@@ -5,8 +5,7 @@ workspace "luna"
     configurations
     {
         "debug",
-        "release",
-        "dist"
+        "release"
     }
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -53,11 +52,11 @@ project "luna"
         defines
         {
             "LN_BUILD_DLL",
-            "LN_API",
+            "_WINDLL"
         }
         postbuildcommands
         {
-            ("{copy} %{cfg.buildtarget.relpath} ../bin/x64/sandbox")
+            ("{copy} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/x64/sandbox")
         }
         
         filter "configurations:debug"
@@ -75,8 +74,8 @@ project "sandbox"
     kind "ConsoleApp"
     language "c++"
 
-    targetdir("bin/x64/%{prj.name}")
-    objdir("bin-int/x64/%{prj.name}")
+    targetdir("bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
     {
         "%{prj.name}/src/**.h",
@@ -103,5 +102,10 @@ project "sandbox"
         systemversion "latest"
         defines
         {
-
+            "_WINDLL"
         }
+
+buildoptions 
+{
+    "/MT",
+}
