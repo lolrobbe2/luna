@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+/thirdParty
+*.vcxproj
+*.filters
+*.user
+/.vs/luna
