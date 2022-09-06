@@ -1,2 +1,4 @@
 ﻿  sandbox.cpp
+C:\Users\robbe\source\repos\luna\luna\src\core\application.h(18,24): warning C4251: 'luna::application::application::mWindow': class 'std::shared_ptr<luna::vulkan::window>' needs to have dll-interface to be used by clients of class 'luna::application::application'
+C:\Users\robbe\source\repos\luna\luna\src\core\core.h(20): message : see declaration of 'std::shared_ptr<luna::vulkan::window>'
   sandbox.vcxproj -> C:\Users\robbe\source\repos\luna\bin\debug-windows-x86_64\x64\sandbox\sandbox.exe

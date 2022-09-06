@@ -25,11 +25,12 @@ project "luna"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "thirdParty/glfw-3.3.6.bin.WIN64/include",
+        "luna/thirdParty/GLFW/include",
         "thirdParty/glm-master/glm",
         "thirdParty/",
         "thirdParty/stb-master",
         "thirdParty/VulkanMemoryAllocator-master/include",
+        "luna/thirdParty/spdlog/include";
         "luna/src"
     }
 
@@ -53,6 +54,7 @@ project "luna"
         {
             "LN_BUILD_DLL",
             "_WINDLL"
+           
         }
         postbuildcommands
         {
@@ -84,11 +86,12 @@ project "sandbox"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "thirdParty/glfw-3.3.7.bin.WIN64/include",
+        "luna/thirdParty/GLFW/include",
         "thirdParty/glm-master/glm",
         "thirdParty/",
         "thirdParty/stb-master",
         "thirdParty/VulkanMemoryAllocator-master/include",
+        "luna/thirdParty/spdlog/include",
         "luna/src"
     }
    
