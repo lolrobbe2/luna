@@ -1,0 +1,6 @@
+[submodule "luna/thirdParty/spdlog"]
+	path = luna/thirdParty/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "luna/thirdParty/GLFW"]
+	path = luna/thirdParty/GLFW
+	url = https://github.com/glfw/glfw
