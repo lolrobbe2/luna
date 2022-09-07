@@ -1,4 +1,7 @@
 #pragma once
+#ifndef WINDOW
+#define WINDOW
+
 #include <lnpch.h>
 #include <core/core.h>
 #include <core/events/event.h>
@@ -6,6 +9,7 @@ namespace luna
 {
 	namespace vulkan
 	{
+		
 		struct windowSpec
 		{
 			uint32_t width;
@@ -15,9 +19,19 @@ namespace luna
 			{
 			};
 		};
+
+		
+		enum Api
+		{
+			NONE = 0,
+			VULKAN = 1,
+			OPENGL = 2
+		};
+		//using renderApi = uint8_t;
+		
 		/**
-		*	
-		*	@brief this is the window class en creates an os window 
+		*
+		*	@brief this is the window class en creates an os window
 		*	@class std::shared_ptr<window>(window::create(windowSpec windowSpec));
 		*	@warning use as an std::shared_ptr /ref
 		*/
@@ -26,6 +40,8 @@ namespace luna
 			
 		public:
 			
+			Api graphicsApi = VULKAN;
+
 			using eventCallbackFn = std::function<void(Event&)>;
 
 			virtual ~window() {};
@@ -38,3 +54,5 @@ namespace luna
 		};
 	}
 }
+#endif // !WINDOW
+

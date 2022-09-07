@@ -115,6 +115,7 @@ namespace luna
 		void windowsWindow::shutDown()
 		{
 			glfwDestroyWindow(window);
+			glfwTerminate();
 		}
 	}
 }

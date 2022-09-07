@@ -10,6 +10,8 @@ namespace luna
 			Log::Init();
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
+			renderer::renderer::init(mWindow);
+
 			
 		}
 		application::~application()
@@ -19,7 +21,7 @@ namespace luna
 
 		void application::run()
 		{
-			while (true)
+			while (running)
 			{
 				mWindow->onUpdate();
 			}
@@ -27,7 +29,9 @@ namespace luna
 
 		void application::onEvent(Event& e)
 		{
+			
 			LN_TRACE("{0}", e);
+			if (e.getEventType() == luna::eventType::WindowClose) running = false;
 		}
 	}
 }

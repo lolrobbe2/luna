@@ -1,4 +1,6 @@
-﻿  windowsWindow.cpp
+﻿  vulkanDevice.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(55,64): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(99): warning C4172: returning address of local variable or temporary: extensions
   luna.vcxproj -> C:\Users\robbe\source\repos\luna\bin\debug-windows-x86_64\x64\luna\luna.dll
