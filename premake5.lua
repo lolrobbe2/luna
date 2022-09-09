@@ -42,7 +42,7 @@ project "luna"
     
     libdirs
     {
-        "thirdParty/glfw-3.3.7.bin.WIN64/lib-vc2022", 
+        "luna/thirdParty/GLFW/lib-vc2022", 
     }
 
      filter "system:windows"

@@ -23,6 +23,10 @@ namespace luna
 		{
 			glfwPollEvents();
 		}
+		inline void* windowsWindow::getWindow()
+		{
+			return _window;
+		}
 		void windowsWindow::init(const vulkan::windowSpec& windowInfo)
 		{
 			mData.width = windowInfo.width;
@@ -32,12 +36,33 @@ namespace luna
 			if (!isGlfwInit)
 			{
 				int succes = glfwInit();
-				window = glfwCreateWindow(mData.width, mData.height, mData.title.c_str(), NULL, NULL);
+				glfwSetErrorCallback([](int error_code, const char* description)
+				{
+						LN_CORE_ERROR("glfw error. error code = {0}, description: {1}", error_code, description);
+				});
 				isGlfwInit = true;
 			}
-			glfwSetWindowUserPointer(window, &mData);
+
+			//select GLFW_API based on selected API
+			switch (graphicsApi)
+			{
+			case luna::vulkan::NONE:
+				break;
+			case luna::vulkan::VULKAN:
+				glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+				break;
+			case luna::vulkan::OPENGL:
+				glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
+				break;
+			default:
+				break;
+			}
+			
+			_window = glfwCreateWindow(mData.width, mData.height, mData.title.c_str(), NULL, NULL);
+
+			glfwSetWindowUserPointer(_window, &mData);
 			/* setting GLFW callbacks*/
-			glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height)
+			glfwSetWindowSizeCallback(_window, [](GLFWwindow* window, int width, int height)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
 				winData.height = height;
@@ -46,14 +71,14 @@ namespace luna
 				winData.eventCallbackFn(event);
 			});
 
-			glfwSetWindowCloseCallback(window, [](GLFWwindow* window)
+			glfwSetWindowCloseCallback(_window, [](GLFWwindow* window)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
 				windowCloseEvent event;
 				winData.eventCallbackFn(event);
 			});
 
-			glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+			glfwSetKeyCallback(_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
 				switch (action)
@@ -78,7 +103,7 @@ namespace luna
 				}
 			});
 
-			glfwSetMouseButtonCallback(window, [](GLFWwindow* window, int button, int action, int mods)
+			glfwSetMouseButtonCallback(_window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
 				switch (action)
@@ -98,14 +123,14 @@ namespace luna
 				}
 			});
 
-			glfwSetScrollCallback(window, [](GLFWwindow* window, double xoffset, double yoffset) 
+			glfwSetScrollCallback(_window, [](GLFWwindow* window, double xoffset, double yoffset) 
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
 				mouseScrolledEvent scrollEvent((float)xoffset, (float)yoffset);
 				winData.eventCallbackFn(scrollEvent);
 			});
 
-			glfwSetCursorPosCallback(window, [](GLFWwindow* window, double xpos, double ypos)
+			glfwSetCursorPosCallback(_window, [](GLFWwindow* window, double xpos, double ypos)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
 				mouseMovedEvent moveEvent((float)xpos, (float)ypos);
@@ -114,7 +139,7 @@ namespace luna
 		}
 		void windowsWindow::shutDown()
 		{
-			glfwDestroyWindow(window);
+			glfwDestroyWindow(_window);
 			glfwTerminate();
 		}
 	}

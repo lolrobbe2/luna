@@ -18,13 +18,14 @@ namespace luna
 			inline uint32_t getWidth() const override { return mData.width; };
 			inline uint32_t getHeight() const override { return mData.height; };
 			inline void setEventCallBack(const eventCallbackFn& callback) override { mData.eventCallbackFn = callback; };
+			inline void* getWindow() override;
 		private: 
 			virtual void init(const vulkan::windowSpec& windowInfo);
 			virtual void shutDown();
 
 		private:
 			
-			GLFWwindow* window;
+			GLFWwindow* _window;
 			struct windowData
 			{
 				uint32_t width = 0;

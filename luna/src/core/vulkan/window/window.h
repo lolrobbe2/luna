@@ -50,6 +50,7 @@ namespace luna
 			virtual uint32_t getWidth() const = 0;
 			virtual uint32_t getHeight() const = 0;
 			virtual void setEventCallBack(const eventCallbackFn& callback) = 0;
+			virtual void* getWindow() = 0;
 			windowSpec windowSpec;
 		};
 	}

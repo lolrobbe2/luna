@@ -4,8 +4,9 @@ namespace luna
 {
 	namespace renderer
 	{
-		vulkanDevice::vulkanDevice()
+		vulkanDevice::vulkanDevice(const ref<vulkan::window>& Window)
 		{
+			window = Window;
 			createContext();
 		}
 		vulkanDevice::~vulkanDevice()
@@ -15,11 +16,15 @@ namespace luna
 		void vulkanDevice::createContext()
 		{
 			LN_CORE_TRACE("instance creation result = {0}",createInstance());
+			LN_CORE_TRACE("surface creation result = {0}", glfwCreateWindowSurface(deviceHandle.instance, (GLFWwindow*)window->getWindow(), nullptr, &surface));
 			LN_CORE_TRACE("device selection result = {0}", pickPhysicalDevice());
+			LN_CORE_TRACE("logical device creation result = {0}", createLogicalDevice()); //TODO add specification;
 		}
 
 		void vulkanDevice::destroyContext()
 		{
+			vkDestroyDevice(deviceHandle.device, nullptr);
+			vkDestroySurfaceKHR(deviceHandle.instance, surface, nullptr);
 			vkDestroyInstance(deviceHandle.instance,nullptr);
 		}
 
@@ -76,7 +81,7 @@ namespace luna
 			uint32_t variant, major, minor, patch;
 			GET_UNCODED_VERSION(deviceProperties.apiVersion, variant, major, minor, patch);
 			LN_CORE_INFO("api version = {0}.{1}.{2}.{3}", variant, major, minor, patch);
-			
+			//chacking if api version is compatible.
 			if (variant <= LN_VULKAN_VARIANT && major <= LN_VULKAN_MAJOR)
 			{
 				if (minor < LN_VULKAN_MINOR) {LN_CORE_INFO("picked physical device, name: {0}, type {1}", deviceProperties.deviceName, deviceProperties.deviceType); return VK_SUCCESS;};
@@ -85,6 +90,43 @@ namespace luna
 			}
 			LN_CORE_INFO("picked physical device, name: {0}, type {1}", deviceProperties.deviceName, deviceProperties.deviceType);
 			return VK_SUCCESS;
+		}
+
+		VkResult vulkanDevice::createLogicalDevice()
+		{
+			std::vector<VkDeviceQueueCreateInfo> queueCreateInfos = createQueues();
+			VkPhysicalDeviceFeatures deviceFeatures{};
+			deviceFeatures.samplerAnisotropy = VK_TRUE;
+			deviceFeatures.sparseBinding = VK_TRUE;
+
+			VkDeviceCreateInfo createInfo{};
+			createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+
+			createInfo.queueCreateInfoCount = static_cast<uint32_t>(queueCreateInfos.size());
+			createInfo.pQueueCreateInfos = queueCreateInfos.data();
+
+			createInfo.pEnabledFeatures = &deviceFeatures;
+
+			const std::vector<const char*> deviceExtensions = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
+			createInfo.enabledExtensionCount = static_cast<uint32_t>(deviceExtensions.size());
+			createInfo.ppEnabledExtensionNames = deviceExtensions.data();
+			#ifdef ENABLE_VALIDATION_LAYERS
+			std::vector<const char*> requiredLayers{"VK_LAYER_KHRONOS_validation"};
+			createInfo.enabledLayerCount = static_cast<uint32_t>(requiredLayers.size());
+			createInfo.ppEnabledLayerNames = requiredLayers.data();
+			#else
+				createInfo.enabledLayerCount = 0;
+			#endif
+
+
+			VkPhysicalDeviceShaderDrawParametersFeatures shaderDrawParametersFeatures = {};
+			shaderDrawParametersFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES;
+			shaderDrawParametersFeatures.pNext = nullptr;
+			shaderDrawParametersFeatures.shaderDrawParameters = VK_TRUE;
+
+			createInfo.pNext = &shaderDrawParametersFeatures;
+
+			return vkCreateDevice(deviceHandle.physicalDevice, &createInfo, nullptr, &deviceHandle.device);
 		}
 
 
@@ -113,7 +155,7 @@ namespace luna
 			else return VK_ERROR_LAYER_NOT_PRESENT;
 		}
 
-		const std::vector<const char*>& vulkanDevice::getRequiredExtensions() 
+		std::vector<const char*> vulkanDevice::getRequiredExtensions() 
 		{
 			uint32_t glfwExtensionCount = 0;
 			const char** glfwExtensions;
@@ -141,6 +183,42 @@ namespace luna
 			if (!deviceFeatures.geometryShader) return 0;
 			return score;
 
+		}
+		std::vector<VkDeviceQueueCreateInfo> vulkanDevice::createQueues()
+		{
+			queueFamilyIndices indices;
+			uint32_t queueFamilyCount = 0;
+			int i = 0;
+			vkGetPhysicalDeviceQueueFamilyProperties(deviceHandle.physicalDevice, &queueFamilyCount, nullptr);
+
+			std::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+			vkGetPhysicalDeviceQueueFamilyProperties(deviceHandle.physicalDevice, &queueFamilyCount, queueFamilies.data());
+
+			VkBool32 presentSupport = false;
+			vkGetPhysicalDeviceSurfaceSupportKHR(deviceHandle.physicalDevice, i, surface, &presentSupport);
+
+			if (presentSupport) indices.presentFamily = i;
+			for (const auto& queueFamily : queueFamilies) {
+				if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {indices.graphicsFamily = i;};
+				if (queueFamily.queueFlags & VK_QUEUE_TRANSFER_BIT) {indices.transferFamily = i;};
+				if (indices.isComplete()) {break; };
+				i++;
+			}
+
+			std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
+			std::set<uint32_t> uniqueQueueFamilies = { indices.graphicsFamily.value(), indices.presentFamily.value(),indices.transferFamily.value() };
+
+			std::vector<float> queuePriorities = { 1.0f };
+			for (uint32_t queueFamily : uniqueQueueFamilies) 
+			{
+				VkDeviceQueueCreateInfo queueCreateInfo{};
+				queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+				queueCreateInfo.queueFamilyIndex = queueFamily;
+				queueCreateInfo.queueCount = 1;
+				queueCreateInfo.pQueuePriorities = queuePriorities.data();
+				queueCreateInfos.push_back(queueCreateInfo);
+			}
+			return queueCreateInfos;
 		}
 	}
 }

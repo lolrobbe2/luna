@@ -15,7 +15,7 @@ namespace luna
 				__debugbreak();
 				break;
 			case vulkan::VULKAN:
-				renderer::rendererDevice = ref<device>(new vulkanDevice());
+				renderer::rendererDevice = ref<device>(new vulkanDevice(window));
 				break;
 			default:
 				break;		

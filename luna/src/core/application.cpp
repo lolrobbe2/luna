@@ -29,8 +29,6 @@ namespace luna
 
 		void application::onEvent(Event& e)
 		{
-			
-			LN_TRACE("{0}", e);
 			if (e.getEventType() == luna::eventType::WindowClose) running = false;
 		}
 	}
