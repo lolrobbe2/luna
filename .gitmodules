@@ -4,3 +4,12 @@
 [submodule "luna/thirdParty/GLFW"]
 	path = luna/thirdParty/GLFW
 	url = https://github.com/glfw/glfw
+[submodule "luna/thirdParty/stb"]
+	path = luna/thirdParty/stb
+	url = https://github.com/nothings/stb
+[submodule "luna/thirdParty/glm"]
+	path = luna/thirdParty/glm
+	url = https://github.com/g-truc/glm
+[submodule "luna/thirdParty/VMA"]
+	path = luna/thirdParty/VMA
+	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
