@@ -10,6 +10,10 @@ workspace "luna"
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+
+IncludeDir = {}
+IncludeDir["GLFW"] = "luna/thirdParty/GLFW/include"
+include "luna/thirdParty/GLFW"
 project "luna"
     location "luna"
     kind "SharedLib"
@@ -26,26 +30,29 @@ project "luna"
     {
         "$(VULKAN_SDK)/include",
         "luna/thirdParty/GLFW/include",
-        "thirdParty/glm-master/glm",
-        "thirdParty/",
-        "thirdParty/stb-master",
-        "thirdParty/VulkanMemoryAllocator-master/include",
-        "luna/thirdParty/spdlog/include";
+        "luna/thirdParty/glm",
+        "luna/thirdParty",
+        "luna/thirdParty/VMA/include",
+        "luna/thirdParty/spdlog/include",
         "luna/src"
     }
 
     links
     {
-        "glfw3_mt.lib",
-        "$(VULKAN_SDK)/lib/vulkan-1.lib"
+        "GLFW",
+        "vulkan-1"
+        
     }
     
     libdirs
     {
-        "luna/thirdParty/GLFW/lib-vc2022", 
+        "$(VULKAN_SDK)/Lib", 
     }
-
-     filter "system:windows"
+    postbuildcommands
+    {
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox")
+    }
+    filter "system:windows"
         cppdialect "c++17"
         staticruntime "on"
         systemversion "latest"
@@ -55,10 +62,6 @@ project "luna"
             "LN_BUILD_DLL",
             "_WINDLL"
            
-        }
-        postbuildcommands
-        {
-            ("{copy} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/x64/sandbox")
         }
         
         filter "configurations:debug"
@@ -71,13 +74,14 @@ project "luna"
             "/MT",
         }
 
+ 
 project "sandbox"
     location "sandbox"
     kind "ConsoleApp"
     language "c++"
 
-    targetdir("bin/" .. outputdir .. "/x64/%{prj.name}")
-    objdir("bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
     {
         "%{prj.name}/src/**.h",
@@ -87,16 +91,16 @@ project "sandbox"
     {
         "$(VULKAN_SDK)/include",
         "luna/thirdParty/GLFW/include",
-        "thirdParty/glm-master/glm",
-        "thirdParty/",
-        "thirdParty/stb-master",
-        "thirdParty/VulkanMemoryAllocator-master/include",
+        "luna/thirdParty/glm",
+        "luna/thirdParty",
+        "luna/thirdParty/VMA/include",
         "luna/thirdParty/spdlog/include",
         "luna/src"
     }
    
     links
     {
+        
         "luna"
     }
     filter "system:windows"

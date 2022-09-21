@@ -19,13 +19,22 @@ namespace luna
 			LN_CORE_TRACE("surface creation result = {0}", glfwCreateWindowSurface(deviceHandle.instance, (GLFWwindow*)window->getWindow(), nullptr, &surface));
 			LN_CORE_TRACE("device selection result = {0}", pickPhysicalDevice());
 			LN_CORE_TRACE("logical device creation result = {0}", createLogicalDevice()); //TODO add specification;
+			vulkan::swapchainSpec swapchainspec;
+			swapchainspec.device = deviceHandle.device;
+			swapchainspec.indices = queueFamily;
+			swapchainspec.physicalDevice = deviceHandle.physicalDevice;
+			swapchainspec.surface = surface;
+			swapchainspec.swapchainExtent = { window->getWidth(),window->getHeight() };
+			swapchainspec.window = window;
+			swapchain = std::shared_ptr < vulkan::vulkanSwapchain > (new vulkan::vulkanSwapchain(swapchainspec));
 		}
 
 		void vulkanDevice::destroyContext()
 		{
-			vkDestroyDevice(deviceHandle.device, nullptr);
+			swapchain->~vulkanSwapchain();
 			vkDestroySurfaceKHR(deviceHandle.instance, surface, nullptr);
-			vkDestroyInstance(deviceHandle.instance,nullptr);
+			vkDestroyInstance(deviceHandle.instance, nullptr);
+			vkDestroyDevice(deviceHandle.device, nullptr);
 		}
 
 
@@ -94,7 +103,7 @@ namespace luna
 
 		VkResult vulkanDevice::createLogicalDevice()
 		{
-			std::vector<VkDeviceQueueCreateInfo> queueCreateInfos = createQueues();
+			createQueues();
 			VkPhysicalDeviceFeatures deviceFeatures{};
 			deviceFeatures.samplerAnisotropy = VK_TRUE;
 			deviceFeatures.sparseBinding = VK_TRUE;
@@ -184,9 +193,9 @@ namespace luna
 			return score;
 
 		}
-		std::vector<VkDeviceQueueCreateInfo> vulkanDevice::createQueues()
+		VkDeviceQueueCreateInfo* vulkanDevice::createQueues()
 		{
-			queueFamilyIndices indices;
+			vulkan::queueFamilyIndices indices;
 			uint32_t queueFamilyCount = 0;
 			int i = 0;
 			vkGetPhysicalDeviceQueueFamilyProperties(deviceHandle.physicalDevice, &queueFamilyCount, nullptr);
@@ -204,8 +213,7 @@ namespace luna
 				if (indices.isComplete()) {break; };
 				i++;
 			}
-
-			std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
+			queueFamily = indices;
 			std::set<uint32_t> uniqueQueueFamilies = { indices.graphicsFamily.value(), indices.presentFamily.value(),indices.transferFamily.value() };
 
 			std::vector<float> queuePriorities = { 1.0f };
@@ -218,7 +226,7 @@ namespace luna
 				queueCreateInfo.pQueuePriorities = queuePriorities.data();
 				queueCreateInfos.push_back(queueCreateInfo);
 			}
-			return queueCreateInfos;
+			return queueCreateInfos.data();
 		}
 	}
 }

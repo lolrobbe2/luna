@@ -1,3 +1,0 @@
-﻿LINK : warning LNK4001: no object files specified; libraries used
-LINK : error LNK2001: unresolved external symbol mainCRTStartup
-..\bin\x64\sandbox\sandbox.exe : fatal error LNK1120: 1 unresolved externals

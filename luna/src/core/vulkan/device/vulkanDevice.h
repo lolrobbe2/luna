@@ -1,5 +1,6 @@
 #pragma once
 #include <core/rendering/device.h>
+#include <core/vulkan/rendering/vulkanSwapchain.h>
 #define GET_UNCODED_VERSION(version,variant, major, minor, patch) (uint32_t)variant = ((uint32_t)(version) >> 29); (uint32_t)major = (((uint32_t)(version) >> 22) & 0x7FU); (uint32_t)minor = (((uint32_t)(version) >> 12) & 0x3FFU) ;(uint32_t)patch = ((uint32_t)(version) & 0x3FFU);
 #define LN_VULKAN_VARIANT 0
 #define LN_VULKAN_MAJOR 1
@@ -26,20 +27,11 @@ namespace luna
 			VkResult checkValidationLayerSupport(const std::vector<const char*>& validationLayers);
 			std::vector<const char*> getRequiredExtensions();
 			int rateDeviceSuitability(VkPhysicalDevice device);
-			std::vector<VkDeviceQueueCreateInfo> createQueues();
-
+			VkDeviceQueueCreateInfo* createQueues();
+			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
+		public:
+		
 		private:
-			struct queueFamilyIndices
-			{
-				std::optional<uint32_t> graphicsFamily;
-				std::optional<uint32_t> transferFamily;
-				std::optional<uint32_t> presentFamily;
-
-				bool isComplete() {
-					return graphicsFamily.has_value() && presentFamily.has_value() && transferFamily.has_value();
-				}
-			};
-
 			struct deviceHandles
 			{
 				VkApplicationInfo appInfo{};
@@ -50,7 +42,8 @@ namespace luna
 
 			VkSurfaceKHR surface = VK_NULL_HANDLE;
 			deviceHandles deviceHandle;
-			queueFamilyIndices queueFamily;
+			vulkan::queueFamilyIndices queueFamily;
+			std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
 		};
 	}
 }
