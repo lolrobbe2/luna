@@ -12,15 +12,15 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "luna/thirdParty/GLFW/include"
-include "luna/thirdParty/GLFW"
+IncludeDir["GLFW"] = "%{wks.location}/luna/thirdParty/GLFW/include"
+include "luna/thirdParty/"
 project "luna"
     location "luna"
     kind "SharedLib"
     language "c++"
     
-    targetdir("bin/" .. outputdir .. "/x64/%{prj.name}")
-    objdir("bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
     {
         "%{prj.name}/src/**.h",
@@ -37,11 +37,9 @@ project "luna"
         "luna/src"
     }
 
-    links
+    buildoptions
     {
-        "GLFW",
-        "vulkan-1"
-        
+        "/MT"
     }
     
     libdirs
@@ -59,20 +57,22 @@ project "luna"
         symbols "on"
         defines
         {
+            "_CRT_SECURE_NO_WARNINGS",
             "LN_BUILD_DLL",
             "_WINDLL"
            
         }
-        
+        links
+        {
+            "GLFW",
+            "vulkan-1", 
+        }
         filter "configurations:debug"
         symbols "On"
   
         filter "configurations:release"
         optimize "On"
-        buildoptions 
-        {
-            "/MT",
-        }
+
 
  
 project "sandbox"
