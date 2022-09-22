@@ -39,7 +39,7 @@ namespace luna
 				VkDevice device;
 				VkPhysicalDevice physicalDevice;
 			};
-
+			std::vector<float> queuePriorities = { 0.99f };
 			VkSurfaceKHR surface = VK_NULL_HANDLE;
 			deviceHandles deviceHandle;
 			vulkan::queueFamilyIndices queueFamily;

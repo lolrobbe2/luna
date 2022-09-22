@@ -1,7 +1,7 @@
-[10:41:20] [trace] LUNA: instance creation result = 0
-[10:41:20] [trace] LUNA: surface creation result = 0
-[10:41:20] [info] LUNA: api version = 0.1.2.182
-[10:41:20] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[10:41:20] [trace] LUNA: device selection result = 0
-[10:41:20] [trace] LUNA: logical device creation result = 0
-[10:41:20] [trace] LUNA: swapchain creation result = 0
+[17:32:07] [trace] LUNA: instance creation result = 0
+[17:32:07] [trace] LUNA: surface creation result = 0
+[17:32:07] [info] LUNA: api version = 0.1.2.188
+[17:32:07] [info] LUNA: picked physical device, name: Radeon RX 580 Series, type 2
+[17:32:07] [trace] LUNA: device selection result = 0
+[17:32:07] [trace] LUNA: logical device creation result = 0
+[17:32:07] [trace] LUNA: swapchain creation result = 0

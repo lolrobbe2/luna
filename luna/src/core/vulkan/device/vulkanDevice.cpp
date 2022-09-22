@@ -216,7 +216,7 @@ namespace luna
 			queueFamily = indices;
 			std::set<uint32_t> uniqueQueueFamilies = { indices.graphicsFamily.value(), indices.presentFamily.value(),indices.transferFamily.value() };
 
-			std::vector<float> queuePriorities = { 1.0f };
+			
 			for (uint32_t queueFamily : uniqueQueueFamilies) 
 			{
 				VkDeviceQueueCreateInfo queueCreateInfo{};

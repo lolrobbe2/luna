@@ -13,7 +13,7 @@ namespace luna
 		}
 		VkResult vulkanCmdPool::createNewBuffer(virtualCmdBuffer* commandBuffer)
 		{
-			
+			return VkResult();
 		}
 		VkResult vulkanCmdPool::begin()
 		{
