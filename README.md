@@ -8,7 +8,7 @@ to create a simple to use software engine capable of running commercial software
 
 
 ## buildrequirements 
-- visual studio link: https://visualstudio.microsoft.com/
+- visual studio link: {https://visualstudio.microsoft.com/}
 - c++ build tools 
 ## instalation
 1. clone recursive with visual studio (vs code not supported).
