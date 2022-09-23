@@ -1,0 +1,118 @@
+\hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool}{}\doxysection{luna\+::vulkan\+::vulkan\+Cmd\+Pool Class Reference}
+\label{classluna_1_1vulkan_1_1vulkan_cmd_pool}\index{luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool_a86029eedf07dc8ec4024996bfcd942a9}\label{classluna_1_1vulkan_1_1vulkan_cmd_pool_a86029eedf07dc8ec4024996bfcd942a9}} 
+Vk\+Command\+Buffer {\bfseries operator=} (const virtual\+Cmd\+Buffer command\+Buffer)
+\item 
+\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool_a89a797caa816167be2eaaeb7f84b3e51}{vulkan\+Cmd\+Pool}} (const \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_cmd_pool_spec}{vulkan\+Cmd\+Pool\+Spec}} \&command\+Buffer\+SPec)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool}{vulkan\+Cmd\+Pool}} constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool_af1b1c4731d851243afdc990e33aa0b58}\label{classluna_1_1vulkan_1_1vulkan_cmd_pool_af1b1c4731d851243afdc990e33aa0b58}} 
+virtual {\bfseries $\sim$vulkan\+Cmd\+Pool} ()
+\begin{DoxyCompactList}\small\item\em command\+Pool destructor, does nothing at the moment \end{DoxyCompactList}\item 
+Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool_a624aca7e0d27fd7d351058c12fd2166b}{create\+New\+Buffer}} (virtual\+Cmd\+Buffer $\ast$command\+Buffer, const uint32\+\_\+t \&command\+Buffer\+Count, const Vk\+Command\+Buffer\+Level \&command\+Buffer\+Level)
+\begin{DoxyCompactList}\small\item\em create\+New\+Buffer creates a proteceted command\+Buffer that is bound to the pool it is created with. \end{DoxyCompactList}\item 
+Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool_ad5d6a5128c55f9fcd152d154420b1bd5}{begin}} (virtual\+Cmd\+Buffer command\+Buffer, const Vk\+Command\+Buffer\+Usage\+Flags \&usage\+Flags)
+\begin{DoxyCompactList}\small\item\em starts recording a command\+Buffer. \end{DoxyCompactList}\item 
+Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool_a15dc57d65c7d883e0634eb732844e545}{end}} (virtual\+Cmd\+Buffer command\+Buffer)
+\begin{DoxyCompactList}\small\item\em stops recording the command\+Buffer. \end{DoxyCompactList}\item 
+Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool_ac996574b236e912c58397433cf30e375}{flush}} (Vk\+Queue queue, uint64\+\_\+t submit\+Count, const \mbox{\hyperlink{structluna_1_1vulkan_1_1command_pool_submit_info}{command\+Pool\+Submit\+Info}} $\ast$p\+Command\+Pool\+Submit\+Info, Vk\+Fence wait\+Fence)
+\begin{DoxyCompactList}\small\item\em flush executes all flushed/submitted command\+Buffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool_a89a797caa816167be2eaaeb7f84b3e51}\label{classluna_1_1vulkan_1_1vulkan_cmd_pool_a89a797caa816167be2eaaeb7f84b3e51}} 
+\index{luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}!vulkanCmdPool@{vulkanCmdPool}}
+\index{vulkanCmdPool@{vulkanCmdPool}!luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}}
+\doxysubsubsection{\texorpdfstring{vulkanCmdPool()}{vulkanCmdPool()}}
+{\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Cmd\+Pool\+::vulkan\+Cmd\+Pool (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_cmd_pool_spec}{vulkan\+Cmd\+Pool\+Spec}} \&}]{command\+Buffer\+SPec }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool}{vulkan\+Cmd\+Pool}} constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_cmd_pool_spec}{vulkan\+Cmd\+Pool\+Spec}}} & command\+Pool\+Specefication; \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool_ad5d6a5128c55f9fcd152d154420b1bd5}\label{classluna_1_1vulkan_1_1vulkan_cmd_pool_ad5d6a5128c55f9fcd152d154420b1bd5}} 
+\index{luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}!begin@{begin}}
+\index{begin@{begin}!luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Cmd\+Pool\+::begin (\begin{DoxyParamCaption}\item[{virtual\+Cmd\+Buffer}]{command\+Buffer,  }\item[{const Vk\+Command\+Buffer\+Usage\+Flags \&}]{usage\+Flags }\end{DoxyParamCaption})}
+
+
+
+starts recording a command\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em virtual\+Command\+Buffer} & command\+Buffer handle. \\
+\hline
+{\em const} & Vk\+Command\+Buffer\+Usage\+Flags\& usage\+Flags \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool_a624aca7e0d27fd7d351058c12fd2166b}\label{classluna_1_1vulkan_1_1vulkan_cmd_pool_a624aca7e0d27fd7d351058c12fd2166b}} 
+\index{luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}!createNewBuffer@{createNewBuffer}}
+\index{createNewBuffer@{createNewBuffer}!luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}}
+\doxysubsubsection{\texorpdfstring{createNewBuffer()}{createNewBuffer()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Cmd\+Pool\+::create\+New\+Buffer (\begin{DoxyParamCaption}\item[{virtual\+Cmd\+Buffer $\ast$}]{command\+Buffer,  }\item[{const uint32\+\_\+t \&}]{command\+Buffer\+Count,  }\item[{const Vk\+Command\+Buffer\+Level \&}]{command\+Buffer\+Level }\end{DoxyParamCaption})}
+
+
+
+create\+New\+Buffer creates a proteceted command\+Buffer that is bound to the pool it is created with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em virtual\+Cmd\+Buffer$\ast$} & a command buffer array pointer or std\+::vector pointer. \\
+\hline
+{\em const} & uint32\+\_\+t\& command\+Buffer\+Count number of command\+Buffers to be created. \\
+\hline
+{\em const} & Vk\+Command\+Buffer\+Level\& command\+Buffer\+Level specifies the command\+Buffer type. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool_a15dc57d65c7d883e0634eb732844e545}\label{classluna_1_1vulkan_1_1vulkan_cmd_pool_a15dc57d65c7d883e0634eb732844e545}} 
+\index{luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}!end@{end}}
+\index{end@{end}!luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Cmd\+Pool\+::end (\begin{DoxyParamCaption}\item[{virtual\+Cmd\+Buffer}]{command\+Buffer }\end{DoxyParamCaption})}
+
+
+
+stops recording the command\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em virtual\+Command\+Buffer} & command\+Buffer handle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_cmd_pool_ac996574b236e912c58397433cf30e375}\label{classluna_1_1vulkan_1_1vulkan_cmd_pool_ac996574b236e912c58397433cf30e375}} 
+\index{luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}!flush@{flush}}
+\index{flush@{flush}!luna::vulkan::vulkanCmdPool@{luna::vulkan::vulkanCmdPool}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Cmd\+Pool\+::flush (\begin{DoxyParamCaption}\item[{Vk\+Queue}]{queue,  }\item[{uint64\+\_\+t}]{submit\+Count,  }\item[{const \mbox{\hyperlink{structluna_1_1vulkan_1_1command_pool_submit_info}{command\+Pool\+Submit\+Info}} $\ast$}]{p\+Command\+Pool\+Submit\+Info,  }\item[{Vk\+Fence}]{wait\+Fence }\end{DoxyParamCaption})}
+
+
+
+flush executes all flushed/submitted command\+Buffers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vk\+Queue} & queue \\
+\hline
+{\em submi\+Count} & the amount of command\+Pool\+Submit\+Infos \\
+\hline
+{\em const} & command\+Pool\+Submit\+Info$\ast$ p\+Command\+Pool\+Submit\+Info \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Cmd\+Pool.\+h\item 
+C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Cmd\+Pool.\+cpp\end{DoxyCompactItemize}
