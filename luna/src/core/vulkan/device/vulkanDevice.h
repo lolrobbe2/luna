@@ -20,7 +20,17 @@ namespace luna
 
 		private:
 			/*helper functions*/
+			/**
+			 * @brief creates the vulkan instance.
+			 * 
+			 * \return VK_SUCCESS when creation whas succesful. 
+			 */
 			VkResult createInstance();
+			/**
+			 * @brief picks the most powerful rendering device.
+			 * 
+			 * \return 
+			 */
 			VkResult pickPhysicalDevice();
 			VkResult createLogicalDevice();
 			/*helper helper functions*/
