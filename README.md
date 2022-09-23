@@ -1,4 +1,5 @@
 # luna software engine
+[![License](https://img.shields.io/github/license/TheCherno/Hazel.svg)](https://github.com/lolrobbe2/luna/LICENSE)
 ## goals
 
 to create a simple to use software engine capable of running commercial software.
