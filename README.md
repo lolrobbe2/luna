@@ -9,17 +9,17 @@ to create a simple to use software engine capable of running commercial software
 
 
 ## buildrequirements 
-- [visual studio 2022](https://visualstudio.microsoft.com/).
+- [visual studio 2022](https://visualstudio.microsoft.com/){:target="_blank"}.
 - c++ build tools 
-- [premake5](https://premake.github.io/).
+- [premake5](https://premake.github.io/){:target="_blank"}.
 ## instalation
 1. clone recursive with visual studio (vs code not supported).
 2. create the folder vendor in the sln directory.
 3. open the downloaded zip folder and copy premake5.exe in the vendor folder.
-4. build thirdparty projects ([GLFW](https://www.glfw.org/))
+4. build thirdparty projects ([GLFW](https://www.glfw.org/){:target="_blank"})
 5. build the engine project.
 6. build and run the sanbox project.
 ## website:
-   - [engine source documentation](https://lolrobbe2.github.io/luna/doxygen%20documentation/html/index.html)
-   - [egine website](https://lolrobbe2.github.io/luna)
+   - [engine source documentation](https://lolrobbe2.github.io/luna/doxygen%20documentation/html/index.html){:target="_blank"}
+   - [egine website](https://lolrobbe2.github.io/luna){:target="_blank"}
 # enjoy :)
