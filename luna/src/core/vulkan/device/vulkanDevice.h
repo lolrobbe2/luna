@@ -10,6 +10,12 @@ namespace luna
 {
 	namespace renderer
 	{
+		/**
+		 * this is the vulkan device class and creates a rendering context.
+		 * @code
+		 * ref<device> rederingDevice = std::make_shared<device>(new vulkanDevice(window));
+		 * @endcode
+		 */
 		class vulkanDevice : public device
 		{
 		public:
@@ -19,15 +25,65 @@ namespace luna
 			void destroyContext() override;
 
 		private:
-			/*helper functions*/
+			/**
+			 * @name primaryHelperFunctions helper functions used to create the device
+			 */
+			///@{
+			/**
+			 * @brief creates the vulkan instance.
+			 * 
+			 * \return VK_SUCCESS when creation whas succesful.
+			 * \return VK_ERROR_LAYER_NOT_PRESENT when a requested validation layer is not supported 
+			 */
 			VkResult createInstance();
+			/**
+			 * @brief picks the most powerful rendering device.
+			 * 
+			 * \return VK_SUCCES when suitable physical device(GPU) was found.
+			 * \return VK_ERROR_DEVICE_LOST when no suitable physical device(GPU) could be found.
+			 * \return VK_ERROR_INCOMPATIBLE_DRIVER when the driver version is outdated or incompatible.
+			 */
 			VkResult pickPhysicalDevice();
+			/**
+			 * @brief creates the logical device.
+			 * 
+			 * \return VK_SUCCES
+			 * \return for VK_ERROR look at the vulkan documentation: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDevice.html
+			 */
 			VkResult createLogicalDevice();
-			/*helper helper functions*/
+			///@}
+			/**
+			 * @name secondaryHelperFunctions helper functions used by the primary helper functions
+			 */
+			///@{
+			/**
+			 * @brief checks if all requested validation layers are supported.
+			 * 
+			 * \param validationLayers requested validation layers.
+			 * \return VK_SUCCES when all requested validation layers are supported.
+			 * \return VK_ERROR_LAYER_NOT_PRESENT when a requested validation layer is not supported. 
+			 */
 			VkResult checkValidationLayerSupport(const std::vector<const char*>& validationLayers);
+			/**
+			 * @brief returns all required vulkan extensions.
+			 * 
+			 * \return std::vector<const char*> required extensions for the engine
+			 */
 			std::vector<const char*> getRequiredExtensions();
+			/**
+			 * @brief rates the gpu based on expected performance with a score.
+			 * 
+			 * \param device the physicalDevice(GPU) to be rated
+			 * \return int the score the physical device has.
+			 */
 			int rateDeviceSuitability(VkPhysicalDevice device);
+			/**
+			 * @brief creates all the command queues.
+			 * 
+			 * \return a pointer to all the QueueCreateInfo array
+			 */
 			VkDeviceQueueCreateInfo* createQueues();
+			///@}
 			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
 		public:
 		

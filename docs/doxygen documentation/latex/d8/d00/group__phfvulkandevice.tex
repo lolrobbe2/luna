@@ -1,0 +1,76 @@
+\hypertarget{group__phfvulkandevice}{}\doxysection{primary helper functions.}
+\label{group__phfvulkandevice}\index{primary helper functions.@{primary helper functions.}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Vk\+Result \mbox{\hyperlink{group__phfvulkandevice_ga66e03d83e5817bf883ca7016c69ef19a}{luna\+::renderer\+::vulkan\+Device\+::create\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em creates the vulkan instance. \end{DoxyCompactList}\item 
+Vk\+Result \mbox{\hyperlink{group__phfvulkandevice_gafadd01fd91cc332005a3a2966899e5b4}{luna\+::renderer\+::vulkan\+Device\+::pick\+Physical\+Device}} ()
+\begin{DoxyCompactList}\small\item\em picks the most powerful rendering device. \end{DoxyCompactList}\item 
+Vk\+Result \mbox{\hyperlink{group__phfvulkandevice_gab2fdf422bfa72f2ba8e0b58dbb34b9ea}{luna\+::renderer\+::vulkan\+Device\+::create\+Logical\+Device}} ()
+\begin{DoxyCompactList}\small\item\em creates the logical device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__phfvulkandevice_ga66e03d83e5817bf883ca7016c69ef19a}\label{group__phfvulkandevice_ga66e03d83e5817bf883ca7016c69ef19a}} 
+\index{primary helper functions.@{primary helper functions.}!createInstance@{createInstance}}
+\index{createInstance@{createInstance}!primary helper functions.@{primary helper functions.}}
+\doxysubsubsection{\texorpdfstring{createInstance()}{createInstance()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::renderer\+::vulkan\+Device\+::create\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily \#include $<$\mbox{\hyperlink{vulkan_device_8h}{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.\+h}}$>$}
+
+
+
+creates the vulkan instance. 
+
+\begin{DoxyReturn}{Returns}
+VK\+\_\+\+SUCCESS when creation whas succesful. 
+
+VK\+\_\+\+ERROR\+\_\+\+LAYER\+\_\+\+NOT\+\_\+\+PRESENT when a requested validation layer is not supported 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__phfvulkandevice_gab2fdf422bfa72f2ba8e0b58dbb34b9ea}\label{group__phfvulkandevice_gab2fdf422bfa72f2ba8e0b58dbb34b9ea}} 
+\index{primary helper functions.@{primary helper functions.}!createLogicalDevice@{createLogicalDevice}}
+\index{createLogicalDevice@{createLogicalDevice}!primary helper functions.@{primary helper functions.}}
+\doxysubsubsection{\texorpdfstring{createLogicalDevice()}{createLogicalDevice()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::renderer\+::vulkan\+Device\+::create\+Logical\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily \#include $<$\mbox{\hyperlink{vulkan_device_8h}{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.\+h}}$>$}
+
+
+
+creates the logical device. 
+
+\begin{DoxyReturn}{Returns}
+VK\+\_\+\+SUCCES 
+
+for VK\+\_\+\+ERROR look at the vulkan documentation\+: \href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDevice.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/vk\+Create\+Device.\+html}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__phfvulkandevice_gafadd01fd91cc332005a3a2966899e5b4}\label{group__phfvulkandevice_gafadd01fd91cc332005a3a2966899e5b4}} 
+\index{primary helper functions.@{primary helper functions.}!pickPhysicalDevice@{pickPhysicalDevice}}
+\index{pickPhysicalDevice@{pickPhysicalDevice}!primary helper functions.@{primary helper functions.}}
+\doxysubsubsection{\texorpdfstring{pickPhysicalDevice()}{pickPhysicalDevice()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::renderer\+::vulkan\+Device\+::pick\+Physical\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily \#include $<$\mbox{\hyperlink{vulkan_device_8h}{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.\+h}}$>$}
+
+
+
+picks the most powerful rendering device. 
+
+\begin{DoxyReturn}{Returns}
+VK\+\_\+\+SUCCES when suitable physical device(\+GPU) was found. 
+
+VK\+\_\+\+ERROR\+\_\+\+DEVICE\+\_\+\+LOST when no suitable physical device(\+GPU) could be found. 
+
+VK\+\_\+\+ERROR\+\_\+\+INCOMPATIBLE\+\_\+\+DRIVER when the driver version is outdated or incompatible. 
+\end{DoxyReturn}

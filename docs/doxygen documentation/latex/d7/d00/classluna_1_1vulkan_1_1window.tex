@@ -1,0 +1,142 @@
+\hypertarget{classluna_1_1vulkan_1_1window}{}\doxysection{luna\+::vulkan\+::window Class Reference}
+\label{classluna_1_1vulkan_1_1window}\index{luna::vulkan::window@{luna::vulkan::window}}
+
+
+{\ttfamily \#include $<$window.\+h$>$}
+
+Inheritance diagram for luna\+::vulkan\+::window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d7/d00/classluna_1_1vulkan_1_1window}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a14df75ef2a6abfb73bed3aa3cecd76d6}{event\+Callback\+Fn}} = std\+::function$<$ void(\mbox{\hyperlink{classluna_1_1_event}{Event}} \&)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classluna_1_1vulkan_1_1window_aff65add0ca3ca8329387991a181a9d99}{$\sim$window}} ()
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1window_abb228228131dd1e4b3433ac1ee41762e}{on\+Update}} ()=0
+\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a227c90dbf154016a68c80505bbc80460}{get\+Width}} () const =0
+\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a96c98b4e44f7fb3bacc328845cd415cb}{get\+Height}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1window_ade8005289228808055506555cfff328f}{set\+Event\+Call\+Back}} (const \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a14df75ef2a6abfb73bed3aa3cecd76d6}{event\+Callback\+Fn}} \&callback)=0
+\item 
+virtual void $\ast$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window_add34b613de071ba6e381249cefc6c51c}{get\+Window}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{window}} $\ast$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a9d4489af21757ec6d1d4a210482e09cc}{window\+Create}} (const \mbox{\hyperlink{structluna_1_1vulkan_1_1window_spec}{window\+Spec}} \&Window\+Spec=\mbox{\hyperlink{structluna_1_1vulkan_1_1window_spec_ab957e6f94a1b42d750694b07db2d656c}{window\+Spec\+::window\+Spec}}())
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceluna_1_1vulkan_ac313980b7ef9691114b73c76bec43410}{Api}} \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a1aa550256de37b33fe4eef334faa3adf}{graphics\+Api}} = \mbox{\hyperlink{namespaceluna_1_1vulkan_ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c}{VULKAN}}
+\item 
+\mbox{\hyperlink{structluna_1_1vulkan_1_1window_spec}{window\+Spec}} \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a35baec84a40d0834cab9487f5a1c6040}{window\+Spec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_a14df75ef2a6abfb73bed3aa3cecd76d6}\label{classluna_1_1vulkan_1_1window_a14df75ef2a6abfb73bed3aa3cecd76d6}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!eventCallbackFn@{eventCallbackFn}}
+\index{eventCallbackFn@{eventCallbackFn}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{eventCallbackFn}{eventCallbackFn}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a14df75ef2a6abfb73bed3aa3cecd76d6}{luna\+::vulkan\+::window\+::event\+Callback\+Fn}} =  std\+::function$<$void(\mbox{\hyperlink{classluna_1_1_event}{Event}}\&)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_aff65add0ca3ca8329387991a181a9d99}\label{classluna_1_1vulkan_1_1window_aff65add0ca3ca8329387991a181a9d99}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!````~window@{$\sim$window}}
+\index{````~window@{$\sim$window}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{$\sim$window()}{~window()}}
+{\footnotesize\ttfamily virtual luna\+::vulkan\+::window\+::$\sim$window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_a96c98b4e44f7fb3bacc328845cd415cb}\label{classluna_1_1vulkan_1_1window_a96c98b4e44f7fb3bacc328845cd415cb}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::window\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1windows_window_a30787af0d713fae4aa72786edb258858}{luna\+::vulkan\+::windows\+Window}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_a227c90dbf154016a68c80505bbc80460}\label{classluna_1_1vulkan_1_1window_a227c90dbf154016a68c80505bbc80460}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::window\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1windows_window_ae96780cb0e15cac8eed1fa4befa14449}{luna\+::vulkan\+::windows\+Window}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_add34b613de071ba6e381249cefc6c51c}\label{classluna_1_1vulkan_1_1window_add34b613de071ba6e381249cefc6c51c}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{getWindow()}{getWindow()}}
+{\footnotesize\ttfamily virtual void $\ast$ luna\+::vulkan\+::window\+::get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1windows_window_a1c855425f7826a1fdf0f1bf62da04e25}{luna\+::vulkan\+::windows\+Window}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_abb228228131dd1e4b3433ac1ee41762e}\label{classluna_1_1vulkan_1_1window_abb228228131dd1e4b3433ac1ee41762e}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily virtual void luna\+::vulkan\+::window\+::on\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1windows_window_a427454d1bb14824a27048d35bead798f}{luna\+::vulkan\+::windows\+Window}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_ade8005289228808055506555cfff328f}\label{classluna_1_1vulkan_1_1window_ade8005289228808055506555cfff328f}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!setEventCallBack@{setEventCallBack}}
+\index{setEventCallBack@{setEventCallBack}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{setEventCallBack()}{setEventCallBack()}}
+{\footnotesize\ttfamily virtual void luna\+::vulkan\+::window\+::set\+Event\+Call\+Back (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classluna_1_1vulkan_1_1window_a14df75ef2a6abfb73bed3aa3cecd76d6}{event\+Callback\+Fn}} \&}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1windows_window_a104531586ca2439b6937e7e3e28952d7}{luna\+::vulkan\+::windows\+Window}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_a9d4489af21757ec6d1d4a210482e09cc}\label{classluna_1_1vulkan_1_1window_a9d4489af21757ec6d1d4a210482e09cc}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!windowCreate@{windowCreate}}
+\index{windowCreate@{windowCreate}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{windowCreate()}{windowCreate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{window}} $\ast$ luna\+::vulkan\+::window\+::window\+Create (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structluna_1_1vulkan_1_1window_spec}{window\+Spec}} \&}]{Window\+Spec = {\ttfamily \mbox{\hyperlink{structluna_1_1vulkan_1_1window_spec_ab957e6f94a1b42d750694b07db2d656c}{window\+Spec\+::window\+Spec}}()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_a1aa550256de37b33fe4eef334faa3adf}\label{classluna_1_1vulkan_1_1window_a1aa550256de37b33fe4eef334faa3adf}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!graphicsApi@{graphicsApi}}
+\index{graphicsApi@{graphicsApi}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{graphicsApi}{graphicsApi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_1_1vulkan_ac313980b7ef9691114b73c76bec43410}{Api}} luna\+::vulkan\+::window\+::graphics\+Api = \mbox{\hyperlink{namespaceluna_1_1vulkan_ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c}{VULKAN}}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1window_a35baec84a40d0834cab9487f5a1c6040}\label{classluna_1_1vulkan_1_1window_a35baec84a40d0834cab9487f5a1c6040}} 
+\index{luna::vulkan::window@{luna::vulkan::window}!windowSpec@{windowSpec}}
+\index{windowSpec@{windowSpec}!luna::vulkan::window@{luna::vulkan::window}}
+\doxysubsubsection{\texorpdfstring{windowSpec}{windowSpec}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1vulkan_1_1window_spec}{window\+Spec}} luna\+::vulkan\+::window\+::window\+Spec}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/window/\mbox{\hyperlink{window_8h}{window.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/luna/luna/src/core/platform/windows/\mbox{\hyperlink{windows_window_8cpp}{windows\+Window.\+cpp}}\end{DoxyCompactItemize}

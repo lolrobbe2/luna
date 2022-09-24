@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['s_0',['S',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19add8e32290ffe653c2bc442e19afebada',1,'luna::input']]],
+  ['s_5fclientlogger_1',['s_ClientLogger',['../dc/d00/classluna_1_1_log.html#ac16d7a38d38f5bce0b57ef518dc73e32',1,'luna::Log']]],
+  ['s_5fcorelogger_2',['s_CoreLogger',['../dc/d00/classluna_1_1_log.html#abab8f6ceabbb0d1650ea527ee4f180ee',1,'luna::Log']]],
+  ['scommandpoolspec_3',['sCommandPoolSpec',['../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#a37adb62143af3478ddbc6072160f544f',1,'luna::vulkan::vulkanCmdPool']]],
+  ['scope_4',['scope',['../db/d00/namespaceluna.html#accd5328e0de41c20f918cdd315173870',1,'luna']]],
+  ['scrolllock_5',['ScrollLock',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a3fafff61e91a0645e9d69115b470a1b5',1,'luna::input']]],
+  ['semicolon_6',['Semicolon',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a5d1638abe993d0b78b4d08031316946e',1,'luna::input']]],
+  ['seteventcallback_7',['setEventCallBack',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a104531586ca2439b6937e7e3e28952d7',1,'luna::vulkan::windowsWindow::setEventCallBack()'],['../d7/d00/classluna_1_1vulkan_1_1window.html#ade8005289228808055506555cfff328f',1,'luna::vulkan::window::setEventCallBack()']]],
+  ['shared_5fptr_3c_20window_20_3e_8',['shared_ptr&lt; window &gt;',['../d5/d00/classstd_1_1shared__ptr_3_01window_01_4.html',1,'']]],
+  ['shutdown_9',['shutDown',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a6c54abf726f879ffaba9f3495fe2bf0f',1,'luna::vulkan::windowsWindow']]],
+  ['signalsemaphorecount_10',['signalSemaphoreCount',['../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html#a11b6bb83dfe36d06bc6a3f76ad770cab',1,'luna::vulkan::commandPoolSubmitInfo']]],
+  ['slash_11',['Slash',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a2b0c9beb75f5f9e4dbd1a890acf5c450',1,'luna::input']]],
+  ['space_12',['Space',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a1666ec1914578b61898abd33b657806a',1,'luna::input']]],
+  ['sphysicaldevice_13',['sPhysicalDevice',['../dd/d00/classluna_1_1vulkan_1_1vulkan_feature_support.html#a4eb9f8d158c8496eb2aee4400284e4ea',1,'luna::vulkan::vulkanFeatureSupport']]],
+  ['stb_5fimage_5fimplementation_14',['STB_IMAGE_IMPLEMENTATION',['../dc/d00/lnpch_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78',1,'lnpch.cpp']]],
+  ['surface_15',['surface',['../de/d00/classluna_1_1renderer_1_1vulkan_device.html#ae0a3254cc88bf66aef6347992ebea430',1,'luna::renderer::vulkanDevice::surface()'],['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html#ae8c7a53b0d08fd3d260b4f0f592d478d',1,'luna::vulkan::swapchainSpec::surface()']]],
+  ['swapchain_16',['swapchain',['../de/d00/classluna_1_1renderer_1_1vulkan_device.html#aa482da81d7e840b4b9a6835a58df528c',1,'luna::renderer::vulkanDevice']]],
+  ['swapchainextent_17',['swapchainExtent',['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html#ab523505995070088375e36b3f46612d5',1,'luna::vulkan::swapchainSpec']]],
+  ['swapchainimageformat_18',['swapchainImageFormat',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#af102a54364f502ede5ac4d9c09d2608d',1,'luna::vulkan::vulkanSwapchain']]],
+  ['swapchainimages_19',['swapchainImages',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#af0c7697cf59b0aab645fd24484a8c38f',1,'luna::vulkan::vulkanSwapchain']]],
+  ['swapchainimageviews_20',['swapChainImageViews',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a63790ef192e2ab4bc6823074ba2c8ebe',1,'luna::vulkan::vulkanSwapchain']]],
+  ['swapchainspec_21',['swapchainSpec',['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html',1,'luna::vulkan']]],
+  ['swapchainsupportdetails_22',['swapChainSupportDetails',['../d0/d00/structluna_1_1vulkan_1_1swap_chain_support_details.html',1,'luna::vulkan']]]
+];

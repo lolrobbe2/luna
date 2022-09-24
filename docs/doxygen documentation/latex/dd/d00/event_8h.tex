@@ -1,0 +1,85 @@
+\hypertarget{event_8h}{}\doxysection{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/events/event.h File Reference}
+\label{event_8h}\index{C:/Users/robbe/source/repos/luna/luna/src/core/events/event.h@{C:/Users/robbe/source/repos/luna/luna/src/core/events/event.h}}
+{\ttfamily \#include $<$lnpch.\+h$>$}\newline
+{\ttfamily \#include $<$core/core.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1_event}{luna\+::\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1event_dispatcher}{luna\+::event\+Dispatcher}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceluna}{luna}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{event_8h_a80d534fc4d69a68eefd1573fd0ac2f44}{EVENT\+\_\+\+CLASS\+\_\+\+TYPE}}(type)
+\item 
+\#define \mbox{\hyperlink{event_8h_abd52deea587a36ef619e596a0c691839}{EVENT\+\_\+\+CLASS\+\_\+\+CATEGORY}}(category)~virtual int get\+Category\+Flags() const override \{ return category; \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}{luna\+::event\+Type}} \{ \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a6adf97f83acf6453d4a6a4b1070f3754}{luna\+::\+None}} = 0
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac984201d37197ab297a14d19efee4b07}{luna\+::\+Window\+Close}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9f8f27bff2915738c4fe1b970e12f89c}{luna\+::\+Window\+Resize}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c68d5453b28d52622bf5486a5fd95ca}{luna\+::\+Window\+Focus}}
+, \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c2119b9d61e623975f13f1029f1d97c}{luna\+::\+Window\+Lost\+Focus}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ab94473d9dfc85f8fdbf5cb3b1d992bda}{luna\+::\+Window\+Moved}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a559b408d45669603dbac61cd15984f13}{luna\+::\+App\+Tick}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac177abb86f28dea426f2e3409e14bcda}{luna\+::\+App\+Update}}
+, \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4b2eb3c601042333ac1c0565ff58e3d6}{luna\+::\+App\+Render}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac17e6984c1e5a887a49831beadee6bca}{luna\+::\+Key\+Pressed}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4a77f07c8ad223b71ab4ce78a63841ab}{luna\+::\+Key\+Released}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9afbfd35b289eb4fc7f1bc148d7b422e}{luna\+::\+Key\+Typed}}
+, \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7349f643d689997b7c54bf93e4095f5c}{luna\+::\+Mouse\+Button\+Pressed}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7584c169de594c27f00084b93186fd7c}{luna\+::\+Mouse\+Button\+Released}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac2770ad109c8063ce69a3608a9a16c08}{luna\+::\+Mouse\+Moved}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a50edb169910041bb3c06f6e8322d74c1}{luna\+::\+Mouse\+Scrolled}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}{luna\+::event\+Category}} \{ \newline
+\mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad66255cca4f6c7283f330cfa4a32c7ff}{luna\+::\+None}} = 0
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da09e7f70a97991824dffa6a63722c51fa}{luna\+::event\+Category\+Application}} = BIT(0)
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da83d7552272b8eec46d8ad55978382bb3}{luna\+::event\+Category\+Input}} = BIT(1)
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad1e4d61c40c10dccdc5344fc317c0827}{luna\+::event\+Category\+Keyboard}} = BIT(2)
+, \newline
+\mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da47e4331dbb2547a47ecf89026265b30d}{luna\+::event\+Category\+Mouse}} = BIT(3)
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848}{luna\+::event\+Category\+Mouse\+Button}} = BIT(4)
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}{luna\+::operator$<$$<$}} (std\+::ostream \&os, const Event \&e)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{event_8h_abd52deea587a36ef619e596a0c691839}\label{event_8h_abd52deea587a36ef619e596a0c691839}} 
+\index{event.h@{event.h}!EVENT\_CLASS\_CATEGORY@{EVENT\_CLASS\_CATEGORY}}
+\index{EVENT\_CLASS\_CATEGORY@{EVENT\_CLASS\_CATEGORY}!event.h@{event.h}}
+\doxysubsubsection{\texorpdfstring{EVENT\_CLASS\_CATEGORY}{EVENT\_CLASS\_CATEGORY}}
+{\footnotesize\ttfamily \#define EVENT\+\_\+\+CLASS\+\_\+\+CATEGORY(\begin{DoxyParamCaption}\item[{}]{category }\end{DoxyParamCaption})~virtual int get\+Category\+Flags() const override \{ return category; \}}
+
+\mbox{\Hypertarget{event_8h_a80d534fc4d69a68eefd1573fd0ac2f44}\label{event_8h_a80d534fc4d69a68eefd1573fd0ac2f44}} 
+\index{event.h@{event.h}!EVENT\_CLASS\_TYPE@{EVENT\_CLASS\_TYPE}}
+\index{EVENT\_CLASS\_TYPE@{EVENT\_CLASS\_TYPE}!event.h@{event.h}}
+\doxysubsubsection{\texorpdfstring{EVENT\_CLASS\_TYPE}{EVENT\_CLASS\_TYPE}}
+{\footnotesize\ttfamily \#define EVENT\+\_\+\+CLASS\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{                                \textcolor{keyword}{static} eventType getStaticType() \{ \textcolor{keywordflow}{return} eventType::type; \}\(\backslash\)}
+\DoxyCodeLine{                                \textcolor{keyword}{virtual} eventType getEventType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} getStaticType(); \}\(\backslash\)}
+\DoxyCodeLine{                                \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* getName()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \#type; \}}
+
+\end{DoxyCode}
