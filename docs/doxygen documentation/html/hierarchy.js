@@ -5,6 +5,7 @@ var hierarchy =
     [ "luna::renderer::device", "d6/d00/classluna_1_1renderer_1_1device.html", [
       [ "luna::renderer::vulkanDevice", "de/d00/classluna_1_1renderer_1_1vulkan_device.html", null ]
     ] ],
+    [ "luna::renderer::vulkanDevice::deviceHandles", "d0/d00/structluna_1_1renderer_1_1vulkan_device_1_1device_handles.html", null ],
     [ "luna::Event", "d0/d00/classluna_1_1_event.html", [
       [ "luna::appRenderEvent", "d1/d00/classluna_1_1app_render_event.html", null ],
       [ "luna::appTickEvent", "db/d00/classluna_1_1app_tick_event.html", null ],
@@ -39,5 +40,6 @@ var hierarchy =
     [ "luna::vulkan::window", "d7/d00/classluna_1_1vulkan_1_1window.html", [
       [ "luna::vulkan::windowsWindow", "d5/d00/classluna_1_1vulkan_1_1windows_window.html", null ]
     ] ],
+    [ "luna::vulkan::windowsWindow::windowData", "d8/d00/structluna_1_1vulkan_1_1windows_window_1_1window_data.html", null ],
     [ "luna::vulkan::windowSpec", "de/d00/structluna_1_1vulkan_1_1window_spec.html", null ]
 ];

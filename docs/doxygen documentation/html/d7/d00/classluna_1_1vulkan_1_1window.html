@@ -98,6 +98,8 @@ $(document).ready(function(){initNavTree('d7/d00/classluna_1_1vulkan_1_1window.h
   <div class="headertitle"><div class="title">luna::vulkan::window Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;window.h&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for luna::vulkan::window:</div>
 <div class="dyncontent">
@@ -110,53 +112,279 @@ Inheritance diagram for luna::vulkan::window:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a14df75ef2a6abfb73bed3aa3cecd76d6"><td class="memItemLeft" align="right" valign="top"><a id="a14df75ef2a6abfb73bed3aa3cecd76d6" name="a14df75ef2a6abfb73bed3aa3cecd76d6"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>eventCallbackFn</b> = std::function&lt; void(<a class="el" href="../../d0/d00/classluna_1_1_event.html">Event</a> &amp;)&gt;</td></tr>
+<tr class="memitem:a14df75ef2a6abfb73bed3aa3cecd76d6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</a> = std::function&lt; void(<a class="el" href="../../d0/d00/classluna_1_1_event.html">Event</a> &amp;)&gt;</td></tr>
 <tr class="separator:a14df75ef2a6abfb73bed3aa3cecd76d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abb228228131dd1e4b3433ac1ee41762e"><td class="memItemLeft" align="right" valign="top"><a id="abb228228131dd1e4b3433ac1ee41762e" name="abb228228131dd1e4b3433ac1ee41762e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onUpdate</b> ()=0</td></tr>
+<tr class="memitem:aff65add0ca3ca8329387991a181a9d99"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#aff65add0ca3ca8329387991a181a9d99">~window</a> ()</td></tr>
+<tr class="separator:aff65add0ca3ca8329387991a181a9d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb228228131dd1e4b3433ac1ee41762e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#abb228228131dd1e4b3433ac1ee41762e">onUpdate</a> ()=0</td></tr>
 <tr class="separator:abb228228131dd1e4b3433ac1ee41762e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a227c90dbf154016a68c80505bbc80460"><td class="memItemLeft" align="right" valign="top"><a id="a227c90dbf154016a68c80505bbc80460" name="a227c90dbf154016a68c80505bbc80460"></a>
-virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> () const =0</td></tr>
+<tr class="memitem:a227c90dbf154016a68c80505bbc80460"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a227c90dbf154016a68c80505bbc80460">getWidth</a> () const =0</td></tr>
 <tr class="separator:a227c90dbf154016a68c80505bbc80460"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96c98b4e44f7fb3bacc328845cd415cb"><td class="memItemLeft" align="right" valign="top"><a id="a96c98b4e44f7fb3bacc328845cd415cb" name="a96c98b4e44f7fb3bacc328845cd415cb"></a>
-virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>getHeight</b> () const =0</td></tr>
+<tr class="memitem:a96c98b4e44f7fb3bacc328845cd415cb"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a96c98b4e44f7fb3bacc328845cd415cb">getHeight</a> () const =0</td></tr>
 <tr class="separator:a96c98b4e44f7fb3bacc328845cd415cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade8005289228808055506555cfff328f"><td class="memItemLeft" align="right" valign="top"><a id="ade8005289228808055506555cfff328f" name="ade8005289228808055506555cfff328f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setEventCallBack</b> (const eventCallbackFn &amp;callback)=0</td></tr>
+<tr class="memitem:ade8005289228808055506555cfff328f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#ade8005289228808055506555cfff328f">setEventCallBack</a> (const <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</a> &amp;callback)=0</td></tr>
 <tr class="separator:ade8005289228808055506555cfff328f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add34b613de071ba6e381249cefc6c51c"><td class="memItemLeft" align="right" valign="top"><a id="add34b613de071ba6e381249cefc6c51c" name="add34b613de071ba6e381249cefc6c51c"></a>
-virtual void *&#160;</td><td class="memItemRight" valign="bottom"><b>getWindow</b> ()=0</td></tr>
+<tr class="memitem:add34b613de071ba6e381249cefc6c51c"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#add34b613de071ba6e381249cefc6c51c">getWindow</a> ()=0</td></tr>
 <tr class="separator:add34b613de071ba6e381249cefc6c51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a9d4489af21757ec6d1d4a210482e09cc"><td class="memItemLeft" align="right" valign="top"><a id="a9d4489af21757ec6d1d4a210482e09cc" name="a9d4489af21757ec6d1d4a210482e09cc"></a>
-static <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">window</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>windowCreate</b> (const <a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html">windowSpec</a> &amp;WindowSpec=windowSpec::windowSpec())</td></tr>
+<tr class="memitem:a9d4489af21757ec6d1d4a210482e09cc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a9d4489af21757ec6d1d4a210482e09cc">windowCreate</a> (const <a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html">windowSpec</a> &amp;WindowSpec=<a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html#ab957e6f94a1b42d750694b07db2d656c">windowSpec::windowSpec</a>())</td></tr>
 <tr class="separator:a9d4489af21757ec6d1d4a210482e09cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1aa550256de37b33fe4eef334faa3adf"><td class="memItemLeft" align="right" valign="top"><a id="a1aa550256de37b33fe4eef334faa3adf" name="a1aa550256de37b33fe4eef334faa3adf"></a>
-Api&#160;</td><td class="memItemRight" valign="bottom"><b>graphicsApi</b> = VULKAN</td></tr>
+<tr class="memitem:a1aa550256de37b33fe4eef334faa3adf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#ac313980b7ef9691114b73c76bec43410">Api</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a1aa550256de37b33fe4eef334faa3adf">graphicsApi</a> = <a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c">VULKAN</a></td></tr>
 <tr class="separator:a1aa550256de37b33fe4eef334faa3adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35baec84a40d0834cab9487f5a1c6040"><td class="memItemLeft" align="right" valign="top"><a id="a35baec84a40d0834cab9487f5a1c6040" name="a35baec84a40d0834cab9487f5a1c6040"></a>
-<a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html">windowSpec</a>&#160;</td><td class="memItemRight" valign="bottom"><b>windowSpec</b></td></tr>
+<tr class="memitem:a35baec84a40d0834cab9487f5a1c6040"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html">windowSpec</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a35baec84a40d0834cab9487f5a1c6040">windowSpec</a></td></tr>
 <tr class="separator:a35baec84a40d0834cab9487f5a1c6040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a14df75ef2a6abfb73bed3aa3cecd76d6" name="a14df75ef2a6abfb73bed3aa3cecd76d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14df75ef2a6abfb73bed3aa3cecd76d6">&#9670;&#160;</a></span>eventCallbackFn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a14df75ef2a6abfb73bed3aa3cecd76d6">luna::vulkan::window::eventCallbackFn</a> =  std::function&lt;void(<a class="el" href="../../d0/d00/classluna_1_1_event.html">Event</a>&amp;)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aff65add0ca3ca8329387991a181a9d99" name="aff65add0ca3ca8329387991a181a9d99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff65add0ca3ca8329387991a181a9d99">&#9670;&#160;</a></span>~window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual luna::vulkan::window::~window </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a96c98b4e44f7fb3bacc328845cd415cb" name="a96c98b4e44f7fb3bacc328845cd415cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96c98b4e44f7fb3bacc328845cd415cb">&#9670;&#160;</a></span>getHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint32_t luna::vulkan::window::getHeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a30787af0d713fae4aa72786edb258858">luna::vulkan::windowsWindow</a>.</p>
+
+</div>
+</div>
+<a id="a227c90dbf154016a68c80505bbc80460" name="a227c90dbf154016a68c80505bbc80460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a227c90dbf154016a68c80505bbc80460">&#9670;&#160;</a></span>getWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint32_t luna::vulkan::window::getWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#ae96780cb0e15cac8eed1fa4befa14449">luna::vulkan::windowsWindow</a>.</p>
+
+</div>
+</div>
+<a id="add34b613de071ba6e381249cefc6c51c" name="add34b613de071ba6e381249cefc6c51c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add34b613de071ba6e381249cefc6c51c">&#9670;&#160;</a></span>getWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void * luna::vulkan::window::getWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a1c855425f7826a1fdf0f1bf62da04e25">luna::vulkan::windowsWindow</a>.</p>
+
+</div>
+</div>
+<a id="abb228228131dd1e4b3433ac1ee41762e" name="abb228228131dd1e4b3433ac1ee41762e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb228228131dd1e4b3433ac1ee41762e">&#9670;&#160;</a></span>onUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void luna::vulkan::window::onUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a427454d1bb14824a27048d35bead798f">luna::vulkan::windowsWindow</a>.</p>
+
+</div>
+</div>
+<a id="ade8005289228808055506555cfff328f" name="ade8005289228808055506555cfff328f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade8005289228808055506555cfff328f">&#9670;&#160;</a></span>setEventCallBack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void luna::vulkan::window::setEventCallBack </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a104531586ca2439b6937e7e3e28952d7">luna::vulkan::windowsWindow</a>.</p>
+
+</div>
+</div>
+<a id="a9d4489af21757ec6d1d4a210482e09cc" name="a9d4489af21757ec6d1d4a210482e09cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d4489af21757ec6d1d4a210482e09cc">&#9670;&#160;</a></span>windowCreate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">window</a> * luna::vulkan::window::windowCreate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html">windowSpec</a> &amp;&#160;</td>
+          <td class="paramname"><em>WindowSpec</em> = <code><a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html#ab957e6f94a1b42d750694b07db2d656c">windowSpec::windowSpec</a>()</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1aa550256de37b33fe4eef334faa3adf" name="a1aa550256de37b33fe4eef334faa3adf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa550256de37b33fe4eef334faa3adf">&#9670;&#160;</a></span>graphicsApi</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#ac313980b7ef9691114b73c76bec43410">Api</a> luna::vulkan::window::graphicsApi = <a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c">VULKAN</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35baec84a40d0834cab9487f5a1c6040" name="a35baec84a40d0834cab9487f5a1c6040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35baec84a40d0834cab9487f5a1c6040">&#9670;&#160;</a></span>windowSpec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html">windowSpec</a> luna::vulkan::window::windowSpec</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/window/window.h</li>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/platform/windows/windowsWindow.cpp</li>
+<li>C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/window/<a class="el" href="../../d3/d00/window_8h.html">window.h</a></li>
+<li>C:/Users/robbe/source/repos/luna/luna/src/core/platform/windows/<a class="el" href="../../d1/d00/windows_window_8cpp.html">windowsWindow.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>luna</b></li><li class="navelem"><b>vulkan</b></li><li class="navelem"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">window</a></li>
+    <li class="navelem"><a class="el" href="../../db/d00/namespaceluna.html">luna</a></li><li class="navelem"><a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html">vulkan</a></li><li class="navelem"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">window</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

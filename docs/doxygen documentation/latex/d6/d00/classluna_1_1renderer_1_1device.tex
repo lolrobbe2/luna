@@ -1,5 +1,9 @@
 \hypertarget{classluna_1_1renderer_1_1device}{}\doxysection{luna\+::renderer\+::device Class Reference}
 \label{classluna_1_1renderer_1_1device}\index{luna::renderer::device@{luna::renderer::device}}
+
+
+{\ttfamily \#include $<$device.\+h$>$}
+
 Inheritance diagram for luna\+::renderer\+::device\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,20 +13,74 @@ Inheritance diagram for luna\+::renderer\+::device\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0b8750723e451c}\label{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0b8750723e451c}} 
-virtual void {\bfseries create\+Context} ()=0
+virtual \mbox{\hyperlink{classluna_1_1renderer_1_1device_a2182b56f196936279ecc402d59b894e5}{$\sim$device}} ()
 \item 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}\label{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}} 
-virtual void {\bfseries destroy\+Context} ()=0
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0b8750723e451c}{create\+Context}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}{destroy\+Context}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1device_aafbc6cc53be313fff534273ea56b1345}{window}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}\label{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}} 
-class {\bfseries vulkan\+Device}
+class \mbox{\hyperlink{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}{vulkan\+Device}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a2182b56f196936279ecc402d59b894e5}\label{classluna_1_1renderer_1_1device_a2182b56f196936279ecc402d59b894e5}} 
+\index{luna::renderer::device@{luna::renderer::device}!````~device@{$\sim$device}}
+\index{````~device@{$\sim$device}!luna::renderer::device@{luna::renderer::device}}
+\doxysubsubsection{\texorpdfstring{$\sim$device()}{~device()}}
+{\footnotesize\ttfamily virtual luna\+::renderer\+::device\+::$\sim$device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0b8750723e451c}\label{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0b8750723e451c}} 
+\index{luna::renderer::device@{luna::renderer::device}!createContext@{createContext}}
+\index{createContext@{createContext}!luna::renderer::device@{luna::renderer::device}}
+\doxysubsubsection{\texorpdfstring{createContext()}{createContext()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::device\+::create\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device_a5b1df22cc328eead99c029e3ec8c43b7}{luna\+::renderer\+::vulkan\+Device}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}\label{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}} 
+\index{luna::renderer::device@{luna::renderer::device}!destroyContext@{destroyContext}}
+\index{destroyContext@{destroyContext}!luna::renderer::device@{luna::renderer::device}}
+\doxysubsubsection{\texorpdfstring{destroyContext()}{destroyContext()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::device\+::destroy\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device_a5e2cbcca1d00e490f1804eea2fb48341}{luna\+::renderer\+::vulkan\+Device}}.
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}\label{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}} 
+\index{luna::renderer::device@{luna::renderer::device}!vulkanDevice@{vulkanDevice}}
+\index{vulkanDevice@{vulkanDevice}!luna::renderer::device@{luna::renderer::device}}
+\doxysubsubsection{\texorpdfstring{vulkanDevice}{vulkanDevice}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device}{vulkan\+Device}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1device_aafbc6cc53be313fff534273ea56b1345}\label{classluna_1_1renderer_1_1device_aafbc6cc53be313fff534273ea56b1345}} 
+\index{luna::renderer::device@{luna::renderer::device}!window@{window}}
+\index{window@{window}!luna::renderer::device@{luna::renderer::device}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}}$>$ luna\+::renderer\+::device\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/robbe/source/repos/luna/luna/src/core/rendering/device.\+h\end{DoxyCompactItemize}
+C\+:/\+Users/robbe/source/repos/luna/luna/src/core/rendering/\mbox{\hyperlink{device_8h}{device.\+h}}\end{DoxyCompactItemize}

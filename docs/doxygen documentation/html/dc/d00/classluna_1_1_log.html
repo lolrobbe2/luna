@@ -91,33 +91,161 @@ $(document).ready(function(){initNavTree('dc/d00/classluna_1_1_log.html','../../
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d1/d00/classluna_1_1_log-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::Log Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;log.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a90de80c9fe7f1090577068d8f2157856"><td class="memItemLeft" align="right" valign="top"><a id="a90de80c9fe7f1090577068d8f2157856" name="a90de80c9fe7f1090577068d8f2157856"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
+<tr class="memitem:a90de80c9fe7f1090577068d8f2157856"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/classluna_1_1_log.html#a90de80c9fe7f1090577068d8f2157856">Init</a> ()</td></tr>
 <tr class="separator:a90de80c9fe7f1090577068d8f2157856"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2c0610671710d88c7b042d4df395782"><td class="memItemLeft" align="right" valign="top"><a id="af2c0610671710d88c7b042d4df395782" name="af2c0610671710d88c7b042d4df395782"></a>
-static std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetCoreLogger</b> ()</td></tr>
+<tr class="memitem:af2c0610671710d88c7b042d4df395782"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/classluna_1_1_log.html#af2c0610671710d88c7b042d4df395782">GetCoreLogger</a> ()</td></tr>
 <tr class="separator:af2c0610671710d88c7b042d4df395782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06848aa8317869be9d767c46ce60afb8"><td class="memItemLeft" align="right" valign="top"><a id="a06848aa8317869be9d767c46ce60afb8" name="a06848aa8317869be9d767c46ce60afb8"></a>
-static std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetClientLogger</b> ()</td></tr>
+<tr class="memitem:a06848aa8317869be9d767c46ce60afb8"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/classluna_1_1_log.html#a06848aa8317869be9d767c46ce60afb8">GetClientLogger</a> ()</td></tr>
 <tr class="separator:a06848aa8317869be9d767c46ce60afb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:abab8f6ceabbb0d1650ea527ee4f180ee"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/classluna_1_1_log.html#abab8f6ceabbb0d1650ea527ee4f180ee">s_CoreLogger</a></td></tr>
+<tr class="separator:abab8f6ceabbb0d1650ea527ee4f180ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16d7a38d38f5bce0b57ef518dc73e32"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/classluna_1_1_log.html#ac16d7a38d38f5bce0b57ef518dc73e32">s_ClientLogger</a></td></tr>
+<tr class="separator:ac16d7a38d38f5bce0b57ef518dc73e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a06848aa8317869be9d767c46ce60afb8" name="a06848aa8317869be9d767c46ce60afb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06848aa8317869be9d767c46ce60afb8">&#9670;&#160;</a></span>GetClientLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::shared_ptr&lt; spdlog::logger &gt; luna::Log::GetClientLogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2c0610671710d88c7b042d4df395782" name="af2c0610671710d88c7b042d4df395782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2c0610671710d88c7b042d4df395782">&#9670;&#160;</a></span>GetCoreLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::shared_ptr&lt; spdlog::logger &gt; luna::Log::GetCoreLogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90de80c9fe7f1090577068d8f2157856" name="a90de80c9fe7f1090577068d8f2157856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90de80c9fe7f1090577068d8f2157856">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::Log::Init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac16d7a38d38f5bce0b57ef518dc73e32" name="ac16d7a38d38f5bce0b57ef518dc73e32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac16d7a38d38f5bce0b57ef518dc73e32">&#9670;&#160;</a></span>s_ClientLogger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; spdlog::logger &gt; luna::Log::s_ClientLogger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abab8f6ceabbb0d1650ea527ee4f180ee" name="abab8f6ceabbb0d1650ea527ee4f180ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab8f6ceabbb0d1650ea527ee4f180ee">&#9670;&#160;</a></span>s_CoreLogger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; spdlog::logger &gt; luna::Log::s_CoreLogger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/debug/log.h</li>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/debug/log.cpp</li>
+<li>C:/Users/robbe/source/repos/luna/luna/src/core/debug/<a class="el" href="../../d7/d00/log_8h.html">log.h</a></li>
+<li>C:/Users/robbe/source/repos/luna/luna/src/core/debug/<a class="el" href="../../d9/d00/log_8cpp.html">log.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>luna</b></li><li class="navelem"><a class="el" href="../../dc/d00/classluna_1_1_log.html">Log</a></li>
+    <li class="navelem"><a class="el" href="../../db/d00/namespaceluna.html">luna</a></li><li class="navelem"><a class="el" href="../../dc/d00/classluna_1_1_log.html">Log</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

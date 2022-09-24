@@ -91,11 +91,14 @@ $(document).ready(function(){initNavTree('d6/d00/classluna_1_1renderer_1_1device
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="../../da/d00/classluna_1_1renderer_1_1device-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::renderer::device Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;device.h&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for luna::renderer::device:</div>
 <div class="dyncontent">
@@ -108,28 +111,159 @@ Inheritance diagram for luna::renderer::device:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a742514b1cf12273e7a0b8750723e451c"><td class="memItemLeft" align="right" valign="top"><a id="a742514b1cf12273e7a0b8750723e451c" name="a742514b1cf12273e7a0b8750723e451c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>createContext</b> ()=0</td></tr>
+<tr class="memitem:a2182b56f196936279ecc402d59b894e5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html#a2182b56f196936279ecc402d59b894e5">~device</a> ()</td></tr>
+<tr class="separator:a2182b56f196936279ecc402d59b894e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a742514b1cf12273e7a0b8750723e451c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html#a742514b1cf12273e7a0b8750723e451c">createContext</a> ()=0</td></tr>
 <tr class="separator:a742514b1cf12273e7a0b8750723e451c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff116c44dcc0f44b54f1022f9570536"><td class="memItemLeft" align="right" valign="top"><a id="a8ff116c44dcc0f44b54f1022f9570536" name="a8ff116c44dcc0f44b54f1022f9570536"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>destroyContext</b> ()=0</td></tr>
+<tr class="memitem:a8ff116c44dcc0f44b54f1022f9570536"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html#a8ff116c44dcc0f44b54f1022f9570536">destroyContext</a> ()=0</td></tr>
 <tr class="separator:a8ff116c44dcc0f44b54f1022f9570536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aafbc6cc53be313fff534273ea56b1345"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">vulkan::window</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html#aafbc6cc53be313fff534273ea56b1345">window</a></td></tr>
+<tr class="separator:aafbc6cc53be313fff534273ea56b1345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a0ee548a1b2b101fff96b1b8a3849b3f7"><td class="memItemLeft" align="right" valign="top"><a id="a0ee548a1b2b101fff96b1b8a3849b3f7" name="a0ee548a1b2b101fff96b1b8a3849b3f7"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>vulkanDevice</b></td></tr>
+<tr class="memitem:a0ee548a1b2b101fff96b1b8a3849b3f7"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html#a0ee548a1b2b101fff96b1b8a3849b3f7">vulkanDevice</a></td></tr>
 <tr class="separator:a0ee548a1b2b101fff96b1b8a3849b3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2182b56f196936279ecc402d59b894e5" name="a2182b56f196936279ecc402d59b894e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2182b56f196936279ecc402d59b894e5">&#9670;&#160;</a></span>~device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual luna::renderer::device::~device </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a742514b1cf12273e7a0b8750723e451c" name="a742514b1cf12273e7a0b8750723e451c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a742514b1cf12273e7a0b8750723e451c">&#9670;&#160;</a></span>createContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void luna::renderer::device::createContext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../de/d00/classluna_1_1renderer_1_1vulkan_device.html#a5b1df22cc328eead99c029e3ec8c43b7">luna::renderer::vulkanDevice</a>.</p>
+
+</div>
+</div>
+<a id="a8ff116c44dcc0f44b54f1022f9570536" name="a8ff116c44dcc0f44b54f1022f9570536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff116c44dcc0f44b54f1022f9570536">&#9670;&#160;</a></span>destroyContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void luna::renderer::device::destroyContext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../de/d00/classluna_1_1renderer_1_1vulkan_device.html#a5e2cbcca1d00e490f1804eea2fb48341">luna::renderer::vulkanDevice</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a0ee548a1b2b101fff96b1b8a3849b3f7" name="a0ee548a1b2b101fff96b1b8a3849b3f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ee548a1b2b101fff96b1b8a3849b3f7">&#9670;&#160;</a></span>vulkanDevice</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="../../de/d00/classluna_1_1renderer_1_1vulkan_device.html">vulkanDevice</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aafbc6cc53be313fff534273ea56b1345" name="aafbc6cc53be313fff534273ea56b1345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafbc6cc53be313fff534273ea56b1345">&#9670;&#160;</a></span>window</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt;<a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">vulkan::window</a>&gt; luna::renderer::device::window</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/rendering/device.h</li>
+<li>C:/Users/robbe/source/repos/luna/luna/src/core/rendering/<a class="el" href="../../db/d00/device_8h.html">device.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>luna</b></li><li class="navelem"><b>renderer</b></li><li class="navelem"><a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html">device</a></li>
+    <li class="navelem"><a class="el" href="../../db/d00/namespaceluna.html">luna</a></li><li class="navelem"><a class="el" href="../../df/d00/namespaceluna_1_1renderer.html">renderer</a></li><li class="navelem"><a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html">device</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

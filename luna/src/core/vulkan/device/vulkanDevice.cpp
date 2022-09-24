@@ -158,6 +158,10 @@ namespace luna
 						layersFound++;
 						break;
 					}
+					else
+					{
+						LN_CORE_ERROR("could not find validation layer: {0}", layerName.c_str());
+					}
 				}
 			}
 			if (layersFound == validationLayers.size()) return VK_SUCCESS;

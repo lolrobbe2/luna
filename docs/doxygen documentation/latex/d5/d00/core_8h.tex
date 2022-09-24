@@ -1,0 +1,53 @@
+\hypertarget{core_8h}{}\doxysection{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/core.h File Reference}
+\label{core_8h}\index{C:/Users/robbe/source/repos/luna/luna/src/core/core.h@{C:/Users/robbe/source/repos/luna/luna/src/core/core.h}}
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$core/debug/log.\+h$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceluna}{luna}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{core_8h_aaa2a64e1806a86f073e15277d94cb94a}{CORE}}
+\item 
+\#define \mbox{\hyperlink{core_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(x)~(1$<$$<$x)
+\item 
+\#define \mbox{\hyperlink{core_8h_a601eca0b2cab40b7aeafc444834cc778}{LN\+\_\+\+BIND\+\_\+\+EVENT\+\_\+\+FN}}(fn)~\mbox{[}this\mbox{]}(auto\&\&... args) -\/$>$ decltype(auto) \{ return this-\/$>$fn(std\+::forward$<$decltype(args)$>$(args)...); \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{luna\+::scope}} = std\+::unique\+\_\+ptr$<$ T $>$
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{luna\+::ref}} = std\+::shared\+\_\+ptr$<$ T $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename ... Args$>$ }\\constexpr scope$<$ T $>$ \mbox{\hyperlink{namespaceluna_a7318b1c2711a4b9af5450dcf379e5bcc}{luna\+::create\+Scope}} (Args \&\&... args)
+\item 
+{\footnotesize template$<$typename T , typename ... Args$>$ }\\constexpr ref$<$ T $>$ \mbox{\hyperlink{namespaceluna_a4b6e6b3b5670271d9104388763e3acf1}{luna\+::create\+Ref}} (Args \&\&... args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{core_8h_ad27cc17b25bb93134368d5eb21126eae}\label{core_8h_ad27cc17b25bb93134368d5eb21126eae}} 
+\index{core.h@{core.h}!BIT@{BIT}}
+\index{BIT@{BIT}!core.h@{core.h}}
+\doxysubsubsection{\texorpdfstring{BIT}{BIT}}
+{\footnotesize\ttfamily \#define BIT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(1$<$$<$x)}
+
+\mbox{\Hypertarget{core_8h_aaa2a64e1806a86f073e15277d94cb94a}\label{core_8h_aaa2a64e1806a86f073e15277d94cb94a}} 
+\index{core.h@{core.h}!CORE@{CORE}}
+\index{CORE@{CORE}!core.h@{core.h}}
+\doxysubsubsection{\texorpdfstring{CORE}{CORE}}
+{\footnotesize\ttfamily \#define CORE}
+
+\mbox{\Hypertarget{core_8h_a601eca0b2cab40b7aeafc444834cc778}\label{core_8h_a601eca0b2cab40b7aeafc444834cc778}} 
+\index{core.h@{core.h}!LN\_BIND\_EVENT\_FN@{LN\_BIND\_EVENT\_FN}}
+\index{LN\_BIND\_EVENT\_FN@{LN\_BIND\_EVENT\_FN}!core.h@{core.h}}
+\doxysubsubsection{\texorpdfstring{LN\_BIND\_EVENT\_FN}{LN\_BIND\_EVENT\_FN}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+BIND\+\_\+\+EVENT\+\_\+\+FN(\begin{DoxyParamCaption}\item[{}]{fn }\end{DoxyParamCaption})~\mbox{[}this\mbox{]}(auto\&\&... args) -\/$>$ decltype(auto) \{ return this-\/$>$fn(std\+::forward$<$decltype(args)$>$(args)...); \}}
+

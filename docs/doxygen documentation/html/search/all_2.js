@@ -1,5 +1,20 @@
 var searchData=
 [
-  ['commandpoolsubmitinfo_0',['commandPoolSubmitInfo',['../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html',1,'luna::vulkan']]],
-  ['createnewbuffer_1',['createNewBuffer',['../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#a624aca7e0d27fd7d351058c12fd2166b',1,'luna::vulkan::vulkanCmdPool']]]
+  ['b_0',['B',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a481a0e751fbaab34f50cd69429362dfb',1,'luna::input']]],
+  ['backslash_1',['Backslash',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a8e50e87138c9189b90ec36d64a9d52c7',1,'luna::input']]],
+  ['backspace_2',['Backspace',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a1cf8a10b01c7e09066d38ba88fe4ec59',1,'luna::input']]],
+  ['begin_3',['begin',['../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#ad5d6a5128c55f9fcd152d154420b1bd5',1,'luna::vulkan::vulkanCmdPool']]],
+  ['bit_4',['BIT',['../d5/d00/core_8h.html#ad27cc17b25bb93134368d5eb21126eae',1,'core.h']]],
+  ['button0_5',['Button0',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a21d883d0409b1f5fe6bcc9b29f21930a',1,'luna::Mouse']]],
+  ['button1_6',['Button1',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a717ea0db28b7924d6eae2b6acecc8dbc',1,'luna::Mouse']]],
+  ['button2_7',['Button2',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76abecffa0d888a0814d86f3d2bcc0db1b2',1,'luna::Mouse']]],
+  ['button3_8',['Button3',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76ab41b3e9444310ee5dfaa2687a3c70dcc',1,'luna::Mouse']]],
+  ['button4_9',['Button4',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76aa7e8a76f84929fff43341482f246a841',1,'luna::Mouse']]],
+  ['button5_10',['Button5',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a900547c07bbb031305cd873415648dd3',1,'luna::Mouse']]],
+  ['button6_11',['Button6',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a269ca6dd6cd265d7986d6dee7b3f2cd4',1,'luna::Mouse']]],
+  ['button7_12',['Button7',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a0ba19bad24c3c3b1f8fc0948024d359e',1,'luna::Mouse']]],
+  ['buttonlast_13',['ButtonLast',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76aad9d8d7fda4c0967700822d5782e5c0c',1,'luna::Mouse']]],
+  ['buttonleft_14',['ButtonLeft',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a4e08a52925f0ee7f11fc32bab6296d68',1,'luna::Mouse']]],
+  ['buttonmiddle_15',['ButtonMiddle',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a9442c79013e1758bf2aea3f707ad5e2c',1,'luna::Mouse']]],
+  ['buttonright_16',['ButtonRight',['../d4/d00/namespaceluna_1_1_mouse.html#ab58040b98be4416d030d486fd0b54a76a94ce87390088e1e15311a3a9fb8d8319',1,'luna::Mouse']]]
 ];

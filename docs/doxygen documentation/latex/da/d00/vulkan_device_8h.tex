@@ -1,0 +1,64 @@
+\hypertarget{vulkan_device_8h}{}\doxysection{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.h File Reference}
+\label{vulkan_device_8h}\index{C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanDevice.h@{C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanDevice.h}}
+{\ttfamily \#include $<$core/rendering/device.\+h$>$}\newline
+{\ttfamily \#include $<$core/vulkan/rendering/vulkan\+Swapchain.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device}{luna\+::renderer\+::vulkan\+Device}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1vulkan_device_1_1device_handles}{luna\+::renderer\+::vulkan\+Device\+::device\+Handles}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceluna}{luna}}
+\item 
+namespace \mbox{\hyperlink{namespaceluna_1_1renderer}{luna\+::renderer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{vulkan_device_8h_ac98c4f8dc5e90bea21d420b10e691c85}{GET\+\_\+\+UNCODED\+\_\+\+VERSION}}(version,  variant,  major,  minor,  patch)~(uint32\+\_\+t)variant = ((uint32\+\_\+t)(version) $>$$>$ 29); (uint32\+\_\+t)major = (((uint32\+\_\+t)(version) $>$$>$ 22) \& 0x7\+FU); (uint32\+\_\+t)minor = (((uint32\+\_\+t)(version) $>$$>$ 12) \& 0x3\+FFU) ;(uint32\+\_\+t)patch = ((uint32\+\_\+t)(version) \& 0x3\+FFU);
+\item 
+\#define \mbox{\hyperlink{vulkan_device_8h_aea74d2c0b322810cc63ebc05034046f1}{LN\+\_\+\+VULKAN\+\_\+\+VARIANT}}~0
+\item 
+\#define \mbox{\hyperlink{vulkan_device_8h_a79b4ea55a88900abf9bbd05085b2a128}{LN\+\_\+\+VULKAN\+\_\+\+MAJOR}}~1
+\item 
+\#define \mbox{\hyperlink{vulkan_device_8h_ad9c5b69af5b45955d430b6354329c514}{LN\+\_\+\+VULKAN\+\_\+\+MINOR}}~3
+\item 
+\#define \mbox{\hyperlink{vulkan_device_8h_a7c6d57296e1d6273c3cbf238e0b54b56}{LN\+\_\+\+VULKAN\+\_\+\+PATCH}}~216
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{vulkan_device_8h_ac98c4f8dc5e90bea21d420b10e691c85}\label{vulkan_device_8h_ac98c4f8dc5e90bea21d420b10e691c85}} 
+\index{vulkanDevice.h@{vulkanDevice.h}!GET\_UNCODED\_VERSION@{GET\_UNCODED\_VERSION}}
+\index{GET\_UNCODED\_VERSION@{GET\_UNCODED\_VERSION}!vulkanDevice.h@{vulkanDevice.h}}
+\doxysubsubsection{\texorpdfstring{GET\_UNCODED\_VERSION}{GET\_UNCODED\_VERSION}}
+{\footnotesize\ttfamily \#define GET\+\_\+\+UNCODED\+\_\+\+VERSION(\begin{DoxyParamCaption}\item[{}]{version,  }\item[{}]{variant,  }\item[{}]{major,  }\item[{}]{minor,  }\item[{}]{patch }\end{DoxyParamCaption})~(uint32\+\_\+t)variant = ((uint32\+\_\+t)(version) $>$$>$ 29); (uint32\+\_\+t)major = (((uint32\+\_\+t)(version) $>$$>$ 22) \& 0x7\+FU); (uint32\+\_\+t)minor = (((uint32\+\_\+t)(version) $>$$>$ 12) \& 0x3\+FFU) ;(uint32\+\_\+t)patch = ((uint32\+\_\+t)(version) \& 0x3\+FFU);}
+
+\mbox{\Hypertarget{vulkan_device_8h_a79b4ea55a88900abf9bbd05085b2a128}\label{vulkan_device_8h_a79b4ea55a88900abf9bbd05085b2a128}} 
+\index{vulkanDevice.h@{vulkanDevice.h}!LN\_VULKAN\_MAJOR@{LN\_VULKAN\_MAJOR}}
+\index{LN\_VULKAN\_MAJOR@{LN\_VULKAN\_MAJOR}!vulkanDevice.h@{vulkanDevice.h}}
+\doxysubsubsection{\texorpdfstring{LN\_VULKAN\_MAJOR}{LN\_VULKAN\_MAJOR}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+VULKAN\+\_\+\+MAJOR~1}
+
+\mbox{\Hypertarget{vulkan_device_8h_ad9c5b69af5b45955d430b6354329c514}\label{vulkan_device_8h_ad9c5b69af5b45955d430b6354329c514}} 
+\index{vulkanDevice.h@{vulkanDevice.h}!LN\_VULKAN\_MINOR@{LN\_VULKAN\_MINOR}}
+\index{LN\_VULKAN\_MINOR@{LN\_VULKAN\_MINOR}!vulkanDevice.h@{vulkanDevice.h}}
+\doxysubsubsection{\texorpdfstring{LN\_VULKAN\_MINOR}{LN\_VULKAN\_MINOR}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+VULKAN\+\_\+\+MINOR~3}
+
+\mbox{\Hypertarget{vulkan_device_8h_a7c6d57296e1d6273c3cbf238e0b54b56}\label{vulkan_device_8h_a7c6d57296e1d6273c3cbf238e0b54b56}} 
+\index{vulkanDevice.h@{vulkanDevice.h}!LN\_VULKAN\_PATCH@{LN\_VULKAN\_PATCH}}
+\index{LN\_VULKAN\_PATCH@{LN\_VULKAN\_PATCH}!vulkanDevice.h@{vulkanDevice.h}}
+\doxysubsubsection{\texorpdfstring{LN\_VULKAN\_PATCH}{LN\_VULKAN\_PATCH}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+VULKAN\+\_\+\+PATCH~216}
+
+\mbox{\Hypertarget{vulkan_device_8h_aea74d2c0b322810cc63ebc05034046f1}\label{vulkan_device_8h_aea74d2c0b322810cc63ebc05034046f1}} 
+\index{vulkanDevice.h@{vulkanDevice.h}!LN\_VULKAN\_VARIANT@{LN\_VULKAN\_VARIANT}}
+\index{LN\_VULKAN\_VARIANT@{LN\_VULKAN\_VARIANT}!vulkanDevice.h@{vulkanDevice.h}}
+\doxysubsubsection{\texorpdfstring{LN\_VULKAN\_VARIANT}{LN\_VULKAN\_VARIANT}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+VULKAN\+\_\+\+VARIANT~0}
+
