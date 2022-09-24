@@ -1,0 +1,7 @@
+[17:41:26] [trace] LUNA: instance creation result = 0
+[17:41:26] [trace] LUNA: surface creation result = 0
+[17:41:26] [info] LUNA: api version = 0.1.2.182
+[17:41:26] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
+[17:41:26] [trace] LUNA: device selection result = 0
+[17:41:26] [trace] LUNA: logical device creation result = 0
+[17:41:26] [trace] LUNA: swapchain creation result = 0

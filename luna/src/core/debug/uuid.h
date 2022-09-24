@@ -8,7 +8,6 @@ namespace luna
 	{
 	public:
 		uuid();
-
 		uuid(uint64_t uuid);
 		uint64_t getId() { return _uuid; };
 		operator uint64_t() { return _uuid; }

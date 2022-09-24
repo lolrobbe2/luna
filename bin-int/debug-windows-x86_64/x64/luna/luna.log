@@ -1,4 +1,1 @@
-﻿cl : command line  warning D9025: overriding '/MTd' with '/MT'
-  vulkanCmdPool.cpp
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\device\vulkanCmdPool.cpp(70,32): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-  luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\debug-windows-x86_64\x64\luna\luna.dll
+﻿  luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\debug-windows-x86_64\x64\luna\luna.dll

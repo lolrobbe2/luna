@@ -41,7 +41,7 @@ namespace luna
 			
 		public:
 			
-			Api graphicsApi = VULKAN;
+			static Api graphicsApi;
 
 			using eventCallbackFn = std::function<void(Event&)>;
 

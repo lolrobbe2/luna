@@ -1,4 +1,5 @@
 #include <core/rendering/renderer.h>
+#include <core/vulkan/device/vulkanDevice.h>
 namespace luna
 {
 	namespace renderer

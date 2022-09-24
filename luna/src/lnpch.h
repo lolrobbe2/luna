@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(push, 0)
 #include <cstdint>
 #include <string>
 #include <functional>
@@ -13,5 +14,6 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 #include <stb/stb_image.h>
+#pragma warning(pop)
 
 

@@ -1,5 +1,6 @@
 #pragma once
-#include <core/vulkan/device/vulkanDevice.h>
+#include <core/vulkan/window/window.h>
+#include <core/rendering/device.h>
 namespace luna
 {
 	namespace renderer

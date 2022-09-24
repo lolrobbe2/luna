@@ -7,6 +7,7 @@ namespace luna
 {
 	namespace vulkan
 	{
+		Api window::graphicsApi = Api::VULKAN;
 		window* window::windowCreate(const vulkan::windowSpec& windowSpec)
 		{
 			return new windowsWindow(windowSpec);
