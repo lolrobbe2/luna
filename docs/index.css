@@ -1,0 +1,30 @@
+
+nav{
+display: flex;
+font-family: Verdana;
+min-height: 6vh;
+justify-content: space-around;
+background-color: rgb(194,197,204);
+border: none;
+}
+.navBar tr{
+    
+}
+.navBar th a:hover{
+    background-color: grey;
+    padding-top:2vh;
+    padding-bottom: 2vh;
+    padding-left: 1.1vh;
+    padding-right: 1.1vh;
+    border-spacing: 0px;
+}
+.navBar th a{
+    background-color: darkgray;
+    padding-top:2.25vh;
+    padding-bottom: 2.25vh;
+    padding-left: 1.1vh;
+    padding-right: 1.1vh;
+    text-decoration: none;
+    font-size: large;
+    border-spacing: 0px;
+}
