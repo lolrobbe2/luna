@@ -67,7 +67,7 @@ namespace luna
 				submitInfo.waitSemaphoreCount = pCommandPoolSubmitInfo->waitSemaphoreCount;
 			}
 			
-			return	vkQueueSubmit(queue, submitCount, submitInfos.data(), waitFence);
+			return vkQueueSubmit(queue, submitCount, submitInfos.data(), waitFence);
 		}
 	}
 }

@@ -10,7 +10,7 @@ workspace "luna"
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-
+buildmessage ("$(VULKAN_SDK)/include")
 IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/luna/thirdParty/GLFW/include"
 include "luna/thirdParty/"
@@ -31,7 +31,6 @@ project "luna"
         "$(VULKAN_SDK)/include",
         "luna/thirdParty/GLFW/include",
         "luna/thirdParty/glm",
-        "luna/thirdParty",
         "luna/thirdParty/VMA/include",
         "luna/thirdParty/spdlog/include",
         "luna/src"
@@ -92,7 +91,6 @@ project "sandbox"
         "$(VULKAN_SDK)/include",
         "luna/thirdParty/GLFW/include",
         "luna/thirdParty/glm",
-        "luna/thirdParty",
         "luna/thirdParty/VMA/include",
         "luna/thirdParty/spdlog/include",
         "luna/src"

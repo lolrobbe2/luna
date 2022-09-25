@@ -15,7 +15,7 @@
 
 
 #ifdef LN_PLATFORM_WINDOWS
-#include<Windows.h>
+//#include<Windows.h>
 #define GLFW_EXPOSE_NATIVE_WIN32
 	#ifdef LN_BUILD_DLL
 		#define LN_API __declspec(dllexport)

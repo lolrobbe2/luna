@@ -6,6 +6,8 @@ namespace luna
 		class vulkanPipeline
 		{
 		public:
+			vulkanPipeline();
+			virtual ~vulkanPipeline();
 		private:
 		};
 	}

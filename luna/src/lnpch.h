@@ -1,6 +1,7 @@
 #pragma once
 #pragma warning(push, 0)
 #include <cstdint>
+#include <cstdlib>
 #include <string>
 #include <functional>
 #include <sstream>
@@ -8,6 +9,9 @@
 #include <optional>
 #include <set>
 #include <random>
+#include <iostream>
+#include <fstream>
+#include <filesystem>
 /*personal engine includes*/
 #include <core/platform/platform.h>
 /*thirdparty includes*/

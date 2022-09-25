@@ -8,7 +8,6 @@
 #include <memory>
 #pragma warning(pop)
 #include <core/debug/log.h>
-
 #ifdef _DEBUG
 	#define ENABLE_VALIDATION_LAYERS
 #endif // _DEBUG

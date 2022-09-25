@@ -72,7 +72,7 @@ namespace luna
                 //vkDestroyImageView(mSwapchainSpec.device, swapChainImageViews[i], NULL);
             }
             vkDestroySwapchainKHR(mSwapchainSpec.device, mSwapchain, nullptr);
-			return VkResult();
+			return VK_SUCCESS;
 		}
 
 

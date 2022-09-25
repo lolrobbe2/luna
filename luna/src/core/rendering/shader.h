@@ -13,8 +13,9 @@ namespace luna
 			virtual void unbind() const = 0;
 			static ref<shader> create(const std::string& filepath);
 			static ref<shader> create(const std::vector<uint8_t> shaderSrc);
+			std::string shaderName;
 		private:
-
+			
 		};
 
 	}
