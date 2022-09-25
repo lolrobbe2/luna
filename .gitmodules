@@ -13,6 +13,3 @@
 [submodule "luna/thirdParty/VMA"]
 	path = luna/thirdParty/VMA
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
-[submodule "luna/thirdParty/spirvCross"]
-	path = luna/thirdParty/spirvCross
-	url = https://github.com/KhronosGroup/SPIRV-Cross
