@@ -33,6 +33,7 @@ project "luna"
         "luna/thirdParty/glm",
         "luna/thirdParty/VMA/include",
         "luna/thirdParty/spdlog/include",
+        "luna/thirdParty/stb",
         "luna/src"
     }
 
@@ -63,8 +64,9 @@ project "luna"
         }
         links
         {
+            "shaderc",
             "GLFW",
-            "vulkan-1", 
+            "vulkan-1"
         }
         filter "configurations:debug"
         symbols "On"
@@ -93,6 +95,7 @@ project "sandbox"
         "luna/thirdParty/glm",
         "luna/thirdParty/VMA/include",
         "luna/thirdParty/spdlog/include",
+        "luna/thirdParty/stb",
         "luna/src"
     }
    

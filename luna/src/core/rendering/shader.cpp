@@ -37,6 +37,7 @@ namespace luna
             default:
                 break;
             }
+            return ref<shader>();
         }
     }
 }

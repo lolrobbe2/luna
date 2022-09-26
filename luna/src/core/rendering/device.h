@@ -13,10 +13,9 @@ namespace luna
 			virtual ~device() {};
 			virtual void createContext() = 0;
 			virtual void destroyContext()  = 0;
-			
-		private:
-			friend class vulkanDevice;
 			ref<vulkan::window> window;
+		private:
+			
 			
 		};
 	}

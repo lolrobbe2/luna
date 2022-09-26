@@ -8,7 +8,7 @@
 #define LN_VULKAN_PATCH 216
 namespace luna
 {
-	namespace renderer
+	namespace vulkan
 	{
 		/**
 		 * this is the vulkan device class and creates a rendering context.
@@ -16,9 +16,10 @@ namespace luna
 		 * ref<device> rederingDevice = std::make_shared<device>(new vulkanDevice(window));
 		 * @endcode
 		 */
-		class vulkanDevice : public device
+		class vulkanDevice : public renderer::device
 		{
 		public:
+			
 			vulkanDevice(const ref<vulkan::window>& Window);
 			virtual ~vulkanDevice();
 			void createContext() override;
@@ -88,6 +89,7 @@ namespace luna
 		public:
 		
 		private:
+			
 			struct deviceHandles
 			{
 				VkApplicationInfo appInfo{};

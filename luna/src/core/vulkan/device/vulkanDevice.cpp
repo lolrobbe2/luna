@@ -2,7 +2,7 @@
 #include <core/vulkan/device/vulkanDevice.h>
 namespace luna
 {
-	namespace renderer
+	namespace vulkan
 	{
 		vulkanDevice::vulkanDevice(const ref<vulkan::window>& Window)
 		{
@@ -33,8 +33,8 @@ namespace luna
 		{
 			swapchain->~vulkanSwapchain();
 			vkDestroySurfaceKHR(deviceHandle.instance, surface, nullptr);
-			vkDestroyInstance(deviceHandle.instance, nullptr);
 			vkDestroyDevice(deviceHandle.device, nullptr);
+			vkDestroyInstance(deviceHandle.instance, nullptr);
 		}
 
 
@@ -158,9 +158,9 @@ namespace luna
 						layersFound++;
 						break;
 					}
-					else
+					else if (strcmp(availableLayers.end()->layerName, layerProperties.layerName) == true)
 					{
-						LN_CORE_ERROR("could not find validation layer: {0}", layerName.c_str());
+						LN_CORE_ERROR("could not find validation layer: {0}", layerName);
 					}
 				}
 			}
