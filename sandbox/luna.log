@@ -1,11 +1,15 @@
-[15:38:00] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[15:38:00] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[15:38:00] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[15:38:00] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[15:38:00] [trace] LUNA: instance creation result = 0
-[15:38:00] [trace] LUNA: surface creation result = 0
-[15:38:00] [info] LUNA: api version = 0.1.2.182
-[15:38:00] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[15:38:00] [trace] LUNA: device selection result = 0
-[15:38:00] [trace] LUNA: logical device creation result = 0
-[15:38:00] [trace] LUNA: swapchain creation result = 0
+[18:34:57] [trace] LUNA: instance creation result = 0
+[18:34:57] [trace] LUNA: surface creation result = 0
+[18:34:57] [info] LUNA: api version = 0.1.2.182
+[18:34:57] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
+[18:34:57] [trace] LUNA: device selection result = 0
+[18:34:57] [trace] LUNA: logical device creation result = 0
+[18:34:57] [trace] LUNA: swapchain creation result = 0
+[18:35:06] [trace] LUNA: error messages: 
+[18:35:06] [trace] LUNA:     1 uniform buffers
+[18:35:06] [trace] LUNA:     0 resources
+[18:35:06] [trace] LUNA: Uniform buffers:
+[18:35:06] [trace] LUNA:   UniformBufferObject
+[18:35:06] [trace] LUNA:     Size = 6656
+[18:35:06] [trace] LUNA:     Binding = 0
+[18:35:06] [trace] LUNA:     Members = 4

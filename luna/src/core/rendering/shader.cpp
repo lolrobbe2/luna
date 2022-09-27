@@ -1,5 +1,6 @@
 #include "shader.h"
 #include <core/vulkan/window/window.h>
+#include <core/vulkan/rendering/vulkanShader.h>
 namespace luna
 {
     namespace renderer
@@ -7,6 +8,7 @@ namespace luna
         
         ref<shader> shader::create(const std::string& filepath)
         {
+            shader* shader;
             switch (vulkan::window::graphicsApi)
             {
             case vulkan::NONE:
@@ -16,11 +18,12 @@ namespace luna
                 LN_CORE_INFO(" opengl shaders not implemented");
                 break;
             case vulkan::VULKAN:
-                LN_CORE_INFO(" vulkan shaders not implemented");
+                shader = new vulkan::vulkanShader(filepath);
+                return ref<renderer::shader>(shader);
             default:
                 break;
             }
-            return ref<shader>();
+            return ref<renderer::shader>();
         }
         ref<shader> shader::create(const std::vector<uint8_t> shaderSrc)
         {
@@ -33,7 +36,7 @@ namespace luna
                 LN_CORE_INFO(" opengl shaders not implemented");
                 break;
             case vulkan::VULKAN:
-                LN_CORE_INFO(" vulkan shaders not implemented");
+               
             default:
                 break;
             }

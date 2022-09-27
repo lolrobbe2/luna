@@ -4,10 +4,13 @@ namespace luna
 {
 	namespace vulkan
 	{
-		class vulkanShader 
+		class vulkanShader : public renderer::shader
 		{
+		public:
+			vulkanShader(const std::string& filepath);
+			virtual ~vulkanShader() {};
+			void bind() const override;
+			void unbind() const override;
 		};
 	}
 }
-
-

@@ -13,6 +13,22 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 buildmessage ("$(VULKAN_SDK)/include")
 IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/luna/thirdParty/GLFW/include"
+LibraryDir = {}
+LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
+
+Library = {}
+Library["Vulkan"] = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"
+Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
+
+Library["ShaderC_Debug"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
+Library["SPIRV_Cross_Debug"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL_Debug"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
+Library["SPIRV_Tools_Debug"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
+
+Library["ShaderC_Release"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
+Library["SPIRV_Cross_Release"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL_Release"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
+
 include "luna/thirdParty/"
 project "luna"
     location "luna"
@@ -39,7 +55,7 @@ project "luna"
 
     buildoptions
     {
-        "/MT"
+        "/MD"
     }
     
     libdirs
@@ -64,7 +80,9 @@ project "luna"
         }
         links
         {
-            "shaderc",
+            "%{Library.ShaderC_Debug}",
+			"%{Library.SPIRV_Cross_Debug}",
+			"%{Library.SPIRV_Cross_GLSL_Debug}",
             "GLFW",
             "vulkan-1"
         }
@@ -115,5 +133,5 @@ project "sandbox"
 
 buildoptions 
 {
-    "/MT",
+    "/MD",
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <core/rendering/device.h>
 #include <core/vulkan/rendering/vulkanSwapchain.h>
+#include <core/rendering/shader.h>
 #define GET_UNCODED_VERSION(version,variant, major, minor, patch) (uint32_t)variant = ((uint32_t)(version) >> 29); (uint32_t)major = (((uint32_t)(version) >> 22) & 0x7FU); (uint32_t)minor = (((uint32_t)(version) >> 12) & 0x3FFU) ;(uint32_t)patch = ((uint32_t)(version) & 0x3FFU);
 #define LN_VULKAN_VARIANT 0
 #define LN_VULKAN_MAJOR 1

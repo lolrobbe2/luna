@@ -1,5 +1,6 @@
 #include <lnpch.h>
 #include <core/vulkan/device/vulkanDevice.h>
+
 namespace luna
 {
 	namespace vulkan
@@ -15,6 +16,7 @@ namespace luna
 		}
 		void vulkanDevice::createContext()
 		{
+			
 			LN_CORE_TRACE("instance creation result = {0}",createInstance());
 			LN_CORE_TRACE("surface creation result = {0}", glfwCreateWindowSurface(deviceHandle.instance, (GLFWwindow*)window->getWindow(), nullptr, &surface));
 			LN_CORE_TRACE("device selection result = {0}", pickPhysicalDevice());
@@ -27,6 +29,7 @@ namespace luna
 			swapchainspec.swapchainExtent = { window->getWidth(),window->getHeight() };
 			swapchainspec.window = window;
 			swapchain = std::shared_ptr < vulkan::vulkanSwapchain > (new vulkan::vulkanSwapchain(swapchainspec));
+			ref<renderer::shader>shader = renderer::shader::create("src/assets/fragment.glsl");
 		}
 
 		void vulkanDevice::destroyContext()

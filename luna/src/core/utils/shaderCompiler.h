@@ -1,5 +1,7 @@
 #include <core/core.h>
-#include <shaderc/shaderc.h>
+#include <shaderc/shaderc.hpp>
+#include <spirv_cross/spirv_cross.hpp>
+#include <spirv_cross/spirv_glsl.hpp>
 namespace luna
 {
 	namespace utils
@@ -15,19 +17,19 @@ namespace luna
 			std::vector<char> source;
 			std::string fileName;
 			shaderc_shader_kind shaderKind; 
-			compileLanguage language; 
+			compileLanguage language = SPIR_V; 
 			shaderc_compile_options_t compileOptions;
 		};
 		class shaderCompiler
 		{
 		public:
 			shaderCompiler();
-			virtual ~shaderCompiler() { shaderc_compiler_release(compiler); };
+			virtual ~shaderCompiler() {  };
 			std::vector<char> compile(compileSpec compileSpec);
 
 
 		private:
-			shaderc_compiler_t compiler;
+			void reflect(const std::vector<uint32_t>& shaderData);
 			bool init = false;
 		};
 	}
