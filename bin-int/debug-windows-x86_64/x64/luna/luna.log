@@ -1,7 +1,1 @@
-﻿cl : command line  warning D9025: overriding '/MTd' with '/MD'
-  vulkanDevice.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(74,64): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(164,86): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-  luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\debug-windows-x86_64\x64\luna\luna.dll
+﻿  luna.vcxproj -> C:\Users\robbe\source\repos\luna\bin\debug-windows-x86_64\x64\luna\luna.dll

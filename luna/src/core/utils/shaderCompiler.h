@@ -29,7 +29,7 @@ namespace luna
 
 
 		private:
-			void reflect(const std::vector<uint32_t>& shaderData);
+			bool reflect(const std::vector<uint32_t>& shaderData);
 			bool init = false;
 		};
 	}
