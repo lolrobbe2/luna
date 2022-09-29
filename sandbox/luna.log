@@ -1,28 +1,34 @@
-[21:22:30] [trace] LUNA: instance creation result = 0
-[21:22:30] [trace] LUNA: surface creation result = 0
-[21:22:30] [info] LUNA: api version = 0.1.2.188
-[21:22:30] [info] LUNA: picked physical device, name: Radeon RX 580 Series, type 2
-[21:22:30] [trace] LUNA: device selection result = 0
-[21:22:30] [trace] LUNA: logical device creation result = 0
-[21:22:30] [trace] LUNA: swapchain creation result = 0
-[21:22:30] [trace] LUNA:     1 uniform buffers
-[21:22:30] [trace] LUNA:     1 push constants
-[21:22:30] [trace] LUNA:     0 resources
-[21:22:30] [trace] LUNA:     2 stage inputs
-[21:22:30] [trace] LUNA:     1 stage outputs
-[21:22:30] [trace] LUNA: Uniform buffers:
-[21:22:30] [trace] LUNA:   UniformBufferObject
-[21:22:30] [trace] LUNA:     Size = 6656
-[21:22:30] [trace] LUNA:     Binding = 0
-[21:22:30] [trace] LUNA:     Members = 4
-[21:22:30] [trace] LUNA: push constants:
-[21:22:30] [trace] LUNA:   push
-[21:22:30] [trace] LUNA: stage inputs:
-[21:22:30] [trace] LUNA:   fragColor
-[21:22:30] [trace] LUNA:     id = 24
-[21:22:30] [trace] LUNA:   fragTexCoord
-[21:22:30] [trace] LUNA:     id = 55
-[21:22:30] [trace] LUNA: stage outputs:
-[21:22:30] [trace] LUNA:   outColor
-[21:22:30] [trace] LUNA:     id = 21
-[21:22:30] [trace] LUNA: reflecting shader: true
+[10:30:51] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
+[10:30:51] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
+[10:30:51] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
+[10:30:51] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
+[10:30:51] [trace] LUNA: instance creation result = 0
+[10:30:51] [trace] LUNA: surface creation result = 0
+[10:30:51] [info] LUNA: api version = 0.1.2.182
+[10:30:51] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
+[10:30:51] [trace] LUNA: device selection result = 0
+[10:30:51] [trace] LUNA: logical device creation result = 0
+[10:30:51] [trace] LUNA: swapchain creation result = 0
+[10:30:51] [trace] LUNA:     1 uniform buffers
+[10:30:51] [trace] LUNA:     1 push constants
+[10:30:51] [trace] LUNA:     0 resources
+[10:30:51] [trace] LUNA:     2 stage inputs
+[10:30:51] [trace] LUNA:     1 stage outputs
+[10:30:51] [trace] LUNA: Uniform buffers:
+[10:30:51] [trace] LUNA:   UniformBufferObject
+[10:30:51] [trace] LUNA:     Size = 6656
+[10:30:51] [trace] LUNA:     Binding = 2
+[10:30:51] [trace] LUNA:     Members = 4
+[10:30:51] [trace] LUNA: push constants:
+[10:30:51] [trace] LUNA:   push
+[10:30:51] [trace] LUNA: stage inputs:
+[10:30:51] [trace] LUNA:   fragColor
+[10:30:51] [trace] LUNA:     id = 24
+[10:30:51] [trace] LUNA:     name = Vec3
+[10:30:51] [trace] LUNA:   fragTexCoord
+[10:30:51] [trace] LUNA:     id = 55
+[10:30:51] [trace] LUNA:     name = Vec2
+[10:30:51] [trace] LUNA: stage outputs:
+[10:30:51] [trace] LUNA:   outColor
+[10:30:51] [trace] LUNA:     id = 21
+[10:30:51] [trace] LUNA: reflecting shader: true

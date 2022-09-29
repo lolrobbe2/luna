@@ -1,7 +1,7 @@
 #version 460
 #extension GL_ARB_shader_draw_parameters : enable
 
-layout(set = 0,binding = 0) uniform UniformBufferObject 
+layout(set = 0,binding = 2) uniform UniformBufferObject 
 {
     mat4 model[32];
     mat4 view[32];
@@ -33,7 +33,6 @@ layout(set = 0,binding = 1) uniform sampler samp;
 layout(set = 0,binding = 2) uniform texture2D textures[32];
 layout(std140,set = 0, binding = 3) buffer ObjectBuffer
 {
-
 	ObjectData objects[];
 } objectBuffer;
 

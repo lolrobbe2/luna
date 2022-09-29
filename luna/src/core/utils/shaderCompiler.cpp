@@ -66,14 +66,89 @@ namespace luna
 			{
 				LN_CORE_TRACE("  {0}", stageInput.name);
 				LN_CORE_TRACE("    id = {0}", stageInput.id);
+				LN_CORE_TRACE("    name = {0}", getResourceTypeName(stageInput, compiler));
 			}
 			LN_CORE_TRACE("stage outputs:");
 			for (const auto& stageOutput : resources.stage_outputs)
 			{
 				LN_CORE_TRACE("  {0}", stageOutput.name);
 				LN_CORE_TRACE("    id = {0}", stageOutput.id);
+				
 			}
+		
 			return true;
+		}
+		std::string shaderCompiler::getResourceTypeName(const spirv_cross::Resource& resource,const spirv_cross::Compiler& compiler)
+		{
+			
+			spirv_cross::SPIRType::BaseType baseType = compiler.get_type(resource.base_type_id).basetype;
+			switch (baseType)
+			{
+				uint64_t type;
+			case spirv_cross::SPIRType::Unknown:
+				return "UnKnown";
+			case spirv_cross::SPIRType::Void:
+				return "Void";
+			case spirv_cross::SPIRType::Boolean:
+				return "Boolean";
+			case spirv_cross::SPIRType::SByte:
+				return "SByte_8";
+			case spirv_cross::SPIRType::UByte:
+				return "Ubyte_8";
+			case spirv_cross::SPIRType::Short:
+				return "Short";
+			case spirv_cross::SPIRType::UShort:
+				return "UShort_16";
+			case spirv_cross::SPIRType::Int:
+				return "Int_32";
+			case spirv_cross::SPIRType::UInt:
+				return "UIint_32";
+			case spirv_cross::SPIRType::Int64:
+				return "Int64";
+			case spirv_cross::SPIRType::UInt64:
+				return "Uint64";
+				break;
+			case spirv_cross::SPIRType::AtomicCounter:
+				return "AtomicCounter";
+			case spirv_cross::SPIRType::Half:
+				return "Half";
+			case spirv_cross::SPIRType::Float:
+			{
+				uint32_t vecSize = compiler.get_type(resource.base_type_id).vecsize;
+				switch (vecSize)
+				{
+				case 2:
+					return "Vec2";
+				case 3:
+					return "Vec3";
+				default:
+					return "Float";
+				}
+			}
+			case spirv_cross::SPIRType::Double:
+				break;
+			case spirv_cross::SPIRType::Struct:
+				break;
+			case spirv_cross::SPIRType::Image:
+				break;
+			case spirv_cross::SPIRType::SampledImage:
+				break;
+			case spirv_cross::SPIRType::Sampler:
+				break;
+			case spirv_cross::SPIRType::AccelerationStructure:
+				break;
+			case spirv_cross::SPIRType::RayQuery:
+				break;
+			case spirv_cross::SPIRType::ControlPointArray:
+				break;
+			case spirv_cross::SPIRType::Interpolant:
+				break;
+			case spirv_cross::SPIRType::Char:
+				break;
+			default:
+				return "undetermined";
+			}
+			
 		}
 	}
 }

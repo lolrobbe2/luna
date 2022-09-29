@@ -26,10 +26,11 @@ namespace luna
 			shaderCompiler();
 			virtual ~shaderCompiler() {  };
 			std::vector<char> compile(compileSpec compileSpec);
-
+			
 
 		private:
 			bool reflect(const std::vector<uint32_t>& shaderData);
+			std::string getResourceTypeName(const spirv_cross::Resource& resource, const spirv_cross::Compiler& compiler);
 			bool init = false;
 		};
 	}
