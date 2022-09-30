@@ -11,6 +11,9 @@ namespace luna
 			virtual ~vulkanShader() {};
 			void bind() const override;
 			void unbind() const override;
+			void createLayout() const override;
+		private:
+			renderer::shaderResource getShaderResource(spirv_cross::Resource shaderResource); 
 		};
 	}
 }

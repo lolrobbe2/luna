@@ -6,20 +6,44 @@ namespace luna
 	{
 		enum typeId
 		{
-			Void = 19,
-			Bool = 20,
-			Int = 21,
-			FLoat = 22,
-			Vector = 23,
-			Matrix = 24,
-			Image = 25,
-			Sampler = 26,
-			SampledImage = 27,
-			Array = 28,
-			RuntimeArray = 29,
-			Struct = 30,
-			Pointer = 32
+			Unknown,
+			Void,
+			Boolean,
+			SByte,
+			UByte,
+			Short,
+			UShort,
+			Int,
+			UInt,
+			Int64,
+			UInt64,
+			AtomicCounter,
+			Half,
+			Float,
+			Double,
+			Struct,
+			Image,
+			SampledImage,
+			Sampler,
+			AccelerationStructure,
+			RayQuery,
+
+			// Keep internal types at the end.
+			ControlPointArray,
+			Interpolant,
+			Char,
+			uniform 
 		};
+		struct shaderResource
+		{
+			typeId type = Unknown;
+			uint32_t location = 0;
+			uint32_t set = 0;
+			uint32_t binding = 0;
+			uint32_t strides = 0;
+			std::string name;
+		};
+		 
 		class shader
 		{
 		public:
@@ -27,9 +51,11 @@ namespace luna
 			virtual ~shader() = default;
 			virtual void bind() const = 0;
 			virtual void unbind() const = 0;
+			virtual void createLayout() const = 0;
 			static ref<shader> create(const std::string& filepath);
 			static ref<shader> create(const std::vector<uint8_t> shaderSrc);
 			std::string shaderName;
+			std::vector<shaderResource> shaderLayout{};
 		private:
 			
 		};

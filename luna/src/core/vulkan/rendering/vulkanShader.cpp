@@ -42,6 +42,9 @@ namespace luna
 		void vulkanShader::unbind() const
 		{
 		}
+		void vulkanShader::createLayout() const 
+		{
 
+		}
 	}
 }

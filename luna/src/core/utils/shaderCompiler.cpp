@@ -10,8 +10,6 @@ namespace luna
 		}
 		std::vector<char> shaderCompiler::compile(compileSpec compileSpec)
 		{
-			double startTime;
-			double endtime;
 			shaderc::Compiler compiler;
 			shaderc::SpvCompilationResult compileResult;
 			switch (compileSpec.language)
@@ -66,13 +64,16 @@ namespace luna
 			{
 				LN_CORE_TRACE("  {0}", stageInput.name);
 				LN_CORE_TRACE("    id = {0}", stageInput.id);
-				LN_CORE_TRACE("    name = {0}", getResourceTypeName(stageInput, compiler));
+				LN_CORE_TRACE("    location = {0}", compiler.get_decoration(stageInput.id, spv::DecorationLocation));
+				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageInput, compiler));
 			}
 			LN_CORE_TRACE("stage outputs:");
 			for (const auto& stageOutput : resources.stage_outputs)
 			{
 				LN_CORE_TRACE("  {0}", stageOutput.name);
 				LN_CORE_TRACE("    id = {0}", stageOutput.id);
+				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageOutput, compiler));
+
 				
 			}
 		
@@ -121,30 +122,33 @@ namespace luna
 					return "Vec2";
 				case 3:
 					return "Vec3";
+				case 4:
+					return "Vec4";
 				default:
 					return "Float";
 				}
 			}
 			case spirv_cross::SPIRType::Double:
-				break;
+				return "Double";
 			case spirv_cross::SPIRType::Struct:
+				return "Struct";
 				break;
 			case spirv_cross::SPIRType::Image:
-				break;
+				return "Image";
 			case spirv_cross::SPIRType::SampledImage:
-				break;
+				return "SampledImage";
 			case spirv_cross::SPIRType::Sampler:
-				break;
+				return "Sampler";
 			case spirv_cross::SPIRType::AccelerationStructure:
-				break;
+				return "AccelerationStructure";
 			case spirv_cross::SPIRType::RayQuery:
-				break;
+				return "RayQuery";
 			case spirv_cross::SPIRType::ControlPointArray:
-				break;
+				return "ControlPointArray";
 			case spirv_cross::SPIRType::Interpolant:
-				break;
+				return "InterPolant";
 			case spirv_cross::SPIRType::Char:
-				break;
+				return "Char";
 			default:
 				return "undetermined";
 			}
