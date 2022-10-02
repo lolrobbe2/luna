@@ -1,1 +1,4 @@
-﻿  luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\luna\luna.dll
+﻿cl : command line  warning D9025: overriding '/MT' with '/MD'
+  vulkanShader.cpp
+     Creating library ..\bin\release-windows-x86_64\x64\luna\luna.lib and object ..\bin\release-windows-x86_64\x64\luna\luna.exp
+  luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\luna\luna.dll

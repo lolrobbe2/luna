@@ -8,7 +8,7 @@ namespace luna
 		{
 			
 		}
-		std::vector<char> shaderCompiler::compile(compileSpec compileSpec)
+		std::vector<uint32_t> shaderCompiler::compile(compileSpec compileSpec)
 		{
 			shaderc::Compiler compiler;
 			shaderc::SpvCompilationResult compileResult;
@@ -29,7 +29,7 @@ namespace luna
 			}
 			if(compileResult.GetErrorMessage().size() > 0) LN_CORE_ERROR("compile error: {0}",compileResult.GetErrorMessage());
 			else LN_CORE_TRACE("reflecting shader: {0}",reflect(std::vector<uint32_t>(compileResult.begin(), compileResult.end())));
-			return std::vector<char>(compileResult.cbegin(), compileResult.cend());
+			return std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
 		}
 		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData)
 		{
@@ -37,7 +37,7 @@ namespace luna
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
 			LN_CORE_TRACE("    {0} uniform buffers", resources.uniform_buffers.size());
 			LN_CORE_TRACE("    {0} push constants", resources.push_constant_buffers.size());
-			LN_CORE_TRACE("    {0} resources", resources.sampled_images.size());
+			LN_CORE_TRACE("    {0} resources", resources.separate_images.size());
 			LN_CORE_TRACE("    {0} stage inputs",resources.stage_inputs.size());
 			LN_CORE_TRACE("    {0} stage outputs", resources.stage_outputs.size());
 			LN_CORE_TRACE("Uniform buffers:");

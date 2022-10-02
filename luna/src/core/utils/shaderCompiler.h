@@ -25,7 +25,7 @@ namespace luna
 		public:
 			shaderCompiler();
 			virtual ~shaderCompiler() {  };
-			std::vector<char> compile(compileSpec compileSpec);
+			std::vector<uint32_t> compile(compileSpec compileSpec);
 			
 
 		private:

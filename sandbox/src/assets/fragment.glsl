@@ -1,4 +1,4 @@
-#version 460
++#version 460
 #extension GL_ARB_shader_draw_parameters : enable
 
 layout(set = 0,binding = 2) uniform UniformBufferObject 
@@ -14,7 +14,6 @@ layout(std140,push_constant) uniform PER_OBJECT
 	int index;
 	int text;
 }push;
-
 
 struct ObjectData{
 	mat4 model;

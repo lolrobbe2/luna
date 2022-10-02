@@ -4,6 +4,26 @@ namespace luna
 {
 	namespace renderer
 	{
+		enum typeClass
+		{
+			uniformBuffers,
+			storageBuffers,
+			stageInputs,
+			stageOutputs,
+			subpassInputs,
+			storageImages,
+			sampledImages,
+			atomicCounters,
+			accelerationStructures,
+			pushConstantBuffers,
+
+		// For Vulkan GLSL and HLSL source,
+		// these correspond to separate texture2D and samplers respectively.
+			separateImages,
+			separateSsamplers,
+			builtinInputs,
+			builtinOutputs,
+		};
 		enum typeId
 		{
 			Unknown,
@@ -32,7 +52,14 @@ namespace luna
 			ControlPointArray,
 			Interpolant,
 			Char,
-			uniform 
+			Uniform,
+			PushConstant,
+			Vec2,
+			Vec3,
+			Vec4,
+			mat2,
+			mat3,
+			mat4
 		};
 		struct shaderResource
 		{
@@ -40,8 +67,9 @@ namespace luna
 			uint32_t location = 0;
 			uint32_t set = 0;
 			uint32_t binding = 0;
-			uint32_t strides = 0;
+			uint32_t stride = 0;
 			std::string name;
+			std::vector<shaderResource> members{};
 		};
 		 
 		class shader
@@ -51,11 +79,11 @@ namespace luna
 			virtual ~shader() = default;
 			virtual void bind() const = 0;
 			virtual void unbind() const = 0;
-			virtual void createLayout() const = 0;
+			virtual void createLayout() = 0;
 			static ref<shader> create(const std::string& filepath);
 			static ref<shader> create(const std::vector<uint8_t> shaderSrc);
 			std::string shaderName;
-			std::vector<shaderResource> shaderLayout{};
+			std::vector<shaderResource> shaderLayout;
 		private:
 			
 		};

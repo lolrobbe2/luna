@@ -1,37 +1,63 @@
-[16:01:41] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[16:01:41] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[16:01:41] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[16:01:41] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[16:01:41] [trace] LUNA: instance creation result = 0
-[16:01:41] [trace] LUNA: surface creation result = 0
-[16:01:41] [info] LUNA: api version = 0.1.2.182
-[16:01:41] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[16:01:41] [trace] LUNA: device selection result = 0
-[16:01:41] [trace] LUNA: logical device creation result = 0
-[16:01:41] [trace] LUNA: swapchain creation result = 0
-[16:01:41] [trace] LUNA:     1 uniform buffers
-[16:01:41] [trace] LUNA:     1 push constants
-[16:01:41] [trace] LUNA:     0 resources
-[16:01:41] [trace] LUNA:     2 stage inputs
-[16:01:41] [trace] LUNA:     1 stage outputs
-[16:01:41] [trace] LUNA: Uniform buffers:
-[16:01:41] [trace] LUNA:   UniformBufferObject
-[16:01:41] [trace] LUNA:     Size = 6656
-[16:01:41] [trace] LUNA:     Binding = 2
-[16:01:41] [trace] LUNA:     Members = 4
-[16:01:41] [trace] LUNA: push constants:
-[16:01:41] [trace] LUNA:   push
-[16:01:41] [trace] LUNA: stage inputs:
-[16:01:41] [trace] LUNA:   fragColor
-[16:01:41] [trace] LUNA:     id = 24
-[16:01:41] [trace] LUNA:     location = 0
-[16:01:41] [trace] LUNA:     typeName = Vec3
-[16:01:41] [trace] LUNA:   fragTexCoord
-[16:01:41] [trace] LUNA:     id = 55
-[16:01:41] [trace] LUNA:     location = 1
-[16:01:41] [trace] LUNA:     typeName = Vec2
-[16:01:41] [trace] LUNA: stage outputs:
-[16:01:41] [trace] LUNA:   outColor
-[16:01:41] [trace] LUNA:     id = 21
-[16:01:41] [trace] LUNA:     typeName = Vec4
-[16:01:41] [trace] LUNA: reflecting shader: true
+[17:38:22] [trace] LUNA: instance creation result = 0
+[17:38:22] [trace] LUNA: surface creation result = 0
+[17:38:22] [info] LUNA: api version = 0.1.2.182
+[17:38:22] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
+[17:38:22] [trace] LUNA: device selection result = 0
+[17:38:22] [trace] LUNA: logical device creation result = 0
+[17:38:22] [trace] LUNA: swapchain creation result = 0
+[17:38:22] [trace] LUNA:     1 uniform buffers
+[17:38:22] [trace] LUNA:     1 push constants
+[17:38:22] [trace] LUNA:     1 resources
+[17:38:22] [trace] LUNA:     2 stage inputs
+[17:38:22] [trace] LUNA:     1 stage outputs
+[17:38:22] [trace] LUNA: Uniform buffers:
+[17:38:22] [trace] LUNA:   UniformBufferObject
+[17:38:22] [trace] LUNA:     Size = 6656
+[17:38:22] [trace] LUNA:     Binding = 2
+[17:38:22] [trace] LUNA:     Members = 4
+[17:38:22] [trace] LUNA: push constants:
+[17:38:22] [trace] LUNA:   push
+[17:38:22] [trace] LUNA: stage inputs:
+[17:38:22] [trace] LUNA:   fragColor
+[17:38:22] [trace] LUNA:     id = 24
+[17:38:22] [trace] LUNA:     location = 0
+[17:38:22] [trace] LUNA:     typeName = Vec3
+[17:38:22] [trace] LUNA:   fragTexCoord
+[17:38:22] [trace] LUNA:     id = 55
+[17:38:22] [trace] LUNA:     location = 1
+[17:38:22] [trace] LUNA:     typeName = Vec2
+[17:38:22] [trace] LUNA: stage outputs:
+[17:38:22] [trace] LUNA:   outColor
+[17:38:22] [trace] LUNA:     id = 21
+[17:38:22] [trace] LUNA:     typeName = Vec4
+[17:38:22] [trace] LUNA: reflecting shader: true
+[17:38:22] [trace] LUNA: creating shader Layout
+[17:38:22] [info] LUNA: resource base type = 15
+[17:38:22] [trace] LUNA: resource resource type = 75
+[17:38:22] [trace] LUNA: member name = model
+[17:38:22] [info] LUNA: resource base type = 13
+[17:38:22] [trace] LUNA: resource resource type = 70
+[17:38:22] [trace] LUNA: collumns 4
+[17:38:22] [trace] LUNA: member name = view
+[17:38:22] [info] LUNA: resource base type = 13
+[17:38:22] [trace] LUNA: resource resource type = 70
+[17:38:22] [trace] LUNA: collumns 4
+[17:38:22] [trace] LUNA: member name = proj
+[17:38:22] [info] LUNA: resource base type = 13
+[17:38:22] [trace] LUNA: resource resource type = 70
+[17:38:22] [trace] LUNA: collumns 4
+[17:38:22] [trace] LUNA: member name = text
+[17:38:22] [info] LUNA: resource base type = 8
+[17:38:22] [trace] LUNA: resource resource type = 25
+[17:38:22] [info] LUNA: resource base type = 15
+[17:38:22] [trace] LUNA: resource resource type = 7
+[17:38:22] [info] LUNA: resource base type = 13
+[17:38:22] [trace] LUNA: resource resource type = 22
+[17:38:22] [trace] LUNA: collumns 1
+[17:38:22] [info] LUNA: resource base type = 13
+[17:38:22] [trace] LUNA: resource resource type = 53
+[17:38:22] [trace] LUNA: collumns 1
+[17:38:22] [info] LUNA: resource base type = 13
+[17:38:22] [trace] LUNA: resource resource type = 19
+[17:38:22] [trace] LUNA: collumns 1
+[17:38:22] [trace] LUNA: created shaderLayout
