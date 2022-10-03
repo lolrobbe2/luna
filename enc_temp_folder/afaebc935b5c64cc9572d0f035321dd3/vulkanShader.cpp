@@ -203,19 +203,14 @@ namespace luna
 				resource.type = renderer::Sampler;
 				break;
 			case spirv_cross::SPIRType::AccelerationStructure:
-				resource.type = renderer::AccelerationStructure;
 				break;
 			case spirv_cross::SPIRType::RayQuery:
-				resource.type = renderer::RayQuery;
 				break;
 			case spirv_cross::SPIRType::ControlPointArray:
-				resource.type = renderer::ControlPointArray:
 				break;
 			case spirv_cross::SPIRType::Interpolant:
-				resource.type = renderer::Interpolant;
 				break;
 			case spirv_cross::SPIRType::Char:
-				resource.type = renderer::Char;
 				break;
 			default:
 				break;

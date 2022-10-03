@@ -1,4 +1,4 @@
-+#version 460
+#version 460
 #extension GL_ARB_shader_draw_parameters : enable
 
 layout(set = 0,binding = 2) uniform UniformBufferObject 
