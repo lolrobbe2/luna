@@ -33,9 +33,6 @@ namespace luna
 				createLayout();
 			}
 			else LN_CORE_ERROR("file could not be loaded: {0}", filepath);
-			
-			//auto atributes needs to be done
-
 		}
 
 		void vulkanShader::bind() const
@@ -67,6 +64,7 @@ namespace luna
 			resource.name = _shaderResource.name;
 			resource.binding = compiler.get_decoration(_shaderResource.id, spv::DecorationBinding);
 			resource.location = compiler.get_decoration(_shaderResource.id, spv::DecorationLocation);
+			
 			switch (baseType)
 			{
 			case spirv_cross::SPIRType::Unknown:
@@ -111,6 +109,7 @@ namespace luna
 				
 				switch (compiler.get_type(_shaderResource.base_type_id).vecsize)
 				{
+					
 				case 2:
 					resource.type = renderer::Vec2;
 					break;
@@ -127,6 +126,7 @@ namespace luna
 				}
 				switch (compiler.get_type(_shaderResource.base_type_id).columns)
 				{
+					resource.stride = compiler.get_decoration(_shaderResource.id, spv::DecorationMatrixStride);
 				case 2:
 					resource.type = renderer::mat2;
 					break;
@@ -152,8 +152,9 @@ namespace luna
 						memberResource.type_id = member;
 						memberResource.id = compiler.get_type(member).self;
 						memberResource.name = compiler.get_member_name(type.self, counter);
-						counter++;
 						resource.members.push_back(getShaderResource(memberResource, shaderSource, typeClass));
+						resource.members[counter].stride = compiler.get_declared_struct_member_size(type, counter);
+						counter++;
 					}
 					if (typeClass == renderer::uniformBuffers)
 					{

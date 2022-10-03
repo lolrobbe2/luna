@@ -81,12 +81,28 @@ namespace luna
 			virtual void bind() const = 0;
 			virtual void unbind() const = 0;
 			virtual void createLayout() = 0;
+			/**
+			 * @brief returns the shader compiled source.
+			 */
+			inline std::vector<uint8_t> self() { return shaderSrc; };
+			/**
+			 * @brief creates a shader from a filepath.
+			 * 
+			 * \param filepath
+			 * \return a shader reference.
+			 */
 			static ref<shader> create(const std::string& filepath);
-			static ref<shader> create(const std::vector<uint8_t> shaderSrc);
+			/**
+			 * @brief creates a shader from compiled code.
+			 * 
+			 * \param shaderSrc the shader compiled src code
+			 * \return a shader reference.
+			 */
+			static ref<shader> create(const std::vector<uint8_t>& shaderSrc);
 			std::string shaderName;
 			std::vector<shaderResource> shaderLayout;
 		private:
-			
+			std::vector<uint8_t> shaderSrc;
 		};
 
 	}

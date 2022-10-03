@@ -25,7 +25,7 @@ namespace luna
             }
             return ref<renderer::shader>();
         }
-        ref<shader> shader::create(const std::vector<uint8_t> shaderSrc)
+        ref<shader> shader::create(const std::vector<uint8_t>& shaderSrc)
         {
             switch (vulkan::window::graphicsApi)
             {

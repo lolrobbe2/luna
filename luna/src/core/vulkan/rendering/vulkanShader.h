@@ -9,12 +9,28 @@ namespace luna
 		class vulkanShader : public renderer::shader
 		{
 		public:
+			/**
+			 * @brief creates a vulkan shader from a filePath.
+			 * 
+			 * \param filepath the path to the source .GLSL file.
+			 */
 			vulkanShader(const std::string& filepath);
 			virtual ~vulkanShader() {};
 			void bind() const override;
 			void unbind() const override;
+			/**
+			 * @brief creates the shader layout.
+			 */
 			void createLayout() override;
 		private:
+			/**
+			 * @brief get the shderResource information and returns a corresponding engine shaderresource.
+			 * 
+			 * \param _shaderResource
+			 * \param shaderSource
+			 * \param typeClass
+			 * \return 
+			 */
 			renderer::shaderResource getShaderResource(const spirv_cross::Resource& _shaderResource, const std::vector<uint32_t>& shaderSource,renderer::typeClass typeClass);
 
 		private:

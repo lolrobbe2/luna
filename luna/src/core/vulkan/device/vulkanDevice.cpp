@@ -1,5 +1,6 @@
 #include <lnpch.h>
 #include <core/vulkan/device/vulkanDevice.h>
+#include <core/utils/shaderLibrary.h>
 
 namespace luna
 {
@@ -29,7 +30,7 @@ namespace luna
 			swapchainspec.swapchainExtent = { window->getWidth(),window->getHeight() };
 			swapchainspec.window = window;
 			swapchain = std::shared_ptr < vulkan::vulkanSwapchain > (new vulkan::vulkanSwapchain(swapchainspec));
-			ref<renderer::shader>shader = renderer::shader::create("src/assets/fragment.glsl");
+			utils::shaderLibrary::init();
 		}
 
 		void vulkanDevice::destroyContext()
