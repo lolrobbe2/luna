@@ -50,22 +50,11 @@ namespace luna
 			LN_CORE_TRACE("creating shader Layout");
 			spirv_cross::Compiler compiler(shaderSource);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
-			for(const auto& resource : resources.uniform_buffers)
-			{
-				shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::uniformBuffers));
-			}
-			for (const auto& resource : resources.push_constant_buffers)
-			{
-				shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::pushConstantBuffers));
-			}
-			for (const auto& resource : resources.stage_inputs)
-			{
-				shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::stageInputs));
-			}
-			for (const auto& resource : resources.stage_outputs)
-			{
-				shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::stageOutputs));
-			}
+			for (const auto& resource : resources.uniform_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::uniformBuffers)); 
+			for (const auto& resource : resources.push_constant_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::pushConstantBuffers));
+			for (const auto& resource : resources.storage_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSource, renderer::storageBuffers));
+			for (const auto& resource : resources.stage_inputs) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::stageInputs));
+			for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::stageOutputs));
 			LN_CORE_TRACE("created shaderLayout");
 		}
 
@@ -154,26 +143,6 @@ namespace luna
 			case spirv_cross::SPIRType::Double:
 				break;
 			case spirv_cross::SPIRType::Struct:
-				if (typeClass == renderer::uniformBuffers)
-				{
-					resource.type = renderer::Uniform;
-					uint8_t counter = 0;
-					auto& type = compiler.get_type(_shaderResource.base_type_id);
-					for (const auto& member : compiler.get_type(_shaderResource.base_type_id).member_types)
-					{
-						
-						spirv_cross::Resource memberResource;
-						memberResource.base_type_id = member;
-						memberResource.type_id = member;
-						memberResource.id = compiler.get_type(member).self;
-						
-						memberResource.name = compiler.get_member_name(type.self, counter);
-						counter++;
-						LN_CORE_TRACE("member name = {0}", memberResource.name);
-						resource.members.push_back(getShaderResource(memberResource, shaderSource, typeClass));
-					}
-				}
-				else if(typeClass == renderer::pushConstantBuffers)
 				{
 					uint8_t counter = 0;
 					auto& type = compiler.get_type(_shaderResource.base_type_id);
@@ -190,7 +159,19 @@ namespace luna
 						LN_CORE_TRACE("member name = {0}", memberResource.name);
 						resource.members.push_back(getShaderResource(memberResource, shaderSource, typeClass));
 					}
-					resource.type = renderer::PushConstant;
+					if (typeClass == renderer::uniformBuffers)
+					{
+						resource.type = renderer::Uniform;
+
+					}
+					else if (typeClass == renderer::pushConstantBuffers)
+					{
+						resource.type = renderer::PushConstant;
+					}
+					else if (typeClass == renderer::storageBuffers)
+					{
+						resource.type = renderer::StorageBuffer;
+					}
 				}
 				break;
 			case spirv_cross::SPIRType::Image:
@@ -209,7 +190,7 @@ namespace luna
 				resource.type = renderer::RayQuery;
 				break;
 			case spirv_cross::SPIRType::ControlPointArray:
-				resource.type = renderer::ControlPointArray:
+				resource.type = renderer::ControlPointArray;
 				break;
 			case spirv_cross::SPIRType::Interpolant:
 				resource.type = renderer::Interpolant;

@@ -16,10 +16,10 @@ layout(std140,push_constant) uniform PER_OBJECT
 }push;
 
 struct ObjectData{
-	mat4 model;
-    mat4 view;
-    mat4 proj;
-    bool text;
+	mat4 o_model;
+    mat4 o_view;
+    mat4 o_proj;
+    bool o_text;
 };
 
 

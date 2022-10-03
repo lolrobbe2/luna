@@ -54,6 +54,7 @@ namespace luna
 			Char,
 			Uniform,
 			PushConstant,
+			StorageBuffer,
 			Vec2,
 			Vec3,
 			Vec4,
