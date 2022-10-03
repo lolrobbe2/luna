@@ -14,6 +14,7 @@ namespace luna
 		};
 		struct compileSpec
 		{
+			bool reflect = false;
 			std::vector<char> source;
 			std::string fileName;
 			shaderc_shader_kind shaderKind; 
@@ -29,7 +30,7 @@ namespace luna
 			
 
 		private:
-			bool reflect(const std::vector<uint32_t>& shaderData);
+			bool reflect(const std::vector<uint32_t>& shaderData, bool reflect);
 			std::string getResourceTypeName(const spirv_cross::Resource& resource, const spirv_cross::Compiler& compiler);
 			bool init = false;
 		};

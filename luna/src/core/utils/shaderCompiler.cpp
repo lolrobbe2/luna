@@ -28,11 +28,12 @@ namespace luna
 				break;
 			}
 			if(compileResult.GetErrorMessage().size() > 0) LN_CORE_ERROR("compile error: {0}",compileResult.GetErrorMessage());
-			else LN_CORE_TRACE("reflecting shader: {0}",reflect(std::vector<uint32_t>(compileResult.begin(), compileResult.end())));
+			else LN_CORE_TRACE("reflecting shader: {0}",reflect(std::vector<uint32_t>(compileResult.begin(), compileResult.end()),compileSpec.reflect));
 			return std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
 		}
-		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData)
+		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData,bool reflect)
 		{
+			if (!reflect)return reflect;
 			spirv_cross::Compiler compiler(shaderData);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
 			LN_CORE_TRACE("    {0} uniform buffers", resources.uniform_buffers.size());
@@ -74,10 +75,9 @@ namespace luna
 				LN_CORE_TRACE("    id = {0}", stageOutput.id);
 				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageOutput, compiler));
 
-				
 			}
 		
-			return true;
+			return reflect;
 		}
 		std::string shaderCompiler::getResourceTypeName(const spirv_cross::Resource& resource,const spirv_cross::Compiler& compiler)
 		{

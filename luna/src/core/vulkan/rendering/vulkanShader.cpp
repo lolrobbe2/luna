@@ -65,8 +65,6 @@ namespace luna
 			const spirv_cross::SPIRType& type = compiler.get_type(_shaderResource.type_id);
 			renderer::shaderResource resource;
 			resource.name = _shaderResource.name;
-			LN_CORE_INFO("resource base type = {0}", baseType);
-			LN_CORE_TRACE("resource resource type = {0}", type.self);
 			resource.binding = compiler.get_decoration(_shaderResource.id, spv::DecorationBinding);
 			resource.location = compiler.get_decoration(_shaderResource.id, spv::DecorationLocation);
 			switch (baseType)
@@ -153,10 +151,8 @@ namespace luna
 						memberResource.base_type_id = member;
 						memberResource.type_id = member;
 						memberResource.id = compiler.get_type(member).self;
-
 						memberResource.name = compiler.get_member_name(type.self, counter);
 						counter++;
-						LN_CORE_TRACE("member name = {0}", memberResource.name);
 						resource.members.push_back(getShaderResource(memberResource, shaderSource, typeClass));
 					}
 					if (typeClass == renderer::uniformBuffers)

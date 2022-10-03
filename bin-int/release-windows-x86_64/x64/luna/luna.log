@@ -1,4 +1,7 @@
 ﻿cl : command line  warning D9025: overriding '/MT' with '/MD'
-  vulkanShader.cpp
+  shaderCompiler.cpp
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\utils\shaderCompiler.cpp(48,72): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\utils\shaderCompiler.cpp(50,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\utils\shaderCompiler.cpp(88,14): warning C4101: 'type': unreferenced local variable
      Creating library ..\bin\release-windows-x86_64\x64\luna\luna.lib and object ..\bin\release-windows-x86_64\x64\luna\luna.exp
   luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\luna\luna.dll

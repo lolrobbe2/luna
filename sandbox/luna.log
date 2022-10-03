@@ -1,77 +1,10 @@
-[10:15:14] [trace] LUNA: instance creation result = 0
-[10:15:14] [trace] LUNA: surface creation result = 0
-[10:15:14] [info] LUNA: api version = 0.1.2.182
-[10:15:14] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[10:15:14] [trace] LUNA: device selection result = 0
-[10:15:15] [trace] LUNA: logical device creation result = 0
-[10:15:15] [trace] LUNA: swapchain creation result = 0
-[10:15:15] [trace] LUNA:     1 uniform buffers
-[10:15:15] [trace] LUNA:     1 push constants
-[10:15:15] [trace] LUNA:     1 resources
-[10:15:15] [trace] LUNA:     2 stage inputs
-[10:15:15] [trace] LUNA:     1 stage outputs
-[10:15:15] [trace] LUNA: Uniform buffers:
-[10:15:15] [trace] LUNA:   UniformBufferObject
-[10:15:15] [trace] LUNA:     Size = 6656
-[10:15:15] [trace] LUNA:     Binding = 2
-[10:15:15] [trace] LUNA:     Members = 4
-[10:15:15] [trace] LUNA: push constants:
-[10:15:15] [trace] LUNA:   push
-[10:15:15] [trace] LUNA: stage inputs:
-[10:15:15] [trace] LUNA:   fragColor
-[10:15:15] [trace] LUNA:     id = 24
-[10:15:15] [trace] LUNA:     location = 0
-[10:15:15] [trace] LUNA:     typeName = Vec3
-[10:15:15] [trace] LUNA:   fragTexCoord
-[10:15:15] [trace] LUNA:     id = 55
-[10:15:15] [trace] LUNA:     location = 1
-[10:15:15] [trace] LUNA:     typeName = Vec2
-[10:15:15] [trace] LUNA: stage outputs:
-[10:15:15] [trace] LUNA:   outColor
-[10:15:15] [trace] LUNA:     id = 21
-[10:15:15] [trace] LUNA:     typeName = Vec4
-[10:15:15] [trace] LUNA: reflecting shader: true
-[10:15:15] [trace] LUNA: creating shader Layout
-[10:15:15] [info] LUNA: resource base type = 15
-[10:15:15] [trace] LUNA: resource resource type = 75
-[10:15:15] [trace] LUNA: member name = model
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 70
-[10:15:15] [trace] LUNA: member name = view
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 70
-[10:15:15] [trace] LUNA: member name = proj
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 70
-[10:15:15] [trace] LUNA: member name = text
-[10:15:15] [info] LUNA: resource base type = 8
-[10:15:15] [trace] LUNA: resource resource type = 25
-[10:15:15] [info] LUNA: resource base type = 15
-[10:15:15] [trace] LUNA: resource resource type = 7
-[10:15:15] [trace] LUNA: member name = index
-[10:15:15] [info] LUNA: resource base type = 7
-[10:15:15] [trace] LUNA: resource resource type = 6
-[10:15:15] [trace] LUNA: member name = text
-[10:15:15] [info] LUNA: resource base type = 7
-[10:15:15] [trace] LUNA: resource resource type = 6
-[10:15:15] [info] LUNA: resource base type = 15
-[10:15:15] [trace] LUNA: resource resource type = 80
-[10:15:15] [trace] LUNA: member name = objects
-[10:15:15] [info] LUNA: resource base type = 15
-[10:15:15] [trace] LUNA: resource resource type = 78
-[10:15:15] [trace] LUNA: member name = o_model
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 70
-[10:15:15] [trace] LUNA: member name = o_view
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 70
-[10:15:15] [trace] LUNA: member name = o_proj
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 70
-[10:15:15] [trace] LUNA: member name = o_text
-[10:15:15] [info] LUNA: resource base type = 8
-[10:15:15] [trace] LUNA: resource resource type = 25
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 22
-[10:15:15] [info] LUNA: resource base type = 13
-[10:15:15] [trace] LUNA: resource resource type = 53
+[10:22:20] [trace] LUNA: instance creation result = 0
+[10:22:20] [trace] LUNA: surface creation result = 0
+[10:22:20] [info] LUNA: api version = 0.1.2.182
+[10:22:20] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
+[10:22:20] [trace] LUNA: device selection result = 0
+[10:22:20] [trace] LUNA: logical device creation result = 0
+[10:22:20] [trace] LUNA: swapchain creation result = 0
+[10:22:20] [trace] LUNA: reflecting shader: false
+[10:22:20] [trace] LUNA: creating shader Layout
+[10:22:20] [trace] LUNA: created shaderLayout
