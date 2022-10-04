@@ -3,12 +3,12 @@ namespace luna
 {
 	namespace vulkan 
 	{
-		vulkanPipeline::vulkanPipeline(const pipelineLayout& layout)
+		vulkanPipeline::vulkanPipeline(const renderer::pipelineLayout& layout)
 		{
 		
 			createPipeline(layout);
 		}
-		void vulkanPipeline::createPipeline(const pipelineLayout& layout)
+		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
 			this->layout = layout;
 			createPipeLineLayout();
