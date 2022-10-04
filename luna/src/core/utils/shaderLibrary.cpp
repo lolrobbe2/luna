@@ -5,12 +5,12 @@ namespace luna
 	{
 		void shaderLibrary::init()
 		{
-			load("src/assets/fragment.glsl");
-			load("src/assets/vertex.glsl");
+			load("src/assets/fragment.glsl",renderer::shaderStageFragment);
+			load("src/assets/vertex.glsl",renderer::shaderStageVertex);
 		}
-		void shaderLibrary::load(const std::string& filePath)
+		void shaderLibrary::load(const std::string& filePath,const renderer::shaderStage& stage)
 		{
-			ref<renderer::shader> shader = renderer::shader::create(filePath);
+			ref<renderer::shader> shader = renderer::shader::create(filePath,stage);
 			shaders.insert({ shader->shaderName,shader });
 		}
 		ref<renderer::shader> shaderLibrary::get(const std::string& shaderName)

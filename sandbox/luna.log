@@ -1,15 +1,15 @@
-[12:07:45] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[12:07:45] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[12:07:45] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[12:07:45] [error] LUNA: could not find validation layer: VK_LAYER_KHRONOS_validation
-[12:07:45] [trace] LUNA: instance creation result = 0
-[12:07:45] [trace] LUNA: surface creation result = 0
-[12:07:45] [info] LUNA: api version = 0.1.2.182
-[12:07:45] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[12:07:45] [trace] LUNA: device selection result = 0
-[12:07:45] [trace] LUNA: logical device creation result = 0
-[12:07:45] [trace] LUNA: swapchain creation result = 0
-[12:08:00] [trace] LUNA: reflecting shader: false
-[12:08:00] [trace] LUNA: creating shader Layout
-[12:08:00] [trace] LUNA: created shaderLayout
-[12:08:00] [error] LUNA: file could not be loaded: src/assets/vertex.glsl
+[10:16:14] [trace] LUNA: instance creation result = 0
+[10:16:14] [trace] LUNA: surface creation result = 0
+[10:16:14] [info] LUNA: api version = 0.1.2.196
+[10:16:14] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
+[10:16:14] [trace] LUNA: device selection result = 0
+[10:16:14] [trace] LUNA: logical device creation result = 0
+[10:16:14] [trace] LUNA: swapchain creation result = 0
+[10:16:15] [trace] LUNA: reflecting shader: false
+[10:16:15] [trace] LUNA: creating shader Layout
+[10:16:15] [trace] LUNA: created shaderLayout
+[10:16:15] [trace] LUNA: reflecting shader: false
+[10:16:15] [trace] LUNA: creating shader Layout
+[10:16:15] [trace] LUNA: created shaderLayout
+[10:16:15] [error] LUNA:  To Be Or
+[10:16:15] [error] LUNA: 111

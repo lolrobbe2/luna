@@ -1,10 +1,8 @@
 ﻿cl : command line  warning D9025: overriding '/MT' with '/MD'
-  shaderLibrary.cpp
-  vulkanDevice.cpp
+  application.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(75,64): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(165,86): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-  Generating Code...
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\application.h(19,24): warning C4251: 'luna::application::application::mWindow': class 'std::shared_ptr<luna::vulkan::window>' needs to have dll-interface to be used by clients of class 'luna::application::application'
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\core.h(26): message : see declaration of 'std::shared_ptr<luna::vulkan::window>'
      Creating library ..\bin\release-windows-x86_64\x64\luna\luna.lib and object ..\bin\release-windows-x86_64\x64\luna\luna.exp
   luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\luna\luna.dll

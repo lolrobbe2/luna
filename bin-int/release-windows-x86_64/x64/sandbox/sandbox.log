@@ -1,1 +1,5 @@
-﻿  sandbox.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\sandbox\sandbox.exe
+﻿cl : command line  warning D9025: overriding '/MT' with '/MD'
+  sandbox.cpp
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\application.h(19,24): warning C4251: 'luna::application::application::mWindow': class 'std::shared_ptr<luna::vulkan::window>' needs to have dll-interface to be used by clients of class 'luna::application::application'
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\core.h(26): message : see declaration of 'std::shared_ptr<luna::vulkan::window>'
+  sandbox.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\sandbox\sandbox.exe

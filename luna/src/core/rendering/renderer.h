@@ -1,6 +1,7 @@
 #pragma once
 #include <core/vulkan/window/window.h>
 #include <core/rendering/device.h>
+#include <core/rendering/pipeline.h>
 namespace luna
 {
 	namespace renderer
@@ -12,6 +13,7 @@ namespace luna
 			static void newFrame();
 		private:
 			inline static ref<device> rendererDevice;
+			inline static ref<pipeline> rendererPipeline;
 		};
 
 	}

@@ -62,6 +62,15 @@ namespace luna
 			mat3,
 			mat4
 		};
+		enum shaderStage
+		{
+			shaderStageVertex,
+			shaderStageTessellationControl,
+			shaderStageTessellationEvaluation,
+			shaderStageGeometry,
+			shaderStageFragment,
+			shaderStageCompute 
+		};
 		struct shaderResource
 		{
 			typeId type = Unknown;
@@ -91,18 +100,20 @@ namespace luna
 			 * \param filepath
 			 * \return a shader reference.
 			 */
-			static ref<shader> create(const std::string& filepath);
+			static ref<shader> create(const std::string& filepath,const shaderStage& stage);
 			/**
 			 * @brief creates a shader from compiled code.
 			 * 
 			 * \param shaderSrc the shader compiled src code
 			 * \return a shader reference.
 			 */
-			static ref<shader> create(const std::vector<uint8_t>& shaderSrc);
+			static ref<shader> create(const std::vector<uint8_t>& shaderSrc,const shaderStage& stage);
 			std::string shaderName;
 			std::vector<shaderResource> shaderLayout;
+			shaderStage stage;
 		private:
 			std::vector<uint8_t> shaderSrc;
+
 		};
 
 	}

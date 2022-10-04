@@ -1,5 +1,6 @@
 #include <core/rendering/renderer.h>
 #include <core/vulkan/device/vulkanDevice.h>
+#include <core/vulkan/rendering/vulkanPipeline.h>
 namespace luna
 {
 	namespace renderer
@@ -17,6 +18,7 @@ namespace luna
 				break;
 			case vulkan::VULKAN:
 				renderer::rendererDevice = ref<device>(new vulkan::vulkanDevice(window));
+				renderer::rendererPipeline = ref<pipeline>(new vulkan::vulkanPipeline());
 				break;
 			default:
 				break;		
