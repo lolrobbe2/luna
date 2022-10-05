@@ -18,7 +18,10 @@ namespace luna
 				LN_CORE_ERROR("SPIR is not supported");
 				break;
 			case luna::utils::SPIR_V:
-				compileResult = compiler.CompileGlslToSpv(compileSpec.source.data(),compileSpec.source.size(), shaderc_shader_kind::shaderc_glsl_anyhit_shader, compileSpec.fileName.c_str());
+				
+				compileSpec.compileOptions.SetTargetEnvironment(shaderc_target_env_vulkan, shaderc_env_version_vulkan_1_2);
+				
+				compileResult = compiler.CompileGlslToSpv(compileSpec.source.data(),compileSpec.source.size(), compileSpec.shaderKind, compileSpec.fileName.c_str());
 				break;
 			case luna::utils::GLSL:
 				LN_CORE_ERROR("GLSL is not supported");
@@ -28,8 +31,10 @@ namespace luna
 				break;
 			}
 			if(compileResult.GetErrorMessage().size() > 0) LN_CORE_ERROR("compile error: {0}",compileResult.GetErrorMessage());
-			else LN_CORE_TRACE("reflecting shader: {0}",reflect(std::vector<uint32_t>(compileResult.begin(), compileResult.end()),compileSpec.reflect));
-			return std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
+			else LN_CORE_TRACE("reflecting shader: {0}",reflect(std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend()),compileSpec.reflect));
+			std::vector<uint32_t>shadersource = std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
+			LN_CORE_INFO("source size = {0}", shadersource.size());
+			return shadersource;
 		}
 		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData,bool reflect)
 		{

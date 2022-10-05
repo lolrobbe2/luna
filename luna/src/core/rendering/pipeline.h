@@ -9,7 +9,7 @@ namespace luna
 		struct pipelineLayout
 		{
 			std::vector<ref<shader>> pipelineShaders;
-			ref<device> 
+			ref<device> device;
 		};
 		class pipeline 
 		{

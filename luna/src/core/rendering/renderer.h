@@ -14,6 +14,7 @@ namespace luna
 		private:
 			inline static ref<device> rendererDevice;
 			inline static ref<pipeline> rendererPipeline;
+			inline static renderer::pipelineLayout layout;
 		};
 
 	}

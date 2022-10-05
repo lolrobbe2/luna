@@ -93,7 +93,7 @@ namespace luna
 			/**
 			 * @brief returns the shader compiled source.
 			 */
-			inline std::vector<uint8_t> self() { return shaderSrc; };
+			inline std::vector<uint32_t> self() { return shaderSrc; };
 			/**
 			 * @brief creates a shader from a filepath.
 			 * 
@@ -111,8 +111,10 @@ namespace luna
 			std::string shaderName;
 			std::vector<shaderResource> shaderLayout;
 			shaderStage stage;
+			std::vector<uint32_t> shaderSrc;
 		private:
-			std::vector<uint8_t> shaderSrc;
+			friend class vulkanDevice;
+			
 
 		};
 

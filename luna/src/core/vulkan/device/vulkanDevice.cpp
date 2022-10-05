@@ -41,6 +41,11 @@ namespace luna
 			vkDestroyInstance(deviceHandle.instance, nullptr);
 		}
 
+		vulkanDevice::deviceHandles vulkanDevice::getDeviceHandles()
+		{
+			return deviceHandle;
+		}
+
 
 
 

@@ -14,7 +14,7 @@ namespace luna
 			 * 
 			 * \param filepath the path to the source .GLSL file.
 			 */
-			vulkanShader(const std::string& filepath);
+			vulkanShader(const std::string& filepath,const renderer::shaderStage& stage);
 			virtual ~vulkanShader() {};
 			void bind() const override;
 			void unbind() const override;
@@ -35,7 +35,7 @@ namespace luna
 
 		private:
 			friend class renderer::shader;
-			std::vector<uint32_t>shaderSource;
+			
 		};
 	}
 }

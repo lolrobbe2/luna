@@ -25,7 +25,7 @@ namespace luna
 			virtual ~vulkanDevice();
 			void createContext() override;
 			void destroyContext() override;
-
+			
 		private:
 			/**
 			 * @name primaryHelperFunctions helper functions used to create the device
@@ -88,9 +88,6 @@ namespace luna
 			///@}
 			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
 		public:
-		
-		private:
-			
 			struct deviceHandles
 			{
 				VkApplicationInfo appInfo{};
@@ -98,6 +95,9 @@ namespace luna
 				VkDevice device;
 				VkPhysicalDevice physicalDevice;
 			};
+			deviceHandles getDeviceHandles();
+		private:
+			
 			std::vector<float> queuePriorities = { 0.99f };
 			VkSurfaceKHR surface = VK_NULL_HANDLE;
 			deviceHandles deviceHandle;

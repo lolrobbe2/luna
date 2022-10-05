@@ -1,15 +1,17 @@
-[10:16:14] [trace] LUNA: instance creation result = 0
-[10:16:14] [trace] LUNA: surface creation result = 0
-[10:16:14] [info] LUNA: api version = 0.1.2.196
-[10:16:14] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[10:16:14] [trace] LUNA: device selection result = 0
-[10:16:14] [trace] LUNA: logical device creation result = 0
-[10:16:14] [trace] LUNA: swapchain creation result = 0
-[10:16:15] [trace] LUNA: reflecting shader: false
-[10:16:15] [trace] LUNA: creating shader Layout
-[10:16:15] [trace] LUNA: created shaderLayout
-[10:16:15] [trace] LUNA: reflecting shader: false
-[10:16:15] [trace] LUNA: creating shader Layout
-[10:16:15] [trace] LUNA: created shaderLayout
-[10:16:15] [error] LUNA:  To Be Or
-[10:16:15] [error] LUNA: 111
+[13:13:40] [trace] LUNA: instance creation result = 0
+[13:13:40] [trace] LUNA: surface creation result = 0
+[13:13:40] [info] LUNA: api version = 0.1.2.196
+[13:13:40] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
+[13:13:40] [trace] LUNA: device selection result = 0
+[13:13:40] [trace] LUNA: logical device creation result = 0
+[13:13:40] [trace] LUNA: swapchain creation result = 0
+[13:13:40] [trace] LUNA: reflecting shader: false
+[13:13:40] [info] LUNA: source size = 706
+[13:13:40] [trace] LUNA: creating shader Layout
+[13:13:40] [trace] LUNA: created shaderLayout
+[13:13:40] [trace] LUNA: reflecting shader: false
+[13:13:40] [info] LUNA: source size = 697
+[13:13:40] [trace] LUNA: creating shader Layout
+[13:13:40] [trace] LUNA: created shaderLayout
+[13:13:40] [info] LUNA: creatings vulkan shadermodule, result = 0
+[13:13:40] [info] LUNA: creatings vulkan shadermodule, result = 0

@@ -6,7 +6,7 @@ namespace luna
 {
 	namespace vulkan
 	{
-		vulkanShader::vulkanShader(const std::string& filepath)
+		vulkanShader::vulkanShader(const std::string& filepath,const renderer::shaderStage& stage)
 		{
 			//loading shader stage.
 			std::ifstream file;
@@ -24,11 +24,34 @@ namespace luna
 				utils::shaderCompiler compiler;
 				utils::compileSpec compileSpec;
 				compileSpec.fileName = shaderName;
-				compileSpec.compileOptions = shaderc_compile_options_t();
-				compileSpec.shaderKind = shaderc_shader_kind::shaderc_glsl_anyhit_shader;
 				compileSpec.source = buffer;
-				shaderSource = compiler.compile(compileSpec);
-				spirv_cross::Compiler Compiler(shaderSource);
+				this->stage = stage;
+				switch (stage)
+				{
+				case luna::renderer::shaderStageVertex:
+					compileSpec.shaderKind = shaderc_shader_kind::shaderc_vertex_shader;
+					break;
+				case luna::renderer::shaderStageTessellationControl:
+					compileSpec.shaderKind = shaderc_shader_kind::shaderc_tess_control_shader;
+					break;
+				case luna::renderer::shaderStageTessellationEvaluation:
+					compileSpec.shaderKind = shaderc_shader_kind::shaderc_tess_evaluation_shader;
+					break;
+				case luna::renderer::shaderStageGeometry:
+					compileSpec.shaderKind = shaderc_shader_kind::shaderc_geometry_shader;
+					break;
+				case luna::renderer::shaderStageFragment:
+					compileSpec.shaderKind = shaderc_shader_kind::shaderc_fragment_shader;
+					break;
+				case luna::renderer::shaderStageCompute:
+					compileSpec.shaderKind = shaderc_shader_kind::shaderc_compute_shader;
+					break;
+				default:
+					compileSpec.shaderKind = shaderc_shader_kind::shaderc_anyhit_shader;
+					break;
+				}
+				shaderSrc = compiler.compile(compileSpec);
+				spirv_cross::Compiler Compiler(shaderSrc);
 				spirv_cross::ShaderResources resources = Compiler.get_shader_resources();
 				createLayout();
 			}
@@ -45,13 +68,13 @@ namespace luna
 		void vulkanShader::createLayout()
 		{
 			LN_CORE_TRACE("creating shader Layout");
-			spirv_cross::Compiler compiler(shaderSource);
+			spirv_cross::Compiler compiler(shaderSrc);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
-			for (const auto& resource : resources.uniform_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::uniformBuffers)); 
-			for (const auto& resource : resources.push_constant_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::pushConstantBuffers));
-			for (const auto& resource : resources.storage_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSource, renderer::storageBuffers));
-			for (const auto& resource : resources.stage_inputs) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::stageInputs));
-			for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSource,renderer::stageOutputs));
+			for (const auto& resource : resources.uniform_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::uniformBuffers));
+			for (const auto& resource : resources.push_constant_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::pushConstantBuffers));
+			for (const auto& resource : resources.storage_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSrc, renderer::storageBuffers));
+			for (const auto& resource : resources.stage_inputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageInputs));
+			for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageOutputs));
 			LN_CORE_TRACE("created shaderLayout");
 		}
 

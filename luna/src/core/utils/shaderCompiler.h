@@ -19,7 +19,7 @@ namespace luna
 			std::string fileName;
 			shaderc_shader_kind shaderKind; 
 			compileLanguage language = SPIR_V; 
-			shaderc_compile_options_t compileOptions;
+			shaderc::CompileOptions compileOptions;
 		};
 		class shaderCompiler
 		{

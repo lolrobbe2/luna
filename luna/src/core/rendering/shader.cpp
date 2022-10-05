@@ -18,8 +18,7 @@ namespace luna
                 LN_CORE_INFO(" opengl shaders not implemented");
                 break;
             case vulkan::VULKAN:
-                shader = new vulkan::vulkanShader(filepath);
-                shader->stage = stage;
+                shader = new vulkan::vulkanShader(filepath,stage);
                 return ref<renderer::shader>(shader);
             default:
                 break;

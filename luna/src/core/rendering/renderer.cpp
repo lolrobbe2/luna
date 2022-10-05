@@ -1,6 +1,7 @@
 #include <core/rendering/renderer.h>
 #include <core/vulkan/device/vulkanDevice.h>
 #include <core/vulkan/rendering/vulkanPipeline.h>
+#include <core/utils/shaderLibrary.h>
 namespace luna
 {
 	namespace renderer
@@ -18,7 +19,10 @@ namespace luna
 				break;
 			case vulkan::VULKAN:
 				renderer::rendererDevice = ref<device>(new vulkan::vulkanDevice(window));
-				renderer::rendererPipeline = ref<pipeline>(new vulkan::vulkanPipeline());
+				layout.device = rendererDevice;
+				layout.pipelineShaders.push_back(utils::shaderLibrary::get("fragment.glsl"));
+				layout.pipelineShaders.push_back(utils::shaderLibrary::get("vertex.glsl"));
+				renderer::rendererPipeline = ref<pipeline>(new vulkan::vulkanPipeline(layout));
 				break;
 			default:
 				break;		
