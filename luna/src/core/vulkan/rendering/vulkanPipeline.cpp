@@ -30,7 +30,7 @@ namespace luna
 			std::vector<uint32_t> shadersrc(shader->self().begin(), shader->self().end());
 			shaderModuleCreateInfo.codeSize = shadersrc.size();
 			shaderModuleCreateInfo.pCode = shadersrc.data();
-			//return vkCreateShaderModule()
+			return vkCreateShaderModule()
 		}
 
 	}

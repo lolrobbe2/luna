@@ -1,5 +1,5 @@
 #pragma once
-#include <core/vulkan/window/window.h>
+#include <core/rendering/device.h>
 #include <core/rendering/shader.h>
 namespace luna
 {
@@ -9,6 +9,7 @@ namespace luna
 		struct pipelineLayout
 		{
 			std::vector<ref<shader>> pipelineShaders;
+			ref<device> 
 		};
 		class pipeline 
 		{
