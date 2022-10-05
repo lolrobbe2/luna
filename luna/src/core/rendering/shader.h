@@ -73,11 +73,13 @@ namespace luna
 		};
 		struct shaderResource
 		{
+			typeClass resourceClass = uniformBuffers;
 			typeId type = Unknown;
 			uint32_t location = 0;
 			uint32_t set = 0;
 			uint32_t binding = 0;
 			uint32_t stride = 0;
+			uint32_t offset = 0;
 			std::string name;
 			std::vector<shaderResource> members{};
 		};

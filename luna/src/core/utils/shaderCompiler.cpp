@@ -32,15 +32,14 @@ namespace luna
 			}
 			if(compileResult.GetErrorMessage().size() > 0) LN_CORE_ERROR("compile error: {0}",compileResult.GetErrorMessage());
 			else LN_CORE_TRACE("reflecting shader: {0}",reflect(std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend()),compileSpec.reflect));
-			std::vector<uint32_t>shadersource = std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
-			LN_CORE_INFO("source size = {0}", shadersource.size());
-			return shadersource;
+			return std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
 		}
 		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData,bool reflect)
 		{
 			if (!reflect)return reflect;
 			spirv_cross::Compiler compiler(shaderData);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
+			
 			LN_CORE_TRACE("    {0} uniform buffers", resources.uniform_buffers.size());
 			LN_CORE_TRACE("    {0} push constants", resources.push_constant_buffers.size());
 			LN_CORE_TRACE("    {0} resources", resources.separate_images.size());
@@ -53,7 +52,6 @@ namespace luna
 				uint32_t bufferSize = compiler.get_declared_struct_size(bufferType);
 				uint32_t binding = compiler.get_decoration(resource.id, spv::DecorationBinding);
 				int memberCount = bufferType.member_types.size();
-
 				LN_CORE_TRACE("  {0}", resource.name);
 				LN_CORE_TRACE("    Size = {0}", bufferSize);
 				LN_CORE_TRACE("    Binding = {0}", binding);

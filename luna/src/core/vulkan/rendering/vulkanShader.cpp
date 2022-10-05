@@ -87,6 +87,8 @@ namespace luna
 			resource.name = _shaderResource.name;
 			resource.binding = compiler.get_decoration(_shaderResource.id, spv::DecorationBinding);
 			resource.location = compiler.get_decoration(_shaderResource.id, spv::DecorationLocation);
+			resource.resourceClass = typeClass;
+			resource.offset = compiler.get_decoration(_shaderResource.id, spv::DecorationOffset);
 			
 			switch (baseType)
 			{
@@ -96,30 +98,39 @@ namespace luna
 				resource.type = renderer::Void;
 				break;
 			case spirv_cross::SPIRType::Boolean:
+				resource.stride = sizeof(uint8_t);
 				resource.type = renderer::Boolean;
 				break;
 			case spirv_cross::SPIRType::SByte:
+				resource.stride = sizeof(int8_t);
 				resource.type = renderer::SByte;
 				break;
 			case spirv_cross::SPIRType::UByte:
+				resource.stride = sizeof(uint8_t);
 				resource.type = renderer::UByte;
 				break;
 			case spirv_cross::SPIRType::Short:
+				resource.stride = sizeof(int16_t);
 				resource.type = renderer::Short;
 				break;
 			case spirv_cross::SPIRType::UShort:
+				resource.stride = sizeof(uint16_t);
 				resource.type = renderer::UShort;
 				break;
 			case spirv_cross::SPIRType::Int:
+				resource.stride = sizeof(int32_t);
 				resource.type = renderer::Int;
 				break;
 			case spirv_cross::SPIRType::UInt:
+				resource.stride = sizeof(uint32_t);
 				resource.type = renderer::UInt;
 				break;
 			case spirv_cross::SPIRType::Int64:
+				resource.stride = sizeof(int64_t);
 				resource.type = renderer::Int64;
 				break;
 			case spirv_cross::SPIRType::UInt64:
+				resource.stride = sizeof(uint64_t);
 				resource.type = renderer::UInt64;
 				break;
 			case spirv_cross::SPIRType::AtomicCounter:
@@ -134,12 +145,15 @@ namespace luna
 				{
 					
 				case 2:
+					resource.stride = sizeof(glm::vec2);
 					resource.type = renderer::Vec2;
 					break;
 				case 3:
+					resource.stride = sizeof(glm::vec3);
 					resource.type = renderer::Vec3;
 					break;
 				case 4:
+					resource.stride = sizeof(glm::vec4);
 					resource.type = renderer::Vec4;
 					break;
 
@@ -216,6 +230,7 @@ namespace luna
 				resource.type = renderer::Interpolant;
 				break;
 			case spirv_cross::SPIRType::Char:
+				resource.stride = sizeof(int8_t);
 				resource.type = renderer::Char;
 				break;
 			default:

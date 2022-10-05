@@ -59,9 +59,72 @@ namespace luna
 				shaderStages.push_back(stage);
 			}
 		}
+		void vulkanPipeline::createInputStates()
+		{
+
+		}
+		VkPipelineVertexInputStateCreateInfo vulkanPipeline::createVertexInputState(const ref<renderer::shader> shader)
+		{
+			VkPipelineVertexInputStateCreateInfo vertexInputCreateInfo{ VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO };
+			vertexInputCreateInfo.pVertexAttributeDescriptions = inputDescriptions[shader->shaderName].attributes.data();
+			vertexInputCreateInfo.pVertexBindingDescriptions = inputDescriptions[shader->shaderName].bindings.data();
+			vertexInputCreateInfo.vertexAttributeDescriptionCount = inputDescriptions[shader->shaderName].attributes.size();
+			vertexInputCreateInfo.vertexBindingDescriptionCount = inputDescriptions[shader->shaderName].bindings.size();
+			return vertexInputCreateInfo;
+		}
+		void vulkanPipeline::createBindingDescription(const ref<renderer::shader> shader)
+		{
+			if (shader->stage != renderer::shaderStageVertex) return;
+
+			std::unordered_map<uint32_t, VkVertexInputBindingDescription> bindingDescriptions;
+			for(const auto& shaderResource : shader->shaderLayout)
+			{
+				if ((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)
+				{
+					
+					VkVertexInputBindingDescription bindingDescription;
+					auto bindingDescriptionPtr = bindingDescriptions.find(shaderResource.binding);
+					if (bindingDescriptionPtr == bindingDescriptions.end())
+					{
+
+						bindingDescription.binding = shaderResource.binding;
+						bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+						bindingDescription.stride = shaderResource.stride;
+						bindingDescriptions.insert({ bindingDescription.binding ,bindingDescription });
+					}
+					else
+					{
+						
+						bindingDescriptionPtr->second.stride += shaderResource.stride;
+					}
+				}
+			}
+			for (auto bindingDescription = bindingDescriptions.begin(); bindingDescription != bindingDescriptions.end(); bindingDescription++)inputDescriptions[shader->shaderName].bindings.push_back(bindingDescription->second);
+			
+		}
+		void vulkanPipeline::createAttributeDescription(const ref<renderer::shader> shader)
+		{
+			if (shader->stage != renderer::shaderStageVertex) return;
+
+			
+			for (const auto& shaderResource : shader->shaderLayout)
+			{
+				if ((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)
+				{
+					VkVertexInputAttributeDescription attributeDescription;
+					attributeDescription.binding = shaderResource.binding;
+					attributeDescription.location = shaderResource.location;
+					attributeDescription.offset = shaderResource.offset;
+					attributeDescription.format = getResourceFormat(shaderResource.type);
+					inputDescriptions[shader->shaderName].attributes.push_back(attributeDescription);
+				}
+			}
+		}
 		void vulkanPipeline::createPipeLineLayout()
 		{
 			createShaderStages();
+			for (const auto& shader : layout.pipelineShaders) createBindingDescription(shader);
+			for (const auto& shader : layout.pipelineShaders) createAttributeDescription(shader);
 		}
 
 		VkResult vulkanPipeline::createShaderModule(ref<renderer::shader> shader,VkShaderModule* shaderModule)
@@ -74,6 +137,43 @@ namespace luna
 			vulkanDevice::deviceHandles handles = device->getDeviceHandles();
 			
 			return vkCreateShaderModule(handles.device, &shaderModuleCreateInfo, nullptr, shaderModule);
+		}
+
+		VkFormat vulkanPipeline::getResourceFormat(renderer::typeId resourceType)
+		{
+			switch (resourceType)
+			{
+			case luna::renderer::Boolean:
+				return VK_FORMAT_R8_UINT;
+			case luna::renderer::SByte:
+				return VK_FORMAT_R8_UINT;
+			case luna::renderer::UByte:
+				return VK_FORMAT_R8_UINT;
+			case luna::renderer::Short:
+				return VK_FORMAT_R16_UINT;
+			case luna::renderer::UShort:
+				return VK_FORMAT_R16_UINT;
+			case luna::renderer::Int:
+				return VK_FORMAT_R32_UINT;
+			case luna::renderer::UInt:
+				return VK_FORMAT_R32_UINT;
+			case luna::renderer::Int64:
+				return VK_FORMAT_R64_UINT;
+			case luna::renderer::UInt64:
+				return VK_FORMAT_R64_UINT;
+			case luna::renderer::Float:
+				return VK_FORMAT_R32_SFLOAT;
+			case luna::renderer::Char:
+				return VK_FORMAT_R8_UINT;
+			case luna::renderer::Vec2:
+				return VK_FORMAT_R32G32_SFLOAT;
+			case luna::renderer::Vec3:
+				return VK_FORMAT_R32G32B32_SFLOAT;
+			case luna::renderer::Vec4:
+				return VK_FORMAT_R32G32B32A32_SFLOAT;
+			default:
+				return VK_FORMAT_MAX_ENUM;
+			}
 		}
 
 	}
