@@ -52,6 +52,9 @@ namespace luna
 			 * \return returns VK_SUCCESS on succesful creation.
 			 */
 			VkResult recreateSwapchain();
+			VkViewport getViewport();
+			VkRect2D getScissor();
+			inline VkFormat getSurfaceFormat() { return swapchainImageFormat; };
 		private:
 			/**
 			 * @brief destroys the device bound swapchain.

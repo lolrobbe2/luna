@@ -25,7 +25,9 @@ namespace luna
 			virtual ~vulkanDevice();
 			void createContext() override;
 			void destroyContext() override;
-			
+			inline VkViewport getViewport() { return swapchain->getViewport(); };
+			inline VkRect2D getScissor() { return swapchain->getScissor(); };
+			inline VkFormat getSwapFormat() { return swapchain->getSurfaceFormat(); };
 		private:
 			/**
 			 * @name primaryHelperFunctions helper functions used to create the device

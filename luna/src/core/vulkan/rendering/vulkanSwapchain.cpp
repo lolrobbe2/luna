@@ -58,6 +58,7 @@ namespace luna
             vkGetSwapchainImagesKHR(mSwapchainSpec.device, mSwapchain, &imageCount, swapchainImages.data());
             swapchainImageFormat = surfaceFormat.format;
             createImageViews();
+            
 			return result;
 		}
 		VkResult vulkanSwapchain::recreateSwapchain()
@@ -152,5 +153,25 @@ namespace luna
 
             return imageView;
         }
+        VkViewport vulkanSwapchain::getViewport()
+        {
+            VkViewport viewport;
+            viewport.x = 0.0f;
+            viewport.y = 0.0f;
+            viewport.width = (float)mSwapchainSpec.window->getWidth();
+            viewport.height = (float)mSwapchainSpec.window->getHeight();
+            viewport.minDepth = 0.0f;
+            viewport.maxDepth = 1.0f;
+            return viewport;
+        }
+
+        VkRect2D vulkanSwapchain::getScissor()
+        {
+            VkRect2D scissor;
+            scissor.extent = { mSwapchainSpec.window->getWidth(),mSwapchainSpec.window->getHeight() };
+            scissor.offset = { 0,0 };
+            return scissor;
+        }
+               
 	}
 }

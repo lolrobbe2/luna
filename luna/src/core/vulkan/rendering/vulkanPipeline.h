@@ -16,6 +16,9 @@ namespace luna
 		private:
 			void createPipeLineLayout();
 
+			VkResult buildPipeline(VkDevice device, VkRenderPass pass);
+			
+
 			void createShaderStages();
 			void createInputStates();
 			VkPipelineVertexInputStateCreateInfo createVertexInputState(const ref<renderer::shader> shader);
@@ -23,7 +26,14 @@ namespace luna
 			void createAttributeDescription(const ref<renderer::shader> shader);
 			VkResult createShaderModule(ref<renderer::shader> shader,VkShaderModule* shaderModule);
 			VkFormat getResourceFormat(renderer::typeId resourceType);
+			VkPipelineInputAssemblyStateCreateInfo inputAssemblyCreateInfo(VkPrimitiveTopology topology);
+			VkPipelineRasterizationStateCreateInfo rasterizationStateCreateInfo(VkPolygonMode polygonMode);
+			VkPipelineMultisampleStateCreateInfo multisamplingStateCreateInfo();
+			VkPipelineColorBlendAttachmentState colorBlendAttachmentState();
+			VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo();
+			void initDefaultRenderpass();
 		private:
+			//TODO improve variables usage.
 			struct shaderStage
 			{
 				VkPipelineShaderStageCreateInfo stageInfo;
@@ -42,10 +52,19 @@ namespace luna
 				glm::vec3 normal;
 				glm::vec2 color;
 			};
+			VkRenderPass renderPass;
+			VkPipelineLayout pipelineLayout;
+			VkPipeline pipeline;
 			renderer::pipelineLayout layout;
-			std::vector<shaderStage> shaderStages;
+			std::vector<VkPipelineShaderStageCreateInfo> shaderStages;
+			std::vector<VkShaderModule> shaderModules;
 			std::unordered_map<std::string,vertexInputDescription> inputDescriptions;
-			
+			std::vector<VkPipelineVertexInputStateCreateInfo> vertexInputStates;
+
+			VkPipelineInputAssemblyStateCreateInfo inputAssemblyStateCreateInfo;
+			VkPipelineRasterizationStateCreateInfo pipelineRasterizationStateCreateInfo;
+			VkPipelineMultisampleStateCreateInfo pipelineMultisampleStateCreateInfo;
+			VkPipelineColorBlendAttachmentState pipelineColorBlendAttachementState;
 		};
 		
 	}
