@@ -13,3 +13,6 @@
 [submodule "luna/thirdParty/VMA"]
 	path = luna/thirdParty/VMA
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
+[submodule "luna/thirdParty/VkBootstrap"]
+	path = luna/thirdParty/VkBootstrap
+	url = https://github.com/charles-lunarg/vk-bootstrap
