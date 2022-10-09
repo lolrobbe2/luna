@@ -27,6 +27,7 @@ namespace luna
 		{
 		public:
 			VkCommandBuffer operator=(const virtualCmdBuffer commandBuffer) { return virtualBuffers.find(commandBuffer)->second.first; };
+			
 			/**
 			* @brief vulkanCmdPool constructor
 			* @param vulkanCmdPoolSpec commandPoolSpecefication;
@@ -65,6 +66,7 @@ namespace luna
 			std::unordered_map<virtualCmdBuffer, std::pair<VkCommandBuffer, VkCommandBufferUsageFlags>> virtualBuffers;
 			VkCommandPool commandPool;
 			vulkanCmdPoolSpec sCommandPoolSpec;
+			std::vector<VkCommandBuffer>commandBuffers;
 		};
 		
 

@@ -23,9 +23,10 @@ namespace luna
 			VkResult allocateResult = vkAllocateCommandBuffers(sCommandPoolSpec.device, &allocateInfo, localCommandBuffers.data());
 			for (size_t i = 0; i < commandBufferCount; i++)
 			{
-				virtualCmdBuffer* currentBuffer = commandBuffer + commandBufferCount;
-				*currentBuffer = uuid();
-				virtualBuffers.insert({ *currentBuffer,{localCommandBuffers[i],0} });
+				virtualCmdBuffer* currentBuffer = commandBuffer + i;
+				uint64_t uid = uuid();
+				*currentBuffer = uid;
+				virtualBuffers.insert({ uid,{localCommandBuffers[i],0} });
 				LN_CORE_INFO("added virtualbuffer, uuid = {0} ", *currentBuffer);
 			}
 			return allocateResult;
@@ -38,7 +39,8 @@ namespace luna
 			commandBufferBeginInfo.pNext = nullptr;
 			auto virtualBufferPair = virtualBuffers.find(commandBuffer);
 			virtualBufferPair->second.second = usageFlags;
-			if ((virtualBufferPair->second.first == VK_NULL_HANDLE || (usageFlags & VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT)) != 0) { return VkResult::VK_ERROR_INITIALIZATION_FAILED; };
+			vkResetCommandBuffer(virtualBufferPair->second.first, 0);
+			//if ((virtualBufferPair->second.first == VK_NULL_HANDLE || (usageFlags & VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT)) != 0) { return VkResult::VK_ERROR_INITIALIZATION_FAILED; };
 			return vkBeginCommandBuffer(virtualBufferPair->second.first, &commandBufferBeginInfo);
 		}
 		VkResult vulkanCmdPool::end(virtualCmdBuffer commandBuffer)
@@ -48,26 +50,23 @@ namespace luna
 		VkResult vulkanCmdPool::flush(VkQueue queue,uint64_t submitCount,const commandPoolSubmitInfo* pCommandPoolSubmitInfo,VkFence waitFence)
 		{
 			std::vector<VkSubmitInfo> submitInfos{};
-			std::vector<VkCommandBuffer>commandBuffers;
-			for (size_t i = 0; i < submitCount; i++)
-			{
-				VkSubmitInfo submitInfo = { VK_STRUCTURE_TYPE_SUBMIT_INFO };
-				for (size_t i = 0; i < pCommandPoolSubmitInfo->commandBufferCount; i++)
-				{
-					auto virtualBufferPair = virtualBuffers.find(*(pCommandPoolSubmitInfo->pCommandBuffers+i));
-					commandBuffers.push_back(virtualBufferPair->second.first);
-				}
-				submitInfo.pCommandBuffers = commandBuffers.data();
-				submitInfo.commandBufferCount = pCommandPoolSubmitInfo->commandBufferCount;
-				submitInfo.pNext = pCommandPoolSubmitInfo->pNext;
-				submitInfo.pSignalSemaphores = pCommandPoolSubmitInfo->pSignalSemaphores;
-				submitInfo.pWaitDstStageMask = pCommandPoolSubmitInfo->pWaitDstStageMask;
-				submitInfo.pWaitSemaphores = pCommandPoolSubmitInfo->pWaitSemaphores;
-				submitInfo.signalSemaphoreCount = pCommandPoolSubmitInfo->signalSemaphoreCount;
-				submitInfo.waitSemaphoreCount = pCommandPoolSubmitInfo->waitSemaphoreCount;
-			}
 			
-			return vkQueueSubmit(queue, submitCount, submitInfos.data(), waitFence);
+			VkSubmitInfo submitInfo = { VK_STRUCTURE_TYPE_SUBMIT_INFO };
+			commandBuffers.resize(0);
+			for (size_t i = 0; i < pCommandPoolSubmitInfo->commandBufferCount; i++)
+			{
+				auto virtualBufferPair = virtualBuffers.find(*(pCommandPoolSubmitInfo->pCommandBuffers+i));
+				commandBuffers.push_back(virtualBufferPair->second.first);
+			}
+			submitInfo.pCommandBuffers = commandBuffers.data();
+			submitInfo.commandBufferCount = commandBuffers.size();
+			submitInfo.pNext = pCommandPoolSubmitInfo->pNext;
+			submitInfo.pSignalSemaphores = pCommandPoolSubmitInfo->pSignalSemaphores;
+			submitInfo.pWaitDstStageMask = pCommandPoolSubmitInfo->pWaitDstStageMask;
+			submitInfo.pWaitSemaphores = pCommandPoolSubmitInfo->pWaitSemaphores;
+			submitInfo.signalSemaphoreCount = pCommandPoolSubmitInfo->signalSemaphoreCount;
+			submitInfo.waitSemaphoreCount = pCommandPoolSubmitInfo->waitSemaphoreCount;
+			return vkQueueSubmit(queue, submitCount, &submitInfo, waitFence);
 		}
 	}
 }

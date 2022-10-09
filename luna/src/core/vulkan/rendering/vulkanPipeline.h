@@ -1,5 +1,5 @@
 #pragma once
-
+#include <core/vulkan/device/vulkanCmdPool.h>
 #include <core/rendering/pipeline.h>
 namespace luna
 {
@@ -13,9 +13,9 @@ namespace luna
 			virtual void createPipeline(const renderer::pipelineLayout& layout) override;
 			virtual void begin() const override;
 			virtual void end() const override;
+			virtual void flush() override;
 		private:
 			void createPipeLineLayout();
-
 			VkResult buildPipeline(VkDevice device, VkRenderPass pass);
 			
 
@@ -32,6 +32,7 @@ namespace luna
 			VkPipelineColorBlendAttachmentState colorBlendAttachmentState();
 			VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo();
 			void initDefaultRenderpass();
+			void initSyncStructures();
 		private:
 			//TODO improve variables usage.
 			struct shaderStage
@@ -65,6 +66,17 @@ namespace luna
 			VkPipelineRasterizationStateCreateInfo pipelineRasterizationStateCreateInfo;
 			VkPipelineMultisampleStateCreateInfo pipelineMultisampleStateCreateInfo;
 			VkPipelineColorBlendAttachmentState pipelineColorBlendAttachementState;
+
+			std::vector<VkSemaphore> imageAvailableSemaphores, renderFinishedSemaphores;
+			std::vector<VkFence> inFlightFences;
+			std::vector<VkFence> imagesInFlight;
+			
+			ref<vulkanCmdPool> commandPool = nullptr;
+			std::vector<virtualCmdBuffer> commandBuffers;
+			uint32_t swapchainImageIndex = 0;
+			uint32_t currentFrame = 0;
+			VkQueue presentQueue;
+
 		};
 		
 	}

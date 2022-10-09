@@ -1,16 +1,951 @@
-[11:46:34] [trace] LUNA: instance creation result = 0
-[11:46:36] [trace] LUNA: surface creation result = 0
-[11:46:37] [info] LUNA: api version = 0.1.2.196
-[11:46:37] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[11:46:37] [trace] LUNA: device selection result = 0
-[11:46:37] [trace] LUNA: logical device creation result = 0
-[11:46:37] [trace] LUNA: swapchain creation result = 0
-[11:46:37] [trace] LUNA: reflecting shader: false
-[11:46:37] [trace] LUNA: creating shader Layout
-[11:46:37] [trace] LUNA: created shaderLayout
-[11:46:37] [trace] LUNA: reflecting shader: false
-[11:46:37] [trace] LUNA: creating shader Layout
-[11:46:37] [trace] LUNA: created shaderLayout
-[11:46:37] [info] LUNA: creatings vulkan shadermodule, result = 0
-[11:46:37] [info] LUNA: creatings vulkan shadermodule, result = 0
-[11:46:39] [info] LUNA: pipelinecreation result = 0
+[22:30:54] [critical] LUNA: break point
+[22:30:54] [trace] LUNA: crate instance result = 0
+[22:30:54] [trace] LUNA: device selection result = 0
+[22:30:54] [trace] LUNA: logical device creation result = 0
+[22:30:54] [trace] LUNA: swapchain creation result = 0
+[22:30:54] [trace] LUNA: reflecting shader: false
+[22:30:54] [trace] LUNA: creating shader Layout
+[22:30:54] [trace] LUNA: created shaderLayout
+[22:30:54] [trace] LUNA: reflecting shader: false
+[22:30:54] [trace] LUNA: creating shader Layout
+[22:30:54] [trace] LUNA: created shaderLayout
+[22:30:54] [info] LUNA: added virtualbuffer, uuid = 18219141536742283861 
+[22:30:54] [info] LUNA: added virtualbuffer, uuid = 17677909633694455374 
+[22:30:54] [info] LUNA: added virtualbuffer, uuid = 15029896614991800186 
+[22:30:54] [info] LUNA: commandbuffer create info = 0
+[22:30:54] [info] LUNA: creatings vulkan shadermodule, result = 0
+[22:30:54] [info] LUNA: creatings vulkan shadermodule, result = 0
+[22:30:54] [info] LUNA: pipelinecreation result = 0
+[22:30:54] [info] LUNA: acquire 0
+[22:30:54] [info] LUNA: commandbuffer begin = 0
+[22:30:54] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:55] [info] LUNA: acquire 0
+[22:30:55] [info] LUNA: commandbuffer begin = 0
+[22:30:55] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:56] [info] LUNA: acquire 0
+[22:30:56] [info] LUNA: commandbuffer begin = 0
+[22:30:56] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:57] [info] LUNA: acquire 0
+[22:30:57] [info] LUNA: commandbuffer begin = 0
+[22:30:57] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:58] [info] LUNA: acquire 0
+[22:30:58] [info] LUNA: commandbuffer begin = 0
+[22:30:58] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:30:59] [info] LUNA: acquire 0
+[22:30:59] [info] LUNA: commandbuffer begin = 0
+[22:30:59] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0
+[22:31:00] [info] LUNA: acquire 0
+[22:31:00] [info] LUNA: commandbuffer begin = 0
+[22:31:00] [error] LUNA: commandpool submit info = 0

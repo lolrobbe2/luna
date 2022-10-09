@@ -7,18 +7,110 @@ namespace luna
 		vulkanPipeline::vulkanPipeline(const renderer::pipelineLayout& layout)
 		{
 		
+			vulkanCmdPoolSpec commandPoolSpec;
+			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			commandPoolSpec.device = device->getDeviceHandles().device;
+			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
+			commandPoolSpec.queueFamilyIndex = device->getQueueIndex(vkb::QueueType::present);
+			ref<vulkanCmdPool> commandpool{new vulkanCmdPool(commandPoolSpec) };
+			commandPool = commandpool;
+			commandBuffers.resize(device->swapchain->mSwapchain.image_count);
+			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
 			createPipeline(layout);
+			
+			//vkCmdDraw(commandBuffer, 3, 1, 0, 0);
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
 			this->layout = layout;
 			createPipeLineLayout();
+			initDefaultRenderpass();
+			initSyncStructures();
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			vDevice->swapchain->createFramebuffers(renderPass);
+			presentQueue = vDevice->getQueue(vkb::QueueType::present);
+			LN_CORE_INFO("pipelinecreation result = {0}", buildPipeline(vDevice->getDeviceHandles().device, renderPass));
 		}
 		void vulkanPipeline::begin() const
 		{
+			VkClearValue clearValue;
+			//float flash = abs(sin(_frameNumber / 120.f));
+			clearValue.color = { { 0.0f, 0.0f, 255.0f, 1.0f } };
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], true, 1000000000);
+			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
+			//start the main renderpass.
+			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
+			LN_CORE_INFO("acquire {0}", vDevice->getNextImage(imageAvailableSemaphores[currentFrame], (uint32_t*)&swapchainImageIndex));
+			VkRenderPassBeginInfo rpInfo = {};
+			rpInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+			rpInfo.pNext = nullptr;
+			
+			
+			rpInfo.renderPass = renderPass;
+			rpInfo.renderArea.offset.x = 0;
+			rpInfo.renderArea.offset.y = 0;
+			rpInfo.renderArea.extent = {vDevice->window->getWidth(),vDevice->window->getHeight() };
+			rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentFrame);
+			
+			LN_CORE_INFO("commandbuffer begin = {0}",commandPool->begin(commandBuffers[currentFrame], VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT));
+			//connect clear values
+			rpInfo.clearValueCount = 1;
+			rpInfo.pClearValues = &clearValue;
+
+			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+			vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+			vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
 		}
 		void vulkanPipeline::end() const
 		{
+			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
+			//finalize the command buffer (we can no longer add commands, but it can now be executed)
+			commandPool->end(commandBuffers[currentFrame]);
+		}
+		void vulkanPipeline::flush()
+		{
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+
+			
+			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
+			commandPoolSubmitInfo submit = {};
+			submit.pNext = nullptr;
+
+			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_TRANSFER_BIT };
+			VkSemaphore waitSemaphores[] = { imageAvailableSemaphores[currentFrame] };
+			VkSemaphore signalSemaphores[] = { renderFinishedSemaphores[currentFrame] };
+			submit.pWaitDstStageMask = waitStages;
+			submit.pCommandBuffers = &commandBuffers[currentFrame];
+			submit.commandBufferCount = 1;
+			submit.waitSemaphoreCount = 1;
+			submit.pWaitSemaphores = waitSemaphores;
+
+			submit.signalSemaphoreCount = 1;
+			submit.pSignalSemaphores = signalSemaphores;
+			
+			LN_CORE_ERROR("commandpool submit info = {0}",commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]));
+			//submit command buffer to the queue and execute it.
+			// _renderFence will now block until the graphic commands finish execution
+			
+			
+			
+			VkPresentInfoKHR presentInfo = {};
+			presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+			presentInfo.pNext = nullptr;
+			VkSwapchainKHR swapChain = vDevice->swapchain->getSwapchain();
+			VkSwapchainKHR swapChains[] = { vDevice->swapchain->mSwapchain };
+			presentInfo.pSwapchains =  swapChains;
+			presentInfo.swapchainCount = 1;
+
+			presentInfo.pWaitSemaphores = signalSemaphores;
+			presentInfo.waitSemaphoreCount = 1;
+			
+			presentInfo.pImageIndices = &swapchainImageIndex;
+			presentInfo.pResults = nullptr;
+
+			vkQueuePresentKHR(presentQueue, &presentInfo);
+			currentFrame = (currentFrame + 1) % 2;
 		}
 		void vulkanPipeline::createShaderStages()
 		{
@@ -135,8 +227,6 @@ namespace luna
 			{
 				vertexInputStates.push_back(createVertexInputState(shader));
 			}
-			initDefaultRenderpass();
-			LN_CORE_INFO("pipelinecreation result = {0}",buildPipeline(vDevice->getDeviceHandles().device, renderPass));
 		}
 
 		VkResult vulkanPipeline::buildPipeline(VkDevice device, VkRenderPass pass) 
@@ -336,7 +426,7 @@ namespace luna
 
 			//after the renderpass ends, the image has to be on a layout ready for display
 			color_attachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
-
+			
 			VkAttachmentReference color_attachment_ref = {};
 			//attachment number will index into the pAttachments array in the parent renderpass itself
 			color_attachment_ref.attachment = 0;
@@ -357,9 +447,65 @@ namespace luna
 			//connect the subpass to the info
 			render_pass_info.subpassCount = 1;
 			render_pass_info.pSubpasses = &subpass;
-			
+
+			VkSubpassDependency dependency{};
+			dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+			dependency.dstSubpass = 0;
+
+			dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.srcAccessMask = 0;
+
+			dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+			render_pass_info.dependencyCount = 1;
+			render_pass_info.pDependencies = &dependency;
 
 			vkCreateRenderPass(vDevice->getDeviceHandles().device, &render_pass_info, nullptr, &renderPass);
 		}
+		void vulkanPipeline::initSyncStructures() //TODO make seperate class from this
+		{
+			//create synchronization structures
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			imageAvailableSemaphores.resize(vDevice->swapchain->mSwapchain.image_count);
+			renderFinishedSemaphores.resize(vDevice->swapchain->mSwapchain.image_count);
+			inFlightFences.resize(vDevice->swapchain->mSwapchain.image_count);
+			imagesInFlight.resize(vDevice->swapchain->mSwapchain.image_count, VK_NULL_HANDLE);
+
+			VkSemaphoreCreateInfo semaphoreInfo{};
+			semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+
+			VkFenceCreateInfo fenceInfo{};
+			fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+			fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+
+			for (size_t i = 0; i < vDevice->swapchain->mSwapchain.image_count; i++)
+			{
+				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]) ||
+				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
+				vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
+
+			}
+
+			/*
+			VkFenceCreateInfo fenceCreateInfo = {};
+			fenceCreateInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+			fenceCreateInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+			fenceCreateInfo.pNext = nullptr;
+
+			//we want to create the fence with the Create Signaled flag, so we can wait on it before using it on a GPU command (for the first get)
+			fenceCreateInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+
+			vkCreateFence(vDevice->getDeviceHandles().device, &fenceCreateInfo, nullptr, &_renderFence);
+
+			//for the semaphores we don't need any flags
+			VkSemaphoreCreateInfo semaphoreCreateInfo = {};
+			semaphoreCreateInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+
+			vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreCreateInfo, nullptr, &_presentSemaphore);
+			vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreCreateInfo, nullptr, &_renderSemaphore);
+			*/
+		}
+
+
 	}
 }

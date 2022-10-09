@@ -2,8 +2,8 @@
   vulkanPipeline.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(75,115): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(76,111): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(175,49): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(167,115): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(168,111): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(265,49): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
      Creating library ..\bin\release-windows-x86_64\x64\luna\luna.lib and object ..\bin\release-windows-x86_64\x64\luna\luna.exp
   luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\luna\luna.dll

@@ -28,5 +28,16 @@ namespace luna
 				break;		
 			}
 		}
+		void renderer::createFrame()
+		{
+		
+			
+		}
+		void renderer::newFrame()
+		{
+			rendererPipeline->begin();
+			rendererPipeline->end();
+			rendererPipeline->flush();
+		}
 	}
 }

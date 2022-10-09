@@ -28,6 +28,9 @@ namespace luna
 			inline VkViewport getViewport() { return swapchain->getViewport(); };
 			inline VkRect2D getScissor() { return swapchain->getScissor(); };
 			inline VkFormat getSwapFormat() { return swapchain->getSurfaceFormat(); };
+			inline VkResult getNextImage(VkSemaphore presentSemaphore,uint32_t* imageIndex) { return swapchain->getNextImage(presentSemaphore,imageIndex); };
+			inline VkQueue getQueue(vkb::QueueType queueType) {return deviceHandle.device.get_queue(queueType).value(); };
+			inline uint32_t getQueueIndex(vkb::QueueType queueType) { return deviceHandle.device.get_queue_index(queueType).value(); };
 		private:
 			/**
 			 * @name primaryHelperFunctions helper functions used to create the device
@@ -88,16 +91,17 @@ namespace luna
 			 */
 			VkDeviceQueueCreateInfo* createQueues();
 			///@}
-			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
+			
 		public:
 			struct deviceHandles
 			{
 				VkApplicationInfo appInfo{};
-				VkInstance instance;
-				VkDevice device;
-				VkPhysicalDevice physicalDevice;
+				vkb::Instance instance;
+				vkb::Device device;
+				vkb::PhysicalDevice physicalDevice;
 			};
 			deviceHandles getDeviceHandles();
+			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
 		private:
 			
 			std::vector<float> queuePriorities = { 0.99f };

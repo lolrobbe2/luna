@@ -18,6 +18,7 @@ namespace luna
 			virtual void createPipeline(const pipelineLayout& layout) = 0;
 			virtual void begin() const = 0;
 			virtual void end() const = 0;
+			virtual void flush() = 0;
 			int test;
 		private:
 

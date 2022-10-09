@@ -10,6 +10,7 @@ namespace luna
 		{
 		public:
 			static void init(const ref<vulkan::window>& window);
+			static void createFrame();
 			static void newFrame();
 		private:
 			inline static ref<device> rendererDevice;
