@@ -13,6 +13,12 @@ namespace luna
 			commandPoolCreateInfo.flags = commandPoolSpec.flags;
 			vkCreateCommandPool(commandPoolSpec.device, &commandPoolCreateInfo, nullptr, &commandPool);
 		}
+
+		vulkanCmdPool::~vulkanCmdPool()
+		{
+
+		}
+
 		VkResult vulkanCmdPool::createNewBuffer( virtualCmdBuffer* commandBuffer,const uint32_t& commandBufferCount,const VkCommandBufferLevel& commandBufferLevel)
 		{
 			VkCommandBufferAllocateInfo allocateInfo{ VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO };
@@ -41,6 +47,7 @@ namespace luna
 			virtualBufferPair->second.second = usageFlags;
 			vkResetCommandBuffer(virtualBufferPair->second.first, 0);
 			//if ((virtualBufferPair->second.first == VK_NULL_HANDLE || (usageFlags & VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT)) != 0) { return VkResult::VK_ERROR_INITIALIZATION_FAILED; };
+			
 			return vkBeginCommandBuffer(virtualBufferPair->second.first, &commandBufferBeginInfo);
 		}
 		VkResult vulkanCmdPool::end(virtualCmdBuffer commandBuffer)
@@ -56,6 +63,7 @@ namespace luna
 			for (size_t i = 0; i < pCommandPoolSubmitInfo->commandBufferCount; i++)
 			{
 				auto virtualBufferPair = virtualBuffers.find(*(pCommandPoolSubmitInfo->pCommandBuffers+i));
+				if (virtualBufferPair->second.second == VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT) vkResetCommandBuffer(virtualBufferPair->second.first,0);
 				commandBuffers.push_back(virtualBufferPair->second.first);
 			}
 			submitInfo.pCommandBuffers = commandBuffers.data();
@@ -66,6 +74,7 @@ namespace luna
 			submitInfo.pWaitSemaphores = pCommandPoolSubmitInfo->pWaitSemaphores;
 			submitInfo.signalSemaphoreCount = pCommandPoolSubmitInfo->signalSemaphoreCount;
 			submitInfo.waitSemaphoreCount = pCommandPoolSubmitInfo->waitSemaphoreCount;
+			
 			return vkQueueSubmit(queue, submitCount, &submitInfo, waitFence);
 		}
 	}

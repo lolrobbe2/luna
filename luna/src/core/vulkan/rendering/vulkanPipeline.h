@@ -9,8 +9,9 @@ namespace luna
 		{
 		public:
 			vulkanPipeline(const renderer::pipelineLayout& layout);
-			virtual ~vulkanPipeline() {};
+			virtual ~vulkanPipeline() { destroyPipeline(); };
 			virtual void createPipeline(const renderer::pipelineLayout& layout) override;
+			virtual void destroyPipeline() override;
 			virtual void begin() const override;
 			virtual void end() const override;
 			virtual void flush() override;
@@ -77,6 +78,7 @@ namespace luna
 			uint32_t currentFrame = 0;
 			VkQueue presentQueue;
 
+			uint32_t maxFramesInFlight = 0;
 		};
 		
 	}

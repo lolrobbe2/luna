@@ -36,7 +36,7 @@ namespace luna
 			/**
 			* @brief commandPool destructor, does nothing at the moment
 			*/
-			virtual ~vulkanCmdPool(){};
+			virtual ~vulkanCmdPool();
 			/**
 			* @brief createNewBuffer creates a proteceted commandBuffer that is bound to the pool it is created with.
 			* @param virtualCmdBuffer* a command buffer array pointer or std::vector pointer.

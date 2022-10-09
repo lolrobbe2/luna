@@ -30,13 +30,11 @@ namespace luna
 		}
 		void renderer::createFrame()
 		{
-		
-			
+			rendererPipeline->begin();
+			rendererPipeline->end();
 		}
 		void renderer::newFrame()
 		{
-			rendererPipeline->begin();
-			rendererPipeline->end();
 			rendererPipeline->flush();
 		}
 	}

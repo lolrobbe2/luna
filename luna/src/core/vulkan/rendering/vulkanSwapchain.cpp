@@ -15,12 +15,13 @@ namespace luna
 		{
             mSwapchainSpec = swapChainSpec;
             vkb::SwapchainBuilder swapchainBuilder{ swapChainSpec.physicalDevice, swapChainSpec.device, swapChainSpec.surface };
-
+            
             mSwapchain = swapchainBuilder
                 .use_default_format_selection()
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_FIFO_KHR)
                 .set_desired_extent(swapChainSpec.window->getWidth(), swapChainSpec.window->getHeight())
+                .set_desired_min_image_count(2)
                 .build()
                 .value();
 
@@ -41,11 +42,11 @@ namespace luna
         }
         VkResult vulkanSwapchain::destroySwapchain()
 		{
-            for (size_t i = 0; i < swapChainImageViews.size(); i++)
-            {
-                //vkDestroyImage(mSwapchainSpec.device, swapchainImages[i], NULL);
-                //vkDestroyImageView(mSwapchainSpec.device, swapChainImageViews[i], NULL);
+            for (size_t i = 0; i < swapchainFrameBuffers.size(); i++)
+            {               
+                vkDestroyFramebuffer(mSwapchain.device, swapchainFrameBuffers[i], nullptr);
             }
+            mSwapchain.destroy_image_views(mSwapchain.get_image_views().value());
             vkDestroySwapchainKHR(mSwapchainSpec.device, mSwapchain, nullptr);
 			return VK_SUCCESS;
 		}

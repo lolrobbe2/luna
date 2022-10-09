@@ -6,15 +6,16 @@ namespace luna
 	{
 		vulkanPipeline::vulkanPipeline(const renderer::pipelineLayout& layout)
 		{
-		
+			
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			maxFramesInFlight = 2;
 			commandPoolSpec.device = device->getDeviceHandles().device;
 			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 			commandPoolSpec.queueFamilyIndex = device->getQueueIndex(vkb::QueueType::present);
 			ref<vulkanCmdPool> commandpool{new vulkanCmdPool(commandPoolSpec) };
 			commandPool = commandpool;
-			commandBuffers.resize(device->swapchain->mSwapchain.image_count);
+			commandBuffers.resize(maxFramesInFlight);
 			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
 			createPipeline(layout);
 			
@@ -31,48 +32,67 @@ namespace luna
 			presentQueue = vDevice->getQueue(vkb::QueueType::present);
 			LN_CORE_INFO("pipelinecreation result = {0}", buildPipeline(vDevice->getDeviceHandles().device, renderPass));
 		}
+		void vulkanPipeline::destroyPipeline()
+		{
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			VkDevice device = vDevice->getDeviceHandles().device;
+			for (const auto& shaderModule : shaderModules) 
+			{
+				vkDestroyShaderModule(device,shaderModule,nullptr);
+			}
+			vkDestroyPipeline(device, pipeline, nullptr);
+			vkDestroyPipelineLayout(device, pipelineLayout,nullptr);
+		}
 		void vulkanPipeline::begin() const
 		{
 			VkClearValue clearValue;
 			//float flash = abs(sin(_frameNumber / 120.f));
-			clearValue.color = { { 0.0f, 0.0f, 255.0f, 1.0f } };
+			clearValue.color = { { 0.0f, 255.0f, 255.0f, 1.0f } };
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], true, 1000000000);
-			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
-			LN_CORE_INFO("acquire {0}", vDevice->getNextImage(imageAvailableSemaphores[currentFrame], (uint32_t*)&swapchainImageIndex));
-			VkRenderPassBeginInfo rpInfo = {};
-			rpInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-			rpInfo.pNext = nullptr;
-			
-			
-			rpInfo.renderPass = renderPass;
-			rpInfo.renderArea.offset.x = 0;
-			rpInfo.renderArea.offset.y = 0;
-			rpInfo.renderArea.extent = {vDevice->window->getWidth(),vDevice->window->getHeight() };
-			rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentFrame);
-			
-			LN_CORE_INFO("commandbuffer begin = {0}",commandPool->begin(commandBuffers[currentFrame], VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT));
-			//connect clear values
-			rpInfo.clearValueCount = 1;
-			rpInfo.pClearValues = &clearValue;
+			for (size_t currentBuffer = 0; currentBuffer < commandBuffers.size(); currentBuffer++)
+			{
 
-			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
-			vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
-			vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
+
+				VkRenderPassBeginInfo rpInfo = {};
+				rpInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+				rpInfo.pNext = nullptr;
+
+
+				rpInfo.renderPass = renderPass;
+				rpInfo.renderArea.offset.x = 0;
+				rpInfo.renderArea.offset.y = 0;
+				rpInfo.renderArea.extent = { vDevice->window->getWidth(),vDevice->window->getHeight() };
+				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentBuffer);
+
+				LN_CORE_INFO("commandbuffer begin = {0}", commandPool->begin(commandBuffers[currentBuffer], VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT));
+				//connect clear values
+				rpInfo.clearValueCount = 1;
+				rpInfo.pClearValues = &clearValue;
+
+				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentBuffer]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentBuffer]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
+
+				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
+				//finalize the command buffer (we can no longer add commands, but it can now be executed)
+				commandPool->end(commandBuffers[currentBuffer]);
+			}
 		}
 		void vulkanPipeline::end() const
 		{
-			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
-			//finalize the command buffer (we can no longer add commands, but it can now be executed)
-			commandPool->end(commandBuffers[currentFrame]);
 		}
 		void vulkanPipeline::flush()
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-
-			
+			LN_CORE_INFO("acquire {0}", vDevice->getNextImage(imageAvailableSemaphores[currentFrame], (uint32_t*)&swapchainImageIndex));
+			/*
+			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
+			{
+				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
+			}
+			*/
 			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
@@ -88,6 +108,7 @@ namespace luna
 
 			submit.signalSemaphoreCount = 1;
 			submit.pSignalSemaphores = signalSemaphores;
+			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
 			
 			LN_CORE_ERROR("commandpool submit info = {0}",commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]));
 			//submit command buffer to the queue and execute it.
@@ -98,7 +119,6 @@ namespace luna
 			VkPresentInfoKHR presentInfo = {};
 			presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
 			presentInfo.pNext = nullptr;
-			VkSwapchainKHR swapChain = vDevice->swapchain->getSwapchain();
 			VkSwapchainKHR swapChains[] = { vDevice->swapchain->mSwapchain };
 			presentInfo.pSwapchains =  swapChains;
 			presentInfo.swapchainCount = 1;
@@ -110,7 +130,7 @@ namespace luna
 			presentInfo.pResults = nullptr;
 
 			vkQueuePresentKHR(presentQueue, &presentInfo);
-			currentFrame = (currentFrame + 1) % 2;
+			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
 		}
 		void vulkanPipeline::createShaderStages()
 		{
@@ -160,7 +180,7 @@ namespace luna
 			for (const auto& shader : layout.pipelineShaders) createAttributeDescription(shader);
 		}
 		VkPipelineVertexInputStateCreateInfo vulkanPipeline::createVertexInputState(const ref<renderer::shader> shader)
-		{
+		{ 
 			VkPipelineVertexInputStateCreateInfo vertexInputCreateInfo{ VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO };
 			vertexInputCreateInfo.pVertexAttributeDescriptions = inputDescriptions[shader->shaderName].attributes.data();
 			vertexInputCreateInfo.pVertexBindingDescriptions = inputDescriptions[shader->shaderName].bindings.data();
@@ -466,10 +486,10 @@ namespace luna
 		{
 			//create synchronization structures
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-			imageAvailableSemaphores.resize(vDevice->swapchain->mSwapchain.image_count);
-			renderFinishedSemaphores.resize(vDevice->swapchain->mSwapchain.image_count);
-			inFlightFences.resize(vDevice->swapchain->mSwapchain.image_count);
-			imagesInFlight.resize(vDevice->swapchain->mSwapchain.image_count, VK_NULL_HANDLE);
+			imageAvailableSemaphores.resize(maxFramesInFlight);
+			renderFinishedSemaphores.resize(maxFramesInFlight);
+			inFlightFences.resize(maxFramesInFlight);
+			imagesInFlight.resize(maxFramesInFlight, VK_NULL_HANDLE);
 
 			VkSemaphoreCreateInfo semaphoreInfo{};
 			semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
@@ -478,7 +498,7 @@ namespace luna
 			fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
 			fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
 
-			for (size_t i = 0; i < vDevice->swapchain->mSwapchain.image_count; i++)
+			for (size_t i = 0; i < maxFramesInFlight; i++)
 			{
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]) ||
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
