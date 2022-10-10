@@ -9,6 +9,7 @@ namespace luna
 			
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			this->layout = layout;
 			maxFramesInFlight = 2;
 			commandPoolSpec.device = device->getDeviceHandles().device;
 			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
@@ -17,20 +18,12 @@ namespace luna
 			commandPool = commandpool;
 			commandBuffers.resize(maxFramesInFlight);
 			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
-			createPipeline(layout);
-			
-			//vkCmdDraw(commandBuffer, 3, 1, 0, 0);
+
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
 			this->layout = layout;
 			createPipeLineLayout();
-			initDefaultRenderpass();
-			initSyncStructures();
-			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-			vDevice->swapchain->createFramebuffers(renderPass);
-			presentQueue = vDevice->getQueue(vkb::QueueType::present);
-			LN_CORE_INFO("pipelinecreation result = {0}", buildPipeline(vDevice->getDeviceHandles().device, renderPass));
 		}
 		void vulkanPipeline::destroyPipeline()
 		{
@@ -51,6 +44,7 @@ namespace luna
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
+			VkExtent2D extent = vDevice->swapchain->mSwapchain.extent;
 			for (size_t currentBuffer = 0; currentBuffer < commandBuffers.size(); currentBuffer++)
 			{
 
@@ -63,7 +57,7 @@ namespace luna
 				rpInfo.renderPass = renderPass;
 				rpInfo.renderArea.offset.x = 0;
 				rpInfo.renderArea.offset.y = 0;
-				rpInfo.renderArea.extent = { vDevice->window->getWidth(),vDevice->window->getHeight() };
+				rpInfo.renderArea.extent = extent;
 				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentBuffer);
 
 				LN_CORE_INFO("commandbuffer begin = {0}", commandPool->begin(commandBuffers[currentBuffer], VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT));
@@ -86,7 +80,7 @@ namespace luna
 		void vulkanPipeline::flush()
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-			LN_CORE_INFO("acquire {0}", vDevice->getNextImage(imageAvailableSemaphores[currentFrame], (uint32_t*)&swapchainImageIndex));
+			LN_CORE_INFO("acquire {0}", vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex));
 			/*
 			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
 			{
@@ -131,6 +125,7 @@ namespace luna
 
 			vkQueuePresentKHR(presentQueue, &presentInfo);
 			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
+
 		}
 		void vulkanPipeline::createShaderStages()
 		{
@@ -247,6 +242,9 @@ namespace luna
 			{
 				vertexInputStates.push_back(createVertexInputState(shader));
 			}
+			initDefaultRenderpass();
+			vDevice->swapchain->
+			LN_CORE_INFO("pipelinecreation result = {0}",buildPipeline(vDevice->getDeviceHandles().device, renderPass));
 		}
 
 		VkResult vulkanPipeline::buildPipeline(VkDevice device, VkRenderPass pass) 
@@ -446,7 +444,7 @@ namespace luna
 
 			//after the renderpass ends, the image has to be on a layout ready for display
 			color_attachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
-			
+
 			VkAttachmentReference color_attachment_ref = {};
 			//attachment number will index into the pAttachments array in the parent renderpass itself
 			color_attachment_ref.attachment = 0;
@@ -467,21 +465,11 @@ namespace luna
 			//connect the subpass to the info
 			render_pass_info.subpassCount = 1;
 			render_pass_info.pSubpasses = &subpass;
-
-			VkSubpassDependency dependency{};
-			dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
-			dependency.dstSubpass = 0;
-
-			dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-			dependency.srcAccessMask = 0;
-
-			dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-			dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
-			render_pass_info.dependencyCount = 1;
-			render_pass_info.pDependencies = &dependency;
+			
 
 			vkCreateRenderPass(vDevice->getDeviceHandles().device, &render_pass_info, nullptr, &renderPass);
 		}
+
 		void vulkanPipeline::initSyncStructures() //TODO make seperate class from this
 		{
 			//create synchronization structures
@@ -525,6 +513,7 @@ namespace luna
 			vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreCreateInfo, nullptr, &_renderSemaphore);
 			*/
 		}
+
 
 
 	}

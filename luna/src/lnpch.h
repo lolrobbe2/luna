@@ -18,7 +18,6 @@
 #define GLFW_INCLUDE_VULKAN
 #include <VkBootstrap.h>
 #include <GLFW/glfw3.h>
-
 #include <stb_image.h>
 #pragma warning(pop)
 

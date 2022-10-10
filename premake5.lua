@@ -13,7 +13,6 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 buildmessage ("$(VULKAN_SDK)/include")
 IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/luna/thirdParty/GLFW/include"
-IncludeDir["VkBootstrap"] = "%{wks.location}/luna/thirdParty/VkBootstrap/src"
 LibraryDir = {}
 LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
 
@@ -38,14 +37,11 @@ project "luna"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp",
-        "luna/thirdParty/VkBootstrap/src/**.h",
-        "luna/thirdParty/VkBootstrap/src/**.cpp"
+        "%{prj.name}/src/**.cpp"
     }
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "luna/thirdParty/VkBootstrap/src",
         "luna/thirdParty/GLFW/include",
         "luna/thirdParty/glm",
         "luna/thirdParty/VMA/include",
@@ -110,7 +106,6 @@ project "sandbox"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "luna/thirdParty/VkBootstrap/src",
         "luna/thirdParty/GLFW/include",
         "luna/thirdParty/glm",
         "luna/thirdParty/VMA/include",

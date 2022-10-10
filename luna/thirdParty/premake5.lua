@@ -91,5 +91,3 @@ project "GLFW"
 		runtime "Release"
 		optimize "on"
         symbols "off"
-
-

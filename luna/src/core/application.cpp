@@ -11,7 +11,7 @@ namespace luna
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			renderer::renderer::init(mWindow);
-			renderer::renderer::createFrame();
+
 			
 		}
 		application::~application()
@@ -21,11 +21,11 @@ namespace luna
 
 		void application::run()
 		{
-			
+			renderer::renderer::createFrame();
 			while (running)
 			{
-				mWindow->onUpdate();
 				renderer::renderer::newFrame();
+				mWindow->onUpdate();
 			}
 		}
 

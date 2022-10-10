@@ -1,6 +1,7 @@
 #pragma once
-#include <core/vulkan/device/vulkanCmdPool.h>
+
 #include <core/rendering/pipeline.h>
+#include <core/vulkan/device/vulkanCmdPool.h>
 namespace luna
 {
 	namespace vulkan
@@ -17,6 +18,7 @@ namespace luna
 			virtual void flush() override;
 		private:
 			void createPipeLineLayout();
+
 			VkResult buildPipeline(VkDevice device, VkRenderPass pass);
 			
 
@@ -67,6 +69,7 @@ namespace luna
 			VkPipelineRasterizationStateCreateInfo pipelineRasterizationStateCreateInfo;
 			VkPipelineMultisampleStateCreateInfo pipelineMultisampleStateCreateInfo;
 			VkPipelineColorBlendAttachmentState pipelineColorBlendAttachementState;
+
 
 			std::vector<VkSemaphore> imageAvailableSemaphores, renderFinishedSemaphores;
 			std::vector<VkFence> inFlightFences;

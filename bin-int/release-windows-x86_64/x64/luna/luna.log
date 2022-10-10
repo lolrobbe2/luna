@@ -1,10 +1,18 @@
 ﻿cl : command line  warning D9025: overriding '/MT' with '/MD'
+  vulkanDevice.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(108,86): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
   vulkanPipeline.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(67,74): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(187,115): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(188,111): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(285,49): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(61,74): warning C4267: 'argument': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(182,115): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(183,111): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(282,49): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+  vulkanSwapchain.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  Generating Code...
      Creating library ..\bin\release-windows-x86_64\x64\luna\luna.lib and object ..\bin\release-windows-x86_64\x64\luna\luna.exp
   luna.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\release-windows-x86_64\x64\luna\luna.dll

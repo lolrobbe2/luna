@@ -37,5 +37,6 @@ namespace luna
 		{
 			rendererPipeline->flush();
 		}
+
 	}
 }

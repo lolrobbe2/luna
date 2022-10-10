@@ -1,30 +1,15 @@
-[14:40:17] [critical] LUNA: break point
-[14:40:17] [trace] LUNA: crate instance result = 0
-[14:40:17] [trace] LUNA: device selection result = 0
-[14:40:17] [trace] LUNA: logical device creation result = 0
-[14:40:17] [trace] LUNA: swapchain creation result = 0
-[14:40:17] [trace] LUNA: reflecting shader: false
-[14:40:17] [trace] LUNA: creating shader Layout
-[14:40:17] [trace] LUNA: created shaderLayout
-[14:40:17] [trace] LUNA: reflecting shader: false
-[14:40:17] [trace] LUNA: creating shader Layout
-[14:40:17] [trace] LUNA: created shaderLayout
-[14:40:17] [info] LUNA: added virtualbuffer, uuid = 14802776921232087293 
-[14:40:17] [info] LUNA: added virtualbuffer, uuid = 11425845116379998798 
-[14:40:17] [info] LUNA: added virtualbuffer, uuid = 10403493817869159079 
-[14:40:17] [info] LUNA: commandbuffer create info = 0
-[14:40:17] [info] LUNA: creatings vulkan shadermodule, result = 0
-[14:40:17] [info] LUNA: creatings vulkan shadermodule, result = 0
-[14:40:17] [info] LUNA: pipelinecreation result = 0
-[14:40:17] [info] LUNA: commandbuffer begin = 0
-[14:40:17] [info] LUNA: commandbuffer begin = 0
-[14:40:17] [info] LUNA: acquire 0
-[14:40:17] [error] LUNA: commandpool submit info = -13
-[14:40:17] [info] LUNA: acquire 0
-[14:40:17] [error] LUNA: commandpool submit info = -13
-[14:40:18] [info] LUNA: acquire 2
-[14:40:18] [error] LUNA: commandpool submit info = -13
-[14:40:20] [info] LUNA: acquire 0
-[14:40:20] [error] LUNA: commandpool submit info = -13
-[14:40:21] [info] LUNA: acquire 2
-[14:40:21] [error] LUNA: commandpool submit info = -13
+[16:37:52] [trace] LUNA: instance creation result = 0
+[16:37:52] [trace] LUNA: surface creation result = 0
+[16:37:52] [trace] LUNA: device selection result = 0
+[16:37:52] [trace] LUNA: logical device creation result = 0
+[16:37:52] [trace] LUNA: swapchain creation result = 0
+[16:37:52] [trace] LUNA: reflecting shader: false
+[16:37:52] [trace] LUNA: creating shader Layout
+[16:37:52] [trace] LUNA: created shaderLayout
+[16:37:52] [trace] LUNA: reflecting shader: false
+[16:37:52] [trace] LUNA: creating shader Layout
+[16:37:52] [trace] LUNA: created shaderLayout
+[16:37:52] [info] LUNA: added virtualbuffer, uuid = 2529969867819311390 
+[16:37:52] [info] LUNA: added virtualbuffer, uuid = 9988303944997517151 
+[16:37:52] [info] LUNA: added virtualbuffer, uuid = 83902714089365665 
+[16:37:52] [info] LUNA: commandbuffer create info = 0

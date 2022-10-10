@@ -1,5 +1,6 @@
 #pragma once
 #include <core/vulkan/window/window.h>
+#include <VkBootstrap.h>
 namespace luna
 {
 	namespace vulkan
@@ -16,8 +17,8 @@ namespace luna
 		};
 		struct swapchainSpec
 		{
-			vkb::PhysicalDevice physicalDevice;
-			vkb::Device device;
+			VkPhysicalDevice physicalDevice;
+			VkDevice device;
 			std::shared_ptr<vulkan::window> window = nullptr;
 			VkExtent2D swapchainExtent = {0,0};
 			VkSurfaceKHR surface = VK_NULL_HANDLE;
@@ -52,13 +53,10 @@ namespace luna
 			 * \return returns VK_SUCCESS on succesful creation.
 			 */
 			VkResult recreateSwapchain();
-			VkResult getNextImage(VkSemaphore presentSemaphore,uint32_t* imageIndex);
 			VkViewport getViewport();
 			VkRect2D getScissor();
-			void createFramebuffers(VkRenderPass renderPass);
-			inline VkFormat getSurfaceFormat() { return mSwapchain.image_format; };
-			inline VkSwapchainKHR getSwapchain() { return mSwapchain; };
-			inline VkFramebuffer getFrameBuffer(uint32_t index) { return swapchainFrameBuffers[index]; };
+			inline VkFormat getSurfaceFormat() { return swapchainImageFormat; };
+			inline VkFramebuffer getFrameBuffer(uint8_t index) { return frameBuffers[index]; };
 			vkb::Swapchain mSwapchain;
 		private:
 			/**
@@ -68,20 +66,36 @@ namespace luna
 			 */
 			VkResult destroySwapchain();
 			/**
+			 * @brief gets the swapchain support details.
+			 * 
+			 * \param const VkPhysicalDevice& handle to the physicalDevice(GPU)
+			 * \return swapChainSupportDetails struct
+			 */
+			swapChainSupportDetails querySwapChainSupport(const VkPhysicalDevice& device);
+			/**
+			 * gets the swapchain supported surface format.
+			 * 
+			 * \param std::vector<VkSurfaceFormatKHR> of availableFormats
+			 * \return VkSurfaceFormatKHR surfaceFormat
+			 */
+			VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
+			/**
 			 * @brief chooseSwaPresentMode automaticly selects the present mode.
 			 * 
 			 * \param availablePresentModes
 			 * \return VkpresentModeKHR
 			 */
 			VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
+			VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
+			void createImageViews();
+			VkImageView createImageView(VkImage image, VkFormat format);
 			/*helper functions*/
 			swapchainSpec mSwapchainSpec;
 			
 			std::vector<VkImage> swapchainImages;
 			std::vector<VkImageView> swapChainImageViews;
-			std::vector<VkFramebuffer> swapchainFrameBuffers;
 			VkFormat swapchainImageFormat;
-
+			std::vector<VkFramebuffer> frameBuffers;
 		};
 	}
 }
