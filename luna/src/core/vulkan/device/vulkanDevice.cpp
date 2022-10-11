@@ -98,6 +98,7 @@ namespace luna
 				.set_surface(surface);
 			auto physicalDevice = deviceSelector.select();
 			deviceHandle.physicalDevice = physicalDevice.value();
+			LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
 			return VK_SUCCESS;
 		}
 

@@ -66,30 +66,6 @@ namespace luna
 			 * \return VK_SUCCES
 			 */
 			VkResult destroySwapchain();
-			/**
-			 * @brief gets the swapchain support details.
-			 * 
-			 * \param const VkPhysicalDevice& handle to the physicalDevice(GPU)
-			 * \return swapChainSupportDetails struct
-			 */
-			swapChainSupportDetails querySwapChainSupport(const VkPhysicalDevice& device);
-			/**
-			 * gets the swapchain supported surface format.
-			 * 
-			 * \param std::vector<VkSurfaceFormatKHR> of availableFormats
-			 * \return VkSurfaceFormatKHR surfaceFormat
-			 */
-			VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
-			/**
-			 * @brief chooseSwaPresentMode automaticly selects the present mode.
-			 * 
-			 * \param availablePresentModes
-			 * \return VkpresentModeKHR
-			 */
-			VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
-			VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
-			void createImageViews();
-			VkImageView createImageView(VkImage image, VkFormat format);
 			/*helper functions*/
 			swapchainSpec mSwapchainSpec;
 			

@@ -30,6 +30,7 @@ namespace luna
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
+			vkDeviceWaitIdle(device);
 			for (const auto& shaderModule : shaderModules) 
 			{
 				vkDestroyShaderModule(device,shaderModule,nullptr);
@@ -61,7 +62,7 @@ namespace luna
 				rpInfo.renderArea.extent = extent;
 				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentBuffer);
 
-				LN_CORE_INFO("commandbuffer begin = {0}", commandPool->begin(commandBuffers[currentBuffer], 0));
+				commandPool->begin(commandBuffers[currentBuffer], 0);
 				//connect clear values
 				rpInfo.clearValueCount = 1;
 				rpInfo.pClearValues = &clearValue;
@@ -82,13 +83,15 @@ namespace luna
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
-			LN_CORE_INFO("acquire {0}", vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex));
-			/*
+			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
+
+			
+			
 			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
 			{
 				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
 			}
-			*/
+			
 			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
@@ -106,7 +109,7 @@ namespace luna
 			submit.pSignalSemaphores = signalSemaphores;
 			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
 			
-			LN_CORE_ERROR("commandpool submit info = {0}",commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]));
+			commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]);
 			//submit command buffer to the queue and execute it.
 			// _renderFence will now block until the graphic commands finish execution
 			
@@ -128,16 +131,31 @@ namespace luna
 			vkQueuePresentKHR(presentQueue, &presentInfo);
 			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
 
+			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
+			{
+
+				vDevice->swapchain->recreateSwapchain();
+				vDevice->createFramebuffers(renderPass);
+				
+				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
+				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
+				begin();
+				end();
+				currentFrame = 0;
+			}
+
 		}
 		void vulkanPipeline::createShaderStages()
 		{
+			shaderStages.resize(0);
+			shaderModules.resize(0);
 			for (const auto& shader : layout.pipelineShaders) 
 			{
 				VkPipelineShaderStageCreateInfo stageInfo;
 				stageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
 				stageInfo.pNext = nullptr;
 				VkShaderModule shaderModule;
-				LN_CORE_INFO("creatings vulkan shadermodule, result = {0}", createShaderModule(shader, &shaderModule));
+				LN_CORE_INFO("creating vulkan shadermodule, result = {0}", createShaderModule(shader, &shaderModule));
 				stageInfo.module = shaderModule;
 				shaderModules.push_back(shaderModule);
 				//the entry point of the shader
@@ -477,6 +495,10 @@ namespace luna
 		{
 			//create synchronization structures
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			imageAvailableSemaphores.resize(0);
+			renderFinishedSemaphores.resize(0);
+			inFlightFences.resize(0);
+			imagesInFlight.resize(0);
 			imageAvailableSemaphores.resize(maxFramesInFlight);
 			renderFinishedSemaphores.resize(maxFramesInFlight);
 			inFlightFences.resize(maxFramesInFlight);
