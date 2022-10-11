@@ -22,7 +22,6 @@ namespace luna
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_FIFO_KHR)
                 .set_desired_extent(swapChainSpec.window->getWidth(), swapChainSpec.window->getHeight())
-                .set_desired_min_image_count(2)
                 .build()
                 .value();
 			return VK_SUCCESS;

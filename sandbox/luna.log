@@ -1,15 +1,825 @@
-[16:37:52] [trace] LUNA: instance creation result = 0
-[16:37:52] [trace] LUNA: surface creation result = 0
-[16:37:52] [trace] LUNA: device selection result = 0
-[16:37:52] [trace] LUNA: logical device creation result = 0
-[16:37:52] [trace] LUNA: swapchain creation result = 0
-[16:37:52] [trace] LUNA: reflecting shader: false
-[16:37:52] [trace] LUNA: creating shader Layout
-[16:37:52] [trace] LUNA: created shaderLayout
-[16:37:52] [trace] LUNA: reflecting shader: false
-[16:37:52] [trace] LUNA: creating shader Layout
-[16:37:52] [trace] LUNA: created shaderLayout
-[16:37:52] [info] LUNA: added virtualbuffer, uuid = 2529969867819311390 
-[16:37:52] [info] LUNA: added virtualbuffer, uuid = 9988303944997517151 
-[16:37:52] [info] LUNA: added virtualbuffer, uuid = 83902714089365665 
-[16:37:52] [info] LUNA: commandbuffer create info = 0
+[10:13:10] [trace] LUNA: instance creation result = 0
+[10:13:10] [trace] LUNA: surface creation result = 0
+[10:13:10] [trace] LUNA: device selection result = 0
+[10:13:10] [trace] LUNA: logical device creation result = 0
+[10:13:10] [trace] LUNA: swapchain creation result = 0
+[10:13:11] [trace] LUNA: reflecting shader: false
+[10:13:11] [trace] LUNA: creating shader Layout
+[10:13:11] [trace] LUNA: created shaderLayout
+[10:13:11] [trace] LUNA: reflecting shader: false
+[10:13:11] [trace] LUNA: creating shader Layout
+[10:13:11] [trace] LUNA: created shaderLayout
+[10:13:11] [info] LUNA: added virtualbuffer, uuid = 15745785438967984801 
+[10:13:11] [info] LUNA: added virtualbuffer, uuid = 8404082028553819355 
+[10:13:11] [info] LUNA: added virtualbuffer, uuid = 8226914831699059032 
+[10:13:11] [info] LUNA: commandbuffer create info = 0
+[10:13:11] [info] LUNA: creatings vulkan shadermodule, result = 0
+[10:13:11] [info] LUNA: creatings vulkan shadermodule, result = 0
+[10:13:11] [info] LUNA: framebuffer creation result =0
+[10:13:11] [info] LUNA: pipelinecreation result = 0
+[10:13:11] [info] LUNA: commandbuffer begin = 0
+[10:13:11] [info] LUNA: commandbuffer begin = 0
+[10:13:12] [info] LUNA: acquire 0
+[10:13:12] [error] LUNA: commandpool submit info = 0
+[10:13:20] [info] LUNA: acquire 0
+[10:13:20] [error] LUNA: commandpool submit info = 0
+[10:13:24] [info] LUNA: acquire 0
+[10:13:24] [error] LUNA: commandpool submit info = 0
+[10:13:24] [info] LUNA: acquire 0
+[10:13:24] [error] LUNA: commandpool submit info = 0
+[10:13:25] [info] LUNA: acquire 0
+[10:13:25] [error] LUNA: commandpool submit info = 0
+[10:13:25] [info] LUNA: acquire 0
+[10:13:25] [error] LUNA: commandpool submit info = 0
+[10:13:25] [info] LUNA: acquire 0
+[10:13:25] [error] LUNA: commandpool submit info = 0
+[10:13:25] [info] LUNA: acquire 0
+[10:13:25] [error] LUNA: commandpool submit info = 0
+[10:13:25] [info] LUNA: acquire 0
+[10:13:25] [error] LUNA: commandpool submit info = 0
+[10:13:25] [info] LUNA: acquire 0
+[10:13:25] [error] LUNA: commandpool submit info = 0
+[10:13:26] [info] LUNA: acquire 0
+[10:13:26] [error] LUNA: commandpool submit info = 0
+[10:13:26] [info] LUNA: acquire 0
+[10:13:26] [error] LUNA: commandpool submit info = 0
+[10:13:26] [info] LUNA: acquire 0
+[10:13:26] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:36] [error] LUNA: commandpool submit info = 0
+[10:13:36] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:37] [error] LUNA: commandpool submit info = 0
+[10:13:37] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:38] [error] LUNA: commandpool submit info = 0
+[10:13:38] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:39] [info] LUNA: acquire 0
+[10:13:39] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:40] [error] LUNA: commandpool submit info = 0
+[10:13:40] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:41] [info] LUNA: acquire 0
+[10:13:41] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0
+[10:13:42] [info] LUNA: acquire 0
+[10:13:42] [error] LUNA: commandpool submit info = 0

@@ -18,7 +18,8 @@ namespace luna
 			commandPool = commandpool;
 			commandBuffers.resize(maxFramesInFlight);
 			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
-
+			presentQueue = device->getQueue(vkb::QueueType::present);
+			createPipeline(layout);
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
@@ -60,7 +61,7 @@ namespace luna
 				rpInfo.renderArea.extent = extent;
 				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentBuffer);
 
-				LN_CORE_INFO("commandbuffer begin = {0}", commandPool->begin(commandBuffers[currentBuffer], VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT));
+				LN_CORE_INFO("commandbuffer begin = {0}", commandPool->begin(commandBuffers[currentBuffer], 0));
 				//connect clear values
 				rpInfo.clearValueCount = 1;
 				rpInfo.pClearValues = &clearValue;
@@ -68,7 +69,7 @@ namespace luna
 				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentBuffer]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentBuffer]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
-
+				//TODO gpu driven rendering (VkDrawIndirect);
 				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
 				//finalize the command buffer (we can no longer add commands, but it can now be executed)
 				commandPool->end(commandBuffers[currentBuffer]);
@@ -80,6 +81,7 @@ namespace luna
 		void vulkanPipeline::flush()
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			LN_CORE_INFO("acquire {0}", vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex));
 			/*
 			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
@@ -243,7 +245,8 @@ namespace luna
 				vertexInputStates.push_back(createVertexInputState(shader));
 			}
 			initDefaultRenderpass();
-			vDevice->swapchain->
+			LN_CORE_INFO("framebuffer creation result ={0}", vDevice->createFramebuffers(renderPass));
+			initSyncStructures();
 			LN_CORE_INFO("pipelinecreation result = {0}",buildPipeline(vDevice->getDeviceHandles().device, renderPass));
 		}
 

@@ -27,8 +27,9 @@ namespace luna
 			void destroyContext() override;
 			inline VkViewport getViewport() { return swapchain->getViewport(); };
 			inline VkRect2D getScissor() { return swapchain->getScissor(); };
-			inline VkFormat getSwapFormat() { return swapchain->getSurfaceFormat(); };
+			inline VkFormat getSwapFormat() { return swapchain->mSwapchain.image_format; };
 			inline uint32_t getQueueIndex(const vkb::QueueType& type) { return deviceHandle.device.get_queue_index(type).value(); };
+			inline VkQueue getQueue(const vkb::QueueType& type) { return deviceHandle.device.get_queue(type).value(); };
 			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
 			VkResult createFramebuffers(VkRenderPass renderPass);
 		private:

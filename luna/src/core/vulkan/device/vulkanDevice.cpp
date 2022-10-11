@@ -40,14 +40,16 @@ namespace luna
 			vkDestroyDevice(deviceHandle.device, nullptr);
 			vkDestroyInstance(deviceHandle.instance, nullptr);
 		}
-
+		//TODO needs to be placed in swapchain.
 		VkResult vulkanDevice::createFramebuffers(VkRenderPass renderPass)
 		{
+			VkResult result;
+			swapchain->frameBuffers.resize(swapchain->mSwapchain.get_image_views().value().size());
 			for (size_t i = 0; i < swapchain->mSwapchain.image_count; i++) {
 				VkImageView attachments[] = {
 					swapchain->mSwapchain.get_image_views().value()[i]
 				};
-
+				
 				VkFramebufferCreateInfo framebufferInfo{};
 				framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
 				framebufferInfo.renderPass = renderPass;
@@ -56,10 +58,10 @@ namespace luna
 				framebufferInfo.width = swapchain->mSwapchain.extent.width;
 				framebufferInfo.height = swapchain->mSwapchain.extent.height;
 				framebufferInfo.layers = 1;
-
-				swapChainFramebuffers.resize(swapChainImageViews.size());
-				vkCreateFramebuffer(deviceHandle.device, &framebufferInfo, nullptr, &swapChainFramebuffers[i]), "failed to create framebuffer!", __LINE__, __FILE__, __FUNCTION__);
+				
+				result = vkCreateFramebuffer(deviceHandle.device, &framebufferInfo, nullptr, &swapchain->frameBuffers[i]);
 			}
+			return result;
 		}
 
 		vulkanDevice::deviceHandles vulkanDevice::getDeviceHandles()

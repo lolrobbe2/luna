@@ -58,6 +58,7 @@ namespace luna
 			inline VkFormat getSurfaceFormat() { return swapchainImageFormat; };
 			inline VkFramebuffer getFrameBuffer(uint8_t index) { return frameBuffers[index]; };
 			vkb::Swapchain mSwapchain;
+			std::vector<VkFramebuffer> frameBuffers;
 		private:
 			/**
 			 * @brief destroys the device bound swapchain.
@@ -95,7 +96,7 @@ namespace luna
 			std::vector<VkImage> swapchainImages;
 			std::vector<VkImageView> swapChainImageViews;
 			VkFormat swapchainImageFormat;
-			std::vector<VkFramebuffer> frameBuffers;
+			
 		};
 	}
 }

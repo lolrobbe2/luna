@@ -64,7 +64,6 @@ namespace luna
 			VkSubmitInfo submitInfo = { VK_STRUCTURE_TYPE_SUBMIT_INFO };
 			for (size_t i = 0; i < pCommandPoolSubmitInfo->commandBufferCount; i++)
 			{
-		
 				auto virtualBufferPair = virtualBuffers.find(*(pCommandPoolSubmitInfo->pCommandBuffers+i));
 				commandBuffers.push_back(virtualBufferPair->second.first);
 			}
@@ -76,7 +75,8 @@ namespace luna
 			submitInfo.pWaitSemaphores = pCommandPoolSubmitInfo->pWaitSemaphores;
 			submitInfo.signalSemaphoreCount = pCommandPoolSubmitInfo->signalSemaphoreCount;
 			submitInfo.waitSemaphoreCount = pCommandPoolSubmitInfo->waitSemaphoreCount;
-			return vkQueueSubmit(queue, submitCount, submitInfos.data(), waitFence);
+			VkResult result = vkQueueSubmit(queue, submitCount, &submitInfo, waitFence);
+			return result;
 		}
 	}
 }
