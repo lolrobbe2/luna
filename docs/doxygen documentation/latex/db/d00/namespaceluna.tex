@@ -1,0 +1,298 @@
+\hypertarget{namespaceluna}{}\doxysection{luna Namespace Reference}
+\label{namespaceluna}\index{luna@{luna}}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceluna_1_1application}{application}}
+\item 
+namespace \mbox{\hyperlink{namespaceluna_1_1input}{input}}
+\item 
+namespace \mbox{\hyperlink{namespaceluna_1_1_mouse}{Mouse}}
+\item 
+namespace \mbox{\hyperlink{namespaceluna_1_1renderer}{renderer}}
+\item 
+namespace \mbox{\hyperlink{namespaceluna_1_1vulkan}{vulkan}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1app_render_event}{app\+Render\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1app_tick_event}{app\+Tick\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1app_update_event}{app\+Update\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1_event}{Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1event_dispatcher}{event\+Dispatcher}}
+\item 
+class \mbox{\hyperlink{classluna_1_1key_event}{key\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1key_pressed_event}{key\+Pressed\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1key_released_event}{key\+Released\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1key_typed_event}{key\+Typed\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1_log}{Log}}
+\item 
+class \mbox{\hyperlink{classluna_1_1mouse_button_event}{mouse\+Button\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1mouse_button_pressed_event}{mouse\+Button\+Pressed\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1mouse_button_released_event}{mouse\+Button\+Released\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1mouse_moved_event}{mouse\+Moved\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1mouse_scrolled_event}{mouse\+Scrolled\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1uuid}{uuid}}
+\item 
+class \mbox{\hyperlink{classluna_1_1window_close_event}{window\+Close\+Event}}
+\item 
+class \mbox{\hyperlink{classluna_1_1window_resize_event}{window\+Resize\+Event}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}} = std\+::unique\+\_\+ptr$<$ T $>$
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}} = std\+::shared\+\_\+ptr$<$ T $>$
+\item 
+using \mbox{\hyperlink{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}{key\+Code}} = uint16\+\_\+t
+\item 
+using \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} = uint16\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}{event\+Type}} \{ \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a6adf97f83acf6453d4a6a4b1070f3754}{None}} = 0
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac984201d37197ab297a14d19efee4b07}{Window\+Close}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9f8f27bff2915738c4fe1b970e12f89c}{Window\+Resize}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c68d5453b28d52622bf5486a5fd95ca}{Window\+Focus}}
+, \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c2119b9d61e623975f13f1029f1d97c}{Window\+Lost\+Focus}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ab94473d9dfc85f8fdbf5cb3b1d992bda}{Window\+Moved}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a559b408d45669603dbac61cd15984f13}{App\+Tick}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac177abb86f28dea426f2e3409e14bcda}{App\+Update}}
+, \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4b2eb3c601042333ac1c0565ff58e3d6}{App\+Render}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac17e6984c1e5a887a49831beadee6bca}{Key\+Pressed}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4a77f07c8ad223b71ab4ce78a63841ab}{Key\+Released}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9afbfd35b289eb4fc7f1bc148d7b422e}{Key\+Typed}}
+, \newline
+\mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7349f643d689997b7c54bf93e4095f5c}{Mouse\+Button\+Pressed}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7584c169de594c27f00084b93186fd7c}{Mouse\+Button\+Released}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac2770ad109c8063ce69a3608a9a16c08}{Mouse\+Moved}}
+, \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a50edb169910041bb3c06f6e8322d74c1}{Mouse\+Scrolled}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}{event\+Category}} \{ \newline
+\mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad66255cca4f6c7283f330cfa4a32c7ff}{None}} = 0
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da09e7f70a97991824dffa6a63722c51fa}{event\+Category\+Application}} = BIT(0)
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da83d7552272b8eec46d8ad55978382bb3}{event\+Category\+Input}} = BIT(1)
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad1e4d61c40c10dccdc5344fc317c0827}{event\+Category\+Keyboard}} = BIT(2)
+, \newline
+\mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da47e4331dbb2547a47ecf89026265b30d}{event\+Category\+Mouse}} = BIT(3)
+, \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848}{event\+Category\+Mouse\+Button}} = BIT(4)
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename ... Args$>$ }\\constexpr \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}}$<$ T $>$ \mbox{\hyperlink{namespaceluna_a7318b1c2711a4b9af5450dcf379e5bcc}{create\+Scope}} (Args \&\&... args)
+\item 
+{\footnotesize template$<$typename T , typename ... Args$>$ }\\constexpr \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ T $>$ \mbox{\hyperlink{namespaceluna_a4b6e6b3b5670271d9104388763e3acf1}{create\+Ref}} (Args \&\&... args)
+\item 
+static std\+::mt19937\+\_\+64 \mbox{\hyperlink{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}{engine}} (\mbox{\hyperlink{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}{random\+Device}}())
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classluna_1_1_event}{Event}} \&e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::random\+\_\+device \mbox{\hyperlink{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}{random\+Device}}
+\item 
+static std\+::uniform\+\_\+int\+\_\+distribution$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{namespaceluna_a04387552bf67afc7e9891b959bc3b8d7}{uniform\+Distr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}\label{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}} 
+\index{luna@{luna}!keyCode@{keyCode}}
+\index{keyCode@{keyCode}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{keyCode}{keyCode}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}{luna\+::key\+Code}} = typedef uint16\+\_\+t}
+
+\mbox{\Hypertarget{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}\label{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}} 
+\index{luna@{luna}!mouseCode@{mouseCode}}
+\index{mouseCode@{mouseCode}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{mouseCode}{mouseCode}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{luna\+::mouse\+Code}} = typedef uint16\+\_\+t}
+
+\mbox{\Hypertarget{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}\label{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}} 
+\index{luna@{luna}!ref@{ref}}
+\index{ref@{ref}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{ref}{ref}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{luna\+::ref}} = typedef std\+::shared\+\_\+ptr$<$T$>$}
+
+\mbox{\Hypertarget{namespaceluna_accd5328e0de41c20f918cdd315173870}\label{namespaceluna_accd5328e0de41c20f918cdd315173870}} 
+\index{luna@{luna}!scope@{scope}}
+\index{scope@{scope}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{scope}{scope}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{luna\+::scope}} = typedef std\+::unique\+\_\+ptr$<$T$>$}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}} 
+\index{luna@{luna}!eventCategory@{eventCategory}}
+\index{eventCategory@{eventCategory}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{eventCategory}{eventCategory}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}{luna\+::event\+Category}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!luna@{luna}}\index{luna@{luna}!None@{None}}}\mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad66255cca4f6c7283f330cfa4a32c7ff}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad66255cca4f6c7283f330cfa4a32c7ff}} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{eventCategoryApplication@{eventCategoryApplication}!luna@{luna}}\index{luna@{luna}!eventCategoryApplication@{eventCategoryApplication}}}\mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516da09e7f70a97991824dffa6a63722c51fa}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516da09e7f70a97991824dffa6a63722c51fa}} 
+event\+Category\+Application&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{eventCategoryInput@{eventCategoryInput}!luna@{luna}}\index{luna@{luna}!eventCategoryInput@{eventCategoryInput}}}\mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516da83d7552272b8eec46d8ad55978382bb3}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516da83d7552272b8eec46d8ad55978382bb3}} 
+event\+Category\+Input&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{eventCategoryKeyboard@{eventCategoryKeyboard}!luna@{luna}}\index{luna@{luna}!eventCategoryKeyboard@{eventCategoryKeyboard}}}\mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad1e4d61c40c10dccdc5344fc317c0827}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516dad1e4d61c40c10dccdc5344fc317c0827}} 
+event\+Category\+Keyboard&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{eventCategoryMouse@{eventCategoryMouse}!luna@{luna}}\index{luna@{luna}!eventCategoryMouse@{eventCategoryMouse}}}\mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516da47e4331dbb2547a47ecf89026265b30d}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516da47e4331dbb2547a47ecf89026265b30d}} 
+event\+Category\+Mouse&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{eventCategoryMouseButton@{eventCategoryMouseButton}!luna@{luna}}\index{luna@{luna}!eventCategoryMouseButton@{eventCategoryMouseButton}}}\mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848}} 
+event\+Category\+Mouse\+Button&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}} 
+\index{luna@{luna}!eventType@{eventType}}
+\index{eventType@{eventType}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{eventType}{eventType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}{luna\+::event\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!luna@{luna}}\index{luna@{luna}!None@{None}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a6adf97f83acf6453d4a6a4b1070f3754}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a6adf97f83acf6453d4a6a4b1070f3754}} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WindowClose@{WindowClose}!luna@{luna}}\index{luna@{luna}!WindowClose@{WindowClose}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac984201d37197ab297a14d19efee4b07}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac984201d37197ab297a14d19efee4b07}} 
+Window\+Close&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WindowResize@{WindowResize}!luna@{luna}}\index{luna@{luna}!WindowResize@{WindowResize}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9f8f27bff2915738c4fe1b970e12f89c}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9f8f27bff2915738c4fe1b970e12f89c}} 
+Window\+Resize&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WindowFocus@{WindowFocus}!luna@{luna}}\index{luna@{luna}!WindowFocus@{WindowFocus}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c68d5453b28d52622bf5486a5fd95ca}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c68d5453b28d52622bf5486a5fd95ca}} 
+Window\+Focus&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WindowLostFocus@{WindowLostFocus}!luna@{luna}}\index{luna@{luna}!WindowLostFocus@{WindowLostFocus}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c2119b9d61e623975f13f1029f1d97c}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a1c2119b9d61e623975f13f1029f1d97c}} 
+Window\+Lost\+Focus&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WindowMoved@{WindowMoved}!luna@{luna}}\index{luna@{luna}!WindowMoved@{WindowMoved}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ab94473d9dfc85f8fdbf5cb3b1d992bda}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ab94473d9dfc85f8fdbf5cb3b1d992bda}} 
+Window\+Moved&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AppTick@{AppTick}!luna@{luna}}\index{luna@{luna}!AppTick@{AppTick}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a559b408d45669603dbac61cd15984f13}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a559b408d45669603dbac61cd15984f13}} 
+App\+Tick&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AppUpdate@{AppUpdate}!luna@{luna}}\index{luna@{luna}!AppUpdate@{AppUpdate}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac177abb86f28dea426f2e3409e14bcda}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac177abb86f28dea426f2e3409e14bcda}} 
+App\+Update&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AppRender@{AppRender}!luna@{luna}}\index{luna@{luna}!AppRender@{AppRender}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4b2eb3c601042333ac1c0565ff58e3d6}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4b2eb3c601042333ac1c0565ff58e3d6}} 
+App\+Render&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KeyPressed@{KeyPressed}!luna@{luna}}\index{luna@{luna}!KeyPressed@{KeyPressed}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac17e6984c1e5a887a49831beadee6bca}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac17e6984c1e5a887a49831beadee6bca}} 
+Key\+Pressed&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KeyReleased@{KeyReleased}!luna@{luna}}\index{luna@{luna}!KeyReleased@{KeyReleased}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4a77f07c8ad223b71ab4ce78a63841ab}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a4a77f07c8ad223b71ab4ce78a63841ab}} 
+Key\+Released&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KeyTyped@{KeyTyped}!luna@{luna}}\index{luna@{luna}!KeyTyped@{KeyTyped}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9afbfd35b289eb4fc7f1bc148d7b422e}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a9afbfd35b289eb4fc7f1bc148d7b422e}} 
+Key\+Typed&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MouseButtonPressed@{MouseButtonPressed}!luna@{luna}}\index{luna@{luna}!MouseButtonPressed@{MouseButtonPressed}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7349f643d689997b7c54bf93e4095f5c}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7349f643d689997b7c54bf93e4095f5c}} 
+Mouse\+Button\+Pressed&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MouseButtonReleased@{MouseButtonReleased}!luna@{luna}}\index{luna@{luna}!MouseButtonReleased@{MouseButtonReleased}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7584c169de594c27f00084b93186fd7c}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a7584c169de594c27f00084b93186fd7c}} 
+Mouse\+Button\+Released&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MouseMoved@{MouseMoved}!luna@{luna}}\index{luna@{luna}!MouseMoved@{MouseMoved}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac2770ad109c8063ce69a3608a9a16c08}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610ac2770ad109c8063ce69a3608a9a16c08}} 
+Mouse\+Moved&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MouseScrolled@{MouseScrolled}!luna@{luna}}\index{luna@{luna}!MouseScrolled@{MouseScrolled}}}\mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a50edb169910041bb3c06f6e8322d74c1}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610a50edb169910041bb3c06f6e8322d74c1}} 
+Mouse\+Scrolled&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceluna_a4b6e6b3b5670271d9104388763e3acf1}\label{namespaceluna_a4b6e6b3b5670271d9104388763e3acf1}} 
+\index{luna@{luna}!createRef@{createRef}}
+\index{createRef@{createRef}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{createRef()}{createRef()}}
+{\footnotesize\ttfamily template$<$typename T , typename ... Args$>$ \\
+constexpr \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ T $>$ luna\+::create\+Ref (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespaceluna_a7318b1c2711a4b9af5450dcf379e5bcc}\label{namespaceluna_a7318b1c2711a4b9af5450dcf379e5bcc}} 
+\index{luna@{luna}!createScope@{createScope}}
+\index{createScope@{createScope}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{createScope()}{createScope()}}
+{\footnotesize\ttfamily template$<$typename T , typename ... Args$>$ \\
+constexpr \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}}$<$ T $>$ luna\+::create\+Scope (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}\label{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}} 
+\index{luna@{luna}!engine@{engine}}
+\index{engine@{engine}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{engine()}{engine()}}
+{\footnotesize\ttfamily static std\+::mt19937\+\_\+64 luna\+::engine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}{random\+Device}}()}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}\label{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}} 
+\index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classluna_1_1_event}{Event}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}\label{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}} 
+\index{luna@{luna}!randomDevice@{randomDevice}}
+\index{randomDevice@{randomDevice}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{randomDevice}{randomDevice}}
+{\footnotesize\ttfamily std\+::random\+\_\+device luna\+::random\+Device\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a04387552bf67afc7e9891b959bc3b8d7}\label{namespaceluna_a04387552bf67afc7e9891b959bc3b8d7}} 
+\index{luna@{luna}!uniformDistr@{uniformDistr}}
+\index{uniformDistr@{uniformDistr}!luna@{luna}}
+\doxysubsubsection{\texorpdfstring{uniformDistr}{uniformDistr}}
+{\footnotesize\ttfamily std\+::uniform\+\_\+int\+\_\+distribution$<$uint64\+\_\+t$>$ luna\+::uniform\+Distr\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,62 @@
+﻿cl : command line  warning D9025: overriding '/MTd' with '/MD'
+  application.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\robbe\source\repos\luna\luna\src\core\application.h(19,24): warning C4251: 'luna::application::application::mWindow': class 'std::shared_ptr<luna::vulkan::window>' needs to have dll-interface to be used by clients of class 'luna::application::application'
+C:\Users\robbe\source\repos\luna\luna\src\core\core.h(26): message : see declaration of 'std::shared_ptr<luna::vulkan::window>'
+  log.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  uuid.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  windowsWindow.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  renderer.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(7,9): error C2059: syntax error: '<class-head>'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(7,26): error C2059: syntax error: 'public'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(8,3): error C2143: syntax error: missing ';' before '{'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(8,3): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(23,1): error C2059: syntax error: '}'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(23,1): error C2143: syntax error: missing ';' before '}'
+C:\Users\robbe\source\repos\luna\luna\src\core\rendering\renderer.cpp(5,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\robbe\source\repos\luna\luna\src\core\rendering\renderer.cpp(5,1): error C2447: '{': missing function header (old-style formal list?)
+  shader.cpp
+  shaderCompiler.cpp
+C:\Users\robbe\source\repos\luna\luna\src\core\utils\shaderCompiler.cpp(48,72): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\luna\luna\src\core\utils\shaderCompiler.cpp(50,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\robbe\source\repos\luna\luna\src\core\utils\shaderCompiler.cpp(88,14): warning C4101: 'type': unreferenced local variable
+  shaderLibrary.cpp
+  vulkanCmdPool.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\device\vulkanCmdPool.cpp(70,32): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+  vulkanDevice.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(75,64): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\device\vulkanDevice.cpp(165,86): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+  vulkanPipeline.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(7,9): error C2059: syntax error: '<class-head>'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(7,26): error C2059: syntax error: 'public'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(8,3): error C2143: syntax error: missing ';' before '{'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(8,3): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(23,1): error C2059: syntax error: '}'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.h(23,1): error C2143: syntax error: missing ';' before '}'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(3,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanPipeline.cpp(3,1): error C2447: '{': missing function header (old-style formal list?)
+  vulkanShader.cpp
+C:\Users\robbe\source\repos\luna\luna\src\core\vulkan\rendering\vulkanShader.cpp(156,97): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+  vulkanSwapchain.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  vulkanFeatureSupport.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\robbe\source\repos\luna\luna\thirdParty\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  lnpch.cpp
+  Generating Code...

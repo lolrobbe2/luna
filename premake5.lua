@@ -5,19 +5,35 @@ workspace "luna"
     configurations
     {
         "debug",
-        "release",
-        "dist"
+        "release"
     }
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+buildmessage ("$(VULKAN_SDK)/include")
+IncludeDir = {}
+IncludeDir["GLFW"] = "%{wks.location}/luna/thirdParty/GLFW/include"
+LibraryDir = {}
+LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
+
+Library = {}
+Library["Vulkan"] = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"
+Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
+
+Library["ShaderC"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
+Library["SPIRV_Cross"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
+Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
+
+
+include "luna/thirdParty/"
 project "luna"
     location "luna"
     kind "SharedLib"
     language "c++"
     
-    targetdir("bin/" .. outputdir .. "/x64/%{prj.name}")
-    objdir("bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
     {
         "%{prj.name}/src/**.h",
@@ -26,57 +42,62 @@ project "luna"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "thirdParty/glfw-3.3.6.bin.WIN64/include",
-        "thirdParty/glm-master/glm",
-        "thirdParty/",
-        "thirdParty/stb-master",
-        "thirdParty/VulkanMemoryAllocator-master/include",
+        "luna/thirdParty/GLFW/include",
+        "luna/thirdParty/glm",
+        "luna/thirdParty/VMA/include",
+        "luna/thirdParty/spdlog/include",
+        "luna/thirdParty/stb",
         "luna/src"
     }
 
-    links
+    buildoptions
     {
-        "glfw3_mt.lib",
-        "$(VULKAN_SDK)/lib/vulkan-1.lib"
+        "/MD"
     }
     
     libdirs
     {
-        "thirdParty/glfw-3.3.7.bin.WIN64/lib-vc2022", 
+        "$(VULKAN_SDK)/Lib", 
     }
-
-     filter "system:windows"
+    postbuildcommands
+    {
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox")
+    }
+    filter "system:windows"
         cppdialect "c++17"
         staticruntime "on"
         systemversion "latest"
         symbols "on"
         defines
         {
+            "_CRT_SECURE_NO_WARNINGS",
             "LN_BUILD_DLL",
-            "LN_API",
+            "_WINDLL"
+           
         }
-        postbuildcommands
+        links
         {
-            ("{copy} %{cfg.buildtarget.relpath} ../bin/x64/sandbox")
+            "%{Library.ShaderC}",
+			"%{Library.SPIRV_Cross}",
+			"%{Library.SPIRV_Cross_GLSL}",
+            "GLFW",
+            "vulkan-1"
         }
-        
         filter "configurations:debug"
         symbols "On"
   
         filter "configurations:release"
         optimize "On"
-        buildoptions 
-        {
-            "/MT",
-        }
 
+
+ 
 project "sandbox"
     location "sandbox"
     kind "ConsoleApp"
     language "c++"
 
-    targetdir("bin/x64/%{prj.name}")
-    objdir("bin-int/x64/%{prj.name}")
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
     {
         "%{prj.name}/src/**.h",
@@ -85,16 +106,17 @@ project "sandbox"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "thirdParty/glfw-3.3.7.bin.WIN64/include",
-        "thirdParty/glm-master/glm",
-        "thirdParty/",
-        "thirdParty/stb-master",
-        "thirdParty/VulkanMemoryAllocator-master/include",
+        "luna/thirdParty/GLFW/include",
+        "luna/thirdParty/glm",
+        "luna/thirdParty/VMA/include",
+        "luna/thirdParty/spdlog/include",
+        "luna/thirdParty/stb",
         "luna/src"
     }
    
     links
     {
+        
         "luna"
     }
     filter "system:windows"
@@ -103,5 +125,10 @@ project "sandbox"
         systemversion "latest"
         defines
         {
-
+            "_WINDLL"
         }
+
+buildoptions 
+{
+    "/MD",
+}

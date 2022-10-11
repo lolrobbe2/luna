@@ -1,0 +1,99 @@
+\hypertarget{group__shfvulkandevice}{}\doxysection{secondary helper functions.}
+\label{group__shfvulkandevice}\index{secondary helper functions.@{secondary helper functions.}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Vk\+Result \mbox{\hyperlink{group__shfvulkandevice_gadbd4d163791e527fcc302deb6fe96d72}{luna\+::renderer\+::vulkan\+Device\+::check\+Validation\+Layer\+Support}} (const std\+::vector$<$ const char $\ast$ $>$ \&validation\+Layers)
+\begin{DoxyCompactList}\small\item\em checks if all requested validation layers are supported. \end{DoxyCompactList}\item 
+std\+::vector$<$ const char $\ast$ $>$ \mbox{\hyperlink{group__shfvulkandevice_ga77d61aec0190e2bb30fc62aadededfcc}{luna\+::renderer\+::vulkan\+Device\+::get\+Required\+Extensions}} ()
+\begin{DoxyCompactList}\small\item\em returns all required vulkan extensions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__shfvulkandevice_ga3fe110a0ecefe3432de77f2fa1d4ea76}{luna\+::renderer\+::vulkan\+Device\+::rate\+Device\+Suitability}} (Vk\+Physical\+Device \mbox{\hyperlink{classluna_1_1renderer_1_1device}{device}})
+\begin{DoxyCompactList}\small\item\em rates the gpu based on expected performance with a score. \end{DoxyCompactList}\item 
+Vk\+Device\+Queue\+Create\+Info $\ast$ \mbox{\hyperlink{group__shfvulkandevice_ga161198bc5cda82390af031dd5c17d690}{luna\+::renderer\+::vulkan\+Device\+::create\+Queues}} ()
+\begin{DoxyCompactList}\small\item\em creates all the command queues. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__shfvulkandevice_gadbd4d163791e527fcc302deb6fe96d72}\label{group__shfvulkandevice_gadbd4d163791e527fcc302deb6fe96d72}} 
+\index{secondary helper functions.@{secondary helper functions.}!checkValidationLayerSupport@{checkValidationLayerSupport}}
+\index{checkValidationLayerSupport@{checkValidationLayerSupport}!secondary helper functions.@{secondary helper functions.}}
+\doxysubsubsection{\texorpdfstring{checkValidationLayerSupport()}{checkValidationLayerSupport()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::renderer\+::vulkan\+Device\+::check\+Validation\+Layer\+Support (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ const char $\ast$ $>$ \&}]{validation\+Layers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily \#include $<$\mbox{\hyperlink{vulkan_device_8h}{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.\+h}}$>$}
+
+
+
+checks if all requested validation layers are supported. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em validation\+Layers} & requested validation layers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+VK\+\_\+\+SUCCES when all requested validation layers are supported. 
+
+VK\+\_\+\+ERROR\+\_\+\+LAYER\+\_\+\+NOT\+\_\+\+PRESENT when a requested validation layer is not supported. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__shfvulkandevice_ga161198bc5cda82390af031dd5c17d690}\label{group__shfvulkandevice_ga161198bc5cda82390af031dd5c17d690}} 
+\index{secondary helper functions.@{secondary helper functions.}!createQueues@{createQueues}}
+\index{createQueues@{createQueues}!secondary helper functions.@{secondary helper functions.}}
+\doxysubsubsection{\texorpdfstring{createQueues()}{createQueues()}}
+{\footnotesize\ttfamily Vk\+Device\+Queue\+Create\+Info $\ast$ luna\+::renderer\+::vulkan\+Device\+::create\+Queues (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily \#include $<$\mbox{\hyperlink{vulkan_device_8h}{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.\+h}}$>$}
+
+
+
+creates all the command queues. 
+
+\begin{DoxyReturn}{Returns}
+a pointer to all the Queue\+Create\+Info array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__shfvulkandevice_ga77d61aec0190e2bb30fc62aadededfcc}\label{group__shfvulkandevice_ga77d61aec0190e2bb30fc62aadededfcc}} 
+\index{secondary helper functions.@{secondary helper functions.}!getRequiredExtensions@{getRequiredExtensions}}
+\index{getRequiredExtensions@{getRequiredExtensions}!secondary helper functions.@{secondary helper functions.}}
+\doxysubsubsection{\texorpdfstring{getRequiredExtensions()}{getRequiredExtensions()}}
+{\footnotesize\ttfamily std\+::vector$<$ const char $\ast$ $>$ luna\+::renderer\+::vulkan\+Device\+::get\+Required\+Extensions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily \#include $<$\mbox{\hyperlink{vulkan_device_8h}{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.\+h}}$>$}
+
+
+
+returns all required vulkan extensions. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$const char$\ast$$>$ required extensions for the engine 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__shfvulkandevice_ga3fe110a0ecefe3432de77f2fa1d4ea76}\label{group__shfvulkandevice_ga3fe110a0ecefe3432de77f2fa1d4ea76}} 
+\index{secondary helper functions.@{secondary helper functions.}!rateDeviceSuitability@{rateDeviceSuitability}}
+\index{rateDeviceSuitability@{rateDeviceSuitability}!secondary helper functions.@{secondary helper functions.}}
+\doxysubsubsection{\texorpdfstring{rateDeviceSuitability()}{rateDeviceSuitability()}}
+{\footnotesize\ttfamily int luna\+::renderer\+::vulkan\+Device\+::rate\+Device\+Suitability (\begin{DoxyParamCaption}\item[{Vk\+Physical\+Device}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily \#include $<$\mbox{\hyperlink{vulkan_device_8h}{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Device.\+h}}$>$}
+
+
+
+rates the gpu based on expected performance with a score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & the physical\+Device(\+GPU) to be rated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the score the physical device has. 
+\end{DoxyReturn}
