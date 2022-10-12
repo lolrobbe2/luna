@@ -16,6 +16,7 @@ namespace luna
 			virtual void begin() const override;
 			virtual void end() const override;
 			virtual void flush() override;
+			renderer::pipelineLayout layout;
 		private:
 			void createPipeLineLayout();
 
@@ -59,7 +60,7 @@ namespace luna
 			VkRenderPass renderPass;
 			VkPipelineLayout pipelineLayout;
 			VkPipeline pipeline;
-			renderer::pipelineLayout layout;
+			
 			std::vector<VkPipelineShaderStageCreateInfo> shaderStages;
 			std::vector<VkShaderModule> shaderModules;
 			std::unordered_map<std::string,vertexInputDescription> inputDescriptions;

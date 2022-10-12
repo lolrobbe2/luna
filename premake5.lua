@@ -49,6 +49,7 @@ project "luna"
         "luna/thirdParty/spdlog/include",
         "luna/thirdParty/stb",
         "luna/thirdParty/Vkbootstrap/src",
+        "luna/thirdParty/imGui",
         "luna/src"
     }
 
@@ -118,6 +119,7 @@ project "sandbox"
         "luna/thirdParty/spdlog/include",
         "luna/thirdParty/stb",
         "luna/thirdParty/Vkbootstrap/src",
+        "luna/thirdParty/imGui",
         "luna/src"
     }
    

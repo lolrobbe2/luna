@@ -132,3 +132,35 @@ project "VkBootstrap"
 		optimize "on"
 		symbols "off"
 
+project "imGui"
+	kind "StaticLib"
+	language "C++"
+	staticruntime "off"
+	files
+	{
+		"imGui/imgui.h",
+		"imGui/imgui.cpp",
+
+		"imGui/imgui_demo.cpp",
+		"imGui/imgui_draw.cpp",
+		"imGui/imgui_widgets.cpp",
+
+		"imGui/imgui_impl_vulkan.cpp",
+		"imGui/imgui_impl_glfw.cpp"
+	}
+	buildoptions 
+	{
+		"/MD",
+	}
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		runtime "Release"
+		optimize "on"
+		symbols "off"

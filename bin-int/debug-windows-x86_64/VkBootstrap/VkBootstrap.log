@@ -1,1 +1,3 @@
-﻿
+﻿cl : command line  warning D9025: overriding '/MDd' with '/MD'
+  VkBootstrap.cpp
+  VkBootstrap.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\debug-windows-x86_64\VkBootstrap\VkBootstrap.lib
