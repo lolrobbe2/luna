@@ -144,9 +144,17 @@ project "imGui"
 		"imGui/imgui_demo.cpp",
 		"imGui/imgui_draw.cpp",
 		"imGui/imgui_widgets.cpp",
+		"imGui/imgui_tables.cpp",
+		"imGui/imgui_tables.cpp",
 
-		"imGui/imgui_impl_vulkan.cpp",
-		"imGui/imgui_impl_glfw.cpp"
+		"imGui/backends/imgui_impl_vulkan.cpp",
+		"imGui/backends/imgui_impl_glfw.cpp"
+	}
+	includedirs
+	{
+		"$(VULKAN_SDK)/include",
+		"imgui",
+		"GLFW/include"
 	}
 	buildoptions 
 	{
