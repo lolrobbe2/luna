@@ -20,17 +20,52 @@ namespace luna
 		class vulkanDevice : public renderer::device
 		{
 		public:
-			
+			/**
+			 * @creates a vulkan device using the ref to the main window.
+			 * 
+			 * \param Window
+			 */
 			vulkanDevice(const ref<vulkan::window>& Window);
 			virtual ~vulkanDevice();
+			/**
+			 * @brief creates the device context.
+			 * 
+			 */
 			void createContext() override;
+			/**
+			 * detroys the device context.
+			 * 
+			 */
 			void destroyContext() override;
+			/**
+			 * @brief returns the swapchain viewport.
+			 */
 			inline VkViewport getViewport() { return swapchain->getViewport(); };
+			/**
+			 * @brief returns the swapchain scissor.
+			 */
 			inline VkRect2D getScissor() { return swapchain->getScissor(); };
+			/**
+			 * @brief returns the swapchain format.
+			 */
 			inline VkFormat getSwapFormat() { return swapchain->mSwapchain.image_format; };
+			/**
+			 * @brief returns the queue index.
+			 * \param vkb:QueueType type
+			 */
 			inline uint32_t getQueueIndex(const vkb::QueueType& type) { return deviceHandle.device.get_queue_index(type).value(); };
+			/**
+			 * @brief returns a queue based on the requested type .
+			 * \param vkb::QueueType type 
+			 */
 			inline VkQueue getQueue(const vkb::QueueType& type) { return deviceHandle.device.get_queue(type).value(); };
 			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
+			/**
+			 * @brief creates the appropriate framebuffers for the swapchain.
+			 * 
+			 * \param renderPass
+			 * \return VK_SUCCESS when buffer creation whas succesful
+			 */
 			VkResult createFramebuffers(VkRenderPass renderPass);
 		private:
 			/**
@@ -71,12 +106,6 @@ namespace luna
 			 * \return VK_SUCCES when all requested validation layers are supported.
 			 * \return VK_ERROR_LAYER_NOT_PRESENT when a requested validation layer is not supported. 
 			 */
-			VkResult checkValidationLayerSupport(const std::vector<const char*>& validationLayers);
-			/**
-			 * @brief returns all required vulkan extensions.
-			 * 
-			 * \return std::vector<const char*> required extensions for the engine
-			 */
 			std::vector<const char*> getRequiredExtensions();
 			/**
 			 * @brief rates the gpu based on expected performance with a score.
@@ -84,19 +113,21 @@ namespace luna
 			 * \param device the physicalDevice(GPU) to be rated
 			 * \return int the score the physical device has.
 			 */
-			int rateDeviceSuitability(VkPhysicalDevice device);
-			/**
-			 * @brief creates all the command queues.
-			 * 
-			 * \return a pointer to all the QueueCreateInfo array
-			 */
 			VkDeviceQueueCreateInfo* createQueues();
-			///@}
-			static VKAPI_ATTR VkBool32 VKAPI_CALL vulkanDevice::debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
+			/**
+			 * @brief the debug callback function for vulkan debug and error catching.
+			 * 
+			 * \param messageSeverity
+			 * \param messageTypes
+			 * \param pCallbackData
+			 * \param pUserData
+			 * \return 
+			 */
+			static VKAPI_ATTR VkBool32 VKAPI_CALL vulkanDevice::debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
 				VkDebugUtilsMessageTypeFlagsEXT messageTypes,
 				const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
 				void* pUserData);
-			
+			///@}
 		public:
 			struct deviceHandles
 			{

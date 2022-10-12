@@ -2,6 +2,7 @@
 #include <core/vulkan/device/vulkanDevice.h>
 #include <core/utils/shaderLibrary.h>
 
+
 namespace luna
 {
 	namespace vulkan
@@ -111,33 +112,7 @@ namespace luna
 
 
 		/*private helper helper functions */
-		VkResult vulkanDevice::checkValidationLayerSupport(const std::vector<const char*>& validationLayers)
-		{
-			uint32_t layerCount;
-			bool spacer = 0;
-			vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
-			std::vector<VkLayerProperties> availableLayers(layerCount);
-			vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
-			uint8_t layersFound = 0;
-			for (const std::string layerName : validationLayers)
-			{
-
-				for (const auto& layerProperties : availableLayers)
-				{
-					if (strcmp(layerName.c_str(),layerProperties.layerName) == false)
-					{
-						layersFound++;
-						break;
-					}
-					else if (strcmp(availableLayers.end()->layerName, layerProperties.layerName) == true)
-					{
-						LN_CORE_ERROR("could not find validation layer: {0}", layerName);
-					}
-				}
-			}
-			if (layersFound == validationLayers.size()) return VK_SUCCESS;
-			else return VK_ERROR_LAYER_NOT_PRESENT;
-		}
+		
 
 		std::vector<const char*> vulkanDevice::getRequiredExtensions() 
 		{
@@ -152,22 +127,7 @@ namespace luna
 			return extensions;
 		}
 
-		int vulkanDevice::rateDeviceSuitability(VkPhysicalDevice device)
-		{
-			VkPhysicalDeviceProperties deviceProperties;
-			VkPhysicalDeviceFeatures deviceFeatures;
-			vkGetPhysicalDeviceProperties(device, &deviceProperties);
-			vkGetPhysicalDeviceFeatures(device, &deviceFeatures);
-			int score = 0;
-			// Discrete GPUs have a significant performance advantage
-			if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) score += 1000;
-			// Maximum possible size of textures affects graphics quality
-			score += deviceProperties.limits.maxImageDimension2D;
-			// Application can't function without geometry shaders
-			if (!deviceFeatures.geometryShader) return 0;
-			return score;
-
-		}
+		
 		VkDeviceQueueCreateInfo* vulkanDevice::createQueues()
 		{
 			vulkan::queueFamilyIndices indices;

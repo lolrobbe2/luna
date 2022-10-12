@@ -17,7 +17,7 @@ LibraryDir = {}
 LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
 
 Library = {}
-Library["Vulkan"] = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"
+
 Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
 
 Library["ShaderC"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
@@ -37,7 +37,8 @@ project "luna"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+       
     }
     includedirs
     {
@@ -47,6 +48,7 @@ project "luna"
         "luna/thirdParty/VMA/include",
         "luna/thirdParty/spdlog/include",
         "luna/thirdParty/stb",
+        "luna/thirdParty/Vkbootstrap/src",
         "luna/src"
     }
 
@@ -64,6 +66,7 @@ project "luna"
         ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox")
     }
     filter "system:windows"
+    
         cppdialect "c++17"
         staticruntime "on"
         systemversion "latest"
@@ -81,12 +84,15 @@ project "luna"
 			"%{Library.SPIRV_Cross}",
 			"%{Library.SPIRV_Cross_GLSL}",
             "GLFW",
+            "VkBootstrap",
             "vulkan-1"
         }
         filter "configurations:debug"
+       
         symbols "On"
   
         filter "configurations:release"
+
         optimize "On"
 
 
@@ -111,6 +117,7 @@ project "sandbox"
         "luna/thirdParty/VMA/include",
         "luna/thirdParty/spdlog/include",
         "luna/thirdParty/stb",
+        "luna/thirdParty/Vkbootstrap/src",
         "luna/src"
     }
    
@@ -118,6 +125,10 @@ project "sandbox"
     {
         
         "luna"
+    }
+    buildoptions 
+    {
+        "/MD",
     }
     filter "system:windows"
         cppdialect "c++17"
@@ -127,8 +138,13 @@ project "sandbox"
         {
             "_WINDLL"
         }
+        
+        filter "configurations:debug"
+       
+        symbols "On"
+  
+        filter "configurations:release"
+       
+        optimize "On"
 
-buildoptions 
-{
-    "/MD",
-}
+ 
