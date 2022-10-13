@@ -2,6 +2,7 @@
 #include <core/vulkan/window/window.h>
 #include <core/rendering/device.h>
 #include <core/rendering/pipeline.h>
+#include <core/vulkan/gui/vulkanImgui.h> //TODO make base gui header
 namespace luna
 {
 	namespace renderer
@@ -29,6 +30,7 @@ namespace luna
 			inline static ref<device> rendererDevice; //the main renderDevice (GPU handle)
 			inline static ref<pipeline> rendererPipeline;// the main graphics pipeline
 			inline static renderer::pipelineLayout layout; //the main graphics pipline layout
+			inline static ref<gui::vulkanImgui> gui;
 		};
 
 	}

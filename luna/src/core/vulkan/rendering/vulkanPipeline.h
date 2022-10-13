@@ -1,5 +1,7 @@
 #pragma once
-
+#include <imgui.h>
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_vulkan.h>
 #include <core/rendering/pipeline.h>
 #include <core/vulkan/device/vulkanCmdPool.h>
 namespace luna
@@ -13,9 +15,11 @@ namespace luna
 			virtual ~vulkanPipeline() { destroyPipeline(); };
 			virtual void createPipeline(const renderer::pipelineLayout& layout) override;
 			virtual void destroyPipeline() override;
+			virtual void createCommands() override;
 			virtual void begin() const override;
 			virtual void end() const override;
 			virtual void flush() override;
+			inline VkRenderPass getRenderPass() { return renderPass; };
 			renderer::pipelineLayout layout;
 		private:
 			void createPipeLineLayout();
@@ -83,6 +87,7 @@ namespace luna
 			VkQueue presentQueue;
 
 			uint32_t maxFramesInFlight = 0;
+			
 		};
 		
 	}

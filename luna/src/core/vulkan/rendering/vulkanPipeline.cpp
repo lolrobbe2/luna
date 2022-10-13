@@ -38,12 +38,16 @@ namespace luna
 			vkDestroyPipeline(device, pipeline, nullptr);
 			vkDestroyPipelineLayout(device, pipelineLayout,nullptr);
 		}
-		void vulkanPipeline::begin() const
+
+		void vulkanPipeline::createCommands()
 		{
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			VkDevice device = vDevice->getDeviceHandles().device;
+			vkDeviceWaitIdle(device);
 			VkClearValue clearValue;
 			//float flash = abs(sin(_frameNumber / 120.f));
 			clearValue.color = { { 0.0f, 255.0f, 255.0f, 1.0f } };
-			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
 			VkExtent2D extent = vDevice->swapchain->mSwapchain.extent;
@@ -61,26 +65,52 @@ namespace luna
 				rpInfo.renderArea.offset.y = 0;
 				rpInfo.renderArea.extent = extent;
 				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentBuffer);
-
+				
 				commandPool->begin(commandBuffers[currentBuffer], 0);
 				//connect clear values
 				rpInfo.clearValueCount = 1;
 				rpInfo.pClearValues = &clearValue;
 
 				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentBuffer]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+				
+				
 				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentBuffer]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
+				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentBuffer]));
+				
 				//TODO gpu driven rendering (VkDrawIndirect);
 				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
 				//finalize the command buffer (we can no longer add commands, but it can now be executed)
 				commandPool->end(commandBuffers[currentBuffer]);
 			}
 		}
+		void vulkanPipeline::begin() const
+		{
+
+
+			ImGui_ImplVulkan_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+			//imgui commands
+			ImGui::NewFrame();
+			ImGui::ShowDemoWindow();
+			ImGui::EndFrame();
+			ImGui::Render();
+
+
+		}
 		void vulkanPipeline::end() const
 		{
+	
+			
+		
+
 		}
 		void vulkanPipeline::flush()
 		{
+			
+			
+			
+			
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
@@ -139,8 +169,7 @@ namespace luna
 				
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
 				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
-				begin();
-				end();
+				createCommands();
 				currentFrame = 0;
 			}
 
@@ -462,7 +491,7 @@ namespace luna
 
 			//we don't know or care about the starting layout of the attachment
 			color_attachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-
+		
 			//after the renderpass ends, the image has to be on a layout ready for display
 			color_attachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
 

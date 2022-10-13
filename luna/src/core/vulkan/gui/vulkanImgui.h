@@ -11,6 +11,7 @@ namespace luna
 			~vulkanImgui();
 
 		private:
+			ref<renderer::pipeline> pipeline;
 			VkDescriptorPool imguiPool;
 		};
 	}

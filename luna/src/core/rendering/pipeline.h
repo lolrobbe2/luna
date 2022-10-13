@@ -26,9 +26,11 @@ namespace luna
 			 * 
 			 */
 			virtual void destroyPipeline() = 0;
+
+			virtual void createCommands() = 0;
 			/**
-			 * @brief starts recording pipeline input.
-			 * 
+			* @brief starts recording pipeline input.
+			 *
 			 */
 			virtual void begin() const = 0;
 			/**
