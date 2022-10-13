@@ -1,22 +1,22 @@
-[19:09:15] [trace] LUNA: instance creation result = 0
-[19:09:15] [trace] LUNA: surface creation result = 0
-[19:09:15] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[19:09:15] [trace] LUNA: device selection result = 0
-[19:09:15] [trace] LUNA: logical device creation result = 0
-[19:09:15] [trace] LUNA: swapchain creation result = 0
-[19:09:15] [trace] LUNA: reflecting shader: false
-[19:09:15] [trace] LUNA: creating shader Layout
-[19:09:15] [trace] LUNA: created shaderLayout
-[19:09:15] [trace] LUNA: reflecting shader: false
-[19:09:15] [trace] LUNA: creating shader Layout
-[19:09:15] [trace] LUNA: created shaderLayout
-[19:09:15] [info] LUNA: commandbuffer create info = 0
-[19:09:15] [info] LUNA: creating vulkan shadermodule, result = 0
-[19:09:15] [info] LUNA: creating vulkan shadermodule, result = 0
-[19:09:15] [info] LUNA: framebuffer creation result =0
-[19:09:15] [info] LUNA: pipelinecreation result = 0
-[19:09:15] [info] LUNA: imgui descriptor set creation result = 0
-[19:09:15] [info] LUNA: imgui init for GLFW-vulkan = true
-[19:09:15] [info] LUNA: imgui init vulkan = true
-[19:09:15] [info] LUNA: imgui init complete
-[19:09:15] [trace] APP: started app
+[20:43:28] [trace] LUNA: instance creation result = 0
+[20:43:28] [trace] LUNA: surface creation result = 0
+[20:43:28] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[20:43:28] [trace] LUNA: device selection result = 0
+[20:43:28] [trace] LUNA: logical device creation result = 0
+[20:43:28] [trace] LUNA: swapchain creation result = 0
+[20:43:28] [trace] LUNA: reflecting shader: false
+[20:43:28] [trace] LUNA: creating shader Layout
+[20:43:28] [trace] LUNA: created shaderLayout
+[20:43:28] [trace] LUNA: reflecting shader: false
+[20:43:28] [trace] LUNA: creating shader Layout
+[20:43:28] [trace] LUNA: created shaderLayout
+[20:43:28] [info] LUNA: commandbuffer create info = 0
+[20:43:28] [info] LUNA: creating vulkan shadermodule, result = 0
+[20:43:28] [info] LUNA: creating vulkan shadermodule, result = 0
+[20:43:28] [info] LUNA: framebuffer creation result =0
+[20:43:28] [info] LUNA: pipelinecreation result = 0
+[20:43:28] [info] LUNA: imgui descriptor set creation result = 0
+[20:43:28] [info] LUNA: imgui init for GLFW-vulkan = true
+[20:43:28] [info] LUNA: imgui init vulkan = true
+[20:43:28] [info] LUNA: imgui init complete
+[20:43:28] [trace] APP: started app
