@@ -62,6 +62,7 @@ namespace luna
 				glm::vec2 color;
 			};
 			VkRenderPass renderPass;
+			VkRenderPass imGuiRenderPass;
 			VkPipelineLayout pipelineLayout;
 			VkPipeline pipeline;
 			

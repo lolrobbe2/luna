@@ -81,12 +81,13 @@ namespace luna
 				.set_engine_name("luna software engine")
 				.request_validation_layers(true)
 				.use_default_debug_messenger()
-				.require_api_version(1, 1, 0)
+				.require_api_version(1, 2, 0)
 				.set_debug_callback(debugCallback);
 			for (const auto& extension : getRequiredExtensions())
 			{
 				instanceBuilder.enable_extension(extension);
 			}
+			
 			deviceHandle.instance = instanceBuilder.build().value();
 			return VK_SUCCESS;
 		}
@@ -94,10 +95,15 @@ namespace luna
 		VkResult vulkanDevice::pickPhysicalDevice()
 		{
 			vkb::PhysicalDeviceSelector deviceSelector{ deviceHandle.instance };
+			VkPhysicalDeviceFeatures features {};
+		
+			features.multiViewport = VK_TRUE;
 			deviceSelector
 				.set_minimum_version(1, 1)
 				.set_surface(surface);
-			auto physicalDevice = deviceSelector.select();
+			auto physicalDevice = deviceSelector.add_desired_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME)
+				.set_required_features(features)
+				.select();
 			deviceHandle.physicalDevice = physicalDevice.value();
 			LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
 			return VK_SUCCESS;

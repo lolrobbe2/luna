@@ -38,6 +38,14 @@ namespace luna
 		void renderer::newFrame()
 		{
 			rendererPipeline->begin();
+			auto dockspaceID = ImGui::GetID("HUB_DockSpace");
+			ImGui::DockSpace(dockspaceID, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode/*|ImGuiDockNodeFlags_NoResize*/);
+			if (ImGui::Begin("settings"))
+			{
+				ImGui::Text("test");
+				
+			} 
+			ImGui::End();
 			rendererPipeline->end();
 			rendererPipeline->createCommands();
 			rendererPipeline->flush();

@@ -1,4 +1,5 @@
 buildmessage ("message")
+startproject "sandbox"
 workspace "luna"
     architecture "x64"
     

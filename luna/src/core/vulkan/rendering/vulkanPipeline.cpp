@@ -1,5 +1,7 @@
 #include "vulkanPipeline.h"
 #include <core/vulkan/device/vulkanDevice.h>
+#include <backends/imgui_impl_vulkan.cpp>
+
 namespace luna
 {
 	namespace vulkan 
@@ -73,13 +75,17 @@ namespace luna
 
 				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentBuffer]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 				
-				
 				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentBuffer]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+				//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentBuffer]), 0, 1, &vDevice->getViewport());
 				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
 				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentBuffer]));
+
+				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
+				
+				
 				
 				//TODO gpu driven rendering (VkDrawIndirect);
-				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
+				
 				//finalize the command buffer (we can no longer add commands, but it can now be executed)
 				commandPool->end(commandBuffers[currentBuffer]);
 			}
@@ -92,17 +98,17 @@ namespace luna
 			ImGui_ImplGlfw_NewFrame();
 			//imgui commands
 			ImGui::NewFrame();
-			ImGui::ShowDemoWindow();
-			ImGui::EndFrame();
-			ImGui::Render();
+			
+
 
 
 		}
 		void vulkanPipeline::end() const
 		{
 	
-			
-		
+			ImGui::Render();
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
 
 		}
 		void vulkanPipeline::flush()
@@ -305,12 +311,21 @@ namespace luna
 			VkPipelineViewportStateCreateInfo viewportState = {};
 			viewportState.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
 			viewportState.pNext = nullptr;
-
 			viewportState.viewportCount = 1;
 			viewportState.pViewports = &vDevice->getViewport();
 			viewportState.scissorCount = 1;
 			viewportState.pScissors = &vDevice->getScissor();
 
+			VkDynamicState dynamicState[] = { VK_DYNAMIC_STATE_VIEWPORT , VK_DYNAMIC_STATE_SCISSOR };
+
+			VkPipelineDynamicStateCreateInfo dynamicStateCreateInfo;
+			dynamicStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
+			dynamicStateCreateInfo.dynamicStateCount = 1;
+			dynamicStateCreateInfo.flags = 0;
+			dynamicStateCreateInfo.pNext = nullptr;
+			dynamicStateCreateInfo.pDynamicStates = dynamicState;
+
+			
 			//setup dummy color blending. We aren't using transparent objects yet
 			//the blending is just "no blend", but we do write to the color attachment
 			VkPipelineColorBlendStateCreateInfo colorBlending = {};
@@ -337,6 +352,7 @@ namespace luna
 			pipelineInfo.pViewportState = &viewportState;
 			pipelineInfo.pRasterizationState = &pipelineRasterizationStateCreateInfo;
 			pipelineInfo.pMultisampleState = &pipelineMultisampleStateCreateInfo;
+			//pipelineInfo.pDynamicState = &dynamicStateCreateInfo;
 			pipelineInfo.pColorBlendState = &colorBlending;
 			pipelineInfo.layout = pipelineLayout;
 			pipelineInfo.renderPass = pass;
@@ -506,6 +522,14 @@ namespace luna
 			subpass.colorAttachmentCount = 1;
 			subpass.pColorAttachments = &color_attachment_ref;
 
+			VkSubpassDependency dependency = {};
+			dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+			dependency.dstSubpass = 0;
+			dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.srcAccessMask = 0;  // or VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+			dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+
 			VkRenderPassCreateInfo render_pass_info = {};
 			render_pass_info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
 
@@ -515,9 +539,11 @@ namespace luna
 			//connect the subpass to the info
 			render_pass_info.subpassCount = 1;
 			render_pass_info.pSubpasses = &subpass;
-			
+			render_pass_info.dependencyCount = 1;
+			render_pass_info.pDependencies = &dependency;
 
 			vkCreateRenderPass(vDevice->getDeviceHandles().device, &render_pass_info, nullptr, &renderPass);
+			
 		}
 
 		void vulkanPipeline::initSyncStructures() //TODO make seperate class from this

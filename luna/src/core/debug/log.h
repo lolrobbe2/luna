@@ -9,10 +9,10 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
-
+#include <core/platform/platform.h>
 namespace luna {
 
-	class Log
+	class LN_API Log
 	{
 	public:
 		static void Init();

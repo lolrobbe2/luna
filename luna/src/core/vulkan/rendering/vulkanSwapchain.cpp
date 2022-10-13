@@ -16,11 +16,11 @@ namespace luna
 
             mSwapchainSpec = swapChainSpec;
             vkb::SwapchainBuilder swapchainBuilder{ swapChainSpec.physicalDevice, swapChainSpec.device, swapChainSpec.surface };
-            
             mSwapchain = swapchainBuilder
                 .use_default_format_selection()
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_FIFO_KHR)
+                .set_desired_format({VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
                 .set_desired_extent(swapChainSpec.window->getWidth(), swapChainSpec.window->getHeight())
                 .build()
                 .value();

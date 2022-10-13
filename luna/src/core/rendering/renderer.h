@@ -31,6 +31,7 @@ namespace luna
 			inline static ref<pipeline> rendererPipeline;// the main graphics pipeline
 			inline static renderer::pipelineLayout layout; //the main graphics pipline layout
 			inline static ref<gui::vulkanImgui> gui;
+			inline static bool Selected;
 		};
 
 	}
