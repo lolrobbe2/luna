@@ -30,7 +30,7 @@ namespace luna
 			swapchainspec.surface = surface;
 			swapchainspec.swapchainExtent = { window->getWidth(),window->getHeight() };
 			swapchainspec.window = window;
-			swapchain = std::shared_ptr < vulkan::vulkanSwapchain > (new vulkan::vulkanSwapchain(swapchainspec));
+			swapchain = std::shared_ptr<vulkan::vulkanSwapchain> (new vulkan::vulkanSwapchain(swapchainspec));
 			utils::shaderLibrary::init();
 		}
 

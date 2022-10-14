@@ -78,6 +78,9 @@ namespace luna
 				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentBuffer]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 				//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentBuffer]), 0, 1, &vDevice->getViewport());
 				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
+				//copy framebuffer to seperate image.
+				//clear framebuffer vkCmdClearImage();
+				//iumgui draw
 				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentBuffer]));
 
 				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
@@ -92,20 +95,21 @@ namespace luna
 		}
 		void vulkanPipeline::begin() const
 		{
-
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			vDevice->swapchain->initViewport();
 
 			ImGui_ImplVulkan_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			//imgui commands
 			ImGui::NewFrame();
+
 			
-
-
+			
 
 		}
 		void vulkanPipeline::end() const
 		{
-	
+			ImGui::End();
 			ImGui::Render();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
@@ -301,6 +305,8 @@ namespace luna
 			LN_CORE_INFO("framebuffer creation result ={0}", vDevice->createFramebuffers(renderPass));
 			initSyncStructures();
 			LN_CORE_INFO("pipelinecreation result = {0}",buildPipeline(vDevice->getDeviceHandles().device, renderPass));
+			
+
 		}
 
 		VkResult vulkanPipeline::buildPipeline(VkDevice device, VkRenderPass pass) 
@@ -468,12 +474,11 @@ namespace luna
 		VkPipelineColorBlendAttachmentState vulkanPipeline::colorBlendAttachmentState() 
 		{
 			VkPipelineColorBlendAttachmentState colorBlendAttachment = {};
-			colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT |
-				VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT;
+			colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_G_BIT |
+				VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_A_BIT;
 			colorBlendAttachment.blendEnable = VK_FALSE;
 			return colorBlendAttachment;
 		}
-
 		VkPipelineLayoutCreateInfo vulkanPipeline::pipelineLayoutCreateInfo() 
 		{
 			VkPipelineLayoutCreateInfo info{};

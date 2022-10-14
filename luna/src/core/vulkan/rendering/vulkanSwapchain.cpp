@@ -1,4 +1,5 @@
 #include "vulkanSwapchain.h"
+#include <backends/imgui_impl_vulkan.h>
 namespace luna
 {
 	namespace vulkan
@@ -41,6 +42,7 @@ namespace luna
                 .use_default_format_selection()
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_FIFO_KHR)
+                .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
                 .set_desired_extent(mSwapchainSpec.window->getWidth(), mSwapchainSpec.window->getHeight())
                 .set_required_min_image_count(mSwapchain.image_count)
                 .build();
@@ -77,6 +79,34 @@ namespace luna
             scissor.extent = { mSwapchainSpec.window->getWidth(),mSwapchainSpec.window->getHeight() };
             scissor.offset = { 0,0 };
             return scissor;
+        }
+        VkResult vulkanSwapchain::initViewport()
+        {
+            if (init) return VK_SUCCESS;
+            VkSamplerCreateInfo samplerInfo{};
+            samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+            samplerInfo.magFilter = VK_FILTER_LINEAR;
+            samplerInfo.minFilter = VK_FILTER_LINEAR;
+            samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+            samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+            samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+            samplerInfo.anisotropyEnable = VK_FALSE;
+            VkPhysicalDeviceProperties properties{};
+            vkGetPhysicalDeviceProperties(mSwapchainSpec.physicalDevice, &properties);
+            samplerInfo.maxAnisotropy = properties.limits.maxSamplerAnisotropy;
+            samplerInfo.unnormalizedCoordinates = VK_FALSE;
+            samplerInfo.compareEnable = VK_FALSE;
+            samplerInfo.compareOp = VK_COMPARE_OP_ALWAYS;
+            samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
+            samplerInfo.mipLodBias = 0.0f;
+            samplerInfo.minLod = 0.0f;
+            samplerInfo.maxLod = 0.0f;
+            vkCreateSampler(mSwapchainSpec.device, &samplerInfo, nullptr, &viewportSampler);
+            m_Dset.resize(mSwapchain.image_count);
+            for (uint32_t i = 0; i < mSwapchain.image_count; i++)
+                m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, mSwapchain.get_image_views().value()[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+            init = true;
+            return VK_SUCCESS;
         }
                
 	}

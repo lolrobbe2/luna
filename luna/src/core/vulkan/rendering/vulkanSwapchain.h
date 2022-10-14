@@ -24,12 +24,6 @@ namespace luna
 			VkSurfaceKHR surface = VK_NULL_HANDLE;
 			queueFamilyIndices indices;
 		};
-		struct swapChainSupportDetails
-		{
-			VkSurfaceCapabilitiesKHR capabilities;
-			std::vector<VkSurfaceFormatKHR> formats;
-			std::vector<VkPresentModeKHR> presentModes;
-		};
 
 		/**
 		 * @brief the vulkanSwapchain is a collection of vulkan frambuffers.
@@ -55,10 +49,13 @@ namespace luna
 			VkResult recreateSwapchain();
 			VkViewport getViewport();
 			VkRect2D getScissor();
-			inline VkFormat getSurfaceFormat() { return swapchainImageFormat; };
+			VkResult initViewport();
+			inline VkFormat getSurfaceFormat() { return mSwapchain.image_format; };
 			inline VkFramebuffer getFrameBuffer(uint8_t index) { return frameBuffers[index]; };
+			inline VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
 			vkb::Swapchain mSwapchain;
 			std::vector<VkFramebuffer> frameBuffers;
+			std::vector<VkDescriptorSet> m_Dset;
 		private:
 			/**
 			 * @brief destroys the device bound swapchain.
@@ -72,7 +69,8 @@ namespace luna
 			std::vector<VkImage> swapchainImages;
 			std::vector<VkImageView> swapChainImageViews;
 			VkFormat swapchainImageFormat;
-			
+			bool init = true;
+			VkSampler viewportSampler;
 		};
 	}
 }
