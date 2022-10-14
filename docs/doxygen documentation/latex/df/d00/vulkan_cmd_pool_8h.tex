@@ -1,5 +1,5 @@
-\hypertarget{vulkan_cmd_pool_8h}{}\doxysection{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Cmd\+Pool.h File Reference}
-\label{vulkan_cmd_pool_8h}\index{C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanCmdPool.h@{C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanCmdPool.h}}
+\hypertarget{vulkan_cmd_pool_8h}{}\doxysection{C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkan\+Cmd\+Pool.h File Reference}
+\label{vulkan_cmd_pool_8h}\index{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanCmdPool.h@{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanCmdPool.h}}
 {\ttfamily \#include $<$core/vulkan/window/window.\+h$>$}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
@@ -7,9 +7,9 @@
 struct \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_cmd_pool_spec}{luna\+::vulkan\+::vulkan\+Cmd\+Pool\+Spec}}
 \item 
 struct \mbox{\hyperlink{structluna_1_1vulkan_1_1command_pool_submit_info}{luna\+::vulkan\+::command\+Pool\+Submit\+Info}}
-\item 
+\begin{DoxyCompactList}\small\item\em struct with all the submit info. this is the same except Vk\+Command\+Buffer$\ast$ -\/\texorpdfstring{$>$}{>}virtual\+Cmd\+Buffer$\ast$. for more information\+: \href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/\+Vk\+Submit\+Info.\+html}} \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool}{luna\+::vulkan\+::vulkan\+Cmd\+Pool}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs. all a Vk\+Command\+Buffer has been changed out by virtual\+Cmd\+Buffer type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 

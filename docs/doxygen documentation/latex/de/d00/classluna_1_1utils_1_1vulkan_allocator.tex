@@ -1,0 +1,97 @@
+\hypertarget{classluna_1_1utils_1_1vulkan_allocator}{}\doxysection{luna\+::utils\+::vulkan\+Allocator Class Reference}
+\label{classluna_1_1utils_1_1vulkan_allocator}\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+
+
+{\ttfamily \#include $<$vulkan\+Alllocator.\+h$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1allocation}{allocation}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aa6f47a75c22a22186521aa6b9660c8e1}{vulkan\+Allocator}} ()
+\begin{DoxyCompactList}\small\item\em base allocator constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a1205dc8b70cef4a6cd1eca52a19c9165}{vulkan\+Allocator}} (\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1device}{renderer\+::device}} $>$ device)
+\begin{DoxyCompactList}\small\item\em allocator constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a410177932555a00a9d31a409629705a7}{$\sim$vulkan\+Allocator}} ()
+\begin{DoxyCompactList}\small\item\em destroys the allocator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}}$<$ \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1allocation}{allocation}} $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a0d00cbbea232bff0ebed6f77f518d9b1}{allocation\+Cache}}
+\item 
+Vk\+Queue \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_acd9547e2a1cdd6b80d5d9fe156383138}{transfer\+Queue}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Vma\+Allocator \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a896ca90c3e9bd16b515d95f9fb0c7725}{s\+Allocator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_aa6f47a75c22a22186521aa6b9660c8e1}\label{classluna_1_1utils_1_1vulkan_allocator_aa6f47a75c22a22186521aa6b9660c8e1}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!vulkanAllocator@{vulkanAllocator}}
+\index{vulkanAllocator@{vulkanAllocator}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxysubsubsection{\texorpdfstring{vulkanAllocator()}{vulkanAllocator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily luna\+::utils\+::vulkan\+Allocator\+::vulkan\+Allocator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+base allocator constructor. 
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a1205dc8b70cef4a6cd1eca52a19c9165}\label{classluna_1_1utils_1_1vulkan_allocator_a1205dc8b70cef4a6cd1eca52a19c9165}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!vulkanAllocator@{vulkanAllocator}}
+\index{vulkanAllocator@{vulkanAllocator}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxysubsubsection{\texorpdfstring{vulkanAllocator()}{vulkanAllocator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily luna\+::utils\+::vulkan\+Allocator\+::vulkan\+Allocator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1device}{renderer\+::device}} $>$}]{device }\end{DoxyParamCaption})}
+
+
+
+allocator constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref$<$renderer\+::device$>$}}} & device reference to the device \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a410177932555a00a9d31a409629705a7}\label{classluna_1_1utils_1_1vulkan_allocator_a410177932555a00a9d31a409629705a7}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!````~vulkanAllocator@{$\sim$vulkanAllocator}}
+\index{````~vulkanAllocator@{$\sim$vulkanAllocator}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxysubsubsection{\texorpdfstring{$\sim$vulkanAllocator()}{~vulkanAllocator()}}
+{\footnotesize\ttfamily luna\+::utils\+::vulkan\+Allocator\+::$\sim$vulkan\+Allocator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+destroys the allocator. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a0d00cbbea232bff0ebed6f77f518d9b1}\label{classluna_1_1utils_1_1vulkan_allocator_a0d00cbbea232bff0ebed6f77f518d9b1}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!allocationCache@{allocationCache}}
+\index{allocationCache@{allocationCache}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxysubsubsection{\texorpdfstring{allocationCache}{allocationCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}}$<$\mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1allocation}{allocation}}$>$ luna\+::utils\+::vulkan\+Allocator\+::allocation\+Cache\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a896ca90c3e9bd16b515d95f9fb0c7725}\label{classluna_1_1utils_1_1vulkan_allocator_a896ca90c3e9bd16b515d95f9fb0c7725}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!sAllocator@{sAllocator}}
+\index{sAllocator@{sAllocator}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxysubsubsection{\texorpdfstring{sAllocator}{sAllocator}}
+{\footnotesize\ttfamily Vma\+Allocator luna\+::utils\+::vulkan\+Allocator\+::s\+Allocator\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_acd9547e2a1cdd6b80d5d9fe156383138}\label{classluna_1_1utils_1_1vulkan_allocator_acd9547e2a1cdd6b80d5d9fe156383138}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!transferQueue@{transferQueue}}
+\index{transferQueue@{transferQueue}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxysubsubsection{\texorpdfstring{transferQueue}{transferQueue}}
+{\footnotesize\ttfamily Vk\+Queue luna\+::utils\+::vulkan\+Allocator\+::transfer\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/\mbox{\hyperlink{vulkan_alllocator_8h}{vulkan\+Alllocator.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/\mbox{\hyperlink{vulkan_alllocator_8cpp}{vulkan\+Alllocator.\+cpp}}\end{DoxyCompactItemize}

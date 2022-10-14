@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['eventcategory_0',['eventCategory',['../db/d00/namespaceluna.html#a047ac16c6d2060398e5e6a91e484516d',1,'luna']]],
-  ['eventtype_1',['eventType',['../db/d00/namespaceluna.html#ad79b9142c071f5b952598de9eb0b6610',1,'luna']]]
+  ['cacheresult_0',['cacheResult',['../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0',1,'luna::utils']]],
+  ['compilelanguage_1',['compileLanguage',['../dc/d00/namespaceluna_1_1utils.html#a5d7eb68510835acf5872fc7a29f0c781',1,'luna::utils']]]
 ];

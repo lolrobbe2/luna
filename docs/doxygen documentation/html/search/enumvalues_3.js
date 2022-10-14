@@ -12,5 +12,6 @@ var searchData=
   ['d8_9',['D8',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a25106a2983fb25913b98a45a7b0c0fb9',1,'luna::input']]],
   ['d9_10',['D9',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a0a78be6837e716cadc22abf312dfcd81',1,'luna::input']]],
   ['delete_11',['Delete',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19ab898602092ff348df39e4eb6d7aab592',1,'luna::input']]],
-  ['down_12',['Down',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19ac2b0a04e1e24a8caad45ab6537876bce',1,'luna::input']]]
+  ['double_12',['Double',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba96312d65ff5d0e43b8a803cda9cdc1f3',1,'luna::renderer']]],
+  ['down_13',['Down',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19ac2b0a04e1e24a8caad45ab6537876bce',1,'luna::input']]]
 ];

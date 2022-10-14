@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queuefamilyindices_0',['queueFamilyIndices',['../dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html',1,'luna::vulkan']]]
+  ['log_0',['Log',['../dc/d00/classluna_1_1_log.html',1,'luna']]]
 ];

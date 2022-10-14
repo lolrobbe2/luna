@@ -1,0 +1,134 @@
+\hypertarget{classluna_1_1vulkan_1_1vulkan_shader}{}\doxysection{luna\+::vulkan\+::vulkan\+Shader Class Reference}
+\label{classluna_1_1vulkan_1_1vulkan_shader}\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+
+
+{\ttfamily \#include $<$vulkan\+Shader.\+h$>$}
+
+Inheritance diagram for luna\+::vulkan\+::vulkan\+Shader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d1/d00/classluna_1_1vulkan_1_1vulkan_shader}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_af026ef4fb8045a7829b9ad826cbb31e2}{vulkan\+Shader}} (const std\+::string \&filepath, const \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{renderer\+::shader\+Stage}} \&\mbox{\hyperlink{classluna_1_1renderer_1_1shader_ac76cce027c4234e47f98c2ebf08d83f3}{stage}})
+\begin{DoxyCompactList}\small\item\em creates a vulkan shader from a file\+Path. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_aecec2090c2bd911c3b0bb03f80b91eb7}{$\sim$vulkan\+Shader}} ()
+\item 
+void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_abde840fc72e1f453feeb971d071173f6}{bind}} () const override
+\item 
+void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_a31dfbe55e22e9d8c17aeb1629e83f4f4}{unbind}} () const override
+\item 
+void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_aa7bab09ef9777619f42e56013b073f90}{create\+Layout}} () override
+\begin{DoxyCompactList}\small\item\em creates the shader layout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11}{get\+Shader\+Resource}} (const spirv\+\_\+cross\+::\+Resource \&\+\_\+shader\+Resource, const std\+::vector$<$ uint32\+\_\+t $>$ \&shader\+Source, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}{renderer\+::type\+Class}} type\+Class)
+\begin{DoxyCompactList}\small\item\em get the shder\+Resource information and returns a corresponding engine shaderresource. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_a52afcec1d11d9912d5c8af185fdac2a3}{renderer\+::shader}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_af026ef4fb8045a7829b9ad826cbb31e2}\label{classluna_1_1vulkan_1_1vulkan_shader_af026ef4fb8045a7829b9ad826cbb31e2}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!vulkanShader@{vulkanShader}}
+\index{vulkanShader@{vulkanShader}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxysubsubsection{\texorpdfstring{vulkanShader()}{vulkanShader()}}
+{\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Shader\+::vulkan\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{const \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{renderer\+::shader\+Stage}} \&}]{stage }\end{DoxyParamCaption})}
+
+
+
+creates a vulkan shader from a file\+Path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & the path to the source .GLSL file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_aecec2090c2bd911c3b0bb03f80b91eb7}\label{classluna_1_1vulkan_1_1vulkan_shader_aecec2090c2bd911c3b0bb03f80b91eb7}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!````~vulkanShader@{$\sim$vulkanShader}}
+\index{````~vulkanShader@{$\sim$vulkanShader}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxysubsubsection{\texorpdfstring{$\sim$vulkanShader()}{~vulkanShader()}}
+{\footnotesize\ttfamily virtual luna\+::vulkan\+::vulkan\+Shader\+::$\sim$vulkan\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_abde840fc72e1f453feeb971d071173f6}\label{classluna_1_1vulkan_1_1vulkan_shader_abde840fc72e1f453feeb971d071173f6}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!bind@{bind}}
+\index{bind@{bind}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Shader\+::bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a8c64440945a99d558cae4590e7a1b39f}{luna\+::renderer\+::shader}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_aa7bab09ef9777619f42e56013b073f90}\label{classluna_1_1vulkan_1_1vulkan_shader_aa7bab09ef9777619f42e56013b073f90}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!createLayout@{createLayout}}
+\index{createLayout@{createLayout}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxysubsubsection{\texorpdfstring{createLayout()}{createLayout()}}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Shader\+::create\+Layout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+creates the shader layout. 
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1shader_af85d739bb38d87443861dc2b8a7836ef}{luna\+::renderer\+::shader}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11}\label{classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!getShaderResource@{getShaderResource}}
+\index{getShaderResource@{getShaderResource}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxysubsubsection{\texorpdfstring{getShaderResource()}{getShaderResource()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} luna\+::vulkan\+::vulkan\+Shader\+::get\+Shader\+Resource (\begin{DoxyParamCaption}\item[{const spirv\+\_\+cross\+::\+Resource \&}]{\+\_\+shader\+Resource,  }\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{shader\+Source,  }\item[{\mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}{renderer\+::type\+Class}}}]{type\+Class }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+get the shder\+Resource information and returns a corresponding engine shaderresource. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+shader\+Resource} & \\
+\hline
+{\em shader\+Source} & \\
+\hline
+{\em type\+Class} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_a31dfbe55e22e9d8c17aeb1629e83f4f4}\label{classluna_1_1vulkan_1_1vulkan_shader_a31dfbe55e22e9d8c17aeb1629e83f4f4}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!unbind@{unbind}}
+\index{unbind@{unbind}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxysubsubsection{\texorpdfstring{unbind()}{unbind()}}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Shader\+::unbind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1shader_acadb7154c8196b3cef81e6eb01d5aa25}{luna\+::renderer\+::shader}}.
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_a52afcec1d11d9912d5c8af185fdac2a3}\label{classluna_1_1vulkan_1_1vulkan_shader_a52afcec1d11d9912d5c8af185fdac2a3}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!renderer::shader@{renderer::shader}}
+\index{renderer::shader@{renderer::shader}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxysubsubsection{\texorpdfstring{renderer::shader}{renderer::shader}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{renderer\+::shader}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_shader_8h}{vulkan\+Shader.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_shader_8cpp}{vulkan\+Shader.\+cpp}}\end{DoxyCompactItemize}

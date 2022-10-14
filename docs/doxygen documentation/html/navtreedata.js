@@ -26,15 +26,22 @@ var NAVTREE =
 [
   [ "luna engine", "index.html", [
     [ "return to website", "../../index.html", null ],
+    [ "luna software engine", "dc/d00/md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e.html", [
+      [ "goals", "dc/d00/md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e.html#autotoc_md1", null ],
+      [ "buildrequirements", "dc/d00/md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e.html#autotoc_md2", null ],
+      [ "instalation", "dc/d00/md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e.html#autotoc_md3", null ],
+      [ "website:", "dc/d00/md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e.html#autotoc_md4", null ],
+      [ "enjoy :)", "dc/d00/md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e.html#autotoc_md5", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+        [ "Enumerator", "namespacemembers_eval.html", "namespacemembers_eval" ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -42,8 +49,8 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
@@ -55,7 +62,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "../../index.html",
-"d6/d00/classluna_1_1renderer_1_1device.html#a0ee548a1b2b101fff96b1b8a3849b3f7"
+"d1/d00/classluna_1_1window_resize_event.html#ad24affdedebd80d7d97edea5f9986f63",
+"d6/d00/classluna_1_1renderer_1_1buffer_layout.html#a0089e75e714f411c4e6325998b17598f",
+"dc/d00/classluna_1_1_log.html#abab8f6ceabbb0d1650ea527ee4f180ee",
+"functions_w.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

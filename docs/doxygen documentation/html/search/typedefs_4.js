@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scope_0',['scope',['../db/d00/namespaceluna.html#accd5328e0de41c20f918cdd315173870',1,'luna']]]
+  ['ref_0',['ref',['../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87',1,'luna']]]
 ];

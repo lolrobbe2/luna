@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>luna engine: C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanCmdPool.h File Reference</title>
+<title>luna engine: C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanCmdPool.h File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -103,8 +103,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec.html">luna::vulkan::vulkanCmdPoolSpec</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html">luna::vulkan::commandPoolSubmitInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">struct with all the submit info. this is the same except VkCommandBuffer* -&gt;virtualCmdBuffer*. for more information: <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html</a>  <a href="../../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html">luna::vulkan::vulkanCmdPool</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs. all a VkCommandBuffer has been changed out by virtualCmdBuffer type.  <a href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
