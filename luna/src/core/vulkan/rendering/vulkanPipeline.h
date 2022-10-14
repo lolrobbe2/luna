@@ -11,29 +11,112 @@ namespace luna
 		class vulkanPipeline : public renderer::pipeline
 		{
 		public:
+			/**
+			 * @brief creates a vulkan pipeline.
+			 * 
+			 * \param renderer::pipelineLayout layout struct
+			 */
 			vulkanPipeline(const renderer::pipelineLayout& layout);
+			/**
+			 * @brief pipeline destructor.
+			 */
 			virtual ~vulkanPipeline() { destroyPipeline(); };
+			/**
+			 * @brief creates the vulkan pipeline.
+			 * 
+			 * \param renderer::pipelineLayout layout struct
+			 */
 			virtual void createPipeline(const renderer::pipelineLayout& layout) override;
+			/**
+			 * @brief destroys the vulkan pipeline.
+			 * 
+			 */
 			virtual void destroyPipeline() override;
+			/**
+			 * @brief creates the renderer commands for the pipeline.
+			 * 
+			 */
 			virtual void createCommands() override;
+			/**
+			 * @brief starts recording the pipline input.
+			 * 
+			 */
 			virtual void begin() const override;
+			/**
+			 * @brief ends recording the pipline input.
+			 * 
+			 */
 			virtual void end() const override;
+			/**
+			 * @brief executes the pipeline commands.
+			 * 
+			 */
 			virtual void flush() override;
 			inline VkRenderPass getRenderPass() { return renderPass; };
 			renderer::pipelineLayout layout;
 		private:
+			/**
+			 * @brief creates the shader layout.
+			 * 
+			 */
 			void createPipeLineLayout();
-
+			/**
+			 * @brief build the vulkan pipline.
+			 * 
+			 * \param VkDevice device 
+			 * \param VkRenderPass pass
+			 * \return VK_SUCCES when pipline was succesfully build
+			 */
 			VkResult buildPipeline(VkDevice device, VkRenderPass pass);
-			
-
+			/**
+			 * @brief creates the shader stages to be used in the pipeline.
+			 * 
+			 */
 			void createShaderStages();
+			/**
+			 * @brief creates the vertex input.
+			 */
 			void createInputStates();
+			/**
+			 * @brief creates the vertex input state for a single shader.
+			 * 
+			 * \param ref<renderer::shader> shader reference to a valid shader
+			 * \return VkPipelineVertexInputStateCreateInfo 
+			 */
 			VkPipelineVertexInputStateCreateInfo createVertexInputState(const ref<renderer::shader> shader);
+			/**
+			 * @brief creates the binding descriptio for a single shader.
+			 * 
+			 * \param ref<renderer::shader> shader reference to a valid shader
+			 */
 			void createBindingDescription(const ref<renderer::shader> shader);
+			/**
+			 * @brief creates the attribute description for a single shader.
+			 * 
+			 * \param ref<renderer::shader> shader reference to a valid shader
+			 */
 			void createAttributeDescription(const ref<renderer::shader> shader);
+			/**
+			 * @brief creates a shader module from a shader ref.
+			 * 
+			 * \param ref<renderer::shader> shader the source shader
+			 * \param shaderModule pointer to the vulkan shaderModule
+			 * \return VK_SUCCES when shaderModule was created sucessfully.
+			 */
 			VkResult createShaderModule(ref<renderer::shader> shader,VkShaderModule* shaderModule);
+			/**
+			 * @brief returns the corresponding resource type for a given .
+			 * 
+			 * \param renderer::typeId resourceType
+			 * \return VkFormat the corresponding VkFormat for typeId
+			 */
 			VkFormat getResourceFormat(renderer::typeId resourceType);
+			/**
+			 * @brief creates the input Assembly
+			 * 
+			 * \param topology
+			 * \return 
+			 */
 			VkPipelineInputAssemblyStateCreateInfo inputAssemblyCreateInfo(VkPrimitiveTopology topology);
 			VkPipelineRasterizationStateCreateInfo rasterizationStateCreateInfo(VkPolygonMode polygonMode);
 			VkPipelineMultisampleStateCreateInfo multisamplingStateCreateInfo();

@@ -59,7 +59,7 @@ namespace luna
 			 * \param vkb::QueueType type 
 			 */
 			inline VkQueue getQueue(const vkb::QueueType& type) { return deviceHandle.device.get_queue(type).value(); };
-			std::shared_ptr<vulkan::vulkanSwapchain> swapchain;
+			ref<vulkan::vulkanSwapchain> swapchain; // vulkan swapchain ref ( TODO will become independant of device class in future) 
 			/**
 			 * @brief creates the appropriate framebuffers for the swapchain.
 			 * 
@@ -136,6 +136,11 @@ namespace luna
 				vkb::Device device;
 				vkb::PhysicalDevice physicalDevice;
 			};
+			/**
+			 * #brief returns the device subhandles.
+			 * 
+			 * \return deviceHandles struct
+			 */
 			deviceHandles getDeviceHandles();
 		private:
 			

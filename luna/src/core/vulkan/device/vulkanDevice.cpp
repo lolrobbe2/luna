@@ -22,7 +22,7 @@ namespace luna
 			LN_CORE_TRACE("instance creation result = {0}",createInstance());
 			LN_CORE_TRACE("surface creation result = {0}", glfwCreateWindowSurface(deviceHandle.instance, (GLFWwindow*)window->getWindow(), nullptr, &surface));
 			LN_CORE_TRACE("device selection result = {0}", pickPhysicalDevice());
-			LN_CORE_TRACE("logical device creation result = {0}", createLogicalDevice()); //TODO add specification;
+			LN_CORE_TRACE("logical device creation result = {0}", createLogicalDevice()); //TODO add specification; 
 			vulkan::swapchainSpec swapchainspec;
 			swapchainspec.device = deviceHandle.device;
 			swapchainspec.indices = queueFamily;
@@ -89,6 +89,7 @@ namespace luna
 			}
 			
 			deviceHandle.instance = instanceBuilder.build().value();
+			deviceHandle.appInfo.apiVersion = VKB_VK_API_VERSION_1_2;
 			return VK_SUCCESS;
 		}
 

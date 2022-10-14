@@ -41,9 +41,12 @@ namespace luna
 			ImGuiViewport* viewport = ImGui::GetMainViewport();
 			ImVec2 windowSize = ImGui::GetContentRegionAvail();
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode| ImGuiDockNodeFlags_NoResize);
-			if (ImGui::Begin("main viewport",nullptr))
+			if (ImGui::Begin("settings",nullptr))
 			{
-
+				
+				std::string text = "framerate = ";
+				std::string framerate = std::to_string(ImGui::GetIO().Framerate);
+				ImGui::Text((text + framerate).c_str());
 
 			}
 			rendererPipeline->end();

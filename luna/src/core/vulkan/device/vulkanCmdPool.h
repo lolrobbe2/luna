@@ -5,13 +5,18 @@ namespace luna
 	namespace vulkan
 	{
 		
-		typedef uint64_t virtualCmdBuffer;
+		typedef uint64_t virtualCmdBuffer; // virtual commandbuffer handle 
 		struct vulkanCmdPoolSpec
 		{
 			VkDevice device;
 			VkCommandPoolCreateFlags    flags;
 			uint32_t queueFamilyIndex;
 		};
+		/**
+		 *  @brief struct with all the submit info.
+		 *	this is the same except VkCommandBuffer* ->virtualCmdBuffer*.
+		 *  for more information: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html
+		 */
 		struct commandPoolSubmitInfo
 		{
 			const void* pNext;
@@ -23,6 +28,10 @@ namespace luna
 			uint32_t                       signalSemaphoreCount;
 			const VkSemaphore* pSignalSemaphores;
 		};
+		/**
+		 * @brief abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs.
+		 * all a VkCommandBuffer has been changed out by virtualCmdBuffer type.
+		 */
 		class vulkanCmdPool
 		{
 		public:

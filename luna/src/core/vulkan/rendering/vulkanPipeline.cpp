@@ -479,6 +479,7 @@ namespace luna
 			colorBlendAttachment.blendEnable = VK_FALSE;
 			return colorBlendAttachment;
 		}
+
 		VkPipelineLayoutCreateInfo vulkanPipeline::pipelineLayoutCreateInfo() 
 		{
 			VkPipelineLayoutCreateInfo info{};
@@ -576,30 +577,7 @@ namespace luna
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]) ||
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
 				vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
-
 			}
-
-			/*
-			VkFenceCreateInfo fenceCreateInfo = {};
-			fenceCreateInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
-			fenceCreateInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
-			fenceCreateInfo.pNext = nullptr;
-
-			//we want to create the fence with the Create Signaled flag, so we can wait on it before using it on a GPU command (for the first get)
-			fenceCreateInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
-
-			vkCreateFence(vDevice->getDeviceHandles().device, &fenceCreateInfo, nullptr, &_renderFence);
-
-			//for the semaphores we don't need any flags
-			VkSemaphoreCreateInfo semaphoreCreateInfo = {};
-			semaphoreCreateInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
-
-			vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreCreateInfo, nullptr, &_presentSemaphore);
-			vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreCreateInfo, nullptr, &_renderSemaphore);
-			*/
 		}
-
-
-
 	}
 }

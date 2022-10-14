@@ -22,12 +22,11 @@ namespace luna
 		void application::run()
 		{
 			renderer::renderer::createFrame();
-			LN_CORE_INFO("size of buffer handle = {0}",sizeof(VkBuffer));
-			LN_CORE_INFO("size of commandBuffer handle = {0}", sizeof(VkCommandBuffer));
 			while (running)
 			{
-				renderer::renderer::newFrame();
+				
 				mWindow->onUpdate();
+				renderer::renderer::newFrame();
 			}
 		}
 
