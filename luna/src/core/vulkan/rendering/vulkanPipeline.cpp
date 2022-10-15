@@ -49,10 +49,19 @@ namespace luna
 			VkClearValue clearValue;
 			//float flash = abs(sin(_frameNumber / 120.f));
 			clearValue.color = { { 0.0f, 255.0f, 255.0f, 1.0f } };
+			VkClearColorValue blankValue;
+			//float flash = abs(sin(_frameNumber / 120.f));
+			clearValue.color = { { 0.0f, 0.0f, 0.0f, 1.0f } };
 			
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
 			VkExtent2D extent = vDevice->swapchain->mSwapchain.extent;
+			VkImageSubresourceRange imageSubRange;
+			imageSubRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			imageSubRange.baseMipLevel= 0;
+			imageSubRange.baseArrayLayer = 0;
+			imageSubRange.layerCount = 1;
+			imageSubRange.levelCount = VK_REMAINING_MIP_LEVELS;
 			for (size_t currentBuffer = 0; currentBuffer < commandBuffers.size(); currentBuffer++)
 			{
 
@@ -78,13 +87,20 @@ namespace luna
 				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentBuffer]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 				//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentBuffer]), 0, 1, &vDevice->getViewport());
 				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
+				
+				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
+
+				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentBuffer]), vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
+				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentBuffer]));
 				//copy framebuffer to seperate image.
 				//clear framebuffer vkCmdClearImage();
 				//iumgui draw
-				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentBuffer]));
+				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentBuffer]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
+				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentBuffer]));
 				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
-				
+			
 				
 				
 				//TODO gpu driven rendering (VkDrawIndirect);
@@ -579,5 +595,62 @@ namespace luna
 				vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
 			}
 		}
+		void vulkanPipeline::transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout,VkCommandBuffer commandBufffer) {
+			{
+				VkImageMemoryBarrier barrier{};
+				barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+				barrier.oldLayout = oldLayout;
+				barrier.newLayout = newLayout;
+				barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+				barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+				barrier.image = image;
+				barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+				barrier.subresourceRange.baseMipLevel = 0;
+				barrier.subresourceRange.levelCount = 1;
+				barrier.subresourceRange.baseArrayLayer = 0;
+				barrier.subresourceRange.layerCount = 1;
+				barrier.srcAccessMask = 0; //TODO
+				barrier.dstAccessMask = 0; //TODO
+
+				VkPipelineStageFlags sourceStage;
+				VkPipelineStageFlags destinationStage;
+
+				if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
+					barrier.srcAccessMask = 0;
+					barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+					sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+					destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				}
+				else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {
+					barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+					barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
+
+					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+					destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;
+				}
+				else if(oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
+				{
+					barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+					barrier.dstAccessMask = VK_ACCESS_INDIRECT_COMMAND_READ_BIT;
+
+					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+					destinationStage = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT;
+				}
+				else {
+					LN_CORE_ERROR("incorrect layout = {0}", newLayout);
+				}
+
+				vkCmdPipelineBarrier(
+					commandBufffer,
+					sourceStage, destinationStage,
+					0,
+					0, nullptr,
+					0, nullptr,
+					1, &barrier);
+			}
+		}
+
 	}
+
 }

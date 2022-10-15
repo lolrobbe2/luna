@@ -124,6 +124,7 @@ namespace luna
 			VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo();
 			void initDefaultRenderpass();
 			void initSyncStructures();
+			void transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout, VkCommandBuffer commandBufffer);
 		private:
 			//TODO improve variables usage.
 			struct shaderStage
