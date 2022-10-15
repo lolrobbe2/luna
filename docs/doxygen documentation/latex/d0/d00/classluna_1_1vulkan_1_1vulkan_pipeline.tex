@@ -44,7 +44,7 @@ virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_aa061fcec85
 virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a5a362aa2aac55e29a1953b3c2efcfe04}{flush}} () override
 \begin{DoxyCompactList}\small\item\em executes the pipeline commands. \end{DoxyCompactList}\item 
 Vk\+Render\+Pass \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a24e8bfb38d02fa6c3630ae9511952a27}{get\+Render\+Pass}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em return the pipeline renderpass. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,7 +54,7 @@ Vk\+Render\+Pass \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a24e8bf
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_aaf8203406c0c975f676bde5e856082c0}{create\+Pipe\+Line\+Layout}} ()
-\begin{DoxyCompactList}\small\item\em creates the shader layout. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em creates the pipeline layout. \end{DoxyCompactList}\item 
 Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a2564495814ebfea70d90c779b803b1c4}{build\+Pipeline}} (Vk\+Device device, Vk\+Render\+Pass pass)
 \begin{DoxyCompactList}\small\item\em build the vulkan pipline. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a67e100195b6be54e5e3826ed7b60d9d4}{create\+Shader\+Stages}} ()
@@ -74,19 +74,19 @@ Vk\+Format \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a2e415f36255c
 Vk\+Pipeline\+Input\+Assembly\+State\+Create\+Info \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a4d6c6885c31db211071f554da4a99300}{input\+Assembly\+Create\+Info}} (Vk\+Primitive\+Topology topology)
 \begin{DoxyCompactList}\small\item\em creates the input Assembly \end{DoxyCompactList}\item 
 Vk\+Pipeline\+Rasterization\+State\+Create\+Info \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a061fa43828034b9c3ada6aa8c797a42f}{rasterization\+State\+Create\+Info}} (Vk\+Polygon\+Mode polygon\+Mode)
-\item 
+\begin{DoxyCompactList}\small\item\em creates the rasterizer state create info. \end{DoxyCompactList}\item 
 Vk\+Pipeline\+Multisample\+State\+Create\+Info \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_afc6942d545a4132c205e53ac3aef3dcf}{multisampling\+State\+Create\+Info}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em creates the multisampling info. \end{DoxyCompactList}\item 
 Vk\+Pipeline\+Color\+Blend\+Attachment\+State \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a7711aceff647037594498dca8edf97eb}{color\+Blend\+Attachment\+State}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em the color blend attachment state(color writemask). \end{DoxyCompactList}\item 
 Vk\+Pipeline\+Layout\+Create\+Info \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a5b4270cf728d1e08d705a0563003de74}{pipeline\+Layout\+Create\+Info}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em creates the pipeline layout info. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a4b956fe650f383fea4e65cd4b4d4da25}{init\+Default\+Renderpass}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em initialzes the dafault pipeline render\+Pass. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_ad6d305c8ad88f0d83ab2054a3acf0e58}{init\+Sync\+Structures}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em initializes the the pipeline syncronization structures. (Vk\+Fence and Vk\+Semaphore) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a46a300426475caff50e03bad4532c19f}{transition\+Image\+Layout}} (Vk\+Image image, Vk\+Format format, Vk\+Image\+Layout old\+Layout, Vk\+Image\+Layout new\+Layout, Vk\+Command\+Buffer command\+Bufffer)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em transitions the image layout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -213,6 +213,16 @@ VK\+\_\+\+SUCCES when pipline was succesfully build
 \doxysubsubsection{\texorpdfstring{colorBlendAttachmentState()}{colorBlendAttachmentState()}}
 {\footnotesize\ttfamily Vk\+Pipeline\+Color\+Blend\+Attachment\+State luna\+::vulkan\+::vulkan\+Pipeline\+::color\+Blend\+Attachment\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+the color blend attachment state(color writemask). 
+
+\begin{DoxyReturn}{Returns}
+Vk\+Pipeline\+Color\+Blend\+Attachment\+State struct 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/\+Vk\+Pipeline\+Color\+Blend\+Attachment\+State.\+html}} 
+\end{DoxySeeAlso}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_acb177d8857c6e8309dd72c67e07d267c}\label{classluna_1_1vulkan_1_1vulkan_pipeline_acb177d8857c6e8309dd72c67e07d267c}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!createAttributeDescription@{createAttributeDescription}}
 \index{createAttributeDescription@{createAttributeDescription}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
@@ -294,7 +304,7 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a0f11e067108000e35
 
 
 
-creates the shader layout. 
+creates the pipeline layout. 
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_aa6c9ce6d6c4c9fe5bb165617322279aa}\label{classluna_1_1vulkan_1_1vulkan_pipeline_aa6c9ce6d6c4c9fe5bb165617322279aa}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!createShaderModule@{createShaderModule}}
@@ -392,6 +402,10 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a8f231f1c4fde20cfa
 \doxysubsubsection{\texorpdfstring{getRenderPass()}{getRenderPass()}}
 {\footnotesize\ttfamily Vk\+Render\+Pass luna\+::vulkan\+::vulkan\+Pipeline\+::get\+Render\+Pass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+return the pipeline renderpass. 
+
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a2e415f36255cab1ceb346c182c9e5cf8}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a2e415f36255cab1ceb346c182c9e5cf8}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!getResourceFormat@{getResourceFormat}}
 \index{getResourceFormat@{getResourceFormat}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
@@ -416,12 +430,25 @@ Vk\+Format the corresponding Vk\+Format for type\+Id
 \doxysubsubsection{\texorpdfstring{initDefaultRenderpass()}{initDefaultRenderpass()}}
 {\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Pipeline\+::init\+Default\+Renderpass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+initialzes the dafault pipeline render\+Pass. 
+
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_ad6d305c8ad88f0d83ab2054a3acf0e58}\label{classluna_1_1vulkan_1_1vulkan_pipeline_ad6d305c8ad88f0d83ab2054a3acf0e58}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!initSyncStructures@{initSyncStructures}}
 \index{initSyncStructures@{initSyncStructures}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
 \doxysubsubsection{\texorpdfstring{initSyncStructures()}{initSyncStructures()}}
 {\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Pipeline\+::init\+Sync\+Structures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+initializes the the pipeline syncronization structures. (Vk\+Fence and Vk\+Semaphore) 
+
+\begin{DoxySeeAlso}{See also}
+\href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFence.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/\+Vk\+Fence.\+html}} 
+
+\href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/\+Vk\+Semaphore.\+html}} 
+\end{DoxySeeAlso}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a4d6c6885c31db211071f554da4a99300}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a4d6c6885c31db211071f554da4a99300}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!inputAssemblyCreateInfo@{inputAssemblyCreateInfo}}
 \index{inputAssemblyCreateInfo@{inputAssemblyCreateInfo}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
@@ -446,24 +473,76 @@ creates the input Assembly
 \doxysubsubsection{\texorpdfstring{multisamplingStateCreateInfo()}{multisamplingStateCreateInfo()}}
 {\footnotesize\ttfamily Vk\+Pipeline\+Multisample\+State\+Create\+Info luna\+::vulkan\+::vulkan\+Pipeline\+::multisampling\+State\+Create\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+creates the multisampling info. 
+
+\begin{DoxyReturn}{Returns}
+Vk\+Pipeline\+Multisample\+State\+Create\+Info struct 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/\+Vk\+Pipeline\+Multisample\+State\+Create\+Info.\+html}} 
+\end{DoxySeeAlso}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a5b4270cf728d1e08d705a0563003de74}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a5b4270cf728d1e08d705a0563003de74}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!pipelineLayoutCreateInfo@{pipelineLayoutCreateInfo}}
 \index{pipelineLayoutCreateInfo@{pipelineLayoutCreateInfo}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
 \doxysubsubsection{\texorpdfstring{pipelineLayoutCreateInfo()}{pipelineLayoutCreateInfo()}}
 {\footnotesize\ttfamily Vk\+Pipeline\+Layout\+Create\+Info luna\+::vulkan\+::vulkan\+Pipeline\+::pipeline\+Layout\+Create\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+creates the pipeline layout info. 
+
+\begin{DoxyReturn}{Returns}
+Vk\+Pipeline\+Layout\+Create\+Info struct 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreatePipelineLayout.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/vk\+Create\+Pipeline\+Layout.\+html}} 
+\end{DoxySeeAlso}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a061fa43828034b9c3ada6aa8c797a42f}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a061fa43828034b9c3ada6aa8c797a42f}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!rasterizationStateCreateInfo@{rasterizationStateCreateInfo}}
 \index{rasterizationStateCreateInfo@{rasterizationStateCreateInfo}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
 \doxysubsubsection{\texorpdfstring{rasterizationStateCreateInfo()}{rasterizationStateCreateInfo()}}
 {\footnotesize\ttfamily Vk\+Pipeline\+Rasterization\+State\+Create\+Info luna\+::vulkan\+::vulkan\+Pipeline\+::rasterization\+State\+Create\+Info (\begin{DoxyParamCaption}\item[{Vk\+Polygon\+Mode}]{polygon\+Mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+creates the rasterizer state create info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon\+Mode} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vk\+Pipeline\+Rasterization\+State\+Create\+Info struct 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/\+Vk\+Pipeline\+Rasterization\+State\+Create\+Info.\+html}} 
+\end{DoxySeeAlso}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a46a300426475caff50e03bad4532c19f}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a46a300426475caff50e03bad4532c19f}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!transitionImageLayout@{transitionImageLayout}}
 \index{transitionImageLayout@{transitionImageLayout}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
 \doxysubsubsection{\texorpdfstring{transitionImageLayout()}{transitionImageLayout()}}
 {\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Pipeline\+::transition\+Image\+Layout (\begin{DoxyParamCaption}\item[{Vk\+Image}]{image,  }\item[{Vk\+Format}]{format,  }\item[{Vk\+Image\+Layout}]{old\+Layout,  }\item[{Vk\+Image\+Layout}]{new\+Layout,  }\item[{Vk\+Command\+Buffer}]{command\+Bufffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+transitions the image layout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vk\+Image} & image image\+Handle \\
+\hline
+{\em Vk\+Format} & format \\
+\hline
+{\em Vk\+Image\+Layout} & old\+Layout \\
+\hline
+{\em Vk\+Image\+Layout} & new\+Layout \\
+\hline
+{\em Vk\+Command\+Buffer} & command\+Bufffer \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}

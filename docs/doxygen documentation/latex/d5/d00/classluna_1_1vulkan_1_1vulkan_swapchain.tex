@@ -2,7 +2,7 @@
 \label{classluna_1_1vulkan_1_1vulkan_swapchain}\index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
 
 
-the \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+Swapchain}} is a collection of vulkan frambuffers.  
+the \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+Swapchain}} is a collection of vulkan frambuffers and image views to wich the scene will be .  
 
 
 
@@ -21,17 +21,17 @@ Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a3ad9f4b75e2
 Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a8fc26c80c31e5986d10fe18c91bb4f14}{recreate\+Swapchain}} ()
 \begin{DoxyCompactList}\small\item\em recreates the swapchain. \end{DoxyCompactList}\item 
 Vk\+Viewport \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ab240d26c43fb80899009783331ce5f12}{get\+Viewport}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em returns the main viewport handle. \end{DoxyCompactList}\item 
 Vk\+Rect2D \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a4511f134640ffd606ddd8739a6f0320c}{get\+Scissor}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em returns the viewport scissor. \end{DoxyCompactList}\item 
 Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ad1b0e364d775ae226dc785150619cce6}{init\+Viewport}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em initializes the main viewport. \end{DoxyCompactList}\item 
 Vk\+Format \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ac47ac505afd723edf99f6679c76a97a9}{get\+Surface\+Format}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em returns the surface format. \end{DoxyCompactList}\item 
 Vk\+Framebuffer \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a51ab9da02a86c13fc9d00ea50e697af4}{get\+Frame\+Buffer}} (uint8\+\_\+t index)
-\item 
+\begin{DoxyCompactList}\small\item\em returns the framebuffer given an index. \end{DoxyCompactList}\item 
 Vk\+Descriptor\+Set \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ac10c35a40970fbc24f9c72ff4fe5375b}{get\+Viewport\+Image}} (uint8\+\_\+t current\+Frame)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em returns a Viewport\+Image descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -64,7 +64,7 @@ Vk\+Sampler \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a0f1089773c
 
 
 \doxysubsection{Detailed Description}
-the \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+Swapchain}} is a collection of vulkan frambuffers. 
+the \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+Swapchain}} is a collection of vulkan frambuffers and image views to wich the scene will be . 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a30205844e523a4c82a586c2fa226a23a}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a30205844e523a4c82a586c2fa226a23a}} 
@@ -121,36 +121,84 @@ VK\+\_\+\+SUCCES
 \doxysubsubsection{\texorpdfstring{getFrameBuffer()}{getFrameBuffer()}}
 {\footnotesize\ttfamily Vk\+Framebuffer luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+returns the framebuffer given an index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vk\+Frame\+Buffer} & the framebuffer handle. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a4511f134640ffd606ddd8739a6f0320c}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a4511f134640ffd606ddd8739a6f0320c}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getScissor@{getScissor}}
 \index{getScissor@{getScissor}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
 \doxysubsubsection{\texorpdfstring{getScissor()}{getScissor()}}
 {\footnotesize\ttfamily Vk\+Rect2D luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Scissor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+returns the viewport scissor. 
+
+\begin{DoxyReturn}{Returns}
+Vk\+Rect2D extent. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ac47ac505afd723edf99f6679c76a97a9}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ac47ac505afd723edf99f6679c76a97a9}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getSurfaceFormat@{getSurfaceFormat}}
 \index{getSurfaceFormat@{getSurfaceFormat}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
 \doxysubsubsection{\texorpdfstring{getSurfaceFormat()}{getSurfaceFormat()}}
 {\footnotesize\ttfamily Vk\+Format luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Surface\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+returns the surface format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vk\+Format} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ab240d26c43fb80899009783331ce5f12}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ab240d26c43fb80899009783331ce5f12}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getViewport@{getViewport}}
 \index{getViewport@{getViewport}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
 \doxysubsubsection{\texorpdfstring{getViewport()}{getViewport()}}
 {\footnotesize\ttfamily Vk\+Viewport luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Viewport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+returns the main viewport handle. 
+
+\begin{DoxyReturn}{Returns}
+Vk\+Viewport main handle. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ac10c35a40970fbc24f9c72ff4fe5375b}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ac10c35a40970fbc24f9c72ff4fe5375b}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getViewportImage@{getViewportImage}}
 \index{getViewportImage@{getViewportImage}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
 \doxysubsubsection{\texorpdfstring{getViewportImage()}{getViewportImage()}}
 {\footnotesize\ttfamily Vk\+Descriptor\+Set luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Viewport\+Image (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{current\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+returns a Viewport\+Image descriptor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vk\+Descriptor\+Set} & image descriptor. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ad1b0e364d775ae226dc785150619cce6}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ad1b0e364d775ae226dc785150619cce6}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!initViewport@{initViewport}}
 \index{initViewport@{initViewport}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
 \doxysubsubsection{\texorpdfstring{initViewport()}{initViewport()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Swapchain\+::init\+Viewport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+initializes the main viewport. 
+
+\begin{DoxyReturn}{Returns}
+VK\+\_\+\+SUCCESS when the initialization was succesful. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a8fc26c80c31e5986d10fe18c91bb4f14}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a8fc26c80c31e5986d10fe18c91bb4f14}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!recreateSwapchain@{recreateSwapchain}}
 \index{recreateSwapchain@{recreateSwapchain}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}

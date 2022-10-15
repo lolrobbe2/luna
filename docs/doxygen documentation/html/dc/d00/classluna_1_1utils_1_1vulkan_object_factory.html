@@ -116,6 +116,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3623efe14bd618a25ac747e13b8a87bb"><td class="memItemLeft" align="right" valign="top">static VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/classluna_1_1utils_1_1vulkan_object_factory.html#a3623efe14bd618a25ac747e13b8a87bb">createImageView</a> (VkImageView *pImageView, VkImageViewCreateInfo *pImageViewCreateInfo)</td></tr>
 <tr class="memdesc:a3623efe14bd618a25ac747e13b8a87bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a VkImageView.  <a href="../../dc/d00/classluna_1_1utils_1_1vulkan_object_factory.html#a3623efe14bd618a25ac747e13b8a87bb">More...</a><br /></td></tr>
 <tr class="separator:a3623efe14bd618a25ac747e13b8a87bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61c72ddf01c9e15b546bd5c15bdad65e"><td class="memItemLeft" align="right" valign="top">static VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/classluna_1_1utils_1_1vulkan_object_factory.html#a61c72ddf01c9e15b546bd5c15bdad65e">createImageView</a> (VkImageView *pImageView, const VkImage &amp;image, const VkFormat &amp;format, const VkImageAspectFlags &amp;imageAspectFlags)</td></tr>
+<tr class="memdesc:a61c72ddf01c9e15b546bd5c15bdad65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a VkImageView.  <a href="../../dc/d00/classluna_1_1utils_1_1vulkan_object_factory.html#a61c72ddf01c9e15b546bd5c15bdad65e">More...</a><br /></td></tr>
+<tr class="separator:a61c72ddf01c9e15b546bd5c15bdad65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -240,8 +243,73 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a61c72ddf01c9e15b546bd5c15bdad65e" name="a61c72ddf01c9e15b546bd5c15bdad65e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61c72ddf01c9e15b546bd5c15bdad65e">&#9670;&#160;</a></span>createImageView() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkResult luna::utils::vulkanObjectFactory::createImageView </td>
+          <td>(</td>
+          <td class="paramtype">VkImageView *&#160;</td>
+          <td class="paramname"><em>pImageView</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkImage &amp;&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkFormat &amp;&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkImageAspectFlags &amp;&#160;</td>
+          <td class="paramname"><em>imageAspectFlags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates a VkImageView. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pImageView*</td><td>pointer to the imageView. </td></tr>
+    <tr><td class="paramname">VkImage</td><td>image handle </td></tr>
+    <tr><td class="paramname">VkFormat</td><td>format image format </td></tr>
+    <tr><td class="paramname">imageAspectFlags</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VK_SUCCES when creation was succesful. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageView.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageView.html</a> </dd>
+<dd>
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImageView.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImageView.html</a> </dd>
+<dd>
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html</a> </dd></dl>
+
+</div>
+</div>
 <a id="a3623efe14bd618a25ac747e13b8a87bb" name="a3623efe14bd618a25ac747e13b8a87bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3623efe14bd618a25ac747e13b8a87bb">&#9670;&#160;</a></span>createImageView()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3623efe14bd618a25ac747e13b8a87bb">&#9670;&#160;</a></span>createImageView() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
