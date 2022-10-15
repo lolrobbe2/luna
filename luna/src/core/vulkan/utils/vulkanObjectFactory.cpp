@@ -35,5 +35,26 @@ namespace luna
 			imageCreateInfo.usage = usageFlags;
 			return vkCreateImage(device->getDeviceHandles().device, &imageCreateInfo, nullptr, pImage);
 		}
+		VkResult vulkanObjectFactory::createImageView(VkImageView* pImageView, VkImageViewCreateInfo* pImageViewCreateInfo = nullptr)
+		{
+			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
+			return vkCreateImageView(device->getDeviceHandles().device, pImageViewCreateInfo, nullptr,pImageView);
+		}
+		VkResult vulkanObjectFactory::createImageView(VkImageView* pImageView,const VkImage& image,const VkFormat& format,const VkImageAspectFlags& imageAspectFlags)
+		{
+			VkImageViewCreateInfo imageViewCreateInfo = {};
+			imageViewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+			imageViewCreateInfo.pNext = nullptr;
+
+			imageViewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+			imageViewCreateInfo.image = image;
+			imageViewCreateInfo.format = format;
+			imageViewCreateInfo.subresourceRange.baseMipLevel = 0;
+			imageViewCreateInfo.subresourceRange.levelCount = 1;
+			imageViewCreateInfo.subresourceRange.baseArrayLayer = 0;
+			imageViewCreateInfo.subresourceRange.layerCount = 1;
+			imageViewCreateInfo.subresourceRange.aspectMask = imageAspectFlags;
+			return createImageView(pImageView, &imageViewCreateInfo);
+		}
 	}
 }

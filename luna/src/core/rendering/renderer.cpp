@@ -3,7 +3,7 @@
 #include <core/vulkan/device/vulkanDevice.h>
 #include <core/vulkan/rendering/vulkanPipeline.h>
 #include <core/utils/shaderLibrary.h>
-
+#include <imgui_demo.cpp>
 namespace luna
 {
 	namespace renderer
@@ -43,12 +43,10 @@ namespace luna
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode| ImGuiDockNodeFlags_NoResize);
 			if (ImGui::Begin("settings",nullptr))
 			{
-				
-				std::string text = "framerate = ";
-				std::string framerate = std::to_string(ImGui::GetIO().Framerate);
-				ImGui::Text((text + framerate).c_str());
-
+				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
+				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
 			}
+
 			rendererPipeline->end();
 			rendererPipeline->createCommands();
 			rendererPipeline->flush();

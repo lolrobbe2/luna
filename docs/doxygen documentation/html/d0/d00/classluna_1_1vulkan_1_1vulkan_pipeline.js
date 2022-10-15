@@ -28,6 +28,7 @@ var classluna_1_1vulkan_1_1vulkan_pipeline =
     [ "multisamplingStateCreateInfo", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afc6942d545a4132c205e53ac3aef3dcf", null ],
     [ "pipelineLayoutCreateInfo", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5b4270cf728d1e08d705a0563003de74", null ],
     [ "rasterizationStateCreateInfo", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a061fa43828034b9c3ada6aa8c797a42f", null ],
+    [ "transitionImageLayout", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a46a300426475caff50e03bad4532c19f", null ],
     [ "commandBuffers", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a6cb2a6819e480036478d8a7b88f3be82", null ],
     [ "commandPool", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a414e2d69561aa0ad2038bfae51c21f7f", null ],
     [ "currentFrame", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a558baaa1bd2389cedf1fc07301924e90", null ],

@@ -27,6 +27,7 @@ namespace luna
                 .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_DST_BIT)
                 .build()
                 .value();
+            // std::vector<VkImageView> m_SwapChainImageViews;
 			return VK_SUCCESS;
 		}
 		VkResult vulkanSwapchain::recreateSwapchain()
@@ -37,7 +38,7 @@ namespace luna
             {
                 vkDestroyFramebuffer(mSwapchain.device, frameBuffers[i], nullptr);
             }
-
+            
             vkb::SwapchainBuilder swapchainBuilder{ mSwapchainSpec.physicalDevice, mSwapchainSpec.device, mSwapchainSpec.surface };
             auto newSwapchain = swapchainBuilder.set_old_swapchain(mSwapchain)
                 .use_default_format_selection()

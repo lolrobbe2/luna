@@ -26,7 +26,7 @@ namespace luna
 		};
 
 		/**
-		 * @brief the vulkanSwapchain is a collection of vulkan frambuffers.
+		 * @brief the vulkanSwapchain is a collection of vulkan frambuffers and image views to wich the scene will be .
 		 */
 		class vulkanSwapchain
 		{
@@ -47,11 +47,41 @@ namespace luna
 			 * \return returns VK_SUCCESS on succesful creation.
 			 */
 			VkResult recreateSwapchain();
+			/**
+			 * @brief returns the main viewport handle.
+			 * 
+			 * \return VkViewport main handle.
+			 */
 			VkViewport getViewport();
+			/**
+			 * @brief returns the viewport scissor.
+			 * 
+			 * \return VkRect2D extent.
+			 */
 			VkRect2D getScissor();
+			/**
+			 * @brief initializes the main viewport.
+			 * 
+			 * \return VK_SUCCESS when the initialization was succesful.
+			 */
 			VkResult initViewport();
+			/**
+			 * @brief returns the surface format.
+			 * 
+			 * \param VkFormat
+			 */
 			inline VkFormat getSurfaceFormat() { return mSwapchain.image_format; };
+			/**
+			 * @brief returns the framebuffer given an index.
+			 * 
+			 * \param VkFrameBuffer the framebuffer handle.
+			 */
 			inline VkFramebuffer getFrameBuffer(uint8_t index) { return frameBuffers[index]; };
+			/**
+			 * @brief returns a ViewportImage descriptor.
+			 * 
+			 * \param VkDescriptorSet image descriptor.
+			 */
 			inline VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
 			vkb::Swapchain mSwapchain;
 			std::vector<VkFramebuffer> frameBuffers;

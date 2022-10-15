@@ -8,6 +8,10 @@ namespace luna
 {
 	namespace vulkan
 	{
+		/**
+		 * @brief vulkan pipline implementation class.
+		 * @see renderer::pipeline.
+		 */
 		class vulkanPipeline : public renderer::pipeline
 		{
 		public:
@@ -52,11 +56,14 @@ namespace luna
 			 * 
 			 */
 			virtual void flush() override;
+			/**
+			 * @brief return the pipeline renderpass.
+			 */
 			inline VkRenderPass getRenderPass() { return renderPass; };
 			renderer::pipelineLayout layout;
 		private:
 			/**
-			 * @brief creates the shader layout.
+			 * @brief creates the pipeline layout.
 			 * 
 			 */
 			void createPipeLineLayout();
@@ -118,12 +125,56 @@ namespace luna
 			 * \return 
 			 */
 			VkPipelineInputAssemblyStateCreateInfo inputAssemblyCreateInfo(VkPrimitiveTopology topology);
+			/**
+			 * @brief creates the rasterizer state create info.
+			 * 
+			 * \param polygonMode
+			 * \return VkPipelineRasterizationStateCreateInfo struct
+			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html
+			 */
 			VkPipelineRasterizationStateCreateInfo rasterizationStateCreateInfo(VkPolygonMode polygonMode);
+			/**
+			 * @brief creates the multisampling info.
+			 * 
+			 * \return VkPipelineMultisampleStateCreateInfo struct
+			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html
+			 */
 			VkPipelineMultisampleStateCreateInfo multisamplingStateCreateInfo();
+			/**
+			 * @brief the color blend attachment state(color writemask).
+			 * 
+			 * \return VkPipelineColorBlendAttachmentState struct
+			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html
+			 */
 			VkPipelineColorBlendAttachmentState colorBlendAttachmentState();
+			/**
+			 * @brief creates the pipeline layout info.
+			 * 
+			 * \return VkPipelineLayoutCreateInfo struct
+			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreatePipelineLayout.html
+			 */
 			VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo();
+			/**
+			 * @brief initialzes the dafault pipeline renderPass.
+			 * 
+			 */
 			void initDefaultRenderpass();
+			/**
+			 * @brief initializes the the pipeline syncronization structures.
+			 * (VkFence and VkSemaphore)
+			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFence.html
+			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html
+			 */
 			void initSyncStructures();
+			/**
+			 * @brief transitions the image layout.
+			 * 
+			 * \param VkImage image imageHandle
+			 * \param VkFormat format
+			 * \param VkImageLayout oldLayout
+			 * \param VkImageLayout newLayout
+			 * \param VkCommandBuffer commandBufffer
+			 */
 			void transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout, VkCommandBuffer commandBufffer);
 		private:
 			//TODO improve variables usage.

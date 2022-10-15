@@ -118,7 +118,13 @@ namespace luna
 			ImGui_ImplGlfw_NewFrame();
 			//imgui commands
 			ImGui::NewFrame();
-
+			/*
+			if (ImGui::Begin("scene", nullptr))
+			{
+				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+				//ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), ImVec2{viewportPanelSize.x, viewportPanelSize.y});
+			}
+			*/
 			
 			
 
