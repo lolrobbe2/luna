@@ -11,15 +11,17 @@ namespace luna
 			cacheMiss = 0,
 			cacheHit = 1,
 			cacheInvalidHandle = 2,
-			CACHE_MAX_ENUM = 4
+			cacheOpSucces = 3,
+			cacheOpFailed = 4,
+			CACHE_MAX_ENUM = 5
 		};
 		
 
 		/**
 		 * @brief a pretty optimal multithreaded vector cahce headeronly class.
-		 * 
+		 * @note the vectorcache does not check for duplicate value's
 		 */
-		template<class value> class vectorCache
+		template<typename value> class vectorCache
 		{
 
 		public:
@@ -57,11 +59,11 @@ namespace luna
 			 * 
 			 * \param key a handle to the cahce object
 			 * \param _value the cache object to store
-			 * \return std::pair<bool, value> when succesful returs true and the requested cache value.
+			 * \return std::pair<bool, value> when succesful returs overFlowKey and the overFLow cache value.
 			 */
-			std::pair<bool, value> putValue(cacheObject* key, value _value)
+			std::pair<cacheObject, value> putValue(cacheObject* key, value _value)
 			{
-				if (*key == 0) return std::pair<bool, value>(false, value());
+				if (*key != 0) return std::pair<bool, value>(false, value());
 				*key = uuid();
 				std::lock_guard<std::mutex>(this->lockGuard);
 				
@@ -70,11 +72,12 @@ namespace luna
 				if (handleCache.size() > maxCacheSize)
 				{
 					value overFlowValue = valueCache.end();
+					cacheObject overFlowKey = handleCache.end();
 					handleCache.resize(maxCacheSize);
 					valueCache.resize(maxCacheSize);
-					return std::pair<bool, value>(true, overFlowValue); // returns true in case of cache overflow.
+					return std::pair<cacheObject, value>(overFlowKey, overFlowValue); // returns true in case of cache overflow.
 				}
-				return std::pair<bool, value>(false, value()); //returns false incase there is no cache overflow.
+				return std::pair<cacheObject, value>(false, value()); //returns false incase there is no cache overflow.
 			};
 			/**
 			 * @brief gets a stored cahe value using the key handle.
@@ -90,7 +93,7 @@ namespace luna
 
 				//find cahePair based on key. 
 
-				for (size_t iterator = 0; iterator < handleCache.size(); iterator++)
+				for (size_t iterator = 0; iterator < handleCache.size(); iterator++) //iterate iver handle cache.
 				{
 					cacheObject currentKey = handleCache[iterator];
 					if (currentKey == key)
@@ -98,7 +101,9 @@ namespace luna
 						value requesteCacheObject = valueCache[iterator];
 						handleCache.erase(handleCache.begin() + iterator);
 						valueCache.erase(valueCache.begin() + iterator);
-						handleCache.insert(cache.begin(), requesteCacheObject);
+						handleCache.insert(handleCache.begin(), key);
+						valueCache.insert(valueCache.begin(), requesteCacheObject);
+
 						//return cache hit and value.
 						return std::pair<cacheResult, value>(cacheResult::cacheHit, requesteCacheObject);
 					}
@@ -106,7 +111,57 @@ namespace luna
 				//if value is not found return empty value and cache miss.
 				return std::pair<cacheResult, value>(cacheResult::cacheMiss, value());
 			};
-		private:
+			/**
+			 * @brief sets the current value of the given cacheObject key.
+			 * 
+			 * \param cacheObject key the key to overwite
+			 * \param _value the value to overwrite the current value
+			 * \return 
+			 */
+			std::pair<cacheResult, value> setValue(cacheObject key, value _value)
+			{
+				if (key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
+				std::lock_guard<std::mutex>(this->lockGuard);
+
+				for (size_t iterator = 0; iterator < handleCache.size(); iterator++)
+				{
+					cacheObject currentKey = handleCache[iterator];
+					if (currentKey == key)
+					{
+						handleCache.erase(handleCache.begin() + iterator);
+						valueCache.erase(valueCache.begin() + iterator);
+						handleCache.insert(cache.begin(), key);
+						valueCache.insert(valueCache.begin(), _value);
+						//return cache hit and value.
+						return std::pair<cacheResult, value>(cacheResult::cacheOpSucces, _value);
+					}
+				}
+				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, _value);
+			}
+
+			/**
+			 * @brief erases value of the given key.
+			 * 
+			 * \param cacheObject key
+			 * \param value _value
+			 * \return cacheOpSucces when value whas succesfully erased
+			 * \return cacheOpFailed when value could not be found or some other operation failed
+			 */
+			std::pair<cacheResult, value> eraseValue(cacheObject key, value _value)
+			{
+				if (key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
+				std::lock_guard<std::mutex>(this->lockGuard);
+
+				cacheObject currentKey = handleCache[iterator];
+				if (currentKey == key)
+				{
+					handleCache.erase(handleCache.begin() + iterator);
+					valueCache.erase(valueCache.begin() + iterator);
+					return std::pair<cacheResult, value()>(cacheResult::cacheOpSucces, _value);
+				}
+				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, _value);
+			}
+		protected:
 
 			uint64_t maxCacheSize;
 			std::vector<uint64_t> handleCache; //use seperate vector to allow the entire vector to remain in cache.

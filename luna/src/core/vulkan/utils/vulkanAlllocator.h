@@ -6,6 +6,8 @@ namespace luna
 {
 	namespace utils
 	{
+		typedef uint64_t allocationHandle;
+
 		class vulkanAllocator
 		{
 		public:
@@ -22,15 +24,17 @@ namespace luna
 			 * @brief destroys the allocator.
 			 */
 			virtual ~vulkanAllocator();
+			VkResult createImage(VkImage* pImage, VkImageUsageFlags usageFlags, VmaMemoryUsage memoryUsage, VkExtent3D extent, VkFormat format);
 		private:
-			struct allocation
+			struct vmaAllocation
 			{
 				VmaAllocation allocation;
-				uint64_t vulkanHandle;
+				VmaAllocationInfo allocationInfo;
 			};
-			vectorCache<allocation> allocationCache;
+			inline static ref<renderer::device> pDevice; //ref to graphics device.
 			inline static VmaAllocator sAllocator;
-			VkQueue transferQueue; //for later;
+			VkQueue transferQueue; //for later;7
+
 		};
 		
 	}

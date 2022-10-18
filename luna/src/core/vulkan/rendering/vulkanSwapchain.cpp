@@ -1,5 +1,6 @@
 #include "vulkanSwapchain.h"
 #include <backends/imgui_impl_vulkan.h>
+#include <core/vulkan/utils/vulkanObjectFactory.h>
 namespace luna
 {
 	namespace vulkan
@@ -27,7 +28,7 @@ namespace luna
                 .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_DST_BIT)
                 .build()
                 .value();
-            // std::vector<VkImageView> m_SwapChainImageViews;
+            // std::vector<VkImageView> m_SwapChainImageViews; 
 			return VK_SUCCESS;
 		}
 		VkResult vulkanSwapchain::recreateSwapchain()
@@ -51,6 +52,7 @@ namespace luna
                 .build();
               vkb::destroy_swapchain(mSwapchain);
               mSwapchain = newSwapchain.value();
+   
 			return VK_SUCCESS;
 		}
 		VkResult vulkanSwapchain::destroySwapchain()
@@ -104,11 +106,20 @@ namespace luna
             samplerInfo.mipLodBias = 0.0f;
             samplerInfo.minLod = 0.0f;
             samplerInfo.maxLod = 0.0f;
+
+            sceneViewportImages.resize(mSwapchain.image_count);
+            sceneViewportImageViews.resize(mSwapchain.image_count);
+            for (size_t i = 0; i < mSwapchain.image_count; i++)
+            {
+                utils::vulkanObjectFactory::createImage(&sceneViewportImages[i], VK_IMAGE_USAGE_SAMPLED_BIT, { mSwapchain.extent.width,mSwapchain.extent.height,1 }, mSwapchain.image_format);
+                utils::vulkanObjectFactory::createImageView(&sceneViewportImageViews[i], sceneViewportImages[i], mSwapchain.image_format, VkImageAspectFlagBits::VK_IMAGE_ASPECT_COLOR_BIT);
+            }
+
             vkCreateSampler(mSwapchainSpec.device, &samplerInfo, nullptr, &viewportSampler);
             m_Dset.resize(mSwapchain.image_count);
             for (uint32_t i = 0; i < mSwapchain.image_count; i++)
-                m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, mSwapchain.get_image_views().value()[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
-            init = true;
+                m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, sceneViewportImageViews[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+            //init = true;
             return VK_SUCCESS;
         }
                

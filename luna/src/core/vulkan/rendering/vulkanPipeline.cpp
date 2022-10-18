@@ -1,6 +1,7 @@
 #include "vulkanPipeline.h"
 #include <core/vulkan/device/vulkanDevice.h>
 #include <backends/imgui_impl_vulkan.cpp>
+#include <core/vulkan/utils/vulkanObjectFactory.h>
 
 namespace luna
 {
@@ -21,6 +22,7 @@ namespace luna
 			commandBuffers.resize(maxFramesInFlight);
 			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
 			presentQueue = device->getQueue(vkb::QueueType::present);
+			utils::vulkanObjectFactory::init(layout.device);
 			createPipeline(layout);
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
@@ -118,13 +120,11 @@ namespace luna
 			ImGui_ImplGlfw_NewFrame();
 			//imgui commands
 			ImGui::NewFrame();
-			/*
 			if (ImGui::Begin("scene", nullptr))
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				//ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), ImVec2{viewportPanelSize.x, viewportPanelSize.y});
+				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), ImVec2{viewportPanelSize.x, viewportPanelSize.y});
 			}
-			*/
 			
 			
 
@@ -327,7 +327,7 @@ namespace luna
 			LN_CORE_INFO("framebuffer creation result ={0}", vDevice->createFramebuffers(renderPass));
 			initSyncStructures();
 			LN_CORE_INFO("pipelinecreation result = {0}",buildPipeline(vDevice->getDeviceHandles().device, renderPass));
-			
+			vDevice->swapchain->initViewport();
 
 		}
 

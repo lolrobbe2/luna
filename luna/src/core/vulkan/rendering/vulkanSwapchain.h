@@ -99,8 +99,10 @@ namespace luna
 			std::vector<VkImage> swapchainImages;
 			std::vector<VkImageView> swapChainImageViews;
 			VkFormat swapchainImageFormat;
-			bool init = true;
+			bool init = false;
 			VkSampler viewportSampler;
+			std::vector<VkImage> sceneViewportImages;
+			std::vector<VkImageView> sceneViewportImageViews;
 		};
 	}
 }

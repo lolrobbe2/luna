@@ -4,6 +4,7 @@
 #include <core/vulkan/window/window.h>
 #include <core/events/event.h>
 #include <core/rendering/renderer.h>
+#include <core/utils/objectStorage.h>
 namespace luna
 {
 	namespace application
@@ -30,6 +31,7 @@ namespace luna
 			void onEvent(Event& e);
 		private:
 			ref<vulkan::window> mWindow;
+			utils::objectStorage<glm::mat4> windowStorage;
 			bool running = true;
 		};
 		/**
