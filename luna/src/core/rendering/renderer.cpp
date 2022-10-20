@@ -46,6 +46,7 @@ namespace luna
 				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
 				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
 			}
+			ImGui::End();
 
 			rendererPipeline->end();
 			rendererPipeline->createCommands();

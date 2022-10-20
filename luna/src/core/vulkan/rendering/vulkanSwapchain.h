@@ -1,6 +1,7 @@
 #pragma once
 #include <core/vulkan/window/window.h>
 #include <VkBootstrap.h>
+
 namespace luna
 {
 	namespace vulkan

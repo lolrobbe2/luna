@@ -97,6 +97,7 @@ namespace luna
 			ImGui_ImplVulkan_DestroyFontUploadObjects();
 			vkFreeCommandBuffers(vDevice, commandPool, 1, &commandBuffer);
 			vkDestroyCommandPool(vDevice, commandPool, nullptr);
+			std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->swapchain->initViewport();
 			LN_CORE_INFO("imgui init complete");
 		}
 		vulkanImgui::~vulkanImgui()

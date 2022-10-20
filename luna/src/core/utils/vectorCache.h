@@ -63,16 +63,15 @@ namespace luna
 			 */
 			std::pair<cacheObject, value> putValue(cacheObject* key, value _value)
 			{
-				if (*key != 0) return std::pair<bool, value>(false, value());
-				*key = uuid();
+				if (*key == 0) *key = uuid();
 				std::lock_guard<std::mutex>(this->lockGuard);
 				
 				handleCache.insert(handleCache.begin(), *key);
 				valueCache.insert(valueCache.begin(), _value);
 				if (handleCache.size() > maxCacheSize)
 				{
-					value overFlowValue = valueCache.end();
-					cacheObject overFlowKey = handleCache.end();
+					value overFlowValue = valueCache.back();
+					cacheObject overFlowKey = handleCache.back();
 					handleCache.resize(maxCacheSize);
 					valueCache.resize(maxCacheSize);
 					return std::pair<cacheObject, value>(overFlowKey, overFlowValue); // returns true in case of cache overflow.
@@ -147,19 +146,21 @@ namespace luna
 			 * \return cacheOpSucces when value whas succesfully erased
 			 * \return cacheOpFailed when value could not be found or some other operation failed
 			 */
-			std::pair<cacheResult, value> eraseValue(cacheObject key, value _value)
+			std::pair<cacheResult, value> eraseValue(cacheObject key)
 			{
 				if (key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
 				std::lock_guard<std::mutex>(this->lockGuard);
-
-				cacheObject currentKey = handleCache[iterator];
-				if (currentKey == key)
+				for (uint64_t iterator = 0; iterator < handleCache.size(); iterator++)
 				{
-					handleCache.erase(handleCache.begin() + iterator);
-					valueCache.erase(valueCache.begin() + iterator);
-					return std::pair<cacheResult, value()>(cacheResult::cacheOpSucces, _value);
+					cacheObject currentKey = handleCache[iterator];
+					if (currentKey == key)
+					{
+						handleCache.erase(handleCache.begin() + iterator);
+						valueCache.erase(valueCache.begin() + iterator);
+						return std::pair<cacheResult, value>(cacheResult::cacheOpSucces, value());
+					}
 				}
-				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, _value);
+				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, value());
 			}
 		protected:
 

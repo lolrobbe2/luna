@@ -1,19 +1,25 @@
-[09:14:42] [trace] LUNA: instance creation result = 0
-[09:14:42] [trace] LUNA: surface creation result = 0
-[09:14:42] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[09:14:42] [trace] LUNA: device selection result = 0
-[09:14:42] [trace] LUNA: logical device creation result = 0
-[09:14:42] [trace] LUNA: swapchain creation result = 0
-[09:14:42] [trace] LUNA: reflecting shader: false
-[09:14:42] [trace] LUNA: creating shader Layout
-[09:14:42] [trace] LUNA: created shaderLayout
-[09:14:42] [trace] LUNA: reflecting shader: false
-[09:14:42] [trace] LUNA: creating shader Layout
-[09:14:42] [trace] LUNA: created shaderLayout
-[09:14:42] [info] LUNA: commandbuffer create info = 0
-[09:14:42] [info] LUNA: creating vulkan shadermodule, result = 0
-[09:14:42] [info] LUNA: creating vulkan shadermodule, result = 0
-[09:14:42] [info] LUNA: framebuffer creation result =0
-[09:14:42] [info] LUNA: pipelinecreation result = 0
-[09:14:42] [error] LUNA: Validation Error: [ VUID-VkImageViewCreateInfo-image-01020 ] Object 0: handle = 0x95a125000000001a, type = VK_OBJECT_TYPE_IMAGE; | MessageID = 0xa44364db | vkCreateImageView(): VkImage 0x95a125000000001a[] used with no memory bound. Memory should be bound by calling vkBindImageMemory(). The Vulkan spec states: If image is non-sparse then it must be bound completely and contiguously to a single VkDeviceMemory object (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkImageViewCreateInfo-image-01020)
-[09:14:42] [error] LUNA: Validation Error: [ VUID-VkImageViewCreateInfo-image-01020 ] Object 0: handle = 0x2cfba2000000001c, type = VK_OBJECT_TYPE_IMAGE; | MessageID = 0xa44364db | vkCreateImageView(): VkImage 0x2cfba2000000001c[] used with no memory bound. Memory should be bound by calling vkBindImageMemory(). The Vulkan spec states: If image is non-sparse then it must be bound completely and contiguously to a single VkDeviceMemory object (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkImageViewCreateInfo-image-01020)
+[18:46:12] [trace] LUNA: instance creation result = 0
+[18:46:12] [trace] LUNA: surface creation result = 0
+[18:46:12] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[18:46:12] [trace] LUNA: device selection result = 0
+[18:46:12] [trace] LUNA: logical device creation result = 0
+[18:46:12] [trace] LUNA: swapchain creation result = 0
+[18:46:12] [trace] LUNA: reflecting shader: false
+[18:46:12] [trace] LUNA: creating shader Layout
+[18:46:12] [trace] LUNA: created shaderLayout
+[18:46:12] [trace] LUNA: reflecting shader: false
+[18:46:12] [trace] LUNA: creating shader Layout
+[18:46:12] [trace] LUNA: created shaderLayout
+[18:46:12] [info] LUNA: commandbuffer create info = 0
+[18:46:12] [info] LUNA: vma allocator creation result = 0
+[18:46:12] [info] LUNA: creating vulkan shadermodule, result = 0
+[18:46:12] [info] LUNA: creating vulkan shadermodule, result = 0
+[18:46:12] [info] LUNA: framebuffer creation result =0
+[18:46:12] [info] LUNA: pipelinecreation result = 0
+[18:46:12] [info] LUNA: imgui descriptor set creation result = 0
+[18:46:12] [info] LUNA: imgui init for GLFW-vulkan = true
+[18:46:12] [info] LUNA: imgui init vulkan = true
+[18:46:12] [error] LUNA: Validation Error: [ VUID-VkImageCreateInfo-initialLayout-00993 ] Object 0: handle = 0x20da5726aa0, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x4c3c1da0 | vkCreateImage(): initialLayout is VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, must be VK_IMAGE_LAYOUT_UNDEFINED or VK_IMAGE_LAYOUT_PREINITIALIZED. The Vulkan spec states: initialLayout must be VK_IMAGE_LAYOUT_UNDEFINED or VK_IMAGE_LAYOUT_PREINITIALIZED (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkImageCreateInfo-initialLayout-00993)
+[18:46:12] [error] LUNA: Validation Error: [ VUID-VkImageCreateInfo-initialLayout-00993 ] Object 0: handle = 0x20da5726aa0, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x4c3c1da0 | vkCreateImage(): initialLayout is VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, must be VK_IMAGE_LAYOUT_UNDEFINED or VK_IMAGE_LAYOUT_PREINITIALIZED. The Vulkan spec states: initialLayout must be VK_IMAGE_LAYOUT_UNDEFINED or VK_IMAGE_LAYOUT_PREINITIALIZED (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkImageCreateInfo-initialLayout-00993)
+[18:46:12] [info] LUNA: imgui init complete
+[18:46:12] [trace] APP: started app

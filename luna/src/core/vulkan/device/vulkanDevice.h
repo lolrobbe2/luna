@@ -135,6 +135,7 @@ namespace luna
 				vkb::Instance instance;
 				vkb::Device device;
 				vkb::PhysicalDevice physicalDevice;
+				
 			};
 			/**
 			 * #brief returns the device subhandles.

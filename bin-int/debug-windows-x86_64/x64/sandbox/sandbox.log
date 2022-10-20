@@ -4,6 +4,8 @@ C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\debug\log.h(23,42): war
 C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\spdlog\include\spdlog\details\registry.h(34): message : see declaration of 'std::shared_ptr<spdlog::logger>'
 C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\debug\log.h(24,42): warning C4251: 'luna::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'luna::Log'
 C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\spdlog\include\spdlog\details\registry.h(34): message : see declaration of 'std::shared_ptr<spdlog::logger>'
-C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\application.h(32,24): warning C4251: 'luna::application::application::mWindow': class 'std::shared_ptr<luna::vulkan::window>' needs to have dll-interface to be used by clients of class 'luna::application::application'
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\application.h(33,24): warning C4251: 'luna::application::application::mWindow': class 'std::shared_ptr<luna::vulkan::window>' needs to have dll-interface to be used by clients of class 'luna::application::application'
 C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\core.h(26): message : see declaration of 'std::shared_ptr<luna::vulkan::window>'
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\application.h(34,36): warning C4251: 'luna::application::application::windowStorage': class 'luna::utils::objectStorage<glm::mat4>' needs to have dll-interface to be used by clients of class 'luna::application::application'
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\src\core\application.h(34): message : see declaration of 'luna::utils::objectStorage<glm::mat4>'
   sandbox.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\bin\debug-windows-x86_64\x64\sandbox\sandbox.exe
