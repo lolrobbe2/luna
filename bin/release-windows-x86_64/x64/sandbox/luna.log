@@ -1,8 +1,0 @@
-[16:02:04] [trace] LUNA: instance creation result = 0
-[16:02:04] [trace] LUNA: surface creation result = 0
-[16:02:04] [info] LUNA: api version = 0.1.2.182
-[16:02:04] [info] LUNA: picked physical device, name: AMD Radeon(TM) Graphics, type 1
-[16:02:04] [trace] LUNA: device selection result = 0
-[16:02:04] [trace] LUNA: logical device creation result = 0
-[16:02:04] [trace] LUNA: swapchain creation result = 0
-[16:02:04] [error] LUNA: file could not be loaded: src/assets/fragment.glsl
