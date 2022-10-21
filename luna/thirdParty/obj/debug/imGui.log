@@ -1,10 +1,1 @@
-﻿cl : command line  warning D9025: overriding '/MDd' with '/MD'
-  imgui_impl_glfw.cpp
-  imgui_impl_vulkan.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Generating Code...
-  imGui.vcxproj -> C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\bin\debug\imGui.lib
+﻿  imGui.vcxproj -> C:\Users\robbe\source\repos\luna\luna\thirdParty\bin\debug\imGui.lib
