@@ -24,6 +24,7 @@ namespace luna
 			static VkResult createImage(VkImage* pImage, const VkImageUsageFlags& usageFlags, const VmaMemoryUsage& memoryUsage, const VkExtent3D& extent, const VkFormat& format);
 			static VkResult destroyImage(const VkImage& image);
 			static VkResult createImageView(VkImageView* pImageView, const VkImage& image, const VkFormat& format, const VkImageAspectFlags& imageAspectFlags);
+			static VkResult destroyImageView(const VkImageView& imageView);
 		private:
 			struct vmaAllocation
 			{

@@ -24,11 +24,11 @@ namespace luna
 			allocatorCreateInfo.pTypeExternalMemoryHandleTypes = NULL;
 			allocatorCreateInfo.pHeapSizeLimit = NULL;
 			allocatorCreateInfo.preferredLargeHeapBlockSize = 0;
-			
+
 			VkPhysicalDeviceMemoryProperties memoryProperties;
 			vkGetPhysicalDeviceMemoryProperties(handles.physicalDevice, &memoryProperties);
 			allocatorCreateInfo.vulkanApiVersion = handles.appInfo.apiVersion;
-			LN_CORE_INFO("vma allocator creation result = {0}",vmaCreateAllocator(&allocatorCreateInfo, &sAllocator));
+			LN_CORE_INFO("vma allocator creation result = {0}", vmaCreateAllocator(&allocatorCreateInfo, &sAllocator));
 			pDevice = device;
 		}
 		void vulkanAllocator::shutdown()
@@ -37,9 +37,9 @@ namespace luna
 			vmaDestroyAllocator(sAllocator);
 		}
 
-		VkResult vulkanAllocator::createImage(VkImage* pImage,const VkImageUsageFlags& usageFlags,const VmaMemoryUsage& memoryUsage,const VkExtent3D& extent,const VkFormat& format)
+		VkResult vulkanAllocator::createImage(VkImage* pImage, const VkImageUsageFlags& usageFlags, const VmaMemoryUsage& memoryUsage, const VkExtent3D& extent, const VkFormat& format)
 		{
-		
+
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			VkImageCreateInfo imageCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO };
 			imageCreateInfo.pNext = nullptr;
@@ -54,7 +54,7 @@ namespace luna
 			imageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;
 			imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 			imageCreateInfo.usage = usageFlags;
-			imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
+			imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 
 			VmaAllocation allocation;
 			uint32_t memoryTypeIndex = 2;
@@ -93,6 +93,12 @@ namespace luna
 			imageViewCreateInfo.subresourceRange.aspectMask = imageAspectFlags;
 
 			return vkCreateImageView(device->getDeviceHandles().device, &imageViewCreateInfo, nullptr, pImageView);
+		}
+		VkResult vulkanAllocator::destroyImageView(const VkImageView& imageView)
+		{
+			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
+			vkDestroyImageView(device->getDeviceHandles().device, imageView, nullptr);
+			return VK_SUCCESS;
 		}
 	}
 }

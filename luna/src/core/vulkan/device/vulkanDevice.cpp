@@ -37,7 +37,7 @@ namespace luna
 
 		void vulkanDevice::destroyContext()
 		{
-			swapchain->~vulkanSwapchain();
+			//swapchain->~vulkanSwapchain();
 			vkDestroySurfaceKHR(deviceHandle.instance, surface, nullptr);
 			vkDestroyDevice(deviceHandle.device, nullptr);
 			vkDestroyInstance(deviceHandle.instance, nullptr);
@@ -189,7 +189,7 @@ namespace luna
 				LN_CORE_WARN(pCallbackData->pMessage);
 				break;
 			case VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT:
-				LN_CORE_ERROR(pCallbackData->pMessage);
+				LN_CORE_ERROR((std::string)pCallbackData->pMessage);
 				break;
 			case VK_DEBUG_UTILS_MESSAGE_SEVERITY_FLAG_BITS_MAX_ENUM_EXT:
 				break;

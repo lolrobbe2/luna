@@ -31,6 +31,8 @@
 *.out
 *.app
 /thirdParty
+./bin
+./bin-int
 *.vcxproj
 *.filters
 *.user

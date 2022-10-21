@@ -84,6 +84,7 @@ namespace luna
 			 * \param VkDescriptorSet image descriptor.
 			 */
 			inline VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
+			std::vector<VkImage> sceneViewportImages;
 			vkb::Swapchain mSwapchain;
 			std::vector<VkFramebuffer> frameBuffers;
 			std::vector<VkDescriptorSet> m_Dset;
@@ -102,7 +103,7 @@ namespace luna
 			VkFormat swapchainImageFormat;
 			bool init = false;
 			VkSampler viewportSampler;
-			std::vector<VkImage> sceneViewportImages;
+			
 			std::vector<VkImageView> sceneViewportImageViews;
 		};
 	}

@@ -91,8 +91,35 @@ namespace luna
 				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
 				
 				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
+				//transition dst image
+				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				//transition src image
+				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
 
-				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				VkImageCopy imageCopy;
+				imageCopy.dstOffset = { 0,0,0 };
+				imageCopy.srcOffset = { 0,0,0 };
+
+				imageCopy.extent = { vDevice->swapchain->mSwapchain.extent.width, vDevice->swapchain->mSwapchain.extent.height,1 };
+
+				imageCopy.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+				imageCopy.srcSubresource.mipLevel = 0;
+				imageCopy.srcSubresource.baseArrayLayer = 0;
+				imageCopy.srcSubresource.layerCount = 1;
+
+				imageCopy.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+				imageCopy.dstSubresource.mipLevel = 0;
+				imageCopy.dstSubresource.baseArrayLayer = 0;
+				imageCopy.dstSubresource.layerCount = 1;
+				
+
+				vkCmdCopyImage(commandPool->operator=(commandBuffers[currentBuffer]), vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
+				
+				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+
+				//transition src image to src to clear image
+				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				
 				vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentBuffer]), vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
 				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentBuffer]));
 				//copy framebuffer to seperate image.
@@ -624,6 +651,21 @@ namespace luna
 					barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
 
 					sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+					destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				}
+				else if (oldLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR && newLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL){
+					barrier.srcAccessMask = VK_ACCESS_MEMORY_READ_BIT;
+					barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+
+					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+					destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				}
+				else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+				{
+					barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+					barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
 					destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
 				}
 				else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {

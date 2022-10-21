@@ -25,7 +25,7 @@ namespace luna
                 //.set_desired_format({VK_FORMAT_R8G8B8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR})
                 .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
                 .set_desired_extent(swapChainSpec.window->getWidth(), swapChainSpec.window->getHeight())
-                .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_DST_BIT)
+                .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
                 .build()
                 .value();
           
@@ -48,7 +48,7 @@ namespace luna
                 .set_desired_present_mode(VK_PRESENT_MODE_MAILBOX_KHR)
                 .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR})
                 .set_desired_extent(mSwapchainSpec.window->getWidth(), mSwapchainSpec.window->getHeight())
-                .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_DST_BIT)
+                .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
                 .set_required_min_image_count(mSwapchain.image_count)
                 .build();
               vkb::destroy_swapchain(mSwapchain);
@@ -58,12 +58,16 @@ namespace luna
 		}
 		VkResult vulkanSwapchain::destroySwapchain()
 		{
+            if (mSwapchain == VK_NULL_HANDLE) return VK_ERROR_INVALID_EXTERNAL_HANDLE;
             for (size_t i = 0; i < frameBuffers.size(); i++)
-            {               
+            {
+                utils::vulkanAllocator::destroyImageView(sceneViewportImageViews[i]);
+                utils::vulkanAllocator::destroyImage(sceneViewportImages[i]);
                 vkDestroyFramebuffer(mSwapchain.device, frameBuffers[i], nullptr);
             }
             mSwapchain.destroy_image_views(mSwapchain.get_image_views().value());
             vkDestroySwapchainKHR(mSwapchainSpec.device, mSwapchain, nullptr);
+           
 			return VK_SUCCESS;
 		}
 
@@ -112,7 +116,7 @@ namespace luna
             sceneViewportImageViews.resize(mSwapchain.image_count);
             for (size_t i = 0; i < mSwapchain.image_count; i++)
             {
-                utils::vulkanAllocator::createImage(&sceneViewportImages[i], VK_IMAGE_USAGE_SAMPLED_BIT, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE,{ mSwapchain.extent.width,mSwapchain.extent.height,1 }, mSwapchain.image_format);
+                utils::vulkanAllocator::createImage(&sceneViewportImages[i], VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE,{ mSwapchain.extent.width,mSwapchain.extent.height,1 }, mSwapchain.image_format);
                 utils::vulkanAllocator::createImageView(&sceneViewportImageViews[i], sceneViewportImages[i], mSwapchain.image_format, VkImageAspectFlagBits::VK_IMAGE_ASPECT_COLOR_BIT);
             }
 
