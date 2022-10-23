@@ -38,15 +38,7 @@ namespace luna
 		void renderer::newFrame()
 		{
 			rendererPipeline->begin();
-			ImGuiViewport* viewport = ImGui::GetMainViewport();
-			ImVec2 windowSize = ImGui::GetContentRegionAvail();
-			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode| ImGuiDockNodeFlags_NoResize);
-			if (ImGui::Begin("settings",nullptr))
-			{
-				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
-				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
-			}
-			ImGui::End();
+
 
 			rendererPipeline->end();
 			rendererPipeline->createCommands();
