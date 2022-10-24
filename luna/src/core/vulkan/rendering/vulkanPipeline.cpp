@@ -182,8 +182,15 @@ namespace luna
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 
-			
-			
+			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
+			{
+
+				vDevice->swapchain->recreateSwapchain();
+				vDevice->createFramebuffers(renderPass);
+				currentFrame = 0;
+				return;
+			}
+
 			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
 			{
 				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
