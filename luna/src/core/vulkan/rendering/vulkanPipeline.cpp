@@ -157,16 +157,15 @@ namespace luna
 			{
 				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
 				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
-				ImGui::End();
 			}
-			
+			ImGui::End();
+			ImGui::SetNextWindowSize({ 100,100 });
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), ImVec2{ viewportPanelSize.x, viewportPanelSize.y });
-				ImGui::End();
 			}
-
+			ImGui::End();
 		}
 		void vulkanPipeline::end() const
 		{
