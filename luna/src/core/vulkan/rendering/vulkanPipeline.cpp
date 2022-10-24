@@ -178,9 +178,6 @@ namespace luna
 		void vulkanPipeline::flush()
 		{
 			
-			
-			
-			
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
@@ -239,6 +236,9 @@ namespace luna
 				
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
 				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
+				vDevice->swapchain->recreateViewport();
+				begin();
+				end();
 				createCommands();
 				currentFrame = 0;
 			}

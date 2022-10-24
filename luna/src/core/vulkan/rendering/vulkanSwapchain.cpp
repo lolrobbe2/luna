@@ -51,9 +51,8 @@ namespace luna
                 .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
                 .set_required_min_image_count(mSwapchain.image_count)
                 .build();
-              vkb::destroy_swapchain(mSwapchain);
-              mSwapchain = newSwapchain.value();
-   
+            vkb::destroy_swapchain(mSwapchain);
+            mSwapchain = newSwapchain.value();
 			return VK_SUCCESS;
 		}
 		VkResult vulkanSwapchain::destroySwapchain()
@@ -127,6 +126,20 @@ namespace luna
             init = true;
             return VK_SUCCESS;
         }
-               
+        VkResult vulkanSwapchain::recreateViewport()
+        {
+            sceneViewportImages.resize(mSwapchain.image_count);
+            sceneViewportImageViews.resize(mSwapchain.image_count);
+            for (size_t i = 0; i < mSwapchain.image_count; i++)
+            {
+                ImGui_ImplVulkan_RemoveTexture(m_Dset[i]);
+                utils::vulkanAllocator::destroyImageView(sceneViewportImageViews[i]);
+                utils::vulkanAllocator::destroyImage(sceneViewportImages[i]);
+                utils::vulkanAllocator::createImage(&sceneViewportImages[i], VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE, { mSwapchain.extent.width,mSwapchain.extent.height,1 }, mSwapchain.image_format);
+                utils::vulkanAllocator::createImageView(&sceneViewportImageViews[i], sceneViewportImages[i], mSwapchain.image_format, VkImageAspectFlagBits::VK_IMAGE_ASPECT_COLOR_BIT);
+                m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, sceneViewportImageViews[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+            }
+            return VK_SUCCESS;
+        }
 	}
 }

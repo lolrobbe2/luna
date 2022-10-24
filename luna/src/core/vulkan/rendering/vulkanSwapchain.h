@@ -66,6 +66,7 @@ namespace luna
 			 * \return VK_SUCCESS when the initialization was succesful.
 			 */
 			VkResult initViewport();
+			VkResult recreateViewport();
 			/**
 			 * @brief returns the surface format.
 			 * 
