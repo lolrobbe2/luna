@@ -186,6 +186,15 @@ namespace luna
 
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
+				vDevice->swapchain->recreateSwapchain();
+				vDevice->createFramebuffers(renderPass);
+
+				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
+				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
+				vDevice->swapchain->recreateViewport();
+				begin();
+				end();
+				createCommands();
 				currentFrame = 0;
 				return;
 			}
@@ -247,6 +256,7 @@ namespace luna
 				end();
 				createCommands();
 				currentFrame = 0;
+				
 			}
 
 		}
