@@ -1,23 +1,26 @@
-[21:41:44] [trace] LUNA: instance creation result = 0
-[21:41:44] [trace] LUNA: surface creation result = 0
-[21:41:44] [info] LUNA: chosen gpu = Radeon RX 580 Series
-[21:41:44] [trace] LUNA: device selection result = 0
-[21:41:45] [trace] LUNA: logical device creation result = 0
-[21:41:45] [trace] LUNA: swapchain creation result = 0
-[21:41:45] [trace] LUNA: reflecting shader: false
-[21:41:45] [trace] LUNA: creating shader Layout
-[21:41:45] [trace] LUNA: created shaderLayout
-[21:41:45] [trace] LUNA: reflecting shader: false
-[21:41:45] [trace] LUNA: creating shader Layout
-[21:41:45] [trace] LUNA: created shaderLayout
-[21:41:45] [info] LUNA: commandbuffer create info = 0
-[21:41:45] [info] LUNA: vma allocator creation result = 0
-[21:41:45] [info] LUNA: creating vulkan shadermodule, result = 0
-[21:41:45] [info] LUNA: creating vulkan shadermodule, result = 0
-[21:41:45] [info] LUNA: framebuffer creation result =0
-[21:41:45] [info] LUNA: pipelinecreation result = 0
-[21:41:45] [info] LUNA: imgui descriptor set creation result = 0
-[21:41:45] [info] LUNA: imgui init for GLFW-vulkan = true
-[21:41:45] [info] LUNA: imgui init vulkan = true
-[21:41:45] [info] LUNA: imgui init complete
-[21:41:45] [trace] APP: started app
+[22:44:35] [trace] LUNA: instance creation result = 0
+[22:44:35] [trace] LUNA: surface creation result = 0
+[22:44:35] [info] LUNA: chosen gpu = Radeon RX 580 Series
+[22:44:35] [trace] LUNA: device selection result = 0
+[22:44:35] [trace] LUNA: logical device creation result = 0
+[22:44:35] [trace] LUNA: swapchain creation result = 0
+[22:44:35] [trace] LUNA: reflecting shader: false
+[22:44:35] [trace] LUNA: creating shader Layout
+[22:44:35] [trace] LUNA: created shaderLayout
+[22:44:35] [trace] LUNA: reflecting shader: false
+[22:44:35] [trace] LUNA: creating shader Layout
+[22:44:35] [trace] LUNA: created shaderLayout
+[22:44:35] [info] LUNA: commandbuffer create info = 0
+[22:44:35] [info] LUNA: vma allocator creation result = 0
+[22:44:35] [info] LUNA: creating vulkan shadermodule, result = 0
+[22:44:35] [info] LUNA: creating vulkan shadermodule, result = 0
+[22:44:35] [info] LUNA: framebuffer creation result =0
+[22:44:35] [info] LUNA: pipelinecreation result = 0
+[22:44:35] [info] LUNA: imgui descriptor set creation result = 0
+[22:44:35] [info] LUNA: imgui init for GLFW-vulkan = true
+[22:44:35] [info] LUNA: imgui init vulkan = true
+[22:44:35] [info] LUNA: imgui init complete
+[22:44:35] [trace] APP: started app
+[22:44:39] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x1ca7ddee660, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x1ca7ddee660[] expects VkImage 0x51820000000007b[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
+[22:44:39] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x1ca7ddf6450, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x1ca7ddf6450[] expects VkImage 0x51820000000007b[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
+[22:44:39] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x1ca7ddee660, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x1ca7ddee660[] expects VkImage 0x10ac5000000007e[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.

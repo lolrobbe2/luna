@@ -183,7 +183,8 @@ namespace luna
 
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
-
+				//soloution source: https://community.khronos.org/t/image-layout-transition-bug/105398/7
+				//posible error fix: recreate sync structures
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateSwapchain();
@@ -192,6 +193,7 @@ namespace luna
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
 				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 				vDevice->swapchain->recreateViewport();
+				//recreate sync structures here.
 				begin();
 				end();
 				createCommands();
@@ -245,12 +247,9 @@ namespace luna
 
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
-
+				//layout error not here!
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
-				
-				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
-				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 				vDevice->swapchain->recreateViewport();
 				begin();
 				end();
@@ -675,7 +674,7 @@ namespace luna
 				VkPipelineStageFlags destinationStage;
 
 				if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
-					barrier.srcAccessMask = 0;
+					barrier.srcAccessMask = VK_ACCESS_NONE;
 					barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
 
 					sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
