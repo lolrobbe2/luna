@@ -17,6 +17,7 @@ namespace luna
 		template<typename value> class objectStorage
 		{
 		public:
+			std::pair<storageResult, value> operator[](const storageObject& key) { return getValue(key, value()); };
 			/**
 			 * @brief deafult constructor whith default cache size of 200.µ
 			 * @note this constructor is recommended for dafult use.

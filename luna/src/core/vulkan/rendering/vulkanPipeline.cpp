@@ -112,12 +112,12 @@ namespace luna
 				imageCopy.dstSubresource.baseArrayLayer = 0;
 				imageCopy.dstSubresource.layerCount = 1;
 				
-
+				
 				vkCmdCopyImage(commandPool->operator=(commandBuffers[currentBuffer]), vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 				
 				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
 
-				//transition src image to src to clear image
+				//transition src image to DST to clear image
 				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
 				
 				vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentBuffer]), vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
@@ -183,8 +183,6 @@ namespace luna
 
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
-				//soloution source: https://community.khronos.org/t/image-layout-transition-bug/105398/7
-				//posible error fix: recreate sync structures
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateSwapchain();
@@ -193,11 +191,11 @@ namespace luna
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
 				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 				vDevice->swapchain->recreateViewport();
-				//recreate sync structures here.
 				begin();
 				end();
 				createCommands();
 				currentFrame = 0;
+				
 				return;
 			}
 
@@ -630,10 +628,7 @@ namespace luna
 		{
 			//create synchronization structures
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-			imageAvailableSemaphores.resize(0);
-			renderFinishedSemaphores.resize(0);
-			inFlightFences.resize(0);
-			imagesInFlight.resize(0);
+			destroySyncStructures();
 			imageAvailableSemaphores.resize(maxFramesInFlight);
 			renderFinishedSemaphores.resize(maxFramesInFlight);
 			inFlightFences.resize(maxFramesInFlight);
@@ -649,81 +644,110 @@ namespace luna
 			for (size_t i = 0; i < maxFramesInFlight; i++)
 			{
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]) ||
-				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
-				vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
+					vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
+					vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
 			}
 		}
-		void vulkanPipeline::transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout,VkCommandBuffer commandBufffer) {
+
+		void vulkanPipeline::destroySyncStructures()
+		{
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			// semaphore destruction
+			if (imageAvailableSemaphores.size() != 0)
 			{
-				VkImageMemoryBarrier barrier{};
-				barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
-				barrier.oldLayout = oldLayout;
-				barrier.newLayout = newLayout;
-				barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
-				barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
-				barrier.image = image;
-				barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-				barrier.subresourceRange.baseMipLevel = 0;
-				barrier.subresourceRange.levelCount = 1;
-				barrier.subresourceRange.baseArrayLayer = 0;
-				barrier.subresourceRange.layerCount = 1;
-				barrier.srcAccessMask = 0; //TODO
-				barrier.dstAccessMask = 0; //TODO
+				for (auto imageAvailableSemaphore : imageAvailableSemaphores) vkDestroySemaphore(vDevice->getDeviceHandles().device, imageAvailableSemaphore, nullptr);
+			}
 
-				VkPipelineStageFlags sourceStage;
-				VkPipelineStageFlags destinationStage;
+			if (renderFinishedSemaphores.size() != 0)
+			{
+				for (auto renderFinishedsmaphore : renderFinishedSemaphores) vkDestroySemaphore(vDevice->getDeviceHandles().device, renderFinishedsmaphore, nullptr);
+			}
+			// fence reconstruction
+			if (inFlightFences.size() != 0)
+			{
+				for (auto inFlightFence : inFlightFences) vkDestroyFence(vDevice->getDeviceHandles().device, inFlightFence, nullptr);
+			}
 
-				if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
-					barrier.srcAccessMask = VK_ACCESS_NONE;
-					barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-
-					sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
-					destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-				}
-				else if (oldLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR && newLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL){
-					barrier.srcAccessMask = VK_ACCESS_MEMORY_READ_BIT;
-					barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
-
-					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-					destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-				}
-				else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
-				{
-					barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
-					barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-
-					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-					destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-				}
-				else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {
-					barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-					barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
-
-					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-					destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;
-				}
-				else if(oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
-				{
-					barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-					barrier.dstAccessMask = VK_ACCESS_INDIRECT_COMMAND_READ_BIT;
-
-					sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-					destinationStage = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT;
-				}
-				else {
-					LN_CORE_ERROR("incorrect layout = {0}", newLayout);
-				}
-
-				vkCmdPipelineBarrier(
-					commandBufffer,
-					sourceStage, destinationStage,
-					0,
-					0, nullptr,
-					0, nullptr,
-					1, &barrier);
+			if (imagesInFlight.size() != 0)
+			{
+				for (auto imageInFlight : imagesInFlight) vkDestroyFence(vDevice->getDeviceHandles().device, imageInFlight, nullptr);
 			}
 		}
+		void vulkanPipeline::transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout,VkCommandBuffer commandBufffer) 
+		{
+			
+			VkImageMemoryBarrier barrier{};
+			barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+			barrier.oldLayout = oldLayout;
+			barrier.newLayout = newLayout;
+			barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+			barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+			barrier.image = image;
+			barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			barrier.subresourceRange.baseMipLevel = 0;
+			barrier.subresourceRange.levelCount = 1;
+			barrier.subresourceRange.baseArrayLayer = 0;
+			barrier.subresourceRange.layerCount = 1;
 
+			VkPipelineStageFlags sourceStage;
+			VkPipelineStageFlags destinationStage;
+			if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
+				barrier.srcAccessMask = VK_ACCESS_NONE;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (oldLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR && newLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL){
+				barrier.srcAccessMask = VK_ACCESS_MEMORY_READ_BIT;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;
+			}
+			else if(oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_INDIRECT_COMMAND_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT;
+			}
+			else if (oldLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_UNDEFINED)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_NONE;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+			}
+			else {
+				LN_CORE_ERROR("incorrect layout = {0}", newLayout);
+			}
+
+			vkCmdPipelineBarrier(
+				commandBufffer,
+				sourceStage, destinationStage,
+				0,
+				0, nullptr,
+				0, nullptr,
+				1, &barrier);
+			
+		}
 	}
-
 }

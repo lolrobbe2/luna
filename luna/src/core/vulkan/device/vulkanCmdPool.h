@@ -35,6 +35,7 @@ namespace luna
 		class vulkanCmdPool
 		{
 		public:
+			VkCommandBuffer vulkanCmdPool::operator[](const virtualCmdBuffer commandBuffer);
 			VkCommandBuffer operator=(const virtualCmdBuffer commandBuffer) { return virtualBuffers.find(commandBuffer)->second.first; };
 			/**
 			* @brief vulkanCmdPool constructor

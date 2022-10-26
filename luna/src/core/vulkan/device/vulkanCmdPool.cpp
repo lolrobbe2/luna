@@ -4,6 +4,10 @@ namespace luna
 {
 	namespace vulkan
 	{
+		VkCommandBuffer vulkanCmdPool::operator[](const virtualCmdBuffer commandBuffer)
+		{
+			return VkCommandBuffer();
+		}
 		vulkanCmdPool::vulkanCmdPool(const vulkanCmdPoolSpec& commandPoolSpec)
 		{
 			sCommandPoolSpec = commandPoolSpec;

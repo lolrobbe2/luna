@@ -166,6 +166,7 @@ namespace luna
 			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html
 			 */
 			void initSyncStructures();
+			void destroySyncStructures();
 			/**
 			 * @brief transitions the image layout.
 			 * 
