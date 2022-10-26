@@ -49,11 +49,13 @@ namespace luna
 			VkDevice device = vDevice->getDeviceHandles().device;
 			vkDeviceWaitIdle(device);
 			VkClearValue clearValue;
-			//float flash = abs(sin(_frameNumber / 120.f));
-			clearValue.color = { { 0.0f, 255.0f, 255.0f, 1.0f } };
+			float flash = abs(tan(_frameNumber / 120.0f));
+			float thunder = abs(sin(_frameNumber / 120.0f));
+			float help = abs(cos(_frameNumber /120.0f));
+			clearValue.color = { { help, thunder, flash, 1.0f } };
 			VkClearColorValue blankValue;
 			//float flash = abs(sin(_frameNumber / 120.f));
-			clearValue.color = { { 0.0f, 0.0f, 0.0f, 1.0f } };
+			//clearValue.color = { { 255.0f, 165.0f, 0.0f, 1.0f } };
 			
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
@@ -178,11 +180,13 @@ namespace luna
 		{
 			
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
+				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateSwapchain();
@@ -241,6 +245,7 @@ namespace luna
 			presentInfo.pResults = nullptr;
 
 			vkQueuePresentKHR(presentQueue, &presentInfo);
+			_frameNumber += 1 ;
 			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
 
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)

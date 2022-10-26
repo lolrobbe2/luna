@@ -224,7 +224,7 @@ namespace luna
 			VkQueue presentQueue;
 
 			uint32_t maxFramesInFlight = 0;
-			
+			uint64_t _frameNumber = 0; //temporary
 		};
 		
 	}
