@@ -38,9 +38,9 @@ namespace luna
 		void vulkanDevice::destroyContext()
 		{
 			//swapchain->~vulkanSwapchain();
-			vkDestroySurfaceKHR(deviceHandle.instance, surface, nullptr);
-			vkDestroyDevice(deviceHandle.device, nullptr);
-			vkDestroyInstance(deviceHandle.instance, nullptr);
+			//vkDestroySurfaceKHR(deviceHandle.instance, surface, nullptr);
+			//vkDestroyDevice(deviceHandle.device, nullptr);
+			//vkDestroyInstance(deviceHandle.instance, nullptr);
 		}
 		//TODO needs to be placed in swapchain.
 		VkResult vulkanDevice::createFramebuffers(VkRenderPass renderPass)
@@ -98,13 +98,15 @@ namespace luna
 		{
 			vkb::PhysicalDeviceSelector deviceSelector{ deviceHandle.instance };
 			VkPhysicalDeviceFeatures features {};
-		
+			VkPhysicalDeviceVulkan12Features features12{};
+			features12.bufferDeviceAddress = VK_TRUE;
 			features.multiViewport = VK_TRUE;
 			deviceSelector
-				.set_minimum_version(1, 1)
+				.set_minimum_version(1, 2)
 				.set_surface(surface);
 			auto physicalDevice = deviceSelector.add_desired_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME)
 				.set_required_features(features)
+				.set_required_features_12(features12)
 				.select();
 			deviceHandle.physicalDevice = physicalDevice.value();
 			LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
@@ -129,9 +131,12 @@ namespace luna
 			glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
 			std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+			
+			//extensions.push_back(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME); used for vulkan 1.1;
 			#ifdef ENABLE_VALIDATION_LAYERS
 			extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 			#endif // ENABLE_VALIDATION_LAYERS
+
 			return extensions;
 		}
 

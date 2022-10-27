@@ -1,8 +1,9 @@
 #pragma once
 #include <core/core.h>
+#include <core/rendering/buffer.h>
 namespace luna
 {
-	namespace rebderer
+	namespace renderer
 	{
 		class vertexArray
 		{
@@ -12,10 +13,12 @@ namespace luna
 			virtual void Bind() const = 0;
 			virtual void Unbind() const = 0;
 
-			virtual void AddVertexBuffer(const ref<VertexBuffer>& vertexBuffer) = 0;
-			virtual void SetIndexBuffer(const ref<IndexBuffer>& indexBuffer) = 0;
-		private:
+			virtual void AddVertexBuffer(const ref<vertexBuffer>& vertexBuffer) = 0;
+			virtual void SetIndexBuffer(const ref<indexBuffer>& indexBuffer) = 0;
 			
+		private:
+			std::vector<ref<vertexBuffer>> vertexBuffers;
+			ref<indexBuffer>vertexBuffers;
 		};
 	}
 }

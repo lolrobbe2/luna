@@ -70,7 +70,7 @@ namespace luna
 		}
 		VkResult vulkanAllocator::destroyImage(const VkImage& image)
 		{
-			auto result = allocations[(uint64_t)image];
+			auto result = allocations.getValue((uint64_t)image,vmaAllocation());
 			if (result.first == storageOpSucces) vmaDestroyImage(sAllocator, image, result.second.allocation);
 			allocations.eraseValue((uint64_t)image);
 			return VK_SUCCESS; //TODO return appropriate VkResult based on object storage rsult.

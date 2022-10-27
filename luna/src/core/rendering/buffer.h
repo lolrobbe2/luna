@@ -1,4 +1,5 @@
 #pragma once
+#include <core/rendering/pipeline.h>
 #include <core/rendering/shader.h>
 namespace luna
 {
@@ -49,7 +50,10 @@ namespace luna
 
 			static ref<vertexBuffer> create(uint32_t size);
 			static ref<vertexBuffer> create(float* vertices, uint32_t size);
+
+			bufferLayout bufferLayout;
 		private:
+			
 			ref<shader> srcShader; // src shader to create buffer layout from
 		};
 		
