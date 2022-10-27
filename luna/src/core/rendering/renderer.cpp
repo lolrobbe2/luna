@@ -41,7 +41,7 @@ namespace luna
 
 
 			rendererPipeline->end();
-			rendererPipeline->createCommands();
+			//rendererPipeline->createCommands();
 			rendererPipeline->flush();
 		}
 

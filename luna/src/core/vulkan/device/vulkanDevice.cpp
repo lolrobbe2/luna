@@ -46,7 +46,7 @@ namespace luna
 		VkResult vulkanDevice::createFramebuffers(VkRenderPass renderPass)
 		{
 			VkResult result;
-			swapchain->frameBuffers.resize(swapchain->mSwapchain.get_image_views().value().size());
+			swapchain->frameBuffers.resize(swapchain->mSwapchain.image_count);
 			for (size_t i = 0; i < swapchain->mSwapchain.image_count; i++) {
 				VkImageView attachments[] = {
 					swapchain->mSwapchain.get_image_views().value()[i]

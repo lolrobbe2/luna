@@ -13,14 +13,14 @@ namespace luna
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			this->layout = layout;
-			maxFramesInFlight = 2;
+			maxFramesInFlight = 5;
 			commandPoolSpec.device = device->getDeviceHandles().device;
 			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 			commandPoolSpec.queueFamilyIndex = device->getQueueIndex(vkb::QueueType::present);
 			ref<vulkanCmdPool> commandpool{new vulkanCmdPool(commandPoolSpec) };
 			commandPool = commandpool;
 			commandBuffers.resize(maxFramesInFlight);
-			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
+			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
 			presentQueue = device->getQueue(vkb::QueueType::present);
 			utils::vulkanAllocator::init(layout.device);
 			createPipeline(layout);
@@ -66,9 +66,10 @@ namespace luna
 			imageSubRange.baseArrayLayer = 0;
 			imageSubRange.layerCount = 1;
 			imageSubRange.levelCount = VK_REMAINING_MIP_LEVELS;
+			/*
 			for (size_t currentBuffer = 0; currentBuffer < commandBuffers.size(); currentBuffer++)
 			{
-
+			*/
 
 				VkRenderPassBeginInfo rpInfo = {};
 				rpInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
@@ -79,24 +80,24 @@ namespace luna
 				rpInfo.renderArea.offset.x = 0;
 				rpInfo.renderArea.offset.y = 0;
 				rpInfo.renderArea.extent = extent;
-				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(currentBuffer);
+				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(swapchainImageIndex);
 				
-				commandPool->begin(commandBuffers[currentBuffer], 0);
+				commandPool->begin(commandBuffers[currentFrame], 0);
 				//connect clear values
 				rpInfo.clearValueCount = 1;
 				rpInfo.pClearValues = &clearValue;
 
-				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentBuffer]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 				
-				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentBuffer]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
-				//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentBuffer]), 0, 1, &vDevice->getViewport());
-				vkCmdDraw(commandPool->operator=(commandBuffers[currentBuffer]), 3, 1, 0, 0);
+				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+				//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentFrame]), 0, 1, &vDevice->getViewport());
+				vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
 				
-				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
+				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 				//transition dst image
-				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				transitionImageLayout(vDevice->swapchain->sceneViewportImages[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 				//transition src image
-				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 
 				VkImageCopy imageCopy;
 				imageCopy.dstOffset = { 0,0,0 };
@@ -115,30 +116,30 @@ namespace luna
 				imageCopy.dstSubresource.layerCount = 1;
 				
 				
-				vkCmdCopyImage(commandPool->operator=(commandBuffers[currentBuffer]), vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
+				vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 				
-				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				transitionImageLayout(vDevice->swapchain->sceneViewportImages[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 
 				//transition src image to DST to clear image
-				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentBuffer]));
+				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 				
-				vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentBuffer]), vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
-				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentBuffer]));
+				vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
+				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentFrame]));
 				//copy framebuffer to seperate image.
 				//clear framebuffer vkCmdClearImage();
 				//iumgui draw
-				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentBuffer]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentBuffer]));
-				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentBuffer]));
+				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
+				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 			
 				
 				
 				//TODO gpu driven rendering (VkDrawIndirect);
 				
 				//finalize the command buffer (we can no longer add commands, but it can now be executed)
-				commandPool->end(commandBuffers[currentBuffer]);
-			}
+				commandPool->end(commandBuffers[currentFrame]);
+			
 		}
 		void vulkanPipeline::begin() const
 		{
@@ -165,7 +166,7 @@ namespace luna
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), ImVec2{ viewportPanelSize.x, viewportPanelSize.y });
+				ImGui::Image(vDevice->swapchain->getViewportImage(swapchainImageIndex), ImVec2{ viewportPanelSize.x, viewportPanelSize.y });
 			}
 			ImGui::End();
 		}
@@ -180,28 +181,34 @@ namespace luna
 		{
 			
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+			
 			if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
-
+			
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
+				/*
 				vDevice->swapchain->recreateSwapchain();
-				vDevice->createFramebuffers(renderPass);
+				vDevice->createFramebuffers(renderPass); 
+				and that is why we don't blindlesly copy paste!
+				*/
 
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
-				commandPool->createNewBuffer(commandBuffers.data(), 3, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
+				commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 				vDevice->swapchain->recreateViewport();
-				begin();
-				end();
-				createCommands();
+				//fbegin();
+				//end();
+				//createCommands();
 				currentFrame = 0;
 				
 				return;
 			}
+
+			createCommands();
 
 			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
 			{
@@ -244,20 +251,20 @@ namespace luna
 			presentInfo.pImageIndices = &swapchainImageIndex;
 			presentInfo.pResults = nullptr;
 
-			vkQueuePresentKHR(presentQueue, &presentInfo);
+			VkResult result2 = vkQueuePresentKHR(presentQueue, &presentInfo);
 			_frameNumber += 1 ;
 			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
 
-			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
+			if (result2 == VK_ERROR_OUT_OF_DATE_KHR || result2 == VK_SUBOPTIMAL_KHR)
 			{
 				//layout error not here!
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateViewport();
-				begin();
-				end();
-				createCommands();
-				currentFrame = 0;
+				//begin();
+				//end();
+				//createCommands();
+				//currentFrame = 0;
 				
 			}
 
@@ -649,8 +656,8 @@ namespace luna
 			for (size_t i = 0; i < maxFramesInFlight; i++)
 			{
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]) ||
-					vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
-					vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
+				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
+				vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
 			}
 		}
 

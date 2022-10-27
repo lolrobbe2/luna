@@ -18,7 +18,7 @@ namespace luna
 		};
 		struct swapchainSpec
 		{
-			VkPhysicalDevice physicalDevice;
+			vkb::PhysicalDevice physicalDevice;
 			VkDevice device;
 			std::shared_ptr<vulkan::window> window = nullptr;
 			VkExtent2D swapchainExtent = {0,0};
@@ -104,7 +104,7 @@ namespace luna
 			VkFormat swapchainImageFormat;
 			bool init = false;
 			VkSampler viewportSampler;
-			
+			VkSurfaceCapabilitiesKHR surfaceCapaBilities;
 			std::vector<VkImageView> sceneViewportImageViews;
 		};
 	}
