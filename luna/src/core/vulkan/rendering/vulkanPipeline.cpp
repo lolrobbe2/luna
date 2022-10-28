@@ -48,11 +48,12 @@ namespace luna
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
 			vkDeviceWaitIdle(device);
+
 			VkClearValue clearValue;
 			float flash = abs(tan(_frameNumber / 120.0f));
 			float thunder = abs(sin(_frameNumber / 120.0f));
 			float help = abs(cos(_frameNumber /120.0f));
-			clearValue.color = { { help, thunder, flash, 1.0f } };
+			clearValue.color = {0,0,0 };
 			VkClearColorValue blankValue;
 			//float flash = abs(sin(_frameNumber / 120.f));
 			//clearValue.color = { { 255.0f, 165.0f, 0.0f, 1.0f } };
@@ -186,6 +187,7 @@ namespace luna
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 			
+	
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
@@ -196,15 +198,10 @@ namespace luna
 				vDevice->createFramebuffers(renderPass); 
 				and that is why we don't blindlesly copy paste!
 				*/
-
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
 				commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 				vDevice->swapchain->recreateViewport();
-				//fbegin();
-				//end();
-				//createCommands();
 				currentFrame = 0;
-				
 				return;
 			}
 
@@ -619,7 +616,7 @@ namespace luna
 			dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
 			dependency.srcAccessMask = 0; //VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
 			dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
-
+			
 			VkRenderPassCreateInfo render_pass_info = {};
 			render_pass_info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
 

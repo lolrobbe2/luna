@@ -222,9 +222,10 @@ namespace luna
 			uint32_t swapchainImageIndex = 0;
 			uint32_t currentFrame = 0;
 			VkQueue presentQueue;
-
+			VkExtent2D prevExtent;
 			uint32_t maxFramesInFlight = 0;
 			uint64_t _frameNumber = 0; //temporary
+			
 		};
 		
 	}
