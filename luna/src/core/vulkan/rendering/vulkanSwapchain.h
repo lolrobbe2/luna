@@ -65,8 +65,8 @@ namespace luna
 			 * 
 			 * \return VK_SUCCESS when the initialization was succesful.
 			 */
-			VkResult initViewport();
-			VkResult recreateViewport();
+			VkResult initViewport(uint32_t maxFramesInFlight);
+			VkResult recreateViewport(uint32_t maxFramesInFlight);
 			/**
 			 * @brief returns the surface format.
 			 * 

@@ -27,7 +27,7 @@ namespace luna
                 .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
                 .set_desired_extent(swapChainSpec.window->getWidth(), swapChainSpec.window->getHeight())
                 .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
-                .set_required_min_image_count(surfaceCapaBilities.minImageCount + 2)
+                .set_required_min_image_count(surfaceCapaBilities.minImageCount + 1)
                 .build()
                 .value();
           
@@ -91,7 +91,7 @@ namespace luna
             scissor.offset = { 0,0 };
             return scissor;
         }
-        VkResult vulkanSwapchain::initViewport()
+        VkResult vulkanSwapchain::initViewport(uint32_t maxFramesInFlight)
         {
             if (init) return VK_SUCCESS;
             VkSamplerCreateInfo samplerInfo{};
@@ -113,26 +113,26 @@ namespace luna
             samplerInfo.minLod = 0.0f;
             samplerInfo.maxLod = 0.0f;
 
-            sceneViewportImages.resize(mSwapchain.image_count);
-            sceneViewportImageViews.resize(mSwapchain.image_count);
-            for (size_t i = 0; i < mSwapchain.image_count; i++)
+            sceneViewportImages.resize(maxFramesInFlight);
+            sceneViewportImageViews.resize(maxFramesInFlight);
+            for (size_t i = 0; i < maxFramesInFlight; i++)
             {
                 utils::vulkanAllocator::createImage(&sceneViewportImages[i], VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE,{ mSwapchain.extent.width,mSwapchain.extent.height,1 }, mSwapchain.image_format);
                 utils::vulkanAllocator::createImageView(&sceneViewportImageViews[i], sceneViewportImages[i], mSwapchain.image_format, VkImageAspectFlagBits::VK_IMAGE_ASPECT_COLOR_BIT);
             }
 
             vkCreateSampler(mSwapchainSpec.device, &samplerInfo, nullptr, &viewportSampler);
-            m_Dset.resize(mSwapchain.image_count);
-            for (uint32_t i = 0; i < mSwapchain.image_count; i++)
+            m_Dset.resize(maxFramesInFlight);
+            for (uint32_t i = 0; i < maxFramesInFlight; i++)
                 m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, sceneViewportImageViews[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
             init = true;
             return VK_SUCCESS;
         }
-        VkResult vulkanSwapchain::recreateViewport()
+        VkResult vulkanSwapchain::recreateViewport(uint32_t maxFramesInFlight)
         {
-            sceneViewportImages.resize(mSwapchain.image_count);
-            sceneViewportImageViews.resize(mSwapchain.image_count);
-            for (size_t i = 0; i < mSwapchain.image_count; i++)
+            sceneViewportImages.resize(maxFramesInFlight);
+            sceneViewportImageViews.resize(maxFramesInFlight);
+            for (size_t i = 0; i < maxFramesInFlight; i++)
             {
                 ImGui_ImplVulkan_RemoveTexture(m_Dset[i]);
                 utils::vulkanAllocator::destroyImageView(sceneViewportImageViews[i]);

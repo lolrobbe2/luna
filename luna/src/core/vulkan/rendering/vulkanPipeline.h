@@ -61,6 +61,7 @@ namespace luna
 			 */
 			inline VkRenderPass getRenderPass() { return renderPass; };
 			renderer::pipelineLayout layout;
+			uint32_t maxFramesInFlight = 0;
 		private:
 			/**
 			 * @brief creates the pipeline layout.
@@ -222,8 +223,6 @@ namespace luna
 			uint32_t swapchainImageIndex = 0;
 			uint32_t currentFrame = 0;
 			VkQueue presentQueue;
-			VkExtent2D prevExtent;
-			uint32_t maxFramesInFlight = 0;
 			uint64_t _frameNumber = 0; //temporary
 			bool justResized = false;
 		};

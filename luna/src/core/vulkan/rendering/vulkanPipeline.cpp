@@ -47,7 +47,7 @@ namespace luna
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
-			vkDeviceWaitIdle(device);
+			//vkDeviceWaitIdle(device);
 
 			VkClearValue clearValue;
 			float flash = abs(tan(_frameNumber / 120.0f));
@@ -96,7 +96,7 @@ namespace luna
 				
 				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 				//transition dst image
-				transitionImageLayout(vDevice->swapchain->sceneViewportImages[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 				//transition src image
 				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 
@@ -117,9 +117,9 @@ namespace luna
 				imageCopy.dstSubresource.layerCount = 1;
 				
 				
-				vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
+				vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 				
-				transitionImageLayout(vDevice->swapchain->sceneViewportImages[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 
 				//transition src image to DST to clear image
 				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
@@ -163,11 +163,11 @@ namespace luna
 				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
 			}
 			ImGui::End();
-			ImGui::SetNextWindowSize({ 100,100 });
+			ImGui::SetNextWindowSize(ImGui::GetContentRegionAvail());
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				ImGui::Image(vDevice->swapchain->getViewportImage(swapchainImageIndex), ImVec2{ viewportPanelSize.x, viewportPanelSize.y });
+				ImGui::Image(vDevice->swapchain->getViewportImage(0),viewportPanelSize);
 			}
 			ImGui::End();
 		}
@@ -187,12 +187,13 @@ namespace luna
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 			
-	
+			
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
+				LN_CORE_TRACE("keep it going!");
 				/*
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass); 
@@ -200,19 +201,19 @@ namespace luna
 				*/
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
 				commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
-				vDevice->swapchain->recreateViewport();
-				//currentFrame = 0;
+				vDevice->swapchain->recreateViewport(maxFramesInFlight);
+				currentFrame = 0;
 				return;
 			}
 
 			createCommands();
 
-			if (imagesInFlight[currentFrame] != VK_NULL_HANDLE)
+			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
 			{
-				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[currentFrame], VK_TRUE, UINT64_MAX);
+				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
 			}
 			
-			imagesInFlight[currentFrame] = inFlightFences[currentFrame];
+			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
 
@@ -257,11 +258,11 @@ namespace luna
 				//layout error not here!
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
-				vDevice->swapchain->recreateViewport();
+				vDevice->swapchain->recreateViewport(maxFramesInFlight);
 				//begin();
 				//end();
 				//createCommands();
-				//currentFrame = 0;
+				currentFrame = 0;
 				
 			}
 
@@ -641,7 +642,7 @@ namespace luna
 			imageAvailableSemaphores.resize(maxFramesInFlight);
 			renderFinishedSemaphores.resize(maxFramesInFlight);
 			inFlightFences.resize(maxFramesInFlight);
-			imagesInFlight.resize(maxFramesInFlight, VK_NULL_HANDLE);
+			imagesInFlight.resize(vDevice->swapchain->mSwapchain.image_count, VK_NULL_HANDLE);
 
 			VkSemaphoreCreateInfo semaphoreInfo{};
 			semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
@@ -652,10 +653,11 @@ namespace luna
 
 			for (size_t i = 0; i < maxFramesInFlight; i++)
 			{
-				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]) ||
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
 				vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
 			}
+			for (size_t i = 0; i < vDevice->swapchain->mSwapchain.image_count; i++) vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]);
+			
 		}
 
 		void vulkanPipeline::destroySyncStructures()
