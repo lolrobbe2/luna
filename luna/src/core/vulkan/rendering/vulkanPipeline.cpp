@@ -13,7 +13,7 @@ namespace luna
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			this->layout = layout;
-			maxFramesInFlight = 5;
+			maxFramesInFlight = 2;
 			commandPoolSpec.device = device->getDeviceHandles().device;
 			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 			commandPoolSpec.queueFamilyIndex = device->getQueueIndex(vkb::QueueType::present);
@@ -201,18 +201,18 @@ namespace luna
 				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
 				commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 				vDevice->swapchain->recreateViewport();
-				currentFrame = 0;
+				//currentFrame = 0;
 				return;
 			}
 
 			createCommands();
 
-			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
+			if (imagesInFlight[currentFrame] != VK_NULL_HANDLE)
 			{
-				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
+				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[currentFrame], VK_TRUE, UINT64_MAX);
 			}
 			
-			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
+			imagesInFlight[currentFrame] = inFlightFences[currentFrame];
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
 

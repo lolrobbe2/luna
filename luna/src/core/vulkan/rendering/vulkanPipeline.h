@@ -225,7 +225,7 @@ namespace luna
 			VkExtent2D prevExtent;
 			uint32_t maxFramesInFlight = 0;
 			uint64_t _frameNumber = 0; //temporary
-			
+			bool justResized = false;
 		};
 		
 	}

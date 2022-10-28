@@ -27,7 +27,7 @@ namespace luna
                 .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
                 .set_desired_extent(swapChainSpec.window->getWidth(), swapChainSpec.window->getHeight())
                 .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
-                .set_required_min_image_count(surfaceCapaBilities.minImageCount + 1)
+                .set_required_min_image_count(surfaceCapaBilities.minImageCount + 2)
                 .build()
                 .value();
           
