@@ -40,18 +40,21 @@ namespace luna
 		public:
 			virtual ~vertexBuffer() = default;
 
-			virtual void bind() const = 0;
-			virtual void unbind() const = 0;
+			virtual void bind(ref<renderer::pipeline> pipeline) const = 0;
+			virtual void unbind(ref<renderer::pipeline> pipeline) const = 0;
 
 			virtual void setData(const void* data, uint32_t size) = 0;
-
-			virtual const bufferLayout& getLayout() const = 0;
-			virtual void setLayout(const bufferLayout& layout) = 0;
+			template<typename mesh>
+			mesh& getIndex(uint32_t index);
 
 			static ref<vertexBuffer> create(uint32_t size);
 			static ref<vertexBuffer> create(float* vertices, uint32_t size);
 
-			bufferLayout bufferLayout;
+			void* data = nullptr;
+			uint32_t size = 0;
+			template<typename mesh>
+			mesh operator[] (int index) { return (mesh)data[index]; };
+
 		private:
 			
 			ref<shader> srcShader; // src shader to create buffer layout from

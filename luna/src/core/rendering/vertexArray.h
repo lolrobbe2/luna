@@ -18,7 +18,7 @@ namespace luna
 			
 		private:
 			std::vector<ref<vertexBuffer>> vertexBuffers;
-			ref<indexBuffer>vertexBuffers;
+			ref<indexBuffer> indexBuffers;
 		};
 	}
 }

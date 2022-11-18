@@ -51,7 +51,7 @@ namespace luna
                 .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR})
                 .set_desired_extent(mSwapchainSpec.window->getWidth(), mSwapchainSpec.window->getHeight())
                 .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
-                .set_required_min_image_count(mSwapchain.image_count)
+                .set_required_min_image_count(surfaceCapaBilities.minImageCount + 1)
                 .build();
             vkb::destroy_swapchain(mSwapchain);
             mSwapchain = newSwapchain.value();
@@ -59,16 +59,7 @@ namespace luna
 		}
 		VkResult vulkanSwapchain::destroySwapchain()
 		{
-            if (mSwapchain == VK_NULL_HANDLE) return VK_ERROR_INVALID_EXTERNAL_HANDLE;
-            for (size_t i = 0; i < frameBuffers.size(); i++)
-            {
-                utils::vulkanAllocator::destroyImageView(sceneViewportImageViews[i]);
-                utils::vulkanAllocator::destroyImage(sceneViewportImages[i]);
-                vkDestroyFramebuffer(mSwapchain.device, frameBuffers[i], nullptr);
-            }
-            mSwapchain.destroy_image_views(mSwapchain.get_image_views().value());
-            vkDestroySwapchainKHR(mSwapchainSpec.device, mSwapchain, nullptr);
-           
+            vkb::destroy_swapchain(mSwapchain);
 			return VK_SUCCESS;
 		}
 
@@ -123,8 +114,7 @@ namespace luna
 
             vkCreateSampler(mSwapchainSpec.device, &samplerInfo, nullptr, &viewportSampler);
             m_Dset.resize(maxFramesInFlight);
-            for (uint32_t i = 0; i < maxFramesInFlight; i++)
-                m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, sceneViewportImageViews[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+            for (uint32_t i = 0; i < maxFramesInFlight; i++) m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, sceneViewportImageViews[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
             init = true;
             return VK_SUCCESS;
         }

@@ -37,6 +37,11 @@ namespace luna
 			vmaDestroyAllocator(sAllocator);
 		}
 
+		VmaAllocationInfo vulkanAllocator::getAllocationInfo(const uint64_t& handle)
+		{
+			return allocations.getValue(handle, vmaAllocation()).second.allocationInfo;
+		}
+
 		VkResult vulkanAllocator::createImage(VkImage* pImage, const VkImageUsageFlags& usageFlags, const VmaMemoryUsage& memoryUsage, const VkExtent3D& extent, const VkFormat& format)
 		{
 
@@ -99,6 +104,37 @@ namespace luna
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			vkDestroyImageView(device->getDeviceHandles().device, imageView, nullptr);
 			return VK_SUCCESS;
+		}
+		VkResult vulkanAllocator::createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage)
+		{
+			VkBufferCreateInfo bufferInfo = {};
+			bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+			bufferInfo.pNext = nullptr;
+			bufferInfo.size = allocSize;
+
+			bufferInfo.usage = usage;
+
+
+			//let the VMA library know that this data should be writeable by CPU, but also readable by GPU
+			VmaAllocationCreateInfo vmaAllocInfo = {};
+			vmaAllocInfo.usage = memoryUsage;
+
+			VkBuffer newBuffer;
+			VmaAllocationInfo allocationInfo;
+			VmaAllocation allocation;
+			//allocate the buffer
+			VkResult bufferCreateResult = vmaCreateBuffer(sAllocator, &bufferInfo, &vmaAllocInfo,pBuffer,&allocation,&allocationInfo);
+			uint64_t handle = (uint64_t)*pBuffer;
+			vmaAllocation vmaAlloc = { allocation,allocationInfo };
+			allocations.putValue(&handle, vmaAlloc);
+			
+			return bufferCreateResult;
+		}
+		void vulkanAllocator::destroyBuffer(VkBuffer buffer)
+		{
+			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;
+			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
+
 		}
 	}
 }

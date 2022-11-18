@@ -13,7 +13,7 @@ namespace luna
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			this->layout = layout;
-			maxFramesInFlight = 2;
+			maxFramesInFlight = device->swapchain->mSwapchain.image_count - 1;
 			commandPoolSpec.device = device->getDeviceHandles().device;
 			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 			commandPoolSpec.queueFamilyIndex = device->getQueueIndex(vkb::QueueType::present);
@@ -146,7 +146,6 @@ namespace luna
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			
-
 			ImGui_ImplVulkan_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			//imgui commands
@@ -167,8 +166,12 @@ namespace luna
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				ImGui::Image(vDevice->swapchain->getViewportImage(0),viewportPanelSize);
+				if(!justResized)ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
+				
+				
+				//ImGui::Image(vDevice->swapchain->getViewportImage(0),viewportPanelSize);
 			}
+
 			ImGui::End();
 		}
 		void vulkanPipeline::end() const
@@ -176,7 +179,7 @@ namespace luna
 			ImGui::Render();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
-
+			
 		}
 		void vulkanPipeline::flush()
 		{
@@ -199,10 +202,7 @@ namespace luna
 				vDevice->createFramebuffers(renderPass); 
 				and that is why we don't blindlesly copy paste!
 				*/
-				commandPool->freeCommandBuffer(commandBuffers.data(), commandBuffers.size());
-				commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
-				currentFrame = 0;
 				return;
 			}
 
@@ -251,6 +251,7 @@ namespace luna
 
 			VkResult result2 = vkQueuePresentKHR(presentQueue, &presentInfo);
 			_frameNumber += 1 ;
+
 			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
 
 			if (result2 == VK_ERROR_OUT_OF_DATE_KHR || result2 == VK_SUBOPTIMAL_KHR)
@@ -262,8 +263,8 @@ namespace luna
 				//begin();
 				//end();
 				//createCommands();
-				currentFrame = 0;
-				
+				//currentFrame = 0;
+				return;
 			}
 
 		}
@@ -639,7 +640,7 @@ namespace luna
 			//create synchronization structures
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			destroySyncStructures();
-			imageAvailableSemaphores.resize(maxFramesInFlight);
+			imageAvailableSemaphores.resize(vDevice->swapchain->mSwapchain.image_count);
 			renderFinishedSemaphores.resize(maxFramesInFlight);
 			inFlightFences.resize(maxFramesInFlight);
 			imagesInFlight.resize(vDevice->swapchain->mSwapchain.image_count, VK_NULL_HANDLE);
@@ -664,22 +665,22 @@ namespace luna
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			// semaphore destruction
-			if (imageAvailableSemaphores.size() != 0)
+			if (!imageAvailableSemaphores.size())
 			{
 				for (auto imageAvailableSemaphore : imageAvailableSemaphores) vkDestroySemaphore(vDevice->getDeviceHandles().device, imageAvailableSemaphore, nullptr);
 			}
 
-			if (renderFinishedSemaphores.size() != 0)
+			if (!renderFinishedSemaphores.size())
 			{
 				for (auto renderFinishedsmaphore : renderFinishedSemaphores) vkDestroySemaphore(vDevice->getDeviceHandles().device, renderFinishedsmaphore, nullptr);
 			}
 			// fence reconstruction
-			if (inFlightFences.size() != 0)
+			if (!inFlightFences.size())
 			{
 				for (auto inFlightFence : inFlightFences) vkDestroyFence(vDevice->getDeviceHandles().device, inFlightFence, nullptr);
 			}
 
-			if (imagesInFlight.size() != 0)
+			if (!imagesInFlight.size())
 			{
 				for (auto imageInFlight : imagesInFlight) vkDestroyFence(vDevice->getDeviceHandles().device, imageInFlight, nullptr);
 			}
@@ -700,8 +701,8 @@ namespace luna
 			barrier.subresourceRange.baseArrayLayer = 0;
 			barrier.subresourceRange.layerCount = 1;
 
-			VkPipelineStageFlags sourceStage;
-			VkPipelineStageFlags destinationStage;
+			VkPipelineStageFlags sourceStage = VK_PIPELINE_STAGE_NONE;
+			VkPipelineStageFlags destinationStage = VK_PIPELINE_STAGE_NONE;
 			if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
 				barrier.srcAccessMask = VK_ACCESS_NONE;
 				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
@@ -759,6 +760,21 @@ namespace luna
 				0, nullptr,
 				1, &barrier);
 			
+		}
+		void vulkanPipeline::bindVertexBuffer(const VkBuffer& buffer) 
+		{
+			LN_CORE_INFO("binding vertexbuffer {0}",(uint64_t) buffer);
+			if (buffer == VK_NULL_HANDLE)
+			{
+				boundVertexBuffers.clear();
+				return;
+			}
+			boundVertexBuffers.push_back(buffer);
+		}
+		void vulkanPipeline::unbindVertexBuffer(const VkBuffer& buffer)
+		{
+			//ye be warned do no touch this function!!
+			for (size_t i = 0; i < boundVertexBuffers.size(); i++) if (boundVertexBuffers[i] == buffer) boundVertexBuffers.erase(boundVertexBuffers.begin() + i);
 		}
 	}
 }

@@ -60,6 +60,14 @@ namespace luna
 			 * @brief return the pipeline renderpass.
 			 */
 			inline VkRenderPass getRenderPass() { return renderPass; };
+
+			/**
+			 * @brief binds a vertexBuffer to the renderPipeline.
+			 * @note when a VK_NULL_HANDLE is passed to the function all vrtexBuffers are unbound
+			 * \param const VkBuffer& buffer
+			 */
+			void bindVertexBuffer(const VkBuffer& buffer);
+			void unbindVertexBuffer(const VkBuffer& buffer);
 			renderer::pipelineLayout layout;
 			uint32_t maxFramesInFlight = 0;
 		private:
@@ -167,6 +175,11 @@ namespace luna
 			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html
 			 */
 			void initSyncStructures();
+			/**
+			 * @brief destroys all pipeline sync structures.
+			 * (VkFence and VkSemaphore)
+			 * 
+			 */
 			void destroySyncStructures();
 			/**
 			 * @brief transitions the image layout.
@@ -222,9 +235,11 @@ namespace luna
 			std::vector<virtualCmdBuffer> commandBuffers;
 			uint32_t swapchainImageIndex = 0;
 			uint32_t currentFrame = 0;
+			uint32_t prevFrame = 0;
 			VkQueue presentQueue;
 			uint64_t _frameNumber = 0; //temporary
 			bool justResized = false;
+			std::vector<VkBuffer> boundVertexBuffers;
 		};
 		
 	}

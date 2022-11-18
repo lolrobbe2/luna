@@ -1,50 +1,28 @@
-[17:30:01] [trace] LUNA: instance creation result = 0
-[17:30:01] [trace] LUNA: surface creation result = 0
-[17:30:01] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[17:30:01] [trace] LUNA: device selection result = 0
-[17:30:01] [trace] LUNA: logical device creation result = 0
-[17:30:01] [trace] LUNA: swapchain creation result = 0
-[17:30:01] [trace] LUNA: reflecting shader: false
-[17:30:01] [trace] LUNA: creating shader Layout
-[17:30:01] [trace] LUNA: created shaderLayout
-[17:30:02] [trace] LUNA: reflecting shader: false
-[17:30:02] [trace] LUNA: creating shader Layout
-[17:30:02] [trace] LUNA: created shaderLayout
-[17:30:02] [info] LUNA: commandbuffer create info = 0
-[17:30:02] [info] LUNA: vma allocator creation result = 0
-[17:30:02] [info] LUNA: creating vulkan shadermodule, result = 0
-[17:30:02] [info] LUNA: creating vulkan shadermodule, result = 0
-[17:30:02] [info] LUNA: framebuffer creation result =0
-[17:30:02] [info] LUNA: pipelinecreation result = 0
-[17:30:02] [info] LUNA: imgui descriptor set creation result = 0
-[17:30:02] [info] LUNA: imgui init for GLFW-vulkan = true
-[17:30:02] [info] LUNA: imgui init vulkan = true
-[17:30:02] [info] LUNA: imgui init complete
-[17:30:02] [trace] APP: started app
-[17:30:03] [trace] LUNA: keep it going!
-[17:30:04] [trace] LUNA: keep it going!
-[17:30:05] [trace] LUNA: keep it going!
-[17:30:06] [trace] LUNA: keep it going!
-[17:30:06] [trace] LUNA: keep it going!
-[17:30:07] [trace] LUNA: keep it going!
-[17:30:08] [trace] LUNA: keep it going!
-[17:30:08] [trace] LUNA: keep it going!
-[17:30:09] [trace] LUNA: keep it going!
-[17:30:09] [trace] LUNA: keep it going!
-[17:30:09] [trace] LUNA: keep it going!
-[17:30:12] [trace] LUNA: keep it going!
-[17:30:12] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x26aa0017260, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x26aa0017260[] expects VkImage 0xc5a188000000011d[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
-[17:30:15] [trace] LUNA: keep it going!
-[17:30:18] [trace] LUNA: keep it going!
-[17:30:19] [trace] LUNA: keep it going!
-[17:31:49] [trace] LUNA: keep it going!
-[17:31:50] [trace] LUNA: keep it going!
-[17:31:55] [trace] LUNA: keep it going!
-[17:31:55] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x26aa0049df0, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x26aa0049df0[] expects VkImage 0x7d60e10000000190[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
-[17:31:56] [trace] LUNA: keep it going!
-[17:31:56] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x26aa0040980, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x26aa0040980[] expects VkImage 0x1947d7000000019f[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
-[17:31:57] [trace] LUNA: keep it going!
-[17:31:57] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x26aa0040980, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x26aa0040980[] expects VkImage 0x282e0e00000001ae[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
-[17:31:59] [trace] LUNA: keep it going!
-[17:31:59] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x26aa0040980, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x26aa0040980[] expects VkImage 0xca957200000001bd[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
-[17:32:02] [trace] LUNA: keep it going!
+[11:43:15] [trace] LUNA: instance creation result = 0
+[11:43:15] [trace] LUNA: surface creation result = 0
+[11:43:15] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[11:43:15] [trace] LUNA: device selection result = 0
+[11:43:15] [trace] LUNA: logical device creation result = 0
+[11:43:15] [trace] LUNA: swapchain creation result = 0
+[11:43:15] [trace] LUNA: reflecting shader: false
+[11:43:15] [trace] LUNA: creating shader Layout
+[11:43:15] [trace] LUNA: created shaderLayout
+[11:43:16] [trace] LUNA: reflecting shader: false
+[11:43:16] [trace] LUNA: creating shader Layout
+[11:43:16] [trace] LUNA: created shaderLayout
+[11:43:16] [info] LUNA: commandbuffer create info = 0
+[11:43:16] [info] LUNA: vma allocator creation result = 0
+[11:43:16] [info] LUNA: creating vulkan shadermodule, result = 0
+[11:43:16] [info] LUNA: creating vulkan shadermodule, result = 0
+[11:43:16] [info] LUNA: framebuffer creation result =0
+[11:43:16] [info] LUNA: pipelinecreation result = 0
+[11:43:16] [info] LUNA: imgui descriptor set creation result = 0
+[11:43:16] [info] LUNA: imgui init for GLFW-vulkan = true
+[11:43:16] [info] LUNA: imgui init vulkan = true
+[11:43:16] [info] LUNA: imgui init complete
+[11:43:16] [trace] APP: started app
+[11:43:21] [trace] LUNA: keep it going!
+[11:43:24] [trace] LUNA: keep it going!
+[11:43:24] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x2690af951e0, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x2690af951e0[] expects VkImage 0x8f1c31000000006d[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
+[11:43:25] [trace] LUNA: keep it going!
+[11:43:25] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x2690afa0ee0, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x2690afa0ee0[] expects VkImage 0xa182620000000079[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.

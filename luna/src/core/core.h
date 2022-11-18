@@ -6,8 +6,8 @@
 #define LN_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 #pragma warning(push, 0)
 #include <memory>
-#pragma warning(pop)
 #include <core/debug/log.h>
+#pragma warning(pop)
 #ifdef _DEBUG
 	#define ENABLE_VALIDATION_LAYERS
 #endif // _DEBUG
