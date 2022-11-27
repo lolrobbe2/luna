@@ -1,5 +1,6 @@
 #pragma once
 #include <core/rendering/buffer.h>
+#include <lnpch.h>
 namespace luna
 {
 	namespace vulkan
@@ -10,16 +11,13 @@ namespace luna
 			vulkanVertexBuffer(uint32_t size);
 			vulkanVertexBuffer(const void* data, uint32_t size);
 			virtual ~vulkanVertexBuffer();
-			virtual void bind(ref<renderer::pipeline> pipeline) const override;
-			virtual void unbind(ref<renderer::pipeline> pipeline) const override;
+			virtual void bind() const override;
+			virtual void unbind() const override;
 
 			virtual void setData(const void* data, uint32_t size) override;
-			VkBuffer getBufferHandle() { return VkVertexBuffer; };
-			template<typename mesh>
-			mesh& getIndex(uint32_t index);
-			friend class vertexBuffer;
-		private:
-			VkBuffer VkVertexBuffer;
+		protected:
+			friend class vulkanPipeline;
+			VkBuffer vkVertexBuffer;
 		};
 	}
 }

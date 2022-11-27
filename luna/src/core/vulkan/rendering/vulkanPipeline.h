@@ -67,7 +67,20 @@ namespace luna
 			 * \param const VkBuffer& buffer
 			 */
 			void bindVertexBuffer(const VkBuffer& buffer);
+			/**
+			 * @brief unbinds a vertexbuffer from the render Pipeline.
+			 * 
+			 * \param const VkBuffer& buffer
+			 */
 			void unbindVertexBuffer(const VkBuffer& buffer);
+			/**
+			 * @brief binds the SINGLE indexBuffer.
+			 * 
+			 * \param const VkBuffer& buffer
+			 */
+			void bindIndexBuffer(const VkBuffer& buffer);
+
+			virtual void drawIndexed(const ref<renderer::vertexArray>& vertexArray,int indexCount = 0) override;
 			renderer::pipelineLayout layout;
 			uint32_t maxFramesInFlight = 0;
 		private:
@@ -239,7 +252,10 @@ namespace luna
 			VkQueue presentQueue;
 			uint64_t _frameNumber = 0; //temporary
 			bool justResized = false;
+			/* draw */
 			std::vector<VkBuffer> boundVertexBuffers;
+			VkBuffer boundIndexBuffer;
+			bool changedBoundBuffers;
 		};
 		
 	}
@@ -247,4 +263,7 @@ namespace luna
 
 /* notes 
 * possible optimization by reusing shaderstages and createInfos;
+* 
+* 
+* use per vertexbuffer descriptor for texture.
 */

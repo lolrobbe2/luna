@@ -1,6 +1,7 @@
 #pragma once
 #include <core/rendering/device.h>
 #include <core/rendering/shader.h>
+#include <core/rendering/vertexArray.h>
 namespace luna
 {
 	namespace renderer
@@ -43,6 +44,13 @@ namespace luna
 			 * 
 			 */
 			virtual void flush() = 0;
+			/**
+			 * @brief draw vertexBuffer with and indexBuffer.
+			 * 
+			 * \param ref<renderer::vertexArray> vertexArray ref to vertexarray containing vertexBuffers and inexBuffer;
+			 * \param indexCount indexCount tp be rendered;
+			 */
+			virtual void drawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount) = 0;
 			int test;
 		private:
 

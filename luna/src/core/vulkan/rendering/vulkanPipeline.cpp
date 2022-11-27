@@ -2,6 +2,8 @@
 #include <core/vulkan/device/vulkanDevice.h>
 #include <backends/imgui_impl_vulkan.cpp>
 #include <core/vulkan/utils/vulkanAllocator.h>
+#include <core/vulkan/rendering/vulkanVertexBuffer.h>
+#include <core/vulkan/rendering/vulkanIndexBuffer.h>
 
 namespace luna
 {
@@ -67,79 +69,77 @@ namespace luna
 			imageSubRange.baseArrayLayer = 0;
 			imageSubRange.layerCount = 1;
 			imageSubRange.levelCount = VK_REMAINING_MIP_LEVELS;
-			/*
-			for (size_t currentBuffer = 0; currentBuffer < commandBuffers.size(); currentBuffer++)
-			{
-			*/
-
-				VkRenderPassBeginInfo rpInfo = {};
-				rpInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-				rpInfo.pNext = nullptr;
 
 
-				rpInfo.renderPass = renderPass;
-				rpInfo.renderArea.offset.x = 0;
-				rpInfo.renderArea.offset.y = 0;
-				rpInfo.renderArea.extent = extent;
-				rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(swapchainImageIndex);
+			VkRenderPassBeginInfo rpInfo = {};
+			rpInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+			rpInfo.pNext = nullptr;
+
+
+			rpInfo.renderPass = renderPass;
+			rpInfo.renderArea.offset.x = 0;
+			rpInfo.renderArea.offset.y = 0;
+			rpInfo.renderArea.extent = extent;
+			rpInfo.framebuffer = vDevice->swapchain->getFrameBuffer(swapchainImageIndex);
 				
-				commandPool->begin(commandBuffers[currentFrame], 0);
-				//connect clear values
-				rpInfo.clearValueCount = 1;
-				rpInfo.pClearValues = &clearValue;
+			commandPool->begin(commandBuffers[currentFrame], 0);
+			//connect clear values
+			rpInfo.clearValueCount = 1;
+			rpInfo.pClearValues = &clearValue;
 
-				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 				
-				vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
-				//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentFrame]), 0, 1, &vDevice->getViewport());
-				vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
+			vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+			//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentFrame]), 0, 1, &vDevice->getViewport());
+			vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
+			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
+			//transition dst image
+			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+			//transition src image
+			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+
+			VkImageCopy imageCopy;
+			imageCopy.dstOffset = { 0,0,0 };
+			imageCopy.srcOffset = { 0,0,0 };
+
+			imageCopy.extent = { vDevice->swapchain->mSwapchain.extent.width, vDevice->swapchain->mSwapchain.extent.height,1 };
+
+			imageCopy.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			imageCopy.srcSubresource.mipLevel = 0;
+			imageCopy.srcSubresource.baseArrayLayer = 0;
+			imageCopy.srcSubresource.layerCount = 1;
+
+			imageCopy.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			imageCopy.dstSubresource.mipLevel = 0;
+			
 				
-				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
-				//transition dst image
-				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
-				//transition src image
-				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
-
-				VkImageCopy imageCopy;
-				imageCopy.dstOffset = { 0,0,0 };
-				imageCopy.srcOffset = { 0,0,0 };
-
-				imageCopy.extent = { vDevice->swapchain->mSwapchain.extent.width, vDevice->swapchain->mSwapchain.extent.height,1 };
-
-				imageCopy.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-				imageCopy.srcSubresource.mipLevel = 0;
-				imageCopy.srcSubresource.baseArrayLayer = 0;
-				imageCopy.srcSubresource.layerCount = 1;
-
-				imageCopy.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-				imageCopy.dstSubresource.mipLevel = 0;
-				imageCopy.dstSubresource.baseArrayLayer = 0;
-				imageCopy.dstSubresource.layerCount = 1;
+			imageCopy.dstSubresource.baseArrayLayer = 0;
+			imageCopy.dstSubresource.layerCount = 1;
+			
+			
+			vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 				
-				
-				vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
-				
-				transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 
-				//transition src image to DST to clear image
-				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
-				
-				vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
-				transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentFrame]));
-				//copy framebuffer to seperate image.
-				//clear framebuffer vkCmdClearImage();
-				//iumgui draw
-				vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+			//transition src image to DST to clear image
+			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+			
+			vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
+			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentFrame]));
+			//copy framebuffer to seperate image.
+			//clear framebuffer vkCmdClearImage();
+			//iumgui draw
+			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-				ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
-				vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
+			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
+			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 			
 				
 				
-				//TODO gpu driven rendering (VkDrawIndirect);
+			//TODO gpu driven rendering (VkDrawIndirect);
 				
-				//finalize the command buffer (we can no longer add commands, but it can now be executed)
-				commandPool->end(commandBuffers[currentFrame]);
+			//finalize the command buffer (we can no longer add commands, but it can now be executed)
+			commandPool->end(commandBuffers[currentFrame]);
 			
 		}
 		void vulkanPipeline::begin() const
@@ -769,12 +769,30 @@ namespace luna
 				boundVertexBuffers.clear();
 				return;
 			}
+			changedBoundBuffers = true;
 			boundVertexBuffers.push_back(buffer);
 		}
 		void vulkanPipeline::unbindVertexBuffer(const VkBuffer& buffer)
 		{
 			//ye be warned do no touch this function!!
+			LN_CORE_INFO("unbinding vertex buffer {0}", (uint64_t)buffer);
+			changedBoundBuffers = true;
 			for (size_t i = 0; i < boundVertexBuffers.size(); i++) if (boundVertexBuffers[i] == buffer) boundVertexBuffers.erase(boundVertexBuffers.begin() + i);
+		}
+		void vulkanPipeline::bindIndexBuffer(const VkBuffer& buffer) 
+		{
+			changedBoundBuffers = true;
+			boundIndexBuffer = buffer;
+		}
+		void vulkanPipeline::drawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount)
+		{
+			std::vector<VkBuffer> vulkanVertexBuffers;
+			VkBuffer indexBuffer = std::dynamic_pointer_cast<vulkanIndexBuffer>(vertexArray->getIndexBuffer())->vkIndexBuffer;
+			//cast base vertexBuffer to platform specific ref.
+			for (ref<renderer::vertexBuffer> vertexBuffer : vertexArray->getVertexBuffers()) vulkanVertexBuffers.push_back(std::dynamic_pointer_cast<vulkanVertexBuffer>(vertexBuffer)->vkVertexBuffer);
+			//extract platform specific buffer handle from platform specifi buffer ref.
+			vkCmdBindVertexBuffers(commandPool->operator=(commandBuffers[currentFrame]), 0, vulkanVertexBuffers.size(), vulkanVertexBuffers.data(), nullptr);
+			vkCmdDrawIndexedIndirect(commandPool->operator=(commandBuffers[currentFrame]), indexBuffer, 0, 1, 0);
 		}
 	}
 }

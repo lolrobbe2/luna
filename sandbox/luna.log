@@ -1,28 +1,28 @@
-[11:43:15] [trace] LUNA: instance creation result = 0
-[11:43:15] [trace] LUNA: surface creation result = 0
-[11:43:15] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[11:43:15] [trace] LUNA: device selection result = 0
-[11:43:15] [trace] LUNA: logical device creation result = 0
-[11:43:15] [trace] LUNA: swapchain creation result = 0
-[11:43:15] [trace] LUNA: reflecting shader: false
-[11:43:15] [trace] LUNA: creating shader Layout
-[11:43:15] [trace] LUNA: created shaderLayout
-[11:43:16] [trace] LUNA: reflecting shader: false
-[11:43:16] [trace] LUNA: creating shader Layout
-[11:43:16] [trace] LUNA: created shaderLayout
-[11:43:16] [info] LUNA: commandbuffer create info = 0
-[11:43:16] [info] LUNA: vma allocator creation result = 0
-[11:43:16] [info] LUNA: creating vulkan shadermodule, result = 0
-[11:43:16] [info] LUNA: creating vulkan shadermodule, result = 0
-[11:43:16] [info] LUNA: framebuffer creation result =0
-[11:43:16] [info] LUNA: pipelinecreation result = 0
-[11:43:16] [info] LUNA: imgui descriptor set creation result = 0
-[11:43:16] [info] LUNA: imgui init for GLFW-vulkan = true
-[11:43:16] [info] LUNA: imgui init vulkan = true
-[11:43:16] [info] LUNA: imgui init complete
-[11:43:16] [trace] APP: started app
-[11:43:21] [trace] LUNA: keep it going!
-[11:43:24] [trace] LUNA: keep it going!
-[11:43:24] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x2690af951e0, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x2690af951e0[] expects VkImage 0x8f1c31000000006d[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
-[11:43:25] [trace] LUNA: keep it going!
-[11:43:25] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout ] Object 0: handle = 0x2690afa0ee0, type = VK_OBJECT_TYPE_COMMAND_BUFFER; | MessageID = 0x4dae5635 | vkQueueSubmit(): pSubmits[0].pCommandBuffers[0] command buffer VkCommandBuffer 0x2690afa0ee0[] expects VkImage 0xa182620000000079[] (subresource: aspectMask 0x1 array layer 0, mip level 0) to be in layout VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL--instead, current layout is VK_IMAGE_LAYOUT_UNDEFINED.
+[20:17:11] [trace] LUNA: instance creation result = 0
+[20:17:11] [trace] LUNA: surface creation result = 0
+[20:17:11] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[20:17:11] [trace] LUNA: device selection result = 0
+[20:17:11] [trace] LUNA: logical device creation result = 0
+[20:17:11] [trace] LUNA: swapchain creation result = 0
+[20:17:11] [trace] LUNA: reflecting shader: false
+[20:17:11] [trace] LUNA: creating shader Layout
+[20:17:11] [trace] LUNA: created shaderLayout
+[20:17:11] [trace] LUNA: reflecting shader: false
+[20:17:11] [trace] LUNA: creating shader Layout
+[20:17:11] [trace] LUNA: created shaderLayout
+[20:17:11] [info] LUNA: commandbuffer create info = 0
+[20:17:11] [info] LUNA: vma allocator creation result = 0
+[20:17:11] [info] LUNA: creating vulkan shadermodule, result = 0
+[20:17:11] [info] LUNA: creating vulkan shadermodule, result = 0
+[20:17:11] [info] LUNA: framebuffer creation result =0
+[20:17:11] [info] LUNA: pipelinecreation result = 0
+[20:17:11] [info] LUNA: imgui descriptor set creation result = 0
+[20:17:11] [info] LUNA: imgui init for GLFW-vulkan = true
+[20:17:11] [info] LUNA: imgui init vulkan = true
+[20:17:11] [info] LUNA: imgui init complete
+[20:17:11] [trace] APP: started app
+[20:17:31] [trace] LUNA: keep it going!
+[20:17:34] [trace] LUNA: keep it going!
+[20:17:37] [trace] LUNA: keep it going!
+[20:17:38] [trace] LUNA: keep it going!
+[20:17:41] [trace] LUNA: keep it going!

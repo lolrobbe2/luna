@@ -3,6 +3,7 @@
 #include <core/rendering/device.h>
 #include <core/rendering/pipeline.h>
 #include <core/vulkan/gui/vulkanImgui.h> //TODO make base gui header
+#include <core/rendering/vertexArray.h>
 namespace luna
 {
 	namespace renderer
@@ -26,6 +27,22 @@ namespace luna
 			 * 
 			 */
 			static void newFrame();
+			/**
+			 * @brief starts recording a new scene.
+			 * 
+			 */
+			static void beginScene();
+			/**
+			 * @brief submits a vertexArray to be rendered containing vertexBuffers and 1 indexBuffer.
+			 * @note vertexArray generation is done by the 2D/3D renderer api's respectevly.
+			 * \param vertexArray
+			 */
+			static void Submit(const ref<vertexArray>& vertexArray,const uint64_t& indexCount = 0);
+			/**
+			 * brief ends the scene.
+			 * 
+			 */
+			static void endScene();
 		private:
 			inline static ref<device> rendererDevice; //the main renderDevice (GPU handle)
 			inline static ref<pipeline> rendererPipeline;// the main graphics pipeline

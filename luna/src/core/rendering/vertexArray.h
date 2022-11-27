@@ -8,17 +8,19 @@ namespace luna
 		class vertexArray
 		{
 		public:
-			virtual ~vertexArray();
+			virtual ~vertexArray(){};
 
-			virtual void Bind() const = 0;
-			virtual void Unbind() const = 0;
+			virtual void bind() const = 0;
+			virtual void unbind() const = 0;
 
-			virtual void AddVertexBuffer(const ref<vertexBuffer>& vertexBuffer) = 0;
-			virtual void SetIndexBuffer(const ref<indexBuffer>& indexBuffer) = 0;
-			
-		private:
+			virtual void addVertexBuffer(const ref<vertexBuffer>& VertexBuffer) = 0;
+			virtual void setIndexBuffer(const ref<indexBuffer>& IndexBuffer) = 0;
+
+			virtual const std::vector<ref<vertexBuffer>>& getVertexBuffers() const = 0;
+			virtual const ref<indexBuffer>& getIndexBuffer() const = 0;
+		protected:
 			std::vector<ref<vertexBuffer>> vertexBuffers;
-			ref<indexBuffer> indexBuffers;
+			ref<indexBuffer> indexBuffer;
 		};
 	}
 }

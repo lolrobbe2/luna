@@ -45,5 +45,18 @@ namespace luna
 			rendererPipeline->flush();
 		}
 
+		void renderer::beginScene()
+		{
+		}
+
+		void renderer::Submit(const ref<vertexArray>& vertexArray,const uint64_t& indexCount)
+		{
+			vertexArray->getIndexBuffer();
+		}
+
+		void renderer::endScene()
+		{
+		}
+
 	}
 }

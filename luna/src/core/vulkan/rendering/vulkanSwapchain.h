@@ -66,6 +66,12 @@ namespace luna
 			 * \return VK_SUCCESS when the initialization was succesful.
 			 */
 			VkResult initViewport(uint32_t maxFramesInFlight);
+			/**
+			 * @brief recreates the swapchain.
+			 * 
+			 * \param maxFramesInFlight
+			 * \return VK_SUCCES when recreation was succesful.
+			 */
 			VkResult recreateViewport(uint32_t maxFramesInFlight);
 			/**
 			 * @brief returns the surface format.

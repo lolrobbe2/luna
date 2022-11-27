@@ -1,5 +1,7 @@
 #include "buffer.h"
+#include <core/vulkan/window/window.h>
 #include <core/vulkan/rendering/vulkanVertexBuffer.h>
+#include <core/vulkan/rendering/vulkanIndexBuffer.h>
 namespace luna
 {
 	namespace renderer
@@ -38,6 +40,23 @@ namespace luna
 				return ref<vertexBuffer>();
 			}
 			return ref<vertexBuffer>();
+		}
+		ref<indexBuffer> indexBuffer::create(uint32_t* indices, uint32_t count)
+		{
+			switch (vulkan::window::graphicsApi)
+			{
+			case vulkan::NONE:
+				LN_CORE_ERROR("NONE is currently not supported!");
+				break;
+			case vulkan::OPENGL:
+				LN_CORE_ERROR("OPENGL is currently not supported!");
+				break;
+			case vulkan::VULKAN:
+				return ref<indexBuffer>(new vulkan::vulkanIndexBuffer(indices, count));
+			default:
+				return ref<indexBuffer>();
+			}
+			return ref<indexBuffer>();
 		}
 	}
 }

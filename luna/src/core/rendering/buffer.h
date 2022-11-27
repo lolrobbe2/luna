@@ -1,5 +1,5 @@
 #pragma once
-#include <core/rendering/pipeline.h>
+
 #include <core/rendering/shader.h>
 namespace luna
 {
@@ -40,12 +40,16 @@ namespace luna
 		public:
 			virtual ~vertexBuffer() = default;
 
-			virtual void bind(ref<renderer::pipeline> pipeline) const = 0;
-			virtual void unbind(ref<renderer::pipeline> pipeline) const = 0;
+			virtual void bind() const = 0;
+			virtual void unbind() const = 0;
 
 			virtual void setData(const void* data, uint32_t size) = 0;
 			template<typename mesh>
-			mesh& getIndex(uint32_t index);
+			mesh& getIndex(uint32_t index) 		
+			{
+				mesh* meshData = (mesh*)data;
+				return meshData[index];
+			}
 
 			static ref<vertexBuffer> create(uint32_t size);
 			static ref<vertexBuffer> create(float* vertices, uint32_t size);
@@ -62,14 +66,18 @@ namespace luna
 		
 		class indexBuffer
 		{
+		public:
 			virtual ~indexBuffer() = default;
 
 			virtual void bind() const = 0;
 			virtual void unbind() const = 0;
 
-			virtual uint32_t GetCount() const = 0;
+			virtual uint32_t getCount() const = 0;
 
-			static ref<indexBuffer> Create(uint32_t* indices, uint32_t count);
+			static ref<indexBuffer> create(uint32_t* indices, uint32_t count);
+
+			void* data = nullptr;
+			uint32_t size = 0;
 		};
 	}
 }
