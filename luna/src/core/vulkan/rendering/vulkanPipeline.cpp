@@ -26,6 +26,8 @@ namespace luna
 			presentQueue = device->getQueue(vkb::QueueType::present);
 			utils::vulkanAllocator::init(layout.device);
 			createPipeline(layout);
+
+			drawCommands.reserve(1000);
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
@@ -91,7 +93,10 @@ namespace luna
 				
 			vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 			//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentFrame]), 0, 1, &vDevice->getViewport());
-			vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
+			//vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
+			//draw indexed
+			for (auto draw : drawCommands) fnDrawIndexed(draw.vertexArray,draw.indexCount);
+			
 			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 			//transition dst image
 			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
@@ -196,18 +201,12 @@ namespace luna
 				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
-				LN_CORE_TRACE("keep it going!");
-				/*
-				vDevice->swapchain->recreateSwapchain();
-				vDevice->createFramebuffers(renderPass); 
-				and that is why we don't blindlesly copy paste!
-				*/
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
 				return;
 			}
 
 			createCommands();
-
+			
 			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
 			{
 				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
@@ -233,7 +232,7 @@ namespace luna
 			commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]);
 			//submit command buffer to the queue and execute it.
 			// _renderFence will now block until the graphic commands finish execution
-			
+			drawCommands.clear();
 			
 			
 			VkPresentInfoKHR presentInfo = {};
@@ -309,7 +308,7 @@ namespace luna
 				default:
 					break;
 				}
-				shaderStages.push_back(stageInfo);
+				shaderStages.insert(shaderStages.begin(), stageInfo);
 			}
 		}
 		void vulkanPipeline::createInputStates()
@@ -383,7 +382,7 @@ namespace luna
 			createInputStates();
 			for (const auto& shader : layout.pipelineShaders)
 			{
-				vertexInputStates.push_back(createVertexInputState(shader));
+				if(shader->stage == renderer::shaderStageVertex) vertexInputStates.push_back(createVertexInputState(shader));
 			}
 			initDefaultRenderpass();
 			LN_CORE_INFO("framebuffer creation result ={0}", vDevice->createFramebuffers(renderPass));
@@ -761,38 +760,22 @@ namespace luna
 				1, &barrier);
 			
 		}
-		void vulkanPipeline::bindVertexBuffer(const VkBuffer& buffer) 
-		{
-			LN_CORE_INFO("binding vertexbuffer {0}",(uint64_t) buffer);
-			if (buffer == VK_NULL_HANDLE)
-			{
-				boundVertexBuffers.clear();
-				return;
-			}
-			changedBoundBuffers = true;
-			boundVertexBuffers.push_back(buffer);
-		}
-		void vulkanPipeline::unbindVertexBuffer(const VkBuffer& buffer)
-		{
-			//ye be warned do no touch this function!!
-			LN_CORE_INFO("unbinding vertex buffer {0}", (uint64_t)buffer);
-			changedBoundBuffers = true;
-			for (size_t i = 0; i < boundVertexBuffers.size(); i++) if (boundVertexBuffers[i] == buffer) boundVertexBuffers.erase(boundVertexBuffers.begin() + i);
-		}
-		void vulkanPipeline::bindIndexBuffer(const VkBuffer& buffer) 
-		{
-			changedBoundBuffers = true;
-			boundIndexBuffer = buffer;
-		}
 		void vulkanPipeline::drawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount)
 		{
+			drawCommands.push_back({ vertexArray,indexCount });
+		}
+
+		void vulkanPipeline::fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount)
+		{
+			VkDeviceSize offsets = 0;
 			std::vector<VkBuffer> vulkanVertexBuffers;
 			VkBuffer indexBuffer = std::dynamic_pointer_cast<vulkanIndexBuffer>(vertexArray->getIndexBuffer())->vkIndexBuffer;
 			//cast base vertexBuffer to platform specific ref.
 			for (ref<renderer::vertexBuffer> vertexBuffer : vertexArray->getVertexBuffers()) vulkanVertexBuffers.push_back(std::dynamic_pointer_cast<vulkanVertexBuffer>(vertexBuffer)->vkVertexBuffer);
 			//extract platform specific buffer handle from platform specifi buffer ref.
-			vkCmdBindVertexBuffers(commandPool->operator=(commandBuffers[currentFrame]), 0, vulkanVertexBuffers.size(), vulkanVertexBuffers.data(), nullptr);
-			vkCmdDrawIndexed(commandPool->operator=(commandBuffers[currentFrame]), vertexArray->getIndexBuffer()->getCount(), 0, 0, 0,0);
+			vkCmdBindVertexBuffers(commandPool->operator=(commandBuffers[currentFrame]), 0, vulkanVertexBuffers.size(), vulkanVertexBuffers.data(), &offsets);
+			vkCmdBindIndexBuffer(commandPool->operator=(commandBuffers[currentFrame]), indexBuffer, 0, VK_INDEX_TYPE_UINT32);
+			vkCmdDrawIndexed(commandPool->operator=(commandBuffers[currentFrame]), vertexArray->getIndexBuffer()->getCount(), 1, 0, 1, 0);
 		}
 	}
 }

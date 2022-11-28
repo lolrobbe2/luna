@@ -72,7 +72,7 @@ namespace luna
 			 * \param memoryUsage
 			 * \return 
 			 */
-			static VkResult createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage);
+			static VkResult createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage,VmaAllocationCreateFlags allocFlags = 0);
 			/**
 			 * @brief destroys the VkBuffer object.
 			 * 

@@ -105,7 +105,7 @@ namespace luna
 			vkDestroyImageView(device->getDeviceHandles().device, imageView, nullptr);
 			return VK_SUCCESS;
 		}
-		VkResult vulkanAllocator::createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage)
+		VkResult vulkanAllocator::createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage,VmaAllocationCreateFlags allocFlags)
 		{
 			VkBufferCreateInfo bufferInfo = {};
 			bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
@@ -118,7 +118,8 @@ namespace luna
 			//let the VMA library know that this data should be writeable by CPU, but also readable by GPU
 			VmaAllocationCreateInfo vmaAllocInfo = {};
 			vmaAllocInfo.usage = memoryUsage;
-
+			vmaAllocInfo.flags = allocFlags;
+			//VMA_ALLOCATION_CREATE_MAPPED_BIT;
 			VkBuffer newBuffer;
 			VmaAllocationInfo allocationInfo;
 			VmaAllocation allocation;
@@ -133,7 +134,7 @@ namespace luna
 		void vulkanAllocator::destroyBuffer(VkBuffer buffer)
 		{
 			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;
-			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
+			//vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 
 		}
 	}

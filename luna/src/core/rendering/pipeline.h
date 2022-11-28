@@ -6,11 +6,12 @@ namespace luna
 {
 	namespace renderer
 	{
-	
+		typedef void (*drawCommand)(const ref<vertexArray>& vertexArray, int indexCount);
 		struct pipelineLayout
 		{
 			std::vector<ref<shader>> pipelineShaders;
 			ref<device> device;
+
 		};
 		class pipeline 
 		{
@@ -30,7 +31,7 @@ namespace luna
 
 			virtual void createCommands() = 0;
 			/**
-			* @brief starts recording pipeline input.
+			 * @brief starts recording pipeline input.
 			 *
 			 */
 			virtual void begin() const = 0;
@@ -50,10 +51,10 @@ namespace luna
 			 * \param ref<renderer::vertexArray> vertexArray ref to vertexarray containing vertexBuffers and inexBuffer;
 			 * \param indexCount indexCount tp be rendered;
 			 */
-			virtual void drawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount) = 0;
+			virtual void drawIndexed(const ref<vertexArray>& vertexArray, int indexCount) = 0;
 			int test;
-		private:
-
+		protected:
+			
 		};
 	}
 }

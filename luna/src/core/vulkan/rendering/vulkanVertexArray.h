@@ -12,6 +12,9 @@ namespace luna
 
 			virtual void addVertexBuffer(const ref<renderer::vertexBuffer>& vertexBuffer) override;
 			virtual void setIndexBuffer(const ref<renderer::indexBuffer>& indexBuffer) override;
+		
+			virtual const std::vector<ref<renderer::vertexBuffer>>& getVertexBuffers() const override { return vertexBuffers; };
+			virtual const ref<renderer::indexBuffer>& getIndexBuffer() const override { return indexBuffer; };
 		private:
 		};
 	}

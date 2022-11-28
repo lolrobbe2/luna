@@ -61,26 +61,8 @@ namespace luna
 			 */
 			inline VkRenderPass getRenderPass() { return renderPass; };
 
-			/**
-			 * @brief binds a vertexBuffer to the renderPipeline.
-			 * @note when a VK_NULL_HANDLE is passed to the function all vrtexBuffers are unbound
-			 * \param const VkBuffer& buffer
-			 */
-			void bindVertexBuffer(const VkBuffer& buffer);
-			/**
-			 * @brief unbinds a vertexbuffer from the render Pipeline.
-			 * 
-			 * \param const VkBuffer& buffer
-			 */
-			void unbindVertexBuffer(const VkBuffer& buffer);
-			/**
-			 * @brief binds the SINGLE indexBuffer.
-			 * 
-			 * \param const VkBuffer& buffer
-			 */
-			void bindIndexBuffer(const VkBuffer& buffer);
-
 			virtual void drawIndexed(const ref<renderer::vertexArray>& vertexArray,int indexCount = 0) override;
+			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount);
 			renderer::pipelineLayout layout;
 			uint32_t maxFramesInFlight = 0;
 		private:
@@ -253,8 +235,12 @@ namespace luna
 			uint64_t _frameNumber = 0; //temporary
 			bool justResized = false;
 			/* draw */
-			std::vector<VkBuffer> boundVertexBuffers;
-			VkBuffer boundIndexBuffer;
+			struct drawCommand
+			{
+				ref<renderer::vertexArray> vertexArray;
+				int indexCount = 0;
+			};
+			std::vector<drawCommand> drawCommands;
 			bool changedBoundBuffers;
 		};
 		
