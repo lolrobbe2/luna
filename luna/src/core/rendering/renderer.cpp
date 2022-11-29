@@ -67,6 +67,7 @@ namespace luna
 
 		void renderer::beginScene()
 		{
+			//TODO clears renderDrawCommands
 		}
 
 		void renderer::Submit(const ref<vertexArray>& vertexArray,const uint64_t& indexCount)

@@ -56,9 +56,6 @@ namespace luna
 				std::vector<vertex> vertices;
 				std::vector<uint32_t> indices;
 			};
-			inline static mesh testMesh;
-			inline static ref<vertexArray> vertArray;
 		};
-
 	}
 }
