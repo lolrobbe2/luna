@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_ec40503cd216ceca64dce587ab07734a" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device Directory Reference</primary></indexterm>
+Directory dependency graph for device:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_ec40503cd216ceca64dce587ab07734a_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_vulkan_cmd_pool_8cpp">vulkanCmdPool.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_cmd_pool_8h">vulkanCmdPool.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_device_8cpp">vulkanDevice.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_device_8h">vulkanDevice.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_2ea30aa2956a8db99dd22aa5e597f384" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/bin Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/bin Directory Reference</primary></indexterm>
+Directory dependency graph for bin:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_2ea30aa2956a8db99dd22aa5e597f384_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_87a98b54c65e95f92a8d5a002553db2f">debug-windows-x86_64</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_553cc0e7a3810729969e84725d87b753">release-windows-x86_64</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

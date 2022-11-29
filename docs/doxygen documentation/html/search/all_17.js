@@ -17,9 +17,10 @@ var searchData=
   ['windowresizeevent_14',['windowResizeEvent',['../d1/d00/classluna_1_1window_resize_event.html',1,'luna::windowResizeEvent'],['../d1/d00/classluna_1_1window_resize_event.html#a85791256b947ae4037e8cd81332d6b27',1,'luna::windowResizeEvent::windowResizeEvent()']]],
   ['windows_5fwindow_15',['WINDOWS_WINDOW',['../d9/d00/windows_window_8h.html#a4b362b6a596ff0b88eb524f63913791e',1,'windowsWindow.h']]],
   ['windowspec_16',['windowSpec',['../de/d00/structluna_1_1vulkan_1_1window_spec.html',1,'luna::vulkan::windowSpec'],['../d7/d00/classluna_1_1vulkan_1_1window.html#a35baec84a40d0834cab9487f5a1c6040',1,'luna::vulkan::window::windowSpec()'],['../de/d00/structluna_1_1vulkan_1_1window_spec.html#ab957e6f94a1b42d750694b07db2d656c',1,'luna::vulkan::windowSpec::windowSpec()']]],
-  ['windowswindow_17',['windowsWindow',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html',1,'luna::vulkan::windowsWindow'],['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a31ea80337bb70b42eec75862f91792b0',1,'luna::vulkan::windowsWindow::windowsWindow()']]],
-  ['windowswindow_2ecpp_18',['windowsWindow.cpp',['../d1/d00/windows_window_8cpp.html',1,'']]],
-  ['windowswindow_2eh_19',['windowsWindow.h',['../d9/d00/windows_window_8h.html',1,'']]],
-  ['world1_20',['World1',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a4e1f25fc160be45c2c9cd3161b12d256',1,'luna::input']]],
-  ['world2_21',['World2',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a94e6bb0caf169f9a6d8ca335e53a76ef',1,'luna::input']]]
+  ['windowstorage_17',['windowStorage',['../de/d00/classluna_1_1application_1_1application.html#a6f635658e76dab301e97cd8a9af5d339',1,'luna::application::application']]],
+  ['windowswindow_18',['windowsWindow',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html',1,'luna::vulkan::windowsWindow'],['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a31ea80337bb70b42eec75862f91792b0',1,'luna::vulkan::windowsWindow::windowsWindow()']]],
+  ['windowswindow_2ecpp_19',['windowsWindow.cpp',['../d1/d00/windows_window_8cpp.html',1,'']]],
+  ['windowswindow_2eh_20',['windowsWindow.h',['../d9/d00/windows_window_8h.html',1,'']]],
+  ['world1_21',['World1',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a4e1f25fc160be45c2c9cd3161b12d256',1,'luna::input']]],
+  ['world2_22',['World2',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a94e6bb0caf169f9a6d8ca335e53a76ef',1,'luna::input']]]
 ];

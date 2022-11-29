@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -101,12 +102,12 @@ $(document).ready(function(){initNavTree('d9/d00/classluna_1_1renderer_1_1pipeli
 <div class="dynheader">
 Inheritance diagram for luna::renderer::pipeline:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="../../d9/d00/classluna_1_1renderer_1_1pipeline.png" usemap="#luna::renderer::pipeline_map" alt=""/>
-  <map id="luna::renderer::pipeline_map" name="luna::renderer::pipeline_map">
-<area href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html" title="vulkan pipline implementation class." alt="luna::vulkan::vulkanPipeline" shape="rect" coords="0,56,167,80"/>
-  </map>
-</div></div>
+<div class="center"><img src="../../dd/d00/classluna_1_1renderer_1_1pipeline__inherit__graph.png" border="0" usemap="#aluna_1_1renderer_1_1pipeline_inherit__map" alt="Inheritance graph"/></div>
+<map name="aluna_1_1renderer_1_1pipeline_inherit__map" id="aluna_1_1renderer_1_1pipeline_inherit__map">
+<area shape="rect" title=" " coords="19,5,172,31"/>
+<area shape="rect" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html" title="vulkan pipline implementation class." coords="5,79,185,104"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -129,6 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8f231f1c4fde20cfa26ca59d9def0698"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a8f231f1c4fde20cfa26ca59d9def0698">flush</a> ()=0</td></tr>
 <tr class="memdesc:a8f231f1c4fde20cfa26ca59d9def0698"><td class="mdescLeft">&#160;</td><td class="mdescRight">flush the renderer pipline and render a frame.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a8f231f1c4fde20cfa26ca59d9def0698">More...</a><br /></td></tr>
 <tr class="separator:a8f231f1c4fde20cfa26ca59d9def0698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac93d074f15ee67bc29fa3df51b3498"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498">drawIndexed</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;<a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a>, int indexCount)=0</td></tr>
+<tr class="memdesc:a6ac93d074f15ee67bc29fa3df51b3498"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> with and <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498">More...</a><br /></td></tr>
+<tr class="separator:a6ac93d074f15ee67bc29fa3df51b3498"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -280,6 +284,51 @@ Public Attributes</h2></td></tr>
 <p>destroys the graphics pipeline. </p>
 
 <p>Implemented in <a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ab99b3ab39f4fd1e3275b5b8783f0a554">luna::vulkan::vulkanPipeline</a>.</p>
+
+</div>
+</div>
+<a id="a6ac93d074f15ee67bc29fa3df51b3498" name="a6ac93d074f15ee67bc29fa3df51b3498"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ac93d074f15ee67bc29fa3df51b3498">&#9670;&#160;</a></span>drawIndexed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void luna::renderer::pipeline::drawIndexed </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vertexArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indexCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>draw <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> with and <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::vertexArray&gt;</a></td><td><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> ref to vertexarray containing vertexBuffers and inexBuffer; </td></tr>
+    <tr><td class="paramname">indexCount</td><td>indexCount tp be rendered; </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

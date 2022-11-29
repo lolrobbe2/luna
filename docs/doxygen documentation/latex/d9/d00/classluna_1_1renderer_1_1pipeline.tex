@@ -1,16 +1,20 @@
-\hypertarget{classluna_1_1renderer_1_1pipeline}{}\doxysection{luna\+::renderer\+::pipeline Class Reference}
+\hypertarget{classluna_1_1renderer_1_1pipeline}{}\doxysubsection{luna\+::renderer\+::pipeline Class Reference}
 \label{classluna_1_1renderer_1_1pipeline}\index{luna::renderer::pipeline@{luna::renderer::pipeline}}
 
 
 {\ttfamily \#include $<$pipeline.\+h$>$}
 
-Inheritance diagram for luna\+::renderer\+::pipeline\+:\begin{figure}[H]
+
+
+Inheritance diagram for luna\+::renderer\+::pipeline\+:
+\nopagebreak
+\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{d9/d00/classluna_1_1renderer_1_1pipeline}
+\includegraphics[width=215pt]{dd/d00/classluna_1_1renderer_1_1pipeline__inherit__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_ab40683a6e9514c24b44d36573c5065e9}{$\sim$pipeline}} ()
@@ -26,28 +30,30 @@ virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_afc5a2034a8f1442
 virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a17d90338b9da0e660758cdb406c56091}{end}} () const =0
 \begin{DoxyCompactList}\small\item\em ends recording end. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a8f231f1c4fde20cfa26ca59d9def0698}{flush}} ()=0
-\begin{DoxyCompactList}\small\item\em flush the renderer pipline and render a frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\begin{DoxyCompactList}\small\item\em flush the renderer pipline and render a frame. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a6ac93d074f15ee67bc29fa3df51b3498}{draw\+Indexed}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, int index\+Count)=0
+\begin{DoxyCompactList}\small\item\em draw \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}} with and \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_ab4ed62f2705e4254cf13896862c81863}{test}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\doxysubsubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_ab40683a6e9514c24b44d36573c5065e9}\label{classluna_1_1renderer_1_1pipeline_ab40683a6e9514c24b44d36573c5065e9}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!````~pipeline@{$\sim$pipeline}}
 \index{````~pipeline@{$\sim$pipeline}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{$\sim$pipeline()}{~pipeline()}}
+\doxyparagraph{\texorpdfstring{$\sim$pipeline()}{~pipeline()}}
 {\footnotesize\ttfamily virtual luna\+::renderer\+::pipeline\+::$\sim$pipeline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsubsection{Member Function Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_afc5a2034a8f14426e2ce4b235b0cba2b}\label{classluna_1_1renderer_1_1pipeline_afc5a2034a8f14426e2ce4b235b0cba2b}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!begin@{begin}}
 \index{begin@{begin}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+\doxyparagraph{\texorpdfstring{begin()}{begin()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::pipeline\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
@@ -61,7 +67,7 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_aa2ba811a
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a9f0f6eb618872aa9a2f1fef6dbd3c847}\label{classluna_1_1renderer_1_1pipeline_a9f0f6eb618872aa9a2f1fef6dbd3c847}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!createCommands@{createCommands}}
 \index{createCommands@{createCommands}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{createCommands()}{createCommands()}}
+\doxyparagraph{\texorpdfstring{createCommands()}{createCommands()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::pipeline\+::create\+Commands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
@@ -71,7 +77,7 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a1d4d7250
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a0f11e067108000e35444f69da2175399}\label{classluna_1_1renderer_1_1pipeline_a0f11e067108000e35444f69da2175399}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!createPipeline@{createPipeline}}
 \index{createPipeline@{createPipeline}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{createPipeline()}{createPipeline()}}
+\doxyparagraph{\texorpdfstring{createPipeline()}{createPipeline()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::pipeline\+::create\+Pipeline (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structluna_1_1renderer_1_1pipeline_layout}{pipeline\+Layout}} \&}]{layout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
@@ -90,7 +96,7 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a73d4a77e
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_aa071655def49bf5f9bf517d9ecc7834f}\label{classluna_1_1renderer_1_1pipeline_aa071655def49bf5f9bf517d9ecc7834f}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!destroyPipeline@{destroyPipeline}}
 \index{destroyPipeline@{destroyPipeline}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{destroyPipeline()}{destroyPipeline()}}
+\doxyparagraph{\texorpdfstring{destroyPipeline()}{destroyPipeline()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::pipeline\+::destroy\+Pipeline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
@@ -101,10 +107,27 @@ destroys the graphics pipeline.
 
 Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_ab99b3ab39f4fd1e3275b5b8783f0a554}{luna\+::vulkan\+::vulkan\+Pipeline}}.
 
+\mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a6ac93d074f15ee67bc29fa3df51b3498}\label{classluna_1_1renderer_1_1pipeline_a6ac93d074f15ee67bc29fa3df51b3498}} 
+\index{luna::renderer::pipeline@{luna::renderer::pipeline}!drawIndexed@{drawIndexed}}
+\index{drawIndexed@{drawIndexed}!luna::renderer::pipeline@{luna::renderer::pipeline}}
+\doxyparagraph{\texorpdfstring{drawIndexed()}{drawIndexed()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::pipeline\+::draw\+Indexed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&}]{vertex\+Array,  }\item[{int}]{index\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+draw \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}} with and \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref$<$renderer\+::vertex\+Array$>$}}} & \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} ref to vertexarray containing vertex\+Buffers and inex\+Buffer; \\
+\hline
+{\em index\+Count} & index\+Count tp be rendered; \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a17d90338b9da0e660758cdb406c56091}\label{classluna_1_1renderer_1_1pipeline_a17d90338b9da0e660758cdb406c56091}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!end@{end}}
 \index{end@{end}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{end()}{end()}}
+\doxyparagraph{\texorpdfstring{end()}{end()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::pipeline\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
@@ -118,7 +141,7 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_aa061fcec
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a8f231f1c4fde20cfa26ca59d9def0698}\label{classluna_1_1renderer_1_1pipeline_a8f231f1c4fde20cfa26ca59d9def0698}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!flush@{flush}}
 \index{flush@{flush}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+\doxyparagraph{\texorpdfstring{flush()}{flush()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::pipeline\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
@@ -131,11 +154,11 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a5a362aa2
 
 
 
-\doxysubsection{Member Data Documentation}
+\doxysubsubsection{Member Data Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_ab4ed62f2705e4254cf13896862c81863}\label{classluna_1_1renderer_1_1pipeline_ab4ed62f2705e4254cf13896862c81863}} 
 \index{luna::renderer::pipeline@{luna::renderer::pipeline}!test@{test}}
 \index{test@{test}!luna::renderer::pipeline@{luna::renderer::pipeline}}
-\doxysubsubsection{\texorpdfstring{test}{test}}
+\doxyparagraph{\texorpdfstring{test}{test}}
 {\footnotesize\ttfamily int luna\+::renderer\+::pipeline\+::test}
 
 

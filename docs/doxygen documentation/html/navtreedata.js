@@ -62,10 +62,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "../../index.html",
-"d1/d00/classluna_1_1window_resize_event.html#aac83c6a7b60f24f19558b39fcf7088e6",
-"d6/d00/classluna_1_1renderer_1_1buffer_layout.html",
-"dc/d00/classluna_1_1_log.html#a90de80c9fe7f1090577068d8f2157856",
-"functions_s.html"
+"d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html#abde840fc72e1f453feeb971d071173f6",
+"d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a9e5fae43cd0c39e9c799457e2f16c532",
+"d9/d00/classluna_1_1renderer_1_1shader.html#a716d5fa86b067f0d8def0999a4bc8d9e",
+"de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#a18b558c81f2df4a3a92aec0c3df71cbc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

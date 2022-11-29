@@ -1,27 +1,43 @@
-\hypertarget{event_8h}{}\doxysection{C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/event.h File Reference}
+\hypertarget{event_8h}{}\doxysubsection{C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/event.h File Reference}
 \label{event_8h}\index{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/event.h@{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/event.h}}
 {\ttfamily \#include $<$lnpch.\+h$>$}\newline
 {\ttfamily \#include $<$core/core.\+h$>$}\newline
-\doxysubsection*{Classes}
+Include dependency graph for event.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d00/event_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d00/event_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classluna_1_1_event}{luna\+::\+Event}}
 \item 
 class \mbox{\hyperlink{classluna_1_1event_dispatcher}{luna\+::event\+Dispatcher}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Namespaces}
+\doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespaceluna}{luna}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Macros}
+\doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{event_8h_a80d534fc4d69a68eefd1573fd0ac2f44}{EVENT\+\_\+\+CLASS\+\_\+\+TYPE}}(type)
 \item 
 \#define \mbox{\hyperlink{event_8h_abd52deea587a36ef619e596a0c691839}{EVENT\+\_\+\+CLASS\+\_\+\+CATEGORY}}(category)~virtual int get\+Category\+Flags() const override \{ return category; \}
 \end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
+\doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum class \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}{luna\+::event\+Type}} \{ \newline
@@ -56,24 +72,24 @@ enum \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}{luna\+::e
 , \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848}{luna\+::event\+Category\+Mouse\+Button}} = BIT(4)
  \}
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::ostream \& \mbox{\hyperlink{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}{luna\+::operator$<$$<$}} (std\+::ostream \&os, const Event \&e)
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Macro Definition Documentation}
+\doxysubsubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{event_8h_abd52deea587a36ef619e596a0c691839}\label{event_8h_abd52deea587a36ef619e596a0c691839}} 
 \index{event.h@{event.h}!EVENT\_CLASS\_CATEGORY@{EVENT\_CLASS\_CATEGORY}}
 \index{EVENT\_CLASS\_CATEGORY@{EVENT\_CLASS\_CATEGORY}!event.h@{event.h}}
-\doxysubsubsection{\texorpdfstring{EVENT\_CLASS\_CATEGORY}{EVENT\_CLASS\_CATEGORY}}
+\doxyparagraph{\texorpdfstring{EVENT\_CLASS\_CATEGORY}{EVENT\_CLASS\_CATEGORY}}
 {\footnotesize\ttfamily \#define EVENT\+\_\+\+CLASS\+\_\+\+CATEGORY(\begin{DoxyParamCaption}\item[{}]{category }\end{DoxyParamCaption})~virtual int get\+Category\+Flags() const override \{ return category; \}}
 
 \mbox{\Hypertarget{event_8h_a80d534fc4d69a68eefd1573fd0ac2f44}\label{event_8h_a80d534fc4d69a68eefd1573fd0ac2f44}} 
 \index{event.h@{event.h}!EVENT\_CLASS\_TYPE@{EVENT\_CLASS\_TYPE}}
 \index{EVENT\_CLASS\_TYPE@{EVENT\_CLASS\_TYPE}!event.h@{event.h}}
-\doxysubsubsection{\texorpdfstring{EVENT\_CLASS\_TYPE}{EVENT\_CLASS\_TYPE}}
+\doxyparagraph{\texorpdfstring{EVENT\_CLASS\_TYPE}{EVENT\_CLASS\_TYPE}}
 {\footnotesize\ttfamily \#define EVENT\+\_\+\+CLASS\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}

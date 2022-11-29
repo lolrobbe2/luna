@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -101,6 +102,9 @@ $(document).ready(function(){initNavTree('dc/d00/namespaceluna_1_1utils.html','.
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/structluna_1_1utils_1_1compile_spec.html">compileSpec</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1utils_1_1object_storage.html">objectStorage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">cached object memory class with a key handle.  <a href="../../d5/d00/classluna_1_1utils_1_1object_storage.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1shader_compiler.html">shaderCompiler</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/classluna_1_1utils_1_1shader_library.html">shaderLibrary</a></td></tr>
@@ -116,24 +120,52 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ad825369fbf31da905352dfe904085cd8"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ad825369fbf31da905352dfe904085cd8">storageObject</a></td></tr>
+<tr class="separator:ad825369fbf31da905352dfe904085cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3ec840636b2415749250bb9a183ac2b"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a></td></tr>
 <tr class="separator:ac3ec840636b2415749250bb9a183ac2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b35646c61e2f6d6702a975f67265c3b"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a4b35646c61e2f6d6702a975f67265c3b">allocationHandle</a></td></tr>
+<tr class="separator:a4b35646c61e2f6d6702a975f67265c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a4441ab56334f815b0a8d413e0be275e9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9">storageResult</a> { <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4">storageInvalidHandle</a> = 0
+, <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa">storageOpSucces</a> = 1
+, <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7">storageOpFailed</a> = 2
+ }</td></tr>
+<tr class="separator:a4441ab56334f815b0a8d413e0be275e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d7eb68510835acf5872fc7a29f0c781"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a5d7eb68510835acf5872fc7a29f0c781">compileLanguage</a> { <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928">SPIR</a> = 0
 , <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492">SPIR_V</a> = 1
 , <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f">GLSL</a> = 2
  }</td></tr>
 <tr class="separator:a5d7eb68510835acf5872fc7a29f0c781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add59caf76a7f3b2aa7488057c7625aa0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0">cacheResult</a> { <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8">cacheMiss</a> = 0
+<tr class="memitem:add59caf76a7f3b2aa7488057c7625aa0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0">cacheResult</a> { <br />
+&#160;&#160;<a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8">cacheMiss</a> = 0
 , <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea">cacheHit</a> = 1
 , <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847">cacheInvalidHandle</a> = 2
-, <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f">CACHE_MAX_ENUM</a> = 4
+, <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86">cacheOpSucces</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f">cacheOpFailed</a> = 4
+, <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f">CACHE_MAX_ENUM</a> = 5
+<br />
  }</td></tr>
 <tr class="separator:add59caf76a7f3b2aa7488057c7625aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a id="a4b35646c61e2f6d6702a975f67265c3b" name="a4b35646c61e2f6d6702a975f67265c3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b35646c61e2f6d6702a975f67265c3b">&#9670;&#160;</a></span>allocationHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint64_t <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a4b35646c61e2f6d6702a975f67265c3b">luna::utils::allocationHandle</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac3ec840636b2415749250bb9a183ac2b" name="ac3ec840636b2415749250bb9a183ac2b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac3ec840636b2415749250bb9a183ac2b">&#9670;&#160;</a></span>cacheObject</h2>
 
@@ -142,6 +174,20 @@ Enumerations</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef uint64_t <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">luna::utils::cacheObject</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad825369fbf31da905352dfe904085cd8" name="ad825369fbf31da905352dfe904085cd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad825369fbf31da905352dfe904085cd8">&#9670;&#160;</a></span>storageObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint64_t <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ad825369fbf31da905352dfe904085cd8">luna::utils::storageObject</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -164,6 +210,8 @@ Enumerations</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8" name="add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8"></a>cacheMiss&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea" name="add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea"></a>cacheHit&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847" name="add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847"></a>cacheInvalidHandle&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86" name="add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86"></a>cacheOpSucces&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f" name="add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f"></a>cacheOpFailed&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f" name="add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f"></a>CACHE_MAX_ENUM&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -184,6 +232,25 @@ Enumerations</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928" name="a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928"></a>SPIR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492" name="a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492"></a>SPIR_V&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f" name="a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f"></a>GLSL&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a4441ab56334f815b0a8d413e0be275e9" name="a4441ab56334f815b0a8d413e0be275e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4441ab56334f815b0a8d413e0be275e9">&#9670;&#160;</a></span>storageResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9">luna::utils::storageResult</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4" name="a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4"></a>storageInvalidHandle&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa" name="a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa"></a>storageOpSucces&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7" name="a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7"></a>storageOpFailed&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

@@ -1,4 +1,4 @@
-\hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain}{}\doxysection{luna\+::vulkan\+::vulkan\+Swapchain Class Reference}
+\hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain}{}\doxysubsection{luna\+::vulkan\+::vulkan\+Swapchain Class Reference}
 \label{classluna_1_1vulkan_1_1vulkan_swapchain}\index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
 
 
@@ -9,7 +9,17 @@ the \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+Swapchain}
 
 {\ttfamily \#include $<$vulkan\+Swapchain.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+
+
+Collaboration diagram for luna\+::vulkan\+::vulkan\+Swapchain\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d00/classluna_1_1vulkan_1_1vulkan_swapchain__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a30205844e523a4c82a586c2fa226a23a}{vulkan\+Swapchain}} (const \mbox{\hyperlink{structluna_1_1vulkan_1_1swapchain_spec}{swapchain\+Spec}} \&swap\+Chain\+Spec)
@@ -24,16 +34,20 @@ Vk\+Viewport \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ab240d26c4
 \begin{DoxyCompactList}\small\item\em returns the main viewport handle. \end{DoxyCompactList}\item 
 Vk\+Rect2D \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a4511f134640ffd606ddd8739a6f0320c}{get\+Scissor}} ()
 \begin{DoxyCompactList}\small\item\em returns the viewport scissor. \end{DoxyCompactList}\item 
-Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ad1b0e364d775ae226dc785150619cce6}{init\+Viewport}} ()
+Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ae8f73548005303f54e12658421f16e5a}{init\+Viewport}} (uint32\+\_\+t max\+Frames\+In\+Flight)
 \begin{DoxyCompactList}\small\item\em initializes the main viewport. \end{DoxyCompactList}\item 
+Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a9b0d60eda6d3dd99e4dd365f59704378}{recreate\+Viewport}} (uint32\+\_\+t max\+Frames\+In\+Flight)
+\begin{DoxyCompactList}\small\item\em recreates the swapchain. \end{DoxyCompactList}\item 
 Vk\+Format \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ac47ac505afd723edf99f6679c76a97a9}{get\+Surface\+Format}} ()
 \begin{DoxyCompactList}\small\item\em returns the surface format. \end{DoxyCompactList}\item 
 Vk\+Framebuffer \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a51ab9da02a86c13fc9d00ea50e697af4}{get\+Frame\+Buffer}} (uint8\+\_\+t index)
 \begin{DoxyCompactList}\small\item\em returns the framebuffer given an index. \end{DoxyCompactList}\item 
 Vk\+Descriptor\+Set \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_ac10c35a40970fbc24f9c72ff4fe5375b}{get\+Viewport\+Image}} (uint8\+\_\+t current\+Frame)
 \begin{DoxyCompactList}\small\item\em returns a Viewport\+Image descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ Vk\+Image $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_afb5e85965ea294f324a09433a461be53}{scene\+Viewport\+Images}}
 \item 
 vkb\+::\+Swapchain \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a2ac5e367e771115a392289299ea1b88c}{m\+Swapchain}}
 \item 
@@ -41,12 +55,12 @@ std\+::vector$<$ Vk\+Framebuffer $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vul
 \item 
 std\+::vector$<$ Vk\+Descriptor\+Set $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a815c0418c8db1a95153aca20f2d212df}{m\+\_\+\+Dset}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a01663556c78e5844456e14811d5f7d30}{destroy\+Swapchain}} ()
 \begin{DoxyCompactList}\small\item\em destroys the device bound swapchain. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structluna_1_1vulkan_1_1swapchain_spec}{swapchain\+Spec}} \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a46fb78c2a4568ac3f0c09f86c632e5f9}{m\+Swapchain\+Spec}}
@@ -57,35 +71,39 @@ std\+::vector$<$ Vk\+Image\+View $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vul
 \item 
 Vk\+Format \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_af102a54364f502ede5ac4d9c09d2608d}{swapchain\+Image\+Format}}
 \item 
-bool \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_aa743087e664008a385d6542fbd067f64}{init}} = true
+bool \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_aa743087e664008a385d6542fbd067f64}{init}} = false
 \item 
 Vk\+Sampler \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a0f1089773c7d6583088d9779d12ce1b0}{viewport\+Sampler}}
+\item 
+Vk\+Surface\+Capabilities\+KHR \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a94bbf2dd354d2e252b9447cb6e00d251}{surface\+Capa\+Bilities}}
+\item 
+std\+::vector$<$ Vk\+Image\+View $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain_a3d2920fa23c7c265a28f80d710da73cc}{scene\+Viewport\+Image\+Views}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsubsection{Detailed Description}
 the \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+Swapchain}} is a collection of vulkan frambuffers and image views to wich the scene will be . 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\doxysubsubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a30205844e523a4c82a586c2fa226a23a}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a30205844e523a4c82a586c2fa226a23a}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!vulkanSwapchain@{vulkanSwapchain}}
 \index{vulkanSwapchain@{vulkanSwapchain}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{vulkanSwapchain()}{vulkanSwapchain()}}
+\doxyparagraph{\texorpdfstring{vulkanSwapchain()}{vulkanSwapchain()}}
 {\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Swapchain\+::vulkan\+Swapchain (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structluna_1_1vulkan_1_1swapchain_spec}{swapchain\+Spec}} \&}]{swap\+Chain\+Spec }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_abf80e621aa588cf2fed093b84d114f40}\label{classluna_1_1vulkan_1_1vulkan_swapchain_abf80e621aa588cf2fed093b84d114f40}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!````~vulkanSwapchain@{$\sim$vulkanSwapchain}}
 \index{````~vulkanSwapchain@{$\sim$vulkanSwapchain}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{$\sim$vulkanSwapchain()}{~vulkanSwapchain()}}
+\doxyparagraph{\texorpdfstring{$\sim$vulkanSwapchain()}{~vulkanSwapchain()}}
 {\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Swapchain\+::$\sim$vulkan\+Swapchain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsubsection{Member Function Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a3ad9f4b75e26abb544c9059b2b0f4901}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a3ad9f4b75e26abb544c9059b2b0f4901}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!createSwapchain@{createSwapchain}}
 \index{createSwapchain@{createSwapchain}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{createSwapchain()}{createSwapchain()}}
+\doxyparagraph{\texorpdfstring{createSwapchain()}{createSwapchain()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Swapchain\+::create\+Swapchain (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structluna_1_1vulkan_1_1swapchain_spec}{swapchain\+Spec}} \&}]{swap\+Chain\+Spec }\end{DoxyParamCaption})}
 
 
@@ -105,7 +123,7 @@ for appropriate error info see\+: \href{https://registry.khronos.org/vulkan/spec
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a01663556c78e5844456e14811d5f7d30}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a01663556c78e5844456e14811d5f7d30}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!destroySwapchain@{destroySwapchain}}
 \index{destroySwapchain@{destroySwapchain}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{destroySwapchain()}{destroySwapchain()}}
+\doxyparagraph{\texorpdfstring{destroySwapchain()}{destroySwapchain()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Swapchain\+::destroy\+Swapchain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -118,7 +136,7 @@ VK\+\_\+\+SUCCES
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a51ab9da02a86c13fc9d00ea50e697af4}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a51ab9da02a86c13fc9d00ea50e697af4}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getFrameBuffer@{getFrameBuffer}}
 \index{getFrameBuffer@{getFrameBuffer}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{getFrameBuffer()}{getFrameBuffer()}}
+\doxyparagraph{\texorpdfstring{getFrameBuffer()}{getFrameBuffer()}}
 {\footnotesize\ttfamily Vk\+Framebuffer luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -133,7 +151,7 @@ returns the framebuffer given an index.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a4511f134640ffd606ddd8739a6f0320c}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a4511f134640ffd606ddd8739a6f0320c}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getScissor@{getScissor}}
 \index{getScissor@{getScissor}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{getScissor()}{getScissor()}}
+\doxyparagraph{\texorpdfstring{getScissor()}{getScissor()}}
 {\footnotesize\ttfamily Vk\+Rect2D luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Scissor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -146,7 +164,7 @@ Vk\+Rect2D extent.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ac47ac505afd723edf99f6679c76a97a9}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ac47ac505afd723edf99f6679c76a97a9}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getSurfaceFormat@{getSurfaceFormat}}
 \index{getSurfaceFormat@{getSurfaceFormat}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{getSurfaceFormat()}{getSurfaceFormat()}}
+\doxyparagraph{\texorpdfstring{getSurfaceFormat()}{getSurfaceFormat()}}
 {\footnotesize\ttfamily Vk\+Format luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Surface\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -161,7 +179,7 @@ returns the surface format.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ab240d26c43fb80899009783331ce5f12}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ab240d26c43fb80899009783331ce5f12}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getViewport@{getViewport}}
 \index{getViewport@{getViewport}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{getViewport()}{getViewport()}}
+\doxyparagraph{\texorpdfstring{getViewport()}{getViewport()}}
 {\footnotesize\ttfamily Vk\+Viewport luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Viewport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -174,7 +192,7 @@ Vk\+Viewport main handle.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ac10c35a40970fbc24f9c72ff4fe5375b}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ac10c35a40970fbc24f9c72ff4fe5375b}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!getViewportImage@{getViewportImage}}
 \index{getViewportImage@{getViewportImage}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{getViewportImage()}{getViewportImage()}}
+\doxyparagraph{\texorpdfstring{getViewportImage()}{getViewportImage()}}
 {\footnotesize\ttfamily Vk\+Descriptor\+Set luna\+::vulkan\+::vulkan\+Swapchain\+::get\+Viewport\+Image (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{current\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -186,11 +204,11 @@ returns a Viewport\+Image descriptor.
 {\em Vk\+Descriptor\+Set} & image descriptor. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ad1b0e364d775ae226dc785150619cce6}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ad1b0e364d775ae226dc785150619cce6}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_ae8f73548005303f54e12658421f16e5a}\label{classluna_1_1vulkan_1_1vulkan_swapchain_ae8f73548005303f54e12658421f16e5a}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!initViewport@{initViewport}}
 \index{initViewport@{initViewport}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{initViewport()}{initViewport()}}
-{\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Swapchain\+::init\+Viewport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\doxyparagraph{\texorpdfstring{initViewport()}{initViewport()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Swapchain\+::init\+Viewport (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{max\+Frames\+In\+Flight }\end{DoxyParamCaption})}
 
 
 
@@ -202,7 +220,7 @@ VK\+\_\+\+SUCCESS when the initialization was succesful.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a8fc26c80c31e5986d10fe18c91bb4f14}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a8fc26c80c31e5986d10fe18c91bb4f14}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!recreateSwapchain@{recreateSwapchain}}
 \index{recreateSwapchain@{recreateSwapchain}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{recreateSwapchain()}{recreateSwapchain()}}
+\doxyparagraph{\texorpdfstring{recreateSwapchain()}{recreateSwapchain()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Swapchain\+::recreate\+Swapchain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -212,61 +230,97 @@ recreates the swapchain.
 \begin{DoxyReturn}{Returns}
 returns VK\+\_\+\+SUCCESS on succesful creation. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a9b0d60eda6d3dd99e4dd365f59704378}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a9b0d60eda6d3dd99e4dd365f59704378}} 
+\index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!recreateViewport@{recreateViewport}}
+\index{recreateViewport@{recreateViewport}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
+\doxyparagraph{\texorpdfstring{recreateViewport()}{recreateViewport()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Swapchain\+::recreate\+Viewport (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{max\+Frames\+In\+Flight }\end{DoxyParamCaption})}
 
 
-\doxysubsection{Member Data Documentation}
+
+recreates the swapchain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Frames\+In\+Flight} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+VK\+\_\+\+SUCCES when recreation was succesful. 
+\end{DoxyReturn}
+
+
+\doxysubsubsection{Member Data Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a9e5fae43cd0c39e9c799457e2f16c532}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a9e5fae43cd0c39e9c799457e2f16c532}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!frameBuffers@{frameBuffers}}
 \index{frameBuffers@{frameBuffers}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{frameBuffers}{frameBuffers}}
+\doxyparagraph{\texorpdfstring{frameBuffers}{frameBuffers}}
 {\footnotesize\ttfamily std\+::vector$<$Vk\+Framebuffer$>$ luna\+::vulkan\+::vulkan\+Swapchain\+::frame\+Buffers}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_aa743087e664008a385d6542fbd067f64}\label{classluna_1_1vulkan_1_1vulkan_swapchain_aa743087e664008a385d6542fbd067f64}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!init@{init}}
 \index{init@{init}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{init}{init}}
-{\footnotesize\ttfamily bool luna\+::vulkan\+::vulkan\+Swapchain\+::init = true\hspace{0.3cm}{\ttfamily [private]}}
+\doxyparagraph{\texorpdfstring{init}{init}}
+{\footnotesize\ttfamily bool luna\+::vulkan\+::vulkan\+Swapchain\+::init = false\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a815c0418c8db1a95153aca20f2d212df}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a815c0418c8db1a95153aca20f2d212df}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!m\_Dset@{m\_Dset}}
 \index{m\_Dset@{m\_Dset}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{m\_Dset}{m\_Dset}}
+\doxyparagraph{\texorpdfstring{m\_Dset}{m\_Dset}}
 {\footnotesize\ttfamily std\+::vector$<$Vk\+Descriptor\+Set$>$ luna\+::vulkan\+::vulkan\+Swapchain\+::m\+\_\+\+Dset}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a2ac5e367e771115a392289299ea1b88c}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a2ac5e367e771115a392289299ea1b88c}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!mSwapchain@{mSwapchain}}
 \index{mSwapchain@{mSwapchain}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{mSwapchain}{mSwapchain}}
+\doxyparagraph{\texorpdfstring{mSwapchain}{mSwapchain}}
 {\footnotesize\ttfamily vkb\+::\+Swapchain luna\+::vulkan\+::vulkan\+Swapchain\+::m\+Swapchain}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a46fb78c2a4568ac3f0c09f86c632e5f9}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a46fb78c2a4568ac3f0c09f86c632e5f9}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!mSwapchainSpec@{mSwapchainSpec}}
 \index{mSwapchainSpec@{mSwapchainSpec}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{mSwapchainSpec}{mSwapchainSpec}}
+\doxyparagraph{\texorpdfstring{mSwapchainSpec}{mSwapchainSpec}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1vulkan_1_1swapchain_spec}{swapchain\+Spec}} luna\+::vulkan\+::vulkan\+Swapchain\+::m\+Swapchain\+Spec\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_afb5e85965ea294f324a09433a461be53}\label{classluna_1_1vulkan_1_1vulkan_swapchain_afb5e85965ea294f324a09433a461be53}} 
+\index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!sceneViewportImages@{sceneViewportImages}}
+\index{sceneViewportImages@{sceneViewportImages}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
+\doxyparagraph{\texorpdfstring{sceneViewportImages}{sceneViewportImages}}
+{\footnotesize\ttfamily std\+::vector$<$Vk\+Image$>$ luna\+::vulkan\+::vulkan\+Swapchain\+::scene\+Viewport\+Images}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a3d2920fa23c7c265a28f80d710da73cc}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a3d2920fa23c7c265a28f80d710da73cc}} 
+\index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!sceneViewportImageViews@{sceneViewportImageViews}}
+\index{sceneViewportImageViews@{sceneViewportImageViews}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
+\doxyparagraph{\texorpdfstring{sceneViewportImageViews}{sceneViewportImageViews}}
+{\footnotesize\ttfamily std\+::vector$<$Vk\+Image\+View$>$ luna\+::vulkan\+::vulkan\+Swapchain\+::scene\+Viewport\+Image\+Views\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a94bbf2dd354d2e252b9447cb6e00d251}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a94bbf2dd354d2e252b9447cb6e00d251}} 
+\index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!surfaceCapaBilities@{surfaceCapaBilities}}
+\index{surfaceCapaBilities@{surfaceCapaBilities}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
+\doxyparagraph{\texorpdfstring{surfaceCapaBilities}{surfaceCapaBilities}}
+{\footnotesize\ttfamily Vk\+Surface\+Capabilities\+KHR luna\+::vulkan\+::vulkan\+Swapchain\+::surface\+Capa\+Bilities\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_af102a54364f502ede5ac4d9c09d2608d}\label{classluna_1_1vulkan_1_1vulkan_swapchain_af102a54364f502ede5ac4d9c09d2608d}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!swapchainImageFormat@{swapchainImageFormat}}
 \index{swapchainImageFormat@{swapchainImageFormat}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{swapchainImageFormat}{swapchainImageFormat}}
+\doxyparagraph{\texorpdfstring{swapchainImageFormat}{swapchainImageFormat}}
 {\footnotesize\ttfamily Vk\+Format luna\+::vulkan\+::vulkan\+Swapchain\+::swapchain\+Image\+Format\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_af0c7697cf59b0aab645fd24484a8c38f}\label{classluna_1_1vulkan_1_1vulkan_swapchain_af0c7697cf59b0aab645fd24484a8c38f}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!swapchainImages@{swapchainImages}}
 \index{swapchainImages@{swapchainImages}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{swapchainImages}{swapchainImages}}
+\doxyparagraph{\texorpdfstring{swapchainImages}{swapchainImages}}
 {\footnotesize\ttfamily std\+::vector$<$Vk\+Image$>$ luna\+::vulkan\+::vulkan\+Swapchain\+::swapchain\+Images\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a63790ef192e2ab4bc6823074ba2c8ebe}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a63790ef192e2ab4bc6823074ba2c8ebe}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!swapChainImageViews@{swapChainImageViews}}
 \index{swapChainImageViews@{swapChainImageViews}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{swapChainImageViews}{swapChainImageViews}}
+\doxyparagraph{\texorpdfstring{swapChainImageViews}{swapChainImageViews}}
 {\footnotesize\ttfamily std\+::vector$<$Vk\+Image\+View$>$ luna\+::vulkan\+::vulkan\+Swapchain\+::swap\+Chain\+Image\+Views\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_swapchain_a0f1089773c7d6583088d9779d12ce1b0}\label{classluna_1_1vulkan_1_1vulkan_swapchain_a0f1089773c7d6583088d9779d12ce1b0}} 
 \index{luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}!viewportSampler@{viewportSampler}}
 \index{viewportSampler@{viewportSampler}!luna::vulkan::vulkanSwapchain@{luna::vulkan::vulkanSwapchain}}
-\doxysubsubsection{\texorpdfstring{viewportSampler}{viewportSampler}}
+\doxyparagraph{\texorpdfstring{viewportSampler}{viewportSampler}}
 {\footnotesize\ttfamily Vk\+Sampler luna\+::vulkan\+::vulkan\+Swapchain\+::viewport\+Sampler\hspace{0.3cm}{\ttfamily [private]}}
 
 

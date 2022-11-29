@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1window" xml:lang="en-US">
+<title>luna::vulkan::window Class Reference</title>
+<indexterm><primary>luna::vulkan::window</primary></indexterm>
+<para>
+<computeroutput>#include &lt;window.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::vulkan::window:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dd/d00/classluna_1_1vulkan_1_1window__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::vulkan::window:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/classluna_1_1vulkan_1_1window__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Types    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</link> = std::function&lt; void(<link linkend="_classluna_1_1_event">Event</link> &amp;)&gt;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1window_1aff65add0ca3ca8329387991a181a9d99">~window</link> ()</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1window_1abb228228131dd1e4b3433ac1ee41762e">onUpdate</link> ()=0</para>
+</listitem>
+            <listitem><para>virtual uint32_t <link linkend="_classluna_1_1vulkan_1_1window_1a227c90dbf154016a68c80505bbc80460">getWidth</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual uint32_t <link linkend="_classluna_1_1vulkan_1_1window_1a96c98b4e44f7fb3bacc328845cd415cb">getHeight</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1window_1ade8005289228808055506555cfff328f">setEventCallBack</link> (const <link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</link> &amp;callback)=0</para>
+</listitem>
+            <listitem><para>virtual void * <link linkend="_classluna_1_1vulkan_1_1window_1add34b613de071ba6e381249cefc6c51c">getWindow</link> ()=0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_classluna_1_1vulkan_1_1window">window</link> * <link linkend="_classluna_1_1vulkan_1_1window_1a9d4489af21757ec6d1d4a210482e09cc">windowCreate</link> (const <link linkend="_structluna_1_1vulkan_1_1window_spec">windowSpec</link> &amp;WindowSpec=<link linkend="_structluna_1_1vulkan_1_1window_spec_1ab957e6f94a1b42d750694b07db2d656c">windowSpec::windowSpec</link>())</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structluna_1_1vulkan_1_1window_spec">windowSpec</link> <link linkend="_classluna_1_1vulkan_1_1window_1a35baec84a40d0834cab9487f5a1c6040">windowSpec</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410">Api</link> <link linkend="_classluna_1_1vulkan_1_1window_1a1aa550256de37b33fe4eef334faa3adf">graphicsApi</link> = <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c">Api::VULKAN</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Typedef Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6"/><section>
+    <title>eventCallbackFn</title>
+<indexterm><primary>eventCallbackFn</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>eventCallbackFn</secondary></indexterm>
+<para><computeroutput>using <link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">luna::vulkan::window::eventCallbackFn</link> =  std::function&lt;void(<link linkend="_classluna_1_1_event">Event</link>&amp;)&gt;</computeroutput></para></section>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1aff65add0ca3ca8329387991a181a9d99"/><section>
+    <title>~window()</title>
+<indexterm><primary>~window</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>~window</secondary></indexterm>
+<para><computeroutput>virtual luna::vulkan::window::~window ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1a96c98b4e44f7fb3bacc328845cd415cb"/><section>
+    <title>getHeight()</title>
+<indexterm><primary>getHeight</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>getHeight</secondary></indexterm>
+<para><computeroutput>virtual uint32_t luna::vulkan::window::getHeight ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1windows_window_1a30787af0d713fae4aa72786edb258858">luna::vulkan::windowsWindow</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d7/d00/classluna_1_1vulkan_1_1window_a96c98b4e44f7fb3bacc328845cd415cb_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1a227c90dbf154016a68c80505bbc80460"/><section>
+    <title>getWidth()</title>
+<indexterm><primary>getWidth</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>getWidth</secondary></indexterm>
+<para><computeroutput>virtual uint32_t luna::vulkan::window::getWidth ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1windows_window_1ae96780cb0e15cac8eed1fa4befa14449">luna::vulkan::windowsWindow</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d7/d00/classluna_1_1vulkan_1_1window_a227c90dbf154016a68c80505bbc80460_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1add34b613de071ba6e381249cefc6c51c"/><section>
+    <title>getWindow()</title>
+<indexterm><primary>getWindow</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>getWindow</secondary></indexterm>
+<para><computeroutput>virtual void * luna::vulkan::window::getWindow ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1windows_window_1a1c855425f7826a1fdf0f1bf62da04e25">luna::vulkan::windowsWindow</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d7/d00/classluna_1_1vulkan_1_1window_add34b613de071ba6e381249cefc6c51c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1abb228228131dd1e4b3433ac1ee41762e"/><section>
+    <title>onUpdate()</title>
+<indexterm><primary>onUpdate</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>onUpdate</secondary></indexterm>
+<para><computeroutput>virtual void luna::vulkan::window::onUpdate ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1windows_window_1a427454d1bb14824a27048d35bead798f">luna::vulkan::windowsWindow</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1ade8005289228808055506555cfff328f"/><section>
+    <title>setEventCallBack()</title>
+<indexterm><primary>setEventCallBack</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>setEventCallBack</secondary></indexterm>
+<para><computeroutput>virtual void luna::vulkan::window::setEventCallBack (const <link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</link> &amp; callback)<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1windows_window_1a104531586ca2439b6937e7e3e28952d7">luna::vulkan::windowsWindow</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1a9d4489af21757ec6d1d4a210482e09cc"/><section>
+    <title>windowCreate()</title>
+<indexterm><primary>windowCreate</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>windowCreate</secondary></indexterm>
+<para><computeroutput><link linkend="_classluna_1_1vulkan_1_1window">window</link> * luna::vulkan::window::windowCreate (const <link linkend="_structluna_1_1vulkan_1_1window_spec">windowSpec</link> &amp; WindowSpec = <computeroutput><link linkend="_structluna_1_1vulkan_1_1window_spec_1ab957e6f94a1b42d750694b07db2d656c">windowSpec::windowSpec</link>()</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d7/d00/classluna_1_1vulkan_1_1window_a9d4489af21757ec6d1d4a210482e09cc_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1a1aa550256de37b33fe4eef334faa3adf"/><section>
+    <title>graphicsApi</title>
+<indexterm><primary>graphicsApi</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>graphicsApi</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410">Api</link> luna::vulkan::window::graphicsApi = <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c">Api::VULKAN</link><computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1window_1a35baec84a40d0834cab9487f5a1c6040"/><section>
+    <title>windowSpec</title>
+<indexterm><primary>windowSpec</primary><secondary>luna::vulkan::window</secondary></indexterm>
+<indexterm><primary>luna::vulkan::window</primary><secondary>windowSpec</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1vulkan_1_1window_spec">windowSpec</link> luna::vulkan::window::windowSpec</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/window/<link linkend="_window_8h">window.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/<link linkend="_windows_window_8cpp">windowsWindow.cpp</link></section>
+</section>

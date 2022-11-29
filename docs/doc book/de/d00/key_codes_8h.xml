@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_key_codes_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/keyCodes.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/keyCodes.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;lnpch.h&gt;<?linebreak?>#include &lt;core/core.h&gt;<?linebreak?></programlisting>Include dependency graph for keyCodes.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/key_codes_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dd/d00/key_codes_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1input">luna::input</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39">luna::keyCode</link> = uint16_t</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum : keyCode { <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a1666ec1914578b61898abd33b657806a">luna::input::Space</link> = 32
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af6c5800f7f90ed643856788ff8d01860">luna::input::Apostrophe</link> = 39
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae0d548a4305cc228cb7290905e9d475b">luna::input::Comma</link> = 44
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa31be73ee7b3d16d6ee6970e05554983">luna::input::Minus</link> = 45
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a71ee885825a921d9e873283f3d8feb17">luna::input::Period</link> = 46
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2b0c9beb75f5f9e4dbd1a890acf5c450">luna::input::Slash</link> = 47
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae59e6486de3d4b83917b13efbfe702d2">luna::input::D0</link> = 48
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a39790c2e81e43dc3b012da4993345f33">luna::input::D1</link> = 49
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a18c4d30f804112f40adfb9716168371b">luna::input::D2</link> = 50
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a49fa001e76cff4ef2328cad2d500ebf8">luna::input::D3</link> = 51
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a98d661ac0132e28287a916338705fb9d">luna::input::D4</link> = 52
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad04e9d4f2cda566b83d97defe6ad7329">luna::input::D5</link> = 53
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a65515fbbb5d0488311b0d8014eff51e0">luna::input::D6</link> = 54
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4b625a31bd1c875589e3376eb5bb2c24">luna::input::D7</link> = 55
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a25106a2983fb25913b98a45a7b0c0fb9">luna::input::D8</link> = 56
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0a78be6837e716cadc22abf312dfcd81">luna::input::D9</link> = 57
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5d1638abe993d0b78b4d08031316946e">luna::input::Semicolon</link> = 59
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af12cb1ad7793344ad2ddea1fa89159c5">luna::input::Equal</link> = 61
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19add68b7d71e064c81a45b2aa70a225c06">luna::input::A</link> = 65
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a481a0e751fbaab34f50cd69429362dfb">luna::input::B</link> = 66
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9944323413beed4556c3db4e80672a69">luna::input::C</link> = 67
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afa01245dcdfacd06c578ec02111ad27a">luna::input::D</link> = 68
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9cc6f53aeace4a179fe59213ecbc91e3">luna::input::E</link> = 69
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afca1befd2d577812bad5e1000dd3f0d3">luna::input::F</link> = 70
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a43ed04207ffc8464a329d0fa9fa57957">luna::input::G</link> = 71
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad4deb8dbf136d8dfc77fc72638ddc03e">luna::input::H</link> = 72
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a763a35b2b74701150a338f40d340e048">luna::input::I</link> = 73
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad13e14d90cf66db5dfb7f440a645e1e1">luna::input::J</link> = 74
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a77631642125cae8e7be6667579812f2e">luna::input::K</link> = 75
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a851d04162de4831d0a3335b534ed6596">luna::input::L</link> = 76
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab4e5ba2cf8a352b7e87a693ecdbca5b9">luna::input::M</link> = 77
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2a2a59513980d4592adea169939ee469">luna::input::N</link> = 78
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a7fcb22614caa1c291daebc5b76b409e8">luna::input::O</link> = 79
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a722331098d2459f38455053cd51f0f0a">luna::input::P</link> = 80
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a40e18f99d6ac5375db066508d71217b6">luna::input::Q</link> = 81
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a909e1986507a0711b02cd85e2d0ca9fd">luna::input::R</link> = 82
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19add8e32290ffe653c2bc442e19afebada">luna::input::S</link> = 83
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad9ee97f4bd47c7991b54c5a2fb0dbd7e">luna::input::T</link> = 84
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a53b7d4ab9623663886beabd36f6b4515">luna::input::U</link> = 85
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa680000b5fce66bd2b84b86b72f11818">luna::input::V</link> = 86
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a741b298950f275770888bc052670deff">luna::input::W</link> = 87
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0685e5ee0a0c36e01c069a8bb275e2d1">luna::input::X</link> = 88
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae6f60eb9089a8d5c6e8af65027a19066">luna::input::Y</link> = 89
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a091803cb609677c57389142b4a32f370">luna::input::Z</link> = 90
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a700bd47f1431af90a5cc03e8ef291df0">luna::input::LeftBracket</link> = 91
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a8e50e87138c9189b90ec36d64a9d52c7">luna::input::Backslash</link> = 92
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae94df52004920f8ce806d10a93d88e71">luna::input::RightBracket</link> = 93
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a10caa8f2899f93de045e480b465046f7">luna::input::GraveAccent</link> = 96
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4e1f25fc160be45c2c9cd3161b12d256">luna::input::World1</link> = 161
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a94e6bb0caf169f9a6d8ca335e53a76ef">luna::input::World2</link> = 162
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aba4b6ac4ba82f73bac67152d7821b0e1">luna::input::Escape</link> = 256
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a72dc6dcb9433c4d516802e84a0093066">luna::input::Enter</link> = 257
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae4892326b30004d2f4054ba8a078626c">luna::input::Tab</link> = 258
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a1cf8a10b01c7e09066d38ba88fe4ec59">luna::input::Backspace</link> = 259
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab4eba8c5d5d11c8a73ea14e6ecef42bf">luna::input::Insert</link> = 260
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab898602092ff348df39e4eb6d7aab592">luna::input::Delete</link> = 261
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a27aa4d4804b1c69f0a5943983d5cbd2c">luna::input::Right</link> = 262
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a87007dff1ed9de5660f67c7726dee0ac">luna::input::Left</link> = 263
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ac2b0a04e1e24a8caad45ab6537876bce">luna::input::Down</link> = 264
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aea676057e6a264a78c68ac844564a02e">luna::input::Up</link> = 265
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afafe843569dd61d62a5d8c154c12ac28">luna::input::PageUp</link> = 266
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3c396585439e9684c2d181525b107ccf">luna::input::PageDown</link> = 267
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9344720e55a69ce4b362f86d654273fa">luna::input::Home</link> = 268
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a097ac6e0bbb062da1a68b7332c25a5d3">luna::input::End</link> = 269
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a667fccea4da400eb9ff242a077c47e06">luna::input::CapsLock</link> = 280
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3fafff61e91a0645e9d69115b470a1b5">luna::input::ScrollLock</link> = 281
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af72d1d8f95ce86cbb3166262a2b71195">luna::input::NumLock</link> = 282
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5144e724e7f8896e9103a6a0264d415e">luna::input::PrintScreen</link> = 283
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6ab4f0e5eb24b38b7765e716fbe80623">luna::input::Pause</link> = 284
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19acc4c205d1dfb96bf3734988db609df0d">luna::input::F1</link> = 290
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae3fd1c80dcd687f5167264d6085bbcfd">luna::input::F2</link> = 291
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab563523d136ab9baaaaa540a18a4f34d">luna::input::F3</link> = 292
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a52716c3f671723c5f38d27f28b040b83">luna::input::F4</link> = 293
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9548e6c03e754a384bb1da78a1cd70fc">luna::input::F5</link> = 294
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a996c57984990188d6f55c7032d4da7c4">luna::input::F6</link> = 295
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a103727c0e7fd4241eb6d39242fa7a37e">luna::input::F7</link> = 296
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab10bbbe0218952c200d672f09d3304cd">luna::input::F8</link> = 297
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae08c027dc8cbb4401cf0a8a08b89a986">luna::input::F9</link> = 298
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9842edcae9f371c8ec47efe25659c2a6">luna::input::F10</link> = 299
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4d4fb53f9f8dcfe6884e3c7323ac4c65">luna::input::F11</link> = 300
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0706402df242753334918177bc535051">luna::input::F12</link> = 301
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a05be435a964d69d14344381baeeb86d5">luna::input::F13</link> = 302
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a27c4fc5aa4a567f716c8d81f2ae2d197">luna::input::F14</link> = 303
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9008ea027e237dddd75952819aaab762">luna::input::F15</link> = 304
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a19f1e3f4ec63fa6dc0148404e3f760c4">luna::input::F16</link> = 305
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae7a6599ea1c3a42db86a32855a897d9f">luna::input::F17</link> = 306
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af12aed6ab44bfbc2870800078caeff14">luna::input::F18</link> = 307
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2f47f6df78232e5fa66b527257871f91">luna::input::F19</link> = 308
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aadf56eb6dca08ec7d84ba788bffeb9e0">luna::input::F20</link> = 309
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a69586ec7b1a540be8e84d39d106a6b4e">luna::input::F21</link> = 310
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19adcae36412813dedb8d9d72d2ba405308">luna::input::F22</link> = 311
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad36feecd1740682cf88de00c930a38ea">luna::input::F23</link> = 312
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af5bb2aea52396f79bb89bb3809d8df8a">luna::input::F24</link> = 313
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a34256b3dc6ff0bc619d7e8f66e16db02">luna::input::F25</link> = 314
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa5824fc84ef00b00a64cab62a5745020">luna::input::KP0</link> = 320
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9edff3aa8687767357092e7d866accaf">luna::input::KP1</link> = 321
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3cc93542b7e2254bba4d5ab1692dde53">luna::input::KP2</link> = 322
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae31054ace3f68e4f58f4e6a55cf617b0">luna::input::KP3</link> = 323
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a203211fc1918a418506a8d04788d8527">luna::input::KP4</link> = 324
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aff8cc5b480da3d55d905aa367eef7f8e">luna::input::KP5</link> = 325
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4c18997d02b5edc0afd40f74acb92769">luna::input::KP6</link> = 326
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae645d7a45c3015d510745b2ae378c39d">luna::input::KP7</link> = 327
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aeed7c7f54d4a900a4dc61c59c439266f">luna::input::KP8</link> = 328
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a08bbdc42242e7dce887fef4da36be4f4">luna::input::KP9</link> = 329
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a614211c7a1da49c752fe55ae7d2550fb">luna::input::KPDecimal</link> = 330
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6d4e88f7c366b1e27ddbe5a7456d8b1b">luna::input::KPDivide</link> = 331
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a67f07f88f17f312f6d30b180dda83024">luna::input::KPMultiply</link> = 332
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad376c7271f1901f3ef3bcd3e2538adb3">luna::input::KPSubtract</link> = 333
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5878c6bf8edc78fe8f525ee3ee0e318b">luna::input::KPAdd</link> = 334
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae9d793391546fbac2dbcb93abce6e262">luna::input::KPEnter</link> = 335
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4454f5f7950e126ffadfb6dc6393fb05">luna::input::KPEqual</link> = 336
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad5b3b2361f987d76fdce33669b289588">luna::input::LeftShift</link> = 340
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19abfca106ad161ce08555179266bea622a">luna::input::LeftControl</link> = 341
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4d746a5d0471e2d85ac4065847dd3200">luna::input::LeftAlt</link> = 342
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4e8e98998626a0d79f4b4b5fc999c075">luna::input::LeftSuper</link> = 343
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6e44ff13ad3d41a223de707b20119634">luna::input::RightShift</link> = 344
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af8ce329a1a0ecbe0b6390ee59e3c853c">luna::input::RightControl</link> = 345
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a91f8568fac18a029fbc9904a6fb9989a">luna::input::RightAlt</link> = 346
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afd8d743417c3424aca8e59d92dfe573b">luna::input::RightSuper</link> = 347
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af1a9bd1a7125f0bec641a0833f67f976">luna::input::Menu</link> = 348
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

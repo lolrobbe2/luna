@@ -25,6 +25,9 @@ var searchData=
   ['storagebuffer_22',['StorageBuffer',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba7a59b828caecce4051f8b32fc87f86dc',1,'luna::renderer']]],
   ['storagebuffers_23',['storageBuffers',['../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a5aca7bb61d46cf4a5075123f722053cb',1,'luna::renderer']]],
   ['storageimages_24',['storageImages',['../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a3b3d3702df3499db3035597fc666e626',1,'luna::renderer']]],
-  ['struct_25',['Struct',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba46e61711753dd7a82aabb2f38148bc26',1,'luna::renderer']]],
-  ['subpassinputs_26',['subpassInputs',['../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a0a5ea44659d0cb436b72c54651a1f359',1,'luna::renderer']]]
+  ['storageinvalidhandle_25',['storageInvalidHandle',['../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4',1,'luna::utils']]],
+  ['storageopfailed_26',['storageOpFailed',['../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7',1,'luna::utils']]],
+  ['storageopsucces_27',['storageOpSucces',['../dc/d00/namespaceluna_1_1utils.html#a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa',1,'luna::utils']]],
+  ['struct_28',['Struct',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba46e61711753dd7a82aabb2f38148bc26',1,'luna::renderer']]],
+  ['subpassinputs_29',['subpassInputs',['../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a0a5ea44659d0cb436b72c54651a1f359',1,'luna::renderer']]]
 ];

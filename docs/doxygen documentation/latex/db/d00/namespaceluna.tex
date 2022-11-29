@@ -1,11 +1,9 @@
-\hypertarget{namespaceluna}{}\doxysection{luna Namespace Reference}
+\hypertarget{namespaceluna}{}\doxysubsection{luna Namespace Reference}
 \label{namespaceluna}\index{luna@{luna}}
-\doxysubsection*{Namespaces}
+\doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1application}{application}}
-\item 
-namespace \mbox{\hyperlink{namespaceluna_1_1buffers}{buffers}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1gui}{gui}}
 \item 
@@ -13,15 +11,13 @@ namespace \mbox{\hyperlink{namespaceluna_1_1input}{input}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1_mouse}{Mouse}}
 \item 
-namespace \mbox{\hyperlink{namespaceluna_1_1rebderer}{rebderer}}
-\item 
 namespace \mbox{\hyperlink{namespaceluna_1_1renderer}{renderer}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1utils}{utils}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1vulkan}{vulkan}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Classes}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classluna_1_1app_render_event}{app\+Render\+Event}}
@@ -60,7 +56,7 @@ class \mbox{\hyperlink{classluna_1_1window_close_event}{window\+Close\+Event}}
 \item 
 class \mbox{\hyperlink{classluna_1_1window_resize_event}{window\+Resize\+Event}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}} = std\+::unique\+\_\+ptr$<$ T $>$
@@ -71,7 +67,7 @@ using \mbox{\hyperlink{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}{key\+Cod
 \item 
 using \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} = uint16\+\_\+t
 \end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
+\doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum class \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}{event\+Type}} \{ \newline
@@ -106,7 +102,7 @@ enum \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}{event\+Ca
 , \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848}{event\+Category\+Mouse\+Button}} = BIT(4)
  \}
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename T , typename ... Args$>$ }\\constexpr \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}}$<$ T $>$ \mbox{\hyperlink{namespaceluna_a7318b1c2711a4b9af5450dcf379e5bcc}{create\+Scope}} (Args \&\&... args)
@@ -117,7 +113,7 @@ static std\+::mt19937\+\_\+64 \mbox{\hyperlink{namespaceluna_abc2a4d8820a15b200e
 \item 
 std\+::ostream \& \mbox{\hyperlink{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classluna_1_1_event}{Event}} \&e)
 \end{DoxyCompactItemize}
-\doxysubsection*{Variables}
+\doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 static std\+::random\+\_\+device \mbox{\hyperlink{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}{random\+Device}}
@@ -126,40 +122,40 @@ static std\+::uniform\+\_\+int\+\_\+distribution$<$ uint64\+\_\+t $>$ \mbox{\hyp
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Typedef Documentation}
+\doxysubsubsection{Typedef Documentation}
 \mbox{\Hypertarget{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}\label{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}} 
 \index{luna@{luna}!keyCode@{keyCode}}
 \index{keyCode@{keyCode}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{keyCode}{keyCode}}
+\doxyparagraph{\texorpdfstring{keyCode}{keyCode}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}{luna\+::key\+Code}} = typedef uint16\+\_\+t}
 
 \mbox{\Hypertarget{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}\label{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}} 
 \index{luna@{luna}!mouseCode@{mouseCode}}
 \index{mouseCode@{mouseCode}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{mouseCode}{mouseCode}}
+\doxyparagraph{\texorpdfstring{mouseCode}{mouseCode}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{luna\+::mouse\+Code}} = typedef uint16\+\_\+t}
 
 \mbox{\Hypertarget{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}\label{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}} 
 \index{luna@{luna}!ref@{ref}}
 \index{ref@{ref}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{ref}{ref}}
+\doxyparagraph{\texorpdfstring{ref}{ref}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 using \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{luna\+::ref}} = typedef std\+::shared\+\_\+ptr$<$T$>$}
 
 \mbox{\Hypertarget{namespaceluna_accd5328e0de41c20f918cdd315173870}\label{namespaceluna_accd5328e0de41c20f918cdd315173870}} 
 \index{luna@{luna}!scope@{scope}}
 \index{scope@{scope}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{scope}{scope}}
+\doxyparagraph{\texorpdfstring{scope}{scope}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 using \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{luna\+::scope}} = typedef std\+::unique\+\_\+ptr$<$T$>$}
 
 
 
-\doxysubsection{Enumeration Type Documentation}
+\doxysubsubsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}\label{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}} 
 \index{luna@{luna}!eventCategory@{eventCategory}}
 \index{eventCategory@{eventCategory}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{eventCategory}{eventCategory}}
+\doxyparagraph{\texorpdfstring{eventCategory}{eventCategory}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}{luna\+::event\+Category}}}
 
 \begin{DoxyEnumFields}{Enumerator}
@@ -191,7 +187,7 @@ event\+Category\+Mouse\+Button&\\
 \mbox{\Hypertarget{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}\label{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}} 
 \index{luna@{luna}!eventType@{eventType}}
 \index{eventType@{eventType}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{eventType}{eventType}}
+\doxyparagraph{\texorpdfstring{eventType}{eventType}}
 {\footnotesize\ttfamily enum class \mbox{\hyperlink{namespaceluna_ad79b9142c071f5b952598de9eb0b6610}{luna\+::event\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
@@ -262,45 +258,45 @@ Mouse\+Scrolled&\\
 \end{DoxyEnumFields}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsubsection{Function Documentation}
 \mbox{\Hypertarget{namespaceluna_a4b6e6b3b5670271d9104388763e3acf1}\label{namespaceluna_a4b6e6b3b5670271d9104388763e3acf1}} 
 \index{luna@{luna}!createRef@{createRef}}
 \index{createRef@{createRef}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{createRef()}{createRef()}}
+\doxyparagraph{\texorpdfstring{createRef()}{createRef()}}
 {\footnotesize\ttfamily template$<$typename T , typename ... Args$>$ \\
 constexpr \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ T $>$ luna\+::create\+Ref (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 \mbox{\Hypertarget{namespaceluna_a7318b1c2711a4b9af5450dcf379e5bcc}\label{namespaceluna_a7318b1c2711a4b9af5450dcf379e5bcc}} 
 \index{luna@{luna}!createScope@{createScope}}
 \index{createScope@{createScope}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{createScope()}{createScope()}}
+\doxyparagraph{\texorpdfstring{createScope()}{createScope()}}
 {\footnotesize\ttfamily template$<$typename T , typename ... Args$>$ \\
 constexpr \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}}$<$ T $>$ luna\+::create\+Scope (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 \mbox{\Hypertarget{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}\label{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}} 
 \index{luna@{luna}!engine@{engine}}
 \index{engine@{engine}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{engine()}{engine()}}
+\doxyparagraph{\texorpdfstring{engine()}{engine()}}
 {\footnotesize\ttfamily static std\+::mt19937\+\_\+64 luna\+::engine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}{random\+Device}}()}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}\label{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}} 
 \index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}}
 {\footnotesize\ttfamily std\+::ostream \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classluna_1_1_event}{Event}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-\doxysubsection{Variable Documentation}
+\doxysubsubsection{Variable Documentation}
 \mbox{\Hypertarget{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}\label{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}} 
 \index{luna@{luna}!randomDevice@{randomDevice}}
 \index{randomDevice@{randomDevice}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{randomDevice}{randomDevice}}
+\doxyparagraph{\texorpdfstring{randomDevice}{randomDevice}}
 {\footnotesize\ttfamily std\+::random\+\_\+device luna\+::random\+Device\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{namespaceluna_a04387552bf67afc7e9891b959bc3b8d7}\label{namespaceluna_a04387552bf67afc7e9891b959bc3b8d7}} 
 \index{luna@{luna}!uniformDistr@{uniformDistr}}
 \index{uniformDistr@{uniformDistr}!luna@{luna}}
-\doxysubsubsection{\texorpdfstring{uniformDistr}{uniformDistr}}
+\doxyparagraph{\texorpdfstring{uniformDistr}{uniformDistr}}
 {\footnotesize\ttfamily std\+::uniform\+\_\+int\+\_\+distribution$<$uint64\+\_\+t$>$ luna\+::uniform\+Distr\hspace{0.3cm}{\ttfamily [static]}}
 

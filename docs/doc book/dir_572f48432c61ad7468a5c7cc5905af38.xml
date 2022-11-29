@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_572f48432c61ad7468a5c7cc5905af38" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui Directory Reference</primary></indexterm>
+Directory dependency graph for gui:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_572f48432c61ad7468a5c7cc5905af38_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_vulkan_imgui_8cpp">vulkanImgui.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_imgui_8h">vulkanImgui.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

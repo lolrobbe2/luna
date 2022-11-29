@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1windows_window_1_1window_data" xml:lang="en-US">
+<title>luna::vulkan::windowsWindow::windowData Struct Reference</title>
+<indexterm><primary>luna::vulkan::windowsWindow::windowData</primary></indexterm>
+Collaboration diagram for luna::vulkan::windowsWindow::windowData:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/structluna_1_1vulkan_1_1windows_window_1_1window_data__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a61af8c00871e5f3b89c71b2e33953b65">width</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a1e8eda719c785421697998865385d26e">height</link> = 0</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a30703d411d4db92456d7475a522d0fb8">title</link> {}</para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</link> <link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a3615aa9a296f19f91b496f15006afb26">eventCallbackFn</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a3615aa9a296f19f91b496f15006afb26"/><section>
+    <title>eventCallbackFn</title>
+<indexterm><primary>eventCallbackFn</primary><secondary>luna::vulkan::windowsWindow::windowData</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow::windowData</primary><secondary>eventCallbackFn</secondary></indexterm>
+<para><computeroutput><link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</link> luna::vulkan::windowsWindow::windowData::eventCallbackFn</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a1e8eda719c785421697998865385d26e"/><section>
+    <title>height</title>
+<indexterm><primary>height</primary><secondary>luna::vulkan::windowsWindow::windowData</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow::windowData</primary><secondary>height</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::windowsWindow::windowData::height = 0</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a30703d411d4db92456d7475a522d0fb8"/><section>
+    <title>title</title>
+<indexterm><primary>title</primary><secondary>luna::vulkan::windowsWindow::windowData</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow::windowData</primary><secondary>title</secondary></indexterm>
+<para><computeroutput>std::string luna::vulkan::windowsWindow::windowData::title {}</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1windows_window_1_1window_data_1a61af8c00871e5f3b89c71b2e33953b65"/><section>
+    <title>width</title>
+<indexterm><primary>width</primary><secondary>luna::vulkan::windowsWindow::windowData</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow::windowData</primary><secondary>width</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::windowsWindow::windowData::width = 0</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/<link linkend="_windows_window_8h">windowsWindow.h</link></section>
+</section>

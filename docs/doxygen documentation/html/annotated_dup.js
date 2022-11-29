@@ -7,9 +7,6 @@ var annotated_dup =
       [ "gui", "de/d00/namespaceluna_1_1gui.html", [
         [ "vulkanImgui", "dc/d00/classluna_1_1gui_1_1vulkan_imgui.html", "dc/d00/classluna_1_1gui_1_1vulkan_imgui" ]
       ] ],
-      [ "rebderer", "d2/d00/namespaceluna_1_1rebderer.html", [
-        [ "vertexArray", "da/d00/classluna_1_1rebderer_1_1vertex_array.html", "da/d00/classluna_1_1rebderer_1_1vertex_array" ]
-      ] ],
       [ "renderer", "df/d00/namespaceluna_1_1renderer.html", [
         [ "bufferElement", "d8/d00/classluna_1_1renderer_1_1buffer_element.html", "d8/d00/classluna_1_1renderer_1_1buffer_element" ],
         [ "bufferLayout", "d6/d00/classluna_1_1renderer_1_1buffer_layout.html", "d6/d00/classluna_1_1renderer_1_1buffer_layout" ],
@@ -20,10 +17,12 @@ var annotated_dup =
         [ "renderer", "d5/d00/classluna_1_1renderer_1_1renderer.html", "d5/d00/classluna_1_1renderer_1_1renderer" ],
         [ "shader", "d9/d00/classluna_1_1renderer_1_1shader.html", "d9/d00/classluna_1_1renderer_1_1shader" ],
         [ "shaderResource", "d5/d00/structluna_1_1renderer_1_1shader_resource.html", "d5/d00/structluna_1_1renderer_1_1shader_resource" ],
+        [ "vertexArray", "d5/d00/classluna_1_1renderer_1_1vertex_array.html", "d5/d00/classluna_1_1renderer_1_1vertex_array" ],
         [ "vertexBuffer", "d3/d00/classluna_1_1renderer_1_1vertex_buffer.html", "d3/d00/classluna_1_1renderer_1_1vertex_buffer" ]
       ] ],
       [ "utils", "dc/d00/namespaceluna_1_1utils.html", [
         [ "compileSpec", "db/d00/structluna_1_1utils_1_1compile_spec.html", "db/d00/structluna_1_1utils_1_1compile_spec" ],
+        [ "objectStorage", "d5/d00/classluna_1_1utils_1_1object_storage.html", "d5/d00/classluna_1_1utils_1_1object_storage" ],
         [ "shaderCompiler", "d0/d00/classluna_1_1utils_1_1shader_compiler.html", "d0/d00/classluna_1_1utils_1_1shader_compiler" ],
         [ "shaderLibrary", "d8/d00/classluna_1_1utils_1_1shader_library.html", "d8/d00/classluna_1_1utils_1_1shader_library" ],
         [ "vectorCache", "d0/d00/classluna_1_1utils_1_1vector_cache.html", "d0/d00/classluna_1_1utils_1_1vector_cache" ],
@@ -38,9 +37,12 @@ var annotated_dup =
         [ "vulkanCmdPoolSpec", "df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec.html", "df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec" ],
         [ "vulkanDevice", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_device" ],
         [ "vulkanFeatureSupport", "dd/d00/classluna_1_1vulkan_1_1vulkan_feature_support.html", "dd/d00/classluna_1_1vulkan_1_1vulkan_feature_support" ],
+        [ "vulkanIndexBuffer", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer" ],
         [ "vulkanPipeline", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline" ],
         [ "vulkanShader", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader" ],
         [ "vulkanSwapchain", "d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html", "d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain" ],
+        [ "vulkanVertexArray", "dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array.html", "dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array" ],
+        [ "vulkanVertexBuffer", "de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html", "de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer" ],
         [ "window", "d7/d00/classluna_1_1vulkan_1_1window.html", "d7/d00/classluna_1_1vulkan_1_1window" ],
         [ "windowSpec", "de/d00/structluna_1_1vulkan_1_1window_spec.html", "de/d00/structluna_1_1vulkan_1_1window_spec" ],
         [ "windowsWindow", "d5/d00/classluna_1_1vulkan_1_1windows_window.html", "d5/d00/classluna_1_1vulkan_1_1windows_window" ]

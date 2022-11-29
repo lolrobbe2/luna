@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1_event" xml:lang="en-US">
+<title>luna::Event Class Reference</title>
+<indexterm><primary>luna::Event</primary></indexterm>
+<para>
+<computeroutput>#include &lt;event.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::Event:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d00/classluna_1_1_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classluna_1_1_event_1a08c6e23d9113625624d99774b35c41cf">~Event</link> ()=default</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610">eventType</link> <link linkend="_classluna_1_1_event_1a087ebe0ecf09bb031f7a831f6da6a977">getEventType</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual const char * <link linkend="_classluna_1_1_event_1a36395fc927534541bff09c7abe57594d">getName</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual int <link linkend="_classluna_1_1_event_1a978ef532bf47b2a0f9bb695d0d57dcd0">getCategoryFlags</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual std::string <link linkend="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7">toString</link> () const</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classluna_1_1_event_1a08893b4f963025dab7ccfc56bc5f47c2">IsInCategory</link> (<link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516d">eventCategory</link> category)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_classluna_1_1_event_1ac3adfbdf3c329f442c7edec2029debae">Handled</link> = false</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1_event_1a08c6e23d9113625624d99774b35c41cf"/><section>
+    <title>~Event()</title>
+<indexterm><primary>~Event</primary><secondary>luna::Event</secondary></indexterm>
+<indexterm><primary>luna::Event</primary><secondary>~Event</secondary></indexterm>
+<para><computeroutput>virtual luna::Event::~Event ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1_event_1a978ef532bf47b2a0f9bb695d0d57dcd0"/><section>
+    <title>getCategoryFlags()</title>
+<indexterm><primary>getCategoryFlags</primary><secondary>luna::Event</secondary></indexterm>
+<indexterm><primary>luna::Event</primary><secondary>getCategoryFlags</secondary></indexterm>
+<para><computeroutput>virtual int luna::Event::getCategoryFlags ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1_event_a978ef532bf47b2a0f9bb695d0d57dcd0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1_event_1a087ebe0ecf09bb031f7a831f6da6a977"/><section>
+    <title>getEventType()</title>
+<indexterm><primary>getEventType</primary><secondary>luna::Event</secondary></indexterm>
+<indexterm><primary>luna::Event</primary><secondary>getEventType</secondary></indexterm>
+<para><computeroutput>virtual <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610">eventType</link> luna::Event::getEventType ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1_event_a087ebe0ecf09bb031f7a831f6da6a977_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1_event_1a36395fc927534541bff09c7abe57594d"/><section>
+    <title>getName()</title>
+<indexterm><primary>getName</primary><secondary>luna::Event</secondary></indexterm>
+<indexterm><primary>luna::Event</primary><secondary>getName</secondary></indexterm>
+<para><computeroutput>virtual const char * luna::Event::getName ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1_event_a36395fc927534541bff09c7abe57594d_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1_event_1a08893b4f963025dab7ccfc56bc5f47c2"/><section>
+    <title>IsInCategory()</title>
+<indexterm><primary>IsInCategory</primary><secondary>luna::Event</secondary></indexterm>
+<indexterm><primary>luna::Event</primary><secondary>IsInCategory</secondary></indexterm>
+<para><computeroutput>bool luna::Event::IsInCategory (<link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516d">eventCategory</link> category)<computeroutput>[inline]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1_event_a08893b4f963025dab7ccfc56bc5f47c2_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>luna::Event</secondary></indexterm>
+<indexterm><primary>luna::Event</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>virtual std::string luna::Event::toString ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented in <link linkend="_classluna_1_1window_resize_event_1a41054c9ab94435be172ad64918610607">luna::windowResizeEvent</link>, <link linkend="_classluna_1_1key_pressed_event_1a8538b958d42d052bf319f038e3ff10d6">luna::keyPressedEvent</link>, <link linkend="_classluna_1_1key_released_event_1a2564509fb772e9711bccf6e2fbd2470b">luna::keyReleasedEvent</link>, <link linkend="_classluna_1_1key_typed_event_1a96a9f51fcb44e21c534fa8072a79a273">luna::keyTypedEvent</link>, <link linkend="_classluna_1_1mouse_moved_event_1aa6663ef60b0ccc25c750ebc20899bf5f">luna::mouseMovedEvent</link>, <link linkend="_classluna_1_1mouse_scrolled_event_1a07b539f0949a43dbdca9a8650cf07df7">luna::mouseScrolledEvent</link>, <link linkend="_classluna_1_1mouse_button_pressed_event_1a563fbf565738be757e28cf23a12c97f4">luna::mouseButtonPressedEvent</link>, and <link linkend="_classluna_1_1mouse_button_released_event_1a3586c3785f482e4e174ed7222d83aa98">luna::mouseButtonReleasedEvent</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1_event_a8ca491f0a1d436dd924755aad45a53b7_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1_event_a8ca491f0a1d436dd924755aad45a53b7_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1_event_1ac3adfbdf3c329f442c7edec2029debae"/><section>
+    <title>Handled</title>
+<indexterm><primary>Handled</primary><secondary>luna::Event</secondary></indexterm>
+<indexterm><primary>luna::Event</primary><secondary>Handled</secondary></indexterm>
+<para><computeroutput>bool luna::Event::Handled = false</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_event_8h">event.h</link></section>
+</section>

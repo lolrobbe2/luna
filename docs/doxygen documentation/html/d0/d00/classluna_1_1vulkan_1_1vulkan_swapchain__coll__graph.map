@@ -1,0 +1,17 @@
+<map id="luna::vulkan::vulkanSwapchain" name="luna::vulkan::vulkanSwapchain">
+<area shape="rect" id="node1" title="the vulkanSwapchain is a collection of vulkan frambuffers and image views to wich the scene will be ." coords="1708,113,1905,138"/>
+<area shape="rect" id="node2" title=" " coords="1326,9,1483,34"/>
+<area shape="rect" id="node3" title=" " coords="995,105,1108,130"/>
+<area shape="rect" id="node5" title=" " coords="1309,58,1500,83"/>
+<area shape="rect" id="node6" title=" " coords="1320,108,1489,148"/>
+<area shape="rect" id="node15" title=" " coords="1312,173,1497,198"/>
+<area shape="rect" id="node4" title=" " coords="401,122,439,147"/>
+<area shape="rect" id="node13" title=" " coords="631,166,771,191"/>
+<area shape="rect" id="node7" href="$d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html" title=" " coords="1310,222,1499,247"/>
+<area shape="rect" id="node8" title=" " coords="979,203,1124,243"/>
+<area shape="rect" id="node9" href="$d7/d00/classluna_1_1vulkan_1_1window.html" title=" " coords="631,215,771,241"/>
+<area shape="rect" id="node10" href="$de/d00/structluna_1_1vulkan_1_1window_spec.html" title=" " coords="335,215,505,241"/>
+<area shape="rect" id="node11" title=" " coords="181,215,261,241"/>
+<area shape="rect" id="node12" title=" " coords="5,208,132,248"/>
+<area shape="rect" id="node14" href="$dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html" title=" " coords="965,267,1137,307"/>
+</map>

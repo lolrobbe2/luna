@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec" xml:lang="en-US">
+<title>luna::vulkan::vulkanCmdPoolSpec Struct Reference</title>
+<indexterm><primary>luna::vulkan::vulkanCmdPoolSpec</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanCmdPool.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>VkDevice <link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec_1abbff27bd661efc752aee733c4abd6f19">device</link></para>
+</listitem>
+            <listitem><para>VkCommandPoolCreateFlags <link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec_1acd88aa8a54eb9c4ee01a5600eee0184e">flags</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec_1a110e3d10c2a3533cb02cfdb78c62d40a">queueFamilyIndex</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec_1abbff27bd661efc752aee733c4abd6f19"/><section>
+    <title>device</title>
+<indexterm><primary>device</primary><secondary>luna::vulkan::vulkanCmdPoolSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPoolSpec</primary><secondary>device</secondary></indexterm>
+<para><computeroutput>VkDevice luna::vulkan::vulkanCmdPoolSpec::device</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec_1acd88aa8a54eb9c4ee01a5600eee0184e"/><section>
+    <title>flags</title>
+<indexterm><primary>flags</primary><secondary>luna::vulkan::vulkanCmdPoolSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPoolSpec</primary><secondary>flags</secondary></indexterm>
+<para><computeroutput>VkCommandPoolCreateFlags luna::vulkan::vulkanCmdPoolSpec::flags</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec_1a110e3d10c2a3533cb02cfdb78c62d40a"/><section>
+    <title>queueFamilyIndex</title>
+<indexterm><primary>queueFamilyIndex</primary><secondary>luna::vulkan::vulkanCmdPoolSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPoolSpec</primary><secondary>queueFamilyIndex</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::vulkanCmdPoolSpec::queueFamilyIndex</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/<link linkend="_vulkan_cmd_pool_8h">vulkanCmdPool.h</link></section>
+</section>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_81b3bce3975691880bd92587a1a61704" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils Directory Reference</primary></indexterm>
+Directory dependency graph for utils:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_81b3bce3975691880bd92587a1a61704_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_vma_8cpp">vma.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_allocator_8cpp">vulkanAllocator.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_allocator_8h">vulkanAllocator.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_object_factory_8cpp">vulkanObjectFactory.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_object_factory_8h">vulkanObjectFactory.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

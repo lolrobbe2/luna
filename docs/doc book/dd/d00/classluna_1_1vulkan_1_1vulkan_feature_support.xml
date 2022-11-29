@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1vulkan_feature_support" xml:lang="en-US">
+<title>luna::vulkan::vulkanFeatureSupport Class Reference</title>
+<indexterm><primary>luna::vulkan::vulkanFeatureSupport</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanFeatureSupport.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_feature_support_1ada7cffeda9fa781f98ae658d5af87468">init</link> (const VkPhysicalDevice &amp;physicalDevice)</para>
+</listitem>
+            <listitem><para>static std::pair&lt; VkResult, VkFormatFeatureFlags &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_feature_support_1a1a8b41e3723a2e834d0226c1028542eb">getFormatFeatures</link> (const VkFormat &amp;format, VkFormatFeatureFlags requestedFeatures)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static VkPhysicalDevice <link linkend="_classluna_1_1vulkan_1_1vulkan_feature_support_1a4eb9f8d158c8496eb2aee4400284e4ea">sPhysicalDevice</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>not used yet. </para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_feature_support_1a1a8b41e3723a2e834d0226c1028542eb"/><section>
+    <title>getFormatFeatures()</title>
+<indexterm><primary>getFormatFeatures</primary><secondary>luna::vulkan::vulkanFeatureSupport</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanFeatureSupport</primary><secondary>getFormatFeatures</secondary></indexterm>
+<para><computeroutput>std::pair&lt; VkResult, VkFormatFeatureFlags &gt; luna::vulkan::vulkanFeatureSupport::getFormatFeatures (const VkFormat &amp; format, VkFormatFeatureFlags requestedFeatures)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_feature_support_1ada7cffeda9fa781f98ae658d5af87468"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>luna::vulkan::vulkanFeatureSupport</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanFeatureSupport</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanFeatureSupport::init (const VkPhysicalDevice &amp; physicalDevice)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_feature_support_1a4eb9f8d158c8496eb2aee4400284e4ea"/><section>
+    <title>sPhysicalDevice</title>
+<indexterm><primary>sPhysicalDevice</primary><secondary>luna::vulkan::vulkanFeatureSupport</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanFeatureSupport</primary><secondary>sPhysicalDevice</secondary></indexterm>
+<para><computeroutput>VkPhysicalDevice luna::vulkan::vulkanFeatureSupport::sPhysicalDevice<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/<link linkend="_vulkan_feature_support_8h">vulkanFeatureSupport.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/<link linkend="_vulkan_feature_support_8cpp">vulkanFeatureSupport.cpp</link></section>
+</section>

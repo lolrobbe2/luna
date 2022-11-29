@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_renderer_8cpp" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.cpp File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;core/rendering/renderer.h&gt;<?linebreak?>#include &lt;core/vulkan/device/vulkanDevice.h&gt;<?linebreak?>#include &lt;core/vulkan/rendering/vulkanPipeline.h&gt;<?linebreak?>#include &lt;core/vulkan/rendering/vulkanVertexArray.h&gt;<?linebreak?>#include &lt;core/vulkan/rendering/vulkanVertexBuffer.h&gt;<?linebreak?>#include &lt;core/vulkan/rendering/vulkanIndexBuffer.h&gt;<?linebreak?>#include &lt;core/utils/shaderLibrary.h&gt;<?linebreak?>#include &lt;imgui_demo.cpp&gt;<?linebreak?></programlisting>Include dependency graph for renderer.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d00/renderer_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1renderer">luna::renderer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

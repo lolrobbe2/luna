@@ -9,7 +9,9 @@ var namespaceluna_1_1renderer =
     [ "renderer", "d5/d00/classluna_1_1renderer_1_1renderer.html", "d5/d00/classluna_1_1renderer_1_1renderer" ],
     [ "shader", "d9/d00/classluna_1_1renderer_1_1shader.html", "d9/d00/classluna_1_1renderer_1_1shader" ],
     [ "shaderResource", "d5/d00/structluna_1_1renderer_1_1shader_resource.html", "d5/d00/structluna_1_1renderer_1_1shader_resource" ],
+    [ "vertexArray", "d5/d00/classluna_1_1renderer_1_1vertex_array.html", "d5/d00/classluna_1_1renderer_1_1vertex_array" ],
     [ "vertexBuffer", "d3/d00/classluna_1_1renderer_1_1vertex_buffer.html", "d3/d00/classluna_1_1renderer_1_1vertex_buffer" ],
+    [ "drawCommand", "df/d00/namespaceluna_1_1renderer.html#ac49aeaa7349a30aad88e16003b0e012c", null ],
     [ "shaderStage", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faae", [
       [ "shaderStageVertex", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb", null ],
       [ "shaderStageTessellationControl", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a", null ],

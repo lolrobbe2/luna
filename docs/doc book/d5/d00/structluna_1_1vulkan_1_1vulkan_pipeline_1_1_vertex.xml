@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex" xml:lang="en-US">
+<title>luna::vulkan::vulkanPipeline::Vertex Struct Reference</title>
+<indexterm><primary>luna::vulkan::vulkanPipeline::Vertex</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>glm::vec2 <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex_1a9fc2b5fc8c55d25a1f69774a471c0c17">position</link></para>
+</listitem>
+            <listitem><para>glm::vec3 <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex_1ad2af8670358718ecd9f9a1f1481994ed">normal</link></para>
+</listitem>
+            <listitem><para>glm::vec2 <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex_1a8c11d2de3ff8705798799ffbae447698">color</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex_1a8c11d2de3ff8705798799ffbae447698"/><section>
+    <title>color</title>
+<indexterm><primary>color</primary><secondary>luna::vulkan::vulkanPipeline::Vertex</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline::Vertex</primary><secondary>color</secondary></indexterm>
+<para><computeroutput>glm::vec2 luna::vulkan::vulkanPipeline::Vertex::color</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex_1ad2af8670358718ecd9f9a1f1481994ed"/><section>
+    <title>normal</title>
+<indexterm><primary>normal</primary><secondary>luna::vulkan::vulkanPipeline::Vertex</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline::Vertex</primary><secondary>normal</secondary></indexterm>
+<para><computeroutput>glm::vec3 luna::vulkan::vulkanPipeline::Vertex::normal</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex_1a9fc2b5fc8c55d25a1f69774a471c0c17"/><section>
+    <title>position</title>
+<indexterm><primary>position</primary><secondary>luna::vulkan::vulkanPipeline::Vertex</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline::Vertex</primary><secondary>position</secondary></indexterm>
+<para><computeroutput>glm::vec2 luna::vulkan::vulkanPipeline::Vertex::position</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_pipeline_8h">vulkanPipeline.h</link></section>
+</section>

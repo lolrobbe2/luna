@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description" xml:lang="en-US">
+<title>luna::vulkan::vulkanPipeline::vertexInputDescription Struct Reference</title>
+<indexterm><primary>luna::vulkan::vulkanPipeline::vertexInputDescription</primary></indexterm>
+Collaboration diagram for luna::vulkan::vulkanPipeline::vertexInputDescription:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; VkVertexInputBindingDescription &gt; <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description_1af07a17eed9de34be3352cabad8f409e1">bindings</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkVertexInputAttributeDescription &gt; <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description_1a8f3088f48539e1cc54a9dfb13c77c260">attributes</link></para>
+</listitem>
+            <listitem><para>VkPipelineVertexInputStateCreateFlags <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description_1a81c548e9b6cb1d75fa99d1ff76e357f4">flags</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description_1a8f3088f48539e1cc54a9dfb13c77c260"/><section>
+    <title>attributes</title>
+<indexterm><primary>attributes</primary><secondary>luna::vulkan::vulkanPipeline::vertexInputDescription</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline::vertexInputDescription</primary><secondary>attributes</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkVertexInputAttributeDescription&gt; luna::vulkan::vulkanPipeline::vertexInputDescription::attributes</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description_1af07a17eed9de34be3352cabad8f409e1"/><section>
+    <title>bindings</title>
+<indexterm><primary>bindings</primary><secondary>luna::vulkan::vulkanPipeline::vertexInputDescription</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline::vertexInputDescription</primary><secondary>bindings</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkVertexInputBindingDescription&gt; luna::vulkan::vulkanPipeline::vertexInputDescription::bindings</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description_1a81c548e9b6cb1d75fa99d1ff76e357f4"/><section>
+    <title>flags</title>
+<indexterm><primary>flags</primary><secondary>luna::vulkan::vulkanPipeline::vertexInputDescription</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline::vertexInputDescription</primary><secondary>flags</secondary></indexterm>
+<para><computeroutput>VkPipelineVertexInputStateCreateFlags luna::vulkan::vulkanPipeline::vertexInputDescription::flags = 0</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_pipeline_8h">vulkanPipeline.h</link></section>
+</section>

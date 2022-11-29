@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1uuid" xml:lang="en-US">
+<title>luna::uuid Class Reference</title>
+<indexterm><primary>luna::uuid</primary></indexterm>
+<para>
+
+<para>a general purpose uuid class with a maximum number of 2^64 uuid&apos;s the uuid class does not check for duplicates! </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;uuid.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1uuid_1ae10b320623f531a6dcdfc1a59e3e0b6a">uuid</link> ()</para>
+
+<para>creates/generates a uuid. </para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1uuid_1af95ce67cf8a35f0b04e1143996a5dd84">uuid</link> (uint64_t <link linkend="_classluna_1_1uuid">uuid</link>)</para>
+
+<para>generates a uuid from a uint64_t. </para>
+</listitem>
+            <listitem><para>uint64_t <link linkend="_classluna_1_1uuid_1a84f9ffd4eec1736b8541f1f3fe814208">getId</link> ()</para>
+
+<para>returns the uuid as uint64_t. </para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1uuid_1a57e73628c401b2e1614391137a357583">operator uint64_t</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>uint64_t <link linkend="_classluna_1_1uuid_1afb828e1b3f4c82ba5c86ecbae614b83c">_uuid</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>a general purpose uuid class with a maximum number of 2^64 uuid&apos;s the uuid class does not check for duplicates! </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1uuid_1ae10b320623f531a6dcdfc1a59e3e0b6a"/><section>
+    <title>uuid()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>uuid</primary><secondary>luna::uuid</secondary></indexterm>
+<indexterm><primary>luna::uuid</primary><secondary>uuid</secondary></indexterm>
+<para><computeroutput>luna::uuid::uuid ( )</computeroutput></para><para>
+
+<para>creates/generates a uuid. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d00/classluna_1_1uuid_ae10b320623f531a6dcdfc1a59e3e0b6a_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1uuid_1af95ce67cf8a35f0b04e1143996a5dd84"/><section>
+    <title>uuid()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>uuid</primary><secondary>luna::uuid</secondary></indexterm>
+<indexterm><primary>luna::uuid</primary><secondary>uuid</secondary></indexterm>
+<para><computeroutput>luna::uuid::uuid (uint64_t uuid)</computeroutput></para><para>
+
+<para>generates a uuid from a uint64_t. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>uuid</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1uuid_1a84f9ffd4eec1736b8541f1f3fe814208"/><section>
+    <title>getId()</title>
+<indexterm><primary>getId</primary><secondary>luna::uuid</secondary></indexterm>
+<indexterm><primary>luna::uuid</primary><secondary>getId</secondary></indexterm>
+<para><computeroutput>uint64_t luna::uuid::getId ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>returns the uuid as uint64_t. </para>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1uuid_1a57e73628c401b2e1614391137a357583"/><section>
+    <title>operator uint64_t()</title>
+<indexterm><primary>operator uint64_t</primary><secondary>luna::uuid</secondary></indexterm>
+<indexterm><primary>luna::uuid</primary><secondary>operator uint64_t</secondary></indexterm>
+<para><computeroutput>luna::uuid::operator uint64_t ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1uuid_1afb828e1b3f4c82ba5c86ecbae614b83c"/><section>
+    <title>_uuid</title>
+<indexterm><primary>_uuid</primary><secondary>luna::uuid</secondary></indexterm>
+<indexterm><primary>luna::uuid</primary><secondary>_uuid</secondary></indexterm>
+<para><computeroutput>uint64_t luna::uuid::_uuid<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/<link linkend="_uuid_8h">uuid.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/<link linkend="_uuid_8cpp">uuid.cpp</link></section>
+</section>

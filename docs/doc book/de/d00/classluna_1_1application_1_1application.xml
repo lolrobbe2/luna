@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1application_1_1application" xml:lang="en-US">
+<title>luna::application::application Class Reference</title>
+<indexterm><primary>luna::application::application</primary></indexterm>
+<para>
+<computeroutput>#include &lt;application.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::application::application:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1application_1_1application__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::application::application:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d4/d00/classluna_1_1application_1_1application__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1application_1_1application_1ab14b139e91f011192c54521ccf12f64d">application</link> ()</para>
+
+<para>application constructor, initializes the application and engine. </para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1application_1_1application_1a72fb64703c79f299f6c8b966582b66d1">~application</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1application_1_1application_1a54f15a136ca42981f3a8d5e68fd85648">run</link> ()</para>
+
+<para>the main loop of the application. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1application_1_1application_1af611d7814f0b40e4901357885897c10d">onEvent</link> (<link linkend="_classluna_1_1_event">Event</link> &amp;e)</para>
+
+<para>the main event callback of the application. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link> &gt; <link linkend="_classluna_1_1application_1_1application_1ac76f4ed32350c50b364d7f4c44ea9f91">mWindow</link></para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1object_storage">utils::objectStorage</link>&lt; glm::mat4 &gt; <link linkend="_classluna_1_1application_1_1application_1a6f635658e76dab301e97cd8a9af5d339">windowStorage</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_classluna_1_1application_1_1application_1aecb5c9232bcd1288571522ca517351e2">running</link> = true</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1application_1_1application_1ab14b139e91f011192c54521ccf12f64d"/><section>
+    <title>application()</title>
+<indexterm><primary>application</primary><secondary>luna::application::application</secondary></indexterm>
+<indexterm><primary>luna::application::application</primary><secondary>application</secondary></indexterm>
+<para><computeroutput>luna::application::application::application ( )</computeroutput></para><para>
+
+<para>application constructor, initializes the application and engine. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1application_1_1application_ab14b139e91f011192c54521ccf12f64d_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1application_1_1application_1a72fb64703c79f299f6c8b966582b66d1"/><section>
+    <title>~application()</title>
+<indexterm><primary>~application</primary><secondary>luna::application::application</secondary></indexterm>
+<indexterm><primary>luna::application::application</primary><secondary>~application</secondary></indexterm>
+<para><computeroutput>luna::application::application::~application ( )<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1application_1_1application_1af611d7814f0b40e4901357885897c10d"/><section>
+    <title>onEvent()</title>
+<indexterm><primary>onEvent</primary><secondary>luna::application::application</secondary></indexterm>
+<indexterm><primary>luna::application::application</primary><secondary>onEvent</secondary></indexterm>
+<para><computeroutput>void luna::application::application::onEvent (<link linkend="_classluna_1_1_event">Event</link> &amp; e)</computeroutput></para><para>
+
+<para>the main event callback of the application. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>e</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1application_1_1application_af611d7814f0b40e4901357885897c10d_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1application_1_1application_af611d7814f0b40e4901357885897c10d_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1application_1_1application_1a54f15a136ca42981f3a8d5e68fd85648"/><section>
+    <title>run()</title>
+<indexterm><primary>run</primary><secondary>luna::application::application</secondary></indexterm>
+<indexterm><primary>luna::application::application</primary><secondary>run</secondary></indexterm>
+<para><computeroutput>void luna::application::application::run ( )</computeroutput></para><para>
+
+<para>the main loop of the application. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1application_1_1application_a54f15a136ca42981f3a8d5e68fd85648_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1application_1_1application_a54f15a136ca42981f3a8d5e68fd85648_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1application_1_1application_1ac76f4ed32350c50b364d7f4c44ea9f91"/><section>
+    <title>mWindow</title>
+<indexterm><primary>mWindow</primary><secondary>luna::application::application</secondary></indexterm>
+<indexterm><primary>luna::application::application</primary><secondary>mWindow</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link>&gt; luna::application::application::mWindow<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1application_1_1application_1aecb5c9232bcd1288571522ca517351e2"/><section>
+    <title>running</title>
+<indexterm><primary>running</primary><secondary>luna::application::application</secondary></indexterm>
+<indexterm><primary>luna::application::application</primary><secondary>running</secondary></indexterm>
+<para><computeroutput>bool luna::application::application::running = true<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1application_1_1application_1a6f635658e76dab301e97cd8a9af5d339"/><section>
+    <title>windowStorage</title>
+<indexterm><primary>windowStorage</primary><secondary>luna::application::application</secondary></indexterm>
+<indexterm><primary>luna::application::application</primary><secondary>windowStorage</secondary></indexterm>
+<para><computeroutput><link linkend="_classluna_1_1utils_1_1object_storage">utils::objectStorage</link>&lt;glm::mat4&gt; luna::application::application::windowStorage<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/<link linkend="_application_8h">application.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/<link linkend="_application_8cpp">application.cpp</link></section>
+</section>

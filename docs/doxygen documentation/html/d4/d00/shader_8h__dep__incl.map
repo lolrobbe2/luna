@@ -1,0 +1,34 @@
+<map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/shader.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/shader.h">
+<area shape="rect" id="node1" title=" " coords="2137,5,2295,75"/>
+<area shape="rect" id="node2" href="$d5/d00/buffer_8h.html" title=" " coords="557,123,715,192"/>
+<area shape="rect" id="node5" href="$df/d00/pipeline_8h.html" title=" " coords="1994,357,2153,427"/>
+<area shape="rect" id="node24" href="$dd/d00/shader_8cpp.html" title=" " coords="2229,240,2387,309"/>
+<area shape="rect" id="node25" href="$dc/d00/shader_library_8h.html" title=" " coords="2111,482,2334,537"/>
+<area shape="rect" id="node28" href="$da/d00/vulkan_device_8h.html" title=" " coords="1293,475,1445,544"/>
+<area shape="rect" id="node31" href="$df/d00/vulkan_shader_8h.html" title=" " coords="2279,123,2449,192"/>
+<area shape="rect" id="node3" href="$dd/d00/buffer_8cpp.html" title=" " coords="289,592,447,661"/>
+<area shape="rect" id="node4" href="$d3/d00/vertex_array_8h.html" title=" " coords="1642,240,1801,309"/>
+<area shape="rect" id="node20" href="$dd/d00/vulkan_index_buffer_8h.html" title=" " coords="265,475,460,544"/>
+<area shape="rect" id="node22" href="$d0/d00/vulkan_vertex_buffer_8h.html" title=" " coords="535,475,737,544"/>
+<area shape="rect" id="node6" href="$d6/d00/renderer_8h.html" title=" " coords="1943,709,2102,779"/>
+<area shape="rect" id="node18" href="$d1/d00/vulkan_vertex_array_8h.html" title=" " coords="941,357,1139,427"/>
+<area shape="rect" id="node14" href="$df/d00/vulkan_pipeline_8h.html" title=" " coords="1708,475,1884,544"/>
+<area shape="rect" id="node7" href="$db/d00/application_8h.html" title=" " coords="1933,834,2112,889"/>
+<area shape="rect" id="node13" href="$d6/d00/renderer_8cpp.html" title=" " coords="962,827,1121,896"/>
+<area shape="rect" id="node8" href="$df/d00/application_8cpp.html" title=" " coords="1829,944,2021,999"/>
+<area shape="rect" id="node9" href="$db/d00/luna_8h.html" title=" " coords="2045,944,2197,999"/>
+<area shape="rect" id="node10" href="$d7/d00/bin_2debug-windows-x86__64_2x64_2sandbox_2src_2sandbox_8cpp.html" title=" " coords="1765,1047,1987,1116"/>
+<area shape="rect" id="node11" href="$d6/d00/bin_2release-windows-x86__64_2x64_2sandbox_2src_2sandbox_8cpp.html" title=" " coords="2011,1047,2232,1116"/>
+<area shape="rect" id="node12" href="$dd/d00/sandbox_2src_2sandbox_8cpp.html" title=" " coords="2257,1054,2431,1109"/>
+<area shape="rect" id="node15" href="$d6/d00/vulkan_imgui_8cpp.html" title=" " coords="1767,709,1919,779"/>
+<area shape="rect" id="node16" href="$d3/d00/vulkan_imgui_8h.html" title=" " coords="1833,592,1985,661"/>
+<area shape="rect" id="node17" href="$d2/d00/vulkan_pipeline_8cpp.html" title=" " coords="813,592,1003,661"/>
+<area shape="rect" id="node19" href="$d0/d00/vulkan_vertex_array_8cpp.html" title=" " coords="933,475,1147,544"/>
+<area shape="rect" id="node21" href="$d7/d00/vulkan_index_buffer_8cpp.html" title=" " coords="5,592,213,661"/>
+<area shape="rect" id="node23" href="$d5/d00/vulkan_vertex_buffer_8cpp.html" title=" " coords="471,592,686,661"/>
+<area shape="rect" id="node26" href="$d9/d00/shader_library_8cpp.html" title=" " coords="2178,599,2414,654"/>
+<area shape="rect" id="node27" href="$d6/d00/vulkan_device_8cpp.html" title=" " coords="1543,592,1708,661"/>
+<area shape="rect" id="node29" href="$dd/d00/vulkan_allocator_8cpp.html" title=" " coords="1079,592,1246,661"/>
+<area shape="rect" id="node30" href="$d0/d00/vulkan_object_factory_8cpp.html" title=" " coords="1271,592,1468,661"/>
+<area shape="rect" id="node32" href="$df/d00/vulkan_shader_8cpp.html" title=" " coords="2411,240,2597,309"/>
+</map>

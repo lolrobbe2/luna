@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classstd_1_1shared__ptr_3_01window_01_4" xml:lang="en-US">
+<title>shared_ptr&lt; window &gt; Class Reference</title>
+<indexterm><primary>shared_ptr&lt; window &gt;</primary></indexterm>
+<para>
+
+<para>this is the window class en creates an os window windowSpec)); </para>
+ 
+</para>
+<section>
+<title>Detailed Description</title>
+
+<para>this is the window class en creates an os window windowSpec)); </para>
+
+
+
+<para><warning><title>Warning</title>
+
+<para>use as an std::shared_ptr /ref </para>
+</warning>
+</para>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/window/<link linkend="_window_8h">window.h</link></section>
+</section>

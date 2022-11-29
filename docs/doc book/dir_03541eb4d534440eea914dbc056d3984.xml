@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_03541eb4d534440eea914dbc056d3984" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/bin/debug-windows-x86_64/x64 Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/bin/debug-windows-x86_64/x64 Directory Reference</primary></indexterm>
+Directory dependency graph for x64:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_03541eb4d534440eea914dbc056d3984_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_fcac6e8da2f2086569b7244d7a39c9df">sandbox</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

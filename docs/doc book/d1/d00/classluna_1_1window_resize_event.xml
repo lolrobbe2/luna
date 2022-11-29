@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1window_resize_event" xml:lang="en-US">
+<title>luna::windowResizeEvent Class Reference</title>
+<indexterm><primary>luna::windowResizeEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;applicationEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::windowResizeEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../da/d00/classluna_1_1window_resize_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::windowResizeEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d2/d00/classluna_1_1window_resize_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1window_resize_event_1a85791256b947ae4037e8cd81332d6b27">windowResizeEvent</link> (unsigned int width, unsigned int height)</para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_classluna_1_1window_resize_event_1aac83c6a7b60f24f19558b39fcf7088e6">getWidth</link> () const</para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_classluna_1_1window_resize_event_1ad24affdedebd80d7d97edea5f9986f63">getHeight</link> () const</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classluna_1_1window_resize_event_1a41054c9ab94435be172ad64918610607">toString</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>unsigned int <link linkend="_classluna_1_1window_resize_event_1a297bc9536f045a25243c8dc1606c3388">m_Width</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_classluna_1_1window_resize_event_1a793b20085fda6534e73f7db4a99cefec">m_Height</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1window_resize_event_1a85791256b947ae4037e8cd81332d6b27"/><section>
+    <title>windowResizeEvent()</title>
+<indexterm><primary>windowResizeEvent</primary><secondary>luna::windowResizeEvent</secondary></indexterm>
+<indexterm><primary>luna::windowResizeEvent</primary><secondary>windowResizeEvent</secondary></indexterm>
+<para><computeroutput>luna::windowResizeEvent::windowResizeEvent (unsigned int width, unsigned int height)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1window_resize_event_1ad24affdedebd80d7d97edea5f9986f63"/><section>
+    <title>getHeight()</title>
+<indexterm><primary>getHeight</primary><secondary>luna::windowResizeEvent</secondary></indexterm>
+<indexterm><primary>luna::windowResizeEvent</primary><secondary>getHeight</secondary></indexterm>
+<para><computeroutput>unsigned int luna::windowResizeEvent::getHeight ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1window_resize_event_1aac83c6a7b60f24f19558b39fcf7088e6"/><section>
+    <title>getWidth()</title>
+<indexterm><primary>getWidth</primary><secondary>luna::windowResizeEvent</secondary></indexterm>
+<indexterm><primary>luna::windowResizeEvent</primary><secondary>getWidth</secondary></indexterm>
+<para><computeroutput>unsigned int luna::windowResizeEvent::getWidth ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1window_resize_event_1a41054c9ab94435be172ad64918610607"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>luna::windowResizeEvent</secondary></indexterm>
+<indexterm><primary>luna::windowResizeEvent</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>std::string luna::windowResizeEvent::toString ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7">luna::Event</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1window_resize_event_1a793b20085fda6534e73f7db4a99cefec"/><section>
+    <title>m_Height</title>
+<indexterm><primary>m_Height</primary><secondary>luna::windowResizeEvent</secondary></indexterm>
+<indexterm><primary>luna::windowResizeEvent</primary><secondary>m_Height</secondary></indexterm>
+<para><computeroutput>unsigned int luna::windowResizeEvent::m_Height<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1window_resize_event_1a297bc9536f045a25243c8dc1606c3388"/><section>
+    <title>m_Width</title>
+<indexterm><primary>m_Width</primary><secondary>luna::windowResizeEvent</secondary></indexterm>
+<indexterm><primary>luna::windowResizeEvent</primary><secondary>m_Width</secondary></indexterm>
+<para><computeroutput>unsigned int luna::windowResizeEvent::m_Width<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_application_event_8h">applicationEvent.h</link></section>
+</section>

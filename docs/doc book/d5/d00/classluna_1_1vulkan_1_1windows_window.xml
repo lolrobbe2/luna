@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1windows_window" xml:lang="en-US">
+<title>luna::vulkan::windowsWindow Class Reference</title>
+<indexterm><primary>luna::vulkan::windowsWindow</primary></indexterm>
+<para>
+<computeroutput>#include &lt;windowsWindow.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::vulkan::windowsWindow:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1vulkan_1_1windows_window__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::vulkan::windowsWindow:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/classluna_1_1vulkan_1_1windows_window__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data">windowData</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1windows_window_1a31ea80337bb70b42eec75862f91792b0">windowsWindow</link> (const <link linkend="_structluna_1_1vulkan_1_1window_spec">vulkan::windowSpec</link> &amp;<link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data">windowData</link>)</para>
+
+<para>creates a windows window. </para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1windows_window_1acef4249877e0605c2b175befed0ec9d2">~windowsWindow</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1windows_window_1a427454d1bb14824a27048d35bead798f">onUpdate</link> () override</para>
+
+<para>polls all the window and input events. </para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1vulkan_1_1windows_window_1ae96780cb0e15cac8eed1fa4befa14449">getWidth</link> () const override</para>
+
+<para>returs the current width of the window. </para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1vulkan_1_1windows_window_1a30787af0d713fae4aa72786edb258858">getHeight</link> () const override</para>
+
+<para>return the current height of the window. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1windows_window_1a104531586ca2439b6937e7e3e28952d7">setEventCallBack</link> (const <link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</link> &amp;callback) override</para>
+
+<para>set the window event callback function. </para>
+</listitem>
+            <listitem><para>void * <link linkend="_classluna_1_1vulkan_1_1windows_window_1a1c855425f7826a1fdf0f1bf62da04e25">getWindow</link> () override</para>
+
+<para>returns the GLFW window pointer. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1windows_window_1ad3141e23bc0a4a69bd99df77916284a1">init</link> (const <link linkend="_structluna_1_1vulkan_1_1window_spec">vulkan::windowSpec</link> &amp;windowInfo)</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1windows_window_1a6c54abf726f879ffaba9f3495fe2bf0f">shutDown</link> ()</para>
+
+<para>shutsdown the window and GLFW. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>GLFWwindow * <link linkend="_classluna_1_1vulkan_1_1windows_window_1ae3e2e765b18ecf4b4b39db44334db98e">_window</link></para>
+</listitem>
+            <listitem><para><link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data">windowData</link> <link linkend="_classluna_1_1vulkan_1_1windows_window_1a0c11df51a011eb590f0ce06df639c9c9">mData</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1a31ea80337bb70b42eec75862f91792b0"/><section>
+    <title>windowsWindow()</title>
+<indexterm><primary>windowsWindow</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>windowsWindow</secondary></indexterm>
+<para><computeroutput>luna::vulkan::windowsWindow::windowsWindow (const <link linkend="_structluna_1_1vulkan_1_1window_spec">vulkan::windowSpec</link> &amp; windowData)</computeroutput></para><para>
+
+<para>creates a windows window. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data">windowData</link></entry><entry>
+<para><link linkend="_structluna_1_1vulkan_1_1window_spec">windowSpec</link> struct with the window data </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1windows_window_a31ea80337bb70b42eec75862f91792b0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1acef4249877e0605c2b175befed0ec9d2"/><section>
+    <title>~windowsWindow()</title>
+<indexterm><primary>~windowsWindow</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>~windowsWindow</secondary></indexterm>
+<para><computeroutput>luna::vulkan::windowsWindow::~windowsWindow ( )<computeroutput>[virtual]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1windows_window_acef4249877e0605c2b175befed0ec9d2_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1a30787af0d713fae4aa72786edb258858"/><section>
+    <title>getHeight()</title>
+<indexterm><primary>getHeight</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>getHeight</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::windowsWindow::getHeight ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>return the current height of the window. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1vulkan_1_1window_1a96c98b4e44f7fb3bacc328845cd415cb">luna::vulkan::window</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1ae96780cb0e15cac8eed1fa4befa14449"/><section>
+    <title>getWidth()</title>
+<indexterm><primary>getWidth</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>getWidth</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::windowsWindow::getWidth ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>returs the current width of the window. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1vulkan_1_1window_1a227c90dbf154016a68c80505bbc80460">luna::vulkan::window</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1a1c855425f7826a1fdf0f1bf62da04e25"/><section>
+    <title>getWindow()</title>
+<indexterm><primary>getWindow</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>getWindow</secondary></indexterm>
+<para><computeroutput>void * luna::vulkan::windowsWindow::getWindow ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>returns the GLFW window pointer. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1vulkan_1_1window_1add34b613de071ba6e381249cefc6c51c">luna::vulkan::window</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1ad3141e23bc0a4a69bd99df77916284a1"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::windowsWindow::init (const <link linkend="_structluna_1_1vulkan_1_1window_spec">vulkan::windowSpec</link> &amp; windowInfo)<computeroutput>[private]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para>
+<para>initializes the window and also GLFW if need be.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>windowInfo</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1windows_window_ad3141e23bc0a4a69bd99df77916284a1_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1a427454d1bb14824a27048d35bead798f"/><section>
+    <title>onUpdate()</title>
+<indexterm><primary>onUpdate</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>onUpdate</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::windowsWindow::onUpdate ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>polls all the window and input events. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1vulkan_1_1window_1abb228228131dd1e4b3433ac1ee41762e">luna::vulkan::window</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1a104531586ca2439b6937e7e3e28952d7"/><section>
+    <title>setEventCallBack()</title>
+<indexterm><primary>setEventCallBack</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>setEventCallBack</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::windowsWindow::setEventCallBack (const <link linkend="_classluna_1_1vulkan_1_1window_1a14df75ef2a6abfb73bed3aa3cecd76d6">eventCallbackFn</link> &amp; callback)<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>set the window event callback function. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1vulkan_1_1window_1ade8005289228808055506555cfff328f">luna::vulkan::window</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1a6c54abf726f879ffaba9f3495fe2bf0f"/><section>
+    <title>shutDown()</title>
+<indexterm><primary>shutDown</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>shutDown</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::windowsWindow::shutDown ( )<computeroutput>[private]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>shutsdown the window and GLFW. </para>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1windows_window_a6c54abf726f879ffaba9f3495fe2bf0f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1ae3e2e765b18ecf4b4b39db44334db98e"/><section>
+    <title>_window</title>
+<indexterm><primary>_window</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>_window</secondary></indexterm>
+<para><computeroutput>GLFWwindow* luna::vulkan::windowsWindow::_window<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1windows_window_1a0c11df51a011eb590f0ce06df639c9c9"/><section>
+    <title>mData</title>
+<indexterm><primary>mData</primary><secondary>luna::vulkan::windowsWindow</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowsWindow</primary><secondary>mData</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data">windowData</link> luna::vulkan::windowsWindow::mData<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/<link linkend="_windows_window_8h">windowsWindow.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/<link linkend="_windows_window_8cpp">windowsWindow.cpp</link></section>
+</section>

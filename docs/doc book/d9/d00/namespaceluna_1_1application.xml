@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceluna_1_1application" xml:lang="en-US">
+<title>luna::application Namespace Reference</title>
+<indexterm><primary>luna::application</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1application_1_1application">application</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1application_1_1application">application</link> * <link linkend="_namespaceluna_1_1application_1a7337d658c6d85684f05688a64be61720">createApplication</link> ()</para>
+
+<para>creates the application and returns a pointer to the appliccation. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespaceluna_1_1application_1a7337d658c6d85684f05688a64be61720"/><section>
+    <title>createApplication()</title>
+<indexterm><primary>createApplication</primary><secondary>luna::application</secondary></indexterm>
+<indexterm><primary>luna::application</primary><secondary>createApplication</secondary></indexterm>
+<para><computeroutput><link linkend="_classluna_1_1application_1_1application">luna::application::application</link> * luna::application::createApplication ( )</computeroutput></para><para>
+
+<para>creates the application and returns a pointer to the appliccation. </para>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d00/namespaceluna_1_1application_a7337d658c6d85684f05688a64be61720_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+</section>

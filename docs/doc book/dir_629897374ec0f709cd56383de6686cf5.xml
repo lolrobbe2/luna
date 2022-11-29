@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_629897374ec0f709cd56383de6686cf5" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering Directory Reference</primary></indexterm>
+Directory dependency graph for rendering:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_629897374ec0f709cd56383de6686cf5_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_vulkan_index_buffer_8cpp">vulkanIndexBuffer.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_index_buffer_8h">vulkanIndexBuffer.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_pipeline_8cpp">vulkanPipeline.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_pipeline_8h">vulkanPipeline.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_shader_8cpp">vulkanShader.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_shader_8h">vulkanShader.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_swapchain_8cpp">vulkanSwapchain.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_swapchain_8h">vulkanSwapchain.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_vertex_array_8cpp">vulkanVertexArray.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_vertex_array_8h">vulkanVertexArray.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_vertex_buffer_8cpp">vulkanVertexBuffer.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_vertex_buffer_8h">vulkanVertexBuffer.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -103,6 +104,28 @@ $(document).ready(function(){initNavTree('d5/d00/classluna_1_1vulkan_1_1vulkan_s
  <a href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#details">More...</a></p>
 
 <p><code>#include &lt;vulkanSwapchain.h&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for luna::vulkan::vulkanSwapchain:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d00/classluna_1_1vulkan_1_1vulkan_swapchain__coll__graph.png" border="0" usemap="#aluna_1_1vulkan_1_1vulkan_swapchain_coll__map" alt="Collaboration graph"/></div>
+<map name="aluna_1_1vulkan_1_1vulkan_swapchain_coll__map" id="aluna_1_1vulkan_1_1vulkan_swapchain_coll__map">
+<area shape="rect" title="the vulkanSwapchain is a collection of vulkan frambuffers and image views to wich the scene will be ." coords="1708,113,1905,138"/>
+<area shape="rect" title=" " coords="1326,9,1483,34"/>
+<area shape="rect" title=" " coords="995,105,1108,130"/>
+<area shape="rect" title=" " coords="1309,58,1500,83"/>
+<area shape="rect" title=" " coords="1320,108,1489,148"/>
+<area shape="rect" title=" " coords="1312,173,1497,198"/>
+<area shape="rect" title=" " coords="401,122,439,147"/>
+<area shape="rect" title=" " coords="631,166,771,191"/>
+<area shape="rect" href="../../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html" title=" " coords="1310,222,1499,247"/>
+<area shape="rect" title=" " coords="979,203,1124,243"/>
+<area shape="rect" href="../../d7/d00/classluna_1_1vulkan_1_1window.html" title=" " coords="631,215,771,241"/>
+<area shape="rect" href="../../de/d00/structluna_1_1vulkan_1_1window_spec.html" title=" " coords="335,215,505,241"/>
+<area shape="rect" title=" " coords="181,215,261,241"/>
+<area shape="rect" title=" " coords="5,208,132,248"/>
+<area shape="rect" href="../../dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html" title=" " coords="965,267,1137,307"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -122,9 +145,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4511f134640ffd606ddd8739a6f0320c"><td class="memItemLeft" align="right" valign="top">VkRect2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a4511f134640ffd606ddd8739a6f0320c">getScissor</a> ()</td></tr>
 <tr class="memdesc:a4511f134640ffd606ddd8739a6f0320c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the viewport scissor.  <a href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a4511f134640ffd606ddd8739a6f0320c">More...</a><br /></td></tr>
 <tr class="separator:a4511f134640ffd606ddd8739a6f0320c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1b0e364d775ae226dc785150619cce6"><td class="memItemLeft" align="right" valign="top">VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#ad1b0e364d775ae226dc785150619cce6">initViewport</a> ()</td></tr>
-<tr class="memdesc:ad1b0e364d775ae226dc785150619cce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes the main viewport.  <a href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#ad1b0e364d775ae226dc785150619cce6">More...</a><br /></td></tr>
-<tr class="separator:ad1b0e364d775ae226dc785150619cce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8f73548005303f54e12658421f16e5a"><td class="memItemLeft" align="right" valign="top">VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#ae8f73548005303f54e12658421f16e5a">initViewport</a> (uint32_t maxFramesInFlight)</td></tr>
+<tr class="memdesc:ae8f73548005303f54e12658421f16e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes the main viewport.  <a href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#ae8f73548005303f54e12658421f16e5a">More...</a><br /></td></tr>
+<tr class="separator:ae8f73548005303f54e12658421f16e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b0d60eda6d3dd99e4dd365f59704378"><td class="memItemLeft" align="right" valign="top">VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a9b0d60eda6d3dd99e4dd365f59704378">recreateViewport</a> (uint32_t maxFramesInFlight)</td></tr>
+<tr class="memdesc:a9b0d60eda6d3dd99e4dd365f59704378"><td class="mdescLeft">&#160;</td><td class="mdescRight">recreates the swapchain.  <a href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a9b0d60eda6d3dd99e4dd365f59704378">More...</a><br /></td></tr>
+<tr class="separator:a9b0d60eda6d3dd99e4dd365f59704378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac47ac505afd723edf99f6679c76a97a9"><td class="memItemLeft" align="right" valign="top">VkFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#ac47ac505afd723edf99f6679c76a97a9">getSurfaceFormat</a> ()</td></tr>
 <tr class="memdesc:ac47ac505afd723edf99f6679c76a97a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the surface format.  <a href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#ac47ac505afd723edf99f6679c76a97a9">More...</a><br /></td></tr>
 <tr class="separator:ac47ac505afd723edf99f6679c76a97a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +163,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:afb5e85965ea294f324a09433a461be53"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkImage &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#afb5e85965ea294f324a09433a461be53">sceneViewportImages</a></td></tr>
+<tr class="separator:afb5e85965ea294f324a09433a461be53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ac5e367e771115a392289299ea1b88c"><td class="memItemLeft" align="right" valign="top">vkb::Swapchain&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a2ac5e367e771115a392289299ea1b88c">mSwapchain</a></td></tr>
 <tr class="separator:a2ac5e367e771115a392289299ea1b88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e5fae43cd0c39e9c799457e2f16c532"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkFramebuffer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a9e5fae43cd0c39e9c799457e2f16c532">frameBuffers</a></td></tr>
@@ -160,10 +188,14 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a63790ef192e2ab4bc6823074ba2c8ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af102a54364f502ede5ac4d9c09d2608d"><td class="memItemLeft" align="right" valign="top">VkFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#af102a54364f502ede5ac4d9c09d2608d">swapchainImageFormat</a></td></tr>
 <tr class="separator:af102a54364f502ede5ac4d9c09d2608d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa743087e664008a385d6542fbd067f64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#aa743087e664008a385d6542fbd067f64">init</a> = true</td></tr>
+<tr class="memitem:aa743087e664008a385d6542fbd067f64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#aa743087e664008a385d6542fbd067f64">init</a> = false</td></tr>
 <tr class="separator:aa743087e664008a385d6542fbd067f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f1089773c7d6583088d9779d12ce1b0"><td class="memItemLeft" align="right" valign="top">VkSampler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a0f1089773c7d6583088d9779d12ce1b0">viewportSampler</a></td></tr>
 <tr class="separator:a0f1089773c7d6583088d9779d12ce1b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94bbf2dd354d2e252b9447cb6e00d251"><td class="memItemLeft" align="right" valign="top">VkSurfaceCapabilitiesKHR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a94bbf2dd354d2e252b9447cb6e00d251">surfaceCapaBilities</a></td></tr>
+<tr class="separator:a94bbf2dd354d2e252b9447cb6e00d251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d2920fa23c7c265a28f80d710da73cc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkImageView &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a3d2920fa23c7c265a28f80d710da73cc">sceneViewportImageViews</a></td></tr>
+<tr class="separator:a3d2920fa23c7c265a28f80d710da73cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >the <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html" title="the vulkanSwapchain is a collection of vulkan frambuffers and image views to wich the scene will be .">vulkanSwapchain</a> is a collection of vulkan frambuffers and image views to wich the scene will be . </p>
@@ -410,8 +442,8 @@ for appropriate error info see: <a href="https://registry.khronos.org/vulkan/spe
 
 </div>
 </div>
-<a id="ad1b0e364d775ae226dc785150619cce6" name="ad1b0e364d775ae226dc785150619cce6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1b0e364d775ae226dc785150619cce6">&#9670;&#160;</a></span>initViewport()</h2>
+<a id="ae8f73548005303f54e12658421f16e5a" name="ae8f73548005303f54e12658421f16e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8f73548005303f54e12658421f16e5a">&#9670;&#160;</a></span>initViewport()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -419,7 +451,8 @@ for appropriate error info see: <a href="https://registry.khronos.org/vulkan/spe
         <tr>
           <td class="memname">VkResult luna::vulkan::vulkanSwapchain::initViewport </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>maxFramesInFlight</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -450,6 +483,33 @@ for appropriate error info see: <a href="https://registry.khronos.org/vulkan/spe
 
 </div>
 </div>
+<a id="a9b0d60eda6d3dd99e4dd365f59704378" name="a9b0d60eda6d3dd99e4dd365f59704378"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b0d60eda6d3dd99e4dd365f59704378">&#9670;&#160;</a></span>recreateViewport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkResult luna::vulkan::vulkanSwapchain::recreateViewport </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>maxFramesInFlight</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>recreates the swapchain. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxFramesInFlight</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VK_SUCCES when recreation was succesful. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a9e5fae43cd0c39e9c799457e2f16c532" name="a9e5fae43cd0c39e9c799457e2f16c532"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e5fae43cd0c39e9c799457e2f16c532">&#9670;&#160;</a></span>frameBuffers</h2>
@@ -475,7 +535,7 @@ for appropriate error info see: <a href="https://registry.khronos.org/vulkan/spe
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool luna::vulkan::vulkanSwapchain::init = true</td>
+          <td class="memname">bool luna::vulkan::vulkanSwapchain::init = false</td>
         </tr>
       </table>
   </td>
@@ -526,6 +586,64 @@ for appropriate error info see: <a href="https://registry.khronos.org/vulkan/spe
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html">swapchainSpec</a> luna::vulkan::vulkanSwapchain::mSwapchainSpec</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb5e85965ea294f324a09433a461be53" name="afb5e85965ea294f324a09433a461be53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb5e85965ea294f324a09433a461be53">&#9670;&#160;</a></span>sceneViewportImages</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkImage&gt; luna::vulkan::vulkanSwapchain::sceneViewportImages</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d2920fa23c7c265a28f80d710da73cc" name="a3d2920fa23c7c265a28f80d710da73cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d2920fa23c7c265a28f80d710da73cc">&#9670;&#160;</a></span>sceneViewportImageViews</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkImageView&gt; luna::vulkan::vulkanSwapchain::sceneViewportImageViews</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94bbf2dd354d2e252b9447cb6e00d251" name="a94bbf2dd354d2e252b9447cb6e00d251"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94bbf2dd354d2e252b9447cb6e00d251">&#9670;&#160;</a></span>surfaceCapaBilities</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkSurfaceCapabilitiesKHR luna::vulkan::vulkanSwapchain::surfaceCapaBilities</td>
         </tr>
       </table>
   </td>

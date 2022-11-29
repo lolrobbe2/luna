@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1utils_1_1shader_library" xml:lang="en-US">
+<title>luna::utils::shaderLibrary Class Reference</title>
+<indexterm><primary>luna::utils::shaderLibrary</primary></indexterm>
+<para>
+<computeroutput>#include &lt;shaderLibrary.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::utils::shaderLibrary:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d00/classluna_1_1utils_1_1shader_library__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_classluna_1_1utils_1_1shader_library_1affb684ec8e1d655ec1f9ffd3479f774c">init</link> ()</para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1utils_1_1shader_library_1a1be9ffa6a896c172386288105b84179e">load</link> (const std::string &amp;filePath, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">renderer::shaderStage</link> &amp;stage)</para>
+</listitem>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; <link linkend="_classluna_1_1utils_1_1shader_library_1a3ced6b410190000857da9b4d038a8b69">get</link> (const std::string &amp;shaderName)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static std::unordered_map&lt; std::string, <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; &gt; <link linkend="_classluna_1_1utils_1_1shader_library_1a5d96a73e6d8677ca496d5771f9053a30">shaders</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1shader_library_1a3ced6b410190000857da9b4d038a8b69"/><section>
+    <title>get()</title>
+<indexterm><primary>get</primary><secondary>luna::utils::shaderLibrary</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderLibrary</primary><secondary>get</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; luna::utils::shaderLibrary::get (const std::string &amp; shaderName)<computeroutput>[static]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1utils_1_1shader_library_a3ced6b410190000857da9b4d038a8b69_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1shader_library_1affb684ec8e1d655ec1f9ffd3479f774c"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>luna::utils::shaderLibrary</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderLibrary</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>void luna::utils::shaderLibrary::init ( )<computeroutput>[static]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1utils_1_1shader_library_affb684ec8e1d655ec1f9ffd3479f774c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1utils_1_1shader_library_affb684ec8e1d655ec1f9ffd3479f774c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1shader_library_1a1be9ffa6a896c172386288105b84179e"/><section>
+    <title>load()</title>
+<indexterm><primary>load</primary><secondary>luna::utils::shaderLibrary</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderLibrary</primary><secondary>load</secondary></indexterm>
+<para><computeroutput>void luna::utils::shaderLibrary::load (const std::string &amp; filePath, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">renderer::shaderStage</link> &amp; stage)<computeroutput>[static]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1utils_1_1shader_library_a1be9ffa6a896c172386288105b84179e_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1utils_1_1shader_library_a1be9ffa6a896c172386288105b84179e_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1shader_library_1a5d96a73e6d8677ca496d5771f9053a30"/><section>
+    <title>shaders</title>
+<indexterm><primary>shaders</primary><secondary>luna::utils::shaderLibrary</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderLibrary</primary><secondary>shaders</secondary></indexterm>
+<para><computeroutput>std::unordered_map&lt;std::string, <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link>&gt; &gt; luna::utils::shaderLibrary::shaders<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/<link linkend="_shader_library_8h">shaderLibrary.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/<link linkend="_shader_library_8cpp">shaderLibrary.cpp</link></section>
+</section>

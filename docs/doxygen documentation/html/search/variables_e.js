@@ -1,19 +1,6 @@
 var searchData=
 [
-  ['pcommandbuffers_0',['pCommandBuffers',['../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html#a70cb994495b3233aa81b38ada63352ff',1,'luna::vulkan::commandPoolSubmitInfo']]],
-  ['pdevice_1',['pDevice',['../dc/d00/classluna_1_1utils_1_1vulkan_object_factory.html#ad78d22816c970de33ffa4707f6b73e3b',1,'luna::utils::vulkanObjectFactory']]],
-  ['physicaldevice_2',['physicalDevice',['../df/d00/structluna_1_1vulkan_1_1vulkan_device_1_1device_handles.html#ac9bba299bdbd5cb110b4e5324ae101be',1,'luna::vulkan::vulkanDevice::deviceHandles::physicalDevice()'],['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html#a059bc9446ae9a04c8ef5a740f4bc324e',1,'luna::vulkan::swapchainSpec::physicalDevice()']]],
-  ['pipeline_3',['pipeline',['../dc/d00/classluna_1_1gui_1_1vulkan_imgui.html#adbcd205d5c43b5451bafe362d52b8293',1,'luna::gui::vulkanImgui::pipeline()'],['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a7115aac74d322c47d75c965cc5b92bc5',1,'luna::vulkan::vulkanPipeline::pipeline()']]],
-  ['pipelinecolorblendattachementstate_4',['pipelineColorBlendAttachementState',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afc42bdeb83b8355115b66916c328f2a9',1,'luna::vulkan::vulkanPipeline']]],
-  ['pipelinelayout_5',['pipelineLayout',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a2b7882e3a52ff453bbb48c80ca5abbf4',1,'luna::vulkan::vulkanPipeline']]],
-  ['pipelinemultisamplestatecreateinfo_6',['pipelineMultisampleStateCreateInfo',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aaa8c2b85f2173a9f7bdfb8de20c1315e',1,'luna::vulkan::vulkanPipeline']]],
-  ['pipelinerasterizationstatecreateinfo_7',['pipelineRasterizationStateCreateInfo',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa3537eb4a55b81971ab963d4690f6e5f',1,'luna::vulkan::vulkanPipeline']]],
-  ['pipelineshaders_8',['pipelineShaders',['../db/d00/structluna_1_1renderer_1_1pipeline_layout.html#a5f4c7dc45fbbe3db0f3c124753f12dae',1,'luna::renderer::pipelineLayout']]],
-  ['pnext_9',['pNext',['../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html#acb5c13ba9fb21f8007882fff558d497b',1,'luna::vulkan::commandPoolSubmitInfo']]],
-  ['position_10',['position',['../d5/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex.html#a9fc2b5fc8c55d25a1f69774a471c0c17',1,'luna::vulkan::vulkanPipeline::Vertex']]],
-  ['presentfamily_11',['presentFamily',['../dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html#a9eda497e46939949680a7e9c0676f63e',1,'luna::vulkan::queueFamilyIndices']]],
-  ['presentqueue_12',['presentQueue',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#acc259d2590c74e72a8aeae1ce5059c79',1,'luna::vulkan::vulkanPipeline']]],
-  ['psignalsemaphores_13',['pSignalSemaphores',['../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html#a3582f1f7123a07a37a9970d7440ce9de',1,'luna::vulkan::commandPoolSubmitInfo']]],
-  ['pwaitdststagemask_14',['pWaitDstStageMask',['../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html#a874b001bd288667443ff345d2b0748c7',1,'luna::vulkan::commandPoolSubmitInfo']]],
-  ['pwaitsemaphores_15',['pWaitSemaphores',['../d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html#a19d703ff09361d912d91f5f6c6f178f5',1,'luna::vulkan::commandPoolSubmitInfo']]]
+  ['objectcache_0',['objectCache',['../d5/d00/classluna_1_1utils_1_1object_storage.html#aa01d301af434791982b25fe8c6037fb5',1,'luna::utils::objectStorage']]],
+  ['objectmemory_1',['objectMemory',['../d5/d00/classluna_1_1utils_1_1object_storage.html#ab664366a253e20a7f6fc36ce5ee84c49',1,'luna::utils::objectStorage']]],
+  ['offset_2',['offset',['../d8/d00/classluna_1_1renderer_1_1buffer_element.html#ab4bd033d7987b154d8c88f623b3d0bfa',1,'luna::renderer::bufferElement::offset()'],['../d5/d00/structluna_1_1renderer_1_1shader_resource.html#a6c4a9f3232600481eefb1aa756b78472',1,'luna::renderer::shaderResource::offset()']]]
 ];

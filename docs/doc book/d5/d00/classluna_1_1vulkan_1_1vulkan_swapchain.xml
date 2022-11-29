@@ -1,0 +1,490 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain" xml:lang="en-US">
+<title>luna::vulkan::vulkanSwapchain Class Reference</title>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary></indexterm>
+<para>
+
+<para>the <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain">vulkanSwapchain</link> is a collection of vulkan frambuffers and image views to wich the scene will be . </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;vulkanSwapchain.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::vulkan::vulkanSwapchain:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_swapchain__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a30205844e523a4c82a586c2fa226a23a">vulkanSwapchain</link> (const <link linkend="_structluna_1_1vulkan_1_1swapchain_spec">swapchainSpec</link> &amp;swapChainSpec)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1abf80e621aa588cf2fed093b84d114f40">~vulkanSwapchain</link> ()</para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a3ad9f4b75e26abb544c9059b2b0f4901">createSwapchain</link> (const <link linkend="_structluna_1_1vulkan_1_1swapchain_spec">swapchainSpec</link> &amp;swapChainSpec)</para>
+
+<para>creates the swapchain. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a8fc26c80c31e5986d10fe18c91bb4f14">recreateSwapchain</link> ()</para>
+
+<para>recreates the swapchain. </para>
+</listitem>
+            <listitem><para>VkViewport <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1ab240d26c43fb80899009783331ce5f12">getViewport</link> ()</para>
+
+<para>returns the main viewport handle. </para>
+</listitem>
+            <listitem><para>VkRect2D <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a4511f134640ffd606ddd8739a6f0320c">getScissor</link> ()</para>
+
+<para>returns the viewport scissor. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1ae8f73548005303f54e12658421f16e5a">initViewport</link> (uint32_t maxFramesInFlight)</para>
+
+<para>initializes the main viewport. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a9b0d60eda6d3dd99e4dd365f59704378">recreateViewport</link> (uint32_t maxFramesInFlight)</para>
+
+<para>recreates the swapchain. </para>
+</listitem>
+            <listitem><para>VkFormat <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1ac47ac505afd723edf99f6679c76a97a9">getSurfaceFormat</link> ()</para>
+
+<para>returns the surface format. </para>
+</listitem>
+            <listitem><para>VkFramebuffer <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a51ab9da02a86c13fc9d00ea50e697af4">getFrameBuffer</link> (uint8_t index)</para>
+
+<para>returns the framebuffer given an index. </para>
+</listitem>
+            <listitem><para>VkDescriptorSet <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1ac10c35a40970fbc24f9c72ff4fe5375b">getViewportImage</link> (uint8_t currentFrame)</para>
+
+<para>returns a ViewportImage descriptor. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; VkImage &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1afb5e85965ea294f324a09433a461be53">sceneViewportImages</link></para>
+</listitem>
+            <listitem><para>vkb::Swapchain <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a2ac5e367e771115a392289299ea1b88c">mSwapchain</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkFramebuffer &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a9e5fae43cd0c39e9c799457e2f16c532">frameBuffers</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkDescriptorSet &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a815c0418c8db1a95153aca20f2d212df">m_Dset</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a01663556c78e5844456e14811d5f7d30">destroySwapchain</link> ()</para>
+
+<para>destroys the device bound swapchain. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structluna_1_1vulkan_1_1swapchain_spec">swapchainSpec</link> <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a46fb78c2a4568ac3f0c09f86c632e5f9">mSwapchainSpec</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkImage &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1af0c7697cf59b0aab645fd24484a8c38f">swapchainImages</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkImageView &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a63790ef192e2ab4bc6823074ba2c8ebe">swapChainImageViews</link></para>
+</listitem>
+            <listitem><para>VkFormat <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1af102a54364f502ede5ac4d9c09d2608d">swapchainImageFormat</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1aa743087e664008a385d6542fbd067f64">init</link> = false</para>
+</listitem>
+            <listitem><para>VkSampler <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a0f1089773c7d6583088d9779d12ce1b0">viewportSampler</link></para>
+</listitem>
+            <listitem><para>VkSurfaceCapabilitiesKHR <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a94bbf2dd354d2e252b9447cb6e00d251">surfaceCapaBilities</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkImageView &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain_1a3d2920fa23c7c265a28f80d710da73cc">sceneViewportImageViews</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>the <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain">vulkanSwapchain</link> is a collection of vulkan frambuffers and image views to wich the scene will be . </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a30205844e523a4c82a586c2fa226a23a"/><section>
+    <title>vulkanSwapchain()</title>
+<indexterm><primary>vulkanSwapchain</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>vulkanSwapchain</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanSwapchain::vulkanSwapchain (const <link linkend="_structluna_1_1vulkan_1_1swapchain_spec">swapchainSpec</link> &amp; swapChainSpec)</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain_a30205844e523a4c82a586c2fa226a23a_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1abf80e621aa588cf2fed093b84d114f40"/><section>
+    <title>~vulkanSwapchain()</title>
+<indexterm><primary>~vulkanSwapchain</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>~vulkanSwapchain</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanSwapchain::~vulkanSwapchain ( )<computeroutput>[virtual]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain_abf80e621aa588cf2fed093b84d114f40_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a3ad9f4b75e26abb544c9059b2b0f4901"/><section>
+    <title>createSwapchain()</title>
+<indexterm><primary>createSwapchain</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>createSwapchain</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanSwapchain::createSwapchain (const <link linkend="_structluna_1_1vulkan_1_1swapchain_spec">swapchainSpec</link> &amp; swapChainSpec)</computeroutput></para><para>
+
+<para>creates the swapchain. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>swapChainSpec</entry><entry>
+<para>specification for the swapchain type. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VK_SUCCESS whe the swapchain was created succesfuly </para>
+
+<para>for appropriate error info see: <link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateSwapchainKHR.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateSwapchainKHR.html</link> </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain_a3ad9f4b75e26abb544c9059b2b0f4901_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a01663556c78e5844456e14811d5f7d30"/><section>
+    <title>destroySwapchain()</title>
+<indexterm><primary>destroySwapchain</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>destroySwapchain</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanSwapchain::destroySwapchain ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>destroys the device bound swapchain. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>VK_SUCCES </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain_a01663556c78e5844456e14811d5f7d30_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a51ab9da02a86c13fc9d00ea50e697af4"/><section>
+    <title>getFrameBuffer()</title>
+<indexterm><primary>getFrameBuffer</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>getFrameBuffer</secondary></indexterm>
+<para><computeroutput>VkFramebuffer luna::vulkan::vulkanSwapchain::getFrameBuffer (uint8_t index)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>returns the framebuffer given an index. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkFrameBuffer</entry><entry>
+<para>the framebuffer handle. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a4511f134640ffd606ddd8739a6f0320c"/><section>
+    <title>getScissor()</title>
+<indexterm><primary>getScissor</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>getScissor</secondary></indexterm>
+<para><computeroutput>VkRect2D luna::vulkan::vulkanSwapchain::getScissor ( )</computeroutput></para><para>
+
+<para>returns the viewport scissor. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>VkRect2D extent. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1ac47ac505afd723edf99f6679c76a97a9"/><section>
+    <title>getSurfaceFormat()</title>
+<indexterm><primary>getSurfaceFormat</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>getSurfaceFormat</secondary></indexterm>
+<para><computeroutput>VkFormat luna::vulkan::vulkanSwapchain::getSurfaceFormat ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>returns the surface format. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkFormat</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1ab240d26c43fb80899009783331ce5f12"/><section>
+    <title>getViewport()</title>
+<indexterm><primary>getViewport</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>getViewport</secondary></indexterm>
+<para><computeroutput>VkViewport luna::vulkan::vulkanSwapchain::getViewport ( )</computeroutput></para><para>
+
+<para>returns the main viewport handle. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>VkViewport main handle. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1ac10c35a40970fbc24f9c72ff4fe5375b"/><section>
+    <title>getViewportImage()</title>
+<indexterm><primary>getViewportImage</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>getViewportImage</secondary></indexterm>
+<para><computeroutput>VkDescriptorSet luna::vulkan::vulkanSwapchain::getViewportImage (uint8_t currentFrame)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>returns a ViewportImage descriptor. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkDescriptorSet</entry><entry>
+<para>image descriptor. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1ae8f73548005303f54e12658421f16e5a"/><section>
+    <title>initViewport()</title>
+<indexterm><primary>initViewport</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>initViewport</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanSwapchain::initViewport (uint32_t maxFramesInFlight)</computeroutput></para><para>
+
+<para>initializes the main viewport. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>VK_SUCCESS when the initialization was succesful. </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain_ae8f73548005303f54e12658421f16e5a_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a8fc26c80c31e5986d10fe18c91bb4f14"/><section>
+    <title>recreateSwapchain()</title>
+<indexterm><primary>recreateSwapchain</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>recreateSwapchain</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanSwapchain::recreateSwapchain ( )</computeroutput></para><para>
+
+<para>recreates the swapchain. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>returns VK_SUCCESS on succesful creation. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a9b0d60eda6d3dd99e4dd365f59704378"/><section>
+    <title>recreateViewport()</title>
+<indexterm><primary>recreateViewport</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>recreateViewport</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanSwapchain::recreateViewport (uint32_t maxFramesInFlight)</computeroutput></para><para>
+
+<para>recreates the swapchain. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>maxFramesInFlight</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VK_SUCCES when recreation was succesful. </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain_a9b0d60eda6d3dd99e4dd365f59704378_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a9e5fae43cd0c39e9c799457e2f16c532"/><section>
+    <title>frameBuffers</title>
+<indexterm><primary>frameBuffers</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>frameBuffers</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkFramebuffer&gt; luna::vulkan::vulkanSwapchain::frameBuffers</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1aa743087e664008a385d6542fbd067f64"/><section>
+    <title>init</title>
+<indexterm><primary>init</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>bool luna::vulkan::vulkanSwapchain::init = false<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a815c0418c8db1a95153aca20f2d212df"/><section>
+    <title>m_Dset</title>
+<indexterm><primary>m_Dset</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>m_Dset</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkDescriptorSet&gt; luna::vulkan::vulkanSwapchain::m_Dset</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a2ac5e367e771115a392289299ea1b88c"/><section>
+    <title>mSwapchain</title>
+<indexterm><primary>mSwapchain</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>mSwapchain</secondary></indexterm>
+<para><computeroutput>vkb::Swapchain luna::vulkan::vulkanSwapchain::mSwapchain</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a46fb78c2a4568ac3f0c09f86c632e5f9"/><section>
+    <title>mSwapchainSpec</title>
+<indexterm><primary>mSwapchainSpec</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>mSwapchainSpec</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1vulkan_1_1swapchain_spec">swapchainSpec</link> luna::vulkan::vulkanSwapchain::mSwapchainSpec<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1afb5e85965ea294f324a09433a461be53"/><section>
+    <title>sceneViewportImages</title>
+<indexterm><primary>sceneViewportImages</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>sceneViewportImages</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkImage&gt; luna::vulkan::vulkanSwapchain::sceneViewportImages</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a3d2920fa23c7c265a28f80d710da73cc"/><section>
+    <title>sceneViewportImageViews</title>
+<indexterm><primary>sceneViewportImageViews</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>sceneViewportImageViews</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkImageView&gt; luna::vulkan::vulkanSwapchain::sceneViewportImageViews<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a94bbf2dd354d2e252b9447cb6e00d251"/><section>
+    <title>surfaceCapaBilities</title>
+<indexterm><primary>surfaceCapaBilities</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>surfaceCapaBilities</secondary></indexterm>
+<para><computeroutput>VkSurfaceCapabilitiesKHR luna::vulkan::vulkanSwapchain::surfaceCapaBilities<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1af102a54364f502ede5ac4d9c09d2608d"/><section>
+    <title>swapchainImageFormat</title>
+<indexterm><primary>swapchainImageFormat</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>swapchainImageFormat</secondary></indexterm>
+<para><computeroutput>VkFormat luna::vulkan::vulkanSwapchain::swapchainImageFormat<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1af0c7697cf59b0aab645fd24484a8c38f"/><section>
+    <title>swapchainImages</title>
+<indexterm><primary>swapchainImages</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>swapchainImages</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkImage&gt; luna::vulkan::vulkanSwapchain::swapchainImages<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a63790ef192e2ab4bc6823074ba2c8ebe"/><section>
+    <title>swapChainImageViews</title>
+<indexterm><primary>swapChainImageViews</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>swapChainImageViews</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkImageView&gt; luna::vulkan::vulkanSwapchain::swapChainImageViews<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_swapchain_1a0f1089773c7d6583088d9779d12ce1b0"/><section>
+    <title>viewportSampler</title>
+<indexterm><primary>viewportSampler</primary><secondary>luna::vulkan::vulkanSwapchain</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanSwapchain</primary><secondary>viewportSampler</secondary></indexterm>
+<para><computeroutput>VkSampler luna::vulkan::vulkanSwapchain::viewportSampler<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_swapchain_8h">vulkanSwapchain.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_swapchain_8cpp">vulkanSwapchain.cpp</link></section>
+</section>

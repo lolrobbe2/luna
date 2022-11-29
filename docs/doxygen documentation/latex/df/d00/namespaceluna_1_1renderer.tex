@@ -1,6 +1,6 @@
-\hypertarget{namespaceluna_1_1renderer}{}\doxysection{luna\+::renderer Namespace Reference}
+\hypertarget{namespaceluna_1_1renderer}{}\doxysubsection{luna\+::renderer Namespace Reference}
 \label{namespaceluna_1_1renderer}\index{luna::renderer@{luna::renderer}}
-\doxysubsection*{Classes}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1buffer_element}{buffer\+Element}}
@@ -21,9 +21,16 @@ class \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}}
 \item 
 struct \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{shader\+Resource}}
 \item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}
+\item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{namespaceluna_1_1renderer_ac49aeaa7349a30aad88e16003b0e012c}{draw\+Command}}) (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, int index\+Count)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}{type\+Class}} \{ \newline
@@ -102,11 +109,20 @@ enum \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faa
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Enumeration Type Documentation}
+\doxysubsubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceluna_1_1renderer_ac49aeaa7349a30aad88e16003b0e012c}\label{namespaceluna_1_1renderer_ac49aeaa7349a30aad88e16003b0e012c}} 
+\index{luna::renderer@{luna::renderer}!drawCommand@{drawCommand}}
+\index{drawCommand@{drawCommand}!luna::renderer@{luna::renderer}}
+\doxyparagraph{\texorpdfstring{drawCommand}{drawCommand}}
+{\footnotesize\ttfamily typedef void($\ast$ luna\+::renderer\+::draw\+Command) (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, int index\+Count)}
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}} 
 \index{luna::renderer@{luna::renderer}!shaderStage@{shaderStage}}
 \index{shaderStage@{shaderStage}!luna::renderer@{luna::renderer}}
-\doxysubsubsection{\texorpdfstring{shaderStage}{shaderStage}}
+\doxyparagraph{\texorpdfstring{shaderStage}{shaderStage}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{luna\+::renderer\+::shader\+Stage}}}
 
 \begin{DoxyEnumFields}{Enumerator}
@@ -138,7 +154,7 @@ shader\+Stage\+Compute&\\
 \mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}} 
 \index{luna::renderer@{luna::renderer}!typeClass@{typeClass}}
 \index{typeClass@{typeClass}!luna::renderer@{luna::renderer}}
-\doxysubsubsection{\texorpdfstring{typeClass}{typeClass}}
+\doxyparagraph{\texorpdfstring{typeClass}{typeClass}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}{luna\+::renderer\+::type\+Class}}}
 
 \begin{DoxyEnumFields}{Enumerator}
@@ -202,7 +218,7 @@ builtin\+Outputs&\\
 \mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57db}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57db}} 
 \index{luna::renderer@{luna::renderer}!typeId@{typeId}}
 \index{typeId@{typeId}!luna::renderer@{luna::renderer}}
-\doxysubsubsection{\texorpdfstring{typeId}{typeId}}
+\doxyparagraph{\texorpdfstring{typeId}{typeId}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57db}{luna\+::renderer\+::type\+Id}}}
 
 \begin{DoxyEnumFields}{Enumerator}

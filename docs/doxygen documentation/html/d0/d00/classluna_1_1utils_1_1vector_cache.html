@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -91,7 +92,7 @@ $(document).ready(function(){initNavTree('d0/d00/classluna_1_1utils_1_1vector_ca
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="../../d6/d00/classluna_1_1utils_1_1vector_cache-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::utils::vectorCache&lt; value &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -101,6 +102,29 @@ $(document).ready(function(){initNavTree('d0/d00/classluna_1_1utils_1_1vector_ca
  <a href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#details">More...</a></p>
 
 <p><code>#include &lt;vectorCache.h&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for luna::utils::vectorCache&lt; value &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d7/d00/classluna_1_1utils_1_1vector_cache__inherit__graph.png" border="0" usemap="#aluna_1_1utils_1_1vector_cache_3_01value_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="aluna_1_1utils_1_1vector_cache_3_01value_01_4_inherit__map" id="aluna_1_1utils_1_1vector_cache_3_01value_01_4_inherit__map">
+<area shape="rect" title="a pretty optimal multithreaded vector cahce headeronly class." coords="5,41,163,81"/>
+<area shape="rect" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html" title=" " coords="393,5,550,45"/>
+<area shape="rect" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html" title=" " coords="379,70,564,125"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for luna::utils::vectorCache&lt; value &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d00/classluna_1_1utils_1_1vector_cache__coll__graph.png" border="0" usemap="#aluna_1_1utils_1_1vector_cache_3_01value_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="aluna_1_1utils_1_1vector_cache_3_01value_01_4_coll__map" id="aluna_1_1utils_1_1vector_cache_3_01value_01_4_coll__map">
+<area shape="rect" title="a pretty optimal multithreaded vector cahce headeronly class." coords="171,269,328,309"/>
+<area shape="rect" title=" " coords="5,181,157,207"/>
+<area shape="rect" title=" " coords="107,93,221,119"/>
+<area shape="rect" title=" " coords="182,181,317,207"/>
+<area shape="rect" title=" " coords="145,5,183,31"/>
+<area shape="rect" title=" " coords="341,181,425,207"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -113,15 +137,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aebadfee061404c89444459c45adfc6de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#aebadfee061404c89444459c45adfc6de">~vectorCache</a> ()</td></tr>
 <tr class="memdesc:aebadfee061404c89444459c45adfc6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys/deletes the cache :).  <a href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#aebadfee061404c89444459c45adfc6de">More...</a><br /></td></tr>
 <tr class="separator:aebadfee061404c89444459c45adfc6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45e67fc82fc846ac24ff86b37063a400"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, value &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a45e67fc82fc846ac24ff86b37063a400">putValue</a> (<a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a> *key, value _value)</td></tr>
-<tr class="memdesc:a45e67fc82fc846ac24ff86b37063a400"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a object in a vector cache using a key handle.  <a href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a45e67fc82fc846ac24ff86b37063a400">More...</a><br /></td></tr>
-<tr class="separator:a45e67fc82fc846ac24ff86b37063a400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99befea7d5e6a6ccfe52f76b3f2c518"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a>, value &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#af99befea7d5e6a6ccfe52f76b3f2c518">putValue</a> (<a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a> *key, value _value)</td></tr>
+<tr class="memdesc:af99befea7d5e6a6ccfe52f76b3f2c518"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a object in a vector cache using a key handle.  <a href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#af99befea7d5e6a6ccfe52f76b3f2c518">More...</a><br /></td></tr>
+<tr class="separator:af99befea7d5e6a6ccfe52f76b3f2c518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34e6f0d499499c20a9ed7a881e8b164e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0">cacheResult</a>, value &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a34e6f0d499499c20a9ed7a881e8b164e">getValue</a> (<a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a> key)</td></tr>
 <tr class="memdesc:a34e6f0d499499c20a9ed7a881e8b164e"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets a stored cahe value using the key handle.  <a href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a34e6f0d499499c20a9ed7a881e8b164e">More...</a><br /></td></tr>
 <tr class="separator:a34e6f0d499499c20a9ed7a881e8b164e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa56d6d8db614103245c4776d9a63733e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0">cacheResult</a>, value &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#aa56d6d8db614103245c4776d9a63733e">setValue</a> (<a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a> key, value _value)</td></tr>
+<tr class="memdesc:aa56d6d8db614103245c4776d9a63733e"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the current value of the given cacheObject key.  <a href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#aa56d6d8db614103245c4776d9a63733e">More...</a><br /></td></tr>
+<tr class="separator:aa56d6d8db614103245c4776d9a63733e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d128c24ee583783b1633b84f0250363"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0">cacheResult</a>, value &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a4d128c24ee583783b1633b84f0250363">eraseValue</a> (<a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a> key)</td></tr>
+<tr class="memdesc:a4d128c24ee583783b1633b84f0250363"><td class="mdescLeft">&#160;</td><td class="mdescRight">erases value of the given key.  <a href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a4d128c24ee583783b1633b84f0250363">More...</a><br /></td></tr>
+<tr class="separator:a4d128c24ee583783b1633b84f0250363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a48cca9a42d02619b08942a7b29b004b1"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a48cca9a42d02619b08942a7b29b004b1">maxCacheSize</a></td></tr>
 <tr class="separator:a48cca9a42d02619b08942a7b29b004b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7597e6d2ac4be76eefa520e9ad9c0d65"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html#a7597e6d2ac4be76eefa520e9ad9c0d65">handleCache</a></td></tr>
@@ -132,8 +162,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a52439cb44adfd73a8dfa39455c3efb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;class value&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename value&gt;<br />
 class luna::utils::vectorCache&lt; value &gt;</div><p >a pretty optimal multithreaded vector cahce headeronly class. </p>
+<dl class="section note"><dt>Note</dt><dd>the vectorcache does not check for duplicate value's </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2cbf07923a7eb5e76c09fe3dd3a8d117" name="a2cbf07923a7eb5e76c09fe3dd3a8d117"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2cbf07923a7eb5e76c09fe3dd3a8d117">&#9670;&#160;</a></span>vectorCache() <span class="overload">[1/2]</span></h2>
@@ -141,7 +172,7 @@ class luna::utils::vectorCache&lt; value &gt;</div><p >a pretty optimal multithr
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -170,7 +201,7 @@ template&lt;class value &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -206,7 +237,7 @@ template&lt;class value &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -230,13 +261,53 @@ template&lt;class value &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4d128c24ee583783b1633b84f0250363" name="a4d128c24ee583783b1633b84f0250363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d128c24ee583783b1633b84f0250363">&#9670;&#160;</a></span>eraseValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0">cacheResult</a>, value &gt; <a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html">luna::utils::vectorCache</a>&lt; value &gt;::eraseValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a>&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>erases value of the given key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cacheObject</td><td>key </td></tr>
+    <tr><td class="paramname">value</td><td>_value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>cacheOpSucces when value whas succesfully erased </dd>
+<dd>
+cacheOpFailed when value could not be found or some other operation failed </dd></dl>
+
+</div>
+</div>
 <a id="a34e6f0d499499c20a9ed7a881e8b164e" name="a34e6f0d499499c20a9ed7a881e8b164e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34e6f0d499499c20a9ed7a881e8b164e">&#9670;&#160;</a></span>getValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -267,19 +338,19 @@ template&lt;class value &gt; </div>
 
 </div>
 </div>
-<a id="a45e67fc82fc846ac24ff86b37063a400" name="a45e67fc82fc846ac24ff86b37063a400"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45e67fc82fc846ac24ff86b37063a400">&#9670;&#160;</a></span>putValue()</h2>
+<a id="af99befea7d5e6a6ccfe52f76b3f2c518" name="af99befea7d5e6a6ccfe52f76b3f2c518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af99befea7d5e6a6ccfe52f76b3f2c518">&#9670;&#160;</a></span>putValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt; bool, value &gt; <a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html">luna::utils::vectorCache</a>&lt; value &gt;::putValue </td>
+          <td class="memname">std::pair&lt; <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a>, value &gt; <a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html">luna::utils::vectorCache</a>&lt; value &gt;::putValue </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a> *&#160;</td>
           <td class="paramname"><em>key</em>, </td>
@@ -311,7 +382,55 @@ template&lt;class value &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::pair&lt;bool, value&gt; when succesful returs true and the requested cache value. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>std::pair&lt;bool, value&gt; when succesful returs overFlowKey and the overFLow cache value. </dd></dl>
+
+</div>
+</div>
+<a id="aa56d6d8db614103245c4776d9a63733e" name="aa56d6d8db614103245c4776d9a63733e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa56d6d8db614103245c4776d9a63733e">&#9670;&#160;</a></span>setValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; <a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#add59caf76a7f3b2aa7488057c7625aa0">cacheResult</a>, value &gt; <a class="el" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html">luna::utils::vectorCache</a>&lt; value &gt;::setValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b">cacheObject</a>&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">value&#160;</td>
+          <td class="paramname"><em>_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sets the current value of the given cacheObject key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cacheObject</td><td>key the key to overwite </td></tr>
+    <tr><td class="paramname">_value</td><td>the value to overwrite the current value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -322,7 +441,7 @@ template&lt;class value &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -333,7 +452,7 @@ template&lt;class value &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -346,7 +465,7 @@ template&lt;class value &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -357,7 +476,7 @@ template&lt;class value &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -370,7 +489,7 @@ template&lt;class value &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -381,7 +500,7 @@ template&lt;class value &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -394,7 +513,7 @@ template&lt;class value &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class value &gt; </div>
+template&lt;typename value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -405,7 +524,7 @@ template&lt;class value &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

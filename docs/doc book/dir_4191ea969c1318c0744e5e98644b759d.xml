@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_4191ea969c1318c0744e5e98644b759d" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core Directory Reference</primary></indexterm>
+Directory dependency graph for core:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_4191ea969c1318c0744e5e98644b759d_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_9c1af1a5cd3730ba9054bd232efa12dd">debug</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_c6d0955f3d2864655cf63cc4aefda027">events</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_fec547aa53883aaee32448af5eb69405">platform</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_2b48e3b7a0ca6c7134e745f2568f70b3">rendering</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_af09627eb3bc343fb8991200c83fe8dc">utils</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_5f4c6ae211a9789f186cdc263105f7e6">vulkan</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_application_8cpp">application.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_application_8h">application.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_core_8h">core.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

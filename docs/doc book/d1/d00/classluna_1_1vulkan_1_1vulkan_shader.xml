@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1vulkan_shader" xml:lang="en-US">
+<title>luna::vulkan::vulkanShader Class Reference</title>
+<indexterm><primary>luna::vulkan::vulkanShader</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanShader.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::vulkan::vulkanShader:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../da/d00/classluna_1_1vulkan_1_1vulkan_shader__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::vulkan::vulkanShader:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_shader__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1af026ef4fb8045a7829b9ad826cbb31e2">vulkanShader</link> (const std::string &amp;filepath, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">renderer::shaderStage</link> &amp;<link linkend="_classluna_1_1renderer_1_1shader_1ac76cce027c4234e47f98c2ebf08d83f3">stage</link>)</para>
+
+<para>creates a vulkan shader from a filePath. </para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1aecec2090c2bd911c3b0bb03f80b91eb7">~vulkanShader</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1abde840fc72e1f453feeb971d071173f6">bind</link> () const override</para>
+
+<para>not implemented (reserved for future). </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1a31dfbe55e22e9d8c17aeb1629e83f4f4">unbind</link> () const override</para>
+
+<para>not implemented (reserved for future). </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1aa7bab09ef9777619f42e56013b073f90">createLayout</link> () override</para>
+
+<para>creates the shader layout. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structluna_1_1renderer_1_1shader_resource">renderer::shaderResource</link> <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1a43c9e5cf47585852ceab573e74c0ef11">getShaderResource</link> (const spirv_cross::Resource &amp;_shaderResource, const std::vector&lt; uint32_t &gt; &amp;shaderSource, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1">renderer::typeClass</link> typeClass)</para>
+
+<para>get the shderResource information and returns a corresponding engine shaderresource. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1a52afcec1d11d9912d5c8af185fdac2a3">renderer::shader</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_shader_1af026ef4fb8045a7829b9ad826cbb31e2"/><section>
+    <title>vulkanShader()</title>
+<indexterm><primary>vulkanShader</primary><secondary>luna::vulkan::vulkanShader</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanShader</primary><secondary>vulkanShader</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanShader::vulkanShader (const std::string &amp; filepath, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">renderer::shaderStage</link> &amp; stage)</computeroutput></para><para>
+
+<para>creates a vulkan shader from a filePath. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>filepath</entry><entry>
+<para>the path to the source .GLSL file. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1vulkan_1_1vulkan_shader_af026ef4fb8045a7829b9ad826cbb31e2_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_shader_1aecec2090c2bd911c3b0bb03f80b91eb7"/><section>
+    <title>~vulkanShader()</title>
+<indexterm><primary>~vulkanShader</primary><secondary>luna::vulkan::vulkanShader</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanShader</primary><secondary>~vulkanShader</secondary></indexterm>
+<para><computeroutput>virtual luna::vulkan::vulkanShader::~vulkanShader ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_shader_1abde840fc72e1f453feeb971d071173f6"/><section>
+    <title>bind()</title>
+<indexterm><primary>bind</primary><secondary>luna::vulkan::vulkanShader</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanShader</primary><secondary>bind</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanShader::bind ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>not implemented (reserved for future). </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1shader_1a8c64440945a99d558cae4590e7a1b39f">luna::renderer::shader</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_shader_1aa7bab09ef9777619f42e56013b073f90"/><section>
+    <title>createLayout()</title>
+<indexterm><primary>createLayout</primary><secondary>luna::vulkan::vulkanShader</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanShader</primary><secondary>createLayout</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanShader::createLayout ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>creates the shader layout. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1shader_1af85d739bb38d87443861dc2b8a7836ef">luna::renderer::shader</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1vulkan_1_1vulkan_shader_aa7bab09ef9777619f42e56013b073f90_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1vulkan_1_1vulkan_shader_aa7bab09ef9777619f42e56013b073f90_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_shader_1a43c9e5cf47585852ceab573e74c0ef11"/><section>
+    <title>getShaderResource()</title>
+<indexterm><primary>getShaderResource</primary><secondary>luna::vulkan::vulkanShader</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanShader</primary><secondary>getShaderResource</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1renderer_1_1shader_resource">renderer::shaderResource</link> luna::vulkan::vulkanShader::getShaderResource (const spirv_cross::Resource &amp; _shaderResource, const std::vector&lt; uint32_t &gt; &amp; shaderSource, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1">renderer::typeClass</link> typeClass)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>get the shderResource information and returns a corresponding engine shaderresource. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>_shaderResource</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>shaderSource</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>typeClass</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_shader_1a31dfbe55e22e9d8c17aeb1629e83f4f4"/><section>
+    <title>unbind()</title>
+<indexterm><primary>unbind</primary><secondary>luna::vulkan::vulkanShader</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanShader</primary><secondary>unbind</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanShader::unbind ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>not implemented (reserved for future). </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1shader_1acadb7154c8196b3cef81e6eb01d5aa25">luna::renderer::shader</link>.</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_shader_1a52afcec1d11d9912d5c8af185fdac2a3"/><section>
+    <title>renderer::shader</title>
+<indexterm><primary>renderer::shader</primary><secondary>luna::vulkan::vulkanShader</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanShader</primary><secondary>renderer::shader</secondary></indexterm>
+<para><computeroutput>friend class <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link><computeroutput>[friend]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_shader_8h">vulkanShader.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_shader_8cpp">vulkanShader.cpp</link></section>
+</section>

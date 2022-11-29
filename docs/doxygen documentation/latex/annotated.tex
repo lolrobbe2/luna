@@ -1,6 +1,5 @@
-\doxysection{Class List}
+\doxysubsection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
-\item\contentsline{section}{\mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1allocation}{luna\+::utils\+::vulkan\+Allocator\+::allocation}} }{\pageref{structluna_1_1utils_1_1vulkan_allocator_1_1allocation}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1application_1_1application}{luna\+::application\+::application}} }{\pageref{classluna_1_1application_1_1application}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1app_render_event}{luna\+::app\+Render\+Event}} }{\pageref{classluna_1_1app_render_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1app_tick_event}{luna\+::app\+Tick\+Event}} }{\pageref{classluna_1_1app_tick_event}}{}
@@ -11,6 +10,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions\+:\
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1utils_1_1compile_spec}{luna\+::utils\+::compile\+Spec}} }{\pageref{structluna_1_1utils_1_1compile_spec}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1renderer_1_1device}{luna\+::renderer\+::device}} \\*Device class is the code representation of the physical device or GPU }{\pageref{classluna_1_1renderer_1_1device}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_device_1_1device_handles}{luna\+::vulkan\+::vulkan\+Device\+::device\+Handles}} }{\pageref{structluna_1_1vulkan_1_1vulkan_device_1_1device_handles}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command}{luna\+::vulkan\+::vulkan\+Pipeline\+::draw\+Command}} }{\pageref{structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1_event}{luna\+::\+Event}} }{\pageref{classluna_1_1_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1event_dispatcher}{luna\+::event\+Dispatcher}} }{\pageref{classluna_1_1event_dispatcher}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{luna\+::renderer\+::index\+Buffer}} }{\pageref{classluna_1_1renderer_1_1index_buffer}}{}
@@ -19,11 +19,13 @@ Here are the classes, structs, unions and interfaces with brief descriptions\+:\
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1key_released_event}{luna\+::key\+Released\+Event}} }{\pageref{classluna_1_1key_released_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1key_typed_event}{luna\+::key\+Typed\+Event}} }{\pageref{classluna_1_1key_typed_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1_log}{luna\+::\+Log}} }{\pageref{classluna_1_1_log}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structluna_1_1renderer_1_1renderer_1_1mesh}{luna\+::renderer\+::renderer\+::mesh}} }{\pageref{structluna_1_1renderer_1_1renderer_1_1mesh}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1mouse_button_event}{luna\+::mouse\+Button\+Event}} }{\pageref{classluna_1_1mouse_button_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1mouse_button_pressed_event}{luna\+::mouse\+Button\+Pressed\+Event}} }{\pageref{classluna_1_1mouse_button_pressed_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1mouse_button_released_event}{luna\+::mouse\+Button\+Released\+Event}} }{\pageref{classluna_1_1mouse_button_released_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1mouse_moved_event}{luna\+::mouse\+Moved\+Event}} }{\pageref{classluna_1_1mouse_moved_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1mouse_scrolled_event}{luna\+::mouse\+Scrolled\+Event}} }{\pageref{classluna_1_1mouse_scrolled_event}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage$<$ value $>$}} \\*Cached object memory class with a key handle }{\pageref{classluna_1_1utils_1_1object_storage}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1renderer_1_1pipeline}{luna\+::renderer\+::pipeline}} }{\pageref{classluna_1_1renderer_1_1pipeline}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1renderer_1_1pipeline_layout}{luna\+::renderer\+::pipeline\+Layout}} }{\pageref{structluna_1_1renderer_1_1pipeline_layout}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1queue_family_indices}{luna\+::vulkan\+::queue\+Family\+Indices}} }{\pageref{structluna_1_1vulkan_1_1queue_family_indices}}{}
@@ -38,20 +40,25 @@ Here are the classes, structs, unions and interfaces with brief descriptions\+:\
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1swapchain_spec}{luna\+::vulkan\+::swapchain\+Spec}} }{\pageref{structluna_1_1vulkan_1_1swapchain_spec}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1uuid}{luna\+::uuid}} \\*General purpose uuid class with a maximum number of 2$^\wedge$64 uuid\textquotesingle{}s the uuid class does not check for duplicates! }{\pageref{classluna_1_1uuid}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache$<$ value $>$}} \\*Pretty optimal multithreaded vector cahce headeronly class }{\pageref{classluna_1_1utils_1_1vector_cache}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structluna_1_1renderer_1_1renderer_1_1vertex}{luna\+::renderer\+::renderer\+::vertex}} }{\pageref{structluna_1_1renderer_1_1renderer_1_1vertex}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex}{luna\+::vulkan\+::vulkan\+Pipeline\+::\+Vertex}} }{\pageref{structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classluna_1_1rebderer_1_1vertex_array}{luna\+::rebderer\+::vertex\+Array}} }{\pageref{classluna_1_1rebderer_1_1vertex_array}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{luna\+::renderer\+::vertex\+Array}} }{\pageref{classluna_1_1renderer_1_1vertex_array}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{luna\+::renderer\+::vertex\+Buffer}} }{\pageref{classluna_1_1renderer_1_1vertex_buffer}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description}{luna\+::vulkan\+::vulkan\+Pipeline\+::vertex\+Input\+Description}} }{\pageref{structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation}{luna\+::utils\+::vulkan\+Allocator\+::vma\+Allocation}} }{\pageref{structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator}{luna\+::utils\+::vulkan\+Allocator}} }{\pageref{classluna_1_1utils_1_1vulkan_allocator}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool}{luna\+::vulkan\+::vulkan\+Cmd\+Pool}} \\*Abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs. all a Vk\+Command\+Buffer has been changed out by virtual\+Cmd\+Buffer type }{\pageref{classluna_1_1vulkan_1_1vulkan_cmd_pool}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_cmd_pool_spec}{luna\+::vulkan\+::vulkan\+Cmd\+Pool\+Spec}} }{\pageref{structluna_1_1vulkan_1_1vulkan_cmd_pool_spec}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{luna\+::vulkan\+::vulkan\+Device}} }{\pageref{classluna_1_1vulkan_1_1vulkan_device}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_feature_support}{luna\+::vulkan\+::vulkan\+Feature\+Support}} }{\pageref{classluna_1_1vulkan_1_1vulkan_feature_support}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1gui_1_1vulkan_imgui}{luna\+::gui\+::vulkan\+Imgui}} }{\pageref{classluna_1_1gui_1_1vulkan_imgui}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer}{luna\+::vulkan\+::vulkan\+Index\+Buffer}} }{\pageref{classluna_1_1vulkan_1_1vulkan_index_buffer}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1utils_1_1vulkan_object_factory}{luna\+::utils\+::vulkan\+Object\+Factory}} \\*Static class that creates vulkan objects like buffers and images }{\pageref{classluna_1_1utils_1_1vulkan_object_factory}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline}{luna\+::vulkan\+::vulkan\+Pipeline}} \\*Vulkan pipline implementation class }{\pageref{classluna_1_1vulkan_1_1vulkan_pipeline}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader}{luna\+::vulkan\+::vulkan\+Shader}} }{\pageref{classluna_1_1vulkan_1_1vulkan_shader}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{luna\+::vulkan\+::vulkan\+Swapchain}} \\*Vulkan\+Swapchain is a collection of vulkan frambuffers and image views to wich the scene will be }{\pageref{classluna_1_1vulkan_1_1vulkan_swapchain}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_vertex_array}{luna\+::vulkan\+::vulkan\+Vertex\+Array}} }{\pageref{classluna_1_1vulkan_1_1vulkan_vertex_array}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_vertex_buffer}{luna\+::vulkan\+::vulkan\+Vertex\+Buffer}} }{\pageref{classluna_1_1vulkan_1_1vulkan_vertex_buffer}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1vulkan_1_1window}{luna\+::vulkan\+::window}} }{\pageref{classluna_1_1vulkan_1_1window}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classluna_1_1window_close_event}{luna\+::window\+Close\+Event}} }{\pageref{classluna_1_1window_close_event}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structluna_1_1vulkan_1_1windows_window_1_1window_data}{luna\+::vulkan\+::windows\+Window\+::window\+Data}} }{\pageref{structluna_1_1vulkan_1_1windows_window_1_1window_data}}{}

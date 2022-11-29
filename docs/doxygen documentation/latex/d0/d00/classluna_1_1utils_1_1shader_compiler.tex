@@ -1,10 +1,10 @@
-\hypertarget{classluna_1_1utils_1_1shader_compiler}{}\doxysection{luna\+::utils\+::shader\+Compiler Class Reference}
+\hypertarget{classluna_1_1utils_1_1shader_compiler}{}\doxysubsection{luna\+::utils\+::shader\+Compiler Class Reference}
 \label{classluna_1_1utils_1_1shader_compiler}\index{luna::utils::shaderCompiler@{luna::utils::shaderCompiler}}
 
 
 {\ttfamily \#include $<$shader\+Compiler.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classluna_1_1utils_1_1shader_compiler_abd07f80893b6ab942e6da937ccf393e7}{shader\+Compiler}} ()
@@ -13,7 +13,7 @@ virtual \mbox{\hyperlink{classluna_1_1utils_1_1shader_compiler_a8d6b419a02a58ba8
 \item 
 std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{classluna_1_1utils_1_1shader_compiler_aa92130891033a8c82366309ec519ec8b}{compile}} (\mbox{\hyperlink{structluna_1_1utils_1_1compile_spec}{compile\+Spec}} \mbox{\hyperlink{structluna_1_1utils_1_1compile_spec}{compile\+Spec}})
 \begin{DoxyCompactList}\small\item\em compile a shader from source GLSL to specified. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classluna_1_1utils_1_1shader_compiler_a809ef02f8f12f25017954377abbc7db6}{reflect}} (const std\+::vector$<$ uint32\+\_\+t $>$ \&shader\+Data, bool reflect)
@@ -22,11 +22,11 @@ std\+::string \mbox{\hyperlink{classluna_1_1utils_1_1shader_compiler_ab461732231
 \begin{DoxyCompactList}\small\item\em returns the resource type name ex mat4 returns \char`\"{}\+Mat4\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\doxysubsubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1utils_1_1shader_compiler_abd07f80893b6ab942e6da937ccf393e7}\label{classluna_1_1utils_1_1shader_compiler_abd07f80893b6ab942e6da937ccf393e7}} 
 \index{luna::utils::shaderCompiler@{luna::utils::shaderCompiler}!shaderCompiler@{shaderCompiler}}
 \index{shaderCompiler@{shaderCompiler}!luna::utils::shaderCompiler@{luna::utils::shaderCompiler}}
-\doxysubsubsection{\texorpdfstring{shaderCompiler()}{shaderCompiler()}}
+\doxyparagraph{\texorpdfstring{shaderCompiler()}{shaderCompiler()}}
 {\footnotesize\ttfamily luna\+::utils\+::shader\+Compiler\+::shader\+Compiler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -36,16 +36,16 @@ constructor does nothing at the moment.
 \mbox{\Hypertarget{classluna_1_1utils_1_1shader_compiler_a8d6b419a02a58ba8cd72c3cd54ffcadf}\label{classluna_1_1utils_1_1shader_compiler_a8d6b419a02a58ba8cd72c3cd54ffcadf}} 
 \index{luna::utils::shaderCompiler@{luna::utils::shaderCompiler}!````~shaderCompiler@{$\sim$shaderCompiler}}
 \index{````~shaderCompiler@{$\sim$shaderCompiler}!luna::utils::shaderCompiler@{luna::utils::shaderCompiler}}
-\doxysubsubsection{\texorpdfstring{$\sim$shaderCompiler()}{~shaderCompiler()}}
+\doxyparagraph{\texorpdfstring{$\sim$shaderCompiler()}{~shaderCompiler()}}
 {\footnotesize\ttfamily virtual luna\+::utils\+::shader\+Compiler\+::$\sim$shader\+Compiler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsubsection{Member Function Documentation}
 \mbox{\Hypertarget{classluna_1_1utils_1_1shader_compiler_aa92130891033a8c82366309ec519ec8b}\label{classluna_1_1utils_1_1shader_compiler_aa92130891033a8c82366309ec519ec8b}} 
 \index{luna::utils::shaderCompiler@{luna::utils::shaderCompiler}!compile@{compile}}
 \index{compile@{compile}!luna::utils::shaderCompiler@{luna::utils::shaderCompiler}}
-\doxysubsubsection{\texorpdfstring{compile()}{compile()}}
+\doxyparagraph{\texorpdfstring{compile()}{compile()}}
 {\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ luna\+::utils\+::shader\+Compiler\+::compile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structluna_1_1utils_1_1compile_spec}{compile\+Spec}}}]{compile\+Spec }\end{DoxyParamCaption})}
 
 
@@ -63,7 +63,7 @@ compiled shadersource.
 \mbox{\Hypertarget{classluna_1_1utils_1_1shader_compiler_ab4617322314d71aab9d71efd63ace1e7}\label{classluna_1_1utils_1_1shader_compiler_ab4617322314d71aab9d71efd63ace1e7}} 
 \index{luna::utils::shaderCompiler@{luna::utils::shaderCompiler}!getResourceTypeName@{getResourceTypeName}}
 \index{getResourceTypeName@{getResourceTypeName}!luna::utils::shaderCompiler@{luna::utils::shaderCompiler}}
-\doxysubsubsection{\texorpdfstring{getResourceTypeName()}{getResourceTypeName()}}
+\doxyparagraph{\texorpdfstring{getResourceTypeName()}{getResourceTypeName()}}
 {\footnotesize\ttfamily std\+::string luna\+::utils\+::shader\+Compiler\+::get\+Resource\+Type\+Name (\begin{DoxyParamCaption}\item[{const spirv\+\_\+cross\+::\+Resource \&}]{resource,  }\item[{const spirv\+\_\+cross\+::\+Compiler \&}]{compiler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -83,7 +83,7 @@ the type name of the resource as an std\+::string.
 \mbox{\Hypertarget{classluna_1_1utils_1_1shader_compiler_a809ef02f8f12f25017954377abbc7db6}\label{classluna_1_1utils_1_1shader_compiler_a809ef02f8f12f25017954377abbc7db6}} 
 \index{luna::utils::shaderCompiler@{luna::utils::shaderCompiler}!reflect@{reflect}}
 \index{reflect@{reflect}!luna::utils::shaderCompiler@{luna::utils::shaderCompiler}}
-\doxysubsubsection{\texorpdfstring{reflect()}{reflect()}}
+\doxyparagraph{\texorpdfstring{reflect()}{reflect()}}
 {\footnotesize\ttfamily bool luna\+::utils\+::shader\+Compiler\+::reflect (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{shader\+Data,  }\item[{bool}]{reflect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 

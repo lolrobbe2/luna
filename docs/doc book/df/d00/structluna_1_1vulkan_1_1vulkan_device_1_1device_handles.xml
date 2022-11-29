@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles" xml:lang="en-US">
+<title>luna::vulkan::vulkanDevice::deviceHandles Struct Reference</title>
+<indexterm><primary>luna::vulkan::vulkanDevice::deviceHandles</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanDevice.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>VkApplicationInfo <link linkend="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1adf2e2930f1945c97d5b791378c5e9cfb">appInfo</link> {}</para>
+</listitem>
+            <listitem><para>vkb::Instance <link linkend="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1a28c87ce72ffb17ecf112eb4ac40e90c9">instance</link></para>
+</listitem>
+            <listitem><para>vkb::Device <link linkend="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1a6f4851ce337d05d44098568ff98cc25f">device</link></para>
+</listitem>
+            <listitem><para>vkb::PhysicalDevice <link linkend="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1ac9bba299bdbd5cb110b4e5324ae101be">physicalDevice</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1adf2e2930f1945c97d5b791378c5e9cfb"/><section>
+    <title>appInfo</title>
+<indexterm><primary>appInfo</primary><secondary>luna::vulkan::vulkanDevice::deviceHandles</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanDevice::deviceHandles</primary><secondary>appInfo</secondary></indexterm>
+<para><computeroutput>VkApplicationInfo luna::vulkan::vulkanDevice::deviceHandles::appInfo {}</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1a6f4851ce337d05d44098568ff98cc25f"/><section>
+    <title>device</title>
+<indexterm><primary>device</primary><secondary>luna::vulkan::vulkanDevice::deviceHandles</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanDevice::deviceHandles</primary><secondary>device</secondary></indexterm>
+<para><computeroutput>vkb::Device luna::vulkan::vulkanDevice::deviceHandles::device</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1a28c87ce72ffb17ecf112eb4ac40e90c9"/><section>
+    <title>instance</title>
+<indexterm><primary>instance</primary><secondary>luna::vulkan::vulkanDevice::deviceHandles</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanDevice::deviceHandles</primary><secondary>instance</secondary></indexterm>
+<para><computeroutput>vkb::Instance luna::vulkan::vulkanDevice::deviceHandles::instance</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1vulkan_device_1_1device_handles_1ac9bba299bdbd5cb110b4e5324ae101be"/><section>
+    <title>physicalDevice</title>
+<indexterm><primary>physicalDevice</primary><secondary>luna::vulkan::vulkanDevice::deviceHandles</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanDevice::deviceHandles</primary><secondary>physicalDevice</secondary></indexterm>
+<para><computeroutput>vkb::PhysicalDevice luna::vulkan::vulkanDevice::deviceHandles::physicalDevice</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/<link linkend="_vulkan_device_8h">vulkanDevice.h</link></section>
+</section>

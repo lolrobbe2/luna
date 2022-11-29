@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1renderer_1_1pipeline_layout" xml:lang="en-US">
+<title>luna::renderer::pipelineLayout Struct Reference</title>
+<indexterm><primary>luna::renderer::pipelineLayout</primary></indexterm>
+<para>
+<computeroutput>#include &lt;pipeline.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::renderer::pipelineLayout:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d4/d00/structluna_1_1renderer_1_1pipeline_layout__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">shader</link> &gt; &gt; <link linkend="_structluna_1_1renderer_1_1pipeline_layout_1a5f4c7dc45fbbe3db0f3c124753f12dae">pipelineShaders</link></para>
+</listitem>
+            <listitem><para><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">device</link> &gt; <link linkend="_structluna_1_1renderer_1_1pipeline_layout_1a8a5e9736cc9d5d68b0ac407b00b87687">device</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1renderer_1_1pipeline_layout_1a8a5e9736cc9d5d68b0ac407b00b87687"/><section>
+    <title>device</title>
+<indexterm><primary>device</primary><secondary>luna::renderer::pipelineLayout</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipelineLayout</primary><secondary>device</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1device">device</link>&gt; luna::renderer::pipelineLayout::device</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1pipeline_layout_1a5f4c7dc45fbbe3db0f3c124753f12dae"/><section>
+    <title>pipelineShaders</title>
+<indexterm><primary>pipelineShaders</primary><secondary>luna::renderer::pipelineLayout</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipelineLayout</primary><secondary>pipelineShaders</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1shader">shader</link>&gt; &gt; luna::renderer::pipelineLayout::pipelineShaders</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_pipeline_8h">pipeline.h</link></section>
+</section>

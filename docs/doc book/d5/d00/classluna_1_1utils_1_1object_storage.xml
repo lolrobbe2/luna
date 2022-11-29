@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1utils_1_1object_storage" xml:lang="en-US">
+<title>luna::utils::objectStorage&lt; value &gt; Class Template Reference</title>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary></indexterm>
+<para>
+
+<para>cached object memory class with a key handle. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;objectStorage.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::utils::objectStorage&lt; value &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../da/d00/classluna_1_1utils_1_1object_storage__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::utils::objectStorage&lt; value &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/classluna_1_1utils_1_1object_storage__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage_1a542bc0386906e63d69f8f218792dd6e6">operator[]</link> (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp;key)</para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1object_storage_1a692ccb4487eaa4cfa4e7596e1a484a77">objectStorage</link> ()</para>
+
+<para>deafult constructor whith default cache size of 200.µ </para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1object_storage_1a063bea264ca9b37a1b3588c01d1a4708">objectStorage</link> (size_t cacheSize)</para>
+
+<para>constructor with custom cache size. </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage_1a4126da8a5085ddfe81b15a719fee146d">putValue</link> (<link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> *key, const value &amp;_value)</para>
+
+<para>puts a value in the object storage. </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage_1a06cf21b370891604f75ea7d91251234e">getValue</link> (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp;key, const value &amp;_value)</para>
+
+<para>gets a value from the object storage. </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage_1ac03164acabd597ba74b9422b53de738e">setValue</link> (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp;key, const value &amp;_value)</para>
+
+<para>sets the value of a given key. </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage_1a3dc24886f320f42f992d9d189756b5e6">eraseValue</link> (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp;key)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1vector_cache">vectorCache</link>&lt; value &gt; <link linkend="_classluna_1_1utils_1_1object_storage_1aa01d301af434791982b25fe8c6037fb5">objectCache</link></para>
+</listitem>
+            <listitem><para>std::unordered_map&lt; <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage_1ab664366a253e20a7f6fc36ce5ee84c49">objectMemory</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename value&gt;<?linebreak?>class luna::utils::objectStorage&lt; value &gt;</title></simplesect>
+
+<para>cached object memory class with a key handle. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1a692ccb4487eaa4cfa4e7596e1a484a77"/><section>
+    <title>objectStorage()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>objectStorage</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>objectStorage</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput><link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::objectStorage ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>deafult constructor whith default cache size of 200.µ </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>this constructor is recommended for dafult use. </para>
+</note>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1a063bea264ca9b37a1b3588c01d1a4708"/><section>
+    <title>objectStorage()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>objectStorage</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>objectStorage</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput><link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::objectStorage (size_t cacheSize)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>constructor with custom cache size. </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>recommended to not go above cacheSize of 1000 else cache could become slow! </para>
+
+<para>recommended to use the deafult constructor unless you know what you are doing!</para>
+</note>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>size_t</entry><entry>
+<para>cacheSize </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1a3dc24886f320f42f992d9d189756b5e6"/><section>
+    <title>eraseValue()</title>
+<indexterm><primary>eraseValue</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>eraseValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::eraseValue (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1a06cf21b370891604f75ea7d91251234e"/><section>
+    <title>getValue()</title>
+<indexterm><primary>getValue</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>getValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::getValue (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp; key, const value &amp; _value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>gets a value from the object storage. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>storageObject</entry><entry>
+<para>key </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>_value </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::pair&lt;storageResult, value&gt; value is the input value. </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link> </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1utils_1_1object_storage_a06cf21b370891604f75ea7d91251234e_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1a542bc0386906e63d69f8f218792dd6e6"/><section>
+    <title>operator[]()</title>
+<indexterm><primary>operator[]</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>operator[]</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::operator[] (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1utils_1_1object_storage_a542bc0386906e63d69f8f218792dd6e6_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1a4126da8a5085ddfe81b15a719fee146d"/><section>
+    <title>putValue()</title>
+<indexterm><primary>putValue</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>putValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::putValue (<link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> * key, const value &amp; _value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>puts a value in the object storage. </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>if the value of *key != it whill use this value instead of generating one.</para>
+</note>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>storageObject*</entry><entry>
+<para>key pointer to key </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>_value value/object to be stored. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::pair&lt;storageResult, value&gt; value is the input value. </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1ac03164acabd597ba74b9422b53de738e"/><section>
+    <title>setValue()</title>
+<indexterm><primary>setValue</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>setValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::setValue (const <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link> &amp; key, const value &amp; _value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>sets the value of a given key. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>storageObject</entry><entry>
+<para>key </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>_value </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::pair&lt;storageResult, value&gt; value is the input value. </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link> </para>
+</formalpara>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1aa01d301af434791982b25fe8c6037fb5"/><section>
+    <title>objectCache</title>
+<indexterm><primary>objectCache</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>objectCache</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput><link linkend="_classluna_1_1utils_1_1vector_cache">vectorCache</link>&lt;value&gt; <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::objectCache<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1object_storage_1ab664366a253e20a7f6fc36ce5ee84c49"/><section>
+    <title>objectMemory</title>
+<indexterm><primary>objectMemory</primary><secondary>luna::utils::objectStorage&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::objectStorage&lt; value &gt;</primary><secondary>objectMemory</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::unordered_map&lt;<link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link>, value&gt; <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage</link>&lt; value &gt;::objectMemory<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/<link linkend="_object_storage_8h">objectStorage.h</link></section>
+</section>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_5f4c6ae211a9789f186cdc263105f7e6" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan Directory Reference</primary></indexterm>
+Directory dependency graph for vulkan:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_5f4c6ae211a9789f186cdc263105f7e6_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_ec40503cd216ceca64dce587ab07734a">device</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_572f48432c61ad7468a5c7cc5905af38">gui</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_629897374ec0f709cd56383de6686cf5">rendering</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_81b3bce3975691880bd92587a1a61704">utils</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_f13b31cc8ea2c1f49e7088aedef13329">window</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_vulkan_feature_support_8cpp">vulkanFeatureSupport.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_vulkan_feature_support_8h">vulkanFeatureSupport.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

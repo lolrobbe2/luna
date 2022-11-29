@@ -1,21 +1,35 @@
-\hypertarget{classluna_1_1vulkan_1_1vulkan_device}{}\doxysection{luna\+::vulkan\+::vulkan\+Device Class Reference}
+\hypertarget{classluna_1_1vulkan_1_1vulkan_device}{}\doxysubsection{luna\+::vulkan\+::vulkan\+Device Class Reference}
 \label{classluna_1_1vulkan_1_1vulkan_device}\index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
 
 
 {\ttfamily \#include $<$vulkan\+Device.\+h$>$}
 
-Inheritance diagram for luna\+::vulkan\+::vulkan\+Device\+:\begin{figure}[H]
+
+
+Inheritance diagram for luna\+::vulkan\+::vulkan\+Device\+:
+\nopagebreak
+\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{d0/d00/classluna_1_1vulkan_1_1vulkan_device}
+\includegraphics[width=209pt]{de/d00/classluna_1_1vulkan_1_1vulkan_device__inherit__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Classes}
+
+
+Collaboration diagram for luna\+::vulkan\+::vulkan\+Device\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d00/classluna_1_1vulkan_1_1vulkan_device__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_device_1_1device_handles}{device\+Handles}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_af74bece14ffc07cd0cbc2c19b0d5a85a}{vulkan\+Device}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \&Window)
@@ -40,12 +54,12 @@ Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_abdc0e9ee9733c4
 \begin{DoxyCompactList}\small\item\em creates the appropriate framebuffers for the swapchain. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_device_1_1device_handles}{device\+Handles}} \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a8800fb96ecc2f59731559e73c7229bbc}{get\+Device\+Handles}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+::vulkan\+Swapchain}} $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a3361292b69cd4a898587de41ddb11392}{swapchain}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{Indent}\textbf{ primary\+Helper\+Functions helper functions used to create the device}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -56,7 +70,7 @@ Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a3d8d74462989dc
 Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a8477f63f60e9dbd33f7b421542677540}{create\+Logical\+Device}} ()
 \begin{DoxyCompactList}\small\item\em creates the logical device. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_ae948d02e865d6e91e5ef6f15015997c5}{queue\+Priorities}} = \{ 0.\+99f \}
@@ -69,7 +83,7 @@ Vk\+Surface\+KHR \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a04f1147e
 \item 
 std\+::vector$<$ Vk\+Device\+Queue\+Create\+Info $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a0a2bef2693e2e1fa8dbec5aa306b8de0}{queue\+Create\+Infos}}
 \end{DoxyCompactItemize}
-\doxysubsection*{secondary\+Helper\+Functions helper functions used by the primary helper functions}
+\doxysubsubsection*{secondary\+Helper\+Functions helper functions used by the primary helper functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ const char $\ast$ $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a5b8b5d17dcb2f453fea603deaa2b043c}{get\+Required\+Extensions}} ()
@@ -80,7 +94,7 @@ static VKAPI\+\_\+\+ATTR Vk\+Bool32 VKAPI\+\_\+\+CALL \mbox{\hyperlink{classluna
 \begin{DoxyCompactList}\small\item\em the debug callback function for vulkan debug and error catching. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsubsection{Detailed Description}
 this is the vulkan device class and creates a rendering context. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{ref<device> rederingDevice = std::make\_shared<device>(\textcolor{keyword}{new} \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_af74bece14ffc07cd0cbc2c19b0d5a85a}{vulkanDevice}}(\mbox{\hyperlink{classluna_1_1renderer_1_1device_aafbc6cc53be313fff534273ea56b1345}{window}}));}
@@ -88,11 +102,11 @@ this is the vulkan device class and creates a rendering context.
 \end{DoxyCode}
  
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\doxysubsubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_af74bece14ffc07cd0cbc2c19b0d5a85a}\label{classluna_1_1vulkan_1_1vulkan_device_af74bece14ffc07cd0cbc2c19b0d5a85a}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!vulkanDevice@{vulkanDevice}}
 \index{vulkanDevice@{vulkanDevice}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{vulkanDevice()}{vulkanDevice()}}
+\doxyparagraph{\texorpdfstring{vulkanDevice()}{vulkanDevice()}}
 {\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Device\+::vulkan\+Device (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \&}]{Window }\end{DoxyParamCaption})}
 
 @creates a vulkan device using the ref to the main window.
@@ -105,16 +119,16 @@ this is the vulkan device class and creates a rendering context.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a9107ebb35821385c9008574c7de7b434}\label{classluna_1_1vulkan_1_1vulkan_device_a9107ebb35821385c9008574c7de7b434}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!````~vulkanDevice@{$\sim$vulkanDevice}}
 \index{````~vulkanDevice@{$\sim$vulkanDevice}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{$\sim$vulkanDevice()}{~vulkanDevice()}}
+\doxyparagraph{\texorpdfstring{$\sim$vulkanDevice()}{~vulkanDevice()}}
 {\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Device\+::$\sim$vulkan\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsubsection{Member Function Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_acdef289bdd4596c82ea9c7a8e697fe3e}\label{classluna_1_1vulkan_1_1vulkan_device_acdef289bdd4596c82ea9c7a8e697fe3e}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!createContext@{createContext}}
 \index{createContext@{createContext}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{createContext()}{createContext()}}
+\doxyparagraph{\texorpdfstring{createContext()}{createContext()}}
 {\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Device\+::create\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
@@ -128,7 +142,7 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_abdc0e9ee9733c433e2f64f3e06917fec}\label{classluna_1_1vulkan_1_1vulkan_device_abdc0e9ee9733c433e2f64f3e06917fec}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!createFramebuffers@{createFramebuffers}}
 \index{createFramebuffers@{createFramebuffers}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{createFramebuffers()}{createFramebuffers()}}
+\doxyparagraph{\texorpdfstring{createFramebuffers()}{createFramebuffers()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Device\+::create\+Framebuffers (\begin{DoxyParamCaption}\item[{Vk\+Render\+Pass}]{render\+Pass }\end{DoxyParamCaption})}
 
 
@@ -146,7 +160,7 @@ VK\+\_\+\+SUCCESS when buffer creation whas succesful
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a35d6bd2075cdb2b13fec7b5a7a5a0f92}\label{classluna_1_1vulkan_1_1vulkan_device_a35d6bd2075cdb2b13fec7b5a7a5a0f92}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!createInstance@{createInstance}}
 \index{createInstance@{createInstance}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{createInstance()}{createInstance()}}
+\doxyparagraph{\texorpdfstring{createInstance()}{createInstance()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Device\+::create\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -161,7 +175,7 @@ VK\+\_\+\+ERROR\+\_\+\+LAYER\+\_\+\+NOT\+\_\+\+PRESENT when a requested validati
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a8477f63f60e9dbd33f7b421542677540}\label{classluna_1_1vulkan_1_1vulkan_device_a8477f63f60e9dbd33f7b421542677540}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!createLogicalDevice@{createLogicalDevice}}
 \index{createLogicalDevice@{createLogicalDevice}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{createLogicalDevice()}{createLogicalDevice()}}
+\doxyparagraph{\texorpdfstring{createLogicalDevice()}{createLogicalDevice()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Device\+::create\+Logical\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -176,7 +190,7 @@ for VK\+\_\+\+ERROR look at the vulkan documentation\+: \href{https://registry.k
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_ab191e08dd1a5cbaf7696b752a130bcdb}\label{classluna_1_1vulkan_1_1vulkan_device_ab191e08dd1a5cbaf7696b752a130bcdb}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!createQueues@{createQueues}}
 \index{createQueues@{createQueues}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{createQueues()}{createQueues()}}
+\doxyparagraph{\texorpdfstring{createQueues()}{createQueues()}}
 {\footnotesize\ttfamily Vk\+Device\+Queue\+Create\+Info $\ast$ luna\+::vulkan\+::vulkan\+Device\+::create\+Queues (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -194,7 +208,7 @@ int the score the physical device has.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a2dc4e70b3107536728605aca50620ce3}\label{classluna_1_1vulkan_1_1vulkan_device_a2dc4e70b3107536728605aca50620ce3}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!destroyContext@{destroyContext}}
 \index{destroyContext@{destroyContext}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{destroyContext()}{destroyContext()}}
+\doxyparagraph{\texorpdfstring{destroyContext()}{destroyContext()}}
 {\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Device\+::destroy\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 detroys the device context. 
@@ -204,7 +218,7 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a8800fb96ecc2f59731559e73c7229bbc}\label{classluna_1_1vulkan_1_1vulkan_device_a8800fb96ecc2f59731559e73c7229bbc}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!getDeviceHandles@{getDeviceHandles}}
 \index{getDeviceHandles@{getDeviceHandles}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{getDeviceHandles()}{getDeviceHandles()}}
+\doxyparagraph{\texorpdfstring{getDeviceHandles()}{getDeviceHandles()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_device_1_1device_handles}{vulkan\+Device\+::device\+Handles}} luna\+::vulkan\+::vulkan\+Device\+::get\+Device\+Handles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \#brief returns the device subhandles.
@@ -215,7 +229,7 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_ac7f3094a53a43da29745639d918a882e}\label{classluna_1_1vulkan_1_1vulkan_device_ac7f3094a53a43da29745639d918a882e}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!getQueue@{getQueue}}
 \index{getQueue@{getQueue}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{getQueue()}{getQueue()}}
+\doxyparagraph{\texorpdfstring{getQueue()}{getQueue()}}
 {\footnotesize\ttfamily Vk\+Queue luna\+::vulkan\+::vulkan\+Device\+::get\+Queue (\begin{DoxyParamCaption}\item[{const vkb\+::\+Queue\+Type \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -230,7 +244,7 @@ returns a queue based on the requested type .
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_aa3c7f11adeffb13307efccfc2366db67}\label{classluna_1_1vulkan_1_1vulkan_device_aa3c7f11adeffb13307efccfc2366db67}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!getQueueIndex@{getQueueIndex}}
 \index{getQueueIndex@{getQueueIndex}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{getQueueIndex()}{getQueueIndex()}}
+\doxyparagraph{\texorpdfstring{getQueueIndex()}{getQueueIndex()}}
 {\footnotesize\ttfamily uint32\+\_\+t luna\+::vulkan\+::vulkan\+Device\+::get\+Queue\+Index (\begin{DoxyParamCaption}\item[{const vkb\+::\+Queue\+Type \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -245,7 +259,7 @@ returns the queue index.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a5b8b5d17dcb2f453fea603deaa2b043c}\label{classluna_1_1vulkan_1_1vulkan_device_a5b8b5d17dcb2f453fea603deaa2b043c}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!getRequiredExtensions@{getRequiredExtensions}}
 \index{getRequiredExtensions@{getRequiredExtensions}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{getRequiredExtensions()}{getRequiredExtensions()}}
+\doxyparagraph{\texorpdfstring{getRequiredExtensions()}{getRequiredExtensions()}}
 {\footnotesize\ttfamily std\+::vector$<$ const char $\ast$ $>$ luna\+::vulkan\+::vulkan\+Device\+::get\+Required\+Extensions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -265,7 +279,7 @@ VK\+\_\+\+ERROR\+\_\+\+LAYER\+\_\+\+NOT\+\_\+\+PRESENT when a requested validati
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_af8d7f16d0aeb1ff58b74bd1c7d930e86}\label{classluna_1_1vulkan_1_1vulkan_device_af8d7f16d0aeb1ff58b74bd1c7d930e86}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!getScissor@{getScissor}}
 \index{getScissor@{getScissor}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{getScissor()}{getScissor()}}
+\doxyparagraph{\texorpdfstring{getScissor()}{getScissor()}}
 {\footnotesize\ttfamily Vk\+Rect2D luna\+::vulkan\+::vulkan\+Device\+::get\+Scissor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -275,7 +289,7 @@ returns the swapchain scissor.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a9f0f88c958ad28eec5b1657985923da5}\label{classluna_1_1vulkan_1_1vulkan_device_a9f0f88c958ad28eec5b1657985923da5}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!getSwapFormat@{getSwapFormat}}
 \index{getSwapFormat@{getSwapFormat}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{getSwapFormat()}{getSwapFormat()}}
+\doxyparagraph{\texorpdfstring{getSwapFormat()}{getSwapFormat()}}
 {\footnotesize\ttfamily Vk\+Format luna\+::vulkan\+::vulkan\+Device\+::get\+Swap\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -285,7 +299,7 @@ returns the swapchain format.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a63d11e80067d6ec5591d61a4dbede7a3}\label{classluna_1_1vulkan_1_1vulkan_device_a63d11e80067d6ec5591d61a4dbede7a3}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!getViewport@{getViewport}}
 \index{getViewport@{getViewport}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{getViewport()}{getViewport()}}
+\doxyparagraph{\texorpdfstring{getViewport()}{getViewport()}}
 {\footnotesize\ttfamily Vk\+Viewport luna\+::vulkan\+::vulkan\+Device\+::get\+Viewport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -295,7 +309,7 @@ returns the swapchain viewport.
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a3d8d74462989dcf7bbcedc88f31062ff}\label{classluna_1_1vulkan_1_1vulkan_device_a3d8d74462989dcf7bbcedc88f31062ff}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!pickPhysicalDevice@{pickPhysicalDevice}}
 \index{pickPhysicalDevice@{pickPhysicalDevice}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{pickPhysicalDevice()}{pickPhysicalDevice()}}
+\doxyparagraph{\texorpdfstring{pickPhysicalDevice()}{pickPhysicalDevice()}}
 {\footnotesize\ttfamily Vk\+Result luna\+::vulkan\+::vulkan\+Device\+::pick\+Physical\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -312,7 +326,7 @@ VK\+\_\+\+ERROR\+\_\+\+INCOMPATIBLE\+\_\+\+DRIVER when the driver version is out
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_aab0d20b2d5b585ff4a9b132dada4dc64}\label{classluna_1_1vulkan_1_1vulkan_device_aab0d20b2d5b585ff4a9b132dada4dc64}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!vulkanDevice::debugCallback@{vulkanDevice::debugCallback}}
 \index{vulkanDevice::debugCallback@{vulkanDevice::debugCallback}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{vulkanDevice::debugCallback()}{vulkanDevice::debugCallback()}}
+\doxyparagraph{\texorpdfstring{vulkanDevice::debugCallback()}{vulkanDevice::debugCallback()}}
 {\footnotesize\ttfamily static VKAPI\+\_\+\+ATTR Vk\+Bool32 VKAPI\+\_\+\+CALL luna\+::vulkan\+::vulkan\+Device\+::vulkan\+Device\+::debug\+Callback (\begin{DoxyParamCaption}\item[{Vk\+Debug\+Utils\+Message\+Severity\+Flag\+Bits\+EXT}]{message\+Severity,  }\item[{Vk\+Debug\+Utils\+Message\+Type\+Flags\+EXT}]{message\+Types,  }\item[{const Vk\+Debug\+Utils\+Messenger\+Callback\+Data\+EXT $\ast$}]{p\+Callback\+Data,  }\item[{void $\ast$}]{p\+User\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 
@@ -335,41 +349,41 @@ the debug callback function for vulkan debug and error catching.
 \end{DoxyReturn}
 
 
-\doxysubsection{Member Data Documentation}
+\doxysubsubsection{Member Data Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_afda4bafc9533e7cf7f11b3c009308624}\label{classluna_1_1vulkan_1_1vulkan_device_afda4bafc9533e7cf7f11b3c009308624}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!deviceHandle@{deviceHandle}}
 \index{deviceHandle@{deviceHandle}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{deviceHandle}{deviceHandle}}
+\doxyparagraph{\texorpdfstring{deviceHandle}{deviceHandle}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_device_1_1device_handles}{device\+Handles}} luna\+::vulkan\+::vulkan\+Device\+::device\+Handle\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a0a2bef2693e2e1fa8dbec5aa306b8de0}\label{classluna_1_1vulkan_1_1vulkan_device_a0a2bef2693e2e1fa8dbec5aa306b8de0}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!queueCreateInfos@{queueCreateInfos}}
 \index{queueCreateInfos@{queueCreateInfos}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{queueCreateInfos}{queueCreateInfos}}
+\doxyparagraph{\texorpdfstring{queueCreateInfos}{queueCreateInfos}}
 {\footnotesize\ttfamily std\+::vector$<$Vk\+Device\+Queue\+Create\+Info$>$ luna\+::vulkan\+::vulkan\+Device\+::queue\+Create\+Infos\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a341008b8201a5b2c276773588473d72b}\label{classluna_1_1vulkan_1_1vulkan_device_a341008b8201a5b2c276773588473d72b}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!queueFamily@{queueFamily}}
 \index{queueFamily@{queueFamily}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{queueFamily}{queueFamily}}
+\doxyparagraph{\texorpdfstring{queueFamily}{queueFamily}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1vulkan_1_1queue_family_indices}{vulkan\+::queue\+Family\+Indices}} luna\+::vulkan\+::vulkan\+Device\+::queue\+Family\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_ae948d02e865d6e91e5ef6f15015997c5}\label{classluna_1_1vulkan_1_1vulkan_device_ae948d02e865d6e91e5ef6f15015997c5}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!queuePriorities@{queuePriorities}}
 \index{queuePriorities@{queuePriorities}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{queuePriorities}{queuePriorities}}
+\doxyparagraph{\texorpdfstring{queuePriorities}{queuePriorities}}
 {\footnotesize\ttfamily std\+::vector$<$float$>$ luna\+::vulkan\+::vulkan\+Device\+::queue\+Priorities = \{ 0.\+99f \}\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a04f1147e3507dc022038d141a11d402d}\label{classluna_1_1vulkan_1_1vulkan_device_a04f1147e3507dc022038d141a11d402d}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!surface@{surface}}
 \index{surface@{surface}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{surface}{surface}}
+\doxyparagraph{\texorpdfstring{surface}{surface}}
 {\footnotesize\ttfamily Vk\+Surface\+KHR luna\+::vulkan\+::vulkan\+Device\+::surface = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_device_a3361292b69cd4a898587de41ddb11392}\label{classluna_1_1vulkan_1_1vulkan_device_a3361292b69cd4a898587de41ddb11392}} 
 \index{luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}!swapchain@{swapchain}}
 \index{swapchain@{swapchain}!luna::vulkan::vulkanDevice@{luna::vulkan::vulkanDevice}}
-\doxysubsubsection{\texorpdfstring{swapchain}{swapchain}}
+\doxyparagraph{\texorpdfstring{swapchain}{swapchain}}
 {\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_swapchain}{vulkan\+::vulkan\+Swapchain}}$>$ luna\+::vulkan\+::vulkan\+Device\+::swapchain}
 
 

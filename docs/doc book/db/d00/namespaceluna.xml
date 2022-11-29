@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceluna" xml:lang="en-US">
+<title>luna Namespace Reference</title>
+<indexterm><primary>luna</primary></indexterm>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1application">application</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1gui">gui</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1input">input</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1_mouse">Mouse</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1renderer">renderer</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1utils">utils</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1vulkan">vulkan</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1app_render_event">appRenderEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1app_tick_event">appTickEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1app_update_event">appUpdateEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1_event">Event</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1event_dispatcher">eventDispatcher</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1key_event">keyEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1key_pressed_event">keyPressedEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1key_released_event">keyReleasedEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1key_typed_event">keyTypedEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1_log">Log</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1mouse_button_event">mouseButtonEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1mouse_button_pressed_event">mouseButtonPressedEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1mouse_button_released_event">mouseButtonReleasedEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1mouse_moved_event">mouseMovedEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1mouse_scrolled_event">mouseScrolledEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1uuid">uuid</link></para>
+
+<para>a general purpose uuid class with a maximum number of 2^64 uuid&apos;s the uuid class does not check for duplicates! </para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1window_close_event">windowCloseEvent</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1window_resize_event">windowResizeEvent</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;typename T &gt; </para><para>using <link linkend="_namespaceluna_1accd5328e0de41c20f918cdd315173870">scope</link> = std::unique_ptr&lt; T &gt;</para>
+</listitem>
+            <listitem><para>template&lt;typename T &gt; </para><para>using <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link> = std::shared_ptr&lt; T &gt;</para>
+</listitem>
+            <listitem><para>using <link linkend="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39">keyCode</link> = uint16_t</para>
+</listitem>
+            <listitem><para>using <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> = uint16_t</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum class <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610">eventType</link> { <?linebreak?><link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a6adf97f83acf6453d4a6a4b1070f3754">None</link> = 0
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac984201d37197ab297a14d19efee4b07">WindowClose</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a9f8f27bff2915738c4fe1b970e12f89c">WindowResize</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a1c68d5453b28d52622bf5486a5fd95ca">WindowFocus</link>
+, <?linebreak?><link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a1c2119b9d61e623975f13f1029f1d97c">WindowLostFocus</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ab94473d9dfc85f8fdbf5cb3b1d992bda">WindowMoved</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a559b408d45669603dbac61cd15984f13">AppTick</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac177abb86f28dea426f2e3409e14bcda">AppUpdate</link>
+, <?linebreak?><link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a4b2eb3c601042333ac1c0565ff58e3d6">AppRender</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac17e6984c1e5a887a49831beadee6bca">KeyPressed</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a4a77f07c8ad223b71ab4ce78a63841ab">KeyReleased</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a9afbfd35b289eb4fc7f1bc148d7b422e">KeyTyped</link>
+, <?linebreak?><link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a7349f643d689997b7c54bf93e4095f5c">MouseButtonPressed</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a7584c169de594c27f00084b93186fd7c">MouseButtonReleased</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac2770ad109c8063ce69a3608a9a16c08">MouseMoved</link>
+, <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a50edb169910041bb3c06f6e8322d74c1">MouseScrolled</link>
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516d">eventCategory</link> { <?linebreak?><link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516dad66255cca4f6c7283f330cfa4a32c7ff">None</link> = 0
+, <link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da09e7f70a97991824dffa6a63722c51fa">eventCategoryApplication</link> = BIT(0)
+, <link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da83d7552272b8eec46d8ad55978382bb3">eventCategoryInput</link> = BIT(1)
+, <link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516dad1e4d61c40c10dccdc5344fc317c0827">eventCategoryKeyboard</link> = BIT(2)
+, <?linebreak?><link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da47e4331dbb2547a47ecf89026265b30d">eventCategoryMouse</link> = BIT(3)
+, <link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848">eventCategoryMouseButton</link> = BIT(4)
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;typename T , typename ... Args&gt; </para><para>constexpr <link linkend="_namespaceluna_1accd5328e0de41c20f918cdd315173870">scope</link>&lt; T &gt; <link linkend="_namespaceluna_1a7318b1c2711a4b9af5450dcf379e5bcc">createScope</link> (Args &amp;&amp;... args)</para>
+</listitem>
+            <listitem><para>template&lt;typename T , typename ... Args&gt; </para><para>constexpr <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; T &gt; <link linkend="_namespaceluna_1a4b6e6b3b5670271d9104388763e3acf1">createRef</link> (Args &amp;&amp;... args)</para>
+</listitem>
+            <listitem><para>static std::mt19937_64 <link linkend="_namespaceluna_1abc2a4d8820a15b200e03c795f9775c0b">engine</link> (<link linkend="_namespaceluna_1ab5b429183fa7ddf39c317f3f97f91a21">randomDevice</link>())</para>
+</listitem>
+            <listitem><para>std::ostream &amp; <link linkend="_namespaceluna_1a8d1a70d4570a796a9158fa1ec62678c1">operator&lt;&lt;</link> (std::ostream &amp;os, const <link linkend="_classluna_1_1_event">Event</link> &amp;e)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>static std::random_device <link linkend="_namespaceluna_1ab5b429183fa7ddf39c317f3f97f91a21">randomDevice</link></para>
+</listitem>
+            <listitem><para>static std::uniform_int_distribution&lt; uint64_t &gt; <link linkend="_namespaceluna_1a04387552bf67afc7e9891b959bc3b8d7">uniformDistr</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39"/><section>
+    <title>keyCode</title>
+<indexterm><primary>keyCode</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>keyCode</secondary></indexterm>
+<para><computeroutput>using <link linkend="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39">luna::keyCode</link> = typedef uint16_t</computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92"/><section>
+    <title>mouseCode</title>
+<indexterm><primary>mouseCode</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>mouseCode</secondary></indexterm>
+<para><computeroutput>using <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">luna::mouseCode</link> = typedef uint16_t</computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87"/><section>
+    <title>ref</title>
+<indexterm><primary>ref</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>ref</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>using <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">luna::ref</link> = typedef std::shared_ptr&lt;T&gt;</computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1accd5328e0de41c20f918cdd315173870"/><section>
+    <title>scope</title>
+<indexterm><primary>scope</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>scope</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>using <link linkend="_namespaceluna_1accd5328e0de41c20f918cdd315173870">luna::scope</link> = typedef std::unique_ptr&lt;T&gt;</computeroutput></para></section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516d"/><section>
+    <title>eventCategory</title>
+<indexterm><primary>eventCategory</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>eventCategory</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516d">luna::eventCategory</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>None</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>None</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516dad66255cca4f6c7283f330cfa4a32c7ff"/>None</entry><entry></entry></row><row><entry><indexterm><primary>eventCategoryApplication</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>eventCategoryApplication</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da09e7f70a97991824dffa6a63722c51fa"/>eventCategoryApplication</entry><entry></entry></row><row><entry><indexterm><primary>eventCategoryInput</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>eventCategoryInput</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da83d7552272b8eec46d8ad55978382bb3"/>eventCategoryInput</entry><entry></entry></row><row><entry><indexterm><primary>eventCategoryKeyboard</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>eventCategoryKeyboard</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516dad1e4d61c40c10dccdc5344fc317c0827"/>eventCategoryKeyboard</entry><entry></entry></row><row><entry><indexterm><primary>eventCategoryMouse</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>eventCategoryMouse</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da47e4331dbb2547a47ecf89026265b30d"/>eventCategoryMouse</entry><entry></entry></row><row><entry><indexterm><primary>eventCategoryMouseButton</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>eventCategoryMouseButton</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1a047ac16c6d2060398e5e6a91e484516da595d8e1a905f7005774ca4af5bda1848"/>eventCategoryMouseButton</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610"/><section>
+    <title>eventType</title>
+<indexterm><primary>eventType</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>eventType</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610">luna::eventType</link><computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>None</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>None</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a6adf97f83acf6453d4a6a4b1070f3754"/>None</entry><entry></entry></row><row><entry><indexterm><primary>WindowClose</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>WindowClose</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac984201d37197ab297a14d19efee4b07"/>WindowClose</entry><entry></entry></row><row><entry><indexterm><primary>WindowResize</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>WindowResize</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a9f8f27bff2915738c4fe1b970e12f89c"/>WindowResize</entry><entry></entry></row><row><entry><indexterm><primary>WindowFocus</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>WindowFocus</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a1c68d5453b28d52622bf5486a5fd95ca"/>WindowFocus</entry><entry></entry></row><row><entry><indexterm><primary>WindowLostFocus</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>WindowLostFocus</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a1c2119b9d61e623975f13f1029f1d97c"/>WindowLostFocus</entry><entry></entry></row><row><entry><indexterm><primary>WindowMoved</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>WindowMoved</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ab94473d9dfc85f8fdbf5cb3b1d992bda"/>WindowMoved</entry><entry></entry></row><row><entry><indexterm><primary>AppTick</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>AppTick</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a559b408d45669603dbac61cd15984f13"/>AppTick</entry><entry></entry></row><row><entry><indexterm><primary>AppUpdate</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>AppUpdate</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac177abb86f28dea426f2e3409e14bcda"/>AppUpdate</entry><entry></entry></row><row><entry><indexterm><primary>AppRender</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>AppRender</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a4b2eb3c601042333ac1c0565ff58e3d6"/>AppRender</entry><entry></entry></row><row><entry><indexterm><primary>KeyPressed</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>KeyPressed</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac17e6984c1e5a887a49831beadee6bca"/>KeyPressed</entry><entry></entry></row><row><entry><indexterm><primary>KeyReleased</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>KeyReleased</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a4a77f07c8ad223b71ab4ce78a63841ab"/>KeyReleased</entry><entry></entry></row><row><entry><indexterm><primary>KeyTyped</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>KeyTyped</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a9afbfd35b289eb4fc7f1bc148d7b422e"/>KeyTyped</entry><entry></entry></row><row><entry><indexterm><primary>MouseButtonPressed</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>MouseButtonPressed</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a7349f643d689997b7c54bf93e4095f5c"/>MouseButtonPressed</entry><entry></entry></row><row><entry><indexterm><primary>MouseButtonReleased</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>MouseButtonReleased</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a7584c169de594c27f00084b93186fd7c"/>MouseButtonReleased</entry><entry></entry></row><row><entry><indexterm><primary>MouseMoved</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>MouseMoved</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610ac2770ad109c8063ce69a3608a9a16c08"/>MouseMoved</entry><entry></entry></row><row><entry><indexterm><primary>MouseScrolled</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>MouseScrolled</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1ad79b9142c071f5b952598de9eb0b6610a50edb169910041bb3c06f6e8322d74c1"/>MouseScrolled</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespaceluna_1a4b6e6b3b5670271d9104388763e3acf1"/><section>
+    <title>createRef()</title>
+<indexterm><primary>createRef</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>createRef</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename ... Args&gt; </computeroutput><para><computeroutput>constexpr <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; T &gt; luna::createRef (Args &amp;&amp;... args)<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1a7318b1c2711a4b9af5450dcf379e5bcc"/><section>
+    <title>createScope()</title>
+<indexterm><primary>createScope</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>createScope</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename ... Args&gt; </computeroutput><para><computeroutput>constexpr <link linkend="_namespaceluna_1accd5328e0de41c20f918cdd315173870">scope</link>&lt; T &gt; luna::createScope (Args &amp;&amp;... args)<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1abc2a4d8820a15b200e03c795f9775c0b"/><section>
+    <title>engine()</title>
+<indexterm><primary>engine</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>engine</secondary></indexterm>
+<para><computeroutput>static std::mt19937_64 luna::engine (<link linkend="_namespaceluna_1ab5b429183fa7ddf39c317f3f97f91a21">randomDevice</link>() )<computeroutput>[static]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/namespaceluna_abc2a4d8820a15b200e03c795f9775c0b_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_namespaceluna_1a8d1a70d4570a796a9158fa1ec62678c1"/><section>
+    <title>operator&lt;&lt;()</title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<para><computeroutput>std::ostream &amp; luna::operator&lt;&lt; (std::ostream &amp; os, const <link linkend="_classluna_1_1_event">Event</link> &amp; e)<computeroutput>[inline]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespaceluna_1ab5b429183fa7ddf39c317f3f97f91a21"/><section>
+    <title>randomDevice</title>
+<indexterm><primary>randomDevice</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>randomDevice</secondary></indexterm>
+<para><computeroutput>std::random_device luna::randomDevice<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1a04387552bf67afc7e9891b959bc3b8d7"/><section>
+    <title>uniformDistr</title>
+<indexterm><primary>uniformDistr</primary><secondary>luna</secondary></indexterm>
+<indexterm><primary>luna</primary><secondary>uniformDistr</secondary></indexterm>
+<para><computeroutput>std::uniform_int_distribution&lt;uint64_t&gt; luna::uniformDistr<computeroutput>[static]</computeroutput></computeroutput></para></section>
+</section>
+</section>

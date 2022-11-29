@@ -133,8 +133,10 @@ namespace luna
 		}
 		void vulkanAllocator::destroyBuffer(VkBuffer buffer)
 		{
+			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
+			vkDeviceWaitIdle(vDevice->getDeviceHandles().device);
 			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;
-			//vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
+			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 
 		}
 	}

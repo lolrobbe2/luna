@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_buffer_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/buffer.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/buffer.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;core/rendering/shader.h&gt;<?linebreak?></programlisting>Include dependency graph for buffer.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d3/d00/buffer_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d4/d00/buffer_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1buffer_element">luna::renderer::bufferElement</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1buffer_layout">luna::renderer::bufferLayout</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1vertex_buffer">luna::renderer::vertexBuffer</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1index_buffer">luna::renderer::indexBuffer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1renderer">luna::renderer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1renderer_1_1renderer" xml:lang="en-US">
+<title>luna::renderer::renderer Class Reference</title>
+<indexterm><primary>luna::renderer::renderer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;renderer.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::renderer::renderer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dd/d00/classluna_1_1renderer_1_1renderer__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structluna_1_1renderer_1_1renderer_1_1mesh">mesh</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1renderer_1_1renderer_1_1vertex">vertex</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_classluna_1_1renderer_1_1renderer_1ae03c7718cd0e231dbb9b89c8ecbf944f">init</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link> &gt; &amp;window)</para>
+
+<para>the main renderer class. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1renderer_1_1renderer_1adc22ac127f4932d064a8653ec4c5d18b">createFrame</link> ()</para>
+
+<para>create a frame in the render pipline based on the given input. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1renderer_1_1renderer_1a32fcf021d4fb98074c80ef9bdfd81d18">newFrame</link> ()</para>
+
+<para>renders a new frame. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1renderer_1_1renderer_1afb864b4498cbb6eeb0240cd9a6b2af44">beginScene</link> ()</para>
+
+<para>starts recording a new scene. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1renderer_1_1renderer_1a301fe59cdfcf8a1bb2d5d92b08648921">Submit</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> &gt; &amp;<link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link>, const uint64_t &amp;indexCount=0)</para>
+
+<para>submits a <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> to be rendered containing vertexBuffers and 1 <link linkend="_classluna_1_1renderer_1_1index_buffer">indexBuffer</link>. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1renderer_1_1renderer_1a6d3cc118bda57598c1d5c5524b8bce15">endScene</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">device</link> &gt; <link linkend="_classluna_1_1renderer_1_1renderer_1a3dfff9eb6b64c433ed911ef45e9173d9">rendererDevice</link></para>
+</listitem>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1pipeline">pipeline</link> &gt; <link linkend="_classluna_1_1renderer_1_1renderer_1a315cc5b92efec4d9676e8123f366ea3d">rendererPipeline</link></para>
+</listitem>
+            <listitem><para>static <link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> <link linkend="_classluna_1_1renderer_1_1renderer_1a1b2c934841a3d81adb002dc071f6969a">layout</link></para>
+</listitem>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1gui_1_1vulkan_imgui">gui::vulkanImgui</link> &gt; <link linkend="_classluna_1_1renderer_1_1renderer_1a5de4c1fd2e59811a027b630a743799f5">gui</link></para>
+</listitem>
+            <listitem><para>static bool <link linkend="_classluna_1_1renderer_1_1renderer_1a2d89759f36763e0e9cbff69d10ee676b">Selected</link></para>
+</listitem>
+            <listitem><para>static <link linkend="_structluna_1_1renderer_1_1renderer_1_1mesh">mesh</link> <link linkend="_classluna_1_1renderer_1_1renderer_1a5ac07ac60137f0cf662849f0e64912f5">testMesh</link></para>
+</listitem>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> &gt; <link linkend="_classluna_1_1renderer_1_1renderer_1a1fd8ae0bb7e0c6e624e15112f89b659a">vertArray</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1afb864b4498cbb6eeb0240cd9a6b2af44"/><section>
+    <title>beginScene()</title>
+<indexterm><primary>beginScene</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>beginScene</secondary></indexterm>
+<para><computeroutput>void luna::renderer::renderer::beginScene ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>starts recording a new scene. </para>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1adc22ac127f4932d064a8653ec4c5d18b"/><section>
+    <title>createFrame()</title>
+<indexterm><primary>createFrame</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>createFrame</secondary></indexterm>
+<para><computeroutput>void luna::renderer::renderer::createFrame ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>create a frame in the render pipline based on the given input. </para>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1renderer_1_1renderer_adc22ac127f4932d064a8653ec4c5d18b_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a6d3cc118bda57598c1d5c5524b8bce15"/><section>
+    <title>endScene()</title>
+<indexterm><primary>endScene</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>endScene</secondary></indexterm>
+<para><computeroutput>void luna::renderer::renderer::endScene ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>brief ends the scene. </para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1ae03c7718cd0e231dbb9b89c8ecbf944f"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>void luna::renderer::renderer::init (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link> &gt; &amp; window)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>the main renderer class. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>window</entry><entry>
+<para>a ref to the main window </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a32fcf021d4fb98074c80ef9bdfd81d18"/><section>
+    <title>newFrame()</title>
+<indexterm><primary>newFrame</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>newFrame</secondary></indexterm>
+<para><computeroutput>void luna::renderer::renderer::newFrame ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>renders a new frame. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1renderer_1_1renderer_a32fcf021d4fb98074c80ef9bdfd81d18_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1renderer_1_1renderer_a32fcf021d4fb98074c80ef9bdfd81d18_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a301fe59cdfcf8a1bb2d5d92b08648921"/><section>
+    <title>Submit()</title>
+<indexterm><primary>Submit</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>Submit</secondary></indexterm>
+<para><computeroutput>void luna::renderer::renderer::Submit (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> &gt; &amp; vertexArray, const uint64_t &amp; indexCount = <computeroutput>0</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>submits a <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> to be rendered containing vertexBuffers and 1 <link linkend="_classluna_1_1renderer_1_1index_buffer">indexBuffer</link>. </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para><link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> generation is done by the 2D/3D renderer api&apos;s respectevly. </para>
+</note>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link></entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a5de4c1fd2e59811a027b630a743799f5"/><section>
+    <title>gui</title>
+<indexterm><primary>gui</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>gui</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1gui_1_1vulkan_imgui">gui::vulkanImgui</link>&gt; luna::renderer::renderer::gui<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a1b2c934841a3d81adb002dc071f6969a"/><section>
+    <title>layout</title>
+<indexterm><primary>layout</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>layout</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> luna::renderer::renderer::layout<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a3dfff9eb6b64c433ed911ef45e9173d9"/><section>
+    <title>rendererDevice</title>
+<indexterm><primary>rendererDevice</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>rendererDevice</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1device">device</link>&gt; luna::renderer::renderer::rendererDevice<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a315cc5b92efec4d9676e8123f366ea3d"/><section>
+    <title>rendererPipeline</title>
+<indexterm><primary>rendererPipeline</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>rendererPipeline</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1pipeline">pipeline</link>&gt; luna::renderer::renderer::rendererPipeline<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a2d89759f36763e0e9cbff69d10ee676b"/><section>
+    <title>Selected</title>
+<indexterm><primary>Selected</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>Selected</secondary></indexterm>
+<para><computeroutput>bool luna::renderer::renderer::Selected<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a5ac07ac60137f0cf662849f0e64912f5"/><section>
+    <title>testMesh</title>
+<indexterm><primary>testMesh</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>testMesh</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1renderer_1_1renderer_1_1mesh">mesh</link> luna::renderer::renderer::testMesh<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1renderer_1a1fd8ae0bb7e0c6e624e15112f89b659a"/><section>
+    <title>vertArray</title>
+<indexterm><primary>vertArray</primary><secondary>luna::renderer::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer::renderer</primary><secondary>vertArray</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link>&gt; luna::renderer::renderer::vertArray<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_renderer_8h">renderer.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_renderer_8cpp">renderer.cpp</link></section>
+</section>

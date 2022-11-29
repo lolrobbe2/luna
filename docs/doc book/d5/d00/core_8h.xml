@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_core_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;memory&gt;<?linebreak?>#include &lt;core/debug/log.h&gt;<?linebreak?></programlisting>Include dependency graph for core.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/core_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d3/d00/core_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_core_8h_1aaa2a64e1806a86f073e15277d94cb94a">CORE</link></para>
+</listitem>
+            <listitem><para>#define <link linkend="_core_8h_1ad27cc17b25bb93134368d5eb21126eae">BIT</link>(x)&#160;&#160;&#160;(1&lt;&lt;x)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_core_8h_1a601eca0b2cab40b7aeafc444834cc778">LN_BIND_EVENT_FN</link>(fn)&#160;&#160;&#160;[this](auto&amp;&amp;... args) -&gt; decltype(auto) { return this-&gt;fn(std::forward&lt;decltype(args)&gt;(args)...); }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;typename T &gt; </para><para>using <link linkend="_namespaceluna_1accd5328e0de41c20f918cdd315173870">luna::scope</link> = std::unique_ptr&lt; T &gt;</para>
+</listitem>
+            <listitem><para>template&lt;typename T &gt; </para><para>using <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">luna::ref</link> = std::shared_ptr&lt; T &gt;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;typename T , typename ... Args&gt; </para><para>constexpr scope&lt; T &gt; <link linkend="_namespaceluna_1a7318b1c2711a4b9af5450dcf379e5bcc">luna::createScope</link> (Args &amp;&amp;... args)</para>
+</listitem>
+            <listitem><para>template&lt;typename T , typename ... Args&gt; </para><para>constexpr ref&lt; T &gt; <link linkend="_namespaceluna_1a4b6e6b3b5670271d9104388763e3acf1">luna::createRef</link> (Args &amp;&amp;... args)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_core_8h_1ad27cc17b25bb93134368d5eb21126eae"/><section>
+    <title>BIT</title>
+<indexterm><primary>BIT</primary><secondary>core.h</secondary></indexterm>
+<indexterm><primary>core.h</primary><secondary>BIT</secondary></indexterm>
+<para><computeroutput>#define BIT( x)&#160;&#160;&#160;(1&lt;&lt;x)</computeroutput></para></section>
+<anchor xml:id="_core_8h_1aaa2a64e1806a86f073e15277d94cb94a"/><section>
+    <title>CORE</title>
+<indexterm><primary>CORE</primary><secondary>core.h</secondary></indexterm>
+<indexterm><primary>core.h</primary><secondary>CORE</secondary></indexterm>
+<para><computeroutput>#define CORE</computeroutput></para></section>
+<anchor xml:id="_core_8h_1a601eca0b2cab40b7aeafc444834cc778"/><section>
+    <title>LN_BIND_EVENT_FN</title>
+<indexterm><primary>LN_BIND_EVENT_FN</primary><secondary>core.h</secondary></indexterm>
+<indexterm><primary>core.h</primary><secondary>LN_BIND_EVENT_FN</secondary></indexterm>
+<para><computeroutput>#define LN_BIND_EVENT_FN( fn)&#160;&#160;&#160;[this](auto&amp;&amp;... args) -&gt; decltype(auto) { return this-&gt;fn(std::forward&lt;decltype(args)&gt;(args)...); }</computeroutput></para></section>
+</section>
+</section>

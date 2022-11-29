@@ -17,7 +17,7 @@ namespace luna
 		}
 		vulkanVertexBuffer::~vulkanVertexBuffer()
 		{
-			//utils::vulkanAllocator::destroyBuffer(vkVertexBuffer);
+			utils::vulkanAllocator::destroyBuffer(vkVertexBuffer);
 		}
 		void vulkanVertexBuffer::bind() const
 		{	

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_shader_compiler_8cpp" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shaderCompiler.cpp File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shaderCompiler.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;shaderCompiler.h&quot;<?linebreak?>#include &quot;lnpch.h&quot;<?linebreak?></programlisting>Include dependency graph for shaderCompiler.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d00/shader_compiler_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1utils">luna::utils</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1mouse_button_event" xml:lang="en-US">
+<title>luna::mouseButtonEvent Class Reference</title>
+<indexterm><primary>luna::mouseButtonEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;mouseEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::mouseButtonEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d00/classluna_1_1mouse_button_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::mouseButtonEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1mouse_button_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> <link linkend="_classluna_1_1mouse_button_event_1a4f59234bbac5e021a32595d66e356a1f">getMouseButton</link> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1mouse_button_event_1aa5f2378d9769af5c076d39c583778b0e">mouseButtonEvent</link> (const <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> button)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> <link linkend="_classluna_1_1mouse_button_event_1a05acef1c7a20511a796acf717d515e61">m_Button</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_button_event_1aa5f2378d9769af5c076d39c583778b0e"/><section>
+    <title>mouseButtonEvent()</title>
+<indexterm><primary>mouseButtonEvent</primary><secondary>luna::mouseButtonEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseButtonEvent</primary><secondary>mouseButtonEvent</secondary></indexterm>
+<para><computeroutput>luna::mouseButtonEvent::mouseButtonEvent (const <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> button)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_button_event_1a4f59234bbac5e021a32595d66e356a1f"/><section>
+    <title>getMouseButton()</title>
+<indexterm><primary>getMouseButton</primary><secondary>luna::mouseButtonEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseButtonEvent</primary><secondary>getMouseButton</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> luna::mouseButtonEvent::getMouseButton ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_button_event_1a05acef1c7a20511a796acf717d515e61"/><section>
+    <title>m_Button</title>
+<indexterm><primary>m_Button</primary><secondary>luna::mouseButtonEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseButtonEvent</primary><secondary>m_Button</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> luna::mouseButtonEvent::m_Button<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_mouse_event_8h">mouseEvent.h</link></section>
+</section>

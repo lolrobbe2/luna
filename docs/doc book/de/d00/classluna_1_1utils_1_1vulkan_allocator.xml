@@ -1,0 +1,515 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1utils_1_1vulkan_allocator" xml:lang="en-US">
+<title>luna::utils::vulkanAllocator Class Reference</title>
+<indexterm><primary>luna::utils::vulkanAllocator</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanAllocator.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::utils::vulkanAllocator:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d2/d00/classluna_1_1utils_1_1vulkan_allocator__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation">vmaAllocation</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1ae50dca323c85203f3c71b2d0d396f529">init</link> (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">renderer::device</link> &gt; device)</para>
+
+<para>allocator constructor. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1a2fea061a5507a2960fac3b0cd439abf7">shutdown</link> ()</para>
+
+<para>destroys the allocator. </para>
+</listitem>
+            <listitem><para>static VmaAllocationInfo <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1ad3eac5e3fc3434086968b23ef5ab8e78">getAllocationInfo</link> (const uint64_t &amp;handle)</para>
+
+<para>returns the allocation info from the given handle. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1a2876cd04dc9041b8d350914b0b396b3c">createImage</link> (VkImage *pImage, const VkImageUsageFlags &amp;usageFlags, const VmaMemoryUsage &amp;memoryUsage, const VkExtent3D &amp;extent, const VkFormat &amp;format)</para>
+
+<para>creates a VkImage object. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1aec155812b30cdf711aa0908ead4eb93a">destroyImage</link> (const VkImage &amp;image)</para>
+
+<para>destroys the VkImage object. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1aa28c4356aa8a1640600e5a8b1db73726">createImageView</link> (VkImageView *pImageView, const VkImage &amp;image, const VkFormat &amp;format, const VkImageAspectFlags &amp;imageAspectFlags)</para>
+
+<para>creates a VkImageView object. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1a57da3ba470dac5507cb262c59ffe96b2">destroyImageView</link> (const VkImageView &amp;imageView)</para>
+
+<para>destroys the VkImageView. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1af62c6b824e41f569a5814666a2c5be29">createBuffer</link> (VkBuffer *pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage, VmaAllocationCreateFlags allocFlags=0)</para>
+
+<para>creates a VkBuffer object. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1ae13b23ff6be70612b349f51b217f8353">destroyBuffer</link> (VkBuffer buffer)</para>
+
+<para>destroys the VkBuffer object. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>VkQueue <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1acd9547e2a1cdd6b80d5d9fe156383138">transferQueue</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">renderer::device</link> &gt; <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1a7d48dd03108f5f2c86388cc5b6699ea6">pDevice</link></para>
+</listitem>
+            <listitem><para>static VmaAllocator <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1a896ca90c3e9bd16b515d95f9fb0c7725">sAllocator</link></para>
+</listitem>
+            <listitem><para>static <link linkend="_classluna_1_1utils_1_1object_storage">objectStorage</link>&lt; <link linkend="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation">vmaAllocation</link> &gt; <link linkend="_classluna_1_1utils_1_1vulkan_allocator_1a9fd8bd60f1a505320602099197ffc6de">allocations</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1af62c6b824e41f569a5814666a2c5be29"/><section>
+    <title>createBuffer()</title>
+<indexterm><primary>createBuffer</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>createBuffer</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanAllocator::createBuffer (VkBuffer * pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage, VmaAllocationCreateFlags allocFlags = <computeroutput>0</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a VkBuffer object. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pBuffer</entry><entry>
+<para>pointer to the buffer handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>allocSize</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>usage</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>memoryUsage</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_af62c6b824e41f569a5814666a2c5be29_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1a2876cd04dc9041b8d350914b0b396b3c"/><section>
+    <title>createImage()</title>
+<indexterm><primary>createImage</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>createImage</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanAllocator::createImage (VkImage * pImage, const VkImageUsageFlags &amp; usageFlags, const VmaMemoryUsage &amp; memoryUsage, const VkExtent3D &amp; extent, const VkFormat &amp; format)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a VkImage object. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pImage</entry><entry>
+<para>pointer to the image handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>usageFlags</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>memoryUsage</entry><entry>
+<para>VMA_MEMORY_USAGE </para>
+</entry>
+                            </row>
+                            <row>
+<entry>extent</entry><entry>
+<para>image extend </para>
+</entry>
+                            </row>
+                            <row>
+<entry>format</entry><entry>
+<para>VkImageFormat </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_a2876cd04dc9041b8d350914b0b396b3c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1aa28c4356aa8a1640600e5a8b1db73726"/><section>
+    <title>createImageView()</title>
+<indexterm><primary>createImageView</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>createImageView</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanAllocator::createImageView (VkImageView * pImageView, const VkImage &amp; image, const VkFormat &amp; format, const VkImageAspectFlags &amp; imageAspectFlags)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a VkImageView object. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pImageView</entry><entry>
+<para>pointer to imageView handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>image</entry><entry>
+<para>VkImage handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>format</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>imageAspectFlags</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_aa28c4356aa8a1640600e5a8b1db73726_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1ae13b23ff6be70612b349f51b217f8353"/><section>
+    <title>destroyBuffer()</title>
+<indexterm><primary>destroyBuffer</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>destroyBuffer</secondary></indexterm>
+<para><computeroutput>void luna::utils::vulkanAllocator::destroyBuffer (VkBuffer buffer)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>destroys the VkBuffer object. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>buffer</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_ae13b23ff6be70612b349f51b217f8353_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1aec155812b30cdf711aa0908ead4eb93a"/><section>
+    <title>destroyImage()</title>
+<indexterm><primary>destroyImage</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>destroyImage</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanAllocator::destroyImage (const VkImage &amp; image)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>destroys the VkImage object. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>image</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_aec155812b30cdf711aa0908ead4eb93a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1a57da3ba470dac5507cb262c59ffe96b2"/><section>
+    <title>destroyImageView()</title>
+<indexterm><primary>destroyImageView</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>destroyImageView</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanAllocator::destroyImageView (const VkImageView &amp; imageView)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>destroys the VkImageView. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>imageView</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_a57da3ba470dac5507cb262c59ffe96b2_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1ad3eac5e3fc3434086968b23ef5ab8e78"/><section>
+    <title>getAllocationInfo()</title>
+<indexterm><primary>getAllocationInfo</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>getAllocationInfo</secondary></indexterm>
+<para><computeroutput>VmaAllocationInfo luna::utils::vulkanAllocator::getAllocationInfo (const uint64_t &amp; handle)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>returns the allocation info from the given handle. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>handle</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VmaAllocationInfo </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_ad3eac5e3fc3434086968b23ef5ab8e78_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1ae50dca323c85203f3c71b2d0d396f529"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>void luna::utils::vulkanAllocator::init (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">renderer::device</link> &gt; device)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>allocator constructor. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::device&gt;</link></entry><entry>
+<para>device reference to the device </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1utils_1_1vulkan_allocator_ae50dca323c85203f3c71b2d0d396f529_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1a2fea061a5507a2960fac3b0cd439abf7"/><section>
+    <title>shutdown()</title>
+<indexterm><primary>shutdown</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>shutdown</secondary></indexterm>
+<para><computeroutput>void luna::utils::vulkanAllocator::shutdown ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>destroys the allocator. </para>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1a9fd8bd60f1a505320602099197ffc6de"/><section>
+    <title>allocations</title>
+<indexterm><primary>allocations</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>allocations</secondary></indexterm>
+<para><computeroutput><link linkend="_classluna_1_1utils_1_1object_storage">objectStorage</link>&lt;<link linkend="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation">vmaAllocation</link>&gt; luna::utils::vulkanAllocator::allocations<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1a7d48dd03108f5f2c86388cc5b6699ea6"/><section>
+    <title>pDevice</title>
+<indexterm><primary>pDevice</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>pDevice</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1device">renderer::device</link>&gt; luna::utils::vulkanAllocator::pDevice<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1a896ca90c3e9bd16b515d95f9fb0c7725"/><section>
+    <title>sAllocator</title>
+<indexterm><primary>sAllocator</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>sAllocator</secondary></indexterm>
+<para><computeroutput>VmaAllocator luna::utils::vulkanAllocator::sAllocator<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_allocator_1acd9547e2a1cdd6b80d5d9fe156383138"/><section>
+    <title>transferQueue</title>
+<indexterm><primary>transferQueue</primary><secondary>luna::utils::vulkanAllocator</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator</primary><secondary>transferQueue</secondary></indexterm>
+<para><computeroutput>VkQueue luna::utils::vulkanAllocator::transferQueue<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/<link linkend="_vulkan_allocator_8h">vulkanAllocator.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/<link linkend="_vulkan_allocator_8cpp">vulkanAllocator.cpp</link></section>
+</section>

@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1renderer_1_1pipeline" xml:lang="en-US">
+<title>luna::renderer::pipeline Class Reference</title>
+<indexterm><primary>luna::renderer::pipeline</primary></indexterm>
+<para>
+<computeroutput>#include &lt;pipeline.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::renderer::pipeline:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dd/d00/classluna_1_1renderer_1_1pipeline__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classluna_1_1renderer_1_1pipeline_1ab40683a6e9514c24b44d36573c5065e9">~pipeline</link> ()</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1pipeline_1a0f11e067108000e35444f69da2175399">createPipeline</link> (const <link linkend="_structluna_1_1renderer_1_1pipeline_layout">pipelineLayout</link> &amp;layout)=0</para>
+
+<para>creates graphics a pipeline. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1pipeline_1aa071655def49bf5f9bf517d9ecc7834f">destroyPipeline</link> ()=0</para>
+
+<para>destroys the graphics pipeline. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1pipeline_1a9f0f6eb618872aa9a2f1fef6dbd3c847">createCommands</link> ()=0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1pipeline_1afc5a2034a8f14426e2ce4b235b0cba2b">begin</link> () const =0</para>
+
+<para>starts recording pipeline input. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1pipeline_1a17d90338b9da0e660758cdb406c56091">end</link> () const =0</para>
+
+<para>ends recording end. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1pipeline_1a8f231f1c4fde20cfa26ca59d9def0698">flush</link> ()=0</para>
+
+<para>flush the renderer pipline and render a frame. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1pipeline_1a6ac93d074f15ee67bc29fa3df51b3498">drawIndexed</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> &gt; &amp;<link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link>, int indexCount)=0</para>
+
+<para>draw <link linkend="_classluna_1_1renderer_1_1vertex_buffer">vertexBuffer</link> with and <link linkend="_classluna_1_1renderer_1_1index_buffer">indexBuffer</link>. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_classluna_1_1renderer_1_1pipeline_1ab4ed62f2705e4254cf13896862c81863">test</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1ab40683a6e9514c24b44d36573c5065e9"/><section>
+    <title>~pipeline()</title>
+<indexterm><primary>~pipeline</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>~pipeline</secondary></indexterm>
+<para><computeroutput>virtual luna::renderer::pipeline::~pipeline ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1afc5a2034a8f14426e2ce4b235b0cba2b"/><section>
+    <title>begin()</title>
+<indexterm><primary>begin</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>begin</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::pipeline::begin ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+
+<para>starts recording pipeline input. </para>
+</para>
+<para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa2ba811a7d966ddbbd358413dc8de8e6">luna::vulkan::vulkanPipeline</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1a9f0f6eb618872aa9a2f1fef6dbd3c847"/><section>
+    <title>createCommands()</title>
+<indexterm><primary>createCommands</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>createCommands</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::pipeline::createCommands ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a1d4d725067be784aa50f9e488cdd9dca">luna::vulkan::vulkanPipeline</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1a0f11e067108000e35444f69da2175399"/><section>
+    <title>createPipeline()</title>
+<indexterm><primary>createPipeline</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>createPipeline</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::pipeline::createPipeline (const <link linkend="_structluna_1_1renderer_1_1pipeline_layout">pipelineLayout</link> &amp; layout)<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+
+<para>creates graphics a pipeline. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>layout</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a73d4a77e2f205d00a35968050bd9566a">luna::vulkan::vulkanPipeline</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1aa071655def49bf5f9bf517d9ecc7834f"/><section>
+    <title>destroyPipeline()</title>
+<indexterm><primary>destroyPipeline</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>destroyPipeline</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::pipeline::destroyPipeline ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+
+<para>destroys the graphics pipeline. </para>
+</para>
+<para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ab99b3ab39f4fd1e3275b5b8783f0a554">luna::vulkan::vulkanPipeline</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1a6ac93d074f15ee67bc29fa3df51b3498"/><section>
+    <title>drawIndexed()</title>
+<indexterm><primary>drawIndexed</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>drawIndexed</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::pipeline::drawIndexed (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> &gt; &amp; vertexArray, int indexCount)<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+
+<para>draw <link linkend="_classluna_1_1renderer_1_1vertex_buffer">vertexBuffer</link> with and <link linkend="_classluna_1_1renderer_1_1index_buffer">indexBuffer</link>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::vertexArray&gt;</link></entry><entry>
+<para><link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> ref to vertexarray containing vertexBuffers and inexBuffer; </para>
+</entry>
+                            </row>
+                            <row>
+<entry>indexCount</entry><entry>
+<para>indexCount tp be rendered; </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1a17d90338b9da0e660758cdb406c56091"/><section>
+    <title>end()</title>
+<indexterm><primary>end</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>end</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::pipeline::end ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+
+<para>ends recording end. </para>
+</para>
+<para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa061fcec857b5a7d458ee66ddce7a534">luna::vulkan::vulkanPipeline</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1a8f231f1c4fde20cfa26ca59d9def0698"/><section>
+    <title>flush()</title>
+<indexterm><primary>flush</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>flush</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::pipeline::flush ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+
+<para>flush the renderer pipline and render a frame. </para>
+</para>
+<para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a5a362aa2aac55e29a1953b3c2efcfe04">luna::vulkan::vulkanPipeline</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1pipeline_1ab4ed62f2705e4254cf13896862c81863"/><section>
+    <title>test</title>
+<indexterm><primary>test</primary><secondary>luna::renderer::pipeline</secondary></indexterm>
+<indexterm><primary>luna::renderer::pipeline</primary><secondary>test</secondary></indexterm>
+<para><computeroutput>int luna::renderer::pipeline::test</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_pipeline_8h">pipeline.h</link></section>
+</section>

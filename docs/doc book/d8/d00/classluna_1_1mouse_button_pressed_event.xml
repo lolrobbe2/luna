@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1mouse_button_pressed_event" xml:lang="en-US">
+<title>luna::mouseButtonPressedEvent Class Reference</title>
+<indexterm><primary>luna::mouseButtonPressedEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;mouseEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::mouseButtonPressedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1mouse_button_pressed_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::mouseButtonPressedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1mouse_button_pressed_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1mouse_button_pressed_event_1a1208ba7d414932e52c77120fe97fd32f">mouseButtonPressedEvent</link> (const <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> button)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classluna_1_1mouse_button_pressed_event_1a563fbf565738be757e28cf23a12c97f4">toString</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_button_pressed_event_1a1208ba7d414932e52c77120fe97fd32f"/><section>
+    <title>mouseButtonPressedEvent()</title>
+<indexterm><primary>mouseButtonPressedEvent</primary><secondary>luna::mouseButtonPressedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseButtonPressedEvent</primary><secondary>mouseButtonPressedEvent</secondary></indexterm>
+<para><computeroutput>luna::mouseButtonPressedEvent::mouseButtonPressedEvent (const <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> button)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_button_pressed_event_1a563fbf565738be757e28cf23a12c97f4"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>luna::mouseButtonPressedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseButtonPressedEvent</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>std::string luna::mouseButtonPressedEvent::toString ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7">luna::Event</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_mouse_event_8h">mouseEvent.h</link></section>
+</section>

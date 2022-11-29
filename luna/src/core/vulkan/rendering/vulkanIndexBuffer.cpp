@@ -14,7 +14,7 @@ namespace luna
 
 		vulkanIndexBuffer::~vulkanIndexBuffer()
 		{
-			//utils::vulkanAllocator::destroyBuffer(vkIndexBuffer);
+			utils::vulkanAllocator::destroyBuffer(vkIndexBuffer);
 		}
 
 		void vulkanIndexBuffer::bind() const

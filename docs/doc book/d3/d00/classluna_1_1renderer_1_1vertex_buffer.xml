@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1renderer_1_1vertex_buffer" xml:lang="en-US">
+<title>luna::renderer::vertexBuffer Class Reference</title>
+<indexterm><primary>luna::renderer::vertexBuffer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;buffer.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::renderer::vertexBuffer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d1/d00/classluna_1_1renderer_1_1vertex_buffer__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1a1551e87502a1e33ae4dcc9059270ff7e">~vertexBuffer</link> ()=default</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1ab03a7f2da294919542518b71a32940d2">bind</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1af4dac87c35ff26910f9d9b721090c7bd">unbind</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1ae3a4d001dbc49d1a27f22deb47465679">setData</link> (const void *<link linkend="_classluna_1_1renderer_1_1vertex_buffer_1a5fb06834646a7fc36bfa30d05776ab4c">data</link>, uint32_t <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215">size</link>)=0</para>
+</listitem>
+            <listitem><para>template&lt;typename mesh &gt; </para><para>mesh &amp; <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aec426de4ba68b999869f6aab141058a2">getIndex</link> (uint32_t index)</para>
+</listitem>
+            <listitem><para>template&lt;typename mesh &gt; </para><para>mesh <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aafa1ef98ccc3751eefbc2720af37d3f2">operator[]</link> (int index)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_buffer">vertexBuffer</link> &gt; <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1a497a755d80ad11b81d49bb36e2bf9474">create</link> (uint32_t <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215">size</link>)</para>
+</listitem>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_buffer">vertexBuffer</link> &gt; <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1ace15d724ce60f42c0cf726edcf3b9e49">create</link> (float *vertices, uint32_t <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215">size</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>void * <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1a5fb06834646a7fc36bfa30d05776ab4c">data</link> = nullptr</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215">size</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">shader</link> &gt; <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1a142445be410f9991b192f1a14dee42ca">srcShader</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1a1551e87502a1e33ae4dcc9059270ff7e"/><section>
+    <title>~vertexBuffer()</title>
+<indexterm><primary>~vertexBuffer</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>~vertexBuffer</secondary></indexterm>
+<para><computeroutput>virtual luna::renderer::vertexBuffer::~vertexBuffer ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1ab03a7f2da294919542518b71a32940d2"/><section>
+    <title>bind()</title>
+<indexterm><primary>bind</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>bind</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::vertexBuffer::bind ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a1a2ac1e332244bb5dfa1934055ce0414">luna::vulkan::vulkanVertexBuffer</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1ace15d724ce60f42c0cf726edcf3b9e49"/><section>
+    <title>create()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>create</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>create</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_buffer">vertexBuffer</link> &gt; luna::renderer::vertexBuffer::create (float * vertices, uint32_t size)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1a497a755d80ad11b81d49bb36e2bf9474"/><section>
+    <title>create()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>create</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>create</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_buffer">vertexBuffer</link> &gt; luna::renderer::vertexBuffer::create (uint32_t size)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1aec426de4ba68b999869f6aab141058a2"/><section>
+    <title>getIndex()</title>
+<indexterm><primary>getIndex</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>getIndex</secondary></indexterm>
+<computeroutput>template&lt;typename mesh &gt; </computeroutput><para><computeroutput>mesh &amp; luna::renderer::vertexBuffer::getIndex (uint32_t index)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1aafa1ef98ccc3751eefbc2720af37d3f2"/><section>
+    <title>operator[]()</title>
+<indexterm><primary>operator[]</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>operator[]</secondary></indexterm>
+<computeroutput>template&lt;typename mesh &gt; </computeroutput><para><computeroutput>mesh luna::renderer::vertexBuffer::operator[] (int index)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1ae3a4d001dbc49d1a27f22deb47465679"/><section>
+    <title>setData()</title>
+<indexterm><primary>setData</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>setData</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::vertexBuffer::setData (const void * data, uint32_t size)<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1ac0c410d51dff17d1936397611e0f123c">luna::vulkan::vulkanVertexBuffer</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1af4dac87c35ff26910f9d9b721090c7bd"/><section>
+    <title>unbind()</title>
+<indexterm><primary>unbind</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>unbind</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::vertexBuffer::unbind ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a5f6f2205edf2d6bdb26c373b75a53fdd">luna::vulkan::vulkanVertexBuffer</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1a5fb06834646a7fc36bfa30d05776ab4c"/><section>
+    <title>data</title>
+<indexterm><primary>data</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>data</secondary></indexterm>
+<para><computeroutput>void* luna::renderer::vertexBuffer::data = nullptr</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215"/><section>
+    <title>size</title>
+<indexterm><primary>size</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>size</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::vertexBuffer::size = 0</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1vertex_buffer_1a142445be410f9991b192f1a14dee42ca"/><section>
+    <title>srcShader</title>
+<indexterm><primary>srcShader</primary><secondary>luna::renderer::vertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::vertexBuffer</primary><secondary>srcShader</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1shader">shader</link>&gt; luna::renderer::vertexBuffer::srcShader<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_buffer_8h">buffer.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_buffer_8cpp">buffer.cpp</link></section>
+</section>

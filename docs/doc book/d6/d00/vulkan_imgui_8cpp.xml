@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_vulkan_imgui_8cpp" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/vulkanImgui.cpp File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/vulkanImgui.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;vulkanImgui.h&quot;<?linebreak?>#include &lt;core/vulkan/device/vulkanDevice.h&gt;<?linebreak?>#include &lt;backends/imgui_impl_glfw.h&gt;<?linebreak?>#include &lt;backends/imgui_impl_vulkan.h&gt;<?linebreak?>#include &lt;core/vulkan/rendering/vulkanPipeline.h&gt;<?linebreak?></programlisting>Include dependency graph for vulkanImgui.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/vulkan_imgui_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1gui">luna::gui</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

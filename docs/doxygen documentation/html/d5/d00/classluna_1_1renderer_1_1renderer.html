@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -90,6 +91,7 @@ $(document).ready(function(){initNavTree('d5/d00/classluna_1_1renderer_1_1render
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d5/d00/classluna_1_1renderer_1_1renderer-members.html">List of all members</a>  </div>
@@ -98,7 +100,30 @@ $(document).ready(function(){initNavTree('d5/d00/classluna_1_1renderer_1_1render
 <div class="contents">
 
 <p><code>#include &lt;renderer.h&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for luna::renderer::renderer:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dd/d00/classluna_1_1renderer_1_1renderer__coll__graph.png" border="0" usemap="#aluna_1_1renderer_1_1renderer_coll__map" alt="Collaboration graph"/></div>
+<map name="aluna_1_1renderer_1_1renderer_coll__map" id="aluna_1_1renderer_1_1renderer_coll__map">
+<area shape="rect" title=" " coords="1064,146,1220,171"/>
+<area shape="rect" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html" title=" " coords="803,171,956,211"/>
+<area shape="rect" title=" " coords="506,171,654,211"/>
+<area shape="rect" title=" " coords="171,118,284,143"/>
+<area shape="rect" title=" " coords="514,39,646,94"/>
+<area shape="rect" title=" " coords="504,118,656,143"/>
+<area shape="rect" title=" " coords="5,118,44,143"/>
+<area shape="rect" href="../../de/d00/structluna_1_1renderer_1_1renderer_1_1mesh.html" title=" " coords="801,107,957,147"/>
+<area shape="rect" href="../../d3/d00/structluna_1_1renderer_1_1renderer_1_1vertex.html" title=" " coords="149,5,305,45"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/structluna_1_1renderer_1_1renderer_1_1mesh.html">mesh</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/structluna_1_1renderer_1_1renderer_1_1vertex.html">vertex</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae03c7718cd0e231dbb9b89c8ecbf944f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#ae03c7718cd0e231dbb9b89c8ecbf944f">init</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">vulkan::window</a> &gt; &amp;window)</td></tr>
@@ -110,6 +135,14 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a32fcf021d4fb98074c80ef9bdfd81d18"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a32fcf021d4fb98074c80ef9bdfd81d18">newFrame</a> ()</td></tr>
 <tr class="memdesc:a32fcf021d4fb98074c80ef9bdfd81d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">renders a new frame.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a32fcf021d4fb98074c80ef9bdfd81d18">More...</a><br /></td></tr>
 <tr class="separator:a32fcf021d4fb98074c80ef9bdfd81d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb864b4498cbb6eeb0240cd9a6b2af44"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#afb864b4498cbb6eeb0240cd9a6b2af44">beginScene</a> ()</td></tr>
+<tr class="memdesc:afb864b4498cbb6eeb0240cd9a6b2af44"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts recording a new scene.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#afb864b4498cbb6eeb0240cd9a6b2af44">More...</a><br /></td></tr>
+<tr class="separator:afb864b4498cbb6eeb0240cd9a6b2af44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a301fe59cdfcf8a1bb2d5d92b08648921"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921">Submit</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;<a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a>, const uint64_t &amp;indexCount=0)</td></tr>
+<tr class="memdesc:a301fe59cdfcf8a1bb2d5d92b08648921"><td class="mdescLeft">&#160;</td><td class="mdescRight">submits a <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> to be rendered containing vertexBuffers and 1 <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921">More...</a><br /></td></tr>
+<tr class="separator:a301fe59cdfcf8a1bb2d5d92b08648921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d3cc118bda57598c1d5c5524b8bce15"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a6d3cc118bda57598c1d5c5524b8bce15">endScene</a> ()</td></tr>
+<tr class="separator:a6d3cc118bda57598c1d5c5524b8bce15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -123,8 +156,39 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:a5de4c1fd2e59811a027b630a743799f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d89759f36763e0e9cbff69d10ee676b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a2d89759f36763e0e9cbff69d10ee676b">Selected</a></td></tr>
 <tr class="separator:a2d89759f36763e0e9cbff69d10ee676b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac07ac60137f0cf662849f0e64912f5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../de/d00/structluna_1_1renderer_1_1renderer_1_1mesh.html">mesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a5ac07ac60137f0cf662849f0e64912f5">testMesh</a></td></tr>
+<tr class="separator:a5ac07ac60137f0cf662849f0e64912f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fd8ae0bb7e0c6e624e15112f89b659a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a1fd8ae0bb7e0c6e624e15112f89b659a">vertArray</a></td></tr>
+<tr class="separator:a1fd8ae0bb7e0c6e624e15112f89b659a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="afb864b4498cbb6eeb0240cd9a6b2af44" name="afb864b4498cbb6eeb0240cd9a6b2af44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb864b4498cbb6eeb0240cd9a6b2af44">&#9670;&#160;</a></span>beginScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::beginScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>starts recording a new scene. </p>
+
+</div>
+</div>
 <a id="adc22ac127f4932d064a8653ec4c5d18b" name="adc22ac127f4932d064a8653ec4c5d18b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc22ac127f4932d064a8653ec4c5d18b">&#9670;&#160;</a></span>createFrame()</h2>
 
@@ -149,6 +213,32 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>create a frame in the render pipline based on the given input. </p>
+
+</div>
+</div>
+<a id="a6d3cc118bda57598c1d5c5524b8bce15" name="a6d3cc118bda57598c1d5c5524b8bce15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d3cc118bda57598c1d5c5524b8bce15">&#9670;&#160;</a></span>endScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::endScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >brief ends the scene. </p>
 
 </div>
 </div>
@@ -210,6 +300,51 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>renders a new frame. </p>
+
+</div>
+</div>
+<a id="a301fe59cdfcf8a1bb2d5d92b08648921" name="a301fe59cdfcf8a1bb2d5d92b08648921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a301fe59cdfcf8a1bb2d5d92b08648921">&#9670;&#160;</a></span>Submit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::Submit </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vertexArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>indexCount</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>submits a <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> to be rendered containing vertexBuffers and 1 <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>. </p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> generation is done by the 2D/3D renderer api's respectevly. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -313,6 +448,50 @@ Static Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool luna::renderer::renderer::Selected</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ac07ac60137f0cf662849f0e64912f5" name="a5ac07ac60137f0cf662849f0e64912f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ac07ac60137f0cf662849f0e64912f5">&#9670;&#160;</a></span>testMesh</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d00/structluna_1_1renderer_1_1renderer_1_1mesh.html">mesh</a> luna::renderer::renderer::testMesh</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1fd8ae0bb7e0c6e624e15112f89b659a" name="a1fd8ae0bb7e0c6e624e15112f89b659a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fd8ae0bb7e0c6e624e15112f89b659a">&#9670;&#160;</a></span>vertArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt;<a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a>&gt; luna::renderer::renderer::vertArray</td>
         </tr>
       </table>
   </td>

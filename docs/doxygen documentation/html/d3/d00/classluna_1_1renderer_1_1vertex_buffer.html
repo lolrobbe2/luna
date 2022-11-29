@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -92,6 +93,7 @@ $(document).ready(function(){initNavTree('d3/d00/classluna_1_1renderer_1_1vertex
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d5/d00/classluna_1_1renderer_1_1vertex_buffer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::renderer::vertexBuffer Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -99,6 +101,15 @@ $(document).ready(function(){initNavTree('d3/d00/classluna_1_1renderer_1_1vertex
 <div class="contents">
 
 <p><code>#include &lt;buffer.h&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for luna::renderer::vertexBuffer:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d00/classluna_1_1renderer_1_1vertex_buffer__inherit__graph.png" border="0" usemap="#aluna_1_1renderer_1_1vertex_buffer_inherit__map" alt="Inheritance graph"/></div>
+<map name="aluna_1_1renderer_1_1vertex_buffer_inherit__map" id="aluna_1_1renderer_1_1vertex_buffer_inherit__map">
+<area shape="rect" title=" " coords="5,5,181,31"/>
+<area shape="rect" href="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html" title=" " coords="7,79,179,119"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -108,19 +119,28 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab03a7f2da294919542518b71a32940d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4dac87c35ff26910f9d9b721090c7bd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#af4dac87c35ff26910f9d9b721090c7bd">unbind</a> () const =0</td></tr>
 <tr class="separator:af4dac87c35ff26910f9d9b721090c7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3a4d001dbc49d1a27f22deb47465679"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#ae3a4d001dbc49d1a27f22deb47465679">setData</a> (const void *data, uint32_t size)=0</td></tr>
+<tr class="memitem:ae3a4d001dbc49d1a27f22deb47465679"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#ae3a4d001dbc49d1a27f22deb47465679">setData</a> (const void *<a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#a5fb06834646a7fc36bfa30d05776ab4c">data</a>, uint32_t <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#aa8207840e91676dfcf335c8a92d0d215">size</a>)=0</td></tr>
 <tr class="separator:ae3a4d001dbc49d1a27f22deb47465679"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64e914b36ed8b1080766588a039a84c2"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d6/d00/classluna_1_1renderer_1_1buffer_layout.html">bufferLayout</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#a64e914b36ed8b1080766588a039a84c2">getLayout</a> () const =0</td></tr>
-<tr class="separator:a64e914b36ed8b1080766588a039a84c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1defa03832af454df4aa9d8c0f00ee17"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#a1defa03832af454df4aa9d8c0f00ee17">setLayout</a> (const <a class="el" href="../../d6/d00/classluna_1_1renderer_1_1buffer_layout.html">bufferLayout</a> &amp;layout)=0</td></tr>
-<tr class="separator:a1defa03832af454df4aa9d8c0f00ee17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec426de4ba68b999869f6aab141058a2"><td class="memTemplParams" colspan="2">template&lt;typename mesh &gt; </td></tr>
+<tr class="memitem:aec426de4ba68b999869f6aab141058a2"><td class="memTemplItemLeft" align="right" valign="top">mesh &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#aec426de4ba68b999869f6aab141058a2">getIndex</a> (uint32_t index)</td></tr>
+<tr class="separator:aec426de4ba68b999869f6aab141058a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa1ef98ccc3751eefbc2720af37d3f2"><td class="memTemplParams" colspan="2">template&lt;typename mesh &gt; </td></tr>
+<tr class="memitem:aafa1ef98ccc3751eefbc2720af37d3f2"><td class="memTemplItemLeft" align="right" valign="top">mesh&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#aafa1ef98ccc3751eefbc2720af37d3f2">operator[]</a> (int index)</td></tr>
+<tr class="separator:aafa1ef98ccc3751eefbc2720af37d3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:acf81df090424dd1047886a2ce778b6ab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#acf81df090424dd1047886a2ce778b6ab">create</a> (uint32_t size)</td></tr>
-<tr class="separator:acf81df090424dd1047886a2ce778b6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a7b862e2b7019753bacec20f9ac54f7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#a7a7b862e2b7019753bacec20f9ac54f7">create</a> (float *vertices, uint32_t size)</td></tr>
-<tr class="separator:a7a7b862e2b7019753bacec20f9ac54f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497a755d80ad11b81d49bb36e2bf9474"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#a497a755d80ad11b81d49bb36e2bf9474">create</a> (uint32_t <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#aa8207840e91676dfcf335c8a92d0d215">size</a>)</td></tr>
+<tr class="separator:a497a755d80ad11b81d49bb36e2bf9474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace15d724ce60f42c0cf726edcf3b9e49"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#ace15d724ce60f42c0cf726edcf3b9e49">create</a> (float *vertices, uint32_t <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#aa8207840e91676dfcf335c8a92d0d215">size</a>)</td></tr>
+<tr class="separator:ace15d724ce60f42c0cf726edcf3b9e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a5fb06834646a7fc36bfa30d05776ab4c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#a5fb06834646a7fc36bfa30d05776ab4c">data</a> = nullptr</td></tr>
+<tr class="separator:a5fb06834646a7fc36bfa30d05776ab4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8207840e91676dfcf335c8a92d0d215"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#aa8207840e91676dfcf335c8a92d0d215">size</a> = 0</td></tr>
+<tr class="separator:aa8207840e91676dfcf335c8a92d0d215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -177,10 +197,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Implemented in <a class="el" href="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#a1a2ac1e332244bb5dfa1934055ce0414">luna::vulkan::vulkanVertexBuffer</a>.</p>
+
 </div>
 </div>
-<a id="a7a7b862e2b7019753bacec20f9ac54f7" name="a7a7b862e2b7019753bacec20f9ac54f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a7b862e2b7019753bacec20f9ac54f7">&#9670;&#160;</a></span>create() <span class="overload">[1/2]</span></h2>
+<a id="ace15d724ce60f42c0cf726edcf3b9e49" name="ace15d724ce60f42c0cf726edcf3b9e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace15d724ce60f42c0cf726edcf3b9e49">&#9670;&#160;</a></span>create() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +211,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt; luna::renderer::vertexBuffer::create </td>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt; luna::renderer::vertexBuffer::create </td>
           <td>(</td>
           <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>vertices</em>, </td>
@@ -215,8 +237,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="acf81df090424dd1047886a2ce778b6ab" name="acf81df090424dd1047886a2ce778b6ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf81df090424dd1047886a2ce778b6ab">&#9670;&#160;</a></span>create() <span class="overload">[2/2]</span></h2>
+<a id="a497a755d80ad11b81d49bb36e2bf9474" name="a497a755d80ad11b81d49bb36e2bf9474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a497a755d80ad11b81d49bb36e2bf9474">&#9670;&#160;</a></span>create() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +247,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt; luna::renderer::vertexBuffer::create </td>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> &gt; luna::renderer::vertexBuffer::create </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
@@ -241,25 +263,56 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a64e914b36ed8b1080766588a039a84c2" name="a64e914b36ed8b1080766588a039a84c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64e914b36ed8b1080766588a039a84c2">&#9670;&#160;</a></span>getLayout()</h2>
+<a id="aec426de4ba68b999869f6aab141058a2" name="aec426de4ba68b999869f6aab141058a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec426de4ba68b999869f6aab141058a2">&#9670;&#160;</a></span>getIndex()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename mesh &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual const <a class="el" href="../../d6/d00/classluna_1_1renderer_1_1buffer_layout.html">bufferLayout</a> &amp; luna::renderer::vertexBuffer::getLayout </td>
+          <td class="memname">mesh &amp; luna::renderer::vertexBuffer::getIndex </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aafa1ef98ccc3751eefbc2720af37d3f2" name="aafa1ef98ccc3751eefbc2720af37d3f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa1ef98ccc3751eefbc2720af37d3f2">&#9670;&#160;</a></span>operator[]()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename mesh &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mesh luna::renderer::vertexBuffer::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -300,31 +353,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a1defa03832af454df4aa9d8c0f00ee17" name="a1defa03832af454df4aa9d8c0f00ee17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1defa03832af454df4aa9d8c0f00ee17">&#9670;&#160;</a></span>setLayout()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void luna::renderer::vertexBuffer::setLayout </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d6/d00/classluna_1_1renderer_1_1buffer_layout.html">bufferLayout</a> &amp;&#160;</td>
-          <td class="paramname"><em>layout</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Implemented in <a class="el" href="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#ac0c410d51dff17d1936397611e0f123c">luna::vulkan::vulkanVertexBuffer</a>.</p>
 
 </div>
 </div>
@@ -351,9 +380,39 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Implemented in <a class="el" href="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#a5f6f2205edf2d6bdb26c373b75a53fdd">luna::vulkan::vulkanVertexBuffer</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5fb06834646a7fc36bfa30d05776ab4c" name="a5fb06834646a7fc36bfa30d05776ab4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fb06834646a7fc36bfa30d05776ab4c">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* luna::renderer::vertexBuffer::data = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8207840e91676dfcf335c8a92d0d215" name="aa8207840e91676dfcf335c8a92d0d215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8207840e91676dfcf335c8a92d0d215">&#9670;&#160;</a></span>size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t luna::renderer::vertexBuffer::size = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a142445be410f9991b192f1a14dee42ca" name="a142445be410f9991b192f1a14dee42ca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a142445be410f9991b192f1a14dee42ca">&#9670;&#160;</a></span>srcShader</h2>
 
@@ -376,8 +435,9 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<a class="el" href="../../d5/d00/buffer_8h.html">buffer.h</a></li>
+<li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<a class="el" href="../../dd/d00/buffer_8cpp.html">buffer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

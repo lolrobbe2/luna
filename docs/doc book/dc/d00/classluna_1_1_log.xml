@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1_log" xml:lang="en-US">
+<title>luna::Log Class Reference</title>
+<indexterm><primary>luna::Log</primary></indexterm>
+<para>
+<computeroutput>#include &lt;log.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::Log:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d4/d00/classluna_1_1_log__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_classluna_1_1_log_1a90de80c9fe7f1090577068d8f2157856">Init</link> ()</para>
+</listitem>
+            <listitem><para>static std::shared_ptr&lt; spdlog::logger &gt; <link linkend="_classluna_1_1_log_1af2c0610671710d88c7b042d4df395782">GetCoreLogger</link> ()</para>
+</listitem>
+            <listitem><para>static std::shared_ptr&lt; spdlog::logger &gt; <link linkend="_classluna_1_1_log_1a06848aa8317869be9d767c46ce60afb8">GetClientLogger</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static std::shared_ptr&lt; spdlog::logger &gt; <link linkend="_classluna_1_1_log_1abab8f6ceabbb0d1650ea527ee4f180ee">s_CoreLogger</link></para>
+</listitem>
+            <listitem><para>static std::shared_ptr&lt; spdlog::logger &gt; <link linkend="_classluna_1_1_log_1ac16d7a38d38f5bce0b57ef518dc73e32">s_ClientLogger</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1_log_1a06848aa8317869be9d767c46ce60afb8"/><section>
+    <title>GetClientLogger()</title>
+<indexterm><primary>GetClientLogger</primary><secondary>luna::Log</secondary></indexterm>
+<indexterm><primary>luna::Log</primary><secondary>GetClientLogger</secondary></indexterm>
+<para><computeroutput>static std::shared_ptr&lt; spdlog::logger &gt; luna::Log::GetClientLogger ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1_log_1af2c0610671710d88c7b042d4df395782"/><section>
+    <title>GetCoreLogger()</title>
+<indexterm><primary>GetCoreLogger</primary><secondary>luna::Log</secondary></indexterm>
+<indexterm><primary>luna::Log</primary><secondary>GetCoreLogger</secondary></indexterm>
+<para><computeroutput>static std::shared_ptr&lt; spdlog::logger &gt; luna::Log::GetCoreLogger ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1_log_1a90de80c9fe7f1090577068d8f2157856"/><section>
+    <title>Init()</title>
+<indexterm><primary>Init</primary><secondary>luna::Log</secondary></indexterm>
+<indexterm><primary>luna::Log</primary><secondary>Init</secondary></indexterm>
+<para><computeroutput>void luna::Log::Init ( )<computeroutput>[static]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/classluna_1_1_log_a90de80c9fe7f1090577068d8f2157856_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1_log_1ac16d7a38d38f5bce0b57ef518dc73e32"/><section>
+    <title>s_ClientLogger</title>
+<indexterm><primary>s_ClientLogger</primary><secondary>luna::Log</secondary></indexterm>
+<indexterm><primary>luna::Log</primary><secondary>s_ClientLogger</secondary></indexterm>
+<para><computeroutput>std::shared_ptr&lt; spdlog::logger &gt; luna::Log::s_ClientLogger<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1_log_1abab8f6ceabbb0d1650ea527ee4f180ee"/><section>
+    <title>s_CoreLogger</title>
+<indexterm><primary>s_CoreLogger</primary><secondary>luna::Log</secondary></indexterm>
+<indexterm><primary>luna::Log</primary><secondary>s_CoreLogger</secondary></indexterm>
+<para><computeroutput>std::shared_ptr&lt; spdlog::logger &gt; luna::Log::s_CoreLogger<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/<link linkend="_log_8h">log.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/<link linkend="_log_8cpp">log.cpp</link></section>
+</section>

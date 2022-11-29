@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation" xml:lang="en-US">
+<title>luna::utils::vulkanAllocator::vmaAllocation Struct Reference</title>
+<indexterm><primary>luna::utils::vulkanAllocator::vmaAllocation</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>VmaAllocation <link linkend="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation_1ad9c099f4d06bcceb3d88368750128bec">allocation</link></para>
+</listitem>
+            <listitem><para>VmaAllocationInfo <link linkend="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation_1a5911abbb7ceff3fff97563d5e0b5e04b">allocationInfo</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation_1ad9c099f4d06bcceb3d88368750128bec"/><section>
+    <title>allocation</title>
+<indexterm><primary>allocation</primary><secondary>luna::utils::vulkanAllocator::vmaAllocation</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator::vmaAllocation</primary><secondary>allocation</secondary></indexterm>
+<para><computeroutput>VmaAllocation luna::utils::vulkanAllocator::vmaAllocation::allocation</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation_1a5911abbb7ceff3fff97563d5e0b5e04b"/><section>
+    <title>allocationInfo</title>
+<indexterm><primary>allocationInfo</primary><secondary>luna::utils::vulkanAllocator::vmaAllocation</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanAllocator::vmaAllocation</primary><secondary>allocationInfo</secondary></indexterm>
+<para><computeroutput>VmaAllocationInfo luna::utils::vulkanAllocator::vmaAllocation::allocationInfo</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/<link linkend="_vulkan_allocator_8h">vulkanAllocator.h</link></section>
+</section>

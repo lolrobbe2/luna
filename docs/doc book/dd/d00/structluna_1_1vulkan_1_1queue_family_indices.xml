@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1queue_family_indices" xml:lang="en-US">
+<title>luna::vulkan::queueFamilyIndices Struct Reference</title>
+<indexterm><primary>luna::vulkan::queueFamilyIndices</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanSwapchain.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_structluna_1_1vulkan_1_1queue_family_indices_1a10c139d5f54e9fc98339619f7afb15f0">isComplete</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::optional&lt; uint32_t &gt; <link linkend="_structluna_1_1vulkan_1_1queue_family_indices_1aa739140cdd33b35750635ddf275f4518">graphicsFamily</link></para>
+</listitem>
+            <listitem><para>std::optional&lt; uint32_t &gt; <link linkend="_structluna_1_1vulkan_1_1queue_family_indices_1af4892767dea97de4231ba82e1c17f930">transferFamily</link></para>
+</listitem>
+            <listitem><para>std::optional&lt; uint32_t &gt; <link linkend="_structluna_1_1vulkan_1_1queue_family_indices_1a9eda497e46939949680a7e9c0676f63e">presentFamily</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1queue_family_indices_1a10c139d5f54e9fc98339619f7afb15f0"/><section>
+    <title>isComplete()</title>
+<indexterm><primary>isComplete</primary><secondary>luna::vulkan::queueFamilyIndices</secondary></indexterm>
+<indexterm><primary>luna::vulkan::queueFamilyIndices</primary><secondary>isComplete</secondary></indexterm>
+<para><computeroutput>bool luna::vulkan::queueFamilyIndices::isComplete ( )<computeroutput>[inline]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dd/d00/structluna_1_1vulkan_1_1queue_family_indices_a10c139d5f54e9fc98339619f7afb15f0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1queue_family_indices_1aa739140cdd33b35750635ddf275f4518"/><section>
+    <title>graphicsFamily</title>
+<indexterm><primary>graphicsFamily</primary><secondary>luna::vulkan::queueFamilyIndices</secondary></indexterm>
+<indexterm><primary>luna::vulkan::queueFamilyIndices</primary><secondary>graphicsFamily</secondary></indexterm>
+<para><computeroutput>std::optional&lt;uint32_t&gt; luna::vulkan::queueFamilyIndices::graphicsFamily</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1queue_family_indices_1a9eda497e46939949680a7e9c0676f63e"/><section>
+    <title>presentFamily</title>
+<indexterm><primary>presentFamily</primary><secondary>luna::vulkan::queueFamilyIndices</secondary></indexterm>
+<indexterm><primary>luna::vulkan::queueFamilyIndices</primary><secondary>presentFamily</secondary></indexterm>
+<para><computeroutput>std::optional&lt;uint32_t&gt; luna::vulkan::queueFamilyIndices::presentFamily</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1queue_family_indices_1af4892767dea97de4231ba82e1c17f930"/><section>
+    <title>transferFamily</title>
+<indexterm><primary>transferFamily</primary><secondary>luna::vulkan::queueFamilyIndices</secondary></indexterm>
+<indexterm><primary>luna::vulkan::queueFamilyIndices</primary><secondary>transferFamily</secondary></indexterm>
+<para><computeroutput>std::optional&lt;uint32_t&gt; luna::vulkan::queueFamilyIndices::transferFamily</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_swapchain_8h">vulkanSwapchain.h</link></section>
+</section>

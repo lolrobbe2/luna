@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1event_dispatcher" xml:lang="en-US">
+<title>luna::eventDispatcher Class Reference</title>
+<indexterm><primary>luna::eventDispatcher</primary></indexterm>
+<para>
+<computeroutput>#include &lt;event.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::eventDispatcher:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/classluna_1_1event_dispatcher__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1event_dispatcher_1a7b3791cf813a0438543728d547063047">eventDispatcher</link> (<link linkend="_classluna_1_1_event">Event</link> &amp;event)</para>
+</listitem>
+            <listitem><para>template&lt;typename T , typename F &gt; </para><para>bool <link linkend="_classluna_1_1event_dispatcher_1a9fba21c9f89101eab8b74e8999f1e7dc">dispatch</link> (const F &amp;func)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1_event">Event</link> &amp; <link linkend="_classluna_1_1event_dispatcher_1a698d783d82c578003ef4cede08e7d913">m_Event</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1event_dispatcher_1a7b3791cf813a0438543728d547063047"/><section>
+    <title>eventDispatcher()</title>
+<indexterm><primary>eventDispatcher</primary><secondary>luna::eventDispatcher</secondary></indexterm>
+<indexterm><primary>luna::eventDispatcher</primary><secondary>eventDispatcher</secondary></indexterm>
+<para><computeroutput>luna::eventDispatcher::eventDispatcher (<link linkend="_classluna_1_1_event">Event</link> &amp; event)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1event_dispatcher_1a9fba21c9f89101eab8b74e8999f1e7dc"/><section>
+    <title>dispatch()</title>
+<indexterm><primary>dispatch</primary><secondary>luna::eventDispatcher</secondary></indexterm>
+<indexterm><primary>luna::eventDispatcher</primary><secondary>dispatch</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename F &gt; </computeroutput><para><computeroutput>bool luna::eventDispatcher::dispatch (const F &amp; func)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1event_dispatcher_1a698d783d82c578003ef4cede08e7d913"/><section>
+    <title>m_Event</title>
+<indexterm><primary>m_Event</primary><secondary>luna::eventDispatcher</secondary></indexterm>
+<indexterm><primary>luna::eventDispatcher</primary><secondary>m_Event</secondary></indexterm>
+<para><computeroutput><link linkend="_classluna_1_1_event">Event</link>&amp; luna::eventDispatcher::m_Event<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_event_8h">event.h</link></section>
+</section>

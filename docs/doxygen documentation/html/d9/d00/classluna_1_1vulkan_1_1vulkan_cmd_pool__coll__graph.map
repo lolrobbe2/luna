@@ -1,0 +1,8 @@
+<map id="luna::vulkan::vulkanCmdPool" name="luna::vulkan::vulkanCmdPool">
+<area shape="rect" id="node1" title="abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety an..." coords="941,86,1128,111"/>
+<area shape="rect" id="node2" title=" " coords="540,15,767,84"/>
+<area shape="rect" id="node3" title=" " coords="149,29,287,69"/>
+<area shape="rect" id="node4" title=" " coords="5,11,44,37"/>
+<area shape="rect" id="node5" title=" " coords="5,61,44,86"/>
+<area shape="rect" id="node6" href="$df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec.html" title=" " coords="545,109,762,134"/>
+</map>

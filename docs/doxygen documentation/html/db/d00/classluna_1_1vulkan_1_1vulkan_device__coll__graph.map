@@ -1,0 +1,10 @@
+<map id="luna::vulkan::vulkanDevice" name="luna::vulkan::vulkanDevice">
+<area shape="rect" id="node1" title=" " coords="829,112,1001,137"/>
+<area shape="rect" id="node2" href="$d6/d00/classluna_1_1renderer_1_1device.html" title="the device class is the code representation of the physical device or GPU." coords="510,5,655,31"/>
+<area shape="rect" id="node3" title=" " coords="517,55,648,80"/>
+<area shape="rect" id="node4" title=" " coords="149,84,263,109"/>
+<area shape="rect" id="node8" title=" " coords="489,105,676,145"/>
+<area shape="rect" id="node5" title=" " coords="5,84,44,109"/>
+<area shape="rect" id="node6" href="$df/d00/structluna_1_1vulkan_1_1vulkan_device_1_1device_handles.html" title=" " coords="497,169,669,209"/>
+<area shape="rect" id="node7" href="$dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html" title=" " coords="497,233,669,273"/>
+</map>

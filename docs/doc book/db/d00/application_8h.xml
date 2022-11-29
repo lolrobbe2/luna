@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_application_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/application.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/application.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;core/core.h&gt;<?linebreak?>#include &lt;core/platform/platform.h&gt;<?linebreak?>#include &lt;core/vulkan/window/window.h&gt;<?linebreak?>#include &lt;core/events/event.h&gt;<?linebreak?>#include &lt;core/rendering/renderer.h&gt;<?linebreak?>#include &lt;core/utils/objectStorage.h&gt;<?linebreak?></programlisting>Include dependency graph for application.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/application_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d2/d00/application_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1application_1_1application">luna::application::application</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1application">luna::application</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>application * <link linkend="_namespaceluna_1_1application_1a7337d658c6d85684f05688a64be61720">luna::application::createApplication</link> ()</para>
+
+<para>creates the application and returns a pointer to the appliccation. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

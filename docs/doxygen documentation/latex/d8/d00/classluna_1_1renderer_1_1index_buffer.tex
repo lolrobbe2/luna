@@ -1,10 +1,20 @@
-\hypertarget{classluna_1_1renderer_1_1index_buffer}{}\doxysection{luna\+::renderer\+::index\+Buffer Class Reference}
+\hypertarget{classluna_1_1renderer_1_1index_buffer}{}\doxysubsection{luna\+::renderer\+::index\+Buffer Class Reference}
 \label{classluna_1_1renderer_1_1index_buffer}\index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
 
 
 {\ttfamily \#include $<$buffer.\+h$>$}
 
-\doxysubsection*{Private Member Functions}
+
+
+Inheritance diagram for luna\+::renderer\+::index\+Buffer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{d8/d00/classluna_1_1renderer_1_1index_buffer__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_a6197e4dc4c9f353612970ee9611627b4}{$\sim$index\+Buffer}} ()=default
@@ -13,51 +23,86 @@ virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_aeef9e429bd2
 \item 
 virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_a20c0e59d0d14576ef92b9345dfbac8ea}{unbind}} () const =0
 \item 
-virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_a440e0c7285bcd945bf3cf1f65231bff5}{Get\+Count}} () const =0
+virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_ab8373a6c1e809de5c95ed34b4ad0a44b}{get\+Count}} () const =0
 \end{DoxyCompactItemize}
-\doxysubsection*{Static Private Member Functions}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_a66eec698a35af69e6d2e1505c9172486}{Create}} (uint32\+\_\+t $\ast$indices, uint32\+\_\+t count)
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_a73cecf7461d880e21725c16c8b5f659c}{create}} (uint32\+\_\+t $\ast$indices, uint32\+\_\+t count)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_a7c5357e4276e0cf3834250ce8648ff45}{data}} = nullptr
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_a5a785303d312fbeb75332f636f5279bc}{size}} = 0
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\doxysubsubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_a6197e4dc4c9f353612970ee9611627b4}\label{classluna_1_1renderer_1_1index_buffer_a6197e4dc4c9f353612970ee9611627b4}} 
 \index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!````~indexBuffer@{$\sim$indexBuffer}}
 \index{````~indexBuffer@{$\sim$indexBuffer}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
-\doxysubsubsection{\texorpdfstring{$\sim$indexBuffer()}{~indexBuffer()}}
-{\footnotesize\ttfamily virtual luna\+::renderer\+::index\+Buffer\+::$\sim$index\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}, {\ttfamily [default]}}
+\doxyparagraph{\texorpdfstring{$\sim$indexBuffer()}{~indexBuffer()}}
+{\footnotesize\ttfamily virtual luna\+::renderer\+::index\+Buffer\+::$\sim$index\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
 
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsubsection{Member Function Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_aeef9e429bd29f2229350005f65b71815}\label{classluna_1_1renderer_1_1index_buffer_aeef9e429bd29f2229350005f65b71815}} 
 \index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!bind@{bind}}
 \index{bind@{bind}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
-\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
-{\footnotesize\ttfamily virtual void luna\+::renderer\+::index\+Buffer\+::bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+\doxyparagraph{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::index\+Buffer\+::bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_a66eec698a35af69e6d2e1505c9172486}\label{classluna_1_1renderer_1_1index_buffer_a66eec698a35af69e6d2e1505c9172486}} 
-\index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!Create@{Create}}
-\index{Create@{Create}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
-\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}} $>$ luna\+::renderer\+::index\+Buffer\+::\+Create (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{indices,  }\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_a440e0c7285bcd945bf3cf1f65231bff5}\label{classluna_1_1renderer_1_1index_buffer_a440e0c7285bcd945bf3cf1f65231bff5}} 
-\index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!GetCount@{GetCount}}
-\index{GetCount@{GetCount}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
-\doxysubsubsection{\texorpdfstring{GetCount()}{GetCount()}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::renderer\+::index\+Buffer\+::\+Get\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_a6e4ef557be7b9a111d418ca945cdfaa1}{luna\+::vulkan\+::vulkan\+Index\+Buffer}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_a73cecf7461d880e21725c16c8b5f659c}\label{classluna_1_1renderer_1_1index_buffer_a73cecf7461d880e21725c16c8b5f659c}} 
+\index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!create@{create}}
+\index{create@{create}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
+\doxyparagraph{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}} $>$ luna\+::renderer\+::index\+Buffer\+::create (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{indices,  }\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_ab8373a6c1e809de5c95ed34b4ad0a44b}\label{classluna_1_1renderer_1_1index_buffer_ab8373a6c1e809de5c95ed34b4ad0a44b}} 
+\index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!getCount@{getCount}}
+\index{getCount@{getCount}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
+\doxyparagraph{\texorpdfstring{getCount()}{getCount()}}
+{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::renderer\+::index\+Buffer\+::get\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_a1f56cdededc2d0d6042f1e758afe5a70}{luna\+::vulkan\+::vulkan\+Index\+Buffer}}.
 
 \mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_a20c0e59d0d14576ef92b9345dfbac8ea}\label{classluna_1_1renderer_1_1index_buffer_a20c0e59d0d14576ef92b9345dfbac8ea}} 
 \index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!unbind@{unbind}}
 \index{unbind@{unbind}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
-\doxysubsubsection{\texorpdfstring{unbind()}{unbind()}}
-{\footnotesize\ttfamily virtual void luna\+::renderer\+::index\+Buffer\+::unbind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+\doxyparagraph{\texorpdfstring{unbind()}{unbind()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::index\+Buffer\+::unbind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_ab980b6d04964bcb401c3f20b8a84d40b}{luna\+::vulkan\+::vulkan\+Index\+Buffer}}.
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_a7c5357e4276e0cf3834250ce8648ff45}\label{classluna_1_1renderer_1_1index_buffer_a7c5357e4276e0cf3834250ce8648ff45}} 
+\index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!data@{data}}
+\index{data@{data}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
+\doxyparagraph{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily void$\ast$ luna\+::renderer\+::index\+Buffer\+::data = nullptr}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1index_buffer_a5a785303d312fbeb75332f636f5279bc}\label{classluna_1_1renderer_1_1index_buffer_a5a785303d312fbeb75332f636f5279bc}} 
+\index{luna::renderer::indexBuffer@{luna::renderer::indexBuffer}!size@{size}}
+\index{size@{size}!luna::renderer::indexBuffer@{luna::renderer::indexBuffer}}
+\doxyparagraph{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::renderer\+::index\+Buffer\+::size = 0}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{buffer_8h}{buffer.\+h}}\end{DoxyCompactItemize}
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{buffer_8h}{buffer.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{buffer_8cpp}{buffer.\+cpp}}\end{DoxyCompactItemize}
