@@ -14,6 +14,10 @@
 	#define ENABLE_VALIDATION_LAYERS
 #endif // _DEBUG
 
+#define MAJOR 0
+#define MINOR 0 
+#define PATCH 2 
+
 namespace luna
 {
 	template<typename T>

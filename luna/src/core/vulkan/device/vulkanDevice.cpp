@@ -80,6 +80,7 @@ namespace luna
 			vkb::InstanceBuilder instanceBuilder;
 			instanceBuilder.set_app_name("app")
 				.set_engine_name("luna software engine")
+				.set_engine_version(MAJOR, MINOR, PATCH)
 				.request_validation_layers(true)
 				.use_default_debug_messenger()
 				.require_api_version(1, 2, 0)
