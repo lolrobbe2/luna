@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_9c1af1a5cd3730ba9054bd232efa12dd" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug Directory Reference</primary></indexterm>
+Directory dependency graph for debug:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_9c1af1a5cd3730ba9054bd232efa12dd_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_log_8cpp">log.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_log_8h">log.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_uuid_8cpp">uuid.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_uuid_8h">uuid.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

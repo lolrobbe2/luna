@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_vector_cache_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/vectorCache.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/vectorCache.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;core/core.h&gt;<?linebreak?>#include &lt;core/debug/uuid.h&gt;<?linebreak?></programlisting>Include dependency graph for vectorCache.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d00/vector_cache_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/vector_cache_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache&lt; value &gt;</link></para>
+
+<para>a pretty optimal multithreaded vector cahce headeronly class. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1utils">luna::utils</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">luna::utils::cacheObject</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">luna::utils::cacheResult</link> { <?linebreak?><link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8">luna::utils::cacheMiss</link> = 0
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea">luna::utils::cacheHit</link> = 1
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847">luna::utils::cacheInvalidHandle</link> = 2
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86">luna::utils::cacheOpSucces</link> = 3
+, <?linebreak?><link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f">luna::utils::cacheOpFailed</link> = 4
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f">luna::utils::CACHE_MAX_ENUM</link> = 5
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

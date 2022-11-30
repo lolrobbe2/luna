@@ -9,10 +9,11 @@ var searchData=
   ['ln_5fcritical_6',['LN_CRITICAL',['../d7/d00/log_8h.html#adbeed39bf6a59f59499aed3deb2603d5',1,'log.h']]],
   ['ln_5ferror_7',['LN_ERROR',['../d7/d00/log_8h.html#a7b1d895094e4bc9482cd48d6a6318578',1,'log.h']]],
   ['ln_5finfo_8',['LN_INFO',['../d7/d00/log_8h.html#af2554145626d12ced0bceaa1cad56f27',1,'log.h']]],
-  ['ln_5ftrace_9',['LN_TRACE',['../d7/d00/log_8h.html#aeef1e23fbb91d5d82eec77d7db4d1b66',1,'log.h']]],
-  ['ln_5fvulkan_5fmajor_10',['LN_VULKAN_MAJOR',['../da/d00/vulkan_device_8h.html#a79b4ea55a88900abf9bbd05085b2a128',1,'vulkanDevice.h']]],
-  ['ln_5fvulkan_5fminor_11',['LN_VULKAN_MINOR',['../da/d00/vulkan_device_8h.html#ad9c5b69af5b45955d430b6354329c514',1,'vulkanDevice.h']]],
-  ['ln_5fvulkan_5fpatch_12',['LN_VULKAN_PATCH',['../da/d00/vulkan_device_8h.html#a7c6d57296e1d6273c3cbf238e0b54b56',1,'vulkanDevice.h']]],
-  ['ln_5fvulkan_5fvariant_13',['LN_VULKAN_VARIANT',['../da/d00/vulkan_device_8h.html#aea74d2c0b322810cc63ebc05034046f1',1,'vulkanDevice.h']]],
-  ['ln_5fwarn_14',['LN_WARN',['../d7/d00/log_8h.html#a47657f805c3f8b224f8d9b2b8740d951',1,'log.h']]]
+  ['ln_5fprofile_9',['LN_PROFILE',['../d5/d00/core_8h.html#a200d9a7dd5abdbfc0530aba9b08e9b4f',1,'LN_PROFILE():&#160;core.h'],['../d6/d00/instrumentor_8h.html#a200d9a7dd5abdbfc0530aba9b08e9b4f',1,'LN_PROFILE():&#160;instrumentor.h']]],
+  ['ln_5fprofile_5fbegin_5fsession_10',['LN_PROFILE_BEGIN_SESSION',['../d6/d00/instrumentor_8h.html#a5210ac3bb8728a387306cb7872de1fbb',1,'instrumentor.h']]],
+  ['ln_5fprofile_5fend_5fsession_11',['LN_PROFILE_END_SESSION',['../d6/d00/instrumentor_8h.html#a4505877f400c58212ea2624f283d02fd',1,'instrumentor.h']]],
+  ['ln_5fprofile_5ffunction_12',['LN_PROFILE_FUNCTION',['../d6/d00/instrumentor_8h.html#a1b7678b025be5d7c5fd399bcd1946c13',1,'instrumentor.h']]],
+  ['ln_5fprofile_5fscope_13',['LN_PROFILE_SCOPE',['../d6/d00/instrumentor_8h.html#a4074c3f4470043abe6a40774cbfc8782',1,'instrumentor.h']]],
+  ['ln_5ftrace_14',['LN_TRACE',['../d7/d00/log_8h.html#aeef1e23fbb91d5d82eec77d7db4d1b66',1,'log.h']]],
+  ['ln_5fwarn_15',['LN_WARN',['../d7/d00/log_8h.html#a47657f805c3f8b224f8d9b2b8740d951',1,'log.h']]]
 ];

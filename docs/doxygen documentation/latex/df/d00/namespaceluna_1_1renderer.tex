@@ -1,11 +1,363 @@
-\hypertarget{namespaceluna_1_1renderer}{}\doxysection{luna\+::renderer Namespace Reference}
+\hypertarget{namespaceluna_1_1renderer}{}\doxysubsection{luna\+::renderer Namespace Reference}
 \label{namespaceluna_1_1renderer}\index{luna::renderer@{luna::renderer}}
-\doxysubsection*{Classes}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1buffer_element}{buffer\+Element}}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1buffer_layout}{buffer\+Layout}}
+\item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1device}{device}}
+\begin{DoxyCompactList}\small\item\em the device class is the code representation of the physical device or GPU. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline}{pipeline}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1pipeline_layout}{pipeline\+Layout}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1quad_vertex}{quad\+Vertex}}
 \item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1renderer}{renderer}}
 \item 
-class \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device}{vulkan\+Device}}
+class \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d}{renderer2D}}
+\begin{DoxyCompactList}\small\item\em 2D renderer api runs on\+Top of the renderer api. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_data}{renderer2\+DData}}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{shader\+Resource}}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}{type\+Class}} \{ \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a72c1fc0f8cc2ca24d58b0ee1c3965de4}{uniform\+Buffers}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a5aca7bb61d46cf4a5075123f722053cb}{storage\+Buffers}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ada3aa10e10375a4d9cb925e331e72535}{stage\+Inputs}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1af4c34ec05e2267a7edb6bea7a2599a40}{stage\+Outputs}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a0a5ea44659d0cb436b72c54651a1f359}{subpass\+Inputs}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a3b3d3702df3499db3035597fc666e626}{storage\+Images}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a40c9db8d806f0440a9047de55f5507e7}{sampled\+Images}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a690187ddac149d1334a8bcb4fb646ef6}{atomic\+Counters}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123}{acceleration\+Structures}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855}{push\+Constant\+Buffers}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8}{separate\+Images}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e}{separate\+Ssamplers}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29}{builtin\+Inputs}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1}{builtin\+Outputs}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57db}{type\+Id}} \{ \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc}{Unknown}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbafa08efda03f463da01105f7a60dac69b}{Void}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaafb1b50633b1114ce5e43ac6960b9136}{Boolean}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba820114961cc43839abfcd99232dc7314}{SByte}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0e37403bd27422f62d39557895f3cb26}{UByte}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba041e22bae16c91ec3208c8adab5eb07d}{Short}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf191afb565d07af0465a09c35b07c574}{UShort}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbafd5182ea19dcc1045df53e1180d403df}{Int}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba2ff18af68cff2f69146617171361edc2}{UInt}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba9aaefec68a4c8e80b367a46a826b8cdd}{Int64}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba1fce19be320d6555d179acead15a96cb}{UInt64}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacd1cfee2cee13581919683c866b5f07a}{Atomic\+Counter}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbadf2055aedc3840869747379599ac278e}{Half}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba103bc209515723c78ccbb8586d775549}{Float}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba96312d65ff5d0e43b8a803cda9cdc1f3}{Double}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba46e61711753dd7a82aabb2f38148bc26}{Struct}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0b2a31103db82005ce65c0d90c727319}{Image}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba03270e047b4409d711c5cacb1623bf1d}{Sampled\+Image}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacc20f4d6d1f0b063f22b3c6757467fc7}{Sampler}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacf8aa09bbfa870997dd11486fc776bc2}{Acceleration\+Structure}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba690eeff906494b1d860439f8966cb0a1}{Ray\+Query}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbae21954a5ea2503b22ce898ffa68774f1}{Control\+Point\+Array}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbad950e61fb586f5fe25415511517e5a0d}{Interpolant}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba4876b455eec6d42a5d5092b143b72183}{Char}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0b8dead699838c86f07ceee16917cb41}{Uniform}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf19378e347dd1f264a9fbf3c273b9e31}{Push\+Constant}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba7a59b828caecce4051f8b32fc87f86dc}{Storage\+Buffer}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba37348f84562b1f7ef3ea80a9a1fa605f}{Vec2}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba2d40c9661331cf57b9a571cf7e39d202}{Vec3}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0f1ded9c54df72ce616eca55a6a3a8ac}{Vec4}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba22c0a78a63cb08c78eb9784e2466c0d9}{mat2}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba645a5fcbd75a76b6f6106a998b599524}{mat3}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf58f53f29a327d79100b1bb12026bca2}{mat4}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{shader\+Stage}} \{ \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb}{shader\+Stage\+Vertex}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a}{shader\+Stage\+Tessellation\+Control}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaeaf1748a5d40f5c9c43d8766bfd52c20e6}{shader\+Stage\+Tessellation\+Evaluation}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea3ff13978a803384d34bfdb672df5eddb}{shader\+Stage\+Geometry}}
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea9ff248aa271e248b20e2976568b4e91a}{shader\+Stage\+Fragment}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea1940b12eaac470ef33b59b8d447a0cd0}{shader\+Stage\+Compute}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_data}{renderer2\+DData}} \mbox{\hyperlink{namespaceluna_1_1renderer_a98a3d639a0aeaf8bc830d3d67e7e3ed6}{renderer\+Data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}} 
+\index{luna::renderer@{luna::renderer}!shaderStage@{shaderStage}}
+\index{shaderStage@{shaderStage}!luna::renderer@{luna::renderer}}
+\doxyparagraph{\texorpdfstring{shaderStage}{shaderStage}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{luna\+::renderer\+::shader\+Stage}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{shaderStageVertex@{shaderStageVertex}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!shaderStageVertex@{shaderStageVertex}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb}} 
+shader\+Stage\+Vertex&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{shaderStageTessellationControl@{shaderStageTessellationControl}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!shaderStageTessellationControl@{shaderStageTessellationControl}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a}} 
+shader\+Stage\+Tessellation\+Control&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{shaderStageTessellationEvaluation@{shaderStageTessellationEvaluation}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!shaderStageTessellationEvaluation@{shaderStageTessellationEvaluation}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaeaf1748a5d40f5c9c43d8766bfd52c20e6}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaeaf1748a5d40f5c9c43d8766bfd52c20e6}} 
+shader\+Stage\+Tessellation\+Evaluation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{shaderStageGeometry@{shaderStageGeometry}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!shaderStageGeometry@{shaderStageGeometry}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea3ff13978a803384d34bfdb672df5eddb}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea3ff13978a803384d34bfdb672df5eddb}} 
+shader\+Stage\+Geometry&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{shaderStageFragment@{shaderStageFragment}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!shaderStageFragment@{shaderStageFragment}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea9ff248aa271e248b20e2976568b4e91a}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea9ff248aa271e248b20e2976568b4e91a}} 
+shader\+Stage\+Fragment&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{shaderStageCompute@{shaderStageCompute}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!shaderStageCompute@{shaderStageCompute}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea1940b12eaac470ef33b59b8d447a0cd0}\label{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea1940b12eaac470ef33b59b8d447a0cd0}} 
+shader\+Stage\+Compute&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}} 
+\index{luna::renderer@{luna::renderer}!typeClass@{typeClass}}
+\index{typeClass@{typeClass}!luna::renderer@{luna::renderer}}
+\doxyparagraph{\texorpdfstring{typeClass}{typeClass}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}{luna\+::renderer\+::type\+Class}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{uniformBuffers@{uniformBuffers}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!uniformBuffers@{uniformBuffers}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a72c1fc0f8cc2ca24d58b0ee1c3965de4}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a72c1fc0f8cc2ca24d58b0ee1c3965de4}} 
+uniform\+Buffers&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{storageBuffers@{storageBuffers}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!storageBuffers@{storageBuffers}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a5aca7bb61d46cf4a5075123f722053cb}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a5aca7bb61d46cf4a5075123f722053cb}} 
+storage\+Buffers&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{stageInputs@{stageInputs}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!stageInputs@{stageInputs}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ada3aa10e10375a4d9cb925e331e72535}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ada3aa10e10375a4d9cb925e331e72535}} 
+stage\+Inputs&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{stageOutputs@{stageOutputs}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!stageOutputs@{stageOutputs}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1af4c34ec05e2267a7edb6bea7a2599a40}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1af4c34ec05e2267a7edb6bea7a2599a40}} 
+stage\+Outputs&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{subpassInputs@{subpassInputs}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!subpassInputs@{subpassInputs}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a0a5ea44659d0cb436b72c54651a1f359}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a0a5ea44659d0cb436b72c54651a1f359}} 
+subpass\+Inputs&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{storageImages@{storageImages}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!storageImages@{storageImages}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a3b3d3702df3499db3035597fc666e626}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a3b3d3702df3499db3035597fc666e626}} 
+storage\+Images&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{sampledImages@{sampledImages}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!sampledImages@{sampledImages}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a40c9db8d806f0440a9047de55f5507e7}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a40c9db8d806f0440a9047de55f5507e7}} 
+sampled\+Images&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{atomicCounters@{atomicCounters}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!atomicCounters@{atomicCounters}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a690187ddac149d1334a8bcb4fb646ef6}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a690187ddac149d1334a8bcb4fb646ef6}} 
+atomic\+Counters&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{accelerationStructures@{accelerationStructures}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!accelerationStructures@{accelerationStructures}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123}} 
+acceleration\+Structures&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{pushConstantBuffers@{pushConstantBuffers}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!pushConstantBuffers@{pushConstantBuffers}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855}} 
+push\+Constant\+Buffers&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{separateImages@{separateImages}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!separateImages@{separateImages}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8}} 
+separate\+Images&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{separateSsamplers@{separateSsamplers}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!separateSsamplers@{separateSsamplers}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e}} 
+separate\+Ssamplers&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{builtinInputs@{builtinInputs}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!builtinInputs@{builtinInputs}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29}} 
+builtin\+Inputs&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{builtinOutputs@{builtinOutputs}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!builtinOutputs@{builtinOutputs}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1}} 
+builtin\+Outputs&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57db}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57db}} 
+\index{luna::renderer@{luna::renderer}!typeId@{typeId}}
+\index{typeId@{typeId}!luna::renderer@{luna::renderer}}
+\doxyparagraph{\texorpdfstring{typeId}{typeId}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57db}{luna\+::renderer\+::type\+Id}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unknown@{Unknown}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Unknown@{Unknown}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc}} 
+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Void@{Void}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Void@{Void}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbafa08efda03f463da01105f7a60dac69b}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbafa08efda03f463da01105f7a60dac69b}} 
+Void&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Boolean@{Boolean}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Boolean@{Boolean}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaafb1b50633b1114ce5e43ac6960b9136}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaafb1b50633b1114ce5e43ac6960b9136}} 
+Boolean&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SByte@{SByte}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!SByte@{SByte}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba820114961cc43839abfcd99232dc7314}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba820114961cc43839abfcd99232dc7314}} 
+SByte&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UByte@{UByte}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!UByte@{UByte}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0e37403bd27422f62d39557895f3cb26}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0e37403bd27422f62d39557895f3cb26}} 
+UByte&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Short@{Short}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Short@{Short}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba041e22bae16c91ec3208c8adab5eb07d}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba041e22bae16c91ec3208c8adab5eb07d}} 
+Short&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UShort@{UShort}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!UShort@{UShort}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf191afb565d07af0465a09c35b07c574}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf191afb565d07af0465a09c35b07c574}} 
+UShort&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Int@{Int}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Int@{Int}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbafd5182ea19dcc1045df53e1180d403df}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbafd5182ea19dcc1045df53e1180d403df}} 
+Int&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UInt@{UInt}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!UInt@{UInt}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba2ff18af68cff2f69146617171361edc2}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba2ff18af68cff2f69146617171361edc2}} 
+UInt&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Int64@{Int64}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Int64@{Int64}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba9aaefec68a4c8e80b367a46a826b8cdd}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba9aaefec68a4c8e80b367a46a826b8cdd}} 
+Int64&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UInt64@{UInt64}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!UInt64@{UInt64}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba1fce19be320d6555d179acead15a96cb}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba1fce19be320d6555d179acead15a96cb}} 
+UInt64&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AtomicCounter@{AtomicCounter}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!AtomicCounter@{AtomicCounter}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacd1cfee2cee13581919683c866b5f07a}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacd1cfee2cee13581919683c866b5f07a}} 
+Atomic\+Counter&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Half@{Half}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Half@{Half}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbadf2055aedc3840869747379599ac278e}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbadf2055aedc3840869747379599ac278e}} 
+Half&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Float@{Float}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Float@{Float}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba103bc209515723c78ccbb8586d775549}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba103bc209515723c78ccbb8586d775549}} 
+Float&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Double@{Double}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Double@{Double}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba96312d65ff5d0e43b8a803cda9cdc1f3}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba96312d65ff5d0e43b8a803cda9cdc1f3}} 
+Double&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Struct@{Struct}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Struct@{Struct}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba46e61711753dd7a82aabb2f38148bc26}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba46e61711753dd7a82aabb2f38148bc26}} 
+Struct&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Image@{Image}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Image@{Image}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0b2a31103db82005ce65c0d90c727319}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0b2a31103db82005ce65c0d90c727319}} 
+Image&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SampledImage@{SampledImage}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!SampledImage@{SampledImage}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba03270e047b4409d711c5cacb1623bf1d}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba03270e047b4409d711c5cacb1623bf1d}} 
+Sampled\+Image&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Sampler@{Sampler}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Sampler@{Sampler}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacc20f4d6d1f0b063f22b3c6757467fc7}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacc20f4d6d1f0b063f22b3c6757467fc7}} 
+Sampler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AccelerationStructure@{AccelerationStructure}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!AccelerationStructure@{AccelerationStructure}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacf8aa09bbfa870997dd11486fc776bc2}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbacf8aa09bbfa870997dd11486fc776bc2}} 
+Acceleration\+Structure&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RayQuery@{RayQuery}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!RayQuery@{RayQuery}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba690eeff906494b1d860439f8966cb0a1}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba690eeff906494b1d860439f8966cb0a1}} 
+Ray\+Query&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ControlPointArray@{ControlPointArray}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!ControlPointArray@{ControlPointArray}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbae21954a5ea2503b22ce898ffa68774f1}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbae21954a5ea2503b22ce898ffa68774f1}} 
+Control\+Point\+Array&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Interpolant@{Interpolant}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Interpolant@{Interpolant}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbad950e61fb586f5fe25415511517e5a0d}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbad950e61fb586f5fe25415511517e5a0d}} 
+Interpolant&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Char@{Char}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Char@{Char}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba4876b455eec6d42a5d5092b143b72183}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba4876b455eec6d42a5d5092b143b72183}} 
+Char&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Uniform@{Uniform}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Uniform@{Uniform}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0b8dead699838c86f07ceee16917cb41}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0b8dead699838c86f07ceee16917cb41}} 
+Uniform&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PushConstant@{PushConstant}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!PushConstant@{PushConstant}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf19378e347dd1f264a9fbf3c273b9e31}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf19378e347dd1f264a9fbf3c273b9e31}} 
+Push\+Constant&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StorageBuffer@{StorageBuffer}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!StorageBuffer@{StorageBuffer}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba7a59b828caecce4051f8b32fc87f86dc}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba7a59b828caecce4051f8b32fc87f86dc}} 
+Storage\+Buffer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Vec2@{Vec2}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Vec2@{Vec2}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba37348f84562b1f7ef3ea80a9a1fa605f}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba37348f84562b1f7ef3ea80a9a1fa605f}} 
+Vec2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Vec3@{Vec3}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Vec3@{Vec3}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba2d40c9661331cf57b9a571cf7e39d202}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba2d40c9661331cf57b9a571cf7e39d202}} 
+Vec3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Vec4@{Vec4}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!Vec4@{Vec4}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0f1ded9c54df72ce616eca55a6a3a8ac}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba0f1ded9c54df72ce616eca55a6a3a8ac}} 
+Vec4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mat2@{mat2}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!mat2@{mat2}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba22c0a78a63cb08c78eb9784e2466c0d9}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba22c0a78a63cb08c78eb9784e2466c0d9}} 
+mat2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mat3@{mat3}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!mat3@{mat3}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba645a5fcbd75a76b6f6106a998b599524}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dba645a5fcbd75a76b6f6106a998b599524}} 
+mat3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mat4@{mat4}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!mat4@{mat4}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf58f53f29a327d79100b1bb12026bca2}\label{namespaceluna_1_1renderer_a5ba0d97d5965fb3f0cb40ea96e4f57dbaf58f53f29a327d79100b1bb12026bca2}} 
+mat4&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceluna_1_1renderer_a98a3d639a0aeaf8bc830d3d67e7e3ed6}\label{namespaceluna_1_1renderer_a98a3d639a0aeaf8bc830d3d67e7e3ed6}} 
+\index{luna::renderer@{luna::renderer}!rendererData@{rendererData}}
+\index{rendererData@{rendererData}!luna::renderer@{luna::renderer}}
+\doxyparagraph{\texorpdfstring{rendererData}{rendererData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_data}{renderer2\+DData}} luna\+::renderer\+::renderer\+Data\hspace{0.3cm}{\ttfamily [static]}}
+

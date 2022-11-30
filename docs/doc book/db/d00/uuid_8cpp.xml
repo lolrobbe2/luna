@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_uuid_8cpp" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/uuid.cpp File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/uuid.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;lnpch.h&quot;<?linebreak?>#include &quot;uuid.h&quot;<?linebreak?></programlisting>Include dependency graph for uuid.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d7/d00/uuid_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>static std::mt19937_64 <link linkend="_namespaceluna_1abc2a4d8820a15b200e03c795f9775c0b">luna::engine</link> (randomDevice())</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>static std::random_device <link linkend="_namespaceluna_1ab5b429183fa7ddf39c317f3f97f91a21">luna::randomDevice</link></para>
+</listitem>
+            <listitem><para>static std::uniform_int_distribution&lt; uint64_t &gt; <link linkend="_namespaceluna_1a04387552bf67afc7e9891b959bc3b8d7">luna::uniformDistr</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

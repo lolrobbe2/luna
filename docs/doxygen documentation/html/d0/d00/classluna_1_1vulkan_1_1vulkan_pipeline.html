@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -89,13 +90,1861 @@ $(document).ready(function(){initNavTree('d0/d00/classluna_1_1vulkan_1_1vulkan_p
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="../../da/d00/classluna_1_1vulkan_1_1vulkan_pipeline-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::vulkan::vulkanPipeline Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>vulkan pipline implementation class.  
+ <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#details">More...</a></p>
+
 <p><code>#include &lt;vulkanPipeline.h&gt;</code></p>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/rendering/<a class="el" href="../../df/d00/vulkan_pipeline_8h.html">vulkanPipeline.h</a></li>
+<div class="dynheader">
+Inheritance diagram for luna::vulkan::vulkanPipeline:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d00/classluna_1_1vulkan_1_1vulkan_pipeline__inherit__graph.png" border="0" usemap="#aluna_1_1vulkan_1_1vulkan_pipeline_inherit__map" alt="Inheritance graph"/></div>
+<map name="aluna_1_1vulkan_1_1vulkan_pipeline_inherit__map" id="aluna_1_1vulkan_1_1vulkan_pipeline_inherit__map">
+<area shape="rect" title="vulkan pipline implementation class." coords="5,79,185,104"/>
+<area shape="rect" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html" title=" " coords="19,5,172,31"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for luna::vulkan::vulkanPipeline:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d00/classluna_1_1vulkan_1_1vulkan_pipeline__coll__graph.png" border="0" usemap="#aluna_1_1vulkan_1_1vulkan_pipeline_coll__map" alt="Collaboration graph"/></div>
+<map name="aluna_1_1vulkan_1_1vulkan_pipeline_coll__map" id="aluna_1_1vulkan_1_1vulkan_pipeline_coll__map">
+<area shape="rect" title="vulkan pipline implementation class." coords="1773,255,1953,280"/>
+<area shape="rect" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html" title=" " coords="1459,5,1612,31"/>
+<area shape="rect" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html" title=" " coords="1459,297,1612,337"/>
+<area shape="rect" title=" " coords="610,295,758,335"/>
+<area shape="rect" title=" " coords="183,360,296,385"/>
+<area shape="rect" title=" " coords="796,353,993,393"/>
+<area shape="rect" title=" " coords="1221,699,1427,724"/>
+<area shape="rect" title=" " coords="596,410,772,450"/>
+<area shape="rect" title=" " coords="596,474,772,514"/>
+<area shape="rect" title=" " coords="797,53,992,93"/>
+<area shape="rect" title=" " coords="1230,123,1418,148"/>
+<area shape="rect" title=" " coords="815,184,974,209"/>
+<area shape="rect" title=" " coords="1225,235,1423,260"/>
+<area shape="rect" title=" " coords="610,719,758,773"/>
+<area shape="rect" title=" " coords="5,465,44,491"/>
+<area shape="rect" title=" " coords="171,554,308,594"/>
+<area shape="rect" title=" " coords="1451,489,1620,558"/>
+<area shape="rect" title=" " coords="1067,543,1147,568"/>
+<area shape="rect" title=" " coords="621,538,747,578"/>
+<area shape="rect" href="../../d7/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description.html" title=" " coords="1017,474,1197,514"/>
+<area shape="rect" title=" " coords="5,561,44,587"/>
+<area shape="rect" href="../../d3/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command.html" title=" " coords="149,726,329,766"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command.html">drawCommand</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1shader_stage.html">shaderStage</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex.html">Vertex</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description.html">vertexInputDescription</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a940cc48a838abc936cb97505e578e1d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a940cc48a838abc936cb97505e578e1d0">vulkanPipeline</a> (const <a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a> &amp;<a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a0d13002bebad3a3ecfa14a22005646c4">layout</a>)</td></tr>
+<tr class="memdesc:a940cc48a838abc936cb97505e578e1d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a vulkan pipeline.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a940cc48a838abc936cb97505e578e1d0">More...</a><br /></td></tr>
+<tr class="separator:a940cc48a838abc936cb97505e578e1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1a0f54f1d61cf2e7e287d98daea28f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aaa1a0f54f1d61cf2e7e287d98daea28f">~vulkanPipeline</a> ()</td></tr>
+<tr class="memdesc:aaa1a0f54f1d61cf2e7e287d98daea28f"><td class="mdescLeft">&#160;</td><td class="mdescRight">pipeline destructor.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aaa1a0f54f1d61cf2e7e287d98daea28f">More...</a><br /></td></tr>
+<tr class="separator:aaa1a0f54f1d61cf2e7e287d98daea28f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73d4a77e2f205d00a35968050bd9566a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a73d4a77e2f205d00a35968050bd9566a">createPipeline</a> (const <a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a> &amp;<a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a0d13002bebad3a3ecfa14a22005646c4">layout</a>) override</td></tr>
+<tr class="memdesc:a73d4a77e2f205d00a35968050bd9566a"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the vulkan pipeline.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a73d4a77e2f205d00a35968050bd9566a">More...</a><br /></td></tr>
+<tr class="separator:a73d4a77e2f205d00a35968050bd9566a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab99b3ab39f4fd1e3275b5b8783f0a554"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ab99b3ab39f4fd1e3275b5b8783f0a554">destroyPipeline</a> () override</td></tr>
+<tr class="memdesc:ab99b3ab39f4fd1e3275b5b8783f0a554"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys the vulkan pipeline.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ab99b3ab39f4fd1e3275b5b8783f0a554">More...</a><br /></td></tr>
+<tr class="separator:ab99b3ab39f4fd1e3275b5b8783f0a554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d4d725067be784aa50f9e488cdd9dca"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a1d4d725067be784aa50f9e488cdd9dca">createCommands</a> () override</td></tr>
+<tr class="memdesc:a1d4d725067be784aa50f9e488cdd9dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the renderer commands for the pipeline.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a1d4d725067be784aa50f9e488cdd9dca">More...</a><br /></td></tr>
+<tr class="separator:a1d4d725067be784aa50f9e488cdd9dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ba811a7d966ddbbd358413dc8de8e6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa2ba811a7d966ddbbd358413dc8de8e6">begin</a> () const override</td></tr>
+<tr class="memdesc:aa2ba811a7d966ddbbd358413dc8de8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts recording the pipline input.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa2ba811a7d966ddbbd358413dc8de8e6">More...</a><br /></td></tr>
+<tr class="separator:aa2ba811a7d966ddbbd358413dc8de8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa061fcec857b5a7d458ee66ddce7a534"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa061fcec857b5a7d458ee66ddce7a534">end</a> () const override</td></tr>
+<tr class="memdesc:aa061fcec857b5a7d458ee66ddce7a534"><td class="mdescLeft">&#160;</td><td class="mdescRight">ends recording the pipline input.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa061fcec857b5a7d458ee66ddce7a534">More...</a><br /></td></tr>
+<tr class="separator:aa061fcec857b5a7d458ee66ddce7a534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a362aa2aac55e29a1953b3c2efcfe04"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5a362aa2aac55e29a1953b3c2efcfe04">flush</a> () override</td></tr>
+<tr class="memdesc:a5a362aa2aac55e29a1953b3c2efcfe04"><td class="mdescLeft">&#160;</td><td class="mdescRight">executes the pipeline commands.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5a362aa2aac55e29a1953b3c2efcfe04">More...</a><br /></td></tr>
+<tr class="separator:a5a362aa2aac55e29a1953b3c2efcfe04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa41ea737c800e7a904e3f7507469bf64"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa41ea737c800e7a904e3f7507469bf64">clear</a> () override</td></tr>
+<tr class="memdesc:aa41ea737c800e7a904e3f7507469bf64"><td class="mdescLeft">&#160;</td><td class="mdescRight">clears all the vulkan pipeline draw commands.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa41ea737c800e7a904e3f7507469bf64">More...</a><br /></td></tr>
+<tr class="separator:aa41ea737c800e7a904e3f7507469bf64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24e8bfb38d02fa6c3630ae9511952a27"><td class="memItemLeft" align="right" valign="top">VkRenderPass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a24e8bfb38d02fa6c3630ae9511952a27">getRenderPass</a> ()</td></tr>
+<tr class="memdesc:a24e8bfb38d02fa6c3630ae9511952a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the pipeline renderpass.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a24e8bfb38d02fa6c3630ae9511952a27">More...</a><br /></td></tr>
+<tr class="separator:a24e8bfb38d02fa6c3630ae9511952a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5690e9bd9a70e5ec87ad9fbe040ac941"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5690e9bd9a70e5ec87ad9fbe040ac941">drawIndexed</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">renderer::vertexArray</a> &gt; &amp;vertexArray, int indexCount=0) override</td></tr>
+<tr class="memdesc:a5690e9bd9a70e5ec87ad9fbe040ac941"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a vertexArray indexed.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5690e9bd9a70e5ec87ad9fbe040ac941">More...</a><br /></td></tr>
+<tr class="separator:a5690e9bd9a70e5ec87ad9fbe040ac941"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classluna_1_1renderer_1_1pipeline"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classluna_1_1renderer_1_1pipeline')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html">luna::renderer::pipeline</a></td></tr>
+<tr class="memitem:ab40683a6e9514c24b44d36573c5065e9 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#ab40683a6e9514c24b44d36573c5065e9">~pipeline</a> ()</td></tr>
+<tr class="separator:ab40683a6e9514c24b44d36573c5065e9 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f11e067108000e35444f69da2175399 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a0f11e067108000e35444f69da2175399">createPipeline</a> (const <a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">pipelineLayout</a> &amp;layout)=0</td></tr>
+<tr class="memdesc:a0f11e067108000e35444f69da2175399 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates graphics a pipeline.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a0f11e067108000e35444f69da2175399">More...</a><br /></td></tr>
+<tr class="separator:a0f11e067108000e35444f69da2175399 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa071655def49bf5f9bf517d9ecc7834f inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aa071655def49bf5f9bf517d9ecc7834f">destroyPipeline</a> ()=0</td></tr>
+<tr class="memdesc:aa071655def49bf5f9bf517d9ecc7834f inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys the graphics pipeline.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aa071655def49bf5f9bf517d9ecc7834f">More...</a><br /></td></tr>
+<tr class="separator:aa071655def49bf5f9bf517d9ecc7834f inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f0f6eb618872aa9a2f1fef6dbd3c847 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a9f0f6eb618872aa9a2f1fef6dbd3c847">createCommands</a> ()=0</td></tr>
+<tr class="memdesc:a9f0f6eb618872aa9a2f1fef6dbd3c847 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates platform specific commands for the rendererPipeline using engine drawCommands.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a9f0f6eb618872aa9a2f1fef6dbd3c847">More...</a><br /></td></tr>
+<tr class="separator:a9f0f6eb618872aa9a2f1fef6dbd3c847 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc5a2034a8f14426e2ce4b235b0cba2b inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#afc5a2034a8f14426e2ce4b235b0cba2b">begin</a> () const =0</td></tr>
+<tr class="memdesc:afc5a2034a8f14426e2ce4b235b0cba2b inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts recording pipeline input.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#afc5a2034a8f14426e2ce4b235b0cba2b">More...</a><br /></td></tr>
+<tr class="separator:afc5a2034a8f14426e2ce4b235b0cba2b inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17d90338b9da0e660758cdb406c56091 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a17d90338b9da0e660758cdb406c56091">end</a> () const =0</td></tr>
+<tr class="memdesc:a17d90338b9da0e660758cdb406c56091 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">ends recording end.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a17d90338b9da0e660758cdb406c56091">More...</a><br /></td></tr>
+<tr class="separator:a17d90338b9da0e660758cdb406c56091 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f231f1c4fde20cfa26ca59d9def0698 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a8f231f1c4fde20cfa26ca59d9def0698">flush</a> ()=0</td></tr>
+<tr class="memdesc:a8f231f1c4fde20cfa26ca59d9def0698 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">flush the renderer pipline and render a frame.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a8f231f1c4fde20cfa26ca59d9def0698">More...</a><br /></td></tr>
+<tr class="separator:a8f231f1c4fde20cfa26ca59d9def0698 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac93d074f15ee67bc29fa3df51b3498 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498">drawIndexed</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;<a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a>, int indexCount)=0</td></tr>
+<tr class="memdesc:a6ac93d074f15ee67bc29fa3df51b3498 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> with and <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498">More...</a><br /></td></tr>
+<tr class="separator:a6ac93d074f15ee67bc29fa3df51b3498 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea4856bf4c1a3652937fb94c01b4b2a5 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5">clear</a> ()=0</td></tr>
+<tr class="memdesc:aea4856bf4c1a3652937fb94c01b4b2a5 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="mdescLeft">&#160;</td><td class="mdescRight">clears all drawCommands.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5">More...</a><br /></td></tr>
+<tr class="separator:aea4856bf4c1a3652937fb94c01b4b2a5 inherit pub_methods_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a0d13002bebad3a3ecfa14a22005646c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a0d13002bebad3a3ecfa14a22005646c4">layout</a></td></tr>
+<tr class="separator:a0d13002bebad3a3ecfa14a22005646c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace902ac4661de0ef195e001bf33133ca"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ace902ac4661de0ef195e001bf33133ca">maxFramesInFlight</a> = 0</td></tr>
+<tr class="separator:ace902ac4661de0ef195e001bf33133ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_classluna_1_1renderer_1_1pipeline"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classluna_1_1renderer_1_1pipeline')"><img src="../../closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html">luna::renderer::pipeline</a></td></tr>
+<tr class="memitem:ab4ed62f2705e4254cf13896862c81863 inherit pub_attribs_classluna_1_1renderer_1_1pipeline"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#ab4ed62f2705e4254cf13896862c81863">test</a></td></tr>
+<tr class="separator:ab4ed62f2705e4254cf13896862c81863 inherit pub_attribs_classluna_1_1renderer_1_1pipeline"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aaf8203406c0c975f676bde5e856082c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aaf8203406c0c975f676bde5e856082c0">createPipeLineLayout</a> ()</td></tr>
+<tr class="memdesc:aaf8203406c0c975f676bde5e856082c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the pipeline layout.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aaf8203406c0c975f676bde5e856082c0">More...</a><br /></td></tr>
+<tr class="separator:aaf8203406c0c975f676bde5e856082c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2564495814ebfea70d90c779b803b1c4"><td class="memItemLeft" align="right" valign="top">VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a2564495814ebfea70d90c779b803b1c4">buildPipeline</a> (VkDevice device, VkRenderPass pass)</td></tr>
+<tr class="memdesc:a2564495814ebfea70d90c779b803b1c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">build the vulkan pipline.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a2564495814ebfea70d90c779b803b1c4">More...</a><br /></td></tr>
+<tr class="separator:a2564495814ebfea70d90c779b803b1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67e100195b6be54e5e3826ed7b60d9d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a67e100195b6be54e5e3826ed7b60d9d4">createShaderStages</a> ()</td></tr>
+<tr class="memdesc:a67e100195b6be54e5e3826ed7b60d9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the shader stages to be used in the pipeline.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a67e100195b6be54e5e3826ed7b60d9d4">More...</a><br /></td></tr>
+<tr class="separator:a67e100195b6be54e5e3826ed7b60d9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1edac02342e461b7a6caa96300f7b85e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a1edac02342e461b7a6caa96300f7b85e">createInputStates</a> ()</td></tr>
+<tr class="memdesc:a1edac02342e461b7a6caa96300f7b85e"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the vertex input.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a1edac02342e461b7a6caa96300f7b85e">More...</a><br /></td></tr>
+<tr class="separator:a1edac02342e461b7a6caa96300f7b85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96fc265791be635119ad130623855eaf"><td class="memItemLeft" align="right" valign="top">VkPipelineVertexInputStateCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a96fc265791be635119ad130623855eaf">createVertexInputState</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt; shader)</td></tr>
+<tr class="memdesc:a96fc265791be635119ad130623855eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the vertex input state for a single shader.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a96fc265791be635119ad130623855eaf">More...</a><br /></td></tr>
+<tr class="separator:a96fc265791be635119ad130623855eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd9c73f82bc55d87a56be34d108aac9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afd9c73f82bc55d87a56be34d108aac9e">createBindingDescription</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt; shader)</td></tr>
+<tr class="memdesc:afd9c73f82bc55d87a56be34d108aac9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the binding descriptio for a single shader.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afd9c73f82bc55d87a56be34d108aac9e">More...</a><br /></td></tr>
+<tr class="separator:afd9c73f82bc55d87a56be34d108aac9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb177d8857c6e8309dd72c67e07d267c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#acb177d8857c6e8309dd72c67e07d267c">createAttributeDescription</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt; shader)</td></tr>
+<tr class="memdesc:acb177d8857c6e8309dd72c67e07d267c"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the attribute description for a single shader.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#acb177d8857c6e8309dd72c67e07d267c">More...</a><br /></td></tr>
+<tr class="separator:acb177d8857c6e8309dd72c67e07d267c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6c9ce6d6c4c9fe5bb165617322279aa"><td class="memItemLeft" align="right" valign="top">VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa6c9ce6d6c4c9fe5bb165617322279aa">createShaderModule</a> (<a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt; shader, VkShaderModule *shaderModule)</td></tr>
+<tr class="memdesc:aa6c9ce6d6c4c9fe5bb165617322279aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a shader module from a shader ref.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa6c9ce6d6c4c9fe5bb165617322279aa">More...</a><br /></td></tr>
+<tr class="separator:aa6c9ce6d6c4c9fe5bb165617322279aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e415f36255cab1ceb346c182c9e5cf8"><td class="memItemLeft" align="right" valign="top">VkFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a2e415f36255cab1ceb346c182c9e5cf8">getResourceFormat</a> (<a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57db">renderer::typeId</a> resourceType)</td></tr>
+<tr class="memdesc:a2e415f36255cab1ceb346c182c9e5cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the corresponding resource type for a given .  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a2e415f36255cab1ceb346c182c9e5cf8">More...</a><br /></td></tr>
+<tr class="separator:a2e415f36255cab1ceb346c182c9e5cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d6c6885c31db211071f554da4a99300"><td class="memItemLeft" align="right" valign="top">VkPipelineInputAssemblyStateCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a4d6c6885c31db211071f554da4a99300">inputAssemblyCreateInfo</a> (VkPrimitiveTopology topology)</td></tr>
+<tr class="memdesc:a4d6c6885c31db211071f554da4a99300"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the input Assembly  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a4d6c6885c31db211071f554da4a99300">More...</a><br /></td></tr>
+<tr class="separator:a4d6c6885c31db211071f554da4a99300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a061fa43828034b9c3ada6aa8c797a42f"><td class="memItemLeft" align="right" valign="top">VkPipelineRasterizationStateCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a061fa43828034b9c3ada6aa8c797a42f">rasterizationStateCreateInfo</a> (VkPolygonMode polygonMode)</td></tr>
+<tr class="memdesc:a061fa43828034b9c3ada6aa8c797a42f"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the rasterizer state create info.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a061fa43828034b9c3ada6aa8c797a42f">More...</a><br /></td></tr>
+<tr class="separator:a061fa43828034b9c3ada6aa8c797a42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc6942d545a4132c205e53ac3aef3dcf"><td class="memItemLeft" align="right" valign="top">VkPipelineMultisampleStateCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afc6942d545a4132c205e53ac3aef3dcf">multisamplingStateCreateInfo</a> ()</td></tr>
+<tr class="memdesc:afc6942d545a4132c205e53ac3aef3dcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the multisampling info.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afc6942d545a4132c205e53ac3aef3dcf">More...</a><br /></td></tr>
+<tr class="separator:afc6942d545a4132c205e53ac3aef3dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7711aceff647037594498dca8edf97eb"><td class="memItemLeft" align="right" valign="top">VkPipelineColorBlendAttachmentState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a7711aceff647037594498dca8edf97eb">colorBlendAttachmentState</a> ()</td></tr>
+<tr class="memdesc:a7711aceff647037594498dca8edf97eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the color blend attachment state(color writemask).  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a7711aceff647037594498dca8edf97eb">More...</a><br /></td></tr>
+<tr class="separator:a7711aceff647037594498dca8edf97eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b4270cf728d1e08d705a0563003de74"><td class="memItemLeft" align="right" valign="top">VkPipelineLayoutCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5b4270cf728d1e08d705a0563003de74">pipelineLayoutCreateInfo</a> ()</td></tr>
+<tr class="memdesc:a5b4270cf728d1e08d705a0563003de74"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates the pipeline layout info.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5b4270cf728d1e08d705a0563003de74">More...</a><br /></td></tr>
+<tr class="separator:a5b4270cf728d1e08d705a0563003de74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b956fe650f383fea4e65cd4b4d4da25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a4b956fe650f383fea4e65cd4b4d4da25">initDefaultRenderpass</a> ()</td></tr>
+<tr class="memdesc:a4b956fe650f383fea4e65cd4b4d4da25"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialzes the dafault pipeline renderPass.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a4b956fe650f383fea4e65cd4b4d4da25">More...</a><br /></td></tr>
+<tr class="separator:a4b956fe650f383fea4e65cd4b4d4da25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d305c8ad88f0d83ab2054a3acf0e58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ad6d305c8ad88f0d83ab2054a3acf0e58">initSyncStructures</a> ()</td></tr>
+<tr class="memdesc:ad6d305c8ad88f0d83ab2054a3acf0e58"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes the the pipeline syncronization structures. (VkFence and VkSemaphore)  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ad6d305c8ad88f0d83ab2054a3acf0e58">More...</a><br /></td></tr>
+<tr class="separator:ad6d305c8ad88f0d83ab2054a3acf0e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c975a94d75187855347490a8725d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ab9c975a94d75187855347490a8725d86">destroySyncStructures</a> ()</td></tr>
+<tr class="memdesc:ab9c975a94d75187855347490a8725d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys all pipeline sync structures. (VkFence and VkSemaphore)  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ab9c975a94d75187855347490a8725d86">More...</a><br /></td></tr>
+<tr class="separator:ab9c975a94d75187855347490a8725d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46a300426475caff50e03bad4532c19f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a46a300426475caff50e03bad4532c19f">transitionImageLayout</a> (VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout, VkCommandBuffer commandBufffer)</td></tr>
+<tr class="memdesc:a46a300426475caff50e03bad4532c19f"><td class="mdescLeft">&#160;</td><td class="mdescRight">transitions the image layout.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a46a300426475caff50e03bad4532c19f">More...</a><br /></td></tr>
+<tr class="separator:a46a300426475caff50e03bad4532c19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a2c53eede1df1527173744cdbbd86e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#af7a2c53eede1df1527173744cdbbd86e">fnDrawIndexed</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">renderer::vertexArray</a> &gt; &amp;vertexArray, int indexCount)</td></tr>
+<tr class="memdesc:af7a2c53eede1df1527173744cdbbd86e"><td class="mdescLeft">&#160;</td><td class="mdescRight">executes draw command.  <a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#af7a2c53eede1df1527173744cdbbd86e">More...</a><br /></td></tr>
+<tr class="separator:af7a2c53eede1df1527173744cdbbd86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a45fa54262a258b645521ba34c6adafeb"><td class="memItemLeft" align="right" valign="top">VkRenderPass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a45fa54262a258b645521ba34c6adafeb">renderPass</a></td></tr>
+<tr class="separator:a45fa54262a258b645521ba34c6adafeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e60d36b96a83342ad1ee3147e65924a"><td class="memItemLeft" align="right" valign="top">VkRenderPass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a9e60d36b96a83342ad1ee3147e65924a">imGuiRenderPass</a></td></tr>
+<tr class="separator:a9e60d36b96a83342ad1ee3147e65924a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b7882e3a52ff453bbb48c80ca5abbf4"><td class="memItemLeft" align="right" valign="top">VkPipelineLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a2b7882e3a52ff453bbb48c80ca5abbf4">pipelineLayout</a></td></tr>
+<tr class="separator:a2b7882e3a52ff453bbb48c80ca5abbf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7115aac74d322c47d75c965cc5b92bc5"><td class="memItemLeft" align="right" valign="top">VkPipeline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a7115aac74d322c47d75c965cc5b92bc5">pipeline</a></td></tr>
+<tr class="separator:a7115aac74d322c47d75c965cc5b92bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e41b3e41b14fdca0db5265f08f1e7c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkPipelineShaderStageCreateInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa0e41b3e41b14fdca0db5265f08f1e7c">shaderStages</a></td></tr>
+<tr class="separator:aa0e41b3e41b14fdca0db5265f08f1e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7e1da732b4e88f9f484f8d4b855976"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkShaderModule &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a7f7e1da732b4e88f9f484f8d4b855976">shaderModules</a></td></tr>
+<tr class="separator:a7f7e1da732b4e88f9f484f8d4b855976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac18f07bcb65f4c08a117151e658f7d59"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="../../d7/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description.html">vertexInputDescription</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ac18f07bcb65f4c08a117151e658f7d59">inputDescriptions</a></td></tr>
+<tr class="separator:ac18f07bcb65f4c08a117151e658f7d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7f57d7f057bb2ca62169dab82631fe9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkPipelineVertexInputStateCreateInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa7f57d7f057bb2ca62169dab82631fe9">vertexInputStates</a></td></tr>
+<tr class="separator:aa7f57d7f057bb2ca62169dab82631fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5597157ef687f2fccf732b2ed7e1190"><td class="memItemLeft" align="right" valign="top">VkPipelineInputAssemblyStateCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa5597157ef687f2fccf732b2ed7e1190">inputAssemblyStateCreateInfo</a></td></tr>
+<tr class="separator:aa5597157ef687f2fccf732b2ed7e1190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3537eb4a55b81971ab963d4690f6e5f"><td class="memItemLeft" align="right" valign="top">VkPipelineRasterizationStateCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa3537eb4a55b81971ab963d4690f6e5f">pipelineRasterizationStateCreateInfo</a></td></tr>
+<tr class="separator:aa3537eb4a55b81971ab963d4690f6e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8c2b85f2173a9f7bdfb8de20c1315e"><td class="memItemLeft" align="right" valign="top">VkPipelineMultisampleStateCreateInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aaa8c2b85f2173a9f7bdfb8de20c1315e">pipelineMultisampleStateCreateInfo</a></td></tr>
+<tr class="separator:aaa8c2b85f2173a9f7bdfb8de20c1315e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc42bdeb83b8355115b66916c328f2a9"><td class="memItemLeft" align="right" valign="top">VkPipelineColorBlendAttachmentState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afc42bdeb83b8355115b66916c328f2a9">pipelineColorBlendAttachementState</a></td></tr>
+<tr class="separator:afc42bdeb83b8355115b66916c328f2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff2c0465f6027bc618c93a03d431d261"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkSemaphore &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aff2c0465f6027bc618c93a03d431d261">imageAvailableSemaphores</a></td></tr>
+<tr class="separator:aff2c0465f6027bc618c93a03d431d261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1abf0b8097244e5b836f16f428ac0ba8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkSemaphore &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a1abf0b8097244e5b836f16f428ac0ba8">renderFinishedSemaphores</a></td></tr>
+<tr class="separator:a1abf0b8097244e5b836f16f428ac0ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa60424dee8b03d13a3b706c023f807a2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkFence &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa60424dee8b03d13a3b706c023f807a2">inFlightFences</a></td></tr>
+<tr class="separator:aa60424dee8b03d13a3b706c023f807a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcdd27058313bb5bb79fcabef1cb8433"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkFence &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afcdd27058313bb5bb79fcabef1cb8433">imagesInFlight</a></td></tr>
+<tr class="separator:afcdd27058313bb5bb79fcabef1cb8433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414e2d69561aa0ad2038bfae51c21f7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html">vulkanCmdPool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a414e2d69561aa0ad2038bfae51c21f7f">commandPool</a> = nullptr</td></tr>
+<tr class="separator:a414e2d69561aa0ad2038bfae51c21f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb2a6819e480036478d8a7b88f3be82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a6cb2a6819e480036478d8a7b88f3be82">commandBuffers</a></td></tr>
+<tr class="separator:a6cb2a6819e480036478d8a7b88f3be82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73b5d00ca87f4baeaa5beb9fb3c6eac"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa73b5d00ca87f4baeaa5beb9fb3c6eac">swapchainImageIndex</a> = 0</td></tr>
+<tr class="separator:aa73b5d00ca87f4baeaa5beb9fb3c6eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a558baaa1bd2389cedf1fc07301924e90"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a558baaa1bd2389cedf1fc07301924e90">currentFrame</a> = 0</td></tr>
+<tr class="separator:a558baaa1bd2389cedf1fc07301924e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e049ebc7fef8ebbf4adaf4872e48a8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ae2e049ebc7fef8ebbf4adaf4872e48a8">prevFrame</a> = 0</td></tr>
+<tr class="separator:ae2e049ebc7fef8ebbf4adaf4872e48a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc259d2590c74e72a8aeae1ce5059c79"><td class="memItemLeft" align="right" valign="top">VkQueue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#acc259d2590c74e72a8aeae1ce5059c79">presentQueue</a></td></tr>
+<tr class="separator:acc259d2590c74e72a8aeae1ce5059c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac21d0b749997e2207165cabb6b4e9fad"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ac21d0b749997e2207165cabb6b4e9fad">_frameNumber</a> = 0</td></tr>
+<tr class="separator:ac21d0b749997e2207165cabb6b4e9fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afded6cd43387b83294e412164a0e3636"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afded6cd43387b83294e412164a0e3636">justResized</a> = false</td></tr>
+<tr class="separator:afded6cd43387b83294e412164a0e3636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a910814cca718d344650a921f6e1289"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d3/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command.html">drawCommand</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a9a910814cca718d344650a921f6e1289">drawCommands</a></td></tr>
+<tr class="separator:a9a910814cca718d344650a921f6e1289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29ab724396a49e9a41e0e3f5c867ea17"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a29ab724396a49e9a41e0e3f5c867ea17">changedBoundBuffers</a></td></tr>
+<tr class="separator:a29ab724396a49e9a41e0e3f5c867ea17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >vulkan pipline implementation class. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html">renderer::pipeline</a>. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a940cc48a838abc936cb97505e578e1d0" name="a940cc48a838abc936cb97505e578e1d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a940cc48a838abc936cb97505e578e1d0">&#9670;&#160;</a></span>vulkanPipeline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">luna::vulkan::vulkanPipeline::vulkanPipeline </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a> &amp;&#160;</td>
+          <td class="paramname"><em>layout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a vulkan pipeline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a></td><td>layout struct </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aaa1a0f54f1d61cf2e7e287d98daea28f" name="aaa1a0f54f1d61cf2e7e287d98daea28f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1a0f54f1d61cf2e7e287d98daea28f">&#9670;&#160;</a></span>~vulkanPipeline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual luna::vulkan::vulkanPipeline::~vulkanPipeline </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pipeline destructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa2ba811a7d966ddbbd358413dc8de8e6" name="aa2ba811a7d966ddbbd358413dc8de8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ba811a7d966ddbbd358413dc8de8e6">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>starts recording the pipline input. </p>
+
+<p>Implements <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#afc5a2034a8f14426e2ce4b235b0cba2b">luna::renderer::pipeline</a>.</p>
+
+</div>
+</div>
+<a id="a2564495814ebfea70d90c779b803b1c4" name="a2564495814ebfea70d90c779b803b1c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2564495814ebfea70d90c779b803b1c4">&#9670;&#160;</a></span>buildPipeline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkResult luna::vulkan::vulkanPipeline::buildPipeline </td>
+          <td>(</td>
+          <td class="paramtype">VkDevice&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VkRenderPass&#160;</td>
+          <td class="paramname"><em>pass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>build the vulkan pipline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">VkDevice</td><td>device </td></tr>
+    <tr><td class="paramname">VkRenderPass</td><td>pass </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VK_SUCCES when pipline was succesfully build </dd></dl>
+
+</div>
+</div>
+<a id="aa41ea737c800e7a904e3f7507469bf64" name="aa41ea737c800e7a904e3f7507469bf64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa41ea737c800e7a904e3f7507469bf64">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>clears all the vulkan pipeline draw commands. </p>
+
+<p>Implements <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5">luna::renderer::pipeline</a>.</p>
+
+</div>
+</div>
+<a id="a7711aceff647037594498dca8edf97eb" name="a7711aceff647037594498dca8edf97eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7711aceff647037594498dca8edf97eb">&#9670;&#160;</a></span>colorBlendAttachmentState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineColorBlendAttachmentState luna::vulkan::vulkanPipeline::colorBlendAttachmentState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the color blend attachment state(color writemask). </p>
+<dl class="section return"><dt>Returns</dt><dd>VkPipelineColorBlendAttachmentState struct </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html</a> </dd></dl>
+
+</div>
+</div>
+<a id="acb177d8857c6e8309dd72c67e07d267c" name="acb177d8857c6e8309dd72c67e07d267c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb177d8857c6e8309dd72c67e07d267c">&#9670;&#160;</a></span>createAttributeDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::createAttributeDescription </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the attribute description for a single shader. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</a></td><td>shader reference to a valid shader </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afd9c73f82bc55d87a56be34d108aac9e" name="afd9c73f82bc55d87a56be34d108aac9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9c73f82bc55d87a56be34d108aac9e">&#9670;&#160;</a></span>createBindingDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::createBindingDescription </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the binding descriptio for a single shader. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</a></td><td>shader reference to a valid shader </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1d4d725067be784aa50f9e488cdd9dca" name="a1d4d725067be784aa50f9e488cdd9dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4d725067be784aa50f9e488cdd9dca">&#9670;&#160;</a></span>createCommands()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::createCommands </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the renderer commands for the pipeline. </p>
+
+<p>Implements <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a9f0f6eb618872aa9a2f1fef6dbd3c847">luna::renderer::pipeline</a>.</p>
+
+</div>
+</div>
+<a id="a1edac02342e461b7a6caa96300f7b85e" name="a1edac02342e461b7a6caa96300f7b85e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1edac02342e461b7a6caa96300f7b85e">&#9670;&#160;</a></span>createInputStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::createInputStates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the vertex input. </p>
+
+</div>
+</div>
+<a id="a73d4a77e2f205d00a35968050bd9566a" name="a73d4a77e2f205d00a35968050bd9566a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73d4a77e2f205d00a35968050bd9566a">&#9670;&#160;</a></span>createPipeline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::createPipeline </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a> &amp;&#160;</td>
+          <td class="paramname"><em>layout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the vulkan pipeline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a></td><td>layout struct </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a0f11e067108000e35444f69da2175399">luna::renderer::pipeline</a>.</p>
+
+</div>
+</div>
+<a id="aaf8203406c0c975f676bde5e856082c0" name="aaf8203406c0c975f676bde5e856082c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf8203406c0c975f676bde5e856082c0">&#9670;&#160;</a></span>createPipeLineLayout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::createPipeLineLayout </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the pipeline layout. </p>
+
+</div>
+</div>
+<a id="aa6c9ce6d6c4c9fe5bb165617322279aa" name="aa6c9ce6d6c4c9fe5bb165617322279aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c9ce6d6c4c9fe5bb165617322279aa">&#9670;&#160;</a></span>createShaderModule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkResult luna::vulkan::vulkanPipeline::createShaderModule </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt;&#160;</td>
+          <td class="paramname"><em>shader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VkShaderModule *&#160;</td>
+          <td class="paramname"><em>shaderModule</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates a shader module from a shader ref. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</a></td><td>shader the source shader </td></tr>
+    <tr><td class="paramname">shaderModule</td><td>pointer to the vulkan shaderModule </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VK_SUCCES when shaderModule was created sucessfully. </dd></dl>
+
+</div>
+</div>
+<a id="a67e100195b6be54e5e3826ed7b60d9d4" name="a67e100195b6be54e5e3826ed7b60d9d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e100195b6be54e5e3826ed7b60d9d4">&#9670;&#160;</a></span>createShaderStages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::createShaderStages </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the shader stages to be used in the pipeline. </p>
+
+</div>
+</div>
+<a id="a96fc265791be635119ad130623855eaf" name="a96fc265791be635119ad130623855eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96fc265791be635119ad130623855eaf">&#9670;&#160;</a></span>createVertexInputState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineVertexInputStateCreateInfo luna::vulkan::vulkanPipeline::createVertexInputState </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1shader.html">renderer::shader</a> &gt;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the vertex input state for a single shader. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</a></td><td>shader reference to a valid shader </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VkPipelineVertexInputStateCreateInfo </dd></dl>
+
+</div>
+</div>
+<a id="ab99b3ab39f4fd1e3275b5b8783f0a554" name="ab99b3ab39f4fd1e3275b5b8783f0a554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab99b3ab39f4fd1e3275b5b8783f0a554">&#9670;&#160;</a></span>destroyPipeline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::destroyPipeline </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>destroys the vulkan pipeline. </p>
+
+<p>Implements <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aa071655def49bf5f9bf517d9ecc7834f">luna::renderer::pipeline</a>.</p>
+
+</div>
+</div>
+<a id="ab9c975a94d75187855347490a8725d86" name="ab9c975a94d75187855347490a8725d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c975a94d75187855347490a8725d86">&#9670;&#160;</a></span>destroySyncStructures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::destroySyncStructures </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>destroys all pipeline sync structures. (VkFence and VkSemaphore) </p>
+
+</div>
+</div>
+<a id="a5690e9bd9a70e5ec87ad9fbe040ac941" name="a5690e9bd9a70e5ec87ad9fbe040ac941"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5690e9bd9a70e5ec87ad9fbe040ac941">&#9670;&#160;</a></span>drawIndexed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::drawIndexed </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">renderer::vertexArray</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vertexArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indexCount</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>draw a vertexArray indexed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">const</td><td><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::vertexArray&gt;</a>&amp; vertexArray vertexArray to render </td></tr>
+    <tr><td class="paramname">int</td><td>indexCount the indices count to render; </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>check if the indexCount variable is not zero when the rendered quad does not appear; </dd></dl>
+
+</div>
+</div>
+<a id="aa061fcec857b5a7d458ee66ddce7a534" name="aa061fcec857b5a7d458ee66ddce7a534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa061fcec857b5a7d458ee66ddce7a534">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ends recording the pipline input. </p>
+
+<p>Implements <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a17d90338b9da0e660758cdb406c56091">luna::renderer::pipeline</a>.</p>
+
+</div>
+</div>
+<a id="a5a362aa2aac55e29a1953b3c2efcfe04" name="a5a362aa2aac55e29a1953b3c2efcfe04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a362aa2aac55e29a1953b3c2efcfe04">&#9670;&#160;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>executes the pipeline commands. </p>
+
+<p>Implements <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a8f231f1c4fde20cfa26ca59d9def0698">luna::renderer::pipeline</a>.</p>
+
+</div>
+</div>
+<a id="af7a2c53eede1df1527173744cdbbd86e" name="af7a2c53eede1df1527173744cdbbd86e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7a2c53eede1df1527173744cdbbd86e">&#9670;&#160;</a></span>fnDrawIndexed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::fnDrawIndexed </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">renderer::vertexArray</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vertexArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indexCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>executes draw command. </p>
+
+</div>
+</div>
+<a id="a24e8bfb38d02fa6c3630ae9511952a27" name="a24e8bfb38d02fa6c3630ae9511952a27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24e8bfb38d02fa6c3630ae9511952a27">&#9670;&#160;</a></span>getRenderPass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkRenderPass luna::vulkan::vulkanPipeline::getRenderPass </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return the pipeline renderpass. </p>
+
+</div>
+</div>
+<a id="a2e415f36255cab1ceb346c182c9e5cf8" name="a2e415f36255cab1ceb346c182c9e5cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e415f36255cab1ceb346c182c9e5cf8">&#9670;&#160;</a></span>getResourceFormat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkFormat luna::vulkan::vulkanPipeline::getResourceFormat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57db">renderer::typeId</a>&#160;</td>
+          <td class="paramname"><em>resourceType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns the corresponding resource type for a given . </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57db">renderer::typeId</a></td><td>resourceType </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VkFormat the corresponding VkFormat for typeId </dd></dl>
+
+</div>
+</div>
+<a id="a4b956fe650f383fea4e65cd4b4d4da25" name="a4b956fe650f383fea4e65cd4b4d4da25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b956fe650f383fea4e65cd4b4d4da25">&#9670;&#160;</a></span>initDefaultRenderpass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::initDefaultRenderpass </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>initialzes the dafault pipeline renderPass. </p>
+
+</div>
+</div>
+<a id="ad6d305c8ad88f0d83ab2054a3acf0e58" name="ad6d305c8ad88f0d83ab2054a3acf0e58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d305c8ad88f0d83ab2054a3acf0e58">&#9670;&#160;</a></span>initSyncStructures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::initSyncStructures </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>initializes the the pipeline syncronization structures. (VkFence and VkSemaphore) </p>
+<dl class="section see"><dt>See also</dt><dd><a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFence.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFence.html</a> </dd>
+<dd>
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4d6c6885c31db211071f554da4a99300" name="a4d6c6885c31db211071f554da4a99300"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d6c6885c31db211071f554da4a99300">&#9670;&#160;</a></span>inputAssemblyCreateInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineInputAssemblyStateCreateInfo luna::vulkan::vulkanPipeline::inputAssemblyCreateInfo </td>
+          <td>(</td>
+          <td class="paramtype">VkPrimitiveTopology&#160;</td>
+          <td class="paramname"><em>topology</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the input Assembly </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topology</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="afc6942d545a4132c205e53ac3aef3dcf" name="afc6942d545a4132c205e53ac3aef3dcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc6942d545a4132c205e53ac3aef3dcf">&#9670;&#160;</a></span>multisamplingStateCreateInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineMultisampleStateCreateInfo luna::vulkan::vulkanPipeline::multisamplingStateCreateInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the multisampling info. </p>
+<dl class="section return"><dt>Returns</dt><dd>VkPipelineMultisampleStateCreateInfo struct </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5b4270cf728d1e08d705a0563003de74" name="a5b4270cf728d1e08d705a0563003de74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b4270cf728d1e08d705a0563003de74">&#9670;&#160;</a></span>pipelineLayoutCreateInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineLayoutCreateInfo luna::vulkan::vulkanPipeline::pipelineLayoutCreateInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the pipeline layout info. </p>
+<dl class="section return"><dt>Returns</dt><dd>VkPipelineLayoutCreateInfo struct </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreatePipelineLayout.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreatePipelineLayout.html</a> </dd></dl>
+
+</div>
+</div>
+<a id="a061fa43828034b9c3ada6aa8c797a42f" name="a061fa43828034b9c3ada6aa8c797a42f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a061fa43828034b9c3ada6aa8c797a42f">&#9670;&#160;</a></span>rasterizationStateCreateInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineRasterizationStateCreateInfo luna::vulkan::vulkanPipeline::rasterizationStateCreateInfo </td>
+          <td>(</td>
+          <td class="paramtype">VkPolygonMode&#160;</td>
+          <td class="paramname"><em>polygonMode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates the rasterizer state create info. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">polygonMode</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VkPipelineRasterizationStateCreateInfo struct </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html</a> </dd></dl>
+
+</div>
+</div>
+<a id="a46a300426475caff50e03bad4532c19f" name="a46a300426475caff50e03bad4532c19f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46a300426475caff50e03bad4532c19f">&#9670;&#160;</a></span>transitionImageLayout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::vulkan::vulkanPipeline::transitionImageLayout </td>
+          <td>(</td>
+          <td class="paramtype">VkImage&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VkFormat&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VkImageLayout&#160;</td>
+          <td class="paramname"><em>oldLayout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VkImageLayout&#160;</td>
+          <td class="paramname"><em>newLayout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VkCommandBuffer&#160;</td>
+          <td class="paramname"><em>commandBufffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>transitions the image layout. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">VkImage</td><td>image imageHandle </td></tr>
+    <tr><td class="paramname">VkFormat</td><td>format </td></tr>
+    <tr><td class="paramname">VkImageLayout</td><td>oldLayout </td></tr>
+    <tr><td class="paramname">VkImageLayout</td><td>newLayout </td></tr>
+    <tr><td class="paramname">VkCommandBuffer</td><td>commandBufffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac21d0b749997e2207165cabb6b4e9fad" name="ac21d0b749997e2207165cabb6b4e9fad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac21d0b749997e2207165cabb6b4e9fad">&#9670;&#160;</a></span>_frameNumber</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t luna::vulkan::vulkanPipeline::_frameNumber = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29ab724396a49e9a41e0e3f5c867ea17" name="a29ab724396a49e9a41e0e3f5c867ea17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29ab724396a49e9a41e0e3f5c867ea17">&#9670;&#160;</a></span>changedBoundBuffers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool luna::vulkan::vulkanPipeline::changedBoundBuffers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6cb2a6819e480036478d8a7b88f3be82" name="a6cb2a6819e480036478d8a7b88f3be82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cb2a6819e480036478d8a7b88f3be82">&#9670;&#160;</a></span>commandBuffers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</a>&gt; luna::vulkan::vulkanPipeline::commandBuffers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a414e2d69561aa0ad2038bfae51c21f7f" name="a414e2d69561aa0ad2038bfae51c21f7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414e2d69561aa0ad2038bfae51c21f7f">&#9670;&#160;</a></span>commandPool</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt;<a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html">vulkanCmdPool</a>&gt; luna::vulkan::vulkanPipeline::commandPool = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a558baaa1bd2389cedf1fc07301924e90" name="a558baaa1bd2389cedf1fc07301924e90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a558baaa1bd2389cedf1fc07301924e90">&#9670;&#160;</a></span>currentFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t luna::vulkan::vulkanPipeline::currentFrame = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a910814cca718d344650a921f6e1289" name="a9a910814cca718d344650a921f6e1289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a910814cca718d344650a921f6e1289">&#9670;&#160;</a></span>drawCommands</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../d3/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command.html">drawCommand</a>&gt; luna::vulkan::vulkanPipeline::drawCommands</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff2c0465f6027bc618c93a03d431d261" name="aff2c0465f6027bc618c93a03d431d261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff2c0465f6027bc618c93a03d431d261">&#9670;&#160;</a></span>imageAvailableSemaphores</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkSemaphore&gt; luna::vulkan::vulkanPipeline::imageAvailableSemaphores</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcdd27058313bb5bb79fcabef1cb8433" name="afcdd27058313bb5bb79fcabef1cb8433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcdd27058313bb5bb79fcabef1cb8433">&#9670;&#160;</a></span>imagesInFlight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkFence&gt; luna::vulkan::vulkanPipeline::imagesInFlight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e60d36b96a83342ad1ee3147e65924a" name="a9e60d36b96a83342ad1ee3147e65924a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e60d36b96a83342ad1ee3147e65924a">&#9670;&#160;</a></span>imGuiRenderPass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkRenderPass luna::vulkan::vulkanPipeline::imGuiRenderPass</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa60424dee8b03d13a3b706c023f807a2" name="aa60424dee8b03d13a3b706c023f807a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa60424dee8b03d13a3b706c023f807a2">&#9670;&#160;</a></span>inFlightFences</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkFence&gt; luna::vulkan::vulkanPipeline::inFlightFences</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa5597157ef687f2fccf732b2ed7e1190" name="aa5597157ef687f2fccf732b2ed7e1190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5597157ef687f2fccf732b2ed7e1190">&#9670;&#160;</a></span>inputAssemblyStateCreateInfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineInputAssemblyStateCreateInfo luna::vulkan::vulkanPipeline::inputAssemblyStateCreateInfo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac18f07bcb65f4c08a117151e658f7d59" name="ac18f07bcb65f4c08a117151e658f7d59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac18f07bcb65f4c08a117151e658f7d59">&#9670;&#160;</a></span>inputDescriptions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string,<a class="el" href="../../d7/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description.html">vertexInputDescription</a>&gt; luna::vulkan::vulkanPipeline::inputDescriptions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afded6cd43387b83294e412164a0e3636" name="afded6cd43387b83294e412164a0e3636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afded6cd43387b83294e412164a0e3636">&#9670;&#160;</a></span>justResized</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool luna::vulkan::vulkanPipeline::justResized = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d13002bebad3a3ecfa14a22005646c4" name="a0d13002bebad3a3ecfa14a22005646c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d13002bebad3a3ecfa14a22005646c4">&#9670;&#160;</a></span>layout</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a> luna::vulkan::vulkanPipeline::layout</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace902ac4661de0ef195e001bf33133ca" name="ace902ac4661de0ef195e001bf33133ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace902ac4661de0ef195e001bf33133ca">&#9670;&#160;</a></span>maxFramesInFlight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t luna::vulkan::vulkanPipeline::maxFramesInFlight = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7115aac74d322c47d75c965cc5b92bc5" name="a7115aac74d322c47d75c965cc5b92bc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7115aac74d322c47d75c965cc5b92bc5">&#9670;&#160;</a></span>pipeline</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipeline luna::vulkan::vulkanPipeline::pipeline</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc42bdeb83b8355115b66916c328f2a9" name="afc42bdeb83b8355115b66916c328f2a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc42bdeb83b8355115b66916c328f2a9">&#9670;&#160;</a></span>pipelineColorBlendAttachementState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineColorBlendAttachmentState luna::vulkan::vulkanPipeline::pipelineColorBlendAttachementState</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b7882e3a52ff453bbb48c80ca5abbf4" name="a2b7882e3a52ff453bbb48c80ca5abbf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b7882e3a52ff453bbb48c80ca5abbf4">&#9670;&#160;</a></span>pipelineLayout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineLayout luna::vulkan::vulkanPipeline::pipelineLayout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa8c2b85f2173a9f7bdfb8de20c1315e" name="aaa8c2b85f2173a9f7bdfb8de20c1315e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa8c2b85f2173a9f7bdfb8de20c1315e">&#9670;&#160;</a></span>pipelineMultisampleStateCreateInfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineMultisampleStateCreateInfo luna::vulkan::vulkanPipeline::pipelineMultisampleStateCreateInfo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3537eb4a55b81971ab963d4690f6e5f" name="aa3537eb4a55b81971ab963d4690f6e5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3537eb4a55b81971ab963d4690f6e5f">&#9670;&#160;</a></span>pipelineRasterizationStateCreateInfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPipelineRasterizationStateCreateInfo luna::vulkan::vulkanPipeline::pipelineRasterizationStateCreateInfo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc259d2590c74e72a8aeae1ce5059c79" name="acc259d2590c74e72a8aeae1ce5059c79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc259d2590c74e72a8aeae1ce5059c79">&#9670;&#160;</a></span>presentQueue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkQueue luna::vulkan::vulkanPipeline::presentQueue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2e049ebc7fef8ebbf4adaf4872e48a8" name="ae2e049ebc7fef8ebbf4adaf4872e48a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e049ebc7fef8ebbf4adaf4872e48a8">&#9670;&#160;</a></span>prevFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t luna::vulkan::vulkanPipeline::prevFrame = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1abf0b8097244e5b836f16f428ac0ba8" name="a1abf0b8097244e5b836f16f428ac0ba8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1abf0b8097244e5b836f16f428ac0ba8">&#9670;&#160;</a></span>renderFinishedSemaphores</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkSemaphore&gt; luna::vulkan::vulkanPipeline::renderFinishedSemaphores</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45fa54262a258b645521ba34c6adafeb" name="a45fa54262a258b645521ba34c6adafeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45fa54262a258b645521ba34c6adafeb">&#9670;&#160;</a></span>renderPass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkRenderPass luna::vulkan::vulkanPipeline::renderPass</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f7e1da732b4e88f9f484f8d4b855976" name="a7f7e1da732b4e88f9f484f8d4b855976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7e1da732b4e88f9f484f8d4b855976">&#9670;&#160;</a></span>shaderModules</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkShaderModule&gt; luna::vulkan::vulkanPipeline::shaderModules</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0e41b3e41b14fdca0db5265f08f1e7c" name="aa0e41b3e41b14fdca0db5265f08f1e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e41b3e41b14fdca0db5265f08f1e7c">&#9670;&#160;</a></span>shaderStages</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkPipelineShaderStageCreateInfo&gt; luna::vulkan::vulkanPipeline::shaderStages</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa73b5d00ca87f4baeaa5beb9fb3c6eac" name="aa73b5d00ca87f4baeaa5beb9fb3c6eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa73b5d00ca87f4baeaa5beb9fb3c6eac">&#9670;&#160;</a></span>swapchainImageIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t luna::vulkan::vulkanPipeline::swapchainImageIndex = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7f57d7f057bb2ca62169dab82631fe9" name="aa7f57d7f057bb2ca62169dab82631fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7f57d7f057bb2ca62169dab82631fe9">&#9670;&#160;</a></span>vertexInputStates</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;VkPipelineVertexInputStateCreateInfo&gt; luna::vulkan::vulkanPipeline::vertexInputStates</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<a class="el" href="../../df/d00/vulkan_pipeline_8h.html">vulkanPipeline.h</a></li>
+<li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<a class="el" href="../../d2/d00/vulkan_pipeline_8cpp.html">vulkanPipeline.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

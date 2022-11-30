@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer" xml:lang="en-US">
+<title>luna::vulkan::vulkanVertexBuffer Class Reference</title>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanVertexBuffer.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::vulkan::vulkanVertexBuffer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dd/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::vulkan::vulkanVertexBuffer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a8b9ac8e4ee14f6fa31b9e5e66f691829">vulkanVertexBuffer</link> (uint32_t <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215">size</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1ad74eea26566f25653d5b295e7df3b311">vulkanVertexBuffer</link> (const void *<link linkend="_classluna_1_1renderer_1_1vertex_buffer_1a5fb06834646a7fc36bfa30d05776ab4c">data</link>, uint32_t <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215">size</link>)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1ad0f0b852b46a64de5841d49aefbdd9f1">~vulkanVertexBuffer</link> ()</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a1a2ac1e332244bb5dfa1934055ce0414">bind</link> () const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a5f6f2205edf2d6bdb26c373b75a53fdd">unbind</link> () const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1ac0c410d51dff17d1936397611e0f123c">setData</link> (const void *<link linkend="_classluna_1_1renderer_1_1vertex_buffer_1a5fb06834646a7fc36bfa30d05776ab4c">data</link>, uint32_t <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1aa8207840e91676dfcf335c8a92d0d215">size</link>) override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>VkBuffer <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a8b7007de5e8a93ec1c7047c229070637">vkVertexBuffer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a18b558c81f2df4a3a92aec0c3df71cbc">vulkanPipeline</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a8b9ac8e4ee14f6fa31b9e5e66f691829"/><section>
+    <title>vulkanVertexBuffer()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>vulkanVertexBuffer</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>vulkanVertexBuffer</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanVertexBuffer::vulkanVertexBuffer (uint32_t size)</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer_a8b9ac8e4ee14f6fa31b9e5e66f691829_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1ad74eea26566f25653d5b295e7df3b311"/><section>
+    <title>vulkanVertexBuffer()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>vulkanVertexBuffer</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>vulkanVertexBuffer</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanVertexBuffer::vulkanVertexBuffer (const void * data, uint32_t size)</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer_ad74eea26566f25653d5b295e7df3b311_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1ad0f0b852b46a64de5841d49aefbdd9f1"/><section>
+    <title>~vulkanVertexBuffer()</title>
+<indexterm><primary>~vulkanVertexBuffer</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>~vulkanVertexBuffer</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanVertexBuffer::~vulkanVertexBuffer ( )<computeroutput>[virtual]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer_ad0f0b852b46a64de5841d49aefbdd9f1_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a1a2ac1e332244bb5dfa1934055ce0414"/><section>
+    <title>bind()</title>
+<indexterm><primary>bind</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>bind</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanVertexBuffer::bind ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1ab03a7f2da294919542518b71a32940d2">luna::renderer::vertexBuffer</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1ac0c410d51dff17d1936397611e0f123c"/><section>
+    <title>setData()</title>
+<indexterm><primary>setData</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>setData</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanVertexBuffer::setData (const void * data, uint32_t size)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1ae3a4d001dbc49d1a27f22deb47465679">luna::renderer::vertexBuffer</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer_ac0c410d51dff17d1936397611e0f123c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer_ac0c410d51dff17d1936397611e0f123c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a5f6f2205edf2d6bdb26c373b75a53fdd"/><section>
+    <title>unbind()</title>
+<indexterm><primary>unbind</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>unbind</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanVertexBuffer::unbind ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_classluna_1_1renderer_1_1vertex_buffer_1af4dac87c35ff26910f9d9b721090c7bd">luna::renderer::vertexBuffer</link>.</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a18b558c81f2df4a3a92aec0c3df71cbc"/><section>
+    <title>vulkanPipeline</title>
+<indexterm><primary>vulkanPipeline</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>vulkanPipeline</secondary></indexterm>
+<para><computeroutput>friend class <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline">vulkanPipeline</link><computeroutput>[friend]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_vertex_buffer_1a8b7007de5e8a93ec1c7047c229070637"/><section>
+    <title>vkVertexBuffer</title>
+<indexterm><primary>vkVertexBuffer</primary><secondary>luna::vulkan::vulkanVertexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanVertexBuffer</primary><secondary>vkVertexBuffer</secondary></indexterm>
+<para><computeroutput>VkBuffer luna::vulkan::vulkanVertexBuffer::vkVertexBuffer<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_vertex_buffer_8h">vulkanVertexBuffer.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_vertex_buffer_8cpp">vulkanVertexBuffer.cpp</link></section>
+</section>

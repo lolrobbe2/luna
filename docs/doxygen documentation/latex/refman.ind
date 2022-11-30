@@ -1,0 +1,2295 @@
+\begin{theindex}
+
+  \item {\_UUID}
+    \subitem {uuid.h}, \hyperpage{159}
+  \item {\_frameNumber}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+  \item {\_uuid}
+    \subitem {luna::uuid}, \hyperpage{77}
+  \item {\_window}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{149}
+  \item {$\sim$Event}
+    \subitem {luna::Event}, \hyperpage{31}
+  \item {$\sim$application}
+    \subitem {luna::application::application}, \hyperpage{16}
+  \item {$\sim$bufferLayout}
+    \subitem {luna::renderer::bufferLayout}, \hyperpage{24}
+  \item {$\sim$device}
+    \subitem {luna::renderer::device}, \hyperpage{28}
+  \item {$\sim$indexBuffer}
+    \subitem {luna::renderer::indexBuffer}, \hyperpage{34}
+  \item {$\sim$pipeline}
+    \subitem {luna::renderer::pipeline}, \hyperpage{57}
+  \item {$\sim$sandbox}
+    \subitem {sandbox}, \hyperpage{65}
+  \item {$\sim$shader}
+    \subitem {luna::renderer::shader}, \hyperpage{67}
+  \item {$\sim$shaderCompiler}
+    \subitem {luna::utils::shaderCompiler}, \hyperpage{69}
+  \item {$\sim$vectorCache}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{80}
+  \item {$\sim$vertexArray}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{84}
+  \item {$\sim$vertexBuffer}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{86}
+  \item {$\sim$vulkanCmdPool}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{94}
+  \item {$\sim$vulkanDevice}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{100}
+  \item {$\sim$vulkanImgui}
+    \subitem {luna::gui::vulkanImgui}, \hyperpage{105}
+  \item {$\sim$vulkanIndexBuffer}
+    \subitem {luna::vulkan::vulkanIndexBuffer}, \hyperpage{107}
+  \item {$\sim$vulkanPipeline}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{114}
+  \item {$\sim$vulkanShader}
+    \subitem {luna::vulkan::vulkanShader}, \hyperpage{125}
+  \item {$\sim$vulkanSwapchain}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{128}
+  \item {$\sim$vulkanVertexBuffer}
+    \subitem {luna::vulkan::vulkanVertexBuffer}, \hyperpage{135}
+  \item {$\sim$window}
+    \subitem {luna::vulkan::window}, \hyperpage{138}
+  \item {$\sim$windowsWindow}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{147}
+
+  \indexspace
+
+  \item {A}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {AccelerationStructure}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {accelerationStructures}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {addVertexBuffer}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{84}
+    \subitem {luna::vulkan::vulkanVertexArray}, \hyperpage{133}
+  \item {allocation}
+    \subitem {luna::utils::vulkanAllocator::vmaAllocation}, 
+		\hyperpage{89}
+  \item {allocationHandle}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {allocationInfo}
+    \subitem {luna::utils::vulkanAllocator::vmaAllocation}, 
+		\hyperpage{89}
+  \item {allocations}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{93}
+  \item {Api}
+    \subitem {luna::vulkan}, \hyperpage{15}
+  \item {Apostrophe}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {appInfo}
+    \subitem {luna::vulkan::vulkanDevice::deviceHandles}, 
+		\hyperpage{29}
+  \item {application}
+    \subitem {luna::application::application}, \hyperpage{16}
+  \item {AppRender}
+    \subitem {luna}, \hyperpage{4}
+  \item {appRenderEvent}
+    \subitem {luna::appRenderEvent}, \hyperpage{18}
+  \item {AppTick}
+    \subitem {luna}, \hyperpage{4}
+  \item {appTickEvent}
+    \subitem {luna::appTickEvent}, \hyperpage{19}
+  \item {AppUpdate}
+    \subitem {luna}, \hyperpage{4}
+  \item {appUpdateEvent}
+    \subitem {luna::appUpdateEvent}, \hyperpage{20}
+  \item {AtomicCounter}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {atomicCounters}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {attributes}
+    \subitem {luna::vulkan::vulkanPipeline::vertexInputDescription}, 
+		\hyperpage{88}
+
+  \indexspace
+
+  \item {B}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {Backslash}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {Backspace}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {begin}
+    \subitem {luna::renderer::pipeline}, \hyperpage{58}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{95}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{114}
+  \item {beginScene}
+    \subitem {luna::renderer::renderer}, \hyperpage{62}
+  \item {bind}
+    \subitem {luna::renderer::indexBuffer}, \hyperpage{34}
+    \subitem {luna::renderer::shader}, \hyperpage{67}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{84}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{86}
+    \subitem {luna::vulkan::vulkanIndexBuffer}, \hyperpage{107}
+    \subitem {luna::vulkan::vulkanShader}, \hyperpage{125}
+    \subitem {luna::vulkan::vulkanVertexArray}, \hyperpage{133}
+    \subitem {luna::vulkan::vulkanVertexBuffer}, \hyperpage{136}
+  \item {binding}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {bindings}
+    \subitem {luna::vulkan::vulkanPipeline::vertexInputDescription}, 
+		\hyperpage{88}
+  \item {BIT}
+    \subitem {core.h}, \hyperpage{153}
+  \item {Boolean}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {bufferElement}
+    \subitem {luna::renderer::bufferElement}, \hyperpage{21, 22}
+  \item {bufferLayout}
+    \subitem {luna::renderer::bufferLayout}, \hyperpage{23, 24}
+  \item {buildPipeline}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{115}
+  \item {builtinInputs}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {builtinOutputs}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {Button0}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {Button1}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {Button2}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {Button3}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {Button4}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {Button5}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {Button6}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {Button7}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {ButtonLast}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {ButtonLeft}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {ButtonMiddle}
+    \subitem {luna::Mouse}, \hyperpage{9}
+  \item {ButtonRight}
+    \subitem {luna::Mouse}, \hyperpage{9}
+
+  \indexspace
+
+  \item {C}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/bin/debug-\/windows-\/x86\_64/x64/sandbox/src/sandbox.cpp}, 
+		\hyperpage{149}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/bin/release-\/windows-\/x86\_64/x64/sandbox/src/sandbox.cpp}, 
+		\hyperpage{150}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/application.cpp}, 
+		\hyperpage{151}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/application.h}, 
+		\hyperpage{151}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h}, 
+		\hyperpage{152}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/log.cpp}, 
+		\hyperpage{154}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/log.h}, 
+		\hyperpage{154}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/uuid.cpp}, 
+		\hyperpage{157}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/uuid.h}, 
+		\hyperpage{158}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/applicationEvent.h}, 
+		\hyperpage{159}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/event.h}, 
+		\hyperpage{160}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/keyCodes.h}, 
+		\hyperpage{161}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/keyEvent.h}, 
+		\hyperpage{163}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/mouseCodes.h}, 
+		\hyperpage{164}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/mouseEvent.h}, 
+		\hyperpage{165}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/platform.h}, 
+		\hyperpage{167}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/windowsWindow.cpp}, 
+		\hyperpage{167}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/windowsWindow.h}, 
+		\hyperpage{167}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/buffer.cpp}, 
+		\hyperpage{169}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/buffer.h}, 
+		\hyperpage{169}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/device.h}, 
+		\hyperpage{170}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/pipeline.h}, 
+		\hyperpage{171}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.cpp}, 
+		\hyperpage{173}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.h}, 
+		\hyperpage{173}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/shader.cpp}, 
+		\hyperpage{174}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/shader.h}, 
+		\hyperpage{175}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/vertexArray.h}, 
+		\hyperpage{176}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/objectStorage.h}, 
+		\hyperpage{177}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shaderCompiler.cpp}, 
+		\hyperpage{179}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shaderCompiler.h}, 
+		\hyperpage{179}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shaderLibrary.cpp}, 
+		\hyperpage{180}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shaderLibrary.h}, 
+		\hyperpage{181}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/vectorCache.h}, 
+		\hyperpage{182}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanCmdPool.cpp}, 
+		\hyperpage{183}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanCmdPool.h}, 
+		\hyperpage{184}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanDevice.cpp}, 
+		\hyperpage{185}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanDevice.h}, 
+		\hyperpage{185}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/vulkanImgui.cpp}, 
+		\hyperpage{187}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/vulkanImgui.h}, 
+		\hyperpage{187}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanIndexBuffer.cpp}, 
+		\hyperpage{188}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanIndexBuffer.h}, 
+		\hyperpage{189}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.cpp}, 
+		\hyperpage{190}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.h}, 
+		\hyperpage{190}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanShader.cpp}, 
+		\hyperpage{191}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanShader.h}, 
+		\hyperpage{192}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanSwapchain.cpp}, 
+		\hyperpage{193}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanSwapchain.h}, 
+		\hyperpage{194}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanVertexArray.cpp}, 
+		\hyperpage{195}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanVertexArray.h}, 
+		\hyperpage{195}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanVertexBuffer.cpp}, 
+		\hyperpage{197}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanVertexBuffer.h}, 
+		\hyperpage{197}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vma.cpp}, 
+		\hyperpage{198}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.cpp}, 
+		\hyperpage{199}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h}, 
+		\hyperpage{199}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanObjectFactory.cpp}, 
+		\hyperpage{200}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanObjectFactory.h}, 
+		\hyperpage{201}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/vulkanFeatureSupport.cpp}, 
+		\hyperpage{202}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/vulkanFeatureSupport.h}, 
+		\hyperpage{202}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/window/window.h}, 
+		\hyperpage{203}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.cpp}, 
+		\hyperpage{204}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.h}, 
+		\hyperpage{205}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/luna.h}, 
+		\hyperpage{206}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/README.md}, 
+		\hyperpage{206}
+  \item {C:/Users/robbe/source/repos/lolrobbe2/luna/sandbox/src/sandbox.cpp}, 
+		\hyperpage{150}
+  \item {CACHE\_MAX\_ENUM}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {cacheHit}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {cacheInvalidHandle}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {cacheMiss}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {cacheObject}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {cacheOpFailed}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {cacheOpSucces}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {cacheResult}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {CapsLock}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {changedBoundBuffers}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+  \item {Char}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {color}
+    \subitem {luna::vulkan::vulkanPipeline::Vertex}, \hyperpage{82}
+  \item {colorBlendAttachmentState}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{115}
+  \item {Comma}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {commandBufferCount}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+  \item {commandBuffers}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+  \item {commandPool}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{96}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+  \item {compile}
+    \subitem {luna::utils::shaderCompiler}, \hyperpage{69}
+  \item {compileLanguage}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {compileOptions}
+    \subitem {luna::utils::compileSpec}, \hyperpage{26}
+  \item {ControlPointArray}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {CORE}
+    \subitem {core.h}, \hyperpage{153}
+  \item {core.h}
+    \subitem {BIT}, \hyperpage{153}
+    \subitem {CORE}, \hyperpage{153}
+    \subitem {LN\_BIND\_EVENT\_FN}, \hyperpage{153}
+  \item {create}
+    \subitem {luna::renderer::indexBuffer}, \hyperpage{34}
+    \subitem {luna::renderer::shader}, \hyperpage{67}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{86}
+  \item {createApplication}
+    \subitem {luna::application}, \hyperpage{5}
+  \item {createAttributeDescription}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{115}
+  \item {createBindingDescription}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{116}
+  \item {createBuffer}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{90}
+  \item {createCommands}
+    \subitem {luna::renderer::pipeline}, \hyperpage{58}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{116}
+  \item {createContext}
+    \subitem {luna::renderer::device}, \hyperpage{28}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{100}
+  \item {createFrame}
+    \subitem {luna::renderer::renderer}, \hyperpage{62}
+  \item {createFramebuffers}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{100}
+  \item {createImage}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{90}
+    \subitem {luna::utils::vulkanObjectFactory}, \hyperpage{109}
+  \item {createImageView}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{91}
+    \subitem {luna::utils::vulkanObjectFactory}, \hyperpage{110}
+  \item {createInputStates}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{116}
+  \item {createInstance}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{100}
+  \item {createLayout}
+    \subitem {luna::renderer::shader}, \hyperpage{67}
+    \subitem {luna::vulkan::vulkanShader}, \hyperpage{126}
+  \item {createLogicalDevice}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{100}
+  \item {createNewBuffer}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{95}
+  \item {createPipeline}
+    \subitem {luna::renderer::pipeline}, \hyperpage{58}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{116}
+  \item {createPipeLineLayout}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{116}
+  \item {createQueues}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{101}
+  \item {createRef}
+    \subitem {luna}, \hyperpage{4}
+  \item {createScope}
+    \subitem {luna}, \hyperpage{4}
+  \item {createShaderModule}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{116}
+  \item {createShaderStages}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{117}
+  \item {createSwapchain}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{128}
+  \item {createVertexInputState}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{117}
+  \item {currentFrame}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+
+  \indexspace
+
+  \item {D}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {D0}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {D1}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {D2}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {D3}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {D4}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {D5}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {D6}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {D7}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {D8}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {D9}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {data}
+    \subitem {luna::renderer::indexBuffer}, \hyperpage{34}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{87}
+  \item {Delete}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {destroyBuffer}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{91}
+  \item {destroyContext}
+    \subitem {luna::renderer::device}, \hyperpage{28}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{101}
+  \item {destroyImage}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{91}
+  \item {destroyImageView}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{92}
+  \item {destroyPipeline}
+    \subitem {luna::renderer::pipeline}, \hyperpage{58}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{117}
+  \item {destroySwapchain}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{128}
+  \item {destroySyncStructures}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{117}
+  \item {device}
+    \subitem {luna::renderer::pipelineLayout}, \hyperpage{60}
+    \subitem {luna::vulkan::swapchainSpec}, \hyperpage{75}
+    \subitem {luna::vulkan::vulkanCmdPoolSpec}, \hyperpage{97}
+    \subitem {luna::vulkan::vulkanDevice::deviceHandles}, 
+		\hyperpage{29}
+  \item {deviceHandle}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{103}
+  \item {dispatch}
+    \subitem {luna::eventDispatcher}, \hyperpage{32}
+  \item {Double}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {Down}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {drawCommand}
+    \subitem {luna::renderer}, \hyperpage{10}
+  \item {drawCommands}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+  \item {drawIndexed}
+    \subitem {luna::renderer::pipeline}, \hyperpage{58}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{118}
+
+  \indexspace
+
+  \item {E}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {End}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {end}
+    \subitem {luna::renderer::pipeline}, \hyperpage{59}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{95}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{118}
+  \item {endScene}
+    \subitem {luna::renderer::renderer}, \hyperpage{62}
+  \item {engine}
+    \subitem {luna}, \hyperpage{4}
+  \item {Enter}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {Equal}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {eraseValue}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{54}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{80}
+  \item {Escape}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {event.h}
+    \subitem {EVENT\_CLASS\_CATEGORY}, \hyperpage{161}
+    \subitem {EVENT\_CLASS\_TYPE}, \hyperpage{161}
+  \item {EVENT\_CLASS\_CATEGORY}
+    \subitem {event.h}, \hyperpage{161}
+  \item {EVENT\_CLASS\_TYPE}
+    \subitem {event.h}, \hyperpage{161}
+  \item {eventCallbackFn}
+    \subitem {luna::vulkan::window}, \hyperpage{138}
+    \subitem {luna::vulkan::windowsWindow::windowData}, \hyperpage{141}
+  \item {eventCategory}
+    \subitem {luna}, \hyperpage{3}
+  \item {eventCategoryApplication}
+    \subitem {luna}, \hyperpage{4}
+  \item {eventCategoryInput}
+    \subitem {luna}, \hyperpage{4}
+  \item {eventCategoryKeyboard}
+    \subitem {luna}, \hyperpage{4}
+  \item {eventCategoryMouse}
+    \subitem {luna}, \hyperpage{4}
+  \item {eventCategoryMouseButton}
+    \subitem {luna}, \hyperpage{4}
+  \item {eventDispatcher}
+    \subitem {luna::eventDispatcher}, \hyperpage{32}
+  \item {eventType}
+    \subitem {luna}, \hyperpage{4}
+
+  \indexspace
+
+  \item {F}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {F1}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F10}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F11}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F12}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F13}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F14}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F15}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F16}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F17}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F18}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F19}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F2}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F20}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F21}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F22}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F23}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F24}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F25}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F3}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F4}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F5}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F6}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F7}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F8}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {F9}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {fileName}
+    \subitem {luna::utils::compileSpec}, \hyperpage{26}
+  \item {flags}
+    \subitem {luna::vulkan::vulkanCmdPoolSpec}, \hyperpage{97}
+    \subitem {luna::vulkan::vulkanPipeline::vertexInputDescription}, 
+		\hyperpage{88}
+  \item {Float}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {flush}
+    \subitem {luna::renderer::pipeline}, \hyperpage{59}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{95}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{118}
+  \item {fnDrawIndexed}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{118}
+  \item {frameBuffers}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{130}
+  \item {freeCommandBuffer}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{96}
+
+  \indexspace
+
+  \item {G}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {get}
+    \subitem {luna::utils::shaderLibrary}, \hyperpage{71}
+  \item {GET\_UNCODED\_VERSION}
+    \subitem {vulkanDevice.h}, \hyperpage{186}
+  \item {getAllocationInfo}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{92}
+  \item {getCategoryFlags}
+    \subitem {luna::Event}, \hyperpage{31}
+  \item {GetClientLogger}
+    \subitem {luna::Log}, \hyperpage{42}
+  \item {GetCoreLogger}
+    \subitem {luna::Log}, \hyperpage{42}
+  \item {getCount}
+    \subitem {luna::renderer::indexBuffer}, \hyperpage{34}
+    \subitem {luna::vulkan::vulkanIndexBuffer}, \hyperpage{107}
+  \item {getDeviceHandles}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{101}
+  \item {getEventType}
+    \subitem {luna::Event}, \hyperpage{31}
+  \item {getFormatFeatures}
+    \subitem {luna::vulkan::vulkanFeatureSupport}, \hyperpage{104}
+  \item {getFrameBuffer}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{129}
+  \item {getHeight}
+    \subitem {luna::vulkan::window}, \hyperpage{138}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{147}
+    \subitem {luna::windowResizeEvent}, \hyperpage{143}
+  \item {getId}
+    \subitem {luna::uuid}, \hyperpage{77}
+  \item {getIndex}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{87}
+  \item {getIndexBuffer}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{84}
+    \subitem {luna::vulkan::vulkanVertexArray}, \hyperpage{134}
+  \item {getkeyCode}
+    \subitem {luna::keyEvent}, \hyperpage{36}
+  \item {getMouseButton}
+    \subitem {luna::mouseButtonEvent}, \hyperpage{45}
+  \item {getName}
+    \subitem {luna::Event}, \hyperpage{31}
+  \item {getQueue}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{101}
+  \item {getQueueIndex}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{102}
+  \item {getRenderPass}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{118}
+  \item {getRequiredExtensions}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{102}
+  \item {getResourceFormat}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{118}
+  \item {getResourceTypeName}
+    \subitem {luna::utils::shaderCompiler}, \hyperpage{70}
+  \item {getScissor}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{102}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{129}
+  \item {getShaderResource}
+    \subitem {luna::vulkan::vulkanShader}, \hyperpage{126}
+  \item {getSurfaceFormat}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{129}
+  \item {getSwapFormat}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{102}
+  \item {getValue}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{54}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{80}
+  \item {getVertexBuffers}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{84}
+    \subitem {luna::vulkan::vulkanVertexArray}, \hyperpage{134}
+  \item {getViewport}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{102}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{129}
+  \item {getViewportImage}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{129}
+  \item {getWidth}
+    \subitem {luna::vulkan::window}, \hyperpage{138}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{147}
+    \subitem {luna::windowResizeEvent}, \hyperpage{143}
+  \item {getWindow}
+    \subitem {luna::vulkan::window}, \hyperpage{139}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{148}
+  \item {GetX}
+    \subitem {luna::mouseMovedEvent}, \hyperpage{49}
+  \item {getXOffset}
+    \subitem {luna::mouseScrolledEvent}, \hyperpage{51}
+  \item {GetY}
+    \subitem {luna::mouseMovedEvent}, \hyperpage{49}
+  \item {getYOffset}
+    \subitem {luna::mouseScrolledEvent}, \hyperpage{51}
+  \item {GLFW\_INCLUDE\_VULKAN}
+    \subitem {lnpch.h}, \hyperpage{205}
+  \item {GLM\_ENABLE\_EXPERIMENTAL}
+    \subitem {log.h}, \hyperpage{155}
+  \item {GLSL}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {graphicsApi}
+    \subitem {luna::vulkan::window}, \hyperpage{139}
+  \item {graphicsFamily}
+    \subitem {luna::vulkan::queueFamilyIndices}, \hyperpage{60}
+  \item {GraveAccent}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {gui}
+    \subitem {luna::renderer::renderer}, \hyperpage{63}
+
+  \indexspace
+
+  \item {H}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {Half}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {handleCache}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{81}
+  \item {Handled}
+    \subitem {luna::Event}, \hyperpage{31}
+  \item {height}
+    \subitem {luna::vulkan::windowSpec}, \hyperpage{144}
+    \subitem {luna::vulkan::windowsWindow::windowData}, \hyperpage{141}
+  \item {Home}
+    \subitem {luna::input}, \hyperpage{8}
+
+  \indexspace
+
+  \item {I}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {Image}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {imageAvailableSemaphores}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+  \item {imagesInFlight}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{121}
+  \item {imguiPool}
+    \subitem {luna::gui::vulkanImgui}, \hyperpage{106}
+  \item {imGuiRenderPass}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {indexBuffer}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{85}
+  \item {indexCount}
+    \subitem {luna::vulkan::vulkanPipeline::drawCommand}, 
+		\hyperpage{29}
+  \item {indices}
+    \subitem {luna::renderer::renderer::mesh}, \hyperpage{43}
+    \subitem {luna::vulkan::swapchainSpec}, \hyperpage{76}
+  \item {inFlightFences}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {Init}
+    \subitem {luna::Log}, \hyperpage{42}
+  \item {init}
+    \subitem {luna::renderer::renderer}, \hyperpage{62}
+    \subitem {luna::utils::shaderLibrary}, \hyperpage{71}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{92}
+    \subitem {luna::utils::vulkanObjectFactory}, \hyperpage{111}
+    \subitem {luna::vulkan::vulkanFeatureSupport}, \hyperpage{104}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{148}
+  \item {initDefaultRenderpass}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{119}
+  \item {initSyncStructures}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{119}
+  \item {initViewport}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{130}
+  \item {inputAssemblyCreateInfo}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{119}
+  \item {inputAssemblyStateCreateInfo}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {inputDescriptions}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {Insert}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {instance}
+    \subitem {luna::vulkan::vulkanDevice::deviceHandles}, 
+		\hyperpage{29}
+  \item {Int}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {Int64}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {Interpolant}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {isComplete}
+    \subitem {luna::vulkan::queueFamilyIndices}, \hyperpage{60}
+  \item {isGlfwInit}
+    \subitem {luna::vulkan}, \hyperpage{15}
+  \item {IsInCategory}
+    \subitem {luna::Event}, \hyperpage{31}
+  \item {isRepeat}
+    \subitem {luna::keyPressedEvent}, \hyperpage{37}
+
+  \indexspace
+
+  \item {J}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {justResized}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+
+  \indexspace
+
+  \item {K}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {keyCode}
+    \subitem {luna}, \hyperpage{3}
+  \item {keyEvent}
+    \subitem {luna::keyEvent}, \hyperpage{36}
+  \item {KeyPressed}
+    \subitem {luna}, \hyperpage{4}
+  \item {keyPressedEvent}
+    \subitem {luna::keyPressedEvent}, \hyperpage{37}
+  \item {KeyReleased}
+    \subitem {luna}, \hyperpage{4}
+  \item {keyReleasedEvent}
+    \subitem {luna::keyReleasedEvent}, \hyperpage{39}
+  \item {KeyTyped}
+    \subitem {luna}, \hyperpage{4}
+  \item {keyTypedEvent}
+    \subitem {luna::keyTypedEvent}, \hyperpage{40}
+  \item {KP0}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP1}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP2}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP3}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP4}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP5}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP6}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP7}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP8}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KP9}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KPAdd}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KPDecimal}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KPDivide}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KPEnter}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KPEqual}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KPMultiply}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {KPSubtract}
+    \subitem {luna::input}, \hyperpage{8}
+
+  \indexspace
+
+  \item {L}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {language}
+    \subitem {luna::utils::compileSpec}, \hyperpage{26}
+  \item {layout}
+    \subitem {luna::renderer::renderer}, \hyperpage{63}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {Left}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {LeftAlt}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {LeftBracket}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {LeftControl}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {LeftShift}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {LeftSuper}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {LN\_BIND\_EVENT\_FN}
+    \subitem {core.h}, \hyperpage{153}
+  \item {LN\_CORE\_CRITICAL}
+    \subitem {log.h}, \hyperpage{155}
+  \item {LN\_CORE\_ERROR}
+    \subitem {log.h}, \hyperpage{155}
+  \item {LN\_CORE\_INFO}
+    \subitem {log.h}, \hyperpage{155}
+  \item {LN\_CORE\_TRACE}
+    \subitem {log.h}, \hyperpage{156}
+  \item {LN\_CORE\_WARN}
+    \subitem {log.h}, \hyperpage{156}
+  \item {LN\_CRITICAL}
+    \subitem {log.h}, \hyperpage{156}
+  \item {LN\_ERROR}
+    \subitem {log.h}, \hyperpage{156}
+  \item {LN\_INFO}
+    \subitem {log.h}, \hyperpage{156}
+  \item {LN\_TRACE}
+    \subitem {log.h}, \hyperpage{156}
+  \item {LN\_WARN}
+    \subitem {log.h}, \hyperpage{156}
+  \item {lnpch.cpp}
+    \subitem {STB\_IMAGE\_IMPLEMENTATION}, \hyperpage{204}
+  \item {lnpch.h}
+    \subitem {GLFW\_INCLUDE\_VULKAN}, \hyperpage{205}
+  \item {load}
+    \subitem {luna::utils::shaderLibrary}, \hyperpage{72}
+  \item {location}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {lockGuard}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{81}
+  \item {log.h}
+    \subitem {GLM\_ENABLE\_EXPERIMENTAL}, \hyperpage{155}
+    \subitem {LN\_CORE\_CRITICAL}, \hyperpage{155}
+    \subitem {LN\_CORE\_ERROR}, \hyperpage{155}
+    \subitem {LN\_CORE\_INFO}, \hyperpage{155}
+    \subitem {LN\_CORE\_TRACE}, \hyperpage{156}
+    \subitem {LN\_CORE\_WARN}, \hyperpage{156}
+    \subitem {LN\_CRITICAL}, \hyperpage{156}
+    \subitem {LN\_ERROR}, \hyperpage{156}
+    \subitem {LN\_INFO}, \hyperpage{156}
+    \subitem {LN\_TRACE}, \hyperpage{156}
+    \subitem {LN\_WARN}, \hyperpage{156}
+    \subitem {operator$<$$<$}, \hyperpage{156, 157}
+  \item {luna}, \hyperpage{2}
+    \subitem {AppRender}, \hyperpage{4}
+    \subitem {AppTick}, \hyperpage{4}
+    \subitem {AppUpdate}, \hyperpage{4}
+    \subitem {createRef}, \hyperpage{4}
+    \subitem {createScope}, \hyperpage{4}
+    \subitem {engine}, \hyperpage{4}
+    \subitem {eventCategory}, \hyperpage{3}
+    \subitem {eventCategoryApplication}, \hyperpage{4}
+    \subitem {eventCategoryInput}, \hyperpage{4}
+    \subitem {eventCategoryKeyboard}, \hyperpage{4}
+    \subitem {eventCategoryMouse}, \hyperpage{4}
+    \subitem {eventCategoryMouseButton}, \hyperpage{4}
+    \subitem {eventType}, \hyperpage{4}
+    \subitem {keyCode}, \hyperpage{3}
+    \subitem {KeyPressed}, \hyperpage{4}
+    \subitem {KeyReleased}, \hyperpage{4}
+    \subitem {KeyTyped}, \hyperpage{4}
+    \subitem {MouseButtonPressed}, \hyperpage{4}
+    \subitem {MouseButtonReleased}, \hyperpage{4}
+    \subitem {mouseCode}, \hyperpage{3}
+    \subitem {MouseMoved}, \hyperpage{4}
+    \subitem {MouseScrolled}, \hyperpage{4}
+    \subitem {None}, \hyperpage{4}
+    \subitem {operator$<$$<$}, \hyperpage{5}
+    \subitem {randomDevice}, \hyperpage{5}
+    \subitem {ref}, \hyperpage{3}
+    \subitem {scope}, \hyperpage{3}
+    \subitem {uniformDistr}, \hyperpage{5}
+    \subitem {WindowClose}, \hyperpage{4}
+    \subitem {WindowFocus}, \hyperpage{4}
+    \subitem {WindowLostFocus}, \hyperpage{4}
+    \subitem {WindowMoved}, \hyperpage{4}
+    \subitem {WindowResize}, \hyperpage{4}
+  \item {luna.h}
+    \subitem {main}, \hyperpage{206}
+  \item {luna::application}, \hyperpage{5}
+    \subitem {createApplication}, \hyperpage{5}
+  \item {luna::application::application}, \hyperpage{15}
+    \subitem {$\sim$application}, \hyperpage{16}
+    \subitem {application}, \hyperpage{16}
+    \subitem {mWindow}, \hyperpage{17}
+    \subitem {onEvent}, \hyperpage{16}
+    \subitem {run}, \hyperpage{17}
+    \subitem {running}, \hyperpage{17}
+    \subitem {windowStorage}, \hyperpage{17}
+  \item {luna::appRenderEvent}, \hyperpage{17}
+    \subitem {appRenderEvent}, \hyperpage{18}
+  \item {luna::appTickEvent}, \hyperpage{18}
+    \subitem {appTickEvent}, \hyperpage{19}
+  \item {luna::appUpdateEvent}, \hyperpage{19}
+    \subitem {appUpdateEvent}, \hyperpage{20}
+  \item {luna::Event}, \hyperpage{30}
+    \subitem {$\sim$Event}, \hyperpage{31}
+    \subitem {getCategoryFlags}, \hyperpage{31}
+    \subitem {getEventType}, \hyperpage{31}
+    \subitem {getName}, \hyperpage{31}
+    \subitem {Handled}, \hyperpage{31}
+    \subitem {IsInCategory}, \hyperpage{31}
+    \subitem {toString}, \hyperpage{31}
+  \item {luna::eventDispatcher}, \hyperpage{32}
+    \subitem {dispatch}, \hyperpage{32}
+    \subitem {eventDispatcher}, \hyperpage{32}
+    \subitem {m\_Event}, \hyperpage{33}
+  \item {luna::gui}, \hyperpage{5}
+  \item {luna::gui::vulkanImgui}, \hyperpage{105}
+    \subitem {$\sim$vulkanImgui}, \hyperpage{105}
+    \subitem {imguiPool}, \hyperpage{106}
+    \subitem {pipeline}, \hyperpage{106}
+    \subitem {vulkanImgui}, \hyperpage{105}
+  \item {luna::input}, \hyperpage{6}
+    \subitem {A}, \hyperpage{7}
+    \subitem {Apostrophe}, \hyperpage{6}
+    \subitem {B}, \hyperpage{7}
+    \subitem {Backslash}, \hyperpage{7}
+    \subitem {Backspace}, \hyperpage{7}
+    \subitem {C}, \hyperpage{7}
+    \subitem {CapsLock}, \hyperpage{8}
+    \subitem {Comma}, \hyperpage{6}
+    \subitem {D}, \hyperpage{7}
+    \subitem {D0}, \hyperpage{6}
+    \subitem {D1}, \hyperpage{6}
+    \subitem {D2}, \hyperpage{6}
+    \subitem {D3}, \hyperpage{6}
+    \subitem {D4}, \hyperpage{7}
+    \subitem {D5}, \hyperpage{7}
+    \subitem {D6}, \hyperpage{7}
+    \subitem {D7}, \hyperpage{7}
+    \subitem {D8}, \hyperpage{7}
+    \subitem {D9}, \hyperpage{7}
+    \subitem {Delete}, \hyperpage{7}
+    \subitem {Down}, \hyperpage{7}
+    \subitem {E}, \hyperpage{7}
+    \subitem {End}, \hyperpage{8}
+    \subitem {Enter}, \hyperpage{7}
+    \subitem {Equal}, \hyperpage{7}
+    \subitem {Escape}, \hyperpage{7}
+    \subitem {F}, \hyperpage{7}
+    \subitem {F1}, \hyperpage{8}
+    \subitem {F10}, \hyperpage{8}
+    \subitem {F11}, \hyperpage{8}
+    \subitem {F12}, \hyperpage{8}
+    \subitem {F13}, \hyperpage{8}
+    \subitem {F14}, \hyperpage{8}
+    \subitem {F15}, \hyperpage{8}
+    \subitem {F16}, \hyperpage{8}
+    \subitem {F17}, \hyperpage{8}
+    \subitem {F18}, \hyperpage{8}
+    \subitem {F19}, \hyperpage{8}
+    \subitem {F2}, \hyperpage{8}
+    \subitem {F20}, \hyperpage{8}
+    \subitem {F21}, \hyperpage{8}
+    \subitem {F22}, \hyperpage{8}
+    \subitem {F23}, \hyperpage{8}
+    \subitem {F24}, \hyperpage{8}
+    \subitem {F25}, \hyperpage{8}
+    \subitem {F3}, \hyperpage{8}
+    \subitem {F4}, \hyperpage{8}
+    \subitem {F5}, \hyperpage{8}
+    \subitem {F6}, \hyperpage{8}
+    \subitem {F7}, \hyperpage{8}
+    \subitem {F8}, \hyperpage{8}
+    \subitem {F9}, \hyperpage{8}
+    \subitem {G}, \hyperpage{7}
+    \subitem {GraveAccent}, \hyperpage{7}
+    \subitem {H}, \hyperpage{7}
+    \subitem {Home}, \hyperpage{8}
+    \subitem {I}, \hyperpage{7}
+    \subitem {Insert}, \hyperpage{7}
+    \subitem {J}, \hyperpage{7}
+    \subitem {K}, \hyperpage{7}
+    \subitem {KP0}, \hyperpage{8}
+    \subitem {KP1}, \hyperpage{8}
+    \subitem {KP2}, \hyperpage{8}
+    \subitem {KP3}, \hyperpage{8}
+    \subitem {KP4}, \hyperpage{8}
+    \subitem {KP5}, \hyperpage{8}
+    \subitem {KP6}, \hyperpage{8}
+    \subitem {KP7}, \hyperpage{8}
+    \subitem {KP8}, \hyperpage{8}
+    \subitem {KP9}, \hyperpage{8}
+    \subitem {KPAdd}, \hyperpage{8}
+    \subitem {KPDecimal}, \hyperpage{8}
+    \subitem {KPDivide}, \hyperpage{8}
+    \subitem {KPEnter}, \hyperpage{8}
+    \subitem {KPEqual}, \hyperpage{8}
+    \subitem {KPMultiply}, \hyperpage{8}
+    \subitem {KPSubtract}, \hyperpage{8}
+    \subitem {L}, \hyperpage{7}
+    \subitem {Left}, \hyperpage{7}
+    \subitem {LeftAlt}, \hyperpage{9}
+    \subitem {LeftBracket}, \hyperpage{7}
+    \subitem {LeftControl}, \hyperpage{9}
+    \subitem {LeftShift}, \hyperpage{9}
+    \subitem {LeftSuper}, \hyperpage{9}
+    \subitem {M}, \hyperpage{7}
+    \subitem {Menu}, \hyperpage{9}
+    \subitem {Minus}, \hyperpage{6}
+    \subitem {N}, \hyperpage{7}
+    \subitem {NumLock}, \hyperpage{8}
+    \subitem {O}, \hyperpage{7}
+    \subitem {P}, \hyperpage{7}
+    \subitem {PageDown}, \hyperpage{8}
+    \subitem {PageUp}, \hyperpage{8}
+    \subitem {Pause}, \hyperpage{8}
+    \subitem {Period}, \hyperpage{6}
+    \subitem {PrintScreen}, \hyperpage{8}
+    \subitem {Q}, \hyperpage{7}
+    \subitem {R}, \hyperpage{7}
+    \subitem {Right}, \hyperpage{7}
+    \subitem {RightAlt}, \hyperpage{9}
+    \subitem {RightBracket}, \hyperpage{7}
+    \subitem {RightControl}, \hyperpage{9}
+    \subitem {RightShift}, \hyperpage{9}
+    \subitem {RightSuper}, \hyperpage{9}
+    \subitem {S}, \hyperpage{7}
+    \subitem {ScrollLock}, \hyperpage{8}
+    \subitem {Semicolon}, \hyperpage{7}
+    \subitem {Slash}, \hyperpage{6}
+    \subitem {Space}, \hyperpage{6}
+    \subitem {T}, \hyperpage{7}
+    \subitem {Tab}, \hyperpage{7}
+    \subitem {U}, \hyperpage{7}
+    \subitem {Up}, \hyperpage{7}
+    \subitem {V}, \hyperpage{7}
+    \subitem {W}, \hyperpage{7}
+    \subitem {World1}, \hyperpage{7}
+    \subitem {World2}, \hyperpage{7}
+    \subitem {X}, \hyperpage{7}
+    \subitem {Y}, \hyperpage{7}
+    \subitem {Z}, \hyperpage{7}
+  \item {luna::keyEvent}, \hyperpage{35}
+    \subitem {getkeyCode}, \hyperpage{36}
+    \subitem {keyEvent}, \hyperpage{36}
+    \subitem {m\_keyCode}, \hyperpage{36}
+  \item {luna::keyPressedEvent}, \hyperpage{36}
+    \subitem {isRepeat}, \hyperpage{37}
+    \subitem {keyPressedEvent}, \hyperpage{37}
+    \subitem {m\_IsRepeat}, \hyperpage{38}
+    \subitem {toString}, \hyperpage{37}
+  \item {luna::keyReleasedEvent}, \hyperpage{38}
+    \subitem {keyReleasedEvent}, \hyperpage{39}
+    \subitem {toString}, \hyperpage{39}
+  \item {luna::keyTypedEvent}, \hyperpage{40}
+    \subitem {keyTypedEvent}, \hyperpage{40}
+    \subitem {toString}, \hyperpage{41}
+  \item {luna::Log}, \hyperpage{41}
+    \subitem {GetClientLogger}, \hyperpage{42}
+    \subitem {GetCoreLogger}, \hyperpage{42}
+    \subitem {Init}, \hyperpage{42}
+    \subitem {s\_ClientLogger}, \hyperpage{42}
+    \subitem {s\_CoreLogger}, \hyperpage{42}
+  \item {luna::Mouse}, \hyperpage{9}
+    \subitem {Button0}, \hyperpage{9}
+    \subitem {Button1}, \hyperpage{9}
+    \subitem {Button2}, \hyperpage{9}
+    \subitem {Button3}, \hyperpage{9}
+    \subitem {Button4}, \hyperpage{9}
+    \subitem {Button5}, \hyperpage{9}
+    \subitem {Button6}, \hyperpage{9}
+    \subitem {Button7}, \hyperpage{9}
+    \subitem {ButtonLast}, \hyperpage{9}
+    \subitem {ButtonLeft}, \hyperpage{9}
+    \subitem {ButtonMiddle}, \hyperpage{9}
+    \subitem {ButtonRight}, \hyperpage{9}
+  \item {luna::mouseButtonEvent}, \hyperpage{44}
+    \subitem {getMouseButton}, \hyperpage{45}
+    \subitem {m\_Button}, \hyperpage{45}
+    \subitem {mouseButtonEvent}, \hyperpage{45}
+  \item {luna::mouseButtonPressedEvent}, \hyperpage{45}
+    \subitem {mouseButtonPressedEvent}, \hyperpage{46}
+    \subitem {toString}, \hyperpage{46}
+  \item {luna::mouseButtonReleasedEvent}, \hyperpage{47}
+    \subitem {mouseButtonReleasedEvent}, \hyperpage{48}
+    \subitem {toString}, \hyperpage{48}
+  \item {luna::mouseMovedEvent}, \hyperpage{48}
+    \subitem {GetX}, \hyperpage{49}
+    \subitem {GetY}, \hyperpage{49}
+    \subitem {m\_MouseX}, \hyperpage{50}
+    \subitem {m\_MouseY}, \hyperpage{50}
+    \subitem {mouseMovedEvent}, \hyperpage{49}
+    \subitem {toString}, \hyperpage{50}
+  \item {luna::mouseScrolledEvent}, \hyperpage{50}
+    \subitem {getXOffset}, \hyperpage{51}
+    \subitem {getYOffset}, \hyperpage{51}
+    \subitem {m\_XOffset}, \hyperpage{52}
+    \subitem {m\_YOffset}, \hyperpage{52}
+    \subitem {mouseScrolledEvent}, \hyperpage{51}
+    \subitem {toString}, \hyperpage{52}
+  \item {luna::renderer}, \hyperpage{9}
+    \subitem {AccelerationStructure}, \hyperpage{12}
+    \subitem {accelerationStructures}, \hyperpage{11}
+    \subitem {AtomicCounter}, \hyperpage{11}
+    \subitem {atomicCounters}, \hyperpage{11}
+    \subitem {Boolean}, \hyperpage{11}
+    \subitem {builtinInputs}, \hyperpage{11}
+    \subitem {builtinOutputs}, \hyperpage{11}
+    \subitem {Char}, \hyperpage{12}
+    \subitem {ControlPointArray}, \hyperpage{12}
+    \subitem {Double}, \hyperpage{12}
+    \subitem {drawCommand}, \hyperpage{10}
+    \subitem {Float}, \hyperpage{12}
+    \subitem {Half}, \hyperpage{12}
+    \subitem {Image}, \hyperpage{12}
+    \subitem {Int}, \hyperpage{11}
+    \subitem {Int64}, \hyperpage{11}
+    \subitem {Interpolant}, \hyperpage{12}
+    \subitem {mat2}, \hyperpage{12}
+    \subitem {mat3}, \hyperpage{12}
+    \subitem {mat4}, \hyperpage{12}
+    \subitem {PushConstant}, \hyperpage{12}
+    \subitem {pushConstantBuffers}, \hyperpage{11}
+    \subitem {RayQuery}, \hyperpage{12}
+    \subitem {SampledImage}, \hyperpage{12}
+    \subitem {sampledImages}, \hyperpage{11}
+    \subitem {Sampler}, \hyperpage{12}
+    \subitem {SByte}, \hyperpage{11}
+    \subitem {separateImages}, \hyperpage{11}
+    \subitem {separateSsamplers}, \hyperpage{11}
+    \subitem {shaderStage}, \hyperpage{10}
+    \subitem {shaderStageCompute}, \hyperpage{11}
+    \subitem {shaderStageFragment}, \hyperpage{11}
+    \subitem {shaderStageGeometry}, \hyperpage{11}
+    \subitem {shaderStageTessellationControl}, \hyperpage{11}
+    \subitem {shaderStageTessellationEvaluation}, \hyperpage{11}
+    \subitem {shaderStageVertex}, \hyperpage{11}
+    \subitem {Short}, \hyperpage{11}
+    \subitem {stageInputs}, \hyperpage{11}
+    \subitem {stageOutputs}, \hyperpage{11}
+    \subitem {StorageBuffer}, \hyperpage{12}
+    \subitem {storageBuffers}, \hyperpage{11}
+    \subitem {storageImages}, \hyperpage{11}
+    \subitem {Struct}, \hyperpage{12}
+    \subitem {subpassInputs}, \hyperpage{11}
+    \subitem {typeClass}, \hyperpage{11}
+    \subitem {typeId}, \hyperpage{11}
+    \subitem {UByte}, \hyperpage{11}
+    \subitem {UInt}, \hyperpage{11}
+    \subitem {UInt64}, \hyperpage{11}
+    \subitem {Uniform}, \hyperpage{12}
+    \subitem {uniformBuffers}, \hyperpage{11}
+    \subitem {Unknown}, \hyperpage{11}
+    \subitem {UShort}, \hyperpage{11}
+    \subitem {Vec2}, \hyperpage{12}
+    \subitem {Vec3}, \hyperpage{12}
+    \subitem {Vec4}, \hyperpage{12}
+    \subitem {Void}, \hyperpage{11}
+  \item {luna::renderer::bufferElement}, \hyperpage{20}
+    \subitem {bufferElement}, \hyperpage{21, 22}
+    \subitem {name}, \hyperpage{22}
+    \subitem {offset}, \hyperpage{22}
+    \subitem {size}, \hyperpage{22}
+    \subitem {type}, \hyperpage{22}
+  \item {luna::renderer::bufferLayout}, \hyperpage{23}
+    \subitem {$\sim$bufferLayout}, \hyperpage{24}
+    \subitem {bufferLayout}, \hyperpage{23, 24}
+    \subitem {mElements}, \hyperpage{24}
+  \item {luna::renderer::device}, \hyperpage{27}
+    \subitem {$\sim$device}, \hyperpage{28}
+    \subitem {createContext}, \hyperpage{28}
+    \subitem {destroyContext}, \hyperpage{28}
+    \subitem {window}, \hyperpage{28}
+  \item {luna::renderer::indexBuffer}, \hyperpage{33}
+    \subitem {$\sim$indexBuffer}, \hyperpage{34}
+    \subitem {bind}, \hyperpage{34}
+    \subitem {create}, \hyperpage{34}
+    \subitem {data}, \hyperpage{34}
+    \subitem {getCount}, \hyperpage{34}
+    \subitem {size}, \hyperpage{34}
+    \subitem {unbind}, \hyperpage{34}
+  \item {luna::renderer::pipeline}, \hyperpage{57}
+    \subitem {$\sim$pipeline}, \hyperpage{57}
+    \subitem {begin}, \hyperpage{58}
+    \subitem {createCommands}, \hyperpage{58}
+    \subitem {createPipeline}, \hyperpage{58}
+    \subitem {destroyPipeline}, \hyperpage{58}
+    \subitem {drawIndexed}, \hyperpage{58}
+    \subitem {end}, \hyperpage{59}
+    \subitem {flush}, \hyperpage{59}
+    \subitem {test}, \hyperpage{59}
+  \item {luna::renderer::pipelineLayout}, \hyperpage{59}
+    \subitem {device}, \hyperpage{60}
+    \subitem {pipelineShaders}, \hyperpage{60}
+  \item {luna::renderer::renderer}, \hyperpage{61}
+    \subitem {beginScene}, \hyperpage{62}
+    \subitem {createFrame}, \hyperpage{62}
+    \subitem {endScene}, \hyperpage{62}
+    \subitem {gui}, \hyperpage{63}
+    \subitem {init}, \hyperpage{62}
+    \subitem {layout}, \hyperpage{63}
+    \subitem {newFrame}, \hyperpage{62}
+    \subitem {rendererDevice}, \hyperpage{63}
+    \subitem {rendererPipeline}, \hyperpage{63}
+    \subitem {Selected}, \hyperpage{63}
+    \subitem {Submit}, \hyperpage{62}
+    \subitem {testMesh}, \hyperpage{63}
+    \subitem {vertArray}, \hyperpage{63}
+  \item {luna::renderer::renderer::mesh}, \hyperpage{43}
+    \subitem {indices}, \hyperpage{43}
+    \subitem {vertices}, \hyperpage{43}
+  \item {luna::renderer::renderer::vertex}, \hyperpage{82}
+    \subitem {vert}, \hyperpage{82}
+  \item {luna::renderer::shader}, \hyperpage{65}
+    \subitem {$\sim$shader}, \hyperpage{67}
+    \subitem {bind}, \hyperpage{67}
+    \subitem {create}, \hyperpage{67}
+    \subitem {createLayout}, \hyperpage{67}
+    \subitem {self}, \hyperpage{68}
+    \subitem {shaderLayout}, \hyperpage{68}
+    \subitem {shaderName}, \hyperpage{68}
+    \subitem {shaderSrc}, \hyperpage{68}
+    \subitem {stage}, \hyperpage{68}
+    \subitem {unbind}, \hyperpage{68}
+    \subitem {vulkanDevice}, \hyperpage{68}
+  \item {luna::renderer::shaderResource}, \hyperpage{72}
+    \subitem {binding}, \hyperpage{73}
+    \subitem {location}, \hyperpage{73}
+    \subitem {members}, \hyperpage{73}
+    \subitem {name}, \hyperpage{73}
+    \subitem {offset}, \hyperpage{73}
+    \subitem {resourceClass}, \hyperpage{73}
+    \subitem {set}, \hyperpage{73}
+    \subitem {stride}, \hyperpage{73}
+    \subitem {type}, \hyperpage{73}
+  \item {luna::renderer::vertexArray}, \hyperpage{83}
+    \subitem {$\sim$vertexArray}, \hyperpage{84}
+    \subitem {addVertexBuffer}, \hyperpage{84}
+    \subitem {bind}, \hyperpage{84}
+    \subitem {getIndexBuffer}, \hyperpage{84}
+    \subitem {getVertexBuffers}, \hyperpage{84}
+    \subitem {indexBuffer}, \hyperpage{85}
+    \subitem {setIndexBuffer}, \hyperpage{84}
+    \subitem {unbind}, \hyperpage{85}
+    \subitem {vertexBuffers}, \hyperpage{85}
+  \item {luna::renderer::vertexBuffer}, \hyperpage{85}
+    \subitem {$\sim$vertexBuffer}, \hyperpage{86}
+    \subitem {bind}, \hyperpage{86}
+    \subitem {create}, \hyperpage{86}
+    \subitem {data}, \hyperpage{87}
+    \subitem {getIndex}, \hyperpage{87}
+    \subitem {operator[]}, \hyperpage{87}
+    \subitem {setData}, \hyperpage{87}
+    \subitem {size}, \hyperpage{87}
+    \subitem {srcShader}, \hyperpage{87}
+    \subitem {unbind}, \hyperpage{87}
+  \item {luna::utils}, \hyperpage{12}
+    \subitem {allocationHandle}, \hyperpage{13}
+    \subitem {CACHE\_MAX\_ENUM}, \hyperpage{13}
+    \subitem {cacheHit}, \hyperpage{13}
+    \subitem {cacheInvalidHandle}, \hyperpage{13}
+    \subitem {cacheMiss}, \hyperpage{13}
+    \subitem {cacheObject}, \hyperpage{13}
+    \subitem {cacheOpFailed}, \hyperpage{13}
+    \subitem {cacheOpSucces}, \hyperpage{13}
+    \subitem {cacheResult}, \hyperpage{13}
+    \subitem {compileLanguage}, \hyperpage{13}
+    \subitem {GLSL}, \hyperpage{13}
+    \subitem {SPIR}, \hyperpage{13}
+    \subitem {SPIR\_V}, \hyperpage{13}
+    \subitem {storageInvalidHandle}, \hyperpage{14}
+    \subitem {storageObject}, \hyperpage{13}
+    \subitem {storageOpFailed}, \hyperpage{14}
+    \subitem {storageOpSucces}, \hyperpage{14}
+    \subitem {storageResult}, \hyperpage{13}
+  \item {luna::utils::compileSpec}, \hyperpage{26}
+    \subitem {compileOptions}, \hyperpage{26}
+    \subitem {fileName}, \hyperpage{26}
+    \subitem {language}, \hyperpage{26}
+    \subitem {reflect}, \hyperpage{27}
+    \subitem {shaderKind}, \hyperpage{27}
+    \subitem {source}, \hyperpage{27}
+  \item {luna::utils::objectStorage$<$ value $>$}, \hyperpage{52}
+    \subitem {eraseValue}, \hyperpage{54}
+    \subitem {getValue}, \hyperpage{54}
+    \subitem {objectCache}, \hyperpage{56}
+    \subitem {objectMemory}, \hyperpage{56}
+    \subitem {objectStorage}, \hyperpage{54}
+    \subitem {operator[]}, \hyperpage{55}
+    \subitem {putValue}, \hyperpage{55}
+    \subitem {setValue}, \hyperpage{56}
+  \item {luna::utils::shaderCompiler}, \hyperpage{69}
+    \subitem {$\sim$shaderCompiler}, \hyperpage{69}
+    \subitem {compile}, \hyperpage{69}
+    \subitem {getResourceTypeName}, \hyperpage{70}
+    \subitem {reflect}, \hyperpage{70}
+    \subitem {shaderCompiler}, \hyperpage{69}
+  \item {luna::utils::shaderLibrary}, \hyperpage{70}
+    \subitem {get}, \hyperpage{71}
+    \subitem {init}, \hyperpage{71}
+    \subitem {load}, \hyperpage{72}
+    \subitem {shaders}, \hyperpage{72}
+  \item {luna::utils::vectorCache$<$ value $>$}, \hyperpage{78}
+    \subitem {$\sim$vectorCache}, \hyperpage{80}
+    \subitem {eraseValue}, \hyperpage{80}
+    \subitem {getValue}, \hyperpage{80}
+    \subitem {handleCache}, \hyperpage{81}
+    \subitem {lockGuard}, \hyperpage{81}
+    \subitem {maxCacheSize}, \hyperpage{81}
+    \subitem {putValue}, \hyperpage{80}
+    \subitem {setValue}, \hyperpage{81}
+    \subitem {valueCache}, \hyperpage{81}
+    \subitem {vectorCache}, \hyperpage{79}
+  \item {luna::utils::vulkanAllocator}, \hyperpage{89}
+    \subitem {allocations}, \hyperpage{93}
+    \subitem {createBuffer}, \hyperpage{90}
+    \subitem {createImage}, \hyperpage{90}
+    \subitem {createImageView}, \hyperpage{91}
+    \subitem {destroyBuffer}, \hyperpage{91}
+    \subitem {destroyImage}, \hyperpage{91}
+    \subitem {destroyImageView}, \hyperpage{92}
+    \subitem {getAllocationInfo}, \hyperpage{92}
+    \subitem {init}, \hyperpage{92}
+    \subitem {pDevice}, \hyperpage{93}
+    \subitem {sAllocator}, \hyperpage{93}
+    \subitem {shutdown}, \hyperpage{92}
+    \subitem {transferQueue}, \hyperpage{93}
+  \item {luna::utils::vulkanAllocator::vmaAllocation}, \hyperpage{88}
+    \subitem {allocation}, \hyperpage{89}
+    \subitem {allocationInfo}, \hyperpage{89}
+  \item {luna::utils::vulkanObjectFactory}, \hyperpage{108}
+    \subitem {createImage}, \hyperpage{109}
+    \subitem {createImageView}, \hyperpage{110}
+    \subitem {init}, \hyperpage{111}
+    \subitem {pDevice}, \hyperpage{111}
+  \item {luna::uuid}, \hyperpage{76}
+    \subitem {\_uuid}, \hyperpage{77}
+    \subitem {getId}, \hyperpage{77}
+    \subitem {operator uint64\_t}, \hyperpage{77}
+    \subitem {uuid}, \hyperpage{77}
+  \item {luna::vulkan}, \hyperpage{14}
+    \subitem {Api}, \hyperpage{15}
+    \subitem {isGlfwInit}, \hyperpage{15}
+    \subitem {NONE}, \hyperpage{15}
+    \subitem {OPENGL}, \hyperpage{15}
+    \subitem {virtualCmdBuffer}, \hyperpage{14}
+    \subitem {VULKAN}, \hyperpage{15}
+  \item {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{24}
+    \subitem {commandBufferCount}, \hyperpage{25}
+    \subitem {pCommandBuffers}, \hyperpage{25}
+    \subitem {pNext}, \hyperpage{25}
+    \subitem {pSignalSemaphores}, \hyperpage{25}
+    \subitem {pWaitDstStageMask}, \hyperpage{25}
+    \subitem {pWaitSemaphores}, \hyperpage{25}
+    \subitem {signalSemaphoreCount}, \hyperpage{25}
+    \subitem {waitSemaphoreCount}, \hyperpage{25}
+  \item {luna::vulkan::queueFamilyIndices}, \hyperpage{60}
+    \subitem {graphicsFamily}, \hyperpage{60}
+    \subitem {isComplete}, \hyperpage{60}
+    \subitem {presentFamily}, \hyperpage{61}
+    \subitem {transferFamily}, \hyperpage{61}
+  \item {luna::vulkan::swapchainSpec}, \hyperpage{75}
+    \subitem {device}, \hyperpage{75}
+    \subitem {indices}, \hyperpage{76}
+    \subitem {physicalDevice}, \hyperpage{76}
+    \subitem {surface}, \hyperpage{76}
+    \subitem {swapchainExtent}, \hyperpage{76}
+    \subitem {window}, \hyperpage{76}
+  \item {luna::vulkan::vulkanCmdPool}, \hyperpage{93}
+    \subitem {$\sim$vulkanCmdPool}, \hyperpage{94}
+    \subitem {begin}, \hyperpage{95}
+    \subitem {commandPool}, \hyperpage{96}
+    \subitem {createNewBuffer}, \hyperpage{95}
+    \subitem {end}, \hyperpage{95}
+    \subitem {flush}, \hyperpage{95}
+    \subitem {freeCommandBuffer}, \hyperpage{96}
+    \subitem {operator=}, \hyperpage{96}
+    \subitem {sCommandPoolSpec}, \hyperpage{96}
+    \subitem {virtualBuffers}, \hyperpage{97}
+    \subitem {vulkanCmdPool}, \hyperpage{94}
+    \subitem {vulkanCmdPool::operator[]}, \hyperpage{96}
+  \item {luna::vulkan::vulkanCmdPoolSpec}, \hyperpage{97}
+    \subitem {device}, \hyperpage{97}
+    \subitem {flags}, \hyperpage{97}
+    \subitem {queueFamilyIndex}, \hyperpage{97}
+  \item {luna::vulkan::vulkanDevice}, \hyperpage{98}
+    \subitem {$\sim$vulkanDevice}, \hyperpage{100}
+    \subitem {createContext}, \hyperpage{100}
+    \subitem {createFramebuffers}, \hyperpage{100}
+    \subitem {createInstance}, \hyperpage{100}
+    \subitem {createLogicalDevice}, \hyperpage{100}
+    \subitem {createQueues}, \hyperpage{101}
+    \subitem {destroyContext}, \hyperpage{101}
+    \subitem {deviceHandle}, \hyperpage{103}
+    \subitem {getDeviceHandles}, \hyperpage{101}
+    \subitem {getQueue}, \hyperpage{101}
+    \subitem {getQueueIndex}, \hyperpage{102}
+    \subitem {getRequiredExtensions}, \hyperpage{102}
+    \subitem {getScissor}, \hyperpage{102}
+    \subitem {getSwapFormat}, \hyperpage{102}
+    \subitem {getViewport}, \hyperpage{102}
+    \subitem {pickPhysicalDevice}, \hyperpage{102}
+    \subitem {queueCreateInfos}, \hyperpage{103}
+    \subitem {queueFamily}, \hyperpage{103}
+    \subitem {queuePriorities}, \hyperpage{103}
+    \subitem {surface}, \hyperpage{104}
+    \subitem {swapchain}, \hyperpage{104}
+    \subitem {vulkanDevice}, \hyperpage{99}
+    \subitem {vulkanDevice::debugCallback}, \hyperpage{103}
+  \item {luna::vulkan::vulkanDevice::deviceHandles}, \hyperpage{28}
+    \subitem {appInfo}, \hyperpage{29}
+    \subitem {device}, \hyperpage{29}
+    \subitem {instance}, \hyperpage{29}
+    \subitem {physicalDevice}, \hyperpage{29}
+  \item {luna::vulkan::vulkanFeatureSupport}, \hyperpage{104}
+    \subitem {getFormatFeatures}, \hyperpage{104}
+    \subitem {init}, \hyperpage{104}
+    \subitem {sPhysicalDevice}, \hyperpage{105}
+  \item {luna::vulkan::vulkanIndexBuffer}, \hyperpage{106}
+    \subitem {$\sim$vulkanIndexBuffer}, \hyperpage{107}
+    \subitem {bind}, \hyperpage{107}
+    \subitem {getCount}, \hyperpage{107}
+    \subitem {unbind}, \hyperpage{107}
+    \subitem {vkIndexBuffer}, \hyperpage{108}
+    \subitem {vulkanIndexBuffer}, \hyperpage{107}
+    \subitem {vulkanPipeline}, \hyperpage{108}
+  \item {luna::vulkan::vulkanPipeline}, \hyperpage{111}
+    \subitem {\_frameNumber}, \hyperpage{121}
+    \subitem {$\sim$vulkanPipeline}, \hyperpage{114}
+    \subitem {begin}, \hyperpage{114}
+    \subitem {buildPipeline}, \hyperpage{115}
+    \subitem {changedBoundBuffers}, \hyperpage{121}
+    \subitem {colorBlendAttachmentState}, \hyperpage{115}
+    \subitem {commandBuffers}, \hyperpage{121}
+    \subitem {commandPool}, \hyperpage{121}
+    \subitem {createAttributeDescription}, \hyperpage{115}
+    \subitem {createBindingDescription}, \hyperpage{116}
+    \subitem {createCommands}, \hyperpage{116}
+    \subitem {createInputStates}, \hyperpage{116}
+    \subitem {createPipeline}, \hyperpage{116}
+    \subitem {createPipeLineLayout}, \hyperpage{116}
+    \subitem {createShaderModule}, \hyperpage{116}
+    \subitem {createShaderStages}, \hyperpage{117}
+    \subitem {createVertexInputState}, \hyperpage{117}
+    \subitem {currentFrame}, \hyperpage{121}
+    \subitem {destroyPipeline}, \hyperpage{117}
+    \subitem {destroySyncStructures}, \hyperpage{117}
+    \subitem {drawCommands}, \hyperpage{121}
+    \subitem {drawIndexed}, \hyperpage{118}
+    \subitem {end}, \hyperpage{118}
+    \subitem {flush}, \hyperpage{118}
+    \subitem {fnDrawIndexed}, \hyperpage{118}
+    \subitem {getRenderPass}, \hyperpage{118}
+    \subitem {getResourceFormat}, \hyperpage{118}
+    \subitem {imageAvailableSemaphores}, \hyperpage{121}
+    \subitem {imagesInFlight}, \hyperpage{121}
+    \subitem {imGuiRenderPass}, \hyperpage{122}
+    \subitem {inFlightFences}, \hyperpage{122}
+    \subitem {initDefaultRenderpass}, \hyperpage{119}
+    \subitem {initSyncStructures}, \hyperpage{119}
+    \subitem {inputAssemblyCreateInfo}, \hyperpage{119}
+    \subitem {inputAssemblyStateCreateInfo}, \hyperpage{122}
+    \subitem {inputDescriptions}, \hyperpage{122}
+    \subitem {justResized}, \hyperpage{122}
+    \subitem {layout}, \hyperpage{122}
+    \subitem {maxFramesInFlight}, \hyperpage{122}
+    \subitem {multisamplingStateCreateInfo}, \hyperpage{119}
+    \subitem {pipeline}, \hyperpage{122}
+    \subitem {pipelineColorBlendAttachementState}, \hyperpage{122}
+    \subitem {pipelineLayout}, \hyperpage{122}
+    \subitem {pipelineLayoutCreateInfo}, \hyperpage{120}
+    \subitem {pipelineMultisampleStateCreateInfo}, \hyperpage{123}
+    \subitem {pipelineRasterizationStateCreateInfo}, \hyperpage{123}
+    \subitem {presentQueue}, \hyperpage{123}
+    \subitem {prevFrame}, \hyperpage{123}
+    \subitem {rasterizationStateCreateInfo}, \hyperpage{120}
+    \subitem {renderFinishedSemaphores}, \hyperpage{123}
+    \subitem {renderPass}, \hyperpage{123}
+    \subitem {shaderModules}, \hyperpage{123}
+    \subitem {shaderStages}, \hyperpage{123}
+    \subitem {swapchainImageIndex}, \hyperpage{123}
+    \subitem {transitionImageLayout}, \hyperpage{120}
+    \subitem {vertexInputStates}, \hyperpage{123}
+    \subitem {vulkanPipeline}, \hyperpage{114}
+  \item {luna::vulkan::vulkanPipeline::drawCommand}, \hyperpage{29}
+    \subitem {indexCount}, \hyperpage{29}
+    \subitem {vertexArray}, \hyperpage{29}
+  \item {luna::vulkan::vulkanPipeline::shaderStage}, \hyperpage{74}
+    \subitem {shaderModule}, \hyperpage{74}
+    \subitem {stageInfo}, \hyperpage{74}
+  \item {luna::vulkan::vulkanPipeline::Vertex}, \hyperpage{82}
+    \subitem {color}, \hyperpage{82}
+    \subitem {normal}, \hyperpage{82}
+    \subitem {position}, \hyperpage{82}
+  \item {luna::vulkan::vulkanPipeline::vertexInputDescription}, 
+		\hyperpage{88}
+    \subitem {attributes}, \hyperpage{88}
+    \subitem {bindings}, \hyperpage{88}
+    \subitem {flags}, \hyperpage{88}
+  \item {luna::vulkan::vulkanShader}, \hyperpage{124}
+    \subitem {$\sim$vulkanShader}, \hyperpage{125}
+    \subitem {bind}, \hyperpage{125}
+    \subitem {createLayout}, \hyperpage{126}
+    \subitem {getShaderResource}, \hyperpage{126}
+    \subitem {renderer::shader}, \hyperpage{126}
+    \subitem {unbind}, \hyperpage{126}
+    \subitem {vulkanShader}, \hyperpage{125}
+  \item {luna::vulkan::vulkanSwapchain}, \hyperpage{127}
+    \subitem {$\sim$vulkanSwapchain}, \hyperpage{128}
+    \subitem {createSwapchain}, \hyperpage{128}
+    \subitem {destroySwapchain}, \hyperpage{128}
+    \subitem {frameBuffers}, \hyperpage{130}
+    \subitem {getFrameBuffer}, \hyperpage{129}
+    \subitem {getScissor}, \hyperpage{129}
+    \subitem {getSurfaceFormat}, \hyperpage{129}
+    \subitem {getViewport}, \hyperpage{129}
+    \subitem {getViewportImage}, \hyperpage{129}
+    \subitem {init}, \hyperpage{131}
+    \subitem {initViewport}, \hyperpage{130}
+    \subitem {m\_Dset}, \hyperpage{131}
+    \subitem {mSwapchain}, \hyperpage{131}
+    \subitem {mSwapchainSpec}, \hyperpage{131}
+    \subitem {recreateSwapchain}, \hyperpage{130}
+    \subitem {recreateViewport}, \hyperpage{130}
+    \subitem {sceneViewportImages}, \hyperpage{131}
+    \subitem {sceneViewportImageViews}, \hyperpage{131}
+    \subitem {surfaceCapaBilities}, \hyperpage{131}
+    \subitem {swapchainImageFormat}, \hyperpage{131}
+    \subitem {swapchainImages}, \hyperpage{131}
+    \subitem {swapChainImageViews}, \hyperpage{131}
+    \subitem {viewportSampler}, \hyperpage{132}
+    \subitem {vulkanSwapchain}, \hyperpage{128}
+  \item {luna::vulkan::vulkanVertexArray}, \hyperpage{132}
+    \subitem {addVertexBuffer}, \hyperpage{133}
+    \subitem {bind}, \hyperpage{133}
+    \subitem {getIndexBuffer}, \hyperpage{134}
+    \subitem {getVertexBuffers}, \hyperpage{134}
+    \subitem {setIndexBuffer}, \hyperpage{134}
+    \subitem {unbind}, \hyperpage{134}
+  \item {luna::vulkan::vulkanVertexBuffer}, \hyperpage{134}
+    \subitem {$\sim$vulkanVertexBuffer}, \hyperpage{135}
+    \subitem {bind}, \hyperpage{136}
+    \subitem {setData}, \hyperpage{136}
+    \subitem {unbind}, \hyperpage{136}
+    \subitem {vkVertexBuffer}, \hyperpage{136}
+    \subitem {vulkanPipeline}, \hyperpage{136}
+    \subitem {vulkanVertexBuffer}, \hyperpage{135}
+  \item {luna::vulkan::window}, \hyperpage{137}
+    \subitem {$\sim$window}, \hyperpage{138}
+    \subitem {eventCallbackFn}, \hyperpage{138}
+    \subitem {getHeight}, \hyperpage{138}
+    \subitem {getWidth}, \hyperpage{138}
+    \subitem {getWindow}, \hyperpage{139}
+    \subitem {graphicsApi}, \hyperpage{139}
+    \subitem {onUpdate}, \hyperpage{139}
+    \subitem {setEventCallBack}, \hyperpage{139}
+    \subitem {windowCreate}, \hyperpage{139}
+    \subitem {windowSpec}, \hyperpage{139}
+  \item {luna::vulkan::windowSpec}, \hyperpage{144}
+    \subitem {height}, \hyperpage{144}
+    \subitem {title}, \hyperpage{145}
+    \subitem {width}, \hyperpage{145}
+    \subitem {windowSpec}, \hyperpage{144}
+  \item {luna::vulkan::windowsWindow}, \hyperpage{145}
+    \subitem {\_window}, \hyperpage{149}
+    \subitem {$\sim$windowsWindow}, \hyperpage{147}
+    \subitem {getHeight}, \hyperpage{147}
+    \subitem {getWidth}, \hyperpage{147}
+    \subitem {getWindow}, \hyperpage{148}
+    \subitem {init}, \hyperpage{148}
+    \subitem {mData}, \hyperpage{149}
+    \subitem {onUpdate}, \hyperpage{148}
+    \subitem {setEventCallBack}, \hyperpage{148}
+    \subitem {shutDown}, \hyperpage{148}
+    \subitem {windowsWindow}, \hyperpage{147}
+  \item {luna::vulkan::windowsWindow::windowData}, \hyperpage{141}
+    \subitem {eventCallbackFn}, \hyperpage{141}
+    \subitem {height}, \hyperpage{141}
+    \subitem {title}, \hyperpage{141}
+    \subitem {width}, \hyperpage{141}
+  \item {luna::windowCloseEvent}, \hyperpage{140}
+    \subitem {windowCloseEvent}, \hyperpage{140}
+  \item {luna::windowResizeEvent}, \hyperpage{142}
+    \subitem {getHeight}, \hyperpage{143}
+    \subitem {getWidth}, \hyperpage{143}
+    \subitem {m\_Height}, \hyperpage{143}
+    \subitem {m\_Width}, \hyperpage{143}
+    \subitem {toString}, \hyperpage{143}
+    \subitem {windowResizeEvent}, \hyperpage{143}
+
+  \indexspace
+
+  \item {M}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {m\_Button}
+    \subitem {luna::mouseButtonEvent}, \hyperpage{45}
+  \item {m\_Dset}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {m\_Event}
+    \subitem {luna::eventDispatcher}, \hyperpage{33}
+  \item {m\_Height}
+    \subitem {luna::windowResizeEvent}, \hyperpage{143}
+  \item {m\_IsRepeat}
+    \subitem {luna::keyPressedEvent}, \hyperpage{38}
+  \item {m\_keyCode}
+    \subitem {luna::keyEvent}, \hyperpage{36}
+  \item {m\_MouseX}
+    \subitem {luna::mouseMovedEvent}, \hyperpage{50}
+  \item {m\_MouseY}
+    \subitem {luna::mouseMovedEvent}, \hyperpage{50}
+  \item {m\_Width}
+    \subitem {luna::windowResizeEvent}, \hyperpage{143}
+  \item {m\_XOffset}
+    \subitem {luna::mouseScrolledEvent}, \hyperpage{52}
+  \item {m\_YOffset}
+    \subitem {luna::mouseScrolledEvent}, \hyperpage{52}
+  \item {main}
+    \subitem {luna.h}, \hyperpage{206}
+  \item {mat2}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {mat3}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {mat4}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {maxCacheSize}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{81}
+  \item {maxFramesInFlight}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {mData}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{149}
+  \item {mElements}
+    \subitem {luna::renderer::bufferLayout}, \hyperpage{24}
+  \item {members}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {Menu}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {Minus}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {mouseButtonEvent}
+    \subitem {luna::mouseButtonEvent}, \hyperpage{45}
+  \item {MouseButtonPressed}
+    \subitem {luna}, \hyperpage{4}
+  \item {mouseButtonPressedEvent}
+    \subitem {luna::mouseButtonPressedEvent}, \hyperpage{46}
+  \item {MouseButtonReleased}
+    \subitem {luna}, \hyperpage{4}
+  \item {mouseButtonReleasedEvent}
+    \subitem {luna::mouseButtonReleasedEvent}, \hyperpage{48}
+  \item {mouseCode}
+    \subitem {luna}, \hyperpage{3}
+  \item {MouseMoved}
+    \subitem {luna}, \hyperpage{4}
+  \item {mouseMovedEvent}
+    \subitem {luna::mouseMovedEvent}, \hyperpage{49}
+  \item {MouseScrolled}
+    \subitem {luna}, \hyperpage{4}
+  \item {mouseScrolledEvent}
+    \subitem {luna::mouseScrolledEvent}, \hyperpage{51}
+  \item {mSwapchain}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {mSwapchainSpec}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {multisamplingStateCreateInfo}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{119}
+  \item {mWindow}
+    \subitem {luna::application::application}, \hyperpage{17}
+
+  \indexspace
+
+  \item {N}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {name}
+    \subitem {luna::renderer::bufferElement}, \hyperpage{22}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {newFrame}
+    \subitem {luna::renderer::renderer}, \hyperpage{62}
+  \item {NONE}
+    \subitem {luna::vulkan}, \hyperpage{15}
+  \item {None}
+    \subitem {luna}, \hyperpage{4}
+  \item {normal}
+    \subitem {luna::vulkan::vulkanPipeline::Vertex}, \hyperpage{82}
+  \item {NumLock}
+    \subitem {luna::input}, \hyperpage{8}
+
+  \indexspace
+
+  \item {O}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {objectCache}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{56}
+  \item {objectMemory}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{56}
+  \item {objectStorage}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{54}
+  \item {offset}
+    \subitem {luna::renderer::bufferElement}, \hyperpage{22}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {onEvent}
+    \subitem {luna::application::application}, \hyperpage{16}
+  \item {onUpdate}
+    \subitem {luna::vulkan::window}, \hyperpage{139}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{148}
+  \item {OPENGL}
+    \subitem {luna::vulkan}, \hyperpage{15}
+  \item {operator uint64\_t}
+    \subitem {luna::uuid}, \hyperpage{77}
+  \item {operator$<$$<$}
+    \subitem {log.h}, \hyperpage{156, 157}
+    \subitem {luna}, \hyperpage{5}
+  \item {operator=}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{96}
+  \item {operator[]}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{87}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{55}
+
+  \indexspace
+
+  \item {P}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {PageDown}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {PageUp}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {Pause}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {pCommandBuffers}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+  \item {pDevice}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{93}
+    \subitem {luna::utils::vulkanObjectFactory}, \hyperpage{111}
+  \item {Period}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {physicalDevice}
+    \subitem {luna::vulkan::swapchainSpec}, \hyperpage{76}
+    \subitem {luna::vulkan::vulkanDevice::deviceHandles}, 
+		\hyperpage{29}
+  \item {pickPhysicalDevice}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{102}
+  \item {pipeline}
+    \subitem {luna::gui::vulkanImgui}, \hyperpage{106}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {pipelineColorBlendAttachementState}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {pipelineLayout}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{122}
+  \item {pipelineLayoutCreateInfo}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{120}
+  \item {pipelineMultisampleStateCreateInfo}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {pipelineRasterizationStateCreateInfo}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {pipelineShaders}
+    \subitem {luna::renderer::pipelineLayout}, \hyperpage{60}
+  \item {pNext}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+  \item {position}
+    \subitem {luna::vulkan::vulkanPipeline::Vertex}, \hyperpage{82}
+  \item {presentFamily}
+    \subitem {luna::vulkan::queueFamilyIndices}, \hyperpage{61}
+  \item {presentQueue}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {prevFrame}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {PrintScreen}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {pSignalSemaphores}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+  \item {PushConstant}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {pushConstantBuffers}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {putValue}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{55}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{80}
+  \item {pWaitDstStageMask}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+  \item {pWaitSemaphores}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+
+  \indexspace
+
+  \item {Q}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {queueCreateInfos}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{103}
+  \item {queueFamily}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{103}
+  \item {queueFamilyIndex}
+    \subitem {luna::vulkan::vulkanCmdPoolSpec}, \hyperpage{97}
+  \item {queuePriorities}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{103}
+
+  \indexspace
+
+  \item {R}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {randomDevice}
+    \subitem {luna}, \hyperpage{5}
+  \item {rasterizationStateCreateInfo}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{120}
+  \item {RayQuery}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {recreateSwapchain}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{130}
+  \item {recreateViewport}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{130}
+  \item {ref}
+    \subitem {luna}, \hyperpage{3}
+  \item {reflect}
+    \subitem {luna::utils::compileSpec}, \hyperpage{27}
+    \subitem {luna::utils::shaderCompiler}, \hyperpage{70}
+  \item {renderer::shader}
+    \subitem {luna::vulkan::vulkanShader}, \hyperpage{126}
+  \item {rendererDevice}
+    \subitem {luna::renderer::renderer}, \hyperpage{63}
+  \item {rendererPipeline}
+    \subitem {luna::renderer::renderer}, \hyperpage{63}
+  \item {renderFinishedSemaphores}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {renderPass}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {resourceClass}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {Right}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {RightAlt}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {RightBracket}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {RightControl}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {RightShift}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {RightSuper}
+    \subitem {luna::input}, \hyperpage{9}
+  \item {run}
+    \subitem {luna::application::application}, \hyperpage{17}
+  \item {running}
+    \subitem {luna::application::application}, \hyperpage{17}
+
+  \indexspace
+
+  \item {S}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {s\_ClientLogger}
+    \subitem {luna::Log}, \hyperpage{42}
+  \item {s\_CoreLogger}
+    \subitem {luna::Log}, \hyperpage{42}
+  \item {sAllocator}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{93}
+  \item {SampledImage}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {sampledImages}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {Sampler}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {sandbox}, \hyperpage{64}
+    \subitem {$\sim$sandbox}, \hyperpage{65}
+    \subitem {sandbox}, \hyperpage{64, 65}
+  \item {SByte}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {sceneViewportImages}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {sceneViewportImageViews}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {sCommandPoolSpec}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{96}
+  \item {scope}
+    \subitem {luna}, \hyperpage{3}
+  \item {ScrollLock}
+    \subitem {luna::input}, \hyperpage{8}
+  \item {Selected}
+    \subitem {luna::renderer::renderer}, \hyperpage{63}
+  \item {self}
+    \subitem {luna::renderer::shader}, \hyperpage{68}
+  \item {Semicolon}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {separateImages}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {separateSsamplers}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {set}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {setData}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{87}
+    \subitem {luna::vulkan::vulkanVertexBuffer}, \hyperpage{136}
+  \item {setEventCallBack}
+    \subitem {luna::vulkan::window}, \hyperpage{139}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{148}
+  \item {setIndexBuffer}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{84}
+    \subitem {luna::vulkan::vulkanVertexArray}, \hyperpage{134}
+  \item {setValue}
+    \subitem {luna::utils::objectStorage$<$ value $>$}, \hyperpage{56}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{81}
+  \item {shaderCompiler}
+    \subitem {luna::utils::shaderCompiler}, \hyperpage{69}
+  \item {shaderKind}
+    \subitem {luna::utils::compileSpec}, \hyperpage{27}
+  \item {shaderLayout}
+    \subitem {luna::renderer::shader}, \hyperpage{68}
+  \item {shaderModule}
+    \subitem {luna::vulkan::vulkanPipeline::shaderStage}, 
+		\hyperpage{74}
+  \item {shaderModules}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {shaderName}
+    \subitem {luna::renderer::shader}, \hyperpage{68}
+  \item {shaders}
+    \subitem {luna::utils::shaderLibrary}, \hyperpage{72}
+  \item {shaderSrc}
+    \subitem {luna::renderer::shader}, \hyperpage{68}
+  \item {shaderStage}
+    \subitem {luna::renderer}, \hyperpage{10}
+  \item {shaderStageCompute}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {shaderStageFragment}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {shaderStageGeometry}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {shaderStages}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {shaderStageTessellationControl}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {shaderStageTessellationEvaluation}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {shaderStageVertex}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {shared\_ptr$<$ window $>$}, \hyperpage{74}
+  \item {Short}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {shutDown}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{148}
+  \item {shutdown}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{92}
+  \item {signalSemaphoreCount}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+  \item {size}
+    \subitem {luna::renderer::bufferElement}, \hyperpage{22}
+    \subitem {luna::renderer::indexBuffer}, \hyperpage{34}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{87}
+  \item {Slash}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {source}
+    \subitem {luna::utils::compileSpec}, \hyperpage{27}
+  \item {Space}
+    \subitem {luna::input}, \hyperpage{6}
+  \item {sPhysicalDevice}
+    \subitem {luna::vulkan::vulkanFeatureSupport}, \hyperpage{105}
+  \item {SPIR}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {SPIR\_V}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {srcShader}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{87}
+  \item {stage}
+    \subitem {luna::renderer::shader}, \hyperpage{68}
+  \item {stageInfo}
+    \subitem {luna::vulkan::vulkanPipeline::shaderStage}, 
+		\hyperpage{74}
+  \item {stageInputs}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {stageOutputs}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {STB\_IMAGE\_IMPLEMENTATION}
+    \subitem {lnpch.cpp}, \hyperpage{204}
+  \item {StorageBuffer}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {storageBuffers}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {storageImages}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {storageInvalidHandle}
+    \subitem {luna::utils}, \hyperpage{14}
+  \item {storageObject}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {storageOpFailed}
+    \subitem {luna::utils}, \hyperpage{14}
+  \item {storageOpSucces}
+    \subitem {luna::utils}, \hyperpage{14}
+  \item {storageResult}
+    \subitem {luna::utils}, \hyperpage{13}
+  \item {stride}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {Struct}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {Submit}
+    \subitem {luna::renderer::renderer}, \hyperpage{62}
+  \item {subpassInputs}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {surface}
+    \subitem {luna::vulkan::swapchainSpec}, \hyperpage{76}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{104}
+  \item {surfaceCapaBilities}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {swapchain}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{104}
+  \item {swapchainExtent}
+    \subitem {luna::vulkan::swapchainSpec}, \hyperpage{76}
+  \item {swapchainImageFormat}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {swapchainImageIndex}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {swapchainImages}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+  \item {swapChainImageViews}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{131}
+
+  \indexspace
+
+  \item {T}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {Tab}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {test}
+    \subitem {luna::renderer::pipeline}, \hyperpage{59}
+  \item {testMesh}
+    \subitem {luna::renderer::renderer}, \hyperpage{63}
+  \item {title}
+    \subitem {luna::vulkan::windowSpec}, \hyperpage{145}
+    \subitem {luna::vulkan::windowsWindow::windowData}, \hyperpage{141}
+  \item {toString}
+    \subitem {luna::Event}, \hyperpage{31}
+    \subitem {luna::keyPressedEvent}, \hyperpage{37}
+    \subitem {luna::keyReleasedEvent}, \hyperpage{39}
+    \subitem {luna::keyTypedEvent}, \hyperpage{41}
+    \subitem {luna::mouseButtonPressedEvent}, \hyperpage{46}
+    \subitem {luna::mouseButtonReleasedEvent}, \hyperpage{48}
+    \subitem {luna::mouseMovedEvent}, \hyperpage{50}
+    \subitem {luna::mouseScrolledEvent}, \hyperpage{52}
+    \subitem {luna::windowResizeEvent}, \hyperpage{143}
+  \item {transferFamily}
+    \subitem {luna::vulkan::queueFamilyIndices}, \hyperpage{61}
+  \item {transferQueue}
+    \subitem {luna::utils::vulkanAllocator}, \hyperpage{93}
+  \item {transitionImageLayout}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{120}
+  \item {type}
+    \subitem {luna::renderer::bufferElement}, \hyperpage{22}
+    \subitem {luna::renderer::shaderResource}, \hyperpage{73}
+  \item {typeClass}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {typeId}
+    \subitem {luna::renderer}, \hyperpage{11}
+
+  \indexspace
+
+  \item {U}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {UByte}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {UInt}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {UInt64}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {unbind}
+    \subitem {luna::renderer::indexBuffer}, \hyperpage{34}
+    \subitem {luna::renderer::shader}, \hyperpage{68}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{85}
+    \subitem {luna::renderer::vertexBuffer}, \hyperpage{87}
+    \subitem {luna::vulkan::vulkanIndexBuffer}, \hyperpage{107}
+    \subitem {luna::vulkan::vulkanShader}, \hyperpage{126}
+    \subitem {luna::vulkan::vulkanVertexArray}, \hyperpage{134}
+    \subitem {luna::vulkan::vulkanVertexBuffer}, \hyperpage{136}
+  \item {Uniform}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {uniformBuffers}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {uniformDistr}
+    \subitem {luna}, \hyperpage{5}
+  \item {Unknown}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {Up}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {UShort}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {uuid}
+    \subitem {luna::uuid}, \hyperpage{77}
+  \item {uuid.h}
+    \subitem {\_UUID}, \hyperpage{159}
+
+  \indexspace
+
+  \item {V}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {valueCache}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{81}
+  \item {Vec2}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {Vec3}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {Vec4}
+    \subitem {luna::renderer}, \hyperpage{12}
+  \item {vectorCache}
+    \subitem {luna::utils::vectorCache$<$ value $>$}, \hyperpage{79}
+  \item {vert}
+    \subitem {luna::renderer::renderer::vertex}, \hyperpage{82}
+  \item {vertArray}
+    \subitem {luna::renderer::renderer}, \hyperpage{63}
+  \item {vertexArray}
+    \subitem {luna::vulkan::vulkanPipeline::drawCommand}, 
+		\hyperpage{29}
+  \item {vertexBuffers}
+    \subitem {luna::renderer::vertexArray}, \hyperpage{85}
+  \item {vertexInputStates}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{123}
+  \item {vertices}
+    \subitem {luna::renderer::renderer::mesh}, \hyperpage{43}
+  \item {viewportSampler}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{132}
+  \item {virtualBuffers}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{97}
+  \item {virtualCmdBuffer}
+    \subitem {luna::vulkan}, \hyperpage{14}
+  \item {vkIndexBuffer}
+    \subitem {luna::vulkan::vulkanIndexBuffer}, \hyperpage{108}
+  \item {vkVertexBuffer}
+    \subitem {luna::vulkan::vulkanVertexBuffer}, \hyperpage{136}
+  \item {vma.cpp}
+    \subitem {VMA\_BIND\_MEMORY2}, \hyperpage{198}
+    \subitem {VMA\_IMPLEMENTATION}, \hyperpage{198}
+    \subitem {VMA\_RECORDING\_ENABLED}, \hyperpage{198}
+    \subitem {VMA\_VULKAN\_VERSION}, \hyperpage{199}
+  \item {VMA\_BIND\_MEMORY2}
+    \subitem {vma.cpp}, \hyperpage{198}
+  \item {VMA\_IMPLEMENTATION}
+    \subitem {vma.cpp}, \hyperpage{198}
+  \item {VMA\_RECORDING\_ENABLED}
+    \subitem {vma.cpp}, \hyperpage{198}
+  \item {VMA\_VULKAN\_VERSION}
+    \subitem {vma.cpp}, \hyperpage{199}
+  \item {Void}
+    \subitem {luna::renderer}, \hyperpage{11}
+  \item {VULKAN}
+    \subitem {luna::vulkan}, \hyperpage{15}
+  \item {vulkanCmdPool}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{94}
+  \item {vulkanCmdPool::operator[]}
+    \subitem {luna::vulkan::vulkanCmdPool}, \hyperpage{96}
+  \item {vulkanDevice}
+    \subitem {luna::renderer::shader}, \hyperpage{68}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{99}
+  \item {vulkanDevice.h}
+    \subitem {GET\_UNCODED\_VERSION}, \hyperpage{186}
+  \item {vulkanDevice::debugCallback}
+    \subitem {luna::vulkan::vulkanDevice}, \hyperpage{103}
+  \item {vulkanImgui}
+    \subitem {luna::gui::vulkanImgui}, \hyperpage{105}
+  \item {vulkanIndexBuffer}
+    \subitem {luna::vulkan::vulkanIndexBuffer}, \hyperpage{107}
+  \item {vulkanPipeline}
+    \subitem {luna::vulkan::vulkanIndexBuffer}, \hyperpage{108}
+    \subitem {luna::vulkan::vulkanPipeline}, \hyperpage{114}
+    \subitem {luna::vulkan::vulkanVertexBuffer}, \hyperpage{136}
+  \item {vulkanShader}
+    \subitem {luna::vulkan::vulkanShader}, \hyperpage{125}
+  \item {vulkanSwapchain}
+    \subitem {luna::vulkan::vulkanSwapchain}, \hyperpage{128}
+  \item {vulkanVertexBuffer}
+    \subitem {luna::vulkan::vulkanVertexBuffer}, \hyperpage{135}
+
+  \indexspace
+
+  \item {W}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {waitSemaphoreCount}
+    \subitem {luna::vulkan::commandPoolSubmitInfo}, \hyperpage{25}
+  \item {width}
+    \subitem {luna::vulkan::windowSpec}, \hyperpage{145}
+    \subitem {luna::vulkan::windowsWindow::windowData}, \hyperpage{141}
+  \item {WINDOW}
+    \subitem {window.h}, \hyperpage{204}
+  \item {window}
+    \subitem {luna::renderer::device}, \hyperpage{28}
+    \subitem {luna::vulkan::swapchainSpec}, \hyperpage{76}
+  \item {window.h}
+    \subitem {WINDOW}, \hyperpage{204}
+  \item {WindowClose}
+    \subitem {luna}, \hyperpage{4}
+  \item {windowCloseEvent}
+    \subitem {luna::windowCloseEvent}, \hyperpage{140}
+  \item {windowCreate}
+    \subitem {luna::vulkan::window}, \hyperpage{139}
+  \item {WindowFocus}
+    \subitem {luna}, \hyperpage{4}
+  \item {WindowLostFocus}
+    \subitem {luna}, \hyperpage{4}
+  \item {WindowMoved}
+    \subitem {luna}, \hyperpage{4}
+  \item {WindowResize}
+    \subitem {luna}, \hyperpage{4}
+  \item {windowResizeEvent}
+    \subitem {luna::windowResizeEvent}, \hyperpage{143}
+  \item {WINDOWS\_WINDOW}
+    \subitem {windowsWindow.h}, \hyperpage{169}
+  \item {windowSpec}
+    \subitem {luna::vulkan::window}, \hyperpage{139}
+    \subitem {luna::vulkan::windowSpec}, \hyperpage{144}
+  \item {windowStorage}
+    \subitem {luna::application::application}, \hyperpage{17}
+  \item {windowsWindow}
+    \subitem {luna::vulkan::windowsWindow}, \hyperpage{147}
+  \item {windowsWindow.h}
+    \subitem {WINDOWS\_WINDOW}, \hyperpage{169}
+  \item {World1}
+    \subitem {luna::input}, \hyperpage{7}
+  \item {World2}
+    \subitem {luna::input}, \hyperpage{7}
+
+  \indexspace
+
+  \item {X}
+    \subitem {luna::input}, \hyperpage{7}
+
+  \indexspace
+
+  \item {Y}
+    \subitem {luna::input}, \hyperpage{7}
+
+  \indexspace
+
+  \item {Z}
+    \subitem {luna::input}, \hyperpage{7}
+
+\end{theindex}

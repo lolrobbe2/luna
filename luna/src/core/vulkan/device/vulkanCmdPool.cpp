@@ -4,6 +4,10 @@ namespace luna
 {
 	namespace vulkan
 	{
+		VkCommandBuffer vulkanCmdPool::operator[](const virtualCmdBuffer commandBuffer)
+		{
+			return VkCommandBuffer();
+		}
 		vulkanCmdPool::vulkanCmdPool(const vulkanCmdPoolSpec& commandPoolSpec)
 		{
 			sCommandPoolSpec = commandPoolSpec;
@@ -32,7 +36,6 @@ namespace luna
 				virtualCmdBuffer* currentBuffer = commandBuffer + i;
 				*currentBuffer = uuid();
 				virtualBuffers.insert({ *currentBuffer,{localCommandBuffers[i],0} });
-				LN_CORE_INFO("added virtualbuffer, uuid = {0} ", *currentBuffer);
 			}
 			return allocateResult;
 		}
@@ -77,6 +80,16 @@ namespace luna
 			submitInfo.waitSemaphoreCount = pCommandPoolSubmitInfo->waitSemaphoreCount;
 			VkResult result = vkQueueSubmit(queue, submitCount, &submitInfo, waitFence);
 			return result;
+		}
+		void vulkanCmdPool::freeCommandBuffer(virtualCmdBuffer* pCommandBuffers, uint32_t count)
+		{
+			std::vector<VkCommandBuffer> commandBuffers;
+			for (size_t i = 0; i < count; i++)
+			{
+				auto virtualBufferPair = virtualBuffers.find(*(pCommandBuffers + i));
+				commandBuffers.push_back(virtualBufferPair->second.first);
+			}
+			vkFreeCommandBuffers(sCommandPoolSpec.device, commandPool, count,commandBuffers.data() );
 		}
 	}
 }

@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceluna_1_1renderer" xml:lang="en-US">
+<title>luna::renderer Namespace Reference</title>
+<indexterm><primary>luna::renderer</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1buffer_element">bufferElement</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1buffer_layout">bufferLayout</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1device">device</link></para>
+
+<para>the device class is the code representation of the physical device or GPU. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1index_buffer">indexBuffer</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1pipeline">pipeline</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1renderer_1_1pipeline_layout">pipelineLayout</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1renderer">renderer</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1shader">shader</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1renderer_1_1shader_resource">shaderResource</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1vertex_buffer">vertexBuffer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef void(* <link linkend="_namespaceluna_1_1renderer_1ac49aeaa7349a30aad88e16003b0e012c">drawCommand</link>) (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> &gt; &amp;<link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link>, int indexCount)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1">typeClass</link> { <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a72c1fc0f8cc2ca24d58b0ee1c3965de4">uniformBuffers</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a5aca7bb61d46cf4a5075123f722053cb">storageBuffers</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1ada3aa10e10375a4d9cb925e331e72535">stageInputs</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1af4c34ec05e2267a7edb6bea7a2599a40">stageOutputs</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a0a5ea44659d0cb436b72c54651a1f359">subpassInputs</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a3b3d3702df3499db3035597fc666e626">storageImages</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a40c9db8d806f0440a9047de55f5507e7">sampledImages</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a690187ddac149d1334a8bcb4fb646ef6">atomicCounters</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123">accelerationStructures</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855">pushConstantBuffers</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8">separateImages</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e">separateSsamplers</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29">builtinInputs</link>
+, <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1">builtinOutputs</link>
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">typeId</link> { <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc">Unknown</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbafa08efda03f463da01105f7a60dac69b">Void</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaafb1b50633b1114ce5e43ac6960b9136">Boolean</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba820114961cc43839abfcd99232dc7314">SByte</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0e37403bd27422f62d39557895f3cb26">UByte</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba041e22bae16c91ec3208c8adab5eb07d">Short</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaf191afb565d07af0465a09c35b07c574">UShort</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbafd5182ea19dcc1045df53e1180d403df">Int</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba2ff18af68cff2f69146617171361edc2">UInt</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba9aaefec68a4c8e80b367a46a826b8cdd">Int64</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba1fce19be320d6555d179acead15a96cb">UInt64</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbacd1cfee2cee13581919683c866b5f07a">AtomicCounter</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbadf2055aedc3840869747379599ac278e">Half</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba103bc209515723c78ccbb8586d775549">Float</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba96312d65ff5d0e43b8a803cda9cdc1f3">Double</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba46e61711753dd7a82aabb2f38148bc26">Struct</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0b2a31103db82005ce65c0d90c727319">Image</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba03270e047b4409d711c5cacb1623bf1d">SampledImage</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbacc20f4d6d1f0b063f22b3c6757467fc7">Sampler</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbacf8aa09bbfa870997dd11486fc776bc2">AccelerationStructure</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba690eeff906494b1d860439f8966cb0a1">RayQuery</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbae21954a5ea2503b22ce898ffa68774f1">ControlPointArray</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbad950e61fb586f5fe25415511517e5a0d">Interpolant</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba4876b455eec6d42a5d5092b143b72183">Char</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0b8dead699838c86f07ceee16917cb41">Uniform</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaf19378e347dd1f264a9fbf3c273b9e31">PushConstant</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba7a59b828caecce4051f8b32fc87f86dc">StorageBuffer</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba37348f84562b1f7ef3ea80a9a1fa605f">Vec2</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba2d40c9661331cf57b9a571cf7e39d202">Vec3</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0f1ded9c54df72ce616eca55a6a3a8ac">Vec4</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba22c0a78a63cb08c78eb9784e2466c0d9">mat2</link>
+, <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba645a5fcbd75a76b6f6106a998b599524">mat3</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaf58f53f29a327d79100b1bb12026bca2">mat4</link>
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">shaderStage</link> { <?linebreak?><link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb">shaderStageVertex</link>
+, <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a">shaderStageTessellationControl</link>
+, <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaeaf1748a5d40f5c9c43d8766bfd52c20e6">shaderStageTessellationEvaluation</link>
+, <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea3ff13978a803384d34bfdb672df5eddb">shaderStageGeometry</link>
+, <?linebreak?><link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea9ff248aa271e248b20e2976568b4e91a">shaderStageFragment</link>
+, <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea1940b12eaac470ef33b59b8d447a0cd0">shaderStageCompute</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_namespaceluna_1_1renderer_1ac49aeaa7349a30aad88e16003b0e012c"/><section>
+    <title>drawCommand</title>
+<indexterm><primary>drawCommand</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>drawCommand</secondary></indexterm>
+<para><computeroutput>typedef void(* luna::renderer::drawCommand) (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link> &gt; &amp;<link linkend="_classluna_1_1renderer_1_1vertex_array">vertexArray</link>, int indexCount)</computeroutput></para></section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae"/><section>
+    <title>shaderStage</title>
+<indexterm><primary>shaderStage</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>shaderStage</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">luna::renderer::shaderStage</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>shaderStageVertex</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>shaderStageVertex</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb"/>shaderStageVertex</entry><entry></entry></row><row><entry><indexterm><primary>shaderStageTessellationControl</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>shaderStageTessellationControl</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a"/>shaderStageTessellationControl</entry><entry></entry></row><row><entry><indexterm><primary>shaderStageTessellationEvaluation</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>shaderStageTessellationEvaluation</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaeaf1748a5d40f5c9c43d8766bfd52c20e6"/>shaderStageTessellationEvaluation</entry><entry></entry></row><row><entry><indexterm><primary>shaderStageGeometry</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>shaderStageGeometry</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea3ff13978a803384d34bfdb672df5eddb"/>shaderStageGeometry</entry><entry></entry></row><row><entry><indexterm><primary>shaderStageFragment</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>shaderStageFragment</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea9ff248aa271e248b20e2976568b4e91a"/>shaderStageFragment</entry><entry></entry></row><row><entry><indexterm><primary>shaderStageCompute</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>shaderStageCompute</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faaea1940b12eaac470ef33b59b8d447a0cd0"/>shaderStageCompute</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1"/><section>
+    <title>typeClass</title>
+<indexterm><primary>typeClass</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>typeClass</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1">luna::renderer::typeClass</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>uniformBuffers</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>uniformBuffers</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a72c1fc0f8cc2ca24d58b0ee1c3965de4"/>uniformBuffers</entry><entry></entry></row><row><entry><indexterm><primary>storageBuffers</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>storageBuffers</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a5aca7bb61d46cf4a5075123f722053cb"/>storageBuffers</entry><entry></entry></row><row><entry><indexterm><primary>stageInputs</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>stageInputs</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1ada3aa10e10375a4d9cb925e331e72535"/>stageInputs</entry><entry></entry></row><row><entry><indexterm><primary>stageOutputs</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>stageOutputs</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1af4c34ec05e2267a7edb6bea7a2599a40"/>stageOutputs</entry><entry></entry></row><row><entry><indexterm><primary>subpassInputs</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>subpassInputs</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a0a5ea44659d0cb436b72c54651a1f359"/>subpassInputs</entry><entry></entry></row><row><entry><indexterm><primary>storageImages</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>storageImages</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a3b3d3702df3499db3035597fc666e626"/>storageImages</entry><entry></entry></row><row><entry><indexterm><primary>sampledImages</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>sampledImages</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a40c9db8d806f0440a9047de55f5507e7"/>sampledImages</entry><entry></entry></row><row><entry><indexterm><primary>atomicCounters</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>atomicCounters</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a690187ddac149d1334a8bcb4fb646ef6"/>atomicCounters</entry><entry></entry></row><row><entry><indexterm><primary>accelerationStructures</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>accelerationStructures</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123"/>accelerationStructures</entry><entry></entry></row><row><entry><indexterm><primary>pushConstantBuffers</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>pushConstantBuffers</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855"/>pushConstantBuffers</entry><entry></entry></row><row><entry><indexterm><primary>separateImages</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>separateImages</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8"/>separateImages</entry><entry></entry></row><row><entry><indexterm><primary>separateSsamplers</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>separateSsamplers</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e"/>separateSsamplers</entry><entry></entry></row><row><entry><indexterm><primary>builtinInputs</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>builtinInputs</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29"/>builtinInputs</entry><entry></entry></row><row><entry><indexterm><primary>builtinOutputs</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>builtinOutputs</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1"/>builtinOutputs</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db"/><section>
+    <title>typeId</title>
+<indexterm><primary>typeId</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>typeId</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">luna::renderer::typeId</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Unknown</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Unknown</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc"/>Unknown</entry><entry></entry></row><row><entry><indexterm><primary>Void</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Void</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbafa08efda03f463da01105f7a60dac69b"/>Void</entry><entry></entry></row><row><entry><indexterm><primary>Boolean</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Boolean</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaafb1b50633b1114ce5e43ac6960b9136"/>Boolean</entry><entry></entry></row><row><entry><indexterm><primary>SByte</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>SByte</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba820114961cc43839abfcd99232dc7314"/>SByte</entry><entry></entry></row><row><entry><indexterm><primary>UByte</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>UByte</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0e37403bd27422f62d39557895f3cb26"/>UByte</entry><entry></entry></row><row><entry><indexterm><primary>Short</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Short</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba041e22bae16c91ec3208c8adab5eb07d"/>Short</entry><entry></entry></row><row><entry><indexterm><primary>UShort</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>UShort</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaf191afb565d07af0465a09c35b07c574"/>UShort</entry><entry></entry></row><row><entry><indexterm><primary>Int</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Int</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbafd5182ea19dcc1045df53e1180d403df"/>Int</entry><entry></entry></row><row><entry><indexterm><primary>UInt</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>UInt</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba2ff18af68cff2f69146617171361edc2"/>UInt</entry><entry></entry></row><row><entry><indexterm><primary>Int64</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Int64</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba9aaefec68a4c8e80b367a46a826b8cdd"/>Int64</entry><entry></entry></row><row><entry><indexterm><primary>UInt64</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>UInt64</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba1fce19be320d6555d179acead15a96cb"/>UInt64</entry><entry></entry></row><row><entry><indexterm><primary>AtomicCounter</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>AtomicCounter</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbacd1cfee2cee13581919683c866b5f07a"/>AtomicCounter</entry><entry></entry></row><row><entry><indexterm><primary>Half</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Half</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbadf2055aedc3840869747379599ac278e"/>Half</entry><entry></entry></row><row><entry><indexterm><primary>Float</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Float</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba103bc209515723c78ccbb8586d775549"/>Float</entry><entry></entry></row><row><entry><indexterm><primary>Double</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Double</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba96312d65ff5d0e43b8a803cda9cdc1f3"/>Double</entry><entry></entry></row><row><entry><indexterm><primary>Struct</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Struct</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba46e61711753dd7a82aabb2f38148bc26"/>Struct</entry><entry></entry></row><row><entry><indexterm><primary>Image</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Image</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0b2a31103db82005ce65c0d90c727319"/>Image</entry><entry></entry></row><row><entry><indexterm><primary>SampledImage</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>SampledImage</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba03270e047b4409d711c5cacb1623bf1d"/>SampledImage</entry><entry></entry></row><row><entry><indexterm><primary>Sampler</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Sampler</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbacc20f4d6d1f0b063f22b3c6757467fc7"/>Sampler</entry><entry></entry></row><row><entry><indexterm><primary>AccelerationStructure</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>AccelerationStructure</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbacf8aa09bbfa870997dd11486fc776bc2"/>AccelerationStructure</entry><entry></entry></row><row><entry><indexterm><primary>RayQuery</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>RayQuery</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba690eeff906494b1d860439f8966cb0a1"/>RayQuery</entry><entry></entry></row><row><entry><indexterm><primary>ControlPointArray</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>ControlPointArray</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbae21954a5ea2503b22ce898ffa68774f1"/>ControlPointArray</entry><entry></entry></row><row><entry><indexterm><primary>Interpolant</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Interpolant</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbad950e61fb586f5fe25415511517e5a0d"/>Interpolant</entry><entry></entry></row><row><entry><indexterm><primary>Char</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Char</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba4876b455eec6d42a5d5092b143b72183"/>Char</entry><entry></entry></row><row><entry><indexterm><primary>Uniform</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Uniform</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0b8dead699838c86f07ceee16917cb41"/>Uniform</entry><entry></entry></row><row><entry><indexterm><primary>PushConstant</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>PushConstant</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaf19378e347dd1f264a9fbf3c273b9e31"/>PushConstant</entry><entry></entry></row><row><entry><indexterm><primary>StorageBuffer</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>StorageBuffer</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba7a59b828caecce4051f8b32fc87f86dc"/>StorageBuffer</entry><entry></entry></row><row><entry><indexterm><primary>Vec2</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Vec2</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba37348f84562b1f7ef3ea80a9a1fa605f"/>Vec2</entry><entry></entry></row><row><entry><indexterm><primary>Vec3</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Vec3</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba2d40c9661331cf57b9a571cf7e39d202"/>Vec3</entry><entry></entry></row><row><entry><indexterm><primary>Vec4</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>Vec4</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba0f1ded9c54df72ce616eca55a6a3a8ac"/>Vec4</entry><entry></entry></row><row><entry><indexterm><primary>mat2</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>mat2</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba22c0a78a63cb08c78eb9784e2466c0d9"/>mat2</entry><entry></entry></row><row><entry><indexterm><primary>mat3</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>mat3</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dba645a5fcbd75a76b6f6106a998b599524"/>mat3</entry><entry></entry></row><row><entry><indexterm><primary>mat4</primary><secondary>luna::renderer</secondary></indexterm>
+<indexterm><primary>luna::renderer</primary><secondary>mat4</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaf58f53f29a327d79100b1bb12026bca2"/>mat4</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+</section>

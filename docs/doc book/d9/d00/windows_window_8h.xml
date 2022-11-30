@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_windows_window_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/windowsWindow.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/windowsWindow.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;core/vulkan/window/window.h&gt;<?linebreak?></programlisting>Include dependency graph for windowsWindow.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d2/d00/windows_window_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/windows_window_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1windows_window">luna::vulkan::windowsWindow</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1windows_window_1_1window_data">luna::vulkan::windowsWindow::windowData</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1vulkan">luna::vulkan</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_windows_window_8h_1a4b362b6a596ff0b88eb524f63913791e">WINDOWS_WINDOW</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>static bool <link linkend="_namespaceluna_1_1vulkan_1ab01e7cae0075a7bf25b9431954ba665f">luna::vulkan::isGlfwInit</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_windows_window_8h_1a4b362b6a596ff0b88eb524f63913791e"/><section>
+    <title>WINDOWS_WINDOW</title>
+<indexterm><primary>WINDOWS_WINDOW</primary><secondary>windowsWindow.h</secondary></indexterm>
+<indexterm><primary>windowsWindow.h</primary><secondary>WINDOWS_WINDOW</secondary></indexterm>
+<para><computeroutput>#define WINDOWS_WINDOW</computeroutput></para></section>
+</section>
+</section>

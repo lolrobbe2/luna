@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceluna_1_1_mouse" xml:lang="en-US">
+<title>luna::Mouse Namespace Reference</title>
+<indexterm><primary>luna::Mouse</primary></indexterm>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum : mouseCode { <?linebreak?><link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a21d883d0409b1f5fe6bcc9b29f21930a">Button0</link> = 0
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a717ea0db28b7924d6eae2b6acecc8dbc">Button1</link> = 1
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76abecffa0d888a0814d86f3d2bcc0db1b2">Button2</link> = 2
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76ab41b3e9444310ee5dfaa2687a3c70dcc">Button3</link> = 3
+, <?linebreak?><link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76aa7e8a76f84929fff43341482f246a841">Button4</link> = 4
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a900547c07bbb031305cd873415648dd3">Button5</link> = 5
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a269ca6dd6cd265d7986d6dee7b3f2cd4">Button6</link> = 6
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a0ba19bad24c3c3b1f8fc0948024d359e">Button7</link> = 7
+, <?linebreak?><link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76aad9d8d7fda4c0967700822d5782e5c0c">ButtonLast</link> = Button7
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a4e08a52925f0ee7f11fc32bab6296d68">ButtonLeft</link> = Button0
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a94ce87390088e1e15311a3a9fb8d8319">ButtonRight</link> = Button1
+, <link linkend="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a9442c79013e1758bf2aea3f707ad5e2c">ButtonMiddle</link> = Button2
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76"/><section>
+    <title>anonymous enum</title>
+<para><computeroutput>anonymous enum : <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Button0</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button0</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a21d883d0409b1f5fe6bcc9b29f21930a"/>Button0</entry><entry></entry></row><row><entry><indexterm><primary>Button1</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button1</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a717ea0db28b7924d6eae2b6acecc8dbc"/>Button1</entry><entry></entry></row><row><entry><indexterm><primary>Button2</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button2</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76abecffa0d888a0814d86f3d2bcc0db1b2"/>Button2</entry><entry></entry></row><row><entry><indexterm><primary>Button3</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button3</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76ab41b3e9444310ee5dfaa2687a3c70dcc"/>Button3</entry><entry></entry></row><row><entry><indexterm><primary>Button4</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button4</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76aa7e8a76f84929fff43341482f246a841"/>Button4</entry><entry></entry></row><row><entry><indexterm><primary>Button5</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button5</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a900547c07bbb031305cd873415648dd3"/>Button5</entry><entry></entry></row><row><entry><indexterm><primary>Button6</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button6</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a269ca6dd6cd265d7986d6dee7b3f2cd4"/>Button6</entry><entry></entry></row><row><entry><indexterm><primary>Button7</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>Button7</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a0ba19bad24c3c3b1f8fc0948024d359e"/>Button7</entry><entry></entry></row><row><entry><indexterm><primary>ButtonLast</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>ButtonLast</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76aad9d8d7fda4c0967700822d5782e5c0c"/>ButtonLast</entry><entry></entry></row><row><entry><indexterm><primary>ButtonLeft</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>ButtonLeft</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a4e08a52925f0ee7f11fc32bab6296d68"/>ButtonLeft</entry><entry></entry></row><row><entry><indexterm><primary>ButtonRight</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>ButtonRight</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a94ce87390088e1e15311a3a9fb8d8319"/>ButtonRight</entry><entry></entry></row><row><entry><indexterm><primary>ButtonMiddle</primary><secondary>luna::Mouse</secondary></indexterm>
+<indexterm><primary>luna::Mouse</primary><secondary>ButtonMiddle</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1_mouse_1ab58040b98be4416d030d486fd0b54a76a9442c79013e1758bf2aea3f707ad5e2c"/>ButtonMiddle</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+</section>

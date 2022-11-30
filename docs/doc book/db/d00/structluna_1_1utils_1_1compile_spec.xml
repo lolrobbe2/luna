@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1utils_1_1compile_spec" xml:lang="en-US">
+<title>luna::utils::compileSpec Struct Reference</title>
+<indexterm><primary>luna::utils::compileSpec</primary></indexterm>
+<para>
+<computeroutput>#include &lt;shaderCompiler.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::utils::compileSpec:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/structluna_1_1utils_1_1compile_spec__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_structluna_1_1utils_1_1compile_spec_1ad357490b74e1b1f945ea620470162f94">reflect</link> = false</para>
+</listitem>
+            <listitem><para>std::vector&lt; char &gt; <link linkend="_structluna_1_1utils_1_1compile_spec_1aad621c67dbdbe900d8f876b4b23d6a47">source</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_structluna_1_1utils_1_1compile_spec_1a08fd9b6f00a8e5b3b17f7127fb10e912">fileName</link></para>
+</listitem>
+            <listitem><para>shaderc_shader_kind <link linkend="_structluna_1_1utils_1_1compile_spec_1add4185859749bc7682be9832f633be48">shaderKind</link></para>
+</listitem>
+            <listitem><para><link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781">compileLanguage</link> <link linkend="_structluna_1_1utils_1_1compile_spec_1ac93ac068c7f3ddbd07cfa90130ce4db1">language</link> = <link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492">SPIR_V</link></para>
+</listitem>
+            <listitem><para>shaderc::CompileOptions <link linkend="_structluna_1_1utils_1_1compile_spec_1afd90f6fb056dc9b7b94bb76df50df83b">compileOptions</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1utils_1_1compile_spec_1afd90f6fb056dc9b7b94bb76df50df83b"/><section>
+    <title>compileOptions</title>
+<indexterm><primary>compileOptions</primary><secondary>luna::utils::compileSpec</secondary></indexterm>
+<indexterm><primary>luna::utils::compileSpec</primary><secondary>compileOptions</secondary></indexterm>
+<para><computeroutput>shaderc::CompileOptions luna::utils::compileSpec::compileOptions</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1utils_1_1compile_spec_1a08fd9b6f00a8e5b3b17f7127fb10e912"/><section>
+    <title>fileName</title>
+<indexterm><primary>fileName</primary><secondary>luna::utils::compileSpec</secondary></indexterm>
+<indexterm><primary>luna::utils::compileSpec</primary><secondary>fileName</secondary></indexterm>
+<para><computeroutput>std::string luna::utils::compileSpec::fileName</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1utils_1_1compile_spec_1ac93ac068c7f3ddbd07cfa90130ce4db1"/><section>
+    <title>language</title>
+<indexterm><primary>language</primary><secondary>luna::utils::compileSpec</secondary></indexterm>
+<indexterm><primary>luna::utils::compileSpec</primary><secondary>language</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781">compileLanguage</link> luna::utils::compileSpec::language = <link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492">SPIR_V</link></computeroutput></para></section>
+<anchor xml:id="_structluna_1_1utils_1_1compile_spec_1ad357490b74e1b1f945ea620470162f94"/><section>
+    <title>reflect</title>
+<indexterm><primary>reflect</primary><secondary>luna::utils::compileSpec</secondary></indexterm>
+<indexterm><primary>luna::utils::compileSpec</primary><secondary>reflect</secondary></indexterm>
+<para><computeroutput>bool luna::utils::compileSpec::reflect = false</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1utils_1_1compile_spec_1add4185859749bc7682be9832f633be48"/><section>
+    <title>shaderKind</title>
+<indexterm><primary>shaderKind</primary><secondary>luna::utils::compileSpec</secondary></indexterm>
+<indexterm><primary>luna::utils::compileSpec</primary><secondary>shaderKind</secondary></indexterm>
+<para><computeroutput>shaderc_shader_kind luna::utils::compileSpec::shaderKind</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1utils_1_1compile_spec_1aad621c67dbdbe900d8f876b4b23d6a47"/><section>
+    <title>source</title>
+<indexterm><primary>source</primary><secondary>luna::utils::compileSpec</secondary></indexterm>
+<indexterm><primary>luna::utils::compileSpec</primary><secondary>source</secondary></indexterm>
+<para><computeroutput>std::vector&lt;char&gt; luna::utils::compileSpec::source</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/<link linkend="_shader_compiler_8h">shaderCompiler.h</link></section>
+</section>

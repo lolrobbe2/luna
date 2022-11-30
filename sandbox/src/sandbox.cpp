@@ -5,11 +5,11 @@ class sandbox : public luna::application::application
 public:
 	sandbox() //base function
 	{
-		
+		LN_TRACE("started app");
 	}
 	virtual ~sandbox() //base breaker function
 	{
-
+		
 	}
 
 };

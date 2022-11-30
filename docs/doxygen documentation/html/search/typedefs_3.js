@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ref_0',['ref',['../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87',1,'luna']]]
+  ['floatingpointmicroseconds_0',['floatingPointMicroseconds',['../db/d00/namespaceluna.html#afa1a20a0d8e73fe9d7421fd3630d9762',1,'luna']]]
 ];

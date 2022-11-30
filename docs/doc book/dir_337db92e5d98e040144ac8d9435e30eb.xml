@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_337db92e5d98e040144ac8d9435e30eb" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows Directory Reference</primary></indexterm>
+Directory dependency graph for windows:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_337db92e5d98e040144ac8d9435e30eb_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_windows_window_8cpp">windowsWindow.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_windows_window_8h">windowsWindow.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scope_0',['scope',['../db/d00/namespaceluna.html#accd5328e0de41c20f918cdd315173870',1,'luna']]]
+  ['keycode_0',['keyCode',['../db/d00/namespaceluna.html#a2f2d4316b58f32a02984140d12d63c39',1,'luna']]]
 ];

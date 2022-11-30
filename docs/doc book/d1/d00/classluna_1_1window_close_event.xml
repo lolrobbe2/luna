@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1window_close_event" xml:lang="en-US">
+<title>luna::windowCloseEvent Class Reference</title>
+<indexterm><primary>luna::windowCloseEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;applicationEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::windowCloseEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d4/d00/classluna_1_1window_close_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::windowCloseEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d4/d00/classluna_1_1window_close_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1window_close_event_1ae237ea039a4bd9956c3dd740b5332f10">windowCloseEvent</link> ()=default</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1window_close_event_1ae237ea039a4bd9956c3dd740b5332f10"/><section>
+    <title>windowCloseEvent()</title>
+<indexterm><primary>windowCloseEvent</primary><secondary>luna::windowCloseEvent</secondary></indexterm>
+<indexterm><primary>luna::windowCloseEvent</primary><secondary>windowCloseEvent</secondary></indexterm>
+<para><computeroutput>luna::windowCloseEvent::windowCloseEvent ( )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_application_event_8h">applicationEvent.h</link></section>
+</section>

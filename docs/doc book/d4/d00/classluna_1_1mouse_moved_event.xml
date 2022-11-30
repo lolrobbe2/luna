@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1mouse_moved_event" xml:lang="en-US">
+<title>luna::mouseMovedEvent Class Reference</title>
+<indexterm><primary>luna::mouseMovedEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;mouseEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::mouseMovedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/classluna_1_1mouse_moved_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::mouseMovedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d00/classluna_1_1mouse_moved_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1mouse_moved_event_1aad62c2b53180aab9ef912fe814ece6de">mouseMovedEvent</link> (const float x, const float y)</para>
+</listitem>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_moved_event_1a8880e41e4b60898305c5aa2fe3dd316a">GetX</link> () const</para>
+</listitem>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_moved_event_1a4205c101eb5ff6ef805afd2899cb72eb">GetY</link> () const</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classluna_1_1mouse_moved_event_1aa6663ef60b0ccc25c750ebc20899bf5f">toString</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_moved_event_1a944b123d0d5130fbdd44f1ae0711a90c">m_MouseX</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_moved_event_1ac2ecc7e82112ae1d1b8bbf26976b4d92">m_MouseY</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_moved_event_1aad62c2b53180aab9ef912fe814ece6de"/><section>
+    <title>mouseMovedEvent()</title>
+<indexterm><primary>mouseMovedEvent</primary><secondary>luna::mouseMovedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseMovedEvent</primary><secondary>mouseMovedEvent</secondary></indexterm>
+<para><computeroutput>luna::mouseMovedEvent::mouseMovedEvent (const float x, const float y)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_moved_event_1a8880e41e4b60898305c5aa2fe3dd316a"/><section>
+    <title>GetX()</title>
+<indexterm><primary>GetX</primary><secondary>luna::mouseMovedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseMovedEvent</primary><secondary>GetX</secondary></indexterm>
+<para><computeroutput>float luna::mouseMovedEvent::GetX ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1mouse_moved_event_1a4205c101eb5ff6ef805afd2899cb72eb"/><section>
+    <title>GetY()</title>
+<indexterm><primary>GetY</primary><secondary>luna::mouseMovedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseMovedEvent</primary><secondary>GetY</secondary></indexterm>
+<para><computeroutput>float luna::mouseMovedEvent::GetY ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1mouse_moved_event_1aa6663ef60b0ccc25c750ebc20899bf5f"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>luna::mouseMovedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseMovedEvent</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>std::string luna::mouseMovedEvent::toString ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7">luna::Event</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_moved_event_1a944b123d0d5130fbdd44f1ae0711a90c"/><section>
+    <title>m_MouseX</title>
+<indexterm><primary>m_MouseX</primary><secondary>luna::mouseMovedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseMovedEvent</primary><secondary>m_MouseX</secondary></indexterm>
+<para><computeroutput>float luna::mouseMovedEvent::m_MouseX<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1mouse_moved_event_1ac2ecc7e82112ae1d1b8bbf26976b4d92"/><section>
+    <title>m_MouseY</title>
+<indexterm><primary>m_MouseY</primary><secondary>luna::mouseMovedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseMovedEvent</primary><secondary>m_MouseY</secondary></indexterm>
+<para><computeroutput>float luna::mouseMovedEvent::m_MouseY<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_mouse_event_8h">mouseEvent.h</link></section>
+</section>

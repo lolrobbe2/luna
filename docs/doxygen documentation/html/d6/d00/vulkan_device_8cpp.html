@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>luna engine: C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanDevice.cpp File Reference</title>
+<title>luna engine: C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanDevice.cpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -96,12 +97,60 @@ $(document).ready(function(){initNavTree('d6/d00/vulkan_device_8cpp.html','../..
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="../../d9/d00/lnpch_8h.html">lnpch.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../da/d00/vulkan_device_8h.html">core/vulkan/device/vulkanDevice.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../dc/d00/shader_library_8h.html">core/utils/shaderLibrary.h</a>&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for vulkanDevice.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d00/vulkan_device_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2vulkan_2device_2vulkan_device_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2vulkan_2device_2vulkan_device_8cpp" id="a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2vulkan_2device_2vulkan_device_8cpp">
+<area shape="rect" title=" " coords="1255,5,1421,75"/>
+<area shape="rect" href="../../d9/d00/lnpch_8h.html" title=" " coords="1469,533,1533,559"/>
+<area shape="rect" href="../../da/d00/vulkan_device_8h.html" title=" " coords="1275,123,1401,163"/>
+<area shape="rect" href="../../dc/d00/shader_library_8h.html" title=" " coords="1078,130,1246,155"/>
+<area shape="rect" title=" " coords="2105,614,2166,639"/>
+<area shape="rect" title=" " coords="2191,614,2251,639"/>
+<area shape="rect" title=" " coords="752,614,807,639"/>
+<area shape="rect" title=" " coords="2275,614,2353,639"/>
+<area shape="rect" title=" " coords="831,614,901,639"/>
+<area shape="rect" title=" " coords="2377,614,2424,639"/>
+<area shape="rect" title=" " coords="2449,614,2515,639"/>
+<area shape="rect" title=" " coords="1121,614,1161,639"/>
+<area shape="rect" title=" " coords="1185,614,1251,639"/>
+<area shape="rect" title=" " coords="1275,614,1347,639"/>
+<area shape="rect" title=" " coords="925,614,991,639"/>
+<area shape="rect" title=" " coords="1015,614,1096,639"/>
+<area shape="rect" href="../../de/d00/platform_8h.html" title=" " coords="887,695,1045,720"/>
+<area shape="rect" title=" " coords="2540,614,2645,639"/>
+<area shape="rect" title=" " coords="1423,614,1579,639"/>
+<area shape="rect" title=" " coords="1603,614,1707,639"/>
+<area shape="rect" title=" " coords="1731,614,1795,639"/>
+<area shape="rect" title=" " coords="1819,607,1963,647"/>
+<area shape="rect" title=" " coords="1987,614,2081,639"/>
+<area shape="rect" href="../../db/d00/device_8h.html" title=" " coords="1261,218,1415,243"/>
+<area shape="rect" href="../../d0/d00/vulkan_swapchain_8h.html" title=" " coords="1439,211,1583,251"/>
+<area shape="rect" href="../../d1/d00/shader_8h.html" title=" " coords="1077,218,1236,243"/>
+<area shape="rect" href="../../d3/d00/window_8h.html" title=" " coords="1286,299,1419,339"/>
+<area shape="rect" href="../../d5/d00/core_8h.html" title=" " coords="787,460,873,485"/>
+<area shape="rect" href="../../dd/d00/event_8h.html" title=" " coords="1286,387,1419,412"/>
+<area shape="rect" title=" " coords="555,533,625,559"/>
+<area shape="rect" href="../../d7/d00/log_8h.html" title=" " coords="168,614,287,639"/>
+<area shape="rect" href="../../d6/d00/instrumentor_8h.html" title=" " coords="649,533,822,559"/>
+<area shape="rect" title=" " coords="148,695,307,720"/>
+<area shape="rect" title=" " coords="331,695,444,720"/>
+<area shape="rect" title=" " coords="5,695,124,720"/>
+<area shape="rect" title=" " coords="653,614,727,639"/>
+<area shape="rect" title=" " coords="311,614,373,639"/>
+<area shape="rect" title=" " coords="397,614,463,639"/>
+<area shape="rect" title=" " coords="487,614,546,639"/>
+<area shape="rect" title=" " coords="570,614,629,639"/>
+</map>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:db/d00/namespaceluna"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/namespaceluna.html">luna</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:df/d00/namespaceluna_1_1renderer"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/namespaceluna_1_1renderer.html">luna::renderer</a></td></tr>
+<tr class="memitem:df/d00/namespaceluna_1_1vulkan"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html">luna::vulkan</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

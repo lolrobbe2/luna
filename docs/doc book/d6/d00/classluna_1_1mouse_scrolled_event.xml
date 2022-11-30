@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1mouse_scrolled_event" xml:lang="en-US">
+<title>luna::mouseScrolledEvent Class Reference</title>
+<indexterm><primary>luna::mouseScrolledEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;mouseEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::mouseScrolledEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d00/classluna_1_1mouse_scrolled_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::mouseScrolledEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1mouse_scrolled_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1mouse_scrolled_event_1a6aacf2633ce15ecacc1cccb181b493a4">mouseScrolledEvent</link> (const float xOffset, const float yOffset)</para>
+</listitem>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_scrolled_event_1a29cc50cdd972c3eebc07482c7c1a3796">getXOffset</link> () const</para>
+</listitem>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_scrolled_event_1a9a3efa04d47c18ce6583720282042c84">getYOffset</link> () const</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classluna_1_1mouse_scrolled_event_1a07b539f0949a43dbdca9a8650cf07df7">toString</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_scrolled_event_1ab5c10c416d1789187c2ee9f8d07f3170">m_XOffset</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_classluna_1_1mouse_scrolled_event_1a38c91d8e8ded42a1a47b7544e3ea9084">m_YOffset</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_scrolled_event_1a6aacf2633ce15ecacc1cccb181b493a4"/><section>
+    <title>mouseScrolledEvent()</title>
+<indexterm><primary>mouseScrolledEvent</primary><secondary>luna::mouseScrolledEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseScrolledEvent</primary><secondary>mouseScrolledEvent</secondary></indexterm>
+<para><computeroutput>luna::mouseScrolledEvent::mouseScrolledEvent (const float xOffset, const float yOffset)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_scrolled_event_1a29cc50cdd972c3eebc07482c7c1a3796"/><section>
+    <title>getXOffset()</title>
+<indexterm><primary>getXOffset</primary><secondary>luna::mouseScrolledEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseScrolledEvent</primary><secondary>getXOffset</secondary></indexterm>
+<para><computeroutput>float luna::mouseScrolledEvent::getXOffset ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/classluna_1_1mouse_scrolled_event_a29cc50cdd972c3eebc07482c7c1a3796_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1mouse_scrolled_event_1a9a3efa04d47c18ce6583720282042c84"/><section>
+    <title>getYOffset()</title>
+<indexterm><primary>getYOffset</primary><secondary>luna::mouseScrolledEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseScrolledEvent</primary><secondary>getYOffset</secondary></indexterm>
+<para><computeroutput>float luna::mouseScrolledEvent::getYOffset ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/classluna_1_1mouse_scrolled_event_a9a3efa04d47c18ce6583720282042c84_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1mouse_scrolled_event_1a07b539f0949a43dbdca9a8650cf07df7"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>luna::mouseScrolledEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseScrolledEvent</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>std::string luna::mouseScrolledEvent::toString ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7">luna::Event</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/classluna_1_1mouse_scrolled_event_a07b539f0949a43dbdca9a8650cf07df7_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_scrolled_event_1ab5c10c416d1789187c2ee9f8d07f3170"/><section>
+    <title>m_XOffset</title>
+<indexterm><primary>m_XOffset</primary><secondary>luna::mouseScrolledEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseScrolledEvent</primary><secondary>m_XOffset</secondary></indexterm>
+<para><computeroutput>float luna::mouseScrolledEvent::m_XOffset<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1mouse_scrolled_event_1a38c91d8e8ded42a1a47b7544e3ea9084"/><section>
+    <title>m_YOffset</title>
+<indexterm><primary>m_YOffset</primary><secondary>luna::mouseScrolledEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseScrolledEvent</primary><secondary>m_YOffset</secondary></indexterm>
+<para><computeroutput>float luna::mouseScrolledEvent::m_YOffset<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_mouse_event_8h">mouseEvent.h</link></section>
+</section>

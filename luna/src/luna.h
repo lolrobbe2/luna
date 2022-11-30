@@ -9,4 +9,5 @@ int main(int argc, char** argv)
 	luna::application::application* app = luna::application::createApplication(); // creates an app instance
 	app->run(); // starts the instance
 	delete app; // removes the instance when the app is closed
+
 }

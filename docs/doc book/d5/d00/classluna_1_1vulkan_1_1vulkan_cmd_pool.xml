@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool" xml:lang="en-US">
+<title>luna::vulkan::vulkanCmdPool Class Reference</title>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary></indexterm>
+<para>
+
+<para>abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs. all a VkCommandBuffer has been changed out by virtualCmdBuffer type. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;vulkanCmdPool.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::vulkan::vulkanCmdPool:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>VkCommandBuffer <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1ab811a44da7baca73950986ecd8a93797">vulkanCmdPool::operator[]</link> (const <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer)</para>
+</listitem>
+            <listitem><para>VkCommandBuffer <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a86029eedf07dc8ec4024996bfcd942a9">operator=</link> (const <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer)</para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a89a797caa816167be2eaaeb7f84b3e51">vulkanCmdPool</link> (const <link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec">vulkanCmdPoolSpec</link> &amp;commandBufferSPec)</para>
+
+<para><link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool">vulkanCmdPool</link> constructor </para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1af94c2458db44622e819040aaa6ef9b19">~vulkanCmdPool</link> ()</para>
+
+<para>commandPool destructor, does nothing at the moment </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a624aca7e0d27fd7d351058c12fd2166b">createNewBuffer</link> (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> *commandBuffer, const uint32_t &amp;commandBufferCount, const VkCommandBufferLevel &amp;commandBufferLevel)</para>
+
+<para>createNewBuffer creates a proteceted commandBuffer that is bound to the pool it is created with. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1ad5d6a5128c55f9fcd152d154420b1bd5">begin</link> (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer, const VkCommandBufferUsageFlags &amp;usageFlags)</para>
+
+<para>starts recording a commandBuffer. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a15dc57d65c7d883e0634eb732844e545">end</link> (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer)</para>
+
+<para>stops recording the commandBuffer. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1ac996574b236e912c58397433cf30e375">flush</link> (VkQueue queue, uint64_t submitCount, const <link linkend="_structluna_1_1vulkan_1_1command_pool_submit_info">commandPoolSubmitInfo</link> *pCommandPoolSubmitInfo, VkFence waitFence)</para>
+
+<para>flush executes all flushed/submitted commandBuffers. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a1ae9b1de38dd413c68dce1fb5e3f9479">freeCommandBuffer</link> (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> *pCommandBuffers, uint32_t count)</para>
+
+<para>frees commandbuffers to be able to rerecord them. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::unordered_map&lt; <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link>, std::pair&lt; VkCommandBuffer, VkCommandBufferUsageFlags &gt; &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a9c0343bc897a7c7acc0e91c8aea3d80b">virtualBuffers</link></para>
+</listitem>
+            <listitem><para>VkCommandPool <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a5dbbed29d2f4c15434f5bb0bcd3292b0">commandPool</link></para>
+</listitem>
+            <listitem><para><link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec">vulkanCmdPoolSpec</link> <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a37adb62143af3478ddbc6072160f544f">sCommandPoolSpec</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs. all a VkCommandBuffer has been changed out by virtualCmdBuffer type. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a89a797caa816167be2eaaeb7f84b3e51"/><section>
+    <title>vulkanCmdPool()</title>
+<indexterm><primary>vulkanCmdPool</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>vulkanCmdPool</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanCmdPool::vulkanCmdPool (const <link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec">vulkanCmdPoolSpec</link> &amp; commandBufferSPec)</computeroutput></para><para>
+
+<para><link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool">vulkanCmdPool</link> constructor </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec">vulkanCmdPoolSpec</link></entry><entry>
+<para>commandPoolSpecefication; </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1af94c2458db44622e819040aaa6ef9b19"/><section>
+    <title>~vulkanCmdPool()</title>
+<indexterm><primary>~vulkanCmdPool</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>~vulkanCmdPool</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanCmdPool::~vulkanCmdPool ( )<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>commandPool destructor, does nothing at the moment </para>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1ad5d6a5128c55f9fcd152d154420b1bd5"/><section>
+    <title>begin()</title>
+<indexterm><primary>begin</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>begin</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanCmdPool::begin (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer, const VkCommandBufferUsageFlags &amp; usageFlags)</computeroutput></para><para>
+
+<para>starts recording a commandBuffer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>virtualCommandBuffer</entry><entry>
+<para>commandBuffer handle. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>const</entry><entry>
+<para>VkCommandBufferUsageFlags&amp; usageFlags </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a624aca7e0d27fd7d351058c12fd2166b"/><section>
+    <title>createNewBuffer()</title>
+<indexterm><primary>createNewBuffer</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>createNewBuffer</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanCmdPool::createNewBuffer (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> * commandBuffer, const uint32_t &amp; commandBufferCount, const VkCommandBufferLevel &amp; commandBufferLevel)</computeroutput></para><para>
+
+<para>createNewBuffer creates a proteceted commandBuffer that is bound to the pool it is created with. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>virtualCmdBuffer*</entry><entry>
+<para>a command buffer array pointer or std::vector pointer. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>const</entry><entry>
+<para>uint32_t&amp; commandBufferCount number of commandBuffers to be created. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>const</entry><entry>
+<para>VkCommandBufferLevel&amp; commandBufferLevel specifies the commandBuffer type. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a15dc57d65c7d883e0634eb732844e545"/><section>
+    <title>end()</title>
+<indexterm><primary>end</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>end</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanCmdPool::end (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer)</computeroutput></para><para>
+
+<para>stops recording the commandBuffer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>virtualCommandBuffer</entry><entry>
+<para>commandBuffer handle. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1ac996574b236e912c58397433cf30e375"/><section>
+    <title>flush()</title>
+<indexterm><primary>flush</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>flush</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanCmdPool::flush (VkQueue queue, uint64_t submitCount, const <link linkend="_structluna_1_1vulkan_1_1command_pool_submit_info">commandPoolSubmitInfo</link> * pCommandPoolSubmitInfo, VkFence waitFence)</computeroutput></para><para>
+
+<para>flush executes all flushed/submitted commandBuffers. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkQueue</entry><entry>
+<para>queue </para>
+</entry>
+                            </row>
+                            <row>
+<entry>submiCount</entry><entry>
+<para>the amount of commandPoolSubmitInfos </para>
+</entry>
+                            </row>
+                            <row>
+<entry>const</entry><entry>
+<para>commandPoolSubmitInfo* pCommandPoolSubmitInfo </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a1ae9b1de38dd413c68dce1fb5e3f9479"/><section>
+    <title>freeCommandBuffer()</title>
+<indexterm><primary>freeCommandBuffer</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>freeCommandBuffer</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanCmdPool::freeCommandBuffer (<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> * pCommandBuffers, uint32_t count)</computeroutput></para><para>
+
+<para>frees commandbuffers to be able to rerecord them. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pCommandBuffers</entry><entry>
+<para>a command buffer array pointer or std::vector pointer. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>count</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a86029eedf07dc8ec4024996bfcd942a9"/><section>
+    <title>operator=()</title>
+<indexterm><primary>operator=</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput>VkCommandBuffer luna::vulkan::vulkanCmdPool::operator= (const <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1ab811a44da7baca73950986ecd8a93797"/><section>
+    <title>vulkanCmdPool::operator[]()</title>
+<indexterm><primary>vulkanCmdPool::operator[]</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>vulkanCmdPool::operator[]</secondary></indexterm>
+<para><computeroutput>VkCommandBuffer luna::vulkan::vulkanCmdPool::vulkanCmdPool::operator[] (const <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> commandBuffer)</computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a5dbbed29d2f4c15434f5bb0bcd3292b0"/><section>
+    <title>commandPool</title>
+<indexterm><primary>commandPool</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>commandPool</secondary></indexterm>
+<para><computeroutput>VkCommandPool luna::vulkan::vulkanCmdPool::commandPool<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a37adb62143af3478ddbc6072160f544f"/><section>
+    <title>sCommandPoolSpec</title>
+<indexterm><primary>sCommandPoolSpec</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>sCommandPoolSpec</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec">vulkanCmdPoolSpec</link> luna::vulkan::vulkanCmdPool::sCommandPoolSpec<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_cmd_pool_1a9c0343bc897a7c7acc0e91c8aea3d80b"/><section>
+    <title>virtualBuffers</title>
+<indexterm><primary>virtualBuffers</primary><secondary>luna::vulkan::vulkanCmdPool</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanCmdPool</primary><secondary>virtualBuffers</secondary></indexterm>
+<para><computeroutput>std::unordered_map&lt;<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link>, std::pair&lt;VkCommandBuffer, VkCommandBufferUsageFlags&gt; &gt; luna::vulkan::vulkanCmdPool::virtualBuffers<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/<link linkend="_vulkan_cmd_pool_8h">vulkanCmdPool.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/<link linkend="_vulkan_cmd_pool_8cpp">vulkanCmdPool.cpp</link></section>
+</section>

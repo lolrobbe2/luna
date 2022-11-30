@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_lnpch_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;cstdint&gt;<?linebreak?>#include &lt;cstdlib&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;functional&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &lt;map&gt;<?linebreak?>#include &lt;optional&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;random&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;core/platform/platform.h&gt;<?linebreak?>#include &lt;VkBootstrap.h&gt;<?linebreak?>#include &lt;VkBootstrapDispatch.h&gt;<?linebreak?>#include &lt;GLFW/glfw3.h&gt;<?linebreak?>#include &lt;imgui.h&gt;<?linebreak?>#include &lt;backends/imgui_impl_glfw.h&gt;<?linebreak?>#include &lt;glm/glm.hpp&gt;<?linebreak?></programlisting>Include dependency graph for lnpch.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/lnpch_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/lnpch_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_lnpch_8h_1ab91f325a54d3e35fe831a86d6382c2a9">GLFW_INCLUDE_VULKAN</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_lnpch_8h_1ab91f325a54d3e35fe831a86d6382c2a9"/><section>
+    <title>GLFW_INCLUDE_VULKAN</title>
+<indexterm><primary>GLFW_INCLUDE_VULKAN</primary><secondary>lnpch.h</secondary></indexterm>
+<indexterm><primary>lnpch.h</primary><secondary>GLFW_INCLUDE_VULKAN</secondary></indexterm>
+<para><computeroutput>#define GLFW_INCLUDE_VULKAN</computeroutput></para></section>
+</section>
+</section>

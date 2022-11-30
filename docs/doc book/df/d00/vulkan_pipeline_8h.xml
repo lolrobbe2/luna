@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_vulkan_pipeline_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;imgui.h&gt;<?linebreak?>#include &lt;backends/imgui_impl_glfw.h&gt;<?linebreak?>#include &lt;backends/imgui_impl_vulkan.h&gt;<?linebreak?>#include &lt;core/rendering/pipeline.h&gt;<?linebreak?>#include &lt;core/vulkan/device/vulkanCmdPool.h&gt;<?linebreak?></programlisting>Include dependency graph for vulkanPipeline.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d3/d00/vulkan_pipeline_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/vulkan_pipeline_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline">luna::vulkan::vulkanPipeline</link></para>
+
+<para>vulkan pipline implementation class. </para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1shader_stage">luna::vulkan::vulkanPipeline::shaderStage</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description">luna::vulkan::vulkanPipeline::vertexInputDescription</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex">luna::vulkan::vulkanPipeline::Vertex</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command">luna::vulkan::vulkanPipeline::drawCommand</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1vulkan">luna::vulkan</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

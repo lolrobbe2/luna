@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer" xml:lang="en-US">
+<title>luna::vulkan::vulkanIndexBuffer Class Reference</title>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanIndexBuffer.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::vulkan::vulkanIndexBuffer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d3/d00/classluna_1_1vulkan_1_1vulkan_index_buffer__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::vulkan::vulkanIndexBuffer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/classluna_1_1vulkan_1_1vulkan_index_buffer__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a4766690db99a9a84bba243fc902d3fce">vulkanIndexBuffer</link> (uint32_t *indices, uint32_t count)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1abb5d9e8deed37d96151f58ed853527a5">~vulkanIndexBuffer</link> ()</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a6e4ef557be7b9a111d418ca945cdfaa1">bind</link> () const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1ab980b6d04964bcb401c3f20b8a84d40b">unbind</link> () const override</para>
+</listitem>
+            <listitem><para>virtual uint32_t <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a1f56cdededc2d0d6042f1e758afe5a70">getCount</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>VkBuffer <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a23489689fc2ed8e320b78a7c583084db">vkIndexBuffer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a18b558c81f2df4a3a92aec0c3df71cbc">vulkanPipeline</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a4766690db99a9a84bba243fc902d3fce"/><section>
+    <title>vulkanIndexBuffer()</title>
+<indexterm><primary>vulkanIndexBuffer</primary><secondary>luna::vulkan::vulkanIndexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary><secondary>vulkanIndexBuffer</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanIndexBuffer::vulkanIndexBuffer (uint32_t * indices, uint32_t count)</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer_a4766690db99a9a84bba243fc902d3fce_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer_1abb5d9e8deed37d96151f58ed853527a5"/><section>
+    <title>~vulkanIndexBuffer()</title>
+<indexterm><primary>~vulkanIndexBuffer</primary><secondary>luna::vulkan::vulkanIndexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary><secondary>~vulkanIndexBuffer</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanIndexBuffer::~vulkanIndexBuffer ( )<computeroutput>[virtual]</computeroutput></computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer_abb5d9e8deed37d96151f58ed853527a5_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a6e4ef557be7b9a111d418ca945cdfaa1"/><section>
+    <title>bind()</title>
+<indexterm><primary>bind</primary><secondary>luna::vulkan::vulkanIndexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary><secondary>bind</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanIndexBuffer::bind ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_classluna_1_1renderer_1_1index_buffer_1aeef9e429bd29f2229350005f65b71815">luna::renderer::indexBuffer</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a1f56cdededc2d0d6042f1e758afe5a70"/><section>
+    <title>getCount()</title>
+<indexterm><primary>getCount</primary><secondary>luna::vulkan::vulkanIndexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary><secondary>getCount</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::vulkanIndexBuffer::getCount ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_classluna_1_1renderer_1_1index_buffer_1ab8373a6c1e809de5c95ed34b4ad0a44b">luna::renderer::indexBuffer</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer_1ab980b6d04964bcb401c3f20b8a84d40b"/><section>
+    <title>unbind()</title>
+<indexterm><primary>unbind</primary><secondary>luna::vulkan::vulkanIndexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary><secondary>unbind</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanIndexBuffer::unbind ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_classluna_1_1renderer_1_1index_buffer_1a20c0e59d0d14576ef92b9345dfbac8ea">luna::renderer::indexBuffer</link>.</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a18b558c81f2df4a3a92aec0c3df71cbc"/><section>
+    <title>vulkanPipeline</title>
+<indexterm><primary>vulkanPipeline</primary><secondary>luna::vulkan::vulkanIndexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary><secondary>vulkanPipeline</secondary></indexterm>
+<para><computeroutput>friend class <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline">vulkanPipeline</link><computeroutput>[friend]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a23489689fc2ed8e320b78a7c583084db"/><section>
+    <title>vkIndexBuffer</title>
+<indexterm><primary>vkIndexBuffer</primary><secondary>luna::vulkan::vulkanIndexBuffer</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanIndexBuffer</primary><secondary>vkIndexBuffer</secondary></indexterm>
+<para><computeroutput>VkBuffer luna::vulkan::vulkanIndexBuffer::vkIndexBuffer<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_index_buffer_8h">vulkanIndexBuffer.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_index_buffer_8cpp">vulkanIndexBuffer.cpp</link></section>
+</section>

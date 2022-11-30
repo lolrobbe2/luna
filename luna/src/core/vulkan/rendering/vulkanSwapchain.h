@@ -1,6 +1,7 @@
 #pragma once
 #include <core/vulkan/window/window.h>
 #include <VkBootstrap.h>
+
 namespace luna
 {
 	namespace vulkan
@@ -17,22 +18,16 @@ namespace luna
 		};
 		struct swapchainSpec
 		{
-			VkPhysicalDevice physicalDevice;
+			vkb::PhysicalDevice physicalDevice;
 			VkDevice device;
 			std::shared_ptr<vulkan::window> window = nullptr;
 			VkExtent2D swapchainExtent = {0,0};
 			VkSurfaceKHR surface = VK_NULL_HANDLE;
 			queueFamilyIndices indices;
 		};
-		struct swapChainSupportDetails
-		{
-			VkSurfaceCapabilitiesKHR capabilities;
-			std::vector<VkSurfaceFormatKHR> formats;
-			std::vector<VkPresentModeKHR> presentModes;
-		};
 
 		/**
-		 * @brief the vulkanSwapchain is a collection of vulkan frambuffers.
+		 * @brief the vulkanSwapchain is a collection of vulkan frambuffers and image views to wich the scene will be .
 		 */
 		class vulkanSwapchain
 		{
@@ -53,12 +48,53 @@ namespace luna
 			 * \return returns VK_SUCCESS on succesful creation.
 			 */
 			VkResult recreateSwapchain();
+			/**
+			 * @brief returns the main viewport handle.
+			 * 
+			 * \return VkViewport main handle.
+			 */
 			VkViewport getViewport();
+			/**
+			 * @brief returns the viewport scissor.
+			 * 
+			 * \return VkRect2D extent.
+			 */
 			VkRect2D getScissor();
-			inline VkFormat getSurfaceFormat() { return swapchainImageFormat; };
+			/**
+			 * @brief initializes the main viewport.
+			 * 
+			 * \return VK_SUCCESS when the initialization was succesful.
+			 */
+			VkResult initViewport(uint32_t maxFramesInFlight);
+			/**
+			 * @brief recreates the swapchain.
+			 * 
+			 * \param maxFramesInFlight
+			 * \return VK_SUCCES when recreation was succesful.
+			 */
+			VkResult recreateViewport(uint32_t maxFramesInFlight);
+			/**
+			 * @brief returns the surface format.
+			 * 
+			 * \param VkFormat
+			 */
+			inline VkFormat getSurfaceFormat() { return mSwapchain.image_format; };
+			/**
+			 * @brief returns the framebuffer given an index.
+			 * 
+			 * \param VkFrameBuffer the framebuffer handle.
+			 */
 			inline VkFramebuffer getFrameBuffer(uint8_t index) { return frameBuffers[index]; };
+			/**
+			 * @brief returns a ViewportImage descriptor.
+			 * 
+			 * \param VkDescriptorSet image descriptor.
+			 */
+			inline VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
+			std::vector<VkImage> sceneViewportImages;
 			vkb::Swapchain mSwapchain;
 			std::vector<VkFramebuffer> frameBuffers;
+			std::vector<VkDescriptorSet> m_Dset;
 		private:
 			/**
 			 * @brief destroys the device bound swapchain.
@@ -66,37 +102,16 @@ namespace luna
 			 * \return VK_SUCCES
 			 */
 			VkResult destroySwapchain();
-			/**
-			 * @brief gets the swapchain support details.
-			 * 
-			 * \param const VkPhysicalDevice& handle to the physicalDevice(GPU)
-			 * \return swapChainSupportDetails struct
-			 */
-			swapChainSupportDetails querySwapChainSupport(const VkPhysicalDevice& device);
-			/**
-			 * gets the swapchain supported surface format.
-			 * 
-			 * \param std::vector<VkSurfaceFormatKHR> of availableFormats
-			 * \return VkSurfaceFormatKHR surfaceFormat
-			 */
-			VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
-			/**
-			 * @brief chooseSwaPresentMode automaticly selects the present mode.
-			 * 
-			 * \param availablePresentModes
-			 * \return VkpresentModeKHR
-			 */
-			VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
-			VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
-			void createImageViews();
-			VkImageView createImageView(VkImage image, VkFormat format);
 			/*helper functions*/
 			swapchainSpec mSwapchainSpec;
 			
 			std::vector<VkImage> swapchainImages;
 			std::vector<VkImageView> swapChainImageViews;
 			VkFormat swapchainImageFormat;
-			
+			bool init = false;
+			VkSampler viewportSampler;
+			VkSurfaceCapabilitiesKHR surfaceCapaBilities;
+			std::vector<VkImageView> sceneViewportImageViews;
 		};
 	}
 }

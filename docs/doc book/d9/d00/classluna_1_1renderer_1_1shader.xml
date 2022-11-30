@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1renderer_1_1shader" xml:lang="en-US">
+<title>luna::renderer::shader Class Reference</title>
+<indexterm><primary>luna::renderer::shader</primary></indexterm>
+<para>
+<computeroutput>#include &lt;shader.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::renderer::shader:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d4/d00/classluna_1_1renderer_1_1shader__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::renderer::shader:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../da/d00/classluna_1_1renderer_1_1shader__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classluna_1_1renderer_1_1shader_1a6afb96870fa1bac3a268bf168d29a661">~shader</link> ()=default</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1shader_1a8c64440945a99d558cae4590e7a1b39f">bind</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1shader_1acadb7154c8196b3cef81e6eb01d5aa25">unbind</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1shader_1af85d739bb38d87443861dc2b8a7836ef">createLayout</link> ()=0</para>
+</listitem>
+            <listitem><para>std::vector&lt; uint32_t &gt; <link linkend="_classluna_1_1renderer_1_1shader_1a7b44933de21786d053bc8c550964a9db">self</link> ()</para>
+
+<para>returns the shader compiled source. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">shader</link> &gt; <link linkend="_classluna_1_1renderer_1_1shader_1a6b2d0c423e6fb9daf990ce4cd7db9480">create</link> (const std::string &amp;filepath, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">shaderStage</link> &amp;<link linkend="_classluna_1_1renderer_1_1shader_1ac76cce027c4234e47f98c2ebf08d83f3">stage</link>)</para>
+
+<para>creates a shader from a filepath. </para>
+</listitem>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">shader</link> &gt; <link linkend="_classluna_1_1renderer_1_1shader_1a716d5fa86b067f0d8def0999a4bc8d9e">create</link> (const std::vector&lt; uint8_t &gt; &amp;<link linkend="_classluna_1_1renderer_1_1shader_1ae61ccca2aa4897bd0668af8c369cd1e7">shaderSrc</link>, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">shaderStage</link> &amp;<link linkend="_classluna_1_1renderer_1_1shader_1ac76cce027c4234e47f98c2ebf08d83f3">stage</link>)</para>
+
+<para>creates a shader from compiled code. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_classluna_1_1renderer_1_1shader_1ac9dee5cda365f75d64531581a06bfc81">shaderName</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_structluna_1_1renderer_1_1shader_resource">shaderResource</link> &gt; <link linkend="_classluna_1_1renderer_1_1shader_1a2e1b6738c7d1f9aae90728e5b48d079a">shaderLayout</link></para>
+</listitem>
+            <listitem><para><link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">shaderStage</link> <link linkend="_classluna_1_1renderer_1_1shader_1ac76cce027c4234e47f98c2ebf08d83f3">stage</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; uint32_t &gt; <link linkend="_classluna_1_1renderer_1_1shader_1ae61ccca2aa4897bd0668af8c369cd1e7">shaderSrc</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1renderer_1_1shader_1a0ee548a1b2b101fff96b1b8a3849b3f7">vulkanDevice</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1a6afb96870fa1bac3a268bf168d29a661"/><section>
+    <title>~shader()</title>
+<indexterm><primary>~shader</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>~shader</secondary></indexterm>
+<para><computeroutput>virtual luna::renderer::shader::~shader ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1a8c64440945a99d558cae4590e7a1b39f"/><section>
+    <title>bind()</title>
+<indexterm><primary>bind</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>bind</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::shader::bind ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1abde840fc72e1f453feeb971d071173f6">luna::vulkan::vulkanShader</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1a6b2d0c423e6fb9daf990ce4cd7db9480"/><section>
+    <title>create()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>create</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>create</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">shader</link> &gt; luna::renderer::shader::create (const std::string &amp; filepath, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">shaderStage</link> &amp; stage)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a shader from a filepath. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>filepath</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>a shader reference. </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d00/classluna_1_1renderer_1_1shader_a6b2d0c423e6fb9daf990ce4cd7db9480_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1a716d5fa86b067f0d8def0999a4bc8d9e"/><section>
+    <title>create()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>create</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>create</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">shader</link> &gt; luna::renderer::shader::create (const std::vector&lt; uint8_t &gt; &amp; shaderSrc, const <link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">shaderStage</link> &amp; stage)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a shader from compiled code. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>shaderSrc</entry><entry>
+<para>the shader compiled src code </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>a shader reference. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1af85d739bb38d87443861dc2b8a7836ef"/><section>
+    <title>createLayout()</title>
+<indexterm><primary>createLayout</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>createLayout</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::shader::createLayout ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1aa7bab09ef9777619f42e56013b073f90">luna::vulkan::vulkanShader</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1a7b44933de21786d053bc8c550964a9db"/><section>
+    <title>self()</title>
+<indexterm><primary>self</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>self</secondary></indexterm>
+<para><computeroutput>std::vector&lt; uint32_t &gt; luna::renderer::shader::self ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>returns the shader compiled source. </para>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1acadb7154c8196b3cef81e6eb01d5aa25"/><section>
+    <title>unbind()</title>
+<indexterm><primary>unbind</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>unbind</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::shader::unbind ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_shader_1a31dfbe55e22e9d8c17aeb1629e83f4f4">luna::vulkan::vulkanShader</link>.</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Function Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1a0ee548a1b2b101fff96b1b8a3849b3f7"/><section>
+    <title>vulkanDevice</title>
+<indexterm><primary>vulkanDevice</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>vulkanDevice</secondary></indexterm>
+<para><computeroutput>friend class vulkanDevice<computeroutput>[friend]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1a2e1b6738c7d1f9aae90728e5b48d079a"/><section>
+    <title>shaderLayout</title>
+<indexterm><primary>shaderLayout</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>shaderLayout</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_structluna_1_1renderer_1_1shader_resource">shaderResource</link>&gt; luna::renderer::shader::shaderLayout</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1ac9dee5cda365f75d64531581a06bfc81"/><section>
+    <title>shaderName</title>
+<indexterm><primary>shaderName</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>shaderName</secondary></indexterm>
+<para><computeroutput>std::string luna::renderer::shader::shaderName</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1ae61ccca2aa4897bd0668af8c369cd1e7"/><section>
+    <title>shaderSrc</title>
+<indexterm><primary>shaderSrc</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>shaderSrc</secondary></indexterm>
+<para><computeroutput>std::vector&lt;uint32_t&gt; luna::renderer::shader::shaderSrc</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1shader_1ac76cce027c4234e47f98c2ebf08d83f3"/><section>
+    <title>stage</title>
+<indexterm><primary>stage</primary><secondary>luna::renderer::shader</secondary></indexterm>
+<indexterm><primary>luna::renderer::shader</primary><secondary>stage</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1_1renderer_1acfec401f46f7e9f983c807c61a32faae">shaderStage</link> luna::renderer::shader::stage</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_shader_8h">shader.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_shader_8cpp">shader.cpp</link></section>
+</section>

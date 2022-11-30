@@ -1,0 +1,210 @@
+\hypertarget{classluna_1_1utils_1_1object_storage}{}\doxysubsection{luna\+::utils\+::object\+Storage\texorpdfstring{$<$}{<} value \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classluna_1_1utils_1_1object_storage}\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+
+
+cached object memory class with a key handle.  
+
+
+
+
+{\ttfamily \#include $<$object\+Storage.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::utils\+::object\+Storage\texorpdfstring{$<$}{<} value \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d00/classluna_1_1utils_1_1object_storage__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for luna\+::utils\+::object\+Storage\texorpdfstring{$<$}{<} value \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{dc/d00/classluna_1_1utils_1_1object_storage__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage_a542bc0386906e63d69f8f218792dd6e6}{operator\mbox{[}$\,$\mbox{]}}} (const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&key)
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1object_storage_a692ccb4487eaa4cfa4e7596e1a484a77}{object\+Storage}} ()
+\begin{DoxyCompactList}\small\item\em deafult constructor whith default cache size of 200.µ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1object_storage_a063bea264ca9b37a1b3588c01d1a4708}{object\+Storage}} (size\+\_\+t cache\+Size)
+\begin{DoxyCompactList}\small\item\em constructor with custom cache size. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage_a4126da8a5085ddfe81b15a719fee146d}{put\+Value}} (\mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} $\ast$key, const value \&\+\_\+value)
+\begin{DoxyCompactList}\small\item\em puts a value in the object storage. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage_a06cf21b370891604f75ea7d91251234e}{get\+Value}} (const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&key, const value \&\+\_\+value)
+\begin{DoxyCompactList}\small\item\em gets a value from the object storage. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage_ac03164acabd597ba74b9422b53de738e}{set\+Value}} (const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&key, const value \&\+\_\+value)
+\begin{DoxyCompactList}\small\item\em sets the value of a given key. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage_a3dc24886f320f42f992d9d189756b5e6}{erase\+Value}} (const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&key)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}}$<$ value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage_aa01d301af434791982b25fe8c6037fb5}{object\+Cache}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage_ab664366a253e20a7f6fc36ce5ee84c49}{object\+Memory}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\subsubsection*{template$<$typename value$>$\newline
+class luna\+::utils\+::object\+Storage$<$ value $>$}
+cached object memory class with a key handle. 
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_a692ccb4487eaa4cfa4e7596e1a484a77}\label{classluna_1_1utils_1_1object_storage_a692ccb4487eaa4cfa4e7596e1a484a77}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!objectStorage@{objectStorage}}
+\index{objectStorage@{objectStorage}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{objectStorage()}{objectStorage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+\mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::object\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+deafult constructor whith default cache size of 200.µ 
+
+\begin{DoxyNote}{Note}
+this constructor is recommended for dafult use. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_a063bea264ca9b37a1b3588c01d1a4708}\label{classluna_1_1utils_1_1object_storage_a063bea264ca9b37a1b3588c01d1a4708}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!objectStorage@{objectStorage}}
+\index{objectStorage@{objectStorage}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{objectStorage()}{objectStorage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+\mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::object\+Storage (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{cache\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+constructor with custom cache size. 
+
+\begin{DoxyNote}{Note}
+recommended to not go above cache\+Size of 1000 else cache could become slow! 
+
+recommended to use the deafult constructor unless you know what you are doing!
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+t} & cache\+Size \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_a3dc24886f320f42f992d9d189756b5e6}\label{classluna_1_1utils_1_1object_storage_a3dc24886f320f42f992d9d189756b5e6}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!eraseValue@{eraseValue}}
+\index{eraseValue@{eraseValue}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{eraseValue()}{eraseValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::erase\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_a06cf21b370891604f75ea7d91251234e}\label{classluna_1_1utils_1_1object_storage_a06cf21b370891604f75ea7d91251234e}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!getValue@{getValue}}
+\index{getValue@{getValue}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::get\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&}]{key,  }\item[{const value \&}]{\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+gets a value from the object storage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em storage\+Object} & key \\
+\hline
+{\em value} & \+\_\+value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$storage\+Result, value$>$ value is the input value. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_a542bc0386906e63d69f8f218792dd6e6}\label{classluna_1_1utils_1_1object_storage_a542bc0386906e63d69f8f218792dd6e6}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_a4126da8a5085ddfe81b15a719fee146d}\label{classluna_1_1utils_1_1object_storage_a4126da8a5085ddfe81b15a719fee146d}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!putValue@{putValue}}
+\index{putValue@{putValue}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{putValue()}{putValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::put\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} $\ast$}]{key,  }\item[{const value \&}]{\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+puts a value in the object storage. 
+
+\begin{DoxyNote}{Note}
+if the value of $\ast$key != it whill use this value instead of generating one.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em storage\+Object$\ast$} & key pointer to key \\
+\hline
+{\em value} & \+\_\+value value/object to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$storage\+Result, value$>$ value is the input value. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_ac03164acabd597ba74b9422b53de738e}\label{classluna_1_1utils_1_1object_storage_ac03164acabd597ba74b9422b53de738e}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!setValue@{setValue}}
+\index{setValue@{setValue}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::set\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}} \&}]{key,  }\item[{const value \&}]{\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+sets the value of a given key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em storage\+Object} & key \\
+\hline
+{\em value} & \+\_\+value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$storage\+Result, value$>$ value is the input value. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_aa01d301af434791982b25fe8c6037fb5}\label{classluna_1_1utils_1_1object_storage_aa01d301af434791982b25fe8c6037fb5}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!objectCache@{objectCache}}
+\index{objectCache@{objectCache}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{objectCache}{objectCache}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}}$<$value$>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::object\+Cache\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1object_storage_ab664366a253e20a7f6fc36ce5ee84c49}\label{classluna_1_1utils_1_1object_storage_ab664366a253e20a7f6fc36ce5ee84c49}} 
+\index{luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}!objectMemory@{objectMemory}}
+\index{objectMemory@{objectMemory}!luna::utils::objectStorage$<$ value $>$@{luna::utils::objectStorage$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{objectMemory}{objectMemory}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::unordered\+\_\+map$<$\mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}}, value$>$ \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{luna\+::utils\+::object\+Storage}}$<$ value $>$\+::object\+Memory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/\mbox{\hyperlink{object_storage_8h}{object\+Storage.\+h}}\end{DoxyCompactItemize}

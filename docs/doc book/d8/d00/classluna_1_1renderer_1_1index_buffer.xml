@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1renderer_1_1index_buffer" xml:lang="en-US">
+<title>luna::renderer::indexBuffer Class Reference</title>
+<indexterm><primary>luna::renderer::indexBuffer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;buffer.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::renderer::indexBuffer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1renderer_1_1index_buffer__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classluna_1_1renderer_1_1index_buffer_1a6197e4dc4c9f353612970ee9611627b4">~indexBuffer</link> ()=default</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1index_buffer_1aeef9e429bd29f2229350005f65b71815">bind</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1index_buffer_1a20c0e59d0d14576ef92b9345dfbac8ea">unbind</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual uint32_t <link linkend="_classluna_1_1renderer_1_1index_buffer_1ab8373a6c1e809de5c95ed34b4ad0a44b">getCount</link> () const =0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1index_buffer">indexBuffer</link> &gt; <link linkend="_classluna_1_1renderer_1_1index_buffer_1a73cecf7461d880e21725c16c8b5f659c">create</link> (uint32_t *indices, uint32_t count)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>void * <link linkend="_classluna_1_1renderer_1_1index_buffer_1a7c5357e4276e0cf3834250ce8648ff45">data</link> = nullptr</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1renderer_1_1index_buffer_1a5a785303d312fbeb75332f636f5279bc">size</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1index_buffer_1a6197e4dc4c9f353612970ee9611627b4"/><section>
+    <title>~indexBuffer()</title>
+<indexterm><primary>~indexBuffer</primary><secondary>luna::renderer::indexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::indexBuffer</primary><secondary>~indexBuffer</secondary></indexterm>
+<para><computeroutput>virtual luna::renderer::indexBuffer::~indexBuffer ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1index_buffer_1aeef9e429bd29f2229350005f65b71815"/><section>
+    <title>bind()</title>
+<indexterm><primary>bind</primary><secondary>luna::renderer::indexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::indexBuffer</primary><secondary>bind</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::indexBuffer::bind ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a6e4ef557be7b9a111d418ca945cdfaa1">luna::vulkan::vulkanIndexBuffer</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1index_buffer_1a73cecf7461d880e21725c16c8b5f659c"/><section>
+    <title>create()</title>
+<indexterm><primary>create</primary><secondary>luna::renderer::indexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::indexBuffer</primary><secondary>create</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1index_buffer">indexBuffer</link> &gt; luna::renderer::indexBuffer::create (uint32_t * indices, uint32_t count)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1index_buffer_1ab8373a6c1e809de5c95ed34b4ad0a44b"/><section>
+    <title>getCount()</title>
+<indexterm><primary>getCount</primary><secondary>luna::renderer::indexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::indexBuffer</primary><secondary>getCount</secondary></indexterm>
+<para><computeroutput>virtual uint32_t luna::renderer::indexBuffer::getCount ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1a1f56cdededc2d0d6042f1e758afe5a70">luna::vulkan::vulkanIndexBuffer</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1index_buffer_1a20c0e59d0d14576ef92b9345dfbac8ea"/><section>
+    <title>unbind()</title>
+<indexterm><primary>unbind</primary><secondary>luna::renderer::indexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::indexBuffer</primary><secondary>unbind</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::indexBuffer::unbind ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer_1ab980b6d04964bcb401c3f20b8a84d40b">luna::vulkan::vulkanIndexBuffer</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1index_buffer_1a7c5357e4276e0cf3834250ce8648ff45"/><section>
+    <title>data</title>
+<indexterm><primary>data</primary><secondary>luna::renderer::indexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::indexBuffer</primary><secondary>data</secondary></indexterm>
+<para><computeroutput>void* luna::renderer::indexBuffer::data = nullptr</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1index_buffer_1a5a785303d312fbeb75332f636f5279bc"/><section>
+    <title>size</title>
+<indexterm><primary>size</primary><secondary>luna::renderer::indexBuffer</secondary></indexterm>
+<indexterm><primary>luna::renderer::indexBuffer</primary><secondary>size</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::indexBuffer::size = 0</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_buffer_8h">buffer.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_buffer_8cpp">buffer.cpp</link></section>
+</section>

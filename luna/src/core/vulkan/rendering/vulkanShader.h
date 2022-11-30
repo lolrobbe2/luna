@@ -16,7 +16,15 @@ namespace luna
 			 */
 			vulkanShader(const std::string& filepath,const renderer::shaderStage& stage);
 			virtual ~vulkanShader() {};
+			/**
+			 * @brief not implemented (reserved for future).
+			 * 
+			 */
 			void bind() const override;
+			/**
+			 * @brief not implemented (reserved for future).
+			 *
+			 */
 			void unbind() const override;
 			/**
 			 * @brief creates the shader layout.

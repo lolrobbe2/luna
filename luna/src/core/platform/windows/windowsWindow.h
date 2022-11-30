@@ -11,16 +11,47 @@ namespace luna
 		{
 			
 		public:
+			/**
+			 * @brief creates a windows window.
+			 * 
+			 * \param windowData windowSpec struct with the window data
+			 */
 			windowsWindow(const vulkan::windowSpec& windowData );
 			virtual ~windowsWindow();
 
+			/**
+			 * @brief polls all the window and input events.
+			 * 
+			 */
 			void onUpdate() override;
+			/**
+			 * @brief returs the current width of the window.
+			 */
 			inline uint32_t getWidth() const override { return mData.width; };
+			/**
+			 * @brief return the current height of the window.
+			 */
 			inline uint32_t getHeight() const override { return mData.height; };
+			/**
+			 * @brief set the window event callback function.
+			 */
 			inline void setEventCallBack(const eventCallbackFn& callback) override { mData.eventCallbackFn = callback; };
+			/**
+			 * @brief returns the GLFW window pointer.
+			 * 
+			 * \return 
+			 */
 			inline void* getWindow() override;
 		private: 
+			/**
+			 * initializes the window and also GLFW if need be.
+			 * 
+			 * \param windowInfo
+			 */
 			virtual void init(const vulkan::windowSpec& windowInfo);
+			/**
+			 * @brief shutsdown the window and GLFW.
+			 */
 			virtual void shutDown();
 
 		private:

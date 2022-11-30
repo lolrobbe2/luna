@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1renderer_1_1device" xml:lang="en-US">
+<title>luna::renderer::device Class Reference</title>
+<indexterm><primary>luna::renderer::device</primary></indexterm>
+<para>
+
+<para>the device class is the code representation of the physical device or GPU. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;device.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::renderer::device:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1renderer_1_1device__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classluna_1_1renderer_1_1device_1a2182b56f196936279ecc402d59b894e5">~device</link> ()</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1device_1a742514b1cf12273e7a0b8750723e451c">createContext</link> ()=0</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1renderer_1_1device_1a8ff116c44dcc0f44b54f1022f9570536">destroyContext</link> ()=0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link> &gt; <link linkend="_classluna_1_1renderer_1_1device_1aafbc6cc53be313fff534273ea56b1345">window</link></para>
+
+<para>this is the reference to the main window. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>the device class is the code representation of the physical device or GPU. </para>
+
+
+
+<para><literallayout><computeroutput>ref&lt;device&gt;&#32;device&#32;=&#32;std::make_shared(<emphasis role="keyword">new</emphasis>&#32;device());
+</computeroutput></literallayout> </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1device_1a2182b56f196936279ecc402d59b894e5"/><section>
+    <title>~device()</title>
+<indexterm><primary>~device</primary><secondary>luna::renderer::device</secondary></indexterm>
+<indexterm><primary>luna::renderer::device</primary><secondary>~device</secondary></indexterm>
+<para><computeroutput>virtual luna::renderer::device::~device ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1device_1a742514b1cf12273e7a0b8750723e451c"/><section>
+    <title>createContext()</title>
+<indexterm><primary>createContext</primary><secondary>luna::renderer::device</secondary></indexterm>
+<indexterm><primary>luna::renderer::device</primary><secondary>createContext</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::device::createContext ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_device_1acdef289bdd4596c82ea9c7a8e697fe3e">luna::vulkan::vulkanDevice</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1renderer_1_1device_1a8ff116c44dcc0f44b54f1022f9570536"/><section>
+    <title>destroyContext()</title>
+<indexterm><primary>destroyContext</primary><secondary>luna::renderer::device</secondary></indexterm>
+<indexterm><primary>luna::renderer::device</primary><secondary>destroyContext</secondary></indexterm>
+<para><computeroutput>virtual void luna::renderer::device::destroyContext ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classluna_1_1vulkan_1_1vulkan_device_1a2dc4e70b3107536728605aca50620ce3">luna::vulkan::vulkanDevice</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1device_1aafbc6cc53be313fff534273ea56b1345"/><section>
+    <title>window</title>
+<indexterm><primary>window</primary><secondary>luna::renderer::device</secondary></indexterm>
+<indexterm><primary>luna::renderer::device</primary><secondary>window</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link>&gt; luna::renderer::device::window</computeroutput></para><para>
+
+<para>this is the reference to the main window. </para>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_device_8h">device.h</link></section>
+</section>

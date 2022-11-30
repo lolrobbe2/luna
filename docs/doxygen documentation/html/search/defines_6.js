@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['stb_5fimage_5fimplementation_0',['STB_IMAGE_IMPLEMENTATION',['../dc/d00/lnpch_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78',1,'lnpch.cpp']]]
+  ['major_0',['MAJOR',['../d5/d00/core_8h.html#a877cce34f3e58fd7f9194fab90724cb8',1,'core.h']]],
+  ['minor_1',['MINOR',['../d5/d00/core_8h.html#a4e10915d93013542d442d78de0e02e9a',1,'core.h']]]
 ];

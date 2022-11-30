@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>luna engine: C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/rendering/vulkanPipeline.cpp File Reference</title>
+<title>luna engine: C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.cpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -89,11 +90,83 @@ $(document).ready(function(){initNavTree('d2/d00/vulkan_pipeline_8cpp.html','../
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle"><div class="title">vulkanPipeline.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../df/d00/vulkan_pipeline_8h.html">vulkanPipeline.h</a>&quot;</code><br />
-</div></div><!-- contents -->
+<code>#include &lt;<a class="el" href="../../da/d00/vulkan_device_8h.html">core/vulkan/device/vulkanDevice.h</a>&gt;</code><br />
+<code>#include &lt;backends/imgui_impl_vulkan.cpp&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d3/d00/vulkan_allocator_8h.html">core/vulkan/utils/vulkanAllocator.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d0/d00/vulkan_vertex_buffer_8h.html">core/vulkan/rendering/vulkanVertexBuffer.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../dd/d00/vulkan_index_buffer_8h.html">core/vulkan/rendering/vulkanIndexBuffer.h</a>&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for vulkanPipeline.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d5/d00/vulkan_pipeline_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2vulkan_2rendering_2vulkan_pipeline_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2vulkan_2rendering_2vulkan_pipeline_8cpp" id="a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2vulkan_2rendering_2vulkan_pipeline_8cpp">
+<area shape="rect" title=" " coords="964,5,1155,75"/>
+<area shape="rect" href="../../df/d00/vulkan_pipeline_8h.html" title=" " coords="1399,130,1514,155"/>
+<area shape="rect" href="../../da/d00/vulkan_device_8h.html" title=" " coords="1047,211,1173,251"/>
+<area shape="rect" title=" " coords="1538,123,1682,163"/>
+<area shape="rect" href="../../d3/d00/vulkan_allocator_8h.html" title=" " coords="330,211,485,251"/>
+<area shape="rect" href="../../d0/d00/vulkan_vertex_buffer_8h.html" title=" " coords="966,299,1110,339"/>
+<area shape="rect" href="../../dd/d00/vulkan_index_buffer_8h.html" title=" " coords="798,299,942,339"/>
+<area shape="rect" title=" " coords="2091,629,2155,654"/>
+<area shape="rect" title=" " coords="1923,621,2067,661"/>
+<area shape="rect" title=" " coords="1385,211,1529,251"/>
+<area shape="rect" href="../../df/d00/pipeline_8h.html" title=" " coords="1198,218,1361,243"/>
+<area shape="rect" href="../../df/d00/vulkan_cmd_pool_8h.html" title=" " coords="1553,211,1680,251"/>
+<area shape="rect" href="../../db/d00/device_8h.html" title=" " coords="1302,306,1457,331"/>
+<area shape="rect" href="../../d1/d00/shader_8h.html" title=" " coords="451,475,609,500"/>
+<area shape="rect" href="../../d3/d00/vertex_array_8h.html" title=" " coords="590,306,774,331"/>
+<area shape="rect" href="../../d3/d00/window_8h.html" title=" " coords="1139,387,1273,427"/>
+<area shape="rect" href="../../d9/d00/lnpch_8h.html" title=" " coords="1302,548,1366,573"/>
+<area shape="rect" href="../../d5/d00/core_8h.html" title=" " coords="297,548,384,573"/>
+<area shape="rect" href="../../dd/d00/event_8h.html" title=" " coords="1113,475,1246,500"/>
+<area shape="rect" title=" " coords="1523,629,1585,654"/>
+<area shape="rect" title=" " coords="1236,629,1296,654"/>
+<area shape="rect" title=" " coords="516,709,571,735"/>
+<area shape="rect" title=" " coords="1659,629,1737,654"/>
+<area shape="rect" title=" " coords="773,709,842,735"/>
+<area shape="rect" title=" " coords="1761,629,1808,654"/>
+<area shape="rect" title=" " coords="1833,629,1899,654"/>
+<area shape="rect" title=" " coords="558,629,598,654"/>
+<area shape="rect" title=" " coords="623,629,688,654"/>
+<area shape="rect" title=" " coords="713,629,785,654"/>
+<area shape="rect" title=" " coords="956,709,1021,735"/>
+<area shape="rect" title=" " coords="1089,709,1171,735"/>
+<area shape="rect" href="../../de/d00/platform_8h.html" title=" " coords="1005,783,1164,808"/>
+<area shape="rect" title=" " coords="428,629,533,654"/>
+<area shape="rect" title=" " coords="809,629,965,654"/>
+<area shape="rect" title=" " coords="990,629,1094,654"/>
+<area shape="rect" title=" " coords="1118,629,1211,654"/>
+<area shape="rect" title=" " coords="137,629,206,654"/>
+<area shape="rect" href="../../d7/d00/log_8h.html" title=" " coords="143,709,261,735"/>
+<area shape="rect" href="../../d6/d00/instrumentor_8h.html" title=" " coords="230,629,403,654"/>
+<area shape="rect" title=" " coords="285,783,444,808"/>
+<area shape="rect" title=" " coords="5,783,119,808"/>
+<area shape="rect" title=" " coords="143,783,261,808"/>
+<area shape="rect" title=" " coords="371,709,446,735"/>
+<area shape="rect" title=" " coords="286,709,347,735"/>
+<area shape="rect" href="../../d5/d00/buffer_8h.html" title=" " coords="748,394,899,419"/>
+<area shape="rect" href="../../d0/d00/vulkan_swapchain_8h.html" title=" " coords="1134,299,1278,339"/>
+<area shape="rect" title=" " coords="350,306,465,331"/>
+<area shape="rect" href="../../d7/d00/vector_cache_8h.html" title=" " coords="160,394,321,419"/>
+<area shape="rect" href="../../df/d00/object_storage_8h.html" title=" " coords="155,306,326,331"/>
+<area shape="rect" href="../../dd/d00/uuid_8h.html" title=" " coords="278,475,403,500"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:db/d00/namespaceluna"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/namespaceluna.html">luna</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:df/d00/namespaceluna_1_1vulkan"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html">luna::vulkan</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

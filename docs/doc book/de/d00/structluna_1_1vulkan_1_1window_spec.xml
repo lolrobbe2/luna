@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1window_spec" xml:lang="en-US">
+<title>luna::vulkan::windowSpec Struct Reference</title>
+<indexterm><primary>luna::vulkan::windowSpec</primary></indexterm>
+<para>
+<computeroutput>#include &lt;window.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::vulkan::windowSpec:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/structluna_1_1vulkan_1_1window_spec__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structluna_1_1vulkan_1_1window_spec_1ab957e6f94a1b42d750694b07db2d656c">windowSpec</link> (const std::string &amp;Title=&quot;Luna Engine&quot;, uint32_t Width=1280, uint32_t Height=720)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1vulkan_1_1window_spec_1ad41e61737499313b53a8794d8ea2580d">width</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1vulkan_1_1window_spec_1a971d716a040bc615a6b18941e4c865a6">height</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_structluna_1_1vulkan_1_1window_spec_1a36b2c68262f0ded340dec6c8aa17f833">title</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1window_spec_1ab957e6f94a1b42d750694b07db2d656c"/><section>
+    <title>windowSpec()</title>
+<indexterm><primary>windowSpec</primary><secondary>luna::vulkan::windowSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowSpec</primary><secondary>windowSpec</secondary></indexterm>
+<para><computeroutput>luna::vulkan::windowSpec::windowSpec (const std::string &amp; Title = <computeroutput>&quot;Luna&#160;Engine&quot;</computeroutput>
+, uint32_t Width = <computeroutput>1280</computeroutput>
+, uint32_t Height = <computeroutput>720</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1window_spec_1a971d716a040bc615a6b18941e4c865a6"/><section>
+    <title>height</title>
+<indexterm><primary>height</primary><secondary>luna::vulkan::windowSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowSpec</primary><secondary>height</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::windowSpec::height</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1window_spec_1a36b2c68262f0ded340dec6c8aa17f833"/><section>
+    <title>title</title>
+<indexterm><primary>title</primary><secondary>luna::vulkan::windowSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowSpec</primary><secondary>title</secondary></indexterm>
+<para><computeroutput>std::string luna::vulkan::windowSpec::title</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1window_spec_1ad41e61737499313b53a8794d8ea2580d"/><section>
+    <title>width</title>
+<indexterm><primary>width</primary><secondary>luna::vulkan::windowSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::windowSpec</primary><secondary>width</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::windowSpec::width</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/window/<link linkend="_window_8h">window.h</link></section>
+</section>

@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1utils_1_1shader_compiler" xml:lang="en-US">
+<title>luna::utils::shaderCompiler Class Reference</title>
+<indexterm><primary>luna::utils::shaderCompiler</primary></indexterm>
+<para>
+<computeroutput>#include &lt;shaderCompiler.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1shader_compiler_1abd07f80893b6ab942e6da937ccf393e7">shaderCompiler</link> ()</para>
+
+<para>constructor does nothing at the moment. </para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1utils_1_1shader_compiler_1a8d6b419a02a58ba8cd72c3cd54ffcadf">~shaderCompiler</link> ()</para>
+</listitem>
+            <listitem><para>std::vector&lt; uint32_t &gt; <link linkend="_classluna_1_1utils_1_1shader_compiler_1aa92130891033a8c82366309ec519ec8b">compile</link> (<link linkend="_structluna_1_1utils_1_1compile_spec">compileSpec</link> <link linkend="_structluna_1_1utils_1_1compile_spec">compileSpec</link>)</para>
+
+<para>compile a shader from source GLSL to specified. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_classluna_1_1utils_1_1shader_compiler_1a809ef02f8f12f25017954377abbc7db6">reflect</link> (const std::vector&lt; uint32_t &gt; &amp;shaderData, bool reflect)</para>
+
+<para>reflects on the compiled shader and shows a text based dissasambly of the shader. </para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classluna_1_1utils_1_1shader_compiler_1ab4617322314d71aab9d71efd63ace1e7">getResourceTypeName</link> (const spirv_cross::Resource &amp;resource, const spirv_cross::Compiler &amp;compiler)</para>
+
+<para>returns the resource type name ex mat4 returns &quot;Mat4&quot;. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1shader_compiler_1abd07f80893b6ab942e6da937ccf393e7"/><section>
+    <title>shaderCompiler()</title>
+<indexterm><primary>shaderCompiler</primary><secondary>luna::utils::shaderCompiler</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderCompiler</primary><secondary>shaderCompiler</secondary></indexterm>
+<para><computeroutput>luna::utils::shaderCompiler::shaderCompiler ( )</computeroutput></para><para>
+
+<para>constructor does nothing at the moment. </para>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1shader_compiler_1a8d6b419a02a58ba8cd72c3cd54ffcadf"/><section>
+    <title>~shaderCompiler()</title>
+<indexterm><primary>~shaderCompiler</primary><secondary>luna::utils::shaderCompiler</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderCompiler</primary><secondary>~shaderCompiler</secondary></indexterm>
+<para><computeroutput>virtual luna::utils::shaderCompiler::~shaderCompiler ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1shader_compiler_1aa92130891033a8c82366309ec519ec8b"/><section>
+    <title>compile()</title>
+<indexterm><primary>compile</primary><secondary>luna::utils::shaderCompiler</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderCompiler</primary><secondary>compile</secondary></indexterm>
+<para><computeroutput>std::vector&lt; uint32_t &gt; luna::utils::shaderCompiler::compile (<link linkend="_structluna_1_1utils_1_1compile_spec">compileSpec</link> compileSpec)</computeroutput></para><para>
+
+<para>compile a shader from source GLSL to specified. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_structluna_1_1utils_1_1compile_spec">compileSpec</link></entry><entry>
+<para>struct with compile specifications </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>compiled shadersource. </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1utils_1_1shader_compiler_aa92130891033a8c82366309ec519ec8b_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1utils_1_1shader_compiler_aa92130891033a8c82366309ec519ec8b_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1shader_compiler_1ab4617322314d71aab9d71efd63ace1e7"/><section>
+    <title>getResourceTypeName()</title>
+<indexterm><primary>getResourceTypeName</primary><secondary>luna::utils::shaderCompiler</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderCompiler</primary><secondary>getResourceTypeName</secondary></indexterm>
+<para><computeroutput>std::string luna::utils::shaderCompiler::getResourceTypeName (const spirv_cross::Resource &amp; resource, const spirv_cross::Compiler &amp; compiler)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>returns the resource type name ex mat4 returns &quot;Mat4&quot;. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>resource</entry><entry>
+<para>to get the typename of. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>compiler</entry><entry>
+<para>the compiler wich contains the compiled shader. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the type name of the resource as an std::string. </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1utils_1_1shader_compiler_ab4617322314d71aab9d71efd63ace1e7_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1shader_compiler_1a809ef02f8f12f25017954377abbc7db6"/><section>
+    <title>reflect()</title>
+<indexterm><primary>reflect</primary><secondary>luna::utils::shaderCompiler</secondary></indexterm>
+<indexterm><primary>luna::utils::shaderCompiler</primary><secondary>reflect</secondary></indexterm>
+<para><computeroutput>bool luna::utils::shaderCompiler::reflect (const std::vector&lt; uint32_t &gt; &amp; shaderData, bool reflect)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>reflects on the compiled shader and shows a text based dissasambly of the shader. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>shaderData</entry><entry>
+<para>compiled shaderData. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>reflect</entry><entry>
+<para>reflect yes or no. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>param reflect. </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1utils_1_1shader_compiler_a809ef02f8f12f25017954377abbc7db6_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1utils_1_1shader_compiler_a809ef02f8f12f25017954377abbc7db6_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/<link linkend="_shader_compiler_8h">shaderCompiler.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/<link linkend="_shader_compiler_8cpp">shaderCompiler.cpp</link></section>
+</section>

@@ -1,23 +1,39 @@
-\hypertarget{vulkan_cmd_pool_8h}{}\doxysection{C\+:/\+Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkan\+Cmd\+Pool.h File Reference}
-\label{vulkan_cmd_pool_8h}\index{C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanCmdPool.h@{C:/Users/robbe/source/repos/luna/luna/src/core/vulkan/device/vulkanCmdPool.h}}
+\hypertarget{vulkan_cmd_pool_8h}{}\doxysubsection{C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkan\+Cmd\+Pool.h File Reference}
+\label{vulkan_cmd_pool_8h}\index{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanCmdPool.h@{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanCmdPool.h}}
 {\ttfamily \#include $<$core/vulkan/window/window.\+h$>$}\newline
-\doxysubsection*{Classes}
+Include dependency graph for vulkan\+Cmd\+Pool.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/d00/vulkan_cmd_pool_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d00/vulkan_cmd_pool_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_cmd_pool_spec}{luna\+::vulkan\+::vulkan\+Cmd\+Pool\+Spec}}
 \item 
 struct \mbox{\hyperlink{structluna_1_1vulkan_1_1command_pool_submit_info}{luna\+::vulkan\+::command\+Pool\+Submit\+Info}}
-\item 
+\begin{DoxyCompactList}\small\item\em struct with all the submit info. this is the same except Vk\+Command\+Buffer$\ast$ -\/\texorpdfstring{$>$}{>}virtual\+Cmd\+Buffer$\ast$. for more information\+: \href{https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html}{\texttt{ https\+://registry.\+khronos.\+org/vulkan/specs/1.\+3-\/extensions/man/html/\+Vk\+Submit\+Info.\+html}} \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_cmd_pool}{luna\+::vulkan\+::vulkan\+Cmd\+Pool}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Namespaces}
+\begin{DoxyCompactList}\small\item\em abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs. all a Vk\+Command\+Buffer has been changed out by virtual\+Cmd\+Buffer type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespaceluna}{luna}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1vulkan}{luna\+::vulkan}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef uint64\+\_\+t \mbox{\hyperlink{namespaceluna_1_1vulkan_a986d0d1c340e604c9f02198be6e2e9e5}{luna\+::vulkan\+::virtual\+Cmd\+Buffer}}

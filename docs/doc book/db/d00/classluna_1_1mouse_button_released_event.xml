@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1mouse_button_released_event" xml:lang="en-US">
+<title>luna::mouseButtonReleasedEvent Class Reference</title>
+<indexterm><primary>luna::mouseButtonReleasedEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;mouseEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::mouseButtonReleasedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/classluna_1_1mouse_button_released_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::mouseButtonReleasedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../da/d00/classluna_1_1mouse_button_released_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1mouse_button_released_event_1afc25f219557b650efcc83a4b2bc3c937">mouseButtonReleasedEvent</link> (const <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> button)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classluna_1_1mouse_button_released_event_1a3586c3785f482e4e174ed7222d83aa98">toString</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_button_released_event_1afc25f219557b650efcc83a4b2bc3c937"/><section>
+    <title>mouseButtonReleasedEvent()</title>
+<indexterm><primary>mouseButtonReleasedEvent</primary><secondary>luna::mouseButtonReleasedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseButtonReleasedEvent</primary><secondary>mouseButtonReleasedEvent</secondary></indexterm>
+<para><computeroutput>luna::mouseButtonReleasedEvent::mouseButtonReleasedEvent (const <link linkend="_namespaceluna_1ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</link> button)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1mouse_button_released_event_1a3586c3785f482e4e174ed7222d83aa98"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>luna::mouseButtonReleasedEvent</secondary></indexterm>
+<indexterm><primary>luna::mouseButtonReleasedEvent</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>std::string luna::mouseButtonReleasedEvent::toString ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7">luna::Event</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_mouse_event_8h">mouseEvent.h</link></section>
+</section>

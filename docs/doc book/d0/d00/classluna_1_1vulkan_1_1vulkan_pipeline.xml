@@ -1,0 +1,1297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline" xml:lang="en-US">
+<title>luna::vulkan::vulkanPipeline Class Reference</title>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary></indexterm>
+<para>
+
+<para>vulkan pipline implementation class. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;vulkanPipeline.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::vulkan::vulkanPipeline:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d8/d00/classluna_1_1vulkan_1_1vulkan_pipeline__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::vulkan::vulkanPipeline:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/classluna_1_1vulkan_1_1vulkan_pipeline__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command">drawCommand</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1shader_stage">shaderStage</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex">Vertex</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description">vertexInputDescription</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a940cc48a838abc936cb97505e578e1d0">vulkanPipeline</link> (const <link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> &amp;<link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a0d13002bebad3a3ecfa14a22005646c4">layout</link>)</para>
+
+<para>creates a vulkan pipeline. </para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aaa1a0f54f1d61cf2e7e287d98daea28f">~vulkanPipeline</link> ()</para>
+
+<para>pipeline destructor. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a73d4a77e2f205d00a35968050bd9566a">createPipeline</link> (const <link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> &amp;<link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a0d13002bebad3a3ecfa14a22005646c4">layout</link>) override</para>
+
+<para>creates the vulkan pipeline. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ab99b3ab39f4fd1e3275b5b8783f0a554">destroyPipeline</link> () override</para>
+
+<para>destroys the vulkan pipeline. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a1d4d725067be784aa50f9e488cdd9dca">createCommands</link> () override</para>
+
+<para>creates the renderer commands for the pipeline. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa2ba811a7d966ddbbd358413dc8de8e6">begin</link> () const override</para>
+
+<para>starts recording the pipline input. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa061fcec857b5a7d458ee66ddce7a534">end</link> () const override</para>
+
+<para>ends recording the pipline input. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a5a362aa2aac55e29a1953b3c2efcfe04">flush</link> () override</para>
+
+<para>executes the pipeline commands. </para>
+</listitem>
+            <listitem><para>VkRenderPass <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a24e8bfb38d02fa6c3630ae9511952a27">getRenderPass</link> ()</para>
+
+<para>return the pipeline renderpass. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a5690e9bd9a70e5ec87ad9fbe040ac941">drawIndexed</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">renderer::vertexArray</link> &gt; &amp;vertexArray, int indexCount=0) override</para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1af7a2c53eede1df1527173744cdbbd86e">fnDrawIndexed</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">renderer::vertexArray</link> &gt; &amp;vertexArray, int indexCount)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a0d13002bebad3a3ecfa14a22005646c4">layout</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ace902ac4661de0ef195e001bf33133ca">maxFramesInFlight</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aaf8203406c0c975f676bde5e856082c0">createPipeLineLayout</link> ()</para>
+
+<para>creates the pipeline layout. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a2564495814ebfea70d90c779b803b1c4">buildPipeline</link> (VkDevice device, VkRenderPass pass)</para>
+
+<para>build the vulkan pipline. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a67e100195b6be54e5e3826ed7b60d9d4">createShaderStages</link> ()</para>
+
+<para>creates the shader stages to be used in the pipeline. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a1edac02342e461b7a6caa96300f7b85e">createInputStates</link> ()</para>
+
+<para>creates the vertex input. </para>
+</listitem>
+            <listitem><para>VkPipelineVertexInputStateCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a96fc265791be635119ad130623855eaf">createVertexInputState</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader)</para>
+
+<para>creates the vertex input state for a single shader. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1afd9c73f82bc55d87a56be34d108aac9e">createBindingDescription</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader)</para>
+
+<para>creates the binding descriptio for a single shader. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1acb177d8857c6e8309dd72c67e07d267c">createAttributeDescription</link> (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader)</para>
+
+<para>creates the attribute description for a single shader. </para>
+</listitem>
+            <listitem><para>VkResult <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa6c9ce6d6c4c9fe5bb165617322279aa">createShaderModule</link> (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader, VkShaderModule *shaderModule)</para>
+
+<para>creates a shader module from a shader ref. </para>
+</listitem>
+            <listitem><para>VkFormat <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a2e415f36255cab1ceb346c182c9e5cf8">getResourceFormat</link> (<link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">renderer::typeId</link> resourceType)</para>
+
+<para>returns the corresponding resource type for a given . </para>
+</listitem>
+            <listitem><para>VkPipelineInputAssemblyStateCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a4d6c6885c31db211071f554da4a99300">inputAssemblyCreateInfo</link> (VkPrimitiveTopology topology)</para>
+
+<para>creates the input Assembly </para>
+</listitem>
+            <listitem><para>VkPipelineRasterizationStateCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a061fa43828034b9c3ada6aa8c797a42f">rasterizationStateCreateInfo</link> (VkPolygonMode polygonMode)</para>
+
+<para>creates the rasterizer state create info. </para>
+</listitem>
+            <listitem><para>VkPipelineMultisampleStateCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1afc6942d545a4132c205e53ac3aef3dcf">multisamplingStateCreateInfo</link> ()</para>
+
+<para>creates the multisampling info. </para>
+</listitem>
+            <listitem><para>VkPipelineColorBlendAttachmentState <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a7711aceff647037594498dca8edf97eb">colorBlendAttachmentState</link> ()</para>
+
+<para>the color blend attachment state(color writemask). </para>
+</listitem>
+            <listitem><para>VkPipelineLayoutCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a5b4270cf728d1e08d705a0563003de74">pipelineLayoutCreateInfo</link> ()</para>
+
+<para>creates the pipeline layout info. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a4b956fe650f383fea4e65cd4b4d4da25">initDefaultRenderpass</link> ()</para>
+
+<para>initialzes the dafault pipeline renderPass. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ad6d305c8ad88f0d83ab2054a3acf0e58">initSyncStructures</link> ()</para>
+
+<para>initializes the the pipeline syncronization structures. (VkFence and VkSemaphore) </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ab9c975a94d75187855347490a8725d86">destroySyncStructures</link> ()</para>
+
+<para>destroys all pipeline sync structures. (VkFence and VkSemaphore) </para>
+</listitem>
+            <listitem><para>void <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a46a300426475caff50e03bad4532c19f">transitionImageLayout</link> (VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout, VkCommandBuffer commandBufffer)</para>
+
+<para>transitions the image layout. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>VkRenderPass <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a45fa54262a258b645521ba34c6adafeb">renderPass</link></para>
+</listitem>
+            <listitem><para>VkRenderPass <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a9e60d36b96a83342ad1ee3147e65924a">imGuiRenderPass</link></para>
+</listitem>
+            <listitem><para>VkPipelineLayout <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a2b7882e3a52ff453bbb48c80ca5abbf4">pipelineLayout</link></para>
+</listitem>
+            <listitem><para>VkPipeline <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a7115aac74d322c47d75c965cc5b92bc5">pipeline</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkPipelineShaderStageCreateInfo &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa0e41b3e41b14fdca0db5265f08f1e7c">shaderStages</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkShaderModule &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a7f7e1da732b4e88f9f484f8d4b855976">shaderModules</link></para>
+</listitem>
+            <listitem><para>std::unordered_map&lt; std::string, <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description">vertexInputDescription</link> &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ac18f07bcb65f4c08a117151e658f7d59">inputDescriptions</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkPipelineVertexInputStateCreateInfo &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa7f57d7f057bb2ca62169dab82631fe9">vertexInputStates</link></para>
+</listitem>
+            <listitem><para>VkPipelineInputAssemblyStateCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa5597157ef687f2fccf732b2ed7e1190">inputAssemblyStateCreateInfo</link></para>
+</listitem>
+            <listitem><para>VkPipelineRasterizationStateCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa3537eb4a55b81971ab963d4690f6e5f">pipelineRasterizationStateCreateInfo</link></para>
+</listitem>
+            <listitem><para>VkPipelineMultisampleStateCreateInfo <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aaa8c2b85f2173a9f7bdfb8de20c1315e">pipelineMultisampleStateCreateInfo</link></para>
+</listitem>
+            <listitem><para>VkPipelineColorBlendAttachmentState <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1afc42bdeb83b8355115b66916c328f2a9">pipelineColorBlendAttachementState</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkSemaphore &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aff2c0465f6027bc618c93a03d431d261">imageAvailableSemaphores</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkSemaphore &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a1abf0b8097244e5b836f16f428ac0ba8">renderFinishedSemaphores</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkFence &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa60424dee8b03d13a3b706c023f807a2">inFlightFences</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; VkFence &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1afcdd27058313bb5bb79fcabef1cb8433">imagesInFlight</link></para>
+</listitem>
+            <listitem><para><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool">vulkanCmdPool</link> &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a414e2d69561aa0ad2038bfae51c21f7f">commandPool</link> = nullptr</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link> &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a6cb2a6819e480036478d8a7b88f3be82">commandBuffers</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa73b5d00ca87f4baeaa5beb9fb3c6eac">swapchainImageIndex</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a558baaa1bd2389cedf1fc07301924e90">currentFrame</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ae2e049ebc7fef8ebbf4adaf4872e48a8">prevFrame</link> = 0</para>
+</listitem>
+            <listitem><para>VkQueue <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1acc259d2590c74e72a8aeae1ce5059c79">presentQueue</link></para>
+</listitem>
+            <listitem><para>uint64_t <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1ac21d0b749997e2207165cabb6b4e9fad">_frameNumber</link> = 0</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1afded6cd43387b83294e412164a0e3636">justResized</link> = false</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command">drawCommand</link> &gt; <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a9a910814cca718d344650a921f6e1289">drawCommands</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline_1a29ab724396a49e9a41e0e3f5c867ea17">changedBoundBuffers</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>vulkan pipline implementation class. </para>
+
+
+
+<para><formalpara><title>See also</title>
+
+<para><link linkend="_classluna_1_1renderer_1_1pipeline">renderer::pipeline</link>. </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a940cc48a838abc936cb97505e578e1d0"/><section>
+    <title>vulkanPipeline()</title>
+<indexterm><primary>vulkanPipeline</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>vulkanPipeline</secondary></indexterm>
+<para><computeroutput>luna::vulkan::vulkanPipeline::vulkanPipeline (const <link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> &amp; layout)</computeroutput></para><para>
+
+<para>creates a vulkan pipeline. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link></entry><entry>
+<para>layout struct </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a940cc48a838abc936cb97505e578e1d0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aaa1a0f54f1d61cf2e7e287d98daea28f"/><section>
+    <title>~vulkanPipeline()</title>
+<indexterm><primary>~vulkanPipeline</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>~vulkanPipeline</secondary></indexterm>
+<para><computeroutput>virtual luna::vulkan::vulkanPipeline::~vulkanPipeline ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>pipeline destructor. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_aaa1a0f54f1d61cf2e7e287d98daea28f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa2ba811a7d966ddbbd358413dc8de8e6"/><section>
+    <title>begin()</title>
+<indexterm><primary>begin</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>begin</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::begin ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>starts recording the pipline input. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1pipeline_1afc5a2034a8f14426e2ce4b235b0cba2b">luna::renderer::pipeline</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a2564495814ebfea70d90c779b803b1c4"/><section>
+    <title>buildPipeline()</title>
+<indexterm><primary>buildPipeline</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>buildPipeline</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanPipeline::buildPipeline (VkDevice device, VkRenderPass pass)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>build the vulkan pipline. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkDevice</entry><entry>
+<para>device </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkRenderPass</entry><entry>
+<para>pass </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VK_SUCCES when pipline was succesfully build </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a2564495814ebfea70d90c779b803b1c4_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a2564495814ebfea70d90c779b803b1c4_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a7711aceff647037594498dca8edf97eb"/><section>
+    <title>colorBlendAttachmentState()</title>
+<indexterm><primary>colorBlendAttachmentState</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>colorBlendAttachmentState</secondary></indexterm>
+<para><computeroutput>VkPipelineColorBlendAttachmentState luna::vulkan::vulkanPipeline::colorBlendAttachmentState ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>the color blend attachment state(color writemask). </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>VkPipelineColorBlendAttachmentState struct </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html</link> </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a7711aceff647037594498dca8edf97eb_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1acb177d8857c6e8309dd72c67e07d267c"/><section>
+    <title>createAttributeDescription()</title>
+<indexterm><primary>createAttributeDescription</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createAttributeDescription</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::createAttributeDescription (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the attribute description for a single shader. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</link></entry><entry>
+<para>shader reference to a valid shader </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_acb177d8857c6e8309dd72c67e07d267c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_acb177d8857c6e8309dd72c67e07d267c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1afd9c73f82bc55d87a56be34d108aac9e"/><section>
+    <title>createBindingDescription()</title>
+<indexterm><primary>createBindingDescription</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createBindingDescription</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::createBindingDescription (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the binding descriptio for a single shader. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</link></entry><entry>
+<para>shader reference to a valid shader </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_afd9c73f82bc55d87a56be34d108aac9e_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a1d4d725067be784aa50f9e488cdd9dca"/><section>
+    <title>createCommands()</title>
+<indexterm><primary>createCommands</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createCommands</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::createCommands ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>creates the renderer commands for the pipeline. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1pipeline_1a9f0f6eb618872aa9a2f1fef6dbd3c847">luna::renderer::pipeline</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a1d4d725067be784aa50f9e488cdd9dca_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a1d4d725067be784aa50f9e488cdd9dca_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a1edac02342e461b7a6caa96300f7b85e"/><section>
+    <title>createInputStates()</title>
+<indexterm><primary>createInputStates</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createInputStates</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::createInputStates ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the vertex input. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a1edac02342e461b7a6caa96300f7b85e_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a1edac02342e461b7a6caa96300f7b85e_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a73d4a77e2f205d00a35968050bd9566a"/><section>
+    <title>createPipeline()</title>
+<indexterm><primary>createPipeline</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createPipeline</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::createPipeline (const <link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> &amp; layout)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>creates the vulkan pipeline. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link></entry><entry>
+<para>layout struct </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1pipeline_1a0f11e067108000e35444f69da2175399">luna::renderer::pipeline</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a73d4a77e2f205d00a35968050bd9566a_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a73d4a77e2f205d00a35968050bd9566a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aaf8203406c0c975f676bde5e856082c0"/><section>
+    <title>createPipeLineLayout()</title>
+<indexterm><primary>createPipeLineLayout</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createPipeLineLayout</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::createPipeLineLayout ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the pipeline layout. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_aaf8203406c0c975f676bde5e856082c0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_aaf8203406c0c975f676bde5e856082c0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa6c9ce6d6c4c9fe5bb165617322279aa"/><section>
+    <title>createShaderModule()</title>
+<indexterm><primary>createShaderModule</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createShaderModule</secondary></indexterm>
+<para><computeroutput>VkResult luna::vulkan::vulkanPipeline::createShaderModule (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader, VkShaderModule * shaderModule)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates a shader module from a shader ref. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</link></entry><entry>
+<para>shader the source shader </para>
+</entry>
+                            </row>
+                            <row>
+<entry>shaderModule</entry><entry>
+<para>pointer to the vulkan shaderModule </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VK_SUCCES when shaderModule was created sucessfully. </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_aa6c9ce6d6c4c9fe5bb165617322279aa_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a67e100195b6be54e5e3826ed7b60d9d4"/><section>
+    <title>createShaderStages()</title>
+<indexterm><primary>createShaderStages</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createShaderStages</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::createShaderStages ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the shader stages to be used in the pipeline. </para>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a67e100195b6be54e5e3826ed7b60d9d4_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a67e100195b6be54e5e3826ed7b60d9d4_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a96fc265791be635119ad130623855eaf"/><section>
+    <title>createVertexInputState()</title>
+<indexterm><primary>createVertexInputState</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>createVertexInputState</secondary></indexterm>
+<para><computeroutput>VkPipelineVertexInputStateCreateInfo luna::vulkan::vulkanPipeline::createVertexInputState (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1shader">renderer::shader</link> &gt; shader)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the vertex input state for a single shader. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::shader&gt;</link></entry><entry>
+<para>shader reference to a valid shader </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VkPipelineVertexInputStateCreateInfo </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a96fc265791be635119ad130623855eaf_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1ab99b3ab39f4fd1e3275b5b8783f0a554"/><section>
+    <title>destroyPipeline()</title>
+<indexterm><primary>destroyPipeline</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>destroyPipeline</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::destroyPipeline ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>destroys the vulkan pipeline. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1pipeline_1aa071655def49bf5f9bf517d9ecc7834f">luna::renderer::pipeline</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_ab99b3ab39f4fd1e3275b5b8783f0a554_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1ab9c975a94d75187855347490a8725d86"/><section>
+    <title>destroySyncStructures()</title>
+<indexterm><primary>destroySyncStructures</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>destroySyncStructures</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::destroySyncStructures ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>destroys all pipeline sync structures. (VkFence and VkSemaphore) </para>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_ab9c975a94d75187855347490a8725d86_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a5690e9bd9a70e5ec87ad9fbe040ac941"/><section>
+    <title>drawIndexed()</title>
+<indexterm><primary>drawIndexed</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>drawIndexed</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::drawIndexed (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">renderer::vertexArray</link> &gt; &amp; vertexArray, int indexCount = <computeroutput>0</computeroutput>
+)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa061fcec857b5a7d458ee66ddce7a534"/><section>
+    <title>end()</title>
+<indexterm><primary>end</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>end</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::end ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>ends recording the pipline input. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1pipeline_1a17d90338b9da0e660758cdb406c56091">luna::renderer::pipeline</link>.</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a5a362aa2aac55e29a1953b3c2efcfe04"/><section>
+    <title>flush()</title>
+<indexterm><primary>flush</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>flush</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::flush ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>executes the pipeline commands. </para>
+</para>
+<para>
+Implements <link linkend="_classluna_1_1renderer_1_1pipeline_1a8f231f1c4fde20cfa26ca59d9def0698">luna::renderer::pipeline</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a5a362aa2aac55e29a1953b3c2efcfe04_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1af7a2c53eede1df1527173744cdbbd86e"/><section>
+    <title>fnDrawIndexed()</title>
+<indexterm><primary>fnDrawIndexed</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>fnDrawIndexed</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::fnDrawIndexed (const <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1vertex_array">renderer::vertexArray</link> &gt; &amp; vertexArray, int indexCount)</computeroutput></para>Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_af7a2c53eede1df1527173744cdbbd86e_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a24e8bfb38d02fa6c3630ae9511952a27"/><section>
+    <title>getRenderPass()</title>
+<indexterm><primary>getRenderPass</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>getRenderPass</secondary></indexterm>
+<para><computeroutput>VkRenderPass luna::vulkan::vulkanPipeline::getRenderPass ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>return the pipeline renderpass. </para>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a2e415f36255cab1ceb346c182c9e5cf8"/><section>
+    <title>getResourceFormat()</title>
+<indexterm><primary>getResourceFormat</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>getResourceFormat</secondary></indexterm>
+<para><computeroutput>VkFormat luna::vulkan::vulkanPipeline::getResourceFormat (<link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">renderer::typeId</link> resourceType)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>returns the corresponding resource type for a given . </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">renderer::typeId</link></entry><entry>
+<para>resourceType </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VkFormat the corresponding VkFormat for typeId </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a2e415f36255cab1ceb346c182c9e5cf8_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a4b956fe650f383fea4e65cd4b4d4da25"/><section>
+    <title>initDefaultRenderpass()</title>
+<indexterm><primary>initDefaultRenderpass</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>initDefaultRenderpass</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::initDefaultRenderpass ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>initialzes the dafault pipeline renderPass. </para>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a4b956fe650f383fea4e65cd4b4d4da25_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1ad6d305c8ad88f0d83ab2054a3acf0e58"/><section>
+    <title>initSyncStructures()</title>
+<indexterm><primary>initSyncStructures</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>initSyncStructures</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::initSyncStructures ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>initializes the the pipeline syncronization structures. (VkFence and VkSemaphore) </para>
+</para>
+
+<para><formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFence.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFence.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphore.html</link> </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_ad6d305c8ad88f0d83ab2054a3acf0e58_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_ad6d305c8ad88f0d83ab2054a3acf0e58_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a4d6c6885c31db211071f554da4a99300"/><section>
+    <title>inputAssemblyCreateInfo()</title>
+<indexterm><primary>inputAssemblyCreateInfo</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>inputAssemblyCreateInfo</secondary></indexterm>
+<para><computeroutput>VkPipelineInputAssemblyStateCreateInfo luna::vulkan::vulkanPipeline::inputAssemblyCreateInfo (VkPrimitiveTopology topology)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the input Assembly </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>topology</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a4d6c6885c31db211071f554da4a99300_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1afc6942d545a4132c205e53ac3aef3dcf"/><section>
+    <title>multisamplingStateCreateInfo()</title>
+<indexterm><primary>multisamplingStateCreateInfo</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>multisamplingStateCreateInfo</secondary></indexterm>
+<para><computeroutput>VkPipelineMultisampleStateCreateInfo luna::vulkan::vulkanPipeline::multisamplingStateCreateInfo ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the multisampling info. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>VkPipelineMultisampleStateCreateInfo struct </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html</link> </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_afc6942d545a4132c205e53ac3aef3dcf_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a5b4270cf728d1e08d705a0563003de74"/><section>
+    <title>pipelineLayoutCreateInfo()</title>
+<indexterm><primary>pipelineLayoutCreateInfo</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>pipelineLayoutCreateInfo</secondary></indexterm>
+<para><computeroutput>VkPipelineLayoutCreateInfo luna::vulkan::vulkanPipeline::pipelineLayoutCreateInfo ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the pipeline layout info. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>VkPipelineLayoutCreateInfo struct </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreatePipelineLayout.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreatePipelineLayout.html</link> </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a5b4270cf728d1e08d705a0563003de74_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a061fa43828034b9c3ada6aa8c797a42f"/><section>
+    <title>rasterizationStateCreateInfo()</title>
+<indexterm><primary>rasterizationStateCreateInfo</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>rasterizationStateCreateInfo</secondary></indexterm>
+<para><computeroutput>VkPipelineRasterizationStateCreateInfo luna::vulkan::vulkanPipeline::rasterizationStateCreateInfo (VkPolygonMode polygonMode)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>creates the rasterizer state create info. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>polygonMode</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VkPipelineRasterizationStateCreateInfo struct </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html</link> </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a061fa43828034b9c3ada6aa8c797a42f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a46a300426475caff50e03bad4532c19f"/><section>
+    <title>transitionImageLayout()</title>
+<indexterm><primary>transitionImageLayout</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>transitionImageLayout</secondary></indexterm>
+<para><computeroutput>void luna::vulkan::vulkanPipeline::transitionImageLayout (VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout, VkCommandBuffer commandBufffer)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>transitions the image layout. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkImage</entry><entry>
+<para>image imageHandle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkFormat</entry><entry>
+<para>format </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkImageLayout</entry><entry>
+<para>oldLayout </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkImageLayout</entry><entry>
+<para>newLayout </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkCommandBuffer</entry><entry>
+<para>commandBufffer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline_a46a300426475caff50e03bad4532c19f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1ac21d0b749997e2207165cabb6b4e9fad"/><section>
+    <title>_frameNumber</title>
+<indexterm><primary>_frameNumber</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>_frameNumber</secondary></indexterm>
+<para><computeroutput>uint64_t luna::vulkan::vulkanPipeline::_frameNumber = 0<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a29ab724396a49e9a41e0e3f5c867ea17"/><section>
+    <title>changedBoundBuffers</title>
+<indexterm><primary>changedBoundBuffers</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>changedBoundBuffers</secondary></indexterm>
+<para><computeroutput>bool luna::vulkan::vulkanPipeline::changedBoundBuffers<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a6cb2a6819e480036478d8a7b88f3be82"/><section>
+    <title>commandBuffers</title>
+<indexterm><primary>commandBuffers</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>commandBuffers</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link>&gt; luna::vulkan::vulkanPipeline::commandBuffers<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a414e2d69561aa0ad2038bfae51c21f7f"/><section>
+    <title>commandPool</title>
+<indexterm><primary>commandPool</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>commandPool</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool">vulkanCmdPool</link>&gt; luna::vulkan::vulkanPipeline::commandPool = nullptr<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a558baaa1bd2389cedf1fc07301924e90"/><section>
+    <title>currentFrame</title>
+<indexterm><primary>currentFrame</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>currentFrame</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::vulkanPipeline::currentFrame = 0<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a9a910814cca718d344650a921f6e1289"/><section>
+    <title>drawCommands</title>
+<indexterm><primary>drawCommands</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>drawCommands</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command">drawCommand</link>&gt; luna::vulkan::vulkanPipeline::drawCommands<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aff2c0465f6027bc618c93a03d431d261"/><section>
+    <title>imageAvailableSemaphores</title>
+<indexterm><primary>imageAvailableSemaphores</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>imageAvailableSemaphores</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkSemaphore&gt; luna::vulkan::vulkanPipeline::imageAvailableSemaphores<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1afcdd27058313bb5bb79fcabef1cb8433"/><section>
+    <title>imagesInFlight</title>
+<indexterm><primary>imagesInFlight</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>imagesInFlight</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkFence&gt; luna::vulkan::vulkanPipeline::imagesInFlight<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a9e60d36b96a83342ad1ee3147e65924a"/><section>
+    <title>imGuiRenderPass</title>
+<indexterm><primary>imGuiRenderPass</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>imGuiRenderPass</secondary></indexterm>
+<para><computeroutput>VkRenderPass luna::vulkan::vulkanPipeline::imGuiRenderPass<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa60424dee8b03d13a3b706c023f807a2"/><section>
+    <title>inFlightFences</title>
+<indexterm><primary>inFlightFences</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>inFlightFences</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkFence&gt; luna::vulkan::vulkanPipeline::inFlightFences<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa5597157ef687f2fccf732b2ed7e1190"/><section>
+    <title>inputAssemblyStateCreateInfo</title>
+<indexterm><primary>inputAssemblyStateCreateInfo</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>inputAssemblyStateCreateInfo</secondary></indexterm>
+<para><computeroutput>VkPipelineInputAssemblyStateCreateInfo luna::vulkan::vulkanPipeline::inputAssemblyStateCreateInfo<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1ac18f07bcb65f4c08a117151e658f7d59"/><section>
+    <title>inputDescriptions</title>
+<indexterm><primary>inputDescriptions</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>inputDescriptions</secondary></indexterm>
+<para><computeroutput>std::unordered_map&lt;std::string,<link linkend="_structluna_1_1vulkan_1_1vulkan_pipeline_1_1vertex_input_description">vertexInputDescription</link>&gt; luna::vulkan::vulkanPipeline::inputDescriptions<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1afded6cd43387b83294e412164a0e3636"/><section>
+    <title>justResized</title>
+<indexterm><primary>justResized</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>justResized</secondary></indexterm>
+<para><computeroutput>bool luna::vulkan::vulkanPipeline::justResized = false<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a0d13002bebad3a3ecfa14a22005646c4"/><section>
+    <title>layout</title>
+<indexterm><primary>layout</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>layout</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1renderer_1_1pipeline_layout">renderer::pipelineLayout</link> luna::vulkan::vulkanPipeline::layout</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1ace902ac4661de0ef195e001bf33133ca"/><section>
+    <title>maxFramesInFlight</title>
+<indexterm><primary>maxFramesInFlight</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>maxFramesInFlight</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::vulkanPipeline::maxFramesInFlight = 0</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a7115aac74d322c47d75c965cc5b92bc5"/><section>
+    <title>pipeline</title>
+<indexterm><primary>pipeline</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>pipeline</secondary></indexterm>
+<para><computeroutput>VkPipeline luna::vulkan::vulkanPipeline::pipeline<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1afc42bdeb83b8355115b66916c328f2a9"/><section>
+    <title>pipelineColorBlendAttachementState</title>
+<indexterm><primary>pipelineColorBlendAttachementState</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>pipelineColorBlendAttachementState</secondary></indexterm>
+<para><computeroutput>VkPipelineColorBlendAttachmentState luna::vulkan::vulkanPipeline::pipelineColorBlendAttachementState<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a2b7882e3a52ff453bbb48c80ca5abbf4"/><section>
+    <title>pipelineLayout</title>
+<indexterm><primary>pipelineLayout</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>pipelineLayout</secondary></indexterm>
+<para><computeroutput>VkPipelineLayout luna::vulkan::vulkanPipeline::pipelineLayout<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aaa8c2b85f2173a9f7bdfb8de20c1315e"/><section>
+    <title>pipelineMultisampleStateCreateInfo</title>
+<indexterm><primary>pipelineMultisampleStateCreateInfo</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>pipelineMultisampleStateCreateInfo</secondary></indexterm>
+<para><computeroutput>VkPipelineMultisampleStateCreateInfo luna::vulkan::vulkanPipeline::pipelineMultisampleStateCreateInfo<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa3537eb4a55b81971ab963d4690f6e5f"/><section>
+    <title>pipelineRasterizationStateCreateInfo</title>
+<indexterm><primary>pipelineRasterizationStateCreateInfo</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>pipelineRasterizationStateCreateInfo</secondary></indexterm>
+<para><computeroutput>VkPipelineRasterizationStateCreateInfo luna::vulkan::vulkanPipeline::pipelineRasterizationStateCreateInfo<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1acc259d2590c74e72a8aeae1ce5059c79"/><section>
+    <title>presentQueue</title>
+<indexterm><primary>presentQueue</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>presentQueue</secondary></indexterm>
+<para><computeroutput>VkQueue luna::vulkan::vulkanPipeline::presentQueue<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1ae2e049ebc7fef8ebbf4adaf4872e48a8"/><section>
+    <title>prevFrame</title>
+<indexterm><primary>prevFrame</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>prevFrame</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::vulkanPipeline::prevFrame = 0<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a1abf0b8097244e5b836f16f428ac0ba8"/><section>
+    <title>renderFinishedSemaphores</title>
+<indexterm><primary>renderFinishedSemaphores</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>renderFinishedSemaphores</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkSemaphore&gt; luna::vulkan::vulkanPipeline::renderFinishedSemaphores<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a45fa54262a258b645521ba34c6adafeb"/><section>
+    <title>renderPass</title>
+<indexterm><primary>renderPass</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>renderPass</secondary></indexterm>
+<para><computeroutput>VkRenderPass luna::vulkan::vulkanPipeline::renderPass<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1a7f7e1da732b4e88f9f484f8d4b855976"/><section>
+    <title>shaderModules</title>
+<indexterm><primary>shaderModules</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>shaderModules</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkShaderModule&gt; luna::vulkan::vulkanPipeline::shaderModules<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa0e41b3e41b14fdca0db5265f08f1e7c"/><section>
+    <title>shaderStages</title>
+<indexterm><primary>shaderStages</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>shaderStages</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkPipelineShaderStageCreateInfo&gt; luna::vulkan::vulkanPipeline::shaderStages<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa73b5d00ca87f4baeaa5beb9fb3c6eac"/><section>
+    <title>swapchainImageIndex</title>
+<indexterm><primary>swapchainImageIndex</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>swapchainImageIndex</secondary></indexterm>
+<para><computeroutput>uint32_t luna::vulkan::vulkanPipeline::swapchainImageIndex = 0<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1vulkan_1_1vulkan_pipeline_1aa7f57d7f057bb2ca62169dab82631fe9"/><section>
+    <title>vertexInputStates</title>
+<indexterm><primary>vertexInputStates</primary><secondary>luna::vulkan::vulkanPipeline</secondary></indexterm>
+<indexterm><primary>luna::vulkan::vulkanPipeline</primary><secondary>vertexInputStates</secondary></indexterm>
+<para><computeroutput>std::vector&lt;VkPipelineVertexInputStateCreateInfo&gt; luna::vulkan::vulkanPipeline::vertexInputStates<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_pipeline_8h">vulkanPipeline.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_pipeline_8cpp">vulkanPipeline.cpp</link></section>
+</section>

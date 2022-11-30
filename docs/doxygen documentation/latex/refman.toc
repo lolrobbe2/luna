@@ -1,0 +1,818 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {section}{\numberline {1}luna software engine}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}goals}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}buildrequirements}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}instalation}{1}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}website\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}enjoy \discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:)}{2}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Namespace Documentation}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}luna Namespace Reference}{2}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Typedef Documentation}{3}{subsubsection.2.1.1}%
+\contentsline {paragraph}{\numberline {2.1.1.1}keyCode}{3}{paragraph.2.1.1.1}%
+\contentsline {paragraph}{\numberline {2.1.1.2}mouseCode}{3}{paragraph.2.1.1.2}%
+\contentsline {paragraph}{\numberline {2.1.1.3}ref}{3}{paragraph.2.1.1.3}%
+\contentsline {paragraph}{\numberline {2.1.1.4}scope}{3}{paragraph.2.1.1.4}%
+\contentsline {subsubsection}{\numberline {2.1.2}Enumeration Type Documentation}{3}{subsubsection.2.1.2}%
+\contentsline {paragraph}{\numberline {2.1.2.1}eventCategory}{3}{paragraph.2.1.2.1}%
+\contentsline {paragraph}{\numberline {2.1.2.2}eventType}{4}{paragraph.2.1.2.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Function Documentation}{4}{subsubsection.2.1.3}%
+\contentsline {paragraph}{\numberline {2.1.3.1}createRef()}{4}{paragraph.2.1.3.1}%
+\contentsline {paragraph}{\numberline {2.1.3.2}createScope()}{4}{paragraph.2.1.3.2}%
+\contentsline {paragraph}{\numberline {2.1.3.3}engine()}{5}{paragraph.2.1.3.3}%
+\contentsline {paragraph}{\numberline {2.1.3.4}operator$<$$<$()}{5}{paragraph.2.1.3.4}%
+\contentsline {subsubsection}{\numberline {2.1.4}Variable Documentation}{5}{subsubsection.2.1.4}%
+\contentsline {paragraph}{\numberline {2.1.4.1}randomDevice}{5}{paragraph.2.1.4.1}%
+\contentsline {paragraph}{\numberline {2.1.4.2}uniformDistr}{5}{paragraph.2.1.4.2}%
+\contentsline {subsection}{\numberline {2.2}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::application Namespace Reference}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Function Documentation}{5}{subsubsection.2.2.1}%
+\contentsline {paragraph}{\numberline {2.2.1.1}createApplication()}{5}{paragraph.2.2.1.1}%
+\contentsline {subsection}{\numberline {2.3}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::gui Namespace Reference}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::input Namespace Reference}{6}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Enumeration Type Documentation}{6}{subsubsection.2.4.1}%
+\contentsline {paragraph}{\numberline {2.4.1.1}anonymous enum}{6}{paragraph.2.4.1.1}%
+\contentsline {subsection}{\numberline {2.5}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Mouse Namespace Reference}{9}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Enumeration Type Documentation}{9}{subsubsection.2.5.1}%
+\contentsline {paragraph}{\numberline {2.5.1.1}anonymous enum}{9}{paragraph.2.5.1.1}%
+\contentsline {subsection}{\numberline {2.6}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer Namespace Reference}{9}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Typedef Documentation}{10}{subsubsection.2.6.1}%
+\contentsline {paragraph}{\numberline {2.6.1.1}drawCommand}{10}{paragraph.2.6.1.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Enumeration Type Documentation}{10}{subsubsection.2.6.2}%
+\contentsline {paragraph}{\numberline {2.6.2.1}shaderStage}{10}{paragraph.2.6.2.1}%
+\contentsline {paragraph}{\numberline {2.6.2.2}typeClass}{11}{paragraph.2.6.2.2}%
+\contentsline {paragraph}{\numberline {2.6.2.3}typeId}{11}{paragraph.2.6.2.3}%
+\contentsline {subsection}{\numberline {2.7}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils Namespace Reference}{12}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Typedef Documentation}{13}{subsubsection.2.7.1}%
+\contentsline {paragraph}{\numberline {2.7.1.1}allocationHandle}{13}{paragraph.2.7.1.1}%
+\contentsline {paragraph}{\numberline {2.7.1.2}cacheObject}{13}{paragraph.2.7.1.2}%
+\contentsline {paragraph}{\numberline {2.7.1.3}storageObject}{13}{paragraph.2.7.1.3}%
+\contentsline {subsubsection}{\numberline {2.7.2}Enumeration Type Documentation}{13}{subsubsection.2.7.2}%
+\contentsline {paragraph}{\numberline {2.7.2.1}cacheResult}{13}{paragraph.2.7.2.1}%
+\contentsline {paragraph}{\numberline {2.7.2.2}compileLanguage}{13}{paragraph.2.7.2.2}%
+\contentsline {paragraph}{\numberline {2.7.2.3}storageResult}{13}{paragraph.2.7.2.3}%
+\contentsline {subsection}{\numberline {2.8}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan Namespace Reference}{14}{subsection.2.8}%
+\contentsline {subsubsection}{\numberline {2.8.1}Typedef Documentation}{14}{subsubsection.2.8.1}%
+\contentsline {paragraph}{\numberline {2.8.1.1}virtualCmdBuffer}{15}{paragraph.2.8.1.1}%
+\contentsline {subsubsection}{\numberline {2.8.2}Enumeration Type Documentation}{15}{subsubsection.2.8.2}%
+\contentsline {paragraph}{\numberline {2.8.2.1}Api}{15}{paragraph.2.8.2.1}%
+\contentsline {subsubsection}{\numberline {2.8.3}Variable Documentation}{15}{subsubsection.2.8.3}%
+\contentsline {paragraph}{\numberline {2.8.3.1}isGlfwInit}{15}{paragraph.2.8.3.1}%
+\contentsline {section}{\numberline {3}Class Documentation}{15}{section.3}%
+\contentsline {subsection}{\numberline {3.1}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::application\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::application Class Reference}{15}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Constructor \& Destructor Documentation}{16}{subsubsection.3.1.1}%
+\contentsline {paragraph}{\numberline {3.1.1.1}application()}{16}{paragraph.3.1.1.1}%
+\contentsline {paragraph}{\numberline {3.1.1.2}$\sim $application()}{16}{paragraph.3.1.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2}Member Function Documentation}{16}{subsubsection.3.1.2}%
+\contentsline {paragraph}{\numberline {3.1.2.1}onEvent()}{16}{paragraph.3.1.2.1}%
+\contentsline {paragraph}{\numberline {3.1.2.2}run()}{17}{paragraph.3.1.2.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Member Data Documentation}{17}{subsubsection.3.1.3}%
+\contentsline {paragraph}{\numberline {3.1.3.1}mWindow}{17}{paragraph.3.1.3.1}%
+\contentsline {paragraph}{\numberline {3.1.3.2}running}{17}{paragraph.3.1.3.2}%
+\contentsline {paragraph}{\numberline {3.1.3.3}windowStorage}{17}{paragraph.3.1.3.3}%
+\contentsline {subsection}{\numberline {3.2}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::app\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Render\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{17}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Constructor \& Destructor Documentation}{18}{subsubsection.3.2.1}%
+\contentsline {paragraph}{\numberline {3.2.1.1}appRenderEvent()}{18}{paragraph.3.2.1.1}%
+\contentsline {subsection}{\numberline {3.3}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::app\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tick\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{18}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Constructor \& Destructor Documentation}{19}{subsubsection.3.3.1}%
+\contentsline {paragraph}{\numberline {3.3.1.1}appTickEvent()}{19}{paragraph.3.3.1.1}%
+\contentsline {subsection}{\numberline {3.4}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::app\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Update\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{19}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Constructor \& Destructor Documentation}{20}{subsubsection.3.4.1}%
+\contentsline {paragraph}{\numberline {3.4.1.1}appUpdateEvent()}{20}{paragraph.3.4.1.1}%
+\contentsline {subsection}{\numberline {3.5}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::buffer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Element Class Reference}{20}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Constructor \& Destructor Documentation}{21}{subsubsection.3.5.1}%
+\contentsline {paragraph}{\numberline {3.5.1.1}bufferElement()\hspace {0.1cm}{\footnotesize \ttfamily [1/4]}}{21}{paragraph.3.5.1.1}%
+\contentsline {paragraph}{\numberline {3.5.1.2}bufferElement()\hspace {0.1cm}{\footnotesize \ttfamily [2/4]}}{21}{paragraph.3.5.1.2}%
+\contentsline {paragraph}{\numberline {3.5.1.3}bufferElement()\hspace {0.1cm}{\footnotesize \ttfamily [3/4]}}{22}{paragraph.3.5.1.3}%
+\contentsline {paragraph}{\numberline {3.5.1.4}bufferElement()\hspace {0.1cm}{\footnotesize \ttfamily [4/4]}}{22}{paragraph.3.5.1.4}%
+\contentsline {subsubsection}{\numberline {3.5.2}Member Data Documentation}{22}{subsubsection.3.5.2}%
+\contentsline {paragraph}{\numberline {3.5.2.1}name}{22}{paragraph.3.5.2.1}%
+\contentsline {paragraph}{\numberline {3.5.2.2}offset}{22}{paragraph.3.5.2.2}%
+\contentsline {paragraph}{\numberline {3.5.2.3}size}{22}{paragraph.3.5.2.3}%
+\contentsline {paragraph}{\numberline {3.5.2.4}type}{22}{paragraph.3.5.2.4}%
+\contentsline {subsection}{\numberline {3.6}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::buffer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layout Class Reference}{23}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Constructor \& Destructor Documentation}{23}{subsubsection.3.6.1}%
+\contentsline {paragraph}{\numberline {3.6.1.1}bufferLayout()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{24}{paragraph.3.6.1.1}%
+\contentsline {paragraph}{\numberline {3.6.1.2}bufferLayout()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{24}{paragraph.3.6.1.2}%
+\contentsline {paragraph}{\numberline {3.6.1.3}bufferLayout()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{24}{paragraph.3.6.1.3}%
+\contentsline {paragraph}{\numberline {3.6.1.4}$\sim $bufferLayout()}{24}{paragraph.3.6.1.4}%
+\contentsline {subsubsection}{\numberline {3.6.2}Member Data Documentation}{24}{subsubsection.3.6.2}%
+\contentsline {paragraph}{\numberline {3.6.2.1}mElements}{24}{paragraph.3.6.2.1}%
+\contentsline {subsection}{\numberline {3.7}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::command\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pool\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Submit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Info Struct Reference}{24}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Detailed Description}{25}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Member Data Documentation}{25}{subsubsection.3.7.2}%
+\contentsline {paragraph}{\numberline {3.7.2.1}commandBufferCount}{25}{paragraph.3.7.2.1}%
+\contentsline {paragraph}{\numberline {3.7.2.2}pCommandBuffers}{25}{paragraph.3.7.2.2}%
+\contentsline {paragraph}{\numberline {3.7.2.3}pNext}{25}{paragraph.3.7.2.3}%
+\contentsline {paragraph}{\numberline {3.7.2.4}pSignalSemaphores}{25}{paragraph.3.7.2.4}%
+\contentsline {paragraph}{\numberline {3.7.2.5}pWaitDstStageMask}{25}{paragraph.3.7.2.5}%
+\contentsline {paragraph}{\numberline {3.7.2.6}pWaitSemaphores}{25}{paragraph.3.7.2.6}%
+\contentsline {paragraph}{\numberline {3.7.2.7}signalSemaphoreCount}{25}{paragraph.3.7.2.7}%
+\contentsline {paragraph}{\numberline {3.7.2.8}waitSemaphoreCount}{25}{paragraph.3.7.2.8}%
+\contentsline {subsection}{\numberline {3.8}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::compile\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Spec Struct Reference}{26}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}Member Data Documentation}{26}{subsubsection.3.8.1}%
+\contentsline {paragraph}{\numberline {3.8.1.1}compileOptions}{26}{paragraph.3.8.1.1}%
+\contentsline {paragraph}{\numberline {3.8.1.2}fileName}{26}{paragraph.3.8.1.2}%
+\contentsline {paragraph}{\numberline {3.8.1.3}language}{27}{paragraph.3.8.1.3}%
+\contentsline {paragraph}{\numberline {3.8.1.4}reflect}{27}{paragraph.3.8.1.4}%
+\contentsline {paragraph}{\numberline {3.8.1.5}shaderKind}{27}{paragraph.3.8.1.5}%
+\contentsline {paragraph}{\numberline {3.8.1.6}source}{27}{paragraph.3.8.1.6}%
+\contentsline {subsection}{\numberline {3.9}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device Class Reference}{27}{subsection.3.9}%
+\contentsline {subsubsection}{\numberline {3.9.1}Detailed Description}{28}{subsubsection.3.9.1}%
+\contentsline {subsubsection}{\numberline {3.9.2}Constructor \& Destructor Documentation}{28}{subsubsection.3.9.2}%
+\contentsline {paragraph}{\numberline {3.9.2.1}$\sim $device()}{28}{paragraph.3.9.2.1}%
+\contentsline {subsubsection}{\numberline {3.9.3}Member Function Documentation}{28}{subsubsection.3.9.3}%
+\contentsline {paragraph}{\numberline {3.9.3.1}createContext()}{28}{paragraph.3.9.3.1}%
+\contentsline {paragraph}{\numberline {3.9.3.2}destroyContext()}{28}{paragraph.3.9.3.2}%
+\contentsline {subsubsection}{\numberline {3.9.4}Member Data Documentation}{28}{subsubsection.3.9.4}%
+\contentsline {paragraph}{\numberline {3.9.4.1}window}{28}{paragraph.3.9.4.1}%
+\contentsline {subsection}{\numberline {3.10}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::device\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handles Struct Reference}{28}{subsection.3.10}%
+\contentsline {subsubsection}{\numberline {3.10.1}Member Data Documentation}{29}{subsubsection.3.10.1}%
+\contentsline {paragraph}{\numberline {3.10.1.1}appInfo}{29}{paragraph.3.10.1.1}%
+\contentsline {paragraph}{\numberline {3.10.1.2}device}{29}{paragraph.3.10.1.2}%
+\contentsline {paragraph}{\numberline {3.10.1.3}instance}{29}{paragraph.3.10.1.3}%
+\contentsline {paragraph}{\numberline {3.10.1.4}physicalDevice}{29}{paragraph.3.10.1.4}%
+\contentsline {subsection}{\numberline {3.11}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipeline\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::draw\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Command Struct Reference}{29}{subsection.3.11}%
+\contentsline {subsubsection}{\numberline {3.11.1}Member Data Documentation}{29}{subsubsection.3.11.1}%
+\contentsline {paragraph}{\numberline {3.11.1.1}indexCount}{29}{paragraph.3.11.1.1}%
+\contentsline {paragraph}{\numberline {3.11.1.2}vertexArray}{30}{paragraph.3.11.1.2}%
+\contentsline {subsection}{\numberline {3.12}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Event Class Reference}{30}{subsection.3.12}%
+\contentsline {subsubsection}{\numberline {3.12.1}Constructor \& Destructor Documentation}{31}{subsubsection.3.12.1}%
+\contentsline {paragraph}{\numberline {3.12.1.1}$\sim $Event()}{31}{paragraph.3.12.1.1}%
+\contentsline {subsubsection}{\numberline {3.12.2}Member Function Documentation}{31}{subsubsection.3.12.2}%
+\contentsline {paragraph}{\numberline {3.12.2.1}getCategoryFlags()}{31}{paragraph.3.12.2.1}%
+\contentsline {paragraph}{\numberline {3.12.2.2}getEventType()}{31}{paragraph.3.12.2.2}%
+\contentsline {paragraph}{\numberline {3.12.2.3}getName()}{31}{paragraph.3.12.2.3}%
+\contentsline {paragraph}{\numberline {3.12.2.4}IsInCategory()}{31}{paragraph.3.12.2.4}%
+\contentsline {paragraph}{\numberline {3.12.2.5}toString()}{31}{paragraph.3.12.2.5}%
+\contentsline {subsubsection}{\numberline {3.12.3}Member Data Documentation}{31}{subsubsection.3.12.3}%
+\contentsline {paragraph}{\numberline {3.12.3.1}Handled}{31}{paragraph.3.12.3.1}%
+\contentsline {subsection}{\numberline {3.13}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dispatcher Class Reference}{32}{subsection.3.13}%
+\contentsline {subsubsection}{\numberline {3.13.1}Constructor \& Destructor Documentation}{32}{subsubsection.3.13.1}%
+\contentsline {paragraph}{\numberline {3.13.1.1}eventDispatcher()}{32}{paragraph.3.13.1.1}%
+\contentsline {subsubsection}{\numberline {3.13.2}Member Function Documentation}{32}{subsubsection.3.13.2}%
+\contentsline {paragraph}{\numberline {3.13.2.1}dispatch()}{32}{paragraph.3.13.2.1}%
+\contentsline {subsubsection}{\numberline {3.13.3}Member Data Documentation}{33}{subsubsection.3.13.3}%
+\contentsline {paragraph}{\numberline {3.13.3.1}m\_Event}{33}{paragraph.3.13.3.1}%
+\contentsline {subsection}{\numberline {3.14}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::index\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer Class Reference}{33}{subsection.3.14}%
+\contentsline {subsubsection}{\numberline {3.14.1}Constructor \& Destructor Documentation}{34}{subsubsection.3.14.1}%
+\contentsline {paragraph}{\numberline {3.14.1.1}$\sim $indexBuffer()}{34}{paragraph.3.14.1.1}%
+\contentsline {subsubsection}{\numberline {3.14.2}Member Function Documentation}{34}{subsubsection.3.14.2}%
+\contentsline {paragraph}{\numberline {3.14.2.1}bind()}{34}{paragraph.3.14.2.1}%
+\contentsline {paragraph}{\numberline {3.14.2.2}create()}{34}{paragraph.3.14.2.2}%
+\contentsline {paragraph}{\numberline {3.14.2.3}getCount()}{34}{paragraph.3.14.2.3}%
+\contentsline {paragraph}{\numberline {3.14.2.4}unbind()}{34}{paragraph.3.14.2.4}%
+\contentsline {subsubsection}{\numberline {3.14.3}Member Data Documentation}{34}{subsubsection.3.14.3}%
+\contentsline {paragraph}{\numberline {3.14.3.1}data}{34}{paragraph.3.14.3.1}%
+\contentsline {paragraph}{\numberline {3.14.3.2}size}{34}{paragraph.3.14.3.2}%
+\contentsline {subsection}{\numberline {3.15}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::key\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{35}{subsection.3.15}%
+\contentsline {subsubsection}{\numberline {3.15.1}Constructor \& Destructor Documentation}{36}{subsubsection.3.15.1}%
+\contentsline {paragraph}{\numberline {3.15.1.1}keyEvent()}{36}{paragraph.3.15.1.1}%
+\contentsline {subsubsection}{\numberline {3.15.2}Member Function Documentation}{36}{subsubsection.3.15.2}%
+\contentsline {paragraph}{\numberline {3.15.2.1}getkeyCode()}{36}{paragraph.3.15.2.1}%
+\contentsline {subsubsection}{\numberline {3.15.3}Member Data Documentation}{36}{subsubsection.3.15.3}%
+\contentsline {paragraph}{\numberline {3.15.3.1}m\_keyCode}{36}{paragraph.3.15.3.1}%
+\contentsline {subsection}{\numberline {3.16}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::key\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pressed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{36}{subsection.3.16}%
+\contentsline {subsubsection}{\numberline {3.16.1}Constructor \& Destructor Documentation}{37}{subsubsection.3.16.1}%
+\contentsline {paragraph}{\numberline {3.16.1.1}keyPressedEvent()}{37}{paragraph.3.16.1.1}%
+\contentsline {subsubsection}{\numberline {3.16.2}Member Function Documentation}{37}{subsubsection.3.16.2}%
+\contentsline {paragraph}{\numberline {3.16.2.1}isRepeat()}{37}{paragraph.3.16.2.1}%
+\contentsline {paragraph}{\numberline {3.16.2.2}toString()}{38}{paragraph.3.16.2.2}%
+\contentsline {subsubsection}{\numberline {3.16.3}Member Data Documentation}{38}{subsubsection.3.16.3}%
+\contentsline {paragraph}{\numberline {3.16.3.1}m\_IsRepeat}{38}{paragraph.3.16.3.1}%
+\contentsline {subsection}{\numberline {3.17}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::key\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Released\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{38}{subsection.3.17}%
+\contentsline {subsubsection}{\numberline {3.17.1}Constructor \& Destructor Documentation}{39}{subsubsection.3.17.1}%
+\contentsline {paragraph}{\numberline {3.17.1.1}keyReleasedEvent()}{39}{paragraph.3.17.1.1}%
+\contentsline {subsubsection}{\numberline {3.17.2}Member Function Documentation}{39}{subsubsection.3.17.2}%
+\contentsline {paragraph}{\numberline {3.17.2.1}toString()}{39}{paragraph.3.17.2.1}%
+\contentsline {subsection}{\numberline {3.18}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::key\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Typed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{40}{subsection.3.18}%
+\contentsline {subsubsection}{\numberline {3.18.1}Constructor \& Destructor Documentation}{40}{subsubsection.3.18.1}%
+\contentsline {paragraph}{\numberline {3.18.1.1}keyTypedEvent()}{41}{paragraph.3.18.1.1}%
+\contentsline {subsubsection}{\numberline {3.18.2}Member Function Documentation}{41}{subsubsection.3.18.2}%
+\contentsline {paragraph}{\numberline {3.18.2.1}toString()}{41}{paragraph.3.18.2.1}%
+\contentsline {subsection}{\numberline {3.19}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Log Class Reference}{41}{subsection.3.19}%
+\contentsline {subsubsection}{\numberline {3.19.1}Member Function Documentation}{42}{subsubsection.3.19.1}%
+\contentsline {paragraph}{\numberline {3.19.1.1}GetClientLogger()}{42}{paragraph.3.19.1.1}%
+\contentsline {paragraph}{\numberline {3.19.1.2}GetCoreLogger()}{42}{paragraph.3.19.1.2}%
+\contentsline {paragraph}{\numberline {3.19.1.3}Init()}{42}{paragraph.3.19.1.3}%
+\contentsline {subsubsection}{\numberline {3.19.2}Member Data Documentation}{42}{subsubsection.3.19.2}%
+\contentsline {paragraph}{\numberline {3.19.2.1}s\_ClientLogger}{42}{paragraph.3.19.2.1}%
+\contentsline {paragraph}{\numberline {3.19.2.2}s\_CoreLogger}{42}{paragraph.3.19.2.2}%
+\contentsline {subsection}{\numberline {3.20}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::mesh Struct Reference}{43}{subsection.3.20}%
+\contentsline {subsubsection}{\numberline {3.20.1}Member Data Documentation}{43}{subsubsection.3.20.1}%
+\contentsline {paragraph}{\numberline {3.20.1.1}indices}{43}{paragraph.3.20.1.1}%
+\contentsline {paragraph}{\numberline {3.20.1.2}vertices}{43}{paragraph.3.20.1.2}%
+\contentsline {subsection}{\numberline {3.21}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{44}{subsection.3.21}%
+\contentsline {subsubsection}{\numberline {3.21.1}Constructor \& Destructor Documentation}{45}{subsubsection.3.21.1}%
+\contentsline {paragraph}{\numberline {3.21.1.1}mouseButtonEvent()}{45}{paragraph.3.21.1.1}%
+\contentsline {subsubsection}{\numberline {3.21.2}Member Function Documentation}{45}{subsubsection.3.21.2}%
+\contentsline {paragraph}{\numberline {3.21.2.1}getMouseButton()}{45}{paragraph.3.21.2.1}%
+\contentsline {subsubsection}{\numberline {3.21.3}Member Data Documentation}{45}{subsubsection.3.21.3}%
+\contentsline {paragraph}{\numberline {3.21.3.1}m\_Button}{45}{paragraph.3.21.3.1}%
+\contentsline {subsection}{\numberline {3.22}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pressed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{45}{subsection.3.22}%
+\contentsline {subsubsection}{\numberline {3.22.1}Constructor \& Destructor Documentation}{46}{subsubsection.3.22.1}%
+\contentsline {paragraph}{\numberline {3.22.1.1}mouseButtonPressedEvent()}{46}{paragraph.3.22.1.1}%
+\contentsline {subsubsection}{\numberline {3.22.2}Member Function Documentation}{46}{subsubsection.3.22.2}%
+\contentsline {paragraph}{\numberline {3.22.2.1}toString()}{46}{paragraph.3.22.2.1}%
+\contentsline {subsection}{\numberline {3.23}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Released\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{47}{subsection.3.23}%
+\contentsline {subsubsection}{\numberline {3.23.1}Constructor \& Destructor Documentation}{48}{subsubsection.3.23.1}%
+\contentsline {paragraph}{\numberline {3.23.1.1}mouseButtonReleasedEvent()}{48}{paragraph.3.23.1.1}%
+\contentsline {subsubsection}{\numberline {3.23.2}Member Function Documentation}{48}{subsubsection.3.23.2}%
+\contentsline {paragraph}{\numberline {3.23.2.1}toString()}{48}{paragraph.3.23.2.1}%
+\contentsline {subsection}{\numberline {3.24}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Moved\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{48}{subsection.3.24}%
+\contentsline {subsubsection}{\numberline {3.24.1}Constructor \& Destructor Documentation}{49}{subsubsection.3.24.1}%
+\contentsline {paragraph}{\numberline {3.24.1.1}mouseMovedEvent()}{49}{paragraph.3.24.1.1}%
+\contentsline {subsubsection}{\numberline {3.24.2}Member Function Documentation}{49}{subsubsection.3.24.2}%
+\contentsline {paragraph}{\numberline {3.24.2.1}GetX()}{49}{paragraph.3.24.2.1}%
+\contentsline {paragraph}{\numberline {3.24.2.2}GetY()}{50}{paragraph.3.24.2.2}%
+\contentsline {paragraph}{\numberline {3.24.2.3}toString()}{50}{paragraph.3.24.2.3}%
+\contentsline {subsubsection}{\numberline {3.24.3}Member Data Documentation}{50}{subsubsection.3.24.3}%
+\contentsline {paragraph}{\numberline {3.24.3.1}m\_MouseX}{50}{paragraph.3.24.3.1}%
+\contentsline {paragraph}{\numberline {3.24.3.2}m\_MouseY}{50}{paragraph.3.24.3.2}%
+\contentsline {subsection}{\numberline {3.25}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scrolled\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{50}{subsection.3.25}%
+\contentsline {subsubsection}{\numberline {3.25.1}Constructor \& Destructor Documentation}{51}{subsubsection.3.25.1}%
+\contentsline {paragraph}{\numberline {3.25.1.1}mouseScrolledEvent()}{51}{paragraph.3.25.1.1}%
+\contentsline {subsubsection}{\numberline {3.25.2}Member Function Documentation}{51}{subsubsection.3.25.2}%
+\contentsline {paragraph}{\numberline {3.25.2.1}getXOffset()}{51}{paragraph.3.25.2.1}%
+\contentsline {paragraph}{\numberline {3.25.2.2}getYOffset()}{52}{paragraph.3.25.2.2}%
+\contentsline {paragraph}{\numberline {3.25.2.3}toString()}{52}{paragraph.3.25.2.3}%
+\contentsline {subsubsection}{\numberline {3.25.3}Member Data Documentation}{52}{subsubsection.3.25.3}%
+\contentsline {paragraph}{\numberline {3.25.3.1}m\_XOffset}{52}{paragraph.3.25.3.1}%
+\contentsline {paragraph}{\numberline {3.25.3.2}m\_YOffset}{52}{paragraph.3.25.3.2}%
+\contentsline {subsection}{\numberline {3.26}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Storage$<$ value $>$ Class Template Reference}{52}{subsection.3.26}%
+\contentsline {subsubsection}{\numberline {3.26.1}Detailed Description}{54}{subsubsection.3.26.1}%
+\contentsline {subsubsection}{\numberline {3.26.2}Constructor \& Destructor Documentation}{54}{subsubsection.3.26.2}%
+\contentsline {paragraph}{\numberline {3.26.2.1}objectStorage()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{54}{paragraph.3.26.2.1}%
+\contentsline {paragraph}{\numberline {3.26.2.2}objectStorage()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{54}{paragraph.3.26.2.2}%
+\contentsline {subsubsection}{\numberline {3.26.3}Member Function Documentation}{54}{subsubsection.3.26.3}%
+\contentsline {paragraph}{\numberline {3.26.3.1}eraseValue()}{54}{paragraph.3.26.3.1}%
+\contentsline {paragraph}{\numberline {3.26.3.2}getValue()}{55}{paragraph.3.26.3.2}%
+\contentsline {paragraph}{\numberline {3.26.3.3}operator[]()}{55}{paragraph.3.26.3.3}%
+\contentsline {paragraph}{\numberline {3.26.3.4}putValue()}{55}{paragraph.3.26.3.4}%
+\contentsline {paragraph}{\numberline {3.26.3.5}setValue()}{56}{paragraph.3.26.3.5}%
+\contentsline {subsubsection}{\numberline {3.26.4}Member Data Documentation}{56}{subsubsection.3.26.4}%
+\contentsline {paragraph}{\numberline {3.26.4.1}objectCache}{56}{paragraph.3.26.4.1}%
+\contentsline {paragraph}{\numberline {3.26.4.2}objectMemory}{56}{paragraph.3.26.4.2}%
+\contentsline {subsection}{\numberline {3.27}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::pipeline Class Reference}{57}{subsection.3.27}%
+\contentsline {subsubsection}{\numberline {3.27.1}Constructor \& Destructor Documentation}{57}{subsubsection.3.27.1}%
+\contentsline {paragraph}{\numberline {3.27.1.1}$\sim $pipeline()}{57}{paragraph.3.27.1.1}%
+\contentsline {subsubsection}{\numberline {3.27.2}Member Function Documentation}{58}{subsubsection.3.27.2}%
+\contentsline {paragraph}{\numberline {3.27.2.1}begin()}{58}{paragraph.3.27.2.1}%
+\contentsline {paragraph}{\numberline {3.27.2.2}createCommands()}{58}{paragraph.3.27.2.2}%
+\contentsline {paragraph}{\numberline {3.27.2.3}createPipeline()}{58}{paragraph.3.27.2.3}%
+\contentsline {paragraph}{\numberline {3.27.2.4}destroyPipeline()}{58}{paragraph.3.27.2.4}%
+\contentsline {paragraph}{\numberline {3.27.2.5}drawIndexed()}{58}{paragraph.3.27.2.5}%
+\contentsline {paragraph}{\numberline {3.27.2.6}end()}{59}{paragraph.3.27.2.6}%
+\contentsline {paragraph}{\numberline {3.27.2.7}flush()}{59}{paragraph.3.27.2.7}%
+\contentsline {subsubsection}{\numberline {3.27.3}Member Data Documentation}{59}{subsubsection.3.27.3}%
+\contentsline {paragraph}{\numberline {3.27.3.1}test}{59}{paragraph.3.27.3.1}%
+\contentsline {subsection}{\numberline {3.28}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::pipeline\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layout Struct Reference}{59}{subsection.3.28}%
+\contentsline {subsubsection}{\numberline {3.28.1}Member Data Documentation}{60}{subsubsection.3.28.1}%
+\contentsline {paragraph}{\numberline {3.28.1.1}device}{60}{paragraph.3.28.1.1}%
+\contentsline {paragraph}{\numberline {3.28.1.2}pipelineShaders}{60}{paragraph.3.28.1.2}%
+\contentsline {subsection}{\numberline {3.29}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::queue\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Family\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Indices Struct Reference}{60}{subsection.3.29}%
+\contentsline {subsubsection}{\numberline {3.29.1}Member Function Documentation}{60}{subsubsection.3.29.1}%
+\contentsline {paragraph}{\numberline {3.29.1.1}isComplete()}{60}{paragraph.3.29.1.1}%
+\contentsline {subsubsection}{\numberline {3.29.2}Member Data Documentation}{60}{subsubsection.3.29.2}%
+\contentsline {paragraph}{\numberline {3.29.2.1}graphicsFamily}{61}{paragraph.3.29.2.1}%
+\contentsline {paragraph}{\numberline {3.29.2.2}presentFamily}{61}{paragraph.3.29.2.2}%
+\contentsline {paragraph}{\numberline {3.29.2.3}transferFamily}{61}{paragraph.3.29.2.3}%
+\contentsline {subsection}{\numberline {3.30}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer Class Reference}{61}{subsection.3.30}%
+\contentsline {subsubsection}{\numberline {3.30.1}Member Function Documentation}{62}{subsubsection.3.30.1}%
+\contentsline {paragraph}{\numberline {3.30.1.1}beginScene()}{62}{paragraph.3.30.1.1}%
+\contentsline {paragraph}{\numberline {3.30.1.2}createFrame()}{62}{paragraph.3.30.1.2}%
+\contentsline {paragraph}{\numberline {3.30.1.3}endScene()}{62}{paragraph.3.30.1.3}%
+\contentsline {paragraph}{\numberline {3.30.1.4}init()}{62}{paragraph.3.30.1.4}%
+\contentsline {paragraph}{\numberline {3.30.1.5}newFrame()}{62}{paragraph.3.30.1.5}%
+\contentsline {paragraph}{\numberline {3.30.1.6}Submit()}{63}{paragraph.3.30.1.6}%
+\contentsline {subsubsection}{\numberline {3.30.2}Member Data Documentation}{63}{subsubsection.3.30.2}%
+\contentsline {paragraph}{\numberline {3.30.2.1}gui}{63}{paragraph.3.30.2.1}%
+\contentsline {paragraph}{\numberline {3.30.2.2}layout}{63}{paragraph.3.30.2.2}%
+\contentsline {paragraph}{\numberline {3.30.2.3}rendererDevice}{63}{paragraph.3.30.2.3}%
+\contentsline {paragraph}{\numberline {3.30.2.4}rendererPipeline}{63}{paragraph.3.30.2.4}%
+\contentsline {paragraph}{\numberline {3.30.2.5}Selected}{63}{paragraph.3.30.2.5}%
+\contentsline {paragraph}{\numberline {3.30.2.6}testMesh}{63}{paragraph.3.30.2.6}%
+\contentsline {paragraph}{\numberline {3.30.2.7}vertArray}{64}{paragraph.3.30.2.7}%
+\contentsline {subsection}{\numberline {3.31}sandbox Class Reference}{64}{subsection.3.31}%
+\contentsline {subsubsection}{\numberline {3.31.1}Constructor \& Destructor Documentation}{64}{subsubsection.3.31.1}%
+\contentsline {paragraph}{\numberline {3.31.1.1}sandbox()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{65}{paragraph.3.31.1.1}%
+\contentsline {paragraph}{\numberline {3.31.1.2}$\sim $sandbox()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{65}{paragraph.3.31.1.2}%
+\contentsline {paragraph}{\numberline {3.31.1.3}sandbox()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{65}{paragraph.3.31.1.3}%
+\contentsline {paragraph}{\numberline {3.31.1.4}$\sim $sandbox()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{65}{paragraph.3.31.1.4}%
+\contentsline {paragraph}{\numberline {3.31.1.5}sandbox()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{65}{paragraph.3.31.1.5}%
+\contentsline {paragraph}{\numberline {3.31.1.6}$\sim $sandbox()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{65}{paragraph.3.31.1.6}%
+\contentsline {subsection}{\numberline {3.32}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::shader Class Reference}{65}{subsection.3.32}%
+\contentsline {subsubsection}{\numberline {3.32.1}Constructor \& Destructor Documentation}{67}{subsubsection.3.32.1}%
+\contentsline {paragraph}{\numberline {3.32.1.1}$\sim $shader()}{67}{paragraph.3.32.1.1}%
+\contentsline {subsubsection}{\numberline {3.32.2}Member Function Documentation}{67}{subsubsection.3.32.2}%
+\contentsline {paragraph}{\numberline {3.32.2.1}bind()}{67}{paragraph.3.32.2.1}%
+\contentsline {paragraph}{\numberline {3.32.2.2}create()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{67}{paragraph.3.32.2.2}%
+\contentsline {paragraph}{\numberline {3.32.2.3}create()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{67}{paragraph.3.32.2.3}%
+\contentsline {paragraph}{\numberline {3.32.2.4}createLayout()}{68}{paragraph.3.32.2.4}%
+\contentsline {paragraph}{\numberline {3.32.2.5}self()}{68}{paragraph.3.32.2.5}%
+\contentsline {paragraph}{\numberline {3.32.2.6}unbind()}{68}{paragraph.3.32.2.6}%
+\contentsline {subsubsection}{\numberline {3.32.3}Friends And Related Function Documentation}{68}{subsubsection.3.32.3}%
+\contentsline {paragraph}{\numberline {3.32.3.1}vulkanDevice}{68}{paragraph.3.32.3.1}%
+\contentsline {subsubsection}{\numberline {3.32.4}Member Data Documentation}{68}{subsubsection.3.32.4}%
+\contentsline {paragraph}{\numberline {3.32.4.1}shaderLayout}{68}{paragraph.3.32.4.1}%
+\contentsline {paragraph}{\numberline {3.32.4.2}shaderName}{68}{paragraph.3.32.4.2}%
+\contentsline {paragraph}{\numberline {3.32.4.3}shaderSrc}{68}{paragraph.3.32.4.3}%
+\contentsline {paragraph}{\numberline {3.32.4.4}stage}{68}{paragraph.3.32.4.4}%
+\contentsline {subsection}{\numberline {3.33}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Compiler Class Reference}{69}{subsection.3.33}%
+\contentsline {subsubsection}{\numberline {3.33.1}Constructor \& Destructor Documentation}{69}{subsubsection.3.33.1}%
+\contentsline {paragraph}{\numberline {3.33.1.1}shaderCompiler()}{69}{paragraph.3.33.1.1}%
+\contentsline {paragraph}{\numberline {3.33.1.2}$\sim $shaderCompiler()}{69}{paragraph.3.33.1.2}%
+\contentsline {subsubsection}{\numberline {3.33.2}Member Function Documentation}{69}{subsubsection.3.33.2}%
+\contentsline {paragraph}{\numberline {3.33.2.1}compile()}{69}{paragraph.3.33.2.1}%
+\contentsline {paragraph}{\numberline {3.33.2.2}getResourceTypeName()}{70}{paragraph.3.33.2.2}%
+\contentsline {paragraph}{\numberline {3.33.2.3}reflect()}{70}{paragraph.3.33.2.3}%
+\contentsline {subsection}{\numberline {3.34}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library Class Reference}{70}{subsection.3.34}%
+\contentsline {subsubsection}{\numberline {3.34.1}Member Function Documentation}{71}{subsubsection.3.34.1}%
+\contentsline {paragraph}{\numberline {3.34.1.1}get()}{71}{paragraph.3.34.1.1}%
+\contentsline {paragraph}{\numberline {3.34.1.2}init()}{72}{paragraph.3.34.1.2}%
+\contentsline {paragraph}{\numberline {3.34.1.3}load()}{72}{paragraph.3.34.1.3}%
+\contentsline {subsubsection}{\numberline {3.34.2}Member Data Documentation}{72}{subsubsection.3.34.2}%
+\contentsline {paragraph}{\numberline {3.34.2.1}shaders}{72}{paragraph.3.34.2.1}%
+\contentsline {subsection}{\numberline {3.35}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Resource Struct Reference}{72}{subsection.3.35}%
+\contentsline {subsubsection}{\numberline {3.35.1}Member Data Documentation}{73}{subsubsection.3.35.1}%
+\contentsline {paragraph}{\numberline {3.35.1.1}binding}{73}{paragraph.3.35.1.1}%
+\contentsline {paragraph}{\numberline {3.35.1.2}location}{73}{paragraph.3.35.1.2}%
+\contentsline {paragraph}{\numberline {3.35.1.3}members}{73}{paragraph.3.35.1.3}%
+\contentsline {paragraph}{\numberline {3.35.1.4}name}{73}{paragraph.3.35.1.4}%
+\contentsline {paragraph}{\numberline {3.35.1.5}offset}{73}{paragraph.3.35.1.5}%
+\contentsline {paragraph}{\numberline {3.35.1.6}resourceClass}{73}{paragraph.3.35.1.6}%
+\contentsline {paragraph}{\numberline {3.35.1.7}set}{73}{paragraph.3.35.1.7}%
+\contentsline {paragraph}{\numberline {3.35.1.8}stride}{73}{paragraph.3.35.1.8}%
+\contentsline {paragraph}{\numberline {3.35.1.9}type}{74}{paragraph.3.35.1.9}%
+\contentsline {subsection}{\numberline {3.36}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipeline\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stage Struct Reference}{74}{subsection.3.36}%
+\contentsline {subsubsection}{\numberline {3.36.1}Member Data Documentation}{74}{subsubsection.3.36.1}%
+\contentsline {paragraph}{\numberline {3.36.1.1}shaderModule}{74}{paragraph.3.36.1.1}%
+\contentsline {paragraph}{\numberline {3.36.1.2}stageInfo}{74}{paragraph.3.36.1.2}%
+\contentsline {subsection}{\numberline {3.37}shared\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ptr$<$ window $>$ Class Reference}{74}{subsection.3.37}%
+\contentsline {subsubsection}{\numberline {3.37.1}Detailed Description}{74}{subsubsection.3.37.1}%
+\contentsline {subsection}{\numberline {3.38}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::swapchain\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Spec Struct Reference}{75}{subsection.3.38}%
+\contentsline {subsubsection}{\numberline {3.38.1}Member Data Documentation}{75}{subsubsection.3.38.1}%
+\contentsline {paragraph}{\numberline {3.38.1.1}device}{76}{paragraph.3.38.1.1}%
+\contentsline {paragraph}{\numberline {3.38.1.2}indices}{76}{paragraph.3.38.1.2}%
+\contentsline {paragraph}{\numberline {3.38.1.3}physicalDevice}{76}{paragraph.3.38.1.3}%
+\contentsline {paragraph}{\numberline {3.38.1.4}surface}{76}{paragraph.3.38.1.4}%
+\contentsline {paragraph}{\numberline {3.38.1.5}swapchainExtent}{76}{paragraph.3.38.1.5}%
+\contentsline {paragraph}{\numberline {3.38.1.6}window}{76}{paragraph.3.38.1.6}%
+\contentsline {subsection}{\numberline {3.39}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::uuid Class Reference}{76}{subsection.3.39}%
+\contentsline {subsubsection}{\numberline {3.39.1}Detailed Description}{77}{subsubsection.3.39.1}%
+\contentsline {subsubsection}{\numberline {3.39.2}Constructor \& Destructor Documentation}{77}{subsubsection.3.39.2}%
+\contentsline {paragraph}{\numberline {3.39.2.1}uuid()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{77}{paragraph.3.39.2.1}%
+\contentsline {paragraph}{\numberline {3.39.2.2}uuid()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{77}{paragraph.3.39.2.2}%
+\contentsline {subsubsection}{\numberline {3.39.3}Member Function Documentation}{77}{subsubsection.3.39.3}%
+\contentsline {paragraph}{\numberline {3.39.3.1}getId()}{77}{paragraph.3.39.3.1}%
+\contentsline {paragraph}{\numberline {3.39.3.2}operator uint64\_t()}{77}{paragraph.3.39.3.2}%
+\contentsline {subsubsection}{\numberline {3.39.4}Member Data Documentation}{77}{subsubsection.3.39.4}%
+\contentsline {paragraph}{\numberline {3.39.4.1}\_uuid}{77}{paragraph.3.39.4.1}%
+\contentsline {subsection}{\numberline {3.40}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cache$<$ value $>$ Class Template Reference}{78}{subsection.3.40}%
+\contentsline {subsubsection}{\numberline {3.40.1}Detailed Description}{79}{subsubsection.3.40.1}%
+\contentsline {subsubsection}{\numberline {3.40.2}Constructor \& Destructor Documentation}{79}{subsubsection.3.40.2}%
+\contentsline {paragraph}{\numberline {3.40.2.1}vectorCache()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{79}{paragraph.3.40.2.1}%
+\contentsline {paragraph}{\numberline {3.40.2.2}vectorCache()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{79}{paragraph.3.40.2.2}%
+\contentsline {paragraph}{\numberline {3.40.2.3}$\sim $vectorCache()}{80}{paragraph.3.40.2.3}%
+\contentsline {subsubsection}{\numberline {3.40.3}Member Function Documentation}{80}{subsubsection.3.40.3}%
+\contentsline {paragraph}{\numberline {3.40.3.1}eraseValue()}{80}{paragraph.3.40.3.1}%
+\contentsline {paragraph}{\numberline {3.40.3.2}getValue()}{80}{paragraph.3.40.3.2}%
+\contentsline {paragraph}{\numberline {3.40.3.3}putValue()}{80}{paragraph.3.40.3.3}%
+\contentsline {paragraph}{\numberline {3.40.3.4}setValue()}{81}{paragraph.3.40.3.4}%
+\contentsline {subsubsection}{\numberline {3.40.4}Member Data Documentation}{81}{subsubsection.3.40.4}%
+\contentsline {paragraph}{\numberline {3.40.4.1}handleCache}{81}{paragraph.3.40.4.1}%
+\contentsline {paragraph}{\numberline {3.40.4.2}lockGuard}{81}{paragraph.3.40.4.2}%
+\contentsline {paragraph}{\numberline {3.40.4.3}maxCacheSize}{81}{paragraph.3.40.4.3}%
+\contentsline {paragraph}{\numberline {3.40.4.4}valueCache}{82}{paragraph.3.40.4.4}%
+\contentsline {subsection}{\numberline {3.41}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vertex Struct Reference}{82}{subsection.3.41}%
+\contentsline {subsubsection}{\numberline {3.41.1}Member Data Documentation}{82}{subsubsection.3.41.1}%
+\contentsline {paragraph}{\numberline {3.41.1.1}vert}{82}{paragraph.3.41.1.1}%
+\contentsline {subsection}{\numberline {3.42}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipeline\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Vertex Struct Reference}{82}{subsection.3.42}%
+\contentsline {subsubsection}{\numberline {3.42.1}Member Data Documentation}{82}{subsubsection.3.42.1}%
+\contentsline {paragraph}{\numberline {3.42.1.1}color}{82}{paragraph.3.42.1.1}%
+\contentsline {paragraph}{\numberline {3.42.1.2}normal}{82}{paragraph.3.42.1.2}%
+\contentsline {paragraph}{\numberline {3.42.1.3}position}{83}{paragraph.3.42.1.3}%
+\contentsline {subsection}{\numberline {3.43}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array Class Reference}{83}{subsection.3.43}%
+\contentsline {subsubsection}{\numberline {3.43.1}Constructor \& Destructor Documentation}{84}{subsubsection.3.43.1}%
+\contentsline {paragraph}{\numberline {3.43.1.1}$\sim $vertexArray()}{84}{paragraph.3.43.1.1}%
+\contentsline {subsubsection}{\numberline {3.43.2}Member Function Documentation}{84}{subsubsection.3.43.2}%
+\contentsline {paragraph}{\numberline {3.43.2.1}addVertexBuffer()}{84}{paragraph.3.43.2.1}%
+\contentsline {paragraph}{\numberline {3.43.2.2}bind()}{84}{paragraph.3.43.2.2}%
+\contentsline {paragraph}{\numberline {3.43.2.3}getIndexBuffer()}{84}{paragraph.3.43.2.3}%
+\contentsline {paragraph}{\numberline {3.43.2.4}getVertexBuffers()}{84}{paragraph.3.43.2.4}%
+\contentsline {paragraph}{\numberline {3.43.2.5}setIndexBuffer()}{85}{paragraph.3.43.2.5}%
+\contentsline {paragraph}{\numberline {3.43.2.6}unbind()}{85}{paragraph.3.43.2.6}%
+\contentsline {subsubsection}{\numberline {3.43.3}Member Data Documentation}{85}{subsubsection.3.43.3}%
+\contentsline {paragraph}{\numberline {3.43.3.1}indexBuffer}{85}{paragraph.3.43.3.1}%
+\contentsline {paragraph}{\numberline {3.43.3.2}vertexBuffers}{85}{paragraph.3.43.3.2}%
+\contentsline {subsection}{\numberline {3.44}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::renderer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer Class Reference}{85}{subsection.3.44}%
+\contentsline {subsubsection}{\numberline {3.44.1}Constructor \& Destructor Documentation}{86}{subsubsection.3.44.1}%
+\contentsline {paragraph}{\numberline {3.44.1.1}$\sim $vertexBuffer()}{86}{paragraph.3.44.1.1}%
+\contentsline {subsubsection}{\numberline {3.44.2}Member Function Documentation}{86}{subsubsection.3.44.2}%
+\contentsline {paragraph}{\numberline {3.44.2.1}bind()}{86}{paragraph.3.44.2.1}%
+\contentsline {paragraph}{\numberline {3.44.2.2}create()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{86}{paragraph.3.44.2.2}%
+\contentsline {paragraph}{\numberline {3.44.2.3}create()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{87}{paragraph.3.44.2.3}%
+\contentsline {paragraph}{\numberline {3.44.2.4}getIndex()}{87}{paragraph.3.44.2.4}%
+\contentsline {paragraph}{\numberline {3.44.2.5}operator[]()}{87}{paragraph.3.44.2.5}%
+\contentsline {paragraph}{\numberline {3.44.2.6}setData()}{87}{paragraph.3.44.2.6}%
+\contentsline {paragraph}{\numberline {3.44.2.7}unbind()}{87}{paragraph.3.44.2.7}%
+\contentsline {subsubsection}{\numberline {3.44.3}Member Data Documentation}{87}{subsubsection.3.44.3}%
+\contentsline {paragraph}{\numberline {3.44.3.1}data}{87}{paragraph.3.44.3.1}%
+\contentsline {paragraph}{\numberline {3.44.3.2}size}{87}{paragraph.3.44.3.2}%
+\contentsline {paragraph}{\numberline {3.44.3.3}srcShader}{87}{paragraph.3.44.3.3}%
+\contentsline {subsection}{\numberline {3.45}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipeline\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Description Struct Reference}{88}{subsection.3.45}%
+\contentsline {subsubsection}{\numberline {3.45.1}Member Data Documentation}{88}{subsubsection.3.45.1}%
+\contentsline {paragraph}{\numberline {3.45.1.1}attributes}{88}{paragraph.3.45.1.1}%
+\contentsline {paragraph}{\numberline {3.45.1.2}bindings}{88}{paragraph.3.45.1.2}%
+\contentsline {paragraph}{\numberline {3.45.1.3}flags}{88}{paragraph.3.45.1.3}%
+\contentsline {subsection}{\numberline {3.46}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Allocator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vma\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Allocation Struct Reference}{88}{subsection.3.46}%
+\contentsline {subsubsection}{\numberline {3.46.1}Member Data Documentation}{89}{subsubsection.3.46.1}%
+\contentsline {paragraph}{\numberline {3.46.1.1}allocation}{89}{paragraph.3.46.1.1}%
+\contentsline {paragraph}{\numberline {3.46.1.2}allocationInfo}{89}{paragraph.3.46.1.2}%
+\contentsline {subsection}{\numberline {3.47}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Allocator Class Reference}{89}{subsection.3.47}%
+\contentsline {subsubsection}{\numberline {3.47.1}Member Function Documentation}{90}{subsubsection.3.47.1}%
+\contentsline {paragraph}{\numberline {3.47.1.1}createBuffer()}{90}{paragraph.3.47.1.1}%
+\contentsline {paragraph}{\numberline {3.47.1.2}createImage()}{90}{paragraph.3.47.1.2}%
+\contentsline {paragraph}{\numberline {3.47.1.3}createImageView()}{91}{paragraph.3.47.1.3}%
+\contentsline {paragraph}{\numberline {3.47.1.4}destroyBuffer()}{91}{paragraph.3.47.1.4}%
+\contentsline {paragraph}{\numberline {3.47.1.5}destroyImage()}{91}{paragraph.3.47.1.5}%
+\contentsline {paragraph}{\numberline {3.47.1.6}destroyImageView()}{92}{paragraph.3.47.1.6}%
+\contentsline {paragraph}{\numberline {3.47.1.7}getAllocationInfo()}{92}{paragraph.3.47.1.7}%
+\contentsline {paragraph}{\numberline {3.47.1.8}init()}{92}{paragraph.3.47.1.8}%
+\contentsline {paragraph}{\numberline {3.47.1.9}shutdown()}{92}{paragraph.3.47.1.9}%
+\contentsline {subsubsection}{\numberline {3.47.2}Member Data Documentation}{93}{subsubsection.3.47.2}%
+\contentsline {paragraph}{\numberline {3.47.2.1}allocations}{93}{paragraph.3.47.2.1}%
+\contentsline {paragraph}{\numberline {3.47.2.2}pDevice}{93}{paragraph.3.47.2.2}%
+\contentsline {paragraph}{\numberline {3.47.2.3}sAllocator}{93}{paragraph.3.47.2.3}%
+\contentsline {paragraph}{\numberline {3.47.2.4}transferQueue}{93}{paragraph.3.47.2.4}%
+\contentsline {subsection}{\numberline {3.48}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cmd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pool Class Reference}{93}{subsection.3.48}%
+\contentsline {subsubsection}{\numberline {3.48.1}Detailed Description}{94}{subsubsection.3.48.1}%
+\contentsline {subsubsection}{\numberline {3.48.2}Constructor \& Destructor Documentation}{94}{subsubsection.3.48.2}%
+\contentsline {paragraph}{\numberline {3.48.2.1}vulkanCmdPool()}{94}{paragraph.3.48.2.1}%
+\contentsline {paragraph}{\numberline {3.48.2.2}$\sim $vulkanCmdPool()}{95}{paragraph.3.48.2.2}%
+\contentsline {subsubsection}{\numberline {3.48.3}Member Function Documentation}{95}{subsubsection.3.48.3}%
+\contentsline {paragraph}{\numberline {3.48.3.1}begin()}{95}{paragraph.3.48.3.1}%
+\contentsline {paragraph}{\numberline {3.48.3.2}createNewBuffer()}{95}{paragraph.3.48.3.2}%
+\contentsline {paragraph}{\numberline {3.48.3.3}end()}{95}{paragraph.3.48.3.3}%
+\contentsline {paragraph}{\numberline {3.48.3.4}flush()}{96}{paragraph.3.48.3.4}%
+\contentsline {paragraph}{\numberline {3.48.3.5}freeCommandBuffer()}{96}{paragraph.3.48.3.5}%
+\contentsline {paragraph}{\numberline {3.48.3.6}operator=()}{96}{paragraph.3.48.3.6}%
+\contentsline {paragraph}{\numberline {3.48.3.7}vulkanCmdPool::operator[]()}{96}{paragraph.3.48.3.7}%
+\contentsline {subsubsection}{\numberline {3.48.4}Member Data Documentation}{96}{subsubsection.3.48.4}%
+\contentsline {paragraph}{\numberline {3.48.4.1}commandPool}{96}{paragraph.3.48.4.1}%
+\contentsline {paragraph}{\numberline {3.48.4.2}sCommandPoolSpec}{97}{paragraph.3.48.4.2}%
+\contentsline {paragraph}{\numberline {3.48.4.3}virtualBuffers}{97}{paragraph.3.48.4.3}%
+\contentsline {subsection}{\numberline {3.49}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cmd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pool\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Spec Struct Reference}{97}{subsection.3.49}%
+\contentsline {subsubsection}{\numberline {3.49.1}Member Data Documentation}{97}{subsubsection.3.49.1}%
+\contentsline {paragraph}{\numberline {3.49.1.1}device}{97}{paragraph.3.49.1.1}%
+\contentsline {paragraph}{\numberline {3.49.1.2}flags}{97}{paragraph.3.49.1.2}%
+\contentsline {paragraph}{\numberline {3.49.1.3}queueFamilyIndex}{97}{paragraph.3.49.1.3}%
+\contentsline {subsection}{\numberline {3.50}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device Class Reference}{98}{subsection.3.50}%
+\contentsline {subsubsection}{\numberline {3.50.1}Detailed Description}{99}{subsubsection.3.50.1}%
+\contentsline {subsubsection}{\numberline {3.50.2}Constructor \& Destructor Documentation}{99}{subsubsection.3.50.2}%
+\contentsline {paragraph}{\numberline {3.50.2.1}vulkanDevice()}{99}{paragraph.3.50.2.1}%
+\contentsline {paragraph}{\numberline {3.50.2.2}$\sim $vulkanDevice()}{100}{paragraph.3.50.2.2}%
+\contentsline {subsubsection}{\numberline {3.50.3}Member Function Documentation}{100}{subsubsection.3.50.3}%
+\contentsline {paragraph}{\numberline {3.50.3.1}createContext()}{100}{paragraph.3.50.3.1}%
+\contentsline {paragraph}{\numberline {3.50.3.2}createFramebuffers()}{100}{paragraph.3.50.3.2}%
+\contentsline {paragraph}{\numberline {3.50.3.3}createInstance()}{100}{paragraph.3.50.3.3}%
+\contentsline {paragraph}{\numberline {3.50.3.4}createLogicalDevice()}{101}{paragraph.3.50.3.4}%
+\contentsline {paragraph}{\numberline {3.50.3.5}createQueues()}{101}{paragraph.3.50.3.5}%
+\contentsline {paragraph}{\numberline {3.50.3.6}destroyContext()}{101}{paragraph.3.50.3.6}%
+\contentsline {paragraph}{\numberline {3.50.3.7}getDeviceHandles()}{101}{paragraph.3.50.3.7}%
+\contentsline {paragraph}{\numberline {3.50.3.8}getQueue()}{101}{paragraph.3.50.3.8}%
+\contentsline {paragraph}{\numberline {3.50.3.9}getQueueIndex()}{102}{paragraph.3.50.3.9}%
+\contentsline {paragraph}{\numberline {3.50.3.10}getRequiredExtensions()}{102}{paragraph.3.50.3.10}%
+\contentsline {paragraph}{\numberline {3.50.3.11}getScissor()}{102}{paragraph.3.50.3.11}%
+\contentsline {paragraph}{\numberline {3.50.3.12}getSwapFormat()}{102}{paragraph.3.50.3.12}%
+\contentsline {paragraph}{\numberline {3.50.3.13}getViewport()}{102}{paragraph.3.50.3.13}%
+\contentsline {paragraph}{\numberline {3.50.3.14}pickPhysicalDevice()}{103}{paragraph.3.50.3.14}%
+\contentsline {paragraph}{\numberline {3.50.3.15}vulkanDevice::debugCallback()}{103}{paragraph.3.50.3.15}%
+\contentsline {subsubsection}{\numberline {3.50.4}Member Data Documentation}{103}{subsubsection.3.50.4}%
+\contentsline {paragraph}{\numberline {3.50.4.1}deviceHandle}{103}{paragraph.3.50.4.1}%
+\contentsline {paragraph}{\numberline {3.50.4.2}queueCreateInfos}{103}{paragraph.3.50.4.2}%
+\contentsline {paragraph}{\numberline {3.50.4.3}queueFamily}{103}{paragraph.3.50.4.3}%
+\contentsline {paragraph}{\numberline {3.50.4.4}queuePriorities}{104}{paragraph.3.50.4.4}%
+\contentsline {paragraph}{\numberline {3.50.4.5}surface}{104}{paragraph.3.50.4.5}%
+\contentsline {paragraph}{\numberline {3.50.4.6}swapchain}{104}{paragraph.3.50.4.6}%
+\contentsline {subsection}{\numberline {3.51}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feature\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Support Class Reference}{104}{subsection.3.51}%
+\contentsline {subsubsection}{\numberline {3.51.1}Detailed Description}{104}{subsubsection.3.51.1}%
+\contentsline {subsubsection}{\numberline {3.51.2}Member Function Documentation}{104}{subsubsection.3.51.2}%
+\contentsline {paragraph}{\numberline {3.51.2.1}getFormatFeatures()}{104}{paragraph.3.51.2.1}%
+\contentsline {paragraph}{\numberline {3.51.2.2}init()}{105}{paragraph.3.51.2.2}%
+\contentsline {subsubsection}{\numberline {3.51.3}Member Data Documentation}{105}{subsubsection.3.51.3}%
+\contentsline {paragraph}{\numberline {3.51.3.1}sPhysicalDevice}{105}{paragraph.3.51.3.1}%
+\contentsline {subsection}{\numberline {3.52}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::gui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Imgui Class Reference}{105}{subsection.3.52}%
+\contentsline {subsubsection}{\numberline {3.52.1}Constructor \& Destructor Documentation}{105}{subsubsection.3.52.1}%
+\contentsline {paragraph}{\numberline {3.52.1.1}vulkanImgui()}{105}{paragraph.3.52.1.1}%
+\contentsline {paragraph}{\numberline {3.52.1.2}$\sim $vulkanImgui()}{106}{paragraph.3.52.1.2}%
+\contentsline {subsubsection}{\numberline {3.52.2}Member Data Documentation}{106}{subsubsection.3.52.2}%
+\contentsline {paragraph}{\numberline {3.52.2.1}imguiPool}{106}{paragraph.3.52.2.1}%
+\contentsline {paragraph}{\numberline {3.52.2.2}pipeline}{106}{paragraph.3.52.2.2}%
+\contentsline {subsection}{\numberline {3.53}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Index\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer Class Reference}{106}{subsection.3.53}%
+\contentsline {subsubsection}{\numberline {3.53.1}Constructor \& Destructor Documentation}{107}{subsubsection.3.53.1}%
+\contentsline {paragraph}{\numberline {3.53.1.1}vulkanIndexBuffer()}{107}{paragraph.3.53.1.1}%
+\contentsline {paragraph}{\numberline {3.53.1.2}$\sim $vulkanIndexBuffer()}{107}{paragraph.3.53.1.2}%
+\contentsline {subsubsection}{\numberline {3.53.2}Member Function Documentation}{107}{subsubsection.3.53.2}%
+\contentsline {paragraph}{\numberline {3.53.2.1}bind()}{107}{paragraph.3.53.2.1}%
+\contentsline {paragraph}{\numberline {3.53.2.2}getCount()}{107}{paragraph.3.53.2.2}%
+\contentsline {paragraph}{\numberline {3.53.2.3}unbind()}{108}{paragraph.3.53.2.3}%
+\contentsline {subsubsection}{\numberline {3.53.3}Friends And Related Function Documentation}{108}{subsubsection.3.53.3}%
+\contentsline {paragraph}{\numberline {3.53.3.1}vulkanPipeline}{108}{paragraph.3.53.3.1}%
+\contentsline {subsubsection}{\numberline {3.53.4}Member Data Documentation}{108}{subsubsection.3.53.4}%
+\contentsline {paragraph}{\numberline {3.53.4.1}vkIndexBuffer}{108}{paragraph.3.53.4.1}%
+\contentsline {subsection}{\numberline {3.54}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Factory Class Reference}{108}{subsection.3.54}%
+\contentsline {subsubsection}{\numberline {3.54.1}Detailed Description}{109}{subsubsection.3.54.1}%
+\contentsline {subsubsection}{\numberline {3.54.2}Member Function Documentation}{109}{subsubsection.3.54.2}%
+\contentsline {paragraph}{\numberline {3.54.2.1}createImage()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{109}{paragraph.3.54.2.1}%
+\contentsline {paragraph}{\numberline {3.54.2.2}createImage()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{109}{paragraph.3.54.2.2}%
+\contentsline {paragraph}{\numberline {3.54.2.3}createImageView()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{110}{paragraph.3.54.2.3}%
+\contentsline {paragraph}{\numberline {3.54.2.4}createImageView()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{110}{paragraph.3.54.2.4}%
+\contentsline {paragraph}{\numberline {3.54.2.5}init()}{111}{paragraph.3.54.2.5}%
+\contentsline {subsubsection}{\numberline {3.54.3}Member Data Documentation}{111}{subsubsection.3.54.3}%
+\contentsline {paragraph}{\numberline {3.54.3.1}pDevice}{111}{paragraph.3.54.3.1}%
+\contentsline {subsection}{\numberline {3.55}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipeline Class Reference}{111}{subsection.3.55}%
+\contentsline {subsubsection}{\numberline {3.55.1}Detailed Description}{114}{subsubsection.3.55.1}%
+\contentsline {subsubsection}{\numberline {3.55.2}Constructor \& Destructor Documentation}{114}{subsubsection.3.55.2}%
+\contentsline {paragraph}{\numberline {3.55.2.1}vulkanPipeline()}{114}{paragraph.3.55.2.1}%
+\contentsline {paragraph}{\numberline {3.55.2.2}$\sim $vulkanPipeline()}{114}{paragraph.3.55.2.2}%
+\contentsline {subsubsection}{\numberline {3.55.3}Member Function Documentation}{114}{subsubsection.3.55.3}%
+\contentsline {paragraph}{\numberline {3.55.3.1}begin()}{115}{paragraph.3.55.3.1}%
+\contentsline {paragraph}{\numberline {3.55.3.2}buildPipeline()}{115}{paragraph.3.55.3.2}%
+\contentsline {paragraph}{\numberline {3.55.3.3}colorBlendAttachmentState()}{115}{paragraph.3.55.3.3}%
+\contentsline {paragraph}{\numberline {3.55.3.4}createAttributeDescription()}{115}{paragraph.3.55.3.4}%
+\contentsline {paragraph}{\numberline {3.55.3.5}createBindingDescription()}{116}{paragraph.3.55.3.5}%
+\contentsline {paragraph}{\numberline {3.55.3.6}createCommands()}{116}{paragraph.3.55.3.6}%
+\contentsline {paragraph}{\numberline {3.55.3.7}createInputStates()}{116}{paragraph.3.55.3.7}%
+\contentsline {paragraph}{\numberline {3.55.3.8}createPipeline()}{116}{paragraph.3.55.3.8}%
+\contentsline {paragraph}{\numberline {3.55.3.9}createPipeLineLayout()}{116}{paragraph.3.55.3.9}%
+\contentsline {paragraph}{\numberline {3.55.3.10}createShaderModule()}{117}{paragraph.3.55.3.10}%
+\contentsline {paragraph}{\numberline {3.55.3.11}createShaderStages()}{117}{paragraph.3.55.3.11}%
+\contentsline {paragraph}{\numberline {3.55.3.12}createVertexInputState()}{117}{paragraph.3.55.3.12}%
+\contentsline {paragraph}{\numberline {3.55.3.13}destroyPipeline()}{117}{paragraph.3.55.3.13}%
+\contentsline {paragraph}{\numberline {3.55.3.14}destroySyncStructures()}{118}{paragraph.3.55.3.14}%
+\contentsline {paragraph}{\numberline {3.55.3.15}drawIndexed()}{118}{paragraph.3.55.3.15}%
+\contentsline {paragraph}{\numberline {3.55.3.16}end()}{118}{paragraph.3.55.3.16}%
+\contentsline {paragraph}{\numberline {3.55.3.17}flush()}{118}{paragraph.3.55.3.17}%
+\contentsline {paragraph}{\numberline {3.55.3.18}fnDrawIndexed()}{118}{paragraph.3.55.3.18}%
+\contentsline {paragraph}{\numberline {3.55.3.19}getRenderPass()}{118}{paragraph.3.55.3.19}%
+\contentsline {paragraph}{\numberline {3.55.3.20}getResourceFormat()}{118}{paragraph.3.55.3.20}%
+\contentsline {paragraph}{\numberline {3.55.3.21}initDefaultRenderpass()}{119}{paragraph.3.55.3.21}%
+\contentsline {paragraph}{\numberline {3.55.3.22}initSyncStructures()}{119}{paragraph.3.55.3.22}%
+\contentsline {paragraph}{\numberline {3.55.3.23}inputAssemblyCreateInfo()}{119}{paragraph.3.55.3.23}%
+\contentsline {paragraph}{\numberline {3.55.3.24}multisamplingStateCreateInfo()}{119}{paragraph.3.55.3.24}%
+\contentsline {paragraph}{\numberline {3.55.3.25}pipelineLayoutCreateInfo()}{120}{paragraph.3.55.3.25}%
+\contentsline {paragraph}{\numberline {3.55.3.26}rasterizationStateCreateInfo()}{120}{paragraph.3.55.3.26}%
+\contentsline {paragraph}{\numberline {3.55.3.27}transitionImageLayout()}{120}{paragraph.3.55.3.27}%
+\contentsline {subsubsection}{\numberline {3.55.4}Member Data Documentation}{121}{subsubsection.3.55.4}%
+\contentsline {paragraph}{\numberline {3.55.4.1}\_frameNumber}{121}{paragraph.3.55.4.1}%
+\contentsline {paragraph}{\numberline {3.55.4.2}changedBoundBuffers}{121}{paragraph.3.55.4.2}%
+\contentsline {paragraph}{\numberline {3.55.4.3}commandBuffers}{121}{paragraph.3.55.4.3}%
+\contentsline {paragraph}{\numberline {3.55.4.4}commandPool}{121}{paragraph.3.55.4.4}%
+\contentsline {paragraph}{\numberline {3.55.4.5}currentFrame}{121}{paragraph.3.55.4.5}%
+\contentsline {paragraph}{\numberline {3.55.4.6}drawCommands}{121}{paragraph.3.55.4.6}%
+\contentsline {paragraph}{\numberline {3.55.4.7}imageAvailableSemaphores}{121}{paragraph.3.55.4.7}%
+\contentsline {paragraph}{\numberline {3.55.4.8}imagesInFlight}{122}{paragraph.3.55.4.8}%
+\contentsline {paragraph}{\numberline {3.55.4.9}imGuiRenderPass}{122}{paragraph.3.55.4.9}%
+\contentsline {paragraph}{\numberline {3.55.4.10}inFlightFences}{122}{paragraph.3.55.4.10}%
+\contentsline {paragraph}{\numberline {3.55.4.11}inputAssemblyStateCreateInfo}{122}{paragraph.3.55.4.11}%
+\contentsline {paragraph}{\numberline {3.55.4.12}inputDescriptions}{122}{paragraph.3.55.4.12}%
+\contentsline {paragraph}{\numberline {3.55.4.13}justResized}{122}{paragraph.3.55.4.13}%
+\contentsline {paragraph}{\numberline {3.55.4.14}layout}{122}{paragraph.3.55.4.14}%
+\contentsline {paragraph}{\numberline {3.55.4.15}maxFramesInFlight}{122}{paragraph.3.55.4.15}%
+\contentsline {paragraph}{\numberline {3.55.4.16}pipeline}{122}{paragraph.3.55.4.16}%
+\contentsline {paragraph}{\numberline {3.55.4.17}pipelineColorBlendAttachementState}{122}{paragraph.3.55.4.17}%
+\contentsline {paragraph}{\numberline {3.55.4.18}pipelineLayout}{123}{paragraph.3.55.4.18}%
+\contentsline {paragraph}{\numberline {3.55.4.19}pipelineMultisampleStateCreateInfo}{123}{paragraph.3.55.4.19}%
+\contentsline {paragraph}{\numberline {3.55.4.20}pipelineRasterizationStateCreateInfo}{123}{paragraph.3.55.4.20}%
+\contentsline {paragraph}{\numberline {3.55.4.21}presentQueue}{123}{paragraph.3.55.4.21}%
+\contentsline {paragraph}{\numberline {3.55.4.22}prevFrame}{123}{paragraph.3.55.4.22}%
+\contentsline {paragraph}{\numberline {3.55.4.23}renderFinishedSemaphores}{123}{paragraph.3.55.4.23}%
+\contentsline {paragraph}{\numberline {3.55.4.24}renderPass}{123}{paragraph.3.55.4.24}%
+\contentsline {paragraph}{\numberline {3.55.4.25}shaderModules}{123}{paragraph.3.55.4.25}%
+\contentsline {paragraph}{\numberline {3.55.4.26}shaderStages}{123}{paragraph.3.55.4.26}%
+\contentsline {paragraph}{\numberline {3.55.4.27}swapchainImageIndex}{123}{paragraph.3.55.4.27}%
+\contentsline {paragraph}{\numberline {3.55.4.28}vertexInputStates}{124}{paragraph.3.55.4.28}%
+\contentsline {subsection}{\numberline {3.56}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Shader Class Reference}{124}{subsection.3.56}%
+\contentsline {subsubsection}{\numberline {3.56.1}Constructor \& Destructor Documentation}{125}{subsubsection.3.56.1}%
+\contentsline {paragraph}{\numberline {3.56.1.1}vulkanShader()}{125}{paragraph.3.56.1.1}%
+\contentsline {paragraph}{\numberline {3.56.1.2}$\sim $vulkanShader()}{125}{paragraph.3.56.1.2}%
+\contentsline {subsubsection}{\numberline {3.56.2}Member Function Documentation}{125}{subsubsection.3.56.2}%
+\contentsline {paragraph}{\numberline {3.56.2.1}bind()}{126}{paragraph.3.56.2.1}%
+\contentsline {paragraph}{\numberline {3.56.2.2}createLayout()}{126}{paragraph.3.56.2.2}%
+\contentsline {paragraph}{\numberline {3.56.2.3}getShaderResource()}{126}{paragraph.3.56.2.3}%
+\contentsline {paragraph}{\numberline {3.56.2.4}unbind()}{126}{paragraph.3.56.2.4}%
+\contentsline {subsubsection}{\numberline {3.56.3}Friends And Related Function Documentation}{126}{subsubsection.3.56.3}%
+\contentsline {paragraph}{\numberline {3.56.3.1}renderer::shader}{126}{paragraph.3.56.3.1}%
+\contentsline {subsection}{\numberline {3.57}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swapchain Class Reference}{127}{subsection.3.57}%
+\contentsline {subsubsection}{\numberline {3.57.1}Detailed Description}{128}{subsubsection.3.57.1}%
+\contentsline {subsubsection}{\numberline {3.57.2}Constructor \& Destructor Documentation}{128}{subsubsection.3.57.2}%
+\contentsline {paragraph}{\numberline {3.57.2.1}vulkanSwapchain()}{128}{paragraph.3.57.2.1}%
+\contentsline {paragraph}{\numberline {3.57.2.2}$\sim $vulkanSwapchain()}{128}{paragraph.3.57.2.2}%
+\contentsline {subsubsection}{\numberline {3.57.3}Member Function Documentation}{128}{subsubsection.3.57.3}%
+\contentsline {paragraph}{\numberline {3.57.3.1}createSwapchain()}{128}{paragraph.3.57.3.1}%
+\contentsline {paragraph}{\numberline {3.57.3.2}destroySwapchain()}{129}{paragraph.3.57.3.2}%
+\contentsline {paragraph}{\numberline {3.57.3.3}getFrameBuffer()}{129}{paragraph.3.57.3.3}%
+\contentsline {paragraph}{\numberline {3.57.3.4}getScissor()}{129}{paragraph.3.57.3.4}%
+\contentsline {paragraph}{\numberline {3.57.3.5}getSurfaceFormat()}{129}{paragraph.3.57.3.5}%
+\contentsline {paragraph}{\numberline {3.57.3.6}getViewport()}{129}{paragraph.3.57.3.6}%
+\contentsline {paragraph}{\numberline {3.57.3.7}getViewportImage()}{130}{paragraph.3.57.3.7}%
+\contentsline {paragraph}{\numberline {3.57.3.8}initViewport()}{130}{paragraph.3.57.3.8}%
+\contentsline {paragraph}{\numberline {3.57.3.9}recreateSwapchain()}{130}{paragraph.3.57.3.9}%
+\contentsline {paragraph}{\numberline {3.57.3.10}recreateViewport()}{130}{paragraph.3.57.3.10}%
+\contentsline {subsubsection}{\numberline {3.57.4}Member Data Documentation}{130}{subsubsection.3.57.4}%
+\contentsline {paragraph}{\numberline {3.57.4.1}frameBuffers}{131}{paragraph.3.57.4.1}%
+\contentsline {paragraph}{\numberline {3.57.4.2}init}{131}{paragraph.3.57.4.2}%
+\contentsline {paragraph}{\numberline {3.57.4.3}m\_Dset}{131}{paragraph.3.57.4.3}%
+\contentsline {paragraph}{\numberline {3.57.4.4}mSwapchain}{131}{paragraph.3.57.4.4}%
+\contentsline {paragraph}{\numberline {3.57.4.5}mSwapchainSpec}{131}{paragraph.3.57.4.5}%
+\contentsline {paragraph}{\numberline {3.57.4.6}sceneViewportImages}{131}{paragraph.3.57.4.6}%
+\contentsline {paragraph}{\numberline {3.57.4.7}sceneViewportImageViews}{131}{paragraph.3.57.4.7}%
+\contentsline {paragraph}{\numberline {3.57.4.8}surfaceCapaBilities}{131}{paragraph.3.57.4.8}%
+\contentsline {paragraph}{\numberline {3.57.4.9}swapchainImageFormat}{131}{paragraph.3.57.4.9}%
+\contentsline {paragraph}{\numberline {3.57.4.10}swapchainImages}{131}{paragraph.3.57.4.10}%
+\contentsline {paragraph}{\numberline {3.57.4.11}swapChainImageViews}{132}{paragraph.3.57.4.11}%
+\contentsline {paragraph}{\numberline {3.57.4.12}viewportSampler}{132}{paragraph.3.57.4.12}%
+\contentsline {subsection}{\numberline {3.58}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array Class Reference}{132}{subsection.3.58}%
+\contentsline {subsubsection}{\numberline {3.58.1}Member Function Documentation}{133}{subsubsection.3.58.1}%
+\contentsline {paragraph}{\numberline {3.58.1.1}addVertexBuffer()}{133}{paragraph.3.58.1.1}%
+\contentsline {paragraph}{\numberline {3.58.1.2}bind()}{134}{paragraph.3.58.1.2}%
+\contentsline {paragraph}{\numberline {3.58.1.3}getIndexBuffer()}{134}{paragraph.3.58.1.3}%
+\contentsline {paragraph}{\numberline {3.58.1.4}getVertexBuffers()}{134}{paragraph.3.58.1.4}%
+\contentsline {paragraph}{\numberline {3.58.1.5}setIndexBuffer()}{134}{paragraph.3.58.1.5}%
+\contentsline {paragraph}{\numberline {3.58.1.6}unbind()}{134}{paragraph.3.58.1.6}%
+\contentsline {subsection}{\numberline {3.59}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer Class Reference}{134}{subsection.3.59}%
+\contentsline {subsubsection}{\numberline {3.59.1}Constructor \& Destructor Documentation}{135}{subsubsection.3.59.1}%
+\contentsline {paragraph}{\numberline {3.59.1.1}vulkanVertexBuffer()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{135}{paragraph.3.59.1.1}%
+\contentsline {paragraph}{\numberline {3.59.1.2}vulkanVertexBuffer()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{135}{paragraph.3.59.1.2}%
+\contentsline {paragraph}{\numberline {3.59.1.3}$\sim $vulkanVertexBuffer()}{136}{paragraph.3.59.1.3}%
+\contentsline {subsubsection}{\numberline {3.59.2}Member Function Documentation}{136}{subsubsection.3.59.2}%
+\contentsline {paragraph}{\numberline {3.59.2.1}bind()}{136}{paragraph.3.59.2.1}%
+\contentsline {paragraph}{\numberline {3.59.2.2}setData()}{136}{paragraph.3.59.2.2}%
+\contentsline {paragraph}{\numberline {3.59.2.3}unbind()}{136}{paragraph.3.59.2.3}%
+\contentsline {subsubsection}{\numberline {3.59.3}Friends And Related Function Documentation}{136}{subsubsection.3.59.3}%
+\contentsline {paragraph}{\numberline {3.59.3.1}vulkanPipeline}{136}{paragraph.3.59.3.1}%
+\contentsline {subsubsection}{\numberline {3.59.4}Member Data Documentation}{136}{subsubsection.3.59.4}%
+\contentsline {paragraph}{\numberline {3.59.4.1}vkVertexBuffer}{136}{paragraph.3.59.4.1}%
+\contentsline {subsection}{\numberline {3.60}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::window Class Reference}{137}{subsection.3.60}%
+\contentsline {subsubsection}{\numberline {3.60.1}Member Typedef Documentation}{138}{subsubsection.3.60.1}%
+\contentsline {paragraph}{\numberline {3.60.1.1}eventCallbackFn}{138}{paragraph.3.60.1.1}%
+\contentsline {subsubsection}{\numberline {3.60.2}Constructor \& Destructor Documentation}{138}{subsubsection.3.60.2}%
+\contentsline {paragraph}{\numberline {3.60.2.1}$\sim $window()}{138}{paragraph.3.60.2.1}%
+\contentsline {subsubsection}{\numberline {3.60.3}Member Function Documentation}{138}{subsubsection.3.60.3}%
+\contentsline {paragraph}{\numberline {3.60.3.1}getHeight()}{138}{paragraph.3.60.3.1}%
+\contentsline {paragraph}{\numberline {3.60.3.2}getWidth()}{139}{paragraph.3.60.3.2}%
+\contentsline {paragraph}{\numberline {3.60.3.3}getWindow()}{139}{paragraph.3.60.3.3}%
+\contentsline {paragraph}{\numberline {3.60.3.4}onUpdate()}{139}{paragraph.3.60.3.4}%
+\contentsline {paragraph}{\numberline {3.60.3.5}setEventCallBack()}{139}{paragraph.3.60.3.5}%
+\contentsline {paragraph}{\numberline {3.60.3.6}windowCreate()}{139}{paragraph.3.60.3.6}%
+\contentsline {subsubsection}{\numberline {3.60.4}Member Data Documentation}{139}{subsubsection.3.60.4}%
+\contentsline {paragraph}{\numberline {3.60.4.1}graphicsApi}{139}{paragraph.3.60.4.1}%
+\contentsline {paragraph}{\numberline {3.60.4.2}windowSpec}{139}{paragraph.3.60.4.2}%
+\contentsline {subsection}{\numberline {3.61}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::window\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Close\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{140}{subsection.3.61}%
+\contentsline {subsubsection}{\numberline {3.61.1}Constructor \& Destructor Documentation}{140}{subsubsection.3.61.1}%
+\contentsline {paragraph}{\numberline {3.61.1.1}windowCloseEvent()}{140}{paragraph.3.61.1.1}%
+\contentsline {subsection}{\numberline {3.62}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::windows\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::window\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data Struct Reference}{141}{subsection.3.62}%
+\contentsline {subsubsection}{\numberline {3.62.1}Member Data Documentation}{141}{subsubsection.3.62.1}%
+\contentsline {paragraph}{\numberline {3.62.1.1}eventCallbackFn}{141}{paragraph.3.62.1.1}%
+\contentsline {paragraph}{\numberline {3.62.1.2}height}{141}{paragraph.3.62.1.2}%
+\contentsline {paragraph}{\numberline {3.62.1.3}title}{141}{paragraph.3.62.1.3}%
+\contentsline {paragraph}{\numberline {3.62.1.4}width}{142}{paragraph.3.62.1.4}%
+\contentsline {subsection}{\numberline {3.63}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::window\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Resize\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event Class Reference}{142}{subsection.3.63}%
+\contentsline {subsubsection}{\numberline {3.63.1}Constructor \& Destructor Documentation}{143}{subsubsection.3.63.1}%
+\contentsline {paragraph}{\numberline {3.63.1.1}windowResizeEvent()}{143}{paragraph.3.63.1.1}%
+\contentsline {subsubsection}{\numberline {3.63.2}Member Function Documentation}{143}{subsubsection.3.63.2}%
+\contentsline {paragraph}{\numberline {3.63.2.1}getHeight()}{143}{paragraph.3.63.2.1}%
+\contentsline {paragraph}{\numberline {3.63.2.2}getWidth()}{143}{paragraph.3.63.2.2}%
+\contentsline {paragraph}{\numberline {3.63.2.3}toString()}{143}{paragraph.3.63.2.3}%
+\contentsline {subsubsection}{\numberline {3.63.3}Member Data Documentation}{143}{subsubsection.3.63.3}%
+\contentsline {paragraph}{\numberline {3.63.3.1}m\_Height}{143}{paragraph.3.63.3.1}%
+\contentsline {paragraph}{\numberline {3.63.3.2}m\_Width}{143}{paragraph.3.63.3.2}%
+\contentsline {subsection}{\numberline {3.64}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::window\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Spec Struct Reference}{144}{subsection.3.64}%
+\contentsline {subsubsection}{\numberline {3.64.1}Constructor \& Destructor Documentation}{144}{subsubsection.3.64.1}%
+\contentsline {paragraph}{\numberline {3.64.1.1}windowSpec()}{144}{paragraph.3.64.1.1}%
+\contentsline {subsubsection}{\numberline {3.64.2}Member Data Documentation}{144}{subsubsection.3.64.2}%
+\contentsline {paragraph}{\numberline {3.64.2.1}height}{145}{paragraph.3.64.2.1}%
+\contentsline {paragraph}{\numberline {3.64.2.2}title}{145}{paragraph.3.64.2.2}%
+\contentsline {paragraph}{\numberline {3.64.2.3}width}{145}{paragraph.3.64.2.3}%
+\contentsline {subsection}{\numberline {3.65}luna\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::windows\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window Class Reference}{145}{subsection.3.65}%
+\contentsline {subsubsection}{\numberline {3.65.1}Constructor \& Destructor Documentation}{147}{subsubsection.3.65.1}%
+\contentsline {paragraph}{\numberline {3.65.1.1}windowsWindow()}{147}{paragraph.3.65.1.1}%
+\contentsline {paragraph}{\numberline {3.65.1.2}$\sim $windowsWindow()}{147}{paragraph.3.65.1.2}%
+\contentsline {subsubsection}{\numberline {3.65.2}Member Function Documentation}{147}{subsubsection.3.65.2}%
+\contentsline {paragraph}{\numberline {3.65.2.1}getHeight()}{147}{paragraph.3.65.2.1}%
+\contentsline {paragraph}{\numberline {3.65.2.2}getWidth()}{148}{paragraph.3.65.2.2}%
+\contentsline {paragraph}{\numberline {3.65.2.3}getWindow()}{148}{paragraph.3.65.2.3}%
+\contentsline {paragraph}{\numberline {3.65.2.4}init()}{148}{paragraph.3.65.2.4}%
+\contentsline {paragraph}{\numberline {3.65.2.5}onUpdate()}{148}{paragraph.3.65.2.5}%
+\contentsline {paragraph}{\numberline {3.65.2.6}setEventCallBack()}{148}{paragraph.3.65.2.6}%
+\contentsline {paragraph}{\numberline {3.65.2.7}shutDown()}{149}{paragraph.3.65.2.7}%
+\contentsline {subsubsection}{\numberline {3.65.3}Member Data Documentation}{149}{subsubsection.3.65.3}%
+\contentsline {paragraph}{\numberline {3.65.3.1}\_window}{149}{paragraph.3.65.3.1}%
+\contentsline {paragraph}{\numberline {3.65.3.2}mData}{149}{paragraph.3.65.3.2}%
+\contentsline {section}{\numberline {4}File Documentation}{149}{section.4}%
+\contentsline {subsection}{\numberline {4.1}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/bin/debug-\/windows-\/x86\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}64/x64/sandbox/src/sandbox.cpp File Reference}{149}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/bin/release-\/windows-\/x86\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}64/x64/sandbox/src/sandbox.cpp File Reference}{150}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/sandbox/src/sandbox.cpp File Reference}{150}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/application.cpp File Reference}{151}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/application.h File Reference}{151}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h File Reference}{152}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}Macro Definition Documentation}{153}{subsubsection.4.6.1}%
+\contentsline {paragraph}{\numberline {4.6.1.1}BIT}{153}{paragraph.4.6.1.1}%
+\contentsline {paragraph}{\numberline {4.6.1.2}CORE}{153}{paragraph.4.6.1.2}%
+\contentsline {paragraph}{\numberline {4.6.1.3}LN\_BIND\_EVENT\_FN}{154}{paragraph.4.6.1.3}%
+\contentsline {subsection}{\numberline {4.7}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/log.cpp File Reference}{154}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/log.h File Reference}{154}{subsection.4.8}%
+\contentsline {subsubsection}{\numberline {4.8.1}Macro Definition Documentation}{155}{subsubsection.4.8.1}%
+\contentsline {paragraph}{\numberline {4.8.1.1}GLM\_ENABLE\_EXPERIMENTAL}{155}{paragraph.4.8.1.1}%
+\contentsline {paragraph}{\numberline {4.8.1.2}LN\_CORE\_CRITICAL}{155}{paragraph.4.8.1.2}%
+\contentsline {paragraph}{\numberline {4.8.1.3}LN\_CORE\_ERROR}{155}{paragraph.4.8.1.3}%
+\contentsline {paragraph}{\numberline {4.8.1.4}LN\_CORE\_INFO}{156}{paragraph.4.8.1.4}%
+\contentsline {paragraph}{\numberline {4.8.1.5}LN\_CORE\_TRACE}{156}{paragraph.4.8.1.5}%
+\contentsline {paragraph}{\numberline {4.8.1.6}LN\_CORE\_WARN}{156}{paragraph.4.8.1.6}%
+\contentsline {paragraph}{\numberline {4.8.1.7}LN\_CRITICAL}{156}{paragraph.4.8.1.7}%
+\contentsline {paragraph}{\numberline {4.8.1.8}LN\_ERROR}{156}{paragraph.4.8.1.8}%
+\contentsline {paragraph}{\numberline {4.8.1.9}LN\_INFO}{156}{paragraph.4.8.1.9}%
+\contentsline {paragraph}{\numberline {4.8.1.10}LN\_TRACE}{156}{paragraph.4.8.1.10}%
+\contentsline {paragraph}{\numberline {4.8.1.11}LN\_WARN}{156}{paragraph.4.8.1.11}%
+\contentsline {subsubsection}{\numberline {4.8.2}Function Documentation}{156}{subsubsection.4.8.2}%
+\contentsline {paragraph}{\numberline {4.8.2.1}operator$<$$<$()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{156}{paragraph.4.8.2.1}%
+\contentsline {paragraph}{\numberline {4.8.2.2}operator$<$$<$()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{157}{paragraph.4.8.2.2}%
+\contentsline {paragraph}{\numberline {4.8.2.3}operator$<$$<$()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{157}{paragraph.4.8.2.3}%
+\contentsline {subsection}{\numberline {4.9}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/uuid.cpp File Reference}{157}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/uuid.h File Reference}{158}{subsection.4.10}%
+\contentsline {subsubsection}{\numberline {4.10.1}Macro Definition Documentation}{159}{subsubsection.4.10.1}%
+\contentsline {paragraph}{\numberline {4.10.1.1}\_UUID}{159}{paragraph.4.10.1.1}%
+\contentsline {subsection}{\numberline {4.11}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/application\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event.h File Reference}{159}{subsection.4.11}%
+\contentsline {subsection}{\numberline {4.12}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/event.h File Reference}{160}{subsection.4.12}%
+\contentsline {subsubsection}{\numberline {4.12.1}Macro Definition Documentation}{161}{subsubsection.4.12.1}%
+\contentsline {paragraph}{\numberline {4.12.1.1}EVENT\_CLASS\_CATEGORY}{161}{paragraph.4.12.1.1}%
+\contentsline {paragraph}{\numberline {4.12.1.2}EVENT\_CLASS\_TYPE}{161}{paragraph.4.12.1.2}%
+\contentsline {subsection}{\numberline {4.13}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/key\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Codes.h File Reference}{161}{subsection.4.13}%
+\contentsline {subsection}{\numberline {4.14}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/key\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event.h File Reference}{163}{subsection.4.14}%
+\contentsline {subsection}{\numberline {4.15}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Codes.h File Reference}{164}{subsection.4.15}%
+\contentsline {subsection}{\numberline {4.16}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event.h File Reference}{165}{subsection.4.16}%
+\contentsline {subsection}{\numberline {4.17}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/platform.h File Reference}{167}{subsection.4.17}%
+\contentsline {subsection}{\numberline {4.18}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/windows\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window.cpp File Reference}{167}{subsection.4.18}%
+\contentsline {subsection}{\numberline {4.19}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/platform/windows/windows\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window.h File Reference}{167}{subsection.4.19}%
+\contentsline {subsubsection}{\numberline {4.19.1}Macro Definition Documentation}{169}{subsubsection.4.19.1}%
+\contentsline {paragraph}{\numberline {4.19.1.1}WINDOWS\_WINDOW}{169}{paragraph.4.19.1.1}%
+\contentsline {subsection}{\numberline {4.20}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/buffer.cpp File Reference}{169}{subsection.4.20}%
+\contentsline {subsection}{\numberline {4.21}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/buffer.h File Reference}{169}{subsection.4.21}%
+\contentsline {subsection}{\numberline {4.22}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/device.h File Reference}{170}{subsection.4.22}%
+\contentsline {subsection}{\numberline {4.23}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/pipeline.h File Reference}{171}{subsection.4.23}%
+\contentsline {subsection}{\numberline {4.24}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.cpp File Reference}{173}{subsection.4.24}%
+\contentsline {subsection}{\numberline {4.25}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.h File Reference}{173}{subsection.4.25}%
+\contentsline {subsection}{\numberline {4.26}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/shader.cpp File Reference}{174}{subsection.4.26}%
+\contentsline {subsection}{\numberline {4.27}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/shader.h File Reference}{175}{subsection.4.27}%
+\contentsline {subsection}{\numberline {4.28}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array.h File Reference}{176}{subsection.4.28}%
+\contentsline {subsection}{\numberline {4.29}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Storage.h File Reference}{177}{subsection.4.29}%
+\contentsline {subsection}{\numberline {4.30}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Compiler.cpp File Reference}{179}{subsection.4.30}%
+\contentsline {subsection}{\numberline {4.31}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Compiler.h File Reference}{179}{subsection.4.31}%
+\contentsline {subsection}{\numberline {4.32}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library.cpp File Reference}{180}{subsection.4.32}%
+\contentsline {subsection}{\numberline {4.33}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library.h File Reference}{181}{subsection.4.33}%
+\contentsline {subsection}{\numberline {4.34}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/vector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cache.h File Reference}{182}{subsection.4.34}%
+\contentsline {subsection}{\numberline {4.35}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cmd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pool.cpp File Reference}{183}{subsection.4.35}%
+\contentsline {subsection}{\numberline {4.36}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cmd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pool.h File Reference}{184}{subsection.4.36}%
+\contentsline {subsection}{\numberline {4.37}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device.cpp File Reference}{185}{subsection.4.37}%
+\contentsline {subsection}{\numberline {4.38}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Device.h File Reference}{185}{subsection.4.38}%
+\contentsline {subsubsection}{\numberline {4.38.1}Macro Definition Documentation}{186}{subsubsection.4.38.1}%
+\contentsline {paragraph}{\numberline {4.38.1.1}GET\_UNCODED\_VERSION}{186}{paragraph.4.38.1.1}%
+\contentsline {subsection}{\numberline {4.39}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Imgui.cpp File Reference}{187}{subsection.4.39}%
+\contentsline {subsection}{\numberline {4.40}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Imgui.h File Reference}{187}{subsection.4.40}%
+\contentsline {subsection}{\numberline {4.41}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Index\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer.cpp File Reference}{188}{subsection.4.41}%
+\contentsline {subsection}{\numberline {4.42}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Index\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer.h File Reference}{189}{subsection.4.42}%
+\contentsline {subsection}{\numberline {4.43}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipeline.cpp File Reference}{190}{subsection.4.43}%
+\contentsline {subsection}{\numberline {4.44}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipeline.h File Reference}{190}{subsection.4.44}%
+\contentsline {subsection}{\numberline {4.45}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Shader.cpp File Reference}{191}{subsection.4.45}%
+\contentsline {subsection}{\numberline {4.46}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Shader.h File Reference}{192}{subsection.4.46}%
+\contentsline {subsection}{\numberline {4.47}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swapchain.cpp File Reference}{193}{subsection.4.47}%
+\contentsline {subsection}{\numberline {4.48}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swapchain.h File Reference}{194}{subsection.4.48}%
+\contentsline {subsection}{\numberline {4.49}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array.cpp File Reference}{195}{subsection.4.49}%
+\contentsline {subsection}{\numberline {4.50}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array.h File Reference}{195}{subsection.4.50}%
+\contentsline {subsection}{\numberline {4.51}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer.cpp File Reference}{197}{subsection.4.51}%
+\contentsline {subsection}{\numberline {4.52}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Buffer.h File Reference}{197}{subsection.4.52}%
+\contentsline {subsection}{\numberline {4.53}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vma.cpp File Reference}{198}{subsection.4.53}%
+\contentsline {subsubsection}{\numberline {4.53.1}Macro Definition Documentation}{198}{subsubsection.4.53.1}%
+\contentsline {paragraph}{\numberline {4.53.1.1}VMA\_BIND\_MEMORY2}{198}{paragraph.4.53.1.1}%
+\contentsline {paragraph}{\numberline {4.53.1.2}VMA\_IMPLEMENTATION}{198}{paragraph.4.53.1.2}%
+\contentsline {paragraph}{\numberline {4.53.1.3}VMA\_RECORDING\_ENABLED}{199}{paragraph.4.53.1.3}%
+\contentsline {paragraph}{\numberline {4.53.1.4}VMA\_VULKAN\_VERSION}{199}{paragraph.4.53.1.4}%
+\contentsline {subsection}{\numberline {4.54}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Allocator.cpp File Reference}{199}{subsection.4.54}%
+\contentsline {subsection}{\numberline {4.55}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Allocator.h File Reference}{199}{subsection.4.55}%
+\contentsline {subsection}{\numberline {4.56}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Factory.cpp File Reference}{200}{subsection.4.56}%
+\contentsline {subsection}{\numberline {4.57}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Factory.h File Reference}{201}{subsection.4.57}%
+\contentsline {subsection}{\numberline {4.58}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feature\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Support.cpp File Reference}{202}{subsection.4.58}%
+\contentsline {subsection}{\numberline {4.59}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/vulkan\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feature\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Support.h File Reference}{202}{subsection.4.59}%
+\contentsline {subsection}{\numberline {4.60}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/window/window.h File Reference}{203}{subsection.4.60}%
+\contentsline {subsubsection}{\numberline {4.60.1}Macro Definition Documentation}{204}{subsubsection.4.60.1}%
+\contentsline {paragraph}{\numberline {4.60.1.1}WINDOW}{204}{paragraph.4.60.1.1}%
+\contentsline {subsection}{\numberline {4.61}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.cpp File Reference}{204}{subsection.4.61}%
+\contentsline {subsubsection}{\numberline {4.61.1}Macro Definition Documentation}{204}{subsubsection.4.61.1}%
+\contentsline {paragraph}{\numberline {4.61.1.1}STB\_IMAGE\_IMPLEMENTATION}{204}{paragraph.4.61.1.1}%
+\contentsline {subsection}{\numberline {4.62}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.h File Reference}{205}{subsection.4.62}%
+\contentsline {subsubsection}{\numberline {4.62.1}Macro Definition Documentation}{205}{subsubsection.4.62.1}%
+\contentsline {paragraph}{\numberline {4.62.1.1}GLFW\_INCLUDE\_VULKAN}{205}{paragraph.4.62.1.1}%
+\contentsline {subsection}{\numberline {4.63}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/luna/src/luna.h File Reference}{206}{subsection.4.63}%
+\contentsline {subsubsection}{\numberline {4.63.1}Function Documentation}{206}{subsubsection.4.63.1}%
+\contentsline {paragraph}{\numberline {4.63.1.1}main()}{206}{paragraph.4.63.1.1}%
+\contentsline {subsection}{\numberline {4.64}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Users/robbe/source/repos/lolrobbe2/luna/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md File Reference}{206}{subsection.4.64}%
+\contentsline {section}{Index}{207}{section*.473}%

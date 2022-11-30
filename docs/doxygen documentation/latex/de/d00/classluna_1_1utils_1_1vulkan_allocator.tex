@@ -1,0 +1,259 @@
+\hypertarget{classluna_1_1utils_1_1vulkan_allocator}{}\doxysubsection{luna\+::utils\+::vulkan\+Allocator Class Reference}
+\label{classluna_1_1utils_1_1vulkan_allocator}\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+
+
+{\ttfamily \#include $<$vulkan\+Allocator.\+h$>$}
+
+
+
+Collaboration diagram for luna\+::utils\+::vulkan\+Allocator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/d00/classluna_1_1utils_1_1vulkan_allocator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation}{vma\+Allocation}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_ae50dca323c85203f3c71b2d0d396f529}{init}} (\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1device}{renderer\+::device}} $>$ device)
+\begin{DoxyCompactList}\small\item\em allocator constructor. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a2fea061a5507a2960fac3b0cd439abf7}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em destroys the allocator. \end{DoxyCompactList}\item 
+static Vma\+Allocation\+Info \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_ad3eac5e3fc3434086968b23ef5ab8e78}{get\+Allocation\+Info}} (const uint64\+\_\+t \&handle)
+\begin{DoxyCompactList}\small\item\em returns the allocation info from the given handle. \end{DoxyCompactList}\item 
+static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a2876cd04dc9041b8d350914b0b396b3c}{create\+Image}} (Vk\+Image $\ast$p\+Image, const Vk\+Image\+Usage\+Flags \&usage\+Flags, const Vma\+Memory\+Usage \&memory\+Usage, const Vk\+Extent3D \&extent, const Vk\+Format \&format)
+\begin{DoxyCompactList}\small\item\em creates a Vk\+Image object. \end{DoxyCompactList}\item 
+static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aec155812b30cdf711aa0908ead4eb93a}{destroy\+Image}} (const Vk\+Image \&image)
+\begin{DoxyCompactList}\small\item\em destroys the Vk\+Image object. \end{DoxyCompactList}\item 
+static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aa28c4356aa8a1640600e5a8b1db73726}{create\+Image\+View}} (Vk\+Image\+View $\ast$p\+Image\+View, const Vk\+Image \&image, const Vk\+Format \&format, const Vk\+Image\+Aspect\+Flags \&image\+Aspect\+Flags)
+\begin{DoxyCompactList}\small\item\em creates a Vk\+Image\+View object. \end{DoxyCompactList}\item 
+static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a57da3ba470dac5507cb262c59ffe96b2}{destroy\+Image\+View}} (const Vk\+Image\+View \&image\+View)
+\begin{DoxyCompactList}\small\item\em destroys the Vk\+Image\+View. \end{DoxyCompactList}\item 
+static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_af62c6b824e41f569a5814666a2c5be29}{create\+Buffer}} (Vk\+Buffer $\ast$p\+Buffer, size\+\_\+t alloc\+Size, Vk\+Buffer\+Usage\+Flags usage, Vma\+Memory\+Usage memory\+Usage, Vma\+Allocation\+Create\+Flags alloc\+Flags=0)
+\begin{DoxyCompactList}\small\item\em creates a Vk\+Buffer object. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_ae13b23ff6be70612b349f51b217f8353}{destroy\+Buffer}} (Vk\+Buffer buffer)
+\begin{DoxyCompactList}\small\item\em destroys the Vk\+Buffer object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vk\+Queue \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_acd9547e2a1cdd6b80d5d9fe156383138}{transfer\+Queue}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1device}{renderer\+::device}} $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a7d48dd03108f5f2c86388cc5b6699ea6}{p\+Device}}
+\item 
+static Vma\+Allocator \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a896ca90c3e9bd16b515d95f9fb0c7725}{s\+Allocator}}
+\item 
+static \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{object\+Storage}}$<$ \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation}{vma\+Allocation}} $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a9fd8bd60f1a505320602099197ffc6de}{allocations}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_af62c6b824e41f569a5814666a2c5be29}\label{classluna_1_1utils_1_1vulkan_allocator_af62c6b824e41f569a5814666a2c5be29}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!createBuffer@{createBuffer}}
+\index{createBuffer@{createBuffer}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{createBuffer()}{createBuffer()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::utils\+::vulkan\+Allocator\+::create\+Buffer (\begin{DoxyParamCaption}\item[{Vk\+Buffer $\ast$}]{p\+Buffer,  }\item[{size\+\_\+t}]{alloc\+Size,  }\item[{Vk\+Buffer\+Usage\+Flags}]{usage,  }\item[{Vma\+Memory\+Usage}]{memory\+Usage,  }\item[{Vma\+Allocation\+Create\+Flags}]{alloc\+Flags = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+creates a Vk\+Buffer object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Buffer} & pointer to the buffer handle \\
+\hline
+{\em alloc\+Size} & \\
+\hline
+{\em usage} & \\
+\hline
+{\em memory\+Usage} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a2876cd04dc9041b8d350914b0b396b3c}\label{classluna_1_1utils_1_1vulkan_allocator_a2876cd04dc9041b8d350914b0b396b3c}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!createImage@{createImage}}
+\index{createImage@{createImage}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{createImage()}{createImage()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::utils\+::vulkan\+Allocator\+::create\+Image (\begin{DoxyParamCaption}\item[{Vk\+Image $\ast$}]{p\+Image,  }\item[{const Vk\+Image\+Usage\+Flags \&}]{usage\+Flags,  }\item[{const Vma\+Memory\+Usage \&}]{memory\+Usage,  }\item[{const Vk\+Extent3D \&}]{extent,  }\item[{const Vk\+Format \&}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+creates a Vk\+Image object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Image} & pointer to the image handle \\
+\hline
+{\em usage\+Flags} & \\
+\hline
+{\em memory\+Usage} & VMA\+\_\+\+MEMORY\+\_\+\+USAGE \\
+\hline
+{\em extent} & image extend \\
+\hline
+{\em format} & Vk\+Image\+Format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_aa28c4356aa8a1640600e5a8b1db73726}\label{classluna_1_1utils_1_1vulkan_allocator_aa28c4356aa8a1640600e5a8b1db73726}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!createImageView@{createImageView}}
+\index{createImageView@{createImageView}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{createImageView()}{createImageView()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::utils\+::vulkan\+Allocator\+::create\+Image\+View (\begin{DoxyParamCaption}\item[{Vk\+Image\+View $\ast$}]{p\+Image\+View,  }\item[{const Vk\+Image \&}]{image,  }\item[{const Vk\+Format \&}]{format,  }\item[{const Vk\+Image\+Aspect\+Flags \&}]{image\+Aspect\+Flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+creates a Vk\+Image\+View object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Image\+View} & pointer to image\+View handle \\
+\hline
+{\em image} & Vk\+Image handle \\
+\hline
+{\em format} & \\
+\hline
+{\em image\+Aspect\+Flags} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_ae13b23ff6be70612b349f51b217f8353}\label{classluna_1_1utils_1_1vulkan_allocator_ae13b23ff6be70612b349f51b217f8353}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!destroyBuffer@{destroyBuffer}}
+\index{destroyBuffer@{destroyBuffer}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{destroyBuffer()}{destroyBuffer()}}
+{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::destroy\+Buffer (\begin{DoxyParamCaption}\item[{Vk\+Buffer}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+destroys the Vk\+Buffer object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_aec155812b30cdf711aa0908ead4eb93a}\label{classluna_1_1utils_1_1vulkan_allocator_aec155812b30cdf711aa0908ead4eb93a}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!destroyImage@{destroyImage}}
+\index{destroyImage@{destroyImage}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{destroyImage()}{destroyImage()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::utils\+::vulkan\+Allocator\+::destroy\+Image (\begin{DoxyParamCaption}\item[{const Vk\+Image \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+destroys the Vk\+Image object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a57da3ba470dac5507cb262c59ffe96b2}\label{classluna_1_1utils_1_1vulkan_allocator_a57da3ba470dac5507cb262c59ffe96b2}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!destroyImageView@{destroyImageView}}
+\index{destroyImageView@{destroyImageView}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{destroyImageView()}{destroyImageView()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::utils\+::vulkan\+Allocator\+::destroy\+Image\+View (\begin{DoxyParamCaption}\item[{const Vk\+Image\+View \&}]{image\+View }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+destroys the Vk\+Image\+View. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image\+View} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_ad3eac5e3fc3434086968b23ef5ab8e78}\label{classluna_1_1utils_1_1vulkan_allocator_ad3eac5e3fc3434086968b23ef5ab8e78}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!getAllocationInfo@{getAllocationInfo}}
+\index{getAllocationInfo@{getAllocationInfo}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{getAllocationInfo()}{getAllocationInfo()}}
+{\footnotesize\ttfamily Vma\+Allocation\+Info luna\+::utils\+::vulkan\+Allocator\+::get\+Allocation\+Info (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+returns the allocation info from the given handle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vma\+Allocation\+Info 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_ae50dca323c85203f3c71b2d0d396f529}\label{classluna_1_1utils_1_1vulkan_allocator_ae50dca323c85203f3c71b2d0d396f529}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!init@{init}}
+\index{init@{init}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1device}{renderer\+::device}} $>$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+allocator constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref$<$renderer\+::device$>$}}} & device reference to the device \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a2fea061a5507a2960fac3b0cd439abf7}\label{classluna_1_1utils_1_1vulkan_allocator_a2fea061a5507a2960fac3b0cd439abf7}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+destroys the allocator. 
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a9fd8bd60f1a505320602099197ffc6de}\label{classluna_1_1utils_1_1vulkan_allocator_a9fd8bd60f1a505320602099197ffc6de}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!allocations@{allocations}}
+\index{allocations@{allocations}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{allocations}{allocations}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{object\+Storage}}$<$\mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation}{vma\+Allocation}}$>$ luna\+::utils\+::vulkan\+Allocator\+::allocations\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a7d48dd03108f5f2c86388cc5b6699ea6}\label{classluna_1_1utils_1_1vulkan_allocator_a7d48dd03108f5f2c86388cc5b6699ea6}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!pDevice@{pDevice}}
+\index{pDevice@{pDevice}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{pDevice}{pDevice}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1device}{renderer\+::device}}$>$ luna\+::utils\+::vulkan\+Allocator\+::p\+Device\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a896ca90c3e9bd16b515d95f9fb0c7725}\label{classluna_1_1utils_1_1vulkan_allocator_a896ca90c3e9bd16b515d95f9fb0c7725}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!sAllocator@{sAllocator}}
+\index{sAllocator@{sAllocator}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{sAllocator}{sAllocator}}
+{\footnotesize\ttfamily Vma\+Allocator luna\+::utils\+::vulkan\+Allocator\+::s\+Allocator\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_acd9547e2a1cdd6b80d5d9fe156383138}\label{classluna_1_1utils_1_1vulkan_allocator_acd9547e2a1cdd6b80d5d9fe156383138}} 
+\index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!transferQueue@{transferQueue}}
+\index{transferQueue@{transferQueue}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
+\doxyparagraph{\texorpdfstring{transferQueue}{transferQueue}}
+{\footnotesize\ttfamily Vk\+Queue luna\+::utils\+::vulkan\+Allocator\+::transfer\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/\mbox{\hyperlink{vulkan_allocator_8h}{vulkan\+Allocator.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/\mbox{\hyperlink{vulkan_allocator_8cpp}{vulkan\+Allocator.\+cpp}}\end{DoxyCompactItemize}

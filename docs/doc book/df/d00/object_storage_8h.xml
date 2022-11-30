@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_object_storage_8h" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/objectStorage.h File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/objectStorage.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;core/utils/vectorCache.h&gt;<?linebreak?></programlisting>Include dependency graph for objectStorage.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d3/d00/object_storage_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dd/d00/object_storage_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1object_storage">luna::utils::objectStorage&lt; value &gt;</link></para>
+
+<para>cached object memory class with a key handle. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespaceluna">luna</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespaceluna_1_1utils">luna::utils</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">luna::utils::storageObject</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">luna::utils::storageResult</link> { <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4">luna::utils::storageInvalidHandle</link> = 0
+, <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa">luna::utils::storageOpSucces</link> = 1
+, <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7">luna::utils::storageOpFailed</link> = 2
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

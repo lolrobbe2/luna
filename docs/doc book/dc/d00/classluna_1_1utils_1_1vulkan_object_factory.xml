@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1utils_1_1vulkan_object_factory" xml:lang="en-US">
+<title>luna::utils::vulkanObjectFactory Class Reference</title>
+<indexterm><primary>luna::utils::vulkanObjectFactory</primary></indexterm>
+<para>
+
+<para>static class that creates vulkan objects like buffers and images. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;vulkanObjectFactory.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_object_factory_1a4b8cd4b3e37a8a89f6cd9dc88105162b">init</link> (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">renderer::device</link> &gt; device)</para>
+
+<para>initializes the vulkan object factory. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_object_factory_1aaf40ac4d53054b12783768cd7e2ceae6">createImage</link> (VkImage *pImage, VkImageCreateInfo *pCreateInfo)</para>
+
+<para>creates a vulkan image. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_object_factory_1ad666f273ccf0184f0058de4c37b05820">createImage</link> (VkImage *pImage, VkImageUsageFlags usageFlags, VkExtent3D extent, VkFormat format=VK_FORMAT_B8G8R8A8_UNORM)</para>
+
+<para>creates a vulkan image. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_object_factory_1a3623efe14bd618a25ac747e13b8a87bb">createImageView</link> (VkImageView *pImageView, VkImageViewCreateInfo *pImageViewCreateInfo)</para>
+
+<para>creates a VkImageView. </para>
+</listitem>
+            <listitem><para>static VkResult <link linkend="_classluna_1_1utils_1_1vulkan_object_factory_1a61c72ddf01c9e15b546bd5c15bdad65e">createImageView</link> (VkImageView *pImageView, const VkImage &amp;image, const VkFormat &amp;format, const VkImageAspectFlags &amp;imageAspectFlags)</para>
+
+<para>creates a VkImageView. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">renderer::device</link> &gt; <link linkend="_classluna_1_1utils_1_1vulkan_object_factory_1ad78d22816c970de33ffa4707f6b73e3b">pDevice</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>static class that creates vulkan objects like buffers and images. </para>
+
+
+
+<para><note><title>Note</title>
+
+<para>this class is only meant to be included in the .cpp files not in the .h files </para>
+</note>
+</para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_object_factory_1aaf40ac4d53054b12783768cd7e2ceae6"/><section>
+    <title>createImage()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>createImage</primary><secondary>luna::utils::vulkanObjectFactory</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanObjectFactory</primary><secondary>createImage</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanObjectFactory::createImage (VkImage * pImage, VkImageCreateInfo * pCreateInfo = <computeroutput>nullptr</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a vulkan image. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkImage*</entry><entry>
+<para>pImage pointer to the image handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkImageCreateInfo*</entry><entry>
+<para>pCreateInfo pointer to imageCreateInfo struct. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImage.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImage.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImage.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImage.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCreateInfo.html</link> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_object_factory_1ad666f273ccf0184f0058de4c37b05820"/><section>
+    <title>createImage()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>createImage</primary><secondary>luna::utils::vulkanObjectFactory</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanObjectFactory</primary><secondary>createImage</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanObjectFactory::createImage (VkImage * pImage, VkImageUsageFlags usageFlags, VkExtent3D extent, VkFormat format = <computeroutput>VK_FORMAT_B8G8R8A8_UNORM</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a vulkan image. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>VkImage*</entry><entry>
+<para>pImage, pointer to the image handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkFormat</entry><entry>
+<para>format, image format </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkImageUsageFlags, usageFlags</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkExtent3D</entry><entry>
+<para>extent, image extent (width height) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImage.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImage.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImage.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImage.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCreateInfo.html</link> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_object_factory_1a61c72ddf01c9e15b546bd5c15bdad65e"/><section>
+    <title>createImageView()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>createImageView</primary><secondary>luna::utils::vulkanObjectFactory</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanObjectFactory</primary><secondary>createImageView</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanObjectFactory::createImageView (VkImageView * pImageView, const VkImage &amp; image, const VkFormat &amp; format, const VkImageAspectFlags &amp; imageAspectFlags)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a VkImageView. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pImageView*</entry><entry>
+<para>pointer to the imageView. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkImage</entry><entry>
+<para>image handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>VkFormat</entry><entry>
+<para>format image format </para>
+</entry>
+                            </row>
+                            <row>
+<entry>imageAspectFlags</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VK_SUCCES when creation was succesful. </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageView.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageView.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImageView.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImageView.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html</link> </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/classluna_1_1utils_1_1vulkan_object_factory_a61c72ddf01c9e15b546bd5c15bdad65e_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_object_factory_1a3623efe14bd618a25ac747e13b8a87bb"/><section>
+    <title>createImageView()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>createImageView</primary><secondary>luna::utils::vulkanObjectFactory</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanObjectFactory</primary><secondary>createImageView</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanObjectFactory::createImageView (VkImageView * pImageView, VkImageViewCreateInfo * pImageViewCreateInfo = <computeroutput>nullptr</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>creates a VkImageView. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pImageView*</entry><entry>
+<para>pointer to the imageView. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>pImageViewCreateInfo*</entry><entry>
+<para>pointer to the creareInfoStruct </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>VK_SUCCES when creation was succesful. </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageView.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageView.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImageView.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImageView.html</link> </para>
+
+<para><link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html</link> </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/classluna_1_1utils_1_1vulkan_object_factory_a3623efe14bd618a25ac747e13b8a87bb_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_object_factory_1a4b8cd4b3e37a8a89f6cd9dc88105162b"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>luna::utils::vulkanObjectFactory</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanObjectFactory</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>VkResult luna::utils::vulkanObjectFactory::init (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1device">renderer::device</link> &gt; device)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>initializes the vulkan object factory. </para>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1vulkan_object_factory_1ad78d22816c970de33ffa4707f6b73e3b"/><section>
+    <title>pDevice</title>
+<indexterm><primary>pDevice</primary><secondary>luna::utils::vulkanObjectFactory</secondary></indexterm>
+<indexterm><primary>luna::utils::vulkanObjectFactory</primary><secondary>pDevice</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1device">renderer::device</link>&gt; luna::utils::vulkanObjectFactory::pDevice<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/<link linkend="_vulkan_object_factory_8h">vulkanObjectFactory.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/<link linkend="_vulkan_object_factory_8cpp">vulkanObjectFactory.cpp</link></section>
+</section>

@@ -1,0 +1,130 @@
+\hypertarget{classluna_1_1renderer_1_1renderer2_d}{}\doxysubsection{luna\+::renderer\+::renderer2D Class Reference}
+\label{classluna_1_1renderer_1_1renderer2_d}\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+
+
+2D renderer api runs on\+Top of the renderer api.  
+
+
+
+
+{\ttfamily \#include $<$renderer2\+D.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a4106ddeea547ac64510e3bd4a861351a}{init}} ()
+\begin{DoxyCompactList}\small\item\em initializes the 2D renderer. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a123fafe82292e73e34dfb31e6519ff29}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em shutsdown the 2D renderer and destroys the appropriate resources. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a76b5f70881cfab19f3826379b0a3c9c1}{Begin\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em starts a 2D renderer scene. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a0788d2745168acbaad6202be78117c8d}{end\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em ends the 2D renderer scene. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a80f65908b87cfcd1db947a2595b25c90}{draw\+Quad}} (const glm\+::vec3 \&position, const glm\+::vec2 \&size)
+\begin{DoxyCompactList}\small\item\em draws a quad. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a7719753205ad15adcc77500ee4cdeb5d}{draw\+Quad}} (const glm\+::mat4 \&transform)
+\begin{DoxyCompactList}\small\item\em draws a quad. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a68ac5e8cd390ed4951cc4995921a258b}{flush}} ()
+\begin{DoxyCompactList}\small\item\em flushes all the draw commands to the base renderer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+2D renderer api runs on\+Top of the renderer api. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classluna_1_1renderer_1_1renderer}{renderer\+::renderer}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a76b5f70881cfab19f3826379b0a3c9c1}\label{classluna_1_1renderer_1_1renderer2_d_a76b5f70881cfab19f3826379b0a3c9c1}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!BeginScene@{BeginScene}}
+\index{BeginScene@{BeginScene}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{BeginScene()}{BeginScene()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::\+Begin\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+starts a 2D renderer scene. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a7719753205ad15adcc77500ee4cdeb5d}\label{classluna_1_1renderer_1_1renderer2_d_a7719753205ad15adcc77500ee4cdeb5d}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!drawQuad@{drawQuad}}
+\index{drawQuad@{drawQuad}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+draws a quad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & glm\+::mat4\& transform starting transformation. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a80f65908b87cfcd1db947a2595b25c90}\label{classluna_1_1renderer_1_1renderer2_d_a80f65908b87cfcd1db947a2595b25c90}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!drawQuad@{drawQuad}}
+\index{drawQuad@{drawQuad}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{position,  }\item[{const glm\+::vec2 \&}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+draws a quad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & glm\+::vec3\& position starting position \\
+\hline
+{\em const} & glm\+::vec2\& size starting size; \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a0788d2745168acbaad6202be78117c8d}\label{classluna_1_1renderer_1_1renderer2_d_a0788d2745168acbaad6202be78117c8d}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!endScene@{endScene}}
+\index{endScene@{endScene}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{endScene()}{endScene()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::end\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+ends the 2D renderer scene. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a68ac5e8cd390ed4951cc4995921a258b}\label{classluna_1_1renderer_1_1renderer2_d_a68ac5e8cd390ed4951cc4995921a258b}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!flush@{flush}}
+\index{flush@{flush}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+flushes all the draw commands to the base renderer. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classluna_1_1renderer_1_1renderer}{renderer\+::renderer}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a4106ddeea547ac64510e3bd4a861351a}\label{classluna_1_1renderer_1_1renderer2_d_a4106ddeea547ac64510e3bd4a861351a}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!init@{init}}
+\index{init@{init}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+initializes the 2D renderer. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a123fafe82292e73e34dfb31e6519ff29}\label{classluna_1_1renderer_1_1renderer2_d_a123fafe82292e73e34dfb31e6519ff29}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+shutsdown the 2D renderer and destroys the appropriate resources. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{renderer2_d_8h}{renderer2\+D.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{renderer2_d_8cpp}{renderer2\+D.\+cpp}}\end{DoxyCompactItemize}

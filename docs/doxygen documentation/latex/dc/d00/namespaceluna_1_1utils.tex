@@ -1,0 +1,147 @@
+\hypertarget{namespaceluna_1_1utils}{}\doxysubsection{luna\+::utils Namespace Reference}
+\label{namespaceluna_1_1utils}\index{luna::utils@{luna::utils}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1utils_1_1compile_spec}{compile\+Spec}}
+\item 
+class \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{object\+Storage}}
+\begin{DoxyCompactList}\small\item\em cached object memory class with a key handle. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classluna_1_1utils_1_1shader_compiler}{shader\+Compiler}}
+\item 
+class \mbox{\hyperlink{classluna_1_1utils_1_1shader_library}{shader\+Library}}
+\item 
+class \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}}
+\begin{DoxyCompactList}\small\item\em a pretty optimal multithreaded vector cahce headeronly class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator}{vulkan\+Allocator}}
+\item 
+class \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_object_factory}{vulkan\+Object\+Factory}}
+\begin{DoxyCompactList}\small\item\em static class that creates vulkan objects like buffers and images. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint64\+\_\+t \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{storage\+Object}}
+\item 
+typedef uint64\+\_\+t \mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}}
+\item 
+typedef uint64\+\_\+t \mbox{\hyperlink{namespaceluna_1_1utils_a4b35646c61e2f6d6702a975f67265c3b}{allocation\+Handle}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{storage\+Result}} \{ \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4}{storage\+Invalid\+Handle}} = 0
+, \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa}{storage\+Op\+Succes}} = 1
+, \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7}{storage\+Op\+Failed}} = 2
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781}{compile\+Language}} \{ \mbox{\hyperlink{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928}{SPIR}} = 0
+, \mbox{\hyperlink{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492}{SPIR\+\_\+V}} = 1
+, \mbox{\hyperlink{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f}{GLSL}} = 2
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{cache\+Result}} \{ \newline
+\mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8}{cache\+Miss}} = 0
+, \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea}{cache\+Hit}} = 1
+, \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847}{cache\+Invalid\+Handle}} = 2
+, \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86}{cache\+Op\+Succes}} = 3
+, \newline
+\mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f}{cache\+Op\+Failed}} = 4
+, \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f}{CACHE\+\_\+\+MAX\+\_\+\+ENUM}} = 5
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceluna_1_1utils_a4b35646c61e2f6d6702a975f67265c3b}\label{namespaceluna_1_1utils_a4b35646c61e2f6d6702a975f67265c3b}} 
+\index{luna::utils@{luna::utils}!allocationHandle@{allocationHandle}}
+\index{allocationHandle@{allocationHandle}!luna::utils@{luna::utils}}
+\doxyparagraph{\texorpdfstring{allocationHandle}{allocationHandle}}
+{\footnotesize\ttfamily typedef uint64\+\_\+t \mbox{\hyperlink{namespaceluna_1_1utils_a4b35646c61e2f6d6702a975f67265c3b}{luna\+::utils\+::allocation\+Handle}}}
+
+\mbox{\Hypertarget{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}\label{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}} 
+\index{luna::utils@{luna::utils}!cacheObject@{cacheObject}}
+\index{cacheObject@{cacheObject}!luna::utils@{luna::utils}}
+\doxyparagraph{\texorpdfstring{cacheObject}{cacheObject}}
+{\footnotesize\ttfamily typedef uint64\+\_\+t \mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{luna\+::utils\+::cache\+Object}}}
+
+\mbox{\Hypertarget{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}\label{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}} 
+\index{luna::utils@{luna::utils}!storageObject@{storageObject}}
+\index{storageObject@{storageObject}!luna::utils@{luna::utils}}
+\doxyparagraph{\texorpdfstring{storageObject}{storageObject}}
+{\footnotesize\ttfamily typedef uint64\+\_\+t \mbox{\hyperlink{namespaceluna_1_1utils_ad825369fbf31da905352dfe904085cd8}{luna\+::utils\+::storage\+Object}}}
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}\label{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}} 
+\index{luna::utils@{luna::utils}!cacheResult@{cacheResult}}
+\index{cacheResult@{cacheResult}!luna::utils@{luna::utils}}
+\doxyparagraph{\texorpdfstring{cacheResult}{cacheResult}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{luna\+::utils\+::cache\+Result}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cacheMiss@{cacheMiss}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!cacheMiss@{cacheMiss}}}\mbox{\Hypertarget{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8}\label{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8}} 
+cache\+Miss&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cacheHit@{cacheHit}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!cacheHit@{cacheHit}}}\mbox{\Hypertarget{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea}\label{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea}} 
+cache\+Hit&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cacheInvalidHandle@{cacheInvalidHandle}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!cacheInvalidHandle@{cacheInvalidHandle}}}\mbox{\Hypertarget{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847}\label{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847}} 
+cache\+Invalid\+Handle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cacheOpSucces@{cacheOpSucces}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!cacheOpSucces@{cacheOpSucces}}}\mbox{\Hypertarget{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86}\label{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86}} 
+cache\+Op\+Succes&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cacheOpFailed@{cacheOpFailed}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!cacheOpFailed@{cacheOpFailed}}}\mbox{\Hypertarget{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f}\label{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f}} 
+cache\+Op\+Failed&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_MAX\_ENUM@{CACHE\_MAX\_ENUM}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!CACHE\_MAX\_ENUM@{CACHE\_MAX\_ENUM}}}\mbox{\Hypertarget{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f}\label{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f}} 
+CACHE\+\_\+\+MAX\+\_\+\+ENUM&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781}\label{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781}} 
+\index{luna::utils@{luna::utils}!compileLanguage@{compileLanguage}}
+\index{compileLanguage@{compileLanguage}!luna::utils@{luna::utils}}
+\doxyparagraph{\texorpdfstring{compileLanguage}{compileLanguage}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781}{luna\+::utils\+::compile\+Language}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPIR@{SPIR}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!SPIR@{SPIR}}}\mbox{\Hypertarget{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928}\label{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928}} 
+SPIR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPIR\_V@{SPIR\_V}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!SPIR\_V@{SPIR\_V}}}\mbox{\Hypertarget{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492}\label{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492}} 
+SPIR\+\_\+V&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GLSL@{GLSL}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!GLSL@{GLSL}}}\mbox{\Hypertarget{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f}\label{namespaceluna_1_1utils_a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f}} 
+GLSL&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}\label{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}} 
+\index{luna::utils@{luna::utils}!storageResult@{storageResult}}
+\index{storageResult@{storageResult}!luna::utils@{luna::utils}}
+\doxyparagraph{\texorpdfstring{storageResult}{storageResult}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9}{luna\+::utils\+::storage\+Result}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{storageInvalidHandle@{storageInvalidHandle}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!storageInvalidHandle@{storageInvalidHandle}}}\mbox{\Hypertarget{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4}\label{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4}} 
+storage\+Invalid\+Handle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{storageOpSucces@{storageOpSucces}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!storageOpSucces@{storageOpSucces}}}\mbox{\Hypertarget{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa}\label{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa}} 
+storage\+Op\+Succes&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{storageOpFailed@{storageOpFailed}!luna::utils@{luna::utils}}\index{luna::utils@{luna::utils}!storageOpFailed@{storageOpFailed}}}\mbox{\Hypertarget{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7}\label{namespaceluna_1_1utils_a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7}} 
+storage\+Op\+Failed&\\
+\hline
+
+\end{DoxyEnumFields}

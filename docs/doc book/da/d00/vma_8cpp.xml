@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_vma_8cpp" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vma.cpp File Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vma.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;vk_mem_alloc.h&gt;<?linebreak?></programlisting>Include dependency graph for vma.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d3/d00/vma_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_vma_8cpp_1abea80547807da765ebe9fce1c6dd6a8d">VMA_IMPLEMENTATION</link></para>
+</listitem>
+            <listitem><para>#define <link linkend="_vma_8cpp_1a1a2407c283893638cc039bb31fcd74b6">VMA_VULKAN_VERSION</link>&#160;&#160;&#160;1002000</para>
+</listitem>
+            <listitem><para>#define <link linkend="_vma_8cpp_1a88bef97f86d70a34a4c0746e09a2680d">VMA_BIND_MEMORY2</link>&#160;&#160;&#160;0</para>
+</listitem>
+            <listitem><para>#define <link linkend="_vma_8cpp_1a1f0c126759fc96ccb6e2d23c101d770c">VMA_RECORDING_ENABLED</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_vma_8cpp_1a88bef97f86d70a34a4c0746e09a2680d"/><section>
+    <title>VMA_BIND_MEMORY2</title>
+<indexterm><primary>VMA_BIND_MEMORY2</primary><secondary>vma.cpp</secondary></indexterm>
+<indexterm><primary>vma.cpp</primary><secondary>VMA_BIND_MEMORY2</secondary></indexterm>
+<para><computeroutput>#define VMA_BIND_MEMORY2&#160;&#160;&#160;0</computeroutput></para></section>
+<anchor xml:id="_vma_8cpp_1abea80547807da765ebe9fce1c6dd6a8d"/><section>
+    <title>VMA_IMPLEMENTATION</title>
+<indexterm><primary>VMA_IMPLEMENTATION</primary><secondary>vma.cpp</secondary></indexterm>
+<indexterm><primary>vma.cpp</primary><secondary>VMA_IMPLEMENTATION</secondary></indexterm>
+<para><computeroutput>#define VMA_IMPLEMENTATION</computeroutput></para></section>
+<anchor xml:id="_vma_8cpp_1a1f0c126759fc96ccb6e2d23c101d770c"/><section>
+    <title>VMA_RECORDING_ENABLED</title>
+<indexterm><primary>VMA_RECORDING_ENABLED</primary><secondary>vma.cpp</secondary></indexterm>
+<indexterm><primary>vma.cpp</primary><secondary>VMA_RECORDING_ENABLED</secondary></indexterm>
+<para><computeroutput>#define VMA_RECORDING_ENABLED</computeroutput></para></section>
+<anchor xml:id="_vma_8cpp_1a1a2407c283893638cc039bb31fcd74b6"/><section>
+    <title>VMA_VULKAN_VERSION</title>
+<indexterm><primary>VMA_VULKAN_VERSION</primary><secondary>vma.cpp</secondary></indexterm>
+<indexterm><primary>vma.cpp</primary><secondary>VMA_VULKAN_VERSION</secondary></indexterm>
+<para><computeroutput>#define VMA_VULKAN_VERSION&#160;&#160;&#160;1002000</computeroutput></para></section>
+</section>
+</section>

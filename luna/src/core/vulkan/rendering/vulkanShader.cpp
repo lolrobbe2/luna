@@ -9,6 +9,7 @@ namespace luna
 		vulkanShader::vulkanShader(const std::string& filepath,const renderer::shaderStage& stage)
 		{
 			//loading shader stage.
+			LN_PROFILE_FUNCTION();
 			std::ifstream file;
 			shaderName = std::filesystem::path{ filepath }.filename().string();
 			file.open(filepath, std::ios::ate | std::ios::binary);
@@ -67,6 +68,7 @@ namespace luna
 		}
 		void vulkanShader::createLayout()
 		{
+			LN_PROFILE_FUNCTION();
 			LN_CORE_TRACE("creating shader Layout");
 			spirv_cross::Compiler compiler(shaderSrc);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
@@ -80,6 +82,7 @@ namespace luna
 
 		renderer::shaderResource vulkanShader::getShaderResource(const spirv_cross::Resource& _shaderResource,const std::vector<uint32_t>& shaderSource, renderer::typeClass typeClass)
 		{
+			LN_PROFILE_FUNCTION();
 			spirv_cross::Compiler compiler(shaderSource);
 			spirv_cross::SPIRType::BaseType baseType = compiler.get_type(_shaderResource.base_type_id).basetype;
 			const spirv_cross::SPIRType& type = compiler.get_type(_shaderResource.type_id);

@@ -6,11 +6,17 @@
 #define LN_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 #pragma warning(push, 0)
 #include <memory>
-#pragma warning(pop)
 #include <core/debug/log.h>
+#define LN_PROFILE 1
+#include <core/debug/instrumentor.h>
+#pragma warning(pop)
 #ifdef _DEBUG
 	#define ENABLE_VALIDATION_LAYERS
 #endif // _DEBUG
+
+#define MAJOR 0
+#define MINOR 0 
+#define PATCH 2 
 
 namespace luna
 {

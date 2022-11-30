@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e" xml:lang="en-US">
+
+<para><link xlink:href="https://github.com/lolrobbe2/luna/blob/luna_experimental/LICENSE.txt"></link> </para>
+<section xml:id="_md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e_1autotoc_md1">
+<title>goals</title>
+
+<para>to create a simple to use software engine capable of running commercial software.</para>
+
+<para><orderedlist>
+<listitem>
+<para>add support for linux</para>
+</listitem><listitem>
+<para>add support for mac</para>
+</listitem></orderedlist>
+</para>
+</section>
+<section xml:id="_md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e_1autotoc_md2">
+<title>buildrequirements</title>
+
+<para><itemizedlist>
+<listitem>
+<para><link xlink:href="https://visualstudio.microsoft.com/">visual studio 2022</link></para>
+</listitem><listitem>
+<para>c++ build tools</para>
+</listitem><listitem>
+<para><link xlink:href="https://premake.github.io/">premake5</link>. </para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e_1autotoc_md3">
+<title>instalation</title>
+
+<para><orderedlist>
+<listitem>
+<para>clone recursive with visual studio (vs code not supported).</para>
+</listitem><listitem>
+<para>create the folder vendor in the sln directory.</para>
+</listitem><listitem>
+<para>open the downloaded zip folder and copy premake5.exe in the vendor folder.</para>
+</listitem><listitem>
+<para>build thirdparty projects (<link xlink:href="https://www.glfw.org/">GLFW</link>)</para>
+</listitem><listitem>
+<para>build the engine project.</para>
+</listitem><listitem>
+<para>build and run the sanbox project. </para>
+</listitem></orderedlist>
+</para>
+</section>
+<section xml:id="_md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e_1autotoc_md4">
+<title>website:</title>
+
+<para><itemizedlist>
+<listitem>
+<para><link xlink:href="https://lolrobbe2.github.io/luna/doxygen%20documentation/html/index.html">engine source documentation</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://lolrobbe2.github.io/luna">egine website</link> </para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c___users_robbe_source_repos_lolrobbe2_luna__r_e_a_d_m_e_1autotoc_md5">
+<title>enjoy :)</title>
+</section>
+</section>

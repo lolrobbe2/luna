@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceluna_1_1input" xml:lang="en-US">
+<title>luna::input Namespace Reference</title>
+<indexterm><primary>luna::input</primary></indexterm>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum : keyCode { <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a1666ec1914578b61898abd33b657806a">Space</link> = 32
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af6c5800f7f90ed643856788ff8d01860">Apostrophe</link> = 39
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae0d548a4305cc228cb7290905e9d475b">Comma</link> = 44
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa31be73ee7b3d16d6ee6970e05554983">Minus</link> = 45
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a71ee885825a921d9e873283f3d8feb17">Period</link> = 46
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2b0c9beb75f5f9e4dbd1a890acf5c450">Slash</link> = 47
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae59e6486de3d4b83917b13efbfe702d2">D0</link> = 48
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a39790c2e81e43dc3b012da4993345f33">D1</link> = 49
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a18c4d30f804112f40adfb9716168371b">D2</link> = 50
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a49fa001e76cff4ef2328cad2d500ebf8">D3</link> = 51
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a98d661ac0132e28287a916338705fb9d">D4</link> = 52
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad04e9d4f2cda566b83d97defe6ad7329">D5</link> = 53
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a65515fbbb5d0488311b0d8014eff51e0">D6</link> = 54
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4b625a31bd1c875589e3376eb5bb2c24">D7</link> = 55
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a25106a2983fb25913b98a45a7b0c0fb9">D8</link> = 56
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0a78be6837e716cadc22abf312dfcd81">D9</link> = 57
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5d1638abe993d0b78b4d08031316946e">Semicolon</link> = 59
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af12cb1ad7793344ad2ddea1fa89159c5">Equal</link> = 61
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19add68b7d71e064c81a45b2aa70a225c06">A</link> = 65
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a481a0e751fbaab34f50cd69429362dfb">B</link> = 66
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9944323413beed4556c3db4e80672a69">C</link> = 67
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afa01245dcdfacd06c578ec02111ad27a">D</link> = 68
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9cc6f53aeace4a179fe59213ecbc91e3">E</link> = 69
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afca1befd2d577812bad5e1000dd3f0d3">F</link> = 70
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a43ed04207ffc8464a329d0fa9fa57957">G</link> = 71
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad4deb8dbf136d8dfc77fc72638ddc03e">H</link> = 72
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a763a35b2b74701150a338f40d340e048">I</link> = 73
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad13e14d90cf66db5dfb7f440a645e1e1">J</link> = 74
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a77631642125cae8e7be6667579812f2e">K</link> = 75
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a851d04162de4831d0a3335b534ed6596">L</link> = 76
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab4e5ba2cf8a352b7e87a693ecdbca5b9">M</link> = 77
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2a2a59513980d4592adea169939ee469">N</link> = 78
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a7fcb22614caa1c291daebc5b76b409e8">O</link> = 79
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a722331098d2459f38455053cd51f0f0a">P</link> = 80
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a40e18f99d6ac5375db066508d71217b6">Q</link> = 81
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a909e1986507a0711b02cd85e2d0ca9fd">R</link> = 82
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19add8e32290ffe653c2bc442e19afebada">S</link> = 83
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad9ee97f4bd47c7991b54c5a2fb0dbd7e">T</link> = 84
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a53b7d4ab9623663886beabd36f6b4515">U</link> = 85
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa680000b5fce66bd2b84b86b72f11818">V</link> = 86
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a741b298950f275770888bc052670deff">W</link> = 87
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0685e5ee0a0c36e01c069a8bb275e2d1">X</link> = 88
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae6f60eb9089a8d5c6e8af65027a19066">Y</link> = 89
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a091803cb609677c57389142b4a32f370">Z</link> = 90
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a700bd47f1431af90a5cc03e8ef291df0">LeftBracket</link> = 91
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a8e50e87138c9189b90ec36d64a9d52c7">Backslash</link> = 92
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae94df52004920f8ce806d10a93d88e71">RightBracket</link> = 93
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a10caa8f2899f93de045e480b465046f7">GraveAccent</link> = 96
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4e1f25fc160be45c2c9cd3161b12d256">World1</link> = 161
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a94e6bb0caf169f9a6d8ca335e53a76ef">World2</link> = 162
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aba4b6ac4ba82f73bac67152d7821b0e1">Escape</link> = 256
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a72dc6dcb9433c4d516802e84a0093066">Enter</link> = 257
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae4892326b30004d2f4054ba8a078626c">Tab</link> = 258
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a1cf8a10b01c7e09066d38ba88fe4ec59">Backspace</link> = 259
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab4eba8c5d5d11c8a73ea14e6ecef42bf">Insert</link> = 260
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab898602092ff348df39e4eb6d7aab592">Delete</link> = 261
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a27aa4d4804b1c69f0a5943983d5cbd2c">Right</link> = 262
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a87007dff1ed9de5660f67c7726dee0ac">Left</link> = 263
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ac2b0a04e1e24a8caad45ab6537876bce">Down</link> = 264
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aea676057e6a264a78c68ac844564a02e">Up</link> = 265
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afafe843569dd61d62a5d8c154c12ac28">PageUp</link> = 266
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3c396585439e9684c2d181525b107ccf">PageDown</link> = 267
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9344720e55a69ce4b362f86d654273fa">Home</link> = 268
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a097ac6e0bbb062da1a68b7332c25a5d3">End</link> = 269
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a667fccea4da400eb9ff242a077c47e06">CapsLock</link> = 280
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3fafff61e91a0645e9d69115b470a1b5">ScrollLock</link> = 281
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af72d1d8f95ce86cbb3166262a2b71195">NumLock</link> = 282
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5144e724e7f8896e9103a6a0264d415e">PrintScreen</link> = 283
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6ab4f0e5eb24b38b7765e716fbe80623">Pause</link> = 284
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19acc4c205d1dfb96bf3734988db609df0d">F1</link> = 290
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae3fd1c80dcd687f5167264d6085bbcfd">F2</link> = 291
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab563523d136ab9baaaaa540a18a4f34d">F3</link> = 292
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a52716c3f671723c5f38d27f28b040b83">F4</link> = 293
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9548e6c03e754a384bb1da78a1cd70fc">F5</link> = 294
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a996c57984990188d6f55c7032d4da7c4">F6</link> = 295
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a103727c0e7fd4241eb6d39242fa7a37e">F7</link> = 296
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab10bbbe0218952c200d672f09d3304cd">F8</link> = 297
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae08c027dc8cbb4401cf0a8a08b89a986">F9</link> = 298
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9842edcae9f371c8ec47efe25659c2a6">F10</link> = 299
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4d4fb53f9f8dcfe6884e3c7323ac4c65">F11</link> = 300
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0706402df242753334918177bc535051">F12</link> = 301
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a05be435a964d69d14344381baeeb86d5">F13</link> = 302
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a27c4fc5aa4a567f716c8d81f2ae2d197">F14</link> = 303
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9008ea027e237dddd75952819aaab762">F15</link> = 304
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a19f1e3f4ec63fa6dc0148404e3f760c4">F16</link> = 305
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae7a6599ea1c3a42db86a32855a897d9f">F17</link> = 306
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af12aed6ab44bfbc2870800078caeff14">F18</link> = 307
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2f47f6df78232e5fa66b527257871f91">F19</link> = 308
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aadf56eb6dca08ec7d84ba788bffeb9e0">F20</link> = 309
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a69586ec7b1a540be8e84d39d106a6b4e">F21</link> = 310
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19adcae36412813dedb8d9d72d2ba405308">F22</link> = 311
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad36feecd1740682cf88de00c930a38ea">F23</link> = 312
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af5bb2aea52396f79bb89bb3809d8df8a">F24</link> = 313
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a34256b3dc6ff0bc619d7e8f66e16db02">F25</link> = 314
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa5824fc84ef00b00a64cab62a5745020">KP0</link> = 320
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9edff3aa8687767357092e7d866accaf">KP1</link> = 321
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3cc93542b7e2254bba4d5ab1692dde53">KP2</link> = 322
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae31054ace3f68e4f58f4e6a55cf617b0">KP3</link> = 323
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a203211fc1918a418506a8d04788d8527">KP4</link> = 324
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aff8cc5b480da3d55d905aa367eef7f8e">KP5</link> = 325
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4c18997d02b5edc0afd40f74acb92769">KP6</link> = 326
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae645d7a45c3015d510745b2ae378c39d">KP7</link> = 327
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aeed7c7f54d4a900a4dc61c59c439266f">KP8</link> = 328
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a08bbdc42242e7dce887fef4da36be4f4">KP9</link> = 329
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a614211c7a1da49c752fe55ae7d2550fb">KPDecimal</link> = 330
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6d4e88f7c366b1e27ddbe5a7456d8b1b">KPDivide</link> = 331
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a67f07f88f17f312f6d30b180dda83024">KPMultiply</link> = 332
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad376c7271f1901f3ef3bcd3e2538adb3">KPSubtract</link> = 333
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5878c6bf8edc78fe8f525ee3ee0e318b">KPAdd</link> = 334
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae9d793391546fbac2dbcb93abce6e262">KPEnter</link> = 335
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4454f5f7950e126ffadfb6dc6393fb05">KPEqual</link> = 336
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad5b3b2361f987d76fdce33669b289588">LeftShift</link> = 340
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19abfca106ad161ce08555179266bea622a">LeftControl</link> = 341
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4d746a5d0471e2d85ac4065847dd3200">LeftAlt</link> = 342
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4e8e98998626a0d79f4b4b5fc999c075">LeftSuper</link> = 343
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6e44ff13ad3d41a223de707b20119634">RightShift</link> = 344
+, <?linebreak?><link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af8ce329a1a0ecbe0b6390ee59e3c853c">RightControl</link> = 345
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a91f8568fac18a029fbc9904a6fb9989a">RightAlt</link> = 346
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afd8d743417c3424aca8e59d92dfe573b">RightSuper</link> = 347
+, <link linkend="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af1a9bd1a7125f0bec641a0833f67f976">Menu</link> = 348
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19"/><section>
+    <title>anonymous enum</title>
+<para><computeroutput>anonymous enum : <link linkend="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39">keyCode</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Space</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Space</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a1666ec1914578b61898abd33b657806a"/>Space</entry><entry></entry></row><row><entry><indexterm><primary>Apostrophe</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Apostrophe</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af6c5800f7f90ed643856788ff8d01860"/>Apostrophe</entry><entry></entry></row><row><entry><indexterm><primary>Comma</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Comma</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae0d548a4305cc228cb7290905e9d475b"/>Comma</entry><entry></entry></row><row><entry><indexterm><primary>Minus</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Minus</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa31be73ee7b3d16d6ee6970e05554983"/>Minus</entry><entry></entry></row><row><entry><indexterm><primary>Period</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Period</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a71ee885825a921d9e873283f3d8feb17"/>Period</entry><entry></entry></row><row><entry><indexterm><primary>Slash</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Slash</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2b0c9beb75f5f9e4dbd1a890acf5c450"/>Slash</entry><entry></entry></row><row><entry><indexterm><primary>D0</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D0</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae59e6486de3d4b83917b13efbfe702d2"/>D0</entry><entry></entry></row><row><entry><indexterm><primary>D1</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D1</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a39790c2e81e43dc3b012da4993345f33"/>D1</entry><entry></entry></row><row><entry><indexterm><primary>D2</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D2</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a18c4d30f804112f40adfb9716168371b"/>D2</entry><entry></entry></row><row><entry><indexterm><primary>D3</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D3</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a49fa001e76cff4ef2328cad2d500ebf8"/>D3</entry><entry></entry></row><row><entry><indexterm><primary>D4</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D4</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a98d661ac0132e28287a916338705fb9d"/>D4</entry><entry></entry></row><row><entry><indexterm><primary>D5</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D5</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad04e9d4f2cda566b83d97defe6ad7329"/>D5</entry><entry></entry></row><row><entry><indexterm><primary>D6</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D6</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a65515fbbb5d0488311b0d8014eff51e0"/>D6</entry><entry></entry></row><row><entry><indexterm><primary>D7</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D7</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4b625a31bd1c875589e3376eb5bb2c24"/>D7</entry><entry></entry></row><row><entry><indexterm><primary>D8</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D8</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a25106a2983fb25913b98a45a7b0c0fb9"/>D8</entry><entry></entry></row><row><entry><indexterm><primary>D9</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D9</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0a78be6837e716cadc22abf312dfcd81"/>D9</entry><entry></entry></row><row><entry><indexterm><primary>Semicolon</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Semicolon</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5d1638abe993d0b78b4d08031316946e"/>Semicolon</entry><entry></entry></row><row><entry><indexterm><primary>Equal</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Equal</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af12cb1ad7793344ad2ddea1fa89159c5"/>Equal</entry><entry></entry></row><row><entry><indexterm><primary>A</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>A</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19add68b7d71e064c81a45b2aa70a225c06"/>A</entry><entry></entry></row><row><entry><indexterm><primary>B</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>B</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a481a0e751fbaab34f50cd69429362dfb"/>B</entry><entry></entry></row><row><entry><indexterm><primary>C</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>C</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9944323413beed4556c3db4e80672a69"/>C</entry><entry></entry></row><row><entry><indexterm><primary>D</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>D</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afa01245dcdfacd06c578ec02111ad27a"/>D</entry><entry></entry></row><row><entry><indexterm><primary>E</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>E</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9cc6f53aeace4a179fe59213ecbc91e3"/>E</entry><entry></entry></row><row><entry><indexterm><primary>F</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afca1befd2d577812bad5e1000dd3f0d3"/>F</entry><entry></entry></row><row><entry><indexterm><primary>G</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>G</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a43ed04207ffc8464a329d0fa9fa57957"/>G</entry><entry></entry></row><row><entry><indexterm><primary>H</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>H</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad4deb8dbf136d8dfc77fc72638ddc03e"/>H</entry><entry></entry></row><row><entry><indexterm><primary>I</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>I</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a763a35b2b74701150a338f40d340e048"/>I</entry><entry></entry></row><row><entry><indexterm><primary>J</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>J</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad13e14d90cf66db5dfb7f440a645e1e1"/>J</entry><entry></entry></row><row><entry><indexterm><primary>K</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>K</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a77631642125cae8e7be6667579812f2e"/>K</entry><entry></entry></row><row><entry><indexterm><primary>L</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>L</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a851d04162de4831d0a3335b534ed6596"/>L</entry><entry></entry></row><row><entry><indexterm><primary>M</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>M</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab4e5ba2cf8a352b7e87a693ecdbca5b9"/>M</entry><entry></entry></row><row><entry><indexterm><primary>N</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>N</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2a2a59513980d4592adea169939ee469"/>N</entry><entry></entry></row><row><entry><indexterm><primary>O</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>O</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a7fcb22614caa1c291daebc5b76b409e8"/>O</entry><entry></entry></row><row><entry><indexterm><primary>P</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>P</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a722331098d2459f38455053cd51f0f0a"/>P</entry><entry></entry></row><row><entry><indexterm><primary>Q</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Q</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a40e18f99d6ac5375db066508d71217b6"/>Q</entry><entry></entry></row><row><entry><indexterm><primary>R</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>R</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a909e1986507a0711b02cd85e2d0ca9fd"/>R</entry><entry></entry></row><row><entry><indexterm><primary>S</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>S</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19add8e32290ffe653c2bc442e19afebada"/>S</entry><entry></entry></row><row><entry><indexterm><primary>T</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>T</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad9ee97f4bd47c7991b54c5a2fb0dbd7e"/>T</entry><entry></entry></row><row><entry><indexterm><primary>U</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>U</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a53b7d4ab9623663886beabd36f6b4515"/>U</entry><entry></entry></row><row><entry><indexterm><primary>V</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>V</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa680000b5fce66bd2b84b86b72f11818"/>V</entry><entry></entry></row><row><entry><indexterm><primary>W</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>W</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a741b298950f275770888bc052670deff"/>W</entry><entry></entry></row><row><entry><indexterm><primary>X</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>X</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0685e5ee0a0c36e01c069a8bb275e2d1"/>X</entry><entry></entry></row><row><entry><indexterm><primary>Y</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Y</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae6f60eb9089a8d5c6e8af65027a19066"/>Y</entry><entry></entry></row><row><entry><indexterm><primary>Z</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Z</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a091803cb609677c57389142b4a32f370"/>Z</entry><entry></entry></row><row><entry><indexterm><primary>LeftBracket</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>LeftBracket</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a700bd47f1431af90a5cc03e8ef291df0"/>LeftBracket</entry><entry></entry></row><row><entry><indexterm><primary>Backslash</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Backslash</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a8e50e87138c9189b90ec36d64a9d52c7"/>Backslash</entry><entry></entry></row><row><entry><indexterm><primary>RightBracket</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>RightBracket</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae94df52004920f8ce806d10a93d88e71"/>RightBracket</entry><entry></entry></row><row><entry><indexterm><primary>GraveAccent</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>GraveAccent</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a10caa8f2899f93de045e480b465046f7"/>GraveAccent</entry><entry></entry></row><row><entry><indexterm><primary>World1</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>World1</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4e1f25fc160be45c2c9cd3161b12d256"/>World1</entry><entry></entry></row><row><entry><indexterm><primary>World2</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>World2</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a94e6bb0caf169f9a6d8ca335e53a76ef"/>World2</entry><entry></entry></row><row><entry><indexterm><primary>Escape</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Escape</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aba4b6ac4ba82f73bac67152d7821b0e1"/>Escape</entry><entry></entry></row><row><entry><indexterm><primary>Enter</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Enter</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a72dc6dcb9433c4d516802e84a0093066"/>Enter</entry><entry></entry></row><row><entry><indexterm><primary>Tab</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Tab</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae4892326b30004d2f4054ba8a078626c"/>Tab</entry><entry></entry></row><row><entry><indexterm><primary>Backspace</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Backspace</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a1cf8a10b01c7e09066d38ba88fe4ec59"/>Backspace</entry><entry></entry></row><row><entry><indexterm><primary>Insert</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Insert</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab4eba8c5d5d11c8a73ea14e6ecef42bf"/>Insert</entry><entry></entry></row><row><entry><indexterm><primary>Delete</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Delete</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab898602092ff348df39e4eb6d7aab592"/>Delete</entry><entry></entry></row><row><entry><indexterm><primary>Right</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Right</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a27aa4d4804b1c69f0a5943983d5cbd2c"/>Right</entry><entry></entry></row><row><entry><indexterm><primary>Left</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Left</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a87007dff1ed9de5660f67c7726dee0ac"/>Left</entry><entry></entry></row><row><entry><indexterm><primary>Down</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Down</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ac2b0a04e1e24a8caad45ab6537876bce"/>Down</entry><entry></entry></row><row><entry><indexterm><primary>Up</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Up</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aea676057e6a264a78c68ac844564a02e"/>Up</entry><entry></entry></row><row><entry><indexterm><primary>PageUp</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>PageUp</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afafe843569dd61d62a5d8c154c12ac28"/>PageUp</entry><entry></entry></row><row><entry><indexterm><primary>PageDown</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>PageDown</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3c396585439e9684c2d181525b107ccf"/>PageDown</entry><entry></entry></row><row><entry><indexterm><primary>Home</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Home</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9344720e55a69ce4b362f86d654273fa"/>Home</entry><entry></entry></row><row><entry><indexterm><primary>End</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>End</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a097ac6e0bbb062da1a68b7332c25a5d3"/>End</entry><entry></entry></row><row><entry><indexterm><primary>CapsLock</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>CapsLock</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a667fccea4da400eb9ff242a077c47e06"/>CapsLock</entry><entry></entry></row><row><entry><indexterm><primary>ScrollLock</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>ScrollLock</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3fafff61e91a0645e9d69115b470a1b5"/>ScrollLock</entry><entry></entry></row><row><entry><indexterm><primary>NumLock</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>NumLock</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af72d1d8f95ce86cbb3166262a2b71195"/>NumLock</entry><entry></entry></row><row><entry><indexterm><primary>PrintScreen</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>PrintScreen</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5144e724e7f8896e9103a6a0264d415e"/>PrintScreen</entry><entry></entry></row><row><entry><indexterm><primary>Pause</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Pause</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6ab4f0e5eb24b38b7765e716fbe80623"/>Pause</entry><entry></entry></row><row><entry><indexterm><primary>F1</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F1</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19acc4c205d1dfb96bf3734988db609df0d"/>F1</entry><entry></entry></row><row><entry><indexterm><primary>F2</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F2</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae3fd1c80dcd687f5167264d6085bbcfd"/>F2</entry><entry></entry></row><row><entry><indexterm><primary>F3</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F3</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab563523d136ab9baaaaa540a18a4f34d"/>F3</entry><entry></entry></row><row><entry><indexterm><primary>F4</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F4</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a52716c3f671723c5f38d27f28b040b83"/>F4</entry><entry></entry></row><row><entry><indexterm><primary>F5</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F5</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9548e6c03e754a384bb1da78a1cd70fc"/>F5</entry><entry></entry></row><row><entry><indexterm><primary>F6</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F6</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a996c57984990188d6f55c7032d4da7c4"/>F6</entry><entry></entry></row><row><entry><indexterm><primary>F7</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F7</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a103727c0e7fd4241eb6d39242fa7a37e"/>F7</entry><entry></entry></row><row><entry><indexterm><primary>F8</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F8</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ab10bbbe0218952c200d672f09d3304cd"/>F8</entry><entry></entry></row><row><entry><indexterm><primary>F9</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F9</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae08c027dc8cbb4401cf0a8a08b89a986"/>F9</entry><entry></entry></row><row><entry><indexterm><primary>F10</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F10</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9842edcae9f371c8ec47efe25659c2a6"/>F10</entry><entry></entry></row><row><entry><indexterm><primary>F11</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F11</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4d4fb53f9f8dcfe6884e3c7323ac4c65"/>F11</entry><entry></entry></row><row><entry><indexterm><primary>F12</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F12</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a0706402df242753334918177bc535051"/>F12</entry><entry></entry></row><row><entry><indexterm><primary>F13</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F13</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a05be435a964d69d14344381baeeb86d5"/>F13</entry><entry></entry></row><row><entry><indexterm><primary>F14</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F14</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a27c4fc5aa4a567f716c8d81f2ae2d197"/>F14</entry><entry></entry></row><row><entry><indexterm><primary>F15</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F15</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9008ea027e237dddd75952819aaab762"/>F15</entry><entry></entry></row><row><entry><indexterm><primary>F16</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F16</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a19f1e3f4ec63fa6dc0148404e3f760c4"/>F16</entry><entry></entry></row><row><entry><indexterm><primary>F17</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F17</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae7a6599ea1c3a42db86a32855a897d9f"/>F17</entry><entry></entry></row><row><entry><indexterm><primary>F18</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F18</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af12aed6ab44bfbc2870800078caeff14"/>F18</entry><entry></entry></row><row><entry><indexterm><primary>F19</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F19</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a2f47f6df78232e5fa66b527257871f91"/>F19</entry><entry></entry></row><row><entry><indexterm><primary>F20</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F20</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aadf56eb6dca08ec7d84ba788bffeb9e0"/>F20</entry><entry></entry></row><row><entry><indexterm><primary>F21</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F21</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a69586ec7b1a540be8e84d39d106a6b4e"/>F21</entry><entry></entry></row><row><entry><indexterm><primary>F22</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F22</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19adcae36412813dedb8d9d72d2ba405308"/>F22</entry><entry></entry></row><row><entry><indexterm><primary>F23</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F23</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad36feecd1740682cf88de00c930a38ea"/>F23</entry><entry></entry></row><row><entry><indexterm><primary>F24</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F24</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af5bb2aea52396f79bb89bb3809d8df8a"/>F24</entry><entry></entry></row><row><entry><indexterm><primary>F25</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>F25</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a34256b3dc6ff0bc619d7e8f66e16db02"/>F25</entry><entry></entry></row><row><entry><indexterm><primary>KP0</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP0</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aa5824fc84ef00b00a64cab62a5745020"/>KP0</entry><entry></entry></row><row><entry><indexterm><primary>KP1</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP1</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a9edff3aa8687767357092e7d866accaf"/>KP1</entry><entry></entry></row><row><entry><indexterm><primary>KP2</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP2</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a3cc93542b7e2254bba4d5ab1692dde53"/>KP2</entry><entry></entry></row><row><entry><indexterm><primary>KP3</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP3</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae31054ace3f68e4f58f4e6a55cf617b0"/>KP3</entry><entry></entry></row><row><entry><indexterm><primary>KP4</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP4</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a203211fc1918a418506a8d04788d8527"/>KP4</entry><entry></entry></row><row><entry><indexterm><primary>KP5</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP5</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aff8cc5b480da3d55d905aa367eef7f8e"/>KP5</entry><entry></entry></row><row><entry><indexterm><primary>KP6</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP6</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4c18997d02b5edc0afd40f74acb92769"/>KP6</entry><entry></entry></row><row><entry><indexterm><primary>KP7</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP7</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae645d7a45c3015d510745b2ae378c39d"/>KP7</entry><entry></entry></row><row><entry><indexterm><primary>KP8</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP8</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19aeed7c7f54d4a900a4dc61c59c439266f"/>KP8</entry><entry></entry></row><row><entry><indexterm><primary>KP9</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KP9</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a08bbdc42242e7dce887fef4da36be4f4"/>KP9</entry><entry></entry></row><row><entry><indexterm><primary>KPDecimal</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KPDecimal</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a614211c7a1da49c752fe55ae7d2550fb"/>KPDecimal</entry><entry></entry></row><row><entry><indexterm><primary>KPDivide</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KPDivide</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6d4e88f7c366b1e27ddbe5a7456d8b1b"/>KPDivide</entry><entry></entry></row><row><entry><indexterm><primary>KPMultiply</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KPMultiply</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a67f07f88f17f312f6d30b180dda83024"/>KPMultiply</entry><entry></entry></row><row><entry><indexterm><primary>KPSubtract</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KPSubtract</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad376c7271f1901f3ef3bcd3e2538adb3"/>KPSubtract</entry><entry></entry></row><row><entry><indexterm><primary>KPAdd</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KPAdd</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a5878c6bf8edc78fe8f525ee3ee0e318b"/>KPAdd</entry><entry></entry></row><row><entry><indexterm><primary>KPEnter</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KPEnter</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ae9d793391546fbac2dbcb93abce6e262"/>KPEnter</entry><entry></entry></row><row><entry><indexterm><primary>KPEqual</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>KPEqual</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4454f5f7950e126ffadfb6dc6393fb05"/>KPEqual</entry><entry></entry></row><row><entry><indexterm><primary>LeftShift</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>LeftShift</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19ad5b3b2361f987d76fdce33669b289588"/>LeftShift</entry><entry></entry></row><row><entry><indexterm><primary>LeftControl</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>LeftControl</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19abfca106ad161ce08555179266bea622a"/>LeftControl</entry><entry></entry></row><row><entry><indexterm><primary>LeftAlt</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>LeftAlt</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4d746a5d0471e2d85ac4065847dd3200"/>LeftAlt</entry><entry></entry></row><row><entry><indexterm><primary>LeftSuper</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>LeftSuper</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a4e8e98998626a0d79f4b4b5fc999c075"/>LeftSuper</entry><entry></entry></row><row><entry><indexterm><primary>RightShift</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>RightShift</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a6e44ff13ad3d41a223de707b20119634"/>RightShift</entry><entry></entry></row><row><entry><indexterm><primary>RightControl</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>RightControl</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af8ce329a1a0ecbe0b6390ee59e3c853c"/>RightControl</entry><entry></entry></row><row><entry><indexterm><primary>RightAlt</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>RightAlt</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19a91f8568fac18a029fbc9904a6fb9989a"/>RightAlt</entry><entry></entry></row><row><entry><indexterm><primary>RightSuper</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>RightSuper</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19afd8d743417c3424aca8e59d92dfe573b"/>RightSuper</entry><entry></entry></row><row><entry><indexterm><primary>Menu</primary><secondary>luna::input</secondary></indexterm>
+<indexterm><primary>luna::input</primary><secondary>Menu</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1input_1a4476803d517ed1a5009ebc503aeafa19af1a9bd1a7125f0bec641a0833f67f976"/>Menu</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+</section>

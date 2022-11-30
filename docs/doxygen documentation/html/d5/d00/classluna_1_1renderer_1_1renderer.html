@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -98,20 +99,135 @@ $(document).ready(function(){initNavTree('d5/d00/classluna_1_1renderer_1_1render
 <div class="contents">
 
 <p><code>#include &lt;renderer.h&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for luna::renderer::renderer:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dd/d00/classluna_1_1renderer_1_1renderer__coll__graph.png" border="0" usemap="#aluna_1_1renderer_1_1renderer_coll__map" alt="Collaboration graph"/></div>
+<map name="aluna_1_1renderer_1_1renderer_coll__map" id="aluna_1_1renderer_1_1renderer_coll__map">
+<area shape="rect" title=" " coords="5,401,161,427"/>
+<area shape="rect" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html" title=" " coords="7,299,160,339"/>
+<area shape="rect" title=" " coords="9,196,157,236"/>
+<area shape="rect" title=" " coords="27,93,140,119"/>
+<area shape="rect" title=" " coords="64,5,103,31"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae03c7718cd0e231dbb9b89c8ecbf944f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#ae03c7718cd0e231dbb9b89c8ecbf944f">init</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">vulkan::window</a> &gt; &amp;window)</td></tr>
+<tr class="memdesc:ae03c7718cd0e231dbb9b89c8ecbf944f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the main renderer class.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#ae03c7718cd0e231dbb9b89c8ecbf944f">More...</a><br /></td></tr>
 <tr class="separator:ae03c7718cd0e231dbb9b89c8ecbf944f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8039520cf3cf0d8d76248ad7a03b8d06"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a8039520cf3cf0d8d76248ad7a03b8d06">newFrame</a> ()</td></tr>
-<tr class="separator:a8039520cf3cf0d8d76248ad7a03b8d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89801f68cbdc59a324ba80754a7c5eb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#ac89801f68cbdc59a324ba80754a7c5eb">shutdown</a> ()</td></tr>
+<tr class="separator:ac89801f68cbdc59a324ba80754a7c5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc22ac127f4932d064a8653ec4c5d18b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#adc22ac127f4932d064a8653ec4c5d18b">createFrame</a> ()</td></tr>
+<tr class="memdesc:adc22ac127f4932d064a8653ec4c5d18b"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a frame in the render pipline based on the given input.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#adc22ac127f4932d064a8653ec4c5d18b">More...</a><br /></td></tr>
+<tr class="separator:adc22ac127f4932d064a8653ec4c5d18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32fcf021d4fb98074c80ef9bdfd81d18"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a32fcf021d4fb98074c80ef9bdfd81d18">newFrame</a> ()</td></tr>
+<tr class="memdesc:a32fcf021d4fb98074c80ef9bdfd81d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">renders a new frame.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a32fcf021d4fb98074c80ef9bdfd81d18">More...</a><br /></td></tr>
+<tr class="separator:a32fcf021d4fb98074c80ef9bdfd81d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb864b4498cbb6eeb0240cd9a6b2af44"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#afb864b4498cbb6eeb0240cd9a6b2af44">beginScene</a> ()</td></tr>
+<tr class="memdesc:afb864b4498cbb6eeb0240cd9a6b2af44"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts recording a new scene.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#afb864b4498cbb6eeb0240cd9a6b2af44">More...</a><br /></td></tr>
+<tr class="separator:afb864b4498cbb6eeb0240cd9a6b2af44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a301fe59cdfcf8a1bb2d5d92b08648921"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921">Submit</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;<a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a>, const uint64_t &amp;indexCount=0)</td></tr>
+<tr class="memdesc:a301fe59cdfcf8a1bb2d5d92b08648921"><td class="mdescLeft">&#160;</td><td class="mdescRight">submits a <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> to be rendered containing vertexBuffers and 1 <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>.  <a href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921">More...</a><br /></td></tr>
+<tr class="separator:a301fe59cdfcf8a1bb2d5d92b08648921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d3cc118bda57598c1d5c5524b8bce15"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a6d3cc118bda57598c1d5c5524b8bce15">endScene</a> ()</td></tr>
+<tr class="separator:a6d3cc118bda57598c1d5c5524b8bce15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a3dfff9eb6b64c433ed911ef45e9173d9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d6/d00/classluna_1_1renderer_1_1device.html">device</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a3dfff9eb6b64c433ed911ef45e9173d9">rendererDevice</a></td></tr>
 <tr class="separator:a3dfff9eb6b64c433ed911ef45e9173d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a315cc5b92efec4d9676e8123f366ea3d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html">pipeline</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a315cc5b92efec4d9676e8123f366ea3d">rendererPipeline</a></td></tr>
+<tr class="separator:a315cc5b92efec4d9676e8123f366ea3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b2c934841a3d81adb002dc071f6969a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a1b2c934841a3d81adb002dc071f6969a">layout</a></td></tr>
+<tr class="separator:a1b2c934841a3d81adb002dc071f6969a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5de4c1fd2e59811a027b630a743799f5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../dc/d00/classluna_1_1gui_1_1vulkan_imgui.html">gui::vulkanImgui</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a5de4c1fd2e59811a027b630a743799f5">gui</a></td></tr>
+<tr class="separator:a5de4c1fd2e59811a027b630a743799f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d89759f36763e0e9cbff69d10ee676b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1renderer.html#a2d89759f36763e0e9cbff69d10ee676b">Selected</a></td></tr>
+<tr class="separator:a2d89759f36763e0e9cbff69d10ee676b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="afb864b4498cbb6eeb0240cd9a6b2af44" name="afb864b4498cbb6eeb0240cd9a6b2af44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb864b4498cbb6eeb0240cd9a6b2af44">&#9670;&#160;</a></span>beginScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::beginScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>starts recording a new scene. </p>
+
+</div>
+</div>
+<a id="adc22ac127f4932d064a8653ec4c5d18b" name="adc22ac127f4932d064a8653ec4c5d18b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc22ac127f4932d064a8653ec4c5d18b">&#9670;&#160;</a></span>createFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::createFrame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>create a frame in the render pipline based on the given input. </p>
+
+</div>
+</div>
+<a id="a6d3cc118bda57598c1d5c5524b8bce15" name="a6d3cc118bda57598c1d5c5524b8bce15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d3cc118bda57598c1d5c5524b8bce15">&#9670;&#160;</a></span>endScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::endScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >brief ends the scene. </p>
+
+</div>
+</div>
 <a id="ae03c7718cd0e231dbb9b89c8ecbf944f" name="ae03c7718cd0e231dbb9b89c8ecbf944f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae03c7718cd0e231dbb9b89c8ecbf944f">&#9670;&#160;</a></span>init()</h2>
 
@@ -136,10 +252,18 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>the main renderer class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>a ref to the main window </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a8039520cf3cf0d8d76248ad7a03b8d06" name="a8039520cf3cf0d8d76248ad7a03b8d06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8039520cf3cf0d8d76248ad7a03b8d06">&#9670;&#160;</a></span>newFrame()</h2>
+<a id="a32fcf021d4fb98074c80ef9bdfd81d18" name="a32fcf021d4fb98074c80ef9bdfd81d18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32fcf021d4fb98074c80ef9bdfd81d18">&#9670;&#160;</a></span>newFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -148,7 +272,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void luna::renderer::renderer::newFrame </td>
+          <td class="memname">void luna::renderer::renderer::newFrame </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -161,9 +285,126 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>renders a new frame. </p>
+
+</div>
+</div>
+<a id="ac89801f68cbdc59a324ba80754a7c5eb" name="ac89801f68cbdc59a324ba80754a7c5eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac89801f68cbdc59a324ba80754a7c5eb">&#9670;&#160;</a></span>shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::shutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >@biref shutsdown the base renderer. </p>
+
+</div>
+</div>
+<a id="a301fe59cdfcf8a1bb2d5d92b08648921" name="a301fe59cdfcf8a1bb2d5d92b08648921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a301fe59cdfcf8a1bb2d5d92b08648921">&#9670;&#160;</a></span>Submit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::renderer::Submit </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vertexArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>indexCount</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>submits a <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> to be rendered containing vertexBuffers and 1 <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>. </p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> generation is done by the 2D/3D renderer api's respectevly. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5de4c1fd2e59811a027b630a743799f5" name="a5de4c1fd2e59811a027b630a743799f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5de4c1fd2e59811a027b630a743799f5">&#9670;&#160;</a></span>gui</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt;<a class="el" href="../../dc/d00/classluna_1_1gui_1_1vulkan_imgui.html">gui::vulkanImgui</a>&gt; luna::renderer::renderer::gui</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b2c934841a3d81adb002dc071f6969a" name="a1b2c934841a3d81adb002dc071f6969a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b2c934841a3d81adb002dc071f6969a">&#9670;&#160;</a></span>layout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/structluna_1_1renderer_1_1pipeline_layout.html">renderer::pipelineLayout</a> luna::renderer::renderer::layout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3dfff9eb6b64c433ed911ef45e9173d9" name="a3dfff9eb6b64c433ed911ef45e9173d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3dfff9eb6b64c433ed911ef45e9173d9">&#9670;&#160;</a></span>rendererDevice</h2>
 
@@ -186,9 +427,53 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a315cc5b92efec4d9676e8123f366ea3d" name="a315cc5b92efec4d9676e8123f366ea3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a315cc5b92efec4d9676e8123f366ea3d">&#9670;&#160;</a></span>rendererPipeline</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt;<a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html">pipeline</a>&gt; luna::renderer::renderer::rendererPipeline</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d89759f36763e0e9cbff69d10ee676b" name="a2d89759f36763e0e9cbff69d10ee676b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d89759f36763e0e9cbff69d10ee676b">&#9670;&#160;</a></span>Selected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool luna::renderer::renderer::Selected</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/rendering/<a class="el" href="../../d6/d00/renderer_8h.html">renderer.h</a></li>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/rendering/<a class="el" href="../../d6/d00/renderer_8cpp.html">renderer.cpp</a></li>
+<li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<a class="el" href="../../d6/d00/renderer_8h.html">renderer.h</a></li>
+<li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<a class="el" href="../../d6/d00/renderer_8cpp.html">renderer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

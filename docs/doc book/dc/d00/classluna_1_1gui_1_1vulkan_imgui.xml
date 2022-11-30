@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1gui_1_1vulkan_imgui" xml:lang="en-US">
+<title>luna::gui::vulkanImgui Class Reference</title>
+<indexterm><primary>luna::gui::vulkanImgui</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanImgui.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1gui_1_1vulkan_imgui_1a85968b0c424bfc268beba53ef6d3c7f3">vulkanImgui</link> (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1pipeline">renderer::pipeline</link> &gt; <link linkend="_classluna_1_1gui_1_1vulkan_imgui_1adbcd205d5c43b5451bafe362d52b8293">pipeline</link>)</para>
+
+<para>initializes imgui for vulkan. </para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1gui_1_1vulkan_imgui_1aa85bfa5a580638deb001e80190d4341b">~vulkanImgui</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1pipeline">renderer::pipeline</link> &gt; <link linkend="_classluna_1_1gui_1_1vulkan_imgui_1adbcd205d5c43b5451bafe362d52b8293">pipeline</link></para>
+</listitem>
+            <listitem><para>VkDescriptorPool <link linkend="_classluna_1_1gui_1_1vulkan_imgui_1a1bd203247fff254bda9303d98dbb651d">imguiPool</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1gui_1_1vulkan_imgui_1a85968b0c424bfc268beba53ef6d3c7f3"/><section>
+    <title>vulkanImgui()</title>
+<indexterm><primary>vulkanImgui</primary><secondary>luna::gui::vulkanImgui</secondary></indexterm>
+<indexterm><primary>luna::gui::vulkanImgui</primary><secondary>vulkanImgui</secondary></indexterm>
+<para><computeroutput>luna::gui::vulkanImgui::vulkanImgui (<link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt; <link linkend="_classluna_1_1renderer_1_1pipeline">renderer::pipeline</link> &gt; pipeline)</computeroutput></para><para>
+
+<para>initializes imgui for vulkan. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;renderer::pipeline&gt;</link></entry><entry>
+<para>pipeline reference to the vulkan pipeline in base class form </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1gui_1_1vulkan_imgui_1aa85bfa5a580638deb001e80190d4341b"/><section>
+    <title>~vulkanImgui()</title>
+<indexterm><primary>~vulkanImgui</primary><secondary>luna::gui::vulkanImgui</secondary></indexterm>
+<indexterm><primary>luna::gui::vulkanImgui</primary><secondary>~vulkanImgui</secondary></indexterm>
+<para><computeroutput>luna::gui::vulkanImgui::~vulkanImgui ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1gui_1_1vulkan_imgui_1a1bd203247fff254bda9303d98dbb651d"/><section>
+    <title>imguiPool</title>
+<indexterm><primary>imguiPool</primary><secondary>luna::gui::vulkanImgui</secondary></indexterm>
+<indexterm><primary>luna::gui::vulkanImgui</primary><secondary>imguiPool</secondary></indexterm>
+<para><computeroutput>VkDescriptorPool luna::gui::vulkanImgui::imguiPool<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1gui_1_1vulkan_imgui_1adbcd205d5c43b5451bafe362d52b8293"/><section>
+    <title>pipeline</title>
+<indexterm><primary>pipeline</primary><secondary>luna::gui::vulkanImgui</secondary></indexterm>
+<indexterm><primary>luna::gui::vulkanImgui</primary><secondary>pipeline</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1ac8dc8be643504d1935e8e08d0f7d1d87">ref</link>&lt;<link linkend="_classluna_1_1renderer_1_1pipeline">renderer::pipeline</link>&gt; luna::gui::vulkanImgui::pipeline<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/<link linkend="_vulkan_imgui_8h">vulkanImgui.h</link>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/gui/<link linkend="_vulkan_imgui_8cpp">vulkanImgui.cpp</link></section>
+</section>

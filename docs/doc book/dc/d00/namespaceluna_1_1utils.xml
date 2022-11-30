@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceluna_1_1utils" xml:lang="en-US">
+<title>luna::utils Namespace Reference</title>
+<indexterm><primary>luna::utils</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structluna_1_1utils_1_1compile_spec">compileSpec</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1object_storage">objectStorage</link></para>
+
+<para>cached object memory class with a key handle. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1shader_compiler">shaderCompiler</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1shader_library">shaderLibrary</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1vector_cache">vectorCache</link></para>
+
+<para>a pretty optimal multithreaded vector cahce headeronly class. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1vulkan_allocator">vulkanAllocator</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1utils_1_1vulkan_object_factory">vulkanObjectFactory</link></para>
+
+<para>static class that creates vulkan objects like buffers and images. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">storageObject</link></para>
+</listitem>
+            <listitem><para>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link></para>
+</listitem>
+            <listitem><para>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1a4b35646c61e2f6d6702a975f67265c3b">allocationHandle</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">storageResult</link> { <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4">storageInvalidHandle</link> = 0
+, <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa">storageOpSucces</link> = 1
+, <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7">storageOpFailed</link> = 2
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781">compileLanguage</link> { <link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928">SPIR</link> = 0
+, <link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492">SPIR_V</link> = 1
+, <link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f">GLSL</link> = 2
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">cacheResult</link> { <?linebreak?><link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8">cacheMiss</link> = 0
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea">cacheHit</link> = 1
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847">cacheInvalidHandle</link> = 2
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86">cacheOpSucces</link> = 3
+, <?linebreak?><link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f">cacheOpFailed</link> = 4
+, <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f">CACHE_MAX_ENUM</link> = 5
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_namespaceluna_1_1utils_1a4b35646c61e2f6d6702a975f67265c3b"/><section>
+    <title>allocationHandle</title>
+<indexterm><primary>allocationHandle</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>allocationHandle</secondary></indexterm>
+<para><computeroutput>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1a4b35646c61e2f6d6702a975f67265c3b">luna::utils::allocationHandle</link></computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b"/><section>
+    <title>cacheObject</title>
+<indexterm><primary>cacheObject</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>cacheObject</secondary></indexterm>
+<para><computeroutput>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">luna::utils::cacheObject</link></computeroutput></para></section>
+<anchor xml:id="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8"/><section>
+    <title>storageObject</title>
+<indexterm><primary>storageObject</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>storageObject</secondary></indexterm>
+<para><computeroutput>typedef uint64_t <link linkend="_namespaceluna_1_1utils_1ad825369fbf31da905352dfe904085cd8">luna::utils::storageObject</link></computeroutput></para></section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0"/><section>
+    <title>cacheResult</title>
+<indexterm><primary>cacheResult</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>cacheResult</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">luna::utils::cacheResult</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>cacheMiss</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>cacheMiss</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0aff02b33eecd931f2af8688f8868af5d8"/>cacheMiss</entry><entry></entry></row><row><entry><indexterm><primary>cacheHit</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>cacheHit</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a0f3ee087feab563f369f7fd4496013ea"/>cacheHit</entry><entry></entry></row><row><entry><indexterm><primary>cacheInvalidHandle</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>cacheInvalidHandle</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0aa7b2eaa8dd9ae6becf6ce1168603d847"/>cacheInvalidHandle</entry><entry></entry></row><row><entry><indexterm><primary>cacheOpSucces</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>cacheOpSucces</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a9df525d5918b8fa41d1ed1213f578c86"/>cacheOpSucces</entry><entry></entry></row><row><entry><indexterm><primary>cacheOpFailed</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>cacheOpFailed</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a8e1d5f2c71544279150de0cf79aa9a0f"/>cacheOpFailed</entry><entry></entry></row><row><entry><indexterm><primary>CACHE_MAX_ENUM</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>CACHE_MAX_ENUM</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0a28536006d5a40610d9175ba053f0078f"/>CACHE_MAX_ENUM</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781"/><section>
+    <title>compileLanguage</title>
+<indexterm><primary>compileLanguage</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>compileLanguage</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781">luna::utils::compileLanguage</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>SPIR</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>SPIR</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781a5f0b7aa7a21f19e78bc2f6ecc18f4928"/>SPIR</entry><entry></entry></row><row><entry><indexterm><primary>SPIR_V</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>SPIR_V</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781aa1ad69c62e847b75c5e39de6be6dc492"/>SPIR_V</entry><entry></entry></row><row><entry><indexterm><primary>GLSL</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>GLSL</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1a5d7eb68510835acf5872fc7a29f0c781a58bb1491bac07a85b8c5e24fcf28086f"/>GLSL</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9"/><section>
+    <title>storageResult</title>
+<indexterm><primary>storageResult</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>storageResult</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9">luna::utils::storageResult</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>storageInvalidHandle</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>storageInvalidHandle</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9a7b2865664e6f3478c549b784561f40b4"/>storageInvalidHandle</entry><entry></entry></row><row><entry><indexterm><primary>storageOpSucces</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>storageOpSucces</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9a225a27d9c9d3b9ecb577f88ce5d040fa"/>storageOpSucces</entry><entry></entry></row><row><entry><indexterm><primary>storageOpFailed</primary><secondary>luna::utils</secondary></indexterm>
+<indexterm><primary>luna::utils</primary><secondary>storageOpFailed</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1utils_1a4441ab56334f815b0a8d413e0be275e9af1c7cad36105794d86145e24a5cfa6a7"/>storageOpFailed</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+</section>

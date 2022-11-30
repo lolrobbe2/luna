@@ -1,48 +1,163 @@
-\hypertarget{classluna_1_1renderer_1_1renderer}{}\doxysection{luna\+::renderer\+::renderer Class Reference}
+\hypertarget{classluna_1_1renderer_1_1renderer}{}\doxysubsection{luna\+::renderer\+::renderer Class Reference}
 \label{classluna_1_1renderer_1_1renderer}\index{luna::renderer::renderer@{luna::renderer::renderer}}
 
 
 {\ttfamily \#include $<$renderer.\+h$>$}
 
-\doxysubsection*{Static Public Member Functions}
+
+
+Collaboration diagram for luna\+::renderer\+::renderer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{dd/d00/classluna_1_1renderer_1_1renderer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}{init}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \&window)
+\begin{DoxyCompactList}\small\item\em the main renderer class. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_ac89801f68cbdc59a324ba80754a7c5eb}{shutdown}} ()
 \item 
-static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a8039520cf3cf0d8d76248ad7a03b8d06}{new\+Frame}} ()
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_adc22ac127f4932d064a8653ec4c5d18b}{create\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em create a frame in the render pipline based on the given input. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a32fcf021d4fb98074c80ef9bdfd81d18}{new\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em renders a new frame. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_afb864b4498cbb6eeb0240cd9a6b2af44}{begin\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em starts recording a new scene. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}{Submit}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, const uint64\+\_\+t \&index\+Count=0)
+\begin{DoxyCompactList}\small\item\em submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} to be rendered containing vertex\+Buffers and 1 \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a6d3cc118bda57598c1d5c5524b8bce15}{end\+Scene}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Static Private Attributes}
+\doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1device}{device}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a3dfff9eb6b64c433ed911ef45e9173d9}{renderer\+Device}}
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline}{pipeline}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a315cc5b92efec4d9676e8123f366ea3d}{renderer\+Pipeline}}
+\item 
+static \mbox{\hyperlink{structluna_1_1renderer_1_1pipeline_layout}{renderer\+::pipeline\+Layout}} \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a1b2c934841a3d81adb002dc071f6969a}{layout}}
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1gui_1_1vulkan_imgui}{gui\+::vulkan\+Imgui}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a5de4c1fd2e59811a027b630a743799f5}{gui}}
+\item 
+static bool \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a2d89759f36763e0e9cbff69d10ee676b}{Selected}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}\label{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}} 
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_afb864b4498cbb6eeb0240cd9a6b2af44}\label{classluna_1_1renderer_1_1renderer_afb864b4498cbb6eeb0240cd9a6b2af44}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!beginScene@{beginScene}}
+\index{beginScene@{beginScene}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{beginScene()}{beginScene()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::begin\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+starts recording a new scene. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_adc22ac127f4932d064a8653ec4c5d18b}\label{classluna_1_1renderer_1_1renderer_adc22ac127f4932d064a8653ec4c5d18b}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!createFrame@{createFrame}}
+\index{createFrame@{createFrame}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{createFrame()}{createFrame()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::create\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+create a frame in the render pipline based on the given input. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a6d3cc118bda57598c1d5c5524b8bce15}\label{classluna_1_1renderer_1_1renderer_a6d3cc118bda57598c1d5c5524b8bce15}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!endScene@{endScene}}
+\index{endScene@{endScene}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{endScene()}{endScene()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::end\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+brief ends the scene. \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}\label{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}} 
 \index{luna::renderer::renderer@{luna::renderer::renderer}!init@{init}}
 \index{init@{init}!luna::renderer::renderer@{luna::renderer::renderer}}
-\doxysubsubsection{\texorpdfstring{init()}{init()}}
+\doxyparagraph{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a8039520cf3cf0d8d76248ad7a03b8d06}\label{classluna_1_1renderer_1_1renderer_a8039520cf3cf0d8d76248ad7a03b8d06}} 
+
+
+the main renderer class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & a ref to the main window \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a32fcf021d4fb98074c80ef9bdfd81d18}\label{classluna_1_1renderer_1_1renderer_a32fcf021d4fb98074c80ef9bdfd81d18}} 
 \index{luna::renderer::renderer@{luna::renderer::renderer}!newFrame@{newFrame}}
 \index{newFrame@{newFrame}!luna::renderer::renderer@{luna::renderer::renderer}}
-\doxysubsubsection{\texorpdfstring{newFrame()}{newFrame()}}
-{\footnotesize\ttfamily static void luna\+::renderer\+::renderer\+::new\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\doxyparagraph{\texorpdfstring{newFrame()}{newFrame()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::new\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-\doxysubsection{Member Data Documentation}
+renders a new frame. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_ac89801f68cbdc59a324ba80754a7c5eb}\label{classluna_1_1renderer_1_1renderer_ac89801f68cbdc59a324ba80754a7c5eb}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+@biref shutsdown the base renderer. \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}\label{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!Submit@{Submit}}
+\index{Submit@{Submit}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{Submit()}{Submit()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::\+Submit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&}]{vertex\+Array,  }\item[{const uint64\+\_\+t \&}]{index\+Count = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} to be rendered containing vertex\+Buffers and 1 \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} generation is done by the 2D/3D renderer api\textquotesingle{}s respectevly. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a5de4c1fd2e59811a027b630a743799f5}\label{classluna_1_1renderer_1_1renderer_a5de4c1fd2e59811a027b630a743799f5}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!gui@{gui}}
+\index{gui@{gui}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{gui}{gui}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1gui_1_1vulkan_imgui}{gui\+::vulkan\+Imgui}}$>$ luna\+::renderer\+::renderer\+::gui\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a1b2c934841a3d81adb002dc071f6969a}\label{classluna_1_1renderer_1_1renderer_a1b2c934841a3d81adb002dc071f6969a}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!layout@{layout}}
+\index{layout@{layout}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{layout}{layout}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1renderer_1_1pipeline_layout}{renderer\+::pipeline\+Layout}} luna\+::renderer\+::renderer\+::layout\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
 \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a3dfff9eb6b64c433ed911ef45e9173d9}\label{classluna_1_1renderer_1_1renderer_a3dfff9eb6b64c433ed911ef45e9173d9}} 
 \index{luna::renderer::renderer@{luna::renderer::renderer}!rendererDevice@{rendererDevice}}
 \index{rendererDevice@{rendererDevice}!luna::renderer::renderer@{luna::renderer::renderer}}
-\doxysubsubsection{\texorpdfstring{rendererDevice}{rendererDevice}}
+\doxyparagraph{\texorpdfstring{rendererDevice}{rendererDevice}}
 {\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1device}{device}}$>$ luna\+::renderer\+::renderer\+::renderer\+Device\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a315cc5b92efec4d9676e8123f366ea3d}\label{classluna_1_1renderer_1_1renderer_a315cc5b92efec4d9676e8123f366ea3d}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!rendererPipeline@{rendererPipeline}}
+\index{rendererPipeline@{rendererPipeline}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{rendererPipeline}{rendererPipeline}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1pipeline}{pipeline}}$>$ luna\+::renderer\+::renderer\+::renderer\+Pipeline\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a2d89759f36763e0e9cbff69d10ee676b}\label{classluna_1_1renderer_1_1renderer_a2d89759f36763e0e9cbff69d10ee676b}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!Selected@{Selected}}
+\index{Selected@{Selected}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{Selected}{Selected}}
+{\footnotesize\ttfamily bool luna\+::renderer\+::renderer\+::\+Selected\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/robbe/source/repos/luna/luna/src/core/rendering/\mbox{\hyperlink{renderer_8h}{renderer.\+h}}\item 
-C\+:/\+Users/robbe/source/repos/luna/luna/src/core/rendering/\mbox{\hyperlink{renderer_8cpp}{renderer.\+cpp}}\end{DoxyCompactItemize}
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{renderer_8h}{renderer.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{renderer_8cpp}{renderer.\+cpp}}\end{DoxyCompactItemize}

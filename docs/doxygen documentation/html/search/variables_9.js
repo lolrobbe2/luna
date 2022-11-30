@@ -1,17 +1,16 @@
 var searchData=
 [
-  ['m_5fbutton_0',['m_Button',['../d1/d00/classluna_1_1mouse_button_event.html#a05acef1c7a20511a796acf717d515e61',1,'luna::mouseButtonEvent']]],
-  ['m_5fevent_1',['m_Event',['../d1/d00/classluna_1_1event_dispatcher.html#a698d783d82c578003ef4cede08e7d913',1,'luna::eventDispatcher']]],
-  ['m_5fheight_2',['m_Height',['../d1/d00/classluna_1_1window_resize_event.html#a793b20085fda6534e73f7db4a99cefec',1,'luna::windowResizeEvent']]],
-  ['m_5fisrepeat_3',['m_IsRepeat',['../d6/d00/classluna_1_1key_pressed_event.html#a9847ffbdbf8ea9cc9ffbcd599378ba02',1,'luna::keyPressedEvent']]],
-  ['m_5fkeycode_4',['m_keyCode',['../de/d00/classluna_1_1key_event.html#a4553b9d41faace69c8e8f5b2967c2c68',1,'luna::keyEvent']]],
-  ['m_5fmousex_5',['m_MouseX',['../d4/d00/classluna_1_1mouse_moved_event.html#a944b123d0d5130fbdd44f1ae0711a90c',1,'luna::mouseMovedEvent']]],
-  ['m_5fmousey_6',['m_MouseY',['../d4/d00/classluna_1_1mouse_moved_event.html#ac2ecc7e82112ae1d1b8bbf26976b4d92',1,'luna::mouseMovedEvent']]],
-  ['m_5fwidth_7',['m_Width',['../d1/d00/classluna_1_1window_resize_event.html#a297bc9536f045a25243c8dc1606c3388',1,'luna::windowResizeEvent']]],
-  ['m_5fxoffset_8',['m_XOffset',['../d6/d00/classluna_1_1mouse_scrolled_event.html#ab5c10c416d1789187c2ee9f8d07f3170',1,'luna::mouseScrolledEvent']]],
-  ['m_5fyoffset_9',['m_YOffset',['../d6/d00/classluna_1_1mouse_scrolled_event.html#a38c91d8e8ded42a1a47b7544e3ea9084',1,'luna::mouseScrolledEvent']]],
-  ['mdata_10',['mData',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a0c11df51a011eb590f0ce06df639c9c9',1,'luna::vulkan::windowsWindow']]],
-  ['mswapchain_11',['mSwapchain',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a5d8bebe22f253280ad9709ab4f761692',1,'luna::vulkan::vulkanSwapchain']]],
-  ['mswapchainspec_12',['mSwapchainSpec',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a46fb78c2a4568ac3f0c09f86c632e5f9',1,'luna::vulkan::vulkanSwapchain']]],
-  ['mwindow_13',['mWindow',['../de/d00/classluna_1_1application_1_1application.html#ac76f4ed32350c50b364d7f4c44ea9f91',1,'luna::application::application']]]
+  ['imageavailablesemaphores_0',['imageAvailableSemaphores',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aff2c0465f6027bc618c93a03d431d261',1,'luna::vulkan::vulkanPipeline']]],
+  ['imagesinflight_1',['imagesInFlight',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afcdd27058313bb5bb79fcabef1cb8433',1,'luna::vulkan::vulkanPipeline']]],
+  ['imguipool_2',['imguiPool',['../dc/d00/classluna_1_1gui_1_1vulkan_imgui.html#a1bd203247fff254bda9303d98dbb651d',1,'luna::gui::vulkanImgui']]],
+  ['imguirenderpass_3',['imGuiRenderPass',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a9e60d36b96a83342ad1ee3147e65924a',1,'luna::vulkan::vulkanPipeline']]],
+  ['indexbuffer_4',['indexBuffer',['../d5/d00/classluna_1_1renderer_1_1vertex_array.html#a0bb45f5681e220fc61aba6329909630d',1,'luna::renderer::vertexArray']]],
+  ['indexcount_5',['indexCount',['../d3/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command.html#aecb12fcf6b28a82a9f84a4527a0cc227',1,'luna::vulkan::vulkanPipeline::drawCommand']]],
+  ['indices_6',['indices',['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html#afc101e8ff95c164233039733757c674c',1,'luna::vulkan::swapchainSpec']]],
+  ['inflightfences_7',['inFlightFences',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa60424dee8b03d13a3b706c023f807a2',1,'luna::vulkan::vulkanPipeline']]],
+  ['init_8',['init',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#aa743087e664008a385d6542fbd067f64',1,'luna::vulkan::vulkanSwapchain']]],
+  ['inputassemblystatecreateinfo_9',['inputAssemblyStateCreateInfo',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa5597157ef687f2fccf732b2ed7e1190',1,'luna::vulkan::vulkanPipeline']]],
+  ['inputdescriptions_10',['inputDescriptions',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ac18f07bcb65f4c08a117151e658f7d59',1,'luna::vulkan::vulkanPipeline']]],
+  ['instance_11',['instance',['../df/d00/structluna_1_1vulkan_1_1vulkan_device_1_1device_handles.html#a28c87ce72ffb17ecf112eb4ac40e90c9',1,'luna::vulkan::vulkanDevice::deviceHandles']]],
+  ['isglfwinit_12',['isGlfwInit',['../df/d00/namespaceluna_1_1vulkan.html#ab01e7cae0075a7bf25b9431954ba665f',1,'luna::vulkan']]]
 ];

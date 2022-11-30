@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_df20f0ee76ed8d29eaa9d6fa02f39f41" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src Directory Reference</primary></indexterm>
+Directory dependency graph for src:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_df20f0ee76ed8d29eaa9d6fa02f39f41_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_4191ea969c1318c0744e5e98644b759d">core</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_lnpch_8cpp">lnpch.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_lnpch_8h">lnpch.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_luna_8h">luna.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

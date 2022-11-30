@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_553cc0e7a3810729969e84725d87b753" xml:lang="en-US">
+<title>C:/Users/robbe/source/repos/lolrobbe2/luna/bin/release-windows-x86_64 Directory Reference</title>
+<indexterm><primary>C:/Users/robbe/source/repos/lolrobbe2/luna/bin/release-windows-x86_64 Directory Reference</primary></indexterm>
+Directory dependency graph for release-windows-x86_64:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_553cc0e7a3810729969e84725d87b753_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_1e653032bc405bf60be858c3d9d84387">x64</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

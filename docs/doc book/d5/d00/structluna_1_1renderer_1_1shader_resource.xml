@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1renderer_1_1shader_resource" xml:lang="en-US">
+<title>luna::renderer::shaderResource Struct Reference</title>
+<indexterm><primary>luna::renderer::shaderResource</primary></indexterm>
+<para>
+<computeroutput>#include &lt;shader.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::renderer::shaderResource:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/structluna_1_1renderer_1_1shader_resource__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1">typeClass</link> <link linkend="_structluna_1_1renderer_1_1shader_resource_1a874067ad10e7afca9daae124a760edc1">resourceClass</link> = <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a72c1fc0f8cc2ca24d58b0ee1c3965de4">uniformBuffers</link></para>
+</listitem>
+            <listitem><para><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">typeId</link> <link linkend="_structluna_1_1renderer_1_1shader_resource_1a4d3d3caddefb2e6e0366a0ef2a886c61">type</link> = <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc">Unknown</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1renderer_1_1shader_resource_1a9f04db9ef1c5ae026595b9afd5b9ebeb">location</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1renderer_1_1shader_resource_1afceeab0229374db41b07adfa2b81d307">set</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1renderer_1_1shader_resource_1ae2fff157773c98ad8a6c1f5039d0bfd9">binding</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1renderer_1_1shader_resource_1a99a8588cd848916fb71d896ace78e081">stride</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structluna_1_1renderer_1_1shader_resource_1a6c4a9f3232600481eefb1aa756b78472">offset</link> = 0</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_structluna_1_1renderer_1_1shader_resource_1a55c4d7c9996badbdc53e0438a98f36a2">name</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_structluna_1_1renderer_1_1shader_resource">shaderResource</link> &gt; <link linkend="_structluna_1_1renderer_1_1shader_resource_1aaec1e8d55b7b5c5cf55ab78344723eed">members</link> {}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1ae2fff157773c98ad8a6c1f5039d0bfd9"/><section>
+    <title>binding</title>
+<indexterm><primary>binding</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>binding</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::shaderResource::binding = 0</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1a9f04db9ef1c5ae026595b9afd5b9ebeb"/><section>
+    <title>location</title>
+<indexterm><primary>location</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>location</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::shaderResource::location = 0</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1aaec1e8d55b7b5c5cf55ab78344723eed"/><section>
+    <title>members</title>
+<indexterm><primary>members</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>members</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_structluna_1_1renderer_1_1shader_resource">shaderResource</link>&gt; luna::renderer::shaderResource::members {}</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1a55c4d7c9996badbdc53e0438a98f36a2"/><section>
+    <title>name</title>
+<indexterm><primary>name</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>name</secondary></indexterm>
+<para><computeroutput>std::string luna::renderer::shaderResource::name</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1a6c4a9f3232600481eefb1aa756b78472"/><section>
+    <title>offset</title>
+<indexterm><primary>offset</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>offset</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::shaderResource::offset = 0</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1a874067ad10e7afca9daae124a760edc1"/><section>
+    <title>resourceClass</title>
+<indexterm><primary>resourceClass</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>resourceClass</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1">typeClass</link> luna::renderer::shaderResource::resourceClass = <link linkend="_namespaceluna_1_1renderer_1a58e870e411c4fb89575c82593f9873b1a72c1fc0f8cc2ca24d58b0ee1c3965de4">uniformBuffers</link></computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1afceeab0229374db41b07adfa2b81d307"/><section>
+    <title>set</title>
+<indexterm><primary>set</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>set</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::shaderResource::set = 0</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1a99a8588cd848916fb71d896ace78e081"/><section>
+    <title>stride</title>
+<indexterm><primary>stride</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>stride</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::shaderResource::stride = 0</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1renderer_1_1shader_resource_1a4d3d3caddefb2e6e0366a0ef2a886c61"/><section>
+    <title>type</title>
+<indexterm><primary>type</primary><secondary>luna::renderer::shaderResource</secondary></indexterm>
+<indexterm><primary>luna::renderer::shaderResource</primary><secondary>type</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">typeId</link> luna::renderer::shaderResource::type = <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc">Unknown</link></computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_shader_8h">shader.h</link></section>
+</section>

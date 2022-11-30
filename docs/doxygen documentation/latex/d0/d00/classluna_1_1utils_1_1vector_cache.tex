@@ -1,0 +1,231 @@
+\hypertarget{classluna_1_1utils_1_1vector_cache}{}\doxysubsection{luna\+::utils\+::vector\+Cache\texorpdfstring{$<$}{<} value \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classluna_1_1utils_1_1vector_cache}\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+
+
+a pretty optimal multithreaded vector cahce headeronly class.  
+
+
+
+
+{\ttfamily \#include $<$vector\+Cache.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::utils\+::vector\+Cache\texorpdfstring{$<$}{<} value \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d00/classluna_1_1utils_1_1vector_cache__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for luna\+::utils\+::vector\+Cache\texorpdfstring{$<$}{<} value \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d00/classluna_1_1utils_1_1vector_cache__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a2cbf07923a7eb5e76c09fe3dd3a8d117}{vector\+Cache}} ()
+\begin{DoxyCompactList}\small\item\em creates \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}} with default cache size is of 200 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_abf523d3ed42949752ec074f02375a67b}{vector\+Cache}} (size\+\_\+t \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a48cca9a42d02619b08942a7b29b004b1}{max\+Cache\+Size}})
+\begin{DoxyCompactList}\small\item\em creates vectorcache with defined size (recommended to have size less then 1000 objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_aebadfee061404c89444459c45adfc6de}{$\sim$vector\+Cache}} ()
+\begin{DoxyCompactList}\small\item\em destroys/deletes the cache \+:). \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_af99befea7d5e6a6ccfe52f76b3f2c518}{put\+Value}} (\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}} $\ast$key, value \+\_\+value)
+\begin{DoxyCompactList}\small\item\em returns a object in a vector cache using a key handle. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{cache\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a34e6f0d499499c20a9ed7a881e8b164e}{get\+Value}} (\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}} key)
+\begin{DoxyCompactList}\small\item\em gets a stored cahe value using the key handle. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{cache\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_aa56d6d8db614103245c4776d9a63733e}{set\+Value}} (\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}} key, value \+\_\+value)
+\begin{DoxyCompactList}\small\item\em sets the current value of the given cache\+Object key. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{cache\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a4d128c24ee583783b1633b84f0250363}{erase\+Value}} (\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}} key)
+\begin{DoxyCompactList}\small\item\em erases value of the given key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a48cca9a42d02619b08942a7b29b004b1}{max\+Cache\+Size}}
+\item 
+std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a7597e6d2ac4be76eefa520e9ad9c0d65}{handle\+Cache}}
+\item 
+std\+::vector$<$ value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a12912583feaa389b833427d451453c3f}{value\+Cache}}
+\item 
+std\+::mutex \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache_a52439cb44adfd73a8dfa39455c3efb27}{lock\+Guard}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\subsubsection*{template$<$typename value$>$\newline
+class luna\+::utils\+::vector\+Cache$<$ value $>$}
+a pretty optimal multithreaded vector cahce headeronly class. 
+
+\begin{DoxyNote}{Note}
+the vectorcache does not check for duplicate value\textquotesingle{}s 
+\end{DoxyNote}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_a2cbf07923a7eb5e76c09fe3dd3a8d117}\label{classluna_1_1utils_1_1vector_cache_a2cbf07923a7eb5e76c09fe3dd3a8d117}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!vectorCache@{vectorCache}}
+\index{vectorCache@{vectorCache}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{vectorCache()}{vectorCache()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::vector\+Cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+creates \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}} with default cache size is of 200 
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_abf523d3ed42949752ec074f02375a67b}\label{classluna_1_1utils_1_1vector_cache_abf523d3ed42949752ec074f02375a67b}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!vectorCache@{vectorCache}}
+\index{vectorCache@{vectorCache}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{vectorCache()}{vectorCache()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::vector\+Cache (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{max\+Cache\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+creates vectorcache with defined size (recommended to have size less then 1000 objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Cache\+Size} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_aebadfee061404c89444459c45adfc6de}\label{classluna_1_1utils_1_1vector_cache_aebadfee061404c89444459c45adfc6de}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!````~vectorCache@{$\sim$vectorCache}}
+\index{````~vectorCache@{$\sim$vectorCache}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{$\sim$vectorCache()}{~vectorCache()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::$\sim$\mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{vector\+Cache}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+destroys/deletes the cache \+:). 
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_a4d128c24ee583783b1633b84f0250363}\label{classluna_1_1utils_1_1vector_cache_a4d128c24ee583783b1633b84f0250363}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!eraseValue@{eraseValue}}
+\index{eraseValue@{eraseValue}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{eraseValue()}{eraseValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{cache\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::erase\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}}}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+erases value of the given key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache\+Object} & key \\
+\hline
+{\em value} & \+\_\+value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cache\+Op\+Succes when value whas succesfully erased 
+
+cache\+Op\+Failed when value could not be found or some other operation failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_a34e6f0d499499c20a9ed7a881e8b164e}\label{classluna_1_1utils_1_1vector_cache_a34e6f0d499499c20a9ed7a881e8b164e}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!getValue@{getValue}}
+\index{getValue@{getValue}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{cache\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::get\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}}}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+gets a stored cahe value using the key handle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_af99befea7d5e6a6ccfe52f76b3f2c518}\label{classluna_1_1utils_1_1vector_cache_af99befea7d5e6a6ccfe52f76b3f2c518}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!putValue@{putValue}}
+\index{putValue@{putValue}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{putValue()}{putValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::put\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}} $\ast$}]{key,  }\item[{value}]{\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+returns a object in a vector cache using a key handle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & a handle to the cahce object \\
+\hline
+{\em \+\_\+value} & the cache object to store \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$bool, value$>$ when succesful returs over\+Flow\+Key and the over\+FLow cache value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_aa56d6d8db614103245c4776d9a63733e}\label{classluna_1_1utils_1_1vector_cache_aa56d6d8db614103245c4776d9a63733e}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!setValue@{setValue}}
+\index{setValue@{setValue}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::pair$<$ \mbox{\hyperlink{namespaceluna_1_1utils_add59caf76a7f3b2aa7488057c7625aa0}{cache\+Result}}, value $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::set\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_1_1utils_ac3ec840636b2415749250bb9a183ac2b}{cache\+Object}}}]{key,  }\item[{value}]{\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+sets the current value of the given cache\+Object key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache\+Object} & key the key to overwite \\
+\hline
+{\em \+\_\+value} & the value to overwrite the current value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_a7597e6d2ac4be76eefa520e9ad9c0d65}\label{classluna_1_1utils_1_1vector_cache_a7597e6d2ac4be76eefa520e9ad9c0d65}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!handleCache@{handleCache}}
+\index{handleCache@{handleCache}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{handleCache}{handleCache}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::vector$<$uint64\+\_\+t$>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::handle\+Cache\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_a52439cb44adfd73a8dfa39455c3efb27}\label{classluna_1_1utils_1_1vector_cache_a52439cb44adfd73a8dfa39455c3efb27}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!lockGuard@{lockGuard}}
+\index{lockGuard@{lockGuard}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{lockGuard}{lockGuard}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::mutex \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::lock\+Guard\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_a48cca9a42d02619b08942a7b29b004b1}\label{classluna_1_1utils_1_1vector_cache_a48cca9a42d02619b08942a7b29b004b1}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!maxCacheSize@{maxCacheSize}}
+\index{maxCacheSize@{maxCacheSize}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{maxCacheSize}{maxCacheSize}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+uint64\+\_\+t \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::max\+Cache\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vector_cache_a12912583feaa389b833427d451453c3f}\label{classluna_1_1utils_1_1vector_cache_a12912583feaa389b833427d451453c3f}} 
+\index{luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}!valueCache@{valueCache}}
+\index{valueCache@{valueCache}!luna::utils::vectorCache$<$ value $>$@{luna::utils::vectorCache$<$ value $>$}}
+\doxyparagraph{\texorpdfstring{valueCache}{valueCache}}
+{\footnotesize\ttfamily template$<$typename value $>$ \\
+std\+::vector$<$value$>$ \mbox{\hyperlink{classluna_1_1utils_1_1vector_cache}{luna\+::utils\+::vector\+Cache}}$<$ value $>$\+::value\+Cache\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/\mbox{\hyperlink{vector_cache_8h}{vector\+Cache.\+h}}\end{DoxyCompactItemize}

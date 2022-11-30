@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['flags_0',['flags',['../df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec.html#acd88aa8a54eb9c4ee01a5600eee0184e',1,'luna::vulkan::vulkanCmdPoolSpec']]],
-  ['formats_1',['formats',['../d0/d00/structluna_1_1vulkan_1_1swap_chain_support_details.html#aa91215ab20ae2cf47c021b4717883852',1,'luna::vulkan::swapChainSupportDetails']]]
+  ['elapsedtime_0',['ElapsedTime',['../d8/d00/structluna_1_1profile_result.html#ac0188c5b0b48f5942488deb8750ecffb',1,'luna::profileResult']]],
+  ['eventcallbackfn_1',['eventCallbackFn',['../d8/d00/structluna_1_1vulkan_1_1windows_window_1_1window_data.html#a3615aa9a296f19f91b496f15006afb26',1,'luna::vulkan::windowsWindow::windowData']]]
 ];

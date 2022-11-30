@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['shared_5fptr_3c_20window_20_3e_0',['shared_ptr&lt; window &gt;',['../d5/d00/classstd_1_1shared__ptr_3_01window_01_4.html',1,'']]],
-  ['swapchainspec_1',['swapchainSpec',['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html',1,'luna::vulkan']]],
-  ['swapchainsupportdetails_2',['swapChainSupportDetails',['../d0/d00/structluna_1_1vulkan_1_1swap_chain_support_details.html',1,'luna::vulkan']]]
+  ['objectstorage_0',['objectStorage',['../d5/d00/classluna_1_1utils_1_1object_storage.html',1,'luna::utils']]],
+  ['objectstorage_3c_20glm_3a_3amat4_20_3e_1',['objectStorage&lt; glm::mat4 &gt;',['../d5/d00/classluna_1_1utils_1_1object_storage.html',1,'luna::utils']]],
+  ['objectstorage_3c_20luna_3a_3autils_3a_3avulkanallocator_3a_3avmaallocation_20_3e_2',['objectStorage&lt; luna::utils::vulkanAllocator::vmaAllocation &gt;',['../d5/d00/classluna_1_1utils_1_1object_storage.html',1,'luna::utils']]]
 ];

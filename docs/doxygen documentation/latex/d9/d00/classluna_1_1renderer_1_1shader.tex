@@ -1,0 +1,190 @@
+\hypertarget{classluna_1_1renderer_1_1shader}{}\doxysubsection{luna\+::renderer\+::shader Class Reference}
+\label{classluna_1_1renderer_1_1shader}\index{luna::renderer::shader@{luna::renderer::shader}}
+
+
+{\ttfamily \#include $<$shader.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::renderer\+::shader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{d4/d00/classluna_1_1renderer_1_1shader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for luna\+::renderer\+::shader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d00/classluna_1_1renderer_1_1shader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a6afb96870fa1bac3a268bf168d29a661}{$\sim$shader}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a8c64440945a99d558cae4590e7a1b39f}{bind}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1shader_acadb7154c8196b3cef81e6eb01d5aa25}{unbind}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1shader_af85d739bb38d87443861dc2b8a7836ef}{create\+Layout}} ()=0
+\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a7b44933de21786d053bc8c550964a9db}{self}} ()
+\begin{DoxyCompactList}\small\item\em returns the shader compiled source. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a6b2d0c423e6fb9daf990ce4cd7db9480}{create}} (const std\+::string \&filepath, const \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{shader\+Stage}} \&\mbox{\hyperlink{classluna_1_1renderer_1_1shader_ac76cce027c4234e47f98c2ebf08d83f3}{stage}})
+\begin{DoxyCompactList}\small\item\em creates a shader from a filepath. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a716d5fa86b067f0d8def0999a4bc8d9e}{create}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1shader_ae61ccca2aa4897bd0668af8c369cd1e7}{shader\+Src}}, const \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{shader\+Stage}} \&\mbox{\hyperlink{classluna_1_1renderer_1_1shader_ac76cce027c4234e47f98c2ebf08d83f3}{stage}})
+\begin{DoxyCompactList}\small\item\em creates a shader from compiled code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classluna_1_1renderer_1_1shader_ac9dee5cda365f75d64531581a06bfc81}{shader\+Name}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{shader\+Resource}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a2e1b6738c7d1f9aae90728e5b48d079a}{shader\+Layout}}
+\item 
+\mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{shader\+Stage}} \mbox{\hyperlink{classluna_1_1renderer_1_1shader_ac76cce027c4234e47f98c2ebf08d83f3}{stage}}
+\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader_ae61ccca2aa4897bd0668af8c369cd1e7}{shader\+Src}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1shader_a0ee548a1b2b101fff96b1b8a3849b3f7}{vulkan\+Device}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_a6afb96870fa1bac3a268bf168d29a661}\label{classluna_1_1renderer_1_1shader_a6afb96870fa1bac3a268bf168d29a661}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!````~shader@{$\sim$shader}}
+\index{````~shader@{$\sim$shader}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{$\sim$shader()}{~shader()}}
+{\footnotesize\ttfamily virtual luna\+::renderer\+::shader\+::$\sim$shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_a8c64440945a99d558cae4590e7a1b39f}\label{classluna_1_1renderer_1_1shader_a8c64440945a99d558cae4590e7a1b39f}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!bind@{bind}}
+\index{bind@{bind}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::shader\+::bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_abde840fc72e1f453feeb971d071173f6}{luna\+::vulkan\+::vulkan\+Shader}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_a6b2d0c423e6fb9daf990ce4cd7db9480}\label{classluna_1_1renderer_1_1shader_a6b2d0c423e6fb9daf990ce4cd7db9480}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!create@{create}}
+\index{create@{create}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}} $>$ luna\+::renderer\+::shader\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{const \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{shader\+Stage}} \&}]{stage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+creates a shader from a filepath. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a shader reference. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_a716d5fa86b067f0d8def0999a4bc8d9e}\label{classluna_1_1renderer_1_1shader_a716d5fa86b067f0d8def0999a4bc8d9e}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!create@{create}}
+\index{create@{create}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}} $>$ luna\+::renderer\+::shader\+::create (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{shader\+Src,  }\item[{const \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{shader\+Stage}} \&}]{stage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+creates a shader from compiled code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader\+Src} & the shader compiled src code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a shader reference. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_af85d739bb38d87443861dc2b8a7836ef}\label{classluna_1_1renderer_1_1shader_af85d739bb38d87443861dc2b8a7836ef}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!createLayout@{createLayout}}
+\index{createLayout@{createLayout}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{createLayout()}{createLayout()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::shader\+::create\+Layout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_aa7bab09ef9777619f42e56013b073f90}{luna\+::vulkan\+::vulkan\+Shader}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_a7b44933de21786d053bc8c550964a9db}\label{classluna_1_1renderer_1_1shader_a7b44933de21786d053bc8c550964a9db}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!self@{self}}
+\index{self@{self}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{self()}{self()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ luna\+::renderer\+::shader\+::self (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+returns the shader compiled source. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_acadb7154c8196b3cef81e6eb01d5aa25}\label{classluna_1_1renderer_1_1shader_acadb7154c8196b3cef81e6eb01d5aa25}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!unbind@{unbind}}
+\index{unbind@{unbind}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{unbind()}{unbind()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::shader\+::unbind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_a31dfbe55e22e9d8c17aeb1629e83f4f4}{luna\+::vulkan\+::vulkan\+Shader}}.
+
+
+
+\doxysubsubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_a0ee548a1b2b101fff96b1b8a3849b3f7}\label{classluna_1_1renderer_1_1shader_a0ee548a1b2b101fff96b1b8a3849b3f7}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!vulkanDevice@{vulkanDevice}}
+\index{vulkanDevice@{vulkanDevice}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{vulkanDevice}{vulkanDevice}}
+{\footnotesize\ttfamily friend class vulkan\+Device\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_a2e1b6738c7d1f9aae90728e5b48d079a}\label{classluna_1_1renderer_1_1shader_a2e1b6738c7d1f9aae90728e5b48d079a}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!shaderLayout@{shaderLayout}}
+\index{shaderLayout@{shaderLayout}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{shaderLayout}{shaderLayout}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{shader\+Resource}}$>$ luna\+::renderer\+::shader\+::shader\+Layout}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_ac9dee5cda365f75d64531581a06bfc81}\label{classluna_1_1renderer_1_1shader_ac9dee5cda365f75d64531581a06bfc81}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!shaderName@{shaderName}}
+\index{shaderName@{shaderName}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{shaderName}{shaderName}}
+{\footnotesize\ttfamily std\+::string luna\+::renderer\+::shader\+::shader\+Name}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_ae61ccca2aa4897bd0668af8c369cd1e7}\label{classluna_1_1renderer_1_1shader_ae61ccca2aa4897bd0668af8c369cd1e7}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!shaderSrc@{shaderSrc}}
+\index{shaderSrc@{shaderSrc}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{shaderSrc}{shaderSrc}}
+{\footnotesize\ttfamily std\+::vector$<$uint32\+\_\+t$>$ luna\+::renderer\+::shader\+::shader\+Src}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1shader_ac76cce027c4234e47f98c2ebf08d83f3}\label{classluna_1_1renderer_1_1shader_ac76cce027c4234e47f98c2ebf08d83f3}} 
+\index{luna::renderer::shader@{luna::renderer::shader}!stage@{stage}}
+\index{stage@{stage}!luna::renderer::shader@{luna::renderer::shader}}
+\doxyparagraph{\texorpdfstring{stage}{stage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faae}{shader\+Stage}} luna\+::renderer\+::shader\+::stage}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{shader_8h}{shader.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{shader_8cpp}{shader.\+cpp}}\end{DoxyCompactItemize}

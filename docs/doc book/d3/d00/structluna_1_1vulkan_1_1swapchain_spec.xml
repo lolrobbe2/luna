@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structluna_1_1vulkan_1_1swapchain_spec" xml:lang="en-US">
+<title>luna::vulkan::swapchainSpec Struct Reference</title>
+<indexterm><primary>luna::vulkan::swapchainSpec</primary></indexterm>
+<para>
+<computeroutput>#include &lt;vulkanSwapchain.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::vulkan::swapchainSpec:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/d00/structluna_1_1vulkan_1_1swapchain_spec__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>vkb::PhysicalDevice <link linkend="_structluna_1_1vulkan_1_1swapchain_spec_1aa96df782ccc5dd1d7530ea30c3a4aa59">physicalDevice</link></para>
+</listitem>
+            <listitem><para>VkDevice <link linkend="_structluna_1_1vulkan_1_1swapchain_spec_1a5fbebb42f49170c44c6a9f0eaa8eb1bf">device</link></para>
+</listitem>
+            <listitem><para>std::shared_ptr&lt; <link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link> &gt; <link linkend="_structluna_1_1vulkan_1_1swapchain_spec_1afde59e8e99513ca4d8ead1f280daffe9">window</link> = nullptr</para>
+</listitem>
+            <listitem><para>VkExtent2D <link linkend="_structluna_1_1vulkan_1_1swapchain_spec_1ab523505995070088375e36b3f46612d5">swapchainExtent</link> = {0,0}</para>
+</listitem>
+            <listitem><para>VkSurfaceKHR <link linkend="_structluna_1_1vulkan_1_1swapchain_spec_1ae8c7a53b0d08fd3d260b4f0f592d478d">surface</link> = VK_NULL_HANDLE</para>
+</listitem>
+            <listitem><para><link linkend="_structluna_1_1vulkan_1_1queue_family_indices">queueFamilyIndices</link> <link linkend="_structluna_1_1vulkan_1_1swapchain_spec_1afc101e8ff95c164233039733757c674c">indices</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structluna_1_1vulkan_1_1swapchain_spec_1a5fbebb42f49170c44c6a9f0eaa8eb1bf"/><section>
+    <title>device</title>
+<indexterm><primary>device</primary><secondary>luna::vulkan::swapchainSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::swapchainSpec</primary><secondary>device</secondary></indexterm>
+<para><computeroutput>VkDevice luna::vulkan::swapchainSpec::device</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1swapchain_spec_1afc101e8ff95c164233039733757c674c"/><section>
+    <title>indices</title>
+<indexterm><primary>indices</primary><secondary>luna::vulkan::swapchainSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::swapchainSpec</primary><secondary>indices</secondary></indexterm>
+<para><computeroutput><link linkend="_structluna_1_1vulkan_1_1queue_family_indices">queueFamilyIndices</link> luna::vulkan::swapchainSpec::indices</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1swapchain_spec_1aa96df782ccc5dd1d7530ea30c3a4aa59"/><section>
+    <title>physicalDevice</title>
+<indexterm><primary>physicalDevice</primary><secondary>luna::vulkan::swapchainSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::swapchainSpec</primary><secondary>physicalDevice</secondary></indexterm>
+<para><computeroutput>vkb::PhysicalDevice luna::vulkan::swapchainSpec::physicalDevice</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1swapchain_spec_1ae8c7a53b0d08fd3d260b4f0f592d478d"/><section>
+    <title>surface</title>
+<indexterm><primary>surface</primary><secondary>luna::vulkan::swapchainSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::swapchainSpec</primary><secondary>surface</secondary></indexterm>
+<para><computeroutput>VkSurfaceKHR luna::vulkan::swapchainSpec::surface = VK_NULL_HANDLE</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1swapchain_spec_1ab523505995070088375e36b3f46612d5"/><section>
+    <title>swapchainExtent</title>
+<indexterm><primary>swapchainExtent</primary><secondary>luna::vulkan::swapchainSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::swapchainSpec</primary><secondary>swapchainExtent</secondary></indexterm>
+<para><computeroutput>VkExtent2D luna::vulkan::swapchainSpec::swapchainExtent = {0,0}</computeroutput></para></section>
+<anchor xml:id="_structluna_1_1vulkan_1_1swapchain_spec_1afde59e8e99513ca4d8ead1f280daffe9"/><section>
+    <title>window</title>
+<indexterm><primary>window</primary><secondary>luna::vulkan::swapchainSpec</secondary></indexterm>
+<indexterm><primary>luna::vulkan::swapchainSpec</primary><secondary>window</secondary></indexterm>
+<para><computeroutput>std::shared_ptr&lt;<link linkend="_classluna_1_1vulkan_1_1window">vulkan::window</link>&gt; luna::vulkan::swapchainSpec::window = nullptr</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/<link linkend="_vulkan_swapchain_8h">vulkanSwapchain.h</link></section>
+</section>

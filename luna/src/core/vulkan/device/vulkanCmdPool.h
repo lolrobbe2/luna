@@ -5,13 +5,18 @@ namespace luna
 	namespace vulkan
 	{
 		
-		typedef uint64_t virtualCmdBuffer;
+		typedef uint64_t virtualCmdBuffer; // virtual commandbuffer handle 
 		struct vulkanCmdPoolSpec
 		{
 			VkDevice device;
 			VkCommandPoolCreateFlags    flags;
 			uint32_t queueFamilyIndex;
 		};
+		/**
+		 *  @brief struct with all the submit info.
+		 *	this is the same except VkCommandBuffer* ->virtualCmdBuffer*.
+		 *  for more information: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html
+		 */
 		struct commandPoolSubmitInfo
 		{
 			const void* pNext;
@@ -23,9 +28,14 @@ namespace luna
 			uint32_t                       signalSemaphoreCount;
 			const VkSemaphore* pSignalSemaphores;
 		};
+		/**
+		 * @brief abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs.
+		 * all a VkCommandBuffer has been changed out by virtualCmdBuffer type.
+		 */
 		class vulkanCmdPool
 		{
 		public:
+			VkCommandBuffer vulkanCmdPool::operator[](const virtualCmdBuffer commandBuffer);
 			VkCommandBuffer operator=(const virtualCmdBuffer commandBuffer) { return virtualBuffers.find(commandBuffer)->second.first; };
 			/**
 			* @brief vulkanCmdPool constructor
@@ -61,6 +71,13 @@ namespace luna
 			* @param const commandPoolSubmitInfo* pCommandPoolSubmitInfo
 			*/
 			VkResult flush(VkQueue queue, uint64_t submitCount, const commandPoolSubmitInfo* pCommandPoolSubmitInfo, VkFence waitFence);
+			/**
+			 * @brief frees commandbuffers to be able to rerecord them.
+			 * 
+			 * \param pCommandBuffers a command buffer array pointer or std::vector pointer.
+			 * \param count
+			 */
+			void freeCommandBuffer(virtualCmdBuffer* pCommandBuffers, uint32_t count);
 		private:
 			std::unordered_map<virtualCmdBuffer, std::pair<VkCommandBuffer, VkCommandBufferUsageFlags>> virtualBuffers;
 			VkCommandPool commandPool;

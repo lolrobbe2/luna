@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1utils_1_1vector_cache" xml:lang="en-US">
+<title>luna::utils::vectorCache&lt; value &gt; Class Template Reference</title>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary></indexterm>
+<para>
+
+<para>a pretty optimal multithreaded vector cahce headeronly class. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;vectorCache.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::utils::vectorCache&lt; value &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d7/d00/classluna_1_1utils_1_1vector_cache__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::utils::vectorCache&lt; value &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/classluna_1_1utils_1_1vector_cache__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1vector_cache_1a2cbf07923a7eb5e76c09fe3dd3a8d117">vectorCache</link> ()</para>
+
+<para>creates <link linkend="_classluna_1_1utils_1_1vector_cache">vectorCache</link> with default cache size is of 200 </para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1vector_cache_1abf523d3ed42949752ec074f02375a67b">vectorCache</link> (size_t <link linkend="_classluna_1_1utils_1_1vector_cache_1a48cca9a42d02619b08942a7b29b004b1">maxCacheSize</link>)</para>
+
+<para>creates vectorcache with defined size (recommended to have size less then 1000 objects. </para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1utils_1_1vector_cache_1aebadfee061404c89444459c45adfc6de">~vectorCache</link> ()</para>
+
+<para>destroys/deletes the cache :). </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache_1af99befea7d5e6a6ccfe52f76b3f2c518">putValue</link> (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> *key, value _value)</para>
+
+<para>returns a object in a vector cache using a key handle. </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">cacheResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache_1a34e6f0d499499c20a9ed7a881e8b164e">getValue</link> (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> key)</para>
+
+<para>gets a stored cahe value using the key handle. </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">cacheResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache_1aa56d6d8db614103245c4776d9a63733e">setValue</link> (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> key, value _value)</para>
+
+<para>sets the current value of the given cacheObject key. </para>
+</listitem>
+            <listitem><para>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">cacheResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache_1a4d128c24ee583783b1633b84f0250363">eraseValue</link> (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> key)</para>
+
+<para>erases value of the given key. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>uint64_t <link linkend="_classluna_1_1utils_1_1vector_cache_1a48cca9a42d02619b08942a7b29b004b1">maxCacheSize</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; uint64_t &gt; <link linkend="_classluna_1_1utils_1_1vector_cache_1a7597e6d2ac4be76eefa520e9ad9c0d65">handleCache</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache_1a12912583feaa389b833427d451453c3f">valueCache</link></para>
+</listitem>
+            <listitem><para>std::mutex <link linkend="_classluna_1_1utils_1_1vector_cache_1a52439cb44adfd73a8dfa39455c3efb27">lockGuard</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename value&gt;<?linebreak?>class luna::utils::vectorCache&lt; value &gt;</title></simplesect>
+
+<para>a pretty optimal multithreaded vector cahce headeronly class. </para>
+
+
+
+<para><note><title>Note</title>
+
+<para>the vectorcache does not check for duplicate value&apos;s </para>
+</note>
+</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1a2cbf07923a7eb5e76c09fe3dd3a8d117"/><section>
+    <title>vectorCache()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>vectorCache</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>vectorCache</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput><link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::vectorCache ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>creates <link linkend="_classluna_1_1utils_1_1vector_cache">vectorCache</link> with default cache size is of 200 </para>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1abf523d3ed42949752ec074f02375a67b"/><section>
+    <title>vectorCache()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>vectorCache</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>vectorCache</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput><link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::vectorCache (size_t maxCacheSize)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>creates vectorcache with defined size (recommended to have size less then 1000 objects. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>maxCacheSize</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1aebadfee061404c89444459c45adfc6de"/><section>
+    <title>~vectorCache()</title>
+<indexterm><primary>~vectorCache</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>~vectorCache</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput><link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::~<link linkend="_classluna_1_1utils_1_1vector_cache">vectorCache</link> ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>destroys/deletes the cache :). </para>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1a4d128c24ee583783b1633b84f0250363"/><section>
+    <title>eraseValue()</title>
+<indexterm><primary>eraseValue</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>eraseValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">cacheResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::eraseValue (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>erases value of the given key. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>cacheObject</entry><entry>
+<para>key </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>_value </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>cacheOpSucces when value whas succesfully erased </para>
+
+<para>cacheOpFailed when value could not be found or some other operation failed </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1a34e6f0d499499c20a9ed7a881e8b164e"/><section>
+    <title>getValue()</title>
+<indexterm><primary>getValue</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>getValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">cacheResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::getValue (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>gets a stored cahe value using the key handle. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1af99befea7d5e6a6ccfe52f76b3f2c518"/><section>
+    <title>putValue()</title>
+<indexterm><primary>putValue</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>putValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::putValue (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> * key, value _value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>returns a object in a vector cache using a key handle. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>a handle to the cahce object </para>
+</entry>
+                            </row>
+                            <row>
+<entry>_value</entry><entry>
+<para>the cache object to store </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::pair&lt;bool, value&gt; when succesful returs overFlowKey and the overFLow cache value. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1aa56d6d8db614103245c4776d9a63733e"/><section>
+    <title>setValue()</title>
+<indexterm><primary>setValue</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>setValue</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::pair&lt; <link linkend="_namespaceluna_1_1utils_1add59caf76a7f3b2aa7488057c7625aa0">cacheResult</link>, value &gt; <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::setValue (<link linkend="_namespaceluna_1_1utils_1ac3ec840636b2415749250bb9a183ac2b">cacheObject</link> key, value _value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>sets the current value of the given cacheObject key. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>cacheObject</entry><entry>
+<para>key the key to overwite </para>
+</entry>
+                            </row>
+                            <row>
+<entry>_value</entry><entry>
+<para>the value to overwrite the current value </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1a7597e6d2ac4be76eefa520e9ad9c0d65"/><section>
+    <title>handleCache</title>
+<indexterm><primary>handleCache</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>handleCache</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::vector&lt;uint64_t&gt; <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::handleCache<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1a52439cb44adfd73a8dfa39455c3efb27"/><section>
+    <title>lockGuard</title>
+<indexterm><primary>lockGuard</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>lockGuard</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::mutex <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::lockGuard<computeroutput>[mutable]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1a48cca9a42d02619b08942a7b29b004b1"/><section>
+    <title>maxCacheSize</title>
+<indexterm><primary>maxCacheSize</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>maxCacheSize</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>uint64_t <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::maxCacheSize<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1utils_1_1vector_cache_1a12912583feaa389b833427d451453c3f"/><section>
+    <title>valueCache</title>
+<indexterm><primary>valueCache</primary><secondary>luna::utils::vectorCache&lt; value &gt;</secondary></indexterm>
+<indexterm><primary>luna::utils::vectorCache&lt; value &gt;</primary><secondary>valueCache</secondary></indexterm>
+<computeroutput>template&lt;typename value &gt; </computeroutput><para><computeroutput>std::vector&lt;value&gt; <link linkend="_classluna_1_1utils_1_1vector_cache">luna::utils::vectorCache</link>&lt; value &gt;::valueCache<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/<link linkend="_vector_cache_8h">vectorCache.h</link></section>
+</section>

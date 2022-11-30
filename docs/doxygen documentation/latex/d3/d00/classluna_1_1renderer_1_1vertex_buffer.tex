@@ -1,0 +1,144 @@
+\hypertarget{classluna_1_1renderer_1_1vertex_buffer}{}\doxysubsection{luna\+::renderer\+::vertex\+Buffer Class Reference}
+\label{classluna_1_1renderer_1_1vertex_buffer}\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+
+
+{\ttfamily \#include $<$buffer.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::renderer\+::vertex\+Buffer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{d1/d00/classluna_1_1renderer_1_1vertex_buffer__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_a1551e87502a1e33ae4dcc9059270ff7e}{$\sim$vertex\+Buffer}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_ab03a7f2da294919542518b71a32940d2}{bind}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_af4dac87c35ff26910f9d9b721090c7bd}{unbind}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_ae3a4d001dbc49d1a27f22deb47465679}{set\+Data}} (const void $\ast$\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_a5fb06834646a7fc36bfa30d05776ab4c}{data}}, uint32\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_aa8207840e91676dfcf335c8a92d0d215}{size}})=0
+\item 
+{\footnotesize template$<$typename mesh $>$ }\\mesh \& \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_aec426de4ba68b999869f6aab141058a2}{get\+Index}} (uint32\+\_\+t index)
+\item 
+{\footnotesize template$<$typename mesh $>$ }\\mesh \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_aafa1ef98ccc3751eefbc2720af37d3f2}{operator\mbox{[}$\,$\mbox{]}}} (int index)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_a497a755d80ad11b81d49bb36e2bf9474}{create}} (uint32\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_aa8207840e91676dfcf335c8a92d0d215}{size}})
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_ace15d724ce60f42c0cf726edcf3b9e49}{create}} (float $\ast$vertices, uint32\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_aa8207840e91676dfcf335c8a92d0d215}{size}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_a5fb06834646a7fc36bfa30d05776ab4c}{data}} = nullptr
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_aa8207840e91676dfcf335c8a92d0d215}{size}} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer_a142445be410f9991b192f1a14dee42ca}{src\+Shader}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_a1551e87502a1e33ae4dcc9059270ff7e}\label{classluna_1_1renderer_1_1vertex_buffer_a1551e87502a1e33ae4dcc9059270ff7e}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!````~vertexBuffer@{$\sim$vertexBuffer}}
+\index{````~vertexBuffer@{$\sim$vertexBuffer}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{$\sim$vertexBuffer()}{~vertexBuffer()}}
+{\footnotesize\ttfamily virtual luna\+::renderer\+::vertex\+Buffer\+::$\sim$vertex\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_ab03a7f2da294919542518b71a32940d2}\label{classluna_1_1renderer_1_1vertex_buffer_ab03a7f2da294919542518b71a32940d2}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!bind@{bind}}
+\index{bind@{bind}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::vertex\+Buffer\+::bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_vertex_buffer_a1a2ac1e332244bb5dfa1934055ce0414}{luna\+::vulkan\+::vulkan\+Vertex\+Buffer}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_ace15d724ce60f42c0cf726edcf3b9e49}\label{classluna_1_1renderer_1_1vertex_buffer_ace15d724ce60f42c0cf726edcf3b9e49}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!create@{create}}
+\index{create@{create}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}} $>$ luna\+::renderer\+::vertex\+Buffer\+::create (\begin{DoxyParamCaption}\item[{float $\ast$}]{vertices,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_a497a755d80ad11b81d49bb36e2bf9474}\label{classluna_1_1renderer_1_1vertex_buffer_a497a755d80ad11b81d49bb36e2bf9474}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!create@{create}}
+\index{create@{create}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}} $>$ luna\+::renderer\+::vertex\+Buffer\+::create (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_aec426de4ba68b999869f6aab141058a2}\label{classluna_1_1renderer_1_1vertex_buffer_aec426de4ba68b999869f6aab141058a2}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily template$<$typename mesh $>$ \\
+mesh \& luna\+::renderer\+::vertex\+Buffer\+::get\+Index (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_aafa1ef98ccc3751eefbc2720af37d3f2}\label{classluna_1_1renderer_1_1vertex_buffer_aafa1ef98ccc3751eefbc2720af37d3f2}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename mesh $>$ \\
+mesh luna\+::renderer\+::vertex\+Buffer\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_ae3a4d001dbc49d1a27f22deb47465679}\label{classluna_1_1renderer_1_1vertex_buffer_ae3a4d001dbc49d1a27f22deb47465679}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!setData@{setData}}
+\index{setData@{setData}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{setData()}{setData()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::vertex\+Buffer\+::set\+Data (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_vertex_buffer_ac0c410d51dff17d1936397611e0f123c}{luna\+::vulkan\+::vulkan\+Vertex\+Buffer}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_af4dac87c35ff26910f9d9b721090c7bd}\label{classluna_1_1renderer_1_1vertex_buffer_af4dac87c35ff26910f9d9b721090c7bd}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!unbind@{unbind}}
+\index{unbind@{unbind}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{unbind()}{unbind()}}
+{\footnotesize\ttfamily virtual void luna\+::renderer\+::vertex\+Buffer\+::unbind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_vertex_buffer_a5f6f2205edf2d6bdb26c373b75a53fdd}{luna\+::vulkan\+::vulkan\+Vertex\+Buffer}}.
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_a5fb06834646a7fc36bfa30d05776ab4c}\label{classluna_1_1renderer_1_1vertex_buffer_a5fb06834646a7fc36bfa30d05776ab4c}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!data@{data}}
+\index{data@{data}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily void$\ast$ luna\+::renderer\+::vertex\+Buffer\+::data = nullptr}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_aa8207840e91676dfcf335c8a92d0d215}\label{classluna_1_1renderer_1_1vertex_buffer_aa8207840e91676dfcf335c8a92d0d215}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!size@{size}}
+\index{size@{size}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::renderer\+::vertex\+Buffer\+::size = 0}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vertex_buffer_a142445be410f9991b192f1a14dee42ca}\label{classluna_1_1renderer_1_1vertex_buffer_a142445be410f9991b192f1a14dee42ca}} 
+\index{luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}!srcShader@{srcShader}}
+\index{srcShader@{srcShader}!luna::renderer::vertexBuffer@{luna::renderer::vertexBuffer}}
+\doxyparagraph{\texorpdfstring{srcShader}{srcShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}}$>$ luna\+::renderer\+::vertex\+Buffer\+::src\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{buffer_8h}{buffer.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{buffer_8cpp}{buffer.\+cpp}}\end{DoxyCompactItemize}

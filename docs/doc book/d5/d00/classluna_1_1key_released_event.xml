@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1key_released_event" xml:lang="en-US">
+<title>luna::keyReleasedEvent Class Reference</title>
+<indexterm><primary>luna::keyReleasedEvent</primary></indexterm>
+<para>
+<computeroutput>#include &lt;keyEvent.h&gt;</computeroutput>
+</para>
+Inheritance diagram for luna::keyReleasedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../db/d00/classluna_1_1key_released_event__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for luna::keyReleasedEvent:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d5/d00/classluna_1_1key_released_event__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1key_released_event_1ae204b2af841cede8cb737198fec5794e">keyReleasedEvent</link> (const <link linkend="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39">keyCode</link> <link linkend="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39">keyCode</link>)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classluna_1_1key_released_event_1a2564509fb772e9711bccf6e2fbd2470b">toString</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1key_released_event_1ae204b2af841cede8cb737198fec5794e"/><section>
+    <title>keyReleasedEvent()</title>
+<indexterm><primary>keyReleasedEvent</primary><secondary>luna::keyReleasedEvent</secondary></indexterm>
+<indexterm><primary>luna::keyReleasedEvent</primary><secondary>keyReleasedEvent</secondary></indexterm>
+<para><computeroutput>luna::keyReleasedEvent::keyReleasedEvent (const <link linkend="_namespaceluna_1a2f2d4316b58f32a02984140d12d63c39">keyCode</link> keyCode)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classluna_1_1key_released_event_1a2564509fb772e9711bccf6e2fbd2470b"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>luna::keyReleasedEvent</secondary></indexterm>
+<indexterm><primary>luna::keyReleasedEvent</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>std::string luna::keyReleasedEvent::toString ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_classluna_1_1_event_1a8ca491f0a1d436dd924755aad45a53b7">luna::Event</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/<link linkend="_key_event_8h">keyEvent.h</link></section>
+</section>

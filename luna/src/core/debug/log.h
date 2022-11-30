@@ -4,19 +4,18 @@
 
 
 // This ignores all warnings raised inside External headers
-#pragma warning(push, 0)
+#pragma warning (push, 0)
 #include <glm/gtx/string_cast.hpp>
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
-
+#include <core/platform/platform.h>
 namespace luna {
 
-	class Log
+	class LN_API Log
 	{
 	public:
 		static void Init();
-
 		static std::shared_ptr<spdlog::logger> GetCoreLogger() { return s_CoreLogger; }
 		static std::shared_ptr<spdlog::logger> GetClientLogger(){ return s_ClientLogger; }
 	private:

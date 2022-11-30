@@ -27,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">luna engine
    </div>
+   <div id="projectbrief">software engine</div>
   </td>
  </tr>
  </tbody>
@@ -97,15 +98,21 @@ $(document).ready(function(){initNavTree('df/d00/classluna_1_1uuid.html','../../
 </div><!--header-->
 <div class="contents">
 
+<p>a general purpose uuid class with a maximum number of 2^64 uuid's the uuid class does not check for duplicates!  
+ <a href="../../df/d00/classluna_1_1uuid.html#details">More...</a></p>
+
 <p><code>#include &lt;uuid.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae10b320623f531a6dcdfc1a59e3e0b6a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/classluna_1_1uuid.html#ae10b320623f531a6dcdfc1a59e3e0b6a">uuid</a> ()</td></tr>
+<tr class="memdesc:ae10b320623f531a6dcdfc1a59e3e0b6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates/generates a uuid.  <a href="../../df/d00/classluna_1_1uuid.html#ae10b320623f531a6dcdfc1a59e3e0b6a">More...</a><br /></td></tr>
 <tr class="separator:ae10b320623f531a6dcdfc1a59e3e0b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af95ce67cf8a35f0b04e1143996a5dd84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/classluna_1_1uuid.html#af95ce67cf8a35f0b04e1143996a5dd84">uuid</a> (uint64_t <a class="el" href="../../df/d00/classluna_1_1uuid.html">uuid</a>)</td></tr>
+<tr class="memdesc:af95ce67cf8a35f0b04e1143996a5dd84"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a uuid from a uint64_t.  <a href="../../df/d00/classluna_1_1uuid.html#af95ce67cf8a35f0b04e1143996a5dd84">More...</a><br /></td></tr>
 <tr class="separator:af95ce67cf8a35f0b04e1143996a5dd84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f9ffd4eec1736b8541f1f3fe814208"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/classluna_1_1uuid.html#a84f9ffd4eec1736b8541f1f3fe814208">getId</a> ()</td></tr>
+<tr class="memdesc:a84f9ffd4eec1736b8541f1f3fe814208"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the uuid as uint64_t.  <a href="../../df/d00/classluna_1_1uuid.html#a84f9ffd4eec1736b8541f1f3fe814208">More...</a><br /></td></tr>
 <tr class="separator:a84f9ffd4eec1736b8541f1f3fe814208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57e73628c401b2e1614391137a357583"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/classluna_1_1uuid.html#a57e73628c401b2e1614391137a357583">operator uint64_t</a> ()</td></tr>
 <tr class="separator:a57e73628c401b2e1614391137a357583"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,7 +122,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:afb828e1b3f4c82ba5c86ecbae614b83c"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/classluna_1_1uuid.html#afb828e1b3f4c82ba5c86ecbae614b83c">_uuid</a></td></tr>
 <tr class="separator:afb828e1b3f4c82ba5c86ecbae614b83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >a general purpose uuid class with a maximum number of 2^64 uuid's the uuid class does not check for duplicates! </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae10b320623f531a6dcdfc1a59e3e0b6a" name="ae10b320623f531a6dcdfc1a59e3e0b6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae10b320623f531a6dcdfc1a59e3e0b6a">&#9670;&#160;</a></span>uuid() <span class="overload">[1/2]</span></h2>
 
@@ -130,6 +139,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>creates/generates a uuid. </p>
 
 </div>
 </div>
@@ -148,6 +159,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>generates a uuid from a uint64_t. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uuid</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -174,6 +193,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>returns the uuid as uint64_t. </p>
 
 </div>
 </div>
@@ -226,8 +247,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/debug/<a class="el" href="../../dd/d00/uuid_8h.html">uuid.h</a></li>
-<li>C:/Users/robbe/source/repos/luna/luna/src/core/debug/<a class="el" href="../../db/d00/uuid_8cpp.html">uuid.cpp</a></li>
+<li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/<a class="el" href="../../dd/d00/uuid_8h.html">uuid.h</a></li>
+<li>C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/<a class="el" href="../../db/d00/uuid_8cpp.html">uuid.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

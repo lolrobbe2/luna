@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceluna_1_1vulkan" xml:lang="en-US">
+<title>luna::vulkan Namespace Reference</title>
+<indexterm><primary>luna::vulkan</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1command_pool_submit_info">commandPoolSubmitInfo</link></para>
+
+<para>struct with all the submit info. this is the same except VkCommandBuffer* -&gt;virtualCmdBuffer*. for more information: <link xlink:href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html</link> </para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1queue_family_indices">queueFamilyIndices</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1swapchain_spec">swapchainSpec</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_cmd_pool">vulkanCmdPool</link></para>
+
+<para>abbstraction class around the vulkan commandbuffer and pool to introduce increased workflow safety and usability and to decrease bugs. all a VkCommandBuffer has been changed out by virtualCmdBuffer type. </para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1vulkan_cmd_pool_spec">vulkanCmdPoolSpec</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_device">vulkanDevice</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_feature_support">vulkanFeatureSupport</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_index_buffer">vulkanIndexBuffer</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_pipeline">vulkanPipeline</link></para>
+
+<para>vulkan pipline implementation class. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_shader">vulkanShader</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain">vulkanSwapchain</link></para>
+
+<para>the <link linkend="_classluna_1_1vulkan_1_1vulkan_swapchain">vulkanSwapchain</link> is a collection of vulkan frambuffers and image views to wich the scene will be . </para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_array">vulkanVertexArray</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1vulkan_vertex_buffer">vulkanVertexBuffer</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1window">window</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structluna_1_1vulkan_1_1window_spec">windowSpec</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classluna_1_1vulkan_1_1windows_window">windowsWindow</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef uint64_t <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">virtualCmdBuffer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410">Api</link> { <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a9043de567ee384692e168e215b881c0b">NONE</link> = 0
+, <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c">VULKAN</link> = 1
+, <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a2038fef6a4e629fb739a323f7c81e214">OPENGL</link> = 2
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>static bool <link linkend="_namespaceluna_1_1vulkan_1ab01e7cae0075a7bf25b9431954ba665f">isGlfwInit</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5"/><section>
+    <title>virtualCmdBuffer</title>
+<indexterm><primary>virtualCmdBuffer</primary><secondary>luna::vulkan</secondary></indexterm>
+<indexterm><primary>luna::vulkan</primary><secondary>virtualCmdBuffer</secondary></indexterm>
+<para><computeroutput>typedef uint64_t <link linkend="_namespaceluna_1_1vulkan_1a986d0d1c340e604c9f02198be6e2e9e5">luna::vulkan::virtualCmdBuffer</link></computeroutput></para></section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410"/><section>
+    <title>Api</title>
+<indexterm><primary>Api</primary><secondary>luna::vulkan</secondary></indexterm>
+<indexterm><primary>luna::vulkan</primary><secondary>Api</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410">luna::vulkan::Api</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>NONE</primary><secondary>luna::vulkan</secondary></indexterm>
+<indexterm><primary>luna::vulkan</primary><secondary>NONE</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a9043de567ee384692e168e215b881c0b"/>NONE</entry><entry></entry></row><row><entry><indexterm><primary>VULKAN</primary><secondary>luna::vulkan</secondary></indexterm>
+<indexterm><primary>luna::vulkan</primary><secondary>VULKAN</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a96b57b228dc5beee9149ed0e38e5eb3c"/>VULKAN</entry><entry></entry></row><row><entry><indexterm><primary>OPENGL</primary><secondary>luna::vulkan</secondary></indexterm>
+<indexterm><primary>luna::vulkan</primary><secondary>OPENGL</secondary></indexterm>
+<anchor xml:id="_namespaceluna_1_1vulkan_1ac313980b7ef9691114b73c76bec43410a2038fef6a4e629fb739a323f7c81e214"/>OPENGL</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespaceluna_1_1vulkan_1ab01e7cae0075a7bf25b9431954ba665f"/><section>
+    <title>isGlfwInit</title>
+<indexterm><primary>isGlfwInit</primary><secondary>luna::vulkan</secondary></indexterm>
+<indexterm><primary>luna::vulkan</primary><secondary>isGlfwInit</secondary></indexterm>
+<para><computeroutput>bool luna::vulkan::isGlfwInit<computeroutput>[static]</computeroutput></computeroutput></para></section>
+</section>
+</section>

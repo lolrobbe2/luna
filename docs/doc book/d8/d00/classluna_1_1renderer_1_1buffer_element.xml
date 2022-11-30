@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classluna_1_1renderer_1_1buffer_element" xml:lang="en-US">
+<title>luna::renderer::bufferElement Class Reference</title>
+<indexterm><primary>luna::renderer::bufferElement</primary></indexterm>
+<para>
+<computeroutput>#include &lt;buffer.h&gt;</computeroutput>
+</para>
+Collaboration diagram for luna::renderer::bufferElement:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d00/classluna_1_1renderer_1_1buffer_element__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classluna_1_1renderer_1_1buffer_element_1a1e8d4b22fad9066dffb1c617c40cb17c">bufferElement</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1renderer_1_1buffer_element_1ac5ccb2c9093486ed1bfe915c2f9e094a">bufferElement</link> (const <link linkend="_structluna_1_1renderer_1_1shader_resource">shaderResource</link> &amp;resource)</para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1renderer_1_1buffer_element_1a0272bc88dfd1572d03d1715d68154d2d">bufferElement</link> (const std::string &amp;Name, const <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">typeId</link> &amp;Id, const uint32_t &amp;Offset, const uint32_t &amp;Size)</para>
+</listitem>
+            <listitem><para><link linkend="_classluna_1_1renderer_1_1buffer_element_1a79d67458d99e4d3dbc1af55104e4e0db">bufferElement</link> (const <link linkend="_classluna_1_1renderer_1_1buffer_element">bufferElement</link> &amp;element)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_classluna_1_1renderer_1_1buffer_element_1a652c7ea4049434ef63e739499834178e">name</link></para>
+</listitem>
+            <listitem><para><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">typeId</link> <link linkend="_classluna_1_1renderer_1_1buffer_element_1a86ca6fc9dc8f6c9f27c1ff434a14343c">type</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1renderer_1_1buffer_element_1ab4bd033d7987b154d8c88f623b3d0bfa">offset</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_classluna_1_1renderer_1_1buffer_element_1aa91c186cdf280ae64afe670ee3b7ca2b">size</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1a1e8d4b22fad9066dffb1c617c40cb17c"/><section>
+    <title>bufferElement()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>bufferElement</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>bufferElement</secondary></indexterm>
+<para><computeroutput>luna::renderer::bufferElement::bufferElement ( )</computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1ac5ccb2c9093486ed1bfe915c2f9e094a"/><section>
+    <title>bufferElement()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>bufferElement</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>bufferElement</secondary></indexterm>
+<para><computeroutput>luna::renderer::bufferElement::bufferElement (const <link linkend="_structluna_1_1renderer_1_1shader_resource">shaderResource</link> &amp; resource)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1a0272bc88dfd1572d03d1715d68154d2d"/><section>
+    <title>bufferElement()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>bufferElement</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>bufferElement</secondary></indexterm>
+<para><computeroutput>luna::renderer::bufferElement::bufferElement (const std::string &amp; Name, const <link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">typeId</link> &amp; Id, const uint32_t &amp; Offset, const uint32_t &amp; Size)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1a79d67458d99e4d3dbc1af55104e4e0db"/><section>
+    <title>bufferElement()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>bufferElement</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>bufferElement</secondary></indexterm>
+<para><computeroutput>luna::renderer::bufferElement::bufferElement (const <link linkend="_classluna_1_1renderer_1_1buffer_element">bufferElement</link> &amp; element)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1a652c7ea4049434ef63e739499834178e"/><section>
+    <title>name</title>
+<indexterm><primary>name</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>name</secondary></indexterm>
+<para><computeroutput>std::string luna::renderer::bufferElement::name<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1ab4bd033d7987b154d8c88f623b3d0bfa"/><section>
+    <title>offset</title>
+<indexterm><primary>offset</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>offset</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::bufferElement::offset<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1aa91c186cdf280ae64afe670ee3b7ca2b"/><section>
+    <title>size</title>
+<indexterm><primary>size</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>size</secondary></indexterm>
+<para><computeroutput>uint32_t luna::renderer::bufferElement::size<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classluna_1_1renderer_1_1buffer_element_1a86ca6fc9dc8f6c9f27c1ff434a14343c"/><section>
+    <title>type</title>
+<indexterm><primary>type</primary><secondary>luna::renderer::bufferElement</secondary></indexterm>
+<indexterm><primary>luna::renderer::bufferElement</primary><secondary>type</secondary></indexterm>
+<para><computeroutput><link linkend="_namespaceluna_1_1renderer_1a5ba0d97d5965fb3f0cb40ea96e4f57db">typeId</link> luna::renderer::bufferElement::type<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/<link linkend="_buffer_8h">buffer.h</link></section>
+</section>

@@ -1,16 +1,24 @@
-\hypertarget{classluna_1_1renderer_1_1device}{}\doxysection{luna\+::renderer\+::device Class Reference}
+\hypertarget{classluna_1_1renderer_1_1device}{}\doxysubsection{luna\+::renderer\+::device Class Reference}
 \label{classluna_1_1renderer_1_1device}\index{luna::renderer::device@{luna::renderer::device}}
+
+
+the device class is the code representation of the physical device or GPU.  
+
+
 
 
 {\ttfamily \#include $<$device.\+h$>$}
 
-Inheritance diagram for luna\+::renderer\+::device\+:\begin{figure}[H]
+
+
+Inheritance diagram for luna\+::renderer\+::device\+:\nopagebreak
+\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{d6/d00/classluna_1_1renderer_1_1device}
+\includegraphics[width=209pt]{d8/d00/classluna_1_1renderer_1_1device__inherit__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual \mbox{\hyperlink{classluna_1_1renderer_1_1device_a2182b56f196936279ecc402d59b894e5}{$\sim$device}} ()
@@ -19,68 +27,68 @@ virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1device_a742514b1cf12273e7
 \item 
 virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}{destroy\+Context}} ()=0
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1device_aafbc6cc53be313fff534273ea56b1345}{window}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Friends}
-\begin{DoxyCompactItemize}
-\item 
-class \mbox{\hyperlink{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}{vulkan\+Device}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em this is the reference to the main window. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\doxysubsubsection{Detailed Description}
+the device class is the code representation of the physical device or GPU. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ref<device> device = std::make\_shared(\textcolor{keyword}{new} device());}
+
+\end{DoxyCode}
+ 
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1device_a2182b56f196936279ecc402d59b894e5}\label{classluna_1_1renderer_1_1device_a2182b56f196936279ecc402d59b894e5}} 
 \index{luna::renderer::device@{luna::renderer::device}!````~device@{$\sim$device}}
 \index{````~device@{$\sim$device}!luna::renderer::device@{luna::renderer::device}}
-\doxysubsubsection{\texorpdfstring{$\sim$device()}{~device()}}
+\doxyparagraph{\texorpdfstring{$\sim$device()}{~device()}}
 {\footnotesize\ttfamily virtual luna\+::renderer\+::device\+::$\sim$device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsubsection{Member Function Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0b8750723e451c}\label{classluna_1_1renderer_1_1device_a742514b1cf12273e7a0b8750723e451c}} 
 \index{luna::renderer::device@{luna::renderer::device}!createContext@{createContext}}
 \index{createContext@{createContext}!luna::renderer::device@{luna::renderer::device}}
-\doxysubsubsection{\texorpdfstring{createContext()}{createContext()}}
+\doxyparagraph{\texorpdfstring{createContext()}{createContext()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::device\+::create\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device_a5b1df22cc328eead99c029e3ec8c43b7}{luna\+::renderer\+::vulkan\+Device}}.
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_acdef289bdd4596c82ea9c7a8e697fe3e}{luna\+::vulkan\+::vulkan\+Device}}.
 
 \mbox{\Hypertarget{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}\label{classluna_1_1renderer_1_1device_a8ff116c44dcc0f44b54f1022f9570536}} 
 \index{luna::renderer::device@{luna::renderer::device}!destroyContext@{destroyContext}}
 \index{destroyContext@{destroyContext}!luna::renderer::device@{luna::renderer::device}}
-\doxysubsubsection{\texorpdfstring{destroyContext()}{destroyContext()}}
+\doxyparagraph{\texorpdfstring{destroyContext()}{destroyContext()}}
 {\footnotesize\ttfamily virtual void luna\+::renderer\+::device\+::destroy\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device_a5e2cbcca1d00e490f1804eea2fb48341}{luna\+::renderer\+::vulkan\+Device}}.
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device_a2dc4e70b3107536728605aca50620ce3}{luna\+::vulkan\+::vulkan\+Device}}.
 
 
 
-\doxysubsection{Friends And Related Function Documentation}
-\mbox{\Hypertarget{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}\label{classluna_1_1renderer_1_1device_a0ee548a1b2b101fff96b1b8a3849b3f7}} 
-\index{luna::renderer::device@{luna::renderer::device}!vulkanDevice@{vulkanDevice}}
-\index{vulkanDevice@{vulkanDevice}!luna::renderer::device@{luna::renderer::device}}
-\doxysubsubsection{\texorpdfstring{vulkanDevice}{vulkanDevice}}
-{\footnotesize\ttfamily friend class \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_device}{vulkan\+Device}}\hspace{0.3cm}{\ttfamily [friend]}}
-
-
-
-\doxysubsection{Member Data Documentation}
+\doxysubsubsection{Member Data Documentation}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1device_aafbc6cc53be313fff534273ea56b1345}\label{classluna_1_1renderer_1_1device_aafbc6cc53be313fff534273ea56b1345}} 
 \index{luna::renderer::device@{luna::renderer::device}!window@{window}}
 \index{window@{window}!luna::renderer::device@{luna::renderer::device}}
-\doxysubsubsection{\texorpdfstring{window}{window}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}}$>$ luna\+::renderer\+::device\+::window\hspace{0.3cm}{\ttfamily [private]}}
+\doxyparagraph{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}}$>$ luna\+::renderer\+::device\+::window}
+
+
+
+this is the reference to the main window. 
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/robbe/source/repos/luna/luna/src/core/rendering/\mbox{\hyperlink{device_8h}{device.\+h}}\end{DoxyCompactItemize}
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{device_8h}{device.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,4 @@
+<map id="luna::renderer::device" name="luna::renderer::device">
+<area shape="rect" id="node1" title="the device class is the code representation of the physical device or GPU." coords="19,5,164,31"/>
+<area shape="rect" id="node2" href="$d0/d00/classluna_1_1vulkan_1_1vulkan_device.html" title=" " coords="5,79,177,104"/>
+</map>

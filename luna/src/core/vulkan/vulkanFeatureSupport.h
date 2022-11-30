@@ -4,6 +4,9 @@ namespace luna
 {
 	namespace vulkan
 	{
+		/**
+		 * not used yet.
+		 */
 		class vulkanFeatureSupport
 		{
 		public:
