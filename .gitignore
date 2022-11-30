@@ -37,4 +37,6 @@ luna/tirdParty/obj/
 *.filters
 *.user
 /.vs/luna
+#log files
 *.log
+*.json

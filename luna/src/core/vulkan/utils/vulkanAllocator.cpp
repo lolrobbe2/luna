@@ -6,6 +6,7 @@ namespace luna
 	{
 		void vulkanAllocator::init(ref<renderer::device> device)
 		{
+			LN_PROFILE_FUNCTION();
 			VmaAllocatorCreateInfo allocatorCreateInfo;
 			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device);
 			vulkan::vulkanDevice::deviceHandles handles = vDevice->getDeviceHandles();
@@ -33,18 +34,20 @@ namespace luna
 		}
 		void vulkanAllocator::shutdown()
 		{
+			LN_PROFILE_FUNCTION();
 			if (sAllocator == VK_NULL_HANDLE) return;
 			vmaDestroyAllocator(sAllocator);
 		}
 
 		VmaAllocationInfo vulkanAllocator::getAllocationInfo(const uint64_t& handle)
 		{
+			LN_PROFILE_FUNCTION();
 			return allocations.getValue(handle, vmaAllocation()).second.allocationInfo;
 		}
 
 		VkResult vulkanAllocator::createImage(VkImage* pImage, const VkImageUsageFlags& usageFlags, const VmaMemoryUsage& memoryUsage, const VkExtent3D& extent, const VkFormat& format)
 		{
-
+			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			VkImageCreateInfo imageCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO };
 			imageCreateInfo.pNext = nullptr;
@@ -75,6 +78,7 @@ namespace luna
 		}
 		VkResult vulkanAllocator::destroyImage(const VkImage& image)
 		{
+			LN_PROFILE_FUNCTION();
 			auto result = allocations.getValue((uint64_t)image,vmaAllocation());
 			if (result.first == storageOpSucces) vmaDestroyImage(sAllocator, image, result.second.allocation);
 			allocations.eraseValue((uint64_t)image);
@@ -83,6 +87,7 @@ namespace luna
 
 		VkResult vulkanAllocator::createImageView(VkImageView* pImageView, const VkImage& image, const VkFormat& format, const VkImageAspectFlags& imageAspectFlags)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 
 			VkImageViewCreateInfo imageViewCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO };
@@ -101,12 +106,14 @@ namespace luna
 		}
 		VkResult vulkanAllocator::destroyImageView(const VkImageView& imageView)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			vkDestroyImageView(device->getDeviceHandles().device, imageView, nullptr);
 			return VK_SUCCESS;
 		}
 		VkResult vulkanAllocator::createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage,VmaAllocationCreateFlags allocFlags)
 		{
+			LN_PROFILE_FUNCTION();
 			VkBufferCreateInfo bufferInfo = {};
 			bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 			bufferInfo.pNext = nullptr;
@@ -133,6 +140,7 @@ namespace luna
 		}
 		void vulkanAllocator::destroyBuffer(VkBuffer buffer)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			vkDeviceWaitIdle(vDevice->getDeviceHandles().device);
 			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;

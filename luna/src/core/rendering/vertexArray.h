@@ -18,6 +18,7 @@ namespace luna
 
 			virtual const std::vector<ref<vertexBuffer>>& getVertexBuffers() const = 0;
 			virtual const ref<indexBuffer>& getIndexBuffer() const = 0;
+
 			static ref<vertexArray> create();
 		protected:
 			std::vector<ref<vertexBuffer>> vertexBuffers;

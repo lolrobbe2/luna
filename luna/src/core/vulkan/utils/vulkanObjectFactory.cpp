@@ -7,18 +7,21 @@ namespace luna
 	{
 		VkResult vulkanObjectFactory::init(ref<renderer::device> device)
 		{
+			LN_PROFILE_FUNCTION();
 			pDevice = device;
 			return VK_SUCCESS;
 		}
 
 		VkResult vulkanObjectFactory::createImage(VkImage* pImage,VkImageCreateInfo* pCreateInfo = nullptr)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			return vkCreateImage(device->getDeviceHandles().device, pCreateInfo,nullptr ,pImage);
 		}
 
 		VkResult vulkanObjectFactory::createImage(VkImage* pImage, VkImageUsageFlags usageFlags, VkExtent3D extent, VkFormat format)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			VkImageCreateInfo imageCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO };
 			imageCreateInfo.pNext = nullptr;
@@ -37,11 +40,13 @@ namespace luna
 		}
 		VkResult vulkanObjectFactory::createImageView(VkImageView* pImageView, VkImageViewCreateInfo* pImageViewCreateInfo = nullptr)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			return vkCreateImageView(device->getDeviceHandles().device, pImageViewCreateInfo, nullptr,pImageView);
 		}
 		VkResult vulkanObjectFactory::createImageView(VkImageView* pImageView,const VkImage& image,const VkFormat& format,const VkImageAspectFlags& imageAspectFlags)
 		{
+			LN_PROFILE_FUNCTION();
 			VkImageViewCreateInfo imageViewCreateInfo = {};
 			imageViewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 			imageViewCreateInfo.pNext = nullptr;

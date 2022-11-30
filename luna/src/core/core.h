@@ -7,6 +7,8 @@
 #pragma warning(push, 0)
 #include <memory>
 #include <core/debug/log.h>
+#define LN_PROFILE 1
+#include <core/debug/instrumentor.h>
 #pragma warning(pop)
 #ifdef _DEBUG
 	#define ENABLE_VALIDATION_LAYERS

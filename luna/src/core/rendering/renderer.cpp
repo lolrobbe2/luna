@@ -14,16 +14,6 @@ namespace luna
 	{
 		void renderer::init(const ref<vulkan::window>& window)
 		{
-			/*
-			vertex vert1;
-			vert1.vert = { 0.0f, -0.5f , 0.0f};
-			vertex vert2;
-			vert2.vert = { 0.5f, 0.5f , 0.0f };
-			vertex vert3;
-			vert3.vert = { -0.5f, 0.5f , 0.0f };
-			testMesh.vertices = { vert1,vert2,vert3 };
-			testMesh.indices = { 0, 1, 2, 2, 3, 0 };
-			*/
 			switch (window->graphicsApi)
 			{
 			case vulkan::NONE:
@@ -45,12 +35,20 @@ namespace luna
 				break;		
 			}
 		}
+		void renderer::shutdown()
+		{
+			gui = nullptr;
+			rendererPipeline = nullptr;
+			rendererDevice = nullptr; 
+		}
+
 		void renderer::createFrame()
 		{
 
 		}
 		void renderer::newFrame()
 		{
+			LN_PROFILE_SCOPE("newframe");
 			rendererPipeline->begin();
 
 			rendererPipeline->end();

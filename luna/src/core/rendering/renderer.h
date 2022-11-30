@@ -18,6 +18,11 @@ namespace luna
 			 */
 			static void init(const ref<vulkan::window>& window);
 			/**
+			 * @biref shutsdown the base renderer.
+			 * 
+			 */
+			static void shutdown();
+			/**
 			 * @brief create a frame in the render pipline based on the given input.
 			 * 
 			 */

@@ -9,6 +9,7 @@ namespace luna
 	{
 		vulkanImgui::vulkanImgui(ref<renderer::pipeline> pipeline)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<renderer::device> device = std::dynamic_pointer_cast<vulkan::vulkanPipeline>(pipeline)->layout.device;
 			vkb::Device vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->getDeviceHandles().device;
 			this->pipeline = pipeline;
@@ -103,6 +104,7 @@ namespace luna
 		}
 		vulkanImgui::~vulkanImgui()
 		{
+			LN_PROFILE_FUNCTION();
 			ref<renderer::device> device = std::dynamic_pointer_cast<vulkan::vulkanPipeline>(pipeline)->layout.device;
 			vkb::Device vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->getDeviceHandles().device;
 

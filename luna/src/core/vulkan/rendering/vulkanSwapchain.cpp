@@ -15,7 +15,7 @@ namespace luna
 		}
 		VkResult vulkanSwapchain::createSwapchain(const swapchainSpec& swapChainSpec)
 		{
-            
+            LN_PROFILE_FUNCTION();
             vkGetPhysicalDeviceSurfaceCapabilitiesKHR(swapChainSpec.physicalDevice, swapChainSpec.physicalDevice.surface, &surfaceCapaBilities);
             mSwapchainSpec = swapChainSpec;
             vkb::SwapchainBuilder swapchainBuilder{ swapChainSpec.physicalDevice, swapChainSpec.device, swapChainSpec.surface };
@@ -36,6 +36,7 @@ namespace luna
 		}
 		VkResult vulkanSwapchain::recreateSwapchain()
 		{
+            LN_PROFILE_FUNCTION();
             vkDeviceWaitIdle(mSwapchainSpec.device);
             
             for (size_t i = 0; i < frameBuffers.size(); i++)
@@ -59,12 +60,14 @@ namespace luna
 		}
 		VkResult vulkanSwapchain::destroySwapchain()
 		{
+            LN_PROFILE_FUNCTION();
             vkb::destroy_swapchain(mSwapchain);
 			return VK_SUCCESS;
 		}
 
         VkViewport vulkanSwapchain::getViewport()
         {
+            LN_PROFILE_FUNCTION();
             VkViewport viewport;
             viewport.x = 0.0f;
             viewport.y = 0.0f;
@@ -77,6 +80,7 @@ namespace luna
 
         VkRect2D vulkanSwapchain::getScissor()
         {
+            LN_PROFILE_FUNCTION();
             VkRect2D scissor;
             scissor.extent = { mSwapchainSpec.window->getWidth(),mSwapchainSpec.window->getHeight() };
             scissor.offset = { 0,0 };
@@ -84,6 +88,7 @@ namespace luna
         }
         VkResult vulkanSwapchain::initViewport(uint32_t maxFramesInFlight)
         {
+            LN_PROFILE_FUNCTION();
             if (init) return VK_SUCCESS;
             VkSamplerCreateInfo samplerInfo{};
             samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
@@ -120,6 +125,7 @@ namespace luna
         }
         VkResult vulkanSwapchain::recreateViewport(uint32_t maxFramesInFlight)
         {
+            LN_PROFILE_FUNCTION();
             sceneViewportImages.resize(maxFramesInFlight);
             sceneViewportImageViews.resize(maxFramesInFlight);
             for (size_t i = 0; i < maxFramesInFlight; i++)

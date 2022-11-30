@@ -65,9 +65,14 @@ namespace luna
 			 * @brief return the pipeline renderpass.
 			 */
 			inline VkRenderPass getRenderPass() { return renderPass; };
-
+			/**
+			 * @brief draw a vertexArray indexed.
+			 * 
+			 * \param const ref<renderer::vertexArray>& vertexArray vertexArray to render
+			 * \param int indexCount the indices count to render; 
+			 * \note check if the indexCount variable is not zero when the rendered quad does not appear;
+			 */
 			virtual void drawIndexed(const ref<renderer::vertexArray>& vertexArray,int indexCount = 0) override;
-			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount);
 			renderer::pipelineLayout layout;
 			uint32_t maxFramesInFlight = 0;
 		private:
@@ -191,6 +196,10 @@ namespace luna
 			 * \param VkCommandBuffer commandBufffer
 			 */
 			void transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout, VkCommandBuffer commandBufffer);
+			/**
+			 * @brief executes draw command.
+			 */
+			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount);
 		private:
 			//TODO improve variables usage.
 			struct shaderStage

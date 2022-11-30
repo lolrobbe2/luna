@@ -10,6 +10,7 @@ namespace luna
 		}
 		std::vector<uint32_t> shaderCompiler::compile(compileSpec compileSpec)
 		{
+			LN_PROFILE_FUNCTION();
 			shaderc::Compiler compiler;
 			shaderc::SpvCompilationResult compileResult;
 			switch (compileSpec.language)
@@ -36,6 +37,7 @@ namespace luna
 		}
 		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData,bool reflect)
 		{
+			LN_PROFILE_FUNCTION();
 			if (!reflect)return reflect;
 			spirv_cross::Compiler compiler(shaderData);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
@@ -84,7 +86,7 @@ namespace luna
 		}
 		std::string shaderCompiler::getResourceTypeName(const spirv_cross::Resource& resource,const spirv_cross::Compiler& compiler)
 		{
-			
+			LN_PROFILE_FUNCTION();
 			spirv_cross::SPIRType::BaseType baseType = compiler.get_type(resource.base_type_id).basetype;
 			switch (baseType)
 			{

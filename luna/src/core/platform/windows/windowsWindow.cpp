@@ -23,6 +23,7 @@ namespace luna
 		}
 		void windowsWindow::onUpdate()
 		{
+			LN_PROFILE_FUNCTION() ;
 			glfwPollEvents();
 		}
 		inline void* windowsWindow::getWindow()
@@ -31,6 +32,7 @@ namespace luna
 		}
 		void windowsWindow::init(const vulkan::windowSpec& windowInfo)
 		{
+			LN_PROFILE_FUNCTION();
 			mData.width = windowInfo.width;
 			mData.height = windowInfo.height;
 			mData.title = windowInfo.title;

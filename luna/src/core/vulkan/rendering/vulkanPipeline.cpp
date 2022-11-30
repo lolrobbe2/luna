@@ -11,7 +11,7 @@ namespace luna
 	{
 		vulkanPipeline::vulkanPipeline(const renderer::pipelineLayout& layout)
 		{
-			
+			LN_PROFILE_FUNCTION();
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			this->layout = layout;
@@ -31,11 +31,13 @@ namespace luna
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
+			LN_PROFILE_FUNCTION();
 			this->layout = layout;
 			createPipeLineLayout();
 		}
 		void vulkanPipeline::destroyPipeline()
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
 			vkDeviceWaitIdle(device);
@@ -49,6 +51,7 @@ namespace luna
 
 		void vulkanPipeline::createCommands()
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
 			//vkDeviceWaitIdle(device);
@@ -149,6 +152,7 @@ namespace luna
 		}
 		void vulkanPipeline::begin() const
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			
 			ImGui_ImplVulkan_NewFrame();
@@ -181,6 +185,7 @@ namespace luna
 		}
 		void vulkanPipeline::end() const
 		{
+			LN_PROFILE_FUNCTION();
 			ImGui::Render();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
@@ -188,7 +193,7 @@ namespace luna
 		}
 		void vulkanPipeline::flush()
 		{
-			
+			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			
 			if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
@@ -269,10 +274,12 @@ namespace luna
 		}
 		void vulkanPipeline::clear()
 		{
+			LN_PROFILE_FUNCTION();
 			drawCommands.clear();
 		}
 		void vulkanPipeline::createShaderStages()
 		{
+			LN_PROFILE_FUNCTION();
 			shaderStages.resize(0);
 			shaderModules.resize(0);
 			for (const auto& shader : layout.pipelineShaders) 
@@ -317,11 +324,13 @@ namespace luna
 		}
 		void vulkanPipeline::createInputStates()
 		{
+			LN_PROFILE_FUNCTION();
 			for (const auto& shader : layout.pipelineShaders) createBindingDescription(shader);
 			for (const auto& shader : layout.pipelineShaders) createAttributeDescription(shader);
 		}
 		VkPipelineVertexInputStateCreateInfo vulkanPipeline::createVertexInputState(const ref<renderer::shader> shader)
 		{ 
+			LN_PROFILE_FUNCTION();
 			VkPipelineVertexInputStateCreateInfo vertexInputCreateInfo{ VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO };
 			vertexInputCreateInfo.pVertexAttributeDescriptions = inputDescriptions[shader->shaderName].attributes.data();
 			vertexInputCreateInfo.pVertexBindingDescriptions = inputDescriptions[shader->shaderName].bindings.data();
@@ -332,6 +341,7 @@ namespace luna
 		}
 		void vulkanPipeline::createBindingDescription(const ref<renderer::shader> shader)
 		{
+			LN_PROFILE_FUNCTION();
 			if (shader->stage != renderer::shaderStageVertex) return;
 
 			std::unordered_map<uint32_t, VkVertexInputBindingDescription> bindingDescriptions;
@@ -362,6 +372,7 @@ namespace luna
 		}
 		void vulkanPipeline::createAttributeDescription(const ref<renderer::shader> shader)
 		{
+			LN_PROFILE_FUNCTION();
 			if (shader->stage != renderer::shaderStageVertex) return;
 
 			
@@ -380,6 +391,7 @@ namespace luna
 		}
 		void vulkanPipeline::createPipeLineLayout()
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			vkCreatePipelineLayout(vDevice->getDeviceHandles().device, &pipelineLayoutCreateInfo(), nullptr, &pipelineLayout);
 			createShaderStages();
@@ -397,6 +409,7 @@ namespace luna
 
 		VkResult vulkanPipeline::buildPipeline(VkDevice device, VkRenderPass pass) 
 		{
+			LN_PROFILE_FUNCTION();
 			//make viewport state from our stored viewport and scissor.
 			//at the moment we won't support multiple viewports or scissors
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
@@ -458,6 +471,7 @@ namespace luna
 
 		VkResult vulkanPipeline::createShaderModule(ref<renderer::shader> shader,VkShaderModule* shaderModule)
 		{
+			LN_PROFILE_FUNCTION();
 			VkShaderModuleCreateInfo shaderModuleCreateInfo{ VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO };
 			std::vector<uint32_t> shadersrc = shader->self();
 			shaderModuleCreateInfo.codeSize = shadersrc.size() * sizeof(uint32_t);
@@ -470,6 +484,7 @@ namespace luna
 
 		VkFormat vulkanPipeline::getResourceFormat(renderer::typeId resourceType)
 		{
+			LN_PROFILE_FUNCTION();
 			switch (resourceType)
 			{
 			case luna::renderer::Boolean:
@@ -508,6 +523,7 @@ namespace luna
 		}
 		VkPipelineInputAssemblyStateCreateInfo vulkanPipeline::inputAssemblyCreateInfo(VkPrimitiveTopology topology) 
 		{
+			LN_PROFILE_FUNCTION();
 			VkPipelineInputAssemblyStateCreateInfo info = {};
 			info.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 			info.pNext = nullptr;
@@ -520,6 +536,7 @@ namespace luna
 
 		VkPipelineRasterizationStateCreateInfo vulkanPipeline::rasterizationStateCreateInfo(VkPolygonMode polygonMode)
 		{
+			LN_PROFILE_FUNCTION();
 			VkPipelineRasterizationStateCreateInfo info = {};
 			info.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
 			info.pNext = nullptr;
@@ -544,6 +561,7 @@ namespace luna
 
 		VkPipelineMultisampleStateCreateInfo vulkanPipeline::multisamplingStateCreateInfo()
 		{
+			LN_PROFILE_FUNCTION();
 			VkPipelineMultisampleStateCreateInfo info = {};
 			info.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
 			info.pNext = nullptr;
@@ -559,6 +577,7 @@ namespace luna
 		}
 		VkPipelineColorBlendAttachmentState vulkanPipeline::colorBlendAttachmentState() 
 		{
+			LN_PROFILE_FUNCTION();
 			VkPipelineColorBlendAttachmentState colorBlendAttachment = {};
 			colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_G_BIT |
 				VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_A_BIT;
@@ -568,6 +587,7 @@ namespace luna
 
 		VkPipelineLayoutCreateInfo vulkanPipeline::pipelineLayoutCreateInfo() 
 		{
+			LN_PROFILE_FUNCTION();
 			VkPipelineLayoutCreateInfo info{};
 			info.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 			info.pNext = nullptr;
@@ -582,6 +602,7 @@ namespace luna
 		}
 		void vulkanPipeline::initDefaultRenderpass()
 		{
+			LN_PROFILE_FUNCTION();
 			// the renderpass will use this color attachment.
 			VkAttachmentDescription color_attachment = {};
 			//the attachment will have the format needed by the swapchain
@@ -640,6 +661,7 @@ namespace luna
 
 		void vulkanPipeline::initSyncStructures() //TODO make seperate class from this
 		{
+			LN_PROFILE_FUNCTION();
 			//create synchronization structures
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			destroySyncStructures();
@@ -666,6 +688,7 @@ namespace luna
 
 		void vulkanPipeline::destroySyncStructures()
 		{
+			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			// semaphore destruction
 			if (!imageAvailableSemaphores.size())
@@ -690,7 +713,7 @@ namespace luna
 		}
 		void vulkanPipeline::transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout,VkCommandBuffer commandBufffer) 
 		{
-			
+			LN_PROFILE_FUNCTION();
 			VkImageMemoryBarrier barrier{};
 			barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
 			barrier.oldLayout = oldLayout;
@@ -766,11 +789,13 @@ namespace luna
 		}
 		void vulkanPipeline::drawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount)
 		{
+			LN_PROFILE_FUNCTION();
 			drawCommands.push_back({ vertexArray,indexCount });
 		}
 
 		void vulkanPipeline::fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount)
 		{
+			LN_PROFILE_FUNCTION();
 			VkDeviceSize offsets = 0;
 			std::vector<VkBuffer> vulkanVertexBuffers;
 			VkBuffer indexBuffer = std::dynamic_pointer_cast<vulkanIndexBuffer>(vertexArray->getIndexBuffer())->vkIndexBuffer;

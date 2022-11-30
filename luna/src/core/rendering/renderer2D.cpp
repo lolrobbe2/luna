@@ -30,6 +30,7 @@ namespace luna
 
 		void renderer2D::init()
 		{
+			LN_PROFILE_SCOPE("renderer2D init");
 			rendererData.quadVertexBuffer = vertexBuffer::create(rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadVertexBufferBase = (quadVertex*)rendererData.quadVertexBuffer->data;
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
@@ -61,15 +62,18 @@ namespace luna
 
 		void renderer2D::shutdown()
 		{
-			renderer::beginScene(); // to clear draw commands
+			LN_PROFILE_SCOPE("shutdown renderer2D");
+			renderer::beginScene(); //to clear draw commands
 			rendererData.vertexArray = nullptr;
 			rendererData.quadIndexBuffer = nullptr;
 
 			rendererData.quadVertexBuffer = nullptr;
+			renderer::shutdown();
 		}
 
 		void renderer2D::BeginScene()
 		{
+			LN_PROFILE_SCOPE("begin scene");
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
 			rendererData.quadIndexCount = 0;
@@ -77,18 +81,21 @@ namespace luna
 
 		void renderer2D::endScene()
 		{
+			LN_PROFILE_FUNCTION();
 			flush();
 			renderer::endScene();
 		}
 
 		void renderer2D::drawQuad(const glm::vec3& position,const glm::vec2& size)
 		{
+			LN_PROFILE_FUNCTION();
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 			drawQuad(transform);
 		}
 		void renderer2D::drawQuad(const glm::mat4& transform)
 		{
+			LN_PROFILE_FUNCTION();
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
@@ -99,6 +106,7 @@ namespace luna
 		}
 		void renderer2D::flush()
 		{
+			LN_PROFILE_FUNCTION();
 			rendererData.quadVertexBufferBase;
 			renderer::Submit(rendererData.vertexArray , rendererData.quadIndexCount);
 		}
