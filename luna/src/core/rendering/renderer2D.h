@@ -11,7 +11,9 @@ namespace luna
 			static void shutdown();
 			static void BeginScene();
 			static void endScene();
-			static void drawQuad(glm::vec2 size);
+			static void drawQuad(const glm::vec3& position, const glm::vec2& size);
+			static void drawQuad(const glm::mat4& transform);
+			static void flush();
 		private:
 		};
 	}

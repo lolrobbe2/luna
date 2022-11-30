@@ -58,6 +58,23 @@ namespace luna
 			}
 			return ref<indexBuffer>();
 		}
+		ref<indexBuffer> indexBuffer::create(uint32_t count)
+		{
+			switch (vulkan::window::graphicsApi)
+			{
+			case vulkan::NONE:
+				LN_CORE_ERROR("NONE is currently not supported!");
+				break;
+			case vulkan::OPENGL:
+				LN_CORE_ERROR("OPENGL is currently not supported!");
+				break;
+			case vulkan::VULKAN:
+				return ref<indexBuffer>(new vulkan::vulkanIndexBuffer(count));
+			default:
+				return ref<indexBuffer>();
+			}
+			return ref<indexBuffer>();
+		}
 	}
 }
 

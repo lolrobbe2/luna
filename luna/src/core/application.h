@@ -3,7 +3,7 @@
 #include <core/platform/platform.h>
 #include <core/vulkan/window/window.h>
 #include <core/events/event.h>
-#include <core/rendering/renderer.h>
+#include <core/rendering/renderer2D.h>
 #include <core/utils/objectStorage.h>
 namespace luna
 {

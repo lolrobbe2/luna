@@ -57,6 +57,11 @@ namespace luna
 			 */
 			virtual void flush() override;
 			/**
+			 * @brief clears all the vulkan pipeline draw commands.
+			 * 
+			 */
+			virtual void clear() override;
+			/**
 			 * @brief return the pipeline renderpass.
 			 */
 			inline VkRenderPass getRenderPass() { return renderPass; };

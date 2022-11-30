@@ -9,6 +9,7 @@ namespace luna
 		{
 		public:
 			vulkanIndexBuffer(uint32_t* indices, uint32_t count);
+			vulkanIndexBuffer(uint32_t count);
 			virtual ~vulkanIndexBuffer();
 			virtual void bind() const override;
 			virtual void unbind() const override;

@@ -75,8 +75,9 @@ namespace luna
 			virtual uint32_t getCount() const = 0;
 
 			static ref<indexBuffer> create(uint32_t* indices, uint32_t count);
+			static ref<indexBuffer> create(uint32_t count);
 
-			void* data = nullptr;
+			uint32_t* data = nullptr;
 			uint32_t size = 0;
 		};
 	}

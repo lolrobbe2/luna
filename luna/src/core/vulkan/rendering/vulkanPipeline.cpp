@@ -267,6 +267,10 @@ namespace luna
 			}
 
 		}
+		void vulkanPipeline::clear()
+		{
+			drawCommands.clear();
+		}
 		void vulkanPipeline::createShaderStages()
 		{
 			shaderStages.resize(0);

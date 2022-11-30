@@ -8,8 +8,8 @@ namespace luna
 		vulkanVertexBuffer::vulkanVertexBuffer(uint32_t size)
 		{
 			this->size = size;
-			utils::vulkanAllocator::createBuffer(&vkVertexBuffer, size, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU);
-
+			utils::vulkanAllocator::createBuffer(&vkVertexBuffer, size, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU,VMA_ALLOCATION_CREATE_MAPPED_BIT);
+			data = utils::vulkanAllocator::getAllocationInfo((uint64_t)vkVertexBuffer).pMappedData;
 		}
 		vulkanVertexBuffer::vulkanVertexBuffer(const void* data, uint32_t size)
 		{

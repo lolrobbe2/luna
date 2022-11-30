@@ -49,13 +49,6 @@ namespace luna
 			inline static renderer::pipelineLayout layout; //the main graphics pipline layout
 			inline static ref<gui::vulkanImgui> gui;
 			inline static bool Selected;
-			struct vertex {
-				glm::vec3 vert;
-			};
-			struct mesh {
-				std::vector<vertex> vertices;
-				std::vector<uint32_t> indices;
-			};
 		};
 	}
 }

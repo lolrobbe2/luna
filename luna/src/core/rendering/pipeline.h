@@ -6,7 +6,6 @@ namespace luna
 {
 	namespace renderer
 	{
-		typedef void (*drawCommand)(const ref<vertexArray>& vertexArray, int indexCount);
 		struct pipelineLayout
 		{
 			std::vector<ref<shader>> pipelineShaders;
@@ -28,7 +27,10 @@ namespace luna
 			 * 
 			 */
 			virtual void destroyPipeline() = 0;
-
+			/**
+			 * @brief creates platform specific commands for the rendererPipeline using engine drawCommands.
+			 * 
+			 */
 			virtual void createCommands() = 0;
 			/**
 			 * @brief starts recording pipeline input.
@@ -52,6 +54,11 @@ namespace luna
 			 * \param indexCount indexCount tp be rendered;
 			 */
 			virtual void drawIndexed(const ref<vertexArray>& vertexArray, int indexCount) = 0;
+			/**
+			 * @brief clears all drawCommands.
+			 * 
+			 */
+			virtual void clear() = 0;
 			int test;
 		protected:
 			
