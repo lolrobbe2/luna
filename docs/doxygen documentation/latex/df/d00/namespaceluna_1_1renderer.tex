@@ -15,7 +15,13 @@ class \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline}{pipeline}}
 \item 
 struct \mbox{\hyperlink{structluna_1_1renderer_1_1pipeline_layout}{pipeline\+Layout}}
 \item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1quad_vertex}{quad\+Vertex}}
+\item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1renderer}{renderer}}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d}{renderer2D}}
+\begin{DoxyCompactList}\small\item\em 2D renderer api runs on\+Top of the renderer api. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_data}{renderer2\+DData}}
 \item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}}
 \item 
@@ -24,11 +30,6 @@ struct \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{shader\+Resou
 class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}
 \item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef void($\ast$ \mbox{\hyperlink{namespaceluna_1_1renderer_ac49aeaa7349a30aad88e16003b0e012c}{draw\+Command}}) (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, int index\+Count)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -107,15 +108,11 @@ enum \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faa
 , \mbox{\hyperlink{namespaceluna_1_1renderer_acfec401f46f7e9f983c807c61a32faaea1940b12eaac470ef33b59b8d447a0cd0}{shader\+Stage\+Compute}}
  \}
 \end{DoxyCompactItemize}
-
-
-\doxysubsubsection{Typedef Documentation}
-\mbox{\Hypertarget{namespaceluna_1_1renderer_ac49aeaa7349a30aad88e16003b0e012c}\label{namespaceluna_1_1renderer_ac49aeaa7349a30aad88e16003b0e012c}} 
-\index{luna::renderer@{luna::renderer}!drawCommand@{drawCommand}}
-\index{drawCommand@{drawCommand}!luna::renderer@{luna::renderer}}
-\doxyparagraph{\texorpdfstring{drawCommand}{drawCommand}}
-{\footnotesize\ttfamily typedef void($\ast$ luna\+::renderer\+::draw\+Command) (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, int index\+Count)}
-
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_data}{renderer2\+DData}} \mbox{\hyperlink{namespaceluna_1_1renderer_a98a3d639a0aeaf8bc830d3d67e7e3ed6}{renderer\+Data}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsubsection{Enumeration Type Documentation}
@@ -355,3 +352,12 @@ mat4&\\
 \hline
 
 \end{DoxyEnumFields}
+
+
+\doxysubsubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceluna_1_1renderer_a98a3d639a0aeaf8bc830d3d67e7e3ed6}\label{namespaceluna_1_1renderer_a98a3d639a0aeaf8bc830d3d67e7e3ed6}} 
+\index{luna::renderer@{luna::renderer}!rendererData@{rendererData}}
+\index{rendererData@{rendererData}!luna::renderer@{luna::renderer}}
+\doxyparagraph{\texorpdfstring{rendererData}{rendererData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_data}{renderer2\+DData}} luna\+::renderer\+::renderer\+Data\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -120,6 +120,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa071655def49bf5f9bf517d9ecc7834f"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys the graphics pipeline.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aa071655def49bf5f9bf517d9ecc7834f">More...</a><br /></td></tr>
 <tr class="separator:aa071655def49bf5f9bf517d9ecc7834f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f0f6eb618872aa9a2f1fef6dbd3c847"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a9f0f6eb618872aa9a2f1fef6dbd3c847">createCommands</a> ()=0</td></tr>
+<tr class="memdesc:a9f0f6eb618872aa9a2f1fef6dbd3c847"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates platform specific commands for the rendererPipeline using engine drawCommands.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a9f0f6eb618872aa9a2f1fef6dbd3c847">More...</a><br /></td></tr>
 <tr class="separator:a9f0f6eb618872aa9a2f1fef6dbd3c847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc5a2034a8f14426e2ce4b235b0cba2b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#afc5a2034a8f14426e2ce4b235b0cba2b">begin</a> () const =0</td></tr>
 <tr class="memdesc:afc5a2034a8f14426e2ce4b235b0cba2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts recording pipeline input.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#afc5a2034a8f14426e2ce4b235b0cba2b">More...</a><br /></td></tr>
@@ -133,6 +134,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6ac93d074f15ee67bc29fa3df51b3498"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498">drawIndexed</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a> &gt; &amp;<a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a>, int indexCount)=0</td></tr>
 <tr class="memdesc:a6ac93d074f15ee67bc29fa3df51b3498"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw <a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a> with and <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a>.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498">More...</a><br /></td></tr>
 <tr class="separator:a6ac93d074f15ee67bc29fa3df51b3498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea4856bf4c1a3652937fb94c01b4b2a5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5">clear</a> ()=0</td></tr>
+<tr class="memdesc:aea4856bf4c1a3652937fb94c01b4b2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">clears all drawCommands.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5">More...</a><br /></td></tr>
+<tr class="separator:aea4856bf4c1a3652937fb94c01b4b2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -195,6 +199,35 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aea4856bf4c1a3652937fb94c01b4b2a5" name="aea4856bf4c1a3652937fb94c01b4b2a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea4856bf4c1a3652937fb94c01b4b2a5">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void luna::renderer::pipeline::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>clears all drawCommands. </p>
+
+<p>Implemented in <a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa41ea737c800e7a904e3f7507469bf64">luna::vulkan::vulkanPipeline</a>.</p>
+
+</div>
+</div>
 <a id="a9f0f6eb618872aa9a2f1fef6dbd3c847" name="a9f0f6eb618872aa9a2f1fef6dbd3c847"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9f0f6eb618872aa9a2f1fef6dbd3c847">&#9670;&#160;</a></span>createCommands()</h2>
 
@@ -217,6 +250,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>creates platform specific commands for the rendererPipeline using engine drawCommands. </p>
 
 <p>Implemented in <a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a1d4d725067be784aa50f9e488cdd9dca">luna::vulkan::vulkanPipeline</a>.</p>
 

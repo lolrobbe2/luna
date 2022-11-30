@@ -7,6 +7,7 @@ var hierarchy =
     ] ],
     [ "luna::renderer::bufferElement", "d8/d00/classluna_1_1renderer_1_1buffer_element.html", null ],
     [ "luna::renderer::bufferLayout", "d6/d00/classluna_1_1renderer_1_1buffer_layout.html", null ],
+    [ "luna::instrumentorUtils::ChangeResult< N >", "d2/d00/structluna_1_1instrumentor_utils_1_1_change_result.html", null ],
     [ "luna::vulkan::commandPoolSubmitInfo", "d2/d00/structluna_1_1vulkan_1_1command_pool_submit_info.html", null ],
     [ "luna::utils::compileSpec", "db/d00/structluna_1_1utils_1_1compile_spec.html", null ],
     [ "luna::renderer::device", "d6/d00/classluna_1_1renderer_1_1device.html", [
@@ -36,8 +37,10 @@ var hierarchy =
     [ "luna::renderer::indexBuffer", "d8/d00/classluna_1_1renderer_1_1index_buffer.html", [
       [ "luna::vulkan::vulkanIndexBuffer", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html", null ]
     ] ],
+    [ "luna::instrumentationSession", "d4/d00/structluna_1_1instrumentation_session.html", null ],
+    [ "luna::instrumentationTimer", "dd/d00/classluna_1_1instrumentation_timer.html", null ],
+    [ "luna::instrumentor", "dd/d00/classluna_1_1instrumentor.html", null ],
     [ "luna::Log", "dc/d00/classluna_1_1_log.html", null ],
-    [ "luna::renderer::renderer::mesh", "de/d00/structluna_1_1renderer_1_1renderer_1_1mesh.html", null ],
     [ "luna::utils::objectStorage< value >", "d5/d00/classluna_1_1utils_1_1object_storage.html", null ],
     [ "luna::utils::objectStorage< glm::mat4 >", "d5/d00/classluna_1_1utils_1_1object_storage.html", null ],
     [ "luna::utils::objectStorage< luna::utils::vulkanAllocator::vmaAllocation >", "d5/d00/classluna_1_1utils_1_1object_storage.html", null ],
@@ -45,8 +48,12 @@ var hierarchy =
       [ "luna::vulkan::vulkanPipeline", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html", null ]
     ] ],
     [ "luna::renderer::pipelineLayout", "db/d00/structluna_1_1renderer_1_1pipeline_layout.html", null ],
+    [ "luna::profileResult", "d8/d00/structluna_1_1profile_result.html", null ],
+    [ "luna::renderer::quadVertex", "dc/d00/structluna_1_1renderer_1_1quad_vertex.html", null ],
     [ "luna::vulkan::queueFamilyIndices", "dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html", null ],
     [ "luna::renderer::renderer", "d5/d00/classluna_1_1renderer_1_1renderer.html", null ],
+    [ "luna::renderer::renderer2D", "df/d00/classluna_1_1renderer_1_1renderer2_d.html", null ],
+    [ "luna::renderer::renderer2DData", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html", null ],
     [ "luna::renderer::shader", "d9/d00/classluna_1_1renderer_1_1shader.html", [
       [ "luna::vulkan::vulkanShader", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html", null ]
     ] ],
@@ -60,7 +67,6 @@ var hierarchy =
     [ "luna::utils::vectorCache< value >", "d0/d00/classluna_1_1utils_1_1vector_cache.html", null ],
     [ "luna::utils::vectorCache< glm::mat4 >", "d0/d00/classluna_1_1utils_1_1vector_cache.html", null ],
     [ "luna::utils::vectorCache< luna::utils::vulkanAllocator::vmaAllocation >", "d0/d00/classluna_1_1utils_1_1vector_cache.html", null ],
-    [ "luna::renderer::renderer::vertex", "d3/d00/structluna_1_1renderer_1_1renderer_1_1vertex.html", null ],
     [ "luna::vulkan::vulkanPipeline::Vertex", "d5/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1_vertex.html", null ],
     [ "luna::renderer::vertexArray", "d5/d00/classluna_1_1renderer_1_1vertex_array.html", [
       [ "luna::vulkan::vulkanVertexArray", "dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array.html", null ]

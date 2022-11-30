@@ -2,6 +2,7 @@
 \label{core_8h}\index{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h@{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h}}
 {\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include $<$core/debug/log.\+h$>$}\newline
+{\ttfamily \#include $<$core/debug/instrumentor.\+h$>$}\newline
 Include dependency graph for core.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -31,6 +32,14 @@ namespace \mbox{\hyperlink{namespaceluna}{luna}}
 \#define \mbox{\hyperlink{core_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(x)~(1$<$$<$x)
 \item 
 \#define \mbox{\hyperlink{core_8h_a601eca0b2cab40b7aeafc444834cc778}{LN\+\_\+\+BIND\+\_\+\+EVENT\+\_\+\+FN}}(fn)~\mbox{[}this\mbox{]}(auto\&\&... args) -\/$>$ decltype(auto) \{ return this-\/$>$fn(std\+::forward$<$decltype(args)$>$(args)...); \}
+\item 
+\#define \mbox{\hyperlink{core_8h_a200d9a7dd5abdbfc0530aba9b08e9b4f}{LN\+\_\+\+PROFILE}}~1
+\item 
+\#define \mbox{\hyperlink{core_8h_a877cce34f3e58fd7f9194fab90724cb8}{MAJOR}}~0
+\item 
+\#define \mbox{\hyperlink{core_8h_a4e10915d93013542d442d78de0e02e9a}{MINOR}}~0
+\item 
+\#define \mbox{\hyperlink{core_8h_af59c44c1f3ff875c35393428624473aa}{PATCH}}~2
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -66,4 +75,28 @@ namespace \mbox{\hyperlink{namespaceluna}{luna}}
 \index{LN\_BIND\_EVENT\_FN@{LN\_BIND\_EVENT\_FN}!core.h@{core.h}}
 \doxyparagraph{\texorpdfstring{LN\_BIND\_EVENT\_FN}{LN\_BIND\_EVENT\_FN}}
 {\footnotesize\ttfamily \#define LN\+\_\+\+BIND\+\_\+\+EVENT\+\_\+\+FN(\begin{DoxyParamCaption}\item[{}]{fn }\end{DoxyParamCaption})~\mbox{[}this\mbox{]}(auto\&\&... args) -\/$>$ decltype(auto) \{ return this-\/$>$fn(std\+::forward$<$decltype(args)$>$(args)...); \}}
+
+\mbox{\Hypertarget{core_8h_a200d9a7dd5abdbfc0530aba9b08e9b4f}\label{core_8h_a200d9a7dd5abdbfc0530aba9b08e9b4f}} 
+\index{core.h@{core.h}!LN\_PROFILE@{LN\_PROFILE}}
+\index{LN\_PROFILE@{LN\_PROFILE}!core.h@{core.h}}
+\doxyparagraph{\texorpdfstring{LN\_PROFILE}{LN\_PROFILE}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+PROFILE~1}
+
+\mbox{\Hypertarget{core_8h_a877cce34f3e58fd7f9194fab90724cb8}\label{core_8h_a877cce34f3e58fd7f9194fab90724cb8}} 
+\index{core.h@{core.h}!MAJOR@{MAJOR}}
+\index{MAJOR@{MAJOR}!core.h@{core.h}}
+\doxyparagraph{\texorpdfstring{MAJOR}{MAJOR}}
+{\footnotesize\ttfamily \#define MAJOR~0}
+
+\mbox{\Hypertarget{core_8h_a4e10915d93013542d442d78de0e02e9a}\label{core_8h_a4e10915d93013542d442d78de0e02e9a}} 
+\index{core.h@{core.h}!MINOR@{MINOR}}
+\index{MINOR@{MINOR}!core.h@{core.h}}
+\doxyparagraph{\texorpdfstring{MINOR}{MINOR}}
+{\footnotesize\ttfamily \#define MINOR~0}
+
+\mbox{\Hypertarget{core_8h_af59c44c1f3ff875c35393428624473aa}\label{core_8h_af59c44c1f3ff875c35393428624473aa}} 
+\index{core.h@{core.h}!PATCH@{PATCH}}
+\index{PATCH@{PATCH}!core.h@{core.h}}
+\doxyparagraph{\texorpdfstring{PATCH}{PATCH}}
+{\footnotesize\ttfamily \#define PATCH~2}
 

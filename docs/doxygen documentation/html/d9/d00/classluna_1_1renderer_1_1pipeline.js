@@ -2,6 +2,7 @@ var classluna_1_1renderer_1_1pipeline =
 [
     [ "~pipeline", "d9/d00/classluna_1_1renderer_1_1pipeline.html#ab40683a6e9514c24b44d36573c5065e9", null ],
     [ "begin", "d9/d00/classluna_1_1renderer_1_1pipeline.html#afc5a2034a8f14426e2ce4b235b0cba2b", null ],
+    [ "clear", "d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5", null ],
     [ "createCommands", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a9f0f6eb618872aa9a2f1fef6dbd3c847", null ],
     [ "createPipeline", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a0f11e067108000e35444f69da2175399", null ],
     [ "destroyPipeline", "d9/d00/classluna_1_1renderer_1_1pipeline.html#aa071655def49bf5f9bf517d9ecc7834f", null ],

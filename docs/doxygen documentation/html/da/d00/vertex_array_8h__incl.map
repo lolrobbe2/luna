@@ -1,12 +1,22 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/vertexArray.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/vertexArray.h">
-<area shape="rect" id="node1" title=" " coords="172,5,331,75"/>
-<area shape="rect" id="node2" href="$d5/d00/core_8h.html" title=" " coords="211,269,297,295"/>
-<area shape="rect" id="node9" href="$d5/d00/buffer_8h.html" title=" " coords="235,123,385,148"/>
-<area shape="rect" id="node3" title=" " coords="161,343,230,368"/>
-<area shape="rect" id="node4" href="$d7/d00/log_8h.html" title=" " coords="255,343,373,368"/>
-<area shape="rect" id="node5" title=" " coords="5,416,164,441"/>
-<area shape="rect" id="node6" title=" " coords="188,416,301,441"/>
-<area shape="rect" id="node7" title=" " coords="325,416,444,441"/>
-<area shape="rect" id="node8" href="$de/d00/platform_8h.html" title=" " coords="468,416,627,441"/>
-<area shape="rect" id="node10" href="$d1/d00/shader_8h.html" title=" " coords="233,196,392,221"/>
+<area shape="rect" id="node1" title=" " coords="367,5,525,75"/>
+<area shape="rect" id="node2" href="$d5/d00/core_8h.html" title=" " coords="405,269,492,295"/>
+<area shape="rect" id="node19" href="$d5/d00/buffer_8h.html" title=" " coords="429,123,580,148"/>
+<area shape="rect" id="node3" title=" " coords="342,343,411,368"/>
+<area shape="rect" id="node4" href="$d7/d00/log_8h.html" title=" " coords="255,416,373,441"/>
+<area shape="rect" id="node9" href="$d6/d00/instrumentor_8h.html" title=" " coords="619,343,793,368"/>
+<area shape="rect" id="node5" title=" " coords="5,489,164,515"/>
+<area shape="rect" id="node6" title=" " coords="188,489,301,515"/>
+<area shape="rect" id="node7" title=" " coords="325,489,444,515"/>
+<area shape="rect" id="node8" href="$de/d00/platform_8h.html" title=" " coords="468,489,627,515"/>
+<area shape="rect" id="node10" title=" " coords="398,416,473,441"/>
+<area shape="rect" id="node11" title=" " coords="497,416,558,441"/>
+<area shape="rect" id="node12" title=" " coords="583,416,648,441"/>
+<area shape="rect" id="node13" title=" " coords="673,416,739,441"/>
+<area shape="rect" id="node14" title=" " coords="764,416,819,441"/>
+<area shape="rect" id="node15" title=" " coords="843,416,902,441"/>
+<area shape="rect" id="node16" title=" " coords="926,416,985,441"/>
+<area shape="rect" id="node17" title=" " coords="1009,416,1078,441"/>
+<area shape="rect" id="node18" title=" " coords="1103,416,1184,441"/>
+<area shape="rect" id="node20" href="$d1/d00/shader_8h.html" title=" " coords="428,196,587,221"/>
 </map>

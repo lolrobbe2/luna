@@ -8,6 +8,7 @@ var classluna_1_1vulkan_1_1vulkan_pipeline =
     [ "~vulkanPipeline", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aaa1a0f54f1d61cf2e7e287d98daea28f", null ],
     [ "begin", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa2ba811a7d966ddbbd358413dc8de8e6", null ],
     [ "buildPipeline", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a2564495814ebfea70d90c779b803b1c4", null ],
+    [ "clear", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa41ea737c800e7a904e3f7507469bf64", null ],
     [ "colorBlendAttachmentState", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a7711aceff647037594498dca8edf97eb", null ],
     [ "createAttributeDescription", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#acb177d8857c6e8309dd72c67e07d267c", null ],
     [ "createBindingDescription", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afd9c73f82bc55d87a56be34d108aac9e", null ],

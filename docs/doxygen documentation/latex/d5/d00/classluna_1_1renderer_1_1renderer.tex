@@ -11,21 +11,16 @@ Collaboration diagram for luna\+::renderer\+::renderer\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dd/d00/classluna_1_1renderer_1_1renderer__coll__graph}
+\includegraphics[width=230pt]{dd/d00/classluna_1_1renderer_1_1renderer__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{structluna_1_1renderer_1_1renderer_1_1mesh}{mesh}}
-\item 
-struct \mbox{\hyperlink{structluna_1_1renderer_1_1renderer_1_1vertex}{vertex}}
-\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}{init}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \&window)
 \begin{DoxyCompactList}\small\item\em the main renderer class. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_ac89801f68cbdc59a324ba80754a7c5eb}{shutdown}} ()
+\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_adc22ac127f4932d064a8653ec4c5d18b}{create\+Frame}} ()
 \begin{DoxyCompactList}\small\item\em create a frame in the render pipline based on the given input. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a32fcf021d4fb98074c80ef9bdfd81d18}{new\+Frame}} ()
@@ -48,10 +43,6 @@ static \mbox{\hyperlink{structluna_1_1renderer_1_1pipeline_layout}{renderer\+::p
 static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1gui_1_1vulkan_imgui}{gui\+::vulkan\+Imgui}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a5de4c1fd2e59811a027b630a743799f5}{gui}}
 \item 
 static bool \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a2d89759f36763e0e9cbff69d10ee676b}{Selected}}
-\item 
-static \mbox{\hyperlink{structluna_1_1renderer_1_1renderer_1_1mesh}{mesh}} \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a5ac07ac60137f0cf662849f0e64912f5}{test\+Mesh}}
-\item 
-static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a1fd8ae0bb7e0c6e624e15112f89b659a}{vert\+Array}}
 \end{DoxyCompactItemize}
 
 
@@ -107,7 +98,13 @@ the main renderer class.
 
 renders a new frame. 
 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}\label{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}} 
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_ac89801f68cbdc59a324ba80754a7c5eb}\label{classluna_1_1renderer_1_1renderer_ac89801f68cbdc59a324ba80754a7c5eb}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+@biref shutsdown the base renderer. \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}\label{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}} 
 \index{luna::renderer::renderer@{luna::renderer::renderer}!Submit@{Submit}}
 \index{Submit@{Submit}!luna::renderer::renderer@{luna::renderer::renderer}}
 \doxyparagraph{\texorpdfstring{Submit()}{Submit()}}
@@ -157,18 +154,6 @@ submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}
 \index{Selected@{Selected}!luna::renderer::renderer@{luna::renderer::renderer}}
 \doxyparagraph{\texorpdfstring{Selected}{Selected}}
 {\footnotesize\ttfamily bool luna\+::renderer\+::renderer\+::\+Selected\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
-
-\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a5ac07ac60137f0cf662849f0e64912f5}\label{classluna_1_1renderer_1_1renderer_a5ac07ac60137f0cf662849f0e64912f5}} 
-\index{luna::renderer::renderer@{luna::renderer::renderer}!testMesh@{testMesh}}
-\index{testMesh@{testMesh}!luna::renderer::renderer@{luna::renderer::renderer}}
-\doxyparagraph{\texorpdfstring{testMesh}{testMesh}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1renderer_1_1renderer_1_1mesh}{mesh}} luna\+::renderer\+::renderer\+::test\+Mesh\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
-
-\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a1fd8ae0bb7e0c6e624e15112f89b659a}\label{classluna_1_1renderer_1_1renderer_a1fd8ae0bb7e0c6e624e15112f89b659a}} 
-\index{luna::renderer::renderer@{luna::renderer::renderer}!vertArray@{vertArray}}
-\index{vertArray@{vertArray}!luna::renderer::renderer@{luna::renderer::renderer}}
-\doxyparagraph{\texorpdfstring{vertArray}{vertArray}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}$>$ luna\+::renderer\+::renderer\+::vert\+Array\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
 
 
 

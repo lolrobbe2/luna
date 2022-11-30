@@ -106,7 +106,7 @@ Inheritance diagram for luna::renderer::indexBuffer:</div>
 <div class="center"><img src="../../d8/d00/classluna_1_1renderer_1_1index_buffer__inherit__graph.png" border="0" usemap="#aluna_1_1renderer_1_1index_buffer_inherit__map" alt="Inheritance graph"/></div>
 <map name="aluna_1_1renderer_1_1index_buffer_inherit__map" id="aluna_1_1renderer_1_1index_buffer_inherit__map">
 <area shape="rect" title=" " coords="5,5,179,31"/>
-<area shape="rect" href="../../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html" title=" " coords="9,79,175,119"/>
+<area shape="rect" href="../../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html" title="vulkan implemention of the index buffer." coords="9,79,175,119"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -125,11 +125,13 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a73cecf7461d880e21725c16c8b5f659c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html#a73cecf7461d880e21725c16c8b5f659c">create</a> (uint32_t *indices, uint32_t count)</td></tr>
 <tr class="separator:a73cecf7461d880e21725c16c8b5f659c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27636d6a9b0752b638912ef7a0aa1470"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html#a27636d6a9b0752b638912ef7a0aa1470">create</a> (uint32_t count)</td></tr>
+<tr class="separator:a27636d6a9b0752b638912ef7a0aa1470"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a7c5357e4276e0cf3834250ce8648ff45"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html#a7c5357e4276e0cf3834250ce8648ff45">data</a> = nullptr</td></tr>
-<tr class="separator:a7c5357e4276e0cf3834250ce8648ff45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae87c6f53ce74e52f9ac9d9e1d7250f62"><td class="memItemLeft" align="right" valign="top">uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html#ae87c6f53ce74e52f9ac9d9e1d7250f62">data</a> = nullptr</td></tr>
+<tr class="separator:ae87c6f53ce74e52f9ac9d9e1d7250f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a785303d312fbeb75332f636f5279bc"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html#a5a785303d312fbeb75332f636f5279bc">size</a> = 0</td></tr>
 <tr class="separator:a5a785303d312fbeb75332f636f5279bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -188,7 +190,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a73cecf7461d880e21725c16c8b5f659c" name="a73cecf7461d880e21725c16c8b5f659c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73cecf7461d880e21725c16c8b5f659c">&#9670;&#160;</a></span>create()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a73cecf7461d880e21725c16c8b5f659c">&#9670;&#160;</a></span>create() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,6 +214,32 @@ Public Attributes</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27636d6a9b0752b638912ef7a0aa1470" name="a27636d6a9b0752b638912ef7a0aa1470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27636d6a9b0752b638912ef7a0aa1470">&#9670;&#160;</a></span>create() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d8/d00/classluna_1_1renderer_1_1index_buffer.html">indexBuffer</a> &gt; luna::renderer::indexBuffer::create </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>count</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -278,14 +306,14 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7c5357e4276e0cf3834250ce8648ff45" name="a7c5357e4276e0cf3834250ce8648ff45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c5357e4276e0cf3834250ce8648ff45">&#9670;&#160;</a></span>data</h2>
+<a id="ae87c6f53ce74e52f9ac9d9e1d7250f62" name="ae87c6f53ce74e52f9ac9d9e1d7250f62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae87c6f53ce74e52f9ac9d9e1d7250f62">&#9670;&#160;</a></span>data</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* luna::renderer::indexBuffer::data = nullptr</td>
+          <td class="memname">uint32_t* luna::renderer::indexBuffer::data = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">

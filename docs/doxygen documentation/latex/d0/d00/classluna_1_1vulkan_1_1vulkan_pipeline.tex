@@ -11,8 +11,7 @@ vulkan pipline implementation class.
 
 
 
-Inheritance diagram for luna\+::vulkan\+::vulkan\+Pipeline\+:
-\nopagebreak
+Inheritance diagram for luna\+::vulkan\+::vulkan\+Pipeline\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for luna\+::vulkan\+::vulkan\+Pipeline\+:
 \end{figure}
 
 
-Collaboration diagram for luna\+::vulkan\+::vulkan\+Pipeline\+:
-\nopagebreak
+Collaboration diagram for luna\+::vulkan\+::vulkan\+Pipeline\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -59,12 +57,12 @@ virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_aa061fcec85
 \begin{DoxyCompactList}\small\item\em ends recording the pipline input. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a5a362aa2aac55e29a1953b3c2efcfe04}{flush}} () override
 \begin{DoxyCompactList}\small\item\em executes the pipeline commands. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_aa41ea737c800e7a904e3f7507469bf64}{clear}} () override
+\begin{DoxyCompactList}\small\item\em clears all the vulkan pipeline draw commands. \end{DoxyCompactList}\item 
 Vk\+Render\+Pass \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a24e8bfb38d02fa6c3630ae9511952a27}{get\+Render\+Pass}} ()
 \begin{DoxyCompactList}\small\item\em return the pipeline renderpass. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a5690e9bd9a70e5ec87ad9fbe040ac941}{draw\+Indexed}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{renderer\+::vertex\+Array}} $>$ \&vertex\+Array, int index\+Count=0) override
-\item 
-void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_af7a2c53eede1df1527173744cdbbd86e}{fn\+Draw\+Indexed}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{renderer\+::vertex\+Array}} $>$ \&vertex\+Array, int index\+Count)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em draw a vertex\+Array indexed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -110,7 +108,9 @@ void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_ad6d305c8ad88f0d83a
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_ab9c975a94d75187855347490a8725d86}{destroy\+Sync\+Structures}} ()
 \begin{DoxyCompactList}\small\item\em destroys all pipeline sync structures. (Vk\+Fence and Vk\+Semaphore) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a46a300426475caff50e03bad4532c19f}{transition\+Image\+Layout}} (Vk\+Image image, Vk\+Format format, Vk\+Image\+Layout old\+Layout, Vk\+Image\+Layout new\+Layout, Vk\+Command\+Buffer command\+Bufffer)
-\begin{DoxyCompactList}\small\item\em transitions the image layout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em transitions the image layout. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_af7a2c53eede1df1527173744cdbbd86e}{fn\+Draw\+Indexed}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{renderer\+::vertex\+Array}} $>$ \&vertex\+Array, int index\+Count)
+\begin{DoxyCompactList}\small\item\em executes draw command. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -239,6 +239,20 @@ build the vulkan pipline.
 \begin{DoxyReturn}{Returns}
 VK\+\_\+\+SUCCES when pipline was succesfully build 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_aa41ea737c800e7a904e3f7507469bf64}\label{classluna_1_1vulkan_1_1vulkan_pipeline_aa41ea737c800e7a904e3f7507469bf64}} 
+\index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!clear@{clear}}
+\index{clear@{clear}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
+\doxyparagraph{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Pipeline\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+clears all the vulkan pipeline draw commands. 
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_aea4856bf4c1a3652937fb94c01b4b2a5}{luna\+::renderer\+::pipeline}}.
+
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a7711aceff647037594498dca8edf97eb}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a7711aceff647037594498dca8edf97eb}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!colorBlendAttachmentState@{colorBlendAttachmentState}}
 \index{colorBlendAttachmentState@{colorBlendAttachmentState}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
@@ -416,6 +430,20 @@ destroys all pipeline sync structures. (Vk\+Fence and Vk\+Semaphore)
 \doxyparagraph{\texorpdfstring{drawIndexed()}{drawIndexed()}}
 {\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Pipeline\+::draw\+Indexed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{renderer\+::vertex\+Array}} $>$ \&}]{vertex\+Array,  }\item[{int}]{index\+Count = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
+
+
+draw a vertex\+Array indexed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref$<$renderer\+::vertex\+Array$>$}}\& vertex\+Array vertex\+Array to render \\
+\hline
+{\em int} & index\+Count the indices count to render; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+check if the index\+Count variable is not zero when the rendered quad does not appear; 
+\end{DoxyNote}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_aa061fcec857b5a7d458ee66ddce7a534}\label{classluna_1_1vulkan_1_1vulkan_pipeline_aa061fcec857b5a7d458ee66ddce7a534}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!end@{end}}
 \index{end@{end}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
@@ -448,7 +476,11 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a8f231f1c4fde20cfa
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!fnDrawIndexed@{fnDrawIndexed}}
 \index{fnDrawIndexed@{fnDrawIndexed}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
 \doxyparagraph{\texorpdfstring{fnDrawIndexed()}{fnDrawIndexed()}}
-{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Pipeline\+::fn\+Draw\+Indexed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{renderer\+::vertex\+Array}} $>$ \&}]{vertex\+Array,  }\item[{int}]{index\+Count }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Pipeline\+::fn\+Draw\+Indexed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{renderer\+::vertex\+Array}} $>$ \&}]{vertex\+Array,  }\item[{int}]{index\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+executes draw command. 
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a24e8bfb38d02fa6c3630ae9511952a27}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a24e8bfb38d02fa6c3630ae9511952a27}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!getRenderPass@{getRenderPass}}

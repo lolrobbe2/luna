@@ -9,6 +9,8 @@ namespace \mbox{\hyperlink{namespaceluna_1_1gui}{gui}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1input}{input}}
 \item 
+namespace \mbox{\hyperlink{namespaceluna_1_1instrumentor_utils}{instrumentor\+Utils}}
+\item 
 namespace \mbox{\hyperlink{namespaceluna_1_1_mouse}{Mouse}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1renderer}{renderer}}
@@ -30,6 +32,12 @@ class \mbox{\hyperlink{classluna_1_1_event}{Event}}
 \item 
 class \mbox{\hyperlink{classluna_1_1event_dispatcher}{event\+Dispatcher}}
 \item 
+struct \mbox{\hyperlink{structluna_1_1instrumentation_session}{instrumentation\+Session}}
+\item 
+class \mbox{\hyperlink{classluna_1_1instrumentation_timer}{instrumentation\+Timer}}
+\item 
+class \mbox{\hyperlink{classluna_1_1instrumentor}{instrumentor}}
+\item 
 class \mbox{\hyperlink{classluna_1_1key_event}{key\+Event}}
 \item 
 class \mbox{\hyperlink{classluna_1_1key_pressed_event}{key\+Pressed\+Event}}
@@ -50,6 +58,8 @@ class \mbox{\hyperlink{classluna_1_1mouse_moved_event}{mouse\+Moved\+Event}}
 \item 
 class \mbox{\hyperlink{classluna_1_1mouse_scrolled_event}{mouse\+Scrolled\+Event}}
 \item 
+struct \mbox{\hyperlink{structluna_1_1profile_result}{profile\+Result}}
+\item 
 class \mbox{\hyperlink{classluna_1_1uuid}{uuid}}
 \begin{DoxyCompactList}\small\item\em a general purpose uuid class with a maximum number of 2$^\wedge$64 uuid\textquotesingle{}s the uuid class does not check for duplicates! \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classluna_1_1window_close_event}{window\+Close\+Event}}
@@ -62,6 +72,8 @@ class \mbox{\hyperlink{classluna_1_1window_resize_event}{window\+Resize\+Event}}
 {\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}} = std\+::unique\+\_\+ptr$<$ T $>$
 \item 
 {\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}} = std\+::shared\+\_\+ptr$<$ T $>$
+\item 
+using \mbox{\hyperlink{namespaceluna_afa1a20a0d8e73fe9d7421fd3630d9762}{floating\+Point\+Microseconds}} = std\+::chrono\+::duration$<$ double, std\+::micro $>$
 \item 
 using \mbox{\hyperlink{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}{key\+Code}} = uint16\+\_\+t
 \item 
@@ -123,6 +135,12 @@ static std\+::uniform\+\_\+int\+\_\+distribution$<$ uint64\+\_\+t $>$ \mbox{\hyp
 
 
 \doxysubsubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceluna_afa1a20a0d8e73fe9d7421fd3630d9762}\label{namespaceluna_afa1a20a0d8e73fe9d7421fd3630d9762}} 
+\index{luna@{luna}!floatingPointMicroseconds@{floatingPointMicroseconds}}
+\index{floatingPointMicroseconds@{floatingPointMicroseconds}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{floatingPointMicroseconds}{floatingPointMicroseconds}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceluna_afa1a20a0d8e73fe9d7421fd3630d9762}{luna\+::floating\+Point\+Microseconds}} = typedef std\+::chrono\+::duration$<$double, std\+::micro$>$}
+
 \mbox{\Hypertarget{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}\label{namespaceluna_a2f2d4316b58f32a02984140d12d63c39}} 
 \index{luna@{luna}!keyCode@{keyCode}}
 \index{keyCode@{keyCode}!luna@{luna}}

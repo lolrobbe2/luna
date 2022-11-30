@@ -6,7 +6,7 @@ var searchData=
   ['imguirenderpass_3',['imGuiRenderPass',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a9e60d36b96a83342ad1ee3147e65924a',1,'luna::vulkan::vulkanPipeline']]],
   ['indexbuffer_4',['indexBuffer',['../d5/d00/classluna_1_1renderer_1_1vertex_array.html#a0bb45f5681e220fc61aba6329909630d',1,'luna::renderer::vertexArray']]],
   ['indexcount_5',['indexCount',['../d3/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command.html#aecb12fcf6b28a82a9f84a4527a0cc227',1,'luna::vulkan::vulkanPipeline::drawCommand']]],
-  ['indices_6',['indices',['../de/d00/structluna_1_1renderer_1_1renderer_1_1mesh.html#a2f788602011420b4871e006ebdcd05af',1,'luna::renderer::renderer::mesh::indices()'],['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html#afc101e8ff95c164233039733757c674c',1,'luna::vulkan::swapchainSpec::indices()']]],
+  ['indices_6',['indices',['../d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html#afc101e8ff95c164233039733757c674c',1,'luna::vulkan::swapchainSpec']]],
   ['inflightfences_7',['inFlightFences',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa60424dee8b03d13a3b706c023f807a2',1,'luna::vulkan::vulkanPipeline']]],
   ['init_8',['init',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#aa743087e664008a385d6542fbd067f64',1,'luna::vulkan::vulkanSwapchain']]],
   ['inputassemblystatecreateinfo_9',['inputAssemblyStateCreateInfo',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#aa5597157ef687f2fccf732b2ed7e1190',1,'luna::vulkan::vulkanPipeline']]],

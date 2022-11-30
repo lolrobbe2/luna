@@ -8,6 +8,7 @@ var searchData=
   ['setvalue_5',['setValue',['../d5/d00/classluna_1_1utils_1_1object_storage.html#ac03164acabd597ba74b9422b53de738e',1,'luna::utils::objectStorage::setValue()'],['../d0/d00/classluna_1_1utils_1_1vector_cache.html#aa56d6d8db614103245c4776d9a63733e',1,'luna::utils::vectorCache::setValue()']]],
   ['shadercompiler_6',['shaderCompiler',['../d0/d00/classluna_1_1utils_1_1shader_compiler.html#abd07f80893b6ab942e6da937ccf393e7',1,'luna::utils::shaderCompiler']]],
   ['shutdown_7',['shutDown',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a6c54abf726f879ffaba9f3495fe2bf0f',1,'luna::vulkan::windowsWindow']]],
-  ['shutdown_8',['shutdown',['../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a2fea061a5507a2960fac3b0cd439abf7',1,'luna::utils::vulkanAllocator']]],
-  ['submit_9',['Submit',['../d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921',1,'luna::renderer::renderer']]]
+  ['shutdown_8',['shutdown',['../d5/d00/classluna_1_1renderer_1_1renderer.html#ac89801f68cbdc59a324ba80754a7c5eb',1,'luna::renderer::renderer::shutdown()'],['../df/d00/classluna_1_1renderer_1_1renderer2_d.html#a123fafe82292e73e34dfb31e6519ff29',1,'luna::renderer::renderer2D::shutdown()'],['../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a2fea061a5507a2960fac3b0cd439abf7',1,'luna::utils::vulkanAllocator::shutdown()']]],
+  ['stop_9',['Stop',['../dd/d00/classluna_1_1instrumentation_timer.html#a4b8cc5a08bdfec10c5a459024550c9e5',1,'luna::instrumentationTimer']]],
+  ['submit_10',['Submit',['../d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921',1,'luna::renderer::renderer']]]
 ];

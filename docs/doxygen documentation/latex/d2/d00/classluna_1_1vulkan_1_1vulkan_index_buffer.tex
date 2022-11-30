@@ -2,6 +2,11 @@
 \label{classluna_1_1vulkan_1_1vulkan_index_buffer}\index{luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}}
 
 
+vulkan implemention of the index buffer.  
+
+
+
+
 {\ttfamily \#include $<$vulkan\+Index\+Buffer.\+h$>$}
 
 
@@ -28,15 +33,17 @@ Collaboration diagram for luna\+::vulkan\+::vulkan\+Index\+Buffer\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_a4766690db99a9a84bba243fc902d3fce}{vulkan\+Index\+Buffer}} (uint32\+\_\+t $\ast$indices, uint32\+\_\+t count)
-\item 
+\begin{DoxyCompactList}\small\item\em pre\+Filled constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_a964c20576a49226e24bcd89f6fffaea4}{vulkan\+Index\+Buffer}} (uint32\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em creates an empty index buffer of size count. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_abb5d9e8deed37d96151f58ed853527a5}{$\sim$vulkan\+Index\+Buffer}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em index buffer destructor. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_a6e4ef557be7b9a111d418ca945cdfaa1}{bind}} () const override
 \item 
 virtual void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_ab980b6d04964bcb401c3f20b8a84d40b}{unbind}} () const override
 \item 
 virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_a1f56cdededc2d0d6042f1e758afe5a70}{get\+Count}} () const override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em returns the index count. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -50,18 +57,49 @@ class \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_index_buffer_a18b558c81f2df
 \doxysubsubsection*{Additional Inherited Members}
 
 
+\doxysubsubsection{Detailed Description}
+vulkan implemention of the index buffer. 
+
 \doxysubsubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_index_buffer_a4766690db99a9a84bba243fc902d3fce}\label{classluna_1_1vulkan_1_1vulkan_index_buffer_a4766690db99a9a84bba243fc902d3fce}} 
 \index{luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}!vulkanIndexBuffer@{vulkanIndexBuffer}}
 \index{vulkanIndexBuffer@{vulkanIndexBuffer}!luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}}
-\doxyparagraph{\texorpdfstring{vulkanIndexBuffer()}{vulkanIndexBuffer()}}
+\doxyparagraph{\texorpdfstring{vulkanIndexBuffer()}{vulkanIndexBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Index\+Buffer\+::vulkan\+Index\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{indices,  }\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})}
 
+
+
+pre\+Filled constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint32\+\_\+t$\ast$} & indices \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_index_buffer_a964c20576a49226e24bcd89f6fffaea4}\label{classluna_1_1vulkan_1_1vulkan_index_buffer_a964c20576a49226e24bcd89f6fffaea4}} 
+\index{luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}!vulkanIndexBuffer@{vulkanIndexBuffer}}
+\index{vulkanIndexBuffer@{vulkanIndexBuffer}!luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}}
+\doxyparagraph{\texorpdfstring{vulkanIndexBuffer()}{vulkanIndexBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Index\+Buffer\+::vulkan\+Index\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+
+
+creates an empty index buffer of size count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint32\+\_\+t} & count requested index amount. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_index_buffer_abb5d9e8deed37d96151f58ed853527a5}\label{classluna_1_1vulkan_1_1vulkan_index_buffer_abb5d9e8deed37d96151f58ed853527a5}} 
 \index{luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}!````~vulkanIndexBuffer@{$\sim$vulkanIndexBuffer}}
 \index{````~vulkanIndexBuffer@{$\sim$vulkanIndexBuffer}!luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}}
 \doxyparagraph{\texorpdfstring{$\sim$vulkanIndexBuffer()}{~vulkanIndexBuffer()}}
 {\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Index\+Buffer\+::$\sim$vulkan\+Index\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+index buffer destructor. 
 
 
 
@@ -81,6 +119,10 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer_aeef9e429bd29f
 \index{getCount@{getCount}!luna::vulkan::vulkanIndexBuffer@{luna::vulkan::vulkanIndexBuffer}}
 \doxyparagraph{\texorpdfstring{getCount()}{getCount()}}
 {\footnotesize\ttfamily uint32\+\_\+t luna\+::vulkan\+::vulkan\+Index\+Buffer\+::get\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+returns the index count. 
 
 
 

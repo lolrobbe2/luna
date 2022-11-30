@@ -1,0 +1,104 @@
+\hypertarget{instrumentor_8h}{}\doxysubsection{C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/instrumentor.h File Reference}
+\label{instrumentor_8h}\index{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/instrumentor.h@{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/debug/instrumentor.h}}
+{\ttfamily \#include $<$core/debug/log.\+h$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+Include dependency graph for instrumentor.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/instrumentor_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d00/instrumentor_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1profile_result}{luna\+::profile\+Result}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1instrumentation_session}{luna\+::instrumentation\+Session}}
+\item 
+class \mbox{\hyperlink{classluna_1_1instrumentor}{luna\+::instrumentor}}
+\item 
+class \mbox{\hyperlink{classluna_1_1instrumentation_timer}{luna\+::instrumentation\+Timer}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1instrumentor_utils_1_1_change_result}{luna\+::instrumentor\+Utils\+::\+Change\+Result$<$ N $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceluna}{luna}}
+\item 
+namespace \mbox{\hyperlink{namespaceluna_1_1instrumentor_utils}{luna\+::instrumentor\+Utils}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{instrumentor_8h_a200d9a7dd5abdbfc0530aba9b08e9b4f}{LN\+\_\+\+PROFILE}}~0
+\item 
+\#define \mbox{\hyperlink{instrumentor_8h_a5210ac3bb8728a387306cb7872de1fbb}{LN\+\_\+\+PROFILE\+\_\+\+BEGIN\+\_\+\+SESSION}}(name,  filepath)
+\item 
+\#define \mbox{\hyperlink{instrumentor_8h_a4505877f400c58212ea2624f283d02fd}{LN\+\_\+\+PROFILE\+\_\+\+END\+\_\+\+SESSION}}()
+\item 
+\#define \mbox{\hyperlink{instrumentor_8h_a4074c3f4470043abe6a40774cbfc8782}{LN\+\_\+\+PROFILE\+\_\+\+SCOPE}}(name)
+\item 
+\#define \mbox{\hyperlink{instrumentor_8h_a1b7678b025be5d7c5fd399bcd1946c13}{LN\+\_\+\+PROFILE\+\_\+\+FUNCTION}}()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceluna_afa1a20a0d8e73fe9d7421fd3630d9762}{luna\+::floating\+Point\+Microseconds}} = std\+::chrono\+::duration$<$ double, std\+::micro $>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t K$>$ }\\constexpr auto \mbox{\hyperlink{namespaceluna_1_1instrumentor_utils_a34bfb9084a533e32b923e541e0373080}{luna\+::instrumentor\+Utils\+::\+Cleanup\+Output\+String}} (const char(\&expr)\mbox{[}N\mbox{]}, const char(\&remove)\mbox{[}K\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{instrumentor_8h_a200d9a7dd5abdbfc0530aba9b08e9b4f}\label{instrumentor_8h_a200d9a7dd5abdbfc0530aba9b08e9b4f}} 
+\index{instrumentor.h@{instrumentor.h}!LN\_PROFILE@{LN\_PROFILE}}
+\index{LN\_PROFILE@{LN\_PROFILE}!instrumentor.h@{instrumentor.h}}
+\doxyparagraph{\texorpdfstring{LN\_PROFILE}{LN\_PROFILE}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+PROFILE~0}
+
+\mbox{\Hypertarget{instrumentor_8h_a5210ac3bb8728a387306cb7872de1fbb}\label{instrumentor_8h_a5210ac3bb8728a387306cb7872de1fbb}} 
+\index{instrumentor.h@{instrumentor.h}!LN\_PROFILE\_BEGIN\_SESSION@{LN\_PROFILE\_BEGIN\_SESSION}}
+\index{LN\_PROFILE\_BEGIN\_SESSION@{LN\_PROFILE\_BEGIN\_SESSION}!instrumentor.h@{instrumentor.h}}
+\doxyparagraph{\texorpdfstring{LN\_PROFILE\_BEGIN\_SESSION}{LN\_PROFILE\_BEGIN\_SESSION}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+PROFILE\+\_\+\+BEGIN\+\_\+\+SESSION(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{filepath }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{instrumentor_8h_a4505877f400c58212ea2624f283d02fd}\label{instrumentor_8h_a4505877f400c58212ea2624f283d02fd}} 
+\index{instrumentor.h@{instrumentor.h}!LN\_PROFILE\_END\_SESSION@{LN\_PROFILE\_END\_SESSION}}
+\index{LN\_PROFILE\_END\_SESSION@{LN\_PROFILE\_END\_SESSION}!instrumentor.h@{instrumentor.h}}
+\doxyparagraph{\texorpdfstring{LN\_PROFILE\_END\_SESSION}{LN\_PROFILE\_END\_SESSION}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+PROFILE\+\_\+\+END\+\_\+\+SESSION(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{instrumentor_8h_a1b7678b025be5d7c5fd399bcd1946c13}\label{instrumentor_8h_a1b7678b025be5d7c5fd399bcd1946c13}} 
+\index{instrumentor.h@{instrumentor.h}!LN\_PROFILE\_FUNCTION@{LN\_PROFILE\_FUNCTION}}
+\index{LN\_PROFILE\_FUNCTION@{LN\_PROFILE\_FUNCTION}!instrumentor.h@{instrumentor.h}}
+\doxyparagraph{\texorpdfstring{LN\_PROFILE\_FUNCTION}{LN\_PROFILE\_FUNCTION}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+PROFILE\+\_\+\+FUNCTION(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{instrumentor_8h_a4074c3f4470043abe6a40774cbfc8782}\label{instrumentor_8h_a4074c3f4470043abe6a40774cbfc8782}} 
+\index{instrumentor.h@{instrumentor.h}!LN\_PROFILE\_SCOPE@{LN\_PROFILE\_SCOPE}}
+\index{LN\_PROFILE\_SCOPE@{LN\_PROFILE\_SCOPE}!instrumentor.h@{instrumentor.h}}
+\doxyparagraph{\texorpdfstring{LN\_PROFILE\_SCOPE}{LN\_PROFILE\_SCOPE}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+PROFILE\+\_\+\+SCOPE(\begin{DoxyParamCaption}\item[{}]{name }\end{DoxyParamCaption})}
+

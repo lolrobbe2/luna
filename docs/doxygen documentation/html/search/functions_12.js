@@ -6,7 +6,7 @@ var searchData=
   ['vulkancmdpool_3',['vulkanCmdPool',['../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#a89a797caa816167be2eaaeb7f84b3e51',1,'luna::vulkan::vulkanCmdPool']]],
   ['vulkandevice_4',['vulkanDevice',['../d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#af74bece14ffc07cd0cbc2c19b0d5a85a',1,'luna::vulkan::vulkanDevice']]],
   ['vulkanimgui_5',['vulkanImgui',['../dc/d00/classluna_1_1gui_1_1vulkan_imgui.html#a85968b0c424bfc268beba53ef6d3c7f3',1,'luna::gui::vulkanImgui']]],
-  ['vulkanindexbuffer_6',['vulkanIndexBuffer',['../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html#a4766690db99a9a84bba243fc902d3fce',1,'luna::vulkan::vulkanIndexBuffer']]],
+  ['vulkanindexbuffer_6',['vulkanIndexBuffer',['../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html#a4766690db99a9a84bba243fc902d3fce',1,'luna::vulkan::vulkanIndexBuffer::vulkanIndexBuffer(uint32_t *indices, uint32_t count)'],['../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html#a964c20576a49226e24bcd89f6fffaea4',1,'luna::vulkan::vulkanIndexBuffer::vulkanIndexBuffer(uint32_t count)']]],
   ['vulkanpipeline_7',['vulkanPipeline',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a940cc48a838abc936cb97505e578e1d0',1,'luna::vulkan::vulkanPipeline']]],
   ['vulkanshader_8',['vulkanShader',['../d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html#af026ef4fb8045a7829b9ad826cbb31e2',1,'luna::vulkan::vulkanShader']]],
   ['vulkanswapchain_9',['vulkanSwapchain',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a30205844e523a4c82a586c2fa226a23a',1,'luna::vulkan::vulkanSwapchain']]],

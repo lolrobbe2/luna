@@ -8,5 +8,6 @@ var searchData=
   ['destroyswapchain_5',['destroySwapchain',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a01663556c78e5844456e14811d5f7d30',1,'luna::vulkan::vulkanSwapchain']]],
   ['destroysyncstructures_6',['destroySyncStructures',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#ab9c975a94d75187855347490a8725d86',1,'luna::vulkan::vulkanPipeline']]],
   ['dispatch_7',['dispatch',['../d1/d00/classluna_1_1event_dispatcher.html#a9fba21c9f89101eab8b74e8999f1e7dc',1,'luna::eventDispatcher']]],
-  ['drawindexed_8',['drawIndexed',['../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498',1,'luna::renderer::pipeline::drawIndexed()'],['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5690e9bd9a70e5ec87ad9fbe040ac941',1,'luna::vulkan::vulkanPipeline::drawIndexed()']]]
+  ['drawindexed_8',['drawIndexed',['../d9/d00/classluna_1_1renderer_1_1pipeline.html#a6ac93d074f15ee67bc29fa3df51b3498',1,'luna::renderer::pipeline::drawIndexed()'],['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a5690e9bd9a70e5ec87ad9fbe040ac941',1,'luna::vulkan::vulkanPipeline::drawIndexed()']]],
+  ['drawquad_9',['drawQuad',['../df/d00/classluna_1_1renderer_1_1renderer2_d.html#a80f65908b87cfcd1db947a2595b25c90',1,'luna::renderer::renderer2D::drawQuad(const glm::vec3 &amp;position, const glm::vec2 &amp;size)'],['../df/d00/classluna_1_1renderer_1_1renderer2_d.html#a7719753205ad15adcc77500ee4cdeb5d',1,'luna::renderer::renderer2D::drawQuad(const glm::mat4 &amp;transform)']]]
 ];

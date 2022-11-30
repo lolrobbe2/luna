@@ -6,12 +6,14 @@ var namespaceluna_1_1renderer =
     [ "indexBuffer", "d8/d00/classluna_1_1renderer_1_1index_buffer.html", "d8/d00/classluna_1_1renderer_1_1index_buffer" ],
     [ "pipeline", "d9/d00/classluna_1_1renderer_1_1pipeline.html", "d9/d00/classluna_1_1renderer_1_1pipeline" ],
     [ "pipelineLayout", "db/d00/structluna_1_1renderer_1_1pipeline_layout.html", "db/d00/structluna_1_1renderer_1_1pipeline_layout" ],
+    [ "quadVertex", "dc/d00/structluna_1_1renderer_1_1quad_vertex.html", "dc/d00/structluna_1_1renderer_1_1quad_vertex" ],
     [ "renderer", "d5/d00/classluna_1_1renderer_1_1renderer.html", "d5/d00/classluna_1_1renderer_1_1renderer" ],
+    [ "renderer2D", "df/d00/classluna_1_1renderer_1_1renderer2_d.html", "df/d00/classluna_1_1renderer_1_1renderer2_d" ],
+    [ "renderer2DData", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data" ],
     [ "shader", "d9/d00/classluna_1_1renderer_1_1shader.html", "d9/d00/classluna_1_1renderer_1_1shader" ],
     [ "shaderResource", "d5/d00/structluna_1_1renderer_1_1shader_resource.html", "d5/d00/structluna_1_1renderer_1_1shader_resource" ],
     [ "vertexArray", "d5/d00/classluna_1_1renderer_1_1vertex_array.html", "d5/d00/classluna_1_1renderer_1_1vertex_array" ],
     [ "vertexBuffer", "d3/d00/classluna_1_1renderer_1_1vertex_buffer.html", "d3/d00/classluna_1_1renderer_1_1vertex_buffer" ],
-    [ "drawCommand", "df/d00/namespaceluna_1_1renderer.html#ac49aeaa7349a30aad88e16003b0e012c", null ],
     [ "shaderStage", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faae", [
       [ "shaderStageVertex", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb", null ],
       [ "shaderStageTessellationControl", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a", null ],
@@ -70,5 +72,6 @@ var namespaceluna_1_1renderer =
       [ "mat2", "df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba22c0a78a63cb08c78eb9784e2466c0d9", null ],
       [ "mat3", "df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba645a5fcbd75a76b6f6106a998b599524", null ],
       [ "mat4", "df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dbaf58f53f29a327d79100b1bb12026bca2", null ]
-    ] ]
+    ] ],
+    [ "rendererData", "df/d00/namespaceluna_1_1renderer.html#a98a3d639a0aeaf8bc830d3d67e7e3ed6", null ]
 ];
