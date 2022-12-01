@@ -62,7 +62,10 @@ namespace luna {
 			{
 				
 				if (Log::GetCoreLogger()) LN_CORE_ERROR("instrumentor could not open results file '{0}'.", filepath);
-
+				std::filesystem::path _path(filepath);
+				std::string directory = _path.parent_path().string();
+				if (Log::GetCoreLogger()) LN_CORE_ERROR("creating dir {0}", directory);
+				mkdir(directory.c_str());
 			}
 		}
 
