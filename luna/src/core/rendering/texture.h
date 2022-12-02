@@ -11,6 +11,7 @@ namespace luna
 		 */
 		class texture
 		{
+		public:
 			virtual ~texture() = default;
 
 			virtual uint32_t getWidth() const = 0;
@@ -33,6 +34,8 @@ namespace luna
 		 */
 		class texture2D : public texture
 		{
+		public:
+			virtual ~texture2D() = default;
 			ref<texture> create(const uint32_t& width, const uint32_t& height);
 			ref<texture> create(const void* data, const uint32_t& size);
 		};
