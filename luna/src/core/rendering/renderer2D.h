@@ -12,6 +12,17 @@ namespace luna
 		{
 		public:
 			/**
+			 * @brief struct containing renderer2D statistics.
+			 */
+			struct statistics
+			{
+				uint32_t drawCalls = 0;
+				uint32_t quadCount = 0;
+
+				uint32_t getTotalVertexCount() const { return quadCount * 4; }
+				uint32_t getTotalIndexCount() const { return quadCount * 6; }
+			};
+			/**
 			 * @brief initializes the 2D renderer.
 			 * 
 			 */
@@ -46,6 +57,11 @@ namespace luna
 			 * @see renderer::renderer
 			 */
 			static void flush();
+			/**
+			 * @brief returns renderer2D stats.
+			 */
+			static statistics getStats();
+
 		private:
 		};
 	}

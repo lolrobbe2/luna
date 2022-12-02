@@ -22,6 +22,8 @@ namespace luna
 			uint32_t* quadIndices = nullptr;
 
 			glm::vec4 quadVertexPositions[4];
+
+			renderer2D::statistics stats;
 		};
 
 		static renderer2DData rendererData;
@@ -44,6 +46,7 @@ namespace luna
 			rendererData.quadVertexPositions[1] = { 0.5f, -0.5f, 0.0f, 1.0f };
 			rendererData.quadVertexPositions[2] = { 0.5f,  0.5f, 0.0f, 1.0f };
 			rendererData.quadVertexPositions[3] = { -0.5f,  0.5f, 0.0f, 1.0f };
+
 
 			uint32_t offset = 0;
 			for (uint32_t i = 0; i < rendererData.maxIndices; i += 6)
@@ -77,12 +80,15 @@ namespace luna
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
 			rendererData.quadIndexCount = 0;
+			rendererData.stats.drawCalls = 0;
+			rendererData.stats.quadCount = 0;
 		}
 
 		void renderer2D::endScene()
 		{
 			LN_PROFILE_FUNCTION();
 			flush();
+
 			renderer::endScene();
 		}
 
@@ -99,16 +105,23 @@ namespace luna
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
+				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				rendererData.quadVertexBufferPtr++;
-				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];			
 			}
 			rendererData.quadIndexCount += 6;
+			rendererData.stats.quadCount++;
 		}
 		void renderer2D::flush()
 		{
 			LN_PROFILE_FUNCTION();
 			rendererData.quadVertexBufferBase;
 			renderer::Submit(rendererData.vertexArray , rendererData.quadIndexCount);
+			rendererData.stats.drawCalls++;
+		}
+
+		renderer2D::statistics renderer2D::getStats()
+		{
+			return rendererData.stats;
 		}
 	}
 }

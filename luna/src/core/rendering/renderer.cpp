@@ -49,7 +49,7 @@ namespace luna
 		void renderer::newFrame()
 		{
 			LN_PROFILE_SCOPE("newframe");
-			rendererPipeline->begin();
+
 
 			rendererPipeline->end();
 			//rendererPipeline->createCommands();
@@ -59,6 +59,7 @@ namespace luna
 		void renderer::beginScene()
 		{
 			rendererPipeline->clear();
+			rendererPipeline->begin();
 		}
 
 		void renderer::Submit(const ref<vertexArray>& vertexArray,const uint64_t& indexCount)

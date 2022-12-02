@@ -33,9 +33,23 @@ namespace luna
 				mWindow->onUpdate();
 				LN_PROFILE_SCOPE("drawing");
 				renderer::renderer2D::BeginScene();
-				renderer::renderer2D::drawQuad({ 0.5f,0.5f ,0.0f }, { 1.0f ,1.0f });
-				renderer::renderer2D::drawQuad({ -0.5f,-0.5f ,0.0f }, { 1.0f ,1.0f });
+
+
+
+				renderer::renderer2D::drawQuad({ 0.5f,0.5f ,0.0f }, { 0.5f ,0.5f });
+				renderer::renderer2D::drawQuad({ -0.5f,-0.5f ,0.0f }, { 0.5f ,0.5f });
 				renderer::renderer2D::endScene();
+				if (ImGui::Begin("settings"))
+				{
+					ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
+					ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
+					ImGui::Text(("drawCalls = " + std::to_string(renderer::renderer2D::getStats().drawCalls)).c_str());
+					ImGui::Text(("quadCount = " + std::to_string(renderer::renderer2D::getStats().quadCount)).c_str());
+					ImGui::Text(("vertexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalVertexCount())).c_str());
+					ImGui::Text(("indexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalIndexCount())).c_str());
+					
+				}
+				ImGui::End();
 				renderer::renderer::newFrame();
 			}
 			LN_PROFILE_END_SESSION();

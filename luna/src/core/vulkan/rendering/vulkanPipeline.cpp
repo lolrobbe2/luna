@@ -164,13 +164,7 @@ namespace luna
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
 			
 
-			
-			if (ImGui::Begin("settings"))
-			{
-				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
-				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
-			}
-			ImGui::End();
+
 			ImGui::SetNextWindowSize(ImGui::GetContentRegionAvail());
 			if (ImGui::Begin("scene"));
 			{
@@ -804,7 +798,7 @@ namespace luna
 			//extract platform specific buffer handle from platform specifi buffer ref.
 			vkCmdBindVertexBuffers(commandPool->operator=(commandBuffers[currentFrame]), 0, vulkanVertexBuffers.size(), vulkanVertexBuffers.data(), &offsets);
 			vkCmdBindIndexBuffer(commandPool->operator=(commandBuffers[currentFrame]), indexBuffer, 0, VK_INDEX_TYPE_UINT32);
-			vkCmdDrawIndexed(commandPool->operator=(commandBuffers[currentFrame]), vertexArray->getIndexBuffer()->getCount(), 1, 0, 1, 0);
+			vkCmdDrawIndexed(commandPool->operator=(commandBuffers[currentFrame]), vertexArray->getIndexBuffer()->getCount(), 1, 0, 0, 0);
 		}
 	}
 }

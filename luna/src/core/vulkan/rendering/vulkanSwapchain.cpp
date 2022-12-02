@@ -61,6 +61,7 @@ namespace luna
 		VkResult vulkanSwapchain::destroySwapchain()
 		{
             LN_PROFILE_FUNCTION();
+            vkDeviceWaitIdle(mSwapchainSpec.device);
             vkb::destroy_swapchain(mSwapchain);
 			return VK_SUCCESS;
 		}
