@@ -11,6 +11,9 @@ namespace luna
 		class vulkanTexture : public renderer::texture
 		{
 		public:
+			vulkanTexture(const std::string& filePath);
+			vulkanTexture(const void* texelData, const uint32_t textureSize);
+			vulkanTexture(const void* texelData, const glm::vec2& dimensions);
 			virtual ~vulkanTexture() = default;
 
 			virtual uint32_t getWidth() const override;
@@ -34,6 +37,9 @@ namespace luna
 		class vulkanTexture2D : public renderer::texture2D
 		{
 		public:
+			vulkanTexture2D(const std::string& filePath);
+			vulkanTexture2D(const void* texelData, const uint32_t textureSize);
+			vulkanTexture2D(const void* texelData, const glm::vec2& dimensions);
 			~vulkanTexture2D() = default;
 		};
 		/**
@@ -44,7 +50,8 @@ namespace luna
 		class vulkanTextureAtlas : public renderer::textureAtlas
 		{
 		public:
-
+			vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions, const glm::vec2& tileDimensions);
+			vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions);
 			virtual ~vulkanTextureAtlas() = default;
 
 			virtual uint32_t getTileWidth();
