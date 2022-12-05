@@ -5,15 +5,13 @@ namespace luna
 	namespace vulkan
 	{
 		/**
-		 * @brief base texture class.
-		 * @note see specific platform implementation for explenation with functions
+		 * @brief texture implementation in vulkan.
 		 */
 		class vulkanTexture : public renderer::texture
 		{
 		public:
 			vulkanTexture(const std::string& filePath);
-			vulkanTexture(const void* texelData, const uint32_t textureSize);
-			vulkanTexture(const void* texelData, const glm::vec2& dimensions);
+			vulkanTexture(void* texelData, const glm::vec2& dimensions);
 			virtual ~vulkanTexture() = default;
 
 			virtual uint32_t getWidth() const override;
@@ -27,14 +25,20 @@ namespace luna
 
 			virtual bool isLoaded() const override;
 
-			virtual bool operator==(const texture& other) const override;
+			//virtual bool operator==(const texture& other) const override;
+		protected:
+			VkBuffer buffer;
+			VkImage imageHandle;
+		private:
+
+
 		};
 		/**
 		 * @brief texture2D api.
 		 * @see texture
 		 * @note see specific platform implementation for explenation with functions
 		 */
-		class vulkanTexture2D : public renderer::texture2D
+		class vulkanTexture2D : public renderer::texture2D 
 		{
 		public:
 			vulkanTexture2D(const std::string& filePath);

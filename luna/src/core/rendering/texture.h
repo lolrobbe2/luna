@@ -26,6 +26,10 @@ namespace luna
 			virtual bool isLoaded() const = 0;
 
 			virtual bool operator==(const texture& other) const = 0;
+		protected:
+			char* data;
+			uint32_t width;
+			uint32_t height;
 		};
 		/**
 		 * @brief texture2D api.

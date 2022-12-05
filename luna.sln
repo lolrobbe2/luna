@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sandbox", "sandbox\sandbox.vcxproj", "{145A6C82-8039-EB1D-8951-76F4F5AF517F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "luna\thirdParty\GLFW.vcxproj", "{154B857C-0182-860D-AA6E-6C109684020F}"
@@ -10,6 +10,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imGui", "luna\thirdParty\imGui.vcxproj", "{E00FA80F-4C24-D0C0-15A6-73208179CCF1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luna", "luna\luna.vcxproj", "{B5489A7C-A17F-9B0D-4A6C-81103682170F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stb", "luna\thirdParty\stb.vcxproj", "{6EAB880B-DAB4-887C-6330-9F7CCF38947C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.debug|x64.Build.0 = debug|x64
 		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.release|x64.ActiveCfg = release|x64
 		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.release|x64.Build.0 = release|x64
+		{6EAB880B-DAB4-887C-6330-9F7CCF38947C}.debug|x64.ActiveCfg = debug|x64
+		{6EAB880B-DAB4-887C-6330-9F7CCF38947C}.debug|x64.Build.0 = debug|x64
+		{6EAB880B-DAB4-887C-6330-9F7CCF38947C}.release|x64.ActiveCfg = release|x64
+		{6EAB880B-DAB4-887C-6330-9F7CCF38947C}.release|x64.Build.0 = release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

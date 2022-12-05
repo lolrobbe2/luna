@@ -45,6 +45,7 @@ namespace luna
 			 */
 			std::pair<storageResult, value> putValue(storageObject* key,const value& _value)
 			{
+				LN_PROFILE_FUNCTION();
 				std::pair<cacheObject, value> result = objectCache.putValue(key, _value);
 				if (result.first)
 				{
@@ -64,6 +65,7 @@ namespace luna
 			 */
 			std::pair<storageResult, value> getValue(const storageObject& key,const value& _value)
 			{
+				LN_PROFILE_FUNCTION();
 				std::pair<cacheResult, value> result = objectCache.getValue(key);
 				switch (result.first)
 				{
@@ -91,6 +93,7 @@ namespace luna
 			 */
 			std::pair<storageResult, value> setValue(const storageObject& key,const value& _value)
 			{
+				LN_PROFILE_FUNCTION();
 				std::pair<cacheResult, value> result = objectCache.setValue(key, _value);
 				switch (result.first)
 				{
@@ -112,6 +115,7 @@ namespace luna
 			}
 			std::pair<storageResult, value> eraseValue(const storageObject& key)
 			{
+				LN_PROFILE_FUNCTION();
 				std::pair<cacheResult, value> result = objectCache.eraseValue(key);
 				switch (result.first)
 				{

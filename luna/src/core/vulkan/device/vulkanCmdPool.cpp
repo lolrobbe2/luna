@@ -10,6 +10,7 @@ namespace luna
 		}
 		vulkanCmdPool::vulkanCmdPool(const vulkanCmdPoolSpec& commandPoolSpec)
 		{
+			LN_PROFILE_FUNCTION();
 			sCommandPoolSpec = commandPoolSpec;
 			VkCommandPoolCreateInfo commandPoolCreateInfo{ VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO };
 			commandPoolCreateInfo.pNext = nullptr;
@@ -25,6 +26,7 @@ namespace luna
 
 		VkResult vulkanCmdPool::createNewBuffer( virtualCmdBuffer* commandBuffer,const uint32_t& commandBufferCount,const VkCommandBufferLevel& commandBufferLevel)
 		{
+			LN_PROFILE_FUNCTION();
 			VkCommandBufferAllocateInfo allocateInfo{ VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO };
 			allocateInfo.commandBufferCount =  commandBufferCount;
 			allocateInfo.level = commandBufferLevel;
@@ -41,6 +43,7 @@ namespace luna
 		}
 		VkResult vulkanCmdPool::begin(virtualCmdBuffer commandBuffer,const VkCommandBufferUsageFlags& usageFlags)
 		{
+			LN_PROFILE_FUNCTION();
 			VkCommandBufferBeginInfo commandBufferBeginInfo = { VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO };
 			commandBufferBeginInfo.flags = usageFlags;
 			commandBufferBeginInfo.pInheritanceInfo = nullptr;
@@ -59,6 +62,7 @@ namespace luna
 		}
 		VkResult vulkanCmdPool::flush(VkQueue queue,uint64_t submitCount,const commandPoolSubmitInfo* pCommandPoolSubmitInfo,VkFence waitFence)
 		{
+			LN_PROFILE_FUNCTION();
 			std::vector<VkSubmitInfo> submitInfos{};
 			std::vector<VkCommandBuffer>commandBuffers;
 
@@ -83,6 +87,7 @@ namespace luna
 		}
 		void vulkanCmdPool::freeCommandBuffer(virtualCmdBuffer* pCommandBuffers, uint32_t count)
 		{
+			LN_PROFILE_FUNCTION();
 			std::vector<VkCommandBuffer> commandBuffers;
 			for (size_t i = 0; i < count; i++)
 			{

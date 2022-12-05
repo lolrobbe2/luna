@@ -88,6 +88,7 @@ project "luna"
             "GLFW",
             "VkBootstrap",
             "imGui",
+            "stb",
             "vulkan-1"
         }
         filter "configurations:debug"
