@@ -6,7 +6,8 @@ workspace "luna"
     configurations
     {
         "debug",
-        "release"
+        "release",
+        "distribution"
     }
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"

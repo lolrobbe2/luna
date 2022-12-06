@@ -72,23 +72,37 @@ namespace luna
 			 * \param memoryUsage
 			 * \return 
 			 */
-			static VkResult createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage,VmaAllocationCreateFlags allocFlags = 0);
+			static VkResult createBuffer(VkBuffer* pBuffer,const size_t& allocSize,const VkBufferUsageFlags& usage,const VmaMemoryUsage& memoryUsage,const VmaAllocationCreateFlags& allocFlags = 0);
 			/**
 			 * @brief destroys the VkBuffer object.
 			 * 
 			 * \param buffer
 			 */
-			static void destroyBuffer(VkBuffer buffer);
+			static void destroyBuffer(const VkBuffer& buffer);
+			/**
+			 * @brief uploads a texture to the gpu .
+			 * 
+			 * \param buffer dataBuffer that stores texelData
+			 * \param image handle to copy texelData in to. 
+			 */
+			static void uploadTexture(const VkBuffer& buffer,const VkImage& image);
 		private:
+			static void transferTexture();
 			struct vmaAllocation
 			{
 				VmaAllocation allocation;
 				VmaAllocationInfo allocationInfo;
 			};
+			struct transferCommand
+			{
+				VkBuffer sourceBuffer;
+				VkImage VulkanImageView;
+			};
 			inline static ref<renderer::device> pDevice; //ref to graphics device.
 			inline static VmaAllocator sAllocator; //allocator handle.
 			inline static objectStorage<vmaAllocation> allocations;
-			VkQueue transferQueue; //for later;
+			inline static std::vector<transferCommand> transferCommands;
+			inline static VkQueue transferQueue; //for later; thanks past robbe!
 
 		};
 		

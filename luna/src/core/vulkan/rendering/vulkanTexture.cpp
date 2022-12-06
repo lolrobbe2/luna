@@ -22,7 +22,10 @@ namespace luna
 		}
 		vulkanTexture::vulkanTexture(void* texelData, const glm::vec2& dimensions)
 		{
+			utils::vulkanAllocator::createBuffer(&buffer, dimensions.x * dimensions.y, VkBufferUsageFlagBits::VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT, VMA_MEMORY_USAGE_GPU_ONLY, VmaAllocationCreateFlagBits::VMA_ALLOCATION_CREATE_WITHIN_BUDGET_BIT);
+			utils::vulkanAllocator::createImage(&imageHandle, VkImageUsageFlagBits::VK_IMAGE_USAGE_SAMPLED_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,0 }, VK_FORMAT_R8G8B8A8_SRGB);
 			setData(texelData,dimensions.x * dimensions.y * 4);
+			LN_CORE_INFO("not fully implemented");
 		}
 		uint32_t vulkanTexture::getWidth() const
 		{

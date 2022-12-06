@@ -198,7 +198,7 @@ project "stb"
 		systemversion "latest"
 		defines
 		{
-			"STB_INCLUDE_IMPLEMENTATION"
+			"STB_IMAGE_IMPLEMENTATION"
 		}
 
 	filter "configurations:Debug"

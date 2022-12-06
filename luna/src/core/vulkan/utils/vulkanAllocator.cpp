@@ -29,6 +29,7 @@ namespace luna
 			VkPhysicalDeviceMemoryProperties memoryProperties;
 			vkGetPhysicalDeviceMemoryProperties(handles.physicalDevice, &memoryProperties);
 			allocatorCreateInfo.vulkanApiVersion = handles.appInfo.apiVersion;
+			transferQueue = handles.device.get_dedicated_queue(vkb::QueueType::transfer).value();
 			LN_CORE_INFO("vma allocator creation result = {0}", vmaCreateAllocator(&allocatorCreateInfo, &sAllocator));
 			pDevice = device;
 		}
@@ -111,7 +112,7 @@ namespace luna
 			vkDestroyImageView(device->getDeviceHandles().device, imageView, nullptr);
 			return VK_SUCCESS;
 		}
-		VkResult vulkanAllocator::createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage,VmaAllocationCreateFlags allocFlags)
+		VkResult vulkanAllocator::createBuffer(VkBuffer* pBuffer,const size_t& allocSize,const VkBufferUsageFlags& usage,const VmaMemoryUsage& memoryUsage,const VmaAllocationCreateFlags& allocFlags)
 		{
 			LN_PROFILE_FUNCTION();
 			VkBufferCreateInfo bufferInfo = {};
@@ -138,7 +139,7 @@ namespace luna
 			
 			return bufferCreateResult;
 		}
-		void vulkanAllocator::destroyBuffer(VkBuffer buffer)
+		void vulkanAllocator::destroyBuffer(const VkBuffer& buffer)
 		{
 			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
@@ -146,6 +147,9 @@ namespace luna
 			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;
 			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 
+		}
+		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image)
+		{
 		}
 	}
 }
