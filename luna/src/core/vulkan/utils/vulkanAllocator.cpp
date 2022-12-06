@@ -29,7 +29,12 @@ namespace luna
 			VkPhysicalDeviceMemoryProperties memoryProperties;
 			vkGetPhysicalDeviceMemoryProperties(handles.physicalDevice, &memoryProperties);
 			allocatorCreateInfo.vulkanApiVersion = handles.appInfo.apiVersion;
-			transferQueue = handles.device.get_dedicated_queue(vkb::QueueType::transfer).value();
+			vulkan::vulkanCmdPoolSpec commandPoolSpec;
+			commandPoolSpec.device = handles.device;
+			commandPoolSpec.queueFamilyIndex = handles.device.get_dedicated_queue_index(vkb::QueueType::transfer).value();
+			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
+			commandPool = ref<vulkan::vulkanCmdPool>(new vulkan::vulkanCmdPool(commandPoolSpec));
+
 			LN_CORE_INFO("vma allocator creation result = {0}", vmaCreateAllocator(&allocatorCreateInfo, &sAllocator));
 			pDevice = device;
 		}
@@ -150,6 +155,7 @@ namespace luna
 		}
 		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image)
 		{
+
 		}
 	}
 }

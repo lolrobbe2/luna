@@ -3,6 +3,7 @@
 #include <core/utils/vectorCache.h>
 #include <core/rendering/device.h>
 #include <core/utils/objectStorage.h>
+#include <core/vulkan/device/vulkanCmdPool.h>
 namespace luna
 {
 	namespace utils
@@ -102,6 +103,7 @@ namespace luna
 			inline static VmaAllocator sAllocator; //allocator handle.
 			inline static objectStorage<vmaAllocation> allocations;
 			inline static std::vector<transferCommand> transferCommands;
+			inline static ref<vulkan::vulkanCmdPool> commandPool = nullptr;
 			inline static VkQueue transferQueue; //for later; thanks past robbe!
 
 		};
