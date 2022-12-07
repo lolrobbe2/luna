@@ -153,12 +153,9 @@ namespace luna
 			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 
 		}
-		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image)
+		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image,const glm::vec3& imageDimensions)
 		{
-			
-
-
-
+			transferCommands.push_back({ buffer,image,imageDimensions });
 		}
 		void vulkanAllocator::flush()
 		{
@@ -166,9 +163,21 @@ namespace luna
 			commandPool->createNewBuffer(&commandBuffer, 1, VK_COMMAND_BUFFER_LEVEL_SECONDARY);
 			commandPool->begin(commandBuffer, VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
 
-			for (size_t i = 0; i < transferCommands.size(); i++)
+			for (transferCommand command : transferCommands)
 			{
-				
+				VkImageSubresourceLayers subresource;
+				subresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;;
+				subresource.baseArrayLayer = 0;
+				subresource.layerCount = 1;
+				subresource.mipLevel = 0;
+				VkBufferImageCopy region;
+				region.bufferImageHeight = command.dimensions.y;
+				region.bufferRowLength = command.dimensions.y;
+				region.imageExtent = { (unsigned int)command.dimensions.x ,(unsigned int)command.dimensions.y ,0 };
+				region.imageOffset = { 0,0,0 };
+				region.imageSubresource = subresource;
+				vkCmdCopyBufferToImage(commandPool->operator=(commandBuffer), command.sourceBuffer, command.VulkanImage, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, 1,&region);
+				//transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandBuffer);
 			}
 
 			commandPool->end(commandBuffer);
@@ -181,6 +190,9 @@ namespace luna
 			submitInfo.signalSemaphoreCount = 0;
 			submitInfo.waitSemaphoreCount = 0;
 			commandPool->flush(transferQueue, 1, &submitInfo, VK_NULL_HANDLE);
+			commandPool->freeCommandBuffer(&commandBuffer, 1); 
+			for (transferCommand command : transferCommands) destroyBuffer(command.sourceBuffer);
+		
 		}
 		void vulkanAllocator::transitionImageLayout(const VkImage& image,const VkFormat& format,const VkImageLayout& oldLayout,const VkImageLayout& newLayout,const vulkan::virtualCmdBuffer& commandBufffer)
 		{
