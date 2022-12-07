@@ -87,8 +87,22 @@ namespace luna
 			 * \param image handle to copy texelData in to. 
 			 */
 			static void uploadTexture(const VkBuffer& buffer,const VkImage& image);
+			/**
+			 * @brief executes all recorded transferCommands.
+			 * 
+			 */
+			static void flush();
 		private:
-			static void transferTexture();
+			/**
+			 * @brief transitions the image layout.
+			 *
+			 * \param VkImage image imageHandle
+			 * \param VkFormat format
+			 * \param VkImageLayout oldLayout
+			 * \param VkImageLayout newLayout
+			 * \param VkCommandBuffer commandBufffer
+			 */
+			static void transitionImageLayout(const VkImage& image, const VkFormat& format, const VkImageLayout& oldLayout, const VkImageLayout& newLayout, const vulkan::virtualCmdBuffer& commandBufffer);
 			struct vmaAllocation
 			{
 				VmaAllocation allocation;

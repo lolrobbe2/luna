@@ -60,7 +60,7 @@ namespace luna
 		{
 			return vkEndCommandBuffer(virtualBuffers.find(commandBuffer)->second.first);
 		}
-		VkResult vulkanCmdPool::flush(VkQueue queue,uint64_t submitCount,const commandPoolSubmitInfo* pCommandPoolSubmitInfo,VkFence waitFence)
+		VkResult vulkanCmdPool::flush(const VkQueue& queue,const uint64_t& submitCount,const commandPoolSubmitInfo* pCommandPoolSubmitInfo,const VkFence& waitFence)
 		{
 			LN_PROFILE_FUNCTION();
 			std::vector<VkSubmitInfo> submitInfos{};
