@@ -33,6 +33,10 @@ namespace luna
 			setData(texelData,dimensions.x * dimensions.y * 4);
 			LN_CORE_INFO("not fully implemented");
 		}
+		vulkanTexture::~vulkanTexture()
+		{
+			utils::vulkanAllocator::destroyImage(imageHandle);
+		}
 		uint32_t vulkanTexture::getWidth() const
 		{
 			return width;

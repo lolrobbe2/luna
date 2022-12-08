@@ -73,6 +73,7 @@ namespace luna
 			rendererData.quadIndexBuffer = nullptr;
 
 			rendererData.quadVertexBuffer = nullptr;
+			image = nullptr;
 			renderer::shutdown();
 		}
 

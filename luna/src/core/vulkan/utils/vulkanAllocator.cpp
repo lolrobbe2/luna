@@ -201,8 +201,7 @@ namespace luna
 			submitInfo.signalSemaphoreCount = 0;
 			submitInfo.waitSemaphoreCount = 0;
 			submitInfo.pNext = nullptr;
-			commandPool->flush(transferQueue, 1, &submitInfo, VK_NULL_HANDLE);
-		
+			commandPool->flush(transferQueue, 1, &submitInfo, VK_NULL_HANDLE); 
 			commandPool->freeCommandBuffer(&commandBuffer, 1); 
 			for (transferCommand command : transferCommands) destroyBuffer(command.sourceBuffer);
 			transferCommands.clear();
