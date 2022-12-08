@@ -1,5 +1,6 @@
 #pragma once
 #include <core/rendering/renderer.h>
+#include <core/rendering/texture.h>
 namespace luna
 {
 	namespace renderer
@@ -63,6 +64,7 @@ namespace luna
 			static statistics getStats();
 
 		private:
+			inline static ref<texture> image;
 		};
 	}
 }

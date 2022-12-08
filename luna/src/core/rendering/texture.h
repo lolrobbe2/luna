@@ -25,9 +25,11 @@ namespace luna
 
 			virtual bool isLoaded() const = 0;
 
-			virtual bool operator==(const texture& other) const = 0;
+			//virtual bool operator==(const texture& other) const = 0;
+
+			static ref<texture> create(const std::string& filePath);
 		protected:
-			char* data;
+			void* data;
 			uint32_t width;
 			uint32_t height;
 		};
@@ -40,8 +42,9 @@ namespace luna
 		{
 		public:
 			virtual ~texture2D() = default;
-			ref<texture> create(const uint32_t& width, const uint32_t& height);
-			ref<texture> create(const void* data, const uint32_t& size);
+			static ref<texture> create(const std::string& filePath);
+			static ref<texture> create(const uint32_t& width, const uint32_t& height);
+			static ref<texture> create(const void* data, const uint32_t& size);
 		};
 		/**
 		 * @brief textureAtlas api.

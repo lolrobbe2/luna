@@ -159,6 +159,9 @@ namespace luna
 		}
 		void vulkanAllocator::flush()
 		{
+			LN_PROFILE_FUNCTION();
+			if (transferCommands.empty()) return; //when no textures need uploading return.
+
 			vulkan::virtualCmdBuffer commandBuffer;
 			commandPool->createNewBuffer(&commandBuffer, 1, VK_COMMAND_BUFFER_LEVEL_SECONDARY);
 			commandPool->begin(commandBuffer, VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
@@ -169,7 +172,7 @@ namespace luna
 				subresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;;
 				subresource.baseArrayLayer = 0;
 				subresource.layerCount = 1;
-				subresource.mipLevel = 0;
+				subresource.mipLevel = VK_REMAINING_MIP_LEVELS;
 				VkBufferImageCopy region;
 				region.bufferImageHeight = command.dimensions.y;
 				region.bufferRowLength = command.dimensions.y;
