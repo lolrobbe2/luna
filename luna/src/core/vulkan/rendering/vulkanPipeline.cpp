@@ -441,7 +441,7 @@ namespace luna
 			pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 			pipelineInfo.pNext = nullptr;
 			
-			inputAssemblyStateCreateInfo =  inputAssemblyCreateInfo(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN);
+			inputAssemblyStateCreateInfo =  inputAssemblyCreateInfo(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
 			pipelineRasterizationStateCreateInfo = rasterizationStateCreateInfo(VK_POLYGON_MODE_FILL);
 			pipelineMultisampleStateCreateInfo = multisamplingStateCreateInfo();
 			pipelineInfo.stageCount = shaderStages.size();
