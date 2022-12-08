@@ -33,7 +33,7 @@ namespace luna
 		void renderer2D::init()
 		{
 			LN_PROFILE_SCOPE("renderer2D init");
-			image = texture::create("./assets/image.h");
+			image = texture::create("./src/assets/media/logic_gates.png");
 
 			rendererData.quadVertexBuffer = vertexBuffer::create(rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadVertexBufferBase = (quadVertex*)rendererData.quadVertexBuffer->data;

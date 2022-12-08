@@ -88,6 +88,7 @@ namespace luna
 		void vulkanCmdPool::freeCommandBuffer(virtualCmdBuffer* pCommandBuffers, uint32_t count)
 		{
 			LN_PROFILE_FUNCTION();
+			vkDeviceWaitIdle(sCommandPoolSpec.device);
 			std::vector<VkCommandBuffer> commandBuffers;
 			for (size_t i = 0; i < count; i++)
 			{

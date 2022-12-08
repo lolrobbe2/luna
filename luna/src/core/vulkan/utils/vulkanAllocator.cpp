@@ -29,6 +29,9 @@ namespace luna
 			VkPhysicalDeviceMemoryProperties memoryProperties;
 			vkGetPhysicalDeviceMemoryProperties(handles.physicalDevice, &memoryProperties);
 			allocatorCreateInfo.vulkanApiVersion = handles.appInfo.apiVersion;
+
+			transferQueue = handles.device.get_dedicated_queue(vkb::QueueType::transfer).value();
+
 			vulkan::vulkanCmdPoolSpec commandPoolSpec;
 			commandPoolSpec.device = handles.device;
 			commandPoolSpec.queueFamilyIndex = handles.device.get_dedicated_queue_index(vkb::QueueType::transfer).value();
@@ -163,24 +166,29 @@ namespace luna
 			if (transferCommands.empty()) return; //when no textures need uploading return.
 
 			vulkan::virtualCmdBuffer commandBuffer;
-			commandPool->createNewBuffer(&commandBuffer, 1, VK_COMMAND_BUFFER_LEVEL_SECONDARY);
+			commandPool->createNewBuffer(&commandBuffer, 1, VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 			commandPool->begin(commandBuffer, VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
-
+			std::vector<VkBufferImageCopy> regions;
+			regions.resize(transferCommands.size());
+			uint32_t i = 0;
 			for (transferCommand command : transferCommands)
 			{
-				VkImageSubresourceLayers subresource;
-				subresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;;
-				subresource.baseArrayLayer = 0;
-				subresource.layerCount = 1;
-				subresource.mipLevel = VK_REMAINING_MIP_LEVELS;
-				VkBufferImageCopy region;
-				region.bufferImageHeight = command.dimensions.y;
-				region.bufferRowLength = command.dimensions.y;
-				region.imageExtent = { (unsigned int)command.dimensions.x ,(unsigned int)command.dimensions.y ,0 };
-				region.imageOffset = { 0,0,0 };
-				region.imageSubresource = subresource;
-				vkCmdCopyBufferToImage(commandPool->operator=(commandBuffer), command.sourceBuffer, command.VulkanImage, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, 1,&region);
-				//transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandBuffer);
+				
+				regions[i].bufferOffset = 0;
+				regions[i].bufferRowLength = 0;
+				regions[i].bufferImageHeight = 0;
+
+				regions[i].imageExtent = { (unsigned int)command.dimensions.x ,(unsigned int)command.dimensions.y ,1 };
+				regions[i].imageOffset = { 0,0,0 };
+			
+				regions[i].imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+				regions[i].imageSubresource.mipLevel = 0;
+				regions[i].imageSubresource.baseArrayLayer = 0;
+				regions[i].imageSubresource.layerCount = 1;
+				transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandBuffer);
+				vkCmdCopyBufferToImage(commandPool->operator=(commandBuffer), command.sourceBuffer, command.VulkanImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1,&regions[i]);
+				//
+				i++;
 			}
 
 			commandPool->end(commandBuffer);
@@ -192,9 +200,12 @@ namespace luna
 			submitInfo.pWaitSemaphores = nullptr;
 			submitInfo.signalSemaphoreCount = 0;
 			submitInfo.waitSemaphoreCount = 0;
+			submitInfo.pNext = nullptr;
 			commandPool->flush(transferQueue, 1, &submitInfo, VK_NULL_HANDLE);
+		
 			commandPool->freeCommandBuffer(&commandBuffer, 1); 
 			for (transferCommand command : transferCommands) destroyBuffer(command.sourceBuffer);
+			transferCommands.clear();
 		
 		}
 		void vulkanAllocator::transitionImageLayout(const VkImage& image,const VkFormat& format,const VkImageLayout& oldLayout,const VkImageLayout& newLayout,const vulkan::virtualCmdBuffer& commandBufffer)
