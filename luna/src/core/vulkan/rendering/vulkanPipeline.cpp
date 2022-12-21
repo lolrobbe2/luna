@@ -11,6 +11,7 @@ namespace luna
 	{
 		vulkanPipeline::vulkanPipeline(const renderer::pipelineLayout& layout)
 		{
+
 			LN_PROFILE_FUNCTION();
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
@@ -377,9 +378,9 @@ namespace luna
 					VkVertexInputAttributeDescription attributeDescription;
 					attributeDescription.binding = shaderResource.binding;
 					attributeDescription.location = shaderResource.location;
-					attributeDescription.offset = shaderResource.offset;
+					attributeDescription.offset = shaderResource.offset;//TODO offset is wrong
 					attributeDescription.format = getResourceFormat(shaderResource.type);
-					inputDescriptions[shader->shaderName].attributes.push_back(attributeDescription);
+					inputDescriptions[shader->shaderName].attributes.insert(inputDescriptions[shader->shaderName].attributes.begin(), attributeDescription);
 				}
 			}
 		}

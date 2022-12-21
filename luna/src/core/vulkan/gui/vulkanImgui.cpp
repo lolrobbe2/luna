@@ -36,7 +36,7 @@ namespace luna
 			pool_info.pPoolSizes = pool_sizes;
 
 			
-			LN_CORE_INFO("imgui descriptor set creation result = {0}" ,vkCreateDescriptorPool(vDevice, &pool_info, nullptr, &imguiPool));
+			LN_CORE_INFO("imgui descriptor pool creation result = {0}" ,vkCreateDescriptorPool(vDevice, &pool_info, nullptr, &imguiPool));
 			ImGui::CreateContext();
 			ImGuiIO& io = ImGui::GetIO();
 			(void)io;

@@ -70,6 +70,7 @@ namespace luna
 			{
 				LN_CORE_TRACE("  {0}", stageInput.name);
 				LN_CORE_TRACE("    id = {0}", stageInput.id);
+				LN_CORE_TRACE("    offset = {0}",compiler.get_decoration(stageInput.id, spv::DecorationXfbStride));
 				LN_CORE_TRACE("    location = {0}", compiler.get_decoration(stageInput.id, spv::DecorationLocation));
 				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageInput, compiler));
 			}

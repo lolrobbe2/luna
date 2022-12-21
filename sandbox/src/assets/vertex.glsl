@@ -2,11 +2,12 @@
 //#extension GL_ARB_separate_shader_objects : enable
  #extension GL_ARB_shader_draw_parameters : enable
 layout(location = 0) in vec4 inPosition;
+layout(location = 1) in vec4 inColor;
+
+layout(location = 0) out vec4 fragColor;
 
 void main()
 {
-	//const array of positions for the triangle
-	//output the position of each vertex
-	//gl_Position = vec4(positions[gl_VertexIndex], 1.0f);
+	fragColor = inColor;
 	gl_Position = inPosition;
 }

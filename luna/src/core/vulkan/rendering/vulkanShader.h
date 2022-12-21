@@ -40,7 +40,12 @@ namespace luna
 			 * \return 
 			 */
 			renderer::shaderResource getShaderResource(const spirv_cross::Resource& _shaderResource, const std::vector<uint32_t>& shaderSource,renderer::typeClass typeClass);
-
+			/**
+			 * @brief create shader byte offsets.
+			 * 
+			 * \param std::vector<renderer::shaderResource>* layout;
+			 */
+			void createOffsets(std::vector<renderer::shaderResource>* layout);
 		private:
 			friend class renderer::shader;
 			

@@ -6,6 +6,7 @@ namespace luna
 		struct quadVertex
 		{
 			glm::vec4 vert;
+			glm::vec4 color;
 		};
 		struct renderer2DData
 		{
@@ -34,7 +35,6 @@ namespace luna
 		{
 			LN_PROFILE_SCOPE("renderer2D init");
 			image = texture::create("./src/assets/media/logic_gates.png");
-
 			rendererData.quadVertexBuffer = vertexBuffer::create(rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadVertexBufferBase = (quadVertex*)rendererData.quadVertexBuffer->data;
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
@@ -95,19 +95,26 @@ namespace luna
 			renderer::endScene();
 		}
 
-		void renderer2D::drawQuad(const glm::vec3& position,const glm::vec2& size)
+		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec3& color) 
 		{
 			LN_PROFILE_FUNCTION();
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-			drawQuad(transform);
+			drawQuad(transform, color);
 		}
-		void renderer2D::drawQuad(const glm::mat4& transform)
+
+		void renderer2D::drawQuad(const glm::vec3& position,const glm::vec2& size)
+		{
+			LN_PROFILE_FUNCTION();
+			drawQuad(position, size, { 255.0f,255.0f,255.0f });
+		}
+		void renderer2D::drawQuad(const glm::mat4& transform, const glm::vec3& color)
 		{
 			LN_PROFILE_FUNCTION();
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
+				rendererData.quadVertexBufferPtr->color = { color,1.0f };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				rendererData.quadVertexBufferPtr++;
 			}

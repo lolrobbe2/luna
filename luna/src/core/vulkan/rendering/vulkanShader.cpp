@@ -76,7 +76,8 @@ namespace luna
 			for (const auto& resource : resources.push_constant_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::pushConstantBuffers));
 			for (const auto& resource : resources.storage_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSrc, renderer::storageBuffers));
 			for (const auto& resource : resources.stage_inputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageInputs));
-			for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageOutputs));
+			//for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageOutputs));
+			createOffsets(&shaderLayout);
 			LN_CORE_TRACE("created shaderLayout");
 		}
 
@@ -91,7 +92,7 @@ namespace luna
 			resource.binding = compiler.get_decoration(_shaderResource.id, spv::DecorationBinding);
 			resource.location = compiler.get_decoration(_shaderResource.id, spv::DecorationLocation);
 			resource.resourceClass = typeClass;
-			resource.offset = compiler.get_decoration(_shaderResource.id, spv::DecorationOffset);
+			//resource.offset = compiler.get_decoration(_shaderResource.id, spv::DecorationOffset);
 			
 			switch (baseType)
 			{
@@ -240,6 +241,17 @@ namespace luna
 				break;
 			}
 			return resource;
+		}
+		void vulkanShader::createOffsets(std::vector<renderer::shaderResource>* layout) 
+		{
+			if (layout->size() < 2) return;
+			for (size_t i = layout->size() - 1; i >= 1; i--)
+			{
+				renderer::shaderResource prevResource = layout->at(i);
+				renderer::shaderResource* resource = &layout->at(i - 1);
+				resource->offset = prevResource.offset + prevResource.stride;
+				createOffsets(&resource->members);
+			}
 		}
 	}
 }

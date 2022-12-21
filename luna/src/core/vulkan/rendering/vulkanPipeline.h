@@ -200,8 +200,10 @@ namespace luna
 			 * @brief executes draw command.
 			 */
 			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount);
+
+			VkResult createDescriptorSetLayout();
 		private:
-			//TODO improve variables usage.
+					//TODO improve variables usage.
 			struct shaderStage
 			{
 				VkPipelineShaderStageCreateInfo stageInfo;

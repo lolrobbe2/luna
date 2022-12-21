@@ -42,6 +42,14 @@ namespace luna
 			static void endScene();
 			/**
 			 * @brief draws a quad.
+			 *
+			 * \param const glm::vec3& position starting position
+			 * \param const glm::vec2& size starting size;
+			 * \param const glm::vec3& color rgb color value
+			 */
+			static void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec3& color);
+			/**
+			 * @brief draws a quad.
 			 * 
 			 * \param const glm::vec3& position starting position
 			 * \param const glm::vec2& size starting size;
@@ -52,7 +60,7 @@ namespace luna
 			 * 
 			 * \param const glm::mat4& transform starting transformation.
 			 */
-			static void drawQuad(const glm::mat4& transform);
+			static void drawQuad(const glm::mat4& transform,const glm::vec3& color);
 			/**
 			 * @brief flushes all the draw commands to the base renderer.
 			 * @see renderer::renderer

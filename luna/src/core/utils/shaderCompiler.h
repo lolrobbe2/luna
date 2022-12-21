@@ -14,7 +14,7 @@ namespace luna
 		};
 		struct compileSpec
 		{
-			bool reflect = false;
+			bool reflect = true;
 			std::vector<char> source;
 			std::string fileName;
 			shaderc_shader_kind shaderKind; 
