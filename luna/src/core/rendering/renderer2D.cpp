@@ -114,7 +114,7 @@ namespace luna
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
-				rendererData.quadVertexBufferPtr->color = color;
+				rendererData.quadVertexBufferPtr->color = { color.x * 1.0f / 256.0f,color.y * 1.0f / 256.0f,color.z * 1.0f / 256.0f,color.w };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				rendererData.quadVertexBufferPtr++;
 			}
