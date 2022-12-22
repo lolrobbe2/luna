@@ -35,7 +35,7 @@ namespace luna
 			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImage.html
 			 * @see https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCreateInfo.html
 			 */
-			static VkResult createImage(VkImage* pImage, VkImageUsageFlags usageFlags, VkExtent3D extent, VkFormat format = VK_FORMAT_B8G8R8A8_UNORM);
+			static VkResult createImage(VkImage* pImage, VkImageUsageFlags usageFlags, VkExtent3D extent, VkFormat format = VK_FORMAT_R8G8B8A8_UNORM);
 			/**
 			 * @brief creates a VkImageView.
 			 * 

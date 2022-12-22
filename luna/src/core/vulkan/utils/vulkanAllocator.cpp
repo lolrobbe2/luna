@@ -185,7 +185,7 @@ namespace luna
 				regions[i].imageSubresource.mipLevel = 0;
 				regions[i].imageSubresource.baseArrayLayer = 0;
 				regions[i].imageSubresource.layerCount = 1;
-				transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandBuffer);
+				transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandBuffer);
 				vkCmdCopyBufferToImage(commandPool->operator=(commandBuffer), command.sourceBuffer, command.VulkanImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1,&regions[i]);
 				//
 				i++;
@@ -225,14 +225,16 @@ namespace luna
 
 			VkPipelineStageFlags sourceStage = VK_PIPELINE_STAGE_NONE;
 			VkPipelineStageFlags destinationStage = VK_PIPELINE_STAGE_NONE;
-			if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
+			if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) 
+			{
 				barrier.srcAccessMask = VK_ACCESS_NONE;
 				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
 
 				sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
 				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
 			}
-			else if (oldLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR && newLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL) {
+			else if (oldLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR && newLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL) 
+			{
 				barrier.srcAccessMask = VK_ACCESS_MEMORY_READ_BIT;
 				barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
 
@@ -247,7 +249,8 @@ namespace luna
 				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
 				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
 			}
-			else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {
+			else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) 
+			{
 				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
 				barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
 
@@ -270,9 +273,8 @@ namespace luna
 				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
 				destinationStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
 			}
-			else {
-				LN_CORE_ERROR("incorrect layout = {0}", newLayout);
-			}
+			else LN_CORE_ERROR("incorrect layout = {0}", newLayout);
+			
 
 			vkCmdPipelineBarrier(
 				commandPool->operator=(commandBufffer),

@@ -32,6 +32,7 @@ namespace luna
                 .value();
           
             // std::vector<VkImageView> m_SwapChainImageViews; 
+            LN_CORE_INFO("swapchain format = {0}", mSwapchain.image_format);
 			return VK_SUCCESS;
 		}
 		VkResult vulkanSwapchain::recreateSwapchain()

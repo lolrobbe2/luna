@@ -95,7 +95,7 @@ namespace luna
 			renderer::endScene();
 		}
 
-		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec3& color) 
+		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) 
 		{
 			LN_PROFILE_FUNCTION();
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
@@ -106,15 +106,15 @@ namespace luna
 		void renderer2D::drawQuad(const glm::vec3& position,const glm::vec2& size)
 		{
 			LN_PROFILE_FUNCTION();
-			drawQuad(position, size, { 255.0f,255.0f,255.0f });
+			drawQuad(position, size, { 255.0f,255.0f,255.0f ,1.0f });
 		}
-		void renderer2D::drawQuad(const glm::mat4& transform, const glm::vec3& color)
+		void renderer2D::drawQuad(const glm::mat4& transform, const glm::vec4& color)
 		{
 			LN_PROFILE_FUNCTION();
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
-				rendererData.quadVertexBufferPtr->color = { color,1.0f };
+				rendererData.quadVertexBufferPtr->color = color;
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				rendererData.quadVertexBufferPtr++;
 			}
