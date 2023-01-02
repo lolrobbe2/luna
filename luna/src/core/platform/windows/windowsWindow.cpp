@@ -76,6 +76,16 @@ namespace luna
 				
 			});
 
+			glfwSetWindowFocusCallback(_window, [](GLFWwindow* window, int focused) 
+			{
+				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
+				windowFocusEvent focusEvent;
+				windowLostFocusEvent lostFocusEvent;
+				if (focused) winData.eventCallbackFn(focusEvent);
+				else winData.eventCallbackFn(lostFocusEvent);
+					
+			});
+
 			glfwSetWindowCloseCallback(_window, [](GLFWwindow* window)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
@@ -151,6 +161,7 @@ namespace luna
 				ImGui_ImplGlfw_CharCallback(window, codepoint);
 			});
 
+			
 		}
 		void windowsWindow::shutDown()
 		{

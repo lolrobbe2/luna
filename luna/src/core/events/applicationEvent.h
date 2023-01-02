@@ -35,6 +35,23 @@ namespace luna {
 			EVENT_CLASS_CATEGORY(eventCategoryApplication)
 	};
 
+	class windowFocusEvent : public Event
+	{
+	public:
+		windowFocusEvent() = default;
+		EVENT_CLASS_TYPE(WindowFocus)
+			EVENT_CLASS_CATEGORY(eventCategoryApplication)
+	};
+
+	class windowLostFocusEvent : public Event
+	{
+	public:
+		windowLostFocusEvent() = default;
+
+		EVENT_CLASS_TYPE(WindowLostFocus)
+			EVENT_CLASS_CATEGORY(eventCategoryApplication)
+	};
+
 	class appTickEvent : public Event
 	{
 	public:

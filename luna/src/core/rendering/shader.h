@@ -80,6 +80,7 @@ namespace luna
 			uint32_t binding = 0;
 			uint32_t stride = 0;
 			uint32_t offset = 0;
+			uint32_t amount = 0;
 			std::string name;
 			std::vector<shaderResource> members{};
 		};

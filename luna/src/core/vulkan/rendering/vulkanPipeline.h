@@ -4,6 +4,7 @@
 #include <backends/imgui_impl_vulkan.h>
 #include <core/rendering/pipeline.h>
 #include <core/vulkan/device/vulkanCmdPool.h>
+#include <core/vulkan/utils/vulkanDescriptorPool.h>
 namespace luna
 {
 	namespace vulkan
@@ -257,6 +258,7 @@ namespace luna
 				int indexCount = 0;
 			};
 			std::vector<drawCommand> drawCommands;
+			std::vector<VkDescriptorSet> descriptorSets;
 			bool changedBoundBuffers;
 		};
 		

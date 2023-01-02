@@ -47,7 +47,6 @@ namespace luna
 					ImGui::Text(("quadCount = " + std::to_string(renderer::renderer2D::getStats().quadCount)).c_str());
 					ImGui::Text(("vertexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalVertexCount())).c_str());
 					ImGui::Text(("indexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalIndexCount())).c_str());
-					
 				}
 				ImGui::End();
 				renderer::renderer::newFrame();
@@ -58,6 +57,8 @@ namespace luna
 		void application::onEvent(Event& e)
 		{
 			if (e.getEventType() == luna::eventType::WindowClose) running = false;
+			else if (e.getEventType() == luna::eventType::WindowLostFocus) LN_CORE_INFO("lost focus!");
+			else if (e.getEventType() == luna::eventType::WindowFocus) LN_CORE_INFO("gained focus!");
 		}
 	}
 }

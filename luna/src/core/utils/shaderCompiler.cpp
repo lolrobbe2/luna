@@ -82,7 +82,14 @@ namespace luna
 				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageOutput, compiler));
 
 			}
-		
+			LN_CORE_TRACE("resources :");
+			for (const auto& seperateImage : resources.separate_images)
+			{
+				LN_CORE_TRACE("  {0}", seperateImage.name);
+				LN_CORE_TRACE("    id = {0}", seperateImage.id);
+				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(seperateImage, compiler));
+				if(compiler.get_type(seperateImage.type_id).array.size()) LN_CORE_TRACE("    amount = {0}", compiler.get_type(seperateImage.type_id).array[0]);
+			}
 			return reflect;
 		}
 		std::string shaderCompiler::getResourceTypeName(const spirv_cross::Resource& resource,const spirv_cross::Compiler& compiler)

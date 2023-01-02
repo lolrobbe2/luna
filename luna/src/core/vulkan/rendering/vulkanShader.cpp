@@ -91,6 +91,8 @@ namespace luna
 			resource.name = _shaderResource.name;
 			resource.binding = compiler.get_decoration(_shaderResource.id, spv::DecorationBinding);
 			resource.location = compiler.get_decoration(_shaderResource.id, spv::DecorationLocation);
+			if (compiler.get_type(_shaderResource.type_id).array.size()) resource.amount = compiler.get_type(_shaderResource.type_id).array[0];
+			LN_CORE_INFO("array size = {0}", resource.amount);
 			resource.resourceClass = typeClass;
 			//resource.offset = compiler.get_decoration(_shaderResource.id, spv::DecorationOffset);
 			
