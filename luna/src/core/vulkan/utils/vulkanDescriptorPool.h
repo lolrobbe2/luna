@@ -16,7 +16,7 @@ namespace luna
 			 * @brief descroptor pool constructor.
 			 * 
 			 */
-			vulkanDescriptorPool(VkDescriptorPoolSize* pPoolSizes, const uint32_t& poolSizeCount);
+			vulkanDescriptorPool(const ref<vulkan::vulkanDevice>& pDevice,VkDescriptorPoolSize* pPoolSizes, const uint32_t& poolSizeCountconst,const std::vector<renderer::shaderResource>& shaderLayout, VkDescriptorSetLayoutCreateFlags flags);
 			virtual ~vulkanDescriptorPool() = default;
 			VkResult createDescriptorSets(VkDescriptorSet* pDescriptorSets,uint64_t amount);
 		private:

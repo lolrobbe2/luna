@@ -3,14 +3,17 @@ namespace luna
 {
 	namespace utils 
 	{
-		vulkanDescriptorPool::vulkanDescriptorPool(VkDescriptorPoolSize* pPoolSizes,const uint32_t& poolSizeCount )
+		vulkanDescriptorPool::vulkanDescriptorPool(const ref<vulkan::vulkanDevice>& pDevice, VkDescriptorPoolSize* pPoolSizes,const uint32_t& poolSizeCount, const std::vector<renderer::shaderResource>& shaderLayout, VkDescriptorSetLayoutCreateFlags flags)
 		{
+			LN_PROFILE_FUNCTION();
 			VkDescriptorPoolCreateInfo createInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO };
 			createInfo.maxSets = 1000;
 			createInfo.pPoolSizes = pPoolSizes;
 			createInfo.poolSizeCount = poolSizeCount;
 			createInfo.pNext = nullptr;
+			device = pDevice;
 			vkCreateDescriptorPool(device->getDeviceHandles().device,&createInfo,nullptr,&descriptorPool);		
+			createDescriptorLayouts(shaderLayout, flags);
 		}
 		VkResult vulkanDescriptorPool::createDescriptorSets(VkDescriptorSet* pDescriptorSets, uint64_t amount)
 		{
@@ -24,6 +27,7 @@ namespace luna
 		}
 		VkDescriptorSetLayout* vulkanDescriptorPool::createDescriptorLayouts(const std::vector<renderer::shaderResource>& shaderLayout, VkDescriptorSetLayoutCreateFlags flags)
 		{
+			LN_PROFILE_FUNCTION();
 			VkDescriptorSetLayout setLayout;
 			VkDescriptorSetLayoutCreateInfo setLayoutCreateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO };
 			std::vector<VkDescriptorSetLayoutBinding> resourceLayoutBindings;
@@ -43,6 +47,7 @@ namespace luna
 					resourceLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE;
 					resourceLayoutBinding.descriptorCount = resource.amount;
 					resourceLayoutBinding.pImmutableSamplers = nullptr;
+					resourceLayoutBinding.stageFlags = VkShaderStageFlagBits::VK_SHADER_STAGE_FRAGMENT_BIT;
 					resourceLayoutBindings.push_back(resourceLayoutBinding);
 					break;
 				case renderer::sampledImages:
@@ -60,7 +65,7 @@ namespace luna
 			setLayoutCreateInfo.flags = 0;	
 			setLayoutCreateInfo.pNext = nullptr;
 			vkCreateDescriptorSetLayout(device->getDeviceHandles().device, &setLayoutCreateInfo, nullptr, &setLayout);
-			return nullptr;
+			return &setLayout;
 		}
 
 		/*------------------------------------------(descriptor set implementation)------------------------------------------*/

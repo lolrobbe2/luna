@@ -20,7 +20,7 @@ namespace luna
 		// For Vulkan GLSL and HLSL source,
 		// these correspond to separate texture2D and samplers respectively.
 			separateImages,
-			separateSsamplers,
+			separateSamplers,
 			builtinInputs,
 			builtinOutputs,
 		};

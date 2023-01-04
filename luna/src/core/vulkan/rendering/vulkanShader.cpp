@@ -76,6 +76,10 @@ namespace luna
 			for (const auto& resource : resources.push_constant_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::pushConstantBuffers));
 			for (const auto& resource : resources.storage_buffers) shaderLayout.push_back(getShaderResource(resource, shaderSrc, renderer::storageBuffers));
 			for (const auto& resource : resources.stage_inputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageInputs));
+			for (const auto& resource : resources.sampled_images) shaderLayout.push_back(getShaderResource(resource, shaderSrc, renderer::sampledImages));
+			for (const auto& resource : resources.separate_images) shaderLayout.push_back(getShaderResource(resource, shaderSrc, renderer::storageImages));
+			for (const auto& resource : resources.separate_samplers) shaderLayout.push_back(getShaderResource(resource, shaderSrc, renderer::separateSamplers));
+
 			//for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageOutputs));
 			createOffsets(&shaderLayout);
 			LN_CORE_TRACE("created shaderLayout");

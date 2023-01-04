@@ -258,7 +258,7 @@ namespace luna
 				int indexCount = 0;
 			};
 			std::vector<drawCommand> drawCommands;
-			std::vector<VkDescriptorSet> descriptorSets;
+			ref<utils::vulkanDescriptorPool> descriptorPool;
 			bool changedBoundBuffers;
 		};
 		

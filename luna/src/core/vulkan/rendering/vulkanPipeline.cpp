@@ -28,6 +28,22 @@ namespace luna
 			utils::vulkanAllocator::init(layout.device);
 			createPipeline(layout);
 
+			VkDescriptorPoolSize poolSizes[] =
+			{
+				{ VK_DESCRIPTOR_TYPE_SAMPLER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, 1000 },
+				{ VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, 1000 },
+				{ VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, 1000 }
+			};
+			descriptorPool = ref<utils::vulkanDescriptorPool>(new utils::vulkanDescriptorPool(device,poolSizes, std::size(poolSizes),layout.pipelineShaders[0]->shaderLayout,0));
+			
 			drawCommands.reserve(1000);
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
