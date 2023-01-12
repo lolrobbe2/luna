@@ -62,6 +62,7 @@ namespace luna
 			mat3,
 			mat4
 		};
+
 		enum shaderStage
 		{
 			shaderStageVertex,
@@ -84,7 +85,8 @@ namespace luna
 			std::string name;
 			std::vector<shaderResource> members{};
 		};
-		 
+		
+
 		class shader
 		{
 		public:

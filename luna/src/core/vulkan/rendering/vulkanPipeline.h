@@ -58,6 +58,14 @@ namespace luna
 			 */
 			virtual void flush() override;
 			/**
+			 * @brief binds vulkan textures in to there respective textureArrays.
+			 *
+			 * \param textureHandles
+			 * \param indexSet
+			 */
+			virtual void bindTextures(const std::vector<uint64_t> textureHandles, const uint64_t indexSet) override;
+
+			/**
 			 * @brief clears all the vulkan pipeline draw commands.
 			 * 
 			 */
@@ -73,7 +81,7 @@ namespace luna
 			 * \param int indexCount the indices count to render; 
 			 * \note check if the indexCount variable is not zero when the rendered quad does not appear;
 			 */
-			virtual void drawIndexed(const ref<renderer::vertexArray>& vertexArray,int indexCount = 0) override;
+			virtual void drawIndexed(const ref<renderer::vertexArray>& vertexArray, std::vector<uint64_t> textures, int indexCount = 0) override;
 			renderer::pipelineLayout layout;
 			uint32_t maxFramesInFlight = 0;
 		private:
@@ -200,7 +208,7 @@ namespace luna
 			/**
 			 * @brief executes draw command.
 			 */
-			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount);
+			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, const uint64_t& descriptorIndex, const int& indexCount);
 
 			VkResult createDescriptorSetLayout();
 		private:
@@ -255,11 +263,14 @@ namespace luna
 			struct drawCommand
 			{
 				ref<renderer::vertexArray> vertexArray;
+				uint64_t descriptorIndex;
 				int indexCount = 0;
 			};
 			std::vector<drawCommand> drawCommands;
 			ref<utils::vulkanDescriptorPool> descriptorPool;
+			std::vector<ref<utils::vulkanDescriptorSet>> descriptorSets;
 			bool changedBoundBuffers;
+			uint64_t descriptorIndex = 0;
 		};
 		
 	}

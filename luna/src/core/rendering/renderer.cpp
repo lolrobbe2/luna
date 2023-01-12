@@ -66,7 +66,8 @@ namespace luna
 
 		void renderer::Submit(const ref<vertexArray>& vertexArray,const uint64_t& indexCount)
 		{
-			rendererPipeline->drawIndexed(vertexArray,indexCount);
+			const std::vector<uint64_t> texturesEmpty;
+			rendererPipeline->drawIndexed(vertexArray,texturesEmpty, indexCount);
 		}
 
 		void renderer::endScene()
