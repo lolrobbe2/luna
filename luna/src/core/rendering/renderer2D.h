@@ -80,6 +80,7 @@ namespace luna
 			static statistics getStats();
 
 		private:
+			static uint64_t textureInBatch(const uint64_t& handle);
 			inline static ref<texture> image;
 		};
 	}

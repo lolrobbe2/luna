@@ -7,7 +7,7 @@ namespace luna
 		{
 			glm::vec4 vert;
 			glm::vec4 color;
-			glm::vec2 textureCoords;
+			glm::vec3 textureCoords;
 		};
 		struct renderer2DData
 		{
@@ -24,13 +24,10 @@ namespace luna
 			uint32_t* quadIndices = nullptr;
 			std::vector<uint64_t> textures;
 			glm::vec4 quadVertexPositions[4];
-
 			renderer2D::statistics stats;
 		};
 
 		static renderer2DData rendererData;
-
-
 
 		void renderer2D::init()
 		{
@@ -99,12 +96,14 @@ namespace luna
 		{
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-			
+			uint64_t handle = textureInBatch(texture->handle());
+			glm::vec3 textureCoords[] = { { 0.0f, 0.0f ,handle}, { 1.0f, 0.0f,handle }, { 1.0f, 1.0f ,handle}, { 0.0f, 1.0f,handle } };
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
 				//rendererData.quadVertexBufferPtr->color = { color.x * 1.0f / 256.0f,color.y * 1.0f / 256.0f,color.z * 1.0f / 256.0f,color.w };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];
+				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
 				rendererData.quadVertexBufferPtr++;
 			}
 			rendererData.textures.push_back(texture->handle());
@@ -148,6 +147,14 @@ namespace luna
 		renderer2D::statistics renderer2D::getStats()
 		{
 			return rendererData.stats;
+		}
+		uint64_t renderer2D::textureInBatch(const uint64_t& handle)
+		{
+			for (size_t i = 1; i < rendererData.textures.size(); i++)
+			{
+				if (rendererData.textures[i] == handle) return i;
+			}
+			return 0;
 		}
 	}
 }

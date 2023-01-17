@@ -1,97 +1,100 @@
-[21:43:43] [trace] LUNA: instance creation result = 0
-[21:43:43] [trace] LUNA: surface creation result = 0
-[21:43:43] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[21:43:43] [trace] LUNA: device selection result = 0
-[21:43:43] [trace] LUNA: logical device creation result = 0
-[21:43:43] [info] LUNA: swapchain format = 44
-[21:43:43] [trace] LUNA: swapchain creation result = 0
-[21:43:43] [trace] LUNA:     0 uniform buffers
-[21:43:43] [trace] LUNA:     0 push constants
-[21:43:43] [trace] LUNA:     1 resources
-[21:43:43] [trace] LUNA:     2 stage inputs
-[21:43:43] [trace] LUNA:     1 stage outputs
-[21:43:43] [trace] LUNA: Uniform buffers:
-[21:43:43] [trace] LUNA: push constants:
-[21:43:43] [trace] LUNA: stage inputs:
-[21:43:43] [trace] LUNA:   fragColor
-[21:43:43] [trace] LUNA:     id = 11
-[21:43:43] [trace] LUNA:     offset = 0
-[21:43:43] [trace] LUNA:     location = 0
-[21:43:43] [trace] LUNA:     typeName = Vec4
-[21:43:43] [trace] LUNA:   textCoord
-[21:43:43] [trace] LUNA:     id = 15
-[21:43:43] [trace] LUNA:     offset = 0
-[21:43:43] [trace] LUNA:     location = 1
-[21:43:43] [trace] LUNA:     typeName = Vec2
-[21:43:43] [trace] LUNA: stage outputs:
-[21:43:43] [trace] LUNA:   outColor
-[21:43:43] [trace] LUNA:     id = 9
-[21:43:43] [trace] LUNA:     typeName = Vec4
-[21:43:43] [trace] LUNA: resources :
-[21:43:43] [trace] LUNA:   textures
-[21:43:43] [trace] LUNA:     id = 24
-[21:43:43] [trace] LUNA:     typeName = Image
-[21:43:43] [trace] LUNA:     amount = 32
-[21:43:43] [trace] LUNA: reflecting shader: true
-[21:43:43] [trace] LUNA: creating shader Layout
-[21:43:43] [info] LUNA: array size = 0
-[21:43:43] [info] LUNA: array size = 0
-[21:43:43] [info] LUNA: array size = 32
-[21:43:43] [info] LUNA: array size = 0
-[21:43:43] [trace] LUNA: created shaderLayout
-[21:43:43] [trace] LUNA:     0 uniform buffers
-[21:43:43] [trace] LUNA:     0 push constants
-[21:43:43] [trace] LUNA:     0 resources
-[21:43:43] [trace] LUNA:     3 stage inputs
-[21:43:43] [trace] LUNA:     2 stage outputs
-[21:43:43] [trace] LUNA: Uniform buffers:
-[21:43:43] [trace] LUNA: push constants:
-[21:43:43] [trace] LUNA: stage inputs:
-[21:43:43] [trace] LUNA:   inColor
-[21:43:43] [trace] LUNA:     id = 11
-[21:43:43] [trace] LUNA:     offset = 0
-[21:43:43] [trace] LUNA:     location = 1
-[21:43:43] [trace] LUNA:     typeName = Vec4
-[21:43:43] [trace] LUNA:   inPosition
-[21:43:43] [trace] LUNA:     id = 21
-[21:43:43] [trace] LUNA:     offset = 0
-[21:43:43] [trace] LUNA:     location = 0
-[21:43:43] [trace] LUNA:     typeName = Vec4
-[21:43:43] [trace] LUNA:   textureCoord
-[21:43:43] [trace] LUNA:     id = 26
-[21:43:43] [trace] LUNA:     offset = 0
-[21:43:43] [trace] LUNA:     location = 3
-[21:43:43] [trace] LUNA:     typeName = Vec2
-[21:43:43] [trace] LUNA: stage outputs:
-[21:43:43] [trace] LUNA:   fragColor
-[21:43:43] [trace] LUNA:     id = 9
-[21:43:43] [trace] LUNA:     typeName = Vec4
-[21:43:43] [trace] LUNA:   textCoord
-[21:43:43] [trace] LUNA:     id = 28
-[21:43:43] [trace] LUNA:     typeName = Vec2
-[21:43:43] [trace] LUNA: resources :
-[21:43:43] [trace] LUNA: reflecting shader: true
-[21:43:43] [trace] LUNA: creating shader Layout
-[21:43:43] [info] LUNA: array size = 0
-[21:43:43] [info] LUNA: array size = 0
-[21:43:43] [info] LUNA: array size = 0
-[21:43:43] [trace] LUNA: created shaderLayout
-[21:43:43] [info] LUNA: commandbuffer create info = 0
-[21:43:43] [info] LUNA: vma allocator creation result = 0
-[21:43:43] [info] LUNA: not supported inside of descriptorsets: 2
-[21:43:43] [info] LUNA: not supported inside of descriptorsets: 2
-[21:43:43] [info] LUNA: not supported inside of descriptorsets: 11
-[21:43:43] [info] LUNA: not supported inside of descriptorsets: 2
-[21:43:43] [info] LUNA: not supported inside of descriptorsets: 2
-[21:43:43] [info] LUNA: not supported inside of descriptorsets: 11
-[21:43:43] [info] LUNA: creating vulkan shadermodule, result = 0
-[21:43:43] [info] LUNA: creating vulkan shadermodule, result = 0
-[21:43:43] [info] LUNA: format of renderpass = 44
-[21:43:43] [info] LUNA: framebuffer creation result =0
-[21:43:43] [info] LUNA: pipelinecreation result = 0
-[21:43:43] [info] LUNA: imgui descriptor pool creation result = 0
-[21:43:43] [info] LUNA: imgui init for GLFW-vulkan = true
-[21:43:43] [info] LUNA: imgui init vulkan = true
-[21:43:43] [info] LUNA: imgui init complete
-[21:43:43] [info] LUNA: imageCreate result  = 0
-[21:43:43] [trace] APP: started app
+[21:53:55] [trace] LUNA: instance creation result = 0
+[21:53:55] [trace] LUNA: surface creation result = 0
+[21:53:55] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[21:53:55] [trace] LUNA: device selection result = 0
+[21:53:55] [trace] LUNA: logical device creation result = 0
+[21:53:55] [info] LUNA: swapchain format = 44
+[21:53:55] [trace] LUNA: swapchain creation result = 0
+[21:53:55] [trace] LUNA:     0 uniform buffers
+[21:53:55] [trace] LUNA:     0 push constants
+[21:53:55] [trace] LUNA:     1 resources
+[21:53:55] [trace] LUNA:     2 stage inputs
+[21:53:55] [trace] LUNA:     1 stage outputs
+[21:53:55] [trace] LUNA: Uniform buffers:
+[21:53:55] [trace] LUNA: push constants:
+[21:53:55] [trace] LUNA: stage inputs:
+[21:53:55] [trace] LUNA:   fragColor
+[21:53:55] [trace] LUNA:     id = 11
+[21:53:55] [trace] LUNA:     offset = 0
+[21:53:55] [trace] LUNA:     location = 0
+[21:53:55] [trace] LUNA:     typeName = Vec4
+[21:53:55] [trace] LUNA:   textCoord
+[21:53:55] [trace] LUNA:     id = 21
+[21:53:55] [trace] LUNA:     offset = 0
+[21:53:55] [trace] LUNA:     location = 1
+[21:53:55] [trace] LUNA:     typeName = Vec3
+[21:53:55] [trace] LUNA: stage outputs:
+[21:53:55] [trace] LUNA:   outColor
+[21:53:55] [trace] LUNA:     id = 9
+[21:53:55] [trace] LUNA:     typeName = Vec4
+[21:53:55] [trace] LUNA: resources :
+[21:53:55] [trace] LUNA:   textures
+[21:53:55] [trace] LUNA:     id = 18
+[21:53:55] [trace] LUNA:     typeName = Image
+[21:53:55] [trace] LUNA:     amount = 32
+[21:53:55] [trace] LUNA: reflecting shader: true
+[21:53:55] [trace] LUNA: creating shader Layout
+[21:53:55] [info] LUNA: array size = 0
+[21:53:55] [info] LUNA: array size = 0
+[21:53:55] [info] LUNA: array size = 32
+[21:53:55] [info] LUNA: array size = 0
+[21:53:55] [trace] LUNA: created shaderLayout
+[21:53:55] [trace] LUNA:     0 uniform buffers
+[21:53:55] [trace] LUNA:     0 push constants
+[21:53:55] [trace] LUNA:     0 resources
+[21:53:55] [trace] LUNA:     3 stage inputs
+[21:53:55] [trace] LUNA:     2 stage outputs
+[21:53:55] [trace] LUNA: Uniform buffers:
+[21:53:55] [trace] LUNA: push constants:
+[21:53:55] [trace] LUNA: stage inputs:
+[21:53:55] [trace] LUNA:   inColor
+[21:53:55] [trace] LUNA:     id = 11
+[21:53:55] [trace] LUNA:     offset = 0
+[21:53:55] [trace] LUNA:     location = 1
+[21:53:55] [trace] LUNA:     typeName = Vec4
+[21:53:55] [trace] LUNA:   textureCoord
+[21:53:55] [trace] LUNA:     id = 17
+[21:53:55] [trace] LUNA:     offset = 0
+[21:53:55] [trace] LUNA:     location = 3
+[21:53:55] [trace] LUNA:     typeName = Vec3
+[21:53:55] [trace] LUNA:   inPosition
+[21:53:55] [trace] LUNA:     id = 27
+[21:53:55] [trace] LUNA:     offset = 0
+[21:53:55] [trace] LUNA:     location = 0
+[21:53:55] [trace] LUNA:     typeName = Vec4
+[21:53:55] [trace] LUNA: stage outputs:
+[21:53:55] [trace] LUNA:   fragColor
+[21:53:55] [trace] LUNA:     id = 9
+[21:53:55] [trace] LUNA:     typeName = Vec4
+[21:53:55] [trace] LUNA:   textCoord
+[21:53:55] [trace] LUNA:     id = 15
+[21:53:55] [trace] LUNA:     typeName = Vec3
+[21:53:55] [trace] LUNA: resources :
+[21:53:55] [trace] LUNA: reflecting shader: true
+[21:53:55] [trace] LUNA: creating shader Layout
+[21:53:55] [info] LUNA: array size = 0
+[21:53:55] [info] LUNA: array size = 0
+[21:53:55] [info] LUNA: array size = 0
+[21:53:55] [trace] LUNA: created shaderLayout
+[21:53:55] [info] LUNA: commandbuffer create info = 0
+[21:53:55] [info] LUNA: vma allocator creation result = 0
+[21:53:55] [info] LUNA: not supported inside of descriptorsets: 2
+[21:53:55] [info] LUNA: not supported inside of descriptorsets: 2
+[21:53:55] [info] LUNA: not supported inside of descriptorsets: 11
+[21:53:55] [info] LUNA: not supported inside of descriptorsets: 2
+[21:53:55] [info] LUNA: not supported inside of descriptorsets: 2
+[21:53:55] [info] LUNA: not supported inside of descriptorsets: 11
+[21:53:55] [info] LUNA: creating vulkan shadermodule, result = 0
+[21:53:55] [info] LUNA: creating vulkan shadermodule, result = 0
+[21:53:55] [info] LUNA: format of renderpass = 44
+[21:53:55] [info] LUNA: framebuffer creation result =0
+[21:53:55] [error] LUNA: Validation Error: [ VUID-VkGraphicsPipelineCreateInfo-layout-00756 ] Object 0: handle = 0x1db4afa2040, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x45717876 | Shader uses descriptor slot 0.0 (expected `VK_DESCRIPTOR_TYPE_SAMPLER, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`) but not declared in pipeline layout The Vulkan spec states: layout must be consistent with all shaders specified in pStages (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkGraphicsPipelineCreateInfo-layout-00756)
+[21:53:55] [info] LUNA: pipelinecreation result = -13
+[21:53:55] [info] LUNA: imgui descriptor pool creation result = 0
+[21:53:55] [info] LUNA: imgui init for GLFW-vulkan = true
+[21:53:55] [info] LUNA: imgui init vulkan = true
+[21:53:55] [info] LUNA: imgui init complete
+[21:53:55] [info] LUNA: imageCreate result  = 0
+[21:53:55] [trace] APP: started app
+[21:53:55] [error] LUNA: Validation Error: [ UNASSIGNED-GeneralParameterError-RequiredParameter ] Object 0: handle = 0x1db4afa2040, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x99fb7dfd | vkCmdBindPipeline: required parameter pipeline specified as VK_NULL_HANDLE
+[21:53:55] [error] LUNA: Validation Error: [ VUID-vkCmdBindPipeline-pipeline-parameter ] Object 0: handle = 0x1db4a598d90, type = VK_OBJECT_TYPE_INSTANCE; | MessageID = 0xe3212cd6 | Invalid VkPipeline Object 0x0. The Vulkan spec states: pipeline must be a valid VkPipeline handle (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-vkCmdBindPipeline-pipeline-parameter)
