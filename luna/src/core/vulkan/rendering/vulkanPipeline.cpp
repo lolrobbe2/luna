@@ -44,9 +44,8 @@ namespace luna
 			descriptorPool = ref<utils::vulkanDescriptorPool>(new utils::vulkanDescriptorPool(device, poolSizes, std::size(poolSizes), layout.pipelineShaders[0]->shaderLayout, 0));
 			descriptorSets.resize(100);
 			
-			createPipeline(layout);
-
 			descriptorPool->createDescriptorSets(descriptorSets);
+			createPipeline(layout);
 			drawCommands.reserve(1000);
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
@@ -821,7 +820,7 @@ namespace luna
 			//cast base vertexBuffer to platform specific ref.
 			for (ref<renderer::vertexBuffer> vertexBuffer : vertexArray->getVertexBuffers()) vulkanVertexBuffers.push_back(std::dynamic_pointer_cast<vulkanVertexBuffer>(vertexBuffer)->vkVertexBuffer);
 			//extract platform specific buffer handle from platform specifi buffer ref.
-			vkCmdBindDescriptorSets(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, descriptorSets[0]->handle(), 0, nullptr);
+			vkCmdBindDescriptorSets(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, descriptorSets[descriptorIndex]->handle(), 0, nullptr);
 			vkCmdBindVertexBuffers(commandPool->operator=(commandBuffers[currentFrame]), 0, vulkanVertexBuffers.size(), vulkanVertexBuffers.data(), &offsets);
 			vkCmdBindIndexBuffer(commandPool->operator=(commandBuffers[currentFrame]), indexBuffer, 0, VK_INDEX_TYPE_UINT32);
 			vkCmdDrawIndexed(commandPool->operator=(commandBuffers[currentFrame]), vertexArray->getIndexBuffer()->getCount(), 1, 0, 0, 0);

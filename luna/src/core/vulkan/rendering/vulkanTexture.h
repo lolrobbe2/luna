@@ -25,10 +25,9 @@ namespace luna
 
 			virtual bool isLoaded() const override;
 
-			//virtual bool operator==(const texture& other) const override;
 		protected:
-			VkBuffer buffer;
-			VkImage imageHandle;
+			VkBuffer buffer = VK_NULL_HANDLE;
+			VkImage imageHandle = VK_NULL_HANDLE;
 		private:
 
 
@@ -71,7 +70,7 @@ namespace luna
 			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex); // for texture atlasses;
 
 		private:
-			uint32_t tileWidth;
+			uint32_t tileWidths;
 			uint32_t tileHeight;
 
 			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;

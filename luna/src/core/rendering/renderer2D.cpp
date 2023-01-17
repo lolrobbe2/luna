@@ -7,6 +7,7 @@ namespace luna
 		{
 			glm::vec4 vert;
 			glm::vec4 color;
+			glm::vec2 textureCoords;
 		};
 		struct renderer2DData
 		{
@@ -21,7 +22,7 @@ namespace luna
 			quadVertex* quadVertexBufferBase = nullptr;
 			quadVertex* quadVertexBufferPtr = nullptr;
 			uint32_t* quadIndices = nullptr;
-
+			std::vector<uint64_t> textures;
 			glm::vec4 quadVertexPositions[4];
 
 			renderer2D::statistics stats;
@@ -48,7 +49,6 @@ namespace luna
 			rendererData.quadVertexPositions[1] = { 0.5f, -0.5f, 0.0f, 1.0f };
 			rendererData.quadVertexPositions[2] = { 0.5f,  0.5f, 0.0f, 1.0f };
 			rendererData.quadVertexPositions[3] = { -0.5f,  0.5f, 0.0f, 1.0f };
-
 
 			uint32_t offset = 0;
 			for (uint32_t i = 0; i < rendererData.maxIndices; i += 6)
@@ -85,6 +85,7 @@ namespace luna
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
+			rendererData.textures.clear();
 		}
 
 		void renderer2D::endScene()
@@ -94,7 +95,22 @@ namespace luna
 
 			renderer::endScene();
 		}
-
+		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)
+		{
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+			
+			constexpr size_t quadVertexCount = 4;
+			for (size_t i = 0; i < quadVertexCount; i++)
+			{
+				//rendererData.quadVertexBufferPtr->color = { color.x * 1.0f / 256.0f,color.y * 1.0f / 256.0f,color.z * 1.0f / 256.0f,color.w };
+				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];
+				rendererData.quadVertexBufferPtr++;
+			}
+			rendererData.textures.push_back(texture->handle());
+			rendererData.quadIndexCount += 6;
+			rendererData.stats.quadCount++;
+		}
 		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) 
 		{
 			LN_PROFILE_FUNCTION();

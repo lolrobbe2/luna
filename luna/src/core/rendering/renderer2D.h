@@ -47,6 +47,14 @@ namespace luna
 			 * \param const glm::vec2& size starting size;
 			 * \param const glm::vec3& color rgb color value
 			 */
+			static void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture);
+			/**
+			 * @brief draws a quad.
+			 *
+			 * \param const glm::vec3& position starting position
+			 * \param const glm::vec2& size starting size;
+			 * \param const glm::vec3& color rgb color value
+			 */
 			static void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 			/**
 			 * @brief draws a quad.

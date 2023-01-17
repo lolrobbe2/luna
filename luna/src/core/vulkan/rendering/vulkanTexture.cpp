@@ -19,11 +19,10 @@ namespace luna
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 				memcpy(data, (void*)image, width * height * channels);
 				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, { width,height,channels });
-				//read file
+				_handle = (uint64_t)imageHandle;
 				return;
 			}
 			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
-			return;
 		}
 		vulkanTexture::vulkanTexture(void* texelData, const glm::vec2& dimensions)
 		{

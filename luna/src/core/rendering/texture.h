@@ -28,7 +28,9 @@ namespace luna
 			//virtual bool operator==(const texture& other) const = 0;
 
 			static ref<texture> create(const std::string& filePath);
+			inline uint64_t handle() { return _handle; };
 		protected:
+			uint64_t _handle;
 			void* data;
 			uint32_t width;
 			uint32_t height;

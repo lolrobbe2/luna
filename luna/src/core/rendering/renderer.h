@@ -44,6 +44,13 @@ namespace luna
 			 */
 			static void Submit(const ref<vertexArray>& vertexArray,const uint64_t& indexCount = 0);
 			/**
+			 * @brief submits a vertexArray to be rendered containing vertexBuffers and 1 indexBuffer.
+			 * @note vertexArray generation is done by the 2D/3D renderer api's respectevly.
+			 * \param vertexArray
+			 * \param textures (vector of textureHandles)
+			 */
+			static void Submit(const ref<vertexArray>& vertexArray, std::vector<uint64_t> textures, const uint64_t& indexCount = 0);
+			/**
 			 * brief ends the scene.
 			 * 
 			 */
