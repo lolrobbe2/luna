@@ -54,6 +54,7 @@ namespace luna
 			this->layout = layout;
 			createPipeLineLayout();
 		}
+
 		void vulkanPipeline::destroyPipeline()
 		{
 			LN_PROFILE_FUNCTION();
@@ -536,7 +537,6 @@ namespace luna
 			VkPipelineInputAssemblyStateCreateInfo info = {};
 			info.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 			info.pNext = nullptr;
-
 			info.topology = topology;
 			//we are not going to use primitive restart on the entire tutorial so leave it on false
 			info.primitiveRestartEnable = VK_FALSE;

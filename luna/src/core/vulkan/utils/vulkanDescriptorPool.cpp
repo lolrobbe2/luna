@@ -39,10 +39,10 @@ namespace luna
 			VkDescriptorSetLayout setLayout;
 			VkDescriptorSetLayoutCreateInfo setLayoutCreateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO };
 			std::vector<VkDescriptorSetLayoutBinding> resourceLayoutBindings;
-			for (renderer::shaderResource resource : shaderLayout)
+			for (size_t i = shaderLayout.size() - 1; i > 0; i--)
 			{
 				VkDescriptorSetLayoutBinding resourceLayoutBinding;
-				switch (resource.resourceClass)
+				switch (shaderLayout[i].resourceClass)
 				{
 				case renderer::uniformBuffers:
 					LN_CORE_ERROR("uniform buffers not implemented!");
@@ -51,9 +51,9 @@ namespace luna
 					LN_CORE_ERROR("storage buffers not implemented!");
 					break;
 				case renderer::storageImages:
-					resourceLayoutBinding.binding = resource.binding;
+					resourceLayoutBinding.binding = shaderLayout[i].binding;
 					resourceLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE;
-					resourceLayoutBinding.descriptorCount = resource.amount;
+					resourceLayoutBinding.descriptorCount = shaderLayout[i].amount;
 					resourceLayoutBinding.pImmutableSamplers = nullptr;
 					resourceLayoutBinding.stageFlags = VkShaderStageFlagBits::VK_SHADER_STAGE_FRAGMENT_BIT;
 					resourceLayoutBindings.push_back(resourceLayoutBinding);
@@ -63,8 +63,20 @@ namespace luna
 					LN_CORE_ERROR("sampled images not implemented!");
 					break;
 				default:
-					LN_CORE_INFO("not supported inside of descriptorsets: {0}", resource.resourceClass);
-					break;
+
+					switch (shaderLayout[i].type)
+					{
+					case renderer::Sampler:
+						resourceLayoutBinding.binding = shaderLayout[i].binding;
+						resourceLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER;
+						resourceLayoutBinding.descriptorCount = 1; //TODO make dynamic!!!
+						resourceLayoutBinding.pImmutableSamplers = nullptr;
+						resourceLayoutBinding.stageFlags = VkShaderStageFlagBits::VK_SHADER_STAGE_FRAGMENT_BIT;
+						resourceLayoutBindings.push_back(resourceLayoutBinding);
+						LN_CORE_ERROR("found that sampler");
+					default:
+						break;
+					}	
 				}
 			}
 			setLayoutCreateInfo.bindingCount = resourceLayoutBindings.size();
