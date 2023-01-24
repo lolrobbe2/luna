@@ -17,8 +17,9 @@ namespace luna
 			void destroy();
 			VkResult write(const uint32_t& descriptorIndex, void* pDescriptorInfo);
 			VkDescriptorSet* handle() { return &descriptorSet; };
-		private:
 			VkDescriptorSet descriptorSet;
+		private:
+
 			VkDescriptorPool descriptorPool; //the pool the descriptorSet belongs to.
 			std::vector<VkWriteDescriptorSet> descriptorWrites;
 			ref<vulkan::vulkanDevice> device;

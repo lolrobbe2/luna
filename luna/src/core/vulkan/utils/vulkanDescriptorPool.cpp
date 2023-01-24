@@ -89,6 +89,7 @@ namespace luna
 
 		void vulkanDescriptorPool::createDescriptorWrites(const std::vector<renderer::shaderResource>& shaderLayout)
 		{
+			descriptorWrites.resize(1);
 			for (renderer::shaderResource resource : shaderLayout)
 			{
 				VkDescriptorSetLayoutBinding resourceLayoutBinding;
@@ -101,22 +102,31 @@ namespace luna
 					LN_CORE_ERROR("storage buffers not implemented!");
 					break;
 				case renderer::storageImages:
-					if (descriptorWrites.size() < resource.binding) descriptorWrites.resize(resource.binding);
-					descriptorWrites[resource.binding - 1].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-					descriptorWrites[resource.binding - 1].descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE;
-					descriptorWrites[resource.binding - 1].descriptorCount = resource.amount;
-					descriptorWrites[resource.binding - 1].dstBinding = resource.binding;
+					if (descriptorWrites.size() <= resource.binding) descriptorWrites.resize(resource.binding + 1);
+					descriptorWrites[resource.binding].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+					descriptorWrites[resource.binding].descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE;
+					descriptorWrites[resource.binding].descriptorCount = resource.amount;
+					descriptorWrites[resource.binding].dstBinding = resource.binding;
 					break;
 				case renderer::sampledImages:
 					//TODO create samplers perhaps?
 					LN_CORE_ERROR("sampled images not implemented!");
 					break;
+				}
+				switch (resource.type)
+				{
+				case renderer::Sampler:
+					if (descriptorWrites.size() <= resource.binding) descriptorWrites.resize(resource.binding + 1);
+					descriptorWrites[resource.binding].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+					descriptorWrites[resource.binding].descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER;
+					descriptorWrites[resource.binding].descriptorCount = 1;
+					descriptorWrites[resource.binding].dstBinding = resource.binding;
+					break;
 				default:
-					LN_CORE_INFO("not supported inside of descriptorsets: {0}", resource.resourceClass);
 					break;
 				}
 			}
-			descriptorWrites.clear();
+			
 		}
 
 		/*------------------------------------------(descriptor set implementation)------------------------------------------*/
@@ -167,8 +177,9 @@ namespace luna
 			default:
 				break;
 			}
-
-			vkUpdateDescriptorSets(device->getDeviceHandles().device, 1, descriptorWrites.data(), 0, nullptr);
+			//imageview not valid?
+			vkDeviceWaitIdle(device->getDeviceHandles().device);
+			vkUpdateDescriptorSets(device->getDeviceHandles().device, 1, &descriptorWrites[descriptorIndex], 0, nullptr);
 			return VkResult();
 		}
 	}

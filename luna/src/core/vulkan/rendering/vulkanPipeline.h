@@ -5,6 +5,7 @@
 #include <core/rendering/pipeline.h>
 #include <core/vulkan/device/vulkanCmdPool.h>
 #include <core/vulkan/utils/vulkanDescriptorPool.h>
+#include <core/vulkan/rendering/vulkanSampler.h>
 namespace luna
 {
 	namespace vulkan
@@ -46,7 +47,7 @@ namespace luna
 			 * @brief starts recording the pipline input.
 			 * 
 			 */
-			virtual void begin() const override;
+			virtual void begin() override;
 			/**
 			 * @brief ends recording the pipline input.
 			 * 
@@ -208,11 +209,14 @@ namespace luna
 			/**
 			 * @brief executes draw command.
 			 */
-			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, const uint64_t& descriptorIndex, const int& indexCount);
+			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, const uint64_t& descriptorIndex,const std::vector<uint64_t>& textures, const int& indexCount);
 
 			VkResult createDescriptorSetLayout();
 		private:
 					//TODO improve variables usage.
+
+			ref<renderer::vulkanSampler> sampler;
+
 			struct shaderStage
 			{
 				VkPipelineShaderStageCreateInfo stageInfo;
@@ -264,13 +268,14 @@ namespace luna
 			{
 				ref<renderer::vertexArray> vertexArray;
 				uint64_t descriptorIndex;
+				std::vector<uint64_t> textures;
 				int indexCount = 0;
 			};
 			std::vector<drawCommand> drawCommands;
 			ref<utils::vulkanDescriptorPool> descriptorPool;
 			std::vector<ref<utils::vulkanDescriptorSet>> descriptorSets;
 			bool changedBoundBuffers;
-			uint64_t descriptorIndex = 0;
+			uint64_t descriptorsetIndex = 1;
 		};
 		
 	}

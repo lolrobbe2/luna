@@ -19,7 +19,8 @@ namespace luna
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 				memcpy(data, (void*)image, width * height * channels);
 				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, { width,height,channels });
-				_handle = (uint64_t)imageHandle;
+				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_ASPECT_COLOR_BIT);
+				_handle = (uint64_t)imageViewHandle;
 				return;
 			}
 			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
@@ -34,7 +35,7 @@ namespace luna
 		}
 		vulkanTexture::~vulkanTexture()
 		{
-			utils::vulkanAllocator::destroyImage(imageHandle);
+			//utils::vulkanAllocator::destroyImage(imageHandle);
 		}
 		uint32_t vulkanTexture::getWidth() const
 		{

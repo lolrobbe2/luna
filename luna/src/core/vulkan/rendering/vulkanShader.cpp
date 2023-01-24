@@ -52,8 +52,8 @@ namespace luna
 					break;
 				}
 				shaderSrc = compiler.compile(compileSpec);
-				spirv_cross::Compiler Compiler(shaderSrc);
-				spirv_cross::ShaderResources resources = Compiler.get_shader_resources();
+				//spirv_cross::Compiler Compiler(shaderSrc);
+				//spirv_cross::ShaderResources resources = Compiler.get_shader_resources();
 				createLayout();
 			}
 			else LN_CORE_ERROR("file could not be loaded: {0}", filepath);
@@ -81,6 +81,11 @@ namespace luna
 			for (const auto& resource : resources.separate_samplers) shaderLayout.push_back(getShaderResource(resource, shaderSrc, renderer::separateSamplers));
 
 			//for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,renderer::stageOutputs));
+			if (stage == renderer::shaderStageVertex)
+			{
+				std::sort(std::begin(shaderLayout), std::end(shaderLayout), [](const renderer::shaderResource& a,
+					const renderer::shaderResource& b) {return a.location < b.location; });
+			}
 			createOffsets(&shaderLayout);
 			LN_CORE_TRACE("created shaderLayout");
 		}
@@ -96,10 +101,9 @@ namespace luna
 			resource.binding = compiler.get_decoration(_shaderResource.id, spv::DecorationBinding);
 			resource.location = compiler.get_decoration(_shaderResource.id, spv::DecorationLocation);
 			if (compiler.get_type(_shaderResource.type_id).array.size()) resource.amount = compiler.get_type(_shaderResource.type_id).array[0];
-			LN_CORE_INFO("array size = {0}", resource.amount);
+			//LN_CORE_INFO("array size = {0}", resource.amount);
 			resource.resourceClass = typeClass;
-			//resource.offset = compiler.get_decoration(_shaderResource.id, spv::DecorationOffset);
-			
+			//resource.offset = compiler.get_decoration(_shaderResource.id, spv::DecorationXfbStride);
 			switch (baseType)
 			{
 			case spirv_cross::SPIRType::Unknown:
@@ -128,7 +132,7 @@ namespace luna
 				resource.type = renderer::UShort;
 				break;
 			case spirv_cross::SPIRType::Int:
-				resource.stride = sizeof(int32_t);
+				resource.stride = 4;
 				resource.type = renderer::Int;
 				break;
 			case spirv_cross::SPIRType::UInt:
@@ -155,19 +159,20 @@ namespace luna
 				{
 					
 				case 2:
-					resource.stride = sizeof(glm::vec2);
+					resource.stride = 2*4;
 					resource.type = renderer::Vec2;
 					break;
 				case 3:
-					resource.stride = sizeof(glm::vec3);
+					resource.stride = 3*4;
 					resource.type = renderer::Vec3;
 					break;
 				case 4:
-					resource.stride = sizeof(glm::vec4);
+					resource.stride = 4*4;
 					resource.type = renderer::Vec4;
 					break;
 
 				default:
+					resource.stride = 4;
 					resource.type = renderer::Float;
 					break;
 				}
@@ -250,14 +255,18 @@ namespace luna
 		}
 		void vulkanShader::createOffsets(std::vector<renderer::shaderResource>* layout) 
 		{
+
+
 			if (layout->size() < 2) return;
-			for (size_t i = layout->size() - 1; i >= 1; i--)
+			uint64_t prevStride = 0;
+			renderer::shaderResource* _layout = layout->data();
+			for (size_t i = 0; i < layout->size(); i++)
 			{
-				renderer::shaderResource prevResource = layout->at(i);
-				renderer::shaderResource* resource = &layout->at(i - 1);
-				resource->offset = prevResource.offset + prevResource.stride;
-				createOffsets(&resource->members);
+				_layout[i].offset = prevStride;
+				_layout[i].stride += _layout[i].offset;
+				prevStride = _layout[i].stride;
 			}
+			
 		}
 	}
 }

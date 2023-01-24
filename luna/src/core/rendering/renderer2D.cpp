@@ -7,7 +7,8 @@ namespace luna
 		{
 			glm::vec4 vert;
 			glm::vec4 color;
-			glm::vec3 textureCoords;
+			glm::vec2 textureCoords;
+			float textureIndex;
 		};
 		struct renderer2DData
 		{
@@ -33,6 +34,7 @@ namespace luna
 		{
 			LN_PROFILE_SCOPE("renderer2D init");
 			image = texture::create("./src/assets/media/logic_gates.png");
+			blankImage = texture::create("./src/assets/media/blank.png");
 			rendererData.quadVertexBuffer = vertexBuffer::create(rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadVertexBufferBase = (quadVertex*)rendererData.quadVertexBuffer->data;
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
@@ -82,7 +84,8 @@ namespace luna
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
-			rendererData.textures.clear();
+			rendererData.textures.resize(1);
+			rendererData.textures[0] = blankImage->handle();
 		}
 
 		void renderer2D::endScene()
@@ -97,13 +100,14 @@ namespace luna
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 			uint64_t handle = textureInBatch(texture->handle());
-			glm::vec3 textureCoords[] = { { 0.0f, 0.0f ,handle}, { 1.0f, 0.0f,handle }, { 1.0f, 1.0f ,handle}, { 0.0f, 1.0f,handle } };
+			constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
-				//rendererData.quadVertexBufferPtr->color = { color.x * 1.0f / 256.0f,color.y * 1.0f / 256.0f,color.z * 1.0f / 256.0f,color.w };
+				rendererData.quadVertexBufferPtr->color = { 1.0f,1.0f,1.0f,1.0f,1.0f,1.0f };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
+				rendererData.quadVertexBufferPtr->textureIndex = handle;
 				rendererData.quadVertexBufferPtr++;
 			}
 			rendererData.textures.push_back(texture->handle());
@@ -126,11 +130,15 @@ namespace luna
 		void renderer2D::drawQuad(const glm::mat4& transform, const glm::vec4& color)
 		{
 			LN_PROFILE_FUNCTION();
+			uint64_t handle = textureInBatch(blankImage->handle());
+			constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
-				rendererData.quadVertexBufferPtr->color = { color.x * 1.0f / 256.0f,color.y * 1.0f / 256.0f,color.z * 1.0f / 256.0f,color.w };
+				rendererData.quadVertexBufferPtr->color = { color.x * 1 / 255.0f,color.y * 1 / 255.0f,color.z * 1 / 255.0f,1.0f };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
+				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
+				rendererData.quadVertexBufferPtr->textureIndex = handle;
 				rendererData.quadVertexBufferPtr++;
 			}
 			rendererData.quadIndexCount += 6;
@@ -139,8 +147,7 @@ namespace luna
 		void renderer2D::flush()
 		{
 			LN_PROFILE_FUNCTION();
-			rendererData.quadVertexBufferBase;
-			renderer::Submit(rendererData.vertexArray , rendererData.quadIndexCount);
+			renderer::Submit(rendererData.vertexArray ,rendererData.textures, rendererData.quadIndexCount);
 			rendererData.stats.drawCalls++;
 		}
 

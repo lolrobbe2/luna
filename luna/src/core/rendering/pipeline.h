@@ -36,7 +36,7 @@ namespace luna
 			 * @brief starts recording pipeline input.
 			 *
 			 */
-			virtual void begin() const = 0;
+			virtual void begin() = 0;
 			/**
 			 * @brief ends recording end.
 			 * 

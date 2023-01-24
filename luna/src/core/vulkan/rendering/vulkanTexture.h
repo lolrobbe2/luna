@@ -28,6 +28,7 @@ namespace luna
 		protected:
 			VkBuffer buffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;
+			VkImageView imageViewHandle = VK_NULL_HANDLE;
 		private:
 
 

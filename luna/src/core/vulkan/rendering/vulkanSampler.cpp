@@ -3,7 +3,7 @@ namespace luna
 {
 	namespace renderer 
 	{
-		vulkanSampler::vulkanSampler(const ref<device>& device,const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode)
+		vulkanSampler::vulkanSampler(const ref<vulkan::vulkanDevice>& device,const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode)
 		{
 			VkSamplerCreateInfo info = {};
 			info.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
@@ -14,9 +14,9 @@ namespace luna
 			info.addressModeU = samplerAddressMode;
 			info.addressModeV = samplerAddressMode;
 			info.addressModeW = samplerAddressMode;
-			vulkanDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(vulkanDevice);
 		
-			vkCreateSampler(vulkanDevice->getDeviceHandles().device, &info, nullptr, &sampler);
+			vkCreateSampler(device->getDeviceHandles().device, &info, nullptr, &sampler);
+			vulkanDevice = device;
 		}
 		vulkanSampler::~vulkanSampler()
 		{

@@ -34,10 +34,10 @@ namespace luna
 				LN_PROFILE_SCOPE("drawing");
 				renderer::renderer2D::BeginScene();
 
-				renderer::renderer2D::drawQuad({ 0.75f,0.75f ,0.0f }, { 1.0f ,1.0f }, { 246.0f, 83.0f, 20.0f,1.0f });
-				renderer::renderer2D::drawQuad({ -0.75f,-0.75f ,0.0f }, { 1.0f ,1.0f }, { 241.0f, 161.0f,  0.0f,1.0f });
-				renderer::renderer2D::drawQuad({ 0.75f,-0.75f ,0.0f }, { 1.0f ,1.0f },{ 124.0f, 187.0f, 0.0f,1.0f });
-				renderer::renderer2D::drawQuad({ -0.75f,0.75f ,0.0f }, { 1.0f ,1.0f }, { 255.0f, 187.0f, 0.0f,1.0f });
+				renderer::renderer2D::drawQuad({ 0.75f,0.75f ,0.0f }, { 1.0f ,1.0f }, { 246.0f , 83.0f , 20.0f,1.0f });
+				//renderer::renderer2D::drawQuad({ -0.75f,-0.75f ,0.0f }, { 1.0f ,1.0f }, { 241.0f, 161.0f,  0.0f,1.0f });
+				//renderer::renderer2D::drawQuad({ 0.75f,-0.75f ,0.0f }, { 1.0f ,1.0f },{ 124.0f, 187.0f, 0.0f,1.0f });
+				//renderer::renderer2D::drawQuad({ -0.75f,0.75f ,0.0f }, { 1.0f ,1.0f }, { 255.0f, 187.0f, 0.0f,1.0f });
 				renderer::renderer2D::endScene();
 				if (ImGui::Begin("settings"))
 				{

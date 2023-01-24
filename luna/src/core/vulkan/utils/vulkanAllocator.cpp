@@ -30,11 +30,11 @@ namespace luna
 			vkGetPhysicalDeviceMemoryProperties(handles.physicalDevice, &memoryProperties);
 			allocatorCreateInfo.vulkanApiVersion = handles.appInfo.apiVersion;
 
-			transferQueue = handles.device.get_dedicated_queue(vkb::QueueType::transfer).value();
+			transferQueue = vDevice->getQueue(vkb::QueueType::graphics);
 
 			vulkan::vulkanCmdPoolSpec commandPoolSpec;
 			commandPoolSpec.device = handles.device;
-			commandPoolSpec.queueFamilyIndex = handles.device.get_dedicated_queue_index(vkb::QueueType::transfer).value();
+			commandPoolSpec.queueFamilyIndex = vDevice->getQueueIndex(vkb::QueueType::graphics);
 			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 			commandPool = ref<vulkan::vulkanCmdPool>(new vulkan::vulkanCmdPool(commandPoolSpec));
 
@@ -187,7 +187,7 @@ namespace luna
 				regions[i].imageSubresource.layerCount = 1;
 				transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandBuffer);
 				vkCmdCopyBufferToImage(commandPool->operator=(commandBuffer), command.sourceBuffer, command.VulkanImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1,&regions[i]);
-				//
+				transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandBuffer);
 				i++;
 			}
 
