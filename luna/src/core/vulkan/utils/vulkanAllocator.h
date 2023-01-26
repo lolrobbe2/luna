@@ -86,7 +86,7 @@ namespace luna
 			 * \param buffer dataBuffer that stores texelData
 			 * \param image handle to copy texelData in to. 
 			 */
-			static void uploadTexture(const VkBuffer& buffer,const VkImage& image, const glm::vec3& imageDimensions);
+			static void uploadTexture(const VkBuffer& buffer,const VkImage& image, const VkFormat& imageFormat, const glm::vec3& imageDimensions);
 			/**
 			 * @brief executes all recorded transferCommands.
 			 * 
@@ -112,6 +112,7 @@ namespace luna
 			{
 				VkBuffer sourceBuffer;
 				VkImage VulkanImage;
+				VkFormat ImageFormat;
 				glm::vec3 dimensions;
 			};
 			inline static ref<renderer::device> pDevice; //ref to graphics device.

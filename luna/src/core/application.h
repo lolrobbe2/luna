@@ -32,6 +32,9 @@ namespace luna
 		private:
 			ref<vulkan::window> mWindow;
 			utils::objectStorage<glm::mat4> windowStorage;
+			ref<renderer::texture> logicGatesImage;
+			ref<renderer::texture> statueImage;
+			ref<renderer::texture> upgradeImage;
 			bool running = true;
 		};
 		/**

@@ -69,7 +69,7 @@ namespace luna
 			imageCreateInfo.mipLevels = 1;
 			imageCreateInfo.arrayLayers = 1;
 			imageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;
-			imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
+			if(format == VK_FORMAT_R8G8B8A8_UNORM) imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 			imageCreateInfo.usage = usageFlags;
 			imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 
@@ -156,9 +156,9 @@ namespace luna
 			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 
 		}
-		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image,const glm::vec3& imageDimensions)
+		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions)
 		{
-			transferCommands.push_back({ buffer,image,imageDimensions });
+			transferCommands.push_back({ buffer,image,imageFormat,imageDimensions });
 		}
 		void vulkanAllocator::flush()
 		{
@@ -185,9 +185,9 @@ namespace luna
 				regions[i].imageSubresource.mipLevel = 0;
 				regions[i].imageSubresource.baseArrayLayer = 0;
 				regions[i].imageSubresource.layerCount = 1;
-				transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandBuffer);
+				transitionImageLayout(command.VulkanImage, command.ImageFormat , VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandBuffer);
 				vkCmdCopyBufferToImage(commandPool->operator=(commandBuffer), command.sourceBuffer, command.VulkanImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1,&regions[i]);
-				transitionImageLayout(command.VulkanImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandBuffer);
+				transitionImageLayout(command.VulkanImage, command.ImageFormat, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandBuffer);
 				i++;
 			}
 

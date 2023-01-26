@@ -7,6 +7,8 @@ namespace luna
 	{
 		application::application()
 		{
+			//TODO images with less than 3 channels RGB 
+
 			LN_PROFILE_BEGIN_SESSION("luna engine startup", "./debug/luna-profile-startUp.json");
 			Log::Init();
 			LN_PROFILE_SCOPE("engine startup");
@@ -14,6 +16,9 @@ namespace luna
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
+			logicGatesImage = renderer::texture::create("./src/assets/media/logic_gates.png");
+			//statueImage = renderer::texture::create("./src/assets/media/statue.jpg");
+			upgradeImage = renderer::texture::create("./src/assets/media/geheugenUpgrade.png");
 			LN_PROFILE_END_SESSION();
 			
 		}
@@ -34,10 +39,14 @@ namespace luna
 				LN_PROFILE_SCOPE("drawing");
 				renderer::renderer2D::BeginScene();
 
-				renderer::renderer2D::drawQuad({ 0.75f,0.75f ,0.0f }, { 1.0f ,1.0f }, { 246.0f , 83.0f , 20.0f,1.0f });
-				//renderer::renderer2D::drawQuad({ -0.75f,-0.75f ,0.0f }, { 1.0f ,1.0f }, { 241.0f, 161.0f,  0.0f,1.0f });
-				//renderer::renderer2D::drawQuad({ 0.75f,-0.75f ,0.0f }, { 1.0f ,1.0f },{ 124.0f, 187.0f, 0.0f,1.0f });
-				//renderer::renderer2D::drawQuad({ -0.75f,0.75f ,0.0f }, { 1.0f ,1.0f }, { 255.0f, 187.0f, 0.0f,1.0f });
+				renderer::renderer2D::drawQuad({ 0.5f,0.5f ,0.0f }, { 1.0f ,1.0f }, logicGatesImage);
+				//renderer::renderer2D::drawQuad({ -0.5f,-0.5f ,0.0f }, { 1.0f ,1.0f }, statueImage);
+				renderer::renderer2D::drawQuad({ 0.5f,-0.5f ,0.0f }, { 1.0f ,1.0f }, upgradeImage);
+
+				//renderer::renderer2D::drawQuad({ 0.5f,0.5f ,0.0f }, { 1.0f ,1.0f }, { 246.0f , 83.0f , 20.0f,1.0f });
+				//renderer::renderer2D::drawQuad({ -0.5f,-0.5f ,0.0f }, { 1.0f ,1.0f }, { 241.0f, 161.0f,  0.0f,1.0f });
+				//renderer::renderer2D::drawQuad({ 0.5f,-0.5f ,0.0f }, { 1.0f ,1.0f },{ 124.0f, 187.0f, 0.0f,1.0f });
+				renderer::renderer2D::drawQuad({ -0.5f,0.5f ,0.0f }, { 1.0f ,1.0f }, { 255.0f, 187.0f, 0.0f,1.0f });
 				renderer::renderer2D::endScene();
 				if (ImGui::Begin("settings"))
 				{

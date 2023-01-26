@@ -76,16 +76,9 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
-			//vkDeviceWaitIdle(device);
-
 			VkClearValue clearValue;
-			float flash = abs(tan(_frameNumber / 120.0f));
-			float thunder = abs(sin(_frameNumber / 120.0f));
-			float help = abs(cos(_frameNumber /120.0f));
-			clearValue.color = {0,0,0 };
 			VkClearColorValue blankValue;
-			//float flash = abs(sin(_frameNumber / 120.f));
-			//clearValue.color = { { 255.0f, 165.0f, 0.0f, 1.0f } };
+
 			
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
@@ -117,8 +110,6 @@ namespace luna
 			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 				
 			vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
-			//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentFrame]), 0, 1, &vDevice->getViewport());
-			//vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
 			//draw indexed
 			for (auto draw : drawCommands) fnDrawIndexed(draw.vertexArray,draw.descriptorIndex,draw.textures,draw.indexCount);
 			
@@ -359,15 +350,17 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			if (shader->stage != renderer::shaderStageVertex) return;
-			for(const auto& shaderResource : shader->shaderLayout)
+			VkVertexInputBindingDescription bindingDescription;
+			bindingDescription.stride = 0;
+			for(size_t i = shader->shaderLayout.size() -1; i > 0 ;i--)
 			{
-				if ((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)
-				{
-					VkVertexInputBindingDescription bindingDescription;
-					bindingDescription.binding = shaderResource.binding;
+				if ((shader->shaderLayout[i].type != renderer::Uniform) && (shader->shaderLayout[i].type != renderer::PushConstant) && (shader->shaderLayout[i].type != renderer::StorageBuffer) && shader->shaderLayout[i].resourceClass == renderer::stageInputs && bindingDescription.stride < shader->shaderLayout[i].stride)
+				{	
+					bindingDescription.binding = shader->shaderLayout[i].binding;
 					bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
-					bindingDescription.stride = shaderResource.stride;
+					bindingDescription.stride = shader->shaderLayout[i].stride;
 					inputDescriptions[shader->shaderName].bindings.push_back(bindingDescription);
+					return;
 				}
 			}
 		}

@@ -1,34 +1,29 @@
-[22:04:51] [trace] LUNA: instance creation result = 0
-[22:04:51] [trace] LUNA: surface creation result = 0
-[22:04:51] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[22:04:51] [trace] LUNA: device selection result = 0
-[22:04:51] [trace] LUNA: logical device creation result = 0
-[22:04:51] [info] LUNA: swapchain format = 44
-[22:04:51] [trace] LUNA: swapchain creation result = 0
-[22:04:51] [trace] LUNA: reflecting shader: false
-[22:04:51] [trace] LUNA: creating shader Layout
-[22:04:51] [trace] LUNA: created shaderLayout
-[22:04:51] [trace] LUNA: reflecting shader: false
-[22:04:51] [trace] LUNA: creating shader Layout
-[22:04:51] [trace] LUNA: created shaderLayout
-[22:04:51] [info] LUNA: commandbuffer create info = 0
-[22:04:51] [info] LUNA: vma allocator creation result = 0
-[22:04:51] [error] LUNA: found that sampler
-[22:04:51] [info] LUNA: creating vulkan shadermodule, result = 0
-[22:04:51] [info] LUNA: creating vulkan shadermodule, result = 0
-[22:04:51] [info] LUNA: format of renderpass = 44
-[22:04:51] [info] LUNA: framebuffer creation result =0
-[22:04:51] [error] LUNA: Validation Error: [ VUID-VkPipelineVertexInputStateCreateInfo-pVertexBindingDescriptions-00616 ] Object 0: handle = 0x20fd87b5b40, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x6ef6a930 | vkCreateGraphicsPipelines: parameter pCreateInfo[0].pVertexInputState->pVertexBindingDescription[1].binding (0) is not distinct. The Vulkan spec states: All elements of pVertexBindingDescriptions must describe distinct binding numbers (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkPipelineVertexInputStateCreateInfo-pVertexBindingDescriptions-00616)
-[22:04:51] [error] LUNA: Validation Error: [ VUID-VkPipelineVertexInputStateCreateInfo-pVertexBindingDescriptions-00616 ] Object 0: handle = 0x20fd87b5b40, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x6ef6a930 | vkCreateGraphicsPipelines: parameter pCreateInfo[0].pVertexInputState->pVertexBindingDescription[2].binding (0) is not distinct. The Vulkan spec states: All elements of pVertexBindingDescriptions must describe distinct binding numbers (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkPipelineVertexInputStateCreateInfo-pVertexBindingDescriptions-00616)
-[22:04:51] [error] LUNA: Validation Error: [ VUID-VkPipelineVertexInputStateCreateInfo-pVertexBindingDescriptions-00616 ] Object 0: handle = 0x20fd87b5b40, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x6ef6a930 | vkCreateGraphicsPipelines: parameter pCreateInfo[0].pVertexInputState->pVertexBindingDescription[3].binding (0) is not distinct. The Vulkan spec states: All elements of pVertexBindingDescriptions must describe distinct binding numbers (https://vulkan.lunarg.com/doc/view/1.3.224.1/windows/1.3-extensions/vkspec.html#VUID-VkPipelineVertexInputStateCreateInfo-pVertexBindingDescriptions-00616)
-[22:04:51] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-Shader-InconsistentVi ] Object 0: handle = 0x20fd87b5b40, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xbbab4db6 | Duplicate vertex input binding descriptions for binding 0
-[22:04:51] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-Shader-InconsistentVi ] Object 0: handle = 0x20fd87b5b40, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xbbab4db6 | Duplicate vertex input binding descriptions for binding 0
-[22:04:51] [error] LUNA: Validation Error: [ UNASSIGNED-CoreValidation-Shader-InconsistentVi ] Object 0: handle = 0x20fd87b5b40, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xbbab4db6 | Duplicate vertex input binding descriptions for binding 0
-[22:04:51] [info] LUNA: pipelinecreation result = 0
-[22:04:51] [info] LUNA: imgui descriptor pool creation result = 0
-[22:04:51] [info] LUNA: imgui init for GLFW-vulkan = true
-[22:04:51] [info] LUNA: imgui init vulkan = true
-[22:04:51] [info] LUNA: imgui init complete
-[22:04:51] [info] LUNA: imageCreate result  = 0
-[22:04:51] [info] LUNA: imageCreate result  = 0
-[22:04:51] [trace] APP: started app
+[17:03:40] [trace] LUNA: instance creation result = 0
+[17:03:40] [trace] LUNA: surface creation result = 0
+[17:03:40] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[17:03:40] [trace] LUNA: device selection result = 0
+[17:03:40] [trace] LUNA: logical device creation result = 0
+[17:03:40] [info] LUNA: swapchain format = 44
+[17:03:40] [trace] LUNA: swapchain creation result = 0
+[17:03:40] [trace] LUNA: reflecting shader: false
+[17:03:40] [trace] LUNA: creating shader Layout
+[17:03:40] [trace] LUNA: created shaderLayout
+[17:03:41] [trace] LUNA: reflecting shader: false
+[17:03:41] [trace] LUNA: creating shader Layout
+[17:03:41] [trace] LUNA: created shaderLayout
+[17:03:41] [info] LUNA: commandbuffer create info = 0
+[17:03:41] [info] LUNA: vma allocator creation result = 0
+[17:03:41] [error] LUNA: found that sampler
+[17:03:41] [info] LUNA: creating vulkan shadermodule, result = 0
+[17:03:41] [info] LUNA: creating vulkan shadermodule, result = 0
+[17:03:41] [info] LUNA: format of renderpass = 44
+[17:03:41] [info] LUNA: framebuffer creation result =0
+[17:03:41] [info] LUNA: pipelinecreation result = 0
+[17:03:41] [info] LUNA: imgui descriptor pool creation result = 0
+[17:03:41] [info] LUNA: imgui init for GLFW-vulkan = true
+[17:03:41] [info] LUNA: imgui init vulkan = true
+[17:03:41] [info] LUNA: imgui init complete
+[17:03:41] [info] LUNA: imageCreate result  = 0
+[17:03:41] [info] LUNA: imageCreate result  = 0
+[17:03:41] [info] LUNA: imageCreate result  = 0
+[17:03:41] [trace] APP: started app

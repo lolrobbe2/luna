@@ -81,7 +81,6 @@ namespace luna
 
 		private:
 			static uint64_t textureInBatch(const uint64_t& handle);
-			inline static ref<texture> image;
 			inline static ref<texture> blankImage;
 		};
 	}
