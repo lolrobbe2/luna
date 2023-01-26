@@ -76,9 +76,9 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
-			VkClearValue clearValue;
 			VkClearColorValue blankValue;
-
+			VkClearValue clearValue;
+			clearValue.color = blankValue;
 			
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
