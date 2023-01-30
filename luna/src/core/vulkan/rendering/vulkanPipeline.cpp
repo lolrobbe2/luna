@@ -76,7 +76,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
-			VkClearColorValue blankValue;
+			VkClearColorValue blankValue = {0.0f,0.0f,0.0f,0.0f};
 			VkClearValue clearValue;
 			clearValue.color = blankValue;
 			
@@ -354,14 +354,13 @@ namespace luna
 			bindingDescription.stride = 0;
 			for(size_t i = shader->shaderLayout.size() -1; i > 0 ;i--)
 			{
-				if ((shader->shaderLayout[i].type != renderer::Uniform) && (shader->shaderLayout[i].type != renderer::PushConstant) && (shader->shaderLayout[i].type != renderer::StorageBuffer) && shader->shaderLayout[i].resourceClass == renderer::stageInputs && bindingDescription.stride < shader->shaderLayout[i].stride)
-				{	
-					bindingDescription.binding = shader->shaderLayout[i].binding;
-					bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
-					bindingDescription.stride = shader->shaderLayout[i].stride;
-					inputDescriptions[shader->shaderName].bindings.push_back(bindingDescription);
-					return;
-				}
+				if ((shader->shaderLayout[i].type == renderer::Uniform) || (shader->shaderLayout[i].type == renderer::PushConstant) || (shader->shaderLayout[i].type == renderer::StorageBuffer) && shader->shaderLayout[i].resourceClass != renderer::stageInputs && bindingDescription.stride > shader->shaderLayout[i].stride) break;
+				bindingDescription.binding = shader->shaderLayout[i].binding;
+				bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+				bindingDescription.stride = shader->shaderLayout[i].stride;
+				inputDescriptions[shader->shaderName].bindings.push_back(bindingDescription);
+				return;
+				
 			}
 		}
 		void vulkanPipeline::createAttributeDescription(const ref<renderer::shader> shader)
@@ -371,15 +370,15 @@ namespace luna
 
 			for (const auto& shaderResource : shader->shaderLayout)
 			{
-				if ((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)
-				{
-					VkVertexInputAttributeDescription attributeDescription;
-					attributeDescription.binding = shaderResource.binding;
-					attributeDescription.location = shaderResource.location;
-					attributeDescription.offset = shaderResource.offset;//TODO offset is wrong
-					attributeDescription.format = getResourceFormat(shaderResource.type);
-					inputDescriptions[shader->shaderName].attributes.push_back(attributeDescription);
-				}
+				if (!((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)) break;
+				
+				VkVertexInputAttributeDescription attributeDescription;
+				attributeDescription.binding = shaderResource.binding;
+				attributeDescription.location = shaderResource.location;
+				attributeDescription.offset = shaderResource.offset;//TODO offset is wrong
+				attributeDescription.format = getResourceFormat(shaderResource.type);
+				inputDescriptions[shader->shaderName].attributes.push_back(attributeDescription);
+				
 			}
 		}
 		void vulkanPipeline::createPipeLineLayout()
@@ -573,7 +572,14 @@ namespace luna
 			VkPipelineColorBlendAttachmentState colorBlendAttachment = {};
 			colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_G_BIT |
 				VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_A_BIT;
-			colorBlendAttachment.blendEnable = VK_FALSE;
+			colorBlendAttachment.blendEnable = VK_TRUE;
+			colorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;
+			colorBlendAttachment.dstColorBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+			colorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;
+			colorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;
+			colorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
+			colorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;
+
 			return colorBlendAttachment;
 		}
 
@@ -799,7 +805,7 @@ namespace luna
 			for (ref<renderer::vertexBuffer> vertexBuffer : vertexArray->getVertexBuffers()) vulkanVertexBuffers.push_back(std::dynamic_pointer_cast<vulkanVertexBuffer>(vertexBuffer)->vkVertexBuffer);
 			//extract platform specific buffer handle from platform specifi buffer ref.
 			uint64_t currentIndex = descriptorIndex;
-			if (maxFramesInFlight == 1 && currentFrame == 1) currentIndex *= 2;
+			if (currentFrame) currentIndex *= currentFrame + 1; //select descriptor set bank
 
 			VkDescriptorImageInfo samplerInfo{ sampler->getHandle(),VK_NULL_HANDLE,VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL };
 

@@ -59,8 +59,10 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			VkImageCreateInfo imageCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO };
+			
+			VkImageFormatProperties properties;
+			
 			imageCreateInfo.pNext = nullptr;
-
 			imageCreateInfo.imageType = VK_IMAGE_TYPE_2D;
 
 			imageCreateInfo.format = format;
@@ -69,7 +71,7 @@ namespace luna
 			imageCreateInfo.mipLevels = 1;
 			imageCreateInfo.arrayLayers = 1;
 			imageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;
-			if(format == VK_FORMAT_R8G8B8A8_UNORM) imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
+			imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 			imageCreateInfo.usage = usageFlags;
 			imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 
@@ -284,6 +286,25 @@ namespace luna
 				0, nullptr,
 				1, &barrier);
 
+		}
+
+		VkFormat vulkanAllocator::getSuitableFormat( const VkImageUsageFlags& usageFlags, const uint32_t& channels)
+		{
+			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
+			VkFormat baseFormat = (VkFormat)(9 + channels * 7);
+			VkFormat indexedFormat = baseFormat;
+			for (size_t i = 0; i < 7; i++)
+			{
+				VkImageFormatProperties properties;
+				VkResult result = vkGetPhysicalDeviceImageFormatProperties(vDevice->getDeviceHandles().physicalDevice, indexedFormat, VK_IMAGE_TYPE_2D, VK_IMAGE_TILING_OPTIMAL, usageFlags, 0, &properties);
+				if (result == VK_SUCCESS)
+				{
+					LN_CORE_CRITICAL("found supported format: {0}", indexedFormat);
+					return indexedFormat;
+				}
+				indexedFormat = (VkFormat)(indexedFormat + 1);
+			}
+			return VK_FORMAT_UNDEFINED;
 		}
 	}
 }

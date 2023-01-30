@@ -92,6 +92,8 @@ namespace luna
 			 * 
 			 */
 			static void flush();
+
+			static VkFormat getSuitableFormat(const VkImageUsageFlags& usageFlags, const uint32_t& channels);
 		private:
 			/**
 			 * @brief transitions the image layout.
@@ -103,6 +105,7 @@ namespace luna
 			 * \param VkCommandBuffer commandBufffer
 			 */
 			static void transitionImageLayout(const VkImage& image, const VkFormat& format, const VkImageLayout& oldLayout, const VkImageLayout& newLayout, const vulkan::virtualCmdBuffer& commandBufffer);
+		
 			struct vmaAllocation
 			{
 				VmaAllocation allocation;

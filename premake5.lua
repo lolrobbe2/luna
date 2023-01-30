@@ -100,6 +100,12 @@ project "luna"
 
         optimize "On"
 
+        filter "configurations:distribution"
+       
+        symbols "Off"
+        optimize "On"
+
+
 
  
 project "sandbox"
@@ -151,6 +157,11 @@ project "sandbox"
   
         filter "configurations:release"
        
+        optimize "On"
+
+        filter "configurations:distribution"
+       
+        symbols "Off"
         optimize "On"
 
  

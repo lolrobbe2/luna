@@ -1,29 +1,33 @@
-[17:23:50] [trace] LUNA: instance creation result = 0
-[17:23:50] [trace] LUNA: surface creation result = 0
-[17:23:50] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[17:23:50] [trace] LUNA: device selection result = 0
-[17:23:50] [trace] LUNA: logical device creation result = 0
-[17:23:50] [info] LUNA: swapchain format = 44
-[17:23:50] [trace] LUNA: swapchain creation result = 0
-[17:23:50] [trace] LUNA: reflecting shader: false
-[17:23:50] [trace] LUNA: creating shader Layout
-[17:23:50] [trace] LUNA: created shaderLayout
-[17:23:50] [trace] LUNA: reflecting shader: false
-[17:23:50] [trace] LUNA: creating shader Layout
-[17:23:50] [trace] LUNA: created shaderLayout
-[17:23:50] [info] LUNA: commandbuffer create info = 0
-[17:23:50] [info] LUNA: vma allocator creation result = 0
-[17:23:50] [error] LUNA: found that sampler
-[17:23:50] [info] LUNA: creating vulkan shadermodule, result = 0
-[17:23:50] [info] LUNA: creating vulkan shadermodule, result = 0
-[17:23:50] [info] LUNA: format of renderpass = 44
-[17:23:50] [info] LUNA: framebuffer creation result =0
-[17:23:50] [info] LUNA: pipelinecreation result = 0
-[17:23:50] [info] LUNA: imgui descriptor pool creation result = 0
-[17:23:50] [info] LUNA: imgui init for GLFW-vulkan = true
-[17:23:50] [info] LUNA: imgui init vulkan = true
-[17:23:50] [info] LUNA: imgui init complete
-[17:23:50] [info] LUNA: imageCreate result  = 0
-[17:23:50] [info] LUNA: imageCreate result  = 0
-[17:23:50] [info] LUNA: imageCreate result  = 0
-[17:23:50] [trace] APP: started app
+[18:25:34] [trace] LUNA: instance creation result = 0
+[18:25:34] [trace] LUNA: surface creation result = 0
+[18:25:34] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[18:25:34] [trace] LUNA: device selection result = 0
+[18:25:34] [trace] LUNA: logical device creation result = 0
+[18:25:34] [info] LUNA: swapchain format = 44
+[18:25:34] [trace] LUNA: swapchain creation result = 0
+[18:25:34] [trace] LUNA: reflecting shader: false
+[18:25:34] [trace] LUNA: creating shader Layout
+[18:25:34] [trace] LUNA: created shaderLayout
+[18:25:34] [trace] LUNA: reflecting shader: false
+[18:25:34] [trace] LUNA: creating shader Layout
+[18:25:34] [trace] LUNA: created shaderLayout
+[18:25:34] [info] LUNA: commandbuffer create info = 0
+[18:25:34] [info] LUNA: vma allocator creation result = 0
+[18:25:34] [info] LUNA: creating vulkan shadermodule, result = 0
+[18:25:34] [info] LUNA: creating vulkan shadermodule, result = 0
+[18:25:34] [info] LUNA: format of renderpass = 44
+[18:25:34] [info] LUNA: framebuffer creation result =0
+[18:25:34] [info] LUNA: pipelinecreation result = 0
+[18:25:34] [info] LUNA: imgui descriptor pool creation result = 0
+[18:25:34] [info] LUNA: imgui init for GLFW-vulkan = true
+[18:25:34] [info] LUNA: imgui init vulkan = true
+[18:25:34] [info] LUNA: imgui init complete
+[18:25:34] [critical] LUNA: found supported format: 37
+[18:25:34] [info] LUNA: imageCreate result  = 0
+[18:25:34] [critical] LUNA: found supported format: 37
+[18:25:34] [info] LUNA: imageCreate result  = 0
+[18:25:34] [critical] LUNA: found supported format: 37
+[18:25:34] [info] LUNA: imageCreate result  = 0
+[18:25:34] [critical] LUNA: found supported format: 37
+[18:25:34] [info] LUNA: imageCreate result  = 0
+[18:25:34] [trace] APP: started app

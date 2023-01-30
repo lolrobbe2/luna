@@ -30,9 +30,7 @@ namespace luna
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;
 		private:
-			static VkFormat getSuitableFormat(const uint32_t& channels);
-		private:
-
+			virtual stbi_uc* reformat(stbi_uc* src, int& srcChannels,const uint32_t& dstChannels,const uint32_t& width, const uint32_t& height);
 
 		};
 		/**

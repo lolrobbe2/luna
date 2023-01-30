@@ -19,6 +19,7 @@ namespace luna
 		VkResult vulkanDescriptorPool::createDescriptorSets(std::vector<ref<vulkanDescriptorSet>>& descriptorSets)
 		{
 			//remeber descriptorSets handles have not been initialized;
+			LN_PROFILE_FUNCTION();
 			VkDescriptorSetAllocateInfo allocateInfo {VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO};
 			allocateInfo.descriptorPool = descriptorPool;
 			allocateInfo.descriptorSetCount = descriptorSets.size();
@@ -59,8 +60,6 @@ namespace luna
 					resourceLayoutBindings.push_back(resourceLayoutBinding);
 					break;
 				case renderer::sampledImages:
-					//TODO create samplers perhaps?
-					LN_CORE_ERROR("sampled images not implemented!");
 					break;
 				default:
 
@@ -73,7 +72,6 @@ namespace luna
 						resourceLayoutBinding.pImmutableSamplers = nullptr;
 						resourceLayoutBinding.stageFlags = VkShaderStageFlagBits::VK_SHADER_STAGE_FRAGMENT_BIT;
 						resourceLayoutBindings.push_back(resourceLayoutBinding);
-						LN_CORE_ERROR("found that sampler");
 					default:
 						break;
 					}	
@@ -89,6 +87,7 @@ namespace luna
 
 		void vulkanDescriptorPool::createDescriptorWrites(const std::vector<renderer::shaderResource>& shaderLayout)
 		{
+			LN_PROFILE_FUNCTION();
 			descriptorWrites.resize(1);
 			for (renderer::shaderResource resource : shaderLayout)
 			{
@@ -141,7 +140,7 @@ namespace luna
 		}
 		VkResult vulkanDescriptorSet::write(const uint32_t& descriptorIndex, void* pDescriptorInfo)
 		{
-
+			LN_PROFILE_FUNCTION();
 			switch (descriptorWrites[descriptorIndex].descriptorType)
 			{
 			case VK_DESCRIPTOR_TYPE_SAMPLER:
@@ -177,7 +176,6 @@ namespace luna
 			default:
 				break;
 			}
-			//imageview not valid?
 			vkDeviceWaitIdle(device->getDeviceHandles().device);
 			vkUpdateDescriptorSets(device->getDeviceHandles().device, 1, &descriptorWrites[descriptorIndex], 0, nullptr);
 			return VkResult();
