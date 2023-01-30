@@ -97,5 +97,10 @@ namespace luna
 			}
 			vkFreeCommandBuffers(sCommandPoolSpec.device, commandPool, count,commandBuffers.data() );
 		}
+		void vulkanCmdPool::resetCommandBuffer(const virtualCmdBuffer& commandBuffer)
+		{
+			auto virtualBufferPair = virtualBuffers.find(commandBuffer);
+			vkResetCommandBuffer(virtualBufferPair->second.first, 0);
+		}
 	}
 }

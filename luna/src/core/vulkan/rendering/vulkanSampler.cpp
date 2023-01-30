@@ -3,7 +3,7 @@ namespace luna
 {
 	namespace renderer 
 	{
-		vulkanSampler::vulkanSampler(const ref<vulkan::vulkanDevice>& device,const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode)
+		vulkanSampler::vulkanSampler(ref<vulkan::vulkanDevice> device,const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode)
 		{
 			VkSamplerCreateInfo info = {};
 			info.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;

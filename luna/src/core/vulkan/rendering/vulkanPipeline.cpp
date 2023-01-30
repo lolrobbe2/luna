@@ -49,6 +49,7 @@ namespace luna
 			descriptorPool->createDescriptorSets(descriptorSets);
 			createPipeline(layout);
 			drawCommands.reserve(1000);
+			
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
@@ -115,6 +116,7 @@ namespace luna
 			
 			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 			//transition dst image
+			
 			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 			//transition src image
 			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
@@ -176,7 +178,7 @@ namespace luna
 			//ImVec2 windowSize = ImGui::GetContentRegionAvail();
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
 			
-			ImGui::SetNextWindowSize(ImGui::GetContentRegionAvail());
+			//ImGui::SetNextWindowSize(ImGui::GetContentRegionAvail());
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
@@ -199,6 +201,7 @@ namespace luna
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			
 			if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
+
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 			
@@ -206,19 +209,21 @@ namespace luna
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
+				initSyncStructures();
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
 				return;
 			}
+			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
 
-			createCommands();
 			
+			/*
 			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
 			{
 				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
 			}
-			
+			*/
 			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
@@ -231,11 +236,13 @@ namespace luna
 			submit.commandBufferCount = 1;
 			submit.waitSemaphoreCount = 1;
 			submit.pWaitSemaphores = waitSemaphores;
-
 			submit.signalSemaphoreCount = 1;
 			submit.pSignalSemaphores = signalSemaphores;
-			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
-			
+
+
+			//vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
+			commandPool->resetCommandBuffer(commandBuffers[currentFrame]);
+			createCommands();
 			commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]);
 			//submit command buffer to the queue and execute it.
 			// _renderFence will now block until the graphic commands finish execution
@@ -258,16 +265,16 @@ namespace luna
 			VkResult result2 = vkQueuePresentKHR(presentQueue, &presentInfo);
 			_frameNumber += 1 ;
 
-			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
-
 			if (result2 == VK_ERROR_OUT_OF_DATE_KHR || result2 == VK_SUBOPTIMAL_KHR)
 			{
 				//layout error not here!
+				initSyncStructures();
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
 				return;
 			}
+			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
 
 		}
 		void vulkanPipeline::bindTextures(const std::vector<uint64_t> textureHandles, const uint64_t indexSet)

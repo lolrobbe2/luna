@@ -78,6 +78,7 @@ namespace luna
 			 * \param count
 			 */
 			void freeCommandBuffer(virtualCmdBuffer* pCommandBuffers, uint32_t count);
+			void resetCommandBuffer(const virtualCmdBuffer& commandBuffer);
 		private:
 			std::unordered_map<virtualCmdBuffer, std::pair<VkCommandBuffer, VkCommandBufferUsageFlags>> virtualBuffers;
 			VkCommandPool commandPool;

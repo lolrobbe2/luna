@@ -17,7 +17,7 @@ namespace luna
 			 * \param filters
 			 * \param samplerAddressMode
 			 */
-			vulkanSampler(const ref<vulkan::vulkanDevice>& device,const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode = VK_SAMPLER_ADDRESS_MODE_REPEAT);
+			vulkanSampler(ref<vulkan::vulkanDevice> device,const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode = VK_SAMPLER_ADDRESS_MODE_REPEAT);
 			~vulkanSampler();
 			/**
 			 * @brief returns the vulkan native sampler handle.

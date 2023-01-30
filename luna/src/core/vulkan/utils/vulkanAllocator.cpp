@@ -293,15 +293,12 @@ namespace luna
 			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			VkFormat baseFormat = (VkFormat)(9 + channels * 7);
 			VkFormat indexedFormat = baseFormat;
+
 			for (size_t i = 0; i < 7; i++)
 			{
 				VkImageFormatProperties properties;
 				VkResult result = vkGetPhysicalDeviceImageFormatProperties(vDevice->getDeviceHandles().physicalDevice, indexedFormat, VK_IMAGE_TYPE_2D, VK_IMAGE_TILING_OPTIMAL, usageFlags, 0, &properties);
-				if (result == VK_SUCCESS)
-				{
-					LN_CORE_CRITICAL("found supported format: {0}", indexedFormat);
-					return indexedFormat;
-				}
+				if (result == VK_SUCCESS) return indexedFormat;
 				indexedFormat = (VkFormat)(indexedFormat + 1);
 			}
 			return VK_FORMAT_UNDEFINED;
