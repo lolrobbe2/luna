@@ -44,7 +44,7 @@ namespace luna
 			io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 			io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 			io.IniFilename = NULL;
-			LN_CORE_INFO("imgui init for GLFW-vulkan = {0}",ImGui_ImplGlfw_InitForVulkan((GLFWwindow*)device->window->getWindow(), 0));
+			LN_CORE_INFO("imgui init for GLFW-vulkan = {0}",ImGui_ImplGlfw_InitForVulkan((GLFWwindow*)device->window->getWindow(), true));
 			ImGui_ImplVulkan_InitInfo init_info = {};
 			init_info.Instance = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->getDeviceHandles().instance;
 			init_info.PhysicalDevice = vDevice.physical_device;

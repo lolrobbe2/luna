@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sandbox", "sandbox\sandbox.vcxproj", "{145A6C82-8039-EB1D-8951-76F4F5AF517F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luna", "luna\luna.vcxproj", "{B5489A7C-A17F-9B0D-4A6C-81103682170F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thirdParty", "thirdParty", "{5792A83A-438B-C78C-6CBD-AC115815A798}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "luna\thirdParty\GLFW.vcxproj", "{154B857C-0182-860D-AA6E-6C109684020F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VkBootstrap", "luna\thirdParty\VkBootstrap.vcxproj", "{C4141359-30CA-8B4E-B9BE-852525738252}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imGui", "luna\thirdParty\imGui.vcxproj", "{E00FA80F-4C24-D0C0-15A6-73208179CCF1}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luna", "luna\luna.vcxproj", "{B5489A7C-A17F-9B0D-4A6C-81103682170F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stb", "luna\thirdParty\stb.vcxproj", "{6EAB880B-DAB4-887C-6330-9F7CCF38947C}"
 EndProject
@@ -26,6 +28,12 @@ Global
 		{145A6C82-8039-EB1D-8951-76F4F5AF517F}.distribution|x64.Build.0 = distribution|x64
 		{145A6C82-8039-EB1D-8951-76F4F5AF517F}.release|x64.ActiveCfg = release|x64
 		{145A6C82-8039-EB1D-8951-76F4F5AF517F}.release|x64.Build.0 = release|x64
+		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.debug|x64.ActiveCfg = debug|x64
+		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.debug|x64.Build.0 = debug|x64
+		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.distribution|x64.ActiveCfg = distribution|x64
+		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.distribution|x64.Build.0 = distribution|x64
+		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.release|x64.ActiveCfg = release|x64
+		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.release|x64.Build.0 = release|x64
 		{154B857C-0182-860D-AA6E-6C109684020F}.debug|x64.ActiveCfg = debug|x64
 		{154B857C-0182-860D-AA6E-6C109684020F}.debug|x64.Build.0 = debug|x64
 		{154B857C-0182-860D-AA6E-6C109684020F}.distribution|x64.ActiveCfg = distribution|x64
@@ -44,12 +52,6 @@ Global
 		{E00FA80F-4C24-D0C0-15A6-73208179CCF1}.distribution|x64.Build.0 = distribution|x64
 		{E00FA80F-4C24-D0C0-15A6-73208179CCF1}.release|x64.ActiveCfg = release|x64
 		{E00FA80F-4C24-D0C0-15A6-73208179CCF1}.release|x64.Build.0 = release|x64
-		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.debug|x64.ActiveCfg = debug|x64
-		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.debug|x64.Build.0 = debug|x64
-		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.distribution|x64.ActiveCfg = distribution|x64
-		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.distribution|x64.Build.0 = distribution|x64
-		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.release|x64.ActiveCfg = release|x64
-		{B5489A7C-A17F-9B0D-4A6C-81103682170F}.release|x64.Build.0 = release|x64
 		{6EAB880B-DAB4-887C-6330-9F7CCF38947C}.debug|x64.ActiveCfg = debug|x64
 		{6EAB880B-DAB4-887C-6330-9F7CCF38947C}.debug|x64.Build.0 = debug|x64
 		{6EAB880B-DAB4-887C-6330-9F7CCF38947C}.distribution|x64.ActiveCfg = distribution|x64
@@ -59,5 +61,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{154B857C-0182-860D-AA6E-6C109684020F} = {5792A83A-438B-C78C-6CBD-AC115815A798}
+		{C4141359-30CA-8B4E-B9BE-852525738252} = {5792A83A-438B-C78C-6CBD-AC115815A798}
+		{E00FA80F-4C24-D0C0-15A6-73208179CCF1} = {5792A83A-438B-C78C-6CBD-AC115815A798}
+		{6EAB880B-DAB4-887C-6330-9F7CCF38947C} = {5792A83A-438B-C78C-6CBD-AC115815A798}
 	EndGlobalSection
 EndGlobal
