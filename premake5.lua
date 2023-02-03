@@ -14,7 +14,17 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 buildmessage ("$(VULKAN_SDK)/include")
 IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/luna/thirdParty/GLFW/include"
+IncludeDir["GLFW"] =  "%{wks.location}/luna/thirdParty/GLFW/include"
+IncludeDir["entt"] =  "%{wks.location}/luna/thirdParty/entt"
+IncludeDir["glm"] =   "%{wks.location}/luna/thirdParty/glm"
+IncludeDir["vma"] =   "%{wks.location}/luna/thirdParty/VMA/include"
+IncludeDir["vkb"] =   "%{wks.location}/luna/thirdParty/Vkbootstrap/src"
+IncludeDir["stb"] =   "%{wks.location}/luna/thirdParty/stb"
+IncludeDir["spd"] =   "%{wks.location}/luna/thirdParty/spdlog/include"
+IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
+
+IncludeDir["luna"] = "%{wks.location}/luna/src"
+
 LibraryDir = {}
 LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
 
@@ -45,14 +55,15 @@ project "luna"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "luna/thirdParty/GLFW/include",
-        "luna/thirdParty/glm",
-        "luna/thirdParty/VMA/include",
-        "luna/thirdParty/spdlog/include",
-        "luna/thirdParty/stb",
-        "luna/thirdParty/Vkbootstrap/src",
-        "luna/thirdParty/imGui/",
-        "luna/src"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.spd}",
+        "%{IncludeDir.vma}",
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.vkb}",
+        "%{IncludeDir.imgui}",
+        "%{IncludeDir.luna}"
     }
 
     buildoptions
@@ -123,14 +134,15 @@ project "sandbox"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "luna/thirdParty/GLFW/include",
-        "luna/thirdParty/glm",
-        "luna/thirdParty/VMA/include",
-        "luna/thirdParty/spdlog/include",
-        "luna/thirdParty/stb",
-        "luna/thirdParty/Vkbootstrap/src",
-        "luna/thirdParty/imGui/",
-        "luna/src"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.spd}",
+        "%{IncludeDir.vma}",
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.vkb}",
+        "%{IncludeDir.imgui}",
+        "%{IncludeDir.luna}"
     }
    
     links

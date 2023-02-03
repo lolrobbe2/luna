@@ -4,7 +4,6 @@
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <core/vulkan/rendering/vulkanVertexBuffer.h>
 #include <core/vulkan/rendering/vulkanIndexBuffer.h>
-
 namespace luna
 {
 	namespace vulkan 
@@ -68,6 +67,7 @@ namespace luna
 			{
 				vkDestroyShaderModule(device,shaderModule,nullptr);
 			}
+			vkDestroyRenderPass(device, renderPass, nullptr);
 			vkDestroyPipeline(device, pipeline, nullptr);
 			vkDestroyPipelineLayout(device, pipelineLayout,nullptr);
 		}
@@ -143,15 +143,17 @@ namespace luna
 			vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 				
 			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
-
+			/*
 			//transition src image to DST to clear image
 			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 			
 			vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
+			
 			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentFrame]));
 			//copy framebuffer to seperate image.
 			//clear framebuffer vkCmdClearImage();
 			//iumgui draw
+			*/
 			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
@@ -182,7 +184,7 @@ namespace luna
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				if(!justResized)ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
+				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
 			}
 
 			ImGui::End();
@@ -209,10 +211,14 @@ namespace luna
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
-				initSyncStructures();
+				//commandPool->resetCommandBuffer(commandBuffers[currentFrame]);
+				destroyPipeline();
+				createPipeLineLayout();
+				for (auto commandBuffer : commandBuffers) commandPool->resetCommandBuffer(commandBuffer);
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
+				
 				return;
 			}
 			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
@@ -228,7 +234,7 @@ namespace luna
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
 
-			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_TRANSFER_BIT };
+			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
 			VkSemaphore waitSemaphores[] = { imageAvailableSemaphores[currentFrame] };
 			VkSemaphore signalSemaphores[] = { renderFinishedSemaphores[currentFrame] };
 			submit.pWaitDstStageMask = waitStages;
@@ -240,7 +246,7 @@ namespace luna
 			submit.pSignalSemaphores = signalSemaphores;
 
 
-			//vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
+			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
 			commandPool->resetCommandBuffer(commandBuffers[currentFrame]);
 			createCommands();
 			commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]);
@@ -359,6 +365,7 @@ namespace luna
 			if (shader->stage != renderer::shaderStageVertex) return;
 			VkVertexInputBindingDescription bindingDescription;
 			bindingDescription.stride = 0;
+			inputDescriptions[shader->shaderName].bindings.resize(0);
 			for(size_t i = shader->shaderLayout.size() -1; i > 0 ;i--)
 			{
 				if ((shader->shaderLayout[i].type == renderer::Uniform) || (shader->shaderLayout[i].type == renderer::PushConstant) || (shader->shaderLayout[i].type == renderer::StorageBuffer) && shader->shaderLayout[i].resourceClass != renderer::stageInputs && bindingDescription.stride > shader->shaderLayout[i].stride) break;
@@ -374,7 +381,7 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			if (shader->stage != renderer::shaderStageVertex) return;
-
+			inputDescriptions[shader->shaderName].attributes.resize(0);
 			for (const auto& shaderResource : shader->shaderLayout)
 			{
 				if (!((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)) break;
@@ -395,14 +402,15 @@ namespace luna
 			vkCreatePipelineLayout(vDevice->getDeviceHandles().device, &pipelineLayoutCreateInfo(), nullptr, &pipelineLayout);
 			createShaderStages();
 			createInputStates();
+			vertexInputStates.resize(0);
 			for (const auto& shader : layout.pipelineShaders)
 			{
 				if(shader->stage == renderer::shaderStageVertex) vertexInputStates.push_back(createVertexInputState(shader));
 			}
 			initDefaultRenderpass();
-			LN_CORE_INFO("framebuffer creation result ={0}", vDevice->createFramebuffers(renderPass));
+			vDevice->createFramebuffers(renderPass);
 			initSyncStructures();
-			LN_CORE_INFO("pipelinecreation result = {0}",buildPipeline(vDevice->getDeviceHandles().device, renderPass));
+			buildPipeline(vDevice->getDeviceHandles().device, renderPass);
 
 		}
 
@@ -612,7 +620,7 @@ namespace luna
 			VkAttachmentDescription color_attachment = {};
 			//the attachment will have the format needed by the swapchain
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-			LN_CORE_INFO("format of renderpass = {0}", vDevice->getSwapFormat());
+		
 			color_attachment.format = vDevice->getSwapFormat();
 			//1 sample, we won't be doing MSAA
 			color_attachment.samples = VK_SAMPLE_COUNT_1_BIT;

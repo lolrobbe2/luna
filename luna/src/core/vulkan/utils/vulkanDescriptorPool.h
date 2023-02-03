@@ -19,7 +19,6 @@ namespace luna
 			VkDescriptorSet* handle() { return &descriptorSet; };
 			VkDescriptorSet descriptorSet;
 		private:
-
 			VkDescriptorPool descriptorPool; //the pool the descriptorSet belongs to.
 			std::vector<VkWriteDescriptorSet> descriptorWrites;
 			ref<vulkan::vulkanDevice> device;

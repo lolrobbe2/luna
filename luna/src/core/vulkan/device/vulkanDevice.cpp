@@ -84,6 +84,7 @@ namespace luna
 				.request_validation_layers(true)
 				.use_default_debug_messenger()
 				.require_api_version(1, 2, 0)
+				.add_debug_messenger_severity(VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT)
 				.set_debug_callback(debugCallback);
 			for (const auto& extension : getRequiredExtensions())
 			{
