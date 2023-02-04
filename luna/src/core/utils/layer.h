@@ -9,7 +9,7 @@ namespace luna
 {
 	namespace utils
 	{
-		class layer
+		class LN_API layer
 		{
 		public:
 			layer(const std::string& name = "luna layer");

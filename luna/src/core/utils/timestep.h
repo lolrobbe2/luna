@@ -1,10 +1,12 @@
 #pragma once
+#include "lnpch.h"
+
 /*from hazel2D*/
 namespace luna 
 {
 	namespace utils
 	{
-		class timestep
+		class LN_API timestep
 		{
 		public:
 			timestep(float time = 0.0f)

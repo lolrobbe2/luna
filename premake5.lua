@@ -77,7 +77,8 @@ project "luna"
     }
     postbuildcommands
     {
-        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox")
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo")
     }
     filter "system:windows"
     
@@ -142,7 +143,8 @@ project "sandbox"
         "%{IncludeDir.stb}",
         "%{IncludeDir.vkb}",
         "%{IncludeDir.imgui}",
-        "%{IncludeDir.luna}"
+        "%{IncludeDir.luna}",
+        "%{prj.name}/src"
     }
    
     links
@@ -178,7 +180,7 @@ project "sandbox"
 
 project "apollo"
     location "apollo"
-    kind "WindowedApp"
+    kind "ConsoleApp"
     language "c++"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
@@ -199,7 +201,8 @@ project "apollo"
         "%{IncludeDir.stb}",
         "%{IncludeDir.vkb}",
         "%{IncludeDir.imgui}",
-        "%{IncludeDir.luna}"
+        "%{IncludeDir.luna}",
+        "%{prj.name}/src"
     }
 
     links
