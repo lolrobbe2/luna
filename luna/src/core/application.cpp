@@ -1,6 +1,7 @@
 #pragma once
 #include <lnpch.h>
 #include <core/application.h>
+
 namespace luna
 {
 	namespace application
@@ -16,9 +17,6 @@ namespace luna
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
-			logicGatesImage = renderer::texture::create("./src/assets/media/logic_gates.png");
-			statueImage = renderer::texture::create("./src/assets/media/test.png");
-			upgradeImage = renderer::texture::create("./src/assets/media/geheugenUpgrade.png");
 			LN_PROFILE_END_SESSION();
 			
 		}
@@ -37,7 +35,7 @@ namespace luna
 
 				mWindow->onUpdate();
 				LN_PROFILE_SCOPE("drawing");
-				renderer::renderer2D::BeginScene();
+			
 				/*
 				renderer::renderer2D::drawQuad({ 0.75f,0.75f ,0.0f }, { 1.0f ,1.0f }, statueImage);
 				renderer::renderer2D::drawQuad({ -0.75f,-0.75f ,0.0f }, { 1.0f ,1.0f }, logicGatesImage);
@@ -47,7 +45,7 @@ namespace luna
 				//renderer::renderer2D::drawQuad({ -0.5f,-0.5f ,0.0f }, { 1.0f ,1.0f }, { 241.0f, 161.0f,  0.0f,1.0f });
 				//renderer::renderer2D::drawQuad({ 0.5f,-0.5f ,0.0f }, { 1.0f ,1.0f },{ 124.0f, 187.0f, 0.0f,1.0f });
 				//renderer::renderer2D::drawQuad({ -0.5f,0.5f ,0.0f }, { 1.0f ,1.0f }, { 255.0f, 187.0f, 0.0f,1.0f });
-				renderer::renderer2D::endScene();
+
 				
 				/*if (ImGui::Begin("settings"))
 				{
@@ -60,6 +58,28 @@ namespace luna
 				}
 				ImGui::End();
 				*/
+				float time = Time::getTime();
+				utils::timestep timestep = time - lastFrameTime;
+				lastFrameTime = time;
+				if (!minimized)
+				{
+					{
+						LN_PROFILE_SCOPE("LayerStack OnUpdate");
+
+						for (utils::layer* layer : layerStack)
+							layer->onUpdate(timestep);
+					}
+					renderer::renderer2D::BeginScene();
+
+					renderer::renderer2D::endScene();
+					{
+						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+						for (utils::layer* layer : layerStack)
+							layer->onImGuiRender();
+					}
+					
+				}
 				renderer::renderer::newFrame();
 			}
 			LN_PROFILE_END_SESSION();
@@ -67,9 +87,50 @@ namespace luna
 
 		void application::onEvent(Event& e)
 		{
-			if (e.getEventType() == luna::eventType::WindowClose) running = false;
-			else if (e.getEventType() == luna::eventType::WindowLostFocus) LN_CORE_INFO("lost focus!");
-			else if (e.getEventType() == luna::eventType::WindowFocus) LN_CORE_INFO("gained focus!");
+			eventDispatcher dispatcher(e);
+			dispatcher.dispatch<windowCloseEvent>(LN_BIND_EVENT_FN(application::onWindowClose));
+			dispatcher.dispatch<windowResizeEvent>(LN_BIND_EVENT_FN(application::onWindowResize));
+			for (auto it = layerStack.rbegin(); it != layerStack.rend(); ++it)
+			{
+				if (e.Handled)
+					break;
+				(*it)->onEvent(e);
+			}
+		}
+
+		bool application::onWindowClose(windowCloseEvent& e)
+		{
+			running = false;
+			return true;
+		}
+
+		bool application::onWindowResize(windowResizeEvent& e)
+		{
+			LN_PROFILE_FUNCTION();
+
+			if (e.getWidth() == 0 || e.getHeight() == 0)
+			{
+				minimized = true;
+				return false;
+			}
+
+			minimized = false;
+			return false;
+		}
+		void application::pushLayer(utils::layer* layer)
+		{
+			LN_PROFILE_FUNCTION();
+
+			layerStack.pushLayer(layer);
+			layer->onAttach();
+		}
+
+		void application::pushOverlay(utils::layer* layer)
+		{
+			LN_PROFILE_FUNCTION();
+
+			layerStack.pushOverlay(layer);
+			layer->onAttach();
 		}
 	}
 }

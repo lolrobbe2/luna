@@ -31,3 +31,14 @@
 #endif 
 
 
+namespace luna
+{
+	class Time
+	{
+	public:
+		static float getTime();
+	};
+}
+
+
+
