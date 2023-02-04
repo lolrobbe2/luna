@@ -1,4 +1,6 @@
 #include "editorLayer.h"
+
+
 namespace luna
 {
 	editorLayer::editorLayer(const std::string& name)
@@ -16,6 +18,8 @@ namespace luna
 	}
 	void editorLayer::onImGuiRender()
 	{
+		if (ImGui::Begin("sceneHierachy"));
+		ImGui::End();
 	}
 	void editorLayer::onEvent(Event& event)
 	{

@@ -9,7 +9,7 @@ namespace luna
 		 * @brief 2D renderer api  runs onTop of the renderer api.
 		 * @see renderer::renderer
 		 */
-		class renderer2D
+		class LN_API renderer2D
 		{
 		public:
 			/**

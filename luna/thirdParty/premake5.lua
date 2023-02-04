@@ -139,6 +139,7 @@ project "imGui"
 	staticruntime "off"
 	files
 	{
+		"imGui/imConfig.h",
 		"imGui/imgui.h",
 		"imGui/imgui.cpp",
 
