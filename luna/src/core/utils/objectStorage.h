@@ -63,7 +63,7 @@ namespace luna
 			 * \return std::pair<storageResult, value> value is the input value.
 			 * @see storageResult
 			 */
-			std::pair<storageResult, value> getValue(const storageObject& key,const value& _value)
+			std::pair<storageResult, value> getValue(const storageObject& key,const value& _value = value())
 			{
 				LN_PROFILE_FUNCTION();
 				std::pair<cacheResult, value> result = objectCache.getValue(key);

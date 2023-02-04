@@ -5,10 +5,13 @@ namespace luna
 {
 	editorLayer::editorLayer(const std::string& name)
 	{
+		activeScene = ref<scene>(new scene());
+		scenePanel = ref<sceneHierarchyPanel>(new sceneHierarchyPanel());
 	}
 	void editorLayer::onAttach()
 	{
 		LN_CORE_INFO("added editor!");
+		scenePanel->setContext(activeScene);
 	}
 	void editorLayer::onDetach()
 	{
@@ -18,8 +21,9 @@ namespace luna
 	}
 	void editorLayer::onImGuiRender()
 	{
-		if (ImGui::Begin("sceneHierachy"));
-		ImGui::End();
+
+		scenePanel->onImGuiRender();
+
 	}
 	void editorLayer::onEvent(Event& event)
 	{

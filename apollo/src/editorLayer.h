@@ -1,6 +1,6 @@
 #pragma once
 #include <core/utils/layer.h>
-#include <core/scene/scene.h>
+#include <panels/sceneHierarchyPanel.h>
 namespace luna
 {
 	class editorLayer : public utils::layer
@@ -16,6 +16,7 @@ namespace luna
 		virtual void onEvent(Event& event) override;
 	private:
 		ref<scene> activeScene;
+		ref<sceneHierarchyPanel> scenePanel;
 	};
 }
 

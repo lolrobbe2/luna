@@ -76,6 +76,6 @@ namespace luna
 	 */
 	struct childComponent
 	{
-		std::vector<uuid> childs;
+		std::vector<entt::entity> childs;
 	};
 }

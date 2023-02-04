@@ -3,23 +3,29 @@ namespace luna
 {
 
 	template<typename T>
-	bool scene::deleteNode(const T& node)
+	bool scene::destroyNode(const T& Node)
 	{
+		enttityStorage.eraseValue(node.getUUID());
+		m_Registry.destroy(node);
 		return false;
 	}
 	template<typename T>
-	void scene::onComponentAdded(luna::node node, T& component) 
+	void scene::onComponentAdded(luna::Node Node, T& component) 
 	{
 
 	}
-
-	node::node(luna::scene* scene)
+	Node::Node(entt::entity handle, luna::scene* scene)
+		: entityHandle(handle), scene(scene)
+	{
+	}
+	Node::Node(luna::scene* scene)
 	{
 		this->scene = scene;
 		entityHandle = scene->m_Registry.create();
 		addComponent<idComponent>();
+		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
-	void node::setName(std::string name)
+	void Node::setName(std::string name)
 	{
 		if (hasComponent<tagComponent>()) getComponent<tagComponent>().tag = name;
 		else 
@@ -27,38 +33,18 @@ namespace luna
 			addComponent<tagComponent>(name);
 		}
 	}
+	void Node::addChild(Node node)
+	{
+		if (node.hasComponent<parentComponent>()) node.getComponent<parentComponent>().parentId = getComponent<idComponent>().id;
+		else
+		{
+			node.addComponent<parentComponent>().parentId = getComponent<idComponent>().id;
+		}
 
-	std::string node::getName()
-	{
-		if (hasComponent<tagComponent>()) return getComponent<tagComponent>().tag;
-		else return "node noname!";
-	}
-	template<typename T, typename... Args>
-	T& node::addComponent(Args&&... args)
-	{
-		//LN_CORE_ASSERT(!hasComponent<T>(), "node already has component!");
-		T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
-		scene->onComponentAdded<T>(*this, component);
-		return component;
-	}
-
-	template<typename T, typename... Args>
-	T& node::addOrReplaceComponent(Args&&... args)
-	{
-		T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-		scene->onComponentAdded<T>(*this, component);
-		return component;
-	}
-
-	template<typename T>
-	T& node::getComponent()
-	{
-		//LN_CORE_ASSERT(hasComponent<T>(), "node does not have component!");
-		return scene->m_Registry.get<T>(entityHandle);
-	}
-	template<typename T>
-	bool node::hasComponent()
-	{
-		return scene->m_Registry.all_of<T>(entityHandle);
+		if (hasComponent<childComponent>()) getComponent<childComponent>().childs.push_back(node);
+		else 
+		{
+			addComponent<childComponent>().childs.push_back(node);
+		}
 	}
 }
