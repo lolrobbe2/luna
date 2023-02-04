@@ -64,7 +64,7 @@ namespace luna
 		template<typename T, typename F>
 		bool dispatch(const F& func)
 		{
-			if (m_Event.GetEventType() == T::GetStaticType())
+			if (m_Event.getEventType() == T::getStaticType())
 			{
 				m_Event.Handled |= func(static_cast<T&>(m_Event));
 				return true;

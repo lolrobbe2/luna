@@ -1,7 +1,7 @@
 #pragma once
 #include <lnpch.h>
 #include <core/application.h>
-
+#include <core/scene/scene.h>
 namespace luna
 {
 	namespace application
@@ -17,6 +17,7 @@ namespace luna
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
+			scene.addNode<node>("testnode");
 			LN_PROFILE_END_SESSION();
 			
 		}
@@ -58,7 +59,7 @@ namespace luna
 				}
 				ImGui::End();
 				*/
-				float time = Time::getTime();
+				float time = glfwGetTime();
 				utils::timestep timestep = time - lastFrameTime;
 				lastFrameTime = time;
 				if (!minimized)

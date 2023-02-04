@@ -7,6 +7,7 @@
 #include <core/rendering/renderer2D.h>
 #include <core/utils/objectStorage.h>
 #include <core/utils/layerStack.h>
+#include <core/scene/scene.h>
 namespace luna
 {
 	namespace application
@@ -46,6 +47,7 @@ namespace luna
 			ref<renderer::texture> logicGatesImage;
 			ref<renderer::texture> statueImage;
 			ref<renderer::texture> upgradeImage;
+			scene scene;
 			utils::layerStack layerStack;
 			float lastFrameTime = 0.0f;
 			bool running = true;
