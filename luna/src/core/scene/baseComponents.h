@@ -59,4 +59,23 @@ namespace luna
 		spriteRendererComponent(const glm::vec4& color)
 			: color(color) {}
 	};
+	/*
+		node tree components:
+		these components represent the node tree
+	*/
+
+	/**
+	 * @brief represents a node that has a parent node.
+	 */
+	struct parentComponent
+	{
+		uuid parentId;
+	};
+	/**
+	 * represents a node that has a root component.
+	 */
+	struct childComponent
+	{
+		std::vector<uuid> childs;
+	};
 }

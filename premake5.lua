@@ -12,7 +12,7 @@ workspace "luna"
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-buildmessage ("$(VULKAN_SDK)/include")
+buildmessage("$(VULKAN_SDK)/include")
 IncludeDir = {}
 IncludeDir["GLFW"] =  "%{wks.location}/luna/thirdParty/GLFW/include"
 IncludeDir["entt"] =  "%{wks.location}/luna/thirdParty/entt"
