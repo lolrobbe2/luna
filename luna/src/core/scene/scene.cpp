@@ -28,6 +28,11 @@ namespace luna
 		}
 	}
 
+	std::string node::getName()
+	{
+		if (hasComponent<tagComponent>()) return getComponent<tagComponent>().tag;
+		else return "node noname!";
+	}
 	template<typename T, typename... Args>
 	T& node::addComponent(Args&&... args)
 	{

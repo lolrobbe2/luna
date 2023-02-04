@@ -17,7 +17,6 @@ namespace luna
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
-			scene.addNode<node>("testnode");
 			LN_PROFILE_END_SESSION();
 			
 		}

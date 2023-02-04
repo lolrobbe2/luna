@@ -176,4 +176,59 @@ project "sandbox"
         symbols "Off"
         optimize "On"
 
- 
+project "apollo"
+    location "apollo"
+    kind "WindowedApp"
+    language "c++"
+
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    files
+    {
+        "%{prj.name}/src/**.h",
+        "%{prj.name}/src/**.cpp"
+    }
+    includedirs
+    {
+        "$(VULKAN_SDK)/include",
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.spd}",
+        "%{IncludeDir.vma}",
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.vkb}",
+        "%{IncludeDir.imgui}",
+        "%{IncludeDir.luna}"
+    }
+
+    links
+    {
+        
+        "luna"
+    }
+    buildoptions 
+    {
+        "/MD",
+    }
+    filter "system:windows"
+        cppdialect "c++17"
+        staticruntime "on"
+        systemversion "latest"
+        defines
+        {
+            "_WINDLL"
+        }
+        
+        filter "configurations:debug"
+    
+        symbols "On"
+
+        filter "configurations:release"
+    
+        optimize "On"
+
+        filter "configurations:distribution"
+    
+        symbols "Off"
+        optimize "On"

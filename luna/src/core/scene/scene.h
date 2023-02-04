@@ -42,6 +42,7 @@ namespace luna
 		node(scene* scene);
 		virtual ~node() = default;
 		void setName(std::string name);
+		std::string getName();
 	protected:
 
 		template<typename T, typename... Args>
