@@ -35,16 +35,11 @@ namespace luna
 	}
 	void Node::addChild(Node node)
 	{
+		LN_CORE_INFO("adding node {0} as a child to {1} .", node.getUUID().getId(), getUUID().getId());
 		if (node.hasComponent<parentComponent>()) node.getComponent<parentComponent>().parentId = getComponent<idComponent>().id;
-		else
-		{
-			node.addComponent<parentComponent>().parentId = getComponent<idComponent>().id;
-		}
-
+		else node.addComponent<parentComponent>().parentId = getComponent<idComponent>().id;
+	
 		if (hasComponent<childComponent>()) getComponent<childComponent>().childs.push_back(node);
-		else 
-		{
-			addComponent<childComponent>().childs.push_back(node);
-		}
+		else addComponent<childComponent>().childs.push_back(node);
 	}
 }

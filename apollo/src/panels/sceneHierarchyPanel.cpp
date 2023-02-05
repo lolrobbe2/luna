@@ -23,12 +23,12 @@ namespace luna
 			m_Context->m_Registry.each([&](auto entityID)
 			{
 				Node Node{ entityID , m_Context };
-				if(!Node.hasComponent<childComponent>()) drawEntityNode(Node);
+				if(!Node.hasComponent<parentComponent>()) drawEntityNode(Node,0);
 			});
-
+			/*
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
 				m_SelectionContext = {};
-
+			*/
 
 
 		}
@@ -40,39 +40,54 @@ namespace luna
 		m_SelectionContext = Node;
 	}
 
-	void sceneHierarchyPanel::drawEntityNode(Node Node)
+	void sceneHierarchyPanel::drawEntityNode(Node Node, uint32_t indent)
 	{
-		if (ImGui::TreeNode((void*)Node.getUUID().getId(), Node.getName().c_str()))
-		{
-			
-
-			if(Node.hasComponent<childComponent>())
-			{
-				auto& childs = Node.getComponent<childComponent>().childs;
-				for (auto child : childs)
-				{
-					luna::Node Node{ child,m_Context };
-					drawEntityNode(Node);
-				}
-			}
-			ImGui::TreePop();
-		}
+		
+		std::string buttonText = Node.getName();
+		bool isOpen = ImGui::TreeNodeEx((void*)Node.getUUID().getId(), ImGuiTreeNodeFlags_OpenOnArrow, buttonText.c_str());
+	
+		
 		if (ImGui::BeginDragDropTarget())
 		{
-			const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("node", ImGuiDragDropFlags_None);
+			const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("node");
 			if (payload != nullptr && payload->DataSize == 0)
 			{
-				
 				Node.addChild(m_SelectionContext);
+				
 			}
 			ImGui::EndDragDropTarget();
 		}
 
-		if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+		if (ImGui::BeginDragDropSource()) {
 			ImGui::SetDragDropPayload("node", nullptr, 0);
 			m_SelectionContext = Node;
-			ImGui::Button(Node.getName().c_str(), ImVec2(50, 50));
+			ImGui::Text(Node.getName().c_str());
 			ImGui::EndDragDropSource();
+		}
+
+		if (isOpen)
+		{
+			if (Node.hasComponent<childComponent>())
+			{
+				ImGui::Indent(indent + addIndent);
+				auto& childs = Node.getComponent<childComponent>().childs;
+
+				for (auto child : childs)
+				{
+					luna::Node _Node{ child,m_Context };
+					if (_Node.getComponent<parentComponent>().parentId == Node.getComponent<idComponent>().id)
+					{
+						drawEntityNode(_Node, indent + addIndent);
+					}
+				}
+				ImGui::Unindent(indent + addIndent);
+			}
+
+			ImGui::TreePop();
+		}
+		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen())
+		{
+			LN_CORE_INFO("clicked");
 		}
 	}
 }

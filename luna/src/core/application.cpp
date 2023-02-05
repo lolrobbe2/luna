@@ -78,9 +78,9 @@ namespace luna
 						for (utils::layer* layer : layerStack)
 							layer->onImGuiRender();
 					}
-					
+					renderer::renderer::newFrame();
 				}
-				renderer::renderer::newFrame();
+				
 			}
 			LN_PROFILE_END_SESSION();
 		}

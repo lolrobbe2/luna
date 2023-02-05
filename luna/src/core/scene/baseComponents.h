@@ -12,7 +12,6 @@ namespace luna
 	struct idComponent
 	{
 		uuid id;
-
 		idComponent() = default;
 		idComponent(const idComponent&) = default;
 	};

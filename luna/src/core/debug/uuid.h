@@ -8,7 +8,7 @@ namespace luna
 	 * @brief a general purpose uuid class with a maximum number of 2^64 uuid's
 	 * the uuid class does not check for duplicates!
 	 */
-	class uuid
+	class LN_API uuid
 	{
 	public:
 		/**
@@ -27,6 +27,7 @@ namespace luna
 		 */
 		uint64_t getId() { return _uuid; };
 		operator uint64_t() { return _uuid; }
+		operator std::string() { return std::to_string(_uuid); };
 	private:
 		uint64_t _uuid;
 	};
