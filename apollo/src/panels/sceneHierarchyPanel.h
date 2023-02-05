@@ -25,6 +25,7 @@ namespace luna
 		uint64_t addIndent = 3;
 		scene* m_Context;
 		Node m_SelectionContext;
+		Node m_Selected;
 	};
 }
 
