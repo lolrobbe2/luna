@@ -1,4 +1,5 @@
 #include "sceneHierarchyPanel.h"
+
 namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
@@ -16,6 +17,16 @@ namespace luna
 
 		if (m_Context)
 		{
+
+			//ImGui::SetCurrentContext(nullptr);
+			/*
+			ImGuiID dockspace_id = ImGui::GetID("DockSpace");
+			auto dock_id_left = ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Left, 0.2f, nullptr, &dockspace_id);
+			auto dock_id_Top_left = ImGui::DockBuilderSplitNode(dock_id_left, ImGuiDir_Up, 0.2f, nullptr, &dockspace_id);
+			auto dock_id_bottom_left = ImGui::DockBuilderSplitNode(dock_id_left, ImGuiDir_Down, 0.2f, nullptr, &dockspace_id);
+			ImGui::DockBuilderDockWindow("scene Hierarchy", dock_id_Top_left);
+			*/
+			//docking needs to be done in engine;
 			ImGui::Begin("scene Hierarchy");
 			if (ImGui::Button("add node", ImVec2(60, 30)))
 			{
@@ -31,6 +42,7 @@ namespace luna
 				m_Selected = {};
 			
 			ImGui::End();
+			//ImGui::DockBuilderDockWindow("properties", dock_id_Top_left);
 			ImGui::Begin("properties");
 			if(m_Selected) drawComponents(m_Selected);
 			ImGui::End();
@@ -98,6 +110,16 @@ namespace luna
 	}
 	void sceneHierarchyPanel::drawComponents(Node Node)
 	{
+		if (Node.hasComponent<idComponent>())
+		{
+			auto& id = Node.getComponent<idComponent>();
+			std::stringstream sstream;
+			sstream << std::hex << id.id;
+			std::string result = sstream.str();
+			ImGui::LabelText(result.c_str(), "id");
+			ImGui::Separator();
+
+		}
 		if(Node.hasComponent<tagComponent>())
 		{
 			auto& tag = Node.getComponent<tagComponent>().tag;
@@ -108,6 +130,8 @@ namespace luna
 			{
 				tag = std::string(buffer);
 			}
+			ImGui::Separator();
 		}
+		
 	}
 }
