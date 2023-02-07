@@ -43,7 +43,7 @@ namespace luna
 			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 			io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 			io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-			io.IniFilename = NULL;
+			io.IniFilename = "guiConfig.ini";
 			LN_CORE_INFO("imgui init for GLFW-vulkan = {0}",ImGui_ImplGlfw_InitForVulkan((GLFWwindow*)device->window->getWindow(), false));
 			ImGui_ImplVulkan_InitInfo init_info = {};
 			init_info.Instance = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->getDeviceHandles().instance;

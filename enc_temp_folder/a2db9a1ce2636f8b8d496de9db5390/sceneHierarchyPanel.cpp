@@ -184,7 +184,6 @@ namespace luna
 				if (ImGui::InputText("file path", buffer, sizeof(buffer))) sprite.filePath = std::string(buffer);
 				ImGui::TreePop();
 			}
-			ImGui::Separator();
 		}
 	}
 

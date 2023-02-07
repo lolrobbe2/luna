@@ -9,11 +9,7 @@ namespace luna
 		m_Registry.destroy(node);
 		return false;
 	}
-	template<typename T>
-	void scene::onComponentAdded(luna::Node Node, T& component) 
-	{
 
-	}
 	Node::Node(entt::entity handle, luna::scene* scene)
 		: entityHandle(handle), scene(scene)
 	{

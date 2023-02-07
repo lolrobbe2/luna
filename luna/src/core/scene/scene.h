@@ -24,7 +24,10 @@ namespace luna
 		bool destroyNode(const T& Node);
 
 		template<typename T>
-		void onComponentAdded(Node Node, T& component);
+		void onComponentAdded(Node Node, T& component)
+		{
+
+		}
 	private:
 		friend class Node;
 		friend class sceneHierarchyPanel;
@@ -46,9 +49,10 @@ namespace luna
 		virtual ~Node() = default;
 		void setName(std::string name);
 		void addChild(Node node);
-	protected:
+
 		friend class scene;
 		friend class sceneHierarchyPanel;
+
 		template<typename T, typename... Args>
 		T& addComponent(Args&&... args)
 		{

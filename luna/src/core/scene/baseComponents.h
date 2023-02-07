@@ -51,8 +51,9 @@ namespace luna
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
 		ref<renderer::texture> texture;
+		std::string filePath;
 		float TilingFactor = 1.0f;
-
+		
 		spriteRendererComponent() = default;
 		spriteRendererComponent(const spriteRendererComponent&) = default;
 		spriteRendererComponent(const glm::vec4& color)
