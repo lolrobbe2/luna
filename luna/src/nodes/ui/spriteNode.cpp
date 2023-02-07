@@ -9,7 +9,6 @@ namespace luna
 		}
 		spriteNode::spriteNode(luna::scene* scene) : Node(scene)
 		{
-
 			addComponent<transformComponent>();
 			addComponent<spriteRendererComponent>();
 		}

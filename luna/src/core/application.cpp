@@ -6,11 +6,13 @@ namespace luna
 {
 	namespace application
 	{
+		static application* instance;
 		application::application()
 		{
 			//TODO images with less than 3 channels RGB 
 
 			LN_PROFILE_BEGIN_SESSION("luna engine startup", "./debug/luna-profile-startUp.json");
+			instance = this;
 			Log::Init();
 			LN_PROFILE_SCOPE("engine startup");
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
@@ -63,14 +65,13 @@ namespace luna
 				lastFrameTime = time;
 				if (!minimized)
 				{
+					renderer::renderer2D::BeginScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnUpdate");
 
 						for (utils::layer* layer : layerStack)
 							layer->onUpdate(timestep);
 					}
-					renderer::renderer2D::BeginScene();
-
 					renderer::renderer2D::endScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
@@ -131,6 +132,10 @@ namespace luna
 
 			layerStack.pushOverlay(layer);
 			layer->onAttach();
+		}
+		application& application::get()
+		{
+			return *instance;
 		}
 	}
 }

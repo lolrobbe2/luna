@@ -8,6 +8,9 @@
 #include <core/utils/objectStorage.h>
 #include <core/utils/layerStack.h>
 #include <core/scene/scene.h>
+
+int main(int argc, char** argv);
+
 namespace luna
 {
 	namespace application
@@ -32,7 +35,7 @@ namespace luna
 			 * \param e
 			 */
 			void onEvent(Event& e);
-
+			vulkan::window& getWindow() { return *mWindow; }
 			bool onWindowClose(windowCloseEvent& e);
 			bool onWindowResize(windowResizeEvent& e);
 			/**
@@ -42,7 +45,10 @@ namespace luna
 			 */
 			void pushLayer(utils::layer* layer);
 			void pushOverlay(utils::layer* layer);
+
+			static application& get();
 		private:
+			friend class os;
 			ref<vulkan::window> mWindow;
 			ref<renderer::texture> logicGatesImage;
 			ref<renderer::texture> statueImage;
@@ -52,6 +58,9 @@ namespace luna
 			float lastFrameTime = 0.0f;
 			bool running = true;
 			bool minimized = false;
+		private:
+
+			friend int ::main(int argc, char** argv);
 		};
 		/**
 		 * @brief creates the application and returns a pointer to the appliccation.
