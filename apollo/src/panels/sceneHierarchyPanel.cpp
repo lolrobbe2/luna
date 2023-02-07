@@ -183,13 +183,13 @@ namespace luna
 				memset(buffer, 0, sizeof(buffer));
 				strcpy_s(buffer, sprite.filePath.c_str());
 				if (ImGui::InputText("file path", buffer, sizeof(buffer))) sprite.filePath = std::string(buffer);
-				ImGui::SameLine(10.0f);
+				ImGui::SameLine();
 				if(ImGui::Button("select image"))
 				{
 					sprite.filePath = luna::platform::os::openFilaDialog("image (*.png)\0*.png\0");
 					sprite.texture = renderer::texture::create(sprite.filePath);
 				}
-				ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
+
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
