@@ -3,6 +3,7 @@
 #include <entt.h>
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
+#include <core/utils/timestep.h>
 namespace luna 
 {
 	class LN_API Node;
@@ -28,6 +29,13 @@ namespace luna
 		{
 
 		}
+
+		template<typename... components>
+		auto getAllEntitiesWith()
+		{
+			return m_Registry.view<components...>();
+		}
+		void onUpdateEditor(utils::timestep ts);
 	private:
 		friend class Node;
 		friend class sceneHierarchyPanel;

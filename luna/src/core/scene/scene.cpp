@@ -1,4 +1,5 @@
 #include "scene.h"
+#include <core/rendering/renderer2D.h>
 namespace luna
 {
 
@@ -8,6 +9,18 @@ namespace luna
 		enttityStorage.eraseValue(node.getUUID());
 		m_Registry.destroy(node);
 		return false;
+	}
+
+	void scene::onUpdateEditor(utils::timestep ts)
+	{
+		auto group = m_Registry.group<transformComponent>(entt::get<spriteRendererComponent>);
+		for (auto entity : group)
+		{
+			auto [transform, sprite] = group.get<transformComponent, spriteRendererComponent>(entity);
+			if(sprite.texture) renderer::renderer2D::drawQuad(transform.translation,{transform.scale.x,transform.scale.y}, sprite.texture);
+		}
+		//TODO blending issue!
+		//renderer::renderer2D::drawQuad({ 0.5f,0.5f ,0.0f }, { 1.0f ,1.0f }, { 246.0f , 83.0f , 20.0f,1.0f });
 	}
 
 	Node::Node(entt::entity handle, luna::scene* scene)

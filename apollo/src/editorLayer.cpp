@@ -1,5 +1,5 @@
 #include "editorLayer.h"
-
+#include <core/rendering/renderer2D.h>
 
 namespace luna
 {
@@ -18,6 +18,7 @@ namespace luna
 	}
 	void editorLayer::onUpdate(utils::timestep ts)
 	{
+		activeScene->onUpdateEditor(ts);
 	}
 	void editorLayer::onImGuiRender()
 	{
