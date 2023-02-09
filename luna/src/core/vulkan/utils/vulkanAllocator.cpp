@@ -74,12 +74,11 @@ namespace luna
 			imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 			imageCreateInfo.usage = usageFlags;
 			imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-
+			
 			VmaAllocation allocation;
 			uint32_t memoryTypeIndex = 2;
 			VmaAllocationCreateInfo allocationCreateInfo = {};
 			allocationCreateInfo.usage = VMA_MEMORY_USAGE_AUTO;
-
 			VmaAllocationInfo allocationInfo;
 			VkResult createResult = vmaCreateImage(sAllocator, &imageCreateInfo, &allocationCreateInfo, pImage, &allocation, &allocationInfo);
 			uint64_t handle = (uint64_t)*pImage;
@@ -293,7 +292,6 @@ namespace luna
 			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			VkFormat baseFormat = (VkFormat)(9 + channels * 7);
 			VkFormat indexedFormat = baseFormat;
-
 			for (size_t i = 0; i < 7; i++)
 			{
 				VkImageFormatProperties properties;

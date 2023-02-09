@@ -202,8 +202,8 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			
-			if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
-
+		
+			vkDeviceWaitIdle(vDevice->getDeviceHandles().device);
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 			
@@ -448,6 +448,10 @@ namespace luna
 			colorBlending.logicOp = VK_LOGIC_OP_COPY;
 			colorBlending.attachmentCount = 1;
 			colorBlending.pAttachments = &pipelineColorBlendAttachementState;
+			colorBlending.blendConstants[0] = 0.0f; // Optional
+			colorBlending.blendConstants[1] = 0.0f; // Optional
+			colorBlending.blendConstants[2] = 0.0f; // Optional
+			colorBlending.blendConstants[3] = 0.0f; // Optional
 			//build the actual pipeline
 			//we now use all of the info structs we have been writing into into this one to create the pipeline
 			VkGraphicsPipelineCreateInfo pipelineInfo = {};
@@ -465,6 +469,7 @@ namespace luna
 			pipelineInfo.pRasterizationState = &pipelineRasterizationStateCreateInfo;
 			pipelineInfo.pMultisampleState = &pipelineMultisampleStateCreateInfo;
 			//pipelineInfo.pDynamicState = &dynamicStateCreateInfo;
+			pipelineInfo.pDepthStencilState = nullptr;
 			pipelineInfo.pColorBlendState = &colorBlending;
 			pipelineInfo.layout = pipelineLayout;
 			pipelineInfo.renderPass = pass;
@@ -554,7 +559,7 @@ namespace luna
 			info.polygonMode = polygonMode;
 			info.lineWidth = 1.0f;
 			//no backface cull
-			info.cullMode = VK_CULL_MODE_NONE;
+			info.cullMode = VK_CULL_MODE_BACK_BIT;
 			info.frontFace = VK_FRONT_FACE_CLOCKWISE;
 			//no depth bias
 			info.depthBiasEnable = VK_FALSE;
@@ -629,8 +634,8 @@ namespace luna
 			// we keep the attachment stored when the renderpass ends
 			color_attachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
 			//we don't care about stencil
-			color_attachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
-			color_attachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+			color_attachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+			color_attachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_STORE;
 
 			//we don't know or care about the starting layout of the attachment
 			color_attachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
@@ -643,6 +648,7 @@ namespace luna
 			color_attachment_ref.attachment = 0;
 			color_attachment_ref.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
 
+
 			//we are going to create 1 subpass, which is the minimum you can do
 			VkSubpassDescription subpass = {};
 			subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
@@ -653,10 +659,10 @@ namespace luna
 			dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
 			dependency.dstSubpass = 0;
 			dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.srcAccessMask = 0;
+
 			dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-			dependency.srcAccessMask = 0; //VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
 			dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
-			
 			VkRenderPassCreateInfo render_pass_info = {};
 			render_pass_info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
 

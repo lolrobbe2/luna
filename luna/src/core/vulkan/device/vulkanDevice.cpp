@@ -100,17 +100,21 @@ namespace luna
 			vkb::PhysicalDeviceSelector deviceSelector{ deviceHandle.instance };
 			VkPhysicalDeviceFeatures features {};
 			VkPhysicalDeviceVulkan12Features features12{};
-			features12.bufferDeviceAddress = VK_TRUE;
+			//features12.bufferDeviceAddress = VK_TRUE;
 			features.multiViewport = VK_TRUE;
+			features.samplerAnisotropy = VK_TRUE;
+			features.sparseBinding = VK_TRUE;
+			//.add_desired_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME)
 			deviceSelector
 				.set_minimum_version(1, 2)
 				.set_surface(surface);
-			auto physicalDevice = deviceSelector.add_desired_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME)
+			auto physicalDevice = deviceSelector
 				.set_required_features(features)
 				.set_required_features_12(features12)
 				.select();
 			deviceHandle.physicalDevice = physicalDevice.value();
 			LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
+			//LN_CORE_INFO("chosen gpu driver version = {0}", deviceHandle.);
 			return VK_SUCCESS;
 		}
 

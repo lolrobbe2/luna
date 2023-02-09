@@ -115,7 +115,7 @@ namespace luna
 				rendererData.quadVertexBufferPtr->color = color;
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
-				rendererData.quadVertexBufferPtr->textureIndex = handle;
+				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
 				rendererData.quadVertexBufferPtr++;
 			}
 			rendererData.quadIndexCount += 6;
@@ -145,7 +145,7 @@ namespace luna
 				rendererData.quadVertexBufferPtr->color = { color.x * 1 / 255.0f,color.y * 1 / 255.0f,color.z * 1 / 255.0f,1.0f };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
-				rendererData.quadVertexBufferPtr->textureIndex = handle;
+				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
 				rendererData.quadVertexBufferPtr++;
 			}
 			rendererData.quadIndexCount += 6;
