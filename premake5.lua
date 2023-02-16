@@ -6,14 +6,25 @@ workspace "luna"
     configurations
     {
         "debug",
-        "release"
+        "release",
+        "distribution"
     }
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-buildmessage ("$(VULKAN_SDK)/include")
+buildmessage("$(VULKAN_SDK)/include")
 IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/luna/thirdParty/GLFW/include"
+IncludeDir["GLFW"] =  "%{wks.location}/luna/thirdParty/GLFW/include"
+IncludeDir["entt"] =  "%{wks.location}/luna/thirdParty/entt"
+IncludeDir["glm"] =   "%{wks.location}/luna/thirdParty/glm"
+IncludeDir["vma"] =   "%{wks.location}/luna/thirdParty/VMA/include"
+IncludeDir["vkb"] =   "%{wks.location}/luna/thirdParty/Vkbootstrap/src"
+IncludeDir["stb"] =   "%{wks.location}/luna/thirdParty/stb"
+IncludeDir["spd"] =   "%{wks.location}/luna/thirdParty/spdlog/include"
+IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
+
+IncludeDir["luna"] = "%{wks.location}/luna/src"
+
 LibraryDir = {}
 LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
 
@@ -44,14 +55,15 @@ project "luna"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "luna/thirdParty/GLFW/include",
-        "luna/thirdParty/glm",
-        "luna/thirdParty/VMA/include",
-        "luna/thirdParty/spdlog/include",
-        "luna/thirdParty/stb",
-        "luna/thirdParty/Vkbootstrap/src",
-        "luna/thirdParty/imGui/",
-        "luna/src"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.spd}",
+        "%{IncludeDir.vma}",
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.vkb}",
+        "%{IncludeDir.imgui}",
+        "%{IncludeDir.luna}"
     }
 
     buildoptions
@@ -65,7 +77,8 @@ project "luna"
     }
     postbuildcommands
     {
-        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox")
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo")
     }
     filter "system:windows"
     
@@ -88,6 +101,7 @@ project "luna"
             "GLFW",
             "VkBootstrap",
             "imGui",
+            "stb",
             "vulkan-1"
         }
         filter "configurations:debug"
@@ -97,6 +111,12 @@ project "luna"
         filter "configurations:release"
 
         optimize "On"
+
+        filter "configurations:distribution"
+       
+        symbols "Off"
+        optimize "On"
+
 
 
  
@@ -115,14 +135,16 @@ project "sandbox"
     includedirs
     {
         "$(VULKAN_SDK)/include",
-        "luna/thirdParty/GLFW/include",
-        "luna/thirdParty/glm",
-        "luna/thirdParty/VMA/include",
-        "luna/thirdParty/spdlog/include",
-        "luna/thirdParty/stb",
-        "luna/thirdParty/Vkbootstrap/src",
-        "luna/thirdParty/imGui/",
-        "luna/src"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.spd}",
+        "%{IncludeDir.vma}",
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.vkb}",
+        "%{IncludeDir.imgui}",
+        "%{IncludeDir.luna}",
+        "%{prj.name}/src"
     }
    
     links
@@ -151,4 +173,65 @@ project "sandbox"
        
         optimize "On"
 
- 
+        filter "configurations:distribution"
+       
+        symbols "Off"
+        optimize "On"
+
+project "apollo"
+    location "apollo"
+    kind "ConsoleApp"
+    language "c++"
+
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    files
+    {
+        "%{prj.name}/src/**.h",
+        "%{prj.name}/src/**.cpp"
+    }
+    includedirs
+    {
+        "$(VULKAN_SDK)/include",
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.spd}",
+        "%{IncludeDir.vma}",
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.vkb}",
+        "%{IncludeDir.imgui}",
+        "%{IncludeDir.luna}",
+        "%{prj.name}/src"
+    }
+
+    links
+    {
+  
+        "luna"
+    }
+    buildoptions 
+    {
+        "/MD",
+    }
+    filter "system:windows"
+        cppdialect "c++17"
+        staticruntime "on"
+        systemversion "latest"
+        defines
+        {
+            "_WINDLL"
+        }
+        
+        filter "configurations:debug"
+    
+        symbols "On"
+
+        filter "configurations:release"
+    
+        optimize "On"
+
+        filter "configurations:distribution"
+    
+        symbols "Off"
+        optimize "On"

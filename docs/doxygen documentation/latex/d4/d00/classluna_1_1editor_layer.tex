@@ -1,0 +1,140 @@
+\hypertarget{classluna_1_1editor_layer}{}\doxysubsection{luna\+::editor\+Layer Class Reference}
+\label{classluna_1_1editor_layer}\index{luna::editorLayer@{luna::editorLayer}}
+
+
+{\ttfamily \#include $<$editor\+Layer.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::editor\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{da/d00/classluna_1_1editor_layer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for luna\+::editor\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{dc/d00/classluna_1_1editor_layer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1editor_layer_ab64aed49522e9335537c1ca3fe3dd5f9}{editor\+Layer}} (const std\+::string \&name=\char`\"{}editor layer\char`\"{})
+\item 
+virtual \mbox{\hyperlink{classluna_1_1editor_layer_a56780ddba4d33ebc1238bef4347d6b08}{$\sim$editor\+Layer}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1editor_layer_aabcf9a39709f86bfe6541ec87fb137e2}{on\+Attach}} () override
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1editor_layer_a6c4521a9f20d7f571f970dd6a7e03f44}{on\+Detach}} () override
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1editor_layer_aed1677cc8df9b4a2be7fd3d76181dc9c}{on\+Update}} (\mbox{\hyperlink{classluna_1_1utils_1_1timestep}{utils\+::timestep}} ts) override
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1editor_layer_adce957eae7cef69ab116dd68ffd8a505}{on\+Im\+Gui\+Render}} () override
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1editor_layer_aa7f57c8b9fcfa9b9bd8181ac60fa39f9}{on\+Event}} (\mbox{\hyperlink{classluna_1_1_event}{Event}} \&event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1scene}{scene}} $>$ \mbox{\hyperlink{classluna_1_1editor_layer_ad552c29558e66d8f86d8539ca4cb8774}{active\+Scene}}
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel}{scene\+Hierarchy\+Panel}} $>$ \mbox{\hyperlink{classluna_1_1editor_layer_aa07d2eb506317f2b369c0f4d7322dd85}{scene\+Panel}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1editor_layer_ab64aed49522e9335537c1ca3fe3dd5f9}\label{classluna_1_1editor_layer_ab64aed49522e9335537c1ca3fe3dd5f9}} 
+\index{luna::editorLayer@{luna::editorLayer}!editorLayer@{editorLayer}}
+\index{editorLayer@{editorLayer}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{editorLayer()}{editorLayer()}}
+{\footnotesize\ttfamily luna\+::editor\+Layer\+::editor\+Layer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name = {\ttfamily \char`\"{}editor~layer\char`\"{}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1editor_layer_a56780ddba4d33ebc1238bef4347d6b08}\label{classluna_1_1editor_layer_a56780ddba4d33ebc1238bef4347d6b08}} 
+\index{luna::editorLayer@{luna::editorLayer}!````~editorLayer@{$\sim$editorLayer}}
+\index{````~editorLayer@{$\sim$editorLayer}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{$\sim$editorLayer()}{~editorLayer()}}
+{\footnotesize\ttfamily virtual luna\+::editor\+Layer\+::$\sim$editor\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1editor_layer_aabcf9a39709f86bfe6541ec87fb137e2}\label{classluna_1_1editor_layer_aabcf9a39709f86bfe6541ec87fb137e2}} 
+\index{luna::editorLayer@{luna::editorLayer}!onAttach@{onAttach}}
+\index{onAttach@{onAttach}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{onAttach()}{onAttach()}}
+{\footnotesize\ttfamily void luna\+::editor\+Layer\+::on\+Attach (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classluna_1_1utils_1_1layer_a15c7e6619bff66b6b3b94cd4fa46d4b0}{luna\+::utils\+::layer}}.
+
+\mbox{\Hypertarget{classluna_1_1editor_layer_a6c4521a9f20d7f571f970dd6a7e03f44}\label{classluna_1_1editor_layer_a6c4521a9f20d7f571f970dd6a7e03f44}} 
+\index{luna::editorLayer@{luna::editorLayer}!onDetach@{onDetach}}
+\index{onDetach@{onDetach}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{onDetach()}{onDetach()}}
+{\footnotesize\ttfamily void luna\+::editor\+Layer\+::on\+Detach (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classluna_1_1utils_1_1layer_a7c6b8d0c3cd1d94e676474656ab28755}{luna\+::utils\+::layer}}.
+
+\mbox{\Hypertarget{classluna_1_1editor_layer_aa7f57c8b9fcfa9b9bd8181ac60fa39f9}\label{classluna_1_1editor_layer_aa7f57c8b9fcfa9b9bd8181ac60fa39f9}} 
+\index{luna::editorLayer@{luna::editorLayer}!onEvent@{onEvent}}
+\index{onEvent@{onEvent}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{onEvent()}{onEvent()}}
+{\footnotesize\ttfamily void luna\+::editor\+Layer\+::on\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_event}{Event}} \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classluna_1_1utils_1_1layer_af1d1a5b03bcbab2eefb9db317cd8c97a}{luna\+::utils\+::layer}}.
+
+\mbox{\Hypertarget{classluna_1_1editor_layer_adce957eae7cef69ab116dd68ffd8a505}\label{classluna_1_1editor_layer_adce957eae7cef69ab116dd68ffd8a505}} 
+\index{luna::editorLayer@{luna::editorLayer}!onImGuiRender@{onImGuiRender}}
+\index{onImGuiRender@{onImGuiRender}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{onImGuiRender()}{onImGuiRender()}}
+{\footnotesize\ttfamily void luna\+::editor\+Layer\+::on\+Im\+Gui\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classluna_1_1utils_1_1layer_a079192029acb667c034272df354cf9e6}{luna\+::utils\+::layer}}.
+
+\mbox{\Hypertarget{classluna_1_1editor_layer_aed1677cc8df9b4a2be7fd3d76181dc9c}\label{classluna_1_1editor_layer_aed1677cc8df9b4a2be7fd3d76181dc9c}} 
+\index{luna::editorLayer@{luna::editorLayer}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void luna\+::editor\+Layer\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1timestep}{utils\+::timestep}}}]{ts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classluna_1_1utils_1_1layer_aee28667acc0e8887a86781ef52bcfab6}{luna\+::utils\+::layer}}.
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1editor_layer_ad552c29558e66d8f86d8539ca4cb8774}\label{classluna_1_1editor_layer_ad552c29558e66d8f86d8539ca4cb8774}} 
+\index{luna::editorLayer@{luna::editorLayer}!activeScene@{activeScene}}
+\index{activeScene@{activeScene}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{activeScene}{activeScene}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1scene}{scene}}$>$ luna\+::editor\+Layer\+::active\+Scene\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1editor_layer_aa07d2eb506317f2b369c0f4d7322dd85}\label{classluna_1_1editor_layer_aa07d2eb506317f2b369c0f4d7322dd85}} 
+\index{luna::editorLayer@{luna::editorLayer}!scenePanel@{scenePanel}}
+\index{scenePanel@{scenePanel}!luna::editorLayer@{luna::editorLayer}}
+\doxyparagraph{\texorpdfstring{scenePanel}{scenePanel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1scene_hierarchy_panel}{scene\+Hierarchy\+Panel}}$>$ luna\+::editor\+Layer\+::scene\+Panel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/apollo/src/\mbox{\hyperlink{editor_layer_8h}{editor\+Layer.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/apollo/src/\mbox{\hyperlink{editor_layer_8cpp}{editor\+Layer.\+cpp}}\end{DoxyCompactItemize}

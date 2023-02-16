@@ -1,0 +1,95 @@
+\hypertarget{classluna_1_1renderer_1_1vulkan_sampler}{}\doxysubsection{luna\+::renderer\+::vulkan\+Sampler Class Reference}
+\label{classluna_1_1renderer_1_1vulkan_sampler}\index{luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}}
+
+
+vulkan sampler wrapper class to be superceded by multiplatform implementation later.  
+
+
+
+
+{\ttfamily \#include $<$vulkan\+Sampler.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_sampler_a44fdcf2a63595503b6d13344a19beffa}{vulkan\+Sampler}} (\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1device}{device}}, const Vk\+Filter \&filters, const Vk\+Sampler\+Address\+Mode \&sampler\+Address\+Mode=VK\+\_\+\+SAMPLER\+\_\+\+ADDRESS\+\_\+\+MODE\+\_\+\+REPEAT)
+\begin{DoxyCompactList}\small\item\em sampler constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_sampler_a35ad92954e6d0a552b8d4ba079b1d430}{$\sim$vulkan\+Sampler}} ()
+\item 
+Vk\+Sampler \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_sampler_aa93469d80e07158af36103519baa5cf0}{get\+Handle}} ()
+\begin{DoxyCompactList}\small\item\em returns the vulkan native sampler handle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vk\+Sampler \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_sampler_abcbe7cbb76fbcbae0ee09d0859299415}{sampler}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_sampler_a19692fcd873461a00e8e91ad13833723}{vulkan\+Device}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+vulkan sampler wrapper class to be superceded by multiplatform implementation later. 
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vulkan_sampler_a44fdcf2a63595503b6d13344a19beffa}\label{classluna_1_1renderer_1_1vulkan_sampler_a44fdcf2a63595503b6d13344a19beffa}} 
+\index{luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}!vulkanSampler@{vulkanSampler}}
+\index{vulkanSampler@{vulkanSampler}!luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}}
+\doxyparagraph{\texorpdfstring{vulkanSampler()}{vulkanSampler()}}
+{\footnotesize\ttfamily luna\+::renderer\+::vulkan\+Sampler\+::vulkan\+Sampler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}} $>$}]{device,  }\item[{const Vk\+Filter \&}]{filters,  }\item[{const Vk\+Sampler\+Address\+Mode \&}]{sampler\+Address\+Mode = {\ttfamily VK\+\_\+SAMPLER\+\_\+ADDRESS\+\_\+MODE\+\_\+REPEAT} }\end{DoxyParamCaption})}
+
+
+
+sampler constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & reference \\
+\hline
+{\em filters} & \\
+\hline
+{\em sampler\+Address\+Mode} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vulkan_sampler_a35ad92954e6d0a552b8d4ba079b1d430}\label{classluna_1_1renderer_1_1vulkan_sampler_a35ad92954e6d0a552b8d4ba079b1d430}} 
+\index{luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}!````~vulkanSampler@{$\sim$vulkanSampler}}
+\index{````~vulkanSampler@{$\sim$vulkanSampler}!luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}}
+\doxyparagraph{\texorpdfstring{$\sim$vulkanSampler()}{~vulkanSampler()}}
+{\footnotesize\ttfamily luna\+::renderer\+::vulkan\+Sampler\+::$\sim$vulkan\+Sampler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vulkan_sampler_aa93469d80e07158af36103519baa5cf0}\label{classluna_1_1renderer_1_1vulkan_sampler_aa93469d80e07158af36103519baa5cf0}} 
+\index{luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}!getHandle@{getHandle}}
+\index{getHandle@{getHandle}!luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}}
+\doxyparagraph{\texorpdfstring{getHandle()}{getHandle()}}
+{\footnotesize\ttfamily Vk\+Sampler luna\+::renderer\+::vulkan\+Sampler\+::get\+Handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+returns the vulkan native sampler handle. 
+
+\begin{DoxyReturn}{Returns}
+Vk\+Sampler handle 
+\end{DoxyReturn}
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vulkan_sampler_abcbe7cbb76fbcbae0ee09d0859299415}\label{classluna_1_1renderer_1_1vulkan_sampler_abcbe7cbb76fbcbae0ee09d0859299415}} 
+\index{luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}!sampler@{sampler}}
+\index{sampler@{sampler}!luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}}
+\doxyparagraph{\texorpdfstring{sampler}{sampler}}
+{\footnotesize\ttfamily Vk\+Sampler luna\+::renderer\+::vulkan\+Sampler\+::sampler = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1vulkan_sampler_a19692fcd873461a00e8e91ad13833723}\label{classluna_1_1renderer_1_1vulkan_sampler_a19692fcd873461a00e8e91ad13833723}} 
+\index{luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}!vulkanDevice@{vulkanDevice}}
+\index{vulkanDevice@{vulkanDevice}!luna::renderer::vulkanSampler@{luna::renderer::vulkanSampler}}
+\doxyparagraph{\texorpdfstring{vulkanDevice}{vulkanDevice}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}}$>$ luna\+::renderer\+::vulkan\+Sampler\+::vulkan\+Device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_sampler_8h}{vulkan\+Sampler.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_sampler_8cpp}{vulkan\+Sampler.\+cpp}}\end{DoxyCompactItemize}

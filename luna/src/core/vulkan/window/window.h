@@ -5,7 +5,7 @@
 #include <lnpch.h>
 #include <core/core.h>
 #include <core/events/event.h>
-
+#include <imgui.h>
 namespace luna
 {
 	namespace vulkan
@@ -32,11 +32,11 @@ namespace luna
 		
 		/**
 		*
-		*	@brief this is the window class en creates an os window
+		*	@brief this is the window class and creates an os window
 		*	@class std::shared_ptr<window>(window::create(windowSpec windowSpec));
 		*	@warning use as an std::shared_ptr /ref
 		*/
-		class window
+		class LN_API window
 		{
 			
 		public:

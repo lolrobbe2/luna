@@ -36,15 +36,15 @@ namespace luna
 			pool_info.pPoolSizes = pool_sizes;
 
 			
-			LN_CORE_INFO("imgui descriptor set creation result = {0}" ,vkCreateDescriptorPool(vDevice, &pool_info, nullptr, &imguiPool));
+			LN_CORE_INFO("imgui descriptor pool creation result = {0}" ,vkCreateDescriptorPool(vDevice, &pool_info, nullptr, &imguiPool));
 			ImGui::CreateContext();
 			ImGuiIO& io = ImGui::GetIO();
 			(void)io;
 			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 			io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 			io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-			io.IniFilename = NULL;
-			LN_CORE_INFO("imgui init for GLFW-vulkan = {0}",ImGui_ImplGlfw_InitForVulkan((GLFWwindow*)device->window->getWindow(), 0));
+			io.IniFilename = "guiConfig.ini";
+			LN_CORE_INFO("imgui init for GLFW-vulkan = {0}",ImGui_ImplGlfw_InitForVulkan((GLFWwindow*)device->window->getWindow(), false));
 			ImGui_ImplVulkan_InitInfo init_info = {};
 			init_info.Instance = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->getDeviceHandles().instance;
 			init_info.PhysicalDevice = vDevice.physical_device;

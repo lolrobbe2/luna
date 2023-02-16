@@ -12,8 +12,12 @@ var namespaceluna_1_1renderer =
     [ "renderer2DData", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data" ],
     [ "shader", "d9/d00/classluna_1_1renderer_1_1shader.html", "d9/d00/classluna_1_1renderer_1_1shader" ],
     [ "shaderResource", "d5/d00/structluna_1_1renderer_1_1shader_resource.html", "d5/d00/structluna_1_1renderer_1_1shader_resource" ],
+    [ "texture", "dd/d00/classluna_1_1renderer_1_1texture.html", "dd/d00/classluna_1_1renderer_1_1texture" ],
+    [ "texture2D", "d4/d00/classluna_1_1renderer_1_1texture2_d.html", "d4/d00/classluna_1_1renderer_1_1texture2_d" ],
+    [ "textureAtlas", "db/d00/classluna_1_1renderer_1_1texture_atlas.html", "db/d00/classluna_1_1renderer_1_1texture_atlas" ],
     [ "vertexArray", "d5/d00/classluna_1_1renderer_1_1vertex_array.html", "d5/d00/classluna_1_1renderer_1_1vertex_array" ],
     [ "vertexBuffer", "d3/d00/classluna_1_1renderer_1_1vertex_buffer.html", "d3/d00/classluna_1_1renderer_1_1vertex_buffer" ],
+    [ "vulkanSampler", "d3/d00/classluna_1_1renderer_1_1vulkan_sampler.html", "d3/d00/classluna_1_1renderer_1_1vulkan_sampler" ],
     [ "shaderStage", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faae", [
       [ "shaderStageVertex", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faaea58091179fd5b1c3dae2e2249134a0bfb", null ],
       [ "shaderStageTessellationControl", "df/d00/namespaceluna_1_1renderer.html#acfec401f46f7e9f983c807c61a32faaeaf5742c23e83b5f29cc72caae6675015a", null ],
@@ -34,7 +38,7 @@ var namespaceluna_1_1renderer =
       [ "accelerationStructures", "df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123", null ],
       [ "pushConstantBuffers", "df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855", null ],
       [ "separateImages", "df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8", null ],
-      [ "separateSsamplers", "df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e", null ],
+      [ "separateSamplers", "df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a0b5751515e882fb189dd2991f9ecce81", null ],
       [ "builtinInputs", "df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29", null ],
       [ "builtinOutputs", "df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1", null ]
     ] ],

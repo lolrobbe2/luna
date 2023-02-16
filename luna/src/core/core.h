@@ -16,8 +16,7 @@
 
 #define MAJOR 0
 #define MINOR 0 
-#define PATCH 2 
-
+#define PATCH 4
 namespace luna
 {
 	template<typename T>

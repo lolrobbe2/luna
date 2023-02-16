@@ -4,8 +4,11 @@
 {\ttfamily \#include $<$core/platform/platform.\+h$>$}\newline
 {\ttfamily \#include $<$core/vulkan/window/window.\+h$>$}\newline
 {\ttfamily \#include $<$core/events/event.\+h$>$}\newline
+{\ttfamily \#include $<$core/events/application\+Event.\+h$>$}\newline
 {\ttfamily \#include $<$core/rendering/renderer2\+D.\+h$>$}\newline
 {\ttfamily \#include $<$core/utils/object\+Storage.\+h$>$}\newline
+{\ttfamily \#include $<$core/utils/layer\+Stack.\+h$>$}\newline
+{\ttfamily \#include $<$core/scene/scene.\+h$>$}\newline
 Include dependency graph for application.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -14,7 +17,8 @@ Include dependency graph for application.\+h\+:
 \includegraphics[width=350pt]{d8/d00/application_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -36,5 +40,16 @@ namespace \mbox{\hyperlink{namespaceluna_1_1application}{luna\+::application}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+int \mbox{\hyperlink{application_8h_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\item 
 application $\ast$ \mbox{\hyperlink{namespaceluna_1_1application_a7337d658c6d85684f05688a64be61720}{luna\+::application\+::create\+Application}} ()
 \begin{DoxyCompactList}\small\item\em creates the application and returns a pointer to the appliccation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Function Documentation}
+\mbox{\Hypertarget{application_8h_a3c04138a5bfe5d72780bb7e82a18e627}\label{application_8h_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{application.h@{application.h}!main@{main}}
+\index{main@{main}!application.h@{application.h}}
+\doxyparagraph{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+

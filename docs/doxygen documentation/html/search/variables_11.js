@@ -8,5 +8,6 @@ var searchData=
   ['renderfinishedsemaphores_5',['renderFinishedSemaphores',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a1abf0b8097244e5b836f16f428ac0ba8',1,'luna::vulkan::vulkanPipeline']]],
   ['renderpass_6',['renderPass',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a45fa54262a258b645521ba34c6adafeb',1,'luna::vulkan::vulkanPipeline']]],
   ['resourceclass_7',['resourceClass',['../d5/d00/structluna_1_1renderer_1_1shader_resource.html#a874067ad10e7afca9daae124a760edc1',1,'luna::renderer::shaderResource']]],
-  ['running_8',['running',['../de/d00/classluna_1_1application_1_1application.html#aecb5c9232bcd1288571522ca517351e2',1,'luna::application::application']]]
+  ['rotation_8',['rotation',['../d8/d00/structluna_1_1transform_component.html#a1d2174c977a373e9f107b461e966420e',1,'luna::transformComponent']]],
+  ['running_9',['running',['../de/d00/classluna_1_1application_1_1application.html#aecb5c9232bcd1288571522ca517351e2',1,'luna::application::application']]]
 ];

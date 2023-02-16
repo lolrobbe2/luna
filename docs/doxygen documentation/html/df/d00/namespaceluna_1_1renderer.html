@@ -126,9 +126,21 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/structluna_1_1renderer_1_1shader_resource.html">shaderResource</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html">texture</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">base texture class.  <a href="../../dd/d00/classluna_1_1renderer_1_1texture.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d00/classluna_1_1renderer_1_1texture2_d.html">texture2D</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d00/classluna_1_1renderer_1_1texture2_d.html" title="texture2D api.">texture2D</a> api.  <a href="../../d4/d00/classluna_1_1renderer_1_1texture2_d.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classluna_1_1renderer_1_1texture_atlas.html">textureAtlas</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d00/classluna_1_1renderer_1_1texture_atlas.html" title="textureAtlas api.">textureAtlas</a> api.  <a href="../../db/d00/classluna_1_1renderer_1_1texture_atlas.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1renderer_1_1vertex_array.html">vertexArray</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html">vertexBuffer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classluna_1_1renderer_1_1vulkan_sampler.html">vulkanSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">vulkan sampler wrapper class to be superceded by multiplatform implementation later.  <a href="../../d3/d00/classluna_1_1renderer_1_1vulkan_sampler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -147,7 +159,7 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123">accelerationStructures</a>
 , <a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855">pushConstantBuffers</a>
 , <a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8">separateImages</a>
-, <a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e">separateSsamplers</a>
+, <a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a0b5751515e882fb189dd2991f9ecce81">separateSamplers</a>
 , <br />
 &#160;&#160;<a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29">builtinInputs</a>
 , <a class="el" href="../../df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1">builtinOutputs</a>
@@ -262,7 +274,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123" name="a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123"></a>accelerationStructures&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855" name="a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855"></a>pushConstantBuffers&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8" name="a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8"></a>separateImages&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e" name="a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e"></a>separateSsamplers&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a58e870e411c4fb89575c82593f9873b1a0b5751515e882fb189dd2991f9ecce81" name="a58e870e411c4fb89575c82593f9873b1a0b5751515e882fb189dd2991f9ecce81"></a>separateSamplers&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29" name="a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29"></a>builtinInputs&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1" name="a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1"></a>builtinOutputs&#160;</td><td class="fielddoc"></td></tr>
 </table>

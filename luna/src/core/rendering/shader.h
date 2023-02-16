@@ -20,7 +20,7 @@ namespace luna
 		// For Vulkan GLSL and HLSL source,
 		// these correspond to separate texture2D and samplers respectively.
 			separateImages,
-			separateSsamplers,
+			separateSamplers,
 			builtinInputs,
 			builtinOutputs,
 		};
@@ -62,6 +62,7 @@ namespace luna
 			mat3,
 			mat4
 		};
+
 		enum shaderStage
 		{
 			shaderStageVertex,
@@ -80,10 +81,12 @@ namespace luna
 			uint32_t binding = 0;
 			uint32_t stride = 0;
 			uint32_t offset = 0;
+			uint32_t amount = 0;
 			std::string name;
 			std::vector<shaderResource> members{};
 		};
-		 
+		
+
 		class shader
 		{
 		public:

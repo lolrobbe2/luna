@@ -1,9 +1,21 @@
 var searchData=
 [
-  ['test_0',['test',['../d9/d00/classluna_1_1renderer_1_1pipeline.html#ab4ed62f2705e4254cf13896862c81863',1,'luna::renderer::pipeline']]],
-  ['threadid_1',['ThreadID',['../d8/d00/structluna_1_1profile_result.html#ab52ea4a51aae1c38c1374e6019b85180',1,'luna::profileResult']]],
-  ['title_2',['title',['../d8/d00/structluna_1_1vulkan_1_1windows_window_1_1window_data.html#a30703d411d4db92456d7475a522d0fb8',1,'luna::vulkan::windowsWindow::windowData::title()'],['../de/d00/structluna_1_1vulkan_1_1window_spec.html#a36b2c68262f0ded340dec6c8aa17f833',1,'luna::vulkan::windowSpec::title()']]],
-  ['transferfamily_3',['transferFamily',['../dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html#af4892767dea97de4231ba82e1c17f930',1,'luna::vulkan::queueFamilyIndices']]],
-  ['transferqueue_4',['transferQueue',['../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acd9547e2a1cdd6b80d5d9fe156383138',1,'luna::utils::vulkanAllocator']]],
-  ['type_5',['type',['../d8/d00/classluna_1_1renderer_1_1buffer_element.html#a86ca6fc9dc8f6c9f27c1ff434a14343c',1,'luna::renderer::bufferElement::type()'],['../d5/d00/structluna_1_1renderer_1_1shader_resource.html#a4d3d3caddefb2e6e0366a0ef2a886c61',1,'luna::renderer::shaderResource::type()']]]
+  ['tag_0',['tag',['../dd/d00/structluna_1_1tag_component.html#a4eb8ee8aeefbe380ad47773549e13235',1,'luna::tagComponent']]],
+  ['test_1',['test',['../d9/d00/classluna_1_1renderer_1_1pipeline.html#ab4ed62f2705e4254cf13896862c81863',1,'luna::renderer::pipeline']]],
+  ['texture_2',['texture',['../d9/d00/structluna_1_1sprite_renderer_component.html#a54e2ced277e313a81095de9489e7bdd1',1,'luna::spriteRendererComponent']]],
+  ['texturecoords_3',['textureCoords',['../dc/d00/structluna_1_1renderer_1_1quad_vertex.html#a39c160410c8dd0148f1d8aa3ea462b26',1,'luna::renderer::quadVertex']]],
+  ['textureindex_4',['textureIndex',['../dc/d00/structluna_1_1renderer_1_1quad_vertex.html#accec6586301a15f68ad4346db6f7ab98',1,'luna::renderer::quadVertex']]],
+  ['textures_5',['textures',['../d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a1795bef5123f7ae3d9a7120329bfbace',1,'luna::renderer::renderer2DData::textures()'],['../d3/d00/structluna_1_1vulkan_1_1vulkan_pipeline_1_1draw_command.html#adc56bf14bf4fbc69d717db07015a7f42',1,'luna::vulkan::vulkanPipeline::drawCommand::textures()']]],
+  ['threadid_6',['ThreadID',['../d8/d00/structluna_1_1profile_result.html#ab52ea4a51aae1c38c1374e6019b85180',1,'luna::profileResult']]],
+  ['tilecustomtexcoords_7',['tileCustomTexCoords',['../db/d00/classluna_1_1renderer_1_1texture_atlas.html#aef27555244e4c4eba769322aa97807d0',1,'luna::renderer::textureAtlas::tileCustomTexCoords()'],['../d8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas.html#a7daf5b70f3d2b658b1445efc37739b72',1,'luna::vulkan::vulkanTextureAtlas::tileCustomTexCoords()']]],
+  ['tileheight_8',['tileHeight',['../db/d00/classluna_1_1renderer_1_1texture_atlas.html#a4e7e6d1c9621ec85861e1aab901616d4',1,'luna::renderer::textureAtlas::tileHeight()'],['../d8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas.html#aa8c5a51bc25d9eb3a871d95904cf284d',1,'luna::vulkan::vulkanTextureAtlas::tileHeight()']]],
+  ['tilewidth_9',['tileWidth',['../db/d00/classluna_1_1renderer_1_1texture_atlas.html#af23a00ed0dafcbba220c7137485c4a4e',1,'luna::renderer::textureAtlas']]],
+  ['tilewidths_10',['tileWidths',['../d8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas.html#a6ca2ed283500af63e11702fd30dbcc44',1,'luna::vulkan::vulkanTextureAtlas']]],
+  ['tilingfactor_11',['TilingFactor',['../d9/d00/structluna_1_1sprite_renderer_component.html#a2b3771af3a5b139057d9790017626f57',1,'luna::spriteRendererComponent']]],
+  ['title_12',['title',['../d8/d00/structluna_1_1vulkan_1_1windows_window_1_1window_data.html#a30703d411d4db92456d7475a522d0fb8',1,'luna::vulkan::windowsWindow::windowData::title()'],['../de/d00/structluna_1_1vulkan_1_1window_spec.html#a36b2c68262f0ded340dec6c8aa17f833',1,'luna::vulkan::windowSpec::title()']]],
+  ['transfercommands_13',['transferCommands',['../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#ac64b73d33298566b5e6ac69b419c251e',1,'luna::utils::vulkanAllocator']]],
+  ['transferfamily_14',['transferFamily',['../dd/d00/structluna_1_1vulkan_1_1queue_family_indices.html#af4892767dea97de4231ba82e1c17f930',1,'luna::vulkan::queueFamilyIndices']]],
+  ['transferqueue_15',['transferQueue',['../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acd9547e2a1cdd6b80d5d9fe156383138',1,'luna::utils::vulkanAllocator']]],
+  ['translation_16',['translation',['../d8/d00/structluna_1_1transform_component.html#a88432c91e4c16963f8e4f817afd31bfe',1,'luna::transformComponent']]],
+  ['type_17',['type',['../d8/d00/classluna_1_1renderer_1_1buffer_element.html#a86ca6fc9dc8f6c9f27c1ff434a14343c',1,'luna::renderer::bufferElement::type()'],['../d5/d00/structluna_1_1renderer_1_1shader_resource.html#a4d3d3caddefb2e6e0366a0ef2a886c61',1,'luna::renderer::shaderResource::type()']]]
 ];

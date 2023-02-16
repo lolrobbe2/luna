@@ -10,6 +10,12 @@ var annotated_dup =
       [ "instrumentorUtils", "d4/d00/namespaceluna_1_1instrumentor_utils.html", [
         [ "ChangeResult", "d2/d00/structluna_1_1instrumentor_utils_1_1_change_result.html", "d2/d00/structluna_1_1instrumentor_utils_1_1_change_result" ]
       ] ],
+      [ "nodes", "d8/d00/namespaceluna_1_1nodes.html", [
+        [ "spriteNode", "d0/d00/classluna_1_1nodes_1_1sprite_node.html", "d0/d00/classluna_1_1nodes_1_1sprite_node" ]
+      ] ],
+      [ "platform", "d0/d00/namespaceluna_1_1platform.html", [
+        [ "os", "db/d00/classluna_1_1platform_1_1os.html", "db/d00/classluna_1_1platform_1_1os" ]
+      ] ],
       [ "renderer", "df/d00/namespaceluna_1_1renderer.html", [
         [ "bufferElement", "d8/d00/classluna_1_1renderer_1_1buffer_element.html", "d8/d00/classluna_1_1renderer_1_1buffer_element" ],
         [ "bufferLayout", "d6/d00/classluna_1_1renderer_1_1buffer_layout.html", "d6/d00/classluna_1_1renderer_1_1buffer_layout" ],
@@ -23,16 +29,28 @@ var annotated_dup =
         [ "renderer2DData", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data" ],
         [ "shader", "d9/d00/classluna_1_1renderer_1_1shader.html", "d9/d00/classluna_1_1renderer_1_1shader" ],
         [ "shaderResource", "d5/d00/structluna_1_1renderer_1_1shader_resource.html", "d5/d00/structluna_1_1renderer_1_1shader_resource" ],
+        [ "texture", "dd/d00/classluna_1_1renderer_1_1texture.html", "dd/d00/classluna_1_1renderer_1_1texture" ],
+        [ "texture2D", "d4/d00/classluna_1_1renderer_1_1texture2_d.html", "d4/d00/classluna_1_1renderer_1_1texture2_d" ],
+        [ "textureAtlas", "db/d00/classluna_1_1renderer_1_1texture_atlas.html", "db/d00/classluna_1_1renderer_1_1texture_atlas" ],
         [ "vertexArray", "d5/d00/classluna_1_1renderer_1_1vertex_array.html", "d5/d00/classluna_1_1renderer_1_1vertex_array" ],
-        [ "vertexBuffer", "d3/d00/classluna_1_1renderer_1_1vertex_buffer.html", "d3/d00/classluna_1_1renderer_1_1vertex_buffer" ]
+        [ "vertexBuffer", "d3/d00/classluna_1_1renderer_1_1vertex_buffer.html", "d3/d00/classluna_1_1renderer_1_1vertex_buffer" ],
+        [ "vulkanSampler", "d3/d00/classluna_1_1renderer_1_1vulkan_sampler.html", "d3/d00/classluna_1_1renderer_1_1vulkan_sampler" ]
+      ] ],
+      [ "scene", "d3/d00/namespaceluna_1_1scene.html", [
+        [ "node", "d8/d00/classluna_1_1scene_1_1node.html", "d8/d00/classluna_1_1scene_1_1node" ]
       ] ],
       [ "utils", "dc/d00/namespaceluna_1_1utils.html", [
         [ "compileSpec", "db/d00/structluna_1_1utils_1_1compile_spec.html", "db/d00/structluna_1_1utils_1_1compile_spec" ],
+        [ "layer", "d5/d00/classluna_1_1utils_1_1layer.html", "d5/d00/classluna_1_1utils_1_1layer" ],
+        [ "layerStack", "da/d00/classluna_1_1utils_1_1layer_stack.html", "da/d00/classluna_1_1utils_1_1layer_stack" ],
         [ "objectStorage", "d5/d00/classluna_1_1utils_1_1object_storage.html", "d5/d00/classluna_1_1utils_1_1object_storage" ],
         [ "shaderCompiler", "d0/d00/classluna_1_1utils_1_1shader_compiler.html", "d0/d00/classluna_1_1utils_1_1shader_compiler" ],
         [ "shaderLibrary", "d8/d00/classluna_1_1utils_1_1shader_library.html", "d8/d00/classluna_1_1utils_1_1shader_library" ],
+        [ "timestep", "d0/d00/classluna_1_1utils_1_1timestep.html", "d0/d00/classluna_1_1utils_1_1timestep" ],
         [ "vectorCache", "d0/d00/classluna_1_1utils_1_1vector_cache.html", "d0/d00/classluna_1_1utils_1_1vector_cache" ],
         [ "vulkanAllocator", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html", "de/d00/classluna_1_1utils_1_1vulkan_allocator" ],
+        [ "vulkanDescriptorPool", "d2/d00/classluna_1_1utils_1_1vulkan_descriptor_pool.html", "d2/d00/classluna_1_1utils_1_1vulkan_descriptor_pool" ],
+        [ "vulkanDescriptorSet", "df/d00/classluna_1_1utils_1_1vulkan_descriptor_set.html", "df/d00/classluna_1_1utils_1_1vulkan_descriptor_set" ],
         [ "vulkanObjectFactory", "dc/d00/classluna_1_1utils_1_1vulkan_object_factory.html", "dc/d00/classluna_1_1utils_1_1vulkan_object_factory" ]
       ] ],
       [ "vulkan", "df/d00/namespaceluna_1_1vulkan.html", [
@@ -47,6 +65,9 @@ var annotated_dup =
         [ "vulkanPipeline", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline" ],
         [ "vulkanShader", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader" ],
         [ "vulkanSwapchain", "d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html", "d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain" ],
+        [ "vulkanTexture", "d4/d00/classluna_1_1vulkan_1_1vulkan_texture.html", "d4/d00/classluna_1_1vulkan_1_1vulkan_texture" ],
+        [ "vulkanTexture2D", "d0/d00/classluna_1_1vulkan_1_1vulkan_texture2_d.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_texture2_d" ],
+        [ "vulkanTextureAtlas", "d8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas.html", "d8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas" ],
         [ "vulkanVertexArray", "dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array.html", "dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array" ],
         [ "vulkanVertexBuffer", "de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html", "de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer" ],
         [ "window", "d7/d00/classluna_1_1vulkan_1_1window.html", "d7/d00/classluna_1_1vulkan_1_1window" ],
@@ -56,8 +77,11 @@ var annotated_dup =
       [ "appRenderEvent", "d1/d00/classluna_1_1app_render_event.html", "d1/d00/classluna_1_1app_render_event" ],
       [ "appTickEvent", "db/d00/classluna_1_1app_tick_event.html", "db/d00/classluna_1_1app_tick_event" ],
       [ "appUpdateEvent", "d6/d00/classluna_1_1app_update_event.html", "d6/d00/classluna_1_1app_update_event" ],
+      [ "childComponent", "d5/d00/structluna_1_1child_component.html", "d5/d00/structluna_1_1child_component" ],
+      [ "editorLayer", "d4/d00/classluna_1_1editor_layer.html", "d4/d00/classluna_1_1editor_layer" ],
       [ "Event", "d0/d00/classluna_1_1_event.html", "d0/d00/classluna_1_1_event" ],
       [ "eventDispatcher", "d1/d00/classluna_1_1event_dispatcher.html", "d1/d00/classluna_1_1event_dispatcher" ],
+      [ "idComponent", "d9/d00/structluna_1_1id_component.html", "d9/d00/structluna_1_1id_component" ],
       [ "instrumentationSession", "d4/d00/structluna_1_1instrumentation_session.html", "d4/d00/structluna_1_1instrumentation_session" ],
       [ "instrumentationTimer", "dd/d00/classluna_1_1instrumentation_timer.html", "dd/d00/classluna_1_1instrumentation_timer" ],
       [ "instrumentor", "dd/d00/classluna_1_1instrumentor.html", "dd/d00/classluna_1_1instrumentor" ],
@@ -71,11 +95,22 @@ var annotated_dup =
       [ "mouseButtonReleasedEvent", "db/d00/classluna_1_1mouse_button_released_event.html", "db/d00/classluna_1_1mouse_button_released_event" ],
       [ "mouseMovedEvent", "d4/d00/classluna_1_1mouse_moved_event.html", "d4/d00/classluna_1_1mouse_moved_event" ],
       [ "mouseScrolledEvent", "d6/d00/classluna_1_1mouse_scrolled_event.html", "d6/d00/classluna_1_1mouse_scrolled_event" ],
+      [ "Node", "dc/d00/classluna_1_1_node.html", "dc/d00/classluna_1_1_node" ],
+      [ "parentComponent", "df/d00/structluna_1_1parent_component.html", "df/d00/structluna_1_1parent_component" ],
       [ "profileResult", "d8/d00/structluna_1_1profile_result.html", "d8/d00/structluna_1_1profile_result" ],
+      [ "scene", "da/d00/classluna_1_1scene.html", "da/d00/classluna_1_1scene" ],
+      [ "sceneHierarchyPanel", "d8/d00/classluna_1_1scene_hierarchy_panel.html", "d8/d00/classluna_1_1scene_hierarchy_panel" ],
+      [ "spriteRendererComponent", "d9/d00/structluna_1_1sprite_renderer_component.html", "d9/d00/structluna_1_1sprite_renderer_component" ],
+      [ "tagComponent", "dd/d00/structluna_1_1tag_component.html", "dd/d00/structluna_1_1tag_component" ],
+      [ "Time", "db/d00/classluna_1_1_time.html", "db/d00/classluna_1_1_time" ],
+      [ "transformComponent", "d8/d00/structluna_1_1transform_component.html", "d8/d00/structluna_1_1transform_component" ],
       [ "uuid", "df/d00/classluna_1_1uuid.html", "df/d00/classluna_1_1uuid" ],
       [ "windowCloseEvent", "d1/d00/classluna_1_1window_close_event.html", "d1/d00/classluna_1_1window_close_event" ],
+      [ "windowFocusEvent", "d1/d00/classluna_1_1window_focus_event.html", "d1/d00/classluna_1_1window_focus_event" ],
+      [ "windowLostFocusEvent", "d4/d00/classluna_1_1window_lost_focus_event.html", "d4/d00/classluna_1_1window_lost_focus_event" ],
       [ "windowResizeEvent", "d1/d00/classluna_1_1window_resize_event.html", "d1/d00/classluna_1_1window_resize_event" ]
     ] ],
+    [ "apollo", "d6/d00/classapollo.html", "d6/d00/classapollo" ],
     [ "sandbox", "d9/d00/classsandbox.html", "d9/d00/classsandbox" ],
     [ "shared_ptr< window >", "d5/d00/classstd_1_1shared__ptr_3_01window_01_4.html", null ]
 ];

@@ -19,3 +19,6 @@
 [submodule "luna/thirdParty/imGui"]
 	path = luna/thirdParty/imGui
 	url = https://github.com/ocornut/imgui
+[submodule "luna/thirdparty/stb"]
+	path = luna/thirdparty/stb
+	url = https://github.com/nothings/stb

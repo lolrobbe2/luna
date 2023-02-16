@@ -1,4 +1,5 @@
 Library["Vulkan"] = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"
+group "thirdParty"
 project "GLFW"
 	kind "StaticLib"
 	language "C"
@@ -138,6 +139,7 @@ project "imGui"
 	staticruntime "off"
 	files
 	{
+		"imGui/imConfig.h",
 		"imGui/imgui.h",
 		"imGui/imgui.cpp",
 
@@ -172,3 +174,45 @@ project "imGui"
 		runtime "Release"
 		optimize "on"
 		symbols "off"
+
+project "stb"
+	kind "StaticLib"
+	language "C++"
+	staticruntime "off"
+	files
+	{
+		"stb.c",
+		"stb/stb_include.h",
+		"stb/stb_image.h"
+	}
+	buildoptions 
+	{
+		"/MD",
+	}
+	includedirs
+	{
+		"stb"
+	}
+
+	filter "system:windows"
+		cppdialect "c++17"
+		staticruntime "on"
+		systemversion "latest"
+		defines
+		{
+			"STB_IMAGE_IMPLEMENTATION"
+		}
+
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		runtime "Release"
+		optimize "on"
+		symbols "off"
+group ""

@@ -7,6 +7,7 @@ var classluna_1_1renderer_1_1renderer =
     [ "newFrame", "d5/d00/classluna_1_1renderer_1_1renderer.html#a32fcf021d4fb98074c80ef9bdfd81d18", null ],
     [ "shutdown", "d5/d00/classluna_1_1renderer_1_1renderer.html#ac89801f68cbdc59a324ba80754a7c5eb", null ],
     [ "Submit", "d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921", null ],
+    [ "Submit", "d5/d00/classluna_1_1renderer_1_1renderer.html#a70238c9cb6fd163229ca4454ad8eaadd", null ],
     [ "gui", "d5/d00/classluna_1_1renderer_1_1renderer.html#a5de4c1fd2e59811a027b630a743799f5", null ],
     [ "layout", "d5/d00/classluna_1_1renderer_1_1renderer.html#a1b2c934841a3d81adb002dc071f6969a", null ],
     [ "rendererDevice", "d5/d00/classluna_1_1renderer_1_1renderer.html#a3dfff9eb6b64c433ed911ef45e9173d9", null ],

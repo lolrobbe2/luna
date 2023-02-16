@@ -1,46 +1,49 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.cpp" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.cpp">
-<area shape="rect" id="node1" title=" " coords="1296,5,1463,75"/>
-<area shape="rect" id="node2" href="$d3/d00/vulkan_allocator_8h.html" title=" " coords="1226,130,1346,155"/>
-<area shape="rect" id="node42" href="$da/d00/vulkan_device_8h.html" title=" " coords="1467,123,1593,163"/>
-<area shape="rect" id="node3" title=" " coords="1011,218,1126,243"/>
-<area shape="rect" id="node4" href="$d7/d00/vector_cache_8h.html" title=" " coords="1144,306,1305,331"/>
-<area shape="rect" id="node23" href="$db/d00/device_8h.html" title=" " coords="1395,218,1550,243"/>
-<area shape="rect" id="node41" href="$df/d00/object_storage_8h.html" title=" " coords="1201,218,1371,243"/>
-<area shape="rect" id="node5" href="$d5/d00/core_8h.html" title=" " coords="1181,460,1268,485"/>
-<area shape="rect" id="node22" href="$dd/d00/uuid_8h.html" title=" " coords="1113,387,1238,412"/>
-<area shape="rect" id="node6" title=" " coords="511,533,581,559"/>
-<area shape="rect" id="node7" href="$d7/d00/log_8h.html" title=" " coords="168,614,287,639"/>
-<area shape="rect" id="node12" href="$d6/d00/instrumentor_8h.html" title=" " coords="655,533,829,559"/>
-<area shape="rect" id="node8" title=" " coords="148,695,307,720"/>
-<area shape="rect" id="node9" title=" " coords="331,695,444,720"/>
-<area shape="rect" id="node10" title=" " coords="5,695,124,720"/>
-<area shape="rect" id="node11" href="$de/d00/platform_8h.html" title=" " coords="1149,695,1308,720"/>
-<area shape="rect" id="node13" title=" " coords="311,614,386,639"/>
-<area shape="rect" id="node14" title=" " coords="410,614,471,639"/>
-<area shape="rect" id="node15" title=" " coords="951,614,1016,639"/>
-<area shape="rect" id="node16" title=" " coords="495,614,562,639"/>
-<area shape="rect" id="node17" title=" " coords="1040,614,1095,639"/>
-<area shape="rect" id="node18" title=" " coords="586,614,645,639"/>
-<area shape="rect" id="node19" title=" " coords="669,614,727,639"/>
-<area shape="rect" id="node20" title=" " coords="751,614,821,639"/>
-<area shape="rect" id="node21" title=" " coords="845,614,927,639"/>
-<area shape="rect" id="node24" href="$d3/d00/window_8h.html" title=" " coords="1513,299,1646,339"/>
-<area shape="rect" id="node25" href="$d9/d00/lnpch_8h.html" title=" " coords="1653,533,1717,559"/>
-<area shape="rect" id="node40" href="$dd/d00/event_8h.html" title=" " coords="1513,387,1646,412"/>
-<area shape="rect" id="node26" title=" " coords="1949,614,2010,639"/>
-<area shape="rect" id="node27" title=" " coords="2035,614,2095,639"/>
-<area shape="rect" id="node28" title=" " coords="2119,614,2197,639"/>
-<area shape="rect" id="node29" title=" " coords="2221,614,2268,639"/>
-<area shape="rect" id="node30" title=" " coords="2293,614,2359,639"/>
-<area shape="rect" id="node31" title=" " coords="2383,614,2423,639"/>
-<area shape="rect" id="node32" title=" " coords="2448,614,2513,639"/>
-<area shape="rect" id="node33" title=" " coords="1119,614,1191,639"/>
-<area shape="rect" id="node34" title=" " coords="2537,614,2643,639"/>
-<area shape="rect" id="node35" title=" " coords="1216,614,1372,639"/>
-<area shape="rect" id="node36" title=" " coords="1397,614,1501,639"/>
-<area shape="rect" id="node37" title=" " coords="1525,614,1589,639"/>
-<area shape="rect" id="node38" title=" " coords="1613,607,1757,647"/>
-<area shape="rect" id="node39" title=" " coords="1781,614,1874,639"/>
-<area shape="rect" id="node43" href="$d0/d00/vulkan_swapchain_8h.html" title=" " coords="1625,211,1769,251"/>
-<area shape="rect" id="node44" href="$d1/d00/shader_8h.html" title=" " coords="1329,306,1488,331"/>
+<area shape="rect" id="node1" title=" " coords="1328,5,1495,75"/>
+<area shape="rect" id="node2" href="$d3/d00/vulkan_allocator_8h.html" title=" " coords="1278,130,1398,155"/>
+<area shape="rect" id="node45" href="$da/d00/vulkan_device_8h.html" title=" " coords="1485,123,1612,163"/>
+<area shape="rect" id="node3" title=" " coords="995,218,1110,243"/>
+<area shape="rect" id="node4" href="$d7/d00/vector_cache_8h.html" title=" " coords="923,306,1084,331"/>
+<area shape="rect" id="node23" href="$db/d00/device_8h.html" title=" " coords="1531,218,1686,243"/>
+<area shape="rect" id="node43" href="$df/d00/object_storage_8h.html" title=" " coords="1134,218,1305,243"/>
+<area shape="rect" id="node44" href="$df/d00/vulkan_cmd_pool_8h.html" title=" " coords="1329,211,1456,251"/>
+<area shape="rect" id="node5" href="$d5/d00/core_8h.html" title=" " coords="1000,460,1087,485"/>
+<area shape="rect" id="node22" href="$dd/d00/uuid_8h.html" title=" " coords="931,387,1057,412"/>
+<area shape="rect" id="node6" title=" " coords="485,533,554,559"/>
+<area shape="rect" id="node7" href="$d7/d00/log_8h.html" title=" " coords="143,614,261,639"/>
+<area shape="rect" id="node12" href="$d6/d00/instrumentor_8h.html" title=" " coords="629,533,802,559"/>
+<area shape="rect" id="node8" title=" " coords="285,695,444,720"/>
+<area shape="rect" id="node9" title=" " coords="5,695,119,720"/>
+<area shape="rect" id="node10" title=" " coords="143,695,261,720"/>
+<area shape="rect" id="node11" href="$de/d00/platform_8h.html" title=" " coords="905,695,1064,720"/>
+<area shape="rect" id="node13" title=" " coords="542,614,617,639"/>
+<area shape="rect" id="node14" title=" " coords="641,614,702,639"/>
+<area shape="rect" id="node15" title=" " coords="925,614,991,639"/>
+<area shape="rect" id="node16" title=" " coords="286,614,353,639"/>
+<area shape="rect" id="node17" title=" " coords="1015,614,1069,639"/>
+<area shape="rect" id="node18" title=" " coords="377,614,435,639"/>
+<area shape="rect" id="node19" title=" " coords="459,614,518,639"/>
+<area shape="rect" id="node20" title=" " coords="726,614,795,639"/>
+<area shape="rect" id="node21" title=" " coords="820,614,901,639"/>
+<area shape="rect" id="node24" href="$d3/d00/window_8h.html" title=" " coords="1542,299,1675,339"/>
+<area shape="rect" id="node25" href="$d9/d00/lnpch_8h.html" title=" " coords="1590,533,1654,559"/>
+<area shape="rect" id="node37" title=" " coords="2622,614,2686,639"/>
+<area shape="rect" id="node42" href="$dd/d00/event_8h.html" title=" " coords="1451,387,1585,412"/>
+<area shape="rect" id="node26" title=" " coords="1459,614,1521,639"/>
+<area shape="rect" id="node27" title=" " coords="1545,614,1605,639"/>
+<area shape="rect" id="node28" title=" " coords="1630,614,1707,639"/>
+<area shape="rect" id="node29" title=" " coords="1732,614,1779,639"/>
+<area shape="rect" id="node30" title=" " coords="1803,614,1870,639"/>
+<area shape="rect" id="node31" title=" " coords="1894,614,1934,639"/>
+<area shape="rect" id="node32" title=" " coords="1959,614,2024,639"/>
+<area shape="rect" id="node33" title=" " coords="2049,614,2121,639"/>
+<area shape="rect" id="node34" title=" " coords="2711,614,2816,639"/>
+<area shape="rect" id="node35" title=" " coords="2145,614,2301,639"/>
+<area shape="rect" id="node36" title=" " coords="2326,614,2430,639"/>
+<area shape="rect" id="node38" title=" " coords="2454,607,2598,647"/>
+<area shape="rect" id="node39" title=" " coords="1094,614,1187,639"/>
+<area shape="rect" id="node40" title=" " coords="1211,614,1305,639"/>
+<area shape="rect" id="node41" title=" " coords="1329,614,1384,639"/>
+<area shape="rect" id="node46" href="$d0/d00/vulkan_swapchain_8h.html" title=" " coords="1710,211,1854,251"/>
+<area shape="rect" id="node47" href="$d1/d00/shader_8h.html" title=" " coords="1275,306,1433,331"/>
 </map>

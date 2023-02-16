@@ -9,6 +9,11 @@
 
 {\ttfamily \#include $<$renderer2\+D.\+h$>$}
 
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_1_1statistics}{statistics}}
+\begin{DoxyCompactList}\small\item\em struct containing \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d}{renderer2D}} statistics. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,12 +25,30 @@ static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a76b5f70881cfa
 \begin{DoxyCompactList}\small\item\em starts a 2D renderer scene. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a0788d2745168acbaad6202be78117c8d}{end\+Scene}} ()
 \begin{DoxyCompactList}\small\item\em ends the 2D renderer scene. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a82e6d85db40df27b5afe7047b6325afd}{draw\+Quad}} (const glm\+::vec3 \&position, const glm\+::vec2 \&size, const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}})
+\begin{DoxyCompactList}\small\item\em draws a quad. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_aee1d82c42297fb86d4e6949506507479}{draw\+Quad}} (const glm\+::mat4 transform, const glm\+::vec4 color, const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}})
+\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a7f842045e7db4f4255ed7b44cc41ffc1}{draw\+Quad}} (const glm\+::vec3 \&position, const glm\+::vec2 \&size, const glm\+::vec4 \&color)
+\begin{DoxyCompactList}\small\item\em draws a quad. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a80f65908b87cfcd1db947a2595b25c90}{draw\+Quad}} (const glm\+::vec3 \&position, const glm\+::vec2 \&size)
 \begin{DoxyCompactList}\small\item\em draws a quad. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a7719753205ad15adcc77500ee4cdeb5d}{draw\+Quad}} (const glm\+::mat4 \&transform)
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a408e809feefb115d990c54c694d83da3}{draw\+Quad}} (const glm\+::mat4 \&transform, const glm\+::vec4 \&color)
 \begin{DoxyCompactList}\small\item\em draws a quad. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a68ac5e8cd390ed4951cc4995921a258b}{flush}} ()
-\begin{DoxyCompactList}\small\item\em flushes all the draw commands to the base renderer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em flushes all the draw commands to the base renderer. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_1_1statistics}{statistics}} \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a45a9f388190956a135fc3a47fe3f4fa9}{get\+Stats}} ()
+\begin{DoxyCompactList}\small\item\em returns \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d}{renderer2D}} stats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint64\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a9a092364c1dd24a670fbdc9c508cb26f}{texture\+In\+Batch}} (const uint64\+\_\+t \&handle)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a61677113a7c675bb05ebe00133aa8aa0}{blank\+Image}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsubsection{Detailed Description}
@@ -47,11 +70,11 @@ static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d_a68ac5e8cd390e
 
 starts a 2D renderer scene. 
 
-\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a7719753205ad15adcc77500ee4cdeb5d}\label{classluna_1_1renderer_1_1renderer2_d_a7719753205ad15adcc77500ee4cdeb5d}} 
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a408e809feefb115d990c54c694d83da3}\label{classluna_1_1renderer_1_1renderer2_d_a408e809feefb115d990c54c694d83da3}} 
 \index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!drawQuad@{drawQuad}}
 \index{drawQuad@{drawQuad}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
-\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::mat4 \&}]{transform,  }\item[{const glm\+::vec4 \&}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -62,10 +85,16 @@ draws a quad.
 {\em const} & glm\+::mat4\& transform starting transformation. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_aee1d82c42297fb86d4e6949506507479}\label{classluna_1_1renderer_1_1renderer2_d_aee1d82c42297fb86d4e6949506507479}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!drawQuad@{drawQuad}}
+\index{drawQuad@{drawQuad}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::mat4}]{transform,  }\item[{const glm\+::vec4}]{color,  }\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ \&}]{texture }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a80f65908b87cfcd1db947a2595b25c90}\label{classluna_1_1renderer_1_1renderer2_d_a80f65908b87cfcd1db947a2595b25c90}} 
 \index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!drawQuad@{drawQuad}}
 \index{drawQuad@{drawQuad}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
-\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
 {\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{position,  }\item[{const glm\+::vec2 \&}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
@@ -77,6 +106,44 @@ draws a quad.
 {\em const} & glm\+::vec3\& position starting position \\
 \hline
 {\em const} & glm\+::vec2\& size starting size; \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a7f842045e7db4f4255ed7b44cc41ffc1}\label{classluna_1_1renderer_1_1renderer2_d_a7f842045e7db4f4255ed7b44cc41ffc1}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!drawQuad@{drawQuad}}
+\index{drawQuad@{drawQuad}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{position,  }\item[{const glm\+::vec2 \&}]{size,  }\item[{const glm\+::vec4 \&}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+draws a quad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & glm\+::vec3\& position starting position \\
+\hline
+{\em const} & glm\+::vec2\& size starting size; \\
+\hline
+{\em const} & glm\+::vec3\& color rgb color value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a82e6d85db40df27b5afe7047b6325afd}\label{classluna_1_1renderer_1_1renderer2_d_a82e6d85db40df27b5afe7047b6325afd}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!drawQuad@{drawQuad}}
+\index{drawQuad@{drawQuad}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{drawQuad()}{drawQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer2\+D\+::draw\+Quad (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{position,  }\item[{const glm\+::vec2 \&}]{size,  }\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ \&}]{texture }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+draws a quad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & glm\+::vec3\& position starting position \\
+\hline
+{\em const} & glm\+::vec2\& size starting size; \\
+\hline
+{\em const} & glm\+::vec3\& color rgb color value \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a0788d2745168acbaad6202be78117c8d}\label{classluna_1_1renderer_1_1renderer2_d_a0788d2745168acbaad6202be78117c8d}} 
@@ -102,6 +169,16 @@ flushes all the draw commands to the base renderer.
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{classluna_1_1renderer_1_1renderer}{renderer\+::renderer}} 
 \end{DoxySeeAlso}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a45a9f388190956a135fc3a47fe3f4fa9}\label{classluna_1_1renderer_1_1renderer2_d_a45a9f388190956a135fc3a47fe3f4fa9}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!getStats@{getStats}}
+\index{getStats@{getStats}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{getStats()}{getStats()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1renderer_1_1renderer2_d_1_1statistics}{renderer2\+D\+::statistics}} luna\+::renderer\+::renderer2\+D\+::get\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+returns \mbox{\hyperlink{classluna_1_1renderer_1_1renderer2_d}{renderer2D}} stats. 
+
 \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a4106ddeea547ac64510e3bd4a861351a}\label{classluna_1_1renderer_1_1renderer2_d_a4106ddeea547ac64510e3bd4a861351a}} 
 \index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!init@{init}}
 \index{init@{init}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
@@ -121,6 +198,21 @@ initializes the 2D renderer.
 
 
 shutsdown the 2D renderer and destroys the appropriate resources. 
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a9a092364c1dd24a670fbdc9c508cb26f}\label{classluna_1_1renderer_1_1renderer2_d_a9a092364c1dd24a670fbdc9c508cb26f}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!textureInBatch@{textureInBatch}}
+\index{textureInBatch@{textureInBatch}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{textureInBatch()}{textureInBatch()}}
+{\footnotesize\ttfamily uint64\+\_\+t luna\+::renderer\+::renderer2\+D\+::texture\+In\+Batch (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer2_d_a61677113a7c675bb05ebe00133aa8aa0}\label{classluna_1_1renderer_1_1renderer2_d_a61677113a7c675bb05ebe00133aa8aa0}} 
+\index{luna::renderer::renderer2D@{luna::renderer::renderer2D}!blankImage@{blankImage}}
+\index{blankImage@{blankImage}!luna::renderer::renderer2D@{luna::renderer::renderer2D}}
+\doxyparagraph{\texorpdfstring{blankImage}{blankImage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}}$>$ luna\+::renderer\+::renderer2\+D\+::blank\+Image\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
 
 
 

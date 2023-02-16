@@ -1,0 +1,8 @@
+<map id="luna::vulkan::vulkanTextureAtlas" name="luna::vulkan::vulkanTextureAtlas">
+<area shape="rect" id="node1" title="textureAtlas api." coords="110,373,287,413"/>
+<area shape="rect" id="node2" href="$db/d00/classluna_1_1renderer_1_1texture_atlas.html" title="textureAtlas api." coords="35,299,213,324"/>
+<area shape="rect" id="node3" href="$dd/d00/classluna_1_1renderer_1_1texture.html" title="base texture class." coords="5,203,155,229"/>
+<area shape="rect" id="node4" title=" " coords="187,196,341,236"/>
+<area shape="rect" id="node5" title=" " coords="207,93,321,119"/>
+<area shape="rect" id="node6" title=" " coords="245,5,283,31"/>
+</map>

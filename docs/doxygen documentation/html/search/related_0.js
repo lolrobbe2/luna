@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shader_0',['shader',['../d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html#a52afcec1d11d9912d5c8af185fdac2a3',1,'luna::vulkan::vulkanShader']]]
+  ['node_0',['Node',['../da/d00/classluna_1_1scene.html#a6db9d28bd448a131448276ee03de1e6d',1,'luna::scene']]]
 ];

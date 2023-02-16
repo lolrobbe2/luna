@@ -70,7 +70,7 @@ namespace luna
 			* @param submiCount the amount of commandPoolSubmitInfos 
 			* @param const commandPoolSubmitInfo* pCommandPoolSubmitInfo
 			*/
-			VkResult flush(VkQueue queue, uint64_t submitCount, const commandPoolSubmitInfo* pCommandPoolSubmitInfo, VkFence waitFence);
+			VkResult flush(const VkQueue& queue,const uint64_t& submitCount, const commandPoolSubmitInfo* pCommandPoolSubmitInfo,const VkFence& waitFence);
 			/**
 			 * @brief frees commandbuffers to be able to rerecord them.
 			 * 
@@ -78,6 +78,7 @@ namespace luna
 			 * \param count
 			 */
 			void freeCommandBuffer(virtualCmdBuffer* pCommandBuffers, uint32_t count);
+			void resetCommandBuffer(const virtualCmdBuffer& commandBuffer);
 		private:
 			std::unordered_map<virtualCmdBuffer, std::pair<VkCommandBuffer, VkCommandBufferUsageFlags>> virtualBuffers;
 			VkCommandPool commandPool;

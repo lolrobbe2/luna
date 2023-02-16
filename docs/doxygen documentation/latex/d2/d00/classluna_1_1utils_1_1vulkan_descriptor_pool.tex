@@ -1,0 +1,140 @@
+\hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool}{}\doxysubsection{luna\+::utils\+::vulkan\+Descriptor\+Pool Class Reference}
+\label{classluna_1_1utils_1_1vulkan_descriptor_pool}\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+
+
+vulkan descriptor pool and descriptorset wrapper class.  
+
+
+
+
+{\ttfamily \#include $<$vulkan\+Descriptor\+Pool.\+h$>$}
+
+
+
+Collaboration diagram for luna\+::utils\+::vulkan\+Descriptor\+Pool\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{d5/d00/classluna_1_1utils_1_1vulkan_descriptor_pool__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a6df8496615efaf0aa8ff65b7745d36a5}{vulkan\+Descriptor\+Pool}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}} $>$ \&p\+Device, Vk\+Descriptor\+Pool\+Size $\ast$p\+Pool\+Sizes, const uint32\+\_\+t \&pool\+Size\+Countconst, const std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ \&shader\+Layout, Vk\+Descriptor\+Set\+Layout\+Create\+Flags flags)
+\begin{DoxyCompactList}\small\item\em descroptor pool constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a778aea22358115e23c4510784b76bd51}{$\sim$vulkan\+Descriptor\+Pool}} ()=default
+\item 
+Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a89bd6c2a2b87be169592a7d8bf4144d9}{create\+Descriptor\+Sets}} (std\+::vector$<$ \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_set}{vulkan\+Descriptor\+Set}} $>$ $>$ \&descriptor\+Sets)
+\item 
+Vk\+Descriptor\+Set\+Layout \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a1d9f008fb54ba20984a0d282f0bb2dfd}{get\+Layout}} ()
+\item 
+Vk\+Descriptor\+Set\+Layout $\ast$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a168dba72eeb833db142be718ce59c2a2}{get\+Layout\+Ptr}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Vk\+Descriptor\+Set\+Layout \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_afb1d456f0b3e003d93c31d2788f58888}{create\+Descriptor\+Layouts}} (const std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ \&shader\+Layout, Vk\+Descriptor\+Set\+Layout\+Create\+Flags flags)
+\item 
+void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_ab5c9134a7142dc9f54309c4407811bae}{create\+Descriptor\+Writes}} (const std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ \&shader\+Layout)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}} $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_aa09e71ae51326a5d1d0cf9d69d064421}{device}}
+\item 
+Vk\+Descriptor\+Pool \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a58aa3d7836b2ce01be33fc4f65f90a78}{descriptor\+Pool}}
+\item 
+Vk\+Descriptor\+Set\+Layout \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a044fc038dd16c1424193821a5610dac8}{layout}}
+\item 
+std\+::vector$<$ Vk\+Write\+Descriptor\+Set $>$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_pool_a4056ddb1d4112b15dd3c458b4d6d34d8}{descriptor\+Writes}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+vulkan descriptor pool and descriptorset wrapper class. 
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a6df8496615efaf0aa8ff65b7745d36a5}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a6df8496615efaf0aa8ff65b7745d36a5}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!vulkanDescriptorPool@{vulkanDescriptorPool}}
+\index{vulkanDescriptorPool@{vulkanDescriptorPool}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{vulkanDescriptorPool()}{vulkanDescriptorPool()}}
+{\footnotesize\ttfamily luna\+::utils\+::vulkan\+Descriptor\+Pool\+::vulkan\+Descriptor\+Pool (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}} $>$ \&}]{p\+Device,  }\item[{Vk\+Descriptor\+Pool\+Size $\ast$}]{p\+Pool\+Sizes,  }\item[{const uint32\+\_\+t \&}]{pool\+Size\+Countconst,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ \&}]{shader\+Layout,  }\item[{Vk\+Descriptor\+Set\+Layout\+Create\+Flags}]{flags }\end{DoxyParamCaption})}
+
+
+
+descroptor pool constructor. 
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a778aea22358115e23c4510784b76bd51}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a778aea22358115e23c4510784b76bd51}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!````~vulkanDescriptorPool@{$\sim$vulkanDescriptorPool}}
+\index{````~vulkanDescriptorPool@{$\sim$vulkanDescriptorPool}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{$\sim$vulkanDescriptorPool()}{~vulkanDescriptorPool()}}
+{\footnotesize\ttfamily virtual luna\+::utils\+::vulkan\+Descriptor\+Pool\+::$\sim$vulkan\+Descriptor\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_afb1d456f0b3e003d93c31d2788f58888}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_afb1d456f0b3e003d93c31d2788f58888}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!createDescriptorLayouts@{createDescriptorLayouts}}
+\index{createDescriptorLayouts@{createDescriptorLayouts}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{createDescriptorLayouts()}{createDescriptorLayouts()}}
+{\footnotesize\ttfamily Vk\+Descriptor\+Set\+Layout luna\+::utils\+::vulkan\+Descriptor\+Pool\+::create\+Descriptor\+Layouts (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ \&}]{shader\+Layout,  }\item[{Vk\+Descriptor\+Set\+Layout\+Create\+Flags}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a89bd6c2a2b87be169592a7d8bf4144d9}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a89bd6c2a2b87be169592a7d8bf4144d9}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!createDescriptorSets@{createDescriptorSets}}
+\index{createDescriptorSets@{createDescriptorSets}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{createDescriptorSets()}{createDescriptorSets()}}
+{\footnotesize\ttfamily Vk\+Result luna\+::utils\+::vulkan\+Descriptor\+Pool\+::create\+Descriptor\+Sets (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_descriptor_set}{vulkan\+Descriptor\+Set}} $>$ $>$ \&}]{descriptor\+Sets }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_ab5c9134a7142dc9f54309c4407811bae}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_ab5c9134a7142dc9f54309c4407811bae}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!createDescriptorWrites@{createDescriptorWrites}}
+\index{createDescriptorWrites@{createDescriptorWrites}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{createDescriptorWrites()}{createDescriptorWrites()}}
+{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Descriptor\+Pool\+::create\+Descriptor\+Writes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ \&}]{shader\+Layout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a1d9f008fb54ba20984a0d282f0bb2dfd}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a1d9f008fb54ba20984a0d282f0bb2dfd}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!getLayout@{getLayout}}
+\index{getLayout@{getLayout}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{getLayout()}{getLayout()}}
+{\footnotesize\ttfamily Vk\+Descriptor\+Set\+Layout luna\+::utils\+::vulkan\+Descriptor\+Pool\+::get\+Layout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a168dba72eeb833db142be718ce59c2a2}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a168dba72eeb833db142be718ce59c2a2}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!getLayoutPtr@{getLayoutPtr}}
+\index{getLayoutPtr@{getLayoutPtr}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{getLayoutPtr()}{getLayoutPtr()}}
+{\footnotesize\ttfamily Vk\+Descriptor\+Set\+Layout $\ast$ luna\+::utils\+::vulkan\+Descriptor\+Pool\+::get\+Layout\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a58aa3d7836b2ce01be33fc4f65f90a78}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a58aa3d7836b2ce01be33fc4f65f90a78}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!descriptorPool@{descriptorPool}}
+\index{descriptorPool@{descriptorPool}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{descriptorPool}{descriptorPool}}
+{\footnotesize\ttfamily Vk\+Descriptor\+Pool luna\+::utils\+::vulkan\+Descriptor\+Pool\+::descriptor\+Pool\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a4056ddb1d4112b15dd3c458b4d6d34d8}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a4056ddb1d4112b15dd3c458b4d6d34d8}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!descriptorWrites@{descriptorWrites}}
+\index{descriptorWrites@{descriptorWrites}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{descriptorWrites}{descriptorWrites}}
+{\footnotesize\ttfamily std\+::vector$<$Vk\+Write\+Descriptor\+Set$>$ luna\+::utils\+::vulkan\+Descriptor\+Pool\+::descriptor\+Writes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_aa09e71ae51326a5d1d0cf9d69d064421}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_aa09e71ae51326a5d1d0cf9d69d064421}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!device@{device}}
+\index{device@{device}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_device}{vulkan\+::vulkan\+Device}}$>$ luna\+::utils\+::vulkan\+Descriptor\+Pool\+::device\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_descriptor_pool_a044fc038dd16c1424193821a5610dac8}\label{classluna_1_1utils_1_1vulkan_descriptor_pool_a044fc038dd16c1424193821a5610dac8}} 
+\index{luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}!layout@{layout}}
+\index{layout@{layout}!luna::utils::vulkanDescriptorPool@{luna::utils::vulkanDescriptorPool}}
+\doxyparagraph{\texorpdfstring{layout}{layout}}
+{\footnotesize\ttfamily Vk\+Descriptor\+Set\+Layout luna\+::utils\+::vulkan\+Descriptor\+Pool\+::layout\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/\mbox{\hyperlink{vulkan_descriptor_pool_8h}{vulkan\+Descriptor\+Pool.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/\mbox{\hyperlink{vulkan_descriptor_pool_8cpp}{vulkan\+Descriptor\+Pool.\+cpp}}\end{DoxyCompactItemize}

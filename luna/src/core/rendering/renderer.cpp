@@ -7,6 +7,7 @@
 #include <core/vulkan/rendering/vulkanVertexBuffer.h>
 #include <core/vulkan/rendering/vulkanIndexBuffer.h>
 #include <core/utils/shaderLibrary.h>
+#include <core/vulkan/utils/vulkanAllocator.h>
 #include <imgui_demo.cpp>
 namespace luna
 {
@@ -49,21 +50,29 @@ namespace luna
 		void renderer::newFrame()
 		{
 			LN_PROFILE_SCOPE("newframe");
-			rendererPipeline->begin();
 
+			utils::vulkanAllocator::flush(); //TODO run as async or put in threadpool.
 			rendererPipeline->end();
-			//rendererPipeline->createCommands();
+			
 			rendererPipeline->flush();
 		}
 
 		void renderer::beginScene()
 		{
 			rendererPipeline->clear();
+			rendererPipeline->begin();
+			
 		}
 
 		void renderer::Submit(const ref<vertexArray>& vertexArray,const uint64_t& indexCount)
 		{
-			rendererPipeline->drawIndexed(vertexArray,indexCount);
+			const std::vector<uint64_t> texturesEmpty;
+			rendererPipeline->drawIndexed(vertexArray,texturesEmpty, indexCount);
+		}
+
+		void renderer::Submit(const ref<vertexArray>& vertexArray, std::vector<uint64_t> textures, const uint64_t& indexCount)
+		{
+			rendererPipeline->drawIndexed(vertexArray, textures, indexCount);
 		}
 
 		void renderer::endScene()

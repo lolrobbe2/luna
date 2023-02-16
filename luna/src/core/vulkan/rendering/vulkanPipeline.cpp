@@ -4,13 +4,13 @@
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <core/vulkan/rendering/vulkanVertexBuffer.h>
 #include <core/vulkan/rendering/vulkanIndexBuffer.h>
-
 namespace luna
 {
 	namespace vulkan 
 	{
 		vulkanPipeline::vulkanPipeline(const renderer::pipelineLayout& layout)
 		{
+
 			LN_PROFILE_FUNCTION();
 			vulkanCmdPoolSpec commandPoolSpec;
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
@@ -25,9 +25,29 @@ namespace luna
 			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
 			presentQueue = device->getQueue(vkb::QueueType::present);
 			utils::vulkanAllocator::init(layout.device);
-			createPipeline(layout);
+			sampler = ref<renderer::vulkanSampler>(new renderer::vulkanSampler(device, VK_FILTER_NEAREST));
 
+			VkDescriptorPoolSize poolSizes[] =
+			{
+				{ VK_DESCRIPTOR_TYPE_SAMPLER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, 1000 },
+				{ VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1000 },
+				{ VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1000 },
+				{ VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, 1000 },
+				{ VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, 1000 }
+			};
+			descriptorPool = ref<utils::vulkanDescriptorPool>(new utils::vulkanDescriptorPool(device, poolSizes, std::size(poolSizes), layout.pipelineShaders[0]->shaderLayout, 0));
+			descriptorSets.resize(100);
+			
+			descriptorPool->createDescriptorSets(descriptorSets);
+			createPipeline(layout);
 			drawCommands.reserve(1000);
+			
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
 		{
@@ -35,6 +55,7 @@ namespace luna
 			this->layout = layout;
 			createPipeLineLayout();
 		}
+
 		void vulkanPipeline::destroyPipeline()
 		{
 			LN_PROFILE_FUNCTION();
@@ -45,6 +66,7 @@ namespace luna
 			{
 				vkDestroyShaderModule(device,shaderModule,nullptr);
 			}
+			vkDestroyRenderPass(device, renderPass, nullptr);
 			vkDestroyPipeline(device, pipeline, nullptr);
 			vkDestroyPipelineLayout(device, pipelineLayout,nullptr);
 		}
@@ -54,16 +76,9 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			VkDevice device = vDevice->getDeviceHandles().device;
-			//vkDeviceWaitIdle(device);
-
+			VkClearColorValue blankValue = {0.0f,0.0f,0.0f,0.0f};
 			VkClearValue clearValue;
-			float flash = abs(tan(_frameNumber / 120.0f));
-			float thunder = abs(sin(_frameNumber / 120.0f));
-			float help = abs(cos(_frameNumber /120.0f));
-			clearValue.color = {0,0,0 };
-			VkClearColorValue blankValue;
-			//float flash = abs(sin(_frameNumber / 120.f));
-			//clearValue.color = { { 255.0f, 165.0f, 0.0f, 1.0f } };
+			clearValue.color = blankValue;
 			
 			//start the main renderpass.
 			//We will use the clear color from above, and the framebuffer of the index the swapchain gave us
@@ -95,16 +110,15 @@ namespace luna
 			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 				
 			vkCmdBindPipeline(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
-			//vkCmdSetViewport(commandPool->operator=(commandBuffers[currentFrame]), 0, 1, &vDevice->getViewport());
-			//vkCmdDraw(commandPool->operator=(commandBuffers[currentFrame]), 3, 1, 0, 0);
 			//draw indexed
-			for (auto draw : drawCommands) fnDrawIndexed(draw.vertexArray,draw.indexCount);
+			for (auto draw : drawCommands) fnDrawIndexed(draw.vertexArray,draw.descriptorIndex,draw.textures,draw.indexCount);
 			
 			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 			//transition dst image
-			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+			
+			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 			//transition src image
-			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 
 			VkImageCopy imageCopy;
 			imageCopy.dstOffset = { 0,0,0 };
@@ -127,16 +141,8 @@ namespace luna
 			
 			vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 				
-			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
+			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 
-			//transition src image to DST to clear image
-			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
-			
-			vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
-			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_FORMAT_B8G8R8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentFrame]));
-			//copy framebuffer to seperate image.
-			//clear framebuffer vkCmdClearImage();
-			//iumgui draw
 			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
@@ -150,37 +156,25 @@ namespace luna
 			commandPool->end(commandBuffers[currentFrame]);
 			
 		}
-		void vulkanPipeline::begin() const
+		void vulkanPipeline::begin() 
 		{
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
-			
+			descriptorsetIndex = 1;
 			ImGui_ImplVulkan_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			//imgui commands
 			ImGui::NewFrame();
 			ImGuiViewport* viewport = ImGui::GetMainViewport();
-			//ImVec2 windowSize = ImGui::GetContentRegionAvail();
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
 			
-
-			
-			if (ImGui::Begin("settings"))
-			{
-				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
-				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
-			}
-			ImGui::End();
-			ImGui::SetNextWindowSize(ImGui::GetContentRegionAvail());
+			ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				if(!justResized)ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
-				
-				
-				//ImGui::Image(vDevice->swapchain->getViewportImage(0),viewportPanelSize);
+				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
 			}
-
+			ImGui::PopStyleVar(1);
 			ImGui::End();
 		}
 		void vulkanPipeline::end() const
@@ -196,7 +190,8 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			
-			if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
+		
+			vkDeviceWaitIdle(vDevice->getDeviceHandles().device);
 			vkWaitForFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 			VkResult result = vkAcquireNextImageKHR(vDevice->getDeviceHandles().device, vDevice->swapchain->mSwapchain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 			
@@ -204,24 +199,23 @@ namespace luna
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (vDevice->window->getWidth() <= 0 || vDevice->window->getHeight() <= 0) return;
+				//commandPool->resetCommandBuffer(commandBuffers[currentFrame]);
+				destroyPipeline();
+				createPipeLineLayout();
+				for (auto commandBuffer : commandBuffers) commandPool->resetCommandBuffer(commandBuffer);
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
+				
 				return;
 			}
+			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
 
-			createCommands();
-			
-			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
-			{
-				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
-			}
-			
 			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
 
-			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_TRANSFER_BIT };
+			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
 			VkSemaphore waitSemaphores[] = { imageAvailableSemaphores[currentFrame] };
 			VkSemaphore signalSemaphores[] = { renderFinishedSemaphores[currentFrame] };
 			submit.pWaitDstStageMask = waitStages;
@@ -229,11 +223,13 @@ namespace luna
 			submit.commandBufferCount = 1;
 			submit.waitSemaphoreCount = 1;
 			submit.pWaitSemaphores = waitSemaphores;
-
 			submit.signalSemaphoreCount = 1;
 			submit.pSignalSemaphores = signalSemaphores;
+
+
 			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
-			
+			commandPool->resetCommandBuffer(commandBuffers[currentFrame]);
+			createCommands();
 			commandPool->flush(presentQueue, 1, &submit, inFlightFences[currentFrame]);
 			//submit command buffer to the queue and execute it.
 			// _renderFence will now block until the graphic commands finish execution
@@ -256,21 +252,25 @@ namespace luna
 			VkResult result2 = vkQueuePresentKHR(presentQueue, &presentInfo);
 			_frameNumber += 1 ;
 
-			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
-
 			if (result2 == VK_ERROR_OUT_OF_DATE_KHR || result2 == VK_SUBOPTIMAL_KHR)
 			{
-				//layout error not here!
+				initSyncStructures();
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
-				//begin();
-				//end();
-				//createCommands();
-				//currentFrame = 0;
 				return;
 			}
+			currentFrame = (currentFrame + 1) % maxFramesInFlight; 
 
+		}
+		void vulkanPipeline::bindTextures(const std::vector<uint64_t> textureHandles, const uint64_t indexSet)
+		{
+			std::vector<VkDescriptorImageInfo> imageInfos;
+			for(const uint64_t& textureHandle : textureHandles)
+			{
+				imageInfos.push_back({ VK_NULL_HANDLE, (VkImageView)textureHandle, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL });		
+			}
+			descriptorSets[0]->write(indexSet,imageInfos.data());
 		}
 		void vulkanPipeline::clear()
 		{
@@ -343,50 +343,36 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			if (shader->stage != renderer::shaderStageVertex) return;
-
-			std::unordered_map<uint32_t, VkVertexInputBindingDescription> bindingDescriptions;
-			for(const auto& shaderResource : shader->shaderLayout)
+			VkVertexInputBindingDescription bindingDescription;
+			bindingDescription.stride = 0;
+			inputDescriptions[shader->shaderName].bindings.resize(0);
+			for(size_t i = shader->shaderLayout.size() -1; i > 0 ;i--)
 			{
-				if ((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)
-				{
-					
-					VkVertexInputBindingDescription bindingDescription;
-					auto bindingDescriptionPtr = bindingDescriptions.find(shaderResource.binding);
-					if (bindingDescriptionPtr == bindingDescriptions.end())
-					{
-
-						bindingDescription.binding = shaderResource.binding;
-						bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
-						bindingDescription.stride = shaderResource.stride;
-						bindingDescriptions.insert({ bindingDescription.binding ,bindingDescription });
-					}
-					else
-					{
-						
-						bindingDescriptionPtr->second.stride += shaderResource.stride;
-					}
-				}
+				if ((shader->shaderLayout[i].type == renderer::Uniform) || (shader->shaderLayout[i].type == renderer::PushConstant) || (shader->shaderLayout[i].type == renderer::StorageBuffer) && shader->shaderLayout[i].resourceClass != renderer::stageInputs && bindingDescription.stride > shader->shaderLayout[i].stride) break;
+				bindingDescription.binding = shader->shaderLayout[i].binding;
+				bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+				bindingDescription.stride = shader->shaderLayout[i].stride;
+				inputDescriptions[shader->shaderName].bindings.push_back(bindingDescription);
+				return;
+				
 			}
-			for (auto bindingDescription = bindingDescriptions.begin(); bindingDescription != bindingDescriptions.end(); bindingDescription++)inputDescriptions[shader->shaderName].bindings.push_back(bindingDescription->second);
-			
 		}
 		void vulkanPipeline::createAttributeDescription(const ref<renderer::shader> shader)
 		{
 			LN_PROFILE_FUNCTION();
 			if (shader->stage != renderer::shaderStageVertex) return;
-
-			
+			inputDescriptions[shader->shaderName].attributes.resize(0);
 			for (const auto& shaderResource : shader->shaderLayout)
 			{
-				if ((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)
-				{
-					VkVertexInputAttributeDescription attributeDescription;
-					attributeDescription.binding = shaderResource.binding;
-					attributeDescription.location = shaderResource.location;
-					attributeDescription.offset = shaderResource.offset;
-					attributeDescription.format = getResourceFormat(shaderResource.type);
-					inputDescriptions[shader->shaderName].attributes.push_back(attributeDescription);
-				}
+				if (!((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)) break;
+				
+				VkVertexInputAttributeDescription attributeDescription;
+				attributeDescription.binding = shaderResource.binding;
+				attributeDescription.location = shaderResource.location;
+				attributeDescription.offset = shaderResource.offset;//TODO offset is wrong
+				attributeDescription.format = getResourceFormat(shaderResource.type);
+				inputDescriptions[shader->shaderName].attributes.push_back(attributeDescription);
+				
 			}
 		}
 		void vulkanPipeline::createPipeLineLayout()
@@ -396,14 +382,15 @@ namespace luna
 			vkCreatePipelineLayout(vDevice->getDeviceHandles().device, &pipelineLayoutCreateInfo(), nullptr, &pipelineLayout);
 			createShaderStages();
 			createInputStates();
+			vertexInputStates.resize(0);
 			for (const auto& shader : layout.pipelineShaders)
 			{
 				if(shader->stage == renderer::shaderStageVertex) vertexInputStates.push_back(createVertexInputState(shader));
 			}
 			initDefaultRenderpass();
-			LN_CORE_INFO("framebuffer creation result ={0}", vDevice->createFramebuffers(renderPass));
+			vDevice->createFramebuffers(renderPass);
 			initSyncStructures();
-			LN_CORE_INFO("pipelinecreation result = {0}",buildPipeline(vDevice->getDeviceHandles().device, renderPass));
+			buildPipeline(vDevice->getDeviceHandles().device, renderPass);
 
 		}
 
@@ -431,8 +418,7 @@ namespace luna
 			dynamicStateCreateInfo.pDynamicStates = dynamicState;
 
 			
-			//setup dummy color blending. We aren't using transparent objects yet
-			//the blending is just "no blend", but we do write to the color attachment
+
 			VkPipelineColorBlendStateCreateInfo colorBlending = {};
 			colorBlending.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
 			colorBlending.pNext = nullptr;
@@ -441,13 +427,17 @@ namespace luna
 			colorBlending.logicOp = VK_LOGIC_OP_COPY;
 			colorBlending.attachmentCount = 1;
 			colorBlending.pAttachments = &pipelineColorBlendAttachementState;
+			colorBlending.blendConstants[0] = 0.0f; 
+			colorBlending.blendConstants[1] = 0.0f; 
+			colorBlending.blendConstants[2] = 0.0f; 
+			colorBlending.blendConstants[3] = 0.0f; 
 			//build the actual pipeline
 			//we now use all of the info structs we have been writing into into this one to create the pipeline
 			VkGraphicsPipelineCreateInfo pipelineInfo = {};
 			pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 			pipelineInfo.pNext = nullptr;
 			
-			inputAssemblyStateCreateInfo =  inputAssemblyCreateInfo(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN);
+			inputAssemblyStateCreateInfo =  inputAssemblyCreateInfo(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
 			pipelineRasterizationStateCreateInfo = rasterizationStateCreateInfo(VK_POLYGON_MODE_FILL);
 			pipelineMultisampleStateCreateInfo = multisamplingStateCreateInfo();
 			pipelineInfo.stageCount = shaderStages.size();
@@ -458,6 +448,7 @@ namespace luna
 			pipelineInfo.pRasterizationState = &pipelineRasterizationStateCreateInfo;
 			pipelineInfo.pMultisampleState = &pipelineMultisampleStateCreateInfo;
 			//pipelineInfo.pDynamicState = &dynamicStateCreateInfo;
+			pipelineInfo.pDepthStencilState = nullptr;
 			pipelineInfo.pColorBlendState = &colorBlending;
 			pipelineInfo.layout = pipelineLayout;
 			pipelineInfo.renderPass = pass;
@@ -527,7 +518,6 @@ namespace luna
 			VkPipelineInputAssemblyStateCreateInfo info = {};
 			info.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 			info.pNext = nullptr;
-
 			info.topology = topology;
 			//we are not going to use primitive restart on the entire tutorial so leave it on false
 			info.primitiveRestartEnable = VK_FALSE;
@@ -548,7 +538,7 @@ namespace luna
 			info.polygonMode = polygonMode;
 			info.lineWidth = 1.0f;
 			//no backface cull
-			info.cullMode = VK_CULL_MODE_NONE;
+			info.cullMode = VK_CULL_MODE_BACK_BIT;
 			info.frontFace = VK_FRONT_FACE_CLOCKWISE;
 			//no depth bias
 			info.depthBiasEnable = VK_FALSE;
@@ -581,7 +571,14 @@ namespace luna
 			VkPipelineColorBlendAttachmentState colorBlendAttachment = {};
 			colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_G_BIT |
 				VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_A_BIT;
-			colorBlendAttachment.blendEnable = VK_FALSE;
+			colorBlendAttachment.blendEnable = VK_TRUE;
+			colorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;
+			colorBlendAttachment.dstColorBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+			colorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;
+			colorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;
+			colorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
+			colorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;
+
 			return colorBlendAttachment;
 		}
 
@@ -594,8 +591,8 @@ namespace luna
 
 			//empty defaults
 			info.flags = 0;
-			info.setLayoutCount = 0;
-			info.pSetLayouts = nullptr;
+			info.setLayoutCount = 1;
+			info.pSetLayouts = descriptorPool->getLayoutPtr();
 			info.pushConstantRangeCount = 0;
 			info.pPushConstantRanges = nullptr;
 			return info;
@@ -607,6 +604,7 @@ namespace luna
 			VkAttachmentDescription color_attachment = {};
 			//the attachment will have the format needed by the swapchain
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+		
 			color_attachment.format = vDevice->getSwapFormat();
 			//1 sample, we won't be doing MSAA
 			color_attachment.samples = VK_SAMPLE_COUNT_1_BIT;
@@ -615,8 +613,8 @@ namespace luna
 			// we keep the attachment stored when the renderpass ends
 			color_attachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
 			//we don't care about stencil
-			color_attachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
-			color_attachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+			color_attachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+			color_attachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_STORE;
 
 			//we don't know or care about the starting layout of the attachment
 			color_attachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
@@ -629,6 +627,7 @@ namespace luna
 			color_attachment_ref.attachment = 0;
 			color_attachment_ref.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
 
+
 			//we are going to create 1 subpass, which is the minimum you can do
 			VkSubpassDescription subpass = {};
 			subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
@@ -639,10 +638,10 @@ namespace luna
 			dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
 			dependency.dstSubpass = 0;
 			dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.srcAccessMask = 0;
+
 			dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-			dependency.srcAccessMask = 0; //VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
 			dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
-			
 			VkRenderPassCreateInfo render_pass_info = {};
 			render_pass_info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
 
@@ -787,13 +786,16 @@ namespace luna
 				1, &barrier);
 			
 		}
-		void vulkanPipeline::drawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount)
+		void vulkanPipeline::drawIndexed(const ref<renderer::vertexArray>& vertexArray,std::vector<uint64_t> textures, int indexCount)
 		{
 			LN_PROFILE_FUNCTION();
-			drawCommands.push_back({ vertexArray,indexCount });
+			drawCommands.push_back({ vertexArray,currentFrame,textures,indexCount });
+			if (!textures.size()) return;
+			VkDescriptorImageInfo samplerInfo{ sampler->getHandle(),VK_NULL_HANDLE,VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL };
+			descriptorsetIndex++;
 		}
 
-		void vulkanPipeline::fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, int indexCount)
+		void vulkanPipeline::fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray,const uint64_t& descriptorIndex,const std::vector<uint64_t>& textures,const int& indexCount)
 		{
 			LN_PROFILE_FUNCTION();
 			VkDeviceSize offsets = 0;
@@ -802,9 +804,23 @@ namespace luna
 			//cast base vertexBuffer to platform specific ref.
 			for (ref<renderer::vertexBuffer> vertexBuffer : vertexArray->getVertexBuffers()) vulkanVertexBuffers.push_back(std::dynamic_pointer_cast<vulkanVertexBuffer>(vertexBuffer)->vkVertexBuffer);
 			//extract platform specific buffer handle from platform specifi buffer ref.
+			uint64_t currentIndex = descriptorIndex;
+			if (currentFrame) currentIndex *= currentFrame + 1; //select descriptor set bank
+
+			VkDescriptorImageInfo samplerInfo{ sampler->getHandle(),VK_NULL_HANDLE,VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL };
+
+			std::vector<VkDescriptorImageInfo> imageInfos;
+			for (size_t i = 0; i < 32; i++)
+			{
+				if (i < textures.size()) imageInfos.push_back({ VK_NULL_HANDLE,(VkImageView)textures[i],VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL });
+				else  imageInfos.push_back({ VK_NULL_HANDLE,(VkImageView)textures[0],VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL });
+			}
+			descriptorSets[currentFrame]->write(0, &samplerInfo);
+			descriptorSets[currentFrame]->write(1, imageInfos.data());
+			vkCmdBindDescriptorSets(commandPool->operator=(commandBuffers[currentFrame]), VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &descriptorSets[currentFrame]->descriptorSet, 0, nullptr);
 			vkCmdBindVertexBuffers(commandPool->operator=(commandBuffers[currentFrame]), 0, vulkanVertexBuffers.size(), vulkanVertexBuffers.data(), &offsets);
 			vkCmdBindIndexBuffer(commandPool->operator=(commandBuffers[currentFrame]), indexBuffer, 0, VK_INDEX_TYPE_UINT32);
-			vkCmdDrawIndexed(commandPool->operator=(commandBuffers[currentFrame]), vertexArray->getIndexBuffer()->getCount(), 1, 0, 1, 0);
+			vkCmdDrawIndexed(commandPool->operator=(commandBuffers[currentFrame]), vertexArray->getIndexBuffer()->getCount(), 1, 0, 0, 0);
 		}
 	}
 }

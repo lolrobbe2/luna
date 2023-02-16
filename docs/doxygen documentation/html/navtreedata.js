@@ -51,8 +51,10 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ]
@@ -62,11 +64,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "../../index.html",
-"d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html#aa7bab09ef9777619f42e56013b073f90",
-"d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#ac996574b236e912c58397433cf30e375",
-"d8/d00/structluna_1_1profile_result.html#ac0188c5b0b48f5942488deb8750ecffb",
-"dd/d00/classluna_1_1instrumentor.html#a24cdf77156d30c341441abac0448da0e",
-"functions_func_f.html"
+"d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afded6cd43387b83294e412164a0e3636",
+"d4/d00/classluna_1_1vulkan_1_1vulkan_texture.html#a1a792f3da2e810fa2ca1341c0bdc153d",
+"d5/d00/classluna_1_1vulkan_1_1windows_window.html#a6c54abf726f879ffaba9f3495fe2bf0f",
+"d8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas.html#a98f4bf331534a05a2b44de90f575ff16",
+"db/d00/classluna_1_1renderer_1_1texture_atlas.html#a70b68d4771defd91e99b92a13198b3c5",
+"dd/d00/classluna_1_1instrumentor.html#ad1b1188a0601fce4804fbb334674f387",
+"df/d00/namespaceluna_1_1renderer.html#a58e870e411c4fb89575c82593f9873b1a3b3d3702df3499db3035597fc666e626"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

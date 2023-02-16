@@ -1,0 +1,192 @@
+\hypertarget{classluna_1_1scene_hierarchy_panel}{}\doxysubsection{luna\+::scene\+Hierarchy\+Panel Class Reference}
+\label{classluna_1_1scene_hierarchy_panel}\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+
+
+{\ttfamily \#include $<$scene\+Hierarchy\+Panel.\+h$>$}
+
+
+
+Collaboration diagram for luna\+::scene\+Hierarchy\+Panel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d00/classluna_1_1scene_hierarchy_panel__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9}{node\+Types}} \{ \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a566f8c7b361c1f77eb785e88760769d8}{node}}
+, \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a9fbe2c14f7d85390a1d73ba3d94aee9f}{control\+Node}}
+, \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a7c4c96a49a79c9e2e68b1308f78c3346}{sprite\+Node}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a775bc07c997acedb213edf90c23ab852}{scene\+Hierarchy\+Panel}} ()=default
+\item 
+\mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a350d3a2c7a41a2b55cf6b20ffd69a269}{scene\+Hierarchy\+Panel}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1scene}{scene}} $>$ \&\mbox{\hyperlink{classluna_1_1scene}{scene}})
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_abee30cb7372031566e856cbb251703cd}{set\+Context}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1scene}{scene}} $>$ \&\mbox{\hyperlink{classluna_1_1scene}{scene}})
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_afc6adcf7c0e56d08be02e8014187881c}{on\+Im\+Gui\+Render}} ()
+\item 
+\mbox{\hyperlink{classluna_1_1_node}{Node}} \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a6a71826e3c1794f12b075dd7b754cb00}{get\+Selected\+Node}} () const
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a5027e43f0e42fcdfdb173b3d3dde4520}{set\+Selected\+Node}} (\mbox{\hyperlink{classluna_1_1_node}{Node}} \mbox{\hyperlink{classluna_1_1_node}{Node}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a4d3f1480429e777a451d175c8e61dc92}{display\+Add\+Component\+Entry}} (const std\+::string \&entry\+Name)
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_aecd675dda7b7632090d2857d54f749e4}{draw\+Entity\+Node}} (\mbox{\hyperlink{classluna_1_1_node}{Node}} \mbox{\hyperlink{classluna_1_1_node}{Node}}, uint32\+\_\+t indent)
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a2bbc0ec2583c3c9b4a1a3fa0b21feffd}{draw\+Components}} (\mbox{\hyperlink{classluna_1_1_node}{Node}} \mbox{\hyperlink{classluna_1_1_node}{Node}})
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a73581a7740351cda4226b49cc62b2033}{draw\+Node\+Selection\+List}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_af397ce23a4fb379b5aee4b5820bfb78d}{add\+Indent}} = 3
+\item 
+\mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$ \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a1d609e8ec2334d32c5da3e28ce62b146}{m\+\_\+\+Context}}
+\item 
+\mbox{\hyperlink{classluna_1_1_node}{Node}} \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a64fc726aa1a382ad1d5efa60b8c20b2c}{m\+\_\+\+Selection\+Context}}
+\item 
+\mbox{\hyperlink{classluna_1_1_node}{Node}} \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_af30c4930736cb3b03576e5f25e0c345b}{m\+\_\+\+Selected}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_af03034bc5a1819ef508bfd4d7ef71341}{m\+\_\+\+List\+Selected}} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9}\label{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!nodeTypes@{nodeTypes}}
+\index{nodeTypes@{nodeTypes}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{nodeTypes}{nodeTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9}{luna\+::scene\+Hierarchy\+Panel\+::node\+Types}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{node@{node}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!node@{node}}}\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a566f8c7b361c1f77eb785e88760769d8}\label{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a566f8c7b361c1f77eb785e88760769d8}} 
+node&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{controlNode@{controlNode}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!controlNode@{controlNode}}}\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a9fbe2c14f7d85390a1d73ba3d94aee9f}\label{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a9fbe2c14f7d85390a1d73ba3d94aee9f}} 
+control\+Node&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{spriteNode@{spriteNode}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!spriteNode@{spriteNode}}}\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a7c4c96a49a79c9e2e68b1308f78c3346}\label{classluna_1_1scene_hierarchy_panel_a14afe571306f1f572a28f68b5da529b9a7c4c96a49a79c9e2e68b1308f78c3346}} 
+sprite\+Node&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a775bc07c997acedb213edf90c23ab852}\label{classluna_1_1scene_hierarchy_panel_a775bc07c997acedb213edf90c23ab852}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!sceneHierarchyPanel@{sceneHierarchyPanel}}
+\index{sceneHierarchyPanel@{sceneHierarchyPanel}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{sceneHierarchyPanel()}{sceneHierarchyPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily luna\+::scene\+Hierarchy\+Panel\+::scene\+Hierarchy\+Panel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a350d3a2c7a41a2b55cf6b20ffd69a269}\label{classluna_1_1scene_hierarchy_panel_a350d3a2c7a41a2b55cf6b20ffd69a269}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!sceneHierarchyPanel@{sceneHierarchyPanel}}
+\index{sceneHierarchyPanel@{sceneHierarchyPanel}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{sceneHierarchyPanel()}{sceneHierarchyPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily luna\+::scene\+Hierarchy\+Panel\+::scene\+Hierarchy\+Panel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1scene}{scene}} $>$ \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a4d3f1480429e777a451d175c8e61dc92}\label{classluna_1_1scene_hierarchy_panel_a4d3f1480429e777a451d175c8e61dc92}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!displayAddComponentEntry@{displayAddComponentEntry}}
+\index{displayAddComponentEntry@{displayAddComponentEntry}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{displayAddComponentEntry()}{displayAddComponentEntry()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void luna\+::scene\+Hierarchy\+Panel\+::display\+Add\+Component\+Entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{entry\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a2bbc0ec2583c3c9b4a1a3fa0b21feffd}\label{classluna_1_1scene_hierarchy_panel_a2bbc0ec2583c3c9b4a1a3fa0b21feffd}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!drawComponents@{drawComponents}}
+\index{drawComponents@{drawComponents}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{drawComponents()}{drawComponents()}}
+{\footnotesize\ttfamily void luna\+::scene\+Hierarchy\+Panel\+::draw\+Components (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{Node}}}]{Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_aecd675dda7b7632090d2857d54f749e4}\label{classluna_1_1scene_hierarchy_panel_aecd675dda7b7632090d2857d54f749e4}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!drawEntityNode@{drawEntityNode}}
+\index{drawEntityNode@{drawEntityNode}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{drawEntityNode()}{drawEntityNode()}}
+{\footnotesize\ttfamily void luna\+::scene\+Hierarchy\+Panel\+::draw\+Entity\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{Node}}}]{Node,  }\item[{uint32\+\_\+t}]{indent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a73581a7740351cda4226b49cc62b2033}\label{classluna_1_1scene_hierarchy_panel_a73581a7740351cda4226b49cc62b2033}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!drawNodeSelectionList@{drawNodeSelectionList}}
+\index{drawNodeSelectionList@{drawNodeSelectionList}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{drawNodeSelectionList()}{drawNodeSelectionList()}}
+{\footnotesize\ttfamily void luna\+::scene\+Hierarchy\+Panel\+::draw\+Node\+Selection\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a6a71826e3c1794f12b075dd7b754cb00}\label{classluna_1_1scene_hierarchy_panel_a6a71826e3c1794f12b075dd7b754cb00}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!getSelectedNode@{getSelectedNode}}
+\index{getSelectedNode@{getSelectedNode}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{getSelectedNode()}{getSelectedNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1_node}{Node}} luna\+::scene\+Hierarchy\+Panel\+::get\+Selected\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_afc6adcf7c0e56d08be02e8014187881c}\label{classluna_1_1scene_hierarchy_panel_afc6adcf7c0e56d08be02e8014187881c}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!onImGuiRender@{onImGuiRender}}
+\index{onImGuiRender@{onImGuiRender}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{onImGuiRender()}{onImGuiRender()}}
+{\footnotesize\ttfamily void luna\+::scene\+Hierarchy\+Panel\+::on\+Im\+Gui\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_abee30cb7372031566e856cbb251703cd}\label{classluna_1_1scene_hierarchy_panel_abee30cb7372031566e856cbb251703cd}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!setContext@{setContext}}
+\index{setContext@{setContext}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{setContext()}{setContext()}}
+{\footnotesize\ttfamily void luna\+::scene\+Hierarchy\+Panel\+::set\+Context (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1scene}{scene}} $>$ \&}]{scene }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a5027e43f0e42fcdfdb173b3d3dde4520}\label{classluna_1_1scene_hierarchy_panel_a5027e43f0e42fcdfdb173b3d3dde4520}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!setSelectedNode@{setSelectedNode}}
+\index{setSelectedNode@{setSelectedNode}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{setSelectedNode()}{setSelectedNode()}}
+{\footnotesize\ttfamily void luna\+::scene\+Hierarchy\+Panel\+::set\+Selected\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{Node}}}]{Node }\end{DoxyParamCaption})}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_af397ce23a4fb379b5aee4b5820bfb78d}\label{classluna_1_1scene_hierarchy_panel_af397ce23a4fb379b5aee4b5820bfb78d}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!addIndent@{addIndent}}
+\index{addIndent@{addIndent}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{addIndent}{addIndent}}
+{\footnotesize\ttfamily uint64\+\_\+t luna\+::scene\+Hierarchy\+Panel\+::add\+Indent = 3\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a1d609e8ec2334d32c5da3e28ce62b146}\label{classluna_1_1scene_hierarchy_panel_a1d609e8ec2334d32c5da3e28ce62b146}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!m\_Context@{m\_Context}}
+\index{m\_Context@{m\_Context}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{m\_Context}{m\_Context}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1scene}{scene}}$\ast$ luna\+::scene\+Hierarchy\+Panel\+::m\+\_\+\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_af03034bc5a1819ef508bfd4d7ef71341}\label{classluna_1_1scene_hierarchy_panel_af03034bc5a1819ef508bfd4d7ef71341}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!m\_ListSelected@{m\_ListSelected}}
+\index{m\_ListSelected@{m\_ListSelected}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{m\_ListSelected}{m\_ListSelected}}
+{\footnotesize\ttfamily uint64\+\_\+t luna\+::scene\+Hierarchy\+Panel\+::m\+\_\+\+List\+Selected = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_af30c4930736cb3b03576e5f25e0c345b}\label{classluna_1_1scene_hierarchy_panel_af30c4930736cb3b03576e5f25e0c345b}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!m\_Selected@{m\_Selected}}
+\index{m\_Selected@{m\_Selected}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{m\_Selected}{m\_Selected}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1_node}{Node}} luna\+::scene\+Hierarchy\+Panel\+::m\+\_\+\+Selected\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_hierarchy_panel_a64fc726aa1a382ad1d5efa60b8c20b2c}\label{classluna_1_1scene_hierarchy_panel_a64fc726aa1a382ad1d5efa60b8c20b2c}} 
+\index{luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}!m\_SelectionContext@{m\_SelectionContext}}
+\index{m\_SelectionContext@{m\_SelectionContext}!luna::sceneHierarchyPanel@{luna::sceneHierarchyPanel}}
+\doxyparagraph{\texorpdfstring{m\_SelectionContext}{m\_SelectionContext}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1_node}{Node}} luna\+::scene\+Hierarchy\+Panel\+::m\+\_\+\+Selection\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/\mbox{\hyperlink{scene_hierarchy_panel_8h}{scene\+Hierarchy\+Panel.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/\mbox{\hyperlink{scene_hierarchy_panel_8cpp}{scene\+Hierarchy\+Panel.\+cpp}}\end{DoxyCompactItemize}

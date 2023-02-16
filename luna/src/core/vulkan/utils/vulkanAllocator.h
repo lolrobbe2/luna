@@ -3,6 +3,7 @@
 #include <core/utils/vectorCache.h>
 #include <core/rendering/device.h>
 #include <core/utils/objectStorage.h>
+#include <core/vulkan/device/vulkanCmdPool.h>
 namespace luna
 {
 	namespace utils
@@ -72,23 +73,57 @@ namespace luna
 			 * \param memoryUsage
 			 * \return 
 			 */
-			static VkResult createBuffer(VkBuffer* pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage,VmaAllocationCreateFlags allocFlags = 0);
+			static VkResult createBuffer(VkBuffer* pBuffer,const size_t& allocSize,const VkBufferUsageFlags& usage,const VmaMemoryUsage& memoryUsage,const VmaAllocationCreateFlags& allocFlags = 0);
 			/**
 			 * @brief destroys the VkBuffer object.
 			 * 
 			 * \param buffer
 			 */
-			static void destroyBuffer(VkBuffer buffer);
+			static void destroyBuffer(const VkBuffer& buffer);
+			/**
+			 * @brief uploads a texture to the gpu .
+			 * 
+			 * \param buffer dataBuffer that stores texelData
+			 * \param image handle to copy texelData in to. 
+			 */
+			static void uploadTexture(const VkBuffer& buffer,const VkImage& image, const VkFormat& imageFormat, const glm::vec3& imageDimensions);
+			/**
+			 * @brief executes all recorded transferCommands.
+			 * 
+			 */
+			static void flush();
+
+			static VkFormat getSuitableFormat(const VkImageUsageFlags& usageFlags, const uint32_t& channels);
 		private:
+			/**
+			 * @brief transitions the image layout.
+			 *
+			 * \param VkImage image imageHandle
+			 * \param VkFormat format
+			 * \param VkImageLayout oldLayout
+			 * \param VkImageLayout newLayout
+			 * \param VkCommandBuffer commandBufffer
+			 */
+			static void transitionImageLayout(const VkImage& image, const VkFormat& format, const VkImageLayout& oldLayout, const VkImageLayout& newLayout, const vulkan::virtualCmdBuffer& commandBufffer);
+		
 			struct vmaAllocation
 			{
 				VmaAllocation allocation;
 				VmaAllocationInfo allocationInfo;
 			};
+			struct transferCommand
+			{
+				VkBuffer sourceBuffer;
+				VkImage VulkanImage;
+				VkFormat ImageFormat;
+				glm::vec3 dimensions;
+			};
 			inline static ref<renderer::device> pDevice; //ref to graphics device.
 			inline static VmaAllocator sAllocator; //allocator handle.
 			inline static objectStorage<vmaAllocation> allocations;
-			VkQueue transferQueue; //for later;
+			inline static std::vector<transferCommand> transferCommands;
+			inline static ref<vulkan::vulkanCmdPool> commandPool = nullptr;
+			inline static VkQueue transferQueue; //for later; thanks past robbe!
 
 		};
 		

@@ -30,6 +30,7 @@ namespace luna
 			 */
 			vectorCache()
 			{
+				LN_PROFILE_FUNCTION();
 				maxCacheSize = 200;
 				handleCache.reserve(maxCacheSize);
 				valueCache.reserve(maxCacheSize);
@@ -41,6 +42,7 @@ namespace luna
 			 */
 			vectorCache(size_t maxCacheSize)
 			{
+				LN_PROFILE_FUNCTION();
 				this->maxCacheSize = maxCacheSize;
 				handleCache.reserve(maxCacheSize);
 				valueCache.reserve(maxCacheSize);
@@ -63,6 +65,7 @@ namespace luna
 			 */
 			std::pair<cacheObject, value> putValue(cacheObject* key, value _value)
 			{
+				LN_PROFILE_FUNCTION();
 				if (*key == 0) *key = uuid();
 				std::lock_guard<std::mutex>(this->lockGuard);
 				
@@ -86,6 +89,7 @@ namespace luna
 			 */
 			std::pair<cacheResult, value> getValue(cacheObject key)
 			{
+				LN_PROFILE_FUNCTION();
 				//lock mutex to block other threads from accesing it.
 				if(key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
 				std::lock_guard<std::mutex>(this->lockGuard);
@@ -119,6 +123,7 @@ namespace luna
 			 */
 			std::pair<cacheResult, value> setValue(cacheObject key, value _value)
 			{
+				LN_PROFILE_FUNCTION();
 				if (key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
 				std::lock_guard<std::mutex>(this->lockGuard);
 
@@ -148,6 +153,7 @@ namespace luna
 			 */
 			std::pair<cacheResult, value> eraseValue(cacheObject key)
 			{
+				LN_PROFILE_FUNCTION();
 				if (key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
 				std::lock_guard<std::mutex>(this->lockGuard);
 				for (uint64_t iterator = 0; iterator < handleCache.size(); iterator++)

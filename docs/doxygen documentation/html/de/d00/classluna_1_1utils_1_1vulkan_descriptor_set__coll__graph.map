@@ -1,0 +1,6 @@
+<map id="luna::utils::vulkanDescriptorSet" name="luna::utils::vulkanDescriptorSet">
+<area shape="rect" id="node1" title="wrapper class around VkDescriptorSet." coords="5,284,207,309"/>
+<area shape="rect" id="node2" title=" " coords="6,181,206,221"/>
+<area shape="rect" id="node3" title=" " coords="49,93,163,119"/>
+<area shape="rect" id="node4" title=" " coords="87,5,125,31"/>
+</map>

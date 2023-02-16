@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for luna\+::renderer\+::renderer\+:
-\nopagebreak
+Collaboration diagram for luna\+::renderer\+::renderer\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,6 +27,8 @@ static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a32fcf021d4fb9807
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_afb864b4498cbb6eeb0240cd9a6b2af44}{begin\+Scene}} ()
 \begin{DoxyCompactList}\small\item\em starts recording a new scene. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}{Submit}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, const uint64\+\_\+t \&index\+Count=0)
+\begin{DoxyCompactList}\small\item\em submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} to be rendered containing vertex\+Buffers and 1 \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a70238c9cb6fd163229ca4454ad8eaadd}{Submit}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, std\+::vector$<$ uint64\+\_\+t $>$ textures, const uint64\+\_\+t \&index\+Count=0)
 \begin{DoxyCompactList}\small\item\em submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} to be rendered containing vertex\+Buffers and 1 \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a6d3cc118bda57598c1d5c5524b8bce15}{end\+Scene}} ()
 \end{DoxyCompactItemize}
@@ -107,7 +108,7 @@ renders a new frame.
 @biref shutsdown the base renderer. \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}\label{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1bb2d5d92b08648921}} 
 \index{luna::renderer::renderer@{luna::renderer::renderer}!Submit@{Submit}}
 \index{Submit@{Submit}!luna::renderer::renderer@{luna::renderer::renderer}}
-\doxyparagraph{\texorpdfstring{Submit()}{Submit()}}
+\doxyparagraph{\texorpdfstring{Submit()}{Submit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::\+Submit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&}]{vertex\+Array,  }\item[{const uint64\+\_\+t \&}]{index\+Count = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
@@ -120,6 +121,26 @@ submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}
 
 \begin{DoxyParams}{Parameters}
 {\em \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a70238c9cb6fd163229ca4454ad8eaadd}\label{classluna_1_1renderer_1_1renderer_a70238c9cb6fd163229ca4454ad8eaadd}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!Submit@{Submit}}
+\index{Submit@{Submit}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{Submit()}{Submit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::\+Submit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&}]{vertex\+Array,  }\item[{std\+::vector$<$ uint64\+\_\+t $>$}]{textures,  }\item[{const uint64\+\_\+t \&}]{index\+Count = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} to be rendered containing vertex\+Buffers and 1 \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} generation is done by the 2D/3D renderer api\textquotesingle{}s respectevly. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}} & \\
+\hline
+{\em textures} & (vector of texture\+Handles) \\
 \hline
 \end{DoxyParams}
 

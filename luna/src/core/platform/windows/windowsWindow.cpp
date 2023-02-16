@@ -36,7 +36,7 @@ namespace luna
 			mData.width = windowInfo.width;
 			mData.height = windowInfo.height;
 			mData.title = windowInfo.title;
-
+		
 			if (!isGlfwInit)
 			{
 				int succes = glfwInit();
@@ -45,6 +45,7 @@ namespace luna
 						LN_CORE_ERROR("glfw error. error code = {0}, description: {1}", error_code, description);
 				});
 				isGlfwInit = true;
+
 			}
 
 			//select GLFW_API based on selected API
@@ -74,6 +75,16 @@ namespace luna
 				windowResizeEvent event(width,height);
 				winData.eventCallbackFn(event);
 				
+			});
+
+			glfwSetWindowFocusCallback(_window, [](GLFWwindow* window, int focused) 
+			{
+				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
+				windowFocusEvent focusEvent;
+				windowLostFocusEvent lostFocusEvent;
+				if (focused) winData.eventCallbackFn(focusEvent);
+				else winData.eventCallbackFn(lostFocusEvent);
+					
 			});
 
 			glfwSetWindowCloseCallback(_window, [](GLFWwindow* window)
@@ -150,7 +161,7 @@ namespace luna
 			{
 				ImGui_ImplGlfw_CharCallback(window, codepoint);
 			});
-
+			
 		}
 		void windowsWindow::shutDown()
 		{

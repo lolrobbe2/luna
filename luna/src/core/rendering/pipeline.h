@@ -36,7 +36,7 @@ namespace luna
 			 * @brief starts recording pipeline input.
 			 *
 			 */
-			virtual void begin() const = 0;
+			virtual void begin() = 0;
 			/**
 			 * @brief ends recording end.
 			 * 
@@ -53,10 +53,17 @@ namespace luna
 			 * \param ref<renderer::vertexArray> vertexArray ref to vertexarray containing vertexBuffers and inexBuffer;
 			 * \param indexCount indexCount tp be rendered;
 			 */
-			virtual void drawIndexed(const ref<vertexArray>& vertexArray, int indexCount) = 0;
+			virtual void drawIndexed(const ref<vertexArray>& vertexArray, std::vector<uint64_t> textures, int indexCount) = 0;
+			/**
+			 * @brief binds textures in to there respective textureArrays.
+			 * 
+			 * \param textureHandles
+			 * \param indexSet 
+			 */
+			virtual void bindTextures(const std::vector<uint64_t> textureHandles,const uint64_t indexSet) = 0;
 			/**
 			 * @brief clears all drawCommands.
-			 * 
+			 *
 			 */
 			virtual void clear() = 0;
 			int test;

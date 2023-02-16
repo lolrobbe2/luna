@@ -1,0 +1,167 @@
+\hypertarget{classluna_1_1scene}{}\doxysubsection{luna\+::scene Class Reference}
+\label{classluna_1_1scene}\index{luna::scene@{luna::scene}}
+
+
+{\ttfamily \#include $<$scene.\+h$>$}
+
+
+
+Collaboration diagram for luna\+::scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d00/classluna_1_1scene__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1scene_a4b51cfd6d22c77aab932dbe42f29d0ac}{scene}} ()=default
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classluna_1_1scene_a02491855082b8abf1019cce5dc7e9a9c}{add\+Node}} (std\+::string name=std\+::string())
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classluna_1_1scene_ad1e61089ca30395f95ea097c9f0fb766}{destroy\+Node}} (const T \&\mbox{\hyperlink{classluna_1_1_node}{Node}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classluna_1_1scene_a9187b427dc1f30f1dcfd5aede8cf6e3d}{on\+Component\+Added}} (\mbox{\hyperlink{classluna_1_1_node}{Node}} \mbox{\hyperlink{classluna_1_1_node}{Node}}, T \&component)
+\item 
+{\footnotesize template$<$typename... components$>$ }\\auto \mbox{\hyperlink{classluna_1_1scene_aaf9e475b7d264a5c94a78a561151d659}{get\+All\+Entities\+With}} ()
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_a39e773ac9aa03228798d94d48ebc15d9}{on\+Update\+Editor}} (\mbox{\hyperlink{classluna_1_1utils_1_1timestep}{utils\+::timestep}} ts)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+entt\+::registry \mbox{\hyperlink{classluna_1_1scene_a5fd3e966289195ecb6bbed760c3e807a}{m\+\_\+\+Registry}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classluna_1_1scene_af38064a49660088e2493a41684b95edf}{m\+\_\+\+Viewport\+Width}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classluna_1_1scene_a2f6eb33d4329e87352d8d2826886f3b8}{m\+\_\+\+Viewport\+Height}} = 0
+\item 
+bool \mbox{\hyperlink{classluna_1_1scene_afca1311450d22e827d08d08f26282eb6}{m\+\_\+\+Is\+Running}} = false
+\item 
+bool \mbox{\hyperlink{classluna_1_1scene_af71c9a1a19ba01b2d26248ff1d578a06}{m\+\_\+\+Is\+Paused}} = false
+\item 
+int \mbox{\hyperlink{classluna_1_1scene_a199dfba1eed8dd6407918694ed98b486}{m\+\_\+\+Step\+Frames}} = 0
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{utils\+::object\+Storage}}$<$ entt\+::entity $>$ \mbox{\hyperlink{classluna_1_1scene_a07b086b68986d91994de537b550d65a6}{enttity\+Storage}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1scene_a6db9d28bd448a131448276ee03de1e6d}{Node}}
+\item 
+class \mbox{\hyperlink{classluna_1_1scene_a48b3f9b09f4657212c6681f3fe94289c}{scene\+Hierarchy\+Panel}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_a4b51cfd6d22c77aab932dbe42f29d0ac}\label{classluna_1_1scene_a4b51cfd6d22c77aab932dbe42f29d0ac}} 
+\index{luna::scene@{luna::scene}!scene@{scene}}
+\index{scene@{scene}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{scene()}{scene()}}
+{\footnotesize\ttfamily luna\+::scene\+::scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_a02491855082b8abf1019cce5dc7e9a9c}\label{classluna_1_1scene_a02491855082b8abf1019cce5dc7e9a9c}} 
+\index{luna::scene@{luna::scene}!addNode@{addNode}}
+\index{addNode@{addNode}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{addNode()}{addNode()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& luna\+::scene\+::add\+Node (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_ad1e61089ca30395f95ea097c9f0fb766}\label{classluna_1_1scene_ad1e61089ca30395f95ea097c9f0fb766}} 
+\index{luna::scene@{luna::scene}!destroyNode@{destroyNode}}
+\index{destroyNode@{destroyNode}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{destroyNode()}{destroyNode()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool luna\+::scene\+::destroy\+Node (\begin{DoxyParamCaption}\item[{const T \&}]{Node }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1scene_aaf9e475b7d264a5c94a78a561151d659}\label{classluna_1_1scene_aaf9e475b7d264a5c94a78a561151d659}} 
+\index{luna::scene@{luna::scene}!getAllEntitiesWith@{getAllEntitiesWith}}
+\index{getAllEntitiesWith@{getAllEntitiesWith}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{getAllEntitiesWith()}{getAllEntitiesWith()}}
+{\footnotesize\ttfamily template$<$typename... components$>$ \\
+auto luna\+::scene\+::get\+All\+Entities\+With (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a9187b427dc1f30f1dcfd5aede8cf6e3d}\label{classluna_1_1scene_a9187b427dc1f30f1dcfd5aede8cf6e3d}} 
+\index{luna::scene@{luna::scene}!onComponentAdded@{onComponentAdded}}
+\index{onComponentAdded@{onComponentAdded}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{onComponentAdded()}{onComponentAdded()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void luna\+::scene\+::on\+Component\+Added (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{Node}}}]{Node,  }\item[{T \&}]{component }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a39e773ac9aa03228798d94d48ebc15d9}\label{classluna_1_1scene_a39e773ac9aa03228798d94d48ebc15d9}} 
+\index{luna::scene@{luna::scene}!onUpdateEditor@{onUpdateEditor}}
+\index{onUpdateEditor@{onUpdateEditor}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{onUpdateEditor()}{onUpdateEditor()}}
+{\footnotesize\ttfamily void luna\+::scene\+::on\+Update\+Editor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1timestep}{utils\+::timestep}}}]{ts }\end{DoxyParamCaption})}
+
+
+
+\doxysubsubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_a6db9d28bd448a131448276ee03de1e6d}\label{classluna_1_1scene_a6db9d28bd448a131448276ee03de1e6d}} 
+\index{luna::scene@{luna::scene}!Node@{Node}}
+\index{Node@{Node}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{Node}{Node}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classluna_1_1_node}{Node}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a48b3f9b09f4657212c6681f3fe94289c}\label{classluna_1_1scene_a48b3f9b09f4657212c6681f3fe94289c}} 
+\index{luna::scene@{luna::scene}!sceneHierarchyPanel@{sceneHierarchyPanel}}
+\index{sceneHierarchyPanel@{sceneHierarchyPanel}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{sceneHierarchyPanel}{sceneHierarchyPanel}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel}{scene\+Hierarchy\+Panel}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1scene_a07b086b68986d91994de537b550d65a6}\label{classluna_1_1scene_a07b086b68986d91994de537b550d65a6}} 
+\index{luna::scene@{luna::scene}!enttityStorage@{enttityStorage}}
+\index{enttityStorage@{enttityStorage}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{enttityStorage}{enttityStorage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{utils\+::object\+Storage}}$<$entt\+::entity$>$ luna\+::scene\+::enttity\+Storage\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_af71c9a1a19ba01b2d26248ff1d578a06}\label{classluna_1_1scene_af71c9a1a19ba01b2d26248ff1d578a06}} 
+\index{luna::scene@{luna::scene}!m\_IsPaused@{m\_IsPaused}}
+\index{m\_IsPaused@{m\_IsPaused}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{m\_IsPaused}{m\_IsPaused}}
+{\footnotesize\ttfamily bool luna\+::scene\+::m\+\_\+\+Is\+Paused = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_afca1311450d22e827d08d08f26282eb6}\label{classluna_1_1scene_afca1311450d22e827d08d08f26282eb6}} 
+\index{luna::scene@{luna::scene}!m\_IsRunning@{m\_IsRunning}}
+\index{m\_IsRunning@{m\_IsRunning}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{m\_IsRunning}{m\_IsRunning}}
+{\footnotesize\ttfamily bool luna\+::scene\+::m\+\_\+\+Is\+Running = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a5fd3e966289195ecb6bbed760c3e807a}\label{classluna_1_1scene_a5fd3e966289195ecb6bbed760c3e807a}} 
+\index{luna::scene@{luna::scene}!m\_Registry@{m\_Registry}}
+\index{m\_Registry@{m\_Registry}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{m\_Registry}{m\_Registry}}
+{\footnotesize\ttfamily entt\+::registry luna\+::scene\+::m\+\_\+\+Registry\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a199dfba1eed8dd6407918694ed98b486}\label{classluna_1_1scene_a199dfba1eed8dd6407918694ed98b486}} 
+\index{luna::scene@{luna::scene}!m\_StepFrames@{m\_StepFrames}}
+\index{m\_StepFrames@{m\_StepFrames}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{m\_StepFrames}{m\_StepFrames}}
+{\footnotesize\ttfamily int luna\+::scene\+::m\+\_\+\+Step\+Frames = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a2f6eb33d4329e87352d8d2826886f3b8}\label{classluna_1_1scene_a2f6eb33d4329e87352d8d2826886f3b8}} 
+\index{luna::scene@{luna::scene}!m\_ViewportHeight@{m\_ViewportHeight}}
+\index{m\_ViewportHeight@{m\_ViewportHeight}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{m\_ViewportHeight}{m\_ViewportHeight}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::scene\+::m\+\_\+\+Viewport\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_af38064a49660088e2493a41684b95edf}\label{classluna_1_1scene_af38064a49660088e2493a41684b95edf}} 
+\index{luna::scene@{luna::scene}!m\_ViewportWidth@{m\_ViewportWidth}}
+\index{m\_ViewportWidth@{m\_ViewportWidth}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{m\_ViewportWidth}{m\_ViewportWidth}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::scene\+::m\+\_\+\+Viewport\+Width = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/\mbox{\hyperlink{scene_8h}{scene.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/\mbox{\hyperlink{scene_8cpp}{scene.\+cpp}}\end{DoxyCompactItemize}
