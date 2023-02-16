@@ -1,11 +1,16 @@
 var namespaceluna_1_1utils =
 [
     [ "compileSpec", "db/d00/structluna_1_1utils_1_1compile_spec.html", "db/d00/structluna_1_1utils_1_1compile_spec" ],
+    [ "layer", "d5/d00/classluna_1_1utils_1_1layer.html", "d5/d00/classluna_1_1utils_1_1layer" ],
+    [ "layerStack", "da/d00/classluna_1_1utils_1_1layer_stack.html", "da/d00/classluna_1_1utils_1_1layer_stack" ],
     [ "objectStorage", "d5/d00/classluna_1_1utils_1_1object_storage.html", "d5/d00/classluna_1_1utils_1_1object_storage" ],
     [ "shaderCompiler", "d0/d00/classluna_1_1utils_1_1shader_compiler.html", "d0/d00/classluna_1_1utils_1_1shader_compiler" ],
     [ "shaderLibrary", "d8/d00/classluna_1_1utils_1_1shader_library.html", "d8/d00/classluna_1_1utils_1_1shader_library" ],
+    [ "timestep", "d0/d00/classluna_1_1utils_1_1timestep.html", "d0/d00/classluna_1_1utils_1_1timestep" ],
     [ "vectorCache", "d0/d00/classluna_1_1utils_1_1vector_cache.html", "d0/d00/classluna_1_1utils_1_1vector_cache" ],
     [ "vulkanAllocator", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html", "de/d00/classluna_1_1utils_1_1vulkan_allocator" ],
+    [ "vulkanDescriptorPool", "d2/d00/classluna_1_1utils_1_1vulkan_descriptor_pool.html", "d2/d00/classluna_1_1utils_1_1vulkan_descriptor_pool" ],
+    [ "vulkanDescriptorSet", "df/d00/classluna_1_1utils_1_1vulkan_descriptor_set.html", "df/d00/classluna_1_1utils_1_1vulkan_descriptor_set" ],
     [ "vulkanObjectFactory", "dc/d00/classluna_1_1utils_1_1vulkan_object_factory.html", "dc/d00/classluna_1_1utils_1_1vulkan_object_factory" ],
     [ "allocationHandle", "dc/d00/namespaceluna_1_1utils.html#a4b35646c61e2f6d6702a975f67265c3b", null ],
     [ "cacheObject", "dc/d00/namespaceluna_1_1utils.html#ac3ec840636b2415749250bb9a183ac2b", null ],

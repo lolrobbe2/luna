@@ -1,5 +1,6 @@
 var structluna_1_1renderer_1_1shader_resource =
 [
+    [ "amount", "d5/d00/structluna_1_1renderer_1_1shader_resource.html#aa9ee320c146a6a07c457a2913f70eeaa", null ],
     [ "binding", "d5/d00/structluna_1_1renderer_1_1shader_resource.html#ae2fff157773c98ad8a6c1f5039d0bfd9", null ],
     [ "location", "d5/d00/structluna_1_1renderer_1_1shader_resource.html#a9f04db9ef1c5ae026595b9afd5b9ebeb", null ],
     [ "members", "d5/d00/structluna_1_1renderer_1_1shader_resource.html#aaec1e8d55b7b5c5cf55ab78344723eed", null ],

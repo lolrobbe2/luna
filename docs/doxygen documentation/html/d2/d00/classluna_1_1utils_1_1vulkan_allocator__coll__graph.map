@@ -1,18 +1,20 @@
 <map id="luna::utils::vulkanAllocator" name="luna::utils::vulkanAllocator">
-<area shape="rect" id="node1" title=" " coords="1835,321,2008,346"/>
-<area shape="rect" id="node2" href="$d5/d00/classluna_1_1utils_1_1object_storage.html" title=" " coords="1535,306,1720,361"/>
-<area shape="rect" id="node3" href="$d0/d00/classluna_1_1utils_1_1vector_cache.html" title=" " coords="1133,143,1319,198"/>
-<area shape="rect" id="node4" title=" " coords="396,26,548,51"/>
-<area shape="rect" id="node10" href="$d0/d00/classluna_1_1utils_1_1vector_cache.html" title="a pretty optimal multithreaded vector cahce headeronly class." coords="757,73,914,113"/>
-<area shape="rect" id="node5" title=" " coords="149,174,263,199"/>
-<area shape="rect" id="node7" title=" " coords="765,219,906,274"/>
-<area shape="rect" id="node11" title=" " coords="405,77,539,102"/>
-<area shape="rect" id="node6" title=" " coords="5,333,44,358"/>
-<area shape="rect" id="node13" title=" " coords="403,347,541,387"/>
-<area shape="rect" id="node8" href="$da/d00/structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation.html" title=" " coords="385,264,559,304"/>
-<area shape="rect" id="node12" title=" " coords="761,299,910,368"/>
-<area shape="rect" id="node9" title=" " coords="430,127,514,153"/>
-<area shape="rect" id="node16" title=" " coords="753,392,917,432"/>
-<area shape="rect" id="node14" title=" " coords="187,302,225,327"/>
-<area shape="rect" id="node15" href="$d5/d00/classluna_1_1utils_1_1object_storage.html" title="cached object memory class with a key handle." coords="1143,384,1309,424"/>
+<area shape="rect" id="node1" title=" " coords="1988,437,2161,462"/>
+<area shape="rect" id="node2" href="$d5/d00/classluna_1_1utils_1_1object_storage.html" title=" " coords="1688,337,1873,391"/>
+<area shape="rect" id="node3" href="$d0/d00/classluna_1_1utils_1_1vector_cache.html" title=" " coords="1287,145,1472,199"/>
+<area shape="rect" id="node4" title=" " coords="549,29,701,54"/>
+<area shape="rect" id="node10" href="$d0/d00/classluna_1_1utils_1_1vector_cache.html" title="a pretty optimal multithreaded vector cahce headeronly class." coords="910,71,1067,111"/>
+<area shape="rect" id="node5" title=" " coords="179,197,293,222"/>
+<area shape="rect" id="node7" title=" " coords="918,221,1059,275"/>
+<area shape="rect" id="node11" title=" " coords="558,79,693,105"/>
+<area shape="rect" id="node17" title=" " coords="553,414,697,469"/>
+<area shape="rect" id="node6" title=" " coords="5,329,44,354"/>
+<area shape="rect" id="node13" title=" " coords="557,340,694,380"/>
+<area shape="rect" id="node8" href="$da/d00/structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation.html" title=" " coords="539,265,712,305"/>
+<area shape="rect" id="node12" title=" " coords="914,364,1063,433"/>
+<area shape="rect" id="node9" title=" " coords="583,131,667,157"/>
+<area shape="rect" id="node16" title=" " coords="907,300,1071,340"/>
+<area shape="rect" id="node14" title=" " coords="217,246,255,271"/>
+<area shape="rect" id="node15" href="$d5/d00/classluna_1_1utils_1_1object_storage.html" title="cached object memory class with a key handle." coords="1296,311,1463,351"/>
+<area shape="rect" id="node18" href="$dc/d00/structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command.html" title=" " coords="149,421,323,461"/>
 </map>

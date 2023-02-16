@@ -6,7 +6,7 @@ class apollo : public luna::application::application
 public:
 	apollo() //base function
 	{
-		LN_TRACE("started app");
+		LN_TRACE("started apollo editor");
 		pushLayer(new luna::editorLayer());
 	}
 	virtual ~apollo() //base breaker function
@@ -18,7 +18,6 @@ public:
 
 luna::application::application* luna::application::createApplication()
 {
-	//hello
 	return new apollo(); // returns the application
 }
 

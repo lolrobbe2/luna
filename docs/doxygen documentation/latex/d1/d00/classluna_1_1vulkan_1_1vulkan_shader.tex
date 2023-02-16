@@ -39,7 +39,9 @@ void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_aa7bab09ef9777619f42e
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11}{get\+Shader\+Resource}} (const spirv\+\_\+cross\+::\+Resource \&\+\_\+shader\+Resource, const std\+::vector$<$ uint32\+\_\+t $>$ \&shader\+Source, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1}{renderer\+::type\+Class}} type\+Class)
-\begin{DoxyCompactList}\small\item\em get the shder\+Resource information and returns a corresponding engine shaderresource. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em get the shder\+Resource information and returns a corresponding engine shaderresource. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_shader_a20cc5b717aedb9797ec99f6849334f43}{create\+Offsets}} (std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ $\ast$layout)
+\begin{DoxyCompactList}\small\item\em create shader byte offsets. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -101,6 +103,21 @@ creates the shader layout.
 
 Implements \mbox{\hyperlink{classluna_1_1renderer_1_1shader_af85d739bb38d87443861dc2b8a7836ef}{luna\+::renderer\+::shader}}.
 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_a20cc5b717aedb9797ec99f6849334f43}\label{classluna_1_1vulkan_1_1vulkan_shader_a20cc5b717aedb9797ec99f6849334f43}} 
+\index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!createOffsets@{createOffsets}}
+\index{createOffsets@{createOffsets}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}
+\doxyparagraph{\texorpdfstring{createOffsets()}{createOffsets()}}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Shader\+::create\+Offsets (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{renderer\+::shader\+Resource}} $>$ $\ast$}]{layout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+create shader byte offsets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$renderer\+::shader\+Resource$>$$\ast$} & layout; \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11}\label{classluna_1_1vulkan_1_1vulkan_shader_a43c9e5cf47585852ceab573e74c0ef11}} 
 \index{luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}!getShaderResource@{getShaderResource}}
 \index{getShaderResource@{getShaderResource}!luna::vulkan::vulkanShader@{luna::vulkan::vulkanShader}}

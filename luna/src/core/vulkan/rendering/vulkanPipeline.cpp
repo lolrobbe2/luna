@@ -25,7 +25,6 @@ namespace luna
 			LN_CORE_INFO("commandbuffer create info = {0}",commandPool->createNewBuffer(commandBuffers.data(), maxFramesInFlight, VK_COMMAND_BUFFER_LEVEL_PRIMARY));
 			presentQueue = device->getQueue(vkb::QueueType::present);
 			utils::vulkanAllocator::init(layout.device);
-			//utils::vulkanAllocator::flush();
 			sampler = ref<renderer::vulkanSampler>(new renderer::vulkanSampler(device, VK_FILTER_NEAREST));
 
 			VkDescriptorPoolSize poolSizes[] =
@@ -143,17 +142,7 @@ namespace luna
 			vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 				
 			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
-			/*
-			//transition src image to DST to clear image
-			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
-			
-			vkCmdClearColorImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &blankValue, 1, &imageSubRange);
-			
-			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, commandPool->operator=(commandBuffers[currentFrame]));
-			//copy framebuffer to seperate image.
-			//clear framebuffer vkCmdClearImage();
-			//iumgui draw
-			*/
+
 			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
@@ -177,16 +166,15 @@ namespace luna
 			//imgui commands
 			ImGui::NewFrame();
 			ImGuiViewport* viewport = ImGui::GetMainViewport();
-			//ImVec2 windowSize = ImGui::GetContentRegionAvail();
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
 			
-			//ImGui::SetNextWindowSize(ImGui::GetContentRegionAvail());
+			ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
 			}
-
+			ImGui::PopStyleVar(1);
 			ImGui::End();
 		}
 		void vulkanPipeline::end() const
@@ -223,13 +211,6 @@ namespace luna
 			}
 			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);
 
-			
-			/*
-			if (imagesInFlight[swapchainImageIndex] != VK_NULL_HANDLE)
-			{
-				vkWaitForFences(vDevice->getDeviceHandles().device, 1, &imagesInFlight[swapchainImageIndex], VK_TRUE, UINT64_MAX);
-			}
-			*/
 			imagesInFlight[swapchainImageIndex] = inFlightFences[currentFrame];
 			commandPoolSubmitInfo submit = {};
 			submit.pNext = nullptr;
@@ -273,7 +254,6 @@ namespace luna
 
 			if (result2 == VK_ERROR_OUT_OF_DATE_KHR || result2 == VK_SUBOPTIMAL_KHR)
 			{
-				//layout error not here!
 				initSyncStructures();
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
@@ -438,8 +418,7 @@ namespace luna
 			dynamicStateCreateInfo.pDynamicStates = dynamicState;
 
 			
-			//setup dummy color blending. We aren't using transparent objects yet
-			//the blending is just "no blend", but we do write to the color attachment
+
 			VkPipelineColorBlendStateCreateInfo colorBlending = {};
 			colorBlending.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
 			colorBlending.pNext = nullptr;
@@ -448,10 +427,10 @@ namespace luna
 			colorBlending.logicOp = VK_LOGIC_OP_COPY;
 			colorBlending.attachmentCount = 1;
 			colorBlending.pAttachments = &pipelineColorBlendAttachementState;
-			colorBlending.blendConstants[0] = 0.0f; // Optional
-			colorBlending.blendConstants[1] = 0.0f; // Optional
-			colorBlending.blendConstants[2] = 0.0f; // Optional
-			colorBlending.blendConstants[3] = 0.0f; // Optional
+			colorBlending.blendConstants[0] = 0.0f; 
+			colorBlending.blendConstants[1] = 0.0f; 
+			colorBlending.blendConstants[2] = 0.0f; 
+			colorBlending.blendConstants[3] = 0.0f; 
 			//build the actual pipeline
 			//we now use all of the info structs we have been writing into into this one to create the pipeline
 			VkGraphicsPipelineCreateInfo pipelineInfo = {};

@@ -11,5 +11,7 @@ var structluna_1_1renderer_1_1renderer2_d_data =
     [ "quadVertexBufferPtr", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a090580bfdeb5766da1e8c324eb8dfe7c", null ],
     [ "quadVertexCount", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#ade549304a801520f3dbf9eff8e4ab476", null ],
     [ "quadVertexPositions", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a854dd6bbb95be192278a69ac28ebffa4", null ],
+    [ "stats", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a1c511bdf1cacb64d5b9697975809be27", null ],
+    [ "textures", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a1795bef5123f7ae3d9a7120329bfbace", null ],
     [ "vertexArray", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a7c081b1ca639bf84e9e0e23a2ce71bdf", null ]
 ];

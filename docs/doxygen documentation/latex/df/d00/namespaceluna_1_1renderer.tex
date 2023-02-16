@@ -27,10 +27,18 @@ class \mbox{\hyperlink{classluna_1_1renderer_1_1shader}{shader}}
 \item 
 struct \mbox{\hyperlink{structluna_1_1renderer_1_1shader_resource}{shader\+Resource}}
 \item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}}
+\begin{DoxyCompactList}\small\item\em base texture class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1texture2_d}{texture2D}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classluna_1_1renderer_1_1texture2_d}{texture2D}} api. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas}{texture\+Atlas}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas}{texture\+Atlas}} api. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}
 \item 
 class \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_buffer}{vertex\+Buffer}}
-\end{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1renderer_1_1vulkan_sampler}{vulkan\+Sampler}}
+\begin{DoxyCompactList}\small\item\em vulkan sampler wrapper class to be superceded by multiplatform implementation later. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,7 +56,7 @@ enum \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b
 \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a182fc2ccb252a4a2292a69888cade123}{acceleration\+Structures}}
 , \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a264f84d1d1e760477fdfcaf6a9348855}{push\+Constant\+Buffers}}
 , \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a757c4b4b9850cb8626fc0cf1b8570ef8}{separate\+Images}}
-, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e}{separate\+Ssamplers}}
+, \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a0b5751515e882fb189dd2991f9ecce81}{separate\+Samplers}}
 , \newline
 \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29}{builtin\+Inputs}}
 , \mbox{\hyperlink{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a094e2b8d88b6d2e3bb831def0bed36f1}{builtin\+Outputs}}
@@ -199,8 +207,8 @@ push\+Constant\+Buffers&\\
 separate\+Images&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{separateSsamplers@{separateSsamplers}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!separateSsamplers@{separateSsamplers}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ad429c7962437092769ee243cc48d896e}} 
-separate\+Ssamplers&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{separateSamplers@{separateSamplers}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!separateSamplers@{separateSamplers}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a0b5751515e882fb189dd2991f9ecce81}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1a0b5751515e882fb189dd2991f9ecce81}} 
+separate\+Samplers&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{builtinInputs@{builtinInputs}!luna::renderer@{luna::renderer}}\index{luna::renderer@{luna::renderer}!builtinInputs@{builtinInputs}}}\mbox{\Hypertarget{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29}\label{namespaceluna_1_1renderer_a58e870e411c4fb89575c82593f9873b1ac5c88b119a60b1341246974633a82d29}} 

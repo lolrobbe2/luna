@@ -102,62 +102,63 @@ $(document).ready(function(){initNavTree('d6/d00/renderer_8cpp.html','../../'); 
 <code>#include &lt;<a class="el" href="../../d0/d00/vulkan_vertex_buffer_8h.html">core/vulkan/rendering/vulkanVertexBuffer.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../dd/d00/vulkan_index_buffer_8h.html">core/vulkan/rendering/vulkanIndexBuffer.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../dc/d00/shader_library_8h.html">core/utils/shaderLibrary.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d3/d00/vulkan_allocator_8h.html">core/vulkan/utils/vulkanAllocator.h</a>&gt;</code><br />
 <code>#include &lt;imgui_demo.cpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for renderer.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/d00/renderer_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2rendering_2renderer_8cpp" alt=""/></div>
 <map name="a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2rendering_2renderer_8cpp" id="a_c_1_2_users_2robbe_2source_2repos_2lolrobbe2_2luna_2luna_2src_2core_2rendering_2renderer_8cpp">
-<area shape="rect" title=" " coords="1044,5,1203,75"/>
-<area shape="rect" href="../../d6/d00/renderer_8h.html" title=" " coords="1125,123,1292,148"/>
-<area shape="rect" href="../../df/d00/vulkan_pipeline_8h.html" title=" " coords="1622,269,1766,309"/>
-<area shape="rect" href="../../da/d00/vulkan_device_8h.html" title=" " coords="1433,357,1560,397"/>
-<area shape="rect" href="../../d1/d00/vulkan_vertex_array_8h.html" title=" " coords="714,269,858,309"/>
-<area shape="rect" href="../../d0/d00/vulkan_vertex_buffer_8h.html" title=" " coords="867,445,1011,485"/>
-<area shape="rect" href="../../dd/d00/vulkan_index_buffer_8h.html" title=" " coords="1035,445,1179,485"/>
-<area shape="rect" href="../../dc/d00/shader_library_8h.html" title=" " coords="573,196,741,221"/>
-<area shape="rect" title=" " coords="1673,123,1790,148"/>
-<area shape="rect" href="../../d3/d00/window_8h.html" title=" " coords="1315,533,1449,573"/>
-<area shape="rect" href="../../db/d00/device_8h.html" title=" " coords="1305,453,1459,478"/>
-<area shape="rect" href="../../df/d00/pipeline_8h.html" title=" " coords="1067,365,1230,390"/>
-<area shape="rect" href="../../d3/d00/vertex_array_8h.html" title=" " coords="659,453,843,478"/>
-<area shape="rect" href="../../d3/d00/vulkan_imgui_8h.html" title=" " coords="1356,196,1547,221"/>
-<area shape="rect" href="../../d9/d00/lnpch_8h.html" title=" " coords="1234,695,1298,720"/>
-<area shape="rect" href="../../d5/d00/core_8h.html" title=" " coords="708,695,795,720"/>
-<area shape="rect" href="../../dd/d00/event_8h.html" title=" " coords="1199,621,1333,647"/>
-<area shape="rect" title=" " coords="1831,775,1893,801"/>
-<area shape="rect" title=" " coords="552,775,612,801"/>
-<area shape="rect" title=" " coords="605,856,660,881"/>
-<area shape="rect" title=" " coords="687,775,765,801"/>
-<area shape="rect" title=" " coords="726,856,795,881"/>
-<area shape="rect" title=" " coords="840,775,887,801"/>
-<area shape="rect" title=" " coords="911,775,978,801"/>
-<area shape="rect" title=" " coords="1002,775,1042,801"/>
-<area shape="rect" title=" " coords="1067,775,1132,801"/>
-<area shape="rect" title=" " coords="1157,775,1229,801"/>
-<area shape="rect" title=" " coords="905,856,971,881"/>
-<area shape="rect" title=" " coords="1164,856,1245,881"/>
-<area shape="rect" href="../../de/d00/platform_8h.html" title=" " coords="877,929,1036,955"/>
-<area shape="rect" title=" " coords="1917,775,2023,801"/>
-<area shape="rect" title=" " coords="1405,775,1561,801"/>
-<area shape="rect" title=" " coords="1586,775,1690,801"/>
-<area shape="rect" title=" " coords="2215,775,2279,801"/>
-<area shape="rect" title=" " coords="2047,768,2191,808"/>
-<area shape="rect" title=" " coords="1714,775,1807,801"/>
-<area shape="rect" title=" " coords="458,775,527,801"/>
-<area shape="rect" href="../../d7/d00/log_8h.html" title=" " coords="168,856,287,881"/>
-<area shape="rect" href="../../d6/d00/instrumentor_8h.html" title=" " coords="261,775,434,801"/>
-<area shape="rect" title=" " coords="148,929,307,955"/>
-<area shape="rect" title=" " coords="331,929,444,955"/>
-<area shape="rect" title=" " coords="5,929,124,955"/>
-<area shape="rect" title=" " coords="487,856,562,881"/>
-<area shape="rect" title=" " coords="311,856,373,881"/>
-<area shape="rect" title=" " coords="397,856,463,881"/>
-<area shape="rect" href="../../d1/d00/shader_8h.html" title=" " coords="860,621,1019,647"/>
-<area shape="rect" href="../../d5/d00/buffer_8h.html" title=" " coords="864,541,1015,566"/>
-<area shape="rect" title=" " coords="1585,357,1729,397"/>
-<area shape="rect" href="../../df/d00/vulkan_cmd_pool_8h.html" title=" " coords="1753,357,1880,397"/>
-<area shape="rect" href="../../d0/d00/vulkan_swapchain_8h.html" title=" " coords="1534,445,1678,485"/>
+<area shape="rect" title=" " coords="1121,5,1279,75"/>
+<area shape="rect" href="../../d6/d00/renderer_8h.html" title=" " coords="805,123,971,148"/>
+<area shape="rect" href="../../df/d00/vulkan_pipeline_8h.html" title=" " coords="371,269,515,309"/>
+<area shape="rect" href="../../da/d00/vulkan_device_8h.html" title=" " coords="222,445,349,485"/>
+<area shape="rect" href="../../d1/d00/vulkan_vertex_array_8h.html" title=" " coords="1019,269,1163,309"/>
+<area shape="rect" href="../../d0/d00/vulkan_vertex_buffer_8h.html" title=" " coords="1228,445,1372,485"/>
+<area shape="rect" href="../../dd/d00/vulkan_index_buffer_8h.html" title=" " coords="1060,445,1204,485"/>
+<area shape="rect" href="../../dc/d00/shader_library_8h.html" title=" " coords="1288,196,1456,221"/>
+<area shape="rect" href="../../d3/d00/vulkan_allocator_8h.html" title=" " coords="1447,445,1601,485"/>
+<area shape="rect" title=" " coords="1531,123,1648,148"/>
+<area shape="rect" href="../../d3/d00/window_8h.html" title=" " coords="609,621,743,661"/>
+<area shape="rect" href="../../db/d00/device_8h.html" title=" " coords="580,541,735,566"/>
+<area shape="rect" href="../../df/d00/pipeline_8h.html" title=" " coords="731,365,893,390"/>
+<area shape="rect" href="../../d3/d00/vertex_array_8h.html" title=" " coords="852,453,1036,478"/>
+<area shape="rect" href="../../d3/d00/vulkan_imgui_8h.html" title=" " coords="414,196,605,221"/>
+<area shape="rect" href="../../d9/d00/lnpch_8h.html" title=" " coords="908,783,972,808"/>
+<area shape="rect" title=" " coords="304,863,368,889"/>
+<area shape="rect" href="../../d5/d00/core_8h.html" title=" " coords="1023,783,1110,808"/>
+<area shape="rect" href="../../dd/d00/event_8h.html" title=" " coords="769,709,903,735"/>
+<area shape="rect" title=" " coords="2001,863,2063,889"/>
+<area shape="rect" title=" " coords="2087,863,2147,889"/>
+<area shape="rect" title=" " coords="2171,863,2226,889"/>
+<area shape="rect" title=" " coords="392,863,469,889"/>
+<area shape="rect" title=" " coords="493,863,563,889"/>
+<area shape="rect" title=" " coords="587,863,634,889"/>
+<area shape="rect" title=" " coords="659,863,725,889"/>
+<area shape="rect" title=" " coords="749,863,789,889"/>
+<area shape="rect" title=" " coords="814,863,879,889"/>
+<area shape="rect" title=" " coords="904,863,976,889"/>
+<area shape="rect" title=" " coords="1001,863,1066,889"/>
+<area shape="rect" title=" " coords="1090,863,1171,889"/>
+<area shape="rect" href="../../de/d00/platform_8h.html" title=" " coords="1195,863,1354,889"/>
+<area shape="rect" title=" " coords="174,863,279,889"/>
+<area shape="rect" title=" " coords="1378,863,1534,889"/>
+<area shape="rect" title=" " coords="1559,863,1663,889"/>
+<area shape="rect" title=" " coords="5,856,149,896"/>
+<area shape="rect" title=" " coords="1687,863,1780,889"/>
+<area shape="rect" title=" " coords="1804,863,1897,889"/>
+<area shape="rect" title=" " coords="1922,863,1977,889"/>
+<area shape="rect" href="../../d1/d00/shader_8h.html" title=" " coords="895,629,1054,654"/>
+<area shape="rect" href="../../d5/d00/buffer_8h.html" title=" " coords="1063,541,1214,566"/>
+<area shape="rect" title=" " coords="461,357,605,397"/>
+<area shape="rect" href="../../df/d00/vulkan_cmd_pool_8h.html" title=" " coords="810,533,937,573"/>
+<area shape="rect" href="../../d2/d00/vulkan_descriptor_pool_8h.html" title=" " coords="283,357,437,397"/>
+<area shape="rect" href="../../d6/d00/vulkan_sampler_8h.html" title=" " coords="115,357,259,397"/>
+<area shape="rect" href="../../d0/d00/vulkan_swapchain_8h.html" title=" " coords="209,533,353,573"/>
+<area shape="rect" title=" " coords="1340,541,1455,566"/>
+<area shape="rect" href="../../d7/d00/vector_cache_8h.html" title=" " coords="1335,629,1497,654"/>
+<area shape="rect" href="../../df/d00/object_storage_8h.html" title=" " coords="1529,541,1700,566"/>
+<area shape="rect" href="../../dd/d00/uuid_8h.html" title=" " coords="1311,709,1436,735"/>
 </map>
 </div>
 </div><table class="memberdecls">

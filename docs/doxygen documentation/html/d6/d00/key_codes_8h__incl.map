@@ -1,35 +1,37 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/keyCodes.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/keyCodes.h">
-<area shape="rect" id="node1" title=" " coords="565,5,717,75"/>
-<area shape="rect" id="node2" href="$d9/d00/lnpch_8h.html" title=" " coords="1767,196,1831,221"/>
-<area shape="rect" id="node22" href="$d5/d00/core_8h.html" title=" " coords="557,123,644,148"/>
-<area shape="rect" id="node3" title=" " coords="1819,277,1881,302"/>
-<area shape="rect" id="node4" title=" " coords="1905,277,1965,302"/>
-<area shape="rect" id="node5" title=" " coords="875,277,929,302"/>
-<area shape="rect" id="node6" title=" " coords="2041,277,2118,302"/>
-<area shape="rect" id="node7" title=" " coords="954,277,1023,302"/>
-<area shape="rect" id="node8" title=" " coords="2143,277,2189,302"/>
-<area shape="rect" id="node9" title=" " coords="2214,277,2281,302"/>
-<area shape="rect" id="node10" title=" " coords="2305,277,2345,302"/>
-<area shape="rect" id="node11" title=" " coords="2369,277,2435,302"/>
-<area shape="rect" id="node12" title=" " coords="2459,277,2531,302"/>
-<area shape="rect" id="node13" title=" " coords="1048,277,1113,302"/>
-<area shape="rect" id="node14" title=" " coords="769,277,851,302"/>
-<area shape="rect" id="node15" href="$de/d00/platform_8h.html" title=" " coords="1196,357,1355,383"/>
-<area shape="rect" id="node16" title=" " coords="2556,277,2661,302"/>
-<area shape="rect" id="node17" title=" " coords="1137,277,1293,302"/>
-<area shape="rect" id="node18" title=" " coords="1318,277,1422,302"/>
-<area shape="rect" id="node19" title=" " coords="1446,277,1510,302"/>
-<area shape="rect" id="node20" title=" " coords="1534,269,1678,309"/>
-<area shape="rect" id="node21" title=" " coords="1702,277,1795,302"/>
-<area shape="rect" id="node23" title=" " coords="494,196,563,221"/>
-<area shape="rect" id="node24" href="$d7/d00/log_8h.html" title=" " coords="185,277,304,302"/>
-<area shape="rect" id="node28" href="$d6/d00/instrumentor_8h.html" title=" " coords="587,196,761,221"/>
-<area shape="rect" id="node25" title=" " coords="5,357,164,383"/>
-<area shape="rect" id="node26" title=" " coords="188,357,301,383"/>
-<area shape="rect" id="node27" title=" " coords="325,357,444,383"/>
-<area shape="rect" id="node29" title=" " coords="329,277,403,302"/>
-<area shape="rect" id="node30" title=" " coords="427,277,489,302"/>
-<area shape="rect" id="node31" title=" " coords="513,277,579,302"/>
-<area shape="rect" id="node32" title=" " coords="603,277,662,302"/>
-<area shape="rect" id="node33" title=" " coords="686,277,745,302"/>
+<area shape="rect" id="node1" title=" " coords="558,5,710,75"/>
+<area shape="rect" id="node2" href="$d9/d00/lnpch_8h.html" title=" " coords="1882,196,1946,221"/>
+<area shape="rect" id="node24" href="$d5/d00/core_8h.html" title=" " coords="551,123,637,148"/>
+<area shape="rect" id="node3" title=" " coords="2015,277,2077,302"/>
+<area shape="rect" id="node4" title=" " coords="2101,277,2161,302"/>
+<area shape="rect" id="node5" title=" " coords="1057,277,1112,302"/>
+<area shape="rect" id="node6" title=" " coords="2237,277,2314,302"/>
+<area shape="rect" id="node7" title=" " coords="769,277,838,302"/>
+<area shape="rect" id="node8" title=" " coords="2339,277,2385,302"/>
+<area shape="rect" id="node9" title=" " coords="2410,277,2477,302"/>
+<area shape="rect" id="node10" title=" " coords="2501,277,2541,302"/>
+<area shape="rect" id="node11" title=" " coords="2565,277,2631,302"/>
+<area shape="rect" id="node12" title=" " coords="2655,277,2727,302"/>
+<area shape="rect" id="node13" title=" " coords="863,277,928,302"/>
+<area shape="rect" id="node14" title=" " coords="952,277,1033,302"/>
+<area shape="rect" id="node15" href="$de/d00/platform_8h.html" title=" " coords="1293,357,1452,383"/>
+<area shape="rect" id="node16" title=" " coords="2752,277,2857,302"/>
+<area shape="rect" id="node17" title=" " coords="1136,277,1292,302"/>
+<area shape="rect" id="node18" title=" " coords="1317,277,1421,302"/>
+<area shape="rect" id="node19" title=" " coords="1445,277,1509,302"/>
+<area shape="rect" id="node20" title=" " coords="1533,269,1677,309"/>
+<area shape="rect" id="node21" title=" " coords="1701,277,1794,302"/>
+<area shape="rect" id="node22" title=" " coords="1818,277,1911,302"/>
+<area shape="rect" id="node23" title=" " coords="1936,277,1991,302"/>
+<area shape="rect" id="node25" title=" " coords="487,196,557,221"/>
+<area shape="rect" id="node26" href="$d7/d00/log_8h.html" title=" " coords="185,277,304,302"/>
+<area shape="rect" id="node30" href="$d6/d00/instrumentor_8h.html" title=" " coords="581,196,754,221"/>
+<area shape="rect" id="node27" title=" " coords="5,357,164,383"/>
+<area shape="rect" id="node28" title=" " coords="188,357,301,383"/>
+<area shape="rect" id="node29" title=" " coords="325,357,444,383"/>
+<area shape="rect" id="node31" title=" " coords="585,277,659,302"/>
+<area shape="rect" id="node32" title=" " coords="683,277,745,302"/>
+<area shape="rect" id="node33" title=" " coords="329,277,395,302"/>
+<area shape="rect" id="node34" title=" " coords="419,277,478,302"/>
+<area shape="rect" id="node35" title=" " coords="502,277,561,302"/>
 </map>

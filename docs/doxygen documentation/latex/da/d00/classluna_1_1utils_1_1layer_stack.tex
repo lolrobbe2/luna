@@ -1,0 +1,165 @@
+\hypertarget{classluna_1_1utils_1_1layer_stack}{}\doxysubsection{luna\+::utils\+::layer\+Stack Class Reference}
+\label{classluna_1_1utils_1_1layer_stack}\index{luna::utils::layerStack@{luna::utils::layerStack}}
+
+
+{\ttfamily \#include $<$layer\+Stack.\+h$>$}
+
+
+
+Collaboration diagram for luna\+::utils\+::layer\+Stack\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{dd/d00/classluna_1_1utils_1_1layer_stack__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a6154bf3eddafc39443f2e8864c998a40}{layer\+Stack}} ()=default
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_afd3409471810864b83e47d6b81c64d79}{$\sim$layer\+Stack}} ()
+\item 
+void \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a29abf62443665bf3f75eb6d61c45ce0e}{push\+Layer}} (\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}})
+\item 
+void \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_ad1497ea7e661ada4415b30001224a9a2}{push\+Overlay}} (\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$overlay)
+\item 
+void \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a62efe61e963cbdda92632a310c311753}{pop\+Layer}} (\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}})
+\item 
+void \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a9e16b58c748c47777fb417c0546773c0}{pop\+Overlay}} (\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$overlay)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a8d1b0c63d3b54aaa0830b1c6862a74f9}{begin}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_ac7f1bc7a0c7472cb42d55ec1c48c7820}{end}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::reverse\+\_\+iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a5042adc86cd191bf77d99beb630981e5}{rbegin}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::reverse\+\_\+iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_aecdcdd5455d0fe5b78036d7c98830184}{rend}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_aff6c74cd414827e4b507db44257d6a24}{begin}} () const
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a66e2bc3dfc888407e61915b1d6abfc53}{end}} () const
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+reverse\+\_\+iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a8a24aab08479aa72d977a78a53dad2db}{rbegin}} () const
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+reverse\+\_\+iterator \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a73f3f3657f6be0f27eff426c3cac82d0}{rend}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$ \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_aa2562e013d94bd9db081e21d256f39e6}{m\+\_\+\+Layers}}
+\item 
+unsigned int \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack_a62e4ab8ec33fa38ca8acbf64f795754d}{m\+\_\+\+Layer\+Insert\+Index}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a6154bf3eddafc39443f2e8864c998a40}\label{classluna_1_1utils_1_1layer_stack_a6154bf3eddafc39443f2e8864c998a40}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!layerStack@{layerStack}}
+\index{layerStack@{layerStack}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{layerStack()}{layerStack()}}
+{\footnotesize\ttfamily luna\+::utils\+::layer\+Stack\+::layer\+Stack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_afd3409471810864b83e47d6b81c64d79}\label{classluna_1_1utils_1_1layer_stack_afd3409471810864b83e47d6b81c64d79}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!````~layerStack@{$\sim$layerStack}}
+\index{````~layerStack@{$\sim$layerStack}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{$\sim$layerStack()}{~layerStack()}}
+{\footnotesize\ttfamily luna\+::utils\+::layer\+Stack\+::$\sim$layer\+Stack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a8d1b0c63d3b54aaa0830b1c6862a74f9}\label{classluna_1_1utils_1_1layer_stack_a8d1b0c63d3b54aaa0830b1c6862a74f9}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!begin@{begin}}
+\index{begin@{begin}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::iterator luna\+::utils\+::layer\+Stack\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_aff6c74cd414827e4b507db44257d6a24}\label{classluna_1_1utils_1_1layer_stack_aff6c74cd414827e4b507db44257d6a24}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!begin@{begin}}
+\index{begin@{begin}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+iterator luna\+::utils\+::layer\+Stack\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_ac7f1bc7a0c7472cb42d55ec1c48c7820}\label{classluna_1_1utils_1_1layer_stack_ac7f1bc7a0c7472cb42d55ec1c48c7820}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!end@{end}}
+\index{end@{end}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::iterator luna\+::utils\+::layer\+Stack\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a66e2bc3dfc888407e61915b1d6abfc53}\label{classluna_1_1utils_1_1layer_stack_a66e2bc3dfc888407e61915b1d6abfc53}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!end@{end}}
+\index{end@{end}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+iterator luna\+::utils\+::layer\+Stack\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a62efe61e963cbdda92632a310c311753}\label{classluna_1_1utils_1_1layer_stack_a62efe61e963cbdda92632a310c311753}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!popLayer@{popLayer}}
+\index{popLayer@{popLayer}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{popLayer()}{popLayer()}}
+{\footnotesize\ttfamily void luna\+::utils\+::layer\+Stack\+::pop\+Layer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a9e16b58c748c47777fb417c0546773c0}\label{classluna_1_1utils_1_1layer_stack_a9e16b58c748c47777fb417c0546773c0}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!popOverlay@{popOverlay}}
+\index{popOverlay@{popOverlay}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{popOverlay()}{popOverlay()}}
+{\footnotesize\ttfamily void luna\+::utils\+::layer\+Stack\+::pop\+Overlay (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$}]{overlay }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a29abf62443665bf3f75eb6d61c45ce0e}\label{classluna_1_1utils_1_1layer_stack_a29abf62443665bf3f75eb6d61c45ce0e}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!pushLayer@{pushLayer}}
+\index{pushLayer@{pushLayer}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{pushLayer()}{pushLayer()}}
+{\footnotesize\ttfamily void luna\+::utils\+::layer\+Stack\+::push\+Layer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_ad1497ea7e661ada4415b30001224a9a2}\label{classluna_1_1utils_1_1layer_stack_ad1497ea7e661ada4415b30001224a9a2}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!pushOverlay@{pushOverlay}}
+\index{pushOverlay@{pushOverlay}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{pushOverlay()}{pushOverlay()}}
+{\footnotesize\ttfamily void luna\+::utils\+::layer\+Stack\+::push\+Overlay (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$}]{overlay }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a5042adc86cd191bf77d99beb630981e5}\label{classluna_1_1utils_1_1layer_stack_a5042adc86cd191bf77d99beb630981e5}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{rbegin()}{rbegin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::reverse\+\_\+iterator luna\+::utils\+::layer\+Stack\+::rbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a8a24aab08479aa72d977a78a53dad2db}\label{classluna_1_1utils_1_1layer_stack_a8a24aab08479aa72d977a78a53dad2db}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{rbegin()}{rbegin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+reverse\+\_\+iterator luna\+::utils\+::layer\+Stack\+::rbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_aecdcdd5455d0fe5b78036d7c98830184}\label{classluna_1_1utils_1_1layer_stack_aecdcdd5455d0fe5b78036d7c98830184}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!rend@{rend}}
+\index{rend@{rend}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{rend()}{rend()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::reverse\+\_\+iterator luna\+::utils\+::layer\+Stack\+::rend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a73f3f3657f6be0f27eff426c3cac82d0}\label{classluna_1_1utils_1_1layer_stack_a73f3f3657f6be0f27eff426c3cac82d0}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!rend@{rend}}
+\index{rend@{rend}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{rend()}{rend()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}} $\ast$ $>$\+::const\+\_\+reverse\+\_\+iterator luna\+::utils\+::layer\+Stack\+::rend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_a62e4ab8ec33fa38ca8acbf64f795754d}\label{classluna_1_1utils_1_1layer_stack_a62e4ab8ec33fa38ca8acbf64f795754d}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!m\_LayerInsertIndex@{m\_LayerInsertIndex}}
+\index{m\_LayerInsertIndex@{m\_LayerInsertIndex}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{m\_LayerInsertIndex}{m\_LayerInsertIndex}}
+{\footnotesize\ttfamily unsigned int luna\+::utils\+::layer\+Stack\+::m\+\_\+\+Layer\+Insert\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1utils_1_1layer_stack_aa2562e013d94bd9db081e21d256f39e6}\label{classluna_1_1utils_1_1layer_stack_aa2562e013d94bd9db081e21d256f39e6}} 
+\index{luna::utils::layerStack@{luna::utils::layerStack}!m\_Layers@{m\_Layers}}
+\index{m\_Layers@{m\_Layers}!luna::utils::layerStack@{luna::utils::layerStack}}
+\doxyparagraph{\texorpdfstring{m\_Layers}{m\_Layers}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classluna_1_1utils_1_1layer}{layer}}$\ast$$>$ luna\+::utils\+::layer\+Stack\+::m\+\_\+\+Layers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/\mbox{\hyperlink{layer_stack_8h}{layer\+Stack.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/utils/\mbox{\hyperlink{layer_stack_8cpp}{layer\+Stack.\+cpp}}\end{DoxyCompactItemize}

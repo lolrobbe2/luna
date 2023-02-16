@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('de/d00/classluna_1_1utils_1_1vulkan_al
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::utils::vulkanAllocator Class Reference</div></div>
@@ -106,27 +106,31 @@ Collaboration diagram for luna::utils::vulkanAllocator:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/d00/classluna_1_1utils_1_1vulkan_allocator__coll__graph.png" border="0" usemap="#aluna_1_1utils_1_1vulkan_allocator_coll__map" alt="Collaboration graph"/></div>
 <map name="aluna_1_1utils_1_1vulkan_allocator_coll__map" id="aluna_1_1utils_1_1vulkan_allocator_coll__map">
-<area shape="rect" title=" " coords="1835,321,2008,346"/>
-<area shape="rect" href="../../d5/d00/classluna_1_1utils_1_1object_storage.html" title=" " coords="1535,306,1720,361"/>
-<area shape="rect" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html" title=" " coords="1133,143,1319,198"/>
-<area shape="rect" title=" " coords="396,26,548,51"/>
-<area shape="rect" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html" title="a pretty optimal multithreaded vector cahce headeronly class." coords="757,73,914,113"/>
-<area shape="rect" title=" " coords="149,174,263,199"/>
-<area shape="rect" title=" " coords="765,219,906,274"/>
-<area shape="rect" title=" " coords="405,77,539,102"/>
-<area shape="rect" title=" " coords="5,333,44,358"/>
-<area shape="rect" title=" " coords="403,347,541,387"/>
-<area shape="rect" href="../../da/d00/structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation.html" title=" " coords="385,264,559,304"/>
-<area shape="rect" title=" " coords="761,299,910,368"/>
-<area shape="rect" title=" " coords="430,127,514,153"/>
-<area shape="rect" title=" " coords="753,392,917,432"/>
-<area shape="rect" title=" " coords="187,302,225,327"/>
-<area shape="rect" href="../../d5/d00/classluna_1_1utils_1_1object_storage.html" title="cached object memory class with a key handle." coords="1143,384,1309,424"/>
+<area shape="rect" title=" " coords="1988,437,2161,462"/>
+<area shape="rect" href="../../d5/d00/classluna_1_1utils_1_1object_storage.html" title=" " coords="1688,337,1873,391"/>
+<area shape="rect" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html" title=" " coords="1287,145,1472,199"/>
+<area shape="rect" title=" " coords="549,29,701,54"/>
+<area shape="rect" href="../../d0/d00/classluna_1_1utils_1_1vector_cache.html" title="a pretty optimal multithreaded vector cahce headeronly class." coords="910,71,1067,111"/>
+<area shape="rect" title=" " coords="179,197,293,222"/>
+<area shape="rect" title=" " coords="918,221,1059,275"/>
+<area shape="rect" title=" " coords="558,79,693,105"/>
+<area shape="rect" title=" " coords="553,414,697,469"/>
+<area shape="rect" title=" " coords="5,329,44,354"/>
+<area shape="rect" title=" " coords="557,340,694,380"/>
+<area shape="rect" href="../../da/d00/structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation.html" title=" " coords="539,265,712,305"/>
+<area shape="rect" title=" " coords="914,364,1063,433"/>
+<area shape="rect" title=" " coords="583,131,667,157"/>
+<area shape="rect" title=" " coords="907,300,1071,340"/>
+<area shape="rect" title=" " coords="217,246,255,271"/>
+<area shape="rect" href="../../d5/d00/classluna_1_1utils_1_1object_storage.html" title="cached object memory class with a key handle." coords="1296,311,1463,351"/>
+<area shape="rect" href="../../dc/d00/structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command.html" title=" " coords="149,421,323,461"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command.html">transferCommand</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d00/structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation.html">vmaAllocation</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -153,17 +157,26 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a57da3ba470dac5507cb262c59ffe96b2"><td class="memItemLeft" align="right" valign="top">static VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a57da3ba470dac5507cb262c59ffe96b2">destroyImageView</a> (const VkImageView &amp;imageView)</td></tr>
 <tr class="memdesc:a57da3ba470dac5507cb262c59ffe96b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys the VkImageView.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a57da3ba470dac5507cb262c59ffe96b2">More...</a><br /></td></tr>
 <tr class="separator:a57da3ba470dac5507cb262c59ffe96b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af62c6b824e41f569a5814666a2c5be29"><td class="memItemLeft" align="right" valign="top">static VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#af62c6b824e41f569a5814666a2c5be29">createBuffer</a> (VkBuffer *pBuffer, size_t allocSize, VkBufferUsageFlags usage, VmaMemoryUsage memoryUsage, VmaAllocationCreateFlags allocFlags=0)</td></tr>
-<tr class="memdesc:af62c6b824e41f569a5814666a2c5be29"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a VkBuffer object.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#af62c6b824e41f569a5814666a2c5be29">More...</a><br /></td></tr>
-<tr class="separator:af62c6b824e41f569a5814666a2c5be29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae13b23ff6be70612b349f51b217f8353"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#ae13b23ff6be70612b349f51b217f8353">destroyBuffer</a> (VkBuffer buffer)</td></tr>
-<tr class="memdesc:ae13b23ff6be70612b349f51b217f8353"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys the VkBuffer object.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#ae13b23ff6be70612b349f51b217f8353">More...</a><br /></td></tr>
-<tr class="separator:ae13b23ff6be70612b349f51b217f8353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d9d1e2f443a5a1681348fcea9c3fcf"><td class="memItemLeft" align="right" valign="top">static VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa2d9d1e2f443a5a1681348fcea9c3fcf">createBuffer</a> (VkBuffer *pBuffer, const size_t &amp;allocSize, const VkBufferUsageFlags &amp;usage, const VmaMemoryUsage &amp;memoryUsage, const VmaAllocationCreateFlags &amp;allocFlags=0)</td></tr>
+<tr class="memdesc:aa2d9d1e2f443a5a1681348fcea9c3fcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a VkBuffer object.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa2d9d1e2f443a5a1681348fcea9c3fcf">More...</a><br /></td></tr>
+<tr class="separator:aa2d9d1e2f443a5a1681348fcea9c3fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc9cee87a45184efe3676ac1896e27af"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acc9cee87a45184efe3676ac1896e27af">destroyBuffer</a> (const VkBuffer &amp;buffer)</td></tr>
+<tr class="memdesc:acc9cee87a45184efe3676ac1896e27af"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys the VkBuffer object.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acc9cee87a45184efe3676ac1896e27af">More...</a><br /></td></tr>
+<tr class="separator:acc9cee87a45184efe3676ac1896e27af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa990426ee8e7100a94abfff51eb8c04b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa990426ee8e7100a94abfff51eb8c04b">uploadTexture</a> (const VkBuffer &amp;buffer, const VkImage &amp;image, const VkFormat &amp;imageFormat, const glm::vec3 &amp;imageDimensions)</td></tr>
+<tr class="memdesc:aa990426ee8e7100a94abfff51eb8c04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">uploads a texture to the gpu .  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa990426ee8e7100a94abfff51eb8c04b">More...</a><br /></td></tr>
+<tr class="separator:aa990426ee8e7100a94abfff51eb8c04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8be0f55661fadb6da3f66103a27e12a4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a8be0f55661fadb6da3f66103a27e12a4">flush</a> ()</td></tr>
+<tr class="memdesc:a8be0f55661fadb6da3f66103a27e12a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">executes all recorded transferCommands.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a8be0f55661fadb6da3f66103a27e12a4">More...</a><br /></td></tr>
+<tr class="separator:a8be0f55661fadb6da3f66103a27e12a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a092a7652ec495aaffe0b3bc1dddf8c7e"><td class="memItemLeft" align="right" valign="top">static VkFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a092a7652ec495aaffe0b3bc1dddf8c7e">getSuitableFormat</a> (const VkImageUsageFlags &amp;usageFlags, const uint32_t &amp;channels)</td></tr>
+<tr class="separator:a092a7652ec495aaffe0b3bc1dddf8c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:acd9547e2a1cdd6b80d5d9fe156383138"><td class="memItemLeft" align="right" valign="top">VkQueue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acd9547e2a1cdd6b80d5d9fe156383138">transferQueue</a></td></tr>
-<tr class="separator:acd9547e2a1cdd6b80d5d9fe156383138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a1f9178dd08e8befa76f44d9de5fbbd7d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a1f9178dd08e8befa76f44d9de5fbbd7d">transitionImageLayout</a> (const VkImage &amp;image, const VkFormat &amp;format, const VkImageLayout &amp;oldLayout, const VkImageLayout &amp;newLayout, const <a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#a986d0d1c340e604c9f02198be6e2e9e5">vulkan::virtualCmdBuffer</a> &amp;commandBufffer)</td></tr>
+<tr class="memdesc:a1f9178dd08e8befa76f44d9de5fbbd7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transitions the image layout.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a1f9178dd08e8befa76f44d9de5fbbd7d">More...</a><br /></td></tr>
+<tr class="separator:a1f9178dd08e8befa76f44d9de5fbbd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -173,10 +186,16 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:a896ca90c3e9bd16b515d95f9fb0c7725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fd8bd60f1a505320602099197ffc6de"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d00/classluna_1_1utils_1_1object_storage.html">objectStorage</a>&lt; <a class="el" href="../../da/d00/structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation.html">vmaAllocation</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a9fd8bd60f1a505320602099197ffc6de">allocations</a></td></tr>
 <tr class="separator:a9fd8bd60f1a505320602099197ffc6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac64b73d33298566b5e6ac69b419c251e"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="../../dc/d00/structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command.html">transferCommand</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#ac64b73d33298566b5e6ac69b419c251e">transferCommands</a></td></tr>
+<tr class="separator:ac64b73d33298566b5e6ac69b419c251e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a854266c56f7f09f3cea356d8c53bb780"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html">vulkan::vulkanCmdPool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a854266c56f7f09f3cea356d8c53bb780">commandPool</a> = nullptr</td></tr>
+<tr class="separator:a854266c56f7f09f3cea356d8c53bb780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9547e2a1cdd6b80d5d9fe156383138"><td class="memItemLeft" align="right" valign="top">static VkQueue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acd9547e2a1cdd6b80d5d9fe156383138">transferQueue</a></td></tr>
+<tr class="separator:acd9547e2a1cdd6b80d5d9fe156383138"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af62c6b824e41f569a5814666a2c5be29" name="af62c6b824e41f569a5814666a2c5be29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af62c6b824e41f569a5814666a2c5be29">&#9670;&#160;</a></span>createBuffer()</h2>
+<a id="aa2d9d1e2f443a5a1681348fcea9c3fcf" name="aa2d9d1e2f443a5a1681348fcea9c3fcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d9d1e2f443a5a1681348fcea9c3fcf">&#9670;&#160;</a></span>createBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -193,25 +212,25 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">const size_t &amp;&#160;</td>
           <td class="paramname"><em>allocSize</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">VkBufferUsageFlags&#160;</td>
+          <td class="paramtype">const VkBufferUsageFlags &amp;&#160;</td>
           <td class="paramname"><em>usage</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">VmaMemoryUsage&#160;</td>
+          <td class="paramtype">const VmaMemoryUsage &amp;&#160;</td>
           <td class="paramname"><em>memoryUsage</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">VmaAllocationCreateFlags&#160;</td>
+          <td class="paramtype">const VmaAllocationCreateFlags &amp;&#160;</td>
           <td class="paramname"><em>allocFlags</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -368,8 +387,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae13b23ff6be70612b349f51b217f8353" name="ae13b23ff6be70612b349f51b217f8353"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae13b23ff6be70612b349f51b217f8353">&#9670;&#160;</a></span>destroyBuffer()</h2>
+<a id="acc9cee87a45184efe3676ac1896e27af" name="acc9cee87a45184efe3676ac1896e27af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9cee87a45184efe3676ac1896e27af">&#9670;&#160;</a></span>destroyBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -380,7 +399,7 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void luna::utils::vulkanAllocator::destroyBuffer </td>
           <td>(</td>
-          <td class="paramtype">VkBuffer&#160;</td>
+          <td class="paramtype">const VkBuffer &amp;&#160;</td>
           <td class="paramname"><em>buffer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -472,6 +491,33 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a8be0f55661fadb6da3f66103a27e12a4" name="a8be0f55661fadb6da3f66103a27e12a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8be0f55661fadb6da3f66103a27e12a4">&#9670;&#160;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::utils::vulkanAllocator::flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>executes all recorded transferCommands. </p>
+
+</div>
+</div>
 <a id="ad3eac5e3fc3434086968b23ef5ab8e78" name="ad3eac5e3fc3434086968b23ef5ab8e78"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad3eac5e3fc3434086968b23ef5ab8e78">&#9670;&#160;</a></span>getAllocationInfo()</h2>
 
@@ -504,6 +550,42 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>VmaAllocationInfo </dd></dl>
+
+</div>
+</div>
+<a id="a092a7652ec495aaffe0b3bc1dddf8c7e" name="a092a7652ec495aaffe0b3bc1dddf8c7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a092a7652ec495aaffe0b3bc1dddf8c7e">&#9670;&#160;</a></span>getSuitableFormat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkFormat luna::utils::vulkanAllocator::getSuitableFormat </td>
+          <td>(</td>
+          <td class="paramtype">const VkImageUsageFlags &amp;&#160;</td>
+          <td class="paramname"><em>usageFlags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>channels</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -568,6 +650,129 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1f9178dd08e8befa76f44d9de5fbbd7d" name="a1f9178dd08e8befa76f44d9de5fbbd7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f9178dd08e8befa76f44d9de5fbbd7d">&#9670;&#160;</a></span>transitionImageLayout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::utils::vulkanAllocator::transitionImageLayout </td>
+          <td>(</td>
+          <td class="paramtype">const VkImage &amp;&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkFormat &amp;&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkImageLayout &amp;&#160;</td>
+          <td class="paramname"><em>oldLayout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkImageLayout &amp;&#160;</td>
+          <td class="paramname"><em>newLayout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../df/d00/namespaceluna_1_1vulkan.html#a986d0d1c340e604c9f02198be6e2e9e5">vulkan::virtualCmdBuffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>commandBufffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>transitions the image layout. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">VkImage</td><td>image imageHandle </td></tr>
+    <tr><td class="paramname">VkFormat</td><td>format </td></tr>
+    <tr><td class="paramname">VkImageLayout</td><td>oldLayout </td></tr>
+    <tr><td class="paramname">VkImageLayout</td><td>newLayout </td></tr>
+    <tr><td class="paramname">VkCommandBuffer</td><td>commandBufffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa990426ee8e7100a94abfff51eb8c04b" name="aa990426ee8e7100a94abfff51eb8c04b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa990426ee8e7100a94abfff51eb8c04b">&#9670;&#160;</a></span>uploadTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::utils::vulkanAllocator::uploadTexture </td>
+          <td>(</td>
+          <td class="paramtype">const VkBuffer &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkImage &amp;&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VkFormat &amp;&#160;</td>
+          <td class="paramname"><em>imageFormat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>imageDimensions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>uploads a texture to the gpu . </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>dataBuffer that stores texelData </td></tr>
+    <tr><td class="paramname">image</td><td>handle to copy texelData in to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a9fd8bd60f1a505320602099197ffc6de" name="a9fd8bd60f1a505320602099197ffc6de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9fd8bd60f1a505320602099197ffc6de">&#9670;&#160;</a></span>allocations</h2>
@@ -580,6 +785,28 @@ Static Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d5/d00/classluna_1_1utils_1_1object_storage.html">objectStorage</a>&lt;<a class="el" href="../../da/d00/structluna_1_1utils_1_1vulkan_allocator_1_1vma_allocation.html">vmaAllocation</a>&gt; luna::utils::vulkanAllocator::allocations</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a854266c56f7f09f3cea356d8c53bb780" name="a854266c56f7f09f3cea356d8c53bb780"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a854266c56f7f09f3cea356d8c53bb780">&#9670;&#160;</a></span>commandPool</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt;<a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html">vulkan::vulkanCmdPool</a>&gt; luna::utils::vulkanAllocator::commandPool = nullptr</td>
         </tr>
       </table>
   </td>
@@ -635,6 +862,28 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac64b73d33298566b5e6ac69b419c251e" name="ac64b73d33298566b5e6ac69b419c251e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac64b73d33298566b5e6ac69b419c251e">&#9670;&#160;</a></span>transferCommands</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../dc/d00/structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command.html">transferCommand</a>&gt; luna::utils::vulkanAllocator::transferCommands</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="acd9547e2a1cdd6b80d5d9fe156383138" name="acd9547e2a1cdd6b80d5d9fe156383138"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acd9547e2a1cdd6b80d5d9fe156383138">&#9670;&#160;</a></span>transferQueue</h2>
 
@@ -650,7 +899,7 @@ Static Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

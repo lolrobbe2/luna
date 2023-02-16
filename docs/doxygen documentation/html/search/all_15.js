@@ -10,8 +10,10 @@ var searchData=
   ['uniformdistr_7',['uniformDistr',['../db/d00/namespaceluna.html#a04387552bf67afc7e9891b959bc3b8d7',1,'luna']]],
   ['unknown_8',['Unknown',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dbaebe57f156ae2571923241a4797786ecc',1,'luna::renderer']]],
   ['up_9',['Up',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19aea676057e6a264a78c68ac844564a02e',1,'luna::input']]],
-  ['ushort_10',['UShort',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dbaf191afb565d07af0465a09c35b07c574',1,'luna::renderer']]],
-  ['uuid_11',['uuid',['../df/d00/classluna_1_1uuid.html',1,'luna::uuid'],['../df/d00/classluna_1_1uuid.html#ae10b320623f531a6dcdfc1a59e3e0b6a',1,'luna::uuid::uuid()'],['../df/d00/classluna_1_1uuid.html#af95ce67cf8a35f0b04e1143996a5dd84',1,'luna::uuid::uuid(uint64_t uuid)']]],
-  ['uuid_2ecpp_12',['uuid.cpp',['../db/d00/uuid_8cpp.html',1,'']]],
-  ['uuid_2eh_13',['uuid.h',['../dd/d00/uuid_8h.html',1,'']]]
+  ['upgradeimage_10',['upgradeImage',['../de/d00/classluna_1_1application_1_1application.html#a1d06177628f98d70ee1ec7841c80eeaa',1,'luna::application::application']]],
+  ['uploadtexture_11',['uploadTexture',['../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa990426ee8e7100a94abfff51eb8c04b',1,'luna::utils::vulkanAllocator']]],
+  ['ushort_12',['UShort',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dbaf191afb565d07af0465a09c35b07c574',1,'luna::renderer']]],
+  ['uuid_13',['uuid',['../df/d00/classluna_1_1uuid.html',1,'luna::uuid'],['../df/d00/classluna_1_1uuid.html#ae10b320623f531a6dcdfc1a59e3e0b6a',1,'luna::uuid::uuid()'],['../df/d00/classluna_1_1uuid.html#af95ce67cf8a35f0b04e1143996a5dd84',1,'luna::uuid::uuid(uint64_t uuid)']]],
+  ['uuid_2ecpp_14',['uuid.cpp',['../db/d00/uuid_8cpp.html',1,'']]],
+  ['uuid_2eh_15',['uuid.h',['../dd/d00/uuid_8h.html',1,'']]]
 ];

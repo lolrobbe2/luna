@@ -8,5 +8,7 @@ var searchData=
   ['viewportsampler_5',['viewportSampler',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a0f1089773c7d6583088d9779d12ce1b0',1,'luna::vulkan::vulkanSwapchain']]],
   ['virtualbuffers_6',['virtualBuffers',['../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#a9c0343bc897a7c7acc0e91c8aea3d80b',1,'luna::vulkan::vulkanCmdPool']]],
   ['vkindexbuffer_7',['vkIndexBuffer',['../d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html#a23489689fc2ed8e320b78a7c583084db',1,'luna::vulkan::vulkanIndexBuffer']]],
-  ['vkvertexbuffer_8',['vkVertexBuffer',['../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#a8b7007de5e8a93ec1c7047c229070637',1,'luna::vulkan::vulkanVertexBuffer']]]
+  ['vkvertexbuffer_8',['vkVertexBuffer',['../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#a8b7007de5e8a93ec1c7047c229070637',1,'luna::vulkan::vulkanVertexBuffer']]],
+  ['vulkandevice_9',['vulkanDevice',['../d3/d00/classluna_1_1renderer_1_1vulkan_sampler.html#a19692fcd873461a00e8e91ad13833723',1,'luna::renderer::vulkanSampler']]],
+  ['vulkanimage_10',['VulkanImage',['../dc/d00/structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command.html#a273226f760b8d2fdf900fc2e27747a24',1,'luna::utils::vulkanAllocator::transferCommand']]]
 ];

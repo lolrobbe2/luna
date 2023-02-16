@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['sandbox_0',['sandbox',['../d9/d00/classsandbox.html#a59696601c544f4d8da0abea13cc0cb40',1,'sandbox::sandbox()'],['../d9/d00/classsandbox.html#a59696601c544f4d8da0abea13cc0cb40',1,'sandbox::sandbox()'],['../d9/d00/classsandbox.html#a59696601c544f4d8da0abea13cc0cb40',1,'sandbox::sandbox()']]],
-  ['self_1',['self',['../d9/d00/classluna_1_1renderer_1_1shader.html#a7b44933de21786d053bc8c550964a9db',1,'luna::renderer::shader']]],
-  ['setdata_2',['setData',['../d3/d00/classluna_1_1renderer_1_1vertex_buffer.html#ae3a4d001dbc49d1a27f22deb47465679',1,'luna::renderer::vertexBuffer::setData()'],['../de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#ac0c410d51dff17d1936397611e0f123c',1,'luna::vulkan::vulkanVertexBuffer::setData()']]],
-  ['seteventcallback_3',['setEventCallBack',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a104531586ca2439b6937e7e3e28952d7',1,'luna::vulkan::windowsWindow::setEventCallBack()'],['../d7/d00/classluna_1_1vulkan_1_1window.html#ade8005289228808055506555cfff328f',1,'luna::vulkan::window::setEventCallBack()']]],
-  ['setindexbuffer_4',['setIndexBuffer',['../d5/d00/classluna_1_1renderer_1_1vertex_array.html#a3acd447b377b6148e66fb7e7f4ef7503',1,'luna::renderer::vertexArray::setIndexBuffer()'],['../dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array.html#a4e7ee66f40797d95d5d582afff195511',1,'luna::vulkan::vulkanVertexArray::setIndexBuffer()']]],
-  ['setvalue_5',['setValue',['../d5/d00/classluna_1_1utils_1_1object_storage.html#ac03164acabd597ba74b9422b53de738e',1,'luna::utils::objectStorage::setValue()'],['../d0/d00/classluna_1_1utils_1_1vector_cache.html#aa56d6d8db614103245c4776d9a63733e',1,'luna::utils::vectorCache::setValue()']]],
-  ['shadercompiler_6',['shaderCompiler',['../d0/d00/classluna_1_1utils_1_1shader_compiler.html#abd07f80893b6ab942e6da937ccf393e7',1,'luna::utils::shaderCompiler']]],
-  ['shutdown_7',['shutDown',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a6c54abf726f879ffaba9f3495fe2bf0f',1,'luna::vulkan::windowsWindow']]],
-  ['shutdown_8',['shutdown',['../d5/d00/classluna_1_1renderer_1_1renderer.html#ac89801f68cbdc59a324ba80754a7c5eb',1,'luna::renderer::renderer::shutdown()'],['../df/d00/classluna_1_1renderer_1_1renderer2_d.html#a123fafe82292e73e34dfb31e6519ff29',1,'luna::renderer::renderer2D::shutdown()'],['../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a2fea061a5507a2960fac3b0cd439abf7',1,'luna::utils::vulkanAllocator::shutdown()']]],
-  ['stop_9',['Stop',['../dd/d00/classluna_1_1instrumentation_timer.html#a4b8cc5a08bdfec10c5a459024550c9e5',1,'luna::instrumentationTimer']]],
-  ['submit_10',['Submit',['../d5/d00/classluna_1_1renderer_1_1renderer.html#a301fe59cdfcf8a1bb2d5d92b08648921',1,'luna::renderer::renderer']]]
+  ['rasterizationstatecreateinfo_0',['rasterizationStateCreateInfo',['../d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#a061fa43828034b9c3ada6aa8c797a42f',1,'luna::vulkan::vulkanPipeline']]],
+  ['rbegin_1',['rbegin',['../da/d00/classluna_1_1utils_1_1layer_stack.html#a5042adc86cd191bf77d99beb630981e5',1,'luna::utils::layerStack::rbegin()'],['../da/d00/classluna_1_1utils_1_1layer_stack.html#a8a24aab08479aa72d977a78a53dad2db',1,'luna::utils::layerStack::rbegin() const']]],
+  ['recreateswapchain_2',['recreateSwapchain',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a8fc26c80c31e5986d10fe18c91bb4f14',1,'luna::vulkan::vulkanSwapchain']]],
+  ['recreateviewport_3',['recreateViewport',['../d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#a9b0d60eda6d3dd99e4dd365f59704378',1,'luna::vulkan::vulkanSwapchain']]],
+  ['reflect_4',['reflect',['../d0/d00/classluna_1_1utils_1_1shader_compiler.html#a809ef02f8f12f25017954377abbc7db6',1,'luna::utils::shaderCompiler']]],
+  ['reformat_5',['reformat',['../d4/d00/classluna_1_1vulkan_1_1vulkan_texture.html#aa3305f15e3b1d0642a5317e10c082091',1,'luna::vulkan::vulkanTexture']]],
+  ['removecomponent_6',['removeComponent',['../dc/d00/classluna_1_1_node.html#a6565565fa7fb6d2a0104ab48fcc774ca',1,'luna::Node']]],
+  ['rend_7',['rend',['../da/d00/classluna_1_1utils_1_1layer_stack.html#aecdcdd5455d0fe5b78036d7c98830184',1,'luna::utils::layerStack::rend()'],['../da/d00/classluna_1_1utils_1_1layer_stack.html#a73f3f3657f6be0f27eff426c3cac82d0',1,'luna::utils::layerStack::rend() const']]],
+  ['resetcommandbuffer_8',['resetCommandBuffer',['../d5/d00/classluna_1_1vulkan_1_1vulkan_cmd_pool.html#a065a4d3324c5f8a9c026f8135865490a',1,'luna::vulkan::vulkanCmdPool']]],
+  ['run_9',['run',['../de/d00/classluna_1_1application_1_1application.html#a54f15a136ca42981f3a8d5e68fd85648',1,'luna::application::application']]]
 ];

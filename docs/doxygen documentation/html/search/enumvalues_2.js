@@ -10,5 +10,6 @@ var searchData=
   ['capslock_7',['CapsLock',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a667fccea4da400eb9ff242a077c47e06',1,'luna::input']]],
   ['char_8',['Char',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba4876b455eec6d42a5d5092b143b72183',1,'luna::renderer']]],
   ['comma_9',['Comma',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19ae0d548a4305cc228cb7290905e9d475b',1,'luna::input']]],
-  ['controlpointarray_10',['ControlPointArray',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dbae21954a5ea2503b22ce898ffa68774f1',1,'luna::renderer']]]
+  ['controlnode_10',['controlNode',['../d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9a9fbe2c14f7d85390a1d73ba3d94aee9f',1,'luna::sceneHierarchyPanel']]],
+  ['controlpointarray_11',['ControlPointArray',['../df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dbae21954a5ea2503b22ce898ffa68774f1',1,'luna::renderer']]]
 ];

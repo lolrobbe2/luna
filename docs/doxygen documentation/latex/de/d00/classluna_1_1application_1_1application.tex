@@ -6,16 +6,18 @@
 
 
 
-Inheritance diagram for luna\+::application\+::application\+:\nopagebreak
+Inheritance diagram for luna\+::application\+::application\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=173pt]{d1/d00/classluna_1_1application_1_1application__inherit__graph}
+\includegraphics[width=194pt]{d1/d00/classluna_1_1application_1_1application__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for luna\+::application\+::application\+:\nopagebreak
+Collaboration diagram for luna\+::application\+::application\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,15 +34,52 @@ virtual \mbox{\hyperlink{classluna_1_1application_1_1application_a72fb64703c79f2
 void \mbox{\hyperlink{classluna_1_1application_1_1application_a54f15a136ca42981f3a8d5e68fd85648}{run}} ()
 \begin{DoxyCompactList}\small\item\em the main loop of the application. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classluna_1_1application_1_1application_af611d7814f0b40e4901357885897c10d}{on\+Event}} (\mbox{\hyperlink{classluna_1_1_event}{Event}} \&e)
-\begin{DoxyCompactList}\small\item\em the main event callback of the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the main event callback of the application. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} \& \mbox{\hyperlink{classluna_1_1application_1_1application_ad2e5b3df477a10ef33d9e896ee294ddc}{get\+Window}} ()
+\item 
+bool \mbox{\hyperlink{classluna_1_1application_1_1application_ac229a0a989026a64cefd541a8091aca5}{on\+Window\+Close}} (\mbox{\hyperlink{classluna_1_1window_close_event}{window\+Close\+Event}} \&e)
+\item 
+bool \mbox{\hyperlink{classluna_1_1application_1_1application_aae5177d598d57e3d586813d7c6d9c05d}{on\+Window\+Resize}} (\mbox{\hyperlink{classluna_1_1window_resize_event}{window\+Resize\+Event}} \&e)
+\item 
+void \mbox{\hyperlink{classluna_1_1application_1_1application_a6b1d827569b6db5f42f1e07e545c7150}{push\+Layer}} (\mbox{\hyperlink{classluna_1_1utils_1_1layer}{utils\+::layer}} $\ast$layer)
+\begin{DoxyCompactList}\small\item\em pushes a layer to the layerstack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classluna_1_1application_1_1application_a9212f596cd2a4291dc8a90a7b95710e1}{push\+Overlay}} (\mbox{\hyperlink{classluna_1_1utils_1_1layer}{utils\+::layer}} $\ast$layer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classluna_1_1application_1_1application}{application}} \& \mbox{\hyperlink{classluna_1_1application_1_1application_a23bf897c5e5a969dfd1cc1519004c282}{get}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+friend \mbox{\hyperlink{classluna_1_1application_1_1application_a78c05ae151e9cf1848caa87b9c31010d}{int\+::main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} $>$ \mbox{\hyperlink{classluna_1_1application_1_1application_ac76f4ed32350c50b364d7f4c44ea9f91}{m\+Window}}
 \item 
-\mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{utils\+::object\+Storage}}$<$ glm\+::mat4 $>$ \mbox{\hyperlink{classluna_1_1application_1_1application_a6f635658e76dab301e97cd8a9af5d339}{window\+Storage}}
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \mbox{\hyperlink{classluna_1_1application_1_1application_a2167a5ce8a004bd49300e0c95777787a}{logic\+Gates\+Image}}
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \mbox{\hyperlink{classluna_1_1application_1_1application_a2dce24e85c26bb46f1963415aba398fa}{statue\+Image}}
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \mbox{\hyperlink{classluna_1_1application_1_1application_a1d06177628f98d70ee1ec7841c80eeaa}{upgrade\+Image}}
+\item 
+\mbox{\hyperlink{classluna_1_1scene}{scene}} \mbox{\hyperlink{classluna_1_1application_1_1application_a92284b26c1a23ebe1bc88e5961e39c55}{scene}}
+\item 
+\mbox{\hyperlink{classluna_1_1utils_1_1layer_stack}{utils\+::layer\+Stack}} \mbox{\hyperlink{classluna_1_1application_1_1application_ad6354d88e830142b7f1d3402a1bfbdf5}{layer\+Stack}}
+\item 
+float \mbox{\hyperlink{classluna_1_1application_1_1application_a6aa725ba968b52d577043c6c503b3c59}{last\+Frame\+Time}} = 0.\+0f
 \item 
 bool \mbox{\hyperlink{classluna_1_1application_1_1application_aecb5c9232bcd1288571522ca517351e2}{running}} = true
+\item 
+bool \mbox{\hyperlink{classluna_1_1application_1_1application_ad0dd042aa26e6d242db5383a27d7b172}{minimized}} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1application_1_1application_a3ce05f3771623dfa7d77bf633bb22692}{os}}
 \end{DoxyCompactItemize}
 
 
@@ -64,6 +103,24 @@ application constructor, initializes the application and engine.
 
 
 \doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a23bf897c5e5a969dfd1cc1519004c282}\label{classluna_1_1application_1_1application_a23bf897c5e5a969dfd1cc1519004c282}} 
+\index{luna::application::application@{luna::application::application}!get@{get}}
+\index{get@{get}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1application_1_1application}{application}} \& luna\+::application\+::application\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_ad2e5b3df477a10ef33d9e896ee294ddc}\label{classluna_1_1application_1_1application_ad2e5b3df477a10ef33d9e896ee294ddc}} 
+\index{luna::application::application@{luna::application::application}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{getWindow()}{getWindow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1vulkan_1_1window}{vulkan\+::window}} \& luna\+::application\+::application\+::get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a78c05ae151e9cf1848caa87b9c31010d}\label{classluna_1_1application_1_1application_a78c05ae151e9cf1848caa87b9c31010d}} 
+\index{luna::application::application@{luna::application::application}!int::main@{int::main}}
+\index{int::main@{int::main}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{int::main()}{int::main()}}
+{\footnotesize\ttfamily luna\+::application\+::application\+::int\+::main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classluna_1_1application_1_1application_af611d7814f0b40e4901357885897c10d}\label{classluna_1_1application_1_1application_af611d7814f0b40e4901357885897c10d}} 
 \index{luna::application::application@{luna::application::application}!onEvent@{onEvent}}
 \index{onEvent@{onEvent}!luna::application::application@{luna::application::application}}
@@ -79,6 +136,39 @@ the main event callback of the application.
 {\em e} & \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1application_1_1application_ac229a0a989026a64cefd541a8091aca5}\label{classluna_1_1application_1_1application_ac229a0a989026a64cefd541a8091aca5}} 
+\index{luna::application::application@{luna::application::application}!onWindowClose@{onWindowClose}}
+\index{onWindowClose@{onWindowClose}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{onWindowClose()}{onWindowClose()}}
+{\footnotesize\ttfamily bool luna\+::application\+::application\+::on\+Window\+Close (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1window_close_event}{window\+Close\+Event}} \&}]{e }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_aae5177d598d57e3d586813d7c6d9c05d}\label{classluna_1_1application_1_1application_aae5177d598d57e3d586813d7c6d9c05d}} 
+\index{luna::application::application@{luna::application::application}!onWindowResize@{onWindowResize}}
+\index{onWindowResize@{onWindowResize}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{onWindowResize()}{onWindowResize()}}
+{\footnotesize\ttfamily bool luna\+::application\+::application\+::on\+Window\+Resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1window_resize_event}{window\+Resize\+Event}} \&}]{e }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a6b1d827569b6db5f42f1e07e545c7150}\label{classluna_1_1application_1_1application_a6b1d827569b6db5f42f1e07e545c7150}} 
+\index{luna::application::application@{luna::application::application}!pushLayer@{pushLayer}}
+\index{pushLayer@{pushLayer}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{pushLayer()}{pushLayer()}}
+{\footnotesize\ttfamily void luna\+::application\+::application\+::push\+Layer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1layer}{utils\+::layer}} $\ast$}]{layer }\end{DoxyParamCaption})}
+
+
+
+pushes a layer to the layerstack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utils\+::layer$\ast$} & layer (layer to be pushed to the stack) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a9212f596cd2a4291dc8a90a7b95710e1}\label{classluna_1_1application_1_1application_a9212f596cd2a4291dc8a90a7b95710e1}} 
+\index{luna::application::application@{luna::application::application}!pushOverlay@{pushOverlay}}
+\index{pushOverlay@{pushOverlay}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{pushOverlay()}{pushOverlay()}}
+{\footnotesize\ttfamily void luna\+::application\+::application\+::push\+Overlay (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1layer}{utils\+::layer}} $\ast$}]{layer }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classluna_1_1application_1_1application_a54f15a136ca42981f3a8d5e68fd85648}\label{classluna_1_1application_1_1application_a54f15a136ca42981f3a8d5e68fd85648}} 
 \index{luna::application::application@{luna::application::application}!run@{run}}
 \index{run@{run}!luna::application::application@{luna::application::application}}
@@ -91,7 +181,40 @@ the main loop of the application.
 
 
 
+\doxysubsubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a3ce05f3771623dfa7d77bf633bb22692}\label{classluna_1_1application_1_1application_a3ce05f3771623dfa7d77bf633bb22692}} 
+\index{luna::application::application@{luna::application::application}!os@{os}}
+\index{os@{os}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{os}{os}}
+{\footnotesize\ttfamily friend class os\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
 \doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a6aa725ba968b52d577043c6c503b3c59}\label{classluna_1_1application_1_1application_a6aa725ba968b52d577043c6c503b3c59}} 
+\index{luna::application::application@{luna::application::application}!lastFrameTime@{lastFrameTime}}
+\index{lastFrameTime@{lastFrameTime}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{lastFrameTime}{lastFrameTime}}
+{\footnotesize\ttfamily float luna\+::application\+::application\+::last\+Frame\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_ad6354d88e830142b7f1d3402a1bfbdf5}\label{classluna_1_1application_1_1application_ad6354d88e830142b7f1d3402a1bfbdf5}} 
+\index{luna::application::application@{luna::application::application}!layerStack@{layerStack}}
+\index{layerStack@{layerStack}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{layerStack}{layerStack}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1utils_1_1layer_stack}{utils\+::layer\+Stack}} luna\+::application\+::application\+::layer\+Stack\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a2167a5ce8a004bd49300e0c95777787a}\label{classluna_1_1application_1_1application_a2167a5ce8a004bd49300e0c95777787a}} 
+\index{luna::application::application@{luna::application::application}!logicGatesImage@{logicGatesImage}}
+\index{logicGatesImage@{logicGatesImage}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{logicGatesImage}{logicGatesImage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}}$>$ luna\+::application\+::application\+::logic\+Gates\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_ad0dd042aa26e6d242db5383a27d7b172}\label{classluna_1_1application_1_1application_ad0dd042aa26e6d242db5383a27d7b172}} 
+\index{luna::application::application@{luna::application::application}!minimized@{minimized}}
+\index{minimized@{minimized}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{minimized}{minimized}}
+{\footnotesize\ttfamily bool luna\+::application\+::application\+::minimized = false\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classluna_1_1application_1_1application_ac76f4ed32350c50b364d7f4c44ea9f91}\label{classluna_1_1application_1_1application_ac76f4ed32350c50b364d7f4c44ea9f91}} 
 \index{luna::application::application@{luna::application::application}!mWindow@{mWindow}}
 \index{mWindow@{mWindow}!luna::application::application@{luna::application::application}}
@@ -104,11 +227,23 @@ the main loop of the application.
 \doxyparagraph{\texorpdfstring{running}{running}}
 {\footnotesize\ttfamily bool luna\+::application\+::application\+::running = true\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{classluna_1_1application_1_1application_a6f635658e76dab301e97cd8a9af5d339}\label{classluna_1_1application_1_1application_a6f635658e76dab301e97cd8a9af5d339}} 
-\index{luna::application::application@{luna::application::application}!windowStorage@{windowStorage}}
-\index{windowStorage@{windowStorage}!luna::application::application@{luna::application::application}}
-\doxyparagraph{\texorpdfstring{windowStorage}{windowStorage}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1utils_1_1object_storage}{utils\+::object\+Storage}}$<$glm\+::mat4$>$ luna\+::application\+::application\+::window\+Storage\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a92284b26c1a23ebe1bc88e5961e39c55}\label{classluna_1_1application_1_1application_a92284b26c1a23ebe1bc88e5961e39c55}} 
+\index{luna::application::application@{luna::application::application}!scene@{scene}}
+\index{scene@{scene}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{scene}{scene}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1scene}{scene}} luna\+::application\+::application\+::scene\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a2dce24e85c26bb46f1963415aba398fa}\label{classluna_1_1application_1_1application_a2dce24e85c26bb46f1963415aba398fa}} 
+\index{luna::application::application@{luna::application::application}!statueImage@{statueImage}}
+\index{statueImage@{statueImage}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{statueImage}{statueImage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}}$>$ luna\+::application\+::application\+::statue\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1application_1_1application_a1d06177628f98d70ee1ec7841c80eeaa}\label{classluna_1_1application_1_1application_a1d06177628f98d70ee1ec7841c80eeaa}} 
+\index{luna::application::application@{luna::application::application}!upgradeImage@{upgradeImage}}
+\index{upgradeImage@{upgradeImage}!luna::application::application@{luna::application::application}}
+\doxyparagraph{\texorpdfstring{upgradeImage}{upgradeImage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}}$>$ luna\+::application\+::application\+::upgrade\+Image\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
