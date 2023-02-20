@@ -89,8 +89,33 @@ namespace luna
 			return destination.data();
 		}
 		
+
+		/*----------------------------------------------------------------------------------*/
+		/*						vulkan texture atlas implementation							*/
+		/*----------------------------------------------------------------------------------*/
 		vulkanTextureAtlas::vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions, const glm::vec2& tileDimensions)
 		{
+			LN_PROFILE_FUNCTION();
+			std::ifstream textureFile(filePath);
+			if (textureFile.is_open() && textureFile.good())
+			{
+				int width, height, channels;
+				stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 0);
+				uint64_t imageSize = width * height * channels;
+				//imageSize += imageSize % 16;
+				utils::vulkanAllocator::createBuffer(&buffer, imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
+				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
+				LN_CORE_INFO("imageCreate result  = {0}", result);
+				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
+				memcpy(data, (void*)image, width * height * 4);
+				stbi_image_free(image);
+				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
+				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
+				_handle = (uint64_t)imageViewHandle;
+				return;
+			}
+			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
 		}
 
 		vulkanTextureAtlas::vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions)

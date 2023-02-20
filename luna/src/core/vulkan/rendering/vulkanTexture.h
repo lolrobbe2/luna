@@ -58,23 +58,27 @@ namespace luna
 			vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions);
 			virtual ~vulkanTextureAtlas() = default;
 
-			virtual uint32_t getTileWidth();
-			virtual uint32_t getTileWidth(const uint16_t& xIndex, const uint16_t& yIndex);
+			virtual uint32_t getTileWidth() override;
+			virtual uint32_t getTileWidth(const uint16_t& xIndex, const uint16_t& yIndex) override;
 
-			virtual uint32_t getTileHeight();
-			virtual uint32_t getTileHeight(const uint16_t& xIndex, const uint16_t& yIndex);
+			virtual uint32_t getTileHeight() override;
+			virtual uint32_t getTileHeight(const uint16_t& xIndex, const uint16_t& yIndex) override;
 
 			virtual uint32_t addTile(const glm::vec2& dimensions);
-			virtual uint32_t addTile(const uint32_t& width, const uint32_t& height);
+			virtual uint32_t addTile(const uint32_t& width, const uint32_t& height) override;
 
-			virtual glm::vec2 getTileDimensions(const glm::vec2& textureindex);
-			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex); // for texture atlasses;
+			virtual glm::vec2 getTileDimensions(const glm::vec2& textureindex) override;
+			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex) override; // for texture atlasses;
 			ref<renderer::texture> getTileAsTexture(const glm::vec2& textureindex);
 		private:
 			uint32_t tileWidths;
 			uint32_t tileHeight;
-
+			
 			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;
+
+			VkBuffer buffer = VK_NULL_HANDLE;
+			VkImage imageHandle = VK_NULL_HANDLE;
+			VkImageView imageViewHandle = VK_NULL_HANDLE;
 		};
 	}
 }
