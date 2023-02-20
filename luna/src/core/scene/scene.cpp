@@ -14,6 +14,8 @@ namespace luna
 	void scene::onUpdateEditor(utils::timestep ts)
 	{
 		auto group = m_Registry.group<transformComponent>(entt::get<spriteRendererComponent>);
+		//group.sort<transformComponent>([](const auto& transform1, const auto& transform2) {return transform1.translation.z > transform2.translation.z; });
+		
 		for (auto entity : group)
 		{
 			auto [transform, sprite] = group.get<transformComponent, spriteRendererComponent>(entity);

@@ -7,7 +7,11 @@
 #pragma warning(push, 0)
 #include <memory>
 #include <core/debug/log.h>
-#define LN_PROFILE 1
+#ifdef LN_DEBUG
+	#define LN_PROFILE 1
+#else
+	#define LN_PROFILE 0
+#endif
 #include <core/debug/instrumentor.h>
 #pragma warning(pop)
 #ifdef _DEBUG

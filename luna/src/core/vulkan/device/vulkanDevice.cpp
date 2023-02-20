@@ -83,15 +83,18 @@ namespace luna
 				.set_engine_version(MAJOR, MINOR, PATCH)
 				.request_validation_layers(true)
 				.use_default_debug_messenger()
-				.require_api_version(1, 3, 0)
-				.set_debug_callback(debugCallback);
+				.require_api_version(1, 2, 0);
+			#ifdef LN_DEBUG
+				instanceBuilder.set_debug_callback(debugCallback);
+			#endif // LN_DEBUG
+
 			for (const auto& extension : getRequiredExtensions())
 			{
 				instanceBuilder.enable_extension(extension);
 			}
 			
 			deviceHandle.instance = instanceBuilder.build().value();
-			deviceHandle.appInfo.apiVersion = VKB_VK_API_VERSION_1_3;
+			deviceHandle.appInfo.apiVersion = VKB_VK_API_VERSION_1_2;
 			return VK_SUCCESS;
 		}
 
@@ -100,14 +103,14 @@ namespace luna
 			vkb::PhysicalDeviceSelector deviceSelector{ deviceHandle.instance };
 			VkPhysicalDeviceFeatures features {};
 			VkPhysicalDeviceVulkan12Features features12{};
-			//features12.bufferDeviceAddress = VK_TRUE;
+			features12.bufferDeviceAddress = VK_TRUE;
 			features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE;
 			features.multiViewport = VK_TRUE;
 			features.samplerAnisotropy = VK_TRUE;
 			features.sparseBinding = VK_FALSE;
 			//.add_desired_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME)
 			deviceSelector
-				.set_minimum_version(1, 3)
+				.set_minimum_version(1, 2)
 				.set_surface(surface);
 			auto physicalDevice = deviceSelector
 				.set_required_features(features)
@@ -139,9 +142,7 @@ namespace luna
 			std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 			
 			//extensions.push_back(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME); used for vulkan 1.1;
-			#ifdef ENABLE_VALIDATION_LAYERS
-			extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
-			#endif // ENABLE_VALIDATION_LAYERS
+			
 
 			return extensions;
 		}

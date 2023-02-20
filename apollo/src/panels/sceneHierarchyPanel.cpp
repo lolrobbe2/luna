@@ -63,6 +63,7 @@ namespace luna
 				drawNodeSelectionList();
 				ImGui::EndPopup();
 			}
+
 			m_Context->m_Registry.each([&](auto entityID)
 			{
 				Node Node{ entityID , m_Context };
@@ -122,7 +123,7 @@ namespace luna
 			{
 				ImGui::Indent(indent + addIndent);
 				auto& childs = Node.getComponent<childComponent>().childs;
-
+				
 				for (auto child : childs)
 				{
 					luna::Node _Node{ child,m_Context };

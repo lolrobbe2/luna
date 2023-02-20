@@ -69,7 +69,7 @@ namespace luna
 
 			virtual glm::vec2 getTileDimensions(const glm::vec2& textureindex);
 			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex); // for texture atlasses;
-
+			ref<renderer::texture> getTileAsTexture(const glm::vec2& textureindex);
 		private:
 			uint32_t tileWidths;
 			uint32_t tileHeight;

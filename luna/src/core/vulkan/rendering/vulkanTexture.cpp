@@ -89,5 +89,58 @@ namespace luna
 			return destination.data();
 		}
 		
+		vulkanTextureAtlas::vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions, const glm::vec2& tileDimensions)
+		{
+		}
+
+		vulkanTextureAtlas::vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions)
+		{
+		}
+
+		uint32_t vulkanTextureAtlas::getTileWidth()
+		{
+			return uint32_t();
+		}
+
+		uint32_t vulkanTextureAtlas::getTileWidth(const uint16_t& xIndex, const uint16_t& yIndex)
+		{
+			return uint32_t();
+		}
+
+		uint32_t vulkanTextureAtlas::getTileHeight()
+		{
+			return uint32_t();
+		}
+
+		uint32_t vulkanTextureAtlas::getTileHeight(const uint16_t& xIndex, const uint16_t& yIndex)
+		{
+			return uint32_t();
+		}
+
+		uint32_t vulkanTextureAtlas::addTile(const glm::vec2& dimensions)
+		{
+			return uint32_t();
+		}
+
+		uint32_t vulkanTextureAtlas::addTile(const uint32_t& width, const uint32_t& height)
+		{
+			return uint32_t();
+		}
+
+		glm::vec2 vulkanTextureAtlas::getTileDimensions(const glm::vec2& textureindex)
+		{
+			return glm::vec2();
+		}
+
+		glm::vec2 vulkanTextureAtlas::getTextureUv(const glm::vec2& textureindex)
+		{
+			return glm::vec2();
+		}
+
+		ref<renderer::texture> vulkanTextureAtlas::getTileAsTexture(const glm::vec2& textureindex)
+		{
+			return ref<renderer::texture>();
+		}
+
 	}
 }

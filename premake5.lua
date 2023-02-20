@@ -86,13 +86,7 @@ project "luna"
         staticruntime "on"
         systemversion "latest"
         symbols "on"
-        defines
-        {
-            "_CRT_SECURE_NO_WARNINGS",
-            "LN_BUILD_DLL",
-            "_WINDLL"
-           
-        }
+
         links
         {
             "%{Library.ShaderC}",
@@ -105,15 +99,36 @@ project "luna"
             "vulkan-1"
         }
         filter "configurations:debug"
-       
+        defines
+        {
+            "_CRT_SECURE_NO_WARNINGS",
+            "LN_BUILD_DLL",
+            "_WINDLL",
+            "LN_DEBUG"
+           
+        }
         symbols "On"
   
         filter "configurations:release"
-
+        defines
+        {
+            "_CRT_SECURE_NO_WARNINGS",
+            "LN_BUILD_DLL",
+            "_WINDLL",
+            "LN_RELEASE"
+           
+        }
         optimize "On"
 
         filter "configurations:distribution"
-       
+        defines
+        {
+            "_CRT_SECURE_NO_WARNINGS",
+            "LN_BUILD_DLL",
+            "_WINDLL",
+            "LN_DISTRIBUTION"
+           
+        }
         symbols "Off"
         optimize "On"
 
