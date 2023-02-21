@@ -170,7 +170,9 @@ namespace luna
 				vulkanTextureAtlas::freeStripeBlock* foundStripe = checkStripe(stripe, width, height);
 				if (foundStripe) 
 				{
-					//hihi
+					if (foundStripe->getWidth() != width) {
+
+					}
 				}
 			}
 

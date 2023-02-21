@@ -1,5 +1,6 @@
 #include "sceneHierarchyPanel.h"
 #include <nodes/ui/spriteNode.h>
+#include <core/rendering/renderer2D.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <core/platform/platformUtils.h>
 
@@ -30,6 +31,18 @@ namespace luna
 			ImGui::DockBuilderDockWindow("scene Hierarchy", dock_id_Top_left);
 			*/
 			//docking needs to be done in engine;
+			if (ImGui::Begin("settings"))
+			{
+				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
+				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
+				ImGui::Text(("drawCalls = " + std::to_string(renderer::renderer2D::getStats().drawCalls)).c_str());
+				ImGui::Text(("quadCount = " + std::to_string(renderer::renderer2D::getStats().quadCount)).c_str());
+				ImGui::Text(("vertexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalVertexCount())).c_str());
+				ImGui::Text(("indexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalIndexCount())).c_str());
+			}
+			ImGui::End();
+
+
 			ImGui::Begin("scene Hierarchy");
 			if (ImGui::Button("add node", ImVec2(60, 30)))
 			{

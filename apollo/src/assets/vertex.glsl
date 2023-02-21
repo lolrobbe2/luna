@@ -1,6 +1,5 @@
 #version 460
-#extension GL_ARB_shader_draw_parameters : enable
-#extension GL_EXT_nonuniform_qualifier : require
+#extension GL_EXT_nonuniform_qualifier : enable
 layout(location = 0) in vec4 inPosition;
 layout(location = 1) in vec4 inColor;
 layout(location = 2) in vec2 textureCoord;
