@@ -65,8 +65,8 @@ namespace luna
 			virtual uint32_t getTileHeight() = 0;
 			virtual uint32_t getTileHeight(const uint16_t& xIndex, const uint16_t& yIndex) = 0;
 
-			virtual uint32_t addTile(const glm::vec2& dimensions) = 0;
-			virtual uint32_t addTile(const uint32_t& width, const uint32_t& height) = 0;
+			virtual glm::vec2 addTile(const glm::vec2& dimensions) = 0;
+			virtual glm::vec2 addTile(const uint32_t& width, const uint32_t& height) = 0;
 
 			virtual glm::vec2 getTileDimensions(const glm::vec2& textureindex) = 0;
 			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex) = 0; // for texture atlasses;

@@ -19,7 +19,7 @@ namespace luna
 
 			virtual const std::string& getPath() const override;
 
-			virtual void setData(void* data, uint32_t size)override;
+			virtual void setData(void* data, uint32_t size) override;
 
 			virtual void bind(uint32_t slot = 0) const override;
 
@@ -29,9 +29,6 @@ namespace luna
 			VkBuffer buffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;
-		private:
-			virtual stbi_uc* reformat(stbi_uc* src, int& srcChannels,const uint32_t& dstChannels,const uint32_t& width, const uint32_t& height);
-
 		};
 		/**
 		 * @brief texture2D api.
@@ -64,21 +61,34 @@ namespace luna
 			virtual uint32_t getTileHeight() override;
 			virtual uint32_t getTileHeight(const uint16_t& xIndex, const uint16_t& yIndex) override;
 
-			virtual uint32_t addTile(const glm::vec2& dimensions);
-			virtual uint32_t addTile(const uint32_t& width, const uint32_t& height) override;
+			virtual glm::vec2 addTile(const glm::vec2& dimensions);
+			virtual glm::vec2 addTile(const uint32_t& width, const uint32_t& height) override;
 
 			virtual glm::vec2 getTileDimensions(const glm::vec2& textureindex) override;
 			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex) override; // for texture atlasses;
 			ref<renderer::texture> getTileAsTexture(const glm::vec2& textureindex);
 		private:
+
+			struct freeStripeBlock
+			{
+				glm::vec2 start;
+				glm::vec2 end;
+				uint32_t getWidth() { return end.x - start.x; };
+				uint32_t getHeight() { return end.y - start.y; };
+			};
+			struct stripe {
+				std::vector<freeStripeBlock> stripeVector;
+			};
 			uint32_t tileWidths;
 			uint32_t tileHeight;
 			
-			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;
-
+			std::vector<std::vector<glm::vec4>> tileCustomTexCoords;
+			std::vector<stripe> atlas;
 			VkBuffer buffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;
+		private:
+			freeStripeBlock* checkStripe(stripe& stripe,const uint32_t& width, const uint32_t& height);
 		};
 	}
 }
