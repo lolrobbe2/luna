@@ -13,11 +13,12 @@ namespace luna
 			if(textureFile.is_open() && textureFile.good())
 			{
 				int width, height, channels;
-				stbi_uc* image =  stbi_load(filePath.c_str(), &width, &height, &channels, channels);
+				stbi_uc* image =  stbi_load(filePath.c_str(), &width, &height, &channels, 4);
+				if (channels == 3) channels = 4;
 				uint64_t imageSize = width * height * channels;
 					
 				utils::vulkanAllocator::createBuffer(&buffer,imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
+				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, channels);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY,{(unsigned int)width,(unsigned int)height,1},imageFormat);
 				LN_CORE_INFO("imageCreate result  = {0}", result);
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;

@@ -104,21 +104,24 @@ namespace luna
 			VkPhysicalDeviceFeatures features {};
 			VkPhysicalDeviceVulkan12Features features12{};
 			features12.bufferDeviceAddress = VK_TRUE;
-			features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE;
+			//features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE;
+			features12.descriptorIndexing = VK_TRUE;
 			features.multiViewport = VK_TRUE;
 			features.samplerAnisotropy = VK_TRUE;
 			features.sparseBinding = VK_FALSE;
 			//.add_desired_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME)
+			
 			deviceSelector
 				.set_minimum_version(1, 2)
 				.set_surface(surface);
 			auto physicalDevice = deviceSelector
 				.set_required_features(features)
 				.set_required_features_12(features12)
+				.add_desired_extension(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME)
 				.select();
 			deviceHandle.physicalDevice = physicalDevice.value();
 			LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
-			//LN_CORE_INFO("chosen gpu driver version = {0}", deviceHandle.);
+			//LN_CORE_INFO("chosen gpu driver version = {0}", deviceHandle.physicalDevice);
 			return VK_SUCCESS;
 		}
 
@@ -141,9 +144,6 @@ namespace luna
 
 			std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 			
-			//extensions.push_back(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME); used for vulkan 1.1;
-			
-
 			return extensions;
 		}
 
