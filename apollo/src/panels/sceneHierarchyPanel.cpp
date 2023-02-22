@@ -1,5 +1,6 @@
 #include "sceneHierarchyPanel.h"
 #include <nodes/ui/spriteNode.h>
+#include <nodes/ui/labelNode.h>
 #include <core/rendering/renderer2D.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <core/platform/platformUtils.h>
@@ -21,16 +22,6 @@ namespace luna
 
 		if (m_Context)
 		{
-
-			//ImGui::SetCurrentContext(nullptr);
-			/*
-			ImGuiID dockspace_id = ImGui::GetID("DockSpace");
-			auto dock_id_left = ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Left, 0.2f, nullptr, &dockspace_id);
-			auto dock_id_Top_left = ImGui::DockBuilderSplitNode(dock_id_left, ImGuiDir_Up, 0.2f, nullptr, &dockspace_id);
-			auto dock_id_bottom_left = ImGui::DockBuilderSplitNode(dock_id_left, ImGuiDir_Down, 0.2f, nullptr, &dockspace_id);
-			ImGui::DockBuilderDockWindow("scene Hierarchy", dock_id_Top_left);
-			*/
-			//docking needs to be done in engine;
 			if (ImGui::Begin("settings"))
 			{
 				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
@@ -44,12 +35,7 @@ namespace luna
 
 
 			ImGui::Begin("scene Hierarchy");
-			if (ImGui::Button("add node", ImVec2(60, 30)))
-			{
-				ImGui::OpenPopup("add node");
-				
-				//m_Context->addNode<Node>("node");
-			}
+			if (ImGui::Button("add node", ImVec2(60, 30)))ImGui::OpenPopup("add node");
 			
 			if (ImGui::BeginPopupModal("add node",nullptr, ImGuiWindowFlags_NoMove))
 			{
@@ -67,6 +53,9 @@ namespace luna
 						break;
 					case spriteNode:
 						m_Context->addNode<nodes::spriteNode>("spriteNode");
+						break;
+					case labelNode:
+						m_Context->addNode<nodes::labelNode>("labelNode");
 						break;
 					default:
 						break;
@@ -125,10 +114,7 @@ namespace luna
 			ImGui::EndDragDropSource();
 		}
 
-		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen())
-		{
-			m_Selected = Node;
-		}
+		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) m_Selected = Node;
 
 		if (isOpen)
 		{
@@ -208,6 +194,30 @@ namespace luna
 			}
 			ImGui::Separator();
 		}
+		if (Node.hasComponent<labelRendererComponent>())
+		{
+			auto& label = Node.getComponent<labelRendererComponent>();
+			if (ImGui::TreeNodeEx((void*)typeid(labelRendererComponent).hash_code(), 0, "label"))
+			{
+				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
+				char buffer[256];
+				memset(buffer, 0, sizeof(buffer));
+				strcpy_s(buffer, label.filePath.c_str());
+				if (ImGui::InputText("file path", buffer, sizeof(buffer))) label.filePath = std::string(buffer);
+				ImGui::SameLine();
+				if (ImGui::Button("select image"))
+				{
+					label.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
+					//label.texture = renderer::texture::create(sprite.filePath);
+				}
+				char labelBuffer[256];
+				memset(labelBuffer, 0, sizeof(labelBuffer));
+				strcpy_s(labelBuffer, label.text.c_str());
+				if (ImGui::InputText("label text", labelBuffer, sizeof(labelBuffer))) label.text = std::string(labelBuffer);
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
 	}
 
 
@@ -228,10 +238,16 @@ namespace luna
 			if (ImGui::IsItemClicked()) m_ListSelected = controlNode;
 			
 			ImGui::Indent(10);
-			flags = (m_ListSelected == spriteNode) ? ImGuiTreeNodeFlags_Selected : 0;
+			flags = (m_ListSelected == (spriteNode || labelNode)) ? ImGuiTreeNodeFlags_Selected : 0;
 			if (ImGui::TreeNodeEx("spriteNode", ImGuiTreeNodeFlags_OpenOnArrow | flags, "spriteNode"))
 			{
 				if (ImGui::IsItemClicked()) m_ListSelected = spriteNode;
+				ImGui::TreePop();
+			}
+
+			if (ImGui::TreeNodeEx("labelNode", ImGuiTreeNodeFlags_OpenOnArrow | flags, "labelNode"))
+			{
+				if (ImGui::IsItemClicked()) m_ListSelected = labelNode;
 				ImGui::TreePop();
 			}
 			ImGui::Indent(0);

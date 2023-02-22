@@ -29,6 +29,7 @@ namespace luna
 				_handle = (uint64_t)imageViewHandle;
 				this->width = (uint32_t)width;
 				this->height = (uint32_t)height;
+				textureFile.close();
 				return;
 			}
 			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
@@ -94,6 +95,8 @@ namespace luna
 				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
 				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
 				_handle = (uint64_t)imageViewHandle;
+
+				textureFile.close();
 				return;
 			}
 			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
@@ -120,6 +123,7 @@ namespace luna
 				_handle = (uint64_t)imageViewHandle;
 				this->width = (uint32_t)width;
 				this->height = (uint32_t)height;
+				textureFile.close();
 				return;
 			}
 			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
@@ -171,7 +175,7 @@ namespace luna
 				if (foundStripe) 
 				{
 					if (foundStripe->getWidth() != width) {
-
+						//TODO
 					}
 				}
 			}
@@ -201,6 +205,35 @@ namespace luna
 				if(block.getWidth() >= width && block.getHeight() >= height) return &block; //search hit
 			}
 			return nullptr; //search miss
+		}
+
+		/*-------------------------------------------------------------------------------------*/
+
+
+		vulkanFont::vulkanFont(std::string filePath)
+		{
+			LN_PROFILE_FUNCTION();
+			std::ifstream fontFile(filePath);
+			if (fontFile.is_open() && fontFile.good())
+			{
+				LN_CORE_TRACE("succesfuly loaded fontFile! {0}",filePath);
+				std::string data;
+				fontFile >> data;
+				if(stbtt_InitFont(&fontInfo,(unsigned char*)data.data(), 0))
+				{
+					LN_CORE_TRACE("init font succesful");
+				}
+				fontFile.close();
+			}
+		}
+		ref<renderer::texture> vulkanFont::getGlyph(char character)
+		{
+			return nullptr;
+		}
+
+		glm::vec2 vulkanFont::getAdvance(char character)
+		{
+			return glm::vec2();
 		}
 	}
 }

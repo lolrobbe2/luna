@@ -90,6 +90,23 @@ namespace luna
 		private:
 			freeStripeBlock* checkStripe(stripe& stripe,const uint32_t& width, const uint32_t& height);
 		};
+		/**
+		 * @brief font implementation in vulkan.
+		 */
+		class LN_API vulkanFont : public renderer::font
+		{
+		public:
+			//16*300 (width) = 4800
+			//14*300 (height) = 4200
+			//32 dec - 127 decimal;
+			vulkanFont(std::string filePath);
+			virtual ~vulkanFont() = default;
+			virtual ref<renderer::texture> getGlyph(char character) override;
+			virtual glm::vec2 getAdvance(char character) override;
+		private:
+
+		};
+	
 	}
 }
 

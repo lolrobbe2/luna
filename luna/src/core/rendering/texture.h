@@ -1,5 +1,6 @@
 #pragma once
 #include <core/vulkan/window/window.h>
+#include <stb_truetype.h>
 
 namespace luna
 {
@@ -76,6 +77,22 @@ namespace luna
 			uint32_t tileHeight;
 
 			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;
+		};
+
+		class LN_API font : texture
+		{
+		public:
+			//16*300 (width) = 4800
+			//14*300 (height) = 4200
+			//32 dec - 127 decimal;
+			virtual ~font() = default;
+			virtual ref<texture> getGlyph(char character) = 0;
+			virtual glm::vec2 getAdvance(char character) = 0;
+
+		protected:
+			stbtt_fontinfo fontInfo;
+		private:
+
 		};
 	}
 }

@@ -183,7 +183,8 @@ project "stb"
 	{
 		"stb.c",
 		"stb/stb_include.h",
-		"stb/stb_image.h"
+		"stb/stb_image.h",
+		"stb/stb_truetype.h"
 	}
 	buildoptions 
 	{

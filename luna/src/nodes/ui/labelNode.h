@@ -1,32 +1,33 @@
 #pragma once
 #include <core/scene/scene.h>
-namespace luna 
+namespace luna
 {
 	namespace nodes
 	{
 		/**
-		 * @brief implementation of spriteNode.
+		 * @brief label node implementation.
 		 */
-		class LN_API spriteNode : public Node
+		class LN_API labelNode : public Node
 		{
 		public:
-			spriteNode() = default;
+			
+			labelNode() = default;
 			/**
 			 * @brief construct node from entityHandle and corresponding scene.
-			 * 
+			 *
 			 * \param handle
 			 * \param scene
 			 */
-			spriteNode(entt::entity handle, luna::scene* scene);
+			labelNode(entt::entity handle, luna::scene* scene);
 			/**
 			 * @brief construct node in scene.
-			 * 
+			 *
 			 * \param scene
 			 */
-			spriteNode(luna::scene* scene);
-			virtual ~spriteNode() = default;
+			labelNode(luna::scene* scene);
+			virtual ~labelNode() = default;
+		private:
+
 		};
 	}
 }
-
-

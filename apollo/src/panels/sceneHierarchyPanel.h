@@ -9,7 +9,8 @@ namespace luna
 		{
 			node,
 			controlNode,
-			spriteNode
+			spriteNode,
+			labelNode
 		};
 
 	public:
