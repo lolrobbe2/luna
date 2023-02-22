@@ -42,9 +42,13 @@ namespace luna
 				ImGui::SetWindowSize(ImVec2(1000, 500));
 				ImVec2 windowPos = ImGui::GetMainViewport()->GetCenter();
 				ImGui::SetWindowPos({windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
-				
-
-				if(ImGui::Button("add selected node",ImVec2(50,20)))
+				if (ImGui::Button("exit node selection", ImVec2(200, 20)))
+				{
+					m_ListSelected = 0;
+					ImGui::CloseCurrentPopup();
+				}
+				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
+				if(ImGui::Button("add selected node",ImVec2(200,20)))
 				{
 					switch (m_ListSelected)
 					{
@@ -60,6 +64,7 @@ namespace luna
 					default:
 						break;
 					}
+					m_ListSelected = 0;
 					ImGui::CloseCurrentPopup();
 				}
 				drawNodeSelectionList();
@@ -207,8 +212,9 @@ namespace luna
 				ImGui::SameLine();
 				if (ImGui::Button("select image"))
 				{
+					//hotpink color code (227,28,121)
 					label.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
-					//label.texture = renderer::texture::create(sprite.filePath);
+					//label.fontAtlas = renderer::font::
 				}
 				char labelBuffer[256];
 				memset(labelBuffer, 0, sizeof(labelBuffer));
