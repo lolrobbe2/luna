@@ -19,7 +19,7 @@ namespace luna
             vkGetPhysicalDeviceSurfaceCapabilitiesKHR(swapChainSpec.physicalDevice, swapChainSpec.physicalDevice.surface, &surfaceCapaBilities);
             mSwapchainSpec = swapChainSpec;
             vkb::SwapchainBuilder swapchainBuilder{ swapChainSpec.physicalDevice, swapChainSpec.device, swapChainSpec.surface };
-            mSwapchain = swapchainBuilder
+            auto swapchain = swapchainBuilder
                 .use_default_format_selection()
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_IMMEDIATE_KHR)
@@ -27,11 +27,15 @@ namespace luna
                 .set_desired_extent(swapChainSpec.window->getWidth(), swapChainSpec.window->getHeight())
                 .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
                 .set_required_min_image_count(surfaceCapaBilities.minImageCount + 1)
-                .build()
-                .value();
-          
-            LN_CORE_INFO("swapchain format = {0}", mSwapchain.image_format);
-			return VK_SUCCESS;
+                .build();
+            if (swapchain) 
+            {
+                mSwapchain = swapchain.value();
+                return VK_SUCCESS;
+            }
+            LN_CORE_ERROR("was not able to construct swapchain: {0}", swapchain.error().message());
+            return (VkResult)swapchain.error().value();
+           
 		}
 		VkResult vulkanSwapchain::recreateSwapchain()
 		{

@@ -81,34 +81,37 @@ namespace luna
 			instanceBuilder.set_app_name("app")
 				.set_engine_name("luna software engine")
 				.set_engine_version(MAJOR, MINOR, PATCH)
-				.request_validation_layers(true)
 				.use_default_debug_messenger()
+				.set_debug_callback(debugCallback)
 				.require_api_version(1, 2, 0);
 			#ifdef LN_DEBUG
-				instanceBuilder.set_debug_callback(debugCallback);
+				instanceBuilder.request_validation_layers(true);
+			#else
+				instanceBuilder.request_validation_layers(false);
 			#endif // LN_DEBUG
 
 			for (const auto& extension : getRequiredExtensions())
 			{
 				instanceBuilder.enable_extension(extension);
 			}
-			
-			deviceHandle.instance = instanceBuilder.build().value();
-			deviceHandle.appInfo.apiVersion = VKB_VK_API_VERSION_1_2;
-			return VK_SUCCESS;
+			auto instance = instanceBuilder.build();
+			if (instance) 
+			{
+				deviceHandle.instance = instance.value();
+				deviceHandle.appInfo.apiVersion = VKB_VK_API_VERSION_1_2;
+				return VK_SUCCESS;
+			}
+			LN_CORE_ERROR("error creating instance: {0}", instance.error().message());
+			return (VkResult)instance.error().value();
 		}
 
 		VkResult vulkanDevice::pickPhysicalDevice()
 		{
 			vkb::PhysicalDeviceSelector deviceSelector{ deviceHandle.instance };
 			VkPhysicalDeviceFeatures features {};
-			VkPhysicalDeviceVulkan12Features features12{};
-			features12.bufferDeviceAddress = VK_TRUE;
+			VkPhysicalDeviceVulkan12Features features12{ VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES };
 			features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE;
-			features12.descriptorIndexing = VK_TRUE;
 			features.multiViewport = VK_TRUE;
-			features.samplerAnisotropy = VK_TRUE;
-			features.sparseBinding = VK_FALSE;
 			
 			deviceSelector
 				.set_minimum_version(1, 2)
@@ -116,19 +119,28 @@ namespace luna
 			auto physicalDevice = deviceSelector
 				.set_required_features(features)
 				.set_required_features_12(features12)
-				.add_desired_extension(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME)
 				.select();
-			deviceHandle.physicalDevice = physicalDevice.value();
-			LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
-			//LN_CORE_INFO("chosen gpu driver version = {0}", deviceHandle.physicalDevice);
-			return VK_SUCCESS;
+			if (physicalDevice)
+			{
+				deviceHandle.physicalDevice = physicalDevice.value();
+				LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
+				return VK_SUCCESS;
+			}
+			LN_CORE_ERROR("error choosing gpu: {0}", physicalDevice.error().message());
+			return (VkResult)physicalDevice.error().value();
 		}
 
 		VkResult vulkanDevice::createLogicalDevice()
 		{
 			vkb::DeviceBuilder deviceBuilder{ deviceHandle.physicalDevice };
-			deviceHandle.device = deviceBuilder.build().value();
-			return VK_SUCCESS;
+			auto device = deviceBuilder.build();
+			if (device)
+			{
+				deviceHandle.device = device.value();
+				return VK_SUCCESS;
+			}
+			LN_CORE_ERROR("could not create logical device: {0}", device.error().message());
+			return (VkResult)device.error().value();
 		}
 
 
