@@ -103,8 +103,15 @@ namespace luna
 			virtual ~vulkanFont() = default;
 			virtual ref<renderer::texture> getGlyph(char character) override;
 			virtual glm::vec2 getAdvance(char character) override;
+			
 		private:
+			const static int width = 4800;
+			const static int height = 4200;
+			void createFontTexture();
 
+			VkBuffer buffer = VK_NULL_HANDLE;
+			VkImage imageHandle = VK_NULL_HANDLE;
+			VkImageView imageViewHandle = VK_NULL_HANDLE;
 		};
 	
 	}

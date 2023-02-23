@@ -217,9 +217,23 @@ namespace luna
 			if (fontFile.is_open() && fontFile.good())
 			{
 				LN_CORE_TRACE("succesfuly loaded fontFile! {0}",filePath);
+				
 				std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(fontFile), {});
+				
+				
 				if(stbtt_InitFont(&fontInfo,buffer.data(), 0))
 				{
+					createFontTexture();
+					int charWidth, charHeight;
+					int xoff, yoff;
+					float xscale, yscale;
+					stbtt_GetCodepointBitmap(&fontInfo, 1, 1, 'b', &charWidth, &charHeight, &xoff, &yoff);
+					xscale = 299.0f / (float)charWidth;
+					yscale = 299.0f / (float)charHeight;
+					int newCharWidth, newCharHeight;
+					int newXoff, newYoff;
+					
+					stbi_uc* fontGlyph = stbtt_GetCodepointBitmap(&fontInfo, xscale, yscale, 'b', &newCharWidth, &newCharHeight, &newXoff, &newYoff);
 					LN_CORE_TRACE("init font succesful");
 				}
 				fontFile.close();
@@ -233,6 +247,16 @@ namespace luna
 		glm::vec2 vulkanFont::getAdvance(char character)
 		{
 			return glm::vec2();
+		}
+
+		void vulkanFont::createFontTexture() {
+			int imageSize = width * height;
+			
+			utils::vulkanAllocator::createBuffer(&buffer, imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
+			VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
+			LN_CORE_INFO("imageCreate result  = {0}", result);
+			data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 		}
 	}
 }

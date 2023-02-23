@@ -92,6 +92,8 @@ namespace luna
 			static ref<font> create(const std::string& filePath);
 		protected:
 			stbtt_fontinfo fontInfo;
+			uint64_t _handle;
+			void* data;
 		private:
 
 		};
