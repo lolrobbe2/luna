@@ -63,7 +63,7 @@ namespace luna
 	struct labelRendererComponent
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
-		ref<renderer::textureAtlas> fontAtlas;
+		ref<renderer::font> font;
 		std::string filePath;
 		std::string text;
 		float TilingFactor = 1.0f;

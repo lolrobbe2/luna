@@ -99,7 +99,7 @@ namespace luna
 			//16*300 (width) = 4800
 			//14*300 (height) = 4200
 			//32 dec - 127 decimal;
-			vulkanFont(std::string filePath);
+			vulkanFont(const std::string& filePath);
 			virtual ~vulkanFont() = default;
 			virtual ref<renderer::texture> getGlyph(char character) override;
 			virtual glm::vec2 getAdvance(char character) override;

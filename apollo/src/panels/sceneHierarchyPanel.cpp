@@ -35,7 +35,7 @@ namespace luna
 
 
 			ImGui::Begin("scene Hierarchy");
-			if (ImGui::Button("add node", ImVec2(60, 30)))ImGui::OpenPopup("add node");
+			if (ImGui::Button("add node", ImVec2(80, 30))) ImGui::OpenPopup("add node");
 			
 			if (ImGui::BeginPopupModal("add node",nullptr, ImGuiWindowFlags_NoMove))
 			{
@@ -50,6 +50,7 @@ namespace luna
 				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
 				if(ImGui::Button("add selected node",ImVec2(200,20)))
 				{
+					//TODO implement register node type method;
 					switch (m_ListSelected)
 					{
 					case node:
@@ -214,7 +215,7 @@ namespace luna
 				{
 					//hotpink color code (227,28,121)
 					label.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
-					//label.fontAtlas = renderer::font::
+					label.font = renderer::font::create(label.filePath);
 				}
 				char labelBuffer[256];
 				memset(labelBuffer, 0, sizeof(labelBuffer));

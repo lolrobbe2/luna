@@ -210,16 +210,15 @@ namespace luna
 		/*-------------------------------------------------------------------------------------*/
 
 
-		vulkanFont::vulkanFont(std::string filePath)
+		vulkanFont::vulkanFont(const std::string& filePath)
 		{
 			LN_PROFILE_FUNCTION();
-			std::ifstream fontFile(filePath);
+			std::ifstream fontFile(filePath, std::ios::binary);
 			if (fontFile.is_open() && fontFile.good())
 			{
 				LN_CORE_TRACE("succesfuly loaded fontFile! {0}",filePath);
-				std::string data;
-				fontFile >> data;
-				if(stbtt_InitFont(&fontInfo,(unsigned char*)data.data(), 0))
+				std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(fontFile), {});
+				if(stbtt_InitFont(&fontInfo,buffer.data(), 0))
 				{
 					LN_CORE_TRACE("init font succesful");
 				}
