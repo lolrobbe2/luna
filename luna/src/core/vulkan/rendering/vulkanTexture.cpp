@@ -12,7 +12,7 @@ namespace luna
 			std::ifstream textureFile(filePath);
 			if(textureFile.is_open() && textureFile.good())
 			{
-				int width, height, channels;
+				int width, height, channels;  
 				stbi_uc* image =  stbi_load(filePath.c_str(), &width, &height, &channels, 4);
 				if (channels == 3) channels = 4;
 				uint64_t imageSize = width * height * channels;

@@ -110,24 +110,34 @@ namespace luna
 			vkb::PhysicalDeviceSelector deviceSelector{ deviceHandle.instance };
 			VkPhysicalDeviceFeatures features {};
 			VkPhysicalDeviceVulkan12Features features12{ VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES };
-			features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE;
-			features.multiViewport = VK_TRUE;
+			
+			
+			
 			
 			deviceSelector
 				.set_minimum_version(1, 2)
 				.set_surface(surface);
-			auto physicalDevice = deviceSelector
-				.set_required_features(features)
-				.set_required_features_12(features12)
-				.select();
-			if (physicalDevice)
+			auto tempPhysicalDevice = deviceSelector.select().value();
+			if (tempPhysicalDevice.physical_device != VK_NULL_HANDLE) 
 			{
-				deviceHandle.physicalDevice = physicalDevice.value();
-				LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
-				return VK_SUCCESS;
+
+				vkGetPhysicalDeviceFeatures(tempPhysicalDevice, &supportedFeatures);
+				if (supportedFeatures.shaderStorageImageArrayDynamicIndexing == VK_TRUE) features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE;
+				if (supportedFeatures.multiViewport == VK_TRUE) features.multiViewport = VK_TRUE;
+				auto physicalDevice = deviceSelector
+					.set_required_features(features)
+					.set_required_features_12(features12)
+					.select();
+				if (physicalDevice)
+				{
+					deviceHandle.physicalDevice = physicalDevice.value();
+					LN_CORE_INFO("chosen gpu = {0}", deviceHandle.physicalDevice.name);
+					return VK_SUCCESS;
+				}
+				LN_CORE_ERROR("error choosing gpu: {0}", physicalDevice.error().message());
+				return (VkResult)physicalDevice.error().value();
 			}
-			LN_CORE_ERROR("error choosing gpu: {0}", physicalDevice.error().message());
-			return (VkResult)physicalDevice.error().value();
+			return VK_ERROR_DEVICE_LOST;
 		}
 
 		VkResult vulkanDevice::createLogicalDevice()

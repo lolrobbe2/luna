@@ -146,6 +146,8 @@ namespace luna
 			deviceHandles deviceHandle;
 			vulkan::queueFamilyIndices queueFamily;
 			std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
+
+			VkPhysicalDeviceFeatures supportedFeatures{};
 		};
 	}
 }
