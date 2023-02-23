@@ -124,6 +124,10 @@ namespace luna
 			
 			void writeGlyphsIntoBuffer();
 		private:
+			struct glyph
+			{
+				stbi_uc _glyph[900];
+			};
 			const static int width = 4800;
 			const static int height = 4200;
 	

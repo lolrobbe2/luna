@@ -266,15 +266,25 @@ namespace luna
 
 		void vulkanFont::writeGlyphsIntoBuffer()
 		{
-			LN_CORE_INFO("writeing glyphs into buffer");
-			for (size_t i = 32; i < 128; i++)
+			LN_CORE_INFO("writing glyphs into vector buffer");
+			std::vector<glyph> glyphs;
+		
+			for (size_t i = 33; i < 128; i++)
 			{
 				int index = i - 32;
 				glm::vec2 scale;
 				int offsetx, offsety;
-				LN_CORE_INFO("writing char: {0}", (char)i);
+				
 				stbi_uc* fontGlyph = createGlyph(&fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
+				
+				if(fontGlyph)
+				{
+					glyph _glyph = *(glyph*)fontGlyph;
+					glyphs.push_back(_glyph);
+				}
+				else LN_CORE_ERROR("could not load glyph: {0}", (char)i);
 			}
+			LN_CORE_INFO("done writing glyphs into vector buffer");
 		}
 	}
 }
