@@ -224,16 +224,7 @@ namespace luna
 				if(stbtt_InitFont(&fontInfo,buffer.data(), 0))
 				{
 					createFontTexture();
-					int charWidth, charHeight;
-					int xoff, yoff;
-					float xscale, yscale;
-					stbtt_GetCodepointBitmap(&fontInfo, 1, 1, 'b', &charWidth, &charHeight, &xoff, &yoff);
-					xscale = 299.0f / (float)charWidth;
-					yscale = 299.0f / (float)charHeight;
-					int newCharWidth, newCharHeight;
-					int newXoff, newYoff;
-					
-					stbi_uc* fontGlyph = stbtt_GetCodepointBitmap(&fontInfo, xscale, yscale, 'b', &newCharWidth, &newCharHeight, &newXoff, &newYoff);
+					writeGlyphsIntoBuffer();
 					LN_CORE_TRACE("init font succesful");
 				}
 				fontFile.close();
@@ -270,7 +261,20 @@ namespace luna
 			*yscale = 299.0f / (float)charHeight; //299.0f instead of 300.0f beacuse of floating point "error".
 			int newCharWidth, newCharHeight;
 			
-			stbi_uc* fontGlyph = stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, newXoff, newYoff);
+			return stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, newXoff, newYoff);
+		}
+
+		void vulkanFont::writeGlyphsIntoBuffer()
+		{
+			LN_CORE_INFO("writeing glyphs into buffer");
+			for (size_t i = 32; i < 128; i++)
+			{
+				int index = i - 32;
+				glm::vec2 scale;
+				int offsetx, offsety;
+				LN_CORE_INFO("writing char: {0}", (char)i);
+				stbi_uc* fontGlyph = createGlyph(&fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
+			}
 		}
 	}
 }

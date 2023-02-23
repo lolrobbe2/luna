@@ -121,7 +121,8 @@ namespace luna
 			 * \return stbi_uc* pointer to texure data.
 			 */
 			stbi_uc* createGlyph(const stbtt_fontinfo* info, int codePoint, float* xscale, float* yscale, int* newXoff, int* newYoff);
-
+			
+			void writeGlyphsIntoBuffer();
 		private:
 			const static int width = 4800;
 			const static int height = 4200;
