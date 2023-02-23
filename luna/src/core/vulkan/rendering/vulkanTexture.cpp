@@ -249,7 +249,8 @@ namespace luna
 			return glm::vec2();
 		}
 
-		void vulkanFont::createFontTexture() {
+		void vulkanFont::createFontTexture() 
+		{
 			int imageSize = width * height;
 			
 			utils::vulkanAllocator::createBuffer(&buffer, imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
@@ -257,6 +258,19 @@ namespace luna
 			VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
 			LN_CORE_INFO("imageCreate result  = {0}", result);
 			data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
+		}
+
+		stbi_uc* vulkanFont::createGlyph(const stbtt_fontinfo* info,int codePoint, float* xscale, float* yscale, int* newXoff,int* newYoff)
+		{
+			int charWidth, charHeight;
+			int xoff, yoff;
+			
+			stbtt_GetCodepointBitmap(info, 1, 1,codePoint , &charWidth, &charHeight, &xoff, &yoff);
+			*xscale = 299.0f / (float)charWidth; //299.0f instead of 300.0f beacuse of floating point "error".
+			*yscale = 299.0f / (float)charHeight; //299.0f instead of 300.0f beacuse of floating point "error".
+			int newCharWidth, newCharHeight;
+			
+			stbi_uc* fontGlyph = stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, newXoff, newYoff);
 		}
 	}
 }
