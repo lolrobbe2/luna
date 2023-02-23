@@ -126,12 +126,12 @@ namespace luna
 		private:
 			struct glyph
 			{
-				stbi_uc _glyph[900];
+				stbi_uc _glyph[300*300];
 			};
 			const static int width = 4800;
-			const static int height = 4200;
+			const static int height = 4800;
 	
-			VkBuffer buffer = VK_NULL_HANDLE;
+			std::vector<VkBuffer> buffer;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;
 		};

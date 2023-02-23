@@ -85,7 +85,6 @@ namespace luna
 				int width, height, channels;
 				stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 0);
 				uint64_t imageSize = width * height * channels;
-				utils::vulkanAllocator::createBuffer(&buffer, imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
 				LN_CORE_INFO("imageCreate result  = {0}", result);
@@ -225,7 +224,10 @@ namespace luna
 				{
 					createFontTexture();
 					writeGlyphsIntoBuffer();
+					
+
 					LN_CORE_TRACE("init font succesful");
+
 				}
 				fontFile.close();
 			}
@@ -244,11 +246,12 @@ namespace luna
 		{
 			int imageSize = width * height;
 			
-			utils::vulkanAllocator::createBuffer(&buffer, imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
+			
+			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 			VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
 			LN_CORE_INFO("imageCreate result  = {0}", result);
-			data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
+			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
+			_handle = (uint64_t)imageViewHandle;
 		}
 
 		stbi_uc* vulkanFont::createGlyph(const stbtt_fontinfo* info,int codePoint, float* xscale, float* yscale, int* newXoff,int* newYoff)
@@ -267,24 +270,36 @@ namespace luna
 		void vulkanFont::writeGlyphsIntoBuffer()
 		{
 			LN_CORE_INFO("writing glyphs into vector buffer");
-			std::vector<glyph> glyphs;
-		
-			for (size_t i = 33; i < 128; i++)
+			
+			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
+			
+			for (size_t i = 32; i < 128; i++)
 			{
 				int index = i - 32;
 				glm::vec2 scale;
 				int offsetx, offsety;
-				
+	
 				stbi_uc* fontGlyph = createGlyph(&fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
-				
-				if(fontGlyph)
-				{
-					glyph _glyph = *(glyph*)fontGlyph;
-					glyphs.push_back(_glyph);
+				if (fontGlyph) {
+					int y = index / 16;
+					int x = index % 16;
+					buffer.push_back(VK_NULL_HANDLE);
+					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));
+					utils::vulkanAllocator::uploadTexture(this->buffer[index], imageHandle, imageFormat, {300,300,1}, {x * 300,y * 300,0});
 				}
-				else LN_CORE_ERROR("could not load glyph: {0}", (char)i);
+				else 
+				{
+					buffer.push_back(VK_NULL_HANDLE);
+					LN_CORE_ERROR("could not load glyph: {0}", (char)i);
+				}
+
+
 			}
-			LN_CORE_INFO("done writing glyphs into vector buffer");
+			utils::vulkanAllocator::flush();
+			buffer.resize(0);
+			LN_CORE_INFO("done writing glyphs into staging buffer");
 		}
 	}
 }

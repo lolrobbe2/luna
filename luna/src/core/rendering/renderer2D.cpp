@@ -94,6 +94,29 @@ namespace luna
 
 			renderer::endScene();
 		}
+		void renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText)
+		{
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+			uint64_t handle = textureInBatch(font->handle());
+			if (!handle) {
+				rendererData.textures.push_back(font->handle());
+				handle = textureInBatch(font->handle());
+			}
+			constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+			constexpr size_t quadVertexCount = 4;
+			for (size_t i = 0; i < quadVertexCount; i++)
+			{
+				rendererData.quadVertexBufferPtr->color = { 1.0f,1.0f,1.0f,1.0f };
+				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];
+				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
+				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
+				rendererData.quadVertexBufferPtr++;
+			}
+			rendererData.quadIndexCount += 6;
+			rendererData.stats.quadCount++;
+		
+		}
 		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)
 		{
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)

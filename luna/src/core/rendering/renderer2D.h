@@ -40,6 +40,7 @@ namespace luna
 			 * @brief ends the 2D renderer scene.
 			 */
 			static void endScene();
+			static void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font,const std::string labelText);
 			/**
 			 * @brief draws a texture quad.
 			 *
