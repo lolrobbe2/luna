@@ -71,7 +71,7 @@ namespace luna
 
 
 
-
+		
 		/* private helper functions */
 		VkResult vulkanDevice::createInstance()
 		{
