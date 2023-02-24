@@ -22,4 +22,10 @@ to create a simple to use software engine capable of running commercial software
 ## website:
    - <a href="https://lolrobbe2.github.io/luna/doxygen%20documentation/html/index.html" target="_blank">engine source documentation</a>
    -  <a href="https://lolrobbe2.github.io/luna" target="_blank">egine website</a>
+## releases:
+  <a href="https://github.com/lolrobbe2/luna/releases" target="_blank">engine releases</a> 
+### download:
+1. download the zip folder called appolo/sandbox.
+2. extract the zip folder.
+3. run sandbox/appolo.exe.
 # enjoy :)
