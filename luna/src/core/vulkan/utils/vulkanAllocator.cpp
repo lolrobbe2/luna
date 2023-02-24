@@ -155,6 +155,7 @@ namespace luna
 			vkDeviceWaitIdle(vDevice->getDeviceHandles().device);
 			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;
 			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
+			allocations.eraseValue((uint64_t)buffer);
 
 		}
 		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions, const glm::vec3& imageOffset)

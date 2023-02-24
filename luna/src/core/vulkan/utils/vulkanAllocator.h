@@ -92,7 +92,14 @@ namespace luna
 			 * 
 			 */
 			static void flush();
-
+			/**
+			 * @brief returns a supported VK_FORMAT given a channel amount from 1-4,
+			 * if no supported format can be found VK_FORMAT_UNDEFINED will be returned
+			 * 
+			 * \param usageFlags
+			 * \param channels
+			 * \return 
+			 */
 			static VkFormat getSuitableFormat(const VkImageUsageFlags& usageFlags, const uint32_t& channels);
 		private:
 			/**

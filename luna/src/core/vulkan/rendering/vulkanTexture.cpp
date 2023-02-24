@@ -20,7 +20,6 @@ namespace luna
 				utils::vulkanAllocator::createBuffer(&buffer,imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, channels);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY,{(unsigned int)width,(unsigned int)height,1},imageFormat);
-				LN_CORE_INFO("imageCreate result  = {0}", result);
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 				memcpy(data, (void*)image, width * height * channels);
 				stbi_image_free(image);
@@ -87,7 +86,6 @@ namespace luna
 				uint64_t imageSize = width * height * channels;
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
-				LN_CORE_INFO("imageCreate result  = {0}", result);
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 				memcpy(data, (void*)image, width * height * 4);
 				stbi_image_free(image);
@@ -113,7 +111,6 @@ namespace luna
 				utils::vulkanAllocator::createBuffer(&buffer, imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
-				LN_CORE_INFO("imageCreate result  = {0}", result);
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 				memcpy(data, (void*)image, width * height * channels);
 				stbi_image_free(image);
@@ -215,20 +212,17 @@ namespace luna
 			std::ifstream fontFile(filePath, std::ios::binary);
 			if (fontFile.is_open() && fontFile.good())
 			{
-				LN_CORE_TRACE("succesfuly loaded fontFile! {0}",filePath);
 				
 				std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(fontFile), {});
 				
 				
-				if(stbtt_InitFont(&fontInfo,buffer.data(), 0))
+				if (stbtt_InitFont(&fontInfo, buffer.data(), 0))
 				{
 					createFontTexture();
 					writeGlyphsIntoBuffer();
-					
-
-					LN_CORE_TRACE("init font succesful");
-
+					LN_CORE_TRACE("succesfuly loaded fontFile! {0}", filePath);
 				}
+				else LN_CORE_ERROR("incorrect file format, expected .ttf!");
 				fontFile.close();
 			}
 		}
@@ -245,11 +239,8 @@ namespace luna
 		void vulkanFont::createFontTexture() 
 		{
 			int imageSize = width * height;
-			
-			
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 			VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
-			LN_CORE_INFO("imageCreate result  = {0}", result);
 			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
 			_handle = (uint64_t)imageViewHandle;
 		}
@@ -269,8 +260,7 @@ namespace luna
 
 		void vulkanFont::writeGlyphsIntoBuffer()
 		{
-			LN_CORE_INFO("writing glyphs into vector buffer");
-			
+			LN_PROFILE_FUNCTION();
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 			
 			for (size_t i = 32; i < 128; i++)
@@ -285,7 +275,6 @@ namespace luna
 					int x = index % 16;
 					buffer.push_back(VK_NULL_HANDLE);
 					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));
 					utils::vulkanAllocator::uploadTexture(this->buffer[index], imageHandle, imageFormat, {300,300,1}, {x * 300,y * 300,0});
 				}
@@ -299,7 +288,6 @@ namespace luna
 			}
 			utils::vulkanAllocator::flush();
 			buffer.resize(0);
-			LN_CORE_INFO("done writing glyphs into staging buffer");
 		}
 	}
 }
