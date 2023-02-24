@@ -36,6 +36,7 @@ namespace luna
 			return m_Registry.view<components...>();
 		}
 		void onUpdateEditor(utils::timestep ts);
+		
 	private:
 		friend class Node;
 		friend class sceneHierarchyPanel;

@@ -20,7 +20,23 @@ namespace luna
 			default:
 				return ref<texture>();
 			}
-			return ref<texture>();
+		}
+
+		ref<font> font::create(const std::string& filePath)
+		{
+			switch (vulkan::window::graphicsApi)
+			{
+			case vulkan::NONE:
+				LN_CORE_ERROR("NONE is currently not supported!");
+				break;
+			case vulkan::OPENGL:
+				LN_CORE_ERROR("OPENGL is currently not supported!");
+				break;
+			case vulkan::VULKAN:
+				return ref<font>(new vulkan::vulkanFont(filePath));
+			default:
+				return ref<font>();
+			}
 		}
 	}
 }

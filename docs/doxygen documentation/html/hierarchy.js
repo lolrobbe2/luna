@@ -36,6 +36,11 @@ var hierarchy =
       [ "luna::windowResizeEvent", "d1/d00/classluna_1_1window_resize_event.html", null ]
     ] ],
     [ "luna::eventDispatcher", "d1/d00/classluna_1_1event_dispatcher.html", null ],
+    [ "luna::renderer::font", "d9/d00/classluna_1_1renderer_1_1font.html", [
+      [ "luna::vulkan::vulkanFont", "d9/d00/classluna_1_1vulkan_1_1vulkan_font.html", null ]
+    ] ],
+    [ "luna::vulkan::vulkanTextureAtlas::freeStripeBlock", "d3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block.html", null ],
+    [ "luna::vulkan::vulkanFont::glyph", "d7/d00/structluna_1_1vulkan_1_1vulkan_font_1_1glyph.html", null ],
     [ "luna::idComponent", "d9/d00/structluna_1_1id_component.html", null ],
     [ "luna::renderer::indexBuffer", "d8/d00/classluna_1_1renderer_1_1index_buffer.html", [
       [ "luna::vulkan::vulkanIndexBuffer", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html", null ]
@@ -43,12 +48,14 @@ var hierarchy =
     [ "luna::instrumentationSession", "d4/d00/structluna_1_1instrumentation_session.html", null ],
     [ "luna::instrumentationTimer", "dd/d00/classluna_1_1instrumentation_timer.html", null ],
     [ "luna::instrumentor", "dd/d00/classluna_1_1instrumentor.html", null ],
+    [ "luna::labelRendererComponent", "dd/d00/structluna_1_1label_renderer_component.html", null ],
     [ "luna::utils::layer", "d5/d00/classluna_1_1utils_1_1layer.html", [
       [ "luna::editorLayer", "d4/d00/classluna_1_1editor_layer.html", null ]
     ] ],
     [ "luna::utils::layerStack", "da/d00/classluna_1_1utils_1_1layer_stack.html", null ],
     [ "luna::Log", "dc/d00/classluna_1_1_log.html", null ],
     [ "luna::Node", "dc/d00/classluna_1_1_node.html", [
+      [ "luna::nodes::labelNode", "d1/d00/classluna_1_1nodes_1_1label_node.html", null ],
       [ "luna::nodes::spriteNode", "d0/d00/classluna_1_1nodes_1_1sprite_node.html", null ]
     ] ],
     [ "luna::scene::node", "d8/d00/classluna_1_1scene_1_1node.html", null ],
@@ -79,6 +86,7 @@ var hierarchy =
     [ "shared_ptr< window >", "d5/d00/classstd_1_1shared__ptr_3_01window_01_4.html", null ],
     [ "luna::spriteRendererComponent", "d9/d00/structluna_1_1sprite_renderer_component.html", null ],
     [ "luna::renderer::renderer2D::statistics", "d9/d00/structluna_1_1renderer_1_1renderer2_d_1_1statistics.html", null ],
+    [ "luna::vulkan::vulkanTextureAtlas::stripe", "d4/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe.html", null ],
     [ "luna::vulkan::swapchainSpec", "d3/d00/structluna_1_1vulkan_1_1swapchain_spec.html", null ],
     [ "luna::tagComponent", "dd/d00/structluna_1_1tag_component.html", null ],
     [ "luna::renderer::texture", "dd/d00/classluna_1_1renderer_1_1texture.html", [

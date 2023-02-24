@@ -11,6 +11,7 @@ var annotated_dup =
         [ "ChangeResult", "d2/d00/structluna_1_1instrumentor_utils_1_1_change_result.html", "d2/d00/structluna_1_1instrumentor_utils_1_1_change_result" ]
       ] ],
       [ "nodes", "d8/d00/namespaceluna_1_1nodes.html", [
+        [ "labelNode", "d1/d00/classluna_1_1nodes_1_1label_node.html", "d1/d00/classluna_1_1nodes_1_1label_node" ],
         [ "spriteNode", "d0/d00/classluna_1_1nodes_1_1sprite_node.html", "d0/d00/classluna_1_1nodes_1_1sprite_node" ]
       ] ],
       [ "platform", "d0/d00/namespaceluna_1_1platform.html", [
@@ -20,6 +21,7 @@ var annotated_dup =
         [ "bufferElement", "d8/d00/classluna_1_1renderer_1_1buffer_element.html", "d8/d00/classluna_1_1renderer_1_1buffer_element" ],
         [ "bufferLayout", "d6/d00/classluna_1_1renderer_1_1buffer_layout.html", "d6/d00/classluna_1_1renderer_1_1buffer_layout" ],
         [ "device", "d6/d00/classluna_1_1renderer_1_1device.html", "d6/d00/classluna_1_1renderer_1_1device" ],
+        [ "font", "d9/d00/classluna_1_1renderer_1_1font.html", "d9/d00/classluna_1_1renderer_1_1font" ],
         [ "indexBuffer", "d8/d00/classluna_1_1renderer_1_1index_buffer.html", "d8/d00/classluna_1_1renderer_1_1index_buffer" ],
         [ "pipeline", "d9/d00/classluna_1_1renderer_1_1pipeline.html", "d9/d00/classluna_1_1renderer_1_1pipeline" ],
         [ "pipelineLayout", "db/d00/structluna_1_1renderer_1_1pipeline_layout.html", "db/d00/structluna_1_1renderer_1_1pipeline_layout" ],
@@ -61,6 +63,7 @@ var annotated_dup =
         [ "vulkanCmdPoolSpec", "df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec.html", "df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec" ],
         [ "vulkanDevice", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_device" ],
         [ "vulkanFeatureSupport", "dd/d00/classluna_1_1vulkan_1_1vulkan_feature_support.html", "dd/d00/classluna_1_1vulkan_1_1vulkan_feature_support" ],
+        [ "vulkanFont", "d9/d00/classluna_1_1vulkan_1_1vulkan_font.html", "d9/d00/classluna_1_1vulkan_1_1vulkan_font" ],
         [ "vulkanIndexBuffer", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer" ],
         [ "vulkanPipeline", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline" ],
         [ "vulkanShader", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader" ],
@@ -89,6 +92,7 @@ var annotated_dup =
       [ "keyPressedEvent", "d6/d00/classluna_1_1key_pressed_event.html", "d6/d00/classluna_1_1key_pressed_event" ],
       [ "keyReleasedEvent", "d5/d00/classluna_1_1key_released_event.html", "d5/d00/classluna_1_1key_released_event" ],
       [ "keyTypedEvent", "d9/d00/classluna_1_1key_typed_event.html", "d9/d00/classluna_1_1key_typed_event" ],
+      [ "labelRendererComponent", "dd/d00/structluna_1_1label_renderer_component.html", "dd/d00/structluna_1_1label_renderer_component" ],
       [ "Log", "dc/d00/classluna_1_1_log.html", "dc/d00/classluna_1_1_log" ],
       [ "mouseButtonEvent", "d1/d00/classluna_1_1mouse_button_event.html", "d1/d00/classluna_1_1mouse_button_event" ],
       [ "mouseButtonPressedEvent", "d8/d00/classluna_1_1mouse_button_pressed_event.html", "d8/d00/classluna_1_1mouse_button_pressed_event" ],

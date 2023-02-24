@@ -7,6 +7,7 @@ var namespaceluna_1_1vulkan =
     [ "vulkanCmdPoolSpec", "df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec.html", "df/d00/structluna_1_1vulkan_1_1vulkan_cmd_pool_spec" ],
     [ "vulkanDevice", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_device" ],
     [ "vulkanFeatureSupport", "dd/d00/classluna_1_1vulkan_1_1vulkan_feature_support.html", "dd/d00/classluna_1_1vulkan_1_1vulkan_feature_support" ],
+    [ "vulkanFont", "d9/d00/classluna_1_1vulkan_1_1vulkan_font.html", "d9/d00/classluna_1_1vulkan_1_1vulkan_font" ],
     [ "vulkanIndexBuffer", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer.html", "d2/d00/classluna_1_1vulkan_1_1vulkan_index_buffer" ],
     [ "vulkanPipeline", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html", "d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline" ],
     [ "vulkanShader", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader.html", "d1/d00/classluna_1_1vulkan_1_1vulkan_shader" ],

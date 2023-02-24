@@ -11,8 +11,7 @@ texture\+Atlas api.
 
 
 
-Inheritance diagram for luna\+::vulkan\+::vulkan\+Texture\+Atlas\+:
-\nopagebreak
+Inheritance diagram for luna\+::vulkan\+::vulkan\+Texture\+Atlas\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -29,6 +28,13 @@ Collaboration diagram for luna\+::vulkan\+::vulkan\+Texture\+Atlas\+:
 \includegraphics[width=350pt]{dd/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block}{free\+Stripe\+Block}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe}{stripe}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,21 +44,28 @@ Collaboration diagram for luna\+::vulkan\+::vulkan\+Texture\+Atlas\+:
 \item 
 virtual \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a12e27c7de248d2a95460fc615b1b9723}{$\sim$vulkan\+Texture\+Atlas}} ()=default
 \item 
-virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_ad69f21386fd03ec25c2aa7ea672fcf29}{get\+Tile\+Width}} ()
+virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae53a99bac3384b46b686127ca13648bf}{get\+Tile\+Width}} () override
 \item 
-virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1b3d0759a6f10bf28f7e3cd8c69e9a9a}{get\+Tile\+Width}} (const uint16\+\_\+t \&x\+Index, const uint16\+\_\+t \&y\+Index)
+virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae9cf2483a2a6d6cce22512feefb996fd}{get\+Tile\+Width}} (const uint16\+\_\+t \&x\+Index, const uint16\+\_\+t \&y\+Index) override
 \item 
-virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_aadae68a729a88ff1bd89056f3a218cdd}{get\+Tile\+Height}} ()
+virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a30afc3f2f2b2deb207743f4b2f8cc410}{get\+Tile\+Height}} () override
 \item 
-virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a54bcfcf83bfc62ba3af752de96b06b30}{get\+Tile\+Height}} (const uint16\+\_\+t \&x\+Index, const uint16\+\_\+t \&y\+Index)
+virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae669735ff1001d50114bf235ed92b576}{get\+Tile\+Height}} (const uint16\+\_\+t \&x\+Index, const uint16\+\_\+t \&y\+Index) override
 \item 
-virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a8ea927a3f34bdaca8eab7a930737eb61}{add\+Tile}} (const glm\+::vec2 \&dimensions)
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a4b9bfdcd4cf9aed34ebc006e5d3fee87}{add\+Tile}} (const glm\+::vec2 \&dimensions)
 \item 
-virtual uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_aaccc8d324955cba7f941184078e0ead6}{add\+Tile}} (const uint32\+\_\+t \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture_a4aef0110e75cfea3933ed9f50c7f89d3}{width}}, const uint32\+\_\+t \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture_ab5c7d9d66dbff6e868d69503757793d0}{height}})
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae6c4d520d71ecf9671cf08b9d434a548}{add\+Tile}} (const uint32\+\_\+t \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture_a4aef0110e75cfea3933ed9f50c7f89d3}{width}}, const uint32\+\_\+t \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture_ab5c7d9d66dbff6e868d69503757793d0}{height}}) override
 \item 
-virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a2e8fc18f1e42bf331796b6ff24ffd6a1}{get\+Tile\+Dimensions}} (const glm\+::vec2 \&textureindex)
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a922dc0166ec0a2469d1c367a8fda7cae}{get\+Tile\+Dimensions}} (const glm\+::vec2 \&textureindex) override
 \item 
-virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a98f4bf331534a05a2b44de90f575ff16}{get\+Texture\+Uv}} (const glm\+::vec2 \&textureindex)
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a0b2f8dde73550e6e03793b883032ffab}{get\+Texture\+Uv}} (const glm\+::vec2 \&textureindex) override
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1f4c6317aa9e8461add92b743d2860cd}{get\+Tile\+As\+Texture}} (const glm\+::vec2 \&textureindex)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block}{free\+Stripe\+Block}} $\ast$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1cbd1a0e8a0bc72d939abadd85826eda}{check\+Stripe}} (\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe}{stripe}} \&\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe}{stripe}}, const uint32\+\_\+t \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture_a4aef0110e75cfea3933ed9f50c7f89d3}{width}}, const uint32\+\_\+t \&\mbox{\hyperlink{classluna_1_1renderer_1_1texture_ab5c7d9d66dbff6e868d69503757793d0}{height}})
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -61,7 +74,15 @@ uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a6ca2
 \item 
 uint32\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_aa8c5a51bc25d9eb3a871d95904cf284d}{tile\+Height}}
 \item 
-std\+::vector$<$ std\+::vector$<$ glm\+::vec2 $>$ $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a7daf5b70f3d2b658b1445efc37739b72}{tile\+Custom\+Tex\+Coords}}
+std\+::vector$<$ std\+::vector$<$ glm\+::vec4 $>$ $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a6e77ad9afed2715ce720796d640e2c48}{tile\+Custom\+Tex\+Coords}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe}{stripe}} $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_aea832eaa761d2d95f4f273a98469800e}{atlas}}
+\item 
+Vk\+Buffer \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a06087456574af86cde717a2935aca3cc}{buffer}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
+\item 
+Vk\+Image \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_a93e7a8a4eb7a5beef849c17718ea81e6}{image\+Handle}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
+\item 
+Vk\+Image\+View \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_texture_atlas_adf7e6fc912d4c940928f5209c68ebc46}{image\+View\+Handle}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 
@@ -99,94 +120,130 @@ see specific platform implementation for explenation with functions
 
 
 \doxysubsubsection{Member Function Documentation}
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a8ea927a3f34bdaca8eab7a930737eb61}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a8ea927a3f34bdaca8eab7a930737eb61}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a4b9bfdcd4cf9aed34ebc006e5d3fee87}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a4b9bfdcd4cf9aed34ebc006e5d3fee87}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!addTile@{addTile}}
 \index{addTile@{addTile}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{addTile()}{addTile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::add\+Tile (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{dimensions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::add\+Tile (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{dimensions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a70b68d4771defd91e99b92a13198b3c5}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_af7afe4f5589b03f589313da192b9b886}{luna\+::renderer\+::texture\+Atlas}}.
 
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_aaccc8d324955cba7f941184078e0ead6}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_aaccc8d324955cba7f941184078e0ead6}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae6c4d520d71ecf9671cf08b9d434a548}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae6c4d520d71ecf9671cf08b9d434a548}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!addTile@{addTile}}
 \index{addTile@{addTile}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{addTile()}{addTile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::add\+Tile (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t \&}]{width,  }\item[{const uint32\+\_\+t \&}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::add\+Tile (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t \&}]{width,  }\item[{const uint32\+\_\+t \&}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a1bca908c664f56903d90bb8eb1f634ad}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a2d15879430a5ca3612e4dc74ae31ebca}{luna\+::renderer\+::texture\+Atlas}}.
 
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a98f4bf331534a05a2b44de90f575ff16}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a98f4bf331534a05a2b44de90f575ff16}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1cbd1a0e8a0bc72d939abadd85826eda}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1cbd1a0e8a0bc72d939abadd85826eda}} 
+\index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!checkStripe@{checkStripe}}
+\index{checkStripe@{checkStripe}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
+\doxyparagraph{\texorpdfstring{checkStripe()}{checkStripe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block}{vulkan\+Texture\+Atlas\+::free\+Stripe\+Block}} $\ast$ luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::check\+Stripe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe}{stripe}} \&}]{stripe,  }\item[{const uint32\+\_\+t \&}]{width,  }\item[{const uint32\+\_\+t \&}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a0b2f8dde73550e6e03793b883032ffab}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a0b2f8dde73550e6e03793b883032ffab}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!getTextureUv@{getTextureUv}}
 \index{getTextureUv@{getTextureUv}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{getTextureUv()}{getTextureUv()}}
-{\footnotesize\ttfamily virtual glm\+::vec2 luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Texture\+Uv (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{textureindex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Texture\+Uv (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{textureindex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a82ae101f7f81ceec47a8f2d358ac0aac}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_af07ef891473ccb544394ddb376c86d57}{luna\+::renderer\+::texture\+Atlas}}.
 
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a2e8fc18f1e42bf331796b6ff24ffd6a1}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a2e8fc18f1e42bf331796b6ff24ffd6a1}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1f4c6317aa9e8461add92b743d2860cd}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1f4c6317aa9e8461add92b743d2860cd}} 
+\index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!getTileAsTexture@{getTileAsTexture}}
+\index{getTileAsTexture@{getTileAsTexture}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
+\doxyparagraph{\texorpdfstring{getTileAsTexture()}{getTileAsTexture()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+As\+Texture (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{textureindex }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a922dc0166ec0a2469d1c367a8fda7cae}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a922dc0166ec0a2469d1c367a8fda7cae}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!getTileDimensions@{getTileDimensions}}
 \index{getTileDimensions@{getTileDimensions}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{getTileDimensions()}{getTileDimensions()}}
-{\footnotesize\ttfamily virtual glm\+::vec2 luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Dimensions (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{textureindex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Dimensions (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{textureindex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a11fd07fd1d0c515c067be4413db61877}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a66260188bc38d77bdd89f1b61d1b3a39}{luna\+::renderer\+::texture\+Atlas}}.
 
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_aadae68a729a88ff1bd89056f3a218cdd}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_aadae68a729a88ff1bd89056f3a218cdd}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a30afc3f2f2b2deb207743f4b2f8cc410}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a30afc3f2f2b2deb207743f4b2f8cc410}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!getTileHeight@{getTileHeight}}
 \index{getTileHeight@{getTileHeight}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{getTileHeight()}{getTileHeight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_aea41f6d6b3e89832e21ac47e06f8e69a}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_ad1abbac39a3d6e502ae67f30ee257ebd}{luna\+::renderer\+::texture\+Atlas}}.
 
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a54bcfcf83bfc62ba3af752de96b06b30}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a54bcfcf83bfc62ba3af752de96b06b30}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae669735ff1001d50114bf235ed92b576}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae669735ff1001d50114bf235ed92b576}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!getTileHeight@{getTileHeight}}
 \index{getTileHeight@{getTileHeight}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{getTileHeight()}{getTileHeight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Height (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t \&}]{x\+Index,  }\item[{const uint16\+\_\+t \&}]{y\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Height (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t \&}]{x\+Index,  }\item[{const uint16\+\_\+t \&}]{y\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_ab7499daa70381a4a6a413794ec90a86c}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_abbc72c6f0deb182aa8fb6feb05896887}{luna\+::renderer\+::texture\+Atlas}}.
 
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_ad69f21386fd03ec25c2aa7ea672fcf29}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_ad69f21386fd03ec25c2aa7ea672fcf29}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae53a99bac3384b46b686127ca13648bf}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae53a99bac3384b46b686127ca13648bf}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!getTileWidth@{getTileWidth}}
 \index{getTileWidth@{getTileWidth}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{getTileWidth()}{getTileWidth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a060b7e86f897852c0d583c3018cf98f9}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a1ec266ba50f9a15db5f1d5e193b9f62b}{luna\+::renderer\+::texture\+Atlas}}.
 
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1b3d0759a6f10bf28f7e3cd8c69e9a9a}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a1b3d0759a6f10bf28f7e3cd8c69e9a9a}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae9cf2483a2a6d6cce22512feefb996fd}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_ae9cf2483a2a6d6cce22512feefb996fd}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!getTileWidth@{getTileWidth}}
 \index{getTileWidth@{getTileWidth}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{getTileWidth()}{getTileWidth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Width (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t \&}]{x\+Index,  }\item[{const uint16\+\_\+t \&}]{y\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily uint32\+\_\+t luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::get\+Tile\+Width (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t \&}]{x\+Index,  }\item[{const uint16\+\_\+t \&}]{y\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_ac362ae45991568ea5be9b5849a526a7f}{luna\+::renderer\+::texture\+Atlas}}.
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_a5a878b91d48208d24763a6c9fc9d8966}{luna\+::renderer\+::texture\+Atlas}}.
 
 
 
 \doxysubsubsection{Member Data Documentation}
-\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a7daf5b70f3d2b658b1445efc37739b72}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a7daf5b70f3d2b658b1445efc37739b72}} 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_aea832eaa761d2d95f4f273a98469800e}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_aea832eaa761d2d95f4f273a98469800e}} 
+\index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!atlas@{atlas}}
+\index{atlas@{atlas}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
+\doxyparagraph{\texorpdfstring{atlas}{atlas}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe}{stripe}}$>$ luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::atlas\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a06087456574af86cde717a2935aca3cc}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a06087456574af86cde717a2935aca3cc}} 
+\index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!buffer@{buffer}}
+\index{buffer@{buffer}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
+\doxyparagraph{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily Vk\+Buffer luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::buffer = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a93e7a8a4eb7a5beef849c17718ea81e6}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a93e7a8a4eb7a5beef849c17718ea81e6}} 
+\index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!imageHandle@{imageHandle}}
+\index{imageHandle@{imageHandle}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
+\doxyparagraph{\texorpdfstring{imageHandle}{imageHandle}}
+{\footnotesize\ttfamily Vk\+Image luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::image\+Handle = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_adf7e6fc912d4c940928f5209c68ebc46}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_adf7e6fc912d4c940928f5209c68ebc46}} 
+\index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!imageViewHandle@{imageViewHandle}}
+\index{imageViewHandle@{imageViewHandle}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
+\doxyparagraph{\texorpdfstring{imageViewHandle}{imageViewHandle}}
+{\footnotesize\ttfamily Vk\+Image\+View luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::image\+View\+Handle = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_a6e77ad9afed2715ce720796d640e2c48}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_a6e77ad9afed2715ce720796d640e2c48}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!tileCustomTexCoords@{tileCustomTexCoords}}
 \index{tileCustomTexCoords@{tileCustomTexCoords}!luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}}
 \doxyparagraph{\texorpdfstring{tileCustomTexCoords}{tileCustomTexCoords}}
-{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$glm\+::vec2$>$ $>$ luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::tile\+Custom\+Tex\+Coords\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$glm\+::vec4$>$ $>$ luna\+::vulkan\+::vulkan\+Texture\+Atlas\+::tile\+Custom\+Tex\+Coords\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_texture_atlas_aa8c5a51bc25d9eb3a871d95904cf284d}\label{classluna_1_1vulkan_1_1vulkan_texture_atlas_aa8c5a51bc25d9eb3a871d95904cf284d}} 
 \index{luna::vulkan::vulkanTextureAtlas@{luna::vulkan::vulkanTextureAtlas}!tileHeight@{tileHeight}}
@@ -202,6 +259,7 @@ Reimplemented from \mbox{\hyperlink{classluna_1_1renderer_1_1texture_atlas_ac362
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_texture_8h}{vulkan\+Texture.\+h}}\end{DoxyCompactItemize}
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_texture_8h}{vulkan\+Texture.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_texture_8cpp}{vulkan\+Texture.\+cpp}}\end{DoxyCompactItemize}

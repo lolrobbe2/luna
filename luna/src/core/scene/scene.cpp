@@ -13,11 +13,22 @@ namespace luna
 
 	void scene::onUpdateEditor(utils::timestep ts)
 	{
-		auto group = m_Registry.group<transformComponent>(entt::get<spriteRendererComponent>);
+		auto group = m_Registry.view<transformComponent,spriteRendererComponent>();
+		//group.sort<transformComponent>([](const auto& transform1, const auto& transform2) {return transform1.translation.z > transform2.translation.z; });
+		
 		for (auto entity : group)
 		{
 			auto [transform, sprite] = group.get<transformComponent, spriteRendererComponent>(entity);
 			if(sprite.texture) renderer::renderer2D::drawQuad(transform.translation,{transform.scale.x,transform.scale.y}, sprite.texture);
+		}
+
+		auto labelGroup = m_Registry.view<transformComponent,labelRendererComponent>();
+		//group.sort<transformComponent>([](const auto& transform1, const auto& transform2) {return transform1.translation.z > transform2.translation.z; });
+
+		for (auto labelEntity : labelGroup)
+		{
+			auto [transform, label] = labelGroup.get<transformComponent, labelRendererComponent>(labelEntity);
+			if (label.font) renderer::renderer2D::drawLabel(transform.translation, { transform.scale.x,transform.scale.y },label.font,label.text);
 		}
 	}
 

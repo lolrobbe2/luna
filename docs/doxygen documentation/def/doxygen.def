@@ -5264,7 +5264,7 @@ std::vector< entt::entity >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'childs';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-      sec-mem-desc-line = '79';
+      sec-mem-desc-line = '93';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -5274,7 +5274,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-  cp-fileline  = '77';
+  cp-fileline  = '91';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -6209,7 +6209,7 @@ class = {
   cp-id     = 'de/d00/classvector_3_01entt_1_1entity_01_4_1_1const__iterator';
   cp-name   = 'vector< entt::entity >::const_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-  cp-fileline  = '77';
+  cp-fileline  = '91';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -6302,6 +6302,30 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
 }; /* class */
 class = {
+  cp-id     = 'dc/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_01_4_1_1const__iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >::const_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '79';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd8/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe_01_4_1_1const__iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::stripe >::const_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
   cp-id     = 'dc/d00/classvector_3_01ref_3_01luna_1_1renderer_1_1shader_01_4_01_4_1_1const__iterator';
   cp-name   = 'vector< ref< luna::renderer::shader > >::const_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/pipeline.h';
@@ -6341,7 +6365,19 @@ class = {
   cp-id     = 'dd/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec2_01_4_01_4_1_1const__iterator';
   cp-name   = 'vector< std::vector< glm::vec2 > >::const_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-  cp-fileline  = '56';
+  cp-fileline  = '57';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd0/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec4_01_4_01_4_1_1const__iterator';
+  cp-name   = 'vector< std::vector< glm::vec4 > >::const_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -6390,6 +6426,18 @@ class = {
   cp-name   = 'vector< virtualCmdBuffer >::const_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.h';
   cp-fileline  = '18';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd7/d00/classvector_3_01_vk_buffer_01_4_1_1const__iterator';
+  cp-name   = 'vector< VkBuffer >::const_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '96';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -7073,7 +7121,7 @@ class = {
   cp-id     = 'd9/d00/classvector_3_01entt_1_1entity_01_4_1_1const__reverse__iterator';
   cp-name   = 'vector< entt::entity >::const_reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-  cp-fileline  = '77';
+  cp-fileline  = '91';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -7166,6 +7214,30 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
 }; /* class */
 class = {
+  cp-id     = 'd8/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_01_4_1_1const__reverse__iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >::const_reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '79';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'de/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe_01_4_1_1const__reverse__iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::stripe >::const_reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
   cp-id     = 'd9/d00/classvector_3_01ref_3_01luna_1_1renderer_1_1shader_01_4_01_4_1_1const__reverse__iterator';
   cp-name   = 'vector< ref< luna::renderer::shader > >::const_reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/pipeline.h';
@@ -7205,7 +7277,19 @@ class = {
   cp-id     = 'd9/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec2_01_4_01_4_1_1const__reverse__iterator';
   cp-name   = 'vector< std::vector< glm::vec2 > >::const_reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-  cp-fileline  = '56';
+  cp-fileline  = '57';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd1/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec4_01_4_01_4_1_1const__reverse__iterator';
+  cp-name   = 'vector< std::vector< glm::vec4 > >::const_reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -7254,6 +7338,18 @@ class = {
   cp-name   = 'vector< virtualCmdBuffer >::const_reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.h';
   cp-fileline  = '18';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd8/d00/classvector_3_01_vk_buffer_01_4_1_1const__reverse__iterator';
+  cp-name   = 'vector< VkBuffer >::const_reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '96';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -8913,6 +9009,216 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
 }; /* class */
 class = {
+  cp-id     = 'd9/d00/classluna_1_1renderer_1_1font';
+  cp-name   = 'luna::renderer::font';
+  cp-ref     = {
+    ref-type = derived;
+    ref-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1afb88cb14b53db7ccc2a16b4fb978bf5f';
+      sec-mem-virt = virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '~font';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '88';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1a3312aa8b899024a7263c07d315e9b040';
+      sec-mem-virt = pure-virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual ref< texture >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getGlyph';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+char
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'character';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '89';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1a467c09cf04f67adcee25b2c2e54f38f3';
+      sec-mem-virt = pure-virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual glm::vec2
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getAdvance';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+char
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'character';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '90';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1a11c6d8044626fa0daca1f27498c99884';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint64_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'handle';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '91';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-static-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1af5d2b968fc5a2aad9fbb3e4f1e6c00a0';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+static ref< font >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'create';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const std::string &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'filePath';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '92';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'protected-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1ab08c0ff23a5917e3c448477226dd2342';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+stbtt_fontinfo
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'fontInfo';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '94';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1a1c313d397caad1a909a543296587c2ba';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint64_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '_handle';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '95';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1renderer_1_1font_1ada85792792debb532c8d9806b8ea3f83';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'data';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '96';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+  cp-fileline  = '82';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 1;
+        node-label = 'luna::renderer::font';
+        node-link = {
+          node-link-id = 'd9/d00/classluna_1_1renderer_1_1font';
+        };
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'luna::vulkan::vulkanFont';
+        node-link = {
+          node-link-id = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font';
+        };
+        node-child = {
+          child-id = '1';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
   cp-id     = 'dc/d00/classstd_1_1forward__list';
   cp-name   = 'std::forward_list';
   cp-section = {
@@ -8963,6 +9269,96 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
 }; /* class */
+struct = {
+  cp-id     = 'd3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block';
+  cp-name   = 'luna::vulkan::vulkanTextureAtlas::freeStripeBlock';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_1ac619923865b00fadc20c7bb2087849dc';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint32_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getWidth';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '76';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_1a7e2f5e2ceed619a63aff3ec7b2b2d6ec';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint32_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getHeight';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '77';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_1ab873153b29e0562be8fcdf8a44722cbf';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+glm::vec2
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'start';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '74';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_1ac6509ee78097097e742c78375d1179db';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+glm::vec2
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'end';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '75';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '72';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
 class = {
   cp-id     = 'd1/d00/classstd_1_1fstream';
   cp-name   = 'std::fstream';
@@ -9099,6 +9495,39 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
 }; /* class */
+struct = {
+  cp-id     = 'd7/d00/structluna_1_1vulkan_1_1vulkan_font_1_1glyph';
+  cp-name   = 'luna::vulkan::vulkanFont::glyph';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd7/d00/structluna_1_1vulkan_1_1vulkan_font_1_1glyph_1a42ad22b1f57bb96151fe467de5d8221c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+stbi_uc
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '_glyph';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '129';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '127';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
 struct = {
   cp-id     = 'd9/d00/structluna_1_1id_component';
   cp-name   = 'luna::idComponent';
@@ -11507,7 +11936,7 @@ class = {
   cp-id     = 'd6/d00/classvector_3_01entt_1_1entity_01_4_1_1iterator';
   cp-name   = 'vector< entt::entity >::iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-  cp-fileline  = '77';
+  cp-fileline  = '91';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -11600,6 +12029,30 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
 }; /* class */
 class = {
+  cp-id     = 'd1/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_01_4_1_1iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >::iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '79';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd1/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe_01_4_1_1iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::stripe >::iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
   cp-id     = 'dc/d00/classvector_3_01ref_3_01luna_1_1renderer_1_1shader_01_4_01_4_1_1iterator';
   cp-name   = 'vector< ref< luna::renderer::shader > >::iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/pipeline.h';
@@ -11639,7 +12092,19 @@ class = {
   cp-id     = 'da/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec2_01_4_01_4_1_1iterator';
   cp-name   = 'vector< std::vector< glm::vec2 > >::iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-  cp-fileline  = '56';
+  cp-fileline  = '57';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'dc/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec4_01_4_01_4_1_1iterator';
+  cp-name   = 'vector< std::vector< glm::vec4 > >::iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -11688,6 +12153,18 @@ class = {
   cp-name   = 'vector< virtualCmdBuffer >::iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.h';
   cp-fileline  = '18';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'db/d00/classvector_3_01_vk_buffer_01_4_1_1iterator';
+  cp-name   = 'vector< VkBuffer >::iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '96';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -12472,6 +12949,595 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
 }; /* class */
+class = {
+  cp-id     = 'd1/d00/classluna_1_1nodes_1_1label_node';
+  cp-name   = 'luna::nodes::labelNode';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'dc/d00/classluna_1_1_node';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd1/d00/classluna_1_1nodes_1_1label_node_1ab0067dc243f0ed7aaea1ee2c3b7760e0';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'labelNode';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h';
+      sec-mem-desc-line = '14';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd1/d00/classluna_1_1nodes_1_1label_node_1ae92981d634e0c16c214a6184f52a00f1';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'labelNode';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+entt::entity
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'handle';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+luna::scene *
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'scene';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h';
+      sec-mem-desc-line = '21';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+construct node from entityHandle and corresponding scene.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+\iline 16 
+
+@param handle
+@param scene
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd1/d00/classluna_1_1nodes_1_1label_node_1a62f27faf05687fce2d14839a5fcd653e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'labelNode';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+luna::scene *
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'scene';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h';
+      sec-mem-desc-line = '27';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+construct node in scene.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+\iline 23 
+
+@param scene
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd1/d00/classluna_1_1nodes_1_1label_node_1abe3dacd498134f502157ebc7dfb0d85b';
+      sec-mem-virt = virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '~labelNode';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h';
+      sec-mem-desc-line = '28';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h';
+  cp-fileline  = '10';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+label node implementation.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'luna::Node';
+        node-link = {
+          node-link-id = 'dc/d00/classluna_1_1_node';
+        };
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'luna::nodes::labelNode';
+        node-link = {
+          node-link-id = 'd1/d00/classluna_1_1nodes_1_1label_node';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 15;
+        node-label = 'K';
+      }; /* node */
+      node = {
+        node-id    = 8;
+        node-label = 'T';
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'luna::Node';
+        node-link = {
+          node-link-id = 'dc/d00/classluna_1_1_node';
+        };
+        node-child = {
+          child-id = '3';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+scene
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'luna::nodes::labelNode';
+        node-link = {
+          node-link-id = 'd1/d00/classluna_1_1nodes_1_1label_node';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 3;
+        node-label = 'luna::scene';
+        node-link = {
+          node-link-id = 'da/d00/classluna_1_1scene';
+        };
+        node-child = {
+          child-id = '4';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+enttityStorage
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 16;
+        node-label = 'luna::utils::objectStorage< value >';
+        node-link = {
+          node-link-id = 'd5/d00/classluna_1_1utils_1_1object_storage';
+        };
+        node-child = {
+          child-id = '17';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+objectMemory
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 11;
+        node-label = 'luna::utils::vectorCache< value >';
+        node-link = {
+          node-link-id = 'd0/d00/classluna_1_1utils_1_1vector_cache';
+        };
+        node-child = {
+          child-id = '6';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+handleCache
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '12';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+valueCache
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '10';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+lockGuard
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 4;
+        node-label = 'luna::utils::objectStorage< entt::entity >';
+        node-link = {
+          node-link-id = 'd5/d00/classluna_1_1utils_1_1object_storage';
+        };
+        node-child = {
+          child-id = '5';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+objectCache
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '13';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+objectMemory
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '16';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< entt::entity >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 10;
+        node-label = 'std::mutex';
+      }; /* node */
+      node = {
+        node-id    = 14;
+        node-label = 'std::unordered_map< K, T >';
+        node-child = {
+          child-id = '15';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+keys
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '8';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+elements
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 7;
+        node-label = 'std::vector< T >';
+        node-child = {
+          child-id = '8';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+elements
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 13;
+        node-label = 'std::unordered_map< storageObject, entt::entity >';
+        node-child = {
+          child-id = '14';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< storageObject, entt::entity >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 17;
+        node-label = 'std::unordered_map< storageObject, value >';
+        node-child = {
+          child-id = '14';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< storageObject, value >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 9;
+        node-label = 'std::vector< entt::entity >';
+        node-child = {
+          child-id = '7';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< entt::entity >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 6;
+        node-label = 'std::vector< uint64_t >';
+        node-child = {
+          child-id = '7';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< uint64_t >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 12;
+        node-label = 'std::vector< value >';
+        node-child = {
+          child-id = '7';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< value >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 5;
+        node-label = 'luna::utils::vectorCache< entt::entity >';
+        node-link = {
+          node-link-id = 'd0/d00/classluna_1_1utils_1_1vector_cache';
+        };
+        node-child = {
+          child-id = '6';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+handleCache
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '9';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+valueCache
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '10';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+lockGuard
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '11';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< entt::entity >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+struct = {
+  cp-id     = 'dd/d00/structluna_1_1label_renderer_component';
+  cp-name   = 'luna::labelRendererComponent';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1af696f8a77384edb355c39bba7c99718a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'labelRendererComponent';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '71';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1a98d360c1a5a686d47cbe015183296125';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'labelRendererComponent';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const labelRendererComponent &
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '72';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1ab53bd4a17b24da82f75f87f7894d13d6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'labelRendererComponent';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const glm::vec4 &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'color';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '73';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1ab8a90d29258942b93143cf8c2a9a765c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+glm::vec4
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'color';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+{ 1.0f, 1.0f, 1.0f, 1.0f }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '65';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1a08e8d954f971782d7ad698708831c54c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+ref< renderer::font >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'font';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '66';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1a76f50b812fc3d880baa316fbfa0a3782';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+std::string
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'filePath';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '67';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1a275b943e6b8f4e2d88d7159d859403dc';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+std::string
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'text';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '68';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d00/structluna_1_1label_renderer_component_1ad68200ff465ebbb5b29d60c585eff865';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+float
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'TilingFactor';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= 1.0f
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+      sec-mem-desc-line = '69';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
+  cp-fileline  = '63';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 1;
+        node-label = 'luna::labelRendererComponent';
+        node-link = {
+          node-link-id = 'dd/d00/structluna_1_1label_renderer_component';
+        };
+        node-child = {
+          child-id = '2';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+filePath
+text
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 3;
+        node-label = 'std::basic_string< Char >';
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'std::string';
+        node-child = {
+          child-id = '3';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
 class = {
   cp-id     = 'd5/d00/classluna_1_1utils_1_1layer';
   cp-name   = 'luna::utils::layer';
@@ -14577,6 +15643,12 @@ class = {
   cp-name   = 'luna::Node';
   cp-ref     = {
     ref-type = derived;
+    ref-id   = 'd1/d00/classluna_1_1nodes_1_1label_node';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-ref     = {
+    ref-type = derived;
     ref-id   = 'd0/d00/classluna_1_1nodes_1_1sprite_node';
     ref-prot = public;
     ref-virt = non-virtual;
@@ -14593,7 +15665,7 @@ class = {
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'Node';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '54';
+      sec-mem-desc-line = '55';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14623,7 +15695,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'scene';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '55';
+      sec-mem-desc-line = '56';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14647,7 +15719,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'scene';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '56';
+      sec-mem-desc-line = '57';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14665,7 +15737,7 @@ virtual
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '~Node';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '57';
+      sec-mem-desc-line = '58';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14689,7 +15761,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'name';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '58';
+      sec-mem-desc-line = '59';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14713,7 +15785,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'node';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '59';
+      sec-mem-desc-line = '60';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14737,7 +15809,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'args';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '65';
+      sec-mem-desc-line = '66';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14761,7 +15833,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'args';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '73';
+      sec-mem-desc-line = '74';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14779,7 +15851,7 @@ T &
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getComponent';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '80';
+      sec-mem-desc-line = '81';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14797,7 +15869,7 @@ bool
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'hasComponent';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '85';
+      sec-mem-desc-line = '86';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14815,7 +15887,7 @@ void
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'removeComponent';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '90';
+      sec-mem-desc-line = '91';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14833,7 +15905,7 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'operator bool';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '96';
+      sec-mem-desc-line = '97';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14851,7 +15923,7 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'operator entt::entity';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '97';
+      sec-mem-desc-line = '98';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14869,7 +15941,7 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'operator uint32_t';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '98';
+      sec-mem-desc-line = '99';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14887,7 +15959,7 @@ uuid
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getUUID';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '100';
+      sec-mem-desc-line = '101';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14905,7 +15977,7 @@ const std::string &
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getName';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '101';
+      sec-mem-desc-line = '102';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14929,7 +16001,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'other';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '106';
+      sec-mem-desc-line = '107';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14953,7 +16025,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'other';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '111';
+      sec-mem-desc-line = '112';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14977,7 +16049,7 @@ _EnD_oF_dEf_TeXt_;
 { entt::null }
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '116';
+      sec-mem-desc-line = '117';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -14995,7 +16067,7 @@ scene *
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'scene';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '117';
+      sec-mem-desc-line = '118';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -15016,7 +16088,7 @@ friend class
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'scene';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '61';
+      sec-mem-desc-line = '62';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -15034,7 +16106,7 @@ friend class
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'sceneHierarchyPanel';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '62';
+      sec-mem-desc-line = '63';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -15044,7 +16116,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-  cp-fileline  = '51';
+  cp-fileline  = '52';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -15061,6 +16133,17 @@ _EnD_oF_dEf_TeXt_;
       }; /* node */
       node = {
         node-id    = 2;
+        node-label = 'luna::nodes::labelNode';
+        node-link = {
+          node-link-id = 'd1/d00/classluna_1_1nodes_1_1label_node';
+        };
+        node-child = {
+          child-id = '1';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 3;
         node-label = 'luna::nodes::spriteNode';
         node-link = {
           node-link-id = 'd0/d00/classluna_1_1nodes_1_1sprite_node';
@@ -16202,7 +17285,7 @@ uuid
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'parentId';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-      sec-mem-desc-line = '72';
+      sec-mem-desc-line = '86';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -16212,7 +17295,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-  cp-fileline  = '70';
+  cp-fileline  = '84';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 represents a node that has a parent node.
 _EnD_oF_dEf_TeXt_;
@@ -17543,6 +18626,48 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
+      sec-mem-id   = 'df/d00/classluna_1_1renderer_1_1renderer2_d_1ad66e5db53178599b874584a5a7ed78c6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+static void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'drawLabel';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const glm::vec3 &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'position';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const glm::vec2 &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'size';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const ref< font > &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'font';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const std::string
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'labelText';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
+      sec-mem-desc-line = '43';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
       sec-mem-id   = 'df/d00/classluna_1_1renderer_1_1renderer2_d_1a82e6d85db40df27b5afe7047b6325afd';
       sec-mem-virt = normal;
       sec-mem-prot = public;
@@ -17569,12 +18694,12 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'texture';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '50';
+      sec-mem-desc-line = '51';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-draws a quad.
+draws a texture quad.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-\iline 44 
+\iline 45 
 
 @param const glm::vec3& position starting position
 @param const glm::vec2& size starting size;
@@ -17609,12 +18734,16 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'texture';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '51';
+      sec-mem-desc-line = '59';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
+draws a texture quad.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+\iline 53 
 
+@param const glm::mat4 transform
+@param const glm::vec4 color
+@param const ref<texture>& texture
 _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
@@ -17645,12 +18774,12 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'color';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '59';
+      sec-mem-desc-line = '67';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 draws a quad.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-\iline 53 
+\iline 61 
 
 @param const glm::vec3& position starting position
 @param const glm::vec2& size starting size;
@@ -17679,12 +18808,12 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'size';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '66';
+      sec-mem-desc-line = '74';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 draws a quad.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-\iline 61 
+\iline 69 
 
 @param const glm::vec3& position starting position
 @param const glm::vec2& size starting size;
@@ -17712,12 +18841,12 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'color';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '72';
+      sec-mem-desc-line = '80';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 draws a quad.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-\iline 68 
+\iline 76 
 
 @param const glm::mat4& transform starting transformation.
 _EnD_oF_dEf_TeXt_;
@@ -17732,7 +18861,7 @@ static void
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'flush';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '77';
+      sec-mem-desc-line = '85';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 flushes all the draw commands to the base renderer.
 _EnD_oF_dEf_TeXt_;
@@ -17750,7 +18879,7 @@ static statistics
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getStats';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '81';
+      sec-mem-desc-line = '89';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 returns renderer2D stats.
 _EnD_oF_dEf_TeXt_;
@@ -17777,7 +18906,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'handle';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '84';
+      sec-mem-desc-line = '92';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -17798,7 +18927,7 @@ static ref< texture >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'blankImage';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer2D.h';
-      sec-mem-desc-line = '85';
+      sec-mem-desc-line = '93';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -18702,7 +19831,7 @@ class = {
   cp-id     = 'df/d00/classvector_3_01entt_1_1entity_01_4_1_1reverse__iterator';
   cp-name   = 'vector< entt::entity >::reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h';
-  cp-fileline  = '77';
+  cp-fileline  = '91';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -18795,6 +19924,30 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
 }; /* class */
 class = {
+  cp-id     = 'dd/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block_01_4_1_1reverse__iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >::reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '79';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd6/d00/classvector_3_01luna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe_01_4_1_1reverse__iterator';
+  cp-name   = 'vector< luna::vulkan::vulkanTextureAtlas::stripe >::reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
   cp-id     = 'd5/d00/classvector_3_01ref_3_01luna_1_1renderer_1_1shader_01_4_01_4_1_1reverse__iterator';
   cp-name   = 'vector< ref< luna::renderer::shader > >::reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/pipeline.h';
@@ -18834,7 +19987,19 @@ class = {
   cp-id     = 'df/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec2_01_4_01_4_1_1reverse__iterator';
   cp-name   = 'vector< std::vector< glm::vec2 > >::reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-  cp-fileline  = '56';
+  cp-fileline  = '57';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd8/d00/classvector_3_01std_1_1vector_3_01glm_1_1vec4_01_4_01_4_1_1reverse__iterator';
+  cp-name   = 'vector< std::vector< glm::vec4 > >::reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '51';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -18883,6 +20048,18 @@ class = {
   cp-name   = 'vector< virtualCmdBuffer >::reverse_iterator';
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanPipeline.h';
   cp-fileline  = '18';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'dd/d00/classvector_3_01_vk_buffer_01_4_1_1reverse__iterator';
+  cp-name   = 'vector< VkBuffer >::reverse_iterator';
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '96';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19681,7 +20858,7 @@ entt::registry
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'm_Registry';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '42';
+      sec-mem-desc-line = '43';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19702,7 +20879,7 @@ _EnD_oF_dEf_TeXt_;
 = 0
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '43';
+      sec-mem-desc-line = '44';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19723,7 +20900,7 @@ _EnD_oF_dEf_TeXt_;
 = 0
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '43';
+      sec-mem-desc-line = '44';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19744,7 +20921,7 @@ _EnD_oF_dEf_TeXt_;
 = false
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '44';
+      sec-mem-desc-line = '45';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19765,7 +20942,7 @@ _EnD_oF_dEf_TeXt_;
 = false
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '45';
+      sec-mem-desc-line = '46';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19786,7 +20963,7 @@ _EnD_oF_dEf_TeXt_;
 = 0
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '46';
+      sec-mem-desc-line = '47';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19804,7 +20981,7 @@ utils::objectStorage< entt::entity >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'enttityStorage';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '47';
+      sec-mem-desc-line = '48';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19825,7 +21002,7 @@ friend class
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'Node';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '40';
+      sec-mem-desc-line = '41';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -19843,7 +21020,7 @@ friend class
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'sceneHierarchyPanel';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene.h';
-      sec-mem-desc-line = '41';
+      sec-mem-desc-line = '42';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20093,6 +21270,7 @@ class = {
       sec-mem-enum = { enum-name = node; };
       sec-mem-enum = { enum-name = controlNode; };
       sec-mem-enum = { enum-name = spriteNode; };
+      sec-mem-enum = { enum-name = labelNode; };
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
       sec-mem-desc-line = '8';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
@@ -20115,7 +21293,7 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'sceneHierarchyPanel';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '16';
+      sec-mem-desc-line = '17';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20139,7 +21317,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'scene';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '17';
+      sec-mem-desc-line = '18';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20163,7 +21341,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'scene';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '18';
+      sec-mem-desc-line = '19';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20181,7 +21359,7 @@ void
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'onImGuiRender';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '20';
+      sec-mem-desc-line = '21';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20199,7 +21377,7 @@ Node
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getSelectedNode';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '22';
+      sec-mem-desc-line = '23';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20223,7 +21401,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'Node';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '23';
+      sec-mem-desc-line = '24';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20250,7 +21428,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'entryName';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '26';
+      sec-mem-desc-line = '27';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20280,7 +21458,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'indent';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '28';
+      sec-mem-desc-line = '29';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20304,7 +21482,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'Node';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '29';
+      sec-mem-desc-line = '30';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20322,7 +21500,7 @@ void
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'drawNodeSelectionList';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '30';
+      sec-mem-desc-line = '31';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20346,7 +21524,7 @@ _EnD_oF_dEf_TeXt_;
 = 3
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '34';
+      sec-mem-desc-line = '35';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20364,7 +21542,7 @@ scene *
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'm_Context';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '35';
+      sec-mem-desc-line = '36';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20382,7 +21560,7 @@ Node
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'm_SelectionContext';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '36';
+      sec-mem-desc-line = '37';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20400,7 +21578,7 @@ Node
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'm_Selected';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '37';
+      sec-mem-desc-line = '38';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -20421,7 +21599,7 @@ _EnD_oF_dEf_TeXt_;
 = -1
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/apollo/src/panels/sceneHierarchyPanel.h';
-      sec-mem-desc-line = '38';
+      sec-mem-desc-line = '39';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -22154,7 +23332,7 @@ class = {
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'spriteNode';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.h';
-      sec-mem-desc-line = '10';
+      sec-mem-desc-line = '13';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -22184,12 +23362,12 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'scene';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.h';
-      sec-mem-desc-line = '17';
+      sec-mem-desc-line = '20';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 construct node from entityHandle and corresponding scene.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-\iline 12 
+\iline 15 
 
 @param handle
 @param scene
@@ -22211,12 +23389,12 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'scene';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.h';
-      sec-mem-desc-line = '23';
+      sec-mem-desc-line = '26';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 construct node in scene.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-\iline 19 
+\iline 22 
 
 @param scene
 _EnD_oF_dEf_TeXt_;
@@ -22231,7 +23409,7 @@ virtual
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '~spriteNode';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.h';
-      sec-mem-desc-line = '24';
+      sec-mem-desc-line = '27';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -22241,9 +23419,9 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.h';
-  cp-fileline  = '7';
+  cp-fileline  = '10';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
-
+implementation of spriteNode.
 _EnD_oF_dEf_TeXt_;
   cp-documentation = <<_EnD_oF_dEf_TeXt_
 
@@ -23083,6 +24261,96 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
 }; /* class */
 struct = {
+  cp-id     = 'd4/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe';
+  cp-name   = 'luna::vulkan::vulkanTextureAtlas::stripe';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd4/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe_1a02862400d68f1073d8bac47c35720187';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+std::vector< freeStripeBlock >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'stripeVector';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '80';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '79';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 5;
+        node-label = 'T';
+      }; /* node */
+      node = {
+        node-id    = 3;
+        node-label = 'luna::vulkan::vulkanTextureAtlas::freeStripeBlock';
+        node-link = {
+          node-link-id = 'd3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block';
+        };
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'luna::vulkan::vulkanTextureAtlas::stripe';
+        node-link = {
+          node-link-id = 'd4/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe';
+        };
+        node-child = {
+          child-id = '2';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+stripeVector
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 4;
+        node-label = 'std::vector< T >';
+        node-child = {
+          child-id = '5';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+elements
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'std::vector< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >';
+        node-child = {
+          child-id = '3';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+elements
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '4';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+struct = {
   cp-id     = 'd3/d00/structluna_1_1vulkan_1_1swapchain_spec';
   cp-name   = 'luna::vulkan::swapchainSpec';
   cp-section = {
@@ -23493,7 +24761,7 @@ virtual
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '~texture';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '15';
+      sec-mem-desc-line = '16';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23511,7 +24779,7 @@ virtual uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getWidth';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '17';
+      sec-mem-desc-line = '18';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23529,7 +24797,7 @@ virtual uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getHeight';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '18';
+      sec-mem-desc-line = '19';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23547,7 +24815,7 @@ virtual const std::string &
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getPath';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '20';
+      sec-mem-desc-line = '21';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23577,7 +24845,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'size';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '22';
+      sec-mem-desc-line = '23';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23604,7 +24872,7 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '24';
+      sec-mem-desc-line = '25';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23622,7 +24890,7 @@ virtual bool
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'isLoaded';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '26';
+      sec-mem-desc-line = '27';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23640,7 +24908,7 @@ uint64_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'handle';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '31';
+      sec-mem-desc-line = '32';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23667,7 +24935,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'filePath';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '30';
+      sec-mem-desc-line = '31';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23688,7 +24956,7 @@ uint64_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '_handle';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '33';
+      sec-mem-desc-line = '34';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23706,7 +24974,7 @@ void *
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'data';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '34';
+      sec-mem-desc-line = '35';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23724,7 +24992,7 @@ uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'width';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '35';
+      sec-mem-desc-line = '36';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23742,7 +25010,7 @@ uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'height';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '36';
+      sec-mem-desc-line = '37';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23752,7 +25020,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-  cp-fileline  = '12';
+  cp-fileline  = '13';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 base texture class.
 _EnD_oF_dEf_TeXt_;
@@ -23852,7 +25120,7 @@ virtual
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '~texture2D';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '46';
+      sec-mem-desc-line = '47';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23879,7 +25147,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'filePath';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '47';
+      sec-mem-desc-line = '48';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23909,7 +25177,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'height';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '48';
+      sec-mem-desc-line = '49';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23939,7 +25207,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'size';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '49';
+      sec-mem-desc-line = '50';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -23949,7 +25217,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-  cp-fileline  = '43';
+  cp-fileline  = '44';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 texture2D api.
 _EnD_oF_dEf_TeXt_;
@@ -24038,7 +25306,7 @@ virtual
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '~textureAtlas';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '60';
+      sec-mem-desc-line = '61';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24048,43 +25316,13 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a060b7e86f897852c0d583c3018cf98f9';
-      sec-mem-virt = virtual;
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a1ec266ba50f9a15db5f1d5e193b9f62b';
+      sec-mem-virt = pure-virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 virtual uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getTileWidth';
-      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '62';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-    }; /* sec-member */
-    sec-member = {
-      sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1ac362ae45991568ea5be9b5849a526a7f';
-      sec-mem-virt = virtual;
-      sec-mem-prot = public;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual uint32_t
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'getTileWidth';
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const uint16_t &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'xIndex';
-      }; /*        sec-mem-param--param */
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const uint16_t &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'yIndex';
-      }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
       sec-mem-desc-line = '63';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
@@ -24096,15 +25334,27 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1aea41f6d6b3e89832e21ac47e06f8e69a';
-      sec-mem-virt = virtual;
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a5a878b91d48208d24763a6c9fc9d8966';
+      sec-mem-virt = pure-virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 virtual uint32_t
 _EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'getTileHeight';
+      sec-mem-name = 'getTileWidth';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const uint16_t &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'xIndex';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const uint16_t &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'yIndex';
+      }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '65';
+      sec-mem-desc-line = '64';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24114,8 +25364,26 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1ab7499daa70381a4a6a413794ec90a86c';
-      sec-mem-virt = virtual;
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1ad1abbac39a3d6e502ae67f30ee257ebd';
+      sec-mem-virt = pure-virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual uint32_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getTileHeight';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
+      sec-mem-desc-line = '66';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1abbc72c6f0deb182aa8fb6feb05896887';
+      sec-mem-virt = pure-virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 virtual uint32_t
@@ -24134,7 +25402,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'yIndex';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '66';
+      sec-mem-desc-line = '67';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24144,11 +25412,11 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a70b68d4771defd91e99b92a13198b3c5';
-      sec-mem-virt = virtual;
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1af7afe4f5589b03f589313da192b9b886';
+      sec-mem-virt = pure-virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual uint32_t
+virtual glm::vec2
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'addTile';
       sec-mem-param = {
@@ -24158,7 +25426,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'dimensions';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '68';
+      sec-mem-desc-line = '69';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24168,11 +25436,11 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a1bca908c664f56903d90bb8eb1f634ad';
-      sec-mem-virt = virtual;
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a2d15879430a5ca3612e4dc74ae31ebca';
+      sec-mem-virt = pure-virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual uint32_t
+virtual glm::vec2
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'addTile';
       sec-mem-param = {
@@ -24188,7 +25456,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'height';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '69';
+      sec-mem-desc-line = '70';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24198,8 +25466,8 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a11fd07fd1d0c515c067be4413db61877';
-      sec-mem-virt = virtual;
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a66260188bc38d77bdd89f1b61d1b3a39';
+      sec-mem-virt = pure-virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 virtual glm::vec2
@@ -24212,7 +25480,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'textureindex';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '71';
+      sec-mem-desc-line = '72';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24222,8 +25490,8 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1a82ae101f7f81ceec47a8f2d358ac0aac';
-      sec-mem-virt = virtual;
+      sec-mem-id   = 'db/d00/classluna_1_1renderer_1_1texture_atlas_1af07ef891473ccb544394ddb376c86d57';
+      sec-mem-virt = pure-virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 virtual glm::vec2
@@ -24236,7 +25504,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'textureindex';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '72';
+      sec-mem-desc-line = '73';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24257,7 +25525,7 @@ uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'tileWidth';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '75';
+      sec-mem-desc-line = '76';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24275,7 +25543,7 @@ uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'tileHeight';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '76';
+      sec-mem-desc-line = '77';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24293,7 +25561,7 @@ std::vector< std::vector< glm::vec2 > >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'tileCustomTexCoords';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-      sec-mem-desc-line = '78';
+      sec-mem-desc-line = '79';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -24303,7 +25571,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/texture.h';
-  cp-fileline  = '56';
+  cp-fileline  = '57';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 textureAtlas api.
 _EnD_oF_dEf_TeXt_;
@@ -24642,6 +25910,24 @@ _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'dimensions';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
       sec-mem-desc-line = '119';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dc/d00/structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_1affab5d6e5bf363259cdbedf3cc2771db';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+glm::vec3
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'offset';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
+      sec-mem-desc-line = '120';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -25857,7 +27143,18 @@ _EnD_oF_dEf_TeXt_;
         node-label = 'std::vector< T >';
       }; /* node */
       node = {
-        node-id    = 30;
+        node-id    = 18;
+        node-label = 'std::vector< VkBuffer >';
+        node-child = {
+          child-id = '1';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< VkBuffer >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 31;
         node-label = 'std::vector< VkDescriptorSet >';
         node-child = {
           child-id = '1';
@@ -25879,7 +27176,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 22;
+        node-id    = 23;
         node-label = 'std::vector< VkFence >';
         node-child = {
           child-id = '1';
@@ -25890,7 +27187,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 29;
+        node-id    = 30;
         node-label = 'std::vector< VkFramebuffer >';
         node-child = {
           child-id = '1';
@@ -25901,7 +27198,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 28;
+        node-id    = 29;
         node-label = 'std::vector< VkImage >';
         node-child = {
           child-id = '1';
@@ -25912,7 +27209,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 31;
+        node-id    = 32;
         node-label = 'std::vector< VkImageView >';
         node-child = {
           child-id = '1';
@@ -25923,7 +27220,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 18;
+        node-id    = 19;
         node-label = 'std::vector< VkPipelineShaderStageCreateInfo >';
         node-child = {
           child-id = '1';
@@ -25934,7 +27231,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 20;
+        node-id    = 21;
         node-label = 'std::vector< VkPipelineVertexInputStateCreateInfo >';
         node-child = {
           child-id = '1';
@@ -25945,7 +27242,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 21;
+        node-id    = 22;
         node-label = 'std::vector< VkSemaphore >';
         node-child = {
           child-id = '1';
@@ -25956,7 +27253,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 19;
+        node-id    = 20;
         node-label = 'std::vector< VkShaderModule >';
         node-child = {
           child-id = '1';
@@ -25967,7 +27264,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 27;
+        node-id    = 28;
         node-label = 'std::vector< VkVertexInputAttributeDescription >';
         node-child = {
           child-id = '1';
@@ -25978,7 +27275,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 26;
+        node-id    = 27;
         node-label = 'std::vector< VkVertexInputBindingDescription >';
         node-child = {
           child-id = '1';
@@ -26088,13 +27385,35 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 24;
+        node-id    = 25;
         node-label = 'std::vector< luna::vulkan::vulkanPipeline::drawCommand >';
         node-child = {
           child-id = '1';
           relation = template-instance;
           edgelabel = <<_EnD_oF_dEf_TeXt_
 < luna::vulkan::vulkanPipeline::drawCommand >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 35;
+        node-label = 'std::vector< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >';
+        node-child = {
+          child-id = '1';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 34;
+        node-label = 'std::vector< luna::vulkan::vulkanTextureAtlas::stripe >';
+        node-child = {
+          child-id = '1';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< luna::vulkan::vulkanTextureAtlas::stripe >
 _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
@@ -26121,7 +27440,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 25;
+        node-id    = 26;
         node-label = 'std::vector< ref< luna::utils::vulkanDescriptorSet > >';
         node-child = {
           child-id = '1';
@@ -26139,6 +27458,17 @@ _EnD_oF_dEf_TeXt_;
           relation = template-instance;
           edgelabel = <<_EnD_oF_dEf_TeXt_
 < std::vector< glm::vec2 > >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 33;
+        node-label = 'std::vector< std::vector< glm::vec4 > >';
+        node-child = {
+          child-id = '1';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< std::vector< glm::vec4 > >
 _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
@@ -26176,7 +27506,7 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
-        node-id    = 23;
+        node-id    = 24;
         node-label = 'std::vector< virtualCmdBuffer >';
         node-child = {
           child-id = '1';
@@ -27742,7 +29072,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'de/d00/classluna_1_1utils_1_1vulkan_allocator_1aa990426ee8e7100a94abfff51eb8c04b';
+      sec-mem-id   = 'de/d00/classluna_1_1utils_1_1vulkan_allocator_1aecb1938923f8e82b6d6d71d683a6d43f';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -27772,6 +29102,15 @@ _EnD_oF_dEf_TeXt_;
 const glm::vec3 &
 _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'imageDimensions';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const glm::vec3 &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'imageOffset';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+{0, 0, 0}
+_EnD_oF_dEf_TeXt_;
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
       sec-mem-desc-line = '89';
@@ -27903,7 +29242,7 @@ static ref< renderer::device >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'pDevice';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
-      sec-mem-desc-line = '121';
+      sec-mem-desc-line = '122';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -27921,7 +29260,7 @@ static VmaAllocator
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'sAllocator';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
-      sec-mem-desc-line = '122';
+      sec-mem-desc-line = '123';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -27939,7 +29278,7 @@ static objectStorage< vmaAllocation >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'allocations';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
-      sec-mem-desc-line = '123';
+      sec-mem-desc-line = '124';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -27957,7 +29296,7 @@ static std::vector< transferCommand >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'transferCommands';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
-      sec-mem-desc-line = '124';
+      sec-mem-desc-line = '125';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -27978,7 +29317,7 @@ _EnD_oF_dEf_TeXt_;
 = nullptr
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
-      sec-mem-desc-line = '125';
+      sec-mem-desc-line = '126';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -27996,7 +29335,7 @@ static VkQueue
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'transferQueue';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h';
-      sec-mem-desc-line = '126';
+      sec-mem-desc-line = '127';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -29699,6 +31038,27 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd0/d00/classluna_1_1vulkan_1_1vulkan_device_1a1de778eb911ec4fa6911d66198e7058a';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+VkPhysicalDeviceFeatures
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'supportedFeatures';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+{}
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanDevice.h';
+      sec-mem-desc-line = '150';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/device/vulkanDevice.h';
   cp-fileline  = '16';
@@ -29921,6 +31281,401 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
   cp-documentation = <<_EnD_oF_dEf_TeXt_
 not used yet.
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font';
+  cp-name   = 'luna::vulkan::vulkanFont';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'd9/d00/classluna_1_1renderer_1_1font';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a8f3fe1d7386a1c51f443cdd7ce145b85';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'vulkanFont';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const std::string &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'filePath';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '102';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1af82e17777f759fe08a4dad26348b5592';
+      sec-mem-virt = virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '~vulkanFont';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '103';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a377a42ee0772cf02d025eff6a0b96acc';
+      sec-mem-virt = virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual ref< renderer::texture >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getGlyph';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+char
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'character';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '104';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1aff4f233f438c962cd8cc9c03100a345d';
+      sec-mem-virt = virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual glm::vec2
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getAdvance';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+char
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'character';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '105';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a9185306ac03000f847156e20383f9618';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'createFontTexture';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '111';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+allocates and creates the atlas texture from wich glyph can be sampled from.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+\iline 108 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a0901c04094ceee9cc66b2966e3a6186e';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+stbi_uc *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'createGlyph';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const stbtt_fontinfo *
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'info';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'codePoint';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+float *
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'xscale';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+float *
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'yscale';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int *
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'newXoff';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int *
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'newYoff';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '123';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+creates a font glyph and gurantees the texture height and width to be 300 by 300 pixels.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+\iline 113 
+
+@param const stbtt_fontinfo* info
+@param int codePoint (char code to create glyph from)
+@param float* xscale: relative scale to get 1.0f width back. (300 / xscale)
+@param float* yscale: relative scale to get 1.0f height back. (300 / yscale)
+@param int* newXoff: relative xoffset.
+@param newYoff: relative yoffset.
+\return stbi_uc* pointer to texure data.
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1af682ce231961c7ee3b2e2a1711947157';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'writeGlyphsIntoBuffer';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '125';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a5ce266457c5d336683f7ab3fd1c15389';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+std::vector< VkBuffer >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'buffer';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '134';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a7ced6f5f7bfe7619f11a9be895b50ba9';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+VkImage
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'imageHandle';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= VK_NULL_HANDLE
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '135';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1ab022ad6c59e671dc85a88bf7ee2d9a7f';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+VkImageView
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'imageViewHandle';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= VK_NULL_HANDLE
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '136';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-static-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a5c6c0f45dace15b5b4b154b95f8390c6';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+static const int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'width';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= 4800
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '131';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font_1a2cfd96aa828f599df7f2eac4a6fd6e8e';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+static const int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'height';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= 4800
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '132';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+  cp-fileline  = '96';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+font implementation in vulkan.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 2;
+        node-label = 'luna::renderer::font';
+        node-link = {
+          node-link-id = 'd9/d00/classluna_1_1renderer_1_1font';
+        };
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'luna::vulkan::vulkanFont';
+        node-link = {
+          node-link-id = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 5;
+        node-label = 'T';
+      }; /* node */
+      node = {
+        node-id    = 2;
+        node-label = 'luna::renderer::font';
+        node-link = {
+          node-link-id = 'd9/d00/classluna_1_1renderer_1_1font';
+        };
+      }; /* node */
+      node = {
+        node-id    = 1;
+        node-label = 'luna::vulkan::vulkanFont';
+        node-link = {
+          node-link-id = 'd9/d00/classluna_1_1vulkan_1_1vulkan_font';
+        };
+        node-child = {
+          child-id = '2';
+          relation = public-inheritance;
+        }; /* node-child */
+        node-child = {
+          child-id = '3';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+buffer
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 4;
+        node-label = 'std::vector< T >';
+        node-child = {
+          child-id = '5';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+elements
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 3;
+        node-label = 'std::vector< VkBuffer >';
+        node-child = {
+          child-id = '4';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< VkBuffer >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+
 _EnD_oF_dEf_TeXt_;
 }; /* class */
 class = {
@@ -33754,57 +35509,6 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
-  cp-section = {
-    sec-kind = 'private-func';
-    sec-member = {
-      sec-mem-kind = 'function';
-      sec-mem-id   = 'd4/d00/classluna_1_1vulkan_1_1vulkan_texture_1aa3305f15e3b1d0642a5317e10c082091';
-      sec-mem-virt = virtual;
-      sec-mem-prot = private;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual stbi_uc *
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'reformat';
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-stbi_uc *
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'src';
-      }; /*        sec-mem-param--param */
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-int &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'srcChannels';
-      }; /*        sec-mem-param--param */
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const uint32_t &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'dstChannels';
-      }; /*        sec-mem-param--param */
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const uint32_t &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'width';
-      }; /*        sec-mem-param--param */
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const uint32_t &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'height';
-      }; /*        sec-mem-param--param */
-      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '33';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-    }; /* sec-member */
-  }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
   cp-fileline  = '10';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
@@ -33883,7 +35587,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'filePath';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '44';
+      sec-mem-desc-line = '41';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -33913,7 +35617,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'textureSize';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '45';
+      sec-mem-desc-line = '42';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -33943,7 +35647,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'dimensions';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '46';
+      sec-mem-desc-line = '43';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -33961,7 +35665,7 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '~vulkanTexture2D';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '47';
+      sec-mem-desc-line = '44';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -33971,7 +35675,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-  cp-fileline  = '41';
+  cp-fileline  = '38';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 texture2D api.
 _EnD_oF_dEf_TeXt_;
@@ -34083,7 +35787,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'tileDimensions';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '57';
+      sec-mem-desc-line = '54';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34113,7 +35817,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'texDimensions';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '58';
+      sec-mem-desc-line = '55';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34131,6 +35835,54 @@ virtual
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = '~vulkanTextureAtlas';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '56';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1ae53a99bac3384b46b686127ca13648bf';
+      sec-mem-virt = virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual uint32_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getTileWidth';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '58';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1ae9cf2483a2a6d6cce22512feefb996fd';
+      sec-mem-virt = virtual;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+virtual uint32_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getTileWidth';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const uint16_t &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'xIndex';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const uint16_t &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'yIndex';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
       sec-mem-desc-line = '59';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -34141,13 +35893,13 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1ad69f21386fd03ec25c2aa7ea672fcf29';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a30afc3f2f2b2deb207743f4b2f8cc410';
       sec-mem-virt = virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 virtual uint32_t
 _EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'getTileWidth';
+      sec-mem-name = 'getTileHeight';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
       sec-mem-desc-line = '61';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
@@ -34159,13 +35911,13 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a1b3d0759a6f10bf28f7e3cd8c69e9a9a';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1ae669735ff1001d50114bf235ed92b576';
       sec-mem-virt = virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 virtual uint32_t
 _EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'getTileWidth';
+      sec-mem-name = 'getTileHeight';
       sec-mem-param = {
         sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
 const uint16_t &
@@ -34189,13 +35941,19 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1aadae68a729a88ff1bd89056f3a218cdd';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a4b9bfdcd4cf9aed34ebc006e5d3fee87';
       sec-mem-virt = virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual uint32_t
+virtual glm::vec2
 _EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'getTileHeight';
+      sec-mem-name = 'addTile';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const glm::vec2 &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'dimensions';
+      }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
       sec-mem-desc-line = '64';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
@@ -34207,65 +35965,11 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a54bcfcf83bfc62ba3af752de96b06b30';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1ae6c4d520d71ecf9671cf08b9d434a548';
       sec-mem-virt = virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual uint32_t
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'getTileHeight';
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const uint16_t &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'xIndex';
-      }; /*        sec-mem-param--param */
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const uint16_t &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'yIndex';
-      }; /*        sec-mem-param--param */
-      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '65';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-    }; /* sec-member */
-    sec-member = {
-      sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a8ea927a3f34bdaca8eab7a930737eb61';
-      sec-mem-virt = virtual;
-      sec-mem-prot = public;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual uint32_t
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'addTile';
-      sec-mem-param = {
-        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
-const glm::vec2 &
-_EnD_oF_dEf_TeXt_;
-        sec-mem-param-declname = 'dimensions';
-      }; /*        sec-mem-param--param */
-      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '67';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-    }; /* sec-member */
-    sec-member = {
-      sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1aaccc8d324955cba7f941184078e0ead6';
-      sec-mem-virt = virtual;
-      sec-mem-prot = public;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-virtual uint32_t
+virtual glm::vec2
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'addTile';
       sec-mem-param = {
@@ -34281,7 +35985,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'height';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '68';
+      sec-mem-desc-line = '65';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34291,7 +35995,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a2e8fc18f1e42bf331796b6ff24ffd6a1';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a922dc0166ec0a2469d1c367a8fda7cae';
       sec-mem-virt = virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -34305,7 +36009,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'textureindex';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '70';
+      sec-mem-desc-line = '67';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34315,7 +36019,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a98f4bf331534a05a2b44de90f575ff16';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a0b2f8dde73550e6e03793b883032ffab';
       sec-mem-virt = virtual;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -34329,7 +36033,70 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'textureindex';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '71';
+      sec-mem-desc-line = '68';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a1f4c6317aa9e8461add92b743d2860cd';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+ref< renderer::texture >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getTileAsTexture';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const glm::vec2 &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'textureindex';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '69';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a1cbd1a0e8a0bc72d939abadd85826eda';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+freeStripeBlock *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'checkStripe';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+stripe &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'stripe';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const uint32_t &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'width';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+const uint32_t &
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'height';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '91';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34350,7 +36117,7 @@ uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'tileWidths';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '74';
+      sec-mem-desc-line = '82';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34368,7 +36135,7 @@ uint32_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'tileHeight';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '75';
+      sec-mem-desc-line = '83';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34378,15 +36145,96 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'variable';
-      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a7daf5b70f3d2b658b1445efc37739b72';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a6e77ad9afed2715ce720796d640e2c48';
       sec-mem-virt = normal;
       sec-mem-prot = private;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
-std::vector< std::vector< glm::vec2 > >
+std::vector< std::vector< glm::vec4 > >
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'tileCustomTexCoords';
       sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-      sec-mem-desc-line = '77';
+      sec-mem-desc-line = '85';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1aea832eaa761d2d95f4f273a98469800e';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+std::vector< stripe >
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'atlas';
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '86';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a06087456574af86cde717a2935aca3cc';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+VkBuffer
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'buffer';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= VK_NULL_HANDLE
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '87';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1a93e7a8a4eb7a5beef849c17718ea81e6';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+VkImage
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'imageHandle';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= VK_NULL_HANDLE
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '88';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas_1adf7e6fc912d4c940928f5209c68ebc46';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+VkImageView
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'imageViewHandle';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= VK_NULL_HANDLE
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
+      sec-mem-desc-line = '89';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -34396,7 +36244,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/vulkanTexture.h';
-  cp-fileline  = '54';
+  cp-fileline  = '51';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 textureAtlas api.
 _EnD_oF_dEf_TeXt_;
@@ -34477,10 +36325,38 @@ _EnD_oF_dEf_TeXt_;
           relation = public-inheritance;
         }; /* node-child */
         node-child = {
-          child-id = '4';
+          child-id = '7';
           relation = usage;
           edgelabel = <<_EnD_oF_dEf_TeXt_
 tileCustomTexCoords
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '8';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+atlas
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 11;
+        node-label = 'luna::vulkan::vulkanTextureAtlas::freeStripeBlock';
+        node-link = {
+          node-link-id = 'd3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block';
+        };
+      }; /* node */
+      node = {
+        node-id    = 9;
+        node-label = 'luna::vulkan::vulkanTextureAtlas::stripe';
+        node-link = {
+          node-link-id = 'd4/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1stripe';
+        };
+        node-child = {
+          child-id = '10';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+stripeVector
 _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
@@ -34496,6 +36372,42 @@ _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
       node = {
+        node-id    = 10;
+        node-label = 'std::vector< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >';
+        node-child = {
+          child-id = '11';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+elements
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '5';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< luna::vulkan::vulkanTextureAtlas::freeStripeBlock >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 8;
+        node-label = 'std::vector< luna::vulkan::vulkanTextureAtlas::stripe >';
+        node-child = {
+          child-id = '9';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+elements
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+        node-child = {
+          child-id = '5';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< luna::vulkan::vulkanTextureAtlas::stripe >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
         node-id    = 4;
         node-label = 'std::vector< std::vector< glm::vec2 > >';
         node-child = {
@@ -34503,6 +36415,17 @@ _EnD_oF_dEf_TeXt_;
           relation = template-instance;
           edgelabel = <<_EnD_oF_dEf_TeXt_
 < std::vector< glm::vec2 > >
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 7;
+        node-label = 'std::vector< std::vector< glm::vec4 > >';
+        node-child = {
+          child-id = '5';
+          relation = template-instance;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+< std::vector< glm::vec4 > >
 _EnD_oF_dEf_TeXt_;
         }; /* node-child */
       }; /* node */
@@ -37602,10 +39525,10 @@ _EnD_oF_dEf_TeXt_;
       define-mem-prot = public;
       define-mem-name = 'LN_PROFILE';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
-1
+0
 _EnD_oF_dEf_TeXt_;
       define-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      define-mem-desc-line = '10';
+      define-mem-desc-line = '13';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -37623,7 +39546,7 @@ _EnD_oF_dEf_TeXt_;
 0
 _EnD_oF_dEf_TeXt_;
       define-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      define-mem-desc-line = '17';
+      define-mem-desc-line = '21';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -37641,7 +39564,7 @@ _EnD_oF_dEf_TeXt_;
 0
 _EnD_oF_dEf_TeXt_;
       define-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      define-mem-desc-line = '18';
+      define-mem-desc-line = '22';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -37656,10 +39579,10 @@ _EnD_oF_dEf_TeXt_;
       define-mem-prot = public;
       define-mem-name = 'PATCH';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
-4
+5
 _EnD_oF_dEf_TeXt_;
       define-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      define-mem-desc-line = '19';
+      define-mem-desc-line = '23';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -37679,7 +39602,7 @@ std::unique_ptr< T >
 _EnD_oF_dEf_TeXt_;
       typedef-mem-name = 'scope';
       typedef-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      typedef-mem-desc-line = '24';
+      typedef-mem-desc-line = '27';
       typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -37697,7 +39620,7 @@ std::shared_ptr< T >
 _EnD_oF_dEf_TeXt_;
       typedef-mem-name = 'ref';
       typedef-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      typedef-mem-desc-line = '32';
+      typedef-mem-desc-line = '35';
       typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -37723,7 +39646,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'args';
       }; /*        func-mem-param--param */
       func-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      func-mem-desc-line = '26';
+      func-mem-desc-line = '29';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -37747,7 +39670,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'args';
       }; /*        func-mem-param--param */
       func-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      func-mem-desc-line = '34';
+      func-mem-desc-line = '37';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -39810,7 +41733,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-prot = public;
       define-mem-name = 'VMA_VULKAN_VERSION';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
-1003000
+1002000
 _EnD_oF_dEf_TeXt_;
       define-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vma.cpp';
       define-mem-desc-line = '2';
@@ -39828,7 +41751,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-prot = public;
       define-mem-name = 'VMA_BIND_MEMORY2';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
-1
+0
 _EnD_oF_dEf_TeXt_;
       define-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vma.cpp';
       define-mem-desc-line = '3';
@@ -40132,6 +42055,30 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
 }; /* file */
 file = {
+  file-id   = 'd0/d00/label_node_8cpp';
+  file-name = 'labelNode.cpp';
+  file-full-name  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.cpp';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'da/d00/label_node_8h';
+  file-name = 'labelNode.h';
+  file-full-name  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
   file-id   = 'de/d00/sprite_node_8cpp';
   file-name = 'spriteNode.cpp';
   file-full-name  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.cpp';
@@ -40193,7 +42140,7 @@ std::unique_ptr< T >
 _EnD_oF_dEf_TeXt_;
       typedef-mem-name = 'scope';
       typedef-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      typedef-mem-desc-line = '24';
+      typedef-mem-desc-line = '27';
       typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -40211,7 +42158,7 @@ std::shared_ptr< T >
 _EnD_oF_dEf_TeXt_;
       typedef-mem-name = 'ref';
       typedef-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      typedef-mem-desc-line = '32';
+      typedef-mem-desc-line = '35';
       typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -40345,7 +42292,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'args';
       }; /*        func-mem-param--param */
       func-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      func-mem-desc-line = '26';
+      func-mem-desc-line = '29';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -40369,7 +42316,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'args';
       }; /*        func-mem-param--param */
       func-mem-desc-file = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/core.h';
-      func-mem-desc-line = '34';
+      func-mem-desc-line = '37';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -40799,7 +42746,7 @@ _EnD_oF_dEf_TeXt_;
   namespace = {
     ns-id   = 'd8/d00/namespaceluna_1_1nodes';
     ns-name = 'luna::nodes';
-  ns-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.cpp';
+  ns-filename  = 'C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.cpp';
   ns-fileline  = '4';
   ns-briefdesc = <<_EnD_oF_dEf_TeXt_
 

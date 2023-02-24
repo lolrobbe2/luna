@@ -4,6 +4,9 @@ namespace luna
 {
 	namespace nodes
 	{
+		/**
+		 * @brief implementation of spriteNode.
+		 */
 		class LN_API spriteNode : public Node
 		{
 		public:

@@ -3,7 +3,8 @@ var classluna_1_1scene_hierarchy_panel =
     [ "nodeTypes", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9", [
       [ "node", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9a566f8c7b361c1f77eb785e88760769d8", null ],
       [ "controlNode", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9a9fbe2c14f7d85390a1d73ba3d94aee9f", null ],
-      [ "spriteNode", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9a7c4c96a49a79c9e2e68b1308f78c3346", null ]
+      [ "spriteNode", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9a7c4c96a49a79c9e2e68b1308f78c3346", null ],
+      [ "labelNode", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9a09774aecc33efbdc1321f235a3080101", null ]
     ] ],
     [ "sceneHierarchyPanel", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a775bc07c997acedb213edf90c23ab852", null ],
     [ "sceneHierarchyPanel", "d8/d00/classluna_1_1scene_hierarchy_panel.html#a350d3a2c7a41a2b55cf6b20ffd69a269", null ],

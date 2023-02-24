@@ -1,0 +1,112 @@
+\hypertarget{classluna_1_1renderer_1_1font}{}\doxysubsection{luna\+::renderer\+::font Class Reference}
+\label{classluna_1_1renderer_1_1font}\index{luna::renderer::font@{luna::renderer::font}}
+
+
+{\ttfamily \#include $<$texture.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::renderer\+::font\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{dc/d00/classluna_1_1renderer_1_1font__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classluna_1_1renderer_1_1font_afb88cb14b53db7ccc2a16b4fb978bf5f}{$\sim$font}} ()=default
+\item 
+virtual \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1font_a3312aa8b899024a7263c07d315e9b040}{get\+Glyph}} (char character)=0
+\item 
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1font_a467c09cf04f67adcee25b2c2e54f38f3}{get\+Advance}} (char character)=0
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1font_a11c6d8044626fa0daca1f27498c99884}{handle}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1font}{font}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1font_af5d2b968fc5a2aad9fbb3e4f1e6c00a0}{create}} (const std\+::string \&file\+Path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+stbtt\+\_\+fontinfo \mbox{\hyperlink{classluna_1_1renderer_1_1font_ab08c0ff23a5917e3c448477226dd2342}{font\+Info}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1font_a1c313d397caad1a909a543296587c2ba}{\+\_\+handle}}
+\item 
+void $\ast$ \mbox{\hyperlink{classluna_1_1renderer_1_1font_ada85792792debb532c8d9806b8ea3f83}{data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_afb88cb14b53db7ccc2a16b4fb978bf5f}\label{classluna_1_1renderer_1_1font_afb88cb14b53db7ccc2a16b4fb978bf5f}} 
+\index{luna::renderer::font@{luna::renderer::font}!````~font@{$\sim$font}}
+\index{````~font@{$\sim$font}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{$\sim$font()}{~font()}}
+{\footnotesize\ttfamily virtual luna\+::renderer\+::font\+::$\sim$font (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_af5d2b968fc5a2aad9fbb3e4f1e6c00a0}\label{classluna_1_1renderer_1_1font_af5d2b968fc5a2aad9fbb3e4f1e6c00a0}} 
+\index{luna::renderer::font@{luna::renderer::font}!create@{create}}
+\index{create@{create}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1font}{font}} $>$ luna\+::renderer\+::font\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a467c09cf04f67adcee25b2c2e54f38f3}\label{classluna_1_1renderer_1_1font_a467c09cf04f67adcee25b2c2e54f38f3}} 
+\index{luna::renderer::font@{luna::renderer::font}!getAdvance@{getAdvance}}
+\index{getAdvance@{getAdvance}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{getAdvance()}{getAdvance()}}
+{\footnotesize\ttfamily virtual glm\+::vec2 luna\+::renderer\+::font\+::get\+Advance (\begin{DoxyParamCaption}\item[{char}]{character }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_aff4f233f438c962cd8cc9c03100a345d}{luna\+::vulkan\+::vulkan\+Font}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a3312aa8b899024a7263c07d315e9b040}\label{classluna_1_1renderer_1_1font_a3312aa8b899024a7263c07d315e9b040}} 
+\index{luna::renderer::font@{luna::renderer::font}!getGlyph@{getGlyph}}
+\index{getGlyph@{getGlyph}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{getGlyph()}{getGlyph()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ luna\+::renderer\+::font\+::get\+Glyph (\begin{DoxyParamCaption}\item[{char}]{character }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a377a42ee0772cf02d025eff6a0b96acc}{luna\+::vulkan\+::vulkan\+Font}}.
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a11c6d8044626fa0daca1f27498c99884}\label{classluna_1_1renderer_1_1font_a11c6d8044626fa0daca1f27498c99884}} 
+\index{luna::renderer::font@{luna::renderer::font}!handle@{handle}}
+\index{handle@{handle}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{handle()}{handle()}}
+{\footnotesize\ttfamily uint64\+\_\+t luna\+::renderer\+::font\+::handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a1c313d397caad1a909a543296587c2ba}\label{classluna_1_1renderer_1_1font_a1c313d397caad1a909a543296587c2ba}} 
+\index{luna::renderer::font@{luna::renderer::font}!\_handle@{\_handle}}
+\index{\_handle@{\_handle}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{\_handle}{\_handle}}
+{\footnotesize\ttfamily uint64\+\_\+t luna\+::renderer\+::font\+::\+\_\+handle\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_ada85792792debb532c8d9806b8ea3f83}\label{classluna_1_1renderer_1_1font_ada85792792debb532c8d9806b8ea3f83}} 
+\index{luna::renderer::font@{luna::renderer::font}!data@{data}}
+\index{data@{data}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily void$\ast$ luna\+::renderer\+::font\+::data\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_ab08c0ff23a5917e3c448477226dd2342}\label{classluna_1_1renderer_1_1font_ab08c0ff23a5917e3c448477226dd2342}} 
+\index{luna::renderer::font@{luna::renderer::font}!fontInfo@{fontInfo}}
+\index{fontInfo@{fontInfo}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{fontInfo}{fontInfo}}
+{\footnotesize\ttfamily stbtt\+\_\+fontinfo luna\+::renderer\+::font\+::font\+Info\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{texture_8h}{texture.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/\mbox{\hyperlink{texture_8cpp}{texture.\+cpp}}\end{DoxyCompactItemize}

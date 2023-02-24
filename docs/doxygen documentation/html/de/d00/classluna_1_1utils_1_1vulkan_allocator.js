@@ -14,7 +14,7 @@ var classluna_1_1utils_1_1vulkan_allocator =
     [ "init", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#ae50dca323c85203f3c71b2d0d396f529", null ],
     [ "shutdown", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a2fea061a5507a2960fac3b0cd439abf7", null ],
     [ "transitionImageLayout", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a1f9178dd08e8befa76f44d9de5fbbd7d", null ],
-    [ "uploadTexture", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa990426ee8e7100a94abfff51eb8c04b", null ],
+    [ "uploadTexture", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aecb1938923f8e82b6d6d71d683a6d43f", null ],
     [ "allocations", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a9fd8bd60f1a505320602099197ffc6de", null ],
     [ "commandPool", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a854266c56f7f09f3cea356d8c53bb780", null ],
     [ "pDevice", "de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a7d48dd03108f5f2c86388cc5b6699ea6", null ],

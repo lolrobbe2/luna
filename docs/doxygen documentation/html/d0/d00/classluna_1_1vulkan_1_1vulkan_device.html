@@ -204,6 +204,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a341008b8201a5b2c276773588473d72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a2bef2693e2e1fa8dbec5aa306b8de0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VkDeviceQueueCreateInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a0a2bef2693e2e1fa8dbec5aa306b8de0">queueCreateInfos</a></td></tr>
 <tr class="separator:a0a2bef2693e2e1fa8dbec5aa306b8de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de778eb911ec4fa6911d66198e7058a"><td class="memItemLeft" align="right" valign="top">VkPhysicalDeviceFeatures&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a1de778eb911ec4fa6911d66198e7058a">supportedFeatures</a> {}</td></tr>
+<tr class="separator:a1de778eb911ec4fa6911d66198e7058a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">secondaryHelperFunctions helper functions used by the primary helper functions</h2></td></tr>
 <tr class="memitem:a5b8b5d17dcb2f453fea603deaa2b043c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a5b8b5d17dcb2f453fea603deaa2b043c">getRequiredExtensions</a> ()</td></tr>
@@ -220,7 +222,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p >this is the vulkan device class and creates a rendering context. </p><div class="fragment"><div class="line"><a class="code hl_typedef" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref&lt;device&gt;</a> rederingDevice = std::make_shared&lt;device&gt;(<span class="keyword">new</span> <a class="code hl_class" href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_device.html">vulkanDevice</a>(<a class="code hl_class" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">window</a>));</div>
 <div class="ttc" id="aclassluna_1_1vulkan_1_1vulkan_device_html"><div class="ttname"><a href="../../d0/d00/classluna_1_1vulkan_1_1vulkan_device.html">luna::vulkan::vulkanDevice</a></div><div class="ttdef"><b>Definition:</b> vulkanDevice.h:17</div></div>
 <div class="ttc" id="aclassluna_1_1vulkan_1_1window_html"><div class="ttname"><a href="../../d7/d00/classluna_1_1vulkan_1_1window.html">luna::vulkan::window</a></div><div class="ttdef"><b>Definition:</b> window.h:40</div></div>
-<div class="ttc" id="anamespaceluna_html_ac8dc8be643504d1935e8e08d0f7d1d87"><div class="ttname"><a href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">luna::ref</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; ref</div><div class="ttdef"><b>Definition:</b> core.h:32</div></div>
+<div class="ttc" id="anamespaceluna_html_ac8dc8be643504d1935e8e08d0f7d1d87"><div class="ttname"><a href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">luna::ref</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; ref</div><div class="ttdef"><b>Definition:</b> core.h:35</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af74bece14ffc07cd0cbc2c19b0d5a85a" name="af74bece14ffc07cd0cbc2c19b0d5a85a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af74bece14ffc07cd0cbc2c19b0d5a85a">&#9670;&#160;</a></span>vulkanDevice()</h2>
@@ -825,6 +827,28 @@ VK_ERROR_INCOMPATIBLE_DRIVER when the driver version is outdated or incompatible
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt;float&gt; luna::vulkan::vulkanDevice::queuePriorities = { 0.99f }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1de778eb911ec4fa6911d66198e7058a" name="a1de778eb911ec4fa6911d66198e7058a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de778eb911ec4fa6911d66198e7058a">&#9670;&#160;</a></span>supportedFeatures</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VkPhysicalDeviceFeatures luna::vulkan::vulkanDevice::supportedFeatures {}</td>
         </tr>
       </table>
   </td>

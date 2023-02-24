@@ -1,18 +1,20 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/baseComponents.h">
-<area shape="rect" id="node1" title=" " coords="401,5,657,60"/>
-<area shape="rect" id="node2" href="$db/d00/scene_8h.html" title=" " coords="434,108,625,163"/>
-<area shape="rect" id="node3" href="$d0/d00/scene_hierarchy_panel_8h.html" title=" " coords="532,211,751,280"/>
-<area shape="rect" id="node8" href="$d1/d00/node_8h.html" title=" " coords="52,218,204,273"/>
-<area shape="rect" id="node10" href="$df/d00/application_8cpp.html" title=" " coords="181,335,373,390"/>
-<area shape="rect" id="node11" href="$db/d00/application_8h.html" title=" " coords="329,218,508,273"/>
-<area shape="rect" id="node14" href="$da/d00/scene_8cpp.html" title=" " coords="775,218,979,273"/>
-<area shape="rect" id="node15" href="$de/d00/sprite_node_8h.html" title=" " coords="1004,218,1207,273"/>
-<area shape="rect" id="node4" href="$db/d00/editor_layer_8h.html" title=" " coords="574,335,735,390"/>
-<area shape="rect" id="node7" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="760,328,979,397"/>
-<area shape="rect" id="node5" href="$de/d00/apollo_8cpp.html" title=" " coords="488,445,640,500"/>
-<area shape="rect" id="node6" href="$d9/d00/editor_layer_8cpp.html" title=" " coords="665,445,839,500"/>
-<area shape="rect" id="node9" href="$d7/d00/node_8cpp.html" title=" " coords="5,335,157,390"/>
-<area shape="rect" id="node12" href="$db/d00/luna_8h.html" title=" " coords="397,335,549,390"/>
-<area shape="rect" id="node13" href="$d5/d00/sandbox_8cpp.html" title=" " coords="289,445,463,500"/>
-<area shape="rect" id="node16" href="$de/d00/sprite_node_8cpp.html" title=" " coords="1003,335,1219,390"/>
+<area shape="rect" id="node1" title=" " coords="630,5,886,60"/>
+<area shape="rect" id="node2" href="$db/d00/scene_8h.html" title=" " coords="663,108,853,163"/>
+<area shape="rect" id="node3" href="$d0/d00/scene_hierarchy_panel_8h.html" title=" " coords="417,211,635,280"/>
+<area shape="rect" id="node8" href="$d1/d00/node_8h.html" title=" " coords="1107,218,1259,273"/>
+<area shape="rect" id="node10" href="$df/d00/application_8cpp.html" title=" " coords="193,335,385,390"/>
+<area shape="rect" id="node11" href="$db/d00/application_8h.html" title=" " coords="163,218,342,273"/>
+<area shape="rect" id="node14" href="$da/d00/scene_8cpp.html" title=" " coords="1284,218,1488,273"/>
+<area shape="rect" id="node15" href="$da/d00/label_node_8h.html" title=" " coords="659,218,857,273"/>
+<area shape="rect" id="node17" href="$de/d00/sprite_node_8h.html" title=" " coords="881,218,1083,273"/>
+<area shape="rect" id="node4" href="$db/d00/editor_layer_8h.html" title=" " coords="409,335,571,390"/>
+<area shape="rect" id="node7" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="830,328,1049,397"/>
+<area shape="rect" id="node5" href="$de/d00/apollo_8cpp.html" title=" " coords="215,445,367,500"/>
+<area shape="rect" id="node6" href="$d9/d00/editor_layer_8cpp.html" title=" " coords="403,445,577,500"/>
+<area shape="rect" id="node9" href="$d7/d00/node_8cpp.html" title=" " coords="1313,335,1465,390"/>
+<area shape="rect" id="node12" href="$db/d00/luna_8h.html" title=" " coords="17,335,169,390"/>
+<area shape="rect" id="node13" href="$d5/d00/sandbox_8cpp.html" title=" " coords="5,445,180,500"/>
+<area shape="rect" id="node16" href="$d0/d00/label_node_8cpp.html" title=" " coords="595,335,806,390"/>
+<area shape="rect" id="node18" href="$de/d00/sprite_node_8cpp.html" title=" " coords="1073,335,1289,390"/>
 </map>

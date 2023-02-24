@@ -26,6 +26,7 @@ var namespaceluna =
     [ "keyPressedEvent", "d6/d00/classluna_1_1key_pressed_event.html", "d6/d00/classluna_1_1key_pressed_event" ],
     [ "keyReleasedEvent", "d5/d00/classluna_1_1key_released_event.html", "d5/d00/classluna_1_1key_released_event" ],
     [ "keyTypedEvent", "d9/d00/classluna_1_1key_typed_event.html", "d9/d00/classluna_1_1key_typed_event" ],
+    [ "labelRendererComponent", "dd/d00/structluna_1_1label_renderer_component.html", "dd/d00/structluna_1_1label_renderer_component" ],
     [ "Log", "dc/d00/classluna_1_1_log.html", "dc/d00/classluna_1_1_log" ],
     [ "mouseButtonEvent", "d1/d00/classluna_1_1mouse_button_event.html", "d1/d00/classluna_1_1mouse_button_event" ],
     [ "mouseButtonPressedEvent", "d8/d00/classluna_1_1mouse_button_pressed_event.html", "d8/d00/classluna_1_1mouse_button_pressed_event" ],

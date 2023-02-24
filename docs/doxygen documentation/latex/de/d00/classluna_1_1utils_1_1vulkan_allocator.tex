@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for luna\+::utils\+::vulkan\+Allocator\+:
-\nopagebreak
+Collaboration diagram for luna\+::utils\+::vulkan\+Allocator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -42,7 +41,7 @@ static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aa2d9d
 \begin{DoxyCompactList}\small\item\em creates a Vk\+Buffer object. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_acc9cee87a45184efe3676ac1896e27af}{destroy\+Buffer}} (const Vk\+Buffer \&buffer)
 \begin{DoxyCompactList}\small\item\em destroys the Vk\+Buffer object. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aa990426ee8e7100a94abfff51eb8c04b}{upload\+Texture}} (const Vk\+Buffer \&buffer, const Vk\+Image \&image, const Vk\+Format \&image\+Format, const glm\+::vec3 \&image\+Dimensions)
+static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aecb1938923f8e82b6d6d71d683a6d43f}{upload\+Texture}} (const Vk\+Buffer \&buffer, const Vk\+Image \&image, const Vk\+Format \&image\+Format, const glm\+::vec3 \&image\+Dimensions, const glm\+::vec3 \&image\+Offset=\{0, 0, 0\})
 \begin{DoxyCompactList}\small\item\em uploads a texture to the gpu . \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a8be0f55661fadb6da3f66103a27e12a4}{flush}} ()
 \begin{DoxyCompactList}\small\item\em executes all recorded transfer\+Commands. \end{DoxyCompactList}\item 
@@ -278,11 +277,11 @@ transitions the image layout.
 {\em Vk\+Command\+Buffer} & command\+Bufffer \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_aa990426ee8e7100a94abfff51eb8c04b}\label{classluna_1_1utils_1_1vulkan_allocator_aa990426ee8e7100a94abfff51eb8c04b}} 
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_aecb1938923f8e82b6d6d71d683a6d43f}\label{classluna_1_1utils_1_1vulkan_allocator_aecb1938923f8e82b6d6d71d683a6d43f}} 
 \index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!uploadTexture@{uploadTexture}}
 \index{uploadTexture@{uploadTexture}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
 \doxyparagraph{\texorpdfstring{uploadTexture()}{uploadTexture()}}
-{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::upload\+Texture (\begin{DoxyParamCaption}\item[{const Vk\+Buffer \&}]{buffer,  }\item[{const Vk\+Image \&}]{image,  }\item[{const Vk\+Format \&}]{image\+Format,  }\item[{const glm\+::vec3 \&}]{image\+Dimensions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::upload\+Texture (\begin{DoxyParamCaption}\item[{const Vk\+Buffer \&}]{buffer,  }\item[{const Vk\+Image \&}]{image,  }\item[{const Vk\+Format \&}]{image\+Format,  }\item[{const glm\+::vec3 \&}]{image\+Dimensions,  }\item[{const glm\+::vec3 \&}]{image\+Offset = {\ttfamily \{0,0,0\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

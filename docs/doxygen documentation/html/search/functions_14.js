@@ -9,6 +9,7 @@ var searchData=
   ['windowswindow_6',['windowsWindow',['../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a31ea80337bb70b42eec75862f91792b0',1,'luna::vulkan::windowsWindow']]],
   ['write_7',['write',['../df/d00/classluna_1_1utils_1_1vulkan_descriptor_set.html#a3c198c1ee7ce2515acc7e30ff4acc19d',1,'luna::utils::vulkanDescriptorSet']]],
   ['writefooter_8',['WriteFooter',['../dd/d00/classluna_1_1instrumentor.html#a639069440691b2aad4681ecb56a4aea1',1,'luna::instrumentor']]],
-  ['writeheader_9',['WriteHeader',['../dd/d00/classluna_1_1instrumentor.html#abfd99b7a7242523efd9072f462321ce3',1,'luna::instrumentor']]],
-  ['writeprofile_10',['WriteProfile',['../dd/d00/classluna_1_1instrumentor.html#acaab4c9c49e70f97f1eeccc582da0c67',1,'luna::instrumentor']]]
+  ['writeglyphsintobuffer_9',['writeGlyphsIntoBuffer',['../d9/d00/classluna_1_1vulkan_1_1vulkan_font.html#af682ce231961c7ee3b2e2a1711947157',1,'luna::vulkan::vulkanFont']]],
+  ['writeheader_10',['WriteHeader',['../dd/d00/classluna_1_1instrumentor.html#abfd99b7a7242523efd9072f462321ce3',1,'luna::instrumentor']]],
+  ['writeprofile_11',['WriteProfile',['../dd/d00/classluna_1_1instrumentor.html#acaab4c9c49e70f97f1eeccc582da0c67',1,'luna::instrumentor']]]
 ];

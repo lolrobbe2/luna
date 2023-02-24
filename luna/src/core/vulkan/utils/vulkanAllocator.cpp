@@ -157,9 +157,9 @@ namespace luna
 			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 
 		}
-		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions)
+		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions, const glm::vec3& imageOffset)
 		{
-			transferCommands.push_back({ buffer,image,imageFormat,imageDimensions });
+			transferCommands.push_back({ buffer,image,imageFormat,imageDimensions,imageOffset });
 		}
 		void vulkanAllocator::flush()
 		{
@@ -180,7 +180,7 @@ namespace luna
 				regions[i].bufferImageHeight = 0;
 
 				regions[i].imageExtent = { (unsigned int)command.dimensions.x ,(unsigned int)command.dimensions.y ,1 };
-				regions[i].imageOffset = { 0,0,0 };
+				regions[i].imageOffset = { (int)command.offset.x ,(int)command.offset.y ,0 };
 			
 				regions[i].imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
 				regions[i].imageSubresource.mipLevel = 0;

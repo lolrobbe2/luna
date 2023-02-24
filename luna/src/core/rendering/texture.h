@@ -1,5 +1,6 @@
 #pragma once
 #include <core/vulkan/window/window.h>
+#include <stb_truetype.h>
 
 namespace luna
 {
@@ -53,29 +54,48 @@ namespace luna
 		 * @see texture
 		 * @note see specific platform implementation for explenation with functions
 		 */
-		class textureAtlas : public texture
+		class LN_API textureAtlas : public texture
 		{
 		public:
 
 			virtual ~textureAtlas() = default;
 
-			virtual uint32_t getTileWidth();
-			virtual uint32_t getTileWidth(const uint16_t& xIndex, const uint16_t& yIndex);
+			virtual uint32_t getTileWidth() = 0;
+			virtual uint32_t getTileWidth(const uint16_t& xIndex, const uint16_t& yIndex)  = 0;
 
-			virtual uint32_t getTileHeight();
-			virtual uint32_t getTileHeight(const uint16_t& xIndex, const uint16_t& yIndex);
+			virtual uint32_t getTileHeight() = 0;
+			virtual uint32_t getTileHeight(const uint16_t& xIndex, const uint16_t& yIndex) = 0;
 
-			virtual uint32_t addTile(const glm::vec2& dimensions);
-			virtual uint32_t addTile(const uint32_t& width, const uint32_t& height);
+			virtual glm::vec2 addTile(const glm::vec2& dimensions) = 0;
+			virtual glm::vec2 addTile(const uint32_t& width, const uint32_t& height) = 0;
 
-			virtual glm::vec2 getTileDimensions(const glm::vec2& textureindex);
-			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex); // for texture atlasses;
+			virtual glm::vec2 getTileDimensions(const glm::vec2& textureindex) = 0;
+			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex) = 0; // for texture atlasses;
 
 		private:
 			uint32_t tileWidth;
 			uint32_t tileHeight;
 
 			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;
+		};
+
+		class LN_API font 
+		{
+		public:
+			//16*300 (width) = 4800
+			//14*300 (height) = 4200
+			//32 dec - 127 decimal;
+			virtual ~font() = default;
+			virtual ref<texture> getGlyph(char character) = 0;
+			virtual glm::vec2 getAdvance(char character) = 0;
+			uint64_t handle() { return _handle; };
+			static ref<font> create(const std::string& filePath);
+		protected:
+			stbtt_fontinfo fontInfo;
+			uint64_t _handle;
+			void* data;
+		private:
+
 		};
 	}
 }

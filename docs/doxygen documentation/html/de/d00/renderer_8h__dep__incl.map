@@ -1,13 +1,14 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/rendering/renderer.h">
-<area shape="rect" id="node1" title=" " coords="219,5,377,75"/>
-<area shape="rect" id="node2" href="$d6/d00/renderer_8cpp.html" title=" " coords="128,123,287,192"/>
-<area shape="rect" id="node3" href="$db/d00/renderer2_d_8h.html" title=" " coords="311,123,469,192"/>
+<area shape="rect" id="node1" title=" " coords="365,5,524,75"/>
+<area shape="rect" id="node2" href="$d6/d00/renderer_8cpp.html" title=" " coords="275,123,433,192"/>
+<area shape="rect" id="node3" href="$db/d00/renderer2_d_8h.html" title=" " coords="457,123,616,192"/>
 <area shape="rect" id="node4" href="$d9/d00/editor_layer_8cpp.html" title=" " coords="5,247,180,302"/>
-<area shape="rect" id="node5" href="$db/d00/application_8h.html" title=" " coords="205,247,383,302"/>
-<area shape="rect" id="node10" href="$de/d00/renderer2_d_8cpp.html" title=" " coords="408,240,567,309"/>
-<area shape="rect" id="node11" href="$da/d00/scene_8cpp.html" title=" " coords="591,247,795,302"/>
-<area shape="rect" id="node6" href="$df/d00/application_8cpp.html" title=" " coords="99,357,291,412"/>
-<area shape="rect" id="node7" href="$db/d00/luna_8h.html" title=" " coords="315,357,467,412"/>
-<area shape="rect" id="node8" href="$de/d00/apollo_8cpp.html" title=" " coords="221,460,373,515"/>
-<area shape="rect" id="node9" href="$d5/d00/sandbox_8cpp.html" title=" " coords="397,460,572,515"/>
+<area shape="rect" id="node5" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="205,240,423,309"/>
+<area shape="rect" id="node6" href="$db/d00/application_8h.html" title=" " coords="447,247,626,302"/>
+<area shape="rect" id="node11" href="$de/d00/renderer2_d_8cpp.html" title=" " coords="651,240,809,309"/>
+<area shape="rect" id="node12" href="$da/d00/scene_8cpp.html" title=" " coords="833,247,1037,302"/>
+<area shape="rect" id="node7" href="$df/d00/application_8cpp.html" title=" " coords="342,357,534,412"/>
+<area shape="rect" id="node8" href="$db/d00/luna_8h.html" title=" " coords="558,357,710,412"/>
+<area shape="rect" id="node9" href="$de/d00/apollo_8cpp.html" title=" " coords="463,460,615,515"/>
+<area shape="rect" id="node10" href="$d5/d00/sandbox_8cpp.html" title=" " coords="640,460,815,515"/>
 </map>

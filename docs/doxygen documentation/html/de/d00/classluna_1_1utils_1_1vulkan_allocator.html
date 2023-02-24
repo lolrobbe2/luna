@@ -163,9 +163,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acc9cee87a45184efe3676ac1896e27af"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acc9cee87a45184efe3676ac1896e27af">destroyBuffer</a> (const VkBuffer &amp;buffer)</td></tr>
 <tr class="memdesc:acc9cee87a45184efe3676ac1896e27af"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroys the VkBuffer object.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acc9cee87a45184efe3676ac1896e27af">More...</a><br /></td></tr>
 <tr class="separator:acc9cee87a45184efe3676ac1896e27af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa990426ee8e7100a94abfff51eb8c04b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa990426ee8e7100a94abfff51eb8c04b">uploadTexture</a> (const VkBuffer &amp;buffer, const VkImage &amp;image, const VkFormat &amp;imageFormat, const glm::vec3 &amp;imageDimensions)</td></tr>
-<tr class="memdesc:aa990426ee8e7100a94abfff51eb8c04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">uploads a texture to the gpu .  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aa990426ee8e7100a94abfff51eb8c04b">More...</a><br /></td></tr>
-<tr class="separator:aa990426ee8e7100a94abfff51eb8c04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecb1938923f8e82b6d6d71d683a6d43f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aecb1938923f8e82b6d6d71d683a6d43f">uploadTexture</a> (const VkBuffer &amp;buffer, const VkImage &amp;image, const VkFormat &amp;imageFormat, const glm::vec3 &amp;imageDimensions, const glm::vec3 &amp;imageOffset={0, 0, 0})</td></tr>
+<tr class="memdesc:aecb1938923f8e82b6d6d71d683a6d43f"><td class="mdescLeft">&#160;</td><td class="mdescRight">uploads a texture to the gpu .  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#aecb1938923f8e82b6d6d71d683a6d43f">More...</a><br /></td></tr>
+<tr class="separator:aecb1938923f8e82b6d6d71d683a6d43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8be0f55661fadb6da3f66103a27e12a4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a8be0f55661fadb6da3f66103a27e12a4">flush</a> ()</td></tr>
 <tr class="memdesc:a8be0f55661fadb6da3f66103a27e12a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">executes all recorded transferCommands.  <a href="../../de/d00/classluna_1_1utils_1_1vulkan_allocator.html#a8be0f55661fadb6da3f66103a27e12a4">More...</a><br /></td></tr>
 <tr class="separator:a8be0f55661fadb6da3f66103a27e12a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -716,8 +716,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa990426ee8e7100a94abfff51eb8c04b" name="aa990426ee8e7100a94abfff51eb8c04b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa990426ee8e7100a94abfff51eb8c04b">&#9670;&#160;</a></span>uploadTexture()</h2>
+<a id="aecb1938923f8e82b6d6d71d683a6d43f" name="aecb1938923f8e82b6d6d71d683a6d43f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecb1938923f8e82b6d6d71d683a6d43f">&#9670;&#160;</a></span>uploadTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -747,7 +747,13 @@ Static Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const glm::vec3 &amp;&#160;</td>
-          <td class="paramname"><em>imageDimensions</em>&#160;</td>
+          <td class="paramname"><em>imageDimensions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>imageOffset</em> = <code>{0,0,0}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

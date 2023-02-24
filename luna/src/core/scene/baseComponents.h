@@ -59,6 +59,20 @@ namespace luna
 		spriteRendererComponent(const glm::vec4& color)
 			: color(color) {}
 	};
+
+	struct labelRendererComponent
+	{
+		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
+		ref<renderer::font> font;
+		std::string filePath;
+		std::string text;
+		float TilingFactor = 1.0f;
+
+		labelRendererComponent() = default;
+		labelRendererComponent(const labelRendererComponent&) = default;
+		labelRendererComponent(const glm::vec4& color)
+			: color(color) {}
+	};
 	/*
 		node tree components:
 		these components represent the node tree
