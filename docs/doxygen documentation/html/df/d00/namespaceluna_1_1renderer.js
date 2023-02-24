@@ -3,6 +3,7 @@ var namespaceluna_1_1renderer =
     [ "bufferElement", "d8/d00/classluna_1_1renderer_1_1buffer_element.html", "d8/d00/classluna_1_1renderer_1_1buffer_element" ],
     [ "bufferLayout", "d6/d00/classluna_1_1renderer_1_1buffer_layout.html", "d6/d00/classluna_1_1renderer_1_1buffer_layout" ],
     [ "device", "d6/d00/classluna_1_1renderer_1_1device.html", "d6/d00/classluna_1_1renderer_1_1device" ],
+    [ "font", "d9/d00/classluna_1_1renderer_1_1font.html", "d9/d00/classluna_1_1renderer_1_1font" ],
     [ "indexBuffer", "d8/d00/classluna_1_1renderer_1_1index_buffer.html", "d8/d00/classluna_1_1renderer_1_1index_buffer" ],
     [ "pipeline", "d9/d00/classluna_1_1renderer_1_1pipeline.html", "d9/d00/classluna_1_1renderer_1_1pipeline" ],
     [ "pipelineLayout", "db/d00/structluna_1_1renderer_1_1pipeline_layout.html", "db/d00/structluna_1_1renderer_1_1pipeline_layout" ],

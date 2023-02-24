@@ -22,6 +22,7 @@ var classluna_1_1vulkan_1_1vulkan_device =
     [ "queueCreateInfos", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a0a2bef2693e2e1fa8dbec5aa306b8de0", null ],
     [ "queueFamily", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a341008b8201a5b2c276773588473d72b", null ],
     [ "queuePriorities", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#ae948d02e865d6e91e5ef6f15015997c5", null ],
+    [ "supportedFeatures", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a1de778eb911ec4fa6911d66198e7058a", null ],
     [ "surface", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a04f1147e3507dc022038d141a11d402d", null ],
     [ "swapchain", "d0/d00/classluna_1_1vulkan_1_1vulkan_device.html#a3361292b69cd4a898587de41ddb11392", null ]
 ];

@@ -1,8 +1,8 @@
 var searchData=
 [
   ['n_0',['N',['../d5/d00/namespaceluna_1_1input.html#a4476803d517ed1a5009ebc503aeafa19a2a2a59513980d4592adea169939ee469',1,'luna::input']]],
-  ['name_1',['name',['../d8/d00/classluna_1_1renderer_1_1buffer_element.html#a652c7ea4049434ef63e739499834178e',1,'luna::renderer::bufferElement::name()'],['../d5/d00/structluna_1_1renderer_1_1shader_resource.html#a55c4d7c9996badbdc53e0438a98f36a2',1,'luna::renderer::shaderResource::name()']]],
-  ['name_2',['Name',['../d8/d00/structluna_1_1profile_result.html#a9ec88441b89f60e1b46c31998819c8f0',1,'luna::profileResult::Name()'],['../d4/d00/structluna_1_1instrumentation_session.html#af232070fa420ffda49b7d255b3a9028f',1,'luna::instrumentationSession::Name()']]],
+  ['name_1',['Name',['../d8/d00/structluna_1_1profile_result.html#a9ec88441b89f60e1b46c31998819c8f0',1,'luna::profileResult::Name()'],['../d4/d00/structluna_1_1instrumentation_session.html#af232070fa420ffda49b7d255b3a9028f',1,'luna::instrumentationSession::Name()']]],
+  ['name_2',['name',['../d8/d00/classluna_1_1renderer_1_1buffer_element.html#a652c7ea4049434ef63e739499834178e',1,'luna::renderer::bufferElement::name()'],['../d5/d00/structluna_1_1renderer_1_1shader_resource.html#a55c4d7c9996badbdc53e0438a98f36a2',1,'luna::renderer::shaderResource::name()']]],
   ['newframe_3',['newFrame',['../d5/d00/classluna_1_1renderer_1_1renderer.html#a32fcf021d4fb98074c80ef9bdfd81d18',1,'luna::renderer::renderer']]],
   ['node_4',['Node',['../dc/d00/classluna_1_1_node.html',1,'luna']]],
   ['node_5',['node',['../d8/d00/classluna_1_1scene_1_1node.html',1,'luna::scene::node'],['../d8/d00/classluna_1_1scene_hierarchy_panel.html#a14afe571306f1f572a28f68b5da529b9a566f8c7b361c1f77eb785e88760769d8',1,'luna::sceneHierarchyPanel::node()'],['../d8/d00/classluna_1_1scene_1_1node.html#a1112dbf627613f694e90525c048f5684',1,'luna::scene::node::node()']]],

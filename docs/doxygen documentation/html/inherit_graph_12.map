@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$df/d00/structluna_1_1parent_component.html" title="represents a node that has a parent node." coords="5,5,161,31"/>
+<area shape="rect" id="node1" href="$dc/d00/classluna_1_1_node.html" title=" " coords="5,31,89,56"/>
+<area shape="rect" id="node2" href="$d1/d00/classluna_1_1nodes_1_1label_node.html" title="label node implementation." coords="139,5,294,31"/>
+<area shape="rect" id="node3" href="$d0/d00/classluna_1_1nodes_1_1sprite_node.html" title="implementation of spriteNode." coords="137,55,296,80"/>
 </map>

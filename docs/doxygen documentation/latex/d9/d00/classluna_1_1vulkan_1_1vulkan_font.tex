@@ -1,0 +1,197 @@
+\hypertarget{classluna_1_1vulkan_1_1vulkan_font}{}\doxysubsection{luna\+::vulkan\+::vulkan\+Font Class Reference}
+\label{classluna_1_1vulkan_1_1vulkan_font}\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+
+
+font implementation in vulkan.  
+
+
+
+
+{\ttfamily \#include $<$vulkan\+Texture.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::vulkan\+::vulkan\+Font\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{da/d00/classluna_1_1vulkan_1_1vulkan_font__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for luna\+::vulkan\+::vulkan\+Font\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{d1/d00/classluna_1_1vulkan_1_1vulkan_font__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1vulkan_1_1vulkan_font_1_1glyph}{glyph}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a8f3fe1d7386a1c51f443cdd7ce145b85}{vulkan\+Font}} (const std\+::string \&file\+Path)
+\item 
+virtual \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_af82e17777f759fe08a4dad26348b5592}{$\sim$vulkan\+Font}} ()=default
+\item 
+virtual \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a377a42ee0772cf02d025eff6a0b96acc}{get\+Glyph}} (char character) override
+\item 
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_aff4f233f438c962cd8cc9c03100a345d}{get\+Advance}} (char character) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a9185306ac03000f847156e20383f9618}{create\+Font\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em allocates and creates the atlas texture from wich glyph can be sampled from. \end{DoxyCompactList}\item 
+stbi\+\_\+uc $\ast$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a0901c04094ceee9cc66b2966e3a6186e}{create\+Glyph}} (const stbtt\+\_\+fontinfo $\ast$info, int code\+Point, float $\ast$xscale, float $\ast$yscale, int $\ast$new\+Xoff, int $\ast$new\+Yoff)
+\begin{DoxyCompactList}\small\item\em creates a font glyph and gurantees the texture height and width to be 300 by 300 pixels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_af682ce231961c7ee3b2e2a1711947157}{write\+Glyphs\+Into\+Buffer}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ Vk\+Buffer $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a5ce266457c5d336683f7ab3fd1c15389}{buffer}}
+\item 
+Vk\+Image \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a7ced6f5f7bfe7619f11a9be895b50ba9}{image\+Handle}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
+\item 
+Vk\+Image\+View \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_ab022ad6c59e671dc85a88bf7ee2d9a7f}{image\+View\+Handle}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a5c6c0f45dace15b5b4b154b95f8390c6}{width}} = 4800
+\item 
+static const int \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a2cfd96aa828f599df7f2eac4a6fd6e8e}{height}} = 4800
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+
+
+\doxysubsubsection{Detailed Description}
+font implementation in vulkan. 
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a8f3fe1d7386a1c51f443cdd7ce145b85}\label{classluna_1_1vulkan_1_1vulkan_font_a8f3fe1d7386a1c51f443cdd7ce145b85}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!vulkanFont@{vulkanFont}}
+\index{vulkanFont@{vulkanFont}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{vulkanFont()}{vulkanFont()}}
+{\footnotesize\ttfamily luna\+::vulkan\+::vulkan\+Font\+::vulkan\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_af82e17777f759fe08a4dad26348b5592}\label{classluna_1_1vulkan_1_1vulkan_font_af82e17777f759fe08a4dad26348b5592}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!````~vulkanFont@{$\sim$vulkanFont}}
+\index{````~vulkanFont@{$\sim$vulkanFont}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{$\sim$vulkanFont()}{~vulkanFont()}}
+{\footnotesize\ttfamily virtual luna\+::vulkan\+::vulkan\+Font\+::$\sim$vulkan\+Font (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a9185306ac03000f847156e20383f9618}\label{classluna_1_1vulkan_1_1vulkan_font_a9185306ac03000f847156e20383f9618}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!createFontTexture@{createFontTexture}}
+\index{createFontTexture@{createFontTexture}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{createFontTexture()}{createFontTexture()}}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Font\+::create\+Font\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+allocates and creates the atlas texture from wich glyph can be sampled from. 
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a0901c04094ceee9cc66b2966e3a6186e}\label{classluna_1_1vulkan_1_1vulkan_font_a0901c04094ceee9cc66b2966e3a6186e}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!createGlyph@{createGlyph}}
+\index{createGlyph@{createGlyph}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{createGlyph()}{createGlyph()}}
+{\footnotesize\ttfamily stbi\+\_\+uc $\ast$ luna\+::vulkan\+::vulkan\+Font\+::create\+Glyph (\begin{DoxyParamCaption}\item[{const stbtt\+\_\+fontinfo $\ast$}]{info,  }\item[{int}]{code\+Point,  }\item[{float $\ast$}]{xscale,  }\item[{float $\ast$}]{yscale,  }\item[{int $\ast$}]{new\+Xoff,  }\item[{int $\ast$}]{new\+Yoff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+creates a font glyph and gurantees the texture height and width to be 300 by 300 pixels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & stbtt\+\_\+fontinfo$\ast$ info \\
+\hline
+{\em int} & code\+Point (char code to create glyph from) \\
+\hline
+{\em float$\ast$} & xscale\+: relative scale to get 1.\+0f width back. (300 / xscale) \\
+\hline
+{\em float$\ast$} & yscale\+: relative scale to get 1.\+0f height back. (300 / yscale) \\
+\hline
+{\em int$\ast$} & new\+Xoff\+: relative xoffset. \\
+\hline
+{\em new\+Yoff} & relative yoffset. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+stbi\+\_\+uc$\ast$ pointer to texure data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_aff4f233f438c962cd8cc9c03100a345d}\label{classluna_1_1vulkan_1_1vulkan_font_aff4f233f438c962cd8cc9c03100a345d}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!getAdvance@{getAdvance}}
+\index{getAdvance@{getAdvance}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{getAdvance()}{getAdvance()}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::vulkan\+::vulkan\+Font\+::get\+Advance (\begin{DoxyParamCaption}\item[{char}]{character }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1font_a467c09cf04f67adcee25b2c2e54f38f3}{luna\+::renderer\+::font}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a377a42ee0772cf02d025eff6a0b96acc}\label{classluna_1_1vulkan_1_1vulkan_font_a377a42ee0772cf02d025eff6a0b96acc}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!getGlyph@{getGlyph}}
+\index{getGlyph@{getGlyph}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{getGlyph()}{getGlyph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ luna\+::vulkan\+::vulkan\+Font\+::get\+Glyph (\begin{DoxyParamCaption}\item[{char}]{character }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1font_a3312aa8b899024a7263c07d315e9b040}{luna\+::renderer\+::font}}.
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_af682ce231961c7ee3b2e2a1711947157}\label{classluna_1_1vulkan_1_1vulkan_font_af682ce231961c7ee3b2e2a1711947157}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!writeGlyphsIntoBuffer@{writeGlyphsIntoBuffer}}
+\index{writeGlyphsIntoBuffer@{writeGlyphsIntoBuffer}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{writeGlyphsIntoBuffer()}{writeGlyphsIntoBuffer()}}
+{\footnotesize\ttfamily void luna\+::vulkan\+::vulkan\+Font\+::write\+Glyphs\+Into\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a5ce266457c5d336683f7ab3fd1c15389}\label{classluna_1_1vulkan_1_1vulkan_font_a5ce266457c5d336683f7ab3fd1c15389}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!buffer@{buffer}}
+\index{buffer@{buffer}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily std\+::vector$<$Vk\+Buffer$>$ luna\+::vulkan\+::vulkan\+Font\+::buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a2cfd96aa828f599df7f2eac4a6fd6e8e}\label{classluna_1_1vulkan_1_1vulkan_font_a2cfd96aa828f599df7f2eac4a6fd6e8e}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!height@{height}}
+\index{height@{height}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily const int luna\+::vulkan\+::vulkan\+Font\+::height = 4800\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a7ced6f5f7bfe7619f11a9be895b50ba9}\label{classluna_1_1vulkan_1_1vulkan_font_a7ced6f5f7bfe7619f11a9be895b50ba9}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!imageHandle@{imageHandle}}
+\index{imageHandle@{imageHandle}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{imageHandle}{imageHandle}}
+{\footnotesize\ttfamily Vk\+Image luna\+::vulkan\+::vulkan\+Font\+::image\+Handle = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_ab022ad6c59e671dc85a88bf7ee2d9a7f}\label{classluna_1_1vulkan_1_1vulkan_font_ab022ad6c59e671dc85a88bf7ee2d9a7f}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!imageViewHandle@{imageViewHandle}}
+\index{imageViewHandle@{imageViewHandle}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{imageViewHandle}{imageViewHandle}}
+{\footnotesize\ttfamily Vk\+Image\+View luna\+::vulkan\+::vulkan\+Font\+::image\+View\+Handle = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a5c6c0f45dace15b5b4b154b95f8390c6}\label{classluna_1_1vulkan_1_1vulkan_font_a5c6c0f45dace15b5b4b154b95f8390c6}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!width@{width}}
+\index{width@{width}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily const int luna\+::vulkan\+::vulkan\+Font\+::width = 4800\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_texture_8h}{vulkan\+Texture.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/rendering/\mbox{\hyperlink{vulkan_texture_8cpp}{vulkan\+Texture.\+cpp}}\end{DoxyCompactItemize}

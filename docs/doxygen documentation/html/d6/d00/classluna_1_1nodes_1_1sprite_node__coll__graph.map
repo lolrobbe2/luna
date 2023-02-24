@@ -1,5 +1,5 @@
 <map id="luna::nodes::spriteNode" name="luna::nodes::spriteNode">
-<area shape="rect" id="node1" title=" " coords="2021,290,2180,315"/>
+<area shape="rect" id="node1" title="implementation of spriteNode." coords="2021,290,2180,315"/>
 <area shape="rect" id="node2" href="$dc/d00/classluna_1_1_node.html" title=" " coords="1888,290,1972,315"/>
 <area shape="rect" id="node3" href="$da/d00/classluna_1_1scene.html" title=" " coords="1711,290,1800,315"/>
 <area shape="rect" id="node4" href="$d5/d00/classluna_1_1utils_1_1object_storage.html" title=" " coords="1411,283,1577,323"/>

@@ -1,19 +1,20 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanDescriptorPool.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanDescriptorPool.h">
-<area shape="rect" id="node1" title=" " coords="246,5,433,75"/>
-<area shape="rect" id="node2" href="$df/d00/vulkan_pipeline_8h.html" title=" " coords="146,123,322,192"/>
-<area shape="rect" id="node17" href="$dc/d00/vulkan_descriptor_pool_8cpp.html" title=" " coords="346,123,546,192"/>
-<area shape="rect" id="node3" href="$d6/d00/renderer_8cpp.html" title=" " coords="73,475,232,544"/>
-<area shape="rect" id="node4" href="$d6/d00/vulkan_imgui_8cpp.html" title=" " coords="134,357,286,427"/>
-<area shape="rect" id="node5" href="$d3/d00/vulkan_imgui_8h.html" title=" " coords="215,240,367,309"/>
-<area shape="rect" id="node16" href="$d2/d00/vulkan_pipeline_8cpp.html" title=" " coords="392,240,583,309"/>
-<area shape="rect" id="node6" href="$d6/d00/renderer_8h.html" title=" " coords="311,357,469,427"/>
-<area shape="rect" id="node7" href="$db/d00/renderer2_d_8h.html" title=" " coords="311,475,469,544"/>
+<area shape="rect" id="node1" title=" " coords="393,5,579,75"/>
+<area shape="rect" id="node2" href="$df/d00/vulkan_pipeline_8h.html" title=" " coords="293,123,469,192"/>
+<area shape="rect" id="node18" href="$dc/d00/vulkan_descriptor_pool_8cpp.html" title=" " coords="493,123,693,192"/>
+<area shape="rect" id="node3" href="$d6/d00/renderer_8cpp.html" title=" " coords="220,475,379,544"/>
+<area shape="rect" id="node4" href="$d6/d00/vulkan_imgui_8cpp.html" title=" " coords="281,357,433,427"/>
+<area shape="rect" id="node5" href="$d3/d00/vulkan_imgui_8h.html" title=" " coords="362,240,514,309"/>
+<area shape="rect" id="node17" href="$d2/d00/vulkan_pipeline_8cpp.html" title=" " coords="539,240,729,309"/>
+<area shape="rect" id="node6" href="$d6/d00/renderer_8h.html" title=" " coords="457,357,616,427"/>
+<area shape="rect" id="node7" href="$db/d00/renderer2_d_8h.html" title=" " coords="457,475,616,544"/>
 <area shape="rect" id="node8" href="$d9/d00/editor_layer_8cpp.html" title=" " coords="5,599,180,654"/>
-<area shape="rect" id="node9" href="$db/d00/application_8h.html" title=" " coords="205,599,383,654"/>
-<area shape="rect" id="node14" href="$de/d00/renderer2_d_8cpp.html" title=" " coords="408,592,567,661"/>
-<area shape="rect" id="node15" href="$da/d00/scene_8cpp.html" title=" " coords="591,599,795,654"/>
-<area shape="rect" id="node10" href="$df/d00/application_8cpp.html" title=" " coords="99,709,291,764"/>
-<area shape="rect" id="node11" href="$db/d00/luna_8h.html" title=" " coords="315,709,467,764"/>
-<area shape="rect" id="node12" href="$de/d00/apollo_8cpp.html" title=" " coords="222,812,374,867"/>
-<area shape="rect" id="node13" href="$d5/d00/sandbox_8cpp.html" title=" " coords="399,812,573,867"/>
+<area shape="rect" id="node9" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="205,592,423,661"/>
+<area shape="rect" id="node10" href="$db/d00/application_8h.html" title=" " coords="447,599,626,654"/>
+<area shape="rect" id="node15" href="$de/d00/renderer2_d_8cpp.html" title=" " coords="651,592,809,661"/>
+<area shape="rect" id="node16" href="$da/d00/scene_8cpp.html" title=" " coords="833,599,1037,654"/>
+<area shape="rect" id="node11" href="$df/d00/application_8cpp.html" title=" " coords="342,709,534,764"/>
+<area shape="rect" id="node12" href="$db/d00/luna_8h.html" title=" " coords="558,709,710,764"/>
+<area shape="rect" id="node13" href="$de/d00/apollo_8cpp.html" title=" " coords="465,812,617,867"/>
+<area shape="rect" id="node14" href="$d5/d00/sandbox_8cpp.html" title=" " coords="641,812,816,867"/>
 </map>

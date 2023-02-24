@@ -2,6 +2,7 @@ var classluna_1_1renderer_1_1renderer2_d =
 [
     [ "statistics", "d9/d00/structluna_1_1renderer_1_1renderer2_d_1_1statistics.html", "d9/d00/structluna_1_1renderer_1_1renderer2_d_1_1statistics" ],
     [ "BeginScene", "df/d00/classluna_1_1renderer_1_1renderer2_d.html#a76b5f70881cfab19f3826379b0a3c9c1", null ],
+    [ "drawLabel", "df/d00/classluna_1_1renderer_1_1renderer2_d.html#ad66e5db53178599b874584a5a7ed78c6", null ],
     [ "drawQuad", "df/d00/classluna_1_1renderer_1_1renderer2_d.html#a408e809feefb115d990c54c694d83da3", null ],
     [ "drawQuad", "df/d00/classluna_1_1renderer_1_1renderer2_d.html#aee1d82c42297fb86d4e6949506507479", null ],
     [ "drawQuad", "df/d00/classluna_1_1renderer_1_1renderer2_d.html#a80f65908b87cfcd1db947a2595b25c90", null ],
