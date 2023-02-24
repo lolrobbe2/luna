@@ -20,7 +20,7 @@ namespace luna
             mSwapchainSpec = swapChainSpec;
             vkb::SwapchainBuilder swapchainBuilder{ swapChainSpec.physicalDevice, swapChainSpec.device, swapChainSpec.surface };
             auto swapchain = swapchainBuilder
-                .use_default_format_selection()
+                
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_IMMEDIATE_KHR)
                 .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
@@ -49,7 +49,6 @@ namespace luna
            
             vkb::SwapchainBuilder swapchainBuilder{ mSwapchainSpec.physicalDevice, mSwapchainSpec.device, mSwapchainSpec.surface };
             auto newSwapchain = swapchainBuilder.set_old_swapchain(mSwapchain)
-                .use_default_format_selection()
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_IMMEDIATE_KHR)
                 .set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR})
