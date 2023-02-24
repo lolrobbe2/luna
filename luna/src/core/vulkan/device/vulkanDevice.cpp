@@ -121,7 +121,7 @@ namespace luna
 
 				vkGetPhysicalDeviceFeatures(tempPhysicalDevice, &supportedFeatures);
 				if (supportedFeatures.shaderStorageImageArrayDynamicIndexing == VK_TRUE) features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE; //shaderStorageImageArrayDynamicIndexing : specifies whether arrays of storage images can be indexed by dynamically uniform integer expressions in shader code
-				else  features12.descriptorIndexing = VK_TRUE;
+				else  LN_CORE_ERROR("featurenot supported: shaderStorageImageArrayDynamicIndexing");
 				if (supportedFeatures.multiViewport == VK_TRUE) features.multiViewport = VK_TRUE;
 				auto physicalDevice = deviceSelector
 					.set_required_features(features)
