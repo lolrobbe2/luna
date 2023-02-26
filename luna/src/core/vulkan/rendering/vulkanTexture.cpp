@@ -229,7 +229,7 @@ namespace luna
 		ref<renderer::texture> vulkanFont::getGlyph(char character)
 		{
 			ref<renderer::texture> glyph = renderer::texture::create(_handle, { 300,300 });
-			int index = character - 32;
+			int index = character - startIndex;
 			int yStart = index / 16;
 			int xStart = index % 16;
 			LN_CORE_INFO("glyph coords: ({0},{1})", xStart, yStart);
@@ -248,7 +248,10 @@ namespace luna
 		{
 			return glm::vec2();
 		}
-
+		glm::vec2 vulkanFont::getScale(char character)
+		{
+			return glypScales[character - startIndex];
+		}
 		void vulkanFont::createFontTexture() 
 		{
 			int imageSize = width * height;
@@ -276,16 +279,18 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 			
-			for (size_t i = 32; i < 255; i++)
+			for (size_t i = startIndex; i < 255; i++)
 			{
-				int index = i - 32;
+				int index = i - startIndex;
 				glm::vec2 scale;
 				int offsetx, offsety;
 	
 				stbi_uc* fontGlyph = createGlyph(&fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
+				
 				if (fontGlyph) {
 					int y = index / 16;
 					int x = index % 16;
+					glypScales.push_back(scale);
 					buffer.push_back(VK_NULL_HANDLE);
 					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));
@@ -293,6 +298,7 @@ namespace luna
 				}
 				else 
 				{
+					glypScales.push_back({ 1.0f,1.0f });
 					buffer.push_back(VK_NULL_HANDLE);
 					LN_CORE_ERROR("could not load glyph: {0}", (char)i);
 				}

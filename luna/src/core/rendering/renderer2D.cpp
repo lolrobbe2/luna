@@ -100,8 +100,8 @@ namespace luna
 			if (!labelText.size()) return;
 			for (char character : labelText) {
 				ref<texture> glyph = font->getGlyph(character);
-				if(glyph) drawQuad({ xAdvance + position.x,position.y,position.z }, size, glyph);
-				xAdvance+= size.x;
+				if(glyph) drawQuad({ xAdvance + position.x,position.y,position.z }, size * font->getScale(character), glyph);
+				xAdvance += size.x * font->getScale(character).x;
 			}
 		}
 		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)

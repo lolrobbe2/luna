@@ -103,6 +103,7 @@ namespace luna
 			virtual ~vulkanFont() = default;
 			virtual ref<renderer::texture> getGlyph(char character) override;
 			virtual glm::vec2 getAdvance(char character) override;
+			virtual glm::vec2 getScale(char character) override;
 		private:
 			/**
 			 * @brief allocates and creates the atlas texture from wich glyph can be sampled from.

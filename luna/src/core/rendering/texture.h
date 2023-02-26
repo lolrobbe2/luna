@@ -94,12 +94,15 @@ namespace luna
 			virtual ~font() = default;
 			virtual ref<texture> getGlyph(char character) = 0;
 			virtual glm::vec2 getAdvance(char character) = 0;
+			virtual glm::vec2 getScale(char charcater) = 0;
 			uint64_t handle() { return _handle; };
 			static ref<font> create(const std::string& filePath);
 		protected:
+			const static char startIndex = 32;
 			stbtt_fontinfo fontInfo;
 			uint64_t _handle;
 			void* data;
+			std::vector<glm::vec2> glypScales;
 		private:
 
 		};
