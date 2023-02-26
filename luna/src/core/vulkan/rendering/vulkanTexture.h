@@ -11,7 +11,7 @@ namespace luna
 		{
 		public:
 			vulkanTexture(const std::string& filePath);
-			vulkanTexture(void* texelData, const glm::vec2& dimensions);
+			vulkanTexture(const uint64_t& handle, const glm::vec2& dimensions);
 			virtual ~vulkanTexture();
 
 			virtual uint32_t getWidth() const override;

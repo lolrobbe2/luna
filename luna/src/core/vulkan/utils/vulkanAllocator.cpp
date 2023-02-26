@@ -18,12 +18,12 @@ namespace luna
 			allocatorCreateInfo.physicalDevice = handles.physicalDevice;
 			allocatorCreateInfo.device = handles.device;
 
-			allocatorCreateInfo.pAllocationCallbacks = NULL;
-			allocatorCreateInfo.pDeviceMemoryCallbacks = NULL;
-			allocatorCreateInfo.pVulkanFunctions = NULL;
+			allocatorCreateInfo.pAllocationCallbacks = nullptr;
+			allocatorCreateInfo.pDeviceMemoryCallbacks = nullptr;
+			allocatorCreateInfo.pVulkanFunctions = nullptr;
 
-			allocatorCreateInfo.pTypeExternalMemoryHandleTypes = NULL;
-			allocatorCreateInfo.pHeapSizeLimit = NULL;
+			allocatorCreateInfo.pTypeExternalMemoryHandleTypes = nullptr;
+			allocatorCreateInfo.pHeapSizeLimit = nullptr;
 			allocatorCreateInfo.preferredLargeHeapBlockSize = 0;
 
 			VkPhysicalDeviceMemoryProperties memoryProperties;
@@ -131,12 +131,9 @@ namespace luna
 
 			bufferInfo.usage = usage;
 
-
-			//let the VMA library know that this data should be writeable by CPU, but also readable by GPU
 			VmaAllocationCreateInfo vmaAllocInfo = {};
 			vmaAllocInfo.usage = memoryUsage;
 			vmaAllocInfo.flags = allocFlags;
-			//VMA_ALLOCATION_CREATE_MAPPED_BIT;
 			VkBuffer newBuffer;
 			VmaAllocationInfo allocationInfo;
 			VmaAllocation allocation;

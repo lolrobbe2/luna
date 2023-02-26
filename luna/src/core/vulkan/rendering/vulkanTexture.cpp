@@ -33,17 +33,17 @@ namespace luna
 			}
 			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
 		}
-		vulkanTexture::vulkanTexture(void* texelData, const glm::vec2& dimensions)
+		vulkanTexture::vulkanTexture(const uint64_t& handle, const glm::vec2& dimensions)
 		{
-			LN_PROFILE_FUNCTION();
-			utils::vulkanAllocator::createBuffer(&buffer, dimensions.x * dimensions.y, VkBufferUsageFlagBits::VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT, VMA_MEMORY_USAGE_GPU_ONLY, VmaAllocationCreateFlagBits::VMA_ALLOCATION_CREATE_WITHIN_BUDGET_BIT);
-			utils::vulkanAllocator::createImage(&imageHandle, VkImageUsageFlagBits::VK_IMAGE_USAGE_SAMPLED_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,0 }, VK_FORMAT_R8G8B8A8_SRGB);
-			setData(texelData,dimensions.x * dimensions.y * 4);
-			LN_CORE_INFO("not fully implemented");
+			_handle = handle;
+			width = dimensions.x;
+			height = dimensions.y;
 		}
 		vulkanTexture::~vulkanTexture()
 		{
-			//utils::vulkanAllocator::destroyImage(imageHandle);
+			if (!destroy) return;
+			utils::vulkanAllocator::destroyImage(imageHandle);
+			utils::vulkanAllocator::destroyImageView(imageViewHandle);
 		}
 		uint32_t vulkanTexture::getWidth() const
 		{
@@ -228,7 +228,20 @@ namespace luna
 		}
 		ref<renderer::texture> vulkanFont::getGlyph(char character)
 		{
-			return nullptr;
+			ref<renderer::texture> glyph = renderer::texture::create(_handle, { 300,300 });
+			int index = character - 32;
+			int yStart = index / 16;
+			int xStart = index % 16;
+			LN_CORE_INFO("glyph coords: ({0},{1})", xStart, yStart);
+			if (!(xStart < 16 && yStart < 16)) return nullptr; //character out of scope;
+
+
+			
+			glm::vec2 uvStart = { (float)xStart / 16,(float)yStart / 16 };
+			glm::vec2 uvEnd = { (float)(xStart + 1) / 16,(float)(yStart+1) / 16 };
+			glyph->setUv(uvStart, uvEnd);
+			glyph->setDestroy(false); //make sure the fontAtlas is not destroyed;
+			return glyph;
 		}
 
 		glm::vec2 vulkanFont::getAdvance(char character)
@@ -263,7 +276,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 			
-			for (size_t i = 32; i < 128; i++)
+			for (size_t i = 32; i < 255; i++)
 			{
 				int index = i - 32;
 				glm::vec2 scale;
@@ -283,8 +296,6 @@ namespace luna
 					buffer.push_back(VK_NULL_HANDLE);
 					LN_CORE_ERROR("could not load glyph: {0}", (char)i);
 				}
-
-
 			}
 			utils::vulkanAllocator::flush();
 			buffer.resize(0);

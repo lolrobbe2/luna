@@ -26,15 +26,21 @@ namespace luna
 
 			virtual bool isLoaded() const = 0;
 
-			//virtual bool operator==(const texture& other) const = 0;
-
+			inline void setDestroy(const bool& destroy) { this->destroy = destroy; };
+			inline void setUv(const glm::vec2& _uvStart,const glm::vec2& _uvEnd) { uvStart = _uvStart; uvEnd = _uvEnd; };
+			std::vector<glm::vec2> getUv() { return{ { uvStart.x, uvStart.y }, { uvEnd.x, uvStart.y }, { uvEnd.x, uvEnd.y }, { uvStart.x, uvEnd.y } }; };
 			static ref<texture> create(const std::string& filePath);
+			static ref<texture> create(const uint64_t& handle,const glm::vec2& dimensions);
 			inline uint64_t handle() { return _handle; };
 		protected:
+			bool destroy = true;
 			uint64_t _handle;
 			void* data;
 			uint32_t width;
 			uint32_t height;
+			glm::vec2 uvStart = {0.0f,0.0f};
+			glm::vec2 uvEnd = { 1.0f,1.0f };
+
 		};
 		/**
 		 * @brief texture2D api.
