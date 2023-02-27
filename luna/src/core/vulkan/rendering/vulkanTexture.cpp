@@ -14,7 +14,7 @@ namespace luna
 			{
 				int width, height, channels;  
 				stbi_uc* image =  stbi_load(filePath.c_str(), &width, &height, &channels, 4);
-				if (channels == 3) channels = 4;
+				if (channels == 3) channels = 4; //RGB formats are most likely not supported! so convert to quad channels.
 				uint64_t imageSize = width * height * channels;
 					
 				utils::vulkanAllocator::createBuffer(&buffer,imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
@@ -228,15 +228,12 @@ namespace luna
 		}
 		ref<renderer::texture> vulkanFont::getGlyph(char character)
 		{
+			LN_PROFILE_FUNCTION();
 			ref<renderer::texture> glyph = renderer::texture::create(_handle, { 300,300 });
 			int index = character - startIndex;
 			int yStart = index / 16;
 			int xStart = index % 16;
-			LN_CORE_INFO("glyph coords: ({0},{1})", xStart, yStart);
 			if (!(xStart < 16 && yStart < 16)) return nullptr; //character out of scope;
-
-
-			
 			glm::vec2 uvStart = { (float)xStart / 16,(float)yStart / 16 };
 			glm::vec2 uvEnd = { (float)(xStart + 1) / 16,(float)(yStart+1) / 16 };
 			glyph->setUv(uvStart, uvEnd);
