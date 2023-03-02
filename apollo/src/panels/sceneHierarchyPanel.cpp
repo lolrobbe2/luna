@@ -109,7 +109,6 @@ namespace luna
 			if (payload != nullptr && payload->DataSize == 0)
 			{
 				Node.addChild(m_SelectionContext);
-				
 			}
 			ImGui::EndDragDropTarget();
 		}

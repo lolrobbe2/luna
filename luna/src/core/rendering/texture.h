@@ -103,6 +103,7 @@ namespace luna
 			uint64_t _handle;
 			void* data;
 			std::vector<glm::vec2> glypScales;
+			std::vector<glm::vec2> glypAdvances;
 		private:
 
 		};

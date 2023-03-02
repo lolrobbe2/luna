@@ -240,10 +240,10 @@ namespace luna
 			glyph->setDestroy(false); //make sure the fontAtlas is not destroyed;
 			return glyph;
 		}
-
+		
 		glm::vec2 vulkanFont::getAdvance(char character)
 		{
-			return glm::vec2();
+			return glypAdvances[character - startIndex];
 		}
 		glm::vec2 vulkanFont::getScale(char character)
 		{
@@ -288,6 +288,7 @@ namespace luna
 					int y = index / 16;
 					int x = index % 16;
 					glypScales.push_back(scale);
+					glypAdvances.push_back({ offsetx / 300.0f,offsety / 300.0f });
 					buffer.push_back(VK_NULL_HANDLE);
 					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));
@@ -296,6 +297,7 @@ namespace luna
 				else 
 				{
 					glypScales.push_back({ 1.0f,1.0f });
+					glypAdvances.push_back({0.0f,0.0f });
 					buffer.push_back(VK_NULL_HANDLE);
 					LN_CORE_ERROR("could not load glyph: {0}", (char)i);
 				}

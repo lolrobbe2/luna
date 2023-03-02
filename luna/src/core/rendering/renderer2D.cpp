@@ -9,6 +9,7 @@ namespace luna
 			glm::vec4 color;
 			glm::vec2 textureCoords;
 			float textureIndex;
+			float text;
 		};
 		struct renderer2DData
 		{
@@ -26,6 +27,7 @@ namespace luna
 			std::vector<uint64_t> textures;
 			glm::vec4 quadVertexPositions[4];
 			renderer2D::statistics stats;
+			float isText = false;
 		};
 
 		static renderer2DData rendererData;
@@ -72,6 +74,7 @@ namespace luna
 			rendererData.quadIndexBuffer = nullptr;
 
 			rendererData.quadVertexBuffer = nullptr;
+
 			renderer::shutdown();
 		}
 
@@ -83,8 +86,8 @@ namespace luna
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
-			rendererData.textures.resize(1);
-			rendererData.textures[0] = blankImage->handle();
+			rendererData.textures.resize(0);
+			rendererData.textures.push_back(blankImage->handle());
 		}
 
 		void renderer2D::endScene()
@@ -96,13 +99,16 @@ namespace luna
 		}
 		void renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText)
 		{
-			float xAdvance = 0.1;
+			float xAdvance = 0.0f;
 			if (!labelText.size()) return;
+
+			rendererData.isText = true;
 			for (char character : labelText) {
 				ref<texture> glyph = font->getGlyph(character);
 				if(glyph) drawQuad({ xAdvance + position.x,position.y,position.z }, size  / font->getScale(character), glyph);
 				xAdvance += size.x / font->getScale(character).x;
 			}
+			rendererData.isText = false;
 		}
 		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)
 		{
@@ -126,6 +132,7 @@ namespace luna
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
 				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
+				rendererData.quadVertexBufferPtr->text = rendererData.isText;
 				rendererData.quadVertexBufferPtr++;
 			}
 			rendererData.quadIndexCount += 6;
@@ -156,6 +163,7 @@ namespace luna
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
 				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
+				rendererData.quadVertexBufferPtr->text = rendererData.isText;
 				rendererData.quadVertexBufferPtr++;
 			}
 			rendererData.quadIndexCount += 6;

@@ -106,7 +106,6 @@ namespace luna
 						valueCache.erase(valueCache.begin() + iterator);
 						handleCache.insert(handleCache.begin(), key);
 						valueCache.insert(valueCache.begin(), requesteCacheObject);
-
 						//return cache hit and value.
 						return std::pair<cacheResult, value>(cacheResult::cacheHit, requesteCacheObject);
 					}
@@ -132,8 +131,10 @@ namespace luna
 					cacheObject currentKey = handleCache[iterator];
 					if (currentKey == key)
 					{
+						//erase value from cache
 						handleCache.erase(handleCache.begin() + iterator);
 						valueCache.erase(valueCache.begin() + iterator);
+						//put value in front of cache
 						handleCache.insert(cache.begin(), key);
 						valueCache.insert(valueCache.begin(), _value);
 						//return cache hit and value.
