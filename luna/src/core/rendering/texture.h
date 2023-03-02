@@ -95,10 +95,11 @@ namespace luna
 			virtual ref<texture> getGlyph(char character) = 0;
 			virtual glm::vec2 getAdvance(char character) = 0;
 			virtual glm::vec2 getScale(char charcater) = 0;
+			int getKernAdvance(char ch1, char ch2) { return stbtt_GetCodepointKernAdvance(&fontInfo, ch1, ch2); }
 			uint64_t handle() { return _handle; };
 			static ref<font> create(const std::string& filePath);
 		protected:
-			const static char startIndex = 32;
+			const static char startIndex = 0;
 			stbtt_fontinfo fontInfo;
 			uint64_t _handle;
 			void* data;

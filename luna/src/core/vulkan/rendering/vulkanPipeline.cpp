@@ -174,6 +174,7 @@ namespace luna
 			if (ImGui::Begin("scene"));
 			{
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+				windowDimensions = { viewportPanelSize.x,viewportPanelSize.y };
 				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
 			}
 			ImGui::PopStyleVar(1);
@@ -579,7 +580,7 @@ namespace luna
 			colorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;
 			colorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;
 			colorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
-			colorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;
+			colorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;
 
 			return colorBlendAttachment;
 		}

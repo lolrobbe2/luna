@@ -101,17 +101,20 @@ namespace luna
 		}
 		void renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText)
 		{
-			float xAdvance = 0.0f;
 			if (!labelText.size()) return;
-
+			float xAdvance = 0.0f;
 			rendererData.isText = true;
+			char previousChar = ' ';
 			for (char character : labelText) {
 				ref<texture> glyph = font->getGlyph(character);
-				if(glyph) drawQuad({ xAdvance + position.x,position.y,position.z }, size  / font->getScale(character), glyph);
-				xAdvance += size.x / font->getScale(character).x;
+				glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() } ;
+				if (glyph) drawQuad({ xAdvance + position.x,position.y + ((font->getAdvance(character).y / 2) / renderer::getSceneDimensions().y * size.y),position.z}, (dimensions / renderer::getSceneDimensions()) * size, glyph);
+				// -= font->getKernAdvance(previousChar, character) / renderer::getSceneDimensions().x * size.x;
+				xAdvance += (dimensions.x + (font->getAdvance(character).x * 2)) / renderer::getSceneDimensions().x * size.x;
+
 			}
 			rendererData.isText = false;
-		}
+		} 
 		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)
 		{
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)

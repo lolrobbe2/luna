@@ -229,7 +229,7 @@ namespace luna
 		ref<renderer::texture> vulkanFont::getGlyph(char character)
 		{
 			LN_PROFILE_FUNCTION();
-			ref<renderer::texture> glyph = renderer::texture::create(_handle, { 300,300 });
+			ref<renderer::texture> glyph = renderer::texture::create(_handle, { 300.0f / getScale(character).x,300.0f / getScale(character).y });
 			int index = character - startIndex;
 			int yStart = index / 16;
 			int xStart = index % 16;
@@ -243,11 +243,11 @@ namespace luna
 		
 		glm::vec2 vulkanFont::getAdvance(char character)
 		{
-			return glypAdvances[character - startIndex];
+			return glypAdvances[character];
 		}
 		glm::vec2 vulkanFont::getScale(char character)
 		{
-			return glypScales[character - startIndex];
+			return glypScales[character];
 		}
 		void vulkanFont::createFontTexture() 
 		{
@@ -262,13 +262,12 @@ namespace luna
 		{
 			int charWidth, charHeight;
 			int xoff, yoff;
-			
-			stbtt_GetCodepointBitmap(info, 1, 1,codePoint , &charWidth, &charHeight, &xoff, &yoff);
+			stbtt_GetCodepointBitmap(info, 1, 1,codePoint , &charWidth, &charHeight, newXoff, newYoff);
 			*xscale = 299.0f / (float)charWidth; //299.0f instead of 300.0f beacuse of floating point "error".
 			*yscale = 299.0f / (float)charHeight; //299.0f instead of 300.0f beacuse of floating point "error".
 			int newCharWidth, newCharHeight;
 			
-			return stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, newXoff, newYoff);
+			return stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, &xoff, &yoff);
 		}
 
 		void vulkanFont::writeGlyphsIntoBuffer()
@@ -288,7 +287,7 @@ namespace luna
 					int y = index / 16;
 					int x = index % 16;
 					glypScales.push_back(scale);
-					glypAdvances.push_back({ offsetx / 300.0f,offsety / 300.0f });
+					glypAdvances.push_back({ offsetx,offsety});
 					buffer.push_back(VK_NULL_HANDLE);
 					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));

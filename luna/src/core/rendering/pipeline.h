@@ -66,9 +66,11 @@ namespace luna
 			 *
 			 */
 			virtual void clear() = 0;
+
+			glm::vec2 getDimensions() { return windowDimensions; };
 			int test;
 		protected:
-			
+			glm::vec2 windowDimensions;
 		};
 	}
 }
