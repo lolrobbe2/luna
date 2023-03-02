@@ -83,6 +83,8 @@ namespace luna
 			LN_PROFILE_SCOPE("begin scene");
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
+			//we use memset because it gets fully transformed in to pure assembly an is thus the fastest way to reset the vertewBUffer.
+			memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
