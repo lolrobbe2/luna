@@ -83,6 +83,7 @@ namespace luna
 			LN_PROFILE_SCOPE("begin scene");
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
+			memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;

@@ -12,6 +12,7 @@ namespace luna
 	struct idComponent
 	{
 		uuid id;
+		operator uint64_t() { return id; }
 		idComponent() = default;
 		idComponent(const idComponent&) = default;
 	};
