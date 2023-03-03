@@ -115,20 +115,17 @@ namespace luna
 			 * 3) xadvance += relative glyph width.
 			 * 
 			 */
-
-			if (!labelText.size()) return;
 			float xAdvance = 0.0f;
 			rendererData.isText = true;
-			bool alternate = true;
-			char previousChar = ' ';
-
-			
-			for (size_t i = 0; i < labelText.size(); i+=1) {
+			ref<texture> spaceGlyph = font->getGlyph('_');
+			for (size_t i = 0; i < labelText.size(); i++) 
+			{
 				ref<texture> glyph = font->getGlyph(labelText[i]);
 				glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() };
 				xAdvance += font->getAdvance(labelText[i]).x / renderer::getSceneDimensions().x * size.x;
 				if (glyph) drawCharQuad({ xAdvance + position.x,position.y + font->getAdvance(labelText[i]).y / renderer::getSceneDimensions().y * size.y,position.z}, size, glyph);
-				xAdvance += glyph->getWidth() / renderer::getSceneDimensions().x * size.x;
+				if (labelText[i] == ' ') xAdvance += spaceGlyph->getWidth() / renderer::getSceneDimensions().x * size.x;
+				else xAdvance += glyph->getWidth() / renderer::getSceneDimensions().x * size.x;
 			}
 			rendererData.isText = false;
 		} 

@@ -300,6 +300,7 @@ namespace luna
 					buffer.push_back(VK_NULL_HANDLE);
 					LN_CORE_ERROR("could not load glyph: {0}", (char)i);
 				}
+				
 			}
 			utils::vulkanAllocator::flush();
 			buffer.resize(0);
