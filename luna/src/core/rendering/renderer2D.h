@@ -49,6 +49,15 @@ namespace luna
 			 * \param labelText
 			 */
 			static void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font,const std::string labelText);
+			
+			/**
+			 * @brief draws a texture quad.
+			 *
+			 * \param const glm::vec3& position starting position
+			 * \param const glm::vec2& size starting size;
+			 * \param const glm::vec3& color rgb color value
+			*/
+			static void drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture);
 			/**
 			 * @brief draws a texture quad.
 			 *

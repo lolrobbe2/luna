@@ -26,6 +26,7 @@ namespace luna
 			uint32_t* quadIndices = nullptr;
 			std::vector<uint64_t> textures;
 			glm::vec4 quadVertexPositions[4];
+			glm::vec4 quadCharVertexPositions[4];
 			renderer2D::statistics stats;
 			float isText = false;
 		};
@@ -50,6 +51,11 @@ namespace luna
 			rendererData.quadVertexPositions[1] = { 0.5f, -0.5f, 0.0f, 1.0f };
 			rendererData.quadVertexPositions[2] = { 0.5f,  0.5f, 0.0f, 1.0f };
 			rendererData.quadVertexPositions[3] = { -0.5f,  0.5f, 0.0f, 1.0f };
+
+			rendererData.quadCharVertexPositions[0] = { 0.0f, 0.0f, 0.0f, 1.0f };
+			rendererData.quadCharVertexPositions[1] = { 1.0f, 0.0f, 0.0f, 1.0f };
+			rendererData.quadCharVertexPositions[2] = { 1.0f,  1.0f, 0.0f, 1.0f };
+			rendererData.quadCharVertexPositions[3] = { 0.0f,  1.0f, 0.0f, 1.0f };
 
 			uint32_t offset = 0;
 			for (uint32_t i = 0; i < rendererData.maxIndices; i += 6)
@@ -101,20 +107,57 @@ namespace luna
 		}
 		void renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText)
 		{
+
+			/**
+			 * font rendering: quad origin is at top left.
+			 * 1) xadvance += glyph advance.x 
+			 * 2) draw glyph (+ y advance)
+			 * 3) xadvance += relative glyph width.
+			 * 
+			 */
+
 			if (!labelText.size()) return;
 			float xAdvance = 0.0f;
 			rendererData.isText = true;
+			bool alternate = true;
 			char previousChar = ' ';
-			for (char character : labelText) {
-				ref<texture> glyph = font->getGlyph(character);
-				glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() } ;
-				if (glyph) drawQuad({ xAdvance + position.x,position.y + ((font->getAdvance(character).y / 2) / renderer::getSceneDimensions().y * size.y),position.z}, (dimensions / renderer::getSceneDimensions()) * size, glyph);
-				// -= font->getKernAdvance(previousChar, character) / renderer::getSceneDimensions().x * size.x;
-				xAdvance += (dimensions.x + (font->getAdvance(character).x * 2)) / renderer::getSceneDimensions().x * size.x;
 
+			
+			for (size_t i = 0; i < labelText.size(); i+=1) {
+				ref<texture> glyph = font->getGlyph(labelText[i]);
+				glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() };
+				xAdvance += font->getAdvance(labelText[i]).x / renderer::getSceneDimensions().x * size.x;
+				if (glyph) drawCharQuad({ xAdvance + position.x,position.y + font->getAdvance(labelText[i]).y / renderer::getSceneDimensions().y * size.y,position.z}, size, glyph);
+				xAdvance += glyph->getWidth() / renderer::getSceneDimensions().x * size.x;
 			}
 			rendererData.isText = false;
 		} 
+		void renderer2D::drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)
+		{
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+			uint64_t handle = textureInBatch(texture->handle());
+			if (!handle) {
+				rendererData.textures.push_back(texture->handle());
+				handle = textureInBatch(texture->handle());
+			}
+			glm::vec2 dimensions = { texture->getWidth(),texture->getHeight() };
+			glm::vec2 normalizedDimensions = dimensions / renderer::getSceneDimensions();
+			transform *= glm::scale(glm::mat4(1.0f), { normalizedDimensions.x, normalizedDimensions.y, 1.0f });
+			std::vector<glm::vec2> textureCoords = texture->getUv();
+			constexpr size_t quadVertexCount = 4;
+			for (size_t i = 0; i < quadVertexCount; i++)
+			{
+				rendererData.quadVertexBufferPtr->color = { 1.0f,1.0f,1.0f,1.0f };
+				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadCharVertexPositions[i];
+				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
+				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
+				rendererData.quadVertexBufferPtr->text = rendererData.isText;
+				rendererData.quadVertexBufferPtr++;
+			}
+			rendererData.quadIndexCount += 6;
+			rendererData.stats.quadCount++;
+		}
 		void renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)
 		{
 			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
