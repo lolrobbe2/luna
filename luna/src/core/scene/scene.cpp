@@ -58,4 +58,12 @@ namespace luna
 		if (hasComponent<childComponent>()) getComponent<childComponent>().childs.push_back(node);
 		else addComponent<childComponent>().childs.push_back(node);
 	}
+
+	void Node::init(luna::scene* scene)
+	{
+		this->scene = scene;
+		entityHandle = scene->m_Registry.create();
+		addComponent<idComponent>();
+		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
+	}
 }

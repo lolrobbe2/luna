@@ -4,7 +4,8 @@
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
 #include <core/utils/timestep.h>
-#include <typeinfo>
+
+#include <core/object/objectDB.h>
 namespace luna 
 {
 	class LN_API Node;
@@ -50,7 +51,7 @@ namespace luna
 
 	};
 	
-	class LN_API Node 
+	class LN_API Node : object
 	{
 	public:
 		Node() = default;
@@ -59,6 +60,7 @@ namespace luna
 		virtual ~Node() = default;
 		void setName(std::string name);
 		void addChild(Node node);
+		virtual void init(scene* scene) override;
 
 		friend class scene;
 		friend class sceneHierarchyPanel;
@@ -116,7 +118,7 @@ namespace luna
 		}
 	protected:
 		entt::entity entityHandle{ entt::null };
-		scene* scene;
+		scene* scene = nullptr;
 	};
 	
 }
