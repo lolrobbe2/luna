@@ -7,16 +7,18 @@
 
 namespace luna
 {
+	class scene;
+	class Node;
 	class object
 	{
-
+		virtual void init(scene* scene) = 0;
 	};
 	class LN_API objectDB
 	{
 	public:
 		struct classInfo
 		{
-			object* (*creation_func)() = nullptr;
+			Node* (*creation_func)() = nullptr;
 		};
 		
 		
@@ -35,14 +37,15 @@ namespace luna
 			}
 			LN_CORE_INFO("class registered: {}", seglist.back());
 			classDatabase.insert({ seglist.back(), t});
+			createInstance("Node");
 			//classDatabase.insert( std::string(typeid(T).name()),std::function<void>(&create<T>());
 		}
 		/* start of c++ wizardry */
-		#define memnew(m_class) _post_initialize(new ("") m_class)
+		#define memnew(m_class) _post_initialize(new m_class)
 		template <class T>
-		static object* creator()
+		static Node* creator()
 		{
-			return (object*)memnew(T);
+			return memnew(T);
 		}
 		_ALWAYS_INLINE_ static void postinitialize_handler(void*) {}
 
@@ -53,6 +56,12 @@ namespace luna
 		}
 		/* end of c++ wizardry */
 
+		static void createInstance(const std::string& className)
+		{
+			classInfo* info = getPtr(className);
+			if (!info) return;
+			info->creation_func();
+		}
 
 		static classInfo* getPtr(const std::string className) { return &classDatabase.find(className)->second; };
 		inline static std::unordered_map<std::string, classInfo> classDatabase;
