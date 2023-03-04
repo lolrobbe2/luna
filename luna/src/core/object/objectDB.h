@@ -19,7 +19,7 @@ namespace luna
 			object* (*creation_func)() = nullptr;
 		};
 		
-		#define memnew(m_class) _post_initialize(new ("") m_class)
+		
 		template<class T>
 		static void registerClass()
 		{
@@ -37,6 +37,8 @@ namespace luna
 			classDatabase.insert({ seglist.back(), t});
 			//classDatabase.insert( std::string(typeid(T).name()),std::function<void>(&create<T>());
 		}
+		/* start of c++ wizardry */
+		#define memnew(m_class) _post_initialize(new ("") m_class)
 		template <class T>
 		static object* creator()
 		{
@@ -49,6 +51,7 @@ namespace luna
 			postinitialize_handler(p_obj);
 			return p_obj;
 		}
+		/* end of c++ wizardry */
 
 
 		static classInfo* getPtr(const std::string className) { return &classDatabase.find(className)->second; };
