@@ -10,7 +10,8 @@ namespace luna
 			node,
 			controlNode,
 			spriteNode,
-			labelNode
+			labelNode,
+			buttonNode
 		};
 
 	public:
@@ -30,6 +31,8 @@ namespace luna
 		void drawComponents(Node Node);
 		void drawNodeSelectionList();
 
+		bool addNodeSelection(const std::string& nodeName,const nodeTypes& nodeType);
+
 	private:
 
 		uint64_t addIndent = 3;
@@ -38,5 +41,9 @@ namespace luna
 		Node m_Selected;
 		uint64_t m_ListSelected = -1;
 	};
+	template<typename T>
+	inline void sceneHierarchyPanel::displayAddComponentEntry(const std::string& entryName)
+	{
+	}
 }
 

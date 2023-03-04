@@ -1,10 +1,13 @@
 #include "sceneHierarchyPanel.h"
-#include <nodes/ui/spriteNode.h>
-#include <nodes/ui/labelNode.h>
+//node includes start
+#include <nodes/controlNodes/spriteNode.h>
+#include <nodes/controlNodes/labelNode.h>
+#include <nodes/controlNodes/buttonNode.h>
+//node includes end
 #include <core/rendering/renderer2D.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <core/platform/platformUtils.h>
-
+#include <core/object/objectDB.h>
 namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
@@ -50,6 +53,7 @@ namespace luna
 				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
 				if(ImGui::Button("add selected node",ImVec2(200,20)))
 				{
+					LN_REGISTER_CLASS(Node);
 					//TODO implement register node type method;
 					switch (m_ListSelected)
 					{
@@ -62,6 +66,8 @@ namespace luna
 					case labelNode:
 						m_Context->addNode<nodes::labelNode>("labelNode");
 						break;
+					case buttonNode:
+						m_Context->addNode<nodes::buttonNode>("buttonNode");
 					default:
 						break;
 					}
@@ -181,23 +187,26 @@ namespace luna
 		if (Node.hasComponent<spriteRendererComponent>())
 		{
 			auto& sprite = Node.getComponent<spriteRendererComponent>();
-			if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
+			if (sprite.showInEditor)
 			{
-				ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
-				char buffer[256];
-				memset(buffer, 0, sizeof(buffer));
-				strcpy_s(buffer, sprite.filePath.c_str());
-				if (ImGui::InputText("file path", buffer, sizeof(buffer))) sprite.filePath = std::string(buffer);
-				ImGui::SameLine();
-				if(ImGui::Button("select image"))
+				if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
 				{
-					sprite.filePath = luna::platform::os::openFilaDialog("image (*.png)\0*.png\0");
-					sprite.texture = renderer::texture::create(sprite.filePath);
-				}
+					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
+					char buffer[256];
+					memset(buffer, 0, sizeof(buffer));
+					strcpy_s(buffer, sprite.filePath.c_str());
+					if (ImGui::InputText("file path", buffer, sizeof(buffer))) sprite.filePath = std::string(buffer);
+					ImGui::SameLine();
+					if (ImGui::Button("select image"))
+					{
+						sprite.filePath = luna::platform::os::openFilaDialog("image (*.png)\0*.png\0");
+						sprite.texture = renderer::texture::create(sprite.filePath);
+					}
 
-				ImGui::TreePop();
+					ImGui::TreePop();
+				}
+				ImGui::Separator();
 			}
-			ImGui::Separator();
 		}
 		if (Node.hasComponent<labelRendererComponent>())
 		{
@@ -229,36 +238,30 @@ namespace luna
 
 	void sceneHierarchyPanel::drawNodeSelectionList()
 	{
-		ImGuiTreeNodeFlags flags = (m_ListSelected == node) ? ImGuiTreeNodeFlags_Selected : 0;
-		bool isOpenNode = ImGui::TreeNodeEx("node", ImGuiTreeNodeFlags_OpenOnArrow | flags, "node");
-		if(isOpenNode)
+		
+		if(addNodeSelection("node",node))
 		{
-			if (ImGui::IsItemClicked()) m_ListSelected = node;
-			ImGui::TreePop();
+			
 		}
 
-		flags = (m_ListSelected == controlNode) ? ImGuiTreeNodeFlags_Selected : 0;
-		if (ImGui::TreeNodeEx("control node", ImGuiTreeNodeFlags_OpenOnArrow | flags, "control node"))
+		if (addNodeSelection("control node",controlNode))
 		{
-			
-			if (ImGui::IsItemClicked()) m_ListSelected = controlNode;
-			
 			ImGui::Indent(10);
-			flags = (m_ListSelected == (spriteNode || labelNode)) ? ImGuiTreeNodeFlags_Selected : 0;
-			if (ImGui::TreeNodeEx("spriteNode", ImGuiTreeNodeFlags_OpenOnArrow | flags, "spriteNode"))
-			{
-				if (ImGui::IsItemClicked()) m_ListSelected = spriteNode;
-				ImGui::TreePop();
-			}
-
-			if (ImGui::TreeNodeEx("labelNode", ImGuiTreeNodeFlags_OpenOnArrow | flags, "labelNode"))
-			{
-				if (ImGui::IsItemClicked()) m_ListSelected = labelNode;
-				ImGui::TreePop();
-			}
+			addNodeSelection("spriteNode", spriteNode);
+			addNodeSelection("labelNode", labelNode);
+			addNodeSelection("buttonNode", buttonNode);
 			ImGui::Indent(0);
-			ImGui::TreePop();
-
 		}
+	}
+	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName,const nodeTypes& nodeType)
+	{
+		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeType) ? ImGuiTreeNodeFlags_Selected : 0;
+		bool isOpenNode = ImGui::TreeNodeEx(nodeName.c_str(), ImGuiTreeNodeFlags_OpenOnArrow | flags, nodeName.c_str());
+		if (isOpenNode)
+		{
+			if (ImGui::IsItemClicked()) m_ListSelected = nodeType;
+			ImGui::TreePop();
+		}
+		return isOpenNode;
 	}
 }

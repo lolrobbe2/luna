@@ -89,7 +89,7 @@ namespace luna
 		{
 		public:
 			//16*300 (width) = 4800
-			//14*300 (height) = 4200
+			//16*300 (height) = 4200
 			//32 dec - 127 decimal;
 			virtual ~font() = default;
 			virtual ref<texture> getGlyph(char character) = 0;

@@ -275,7 +275,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 			
-			for (size_t i = startIndex; i < 255; i++)
+			for (size_t i = startIndex; i < 256; i++)
 			{
 				int index = i - startIndex;
 				glm::vec2 scale;

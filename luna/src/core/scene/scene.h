@@ -4,6 +4,7 @@
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
 #include <core/utils/timestep.h>
+#include <typeinfo>
 namespace luna 
 {
 	class LN_API Node;
@@ -27,7 +28,7 @@ namespace luna
 		template<typename T>
 		void onComponentAdded(Node Node, T& component)
 		{
-
+			
 		}
 
 		template<typename... components>

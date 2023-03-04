@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <stddef.h>
 /*personal engine includes*/
 #include <core/platform/platform.h>
 /*thirdparty includes*/

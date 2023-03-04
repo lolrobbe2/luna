@@ -54,7 +54,9 @@ namespace luna
 		ref<renderer::texture> texture;
 		std::string filePath;
 		float TilingFactor = 1.0f;
-		
+		bool showInEditor = true;
+
+
 		spriteRendererComponent() = default;
 		spriteRendererComponent(const spriteRendererComponent&) = default;
 		spriteRendererComponent(const glm::vec4& color)
