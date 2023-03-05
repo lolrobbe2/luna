@@ -27,20 +27,14 @@ namespace luna
 		
 		
 		template<class T>
-		static void registerClass()
+		_ALWAYS_INLINE_ static void registerClass()
 		{
 			
 			classInfo t;
 			t.creation_func = &creator<T>;
 			std::stringstream fullName(typeid(T).name());
-			std::vector<std::string> seglist;
-			std::string segment;
-			while (std::getline(fullName, segment, ':'))
-			{
-				seglist.push_back(segment);
-			}
-			LN_CORE_INFO("class registered: {0}", seglist.back());
-			classDatabase.insert({ seglist.back(), t});
+			LN_CORE_INFO("class registered: {0}", getClasName<T>());
+			classDatabase.insert({ getClasName<T>(), t});
 		}
 		/* start of c++ wizardry */
 		#define memnew(m_class) _post_initialize(new m_class)
@@ -60,11 +54,24 @@ namespace luna
 
 		static void createInstance(const std::string& className, scene* scene);
 
-		static classInfo* getPtr(const std::string className) {
+		_ALWAYS_INLINE_ static classInfo* getPtr(const std::string className) {
 			auto searchResult = classDatabase.find(className);
 			if (searchResult == classDatabase.end()) return nullptr;
 			return &searchResult->second; 
 		};
+
+		template <class T>
+		_ALWAYS_INLINE_ static std::string getClasName()
+		{
+			std::stringstream fullName(typeid(T).name());
+			std::vector<std::string> seglist;
+			std::string segment;
+			while (std::getline(fullName, segment, ':'))
+			{
+				seglist.push_back(segment);
+			}
+			return seglist.back();
+		}
 		inline static std::unordered_map<std::string, classInfo> classDatabase;
 	};
 }
