@@ -5,14 +5,7 @@ namespace luna
 	class sceneHierarchyPanel
 	{
 	public:
-		enum nodeTypes
-		{
-			node,
-			controlNode,
-			spriteNode,
-			labelNode,
-			buttonNode
-		};
+
 
 	public:
 		sceneHierarchyPanel() = default;
@@ -31,7 +24,7 @@ namespace luna
 		void drawComponents(Node Node);
 		void drawNodeSelectionList();
 
-		bool addNodeSelection(const std::string& nodeName,const nodeTypes& nodeType);
+		bool addNodeSelection(const std::string& nodeName);
 
 	private:
 
@@ -39,7 +32,7 @@ namespace luna
 		scene* m_Context;
 		Node m_SelectionContext;
 		Node m_Selected;
-		uint64_t m_ListSelected = -1;
+		std::string m_ListSelected = "";
 	};
 	template<typename T>
 	inline void sceneHierarchyPanel::displayAddComponentEntry(const std::string& entryName)

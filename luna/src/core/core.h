@@ -28,6 +28,9 @@
 #endif
 #endif
 
+#ifndef stringify
+#define stringify( name ) #name
+#endif
 
 #define MAJOR 0
 #define MINOR 0 

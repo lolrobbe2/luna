@@ -39,7 +39,7 @@ namespace luna
 	Node::Node(luna::scene* scene)
 	{
 		this->scene = scene;
-		entityHandle = scene->m_Registry.create();
+		entityHandle = scene->create();
 		addComponent<idComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
@@ -62,7 +62,7 @@ namespace luna
 	void Node::init(luna::scene* scene)
 	{
 		this->scene = scene;
-		entityHandle = scene->m_Registry.create();
+		entityHandle = scene->create();
 		addComponent<idComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}

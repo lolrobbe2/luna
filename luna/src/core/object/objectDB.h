@@ -3,22 +3,26 @@
 #include <type_traits>
 
 
-#define LN_REGISTER_CLASS(node) objectDB::registerClass<node>();
+#define LN_REGISTER_CLASS(object) objectDB::registerClass<object>();
 
 namespace luna
 {
 	class scene;
-	class Node;
-	class object
+	class LN_API object
 	{
+	public:
 		virtual void init(scene* scene) = 0;
 	};
+	/**
+	 * @brief object database class.
+	 * @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
+	 */
 	class LN_API objectDB
 	{
 	public:
 		struct classInfo
 		{
-			Node* (*creation_func)() = nullptr;
+			object* (*creation_func)() = nullptr;
 		};
 		
 		
@@ -35,15 +39,13 @@ namespace luna
 			{
 				seglist.push_back(segment);
 			}
-			LN_CORE_INFO("class registered: {}", seglist.back());
+			LN_CORE_INFO("class registered: {0}", seglist.back());
 			classDatabase.insert({ seglist.back(), t});
-			createInstance("Node");
-			//classDatabase.insert( std::string(typeid(T).name()),std::function<void>(&create<T>());
 		}
 		/* start of c++ wizardry */
 		#define memnew(m_class) _post_initialize(new m_class)
 		template <class T>
-		static Node* creator()
+		static object* creator()
 		{
 			return memnew(T);
 		}
@@ -56,14 +58,13 @@ namespace luna
 		}
 		/* end of c++ wizardry */
 
-		static void createInstance(const std::string& className)
-		{
-			classInfo* info = getPtr(className);
-			if (!info) return;
-			info->creation_func();
-		}
+		static void createInstance(const std::string& className, scene* scene);
 
-		static classInfo* getPtr(const std::string className) { return &classDatabase.find(className)->second; };
+		static classInfo* getPtr(const std::string className) {
+			auto searchResult = classDatabase.find(className);
+			if (searchResult == classDatabase.end()) return nullptr;
+			return &searchResult->second; 
+		};
 		inline static std::unordered_map<std::string, classInfo> classDatabase;
 	};
 }

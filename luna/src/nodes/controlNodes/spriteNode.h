@@ -24,6 +24,7 @@ namespace luna
 			 * \param scene
 			 */
 			spriteNode(luna::scene* scene);
+			virtual void init(luna::scene* scene) override;
 			virtual ~spriteNode() = default;
 		};
 	}

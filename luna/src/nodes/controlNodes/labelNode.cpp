@@ -12,6 +12,17 @@ namespace luna
 			addComponent<transformComponent>();
 			addComponent<labelRendererComponent>();
 		}
+
+		void labelNode::init(luna::scene* scene) 
+		{
+			this->scene = scene;
+			entityHandle = scene->create();
+			addComponent<idComponent>();
+			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
+			/*label Node Components*/
+			addComponent<transformComponent>();
+			addComponent<labelRendererComponent>();
+		}
 	}
 }
 

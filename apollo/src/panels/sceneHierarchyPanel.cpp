@@ -17,6 +17,9 @@ namespace luna
 
 	void sceneHierarchyPanel::setContext(const ref<scene>& context)
 	{
+		LN_REGISTER_CLASS(Node);
+		LN_REGISTER_CLASS(nodes::spriteNode);
+		LN_REGISTER_CLASS(nodes::labelNode);
 		m_Context = context.get();
 	}
 
@@ -47,31 +50,17 @@ namespace luna
 				ImGui::SetWindowPos({windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
 				if (ImGui::Button("exit node selection", ImVec2(200, 20)))
 				{
-					m_ListSelected = 0;
+					m_ListSelected = "";
 					ImGui::CloseCurrentPopup();
 				}
 				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
 				if(ImGui::Button("add selected node",ImVec2(200,20)))
 				{
-					LN_REGISTER_CLASS(Node);
+					
 					//TODO implement register node type method;
-					switch (m_ListSelected)
-					{
-					case node:
-						m_Context->addNode<Node>("node");
-						break;
-					case spriteNode:
-						m_Context->addNode<nodes::spriteNode>("spriteNode");
-						break;
-					case labelNode:
-						m_Context->addNode<nodes::labelNode>("labelNode");
-						break;
-					case buttonNode:
-						m_Context->addNode<nodes::buttonNode>("buttonNode");
-					default:
-						break;
-					}
-					m_ListSelected = 0;
+					LN_CORE_INFO("node added: {0}",m_ListSelected);
+					objectDB::createInstance(m_ListSelected, m_Context);
+					m_ListSelected = "";
 					ImGui::CloseCurrentPopup();
 				}
 				drawNodeSelectionList();
@@ -239,27 +228,27 @@ namespace luna
 	void sceneHierarchyPanel::drawNodeSelectionList()
 	{
 		
-		if(addNodeSelection("node",node))
+		if(addNodeSelection("Node"))
 		{
 			
 		}
 
-		if (addNodeSelection("control node",controlNode))
+		if (addNodeSelection("control node"))
 		{
 			ImGui::Indent(10);
-			addNodeSelection("spriteNode", spriteNode);
-			addNodeSelection("labelNode", labelNode);
-			addNodeSelection("buttonNode", buttonNode);
+			addNodeSelection("spriteNode");
+			addNodeSelection("labelNode");
+			addNodeSelection("buttonNode");
 			ImGui::Indent(0);
 		}
 	}
-	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName,const nodeTypes& nodeType)
+	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName)
 	{
-		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeType) ? ImGuiTreeNodeFlags_Selected : 0;
+		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeName) ? ImGuiTreeNodeFlags_Selected : 0;
 		bool isOpenNode = ImGui::TreeNodeEx(nodeName.c_str(), ImGuiTreeNodeFlags_OpenOnArrow | flags, nodeName.c_str());
 		if (isOpenNode)
 		{
-			if (ImGui::IsItemClicked()) m_ListSelected = nodeType;
+			if (ImGui::IsItemClicked()) m_ListSelected = nodeName;
 			ImGui::TreePop();
 		}
 		return isOpenNode;
