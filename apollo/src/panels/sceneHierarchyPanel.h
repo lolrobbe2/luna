@@ -24,7 +24,7 @@ namespace luna
 		void drawComponents(Node Node);
 		void drawNodeSelectionList();
 
-		bool addNodeSelection(const std::string& nodeName);
+		bool addNodeSelection(const std::string& nodeName,objectDB::classInfo* classInfo);
 
 	private:
 

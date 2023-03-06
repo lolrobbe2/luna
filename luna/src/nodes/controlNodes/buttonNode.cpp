@@ -10,6 +10,7 @@ namespace luna
 		buttonNode::buttonNode(luna::scene* scene) : spriteNode(scene)
 		{
 			getComponent<spriteRendererComponent>().showInEditor = false;
+
 		}
 	}
 }

@@ -192,6 +192,10 @@ project "sandbox"
        
         symbols "Off"
         optimize "On"
+        buildoptions 
+        {
+            "-mwindows"
+        }
 
 project "apollo"
     location "apollo"
@@ -235,18 +239,15 @@ project "apollo"
         systemversion "latest"
         defines
         {
-            "_WINDLL"
+            "_WINDLL",
         }
         
         filter "configurations:debug"
-    
         symbols "On"
 
         filter "configurations:release"
-    
         optimize "On"
 
         filter "configurations:distribution"
-    
         symbols "Off"
         optimize "On"

@@ -3,11 +3,11 @@ namespace luna
 {
 	namespace nodes
 	{
-		labelNode::labelNode(entt::entity handle, luna::scene* scene) : Node(handle, scene)
+		labelNode::labelNode(entt::entity handle, luna::scene* scene) : controlNode(handle, scene)
 		{
 
 		}
-		labelNode::labelNode(luna::scene* scene) : Node(scene)
+		labelNode::labelNode(luna::scene* scene) : controlNode(scene)
 		{
 			addComponent<transformComponent>();
 			addComponent<labelRendererComponent>();

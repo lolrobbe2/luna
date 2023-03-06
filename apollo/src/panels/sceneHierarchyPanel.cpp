@@ -17,9 +17,6 @@ namespace luna
 
 	void sceneHierarchyPanel::setContext(const ref<scene>& context)
 	{
-		LN_REGISTER_CLASS(Node);
-		LN_REGISTER_CLASS(nodes::spriteNode);
-		LN_REGISTER_CLASS(nodes::labelNode);
 		m_Context = context.get();
 	}
 
@@ -227,22 +224,13 @@ namespace luna
 
 	void sceneHierarchyPanel::drawNodeSelectionList()
 	{
-		
-		if(addNodeSelection("Node"))
+		for (auto& [key, value] : objectDB::rootClassDatabase) 
 		{
+			addNodeSelection(key,value);
+		}
 			
-		}
-
-		if (addNodeSelection("control node"))
-		{
-			ImGui::Indent(10);
-			addNodeSelection("spriteNode");
-			addNodeSelection("labelNode");
-			addNodeSelection("buttonNode");
-			ImGui::Indent(0);
-		}
 	}
-	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName)
+	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName,objectDB::classInfo* classInfo)
 	{
 		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeName) ? ImGuiTreeNodeFlags_Selected : 0;
 		bool isOpenNode = ImGui::TreeNodeEx(nodeName.c_str(), ImGuiTreeNodeFlags_OpenOnArrow | flags, nodeName.c_str());
@@ -251,6 +239,17 @@ namespace luna
 			if (ImGui::IsItemClicked()) m_ListSelected = nodeName;
 			ImGui::TreePop();
 		}
+	
+		if(classInfo)
+		{
+			ImGui::Indent(10);
+			for (auto childClass : classInfo->children)
+			{
+				addNodeSelection(childClass->className, childClass);
+			}
+			ImGui::Unindent(10);
+		}
+
 		return isOpenNode;
 	}
 }

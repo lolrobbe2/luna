@@ -1,5 +1,5 @@
 #pragma once
-#include <core/scene/scene.h>
+#include <nodes/controlNodes/controlNode.h>
 namespace luna 
 {
 	namespace nodes
@@ -7,7 +7,7 @@ namespace luna
 		/**
 		 * @brief implementation of spriteNode.
 		 */
-		class LN_API spriteNode : public Node
+		class LN_API spriteNode : public controlNode
 		{
 		public:
 			spriteNode() = default;

@@ -1,5 +1,5 @@
 #pragma once
-#include <core/scene/scene.h>
+#include <nodes/controlNodes/controlNode.h>
 namespace luna
 {
 	namespace nodes
@@ -7,7 +7,7 @@ namespace luna
 		/**
 		 * @brief label node implementation.
 		 */
-		class LN_API labelNode : public Node
+		class LN_API labelNode : public controlNode
 		{
 		public:
 			

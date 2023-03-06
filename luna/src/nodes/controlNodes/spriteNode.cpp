@@ -3,11 +3,11 @@ namespace luna
 {
 	namespace nodes
 	{
-		spriteNode::spriteNode(entt::entity handle, luna::scene* scene) : Node(handle,scene)
+		spriteNode::spriteNode(entt::entity handle, luna::scene* scene) : controlNode(handle,scene)
 		{
 
 		}
-		spriteNode::spriteNode(luna::scene* scene) : Node(scene)
+		spriteNode::spriteNode(luna::scene* scene) : controlNode(scene)
 		{
 			addComponent<transformComponent>();
 			addComponent<spriteRendererComponent>();
