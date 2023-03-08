@@ -37,7 +37,10 @@ namespace luna
 	{
 	public:
 		static float getTime();
+
 	};
+
+
 }
 
 

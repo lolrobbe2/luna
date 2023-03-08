@@ -42,6 +42,12 @@ namespace luna
 			 * \return 
 			 */
 			inline void* getWindow() override;
+			/**
+			 * @brief returns the current cursor pos.
+			 * 
+			 * \return glm::vec2
+			 */
+			virtual glm::vec2 getCursorPos() const override;
 		private: 
 			/**
 			 * initializes the window and also GLFW if need be.

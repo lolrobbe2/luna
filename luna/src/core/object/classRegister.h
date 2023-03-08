@@ -15,6 +15,7 @@ namespace luna
 				LN_CLASS(controlNode, Node);
 				LN_CLASS(labelNode, controlNode);
 				LN_CLASS(spriteNode, controlNode);
+				LN_CLASS(buttonNode, controlNode);
 			}
 		};
 	}

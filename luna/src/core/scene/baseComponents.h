@@ -73,8 +73,22 @@ namespace luna
 
 		labelRendererComponent() = default;
 		labelRendererComponent(const labelRendererComponent&) = default;
-		labelRendererComponent(const glm::vec4& color)
-			: color(color) {}
+		labelRendererComponent(const std::string& text)
+			: text(text) {}
+	};
+
+	struct buttonComponent
+	{
+		ref<renderer::texture> normalTexture; 
+		ref<renderer::texture> hoverTexture;
+		ref<renderer::texture> pressedTexture;
+		std::string normalFilePath;
+		std::string hoverFilePath;
+		std::string pressedFilePath;
+
+		uint8_t state = 0;
+		buttonComponent() = default;
+		buttonComponent(const buttonComponent&) = default;
 	};
 	/*
 		node tree components:

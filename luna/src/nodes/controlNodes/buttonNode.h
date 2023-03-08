@@ -11,6 +11,7 @@ namespace luna
 		{
 		public:
 			~buttonNode() = default;
+			buttonNode() = default;
 			/**
 			 * @brief construct node from entityHandle and corresponding scene.
 			 *
@@ -24,6 +25,8 @@ namespace luna
 			 * \param scene
 			 */
 			buttonNode(luna::scene* scene);
+			virtual void init(luna::scene* scene) override;
+
 		};
 	}
 }

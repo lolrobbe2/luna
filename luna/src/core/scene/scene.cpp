@@ -13,12 +13,21 @@ namespace luna
 
 	void scene::onUpdateEditor(utils::timestep ts)
 	{
-		auto group = m_Registry.view<transformComponent,spriteRendererComponent>();
+
+		auto buttonGroup = m_Registry.view<transformComponent, buttonComponent,spriteRendererComponent>();
+		for (auto entity : buttonGroup)
+		{
+			auto [transform, button,sprite] = buttonGroup.get<transformComponent, buttonComponent,spriteRendererComponent>(entity);
+			LN_CORE_INFO("relative mous pos = {0}",renderer::renderer::getSceneMousePos());
+
+		}
+
+		auto spriteGroup = m_Registry.view<transformComponent,spriteRendererComponent>();
 		//group.sort<transformComponent>([](const auto& transform1, const auto& transform2) {return transform1.translation.z > transform2.translation.z; });
 		
-		for (auto entity : group)
+		for (auto entity : spriteGroup)
 		{
-			auto [transform, sprite] = group.get<transformComponent, spriteRendererComponent>(entity);
+			auto [transform, sprite] = spriteGroup.get<transformComponent, spriteRendererComponent>(entity);
 			if(sprite.texture) renderer::renderer2D::drawQuad(transform.translation,{transform.scale.x,transform.scale.y}, sprite.texture);
 		}
 

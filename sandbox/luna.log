@@ -1,0 +1,29 @@
+[19:40:13] [trace] LUNA: instance creation result = 0
+[19:40:13] [trace] LUNA: surface creation result = 0
+[19:40:13] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[19:40:13] [trace] LUNA: device selection result = 0
+[19:40:13] [trace] LUNA: logical device creation result = 0
+[19:40:13] [trace] LUNA: swapchain creation result = 0
+[19:40:14] [trace] LUNA: reflecting shader: false
+[19:40:14] [trace] LUNA: creating shader Layout
+[19:40:14] [trace] LUNA: created shaderLayout
+[19:40:14] [trace] LUNA: reflecting shader: false
+[19:40:14] [trace] LUNA: creating shader Layout
+[19:40:14] [trace] LUNA: created shaderLayout
+[19:40:14] [info] LUNA: commandbuffer create info = 0
+[19:40:14] [info] LUNA: vma allocator creation result = 0
+[19:40:14] [info] LUNA: creating vulkan shadermodule, result = 0
+[19:40:14] [info] LUNA: creating vulkan shadermodule, result = 0
+[19:40:14] [info] LUNA: imgui descriptor pool creation result = 0
+[19:40:14] [info] LUNA: imgui init for GLFW-vulkan = true
+[19:40:14] [info] LUNA: imgui init vulkan = true
+[19:40:14] [info] LUNA: imgui init complete
+[19:40:14] [info] LUNA: class registered: controlNode
+[19:40:14] [info] LUNA: class registered: Node
+[19:40:14] [info] LUNA: class registered: labelNode
+[19:40:14] [warning] LUNA: class has already been registered: controlNode
+[19:40:14] [info] LUNA: class registered: spriteNode
+[19:40:14] [warning] LUNA: class has already been registered: controlNode
+[19:40:14] [info] LUNA: class registered: buttonNode
+[19:40:14] [warning] LUNA: class has already been registered: controlNode
+[19:40:14] [trace] APP: started app

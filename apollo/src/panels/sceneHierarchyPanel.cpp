@@ -117,7 +117,7 @@ namespace luna
 		{
 			if (Node.hasComponent<childComponent>())
 			{
-				ImGui::Indent(indent + addIndent);
+				ImGui::Indent(addIndent);
 				auto& childs = Node.getComponent<childComponent>().childs;
 				
 				for (auto child : childs)
@@ -128,7 +128,7 @@ namespace luna
 						drawEntityNode(_Node, indent + addIndent);
 					}
 				}
-				ImGui::Unindent(indent + addIndent);
+				ImGui::Unindent(addIndent);
 			}
 
 			ImGui::TreePop();
@@ -234,21 +234,19 @@ namespace luna
 	{
 		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeName) ? ImGuiTreeNodeFlags_Selected : 0;
 		bool isOpenNode = ImGui::TreeNodeEx(nodeName.c_str(), ImGuiTreeNodeFlags_OpenOnArrow | flags, nodeName.c_str());
+		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) m_ListSelected = nodeName;
 		if (isOpenNode)
 		{
-			if (ImGui::IsItemClicked()) m_ListSelected = nodeName;
+
 			ImGui::TreePop();
 		}
-	
-		if(classInfo)
+		if (classInfo && isOpenNode)
 		{
 			ImGui::Indent(10);
-			for (auto childClass : classInfo->children)
-			{
-				addNodeSelection(childClass->className, childClass);
-			}
+			for (auto childClass : classInfo->children) addNodeSelection(childClass->className, childClass);
 			ImGui::Unindent(10);
 		}
+	
 
 		return isOpenNode;
 	}

@@ -30,6 +30,12 @@ namespace luna
 		{
 			return _window;
 		}
+		glm::vec2 windowsWindow::getCursorPos() const
+		{
+			double xpos, ypos;
+			glfwGetCursorPos(_window, &xpos, &ypos);
+			return {xpos,ypos};
+		}
 		void windowsWindow::init(const vulkan::windowSpec& windowInfo)
 		{
 			LN_PROFILE_FUNCTION();

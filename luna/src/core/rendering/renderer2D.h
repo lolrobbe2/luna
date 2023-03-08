@@ -104,7 +104,6 @@ namespace luna
 			 * @brief returns renderer2D stats.
 			 */
 			static statistics getStats();
-
 		private:
 			static uint64_t textureInBatch(const uint64_t& handle);
 			inline static ref<texture> blankImage;
