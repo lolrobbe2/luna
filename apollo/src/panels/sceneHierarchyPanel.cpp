@@ -178,7 +178,7 @@ namespace luna
 					ImGui::SameLine();
 					if (ImGui::Button("select image"))
 					{
-						sprite.filePath = luna::platform::os::openFilaDialog("image (*.png)\0*.png\0");
+						sprite.filePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
 						sprite.texture = renderer::texture::create(sprite.filePath);
 					}
 
@@ -210,35 +210,38 @@ namespace luna
 		if (Node.hasComponent<buttonComponent>())
 		{
 			auto& button = Node.getComponent<buttonComponent>();
-			if (ImGui::TreeNodeEx((void*)typeid(buttonComponent).hash_code(), 0, "button"))
+			if (button.showInEditor)
 			{
-				if (ImGui::Button("select normal image"))
+				if (ImGui::TreeNodeEx((void*)typeid(buttonComponent).hash_code(), 0, "button"))
 				{
-					button.normalFilePath = luna::platform::os::openFilaDialog("image (*.png,*.jepg)\0*.png\0*.jpeg\0");
-					button.normalTexture = renderer::texture::create(button.normalFilePath);
-				}
-				inputText("normal Image", button.normalFilePath);
-				
-				
-				if (ImGui::Button("select hover image"))
-				{
-					button.hoverFilePath = luna::platform::os::openFilaDialog("image (*.png,*.jepg)\0*.png\0*.jpeg\0");
-					button.hoverTexture = renderer::texture::create(button.hoverFilePath);
+					if (ImGui::Button("select normal image"))
+					{
+						button.normalFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.normalTexture = renderer::texture::create(button.normalFilePath);
+					}
+					inputText("normal Image", button.normalFilePath);
 
+
+					if (ImGui::Button("select hover image"))
+					{
+						button.hoverFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.hoverTexture = renderer::texture::create(button.hoverFilePath);
+
+					}
+					inputText("hover Image", button.hoverFilePath);
+
+					if (ImGui::Button("select pressed image"))
+					{
+						button.pressedFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.pressedTexture = renderer::texture::create(button.pressedFilePath);
+					}
+					inputText("pressed Image", button.pressedFilePath);
+
+
+					ImGui::TreePop();
 				}
-				inputText("hover Image", button.hoverFilePath);
-			
-				if (ImGui::Button("select pressed image"))
-				{
-					button.pressedFilePath = luna::platform::os::openFilaDialog("image (*.png,*.jepg)\0*.png\0*.jpeg\0");
-					button.pressedTexture = renderer::texture::create(button.pressedFilePath);
-				}
-				inputText("pressed Image", button.pressedFilePath);
-				
-			
-				ImGui::TreePop();
+				ImGui::Separator();
 			}
-			ImGui::Separator();
 		}
 	}
 

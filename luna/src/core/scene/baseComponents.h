@@ -88,6 +88,7 @@ namespace luna
 
 		bool hover = 0;//release/no hover = 0, hover 1;  
 		bool pressed = 0;
+		bool showInEditor = true;
 		buttonComponent() = default;
 		buttonComponent(const buttonComponent&) = default;
 	};

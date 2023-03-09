@@ -7,7 +7,7 @@ namespace luna
 {
 	namespace platform
 	{
-		std::string os::openFilaDialog(std::string filter)
+		std::string os::openFilaDialog(const char* filter)
 		{
 			OPENFILENAMEA ofn;
 			CHAR szFile[260] = { 0 };
@@ -19,7 +19,7 @@ namespace luna
 			ofn.nMaxFile = sizeof(szFile);
 			if (GetCurrentDirectoryA(256, currentDir))
 				ofn.lpstrInitialDir = currentDir;
-			ofn.lpstrFilter = filter.c_str();
+			ofn.lpstrFilter = filter;
 			ofn.nFilterIndex = 1;
 			ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR;
 

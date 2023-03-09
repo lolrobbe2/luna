@@ -42,8 +42,9 @@ namespace luna
 		vulkanTexture::~vulkanTexture()
 		{
 			if (!destroy) return;
-			utils::vulkanAllocator::destroyImage(imageHandle);
 			utils::vulkanAllocator::destroyImageView(imageViewHandle);
+			utils::vulkanAllocator::destroyImage(imageHandle);
+			
 		}
 		uint32_t vulkanTexture::getWidth() const
 		{
