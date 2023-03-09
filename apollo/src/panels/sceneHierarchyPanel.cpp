@@ -53,7 +53,6 @@ namespace luna
 				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
 				if(ImGui::Button("add selected node",ImVec2(200,20)))
 				{
-					
 					//TODO implement register node type method;
 					LN_CORE_INFO("node added: {0}",m_ListSelected);
 					objectDB::createInstance(m_ListSelected, m_Context);
@@ -151,10 +150,7 @@ namespace luna
 		if(Node.hasComponent<tagComponent>())
 		{
 			auto& tag = Node.getComponent<tagComponent>().tag;
-			char buffer[256];
-			memset(buffer, 0, sizeof(buffer));
-			strcpy_s(buffer, tag.c_str());
-			if (ImGui::InputText("name", buffer, sizeof(buffer)))tag = std::string(buffer);
+			inputText("name", tag);
 			ImGui::Separator();
 		}
 		if(Node.hasComponent<transformComponent>())
@@ -178,10 +174,7 @@ namespace luna
 				if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
 				{
 					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
-					char buffer[256];
-					memset(buffer, 0, sizeof(buffer));
-					strcpy_s(buffer, sprite.filePath.c_str());
-					if (ImGui::InputText("file path", buffer, sizeof(buffer))) sprite.filePath = std::string(buffer);
+					inputText("filePath", sprite.filePath);
 					ImGui::SameLine();
 					if (ImGui::Button("select image"))
 					{
@@ -200,10 +193,7 @@ namespace luna
 			if (ImGui::TreeNodeEx((void*)typeid(labelRendererComponent).hash_code(), 0, "label"))
 			{
 				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
-				char buffer[256];
-				memset(buffer, 0, sizeof(buffer));
-				strcpy_s(buffer, label.filePath.c_str());
-				if (ImGui::InputText("file path", buffer, sizeof(buffer))) label.filePath = std::string(buffer);
+				inputText("file path", label.filePath);
 				ImGui::SameLine();
 				if (ImGui::Button("select image"))
 				{
@@ -211,10 +201,41 @@ namespace luna
 					label.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
 					label.font = renderer::font::create(label.filePath);
 				}
-				char labelBuffer[256];
-				memset(labelBuffer, 0, sizeof(labelBuffer));
-				strcpy_s(labelBuffer, label.text.c_str());
-				if (ImGui::InputText("label text", labelBuffer, sizeof(labelBuffer))) label.text = std::string(labelBuffer);
+				inputText("label text", label.text);
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
+
+		if (Node.hasComponent<buttonComponent>())
+		{
+			auto& button = Node.getComponent<buttonComponent>();
+			if (ImGui::TreeNodeEx((void*)typeid(buttonComponent).hash_code(), 0, "button"))
+			{
+				if (ImGui::Button("select normal image"))
+				{
+					button.normalFilePath = luna::platform::os::openFilaDialog("image (*.png,*.jepg)\0*.png\0*.jpeg\0");
+					button.normalTexture = renderer::texture::create(button.normalFilePath);
+				}
+				inputText("normal Image", button.normalFilePath);
+				
+				
+				if (ImGui::Button("select hover image"))
+				{
+					button.hoverFilePath = luna::platform::os::openFilaDialog("image (*.png,*.jepg)\0*.png\0*.jpeg\0");
+					button.hoverTexture = renderer::texture::create(button.hoverFilePath);
+
+				}
+				inputText("hover Image", button.hoverFilePath);
+			
+				if (ImGui::Button("select pressed image"))
+				{
+					button.pressedFilePath = luna::platform::os::openFilaDialog("image (*.png,*.jepg)\0*.png\0*.jpeg\0");
+					button.pressedTexture = renderer::texture::create(button.pressedFilePath);
+				}
+				inputText("pressed Image", button.pressedFilePath);
+				
+			
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
@@ -249,5 +270,12 @@ namespace luna
 	
 
 		return isOpenNode;
+	}
+	void sceneHierarchyPanel::inputText(const std::string& name,std::string& stringBuffer)
+	{
+		char buffer[256];
+		memset(buffer, 0, sizeof(buffer));
+		strcpy_s(buffer, stringBuffer.c_str());
+		if (ImGui::InputText(name.c_str(), buffer, sizeof(buffer))) stringBuffer = std::string(buffer);
 	}
 }

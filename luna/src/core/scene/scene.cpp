@@ -18,7 +18,12 @@ namespace luna
 		for (auto entity : buttonGroup)
 		{
 			auto [transform, button,sprite] = buttonGroup.get<transformComponent, buttonComponent,spriteRendererComponent>(entity);
-			LN_CORE_INFO("relative mous pos = {0}",renderer::renderer::getSceneMousePos());
+			if (button.state < 0) sprite.texture = button.pressedTexture;
+			else if (button.state > 0) sprite.texture = button.normalTexture;
+			else sprite.texture = button.hoverTexture;
+			if (sprite.texture) renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
+			
+
 
 		}
 
@@ -38,6 +43,31 @@ namespace luna
 		{
 			auto [transform, label] = labelGroup.get<transformComponent, labelRendererComponent>(labelEntity);
 			if (label.font) renderer::renderer2D::drawLabel(transform.translation, { transform.scale.x,transform.scale.y },label.font,label.text);
+		}
+	}
+
+	void scene::onUpdate(utils::timestep ts)
+	{
+		auto buttonGroup = m_Registry.view<transformComponent, buttonComponent, spriteRendererComponent>();
+		for (auto entity : buttonGroup)
+		{
+			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
+			else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
+
+			if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
+			else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
+			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
+			
+			glm::vec2 left = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f};
+			glm::vec2 right = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f};
+			left /= 2.0f; //origin coordinates are in center!
+			right /= 2.0f;//origin coordinates are in center!
+
+			if(left.x < normailizedMousePos.x && left.y < normailizedMousePos.y && right.x > normailizedMousePos.x && right.y > normailizedMousePos.y)
+			{
+				LN_CORE_INFO("hover");
+			}
 		}
 	}
 

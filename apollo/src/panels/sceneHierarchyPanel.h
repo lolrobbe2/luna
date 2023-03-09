@@ -26,6 +26,7 @@ namespace luna
 
 		bool addNodeSelection(const std::string& nodeName,objectDB::classInfo* classInfo);
 
+		void inputText(const std::string& name, std::string& stringBuffer);
 	private:
 
 		uint64_t addIndent = 3;

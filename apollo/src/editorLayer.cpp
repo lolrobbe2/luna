@@ -18,6 +18,7 @@ namespace luna
 	}
 	void editorLayer::onUpdate(utils::timestep ts)
 	{
+		activeScene->onUpdate(ts);
 		activeScene->onUpdateEditor(ts);
 	}
 	void editorLayer::onImGuiRender()

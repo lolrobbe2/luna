@@ -39,6 +39,7 @@ namespace luna
 		}
 		void onUpdateEditor(utils::timestep ts);
 		
+		void onUpdate(utils::timestep ts);
 		entt::entity create() 
 		{
 			return m_Registry.create();
