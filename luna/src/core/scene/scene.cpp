@@ -54,20 +54,16 @@ namespace luna
 			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
 			if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 			else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
-
 			if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
 			else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
-			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
-			
-			glm::vec2 left = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f};
-			glm::vec2 right = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f};
-			left /= 2.0f; //origin coordinates are in center!
-			right /= 2.0f;//origin coordinates are in center!
 
-			if(left.x < normailizedMousePos.x && left.y < normailizedMousePos.y && right.x > normailizedMousePos.x && right.y > normailizedMousePos.y)
-			{
-				LN_CORE_INFO("hover");
-			}
+			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
+			glm::vec2 leftCorner = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f};
+			glm::vec2 rightCorner = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f};
+			leftCorner /= 2.0f; //origin coordinates are in center!
+			rightCorner /= 2.0f;//origin coordinates are in center!
+
+			button.state = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
 		}
 	}
 
