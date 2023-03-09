@@ -29,5 +29,6 @@ namespace luna
 	}
 	void editorLayer::onEvent(Event& event)
 	{
+		activeScene->onEvent(event);
 	}
 }

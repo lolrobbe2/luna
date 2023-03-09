@@ -44,6 +44,8 @@ namespace luna
 		{
 			return m_Registry.create();
 		}
+
+		void onEvent(Event& event);
 	private:
 		friend class Node;
 		friend class sceneHierarchyPanel;

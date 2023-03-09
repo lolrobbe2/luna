@@ -86,7 +86,8 @@ namespace luna
 		std::string hoverFilePath;
 		std::string pressedFilePath;
 
-		uint8_t state = 0;//-1 = pressed, release/no hover = 0, hover 1;  
+		bool hover = 0;//release/no hover = 0, hover 1;  
+		bool pressed = 0;
 		buttonComponent() = default;
 		buttonComponent(const buttonComponent&) = default;
 	};

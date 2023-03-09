@@ -1,5 +1,6 @@
 #include "scene.h"
 #include <core/rendering/renderer2D.h>
+#include <core/events/mouseEvent.h>
 namespace luna
 {
 
@@ -18,18 +19,13 @@ namespace luna
 		for (auto entity : buttonGroup)
 		{
 			auto [transform, button,sprite] = buttonGroup.get<transformComponent, buttonComponent,spriteRendererComponent>(entity);
-			if (button.state < 0) sprite.texture = button.pressedTexture;
-			else if (button.state > 0) sprite.texture = button.normalTexture;
-			else sprite.texture = button.hoverTexture;
+			if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
+			else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
+			else sprite.texture = button.normalTexture;
 			if (sprite.texture) renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
-			
-
-
 		}
 
-		auto spriteGroup = m_Registry.view<transformComponent,spriteRendererComponent>();
-		//group.sort<transformComponent>([](const auto& transform1, const auto& transform2) {return transform1.translation.z > transform2.translation.z; });
-		
+		auto spriteGroup = m_Registry.view<transformComponent,spriteRendererComponent>();		
 		for (auto entity : spriteGroup)
 		{
 			auto [transform, sprite] = spriteGroup.get<transformComponent, spriteRendererComponent>(entity);
@@ -63,7 +59,35 @@ namespace luna
 			leftCorner /= 2.0f; //origin coordinates are in center!
 			rightCorner /= 2.0f;//origin coordinates are in center!
 
-			button.state = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
+			button.hover = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
+		}
+	}
+	void scene::onEvent(Event& event)
+	{
+		if(event.getEventType() == eventType::MouseButtonPressed)
+		{
+			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
+			if (mouseEvent->getMouseButton() == Mouse::ButtonLeft) {
+				auto buttonComponentGroup = m_Registry.view<buttonComponent,transformComponent>();
+				for (auto entity : buttonComponentGroup)
+				{
+					auto [button,transform] =  buttonComponentGroup.get<buttonComponent,transformComponent>(entity);
+					button.pressed = true;
+				}
+			}
+		} 
+		else if(event.getEventType() == eventType::MouseButtonReleased)
+		{
+			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
+			if (mouseEvent->getMouseButton() == Mouse::ButtonLeft) 
+			{
+				auto buttonComponentGroup = m_Registry.view<buttonComponent, transformComponent>();
+				for (auto entity : buttonComponentGroup)
+				{
+					auto [button, transform] = buttonComponentGroup.get<buttonComponent, transformComponent>(entity);
+					button.pressed = false;
+				}
+			}
 		}
 	}
 
