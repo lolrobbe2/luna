@@ -22,6 +22,7 @@
 	#else
 		#define LN_API __declspec(dllimport)
 	#endif 
+#define YAML_CPP_API LN_API
 #elif defined(LN_PLATFORM_LINUX)
 	#error luna does not support linux systems!
 #elif defined(LN_PLATFORM_MAC)

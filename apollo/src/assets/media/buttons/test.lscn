@@ -1,0 +1,116 @@
+scene: name
+nodes:
+  - Node:
+      id: 14549112015425996110
+      node type: buttonNode
+      tagComponent:
+        tag: buttonNode
+      parentComponent:
+        parentId: 5820340266044803867
+      transformComponent:
+        translation: [0, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 1, 1]
+      spriteRendererComponent:
+        color: [1, 1, 1, 1]
+        filePath: ""
+        tilingFactor: 1
+        shownInEditor: false
+  - Node:
+      id: 6742618194498115869
+      node type: spriteNode
+      tagComponent:
+        tag: spriteNode
+      parentComponent:
+        parentId: 15792715437846507372
+      transformComponent:
+        translation: [0, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 1, 1]
+      spriteRendererComponent:
+        color: [1, 1, 1, 1]
+        filePath: ""
+        tilingFactor: 1
+        shownInEditor: true
+  - Node:
+      id: 3533919651098825351
+      node type: labelNode
+      tagComponent:
+        tag: labelNode
+      parentComponent:
+        parentId: 2423432320651865194
+      transformComponent:
+        translation: [0, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 1, 1]
+      labelRendererComponent:
+        color: [1, 1, 1, 1]
+        filePath: ""
+        text: ""
+        tilingFactor: 1
+  - Node:
+      id: 6281397671707116390
+      node type: labelNode
+      tagComponent:
+        tag: labelNode
+      parentComponent:
+        parentId: 2423432320651865194
+      transformComponent:
+        translation: [0, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 1, 1]
+      labelRendererComponent:
+        color: [1, 1, 1, 1]
+        filePath: ""
+        text: ""
+        tilingFactor: 1
+  - Node:
+      id: 14189309634286782457
+      node type: labelNode
+      tagComponent:
+        tag: labelNode
+      parentComponent:
+        parentId: 2423432320651865194
+      transformComponent:
+        translation: [0, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 1, 1]
+      labelRendererComponent:
+        color: [1, 1, 1, 1]
+        filePath: ""
+        text: ""
+        tilingFactor: 1
+  - Node:
+      id: 5820340266044803867
+      node type: controlNode
+      tagComponent:
+        tag: controlNode
+      parentComponent:
+        parentId: 16574160912753907158
+      childComponent:
+        childId's: [14549112015425996110]
+  - Node:
+      id: 15792715437846507372
+      node type: controlNode
+      tagComponent:
+        tag: controlNode
+      parentComponent:
+        parentId: 16574160912753907158
+      childComponent:
+        childId's: [6742618194498115869]
+  - Node:
+      id: 2423432320651865194
+      node type: controlNode
+      tagComponent:
+        tag: controlNode
+      parentComponent:
+        parentId: 16574160912753907158
+      childComponent:
+        childId's: [14189309634286782457, 6281397671707116390, 3533919651098825351]
+  - Node:
+      id: 16574160912753907158
+      node type: Node
+      tagComponent:
+        tag: Node
+      childComponent:
+        childId's: [2423432320651865194, 15792715437846507372, 5820340266044803867]

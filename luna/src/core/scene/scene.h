@@ -4,7 +4,6 @@
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
 #include <core/utils/timestep.h>
-
 #include <core/object/objectDB.h>
 namespace luna 
 {
@@ -48,6 +47,7 @@ namespace luna
 		void onEvent(Event& event);
 	private:
 		friend class Node;
+		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
@@ -64,6 +64,7 @@ namespace luna
 
 		Node() = default;
 		Node(entt::entity handle, luna::scene* scene);
+		Node(uint64_t id, luna::scene* scene);
 		Node(scene* scene);
 		virtual ~Node() = default;
 		void setName(std::string name);
@@ -108,7 +109,7 @@ namespace luna
 		operator bool() const { return entityHandle != entt::null; }
 		operator entt::entity() const { return entityHandle; }
 		operator uint32_t() const { return (uint32_t)entityHandle; }
-
+		operator scene* () const { return scene; };
 		uuid getUUID() { return getComponent<idComponent>().id; }
 		const std::string& getName() {
 			if(hasComponent<tagComponent>()) return getComponent<tagComponent>().tag; 
@@ -124,6 +125,7 @@ namespace luna
 		{
 			return !(*this == other);
 		}
+
 	protected:
 		entt::entity entityHandle{ entt::null };
 		scene* scene = nullptr;

@@ -90,6 +90,21 @@ namespace luna
 			}
 		}
 	}
+	Node::Node(uint64_t id, luna::scene* scene)
+	{
+		auto idComponents = scene->m_Registry.group<idComponent,tagComponent>();
+		this->scene = scene;
+		
+		for (auto entity : idComponents)
+		{
+			auto [testId,tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);
+			if (testId.id == id) {
+				entityHandle = entity;
+				if (!hasComponent<idComponent>()) addComponent<idComponent>().id = id;
+				return;
+			}
+		}
+	}
 
 	Node::Node(entt::entity handle, luna::scene* scene)
 		: entityHandle(handle), scene(scene)
@@ -122,7 +137,8 @@ namespace luna
 	{
 		this->scene = scene;
 		entityHandle = scene->create();
-		addComponent<idComponent>();
+		
+		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
 }

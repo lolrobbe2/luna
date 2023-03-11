@@ -29,7 +29,7 @@ namespace luna
 		void inputText(const std::string& name, std::string& stringBuffer);
 	private:
 
-		uint64_t addIndent = 3;
+		uint64_t addIndent = 5;
 		scene* m_Context;
 		Node m_SelectionContext;
 		Node m_Selected;

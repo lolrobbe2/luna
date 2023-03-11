@@ -9,6 +9,13 @@
 #define LN_CLASS(mClass,mInherits) objectDB::addClass<mClass,mInherits>();
 #endif // !LN_CLASS
 
+
+#ifndef LN_CLASS_STRINGIFY
+/**
+ * @brief creates stringid from class.
+ */
+#define LN_CLASS_STRINGIFY(mClass) objectDB::getClassName<mClass>();
+#endif // !LN_CLASS_STRINGIFY
 namespace luna
 {
 	class scene;
@@ -36,9 +43,9 @@ namespace luna
 		{
 			LN_REGISTER_CLASS(T);
 			LN_REGISTER_CLASS(A);
-			classInfo* infoA = getPtr(getClasName<A>()); // parent node type
+			classInfo* infoA = getPtr(getClassName<A>()); // parent node type
 			if (!infoA) return;
-			classInfo* infoT = getPtr(getClasName<T>()); 
+			classInfo* infoT = getPtr(getClassName<T>()); 
 			if (!infoT) return;
 			infoT->parentClass = infoA;
 			infoA->children.push_back(infoT);
@@ -48,20 +55,20 @@ namespace luna
 		template<class T>
 		_ALWAYS_INLINE_ static void removeRootClass()
 		{
-			rootClassDatabase.erase(getClasName<T>());
+			rootClassDatabase.erase(getClassName<T>());
 		}
 
 		template<class T>
 		_ALWAYS_INLINE_ static void registerClass()
 		{
-			if (classDatabase.find(getClasName<T>()) != classDatabase.end()) return LN_CORE_WARN("class has already been registered: {0}", getClasName<T>());
+			if (classDatabase.find(getClassName<T>()) != classDatabase.end()) return LN_CORE_WARN("class has already been registered: {0}", getClassName<T>());
 			classInfo t;
 			t.creation_func = &creator<T>;
-			t.className = getClasName<T>();
+			t.className = getClassName<T>();
 
 			LN_CORE_INFO("class registered: {0}", t.className);
-			classDatabase.insert({ getClasName<T>(), t});
-			rootClassDatabase.insert({ getClasName<T>(), getPtr(t.className)});
+			classDatabase.insert({ getClassName<T>(), t});
+			rootClassDatabase.insert({ getClassName<T>(), getPtr(t.className)});
 		}
 		/* start of c++ wizardry from GD */
 		#define memnew(m_class) _post_initialize(new m_class)
@@ -89,7 +96,7 @@ namespace luna
 		};
 
 		template <class T>
-		_ALWAYS_INLINE_ static std::string getClasName()
+		_ALWAYS_INLINE_ static std::string getClassName()
 		{
 			std::stringstream fullName(typeid(T).name());
 			std::vector<std::string> seglist;

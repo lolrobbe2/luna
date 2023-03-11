@@ -12,6 +12,7 @@ namespace luna
 	struct idComponent
 	{
 		uuid id;
+		std::string typeName;
 		operator uint64_t() { return id; }
 		idComponent() = default;
 		idComponent(const idComponent&) = default;
@@ -110,5 +111,9 @@ namespace luna
 	struct childComponent
 	{
 		std::vector<entt::entity> childs;
+	};
+	struct childUintComponent
+	{
+		std::vector<uint64_t> childs;
 	};
 }

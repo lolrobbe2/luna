@@ -9,6 +9,7 @@ namespace luna
 		{
 		public:
 			static std::string openFilaDialog(const char* filter);
+			static std::string saveFileDialog(const char* filter);
 		};
 	}
 }

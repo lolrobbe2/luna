@@ -12,7 +12,7 @@ namespace luna
 	{
 		_uuid = uniformDistr(engine);
 	}
-	uuid::uuid(uint64_t uuid)
+	uuid::uuid(uint64_t uuid) : _uuid(uuid)
 	{
 
 	}
