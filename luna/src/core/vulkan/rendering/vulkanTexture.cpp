@@ -299,7 +299,7 @@ namespace luna
 					glypScales.push_back({ 1.0f,1.0f });
 					glypAdvances.push_back({0.0f,0.0f });
 					buffer.push_back(VK_NULL_HANDLE);
-					LN_CORE_ERROR("could not load glyph: {0}", (char)i);
+					//LN_CORE_ERROR("could not load glyph: {0}", (char)i);
 				}
 				
 			}

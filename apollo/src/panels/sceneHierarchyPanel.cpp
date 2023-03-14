@@ -137,6 +137,7 @@ namespace luna
 	}
 	void sceneHierarchyPanel::drawComponents(Node Node)
 	{
+		if (!Node.scene || Node.entityHandle == entt::null ) return;
 		if (Node.hasComponent<idComponent>())
 		{
 			auto& id = Node.getComponent<idComponent>();

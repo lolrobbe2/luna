@@ -1,6 +1,29 @@
 scene: name
 nodes:
   - Node:
+      id: 7706594317682044059
+      node type: Node
+      tagComponent:
+        tag: Node
+      childComponent:
+        childId's: [2857684312755110595, 16260152738797927885]
+  - Node:
+      id: 16260152738797927885
+      node type: controlNode
+      tagComponent:
+        tag: controlNode
+      parentComponent:
+        parentId: 7706594317682044059
+  - Node:
+      id: 2857684312755110595
+      node type: controlNode
+      tagComponent:
+        tag: controlNode
+      parentComponent:
+        parentId: 7706594317682044059
+      childComponent:
+        childId's: [7703133182355076853]
+  - Node:
       id: 7703133182355076853
       node type: spriteNode
       tagComponent:
@@ -13,29 +36,6 @@ nodes:
         scale: [1, 1, 1]
       spriteRendererComponent:
         color: [1, 1, 1, 1]
-        filePath: ""
+        filePath: C:\Users\robbe\source\repos\lolrobbe2\luna\apollo\src\assets\media\buttons\button3.png
         tilingFactor: 1
         shownInEditor: true
-  - Node:
-      id: 2857684312755110595
-      node type: controlNode
-      tagComponent:
-        tag: controlNode
-      parentComponent:
-        parentId: 7706594317682044059
-      childComponent:
-        childId's: [7703133182355076853]
-  - Node:
-      id: 16260152738797927885
-      node type: controlNode
-      tagComponent:
-        tag: controlNode
-      parentComponent:
-        parentId: 7706594317682044059
-  - Node:
-      id: 7706594317682044059
-      node type: Node
-      tagComponent:
-        tag: Node
-      childComponent:
-        childId's: [2857684312755110595, 16260152738797927885]

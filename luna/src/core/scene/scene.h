@@ -12,6 +12,7 @@ namespace luna
 	{
 	public:
 		scene() = default;
+		~scene();
 		template<typename T>
 		T& addNode(std::string name = std::string())
 		{

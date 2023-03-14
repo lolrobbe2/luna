@@ -89,6 +89,7 @@ namespace luna
 		VkResult vulkanAllocator::destroyImage(const VkImage& image)
 		{
 			LN_PROFILE_FUNCTION();
+			vkDeviceWaitIdle(std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice)->getDeviceHandles().device);
 			auto result = allocations.getValue((uint64_t)image,vmaAllocation());
 			if (result.first == storageOpSucces) vmaDestroyImage(sAllocator, image, result.second.allocation);
 			allocations.eraseValue((uint64_t)image);
@@ -118,6 +119,7 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			ref<vulkan::vulkanDevice> device = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
+			vkDeviceWaitIdle(device->getDeviceHandles().device);
 			vkDestroyImageView(device->getDeviceHandles().device, imageView, nullptr);
 			return VK_SUCCESS;
 		}

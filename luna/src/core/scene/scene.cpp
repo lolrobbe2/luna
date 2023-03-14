@@ -4,6 +4,11 @@
 namespace luna
 {
 
+	scene::~scene() 
+	{
+		m_Registry.clear();
+	}
+
 	template<typename T>
 	bool scene::destroyNode(const T& Node)
 	{

@@ -51,10 +51,10 @@ namespace luna
 	}
 	void editorLayer::onEvent(Event& Event)
 	{
-	
-		activeScene->onEvent(Event);
 		eventDispatcher dispatcher(Event);
 		dispatcher.dispatch<keyPressedEvent>(LN_BIND_EVENT_FN(editorLayer::onKeyPressedEvent));
+		activeScene->onEvent(Event);
+	
 	}
 	bool editorLayer::onKeyPressedEvent(keyPressedEvent& Event)
 	{
@@ -91,11 +91,13 @@ namespace luna
 	{
 		std::string filePath = platform::os::openFilaDialog("luna scene\0*.lscn\0");
 		if (!filePath.size()) return;
-		scene* nonActiveScene = sceneSerializer::deSerialize(filePath);
-		if (nonActiveScene)
-		{
-			activeScene = ref<scene>(nonActiveScene);
-			scenePanel->setContext(activeScene);
-		}
+
+		scenePanel = nullptr;
+		scenePanel = ref<sceneHierarchyPanel>(new sceneHierarchyPanel());
+		//activeScene = nullptr;		
+		activeScene = ref<scene>(sceneSerializer::deSerialize(filePath));
+		scenePanel->setContext(activeScene);
+		scenePanel->setSelectedNode(Node());
+		
 	}
 }
