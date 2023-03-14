@@ -141,6 +141,9 @@ namespace luna
 		selectMode selectMode = SELECT_SINGLE;
 		iconMode iconMode = ICON_MODE_LEFT;
 
+		int current = -1;
+		int ensureSelectedVisible = 0;
+
 		bool shapeChanged = false;
 	};
 	/*
