@@ -93,6 +93,56 @@ namespace luna
 		buttonComponent() = default;
 		buttonComponent(const buttonComponent&) = default;
 	};
+	
+	struct item {
+		ref<renderer::texture> icon;
+		bool iconTransposed = false;
+		glm::vec2 iconRegion;
+		glm::vec4 iconModulate = { 1, 1, 1, 1 };
+		ref<renderer::texture> tagIcon;
+		std::string text;
+		std::string language;
+
+		bool selectable = true;
+		bool selected = false;
+		bool disabled = false;
+		bool tooltip_enabled = true;
+		
+		std::string tooltip;
+		glm::vec4 customFg;
+		glm::vec4 customBg = { 0.0, 0.0, 0.0, 0.0 };
+
+		glm::vec2 rectCache;
+		glm::vec2 minRectCache;
+
+		glm::vec2 getIconSize() const;
+
+		bool operator<(const item& p_another) const { return text < p_another.text; }
+
+		item() {
+			//meep meep
+		}
+	};
+	
+	struct itemList 
+	{
+		enum iconMode {
+			ICON_MODE_TOP,
+			ICON_MODE_LEFT
+		};
+
+		enum selectMode {
+			SELECT_SINGLE,
+			SELECT_MULTI
+		};
+		std::vector<item> items;
+		std::vector<int> separators;
+
+		selectMode selectMode = SELECT_SINGLE;
+		iconMode iconMode = ICON_MODE_LEFT;
+
+		bool shapeChanged = false;
+	};
 	/*
 		node tree components:
 		these components represent the node tree
