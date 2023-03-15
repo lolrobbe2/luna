@@ -360,7 +360,7 @@ namespace luna
 
 			eventDispatcher dispatcher(pEvent);
 			dispatcher.dispatch<mouseMovedEvent>(LN_BIND_EVENT_FN(itemListNode::mouseMotionEvent));
-			if(pEvent.IsInCategory(luna::eventCategoryMouse)) dispatcher.dispatch<Event>(LN_BIND_EVENT_FN(itemListNode::mouseEvent));
+			if(pEvent.IsInCategory(luna::eventCategoryMouseButton) || pEvent.IsInCategory(luna::eventCategoryKeyboard)) dispatcher.dispatch<Event>(LN_BIND_EVENT_FN(itemListNode::mouseEvent));
 			/*
 			if (p_event->is_pressed() && items.size() > 0) {
 				if (p_event->is_action("ui_up", true)) {
@@ -609,7 +609,8 @@ namespace luna
 			
 			auto& itemList = getComponent<luna::itemList>();
 			//TODO improve code!
-			luna::mouseButtonEvent& mouseButtonEvent = (luna::mouseButtonEvent&)Event;
+			luna::mouseButtonPressedEvent& mouseButtonEvent = (luna::mouseButtonPressedEvent&)Event;
+			if (Event.getEventType() != eventType::MouseButtonPressed) mouseButtonEvent = luna::mouseButtonPressedEvent(Mouse::MOUSE_CODE_MAX_ENUM,false);
 			luna::mouseMovedEvent& mouseMovedEvent = (luna::mouseMovedEvent&)Event;
 			luna::keyPressedEvent& pressedEvent = (luna::keyPressedEvent&)Event;
 ;			if (itemList.deferSelectSingle >= 0 && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft) {
@@ -663,15 +664,15 @@ namespace luna
 					}
 					else {
 						//todo dubleclicks
-						if (!mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft && !mb->is_command_or_control_pressed() && select_mode == SELECT_MULTI && items[i].selectable && !items[i].disabled && items[i].selected && mb->get_button_index() == MouseButton::LEFT) {
+						if (!mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft && mouseButtonEvent.isDoubleClick() && pressedEvent.getkeyCode() != (input::LeftControl || input::RightControl) && itemList.selectMode == itemList::SELECT_MULTI && itemList.items[i].selectable && !itemList.items[i].disabled && itemList.items[i].selected && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft) {
 							itemList.deferSelectSingle = i;
 							return;
 						}
 
-						if (!items[i].selected || allow_reselect) {
-							select(i, select_mode == SELECT_SINGLE || !mb->is_command_or_control_pressed());
+						if (!itemList.items[i].selected || itemList.allowReselect) {
+							select(i, itemList.selectMode == itemList::SELECT_SINGLE || pressedEvent.getkeyCode() != (input::LeftControl || input::RightControl));
 
-							if (select_mode == SELECT_SINGLE) {
+							if (itemList.selectMode == itemList::SELECT_SINGLE) {
 								//emit_signal(SNAME("item_selected"), i);
 							}
 							else {
@@ -681,7 +682,7 @@ namespace luna
 
 						//emit_signal(SNAME("item_clicked"), i, get_local_mouse_position(), mb->get_button_index());
 
-						if (mb->get_button_index() == MouseButton::LEFT && mb->is_double_click()) {
+						if (mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft && mouseButtonEvent.isDoubleClick()) {
 							//emit_signal(SNAME("item_activated"), i);
 						}
 					}

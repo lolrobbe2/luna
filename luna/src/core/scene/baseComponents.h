@@ -164,6 +164,7 @@ namespace luna
 
 		bool shapeChanged = false;
 		bool allowRmbSelect = false;
+		bool allowReselect = false;
 
 		int currentColumns = 1;
 	};
