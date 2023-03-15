@@ -140,8 +140,22 @@ namespace luna
 					break;
 					case GLFW_PRESS:
 					{
-						mouseButtonPressedEvent pressedEvent(button);
-						winData.eventCallbackFn(pressedEvent);
+						static int prevButton;
+						static auto prevTime = std::chrono::system_clock::now();
+						auto currentTime = std::chrono::system_clock::now();
+						double diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
+						prevTime = currentTime;
+						if (diff_ms > 10 && diff_ms < 200 && prevButton == button) {
+							mouseButtonPressedEvent pressedEvent(button,true);
+						}
+						else
+						{
+							mouseButtonPressedEvent pressedEvent(button, false);
+							winData.eventCallbackFn(pressedEvent);
+						}
+						prevButton = button;
+						
+			
 					}
 					break;
 				}

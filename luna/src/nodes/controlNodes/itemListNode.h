@@ -1,5 +1,7 @@
 #pragma once
 #include <nodes/controlNodes/controlNode.h>
+#include <core/events/mouseEvent.h>
+#include <core/events/keyEvent.h>
 namespace luna
 {
 	namespace nodes
@@ -30,6 +32,9 @@ namespace luna
 			std::string getItemLanguage(int pIdx);
 
 			void select(int Idx, bool single = true);
+
+			int getItemAtPosition(const glm::vec2& pos, bool exact);
+
 			void deselect(int pIdx);
 			void deselect_all();
 			bool isSelected(int pIdx);
@@ -66,6 +71,11 @@ namespace luna
 			std::vector<int> getSelectedItems();
 
 			bool isAnythingSelected();
+
+			void guiInputEvent(Event& p_event);
+			void mouseMotionEvent(mouseMovedEvent& Event);
+
+			void mouseEvent(Event& Event);
 
 			void shape(int p_idx);
 		};

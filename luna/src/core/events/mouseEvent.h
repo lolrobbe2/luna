@@ -64,8 +64,10 @@ namespace luna {
 	class mouseButtonPressedEvent : public mouseButtonEvent
 	{
 	public:
-		mouseButtonPressedEvent(const mouseCode button)
-			: mouseButtonEvent(button) {}
+		mouseButtonPressedEvent(const mouseCode button,const bool doubleCLick)
+			: mouseButtonEvent(button) {this->doubleClick = doubleClick;}
+
+		bool isDoubleClick() { return doubleClick; }
 
 		std::string toString() const override
 		{
@@ -75,6 +77,7 @@ namespace luna {
 		}
 
 		EVENT_CLASS_TYPE(MouseButtonPressed)
+		bool doubleClick = false;
 	};
 
 	class mouseButtonReleasedEvent : public mouseButtonEvent

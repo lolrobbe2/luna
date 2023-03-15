@@ -95,6 +95,20 @@ namespace luna
 	};
 	
 	struct item {
+		struct rectangle
+		{
+			//origin is in center
+			glm::vec2 start; //left top corner
+			glm::vec2 end; //right bottom corner
+
+			glm::vec2 position;
+			_ALWAYS_INLINE_ bool hasPoint(const glm::vec2& point) { return (start.x == point.x || end.x == point.x) && (start.y == point.y || end.y == point.y); };
+			_ALWAYS_INLINE_ uint32_t width() { return end.x - start.x; };
+			_ALWAYS_INLINE_ uint32_t height() { return end.y - start.y; };
+
+			_ALWAYS_INLINE_ void setWidth(float width) { end.x -= width / 2; start.x += width / 2; };
+			_ALWAYS_INLINE_ float distanceTo(const glm::vec2& pos) { return glm::length(pos - position); };
+		};
 		ref<renderer::texture> icon;
 		bool iconTransposed = false;
 		glm::vec2 iconRegion;
@@ -112,8 +126,8 @@ namespace luna
 		glm::vec4 customFg;
 		glm::vec4 customBg = { 0.0, 0.0, 0.0, 0.0 };
 
-		glm::vec2 rectCache;
-		glm::vec2 minRectCache;
+		rectangle rectCache;
+		rectangle minRectCache;
 
 		glm::vec2 getIconSize() const;
 
@@ -138,13 +152,20 @@ namespace luna
 		std::vector<item> items;
 		std::vector<int> separators;
 
+		std::string searchString;
+
 		selectMode selectMode = SELECT_SINGLE;
 		iconMode iconMode = ICON_MODE_LEFT;
 
 		int current = -1;
 		int ensureSelectedVisible = 0;
+		
+		int deferSelectSingle = -1;
 
 		bool shapeChanged = false;
+		bool allowRmbSelect = false;
+
+		int currentColumns = 1;
 	};
 	/*
 		node tree components:

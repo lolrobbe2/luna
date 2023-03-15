@@ -1,4 +1,5 @@
 #include "itemListNode.h"
+#include <core/rendering/renderer2D.h>
 namespace luna 
 {
 	namespace nodes
@@ -82,7 +83,7 @@ namespace luna
 		}
 		ref<renderer::texture> itemListNode::getItemIcon(int pIdx)
 		{
-			//ERR_FAIL_INDEX_V(pIdx, items.size(), Ref<Texture2D>());
+			//ERR_FAIL_INDEX_V(pIdx, items.size(), ref<Texture2D>());
 			auto& itemList = getComponent<luna::itemList>();
 			return itemList.items[pIdx].icon;
 		}
@@ -177,6 +178,7 @@ namespace luna
 			auto& itemList = getComponent<luna::itemList>();
 			return itemList.items[pIdx].disabled;
 		}
+
 		void itemListNode::select(int pIdx, bool pSingle) {
 			//ERR_FAIL_INDEX(p_idx, items.size());
 			auto& itemList = getComponent<luna::itemList>();
@@ -199,6 +201,44 @@ namespace luna
 				}
 			}
 			
+		}
+
+		int itemListNode::getItemAtPosition(const glm::vec2& pos, bool exact = false)
+		{
+			auto& itemList = getComponent<luna::itemList>();
+			auto& transform = getComponent<luna::transformComponent>();
+			glm::vec2 pos = pos;
+			/*
+			pos -= theme_cache.panel_style->get_offset();
+			pos.y += scroll_bar->get_value();
+			*/
+			/*
+			if (is_layout_rtl()) {
+				pos.x = get_size().width - pos.x;
+			}
+			*/
+			int closest = -1;
+			int closest_dist = 0x7FFFFFFF;
+
+			for (int i = 0; i < itemList.items.size(); i++) {
+				item::rectangle rectangle = itemList.items[i].rectCache;
+				if (i % itemList.currentColumns == itemList.currentColumns - 1) {
+					rectangle.setWidth(transform.scale.x - rectangle.position.x); // Make sure you can still select the last item when clicking past the column.
+				}
+
+				if (rectangle.hasPoint(pos)) {
+					closest = i;
+					break;
+				}
+
+				float dist = rectangle.distanceTo(pos);
+				if (!exact && dist < closest_dist) {
+					closest = i;
+					closest_dist = dist;
+				}
+			}
+
+			return closest;
 		}
 
 		void itemListNode::deselect(int p_idx) {
@@ -288,9 +328,9 @@ namespace luna
 		{
 			std::vector<int> selected;
 			auto& itemList = getComponent<luna::itemList>();
-
+			auto& items = itemList.items;
 			for (int i = 0; i < itemList.items.size(); i++) {
-				if (itemList.items[i].selected) {
+				if (items[i].selected) {
 					selected.push_back(i);
 					if (itemList.selectMode == itemList::SELECT_SINGLE) {
 						break;
@@ -307,6 +347,365 @@ namespace luna
 				if (itemList.items[i].selected) return true;
 			}
 			return false;
+		}
+		//event dispatch
+		void itemListNode::guiInputEvent(Event& pEvent) 
+		{
+			//ERR_FAIL_COND(p_event.is_null());
+
+#define CAN_SELECT(i) (items[i].selectable && !items[i].disabled)
+#define IS_SAME_ROW(i, row) (i / current_columns == row)
+
+			//double prev_scroll = scroll_bar->get_value();
+
+			eventDispatcher dispatcher(pEvent);
+			dispatcher.dispatch<mouseMovedEvent>(LN_BIND_EVENT_FN(itemListNode::mouseMotionEvent));
+			if(pEvent.IsInCategory(luna::eventCategoryMouse)) dispatcher.dispatch<Event>(LN_BIND_EVENT_FN(itemListNode::mouseEvent));
+			/*
+			if (p_event->is_pressed() && items.size() > 0) {
+				if (p_event->is_action("ui_up", true)) {
+					if (!search_string.is_empty()) {
+						uint64_t now = OS::get_singleton()->get_ticks_msec();
+						uint64_t diff = now - search_time_msec;
+
+						if (diff < uint64_t(GLOBAL_GET("gui/timers/incremental_search_max_interval_msec")) * 2) {
+							for (int i = current - 1; i >= 0; i--) {
+								if (CAN_SELECT(i) && items[i].text.begins_with(search_string)) {
+									set_current(i);
+									ensure_current_is_visible();
+									if (select_mode == SELECT_SINGLE) {
+										emit_signal(SNAME("item_selected"), current);
+									}
+
+									break;
+								}
+							}
+							accept_event();
+							return;
+						}
+					}
+
+					if (current >= current_columns) {
+						int next = current - current_columns;
+						while (next >= 0 && !CAN_SELECT(next)) {
+							next = next - current_columns;
+						}
+						if (next < 0) {
+							accept_event();
+							return;
+						}
+						set_current(next);
+						ensure_current_is_visible();
+						if (select_mode == SELECT_SINGLE) {
+							emit_signal(SNAME("item_selected"), current);
+						}
+						accept_event();
+					}
+				}
+				else if (p_event->is_action("ui_down", true)) {
+					if (!search_string.is_empty()) {
+						uint64_t now = OS::get_singleton()->get_ticks_msec();
+						uint64_t diff = now - search_time_msec;
+
+						if (diff < uint64_t(GLOBAL_GET("gui/timers/incremental_search_max_interval_msec")) * 2) {
+							for (int i = current + 1; i < items.size(); i++) {
+								if (CAN_SELECT(i) && items[i].text.begins_with(search_string)) {
+									set_current(i);
+									ensure_current_is_visible();
+									if (select_mode == SELECT_SINGLE) {
+										emit_signal(SNAME("item_selected"), current);
+									}
+									break;
+								}
+							}
+							accept_event();
+							return;
+						}
+					}
+
+					if (current < items.size() - current_columns) {
+						int next = current + current_columns;
+						while (next < items.size() && !CAN_SELECT(next)) {
+							next = next + current_columns;
+						}
+						if (next >= items.size()) {
+							accept_event();
+							return;
+						}
+						set_current(next);
+						ensure_current_is_visible();
+						if (select_mode == SELECT_SINGLE) {
+							emit_signal(SNAME("item_selected"), current);
+						}
+						accept_event();
+					}
+				}
+				else if (p_event->is_action("ui_page_up", true)) {
+					search_string = ""; //any mousepress cancels
+
+					for (int i = 4; i > 0; i--) {
+						int index = current - current_columns * i;
+						if (index >= 0 && index < items.size() && CAN_SELECT(index)) {
+							set_current(index);
+							ensure_current_is_visible();
+							if (select_mode == SELECT_SINGLE) {
+								emit_signal(SNAME("item_selected"), current);
+							}
+							accept_event();
+							break;
+						}
+					}
+				}
+				else if (p_event->is_action("ui_page_down", true)) {
+					search_string = ""; //any mousepress cancels
+
+					for (int i = 4; i > 0; i--) {
+						int index = current + current_columns * i;
+						if (index >= 0 && index < items.size() && CAN_SELECT(index)) {
+							set_current(index);
+							ensure_current_is_visible();
+							if (select_mode == SELECT_SINGLE) {
+								emit_signal(SNAME("item_selected"), current);
+							}
+							accept_event();
+
+							break;
+						}
+					}
+				}
+				else if (p_event->is_action("ui_left", true)) {
+					search_string = ""; //any mousepress cancels
+
+					if (current % current_columns != 0) {
+						int current_row = current / current_columns;
+						int next = current - 1;
+						while (next >= 0 && !CAN_SELECT(next)) {
+							next = next - 1;
+						}
+						if (next < 0 || !IS_SAME_ROW(next, current_row)) {
+							accept_event();
+							return;
+						}
+						set_current(next);
+						ensure_current_is_visible();
+						if (select_mode == SELECT_SINGLE) {
+							emit_signal(SNAME("item_selected"), current);
+						}
+						accept_event();
+					}
+				}
+				else if (p_event->is_action("ui_right", true)) {
+					search_string = ""; //any mousepress cancels
+
+					if (current % current_columns != (current_columns - 1) && current + 1 < items.size()) {
+						int current_row = current / current_columns;
+						int next = current + 1;
+						while (next < items.size() && !CAN_SELECT(next)) {
+							next = next + 1;
+						}
+						if (items.size() <= next || !IS_SAME_ROW(next, current_row)) {
+							accept_event();
+							return;
+						}
+						set_current(next);
+						ensure_current_is_visible();
+						if (select_mode == SELECT_SINGLE) {
+							emit_signal(SNAME("item_selected"), current);
+						}
+						accept_event();
+					}
+				}
+				else if (p_event->is_action("ui_cancel", true)) {
+					search_string = "";
+				}
+				else if (p_event->is_action("ui_select", true) && select_mode == SELECT_MULTI) {
+					if (current >= 0 && current < items.size()) {
+						if (items[current].selectable && !items[current].disabled && !items[current].selected) {
+							select(current, false);
+							emit_signal(SNAME("multi_selected"), current, true);
+						}
+						else if (items[current].selected) {
+							deselect(current);
+							emit_signal(SNAME("multi_selected"), current, false);
+						}
+					}
+				}
+				else if (p_event->is_action("ui_accept", true)) {
+					search_string = ""; //any mousepress cancels
+
+					if (current >= 0 && current < items.size()) {
+						emit_signal(SNAME("item_activated"), current);
+					}
+				}
+				else {
+					
+					ref<InputEventKey> k = p_event;
+
+					if (k.is_valid() && k->get_unicode()) {
+						uint64_t now = OS::get_singleton()->get_ticks_msec();
+						uint64_t diff = now - search_time_msec;
+						uint64_t max_interval = uint64_t(GLOBAL_GET("gui/timers/incremental_search_max_interval_msec"));
+						search_time_msec = now;
+
+						if (diff > max_interval) {
+							search_string = "";
+						}
+
+						if (String::chr(k->get_unicode()) != search_string) {
+							search_string += String::chr(k->get_unicode());
+						}
+
+						for (int i = current + 1; i <= items.size(); i++) {
+							if (i == items.size()) {
+								if (current == 0 || current == -1) {
+									break;
+								}
+								else {
+									i = 0;
+								}
+							}
+
+							if (i == current) {
+								break;
+							}
+
+							if (items[i].text.findn(search_string) == 0) {
+								setCurrent(i);
+								ensureCurrentIsVisible();
+								if (select_mode == SELECT_SINGLE) {
+									//emit_signal(SNAME("item_selected"), current);
+								}
+								break;
+							}
+						}
+					}
+				}
+			}
+			*/
+			/*
+			ref<InputEventPanGesture> pan_gesture = p_event;
+			if (pan_gesture.is_valid()) {
+				scroll_bar->set_value(scroll_bar->get_value() + scroll_bar->get_page() * pan_gesture->get_delta().y / 8);
+			}
+
+			if (scroll_bar->get_value() != prev_scroll) {
+				accept_event(); //accept event if scroll changed
+			}
+			*/
+			#undef CAN_SELECT
+			#undef IS_SAME_ROW
+		}
+		void itemListNode::mouseMotionEvent(mouseMovedEvent& Event)
+		{
+			auto& itemList = getComponent<luna::itemList>();
+			if (itemList.deferSelectSingle >= 0) {
+				itemList.deferSelectSingle = -1;
+				return;
+			}
+		}
+
+		void itemListNode::mouseEvent(Event& Event)
+		{
+			
+			auto& itemList = getComponent<luna::itemList>();
+			//TODO improve code!
+			luna::mouseButtonEvent& mouseButtonEvent = (luna::mouseButtonEvent&)Event;
+			luna::mouseMovedEvent& mouseMovedEvent = (luna::mouseMovedEvent&)Event;
+			luna::keyPressedEvent& pressedEvent = (luna::keyPressedEvent&)Event;
+;			if (itemList.deferSelectSingle >= 0 && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft) {
+				select(itemList.deferSelectSingle, true);
+
+				//emit_signal(SNAME("multi_selected"), itemList.deferSelectSingle, true);
+				itemList.deferSelectSingle = -1;
+				return;
+			}
+
+			if (mouseButtonEvent.getMouseButton() == (Mouse::ButtonLast || Mouse::ButtonLeft || Mouse::ButtonMiddle || Mouse::ButtonRight)) {
+				itemList.searchString = ""; //any mousepress cancels
+				glm::vec2 pos;
+				//pos -= theme_cache.panel_style->get_offset();
+				//pos.y += scroll_bar->get_value(); no scrollbar
+
+				/*
+				if (is_layout_rtl()) {
+					pos.x = get_size().width - pos.x;
+				}
+				*/
+				int closest = getItemAtPosition(renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions(), true);
+
+				if (closest != -1 && (mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft || (itemList.allowRmbSelect && mouseButtonEvent.getMouseButton() == Mouse::ButtonRight))) {
+					int i = closest;
+
+					if (itemList.selectMode == itemList::SELECT_MULTI && itemList.items[i].selected && (pressedEvent.getkeyCode() == input::LeftControl || pressedEvent.getkeyCode() == input::RightControl)) {
+						deselect(i);
+						//emit_signal(SNAME("multi_selected"), i, false);
+
+					}
+					else if (itemList.selectMode == itemList::SELECT_MULTI && (pressedEvent.getkeyCode() == input::LeftShift || pressedEvent.getkeyCode() == input::RightShift) && itemList.current >= 0 && itemList.current < itemList.items.size() && itemList.current != i) {
+						int from = itemList.current;
+						int to = i;
+						if (i < itemList.current) {
+								moveItem(from, to);
+								moveItem(to, from);
+						}
+						for (int j = from; j <= to; j++) {
+							if (!itemList.items[j].selectable) {
+								continue;
+							}
+							bool selected = !itemList.items[j].selected;
+							select(j, false);
+							if (selected) {
+								//emit_signal(SNAME("multi_selected"), j, true);
+							}
+						}
+						//emit_signal(SNAME("item_clicked"), i, get_local_mouse_position(), mb->get_button_index());
+
+					}
+					else {
+						//todo dubleclicks
+						if (!mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft && !mb->is_command_or_control_pressed() && select_mode == SELECT_MULTI && items[i].selectable && !items[i].disabled && items[i].selected && mb->get_button_index() == MouseButton::LEFT) {
+							itemList.deferSelectSingle = i;
+							return;
+						}
+
+						if (!items[i].selected || allow_reselect) {
+							select(i, select_mode == SELECT_SINGLE || !mb->is_command_or_control_pressed());
+
+							if (select_mode == SELECT_SINGLE) {
+								//emit_signal(SNAME("item_selected"), i);
+							}
+							else {
+								//emit_signal(SNAME("multi_selected"), i, true);
+							}
+						}
+
+						//emit_signal(SNAME("item_clicked"), i, get_local_mouse_position(), mb->get_button_index());
+
+						if (mb->get_button_index() == MouseButton::LEFT && mb->is_double_click()) {
+							//emit_signal(SNAME("item_activated"), i);
+						}
+					}
+
+					return;
+				}
+				else if (closest != -1) {
+					//emit_signal(SNAME("item_clicked"), closest, get_local_mouse_position(), mb->get_button_index());
+				}
+				else {
+					// Since closest is null, more likely we clicked on empty space, so send signal to interested controls. Allows, for example, implement items deselecting.
+					//emit_signal(SNAME("empty_clicked"), get_local_mouse_position(), mb->get_button_index());
+				}
+			}
+			//TODO
+			//scrollbar not yet supported!! 
+			/*
+			if (mb.is_valid() && mb->get_button_index() == MouseButton::WHEEL_UP && mb->is_pressed()) {
+				scroll_bar->set_value(scroll_bar->get_value() - scroll_bar->get_page() * mb->get_factor() / 8);
+			}
+			if (mb.is_valid() && mb->get_button_index() == MouseButton::WHEEL_DOWN && mb->is_pressed()) {
+				scroll_bar->set_value(scroll_bar->get_value() + scroll_bar->get_page() * mb->get_factor() / 8);
+			}
+			*/
 		}
 	}
 }
