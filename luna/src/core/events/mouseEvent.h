@@ -52,22 +52,22 @@ namespace luna {
 	{
 	public:
 		mouseCode getMouseButton() const { return m_Button; }
-
+		bool isDoubleClick() const { return m_doubleClick; }
 		EVENT_CLASS_CATEGORY(eventCategoryMouse | eventCategoryInput | eventCategoryMouseButton)
 	protected:
-		mouseButtonEvent(const mouseCode button)
-			: m_Button(button) {}
+		mouseButtonEvent(const mouseCode button,bool doubleClick)
+			: m_Button(button),m_doubleClick(doubleClick) {}
 
 		mouseCode m_Button;
+		bool m_doubleClick;
 	};
 
 	class mouseButtonPressedEvent : public mouseButtonEvent
 	{
 	public:
 		mouseButtonPressedEvent(const mouseCode button,const bool doubleCLick)
-			: mouseButtonEvent(button) {this->doubleClick = doubleClick;}
+			: mouseButtonEvent(button,doubleCLick) {}
 
-		bool isDoubleClick() { return doubleClick; }
 
 		std::string toString() const override
 		{
@@ -77,14 +77,13 @@ namespace luna {
 		}
 
 		EVENT_CLASS_TYPE(MouseButtonPressed)
-		bool doubleClick = false;
 	};
 
 	class mouseButtonReleasedEvent : public mouseButtonEvent
 	{
 	public:
 		mouseButtonReleasedEvent(const mouseCode button)
-			: mouseButtonEvent(button) {}
+			: mouseButtonEvent(button,false) {}
 
 		std::string toString() const override
 		{

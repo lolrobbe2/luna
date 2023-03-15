@@ -203,11 +203,11 @@ namespace luna
 			
 		}
 
-		int itemListNode::getItemAtPosition(const glm::vec2& pos, bool exact = false)
+		int itemListNode::getItemAtPosition(const glm::vec2& _pos, bool exact = false)
 		{
 			auto& itemList = getComponent<luna::itemList>();
 			auto& transform = getComponent<luna::transformComponent>();
-			glm::vec2 pos = pos;
+			glm::vec2 pos = _pos;
 			/*
 			pos -= theme_cache.panel_style->get_offset();
 			pos.y += scroll_bar->get_value();
@@ -323,7 +323,10 @@ namespace luna
 			itemList.shapeChanged = true;
 			//notify_property_list_changed();
 		}
-
+		int itemListNode::getItemCount()
+		{
+			return getComponent<luna::itemList>().items.size();
+		}
 		std::vector<int> itemListNode::getSelectedItems()
 		{
 			std::vector<int> selected;
@@ -349,7 +352,7 @@ namespace luna
 			return false;
 		}
 		//event dispatch
-		void itemListNode::guiInputEvent(Event& pEvent) 
+		bool itemListNode::guiInputEvent(Event& pEvent) 
 		{
 			//ERR_FAIL_COND(p_event.is_null());
 
@@ -360,7 +363,7 @@ namespace luna
 
 			eventDispatcher dispatcher(pEvent);
 			dispatcher.dispatch<mouseMovedEvent>(LN_BIND_EVENT_FN(itemListNode::mouseMotionEvent));
-			if(pEvent.IsInCategory(luna::eventCategoryMouseButton) || pEvent.IsInCategory(luna::eventCategoryKeyboard)) dispatcher.dispatch<Event>(LN_BIND_EVENT_FN(itemListNode::mouseEvent));
+			if (pEvent.IsInCategory(luna::eventCategoryMouseButton) || pEvent.IsInCategory(luna::eventCategoryKeyboard)) itemListNode::mouseEvent(pEvent);
 			/*
 			if (p_event->is_pressed() && items.size() > 0) {
 				if (p_event->is_action("ui_up", true)) {
@@ -594,23 +597,24 @@ namespace luna
 			*/
 			#undef CAN_SELECT
 			#undef IS_SAME_ROW
+			return false;
 		}
-		void itemListNode::mouseMotionEvent(mouseMovedEvent& Event)
+		bool itemListNode::mouseMotionEvent(mouseMovedEvent& Event)
 		{
 			auto& itemList = getComponent<luna::itemList>();
 			if (itemList.deferSelectSingle >= 0) {
 				itemList.deferSelectSingle = -1;
-				return;
+				return false;
 			}
 		}
 
-		void itemListNode::mouseEvent(Event& Event)
+		bool itemListNode::mouseEvent(Event& Event)
 		{
 			
 			auto& itemList = getComponent<luna::itemList>();
 			//TODO improve code!
 			luna::mouseButtonPressedEvent& mouseButtonEvent = (luna::mouseButtonPressedEvent&)Event;
-			if (Event.getEventType() != eventType::MouseButtonPressed) mouseButtonEvent = luna::mouseButtonPressedEvent(Mouse::MOUSE_CODE_MAX_ENUM,false);
+			//if (Event.getEventType() != eventType::MouseButtonPressed) mouseButtonEvent = luna::mouseButtonPressedEvent(Mouse::MOUSE_CODE_MAX_ENUM,false);
 			luna::mouseMovedEvent& mouseMovedEvent = (luna::mouseMovedEvent&)Event;
 			luna::keyPressedEvent& pressedEvent = (luna::keyPressedEvent&)Event;
 ;			if (itemList.deferSelectSingle >= 0 && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft) {
@@ -618,7 +622,7 @@ namespace luna
 
 				//emit_signal(SNAME("multi_selected"), itemList.deferSelectSingle, true);
 				itemList.deferSelectSingle = -1;
-				return;
+				return true;
 			}
 
 			if (mouseButtonEvent.getMouseButton() == (Mouse::ButtonLast || Mouse::ButtonLeft || Mouse::ButtonMiddle || Mouse::ButtonRight)) {
@@ -666,7 +670,7 @@ namespace luna
 						//todo dubleclicks
 						if (!mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft && mouseButtonEvent.isDoubleClick() && pressedEvent.getkeyCode() != (input::LeftControl || input::RightControl) && itemList.selectMode == itemList::SELECT_MULTI && itemList.items[i].selectable && !itemList.items[i].disabled && itemList.items[i].selected && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft) {
 							itemList.deferSelectSingle = i;
-							return;
+							return true;
 						}
 
 						if (!itemList.items[i].selected || itemList.allowReselect) {
@@ -687,7 +691,7 @@ namespace luna
 						}
 					}
 
-					return;
+					return false;
 				}
 				else if (closest != -1) {
 					//emit_signal(SNAME("item_clicked"), closest, get_local_mouse_position(), mb->get_button_index());

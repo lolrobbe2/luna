@@ -8,6 +8,8 @@ namespace luna
 	{
 		class itemListNode : public controlNode
 		{
+		public:
+
 			itemListNode() = default;
 			virtual ~itemListNode() = default;
 
@@ -46,7 +48,7 @@ namespace luna
 
 			void setItemCount(int count);
 
-			int getItemCount() const;
+			int getItemCount();
 
 			void removeItem(int idx);
 
@@ -72,10 +74,10 @@ namespace luna
 
 			bool isAnythingSelected();
 
-			void guiInputEvent(Event& p_event);
-			void mouseMotionEvent(mouseMovedEvent& Event);
+			bool guiInputEvent(Event& p_event);
+			bool mouseMotionEvent(mouseMovedEvent& Event);
 
-			void mouseEvent(Event& Event);
+			bool mouseEvent(Event& Event);
 
 			void shape(int p_idx);
 		};
