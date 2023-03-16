@@ -98,16 +98,16 @@ namespace luna
 		struct rectangle
 		{
 			//origin is in center
-			glm::vec2 start; //left top corner
-			glm::vec2 end; //right bottom corner
+			glm::vec2 start = glm::vec2(0.0f); //left top corner
+			glm::vec2 end = glm::vec2(0.0f); //right bottom corner
 
 			glm::vec2 position;
 			_ALWAYS_INLINE_ bool hasPoint(const glm::vec2& point) { return (start.x == point.x || end.x == point.x) && (start.y == point.y || end.y == point.y); };
-			_ALWAYS_INLINE_ uint32_t width() { return end.x - start.x; };
-			_ALWAYS_INLINE_ uint32_t height() { return end.y - start.y; };
+			_ALWAYS_INLINE_ float width() { return end.x - start.x; };
+			_ALWAYS_INLINE_ float height() { return end.y - start.y; };
 
 			_ALWAYS_INLINE_ void setWidth(float width) { end.x -= width / 2; start.x += width / 2; };
-			_ALWAYS_INLINE_ float distanceTo(const glm::vec2& pos) { return glm::length(pos - position); };
+			_ALWAYS_INLINE_ float distanceTo(const glm::vec2& pos) { return glm::length(position - pos); };
 		};
 		ref<renderer::texture> icon;
 		bool iconTransposed = false;
@@ -125,6 +125,8 @@ namespace luna
 		std::string tooltip;
 		glm::vec4 customFg;
 		glm::vec4 customBg = { 0.0, 0.0, 0.0, 0.0 };
+
+		bool hover = 0;
 
 		rectangle rectCache;
 		rectangle minRectCache;

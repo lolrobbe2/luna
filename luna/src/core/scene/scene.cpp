@@ -1,12 +1,14 @@
 #include "scene.h"
 #include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
+#include <nodes/controlNodes/itemListNode.h>
 namespace luna
 {
 
 	
 	static void draw(Node node)
 	{
+		LN_PROFILE_FUNCTION();
 		std::vector<Node> childNodes;
 		if (node.hasComponent<childComponent>()) for (auto child : node.getComponent<childComponent>().childs) childNodes.push_back(Node(child, node));
 		if (!node.hasComponent<transformComponent>()) { for (Node child : childNodes) draw(child); return; }
@@ -31,11 +33,25 @@ namespace luna
 		if (node.hasComponent<itemList>())
 		{
 			auto& itemListComponent = node.getComponent<itemList>();
-			glm::vec3 translation = transform.translation;
-			for(item item : itemListComponent.items)
+			glm::vec3 translation {0.0f,0.0f,0.0f};
+			glm::vec3 customTransform = { 0.0f,0.0f,0.0f };
+			static glm::vec2 glyphDimensions;
+			if (itemListComponent.font) glyphDimensions = glm::vec2(itemListComponent.font->getGlyph('A')->getWidth(), itemListComponent.font->getGlyph('A')->getHeight());
+			glm::vec2 advance{};
+			advance.x = (glyphDimensions.x / renderer::renderer::getSceneDimensions().x) + transform.translation.x;
+			advance.y = (glyphDimensions.y / renderer::renderer::getSceneDimensions().y) + transform.translation.y;
+			for(item& item : itemListComponent.items)
 			{
-				if (itemListComponent.font) renderer::renderer2D::drawLabel(translation, {transform.scale.x,transform.scale.y}, itemListComponent.font, item.text);
-				translation.y += transform.scale.y + transform.scale.y;
+				glm::vec2 size{ 15,3 };
+				size.x *= transform.scale.x;
+				size.y *= transform.scale.y;
+				renderer::renderer2D::drawQuad(translation + transform.translation,size, item.customBg);
+				customTransform = translation;
+				customTransform = customTransform - glm::vec3(size.x / 2,-size.y / 4.0f, 0.0f);
+				if (itemListComponent.font) renderer::renderer2D::drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text);
+				item.rectCache.start = size;
+				item.rectCache.position = translation;
+				translation.y += size.y;
 			}
 		}
 		for (Node child : childNodes) draw(child);
@@ -76,12 +92,41 @@ namespace luna
 			else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
 
 			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
-			glm::vec2 leftCorner = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f};
-			glm::vec2 rightCorner = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f};
+			glm::vec2 leftCorner = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f };
+			glm::vec2 rightCorner = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
 			leftCorner /= 2.0f; //origin coordinates are in center!
 			rightCorner /= 2.0f;//origin coordinates are in center!
 
 			button.hover = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
+		}
+
+		auto itemListGroup = m_Registry.view<transformComponent, itemList>();
+
+		for (auto entity : itemListGroup)
+		{
+			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
+			else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
+			if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
+			else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
+
+			auto [transform,itemListComponent] = itemListGroup.get<transformComponent, itemList>(entity);
+			for (item& item : itemListComponent.items) {
+				glm::vec2 leftCorner = { transform.translation.x + item.rectCache.position.x - item.rectCache.start.x / 2.0f,transform.translation.y + item.rectCache.position.y - item.rectCache.start.y / 2.0f };
+				glm::vec2 rightCorner = { transform.translation.x + item.rectCache.position.x + item.rectCache.start.x / 2.0f,transform.translation.y + item.rectCache.position.y + item.rectCache.start.y / 2.0f };
+				leftCorner /= 2.0f; //origin coordinates are in center!
+				rightCorner /= 2.0f;//origin coordinates are in center!
+				/*
+				LN_CORE_INFO("left corner: {0}", leftCorner);
+				LN_CORE_INFO("right corner: {0}", rightCorner);
+				*/
+				item.hover = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
+				if (item.hover) {
+					//LN_CORE_INFO("hovering");
+					item.customBg = { 128.0f,128.0f,128.0f,255.0f };
+				}
+				else item.customBg = { 0.0f, 128.0f, 128.0f, 255.0f };
+			}
 		}
 	}
 	void scene::onEvent(Event& event)
@@ -111,6 +156,13 @@ namespace luna
 				}
 			}
 		}
+		auto itemLists = m_Registry.view<itemList>();
+		for (auto entity : itemLists)
+		{
+			nodes::itemListNode node(entity, this);
+			node.guiInputEvent(event);
+		}
+
 	}
 	Node::Node(uint64_t id, luna::scene* scene)
 	{
