@@ -4,6 +4,33 @@
 namespace luna
 {
 
+	
+	static void draw(Node node)
+	{
+		std::vector<Node> childNodes;
+		if (node.hasComponent<childComponent>()) for (auto child : node.getComponent<childComponent>().childs) childNodes.push_back(Node(child, node));
+		if (!node.hasComponent<transformComponent>()) { for (Node child : childNodes) draw(child); return; }
+		auto& transform = node.getComponent<transformComponent>();
+		if(node.hasComponent<spriteRendererComponent>())
+		{
+			auto& sprite = node.getComponent<spriteRendererComponent>();
+			if(node.hasComponent<buttonComponent>())
+			{
+				auto& button = node.getComponent<buttonComponent>();
+				if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
+				else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
+				else sprite.texture = button.normalTexture;
+			}
+			if (sprite.texture) renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);	
+		}
+		if(node.hasComponent<labelRendererComponent>())
+		{
+			auto& label = node.getComponent<labelRendererComponent>();
+			if (label.font) renderer::renderer2D::drawLabel(transform.translation, { transform.scale.x,transform.scale.y }, label.font, label.text);
+		}
+		for (Node child : childNodes) draw(child);
+	}
+
 	scene::~scene() 
 	{
 		m_Registry.clear();
@@ -12,14 +39,26 @@ namespace luna
 	template<typename T>
 	bool scene::destroyNode(const T& Node)
 	{
-		enttityStorage.eraseValue(node.getUUID());
-		m_Registry.destroy(node);
+		enttityStorage.eraseValue(Node.getUUID());
+		m_Registry.destroy(Node);
 		return false;
 	}
 
 	void scene::onUpdateEditor(utils::timestep ts)
 	{
+		scene* _scene = this;
+		m_Registry.each([&](auto entityID)
+			{
+				Node Node{ entityID ,  _scene};
+				if (!m_Registry.all_of<parentComponent>(entityID)) draw(Node);
+			});
+		/*
+		auto itemListGroup = m_Registry.view<transformComponent, spriteRendererComponent>();
+		for (auto entity : itemListGroup)
+		{
+			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
 
+		}
 		auto buttonGroup = m_Registry.view<transformComponent, buttonComponent,spriteRendererComponent>();
 		for (auto entity : buttonGroup)
 		{
@@ -45,6 +84,7 @@ namespace luna
 			auto [transform, label] = labelGroup.get<transformComponent, labelRendererComponent>(labelEntity);
 			if (label.font) renderer::renderer2D::drawLabel(transform.translation, { transform.scale.x,transform.scale.y },label.font,label.text);
 		}
+		*/
 	}
 
 	void scene::onUpdate(utils::timestep ts)
