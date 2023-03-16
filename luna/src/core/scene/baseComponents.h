@@ -168,6 +168,9 @@ namespace luna
 
 		int currentColumns = 1;
 
+		ref<renderer::font> font;
+		std::string filePath;
+
 		itemList() = default;
 		itemList(const itemList&) = default;
 	};

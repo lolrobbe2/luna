@@ -28,6 +28,16 @@ namespace luna
 			auto& label = node.getComponent<labelRendererComponent>();
 			if (label.font) renderer::renderer2D::drawLabel(transform.translation, { transform.scale.x,transform.scale.y }, label.font, label.text);
 		}
+		if (node.hasComponent<itemList>())
+		{
+			auto& itemListComponent = node.getComponent<itemList>();
+			glm::vec3 translation = transform.translation;
+			for(item item : itemListComponent.items)
+			{
+				if (itemListComponent.font) renderer::renderer2D::drawLabel(translation, {transform.scale.x,transform.scale.y}, itemListComponent.font, item.text);
+				translation.y += transform.scale.y + transform.scale.y;
+			}
+		}
 		for (Node child : childNodes) draw(child);
 	}
 
@@ -52,39 +62,6 @@ namespace luna
 				Node Node{ entityID ,  _scene};
 				if (!m_Registry.all_of<parentComponent>(entityID)) draw(Node);
 			});
-		/*
-		auto itemListGroup = m_Registry.view<transformComponent, spriteRendererComponent>();
-		for (auto entity : itemListGroup)
-		{
-			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
-
-		}
-		auto buttonGroup = m_Registry.view<transformComponent, buttonComponent,spriteRendererComponent>();
-		for (auto entity : buttonGroup)
-		{
-			auto [transform, button,sprite] = buttonGroup.get<transformComponent, buttonComponent,spriteRendererComponent>(entity);
-			if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
-			else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
-			else sprite.texture = button.normalTexture;
-			if (sprite.texture) renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
-		}
-
-		auto spriteGroup = m_Registry.view<transformComponent,spriteRendererComponent>();		
-		for (auto entity : spriteGroup)
-		{
-			auto [transform, sprite] = spriteGroup.get<transformComponent, spriteRendererComponent>(entity);
-			if(sprite.texture) renderer::renderer2D::drawQuad(transform.translation,{transform.scale.x,transform.scale.y}, sprite.texture);
-		}
-
-		auto labelGroup = m_Registry.view<transformComponent,labelRendererComponent>();
-		//group.sort<transformComponent>([](const auto& transform1, const auto& transform2) {return transform1.translation.z > transform2.translation.z; });
-
-		for (auto labelEntity : labelGroup)
-		{
-			auto [transform, label] = labelGroup.get<transformComponent, labelRendererComponent>(labelEntity);
-			if (label.font) renderer::renderer2D::drawLabel(transform.translation, { transform.scale.x,transform.scale.y },label.font,label.text);
-		}
-		*/
 	}
 
 	void scene::onUpdate(utils::timestep ts)

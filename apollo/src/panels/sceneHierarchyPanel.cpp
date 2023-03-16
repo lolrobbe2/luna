@@ -54,8 +54,7 @@ namespace luna
 				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
 				if(ImGui::Button("add selected node",ImVec2(200,20)))
 				{
-					//TODO implement register node type method;
-					LN_CORE_INFO("node added: {0}",m_ListSelected);
+					//LN_CORE_INFO("node added: {0}",m_ListSelected);
 					objectDB::createInstance(m_ListSelected, m_Context);
 					m_ListSelected = "";
 					ImGui::CloseCurrentPopup();
@@ -197,7 +196,7 @@ namespace luna
 				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
 				inputText("file path", label.filePath);
 				ImGui::SameLine();
-				if (ImGui::Button("select image"))
+				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
 					label.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
@@ -250,6 +249,12 @@ namespace luna
 			auto& itemList = Node.getComponent<luna::itemList>();
 			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "itemList"))
 			{
+				if (ImGui::Button("select font"))
+				{
+					//hotpink color code (227,28,121)
+					itemList.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
+					itemList.font = renderer::font::create(itemList.filePath);
+				}
 				if (ImGui::Button("add item"))
 				{
 					nodes::itemListNode itemListNode(Node);
