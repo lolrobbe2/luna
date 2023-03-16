@@ -167,6 +167,9 @@ namespace luna
 		bool allowReselect = false;
 
 		int currentColumns = 1;
+
+		itemList() = default;
+		itemList(const itemList&) = default;
 	};
 	/*
 		node tree components:

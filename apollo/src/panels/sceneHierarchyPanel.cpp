@@ -3,6 +3,7 @@
 #include <nodes/controlNodes/spriteNode.h>
 #include <nodes/controlNodes/labelNode.h>
 #include <nodes/controlNodes/buttonNode.h>
+#include <nodes/controlNodes/itemListNode.h>
 //node includes end
 #include <core/rendering/renderer2D.h>
 #include <glm/gtc/type_ptr.hpp>
@@ -244,6 +245,39 @@ namespace luna
 				ImGui::Separator();
 			}
 		}
+		if (Node.hasComponent<itemList>())
+		{
+			auto& itemList = Node.getComponent<luna::itemList>();
+			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "itemList"))
+			{
+				if (ImGui::Button("add item"))
+				{
+					nodes::itemListNode itemListNode(Node);
+					itemListNode.addItem("test");
+				}
+				int itemNum = 0;
+				if (ImGui::BeginChild("items"))
+				{
+					for (item& item : itemList.items)
+					{
+						std::string itemText = "item " + std::to_string(itemNum);
+
+						if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, itemText.c_str()))
+						{
+							inputText(itemText, item.text);
+							ImGui::TreePop();
+						}
+						itemNum++;
+					}
+				}
+				ImGui::EndChild();
+			
+				//TODO renderer part.
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
+
 	}
 
 
@@ -260,11 +294,7 @@ namespace luna
 		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeName) ? ImGuiTreeNodeFlags_Selected : 0;
 		bool isOpenNode = ImGui::TreeNodeEx(nodeName.c_str(), ImGuiTreeNodeFlags_OpenOnArrow | flags, nodeName.c_str());
 		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) m_ListSelected = nodeName;
-		if (isOpenNode)
-		{
-
-			ImGui::TreePop();
-		}
+		if (isOpenNode) ImGui::TreePop();
 		if (classInfo && isOpenNode)
 		{
 			ImGui::Indent(10);
@@ -272,7 +302,6 @@ namespace luna
 			ImGui::Unindent(10);
 		}
 	
-
 		return isOpenNode;
 	}
 	void sceneHierarchyPanel::inputText(const std::string& name,std::string& stringBuffer)

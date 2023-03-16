@@ -4,9 +4,10 @@ namespace luna
 {
 	namespace nodes
 	{
-		itemListNode::itemListNode(entt::entity handle, luna::scene* scene) : controlNode(handle, scene)
-		{
-		}
+		itemListNode::itemListNode(Node node) : controlNode(node,node){}
+
+		itemListNode::itemListNode(entt::entity handle, luna::scene* scene) : controlNode(handle, scene){}
+		
 		void itemListNode::init(luna::scene* scene)
 		{
 			this->scene = scene;

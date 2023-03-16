@@ -6,13 +6,13 @@ namespace luna
 {
 	namespace nodes
 	{
-		class itemListNode : public controlNode
+		class LN_API itemListNode : public controlNode
 		{
 		public:
 
 			itemListNode() = default;
 			virtual ~itemListNode() = default;
-
+			itemListNode(Node node);
 			itemListNode(entt::entity handle, luna::scene* scene);
 			itemListNode(luna::scene* scene);
 			virtual void init(luna::scene* scene) override;

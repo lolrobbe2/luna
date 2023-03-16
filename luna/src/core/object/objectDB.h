@@ -23,6 +23,7 @@ namespace luna
 	{
 	public:
 		virtual void init(scene* scene) = 0;
+		virtual void bindMethods(){};
 	};
 	/**
 	 * @brief object database class.
@@ -41,12 +42,15 @@ namespace luna
 		template<class T,class A>
 		_ALWAYS_INLINE_ static void addClass()
 		{
-			LN_REGISTER_CLASS(T);
-			LN_REGISTER_CLASS(A);
-			classInfo* infoA = getPtr(getClassName<A>()); // parent node type
-			if (!infoA) return;
-			classInfo* infoT = getPtr(getClassName<T>()); 
-			if (!infoT) return;
+			classInfo* infoA = getPtr(getClassName<A>());
+			classInfo* infoT = getPtr(getClassName<T>());
+			if (!infoT) LN_REGISTER_CLASS(T)
+			if(!infoA) LN_REGISTER_CLASS(A)
+			if(!infoA) infoA = getPtr(getClassName<A>()); // parent node type
+			if(!infoT) infoT = getPtr(getClassName<T>());
+			//if (!infoA) return;
+			
+			//if (!infoT) return;
 			infoT->parentClass = infoA;
 			infoA->children.push_back(infoT);
 			removeRootClass<T>();
