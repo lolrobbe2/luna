@@ -153,7 +153,7 @@ namespace luna
 		};
 		std::vector<item> items;
 		std::vector<int> separators;
-
+		std::unordered_set<int> selected;
 		std::string searchString;
 
 		selectMode selectMode = SELECT_SINGLE;

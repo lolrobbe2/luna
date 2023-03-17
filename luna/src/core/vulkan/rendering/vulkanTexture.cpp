@@ -261,6 +261,7 @@ namespace luna
 
 		stbi_uc* vulkanFont::createGlyph(const stbtt_fontinfo* info,int codePoint, float* xscale, float* yscale, int* newXoff,int* newYoff)
 		{
+			LN_PROFILE_FUNCTION();
 			int charWidth, charHeight;
 			int xoff, yoff;
 			stbtt_GetCodepointBitmap(info, 1, 1,codePoint , &charWidth, &charHeight, newXoff, newYoff);
@@ -284,7 +285,8 @@ namespace luna
 	
 				stbi_uc* fontGlyph = createGlyph(&fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
 				
-				if (fontGlyph) {
+				if (fontGlyph) 
+				{
 					int y = index / 16;
 					int x = index % 16;
 					glypScales.push_back(scale);
@@ -292,14 +294,13 @@ namespace luna
 					buffer.push_back(VK_NULL_HANDLE);
 					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));
-					utils::vulkanAllocator::uploadTexture(this->buffer[index], imageHandle, imageFormat, {300,300,1}, {x * 300,y * 300,0});
+					if(imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(this->buffer[index], imageHandle, imageFormat, {300,300,1}, {x * 300,y * 300,0});
 				}
 				else 
 				{
 					glypScales.push_back({ 1.0f,1.0f });
 					glypAdvances.push_back({0.0f,0.0f });
 					buffer.push_back(VK_NULL_HANDLE);
-					//LN_CORE_ERROR("could not load glyph: {0}", (char)i);
 				}
 				
 			}

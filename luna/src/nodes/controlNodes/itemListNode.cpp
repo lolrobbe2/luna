@@ -341,7 +341,12 @@ namespace luna
 		bool itemListNode::mouseMotionEvent(mouseMovedEvent& Event)
 		{
 			auto& itemList = getComponent<luna::itemList>();
-			
+			for (size_t i = 0; i < itemList.items.size(); i++)
+			{
+				item& item = itemList.items[i];
+				if (i == itemList.current && !itemList.items[itemList.current].selected) itemList.items[itemList.current].customBg = {255.0f, 105.0f, 180.0f ,255.0f};
+				else if(!itemList.items[i].selected && i!= itemList.current)item.customBg = { 255.0f, 182.0f, 193.0f,255.0f };
+			}
 			return false;
 		}
 
@@ -354,7 +359,19 @@ namespace luna
 			//if (Event.getEventType() != eventType::MouseButtonPressed) mouseButtonEvent = luna::mouseButtonPressedEvent(Mouse::MOUSE_CODE_MAX_ENUM,false);
 			luna::mouseMovedEvent& mouseMovedEvent = (luna::mouseMovedEvent&)Event;
 			luna::keyPressedEvent& pressedEvent = (luna::keyPressedEvent&)Event;
-
+			if (itemList.current != -1 && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft) 
+			{
+				itemList.items[itemList.current].selected = true;
+				itemList.items[itemList.current].customBg = { 255.0f, 0.0f, 255.0f,255.0f };
+			}
+			for(item& item : itemList.items)
+			{
+				if(!item.hover && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft)
+				{
+					item.selected = false;
+					item.customBg = { 255.0f, 182.0f, 193.0f,255.0f };
+				}
+			}
 			return false;
 		}
 	}

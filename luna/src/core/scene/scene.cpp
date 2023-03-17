@@ -104,6 +104,7 @@ namespace luna
 
 		for (auto entity : itemListGroup)
 		{
+			int index = 0;
 			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
 			if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 			else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
@@ -116,16 +117,9 @@ namespace luna
 				glm::vec2 rightCorner = { transform.translation.x + item.rectCache.position.x + item.rectCache.start.x / 2.0f,transform.translation.y + item.rectCache.position.y + item.rectCache.start.y / 2.0f };
 				leftCorner /= 2.0f; //origin coordinates are in center!
 				rightCorner /= 2.0f;//origin coordinates are in center!
-				/*
-				LN_CORE_INFO("left corner: {0}", leftCorner);
-				LN_CORE_INFO("right corner: {0}", rightCorner);
-				*/
 				item.hover = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
-				if (item.hover) {
-					//LN_CORE_INFO("hovering");
-					item.customBg = { 128.0f,128.0f,128.0f,255.0f };
-				}
-				else item.customBg = { 0.0f, 128.0f, 128.0f, 255.0f };
+				if (item.hover) itemListComponent.current = index;
+				index++;
 			}
 		}
 	}
