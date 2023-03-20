@@ -56,7 +56,7 @@ namespace luna
 		std::string filePath;
 		float TilingFactor = 1.0f;
 		bool showInEditor = true;
-
+		bool outOfBounds = false;
 
 		spriteRendererComponent() = default;
 		spriteRendererComponent(const spriteRendererComponent&) = default;

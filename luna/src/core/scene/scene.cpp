@@ -16,14 +16,15 @@ namespace luna
 		if(node.hasComponent<spriteRendererComponent>())
 		{
 			auto& sprite = node.getComponent<spriteRendererComponent>();
-			if(node.hasComponent<buttonComponent>())
+			
+			if(sprite.outOfBounds && node.hasComponent<buttonComponent>())
 			{
 				auto& button = node.getComponent<buttonComponent>();
 				if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
 				else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
 				else sprite.texture = button.normalTexture;
 			}
-			if (sprite.texture) renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);	
+			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);	
 		}
 		if(node.hasComponent<labelRendererComponent>())
 		{
@@ -45,8 +46,12 @@ namespace luna
 				glm::vec2 size{ 15,3 };
 				size.x *= transform.scale.x;
 				size.y *= transform.scale.y;
-				renderer::renderer2D::drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg);
-
+				if (renderer::renderer2D::drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg))
+				{ 
+					item.selectable = false;
+					return;
+				} else item.selectable = true;;
+				
 				renderer::renderer2D::drawQuad(translation + transform.translation,size, item.customFg);
 				customTransform = translation;
 				customTransform = customTransform - glm::vec3(size.x / 2,-size.y / 4.0f, 0.0f);
@@ -84,16 +89,19 @@ namespace luna
 
 	void scene::onUpdate(utils::timestep ts)
 	{
+		glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+		if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
+		else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
+		if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
+		else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
+
+
 		auto buttonGroup = m_Registry.view<transformComponent, buttonComponent, spriteRendererComponent>();
 		for (auto entity : buttonGroup)
 		{
-			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
-			if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
-			else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
-			if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
-			else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
-
 			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
+			if (sprite.outOfBounds) break;
+
 			glm::vec2 leftCorner = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f };
 			glm::vec2 rightCorner = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
 			leftCorner /= 2.0f; //origin coordinates are in center!
@@ -107,14 +115,11 @@ namespace luna
 		for (auto entity : itemListGroup)
 		{
 			int index = 0;
-			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
-			if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
-			else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
-			if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
-			else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
+
 			bool found = false;
 			auto [transform,itemListComponent] = itemListGroup.get<transformComponent, itemList>(entity);
 			for (item& item : itemListComponent.items) {
+				if (!item.selectable) break;
 				glm::vec2 leftCorner = { transform.translation.x + item.rectCache.position.x - item.rectCache.start.x / 2.0f,transform.translation.y + item.rectCache.position.y - item.rectCache.start.y / 2.0f };
 				glm::vec2 rightCorner = { transform.translation.x + item.rectCache.position.x + item.rectCache.start.x / 2.0f,transform.translation.y + item.rectCache.position.y + item.rectCache.start.y / 2.0f };
 				leftCorner /= 2.0f; //origin coordinates are in center!
