@@ -45,7 +45,9 @@ namespace luna
 				glm::vec2 size{ 15,3 };
 				size.x *= transform.scale.x;
 				size.y *= transform.scale.y;
-				renderer::renderer2D::drawQuad(translation + transform.translation,size, item.customBg);
+				renderer::renderer2D::drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg);
+
+				renderer::renderer2D::drawQuad(translation + transform.translation,size, item.customFg);
 				customTransform = translation;
 				customTransform = customTransform - glm::vec3(size.x / 2,-size.y / 4.0f, 0.0f);
 				if (itemListComponent.font) renderer::renderer2D::drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text);
@@ -110,7 +112,7 @@ namespace luna
 			else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
 			if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
 			else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
-
+			bool found = false;
 			auto [transform,itemListComponent] = itemListGroup.get<transformComponent, itemList>(entity);
 			for (item& item : itemListComponent.items) {
 				glm::vec2 leftCorner = { transform.translation.x + item.rectCache.position.x - item.rectCache.start.x / 2.0f,transform.translation.y + item.rectCache.position.y - item.rectCache.start.y / 2.0f };
@@ -118,9 +120,14 @@ namespace luna
 				leftCorner /= 2.0f; //origin coordinates are in center!
 				rightCorner /= 2.0f;//origin coordinates are in center!
 				item.hover = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
-				if (item.hover) itemListComponent.current = index;
+				if (item.hover)
+				{
+					itemListComponent.current = index;
+					found = true;
+				}
 				index++;
 			}
+			if (!found) itemListComponent.current = -1;
 		}
 	}
 	void scene::onEvent(Event& event)

@@ -33,6 +33,11 @@ namespace luna
 
 		static renderer2DData rendererData;
 
+		static bool outOfView(const glm::vec4& vert)
+		{
+			return (vert.x > 1.0 || vert.x < -1.0) || (vert.y > 1.0 || vert.y < -1.0);
+		}
+
 		void renderer2D::init()
 		{
 			LN_PROFILE_SCOPE("renderer2D init");
@@ -142,15 +147,23 @@ namespace luna
 			glm::vec2 normalizedDimensions = dimensions / renderer::getSceneDimensions();
 			transform *= glm::scale(glm::mat4(1.0f), { normalizedDimensions.x, normalizedDimensions.y, 1.0f });
 			std::vector<glm::vec2> textureCoords = texture->getUv();
+			uint8_t outOfBounds = 0;
 			constexpr size_t quadVertexCount = 4;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
 				rendererData.quadVertexBufferPtr->color = { 1.0f,1.0f,1.0f,1.0f };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadCharVertexPositions[i];
+				if (outOfView(rendererData.quadVertexBufferPtr->vert)) outOfBounds++;
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
 				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
 				rendererData.quadVertexBufferPtr->text = rendererData.isText;
 				rendererData.quadVertexBufferPtr++;
+			}
+			if (outOfBounds == 4)
+			{
+				rendererData.quadVertexBufferPtr -= 4;
+				memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
+				return;
 			}
 			rendererData.quadIndexCount += 6;
 			rendererData.stats.quadCount++;
@@ -171,14 +184,23 @@ namespace luna
 			}
 			std::vector<glm::vec2> textureCoords = texture->getUv();
 			constexpr size_t quadVertexCount = 4;
+			uint8_t outOfBounds = 0;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
 				rendererData.quadVertexBufferPtr->color = color;
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];
+				if (outOfView(rendererData.quadVertexBufferPtr->vert)) outOfBounds++;
+
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
 				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
 				rendererData.quadVertexBufferPtr->text = rendererData.isText;
 				rendererData.quadVertexBufferPtr++;
+			}
+			if (outOfBounds == 4)
+			{
+				rendererData.quadVertexBufferPtr -= 4;
+				memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
+				return;
 			}
 			rendererData.quadIndexCount += 6;
 			rendererData.stats.quadCount++;
@@ -202,14 +224,22 @@ namespace luna
 			uint64_t handle = textureInBatch(blankImage->handle());
 			constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 			constexpr size_t quadVertexCount = 4;
+			uint8_t outOfBounds = 0;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
 				rendererData.quadVertexBufferPtr->color = { color.x * 1 / 255.0f,color.y * 1 / 255.0f,color.z * 1 / 255.0f,1.0f };
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
+				if (outOfView(rendererData.quadVertexBufferPtr->vert)) outOfBounds++;
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
 				rendererData.quadVertexBufferPtr->textureIndex = handle + 0.1;
 				rendererData.quadVertexBufferPtr->text = rendererData.isText;
 				rendererData.quadVertexBufferPtr++;
+			}
+			if (outOfBounds == 4) 
+			{
+				rendererData.quadVertexBufferPtr -= 4;
+				memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
+				return;
 			}
 			rendererData.quadIndexCount += 6;
 			rendererData.stats.quadCount++;
@@ -233,5 +263,7 @@ namespace luna
 			}
 			return 0;
 		}
+
+	
 	}
 }
