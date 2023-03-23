@@ -29,6 +29,51 @@ namespace YAML {
 	};
 
 	template<>
+	struct convert<luna::item>
+	{
+		static Node encode(const luna::item& item)
+		{
+			Node node;
+			node.push_back(item);
+		}
+		static bool decode(const Node& node,luna::item& item)
+		{
+			if (!node.IsMap()) return false;
+			item.rectCache;
+			item.disabled = node["disabled"].as<bool>();
+			item.iconRegion = node["iconRegion"].as<glm::vec2>();
+			item.language = node["language"].as<std::string>();
+			item.selectable = node["selectable"].as<bool>();
+			item.text = node["text"].as<std::string>();
+			item.tooltip = node["tooltip"].as<std::string>();
+			item.tooltipEnabled = node["tooltipEnabled"].as<bool>();
+
+		}
+	};
+
+	template<>
+	struct convert<std::vector<luna::item>>
+	{
+		static Node encode(const std::vector<luna::item>& items)
+		{
+			Node node;
+			for (luna::item item : items)
+				node.push_back(item);
+		}
+
+		static bool decode(const Node& node, std::vector<luna::item>& items) 
+		{
+			if (!node.IsSequence())
+				return false;
+			for (Node subNode : node)
+			{
+				items.push_back(subNode.as<luna::item>());
+			}
+			
+		}
+	};
+
+	template<>
 	struct convert<glm::vec3>
 	{
 		static Node encode(const glm::vec3& rhs)
@@ -100,6 +145,7 @@ namespace YAML {
 			return true;
 		}
 	};
+	
 }
 
 
@@ -138,13 +184,36 @@ namespace luna
 		return out;
 	}
 
+	YAML::Emitter& operator<<(YAML::Emitter& out, const item::rectangle& v)
+	{
+		out << YAML::BeginMap; //begin item map
+		out << YAML::Key << "start" << YAML::Value << v.start;
+		out << YAML::Key << "end" << YAML::Value << v.end;
+		out << YAML::Key << "position" << YAML::Value << v.position;
+		out << YAML::EndMap;
+		return out;
+	}
 
+	YAML::Emitter& operator<<(YAML::Emitter& out, const item& v)
+	{
+		out << YAML::BeginMap; //begin item map
+		out << YAML::Key << "rectangle" << YAML::Value << v.rectCache;
+		out << YAML::Key << "disabled" << YAML::Value << v.disabled;
+		out << YAML::Key << "iconRegion" << YAML::Value << v.iconRegion;
+		out << YAML::Key << "language" << YAML::Value << v.language;
+		out << YAML::Key << "selectable" << YAML::Value << v.selectable;
+		out << YAML::Key << "text" << YAML::Value << v.text;
+		out << YAML::Key << "tooltip" << YAML::Value << v.tooltip;
+		out << YAML::Key << "tooltipEnabled" << YAML::Value << v.tooltipEnabled;
+		out << YAML::EndMap;
+		return out;
+	}
 	
 	/*deserialize*/
 	static void deSerializeTag(luna::Node& node, YAML::Node& serializedNode)
 	{
 		if (!serializedNode["tagComponent"]) return node.setName("Node");
-		auto tagComponent = serializedNode["tagComponent"];
+		auto& tagComponent = serializedNode["tagComponent"];
 		node.addComponent<luna::tagComponent>().tag = tagComponent["tag"].as<std::string>();
 	}
 	static void deSerializeParent(luna::Node& node, YAML::Node& serializedNode)
@@ -165,7 +234,7 @@ namespace luna
 	static void deSerializeTransform(luna::Node& node, YAML::Node& serializedNode)
 	{
 		if (!serializedNode["transformComponent"]) return;
-		auto transformComponent = serializedNode["transformComponent"];
+		auto& transformComponent = serializedNode["transformComponent"];
 		auto& transform = node.addComponent<luna::transformComponent>();
 		transform.translation = transformComponent["translation"].as<glm::vec3>();
 		transform.rotation = transformComponent["rotation"].as<glm::vec3>();
@@ -214,6 +283,24 @@ namespace luna
 		if (button.pressedFilePath.size()) button.pressedTexture = renderer::texture::create(button.pressedFilePath);
 		
 	}
+	static void deserializeColorRect(luna::Node& node, YAML::Node& serializedNode)
+	{
+		if (!serializedNode["colorrectComponent"]) return;
+		auto& colorrectComponent = serializedNode["colorrectComponent"];
+		auto& colorRect = node.addComponent<rectComponent>();
+		colorRect.color = colorrectComponent["color"].as<glm::vec4>();
+	}
+	static void deserializeItemList(luna::Node& node, YAML::Node& serializedNode)
+	{
+		if (!serializedNode["itemListComponent"]) return;
+		auto& itemListComponent = serializedNode["itemListComponent"];
+		auto& itemList = node.addComponent<luna::itemList>();
+		itemList.filePath = itemListComponent["filePath"].as<std::string>();
+		itemList.allowReselect = itemListComponent["allowReselect"].as<bool>();
+		itemList.allowRmbSelect = itemListComponent["allowRmbSelect"].as<bool>();
+		itemList.items = itemListComponent["items"].as<std::vector<luna::item>>();
+		if (itemList.filePath.size()) itemList.font = renderer::font::create(itemList.filePath);
+	}
 	static void deSerializeNode(luna::Node& node,YAML::Node& serializedNode)
 	{
 		auto& id = node.addComponent<idComponent>();
@@ -226,6 +313,8 @@ namespace luna
 		deSerializeSprite(node, serializedNode);
 		deSerializeLabelRenderer(node, serializedNode);
 		deserializeButton(node, serializedNode);
+		deserializeItemList(node, serializedNode);
+		deserializeColorRect(node,serializedNode);
 	}
 
 	/*serialize*/
@@ -244,7 +333,7 @@ namespace luna
 	static void serializeParentComponent(YAML::Emitter& out, luna::Node& node)
 	{
 		if (!node.hasComponent<parentComponent>()) return;
-		auto parent = node.getComponent<parentComponent>();
+		auto& parent = node.getComponent<parentComponent>();
 		out << YAML::Key << "parentComponent";
 		out << YAML::BeginMap;
 		out << YAML::Key << "parentId" << YAML::Value << parent.parentId.getId();
@@ -253,7 +342,7 @@ namespace luna
 	static void serializeChildComponent(YAML::Emitter& out, luna::Node& node)
 	{
 		if (!node.hasComponent<childComponent>()) return;
-		auto children = node.getComponent<childComponent>();
+		auto& children = node.getComponent<childComponent>();
 		std::vector<uint64_t> id = transformEntity(node, children.childs);
 		out << YAML::Key << "childComponent";
 		out << YAML::BeginMap;
@@ -263,7 +352,7 @@ namespace luna
 	static void serializeTag(YAML::Emitter& out, luna::Node& node)
 	{
 		if (!node.hasComponent<tagComponent>()) return;
-		auto tag = node.getComponent<tagComponent>();
+		auto& tag = node.getComponent<tagComponent>();
 		out << YAML::Key << "tagComponent";
 		out << YAML::BeginMap; //begin tag map
 		out << YAML::Key << "tag" << YAML::Value << tag.tag;
@@ -272,7 +361,7 @@ namespace luna
 	static void serializeTransform(YAML::Emitter& out, luna::Node& node)
 	{
 		if (!node.hasComponent<transformComponent>()) return;
-		auto transform = node.getComponent<transformComponent>();
+		auto& transform = node.getComponent<transformComponent>();
 		out << YAML::Key << "transformComponent";
 		out << YAML::BeginMap; //begin tag map
 		out << YAML::Key << "translation" << YAML::Value << transform.translation;
@@ -284,7 +373,7 @@ namespace luna
 	static void serializeSpriteRendererComponent(YAML::Emitter& out, luna::Node& node)
 	{
 		if (!node.hasComponent<spriteRendererComponent>()) return;
-		auto spriteRenderer = node.getComponent<spriteRendererComponent>();
+		auto& spriteRenderer = node.getComponent<spriteRendererComponent>();
 		out << YAML::Key << "spriteRendererComponent";
 		out << YAML::BeginMap; //begin sprite map
 		out << YAML::Key << "color" << YAML::Value << spriteRenderer.color;
@@ -296,7 +385,7 @@ namespace luna
 	static void serializeLabelRendererComponent(YAML::Emitter& out, luna::Node& node)
 	{
 		if (!node.hasComponent<labelRendererComponent>()) return;
-		auto labelRenderer = node.getComponent<labelRendererComponent>();
+		auto& labelRenderer = node.getComponent<labelRendererComponent>();
 		out << YAML::Key << "labelRendererComponent";
 		out << YAML::BeginMap; //begin sprite map
 		out << YAML::Key << "color" << YAML::Value << labelRenderer.color;
@@ -305,11 +394,19 @@ namespace luna
 		out << YAML::Key << "tilingFactor" << YAML::Value << labelRenderer.TilingFactor;
 		out << YAML::EndMap; //end sprite map
 	}
-
+	static void serializeColorRect(YAML::Emitter& out, luna::Node& node)
+	{
+		if (!node.hasComponent<rectComponent>()) return;
+		auto colorrect= node.getComponent<rectComponent>();
+		out << YAML::Key << "colorrectComponent";
+		out << YAML::BeginMap; //begin colorrect map
+		out << YAML::Key << "color" << YAML::Value << colorrect.color;
+		out << YAML::EndMap; //end colorrect map
+	}
 	static void serializeButtonComponent(YAML::Emitter& out, luna::Node& node)
 	{
 		if (!node.hasComponent<buttonComponent>()) return;
-		auto button = node.getComponent<buttonComponent>();
+		auto& button = node.getComponent<buttonComponent>();
 		out << YAML::Key << "buttonComponent";
 		out << YAML::BeginMap; //begin button map
 		out << YAML::Key << "normalFilePath" << YAML::Value << button.normalFilePath;
@@ -318,6 +415,23 @@ namespace luna
 		out << YAML::Key << "shownInEditor" << YAML::Value << button.showInEditor;
 		out << YAML::EndMap; // end button map
 
+	}
+	static void serializeItemListComponent(YAML::Emitter& out, luna::Node& node)
+	{
+		if (!node.hasComponent<itemList>()) return;
+		auto& itemList = node.getComponent<luna::itemList>();
+		out << YAML::Key << "itemListComponent";
+		out << YAML::BeginMap; //begin itemList map
+		out << YAML::Key << "filePath" << YAML::Value << itemList.filePath;
+		out << YAML::Key << "allowReselect" << YAML::Value << itemList.allowReselect;
+		out << YAML::Key << "allowRmbSelect" << YAML::Value << itemList.allowRmbSelect;
+		out << YAML::Key << "items" << YAML::Value << YAML::BeginSeq;
+		for (item& item : itemList.items)
+		{
+			out << item;
+		}
+		out << YAML::EndSeq;
+ 		out << YAML::EndMap; // end itemList map
 	}
 	static void serializeNode(YAML::Emitter& out,luna::Node& node)
 	{
@@ -334,6 +448,8 @@ namespace luna
 		serializeSpriteRendererComponent(out, node);
 		serializeLabelRendererComponent(out, node);
 		serializeButtonComponent(out, node);
+		serializeColorRect(out, node);
+		serializeItemListComponent(out, node);
 		out << YAML::EndMap;//node id and typename end
 		out << YAML::EndMap;//node components end
 
@@ -343,15 +459,20 @@ namespace luna
 
 	luna::scene* sceneSerializer::deSerialize(const std::string& filePath)
 	{
-
+		LN_PROFILE_SCOPE("loading and deserializing");
+		auto prevTime = std::chrono::system_clock::now();
+		auto currentTime = std::chrono::system_clock::now();
 		std::ifstream stream(filePath);
 		std::stringstream strstream;
 		strstream << stream.rdbuf();
 		stream.close();
 		YAML::Node data = YAML::Load(strstream.str());
 		strstream.clear();
+		currentTime = std::chrono::system_clock::now();
+		double diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
+		LN_CORE_INFO("file loading took {0} ms", diff_ms);
 		if (!data["scene"]) return nullptr;
-
+		prevTime = std::chrono::system_clock::now();
 		scene* scene = new luna::scene();
 
 		std::string sceneName = data["scene"].as<std::string>();
@@ -363,6 +484,11 @@ namespace luna
 			Node node{ entity,scene };
 			deSerializeNode(node, serializedNode["Node"]);
 		}
+		currentTime = std::chrono::system_clock::now();
+		diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
+		LN_CORE_INFO("deserializing took {0} ms", diff_ms);
+		LN_PROFILE_SCOPE("node tree assembly");
+		prevTime = std::chrono::system_clock::now();
 		auto childGroup = scene->m_Registry.view<childUintComponent>();
 		for (auto& entity : childGroup)
 		{
@@ -371,11 +497,14 @@ namespace luna
 			for(uint64_t childId : children)
 			{
 				Node child{ childId, scene };
-				
 				parent.addChild(child);
 			}
 			parent.removeComponent<childUintComponent>();
+			childGroup = scene->m_Registry.view<childUintComponent>();
 		}
+		currentTime = std::chrono::system_clock::now();
+		diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
+		LN_CORE_INFO("node tree assembly took {0} ms", diff_ms);
 		return scene;
 	}
 

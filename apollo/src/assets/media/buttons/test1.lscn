@@ -1,19 +1,40 @@
 scene: name
 nodes:
   - Node:
-      id: 7706594317682044059
-      node type: Node
+      id: 253211540138888478
+      node type: buttonNode
       tagComponent:
-        tag: Node
-      childComponent:
-        childId's: [2857684312755110595, 16260152738797927885]
+        tag: buttonNode
+      transformComponent:
+        translation: [0.5, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 0.100000001, 1]
+      spriteRendererComponent:
+        color: [1, 1, 1, 1]
+        filePath: ""
+        tilingFactor: 1
+        shownInEditor: false
+      buttonComponent:
+        normalFilePath: src/assets/media/buttons/button1.png
+        hoverFilePath: src/assets/media/buttons/button2.png
+        pressedFilePath: src/assets/media/buttons/button3.png
+        shownInEditor: false
   - Node:
-      id: 16260152738797927885
-      node type: controlNode
+      id: 7703133182355076853
+      node type: spriteNode
       tagComponent:
-        tag: controlNode
+        tag: spriteNode
       parentComponent:
-        parentId: 7706594317682044059
+        parentId: 2857684312755110595
+      transformComponent:
+        translation: [-0.5, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 1, 1]
+      spriteRendererComponent:
+        color: [1, 1, 1, 1]
+        filePath: C:\Users\robbe\source\repos\lolrobbe2\luna\apollo\src\assets\media\buttons\button3.png
+        tilingFactor: 1
+        shownInEditor: true
   - Node:
       id: 2857684312755110595
       node type: controlNode
@@ -24,18 +45,16 @@ nodes:
       childComponent:
         childId's: [7703133182355076853]
   - Node:
-      id: 7703133182355076853
-      node type: spriteNode
+      id: 16260152738797927885
+      node type: controlNode
       tagComponent:
-        tag: spriteNode
+        tag: controlNode
       parentComponent:
-        parentId: 2857684312755110595
-      transformComponent:
-        translation: [0, 0, 0]
-        rotation: [0, 0, 0]
-        scale: [1, 1, 1]
-      spriteRendererComponent:
-        color: [1, 1, 1, 1]
-        filePath: C:\Users\robbe\source\repos\lolrobbe2\luna\apollo\src\assets\media\buttons\button3.png
-        tilingFactor: 1
-        shownInEditor: true
+        parentId: 7706594317682044059
+  - Node:
+      id: 7706594317682044059
+      node type: Node
+      tagComponent:
+        tag: Node
+      childComponent:
+        childId's: [2857684312755110595, 16260152738797927885]

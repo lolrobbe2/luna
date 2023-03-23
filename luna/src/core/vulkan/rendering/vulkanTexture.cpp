@@ -2,6 +2,7 @@
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <core/vulkan/device/vulkanDevice.h>
 #include <lnpch.h>
+
 namespace luna
 {
 	namespace vulkan
@@ -276,9 +277,13 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
-			
+			utils::vulkanAllocator::createBuffer(&testBuffer, 4800 * 4800, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)testBuffer).pMappedData;
+			glyph* bufferPtr = (glyph*)bufferBase;
+			uint64_t offset = 0;
 			for (size_t i = startIndex; i < 256; i++)
 			{
+				
 				int index = i - startIndex;
 				glm::vec2 scale;
 				int offsetx, offsety;
@@ -287,25 +292,34 @@ namespace luna
 				
 				if (fontGlyph) 
 				{
-					int y = index / 16;
-					int x = index % 16;
+					/*
+					
 					glypScales.push_back(scale);
 					glypAdvances.push_back({ offsetx,offsety});
 					buffer.push_back(VK_NULL_HANDLE);
 					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));
 					if(imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(this->buffer[index], imageHandle, imageFormat, {300,300,1}, {x * 300,y * 300,0});
+					*/
+					int y = index / 16;
+					int x = index % 16;
+					glypScales.push_back(scale);
+					glypAdvances.push_back({ offsetx,offsety });
+					memcpy(bufferPtr, fontGlyph, sizeof(glyph));
+					bufferPtr++;
+					if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(this->testBuffer, imageHandle, imageFormat, { 300,300,1 },{ x * 300,y * 300,0 },{300,300},offset);
+					offset += sizeof(glyph);
 				}
 				else 
 				{
 					glypScales.push_back({ 1.0f,1.0f });
 					glypAdvances.push_back({0.0f,0.0f });
-					buffer.push_back(VK_NULL_HANDLE);
+					//buffer.push_back(VK_NULL_HANDLE);
+					bufferPtr++;
+					offset += sizeof(glyph);
 				}
-				
 			}
 			utils::vulkanAllocator::flush();
-			buffer.resize(0);
 		}
 	}
 }

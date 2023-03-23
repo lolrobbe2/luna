@@ -63,7 +63,10 @@ namespace luna
 		spriteRendererComponent(const glm::vec4& color)
 			: color(color) {}
 	};
-
+	struct rectComponent
+	{
+		glm::vec4 color{ 1.0f,1.0f,1.0f,1.0f };
+	};
 	struct labelRendererComponent
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
@@ -120,7 +123,7 @@ namespace luna
 		bool selectable = true;
 		bool selected = false;
 		bool disabled = false;
-		bool tooltip_enabled = true;
+		bool tooltipEnabled = true;
 		
 		std::string tooltip;
 		glm::vec4 customFg;

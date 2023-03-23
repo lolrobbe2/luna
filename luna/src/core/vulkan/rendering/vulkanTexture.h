@@ -131,7 +131,7 @@ namespace luna
 			};
 			const static int width = 4800;
 			const static int height = 4800;
-	
+			VkBuffer testBuffer = VK_NULL_HANDLE;
 			std::vector<VkBuffer> buffer;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;

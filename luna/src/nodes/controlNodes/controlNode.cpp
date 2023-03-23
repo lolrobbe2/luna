@@ -13,6 +13,7 @@ namespace luna
 			this->scene = scene;
 			entityHandle = scene->create();
 			addComponent<idComponent>();
+			addComponent<transformComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 
@@ -21,8 +22,12 @@ namespace luna
 			this->scene = scene;
 			entityHandle = scene->create();
 			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(controlNode);
-
+			addComponent<transformComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
+		}
+		void controlNode::guiEvent(Event& event) 
+		{
+
 		}
 	}
 }

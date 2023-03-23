@@ -92,7 +92,7 @@ nodes:
       parentComponent:
         parentId: 10444825676913013906
       transformComponent:
-        translation: [0, 0, 0]
+        translation: [0.5, 0, 0]
         rotation: [0, 0, 0]
         scale: [1, 1, 1]
       spriteRendererComponent:
@@ -108,7 +108,7 @@ nodes:
       parentComponent:
         parentId: 16900744514465121099
       transformComponent:
-        translation: [-0.5, 0.75, 0]
+        translation: [0.25, 0.75, 0]
         rotation: [0, 0, 0]
         scale: [0.100000001, 0.100000001, 1]
       labelRendererComponent:
@@ -124,7 +124,7 @@ nodes:
       parentComponent:
         parentId: 11788355052564223359
       childComponent:
-        childId's: [9006643476478585281, 8081674021898201994, 11732880573856226182, 1135779900241461391]
+        childId's: [9006643476478585281, 8081674021898201994, 11732880573856226182, 1135779900241461391, 18032773342954397952]
   - Node:
       id: 16900744514465121099
       node type: controlNode
@@ -133,7 +133,7 @@ nodes:
       parentComponent:
         parentId: 11788355052564223359
       childComponent:
-        childId's: [15779325395831295933]
+        childId's: [15779325395831295933, 18032773342954397952]
   - Node:
       id: 10444825676913013906
       node type: controlNode
@@ -142,11 +142,93 @@ nodes:
       parentComponent:
         parentId: 11788355052564223359
       childComponent:
-        childId's: [7245592576641450562]
+        childId's: [7245592576641450562, 18032773342954397952]
   - Node:
       id: 11788355052564223359
       node type: Node
       tagComponent:
         tag: Node
       childComponent:
-        childId's: [10444825676913013906, 16900744514465121099, 13244135034547131563]
+        childId's: [10444825676913013906, 16900744514465121099, 13244135034547131563, 18032773342954397952]
+  - Node:
+      id: 18032773342954397952
+      node type: itemListNode
+      tagComponent:
+        tag: itemListNode
+      parentComponent:
+        parentId: 11788355052564223359
+      transformComponent:
+        translation: [-0.600000024, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [0.0500000007, 0.0500000007, 1]
+      itemListComponent:
+        filePath: C:\Users\robbe\source\repos\lolrobbe2\luna\apollo\src\assets\media\ClimateCrisis-Regular.ttf
+        allowReselect: false
+        allowRmbSelect: false
+        items:
+          - rectangle:
+              start: [0.75, 0.150000006]
+              end: [0, 0]
+              position: [0, 0]
+            disabled: false
+            iconRegion: [-107374176, -107374176]
+            language: ""
+            selectable: true
+            text: test
+            tooltip: ""
+            tooltipEnabled: true
+          - rectangle:
+              start: [0.75, 0.150000006]
+              end: [0, 0]
+              position: [0, 0.150000006]
+            disabled: false
+            iconRegion: [-107374176, -107374176]
+            language: ""
+            selectable: true
+            text: test
+            tooltip: ""
+            tooltipEnabled: true
+          - rectangle:
+              start: [0.75, 0.150000006]
+              end: [0, 0]
+              position: [0, 0.300000012]
+            disabled: false
+            iconRegion: [-107374176, -107374176]
+            language: ""
+            selectable: true
+            text: test
+            tooltip: ""
+            tooltipEnabled: true
+          - rectangle:
+              start: [0.75, 0.150000006]
+              end: [0, 0]
+              position: [0, 0.450000018]
+            disabled: false
+            iconRegion: [-107374176, -107374176]
+            language: ""
+            selectable: true
+            text: test
+            tooltip: ""
+            tooltipEnabled: true
+          - rectangle:
+              start: [0.75, 0.150000006]
+              end: [0, 0]
+              position: [0, 0.600000024]
+            disabled: false
+            iconRegion: [-107374176, -107374176]
+            language: ""
+            selectable: true
+            text: test
+            tooltip: ""
+            tooltipEnabled: true
+          - rectangle:
+              start: [0.75, 0.150000006]
+              end: [0, 0]
+              position: [0, 0.75]
+            disabled: false
+            iconRegion: [-107374176, -107374176]
+            language: ""
+            selectable: true
+            text: test
+            tooltip: ""
+            tooltipEnabled: true

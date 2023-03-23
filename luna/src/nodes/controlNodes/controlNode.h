@@ -12,6 +12,7 @@ namespace luna
 			controlNode(luna::scene* scene);
 			virtual ~controlNode() = default;
 			virtual void init(luna::scene* scene) override;
+			virtual void guiEvent(Event& event);
 		};
 	}
 }

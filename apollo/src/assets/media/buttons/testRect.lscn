@@ -1,0 +1,37 @@
+scene: name
+nodes:
+  - Node:
+      id: 17198954713884936929
+      node type: colorRectNode
+      tagComponent:
+        tag: colorRectNode
+      parentComponent:
+        parentId: 10487002589425408174
+      transformComponent:
+        translation: [0.5, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 2, 1]
+      colorrectComponent:
+        color: [128, 255, 1, 1]
+  - Node:
+      id: 10487002589425408174
+      node type: colorRectNode
+      tagComponent:
+        tag: colorRectNode
+      parentComponent:
+        parentId: 9006628688152214783
+      childComponent:
+        childId's: [17198954713884936929]
+      transformComponent:
+        translation: [-0.5, 0, 0]
+        rotation: [0, 0, 0]
+        scale: [1, 2, 1]
+      colorrectComponent:
+        color: [1, 50, 255, 1]
+  - Node:
+      id: 9006628688152214783
+      node type: Node
+      tagComponent:
+        tag: Node
+      childComponent:
+        childId's: [10487002589425408174]

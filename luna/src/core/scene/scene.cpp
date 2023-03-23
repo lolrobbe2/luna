@@ -17,14 +17,20 @@ namespace luna
 		{
 			auto& sprite = node.getComponent<spriteRendererComponent>();
 			
-			if(sprite.outOfBounds && node.hasComponent<buttonComponent>())
+			if(node.hasComponent<buttonComponent>())
 			{
+
 				auto& button = node.getComponent<buttonComponent>();
 				if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
 				else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
 				else sprite.texture = button.normalTexture;
 			}
 			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);	
+		}
+		if(node.hasComponent<rectComponent>())
+		{
+			auto& rect = node.getComponent<rectComponent>();
+			renderer::renderer2D::drawQuad(transform.translation, transform.scale, rect.color);
 		}
 		if(node.hasComponent<labelRendererComponent>())
 		{

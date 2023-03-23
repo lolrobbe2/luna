@@ -147,19 +147,20 @@ namespace luna
 			
 			return bufferCreateResult;
 		}
-		void vulkanAllocator::destroyBuffer(const VkBuffer& buffer)
+		void vulkanAllocator::destroyBuffer(VkBuffer& buffer)
 		{
 			LN_PROFILE_FUNCTION();
+			if (buffer == VK_NULL_HANDLE) return;
 			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			vkDeviceWaitIdle(vDevice->getDeviceHandles().device);
 			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;
 			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 			allocations.eraseValue((uint64_t)buffer);
-
+			buffer = VK_NULL_HANDLE;
 		}
-		void vulkanAllocator::uploadTexture(const VkBuffer& buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions, const glm::vec3& imageOffset)
+		void vulkanAllocator::uploadTexture(VkBuffer& buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions, const glm::vec3& imageOffset,const glm::vec2& subImageDimensions,const uint64_t bufferOffset)
 		{
-			transferCommands.push_back({ buffer,image,imageFormat,imageDimensions,imageOffset });
+			transferCommands.push_back({ bufferOffset,buffer,image,imageFormat,subImageDimensions,imageDimensions,imageOffset });
 		}
 		void vulkanAllocator::flush()
 		{
@@ -174,11 +175,10 @@ namespace luna
 			uint32_t i = 0;
 			for (transferCommand command : transferCommands)
 			{
+				regions[i].bufferOffset = command.bufferOffset;
+				regions[i].bufferRowLength = command.subImageHeight.x;
+				regions[i].bufferImageHeight = command.subImageHeight.y;
 				
-				regions[i].bufferOffset = 0;
-				regions[i].bufferRowLength = 0;
-				regions[i].bufferImageHeight = 0;
-
 				regions[i].imageExtent = { (unsigned int)command.dimensions.x ,(unsigned int)command.dimensions.y ,1 };
 				regions[i].imageOffset = { (int)command.offset.x ,(int)command.offset.y ,0 };
 			

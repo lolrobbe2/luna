@@ -207,7 +207,16 @@ namespace luna
 			}
 			ImGui::Separator();
 		}
-
+		if(Node.hasComponent<rectComponent>())
+		{
+			auto& rect = Node.getComponent<rectComponent>();
+			if (ImGui::TreeNodeEx((void*)typeid(rectComponent).hash_code(), 0, "color rect"))
+			{
+				ImGui::DragFloat4("color", glm::value_ptr(rect.color), 0.1f);
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
 		if (Node.hasComponent<buttonComponent>())
 		{
 			auto& button = Node.getComponent<buttonComponent>();
@@ -249,6 +258,14 @@ namespace luna
 			auto& itemList = Node.getComponent<luna::itemList>();
 			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "itemList"))
 			{
+				const char* items[] = { "single","multi" };
+				static int currentItem;
+					
+				ImGui::Combo("select mode", &currentItem, items,2);
+				
+				if (currentItem == 0) itemList.selectMode = luna::itemList::SELECT_SINGLE;
+				else itemList.selectMode = luna::itemList::SELECT_MULTI;
+					
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)

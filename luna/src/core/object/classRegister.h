@@ -5,6 +5,7 @@
 #include <nodes/controlNodes/labelNode.h>
 #include <nodes/controlNodes/spriteNode.h>
 #include <nodes/controlNodes/itemListNode.h>
+#include <nodes/controlNodes/colorRectNode.h>
 namespace luna
 {
 	namespace nodes
@@ -19,6 +20,7 @@ namespace luna
 				LN_CLASS(spriteNode, controlNode);
 				LN_CLASS(buttonNode, controlNode);
 				LN_CLASS(itemListNode, controlNode);
+				LN_CLASS(colorRectNode, controlNode);
 				LN_CLASS(imageButtonNode, buttonNode);
 
 			}
