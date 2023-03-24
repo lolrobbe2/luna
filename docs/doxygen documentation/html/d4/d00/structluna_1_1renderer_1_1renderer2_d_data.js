@@ -1,8 +1,10 @@
 var structluna_1_1renderer_1_1renderer2_d_data =
 [
+    [ "isText", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#ab5c35b193a7475645e05d7bf60c5b2b2", null ],
     [ "maxIndices", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#ae147e685d93b19b5bbb6270f6072f472", null ],
     [ "maxQuads", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a7bf658a59b455ca36c9a0fa66c00f4d8", null ],
     [ "maxVertices", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a93757e88effb4cb3a9d3e21227cdf402", null ],
+    [ "quadCharVertexPositions", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a19c28d6da34dce1b2d21384cabfe9917", null ],
     [ "quadIndexBuffer", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#aa5d734a2c08ecabf2cd4ebb5477d02aa", null ],
     [ "quadIndexCount", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a5bc795669d85ec2f621cc62b6a73b916", null ],
     [ "quadIndices", "d4/d00/structluna_1_1renderer_1_1renderer2_d_data.html#a9db70202810ab12ae9b71b5e8e792d60", null ],

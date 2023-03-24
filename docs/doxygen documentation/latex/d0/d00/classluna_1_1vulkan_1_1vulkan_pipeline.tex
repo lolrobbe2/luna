@@ -114,6 +114,10 @@ void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a46a300426475caff50
 void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a53d809a8a14fce72cba583586cbfa568}{fn\+Draw\+Indexed}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{renderer\+::vertex\+Array}} $>$ \&vertex\+Array, const uint64\+\_\+t \&descriptor\+Index, const std\+::vector$<$ uint64\+\_\+t $>$ \&textures, const int \&index\+Count)
 \begin{DoxyCompactList}\small\item\em executes draw command. \end{DoxyCompactList}\item 
 Vk\+Result \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a91ca3b526eccf5463f3789d597234d03}{create\+Descriptor\+Set\+Layout}} ()
+\item 
+Vk\+Access\+Flags \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a73ba55261c16f975df99106739a1af10}{get\+Access\+Flag}} (Vk\+Image\+Layout \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a0d13002bebad3a3ecfa14a22005646c4}{layout}})
+\item 
+Vk\+Pipeline\+Stage\+Flags \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a3a7e686ab7133a04aaa12542464ca121}{get\+Stage\+Flag}} (Vk\+Image\+Layout \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a0d13002bebad3a3ecfa14a22005646c4}{layout}})
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -176,6 +180,7 @@ std\+::vector$<$ \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d8
 \item 
 uint64\+\_\+t \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a0b6e4899aef171c4759c56b370e881a4}{descriptorset\+Index}} = 1
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
 
 
 \doxysubsubsection{Detailed Description}
@@ -519,6 +524,12 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a8f231f1c4fde20cfa
 
 executes draw command. 
 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a73ba55261c16f975df99106739a1af10}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a73ba55261c16f975df99106739a1af10}} 
+\index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!getAccessFlag@{getAccessFlag}}
+\index{getAccessFlag@{getAccessFlag}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
+\doxyparagraph{\texorpdfstring{getAccessFlag()}{getAccessFlag()}}
+{\footnotesize\ttfamily Vk\+Access\+Flags luna\+::vulkan\+::vulkan\+Pipeline\+::get\+Access\+Flag (\begin{DoxyParamCaption}\item[{Vk\+Image\+Layout}]{layout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a24e8bfb38d02fa6c3630ae9511952a27}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a24e8bfb38d02fa6c3630ae9511952a27}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!getRenderPass@{getRenderPass}}
 \index{getRenderPass@{getRenderPass}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
@@ -547,6 +558,12 @@ returns the corresponding resource type for a given .
 \begin{DoxyReturn}{Returns}
 Vk\+Format the corresponding Vk\+Format for type\+Id 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a3a7e686ab7133a04aaa12542464ca121}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a3a7e686ab7133a04aaa12542464ca121}} 
+\index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!getStageFlag@{getStageFlag}}
+\index{getStageFlag@{getStageFlag}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}
+\doxyparagraph{\texorpdfstring{getStageFlag()}{getStageFlag()}}
+{\footnotesize\ttfamily Vk\+Pipeline\+Stage\+Flags luna\+::vulkan\+::vulkan\+Pipeline\+::get\+Stage\+Flag (\begin{DoxyParamCaption}\item[{Vk\+Image\+Layout}]{layout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_pipeline_a4b956fe650f383fea4e65cd4b4d4da25}\label{classluna_1_1vulkan_1_1vulkan_pipeline_a4b956fe650f383fea4e65cd4b4d4da25}} 
 \index{luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}!initDefaultRenderpass@{initDefaultRenderpass}}
 \index{initDefaultRenderpass@{initDefaultRenderpass}!luna::vulkan::vulkanPipeline@{luna::vulkan::vulkanPipeline}}

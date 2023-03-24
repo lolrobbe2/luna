@@ -19,8 +19,6 @@ namespace \mbox{\hyperlink{namespaceluna_1_1platform}{platform}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1renderer}{renderer}}
 \item 
-namespace \mbox{\hyperlink{namespaceluna_1_1scene}{scene}}
-\item 
 namespace \mbox{\hyperlink{namespaceluna_1_1utils}{utils}}
 \item 
 namespace \mbox{\hyperlink{namespaceluna_1_1vulkan}{vulkan}}
@@ -34,7 +32,11 @@ class \mbox{\hyperlink{classluna_1_1app_tick_event}{app\+Tick\+Event}}
 \item 
 class \mbox{\hyperlink{classluna_1_1app_update_event}{app\+Update\+Event}}
 \item 
+struct \mbox{\hyperlink{structluna_1_1button_component}{button\+Component}}
+\item 
 struct \mbox{\hyperlink{structluna_1_1child_component}{child\+Component}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1child_uint_component}{child\+Uint\+Component}}
 \item 
 class \mbox{\hyperlink{classluna_1_1editor_layer}{editor\+Layer}}
 \item 
@@ -49,6 +51,10 @@ struct \mbox{\hyperlink{structluna_1_1instrumentation_session}{instrumentation\+
 class \mbox{\hyperlink{classluna_1_1instrumentation_timer}{instrumentation\+Timer}}
 \item 
 class \mbox{\hyperlink{classluna_1_1instrumentor}{instrumentor}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1item}{item}}
+\item 
+struct \mbox{\hyperlink{structluna_1_1item_list}{item\+List}}
 \item 
 class \mbox{\hyperlink{classluna_1_1key_event}{key\+Event}}
 \item 
@@ -74,13 +80,21 @@ class \mbox{\hyperlink{classluna_1_1mouse_scrolled_event}{mouse\+Scrolled\+Event
 \item 
 class \mbox{\hyperlink{classluna_1_1_node}{Node}}
 \item 
+class \mbox{\hyperlink{classluna_1_1object}{object}}
+\item 
+class \mbox{\hyperlink{classluna_1_1object_d_b}{object\+DB}}
+\begin{DoxyCompactList}\small\item\em object database class. @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!! \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structluna_1_1parent_component}{parent\+Component}}
 \begin{DoxyCompactList}\small\item\em represents a node that has a parent node. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structluna_1_1profile_result}{profile\+Result}}
 \item 
+struct \mbox{\hyperlink{structluna_1_1rect_component}{rect\+Component}}
+\item 
 class \mbox{\hyperlink{classluna_1_1scene}{scene}}
 \item 
 class \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel}{scene\+Hierarchy\+Panel}}
+\item 
+class \mbox{\hyperlink{classluna_1_1scene_serializer}{scene\+Serializer}}
 \item 
 struct \mbox{\hyperlink{structluna_1_1sprite_renderer_component}{sprite\+Renderer\+Component}}
 \item 
@@ -158,6 +172,62 @@ enum \mbox{\hyperlink{namespaceluna_a047ac16c6d2060398e5e6a91e484516d}{event\+Ca
 static std\+::mt19937\+\_\+64 \mbox{\hyperlink{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}{engine}} (\mbox{\hyperlink{namespaceluna_ab5b429183fa7ddf39c317f3f97f91a21}{random\+Device}}())
 \item 
 std\+::ostream \& \mbox{\hyperlink{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classluna_1_1_event}{Event}} \&e)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a9a9103f8a694fe14b9e1712f94295d3e}{draw}} (\mbox{\hyperlink{classluna_1_1_node}{Node}} node)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a7452c30ef37f567e4d6c2895e94585d8}{operator$<$$<$}} (YAML\+::\+Emitter \&out, const glm\+::vec2 \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a00bdbcb421f6d9c1664dbe7034ac16f8}{operator$<$$<$}} (YAML\+::\+Emitter \&out, const glm\+::vec3 \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_ada647d77422f09bee7a14c75474f5b0f}{operator$<$$<$}} (YAML\+::\+Emitter \&out, const glm\+::vec4 \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_aa1e3dd062927f28b50e1e44e0c7ff601}{operator$<$$<$}} (YAML\+::\+Emitter \&out, const std\+::vector$<$ uint64\+\_\+t $>$ \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a1eade8560c12ebc7239dfe012d59f77a}{operator$<$$<$}} (YAML\+::\+Emitter \&out, const \mbox{\hyperlink{structluna_1_1item_1_1rectangle}{item\+::rectangle}} \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a4b1e496b4c64cc53cc2d1ca0fc484b40}{operator$<$$<$}} (YAML\+::\+Emitter \&out, const \mbox{\hyperlink{structluna_1_1item}{item}} \&v)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aac013567b026372d0fd7005aa17baebc}{de\+Serialize\+Tag}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ae9c5b8af8157b06cb01e81d6976aa8df}{de\+Serialize\+Parent}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aaf6338aac29ca47673729f1d67e7f756}{de\+Serialize\+Children}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a661508d7a48562b9645c7c42790ffa96}{de\+Serialize\+Transform}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a30a47092fb7bdf3ea87e79d08561a927}{de\+Serialize\+Sprite}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ae9989df4311d42c7a60a8953c9bae841}{de\+Serialize\+Label\+Renderer}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aa4ff3f014d891fa916498948509ecc0f}{deserialize\+Button}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ad52b64d00b0dff94cba1dd1dffc86fe8}{deserialize\+Color\+Rect}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a0e4193a3f37c58bdcfe190f5fe98c66e}{deserialize\+Item\+List}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a0cf925cff5e2489f72675f9255a101a1}{de\+Serialize\+Node}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{namespaceluna_ae5e81717cfddf8a38dff3d2ea77acf83}{transform\+Entity}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, const std\+::vector$<$ entt\+::entity $>$ \&entitys)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aeafa658ab07a0989eb66fe937c8bab07}{serialize\+Parent\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a70968fbfa492ec87b85929bd46b51ba8}{serialize\+Child\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ace5f01c9ce5a397c01e4da7a9df95607}{serialize\+Tag}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ae949f6a1d1f7657036197bf48c91ec03}{serialize\+Transform}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a141714a8a6bdededf82227179e46c8e4}{serialize\+Sprite\+Renderer\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_afc4d1df96d3e2b941e6d6f7cea7c4645}{serialize\+Label\+Renderer\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a97a9cfee2feb91991f179b8ebd4d5813}{serialize\+Color\+Rect}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a176e0a5920a6c30b2012ae4a8e862cc1}{serialize\+Button\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a2c77ebdf13573b455876aa16eceb0260}{serialize\+Item\+List\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a8365e468ab56c71fbcd610676167e171}{serialize\+Node}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -327,6 +397,72 @@ constexpr \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}
 {\footnotesize\ttfamily template$<$typename T , typename ... Args$>$ \\
 constexpr \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scope}}$<$ T $>$ luna\+::create\+Scope (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
+\mbox{\Hypertarget{namespaceluna_aa4ff3f014d891fa916498948509ecc0f}\label{namespaceluna_aa4ff3f014d891fa916498948509ecc0f}} 
+\index{luna@{luna}!deserializeButton@{deserializeButton}}
+\index{deserializeButton@{deserializeButton}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deserializeButton()}{deserializeButton()}}
+{\footnotesize\ttfamily static void luna\+::deserialize\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_aaf6338aac29ca47673729f1d67e7f756}\label{namespaceluna_aaf6338aac29ca47673729f1d67e7f756}} 
+\index{luna@{luna}!deSerializeChildren@{deSerializeChildren}}
+\index{deSerializeChildren@{deSerializeChildren}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deSerializeChildren()}{deSerializeChildren()}}
+{\footnotesize\ttfamily static void luna\+::de\+Serialize\+Children (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_ad52b64d00b0dff94cba1dd1dffc86fe8}\label{namespaceluna_ad52b64d00b0dff94cba1dd1dffc86fe8}} 
+\index{luna@{luna}!deserializeColorRect@{deserializeColorRect}}
+\index{deserializeColorRect@{deserializeColorRect}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deserializeColorRect()}{deserializeColorRect()}}
+{\footnotesize\ttfamily static void luna\+::deserialize\+Color\+Rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a0e4193a3f37c58bdcfe190f5fe98c66e}\label{namespaceluna_a0e4193a3f37c58bdcfe190f5fe98c66e}} 
+\index{luna@{luna}!deserializeItemList@{deserializeItemList}}
+\index{deserializeItemList@{deserializeItemList}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deserializeItemList()}{deserializeItemList()}}
+{\footnotesize\ttfamily static void luna\+::deserialize\+Item\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_ae9989df4311d42c7a60a8953c9bae841}\label{namespaceluna_ae9989df4311d42c7a60a8953c9bae841}} 
+\index{luna@{luna}!deSerializeLabelRenderer@{deSerializeLabelRenderer}}
+\index{deSerializeLabelRenderer@{deSerializeLabelRenderer}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deSerializeLabelRenderer()}{deSerializeLabelRenderer()}}
+{\footnotesize\ttfamily static void luna\+::de\+Serialize\+Label\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a0cf925cff5e2489f72675f9255a101a1}\label{namespaceluna_a0cf925cff5e2489f72675f9255a101a1}} 
+\index{luna@{luna}!deSerializeNode@{deSerializeNode}}
+\index{deSerializeNode@{deSerializeNode}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deSerializeNode()}{deSerializeNode()}}
+{\footnotesize\ttfamily static void luna\+::de\+Serialize\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_ae9c5b8af8157b06cb01e81d6976aa8df}\label{namespaceluna_ae9c5b8af8157b06cb01e81d6976aa8df}} 
+\index{luna@{luna}!deSerializeParent@{deSerializeParent}}
+\index{deSerializeParent@{deSerializeParent}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deSerializeParent()}{deSerializeParent()}}
+{\footnotesize\ttfamily static void luna\+::de\+Serialize\+Parent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a30a47092fb7bdf3ea87e79d08561a927}\label{namespaceluna_a30a47092fb7bdf3ea87e79d08561a927}} 
+\index{luna@{luna}!deSerializeSprite@{deSerializeSprite}}
+\index{deSerializeSprite@{deSerializeSprite}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deSerializeSprite()}{deSerializeSprite()}}
+{\footnotesize\ttfamily static void luna\+::de\+Serialize\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_aac013567b026372d0fd7005aa17baebc}\label{namespaceluna_aac013567b026372d0fd7005aa17baebc}} 
+\index{luna@{luna}!deSerializeTag@{deSerializeTag}}
+\index{deSerializeTag@{deSerializeTag}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deSerializeTag()}{deSerializeTag()}}
+{\footnotesize\ttfamily static void luna\+::de\+Serialize\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a661508d7a48562b9645c7c42790ffa96}\label{namespaceluna_a661508d7a48562b9645c7c42790ffa96}} 
+\index{luna@{luna}!deSerializeTransform@{deSerializeTransform}}
+\index{deSerializeTransform@{deSerializeTransform}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{deSerializeTransform()}{deSerializeTransform()}}
+{\footnotesize\ttfamily static void luna\+::de\+Serialize\+Transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{YAML\+::\+Node \&}]{serialized\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a9a9103f8a694fe14b9e1712f94295d3e}\label{namespaceluna_a9a9103f8a694fe14b9e1712f94295d3e}} 
+\index{luna@{luna}!draw@{draw}}
+\index{draw@{draw}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily static void luna\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{Node}}}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}\label{namespaceluna_abc2a4d8820a15b200e03c795f9775c0b}} 
 \index{luna@{luna}!engine@{engine}}
 \index{engine@{engine}!luna@{luna}}
@@ -336,8 +472,110 @@ constexpr \mbox{\hyperlink{namespaceluna_accd5328e0de41c20f918cdd315173870}{scop
 \mbox{\Hypertarget{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}\label{namespaceluna_a8d1a70d4570a796a9158fa1ec62678c1}} 
 \index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
-\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
 {\footnotesize\ttfamily std\+::ostream \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classluna_1_1_event}{Event}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{namespaceluna_a7452c30ef37f567e4d6c2895e94585d8}\label{namespaceluna_a7452c30ef37f567e4d6c2895e94585d8}} 
+\index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily YAML\+::\+Emitter \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{const glm\+::vec2 \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceluna_a00bdbcb421f6d9c1664dbe7034ac16f8}\label{namespaceluna_a00bdbcb421f6d9c1664dbe7034ac16f8}} 
+\index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily YAML\+::\+Emitter \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{const glm\+::vec3 \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceluna_ada647d77422f09bee7a14c75474f5b0f}\label{namespaceluna_ada647d77422f09bee7a14c75474f5b0f}} 
+\index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily YAML\+::\+Emitter \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{const glm\+::vec4 \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceluna_a4b1e496b4c64cc53cc2d1ca0fc484b40}\label{namespaceluna_a4b1e496b4c64cc53cc2d1ca0fc484b40}} 
+\index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily YAML\+::\+Emitter \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{const \mbox{\hyperlink{structluna_1_1item}{item}} \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceluna_a1eade8560c12ebc7239dfe012d59f77a}\label{namespaceluna_a1eade8560c12ebc7239dfe012d59f77a}} 
+\index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily YAML\+::\+Emitter \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{const \mbox{\hyperlink{structluna_1_1item_1_1rectangle}{item\+::rectangle}} \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceluna_aa1e3dd062927f28b50e1e44e0c7ff601}\label{namespaceluna_aa1e3dd062927f28b50e1e44e0c7ff601}} 
+\index{luna@{luna}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily YAML\+::\+Emitter \& luna\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{const std\+::vector$<$ uint64\+\_\+t $>$ \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceluna_a176e0a5920a6c30b2012ae4a8e862cc1}\label{namespaceluna_a176e0a5920a6c30b2012ae4a8e862cc1}} 
+\index{luna@{luna}!serializeButtonComponent@{serializeButtonComponent}}
+\index{serializeButtonComponent@{serializeButtonComponent}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeButtonComponent()}{serializeButtonComponent()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Button\+Component (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a70968fbfa492ec87b85929bd46b51ba8}\label{namespaceluna_a70968fbfa492ec87b85929bd46b51ba8}} 
+\index{luna@{luna}!serializeChildComponent@{serializeChildComponent}}
+\index{serializeChildComponent@{serializeChildComponent}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeChildComponent()}{serializeChildComponent()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Child\+Component (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a97a9cfee2feb91991f179b8ebd4d5813}\label{namespaceluna_a97a9cfee2feb91991f179b8ebd4d5813}} 
+\index{luna@{luna}!serializeColorRect@{serializeColorRect}}
+\index{serializeColorRect@{serializeColorRect}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeColorRect()}{serializeColorRect()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Color\+Rect (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a2c77ebdf13573b455876aa16eceb0260}\label{namespaceluna_a2c77ebdf13573b455876aa16eceb0260}} 
+\index{luna@{luna}!serializeItemListComponent@{serializeItemListComponent}}
+\index{serializeItemListComponent@{serializeItemListComponent}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeItemListComponent()}{serializeItemListComponent()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Item\+List\+Component (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_afc4d1df96d3e2b941e6d6f7cea7c4645}\label{namespaceluna_afc4d1df96d3e2b941e6d6f7cea7c4645}} 
+\index{luna@{luna}!serializeLabelRendererComponent@{serializeLabelRendererComponent}}
+\index{serializeLabelRendererComponent@{serializeLabelRendererComponent}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeLabelRendererComponent()}{serializeLabelRendererComponent()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Label\+Renderer\+Component (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a8365e468ab56c71fbcd610676167e171}\label{namespaceluna_a8365e468ab56c71fbcd610676167e171}} 
+\index{luna@{luna}!serializeNode@{serializeNode}}
+\index{serializeNode@{serializeNode}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeNode()}{serializeNode()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Node (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_aeafa658ab07a0989eb66fe937c8bab07}\label{namespaceluna_aeafa658ab07a0989eb66fe937c8bab07}} 
+\index{luna@{luna}!serializeParentComponent@{serializeParentComponent}}
+\index{serializeParentComponent@{serializeParentComponent}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeParentComponent()}{serializeParentComponent()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Parent\+Component (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_a141714a8a6bdededf82227179e46c8e4}\label{namespaceluna_a141714a8a6bdededf82227179e46c8e4}} 
+\index{luna@{luna}!serializeSpriteRendererComponent@{serializeSpriteRendererComponent}}
+\index{serializeSpriteRendererComponent@{serializeSpriteRendererComponent}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeSpriteRendererComponent()}{serializeSpriteRendererComponent()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Sprite\+Renderer\+Component (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_ace5f01c9ce5a397c01e4da7a9df95607}\label{namespaceluna_ace5f01c9ce5a397c01e4da7a9df95607}} 
+\index{luna@{luna}!serializeTag@{serializeTag}}
+\index{serializeTag@{serializeTag}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeTag()}{serializeTag()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Tag (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_ae949f6a1d1f7657036197bf48c91ec03}\label{namespaceluna_ae949f6a1d1f7657036197bf48c91ec03}} 
+\index{luna@{luna}!serializeTransform@{serializeTransform}}
+\index{serializeTransform@{serializeTransform}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{serializeTransform()}{serializeTransform()}}
+{\footnotesize\ttfamily static void luna\+::serialize\+Transform (\begin{DoxyParamCaption}\item[{YAML\+::\+Emitter \&}]{out,  }\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{namespaceluna_ae5e81717cfddf8a38dff3d2ea77acf83}\label{namespaceluna_ae5e81717cfddf8a38dff3d2ea77acf83}} 
+\index{luna@{luna}!transformEntity@{transformEntity}}
+\index{transformEntity@{transformEntity}!luna@{luna}}
+\doxyparagraph{\texorpdfstring{transformEntity()}{transformEntity()}}
+{\footnotesize\ttfamily static std\+::vector$<$ uint64\+\_\+t $>$ luna\+::transform\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&}]{node,  }\item[{const std\+::vector$<$ entt\+::entity $>$ \&}]{entitys }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

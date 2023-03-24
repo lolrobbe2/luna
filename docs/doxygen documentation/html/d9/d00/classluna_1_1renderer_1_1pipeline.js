@@ -10,5 +10,9 @@ var classluna_1_1renderer_1_1pipeline =
     [ "drawIndexed", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a1f756b834df7f8e704dc0368d95d86c2", null ],
     [ "end", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a17d90338b9da0e660758cdb406c56091", null ],
     [ "flush", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a8f231f1c4fde20cfa26ca59d9def0698", null ],
-    [ "test", "d9/d00/classluna_1_1renderer_1_1pipeline.html#ab4ed62f2705e4254cf13896862c81863", null ]
+    [ "getDimensions", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a3a72e6d6958094a3fc534f0dad8a5401", null ],
+    [ "getWindowMousePos", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a86cb25f6529151d8163806acc6e7d6ee", null ],
+    [ "test", "d9/d00/classluna_1_1renderer_1_1pipeline.html#ab4ed62f2705e4254cf13896862c81863", null ],
+    [ "windowDimensions", "d9/d00/classluna_1_1renderer_1_1pipeline.html#a325905862c1af3c99f0c3c208fbbd6d1", null ],
+    [ "windowMousePos", "d9/d00/classluna_1_1renderer_1_1pipeline.html#abcbc1d490c43536b8f2ae2ee158c70fa", null ]
 ];

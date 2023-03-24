@@ -6,12 +6,21 @@
 
 
 
-Inheritance diagram for luna\+::renderer\+::font\+:
-\nopagebreak
+Inheritance diagram for luna\+::renderer\+::font\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=200pt]{dc/d00/classluna_1_1renderer_1_1font__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for luna\+::renderer\+::font\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{d1/d00/classluna_1_1renderer_1_1font__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -22,6 +31,8 @@ virtual \mbox{\hyperlink{classluna_1_1renderer_1_1font_afb88cb14b53db7ccc2a16b4f
 virtual \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{texture}} $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1font_a3312aa8b899024a7263c07d315e9b040}{get\+Glyph}} (char character)=0
 \item 
 virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1font_a467c09cf04f67adcee25b2c2e54f38f3}{get\+Advance}} (char character)=0
+\item 
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1font_a010a655aea019973c407ca5b1bf31d35}{get\+Scale}} (char charcater)=0
 \item 
 uint64\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1font_a11c6d8044626fa0daca1f27498c99884}{handle}} ()
 \end{DoxyCompactItemize}
@@ -38,6 +49,15 @@ stbtt\+\_\+fontinfo \mbox{\hyperlink{classluna_1_1renderer_1_1font_ab08c0ff23a59
 uint64\+\_\+t \mbox{\hyperlink{classluna_1_1renderer_1_1font_a1c313d397caad1a909a543296587c2ba}{\+\_\+handle}}
 \item 
 void $\ast$ \mbox{\hyperlink{classluna_1_1renderer_1_1font_ada85792792debb532c8d9806b8ea3f83}{data}}
+\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1font_a529a3869f5b15d8e3f48b59eab97f76a}{glyp\+Scales}}
+\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classluna_1_1renderer_1_1font_a0589ed4381a1480305a070b7c48cc6df}{glyp\+Advances}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const char \mbox{\hyperlink{classluna_1_1renderer_1_1font_a10df97a740155950b088f4c0a5e143ce}{start\+Index}} = 0
 \end{DoxyCompactItemize}
 
 
@@ -77,6 +97,16 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_aff4f233f438c
 
 Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a377a42ee0772cf02d025eff6a0b96acc}{luna\+::vulkan\+::vulkan\+Font}}.
 
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a010a655aea019973c407ca5b1bf31d35}\label{classluna_1_1renderer_1_1font_a010a655aea019973c407ca5b1bf31d35}} 
+\index{luna::renderer::font@{luna::renderer::font}!getScale@{getScale}}
+\index{getScale@{getScale}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily virtual glm\+::vec2 luna\+::renderer\+::font\+::get\+Scale (\begin{DoxyParamCaption}\item[{char}]{charcater }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a5c3dd15b66a941ad15ceeb5099b4a5f0}{luna\+::vulkan\+::vulkan\+Font}}.
+
 \mbox{\Hypertarget{classluna_1_1renderer_1_1font_a11c6d8044626fa0daca1f27498c99884}\label{classluna_1_1renderer_1_1font_a11c6d8044626fa0daca1f27498c99884}} 
 \index{luna::renderer::font@{luna::renderer::font}!handle@{handle}}
 \index{handle@{handle}!luna::renderer::font@{luna::renderer::font}}
@@ -103,6 +133,24 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a377a42ee0772
 \index{fontInfo@{fontInfo}!luna::renderer::font@{luna::renderer::font}}
 \doxyparagraph{\texorpdfstring{fontInfo}{fontInfo}}
 {\footnotesize\ttfamily stbtt\+\_\+fontinfo luna\+::renderer\+::font\+::font\+Info\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a0589ed4381a1480305a070b7c48cc6df}\label{classluna_1_1renderer_1_1font_a0589ed4381a1480305a070b7c48cc6df}} 
+\index{luna::renderer::font@{luna::renderer::font}!glypAdvances@{glypAdvances}}
+\index{glypAdvances@{glypAdvances}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{glypAdvances}{glypAdvances}}
+{\footnotesize\ttfamily std\+::vector$<$glm\+::vec2$>$ luna\+::renderer\+::font\+::glyp\+Advances\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a529a3869f5b15d8e3f48b59eab97f76a}\label{classluna_1_1renderer_1_1font_a529a3869f5b15d8e3f48b59eab97f76a}} 
+\index{luna::renderer::font@{luna::renderer::font}!glypScales@{glypScales}}
+\index{glypScales@{glypScales}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{glypScales}{glypScales}}
+{\footnotesize\ttfamily std\+::vector$<$glm\+::vec2$>$ luna\+::renderer\+::font\+::glyp\+Scales\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1font_a10df97a740155950b088f4c0a5e143ce}\label{classluna_1_1renderer_1_1font_a10df97a740155950b088f4c0a5e143ce}} 
+\index{luna::renderer::font@{luna::renderer::font}!startIndex@{startIndex}}
+\index{startIndex@{startIndex}!luna::renderer::font@{luna::renderer::font}}
+\doxyparagraph{\texorpdfstring{startIndex}{startIndex}}
+{\footnotesize\ttfamily const char luna\+::renderer\+::font\+::start\+Index = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
 
 
 

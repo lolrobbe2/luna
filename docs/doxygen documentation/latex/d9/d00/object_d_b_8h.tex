@@ -1,0 +1,76 @@
+\hypertarget{object_d_b_8h}{}\doxysubsection{C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/object/object\+DB.h File Reference}
+\label{object_d_b_8h}\index{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/object/objectDB.h@{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/object/objectDB.h}}
+{\ttfamily \#include $<$core/core.\+h$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+Include dependency graph for object\+DB.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d00/object_d_b_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d00/object_d_b_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classluna_1_1object}{luna\+::object}}
+\item 
+class \mbox{\hyperlink{classluna_1_1object_d_b}{luna\+::object\+DB}}
+\begin{DoxyCompactList}\small\item\em object database class. @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!! \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{luna\+::object\+DB\+::class\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceluna}{luna}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{object_d_b_8h_a5afdb8637366621368986da9291ee38f}{LN\+\_\+\+REGISTER\+\_\+\+CLASS}}(m\+Class)~object\+DB\+::register\+Class$<$m\+Class$>$();
+\item 
+\#define \mbox{\hyperlink{object_d_b_8h_a33e4ef46fc2eea20d6c512c9354c4db3}{LN\+\_\+\+CLASS}}(m\+Class,  m\+Inherits)~object\+DB\+::add\+Class$<$m\+Class,m\+Inherits$>$();
+\item 
+\#define \mbox{\hyperlink{object_d_b_8h_adb9379d8ee7d1a66c51674196e856fc0}{LN\+\_\+\+CLASS\+\_\+\+STRINGIFY}}(m\+Class)~object\+DB\+::get\+Class\+Name$<$m\+Class$>$();
+\begin{DoxyCompactList}\small\item\em creates stringid from class. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{object_d_b_8h_a2444fd39344c1b9cf60479da8bc78d23}{memnew}}(m\+\_\+class)~\+\_\+post\+\_\+initialize(new m\+\_\+class)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{object_d_b_8h_a33e4ef46fc2eea20d6c512c9354c4db3}\label{object_d_b_8h_a33e4ef46fc2eea20d6c512c9354c4db3}} 
+\index{objectDB.h@{objectDB.h}!LN\_CLASS@{LN\_CLASS}}
+\index{LN\_CLASS@{LN\_CLASS}!objectDB.h@{objectDB.h}}
+\doxyparagraph{\texorpdfstring{LN\_CLASS}{LN\_CLASS}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+CLASS(\begin{DoxyParamCaption}\item[{}]{m\+Class,  }\item[{}]{m\+Inherits }\end{DoxyParamCaption})~object\+DB\+::add\+Class$<$m\+Class,m\+Inherits$>$();}
+
+\mbox{\Hypertarget{object_d_b_8h_adb9379d8ee7d1a66c51674196e856fc0}\label{object_d_b_8h_adb9379d8ee7d1a66c51674196e856fc0}} 
+\index{objectDB.h@{objectDB.h}!LN\_CLASS\_STRINGIFY@{LN\_CLASS\_STRINGIFY}}
+\index{LN\_CLASS\_STRINGIFY@{LN\_CLASS\_STRINGIFY}!objectDB.h@{objectDB.h}}
+\doxyparagraph{\texorpdfstring{LN\_CLASS\_STRINGIFY}{LN\_CLASS\_STRINGIFY}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+CLASS\+\_\+\+STRINGIFY(\begin{DoxyParamCaption}\item[{}]{m\+Class }\end{DoxyParamCaption})~object\+DB\+::get\+Class\+Name$<$m\+Class$>$();}
+
+
+
+creates stringid from class. 
+
+\mbox{\Hypertarget{object_d_b_8h_a5afdb8637366621368986da9291ee38f}\label{object_d_b_8h_a5afdb8637366621368986da9291ee38f}} 
+\index{objectDB.h@{objectDB.h}!LN\_REGISTER\_CLASS@{LN\_REGISTER\_CLASS}}
+\index{LN\_REGISTER\_CLASS@{LN\_REGISTER\_CLASS}!objectDB.h@{objectDB.h}}
+\doxyparagraph{\texorpdfstring{LN\_REGISTER\_CLASS}{LN\_REGISTER\_CLASS}}
+{\footnotesize\ttfamily \#define LN\+\_\+\+REGISTER\+\_\+\+CLASS(\begin{DoxyParamCaption}\item[{}]{m\+Class }\end{DoxyParamCaption})~object\+DB\+::register\+Class$<$m\+Class$>$();}
+
+\mbox{\Hypertarget{object_d_b_8h_a2444fd39344c1b9cf60479da8bc78d23}\label{object_d_b_8h_a2444fd39344c1b9cf60479da8bc78d23}} 
+\index{objectDB.h@{objectDB.h}!memnew@{memnew}}
+\index{memnew@{memnew}!objectDB.h@{objectDB.h}}
+\doxyparagraph{\texorpdfstring{memnew}{memnew}}
+{\footnotesize\ttfamily \#define memnew(\begin{DoxyParamCaption}\item[{}]{m\+\_\+class }\end{DoxyParamCaption})~\+\_\+post\+\_\+initialize(new m\+\_\+class)}
+

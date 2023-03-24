@@ -1,0 +1,92 @@
+\hypertarget{scene_serializer_8cpp}{}\doxysubsection{C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/scene\+Serializer.cpp File Reference}
+\label{scene_serializer_8cpp}\index{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/sceneSerializer.cpp@{C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/scene/sceneSerializer.cpp}}
+{\ttfamily \#include \char`\"{}scene\+Serializer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$core/vulkan/utils/vulkan\+Allocator.\+h$>$}\newline
+{\ttfamily \#include $<$yaml-\/cpp/yaml.\+h$>$}\newline
+Include dependency graph for scene\+Serializer.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d00/scene_serializer_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_y_a_m_l_1_1convert_3_01glm_1_1vec2_01_4}{YAML\+::convert$<$ glm\+::vec2 $>$}}
+\item 
+struct \mbox{\hyperlink{struct_y_a_m_l_1_1convert_3_01luna_1_1item_01_4}{YAML\+::convert$<$ luna\+::item $>$}}
+\item 
+struct \mbox{\hyperlink{struct_y_a_m_l_1_1convert_3_01std_1_1vector_3_01luna_1_1item_01_4_01_4}{YAML\+::convert$<$ std\+::vector$<$ luna\+::item $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{struct_y_a_m_l_1_1convert_3_01glm_1_1vec3_01_4}{YAML\+::convert$<$ glm\+::vec3 $>$}}
+\item 
+struct \mbox{\hyperlink{struct_y_a_m_l_1_1convert_3_01std_1_1vector_3_01uint64__t_01_4_01_4}{YAML\+::convert$<$ std\+::vector$<$ uint64\+\_\+t $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{struct_y_a_m_l_1_1convert_3_01glm_1_1vec4_01_4}{YAML\+::convert$<$ glm\+::vec4 $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_y_a_m_l}{YAML}}
+\item 
+namespace \mbox{\hyperlink{namespaceluna}{luna}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a7452c30ef37f567e4d6c2895e94585d8}{luna\+::operator$<$$<$}} (YAML\+::\+Emitter \&out, const glm\+::vec2 \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a00bdbcb421f6d9c1664dbe7034ac16f8}{luna\+::operator$<$$<$}} (YAML\+::\+Emitter \&out, const glm\+::vec3 \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_ada647d77422f09bee7a14c75474f5b0f}{luna\+::operator$<$$<$}} (YAML\+::\+Emitter \&out, const glm\+::vec4 \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_aa1e3dd062927f28b50e1e44e0c7ff601}{luna\+::operator$<$$<$}} (YAML\+::\+Emitter \&out, const std\+::vector$<$ uint64\+\_\+t $>$ \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a1eade8560c12ebc7239dfe012d59f77a}{luna\+::operator$<$$<$}} (YAML\+::\+Emitter \&out, const item\+::rectangle \&v)
+\item 
+YAML\+::\+Emitter \& \mbox{\hyperlink{namespaceluna_a4b1e496b4c64cc53cc2d1ca0fc484b40}{luna\+::operator$<$$<$}} (YAML\+::\+Emitter \&out, const item \&v)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aac013567b026372d0fd7005aa17baebc}{luna\+::de\+Serialize\+Tag}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ae9c5b8af8157b06cb01e81d6976aa8df}{luna\+::de\+Serialize\+Parent}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aaf6338aac29ca47673729f1d67e7f756}{luna\+::de\+Serialize\+Children}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a661508d7a48562b9645c7c42790ffa96}{luna\+::de\+Serialize\+Transform}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a30a47092fb7bdf3ea87e79d08561a927}{luna\+::de\+Serialize\+Sprite}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ae9989df4311d42c7a60a8953c9bae841}{luna\+::de\+Serialize\+Label\+Renderer}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aa4ff3f014d891fa916498948509ecc0f}{luna\+::deserialize\+Button}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ad52b64d00b0dff94cba1dd1dffc86fe8}{luna\+::deserialize\+Color\+Rect}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a0e4193a3f37c58bdcfe190f5fe98c66e}{luna\+::deserialize\+Item\+List}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a0cf925cff5e2489f72675f9255a101a1}{luna\+::de\+Serialize\+Node}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, YAML\+::\+Node \&serialized\+Node)
+\item 
+static std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{namespaceluna_ae5e81717cfddf8a38dff3d2ea77acf83}{luna\+::transform\+Entity}} (\mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node, const std\+::vector$<$ entt\+::entity $>$ \&entitys)
+\item 
+static void \mbox{\hyperlink{namespaceluna_aeafa658ab07a0989eb66fe937c8bab07}{luna\+::serialize\+Parent\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a70968fbfa492ec87b85929bd46b51ba8}{luna\+::serialize\+Child\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ace5f01c9ce5a397c01e4da7a9df95607}{luna\+::serialize\+Tag}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_ae949f6a1d1f7657036197bf48c91ec03}{luna\+::serialize\+Transform}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a141714a8a6bdededf82227179e46c8e4}{luna\+::serialize\+Sprite\+Renderer\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_afc4d1df96d3e2b941e6d6f7cea7c4645}{luna\+::serialize\+Label\+Renderer\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a97a9cfee2feb91991f179b8ebd4d5813}{luna\+::serialize\+Color\+Rect}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a176e0a5920a6c30b2012ae4a8e862cc1}{luna\+::serialize\+Button\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a2c77ebdf13573b455876aa16eceb0260}{luna\+::serialize\+Item\+List\+Component}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\item 
+static void \mbox{\hyperlink{namespaceluna_a8365e468ab56c71fbcd610676167e171}{luna\+::serialize\+Node}} (YAML\+::\+Emitter \&out, \mbox{\hyperlink{classluna_1_1_node}{luna\+::\+Node}} \&node)
+\end{DoxyCompactItemize}

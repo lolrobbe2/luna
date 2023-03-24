@@ -1,5 +1,11 @@
-<map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/spriteNode.h">
-<area shape="rect" id="node1" title=" " coords="133,5,336,60"/>
-<area shape="rect" id="node2" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="5,108,224,177"/>
-<area shape="rect" id="node3" href="$de/d00/sprite_node_8cpp.html" title=" " coords="248,115,464,170"/>
+<map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/controlNodes/spriteNode.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/controlNodes/spriteNode.h">
+<area shape="rect" id="node1" title=" " coords="117,5,308,75"/>
+<area shape="rect" id="node2" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="34,240,253,309"/>
+<area shape="rect" id="node3" href="$d0/d00/class_register_8h.html" title=" " coords="179,357,331,427"/>
+<area shape="rect" id="node5" href="$d2/d00/button_node_8h.html" title=" " coords="191,123,381,192"/>
+<area shape="rect" id="node9" href="$de/d00/sprite_node_8cpp.html" title=" " coords="405,123,596,192"/>
+<area shape="rect" id="node4" href="$df/d00/application_8cpp.html" title=" " coords="159,475,351,529"/>
+<area shape="rect" id="node6" href="$d8/d00/button_node_8cpp.html" title=" " coords="543,240,733,309"/>
+<area shape="rect" id="node7" href="$df/d00/image_button_node_8h.html" title=" " coords="328,240,519,309"/>
+<area shape="rect" id="node8" href="$d3/d00/image_button_node_8cpp.html" title=" " coords="356,357,557,427"/>
 </map>

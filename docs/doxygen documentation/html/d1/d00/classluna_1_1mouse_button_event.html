@@ -125,6 +125,8 @@ Collaboration diagram for luna::mouseButtonEvent:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4f59234bbac5e021a32595d66e356a1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d00/namespaceluna.html#ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/classluna_1_1mouse_button_event.html#a4f59234bbac5e021a32595d66e356a1f">getMouseButton</a> () const</td></tr>
 <tr class="separator:a4f59234bbac5e021a32595d66e356a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc416f1c11ab0c9158317f249353b5c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/classluna_1_1mouse_button_event.html#afc416f1c11ab0c9158317f249353b5c2">isDoubleClick</a> () const</td></tr>
+<tr class="separator:afc416f1c11ab0c9158317f249353b5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classluna_1_1_event"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classluna_1_1_event')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d0/d00/classluna_1_1_event.html">luna::Event</a></td></tr>
 <tr class="memitem:a08c6e23d9113625624d99774b35c41cf inherit pub_methods_classluna_1_1_event"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d00/classluna_1_1_event.html#a08c6e23d9113625624d99774b35c41cf">~Event</a> ()=default</td></tr>
 <tr class="separator:a08c6e23d9113625624d99774b35c41cf inherit pub_methods_classluna_1_1_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,13 +143,15 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aa5f2378d9769af5c076d39c583778b0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/classluna_1_1mouse_button_event.html#aa5f2378d9769af5c076d39c583778b0e">mouseButtonEvent</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</a> button)</td></tr>
-<tr class="separator:aa5f2378d9769af5c076d39c583778b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa47a40f6a6eafe61f8ab376174305ee3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/classluna_1_1mouse_button_event.html#aa47a40f6a6eafe61f8ab376174305ee3">mouseButtonEvent</a> (const <a class="el" href="../../db/d00/namespaceluna.html#ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</a> button, bool doubleClick)</td></tr>
+<tr class="separator:aa47a40f6a6eafe61f8ab376174305ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a05acef1c7a20511a796acf717d515e61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d00/namespaceluna.html#ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/classluna_1_1mouse_button_event.html#a05acef1c7a20511a796acf717d515e61">m_Button</a></td></tr>
 <tr class="separator:a05acef1c7a20511a796acf717d515e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3629b1d982e966975ab7dfdb2d7727"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/classluna_1_1mouse_button_event.html#a7b3629b1d982e966975ab7dfdb2d7727">m_doubleClick</a></td></tr>
+<tr class="separator:a7b3629b1d982e966975ab7dfdb2d7727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -156,8 +160,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ac3adfbdf3c329f442c7edec2029debae inherit pub_attribs_classluna_1_1_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa5f2378d9769af5c076d39c583778b0e" name="aa5f2378d9769af5c076d39c583778b0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5f2378d9769af5c076d39c583778b0e">&#9670;&#160;</a></span>mouseButtonEvent()</h2>
+<a id="aa47a40f6a6eafe61f8ab376174305ee3" name="aa47a40f6a6eafe61f8ab376174305ee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa47a40f6a6eafe61f8ab376174305ee3">&#9670;&#160;</a></span>mouseButtonEvent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,8 +173,18 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">luna::mouseButtonEvent::mouseButtonEvent </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="../../db/d00/namespaceluna.html#ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</a>&#160;</td>
-          <td class="paramname"><em>button</em></td><td>)</td>
+          <td class="paramname"><em>button</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>doubleClick</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -208,6 +222,31 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="afc416f1c11ab0c9158317f249353b5c2" name="afc416f1c11ab0c9158317f249353b5c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc416f1c11ab0c9158317f249353b5c2">&#9670;&#160;</a></span>isDoubleClick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool luna::mouseButtonEvent::isDoubleClick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a05acef1c7a20511a796acf717d515e61" name="a05acef1c7a20511a796acf717d515e61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a05acef1c7a20511a796acf717d515e61">&#9670;&#160;</a></span>m_Button</h2>
@@ -220,6 +259,28 @@ Additional Inherited Members</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ae5b18a3787fcddde0b006f7b9c26df92">mouseCode</a> luna::mouseButtonEvent::m_Button</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b3629b1d982e966975ab7dfdb2d7727" name="a7b3629b1d982e966975ab7dfdb2d7727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b3629b1d982e966975ab7dfdb2d7727">&#9670;&#160;</a></span>m_doubleClick</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool luna::mouseButtonEvent::m_doubleClick</td>
         </tr>
       </table>
   </td>

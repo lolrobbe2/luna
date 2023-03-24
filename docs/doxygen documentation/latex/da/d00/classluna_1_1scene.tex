@@ -18,6 +18,8 @@ Collaboration diagram for luna\+::scene\+:\nopagebreak
 \item 
 \mbox{\hyperlink{classluna_1_1scene_a4b51cfd6d22c77aab932dbe42f29d0ac}{scene}} ()=default
 \item 
+\mbox{\hyperlink{classluna_1_1scene_ae49a49ba03104785a1072968f74fcead}{$\sim$scene}} ()
+\item 
 {\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classluna_1_1scene_a02491855082b8abf1019cce5dc7e9a9c}{add\+Node}} (std\+::string name=std\+::string())
 \item 
 {\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classluna_1_1scene_ad1e61089ca30395f95ea097c9f0fb766}{destroy\+Node}} (const T \&\mbox{\hyperlink{classluna_1_1_node}{Node}})
@@ -27,6 +29,12 @@ Collaboration diagram for luna\+::scene\+:\nopagebreak
 {\footnotesize template$<$typename... components$>$ }\\auto \mbox{\hyperlink{classluna_1_1scene_aaf9e475b7d264a5c94a78a561151d659}{get\+All\+Entities\+With}} ()
 \item 
 void \mbox{\hyperlink{classluna_1_1scene_a39e773ac9aa03228798d94d48ebc15d9}{on\+Update\+Editor}} (\mbox{\hyperlink{classluna_1_1utils_1_1timestep}{utils\+::timestep}} ts)
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_ac0df2c849c52de0ecf7dfa8cb8fc2169}{on\+Update}} (\mbox{\hyperlink{classluna_1_1utils_1_1timestep}{utils\+::timestep}} ts)
+\item 
+entt\+::entity \mbox{\hyperlink{classluna_1_1scene_a492582447317d7a4f1420a19070ed836}{create}} ()
+\item 
+void \mbox{\hyperlink{classluna_1_1scene_a377473489c94e0dae3270f5bed9707b6}{on\+Event}} (\mbox{\hyperlink{classluna_1_1_event}{Event}} \&event)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -50,6 +58,8 @@ int \mbox{\hyperlink{classluna_1_1scene_a199dfba1eed8dd6407918694ed98b486}{m\+\_
 \item 
 class \mbox{\hyperlink{classluna_1_1scene_a6db9d28bd448a131448276ee03de1e6d}{Node}}
 \item 
+class \mbox{\hyperlink{classluna_1_1scene_a53a957477990b745a1380b8759c4a38c}{scene\+Serializer}}
+\item 
 class \mbox{\hyperlink{classluna_1_1scene_a48b3f9b09f4657212c6681f3fe94289c}{scene\+Hierarchy\+Panel}}
 \end{DoxyCompactItemize}
 
@@ -61,6 +71,12 @@ class \mbox{\hyperlink{classluna_1_1scene_a48b3f9b09f4657212c6681f3fe94289c}{sce
 \doxyparagraph{\texorpdfstring{scene()}{scene()}}
 {\footnotesize\ttfamily luna\+::scene\+::scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
+\mbox{\Hypertarget{classluna_1_1scene_ae49a49ba03104785a1072968f74fcead}\label{classluna_1_1scene_ae49a49ba03104785a1072968f74fcead}} 
+\index{luna::scene@{luna::scene}!````~scene@{$\sim$scene}}
+\index{````~scene@{$\sim$scene}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{$\sim$scene()}{~scene()}}
+{\footnotesize\ttfamily luna\+::scene\+::$\sim$scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 
 
 \doxysubsubsection{Member Function Documentation}
@@ -70,6 +86,12 @@ class \mbox{\hyperlink{classluna_1_1scene_a48b3f9b09f4657212c6681f3fe94289c}{sce
 \doxyparagraph{\texorpdfstring{addNode()}{addNode()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 T \& luna\+::scene\+::add\+Node (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a492582447317d7a4f1420a19070ed836}\label{classluna_1_1scene_a492582447317d7a4f1420a19070ed836}} 
+\index{luna::scene@{luna::scene}!create@{create}}
+\index{create@{create}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily entt\+::entity luna\+::scene\+::create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classluna_1_1scene_ad1e61089ca30395f95ea097c9f0fb766}\label{classluna_1_1scene_ad1e61089ca30395f95ea097c9f0fb766}} 
 \index{luna::scene@{luna::scene}!destroyNode@{destroyNode}}
@@ -92,6 +114,18 @@ auto luna\+::scene\+::get\+All\+Entities\+With (\begin{DoxyParamCaption}{ }\end{
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 void luna\+::scene\+::on\+Component\+Added (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{Node}}}]{Node,  }\item[{T \&}]{component }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classluna_1_1scene_a377473489c94e0dae3270f5bed9707b6}\label{classluna_1_1scene_a377473489c94e0dae3270f5bed9707b6}} 
+\index{luna::scene@{luna::scene}!onEvent@{onEvent}}
+\index{onEvent@{onEvent}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{onEvent()}{onEvent()}}
+{\footnotesize\ttfamily void luna\+::scene\+::on\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_event}{Event}} \&}]{event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1scene_ac0df2c849c52de0ecf7dfa8cb8fc2169}\label{classluna_1_1scene_ac0df2c849c52de0ecf7dfa8cb8fc2169}} 
+\index{luna::scene@{luna::scene}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void luna\+::scene\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1utils_1_1timestep}{utils\+::timestep}}}]{ts }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classluna_1_1scene_a39e773ac9aa03228798d94d48ebc15d9}\label{classluna_1_1scene_a39e773ac9aa03228798d94d48ebc15d9}} 
 \index{luna::scene@{luna::scene}!onUpdateEditor@{onUpdateEditor}}
 \index{onUpdateEditor@{onUpdateEditor}!luna::scene@{luna::scene}}
@@ -112,6 +146,12 @@ void luna\+::scene\+::on\+Component\+Added (\begin{DoxyParamCaption}\item[{\mbox
 \index{sceneHierarchyPanel@{sceneHierarchyPanel}!luna::scene@{luna::scene}}
 \doxyparagraph{\texorpdfstring{sceneHierarchyPanel}{sceneHierarchyPanel}}
 {\footnotesize\ttfamily friend class \mbox{\hyperlink{classluna_1_1scene_hierarchy_panel}{scene\+Hierarchy\+Panel}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classluna_1_1scene_a53a957477990b745a1380b8759c4a38c}\label{classluna_1_1scene_a53a957477990b745a1380b8759c4a38c}} 
+\index{luna::scene@{luna::scene}!sceneSerializer@{sceneSerializer}}
+\index{sceneSerializer@{sceneSerializer}!luna::scene@{luna::scene}}
+\doxyparagraph{\texorpdfstring{sceneSerializer}{sceneSerializer}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classluna_1_1scene_serializer}{scene\+Serializer}}\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 

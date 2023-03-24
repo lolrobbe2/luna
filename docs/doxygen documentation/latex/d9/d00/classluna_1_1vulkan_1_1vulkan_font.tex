@@ -11,8 +11,7 @@ font implementation in vulkan.
 
 
 
-Inheritance diagram for luna\+::vulkan\+::vulkan\+Font\+:
-\nopagebreak
+Inheritance diagram for luna\+::vulkan\+::vulkan\+Font\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,7 +25,7 @@ Collaboration diagram for luna\+::vulkan\+::vulkan\+Font\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=312pt]{d1/d00/classluna_1_1vulkan_1_1vulkan_font__coll__graph}
+\includegraphics[width=307pt]{d1/d00/classluna_1_1vulkan_1_1vulkan_font__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Classes}
@@ -44,6 +43,8 @@ virtual \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_af82e17777f759fe08a4
 virtual \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a377a42ee0772cf02d025eff6a0b96acc}{get\+Glyph}} (char character) override
 \item 
 virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_aff4f233f438c962cd8cc9c03100a345d}{get\+Advance}} (char character) override
+\item 
+virtual glm\+::vec2 \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a5c3dd15b66a941ad15ceeb5099b4a5f0}{get\+Scale}} (char character) override
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -56,6 +57,8 @@ void \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_af682ce231961c7ee3b2e2a
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+Vk\+Buffer \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a8ab3a043fcd277298d6eb2599cf9c93a}{test\+Buffer}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
 \item 
 std\+::vector$<$ Vk\+Buffer $>$ \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_font_a5ce266457c5d336683f7ab3fd1c15389}{buffer}}
 \item 
@@ -150,6 +153,16 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1font_a467c09cf04f67adcee25b
 
 Implements \mbox{\hyperlink{classluna_1_1renderer_1_1font_a3312aa8b899024a7263c07d315e9b040}{luna\+::renderer\+::font}}.
 
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a5c3dd15b66a941ad15ceeb5099b4a5f0}\label{classluna_1_1vulkan_1_1vulkan_font_a5c3dd15b66a941ad15ceeb5099b4a5f0}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!getScale@{getScale}}
+\index{getScale@{getScale}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::vulkan\+::vulkan\+Font\+::get\+Scale (\begin{DoxyParamCaption}\item[{char}]{character }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1renderer_1_1font_a010a655aea019973c407ca5b1bf31d35}{luna\+::renderer\+::font}}.
+
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_af682ce231961c7ee3b2e2a1711947157}\label{classluna_1_1vulkan_1_1vulkan_font_af682ce231961c7ee3b2e2a1711947157}} 
 \index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!writeGlyphsIntoBuffer@{writeGlyphsIntoBuffer}}
 \index{writeGlyphsIntoBuffer@{writeGlyphsIntoBuffer}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
@@ -182,6 +195,12 @@ Implements \mbox{\hyperlink{classluna_1_1renderer_1_1font_a3312aa8b899024a7263c0
 \index{imageViewHandle@{imageViewHandle}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
 \doxyparagraph{\texorpdfstring{imageViewHandle}{imageViewHandle}}
 {\footnotesize\ttfamily Vk\+Image\+View luna\+::vulkan\+::vulkan\+Font\+::image\+View\+Handle = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a8ab3a043fcd277298d6eb2599cf9c93a}\label{classluna_1_1vulkan_1_1vulkan_font_a8ab3a043fcd277298d6eb2599cf9c93a}} 
+\index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!testBuffer@{testBuffer}}
+\index{testBuffer@{testBuffer}!luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}}
+\doxyparagraph{\texorpdfstring{testBuffer}{testBuffer}}
+{\footnotesize\ttfamily Vk\+Buffer luna\+::vulkan\+::vulkan\+Font\+::test\+Buffer = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classluna_1_1vulkan_1_1vulkan_font_a5c6c0f45dace15b5b4b154b95f8390c6}\label{classluna_1_1vulkan_1_1vulkan_font_a5c6c0f45dace15b5b4b154b95f8390c6}} 
 \index{luna::vulkan::vulkanFont@{luna::vulkan::vulkanFont}!width@{width}}

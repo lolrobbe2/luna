@@ -3,6 +3,8 @@ var classluna_1_1renderer_1_1renderer =
     [ "beginScene", "d5/d00/classluna_1_1renderer_1_1renderer.html#afb864b4498cbb6eeb0240cd9a6b2af44", null ],
     [ "createFrame", "d5/d00/classluna_1_1renderer_1_1renderer.html#adc22ac127f4932d064a8653ec4c5d18b", null ],
     [ "endScene", "d5/d00/classluna_1_1renderer_1_1renderer.html#a6d3cc118bda57598c1d5c5524b8bce15", null ],
+    [ "getSceneDimensions", "d5/d00/classluna_1_1renderer_1_1renderer.html#a43fcab970f459dc7f20ffe6ad9664920", null ],
+    [ "getSceneMousePos", "d5/d00/classluna_1_1renderer_1_1renderer.html#a0e99d842ffb764d5a1e80c8e9029b0f8", null ],
     [ "init", "d5/d00/classluna_1_1renderer_1_1renderer.html#ae03c7718cd0e231dbb9b89c8ecbf944f", null ],
     [ "newFrame", "d5/d00/classluna_1_1renderer_1_1renderer.html#a32fcf021d4fb98074c80ef9bdfd81d18", null ],
     [ "shutdown", "d5/d00/classluna_1_1renderer_1_1renderer.html#ac89801f68cbdc59a324ba80754a7c5eb", null ],

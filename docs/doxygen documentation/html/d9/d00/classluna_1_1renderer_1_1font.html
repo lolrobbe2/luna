@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('d9/d00/classluna_1_1renderer_1_1font.h
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="../../da/d00/classluna_1_1renderer_1_1font-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::renderer::font Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -109,6 +110,17 @@ Inheritance diagram for luna::renderer::font:</div>
 <area shape="rect" href="../../d9/d00/classluna_1_1vulkan_1_1vulkan_font.html" title="font implementation in vulkan." coords="5,79,165,104"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for luna::renderer::font:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d00/classluna_1_1renderer_1_1font__coll__graph.png" border="0" usemap="#aluna_1_1renderer_1_1font_coll__map" alt="Collaboration graph"/></div>
+<map name="aluna_1_1renderer_1_1font_coll__map" id="aluna_1_1renderer_1_1font_coll__map">
+<area shape="rect" title=" " coords="21,284,151,309"/>
+<area shape="rect" title=" " coords="5,181,167,207"/>
+<area shape="rect" title=" " coords="29,93,143,119"/>
+<area shape="rect" title=" " coords="67,5,105,31"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -118,6 +130,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3312aa8b899024a7263c07d315e9b040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467c09cf04f67adcee25b2c2e54f38f3"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1font.html#a467c09cf04f67adcee25b2c2e54f38f3">getAdvance</a> (char character)=0</td></tr>
 <tr class="separator:a467c09cf04f67adcee25b2c2e54f38f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a010a655aea019973c407ca5b1bf31d35"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1font.html#a010a655aea019973c407ca5b1bf31d35">getScale</a> (char charcater)=0</td></tr>
+<tr class="separator:a010a655aea019973c407ca5b1bf31d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11c6d8044626fa0daca1f27498c99884"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1font.html#a11c6d8044626fa0daca1f27498c99884">handle</a> ()</td></tr>
 <tr class="separator:a11c6d8044626fa0daca1f27498c99884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -134,6 +148,15 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a1c313d397caad1a909a543296587c2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada85792792debb532c8d9806b8ea3f83"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1font.html#ada85792792debb532c8d9806b8ea3f83">data</a></td></tr>
 <tr class="separator:ada85792792debb532c8d9806b8ea3f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a529a3869f5b15d8e3f48b59eab97f76a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1font.html#a529a3869f5b15d8e3f48b59eab97f76a">glypScales</a></td></tr>
+<tr class="separator:a529a3869f5b15d8e3f48b59eab97f76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0589ed4381a1480305a070b7c48cc6df"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1font.html#a0589ed4381a1480305a070b7c48cc6df">glypAdvances</a></td></tr>
+<tr class="separator:a0589ed4381a1480305a070b7c48cc6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a10df97a740155950b088f4c0a5e143ce"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1font.html#a10df97a740155950b088f4c0a5e143ce">startIndex</a> = 0</td></tr>
+<tr class="separator:a10df97a740155950b088f4c0a5e143ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afb88cb14b53db7ccc2a16b4fb978bf5f" name="afb88cb14b53db7ccc2a16b4fb978bf5f"></a>
@@ -244,6 +267,34 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a010a655aea019973c407ca5b1bf31d35" name="a010a655aea019973c407ca5b1bf31d35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a010a655aea019973c407ca5b1bf31d35">&#9670;&#160;</a></span>getScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual glm::vec2 luna::renderer::font::getScale </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>charcater</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../d9/d00/classluna_1_1vulkan_1_1vulkan_font.html#a5c3dd15b66a941ad15ceeb5099b4a5f0">luna::vulkan::vulkanFont</a>.</p>
+
+</div>
+</div>
 <a id="a11c6d8044626fa0daca1f27498c99884" name="a11c6d8044626fa0daca1f27498c99884"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a11c6d8044626fa0daca1f27498c99884">&#9670;&#160;</a></span>handle()</h2>
 
@@ -330,6 +381,72 @@ Protected Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0589ed4381a1480305a070b7c48cc6df" name="a0589ed4381a1480305a070b7c48cc6df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0589ed4381a1480305a070b7c48cc6df">&#9670;&#160;</a></span>glypAdvances</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;glm::vec2&gt; luna::renderer::font::glypAdvances</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a529a3869f5b15d8e3f48b59eab97f76a" name="a529a3869f5b15d8e3f48b59eab97f76a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a529a3869f5b15d8e3f48b59eab97f76a">&#9670;&#160;</a></span>glypScales</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;glm::vec2&gt; luna::renderer::font::glypScales</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10df97a740155950b088f4c0a5e143ce" name="a10df97a740155950b088f4c0a5e143ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10df97a740155950b088f4c0a5e143ce">&#9670;&#160;</a></span>startIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char luna::renderer::font::startIndex = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

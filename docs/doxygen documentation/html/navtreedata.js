@@ -64,14 +64,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "../../index.html",
-"d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afd9c73f82bc55d87a56be34d108aac9e",
-"d4/d00/classluna_1_1mouse_moved_event.html#aa6663ef60b0ccc25c750ebc20899bf5f",
-"d5/d00/classluna_1_1vulkan_1_1vulkan_swapchain.html#ac47ac505afd723edf99f6679c76a97a9",
-"d8/d00/classluna_1_1utils_1_1shader_library.html",
-"da/d00/classluna_1_1scene.html#aaf9e475b7d264a5c94a78a561151d659",
-"dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array.html#a74bdf4e8a09ec61ae33ccf26ca0d76ae",
-"de/d00/classluna_1_1utils_1_1vulkan_allocator.html#acd9547e2a1cdd6b80d5d9fe156383138",
-"functions_vars_j.html"
+"d0/d00/classluna_1_1vulkan_1_1vulkan_pipeline.html#afc42bdeb83b8355115b66916c328f2a9",
+"d3/d00/structluna_1_1vulkan_1_1vulkan_texture_atlas_1_1free_stripe_block.html#ac6509ee78097097e742c78375d1179db",
+"d5/d00/classluna_1_1renderer_1_1vertex_array.html#a0bb45f5681e220fc61aba6329909630d",
+"d6/d00/classluna_1_1renderer_1_1device.html#a742514b1cf12273e7a0b8750723e451c",
+"d8/d00/structluna_1_1vulkan_1_1windows_window_1_1window_data.html#a1e8eda719c785421697998865385d26e",
+"da/d00/classluna_1_1nodes_1_1item_list_node.html#a89dc1821c9a1df24cdbbb801e8adb37f",
+"db/d00/namespaceluna.html#ad79b9142c071f5b952598de9eb0b6610a9f8f27bff2915738c4fe1b970e12f89c",
+"dd/d00/classluna_1_1instrumentation_timer.html#aed3e7a648184bfc7827ae2295aa641d8",
+"de/d00/classluna_1_1vulkan_1_1vulkan_vertex_buffer.html#ad74eea26566f25653d5b295e7df3b311",
+"functions_vars_g.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

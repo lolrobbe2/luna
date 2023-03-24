@@ -1,4 +1,8 @@
 <map id="luna::nodes::spriteNode" name="luna::nodes::spriteNode">
-<area shape="rect" id="node1" title="implementation of spriteNode." coords="5,79,164,104"/>
-<area shape="rect" id="node2" href="$dc/d00/classluna_1_1_node.html" title=" " coords="43,5,127,31"/>
+<area shape="rect" id="node1" title="implementation of spriteNode." coords="26,225,185,251"/>
+<area shape="rect" id="node5" href="$d5/d00/classluna_1_1nodes_1_1button_node.html" title="buttonNode implementation." coords="24,299,187,324"/>
+<area shape="rect" id="node2" href="$df/d00/classluna_1_1nodes_1_1control_node.html" title=" " coords="22,152,189,177"/>
+<area shape="rect" id="node3" href="$dc/d00/classluna_1_1_node.html" title=" " coords="63,79,147,104"/>
+<area shape="rect" id="node4" href="$dd/d00/classluna_1_1object.html" title=" " coords="61,5,150,31"/>
+<area shape="rect" id="node6" href="$db/d00/classluna_1_1nodes_1_1image_button_node.html" title="imageButtonNode implementation." coords="5,372,205,397"/>
 </map>

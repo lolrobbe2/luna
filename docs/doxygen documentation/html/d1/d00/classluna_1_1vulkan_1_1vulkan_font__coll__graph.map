@@ -1,7 +1,8 @@
 <map id="luna::vulkan::vulkanFont" name="luna::vulkan::vulkanFont">
-<area shape="rect" id="node1" title="font implementation in vulkan." coords="43,269,203,295"/>
-<area shape="rect" id="node2" href="$d9/d00/classluna_1_1renderer_1_1font.html" title=" " coords="5,181,136,207"/>
-<area shape="rect" id="node3" title=" " coords="160,181,315,207"/>
-<area shape="rect" id="node4" title=" " coords="181,93,294,119"/>
-<area shape="rect" id="node5" title=" " coords="218,5,257,31"/>
+<area shape="rect" id="node1" title="font implementation in vulkan." coords="78,359,238,384"/>
+<area shape="rect" id="node2" href="$d9/d00/classluna_1_1renderer_1_1font.html" title=" " coords="23,284,154,309"/>
+<area shape="rect" id="node3" title=" " coords="5,181,167,207"/>
+<area shape="rect" id="node4" title=" " coords="95,93,208,119"/>
+<area shape="rect" id="node6" title=" " coords="153,233,307,258"/>
+<area shape="rect" id="node5" title=" " coords="132,5,171,31"/>
 </map>

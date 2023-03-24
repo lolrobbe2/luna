@@ -26,26 +26,30 @@ Collaboration diagram for luna\+::mouse\+Button\+Event\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} \mbox{\hyperlink{classluna_1_1mouse_button_event_a4f59234bbac5e021a32595d66e356a1f}{get\+Mouse\+Button}} () const
+\item 
+bool \mbox{\hyperlink{classluna_1_1mouse_button_event_afc416f1c11ab0c9158317f249353b5c2}{is\+Double\+Click}} () const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classluna_1_1mouse_button_event_aa5f2378d9769af5c076d39c583778b0e}{mouse\+Button\+Event}} (const \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} button)
+\mbox{\hyperlink{classluna_1_1mouse_button_event_aa47a40f6a6eafe61f8ab376174305ee3}{mouse\+Button\+Event}} (const \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} button, bool double\+Click)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} \mbox{\hyperlink{classluna_1_1mouse_button_event_a05acef1c7a20511a796acf717d515e61}{m\+\_\+\+Button}}
+\item 
+bool \mbox{\hyperlink{classluna_1_1mouse_button_event_a7b3629b1d982e966975ab7dfdb2d7727}{m\+\_\+double\+Click}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 
 
 \doxysubsubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classluna_1_1mouse_button_event_aa5f2378d9769af5c076d39c583778b0e}\label{classluna_1_1mouse_button_event_aa5f2378d9769af5c076d39c583778b0e}} 
+\mbox{\Hypertarget{classluna_1_1mouse_button_event_aa47a40f6a6eafe61f8ab376174305ee3}\label{classluna_1_1mouse_button_event_aa47a40f6a6eafe61f8ab376174305ee3}} 
 \index{luna::mouseButtonEvent@{luna::mouseButtonEvent}!mouseButtonEvent@{mouseButtonEvent}}
 \index{mouseButtonEvent@{mouseButtonEvent}!luna::mouseButtonEvent@{luna::mouseButtonEvent}}
 \doxyparagraph{\texorpdfstring{mouseButtonEvent()}{mouseButtonEvent()}}
-{\footnotesize\ttfamily luna\+::mouse\+Button\+Event\+::mouse\+Button\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}}}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily luna\+::mouse\+Button\+Event\+::mouse\+Button\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}}}]{button,  }\item[{bool}]{double\+Click }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
 
 
@@ -56,6 +60,12 @@ Collaboration diagram for luna\+::mouse\+Button\+Event\+:\nopagebreak
 \doxyparagraph{\texorpdfstring{getMouseButton()}{getMouseButton()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} luna\+::mouse\+Button\+Event\+::get\+Mouse\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classluna_1_1mouse_button_event_afc416f1c11ab0c9158317f249353b5c2}\label{classluna_1_1mouse_button_event_afc416f1c11ab0c9158317f249353b5c2}} 
+\index{luna::mouseButtonEvent@{luna::mouseButtonEvent}!isDoubleClick@{isDoubleClick}}
+\index{isDoubleClick@{isDoubleClick}!luna::mouseButtonEvent@{luna::mouseButtonEvent}}
+\doxyparagraph{\texorpdfstring{isDoubleClick()}{isDoubleClick()}}
+{\footnotesize\ttfamily bool luna\+::mouse\+Button\+Event\+::is\+Double\+Click (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 \doxysubsubsection{Member Data Documentation}
@@ -64,6 +74,12 @@ Collaboration diagram for luna\+::mouse\+Button\+Event\+:\nopagebreak
 \index{m\_Button@{m\_Button}!luna::mouseButtonEvent@{luna::mouseButtonEvent}}
 \doxyparagraph{\texorpdfstring{m\_Button}{m\_Button}}
 {\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ae5b18a3787fcddde0b006f7b9c26df92}{mouse\+Code}} luna\+::mouse\+Button\+Event\+::m\+\_\+\+Button\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1mouse_button_event_a7b3629b1d982e966975ab7dfdb2d7727}\label{classluna_1_1mouse_button_event_a7b3629b1d982e966975ab7dfdb2d7727}} 
+\index{luna::mouseButtonEvent@{luna::mouseButtonEvent}!m\_doubleClick@{m\_doubleClick}}
+\index{m\_doubleClick@{m\_doubleClick}!luna::mouseButtonEvent@{luna::mouseButtonEvent}}
+\doxyparagraph{\texorpdfstring{m\_doubleClick}{m\_doubleClick}}
+{\footnotesize\ttfamily bool luna\+::mouse\+Button\+Event\+::m\+\_\+double\+Click\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

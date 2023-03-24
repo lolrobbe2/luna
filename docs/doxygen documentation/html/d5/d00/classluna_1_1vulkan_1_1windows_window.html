@@ -151,6 +151,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c855425f7826a1fdf0f1bf62da04e25"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a1c855425f7826a1fdf0f1bf62da04e25">getWindow</a> () override</td></tr>
 <tr class="memdesc:a1c855425f7826a1fdf0f1bf62da04e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the GLFW window pointer.  <a href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#a1c855425f7826a1fdf0f1bf62da04e25">More...</a><br /></td></tr>
 <tr class="separator:a1c855425f7826a1fdf0f1bf62da04e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b6466a06190eed25cc87da8088db94"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#ac7b6466a06190eed25cc87da8088db94">getCursorPos</a> () const override</td></tr>
+<tr class="memdesc:ac7b6466a06190eed25cc87da8088db94"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the current cursor pos.  <a href="../../d5/d00/classluna_1_1vulkan_1_1windows_window.html#ac7b6466a06190eed25cc87da8088db94">More...</a><br /></td></tr>
+<tr class="separator:ac7b6466a06190eed25cc87da8088db94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classluna_1_1vulkan_1_1window"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classluna_1_1vulkan_1_1window')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html">luna::vulkan::window</a></td></tr>
 <tr class="memitem:aff65add0ca3ca8329387991a181a9d99 inherit pub_methods_classluna_1_1vulkan_1_1window"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#aff65add0ca3ca8329387991a181a9d99">~window</a> ()</td></tr>
 <tr class="separator:aff65add0ca3ca8329387991a181a9d99 inherit pub_methods_classluna_1_1vulkan_1_1window"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,6 +167,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ade8005289228808055506555cfff328f inherit pub_methods_classluna_1_1vulkan_1_1window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add34b613de071ba6e381249cefc6c51c inherit pub_methods_classluna_1_1vulkan_1_1window"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#add34b613de071ba6e381249cefc6c51c">getWindow</a> ()=0</td></tr>
 <tr class="separator:add34b613de071ba6e381249cefc6c51c inherit pub_methods_classluna_1_1vulkan_1_1window"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a7374df483001b45af303748d194b86 inherit pub_methods_classluna_1_1vulkan_1_1window"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a4a7374df483001b45af303748d194b86">getCursorPos</a> () const =0</td></tr>
+<tr class="separator:a4a7374df483001b45af303748d194b86 inherit pub_methods_classluna_1_1vulkan_1_1window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -248,6 +253,36 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac7b6466a06190eed25cc87da8088db94" name="ac7b6466a06190eed25cc87da8088db94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b6466a06190eed25cc87da8088db94">&#9670;&#160;</a></span>getCursorPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 luna::vulkan::windowsWindow::getCursorPos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns the current cursor pos. </p>
+<dl class="section return"><dt>Returns</dt><dd>glm::vec2 </dd></dl>
+
+<p>Implements <a class="el" href="../../d7/d00/classluna_1_1vulkan_1_1window.html#a4a7374df483001b45af303748d194b86">luna::vulkan::window</a>.</p>
+
+</div>
+</div>
 <a id="a30787af0d713fae4aa72786edb258858" name="a30787af0d713fae4aa72786edb258858"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30787af0d713fae4aa72786edb258858">&#9670;&#160;</a></span>getHeight()</h2>
 

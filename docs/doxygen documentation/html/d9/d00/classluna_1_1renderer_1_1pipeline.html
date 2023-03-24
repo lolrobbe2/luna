@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('d9/d00/classluna_1_1renderer_1_1pipeli
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="../../dc/d00/classluna_1_1renderer_1_1pipeline-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">luna::renderer::pipeline Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -140,11 +141,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aea4856bf4c1a3652937fb94c01b4b2a5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5">clear</a> ()=0</td></tr>
 <tr class="memdesc:aea4856bf4c1a3652937fb94c01b4b2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">clears all drawCommands.  <a href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#aea4856bf4c1a3652937fb94c01b4b2a5">More...</a><br /></td></tr>
 <tr class="separator:aea4856bf4c1a3652937fb94c01b4b2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a72e6d6958094a3fc534f0dad8a5401"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a3a72e6d6958094a3fc534f0dad8a5401">getDimensions</a> ()</td></tr>
+<tr class="separator:a3a72e6d6958094a3fc534f0dad8a5401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86cb25f6529151d8163806acc6e7d6ee"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a86cb25f6529151d8163806acc6e7d6ee">getWindowMousePos</a> ()</td></tr>
+<tr class="separator:a86cb25f6529151d8163806acc6e7d6ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ab4ed62f2705e4254cf13896862c81863"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#ab4ed62f2705e4254cf13896862c81863">test</a></td></tr>
 <tr class="separator:ab4ed62f2705e4254cf13896862c81863"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:abcbc1d490c43536b8f2ae2ee158c70fa"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#abcbc1d490c43536b8f2ae2ee158c70fa">windowMousePos</a></td></tr>
+<tr class="separator:abcbc1d490c43536b8f2ae2ee158c70fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a325905862c1af3c99f0c3c208fbbd6d1"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classluna_1_1renderer_1_1pipeline.html#a325905862c1af3c99f0c3c208fbbd6d1">windowDimensions</a></td></tr>
+<tr class="separator:a325905862c1af3c99f0c3c208fbbd6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab40683a6e9514c24b44d36573c5065e9" name="ab40683a6e9514c24b44d36573c5065e9"></a>
@@ -481,6 +493,56 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a3a72e6d6958094a3fc534f0dad8a5401" name="a3a72e6d6958094a3fc534f0dad8a5401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a72e6d6958094a3fc534f0dad8a5401">&#9670;&#160;</a></span>getDimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 luna::renderer::pipeline::getDimensions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86cb25f6529151d8163806acc6e7d6ee" name="a86cb25f6529151d8163806acc6e7d6ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86cb25f6529151d8163806acc6e7d6ee">&#9670;&#160;</a></span>getWindowMousePos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 luna::renderer::pipeline::getWindowMousePos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab4ed62f2705e4254cf13896862c81863" name="ab4ed62f2705e4254cf13896862c81863"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4ed62f2705e4254cf13896862c81863">&#9670;&#160;</a></span>test</h2>
@@ -492,6 +554,50 @@ Public Attributes</h2></td></tr>
           <td class="memname">int luna::renderer::pipeline::test</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a325905862c1af3c99f0c3c208fbbd6d1" name="a325905862c1af3c99f0c3c208fbbd6d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a325905862c1af3c99f0c3c208fbbd6d1">&#9670;&#160;</a></span>windowDimensions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 luna::renderer::pipeline::windowDimensions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abcbc1d490c43536b8f2ae2ee158c70fa" name="abcbc1d490c43536b8f2ae2ee158c70fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcbc1d490c43536b8f2ae2ee158c70fa">&#9670;&#160;</a></span>windowMousePos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 luna::renderer::pipeline::windowMousePos</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

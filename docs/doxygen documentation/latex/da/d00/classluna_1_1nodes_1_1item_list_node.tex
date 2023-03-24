@@ -1,0 +1,382 @@
+\hypertarget{classluna_1_1nodes_1_1item_list_node}{}\doxysubsection{luna\+::nodes\+::item\+List\+Node Class Reference}
+\label{classluna_1_1nodes_1_1item_list_node}\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+
+
+{\ttfamily \#include $<$item\+List\+Node.\+h$>$}
+
+
+
+Inheritance diagram for luna\+::nodes\+::item\+List\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{de/d00/classluna_1_1nodes_1_1item_list_node__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for luna\+::nodes\+::item\+List\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d00/classluna_1_1nodes_1_1item_list_node__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a82f63c516d915d12261961273219db1c}{item\+List\+Node}} ()=default
+\item 
+virtual \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_af81e5708e21bb15b9d18293efaade59b}{$\sim$item\+List\+Node}} ()=default
+\item 
+\mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a6ebe6d44a22799e30c30be457e880ef6}{item\+List\+Node}} (\mbox{\hyperlink{classluna_1_1_node}{Node}} node)
+\item 
+\mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a97c6458bcc08529f2b88d11de9ce76ac}{item\+List\+Node}} (entt\+::entity handle, \mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}})
+\item 
+\mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ae266fc46bc601822b0f7376376cdc2dc}{item\+List\+Node}} (\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}})
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a505ec294a750b2e79837b000e10738f0}{init}} (\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}}) override
+\item 
+int \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a1fe210c6fad4486f9fc32de8db8055ea}{add\+Item}} (const std\+::string \&p\+Item, const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&p\+Texture=\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$(), bool selectable=true)
+\item 
+int \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a3d311ed398768eea695f30a212641cc0}{add\+Icon\+Item}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&p\+Item, bool selectable=true)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ac0663afdfa6d0ee42c90d6dd64cad81d}{set\+Item\+Text}} (int p\+Idx, const std\+::string \&text)
+\item 
+std\+::string \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ad21b230e88d541a5afd297185da33a81}{get\+Item\+Text}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_af010893241e6c2bed6e24d3908d1a3eb}{set\+Item\+Icon}} (int p\+Idx, const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&p\+Icon)
+\item 
+\mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a76d70c8559638272db759e7be4f75aaf}{get\+Item\+Icon}} (int p\+\_\+idx)
+\item 
+glm\+::vec2 \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a62c8dc06e829cebb7acd27588fc2a3f0}{get\+Item\+Icon\+Region}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a4dacd1ce5f20b209c3ee15a5f9094ade}{set\+Item\+Language}} (int p\+Idx, const std\+::string \&language)
+\item 
+std\+::string \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a5f88dcf36a28d8f432fbf7a0f832f3e0}{get\+Item\+Language}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_abd1cca26dbe65ec1407619f495fb230c}{select}} (int Idx, bool single=true)
+\item 
+int \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ad820b94289046bd36aeb93918bf8e2d3}{get\+Item\+At\+Position}} (const glm\+::vec2 \&pos, bool exact)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a98723c8a6dcfe48996dd3a6cd3155310}{deselect}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_afd3cbb8ac7dec4cd4f5f2f98fdd6594f}{deselect\+\_\+all}} ()
+\item 
+bool \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a7a1124f64739811c6040ff4ef9498e39}{is\+Selected}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a69f1d1360c96376ae721b3450b51872f}{set\+Current}} (int current)
+\item 
+int \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ae3325032d0e7491f3c5ec2416c5914fb}{get\+Current}} ()
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a364e6cf48771872e9cfc2e01df5165c1}{move\+Item}} (int from\+Idx, int to\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ad8031aace906b2e35c01c1581a40a390}{set\+Item\+Count}} (int count)
+\item 
+int \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_acca979d22458483fea1934f95845a03a}{get\+Item\+Count}} ()
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ad7d6c965f0ca7df887618107cc7cf2cc}{remove\+Item}} (int idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a89dc1821c9a1df24cdbbb801e8adb37f}{set\+Item\+Custom\+Bg\+Color}} (int p\+Idx, const glm\+::vec4 \&p\+Custom\+Bg\+Color)
+\item 
+glm\+::vec4 \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ad80eb772748f52f51b2ea6f988dda133}{get\+Item\+Custom\+Bg\+Color}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_acefebd7faef6a93b6dacbaffa41d9893}{set\+Item\+Custom\+Fg\+Color}} (int p\+Idx, const glm\+::vec4 \&p\+Custom\+Fg\+Color)
+\item 
+glm\+::vec4 \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ac120b3c86544677649ea90e990b110bf}{get\+Item\+Custom\+Fg\+Color}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a2d61a34b8f61e8d68cc3bebc3a62a9b8}{set\+Item\+Tag\+Icon}} (int p\+\_\+idx, const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&p\+Tag\+Icon)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_af8af8e96e11f6d61238bf7a4b085931e}{set\+Item\+Selectable}} (int p\+Idx, bool selectable)
+\item 
+bool \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a1718737b9bb3b3fc23f126cf5cf993c7}{is\+Item\+Selectable}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a60c7d5cb28e9c9382746c46235ed3a12}{set\+Item\+Disabled}} (int p\+Idx, bool disabled)
+\item 
+bool \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_aea41bd42e6a76846b1db609fd70be8ec}{is\+Item\+Disabled}} (int p\+Idx)
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a564b2a4b70b34f204d7786927c237f4e}{clear}} ()
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a98ef016c84067d0b8901d83dfc8b96df}{get\+Selected\+Items}} ()
+\item 
+bool \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_aea893f1e8aa2c9ec60559374ac083804}{is\+Anything\+Selected}} ()
+\item 
+bool \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a0ebf1e842ebec08d7266449c7fdd0428}{gui\+Input\+Event}} (\mbox{\hyperlink{classluna_1_1_event}{Event}} \&p\+\_\+event)
+\item 
+bool \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_afd14168ebd33f1c479b44f686d590bba}{mouse\+Motion\+Event}} (\mbox{\hyperlink{classluna_1_1mouse_moved_event}{mouse\+Moved\+Event}} \&\mbox{\hyperlink{classluna_1_1_event}{Event}})
+\item 
+bool \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_ae4e9d6c6d9ba29399a57b15d8f861d70}{mouse\+Event}} (\mbox{\hyperlink{classluna_1_1_event}{Event}} \&\mbox{\hyperlink{classluna_1_1_event}{Event}})
+\item 
+void \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a249ebd1d8fb234de9435ec9fa73e2cec}{shape}} (int p\+\_\+idx)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a82f63c516d915d12261961273219db1c}\label{classluna_1_1nodes_1_1item_list_node_a82f63c516d915d12261961273219db1c}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!itemListNode@{itemListNode}}
+\index{itemListNode@{itemListNode}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{itemListNode()}{itemListNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily luna\+::nodes\+::item\+List\+Node\+::item\+List\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_af81e5708e21bb15b9d18293efaade59b}\label{classluna_1_1nodes_1_1item_list_node_af81e5708e21bb15b9d18293efaade59b}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!````~itemListNode@{$\sim$itemListNode}}
+\index{````~itemListNode@{$\sim$itemListNode}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{$\sim$itemListNode()}{~itemListNode()}}
+{\footnotesize\ttfamily virtual luna\+::nodes\+::item\+List\+Node\+::$\sim$item\+List\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a6ebe6d44a22799e30c30be457e880ef6}\label{classluna_1_1nodes_1_1item_list_node_a6ebe6d44a22799e30c30be457e880ef6}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!itemListNode@{itemListNode}}
+\index{itemListNode@{itemListNode}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{itemListNode()}{itemListNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily luna\+::nodes\+::item\+List\+Node\+::item\+List\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_node}{Node}}}]{node }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a97c6458bcc08529f2b88d11de9ce76ac}\label{classluna_1_1nodes_1_1item_list_node_a97c6458bcc08529f2b88d11de9ce76ac}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!itemListNode@{itemListNode}}
+\index{itemListNode@{itemListNode}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{itemListNode()}{itemListNode()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily luna\+::nodes\+::item\+List\+Node\+::item\+List\+Node (\begin{DoxyParamCaption}\item[{entt\+::entity}]{handle,  }\item[{\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ae266fc46bc601822b0f7376376cdc2dc}\label{classluna_1_1nodes_1_1item_list_node_ae266fc46bc601822b0f7376376cdc2dc}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!itemListNode@{itemListNode}}
+\index{itemListNode@{itemListNode}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{itemListNode()}{itemListNode()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily luna\+::nodes\+::item\+List\+Node\+::item\+List\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
+
+
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a3d311ed398768eea695f30a212641cc0}\label{classluna_1_1nodes_1_1item_list_node_a3d311ed398768eea695f30a212641cc0}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!addIconItem@{addIconItem}}
+\index{addIconItem@{addIconItem}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{addIconItem()}{addIconItem()}}
+{\footnotesize\ttfamily int luna\+::nodes\+::item\+List\+Node\+::add\+Icon\+Item (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&}]{p\+Item,  }\item[{bool}]{selectable = {\ttfamily true} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a1fe210c6fad4486f9fc32de8db8055ea}\label{classluna_1_1nodes_1_1item_list_node_a1fe210c6fad4486f9fc32de8db8055ea}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!addItem@{addItem}}
+\index{addItem@{addItem}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily int luna\+::nodes\+::item\+List\+Node\+::add\+Item (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+Item,  }\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&}]{p\+Texture = {\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$\mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}}$>$()},  }\item[{bool}]{selectable = {\ttfamily true} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a564b2a4b70b34f204d7786927c237f4e}\label{classluna_1_1nodes_1_1item_list_node_a564b2a4b70b34f204d7786927c237f4e}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!clear@{clear}}
+\index{clear@{clear}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a98723c8a6dcfe48996dd3a6cd3155310}\label{classluna_1_1nodes_1_1item_list_node_a98723c8a6dcfe48996dd3a6cd3155310}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!deselect@{deselect}}
+\index{deselect@{deselect}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{deselect()}{deselect()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::deselect (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_afd3cbb8ac7dec4cd4f5f2f98fdd6594f}\label{classluna_1_1nodes_1_1item_list_node_afd3cbb8ac7dec4cd4f5f2f98fdd6594f}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!deselect\_all@{deselect\_all}}
+\index{deselect\_all@{deselect\_all}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{deselect\_all()}{deselect\_all()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::deselect\+\_\+all (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ae3325032d0e7491f3c5ec2416c5914fb}\label{classluna_1_1nodes_1_1item_list_node_ae3325032d0e7491f3c5ec2416c5914fb}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getCurrent@{getCurrent}}
+\index{getCurrent@{getCurrent}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getCurrent()}{getCurrent()}}
+{\footnotesize\ttfamily int luna\+::nodes\+::item\+List\+Node\+::get\+Current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ad820b94289046bd36aeb93918bf8e2d3}\label{classluna_1_1nodes_1_1item_list_node_ad820b94289046bd36aeb93918bf8e2d3}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemAtPosition@{getItemAtPosition}}
+\index{getItemAtPosition@{getItemAtPosition}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemAtPosition()}{getItemAtPosition()}}
+{\footnotesize\ttfamily int luna\+::nodes\+::item\+List\+Node\+::get\+Item\+At\+Position (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{pos,  }\item[{bool}]{exact = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_acca979d22458483fea1934f95845a03a}\label{classluna_1_1nodes_1_1item_list_node_acca979d22458483fea1934f95845a03a}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemCount@{getItemCount}}
+\index{getItemCount@{getItemCount}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemCount()}{getItemCount()}}
+{\footnotesize\ttfamily int luna\+::nodes\+::item\+List\+Node\+::get\+Item\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ad80eb772748f52f51b2ea6f988dda133}\label{classluna_1_1nodes_1_1item_list_node_ad80eb772748f52f51b2ea6f988dda133}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemCustomBgColor@{getItemCustomBgColor}}
+\index{getItemCustomBgColor@{getItemCustomBgColor}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemCustomBgColor()}{getItemCustomBgColor()}}
+{\footnotesize\ttfamily glm\+::vec4 luna\+::nodes\+::item\+List\+Node\+::get\+Item\+Custom\+Bg\+Color (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ac120b3c86544677649ea90e990b110bf}\label{classluna_1_1nodes_1_1item_list_node_ac120b3c86544677649ea90e990b110bf}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemCustomFgColor@{getItemCustomFgColor}}
+\index{getItemCustomFgColor@{getItemCustomFgColor}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemCustomFgColor()}{getItemCustomFgColor()}}
+{\footnotesize\ttfamily glm\+::vec4 luna\+::nodes\+::item\+List\+Node\+::get\+Item\+Custom\+Fg\+Color (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a76d70c8559638272db759e7be4f75aaf}\label{classluna_1_1nodes_1_1item_list_node_a76d70c8559638272db759e7be4f75aaf}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemIcon@{getItemIcon}}
+\index{getItemIcon@{getItemIcon}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemIcon()}{getItemIcon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ luna\+::nodes\+::item\+List\+Node\+::get\+Item\+Icon (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a62c8dc06e829cebb7acd27588fc2a3f0}\label{classluna_1_1nodes_1_1item_list_node_a62c8dc06e829cebb7acd27588fc2a3f0}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemIconRegion@{getItemIconRegion}}
+\index{getItemIconRegion@{getItemIconRegion}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemIconRegion()}{getItemIconRegion()}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::nodes\+::item\+List\+Node\+::get\+Item\+Icon\+Region (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a5f88dcf36a28d8f432fbf7a0f832f3e0}\label{classluna_1_1nodes_1_1item_list_node_a5f88dcf36a28d8f432fbf7a0f832f3e0}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemLanguage@{getItemLanguage}}
+\index{getItemLanguage@{getItemLanguage}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemLanguage()}{getItemLanguage()}}
+{\footnotesize\ttfamily std\+::string luna\+::nodes\+::item\+List\+Node\+::get\+Item\+Language (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ad21b230e88d541a5afd297185da33a81}\label{classluna_1_1nodes_1_1item_list_node_ad21b230e88d541a5afd297185da33a81}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getItemText@{getItemText}}
+\index{getItemText@{getItemText}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getItemText()}{getItemText()}}
+{\footnotesize\ttfamily std\+::string luna\+::nodes\+::item\+List\+Node\+::get\+Item\+Text (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a98ef016c84067d0b8901d83dfc8b96df}\label{classluna_1_1nodes_1_1item_list_node_a98ef016c84067d0b8901d83dfc8b96df}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!getSelectedItems@{getSelectedItems}}
+\index{getSelectedItems@{getSelectedItems}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{getSelectedItems()}{getSelectedItems()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ luna\+::nodes\+::item\+List\+Node\+::get\+Selected\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a0ebf1e842ebec08d7266449c7fdd0428}\label{classluna_1_1nodes_1_1item_list_node_a0ebf1e842ebec08d7266449c7fdd0428}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!guiInputEvent@{guiInputEvent}}
+\index{guiInputEvent@{guiInputEvent}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{guiInputEvent()}{guiInputEvent()}}
+{\footnotesize\ttfamily bool luna\+::nodes\+::item\+List\+Node\+::gui\+Input\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_event}{Event}} \&}]{p\+\_\+event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a505ec294a750b2e79837b000e10738f0}\label{classluna_1_1nodes_1_1item_list_node_a505ec294a750b2e79837b000e10738f0}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!init@{init}}
+\index{init@{init}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classluna_1_1nodes_1_1control_node_ac6ac273a90719364637c7e881bfea2c5}{luna\+::nodes\+::control\+Node}}.
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_aea893f1e8aa2c9ec60559374ac083804}\label{classluna_1_1nodes_1_1item_list_node_aea893f1e8aa2c9ec60559374ac083804}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!isAnythingSelected@{isAnythingSelected}}
+\index{isAnythingSelected@{isAnythingSelected}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{isAnythingSelected()}{isAnythingSelected()}}
+{\footnotesize\ttfamily bool luna\+::nodes\+::item\+List\+Node\+::is\+Anything\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_aea41bd42e6a76846b1db609fd70be8ec}\label{classluna_1_1nodes_1_1item_list_node_aea41bd42e6a76846b1db609fd70be8ec}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!isItemDisabled@{isItemDisabled}}
+\index{isItemDisabled@{isItemDisabled}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{isItemDisabled()}{isItemDisabled()}}
+{\footnotesize\ttfamily bool luna\+::nodes\+::item\+List\+Node\+::is\+Item\+Disabled (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a1718737b9bb3b3fc23f126cf5cf993c7}\label{classluna_1_1nodes_1_1item_list_node_a1718737b9bb3b3fc23f126cf5cf993c7}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!isItemSelectable@{isItemSelectable}}
+\index{isItemSelectable@{isItemSelectable}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{isItemSelectable()}{isItemSelectable()}}
+{\footnotesize\ttfamily bool luna\+::nodes\+::item\+List\+Node\+::is\+Item\+Selectable (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a7a1124f64739811c6040ff4ef9498e39}\label{classluna_1_1nodes_1_1item_list_node_a7a1124f64739811c6040ff4ef9498e39}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!isSelected@{isSelected}}
+\index{isSelected@{isSelected}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{isSelected()}{isSelected()}}
+{\footnotesize\ttfamily bool luna\+::nodes\+::item\+List\+Node\+::is\+Selected (\begin{DoxyParamCaption}\item[{int}]{p\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ae4e9d6c6d9ba29399a57b15d8f861d70}\label{classluna_1_1nodes_1_1item_list_node_ae4e9d6c6d9ba29399a57b15d8f861d70}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!mouseEvent@{mouseEvent}}
+\index{mouseEvent@{mouseEvent}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{mouseEvent()}{mouseEvent()}}
+{\footnotesize\ttfamily bool luna\+::nodes\+::item\+List\+Node\+::mouse\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1_event}{Event}} \&}]{Event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_afd14168ebd33f1c479b44f686d590bba}\label{classluna_1_1nodes_1_1item_list_node_afd14168ebd33f1c479b44f686d590bba}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!mouseMotionEvent@{mouseMotionEvent}}
+\index{mouseMotionEvent@{mouseMotionEvent}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{mouseMotionEvent()}{mouseMotionEvent()}}
+{\footnotesize\ttfamily bool luna\+::nodes\+::item\+List\+Node\+::mouse\+Motion\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1mouse_moved_event}{mouse\+Moved\+Event}} \&}]{Event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a364e6cf48771872e9cfc2e01df5165c1}\label{classluna_1_1nodes_1_1item_list_node_a364e6cf48771872e9cfc2e01df5165c1}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!moveItem@{moveItem}}
+\index{moveItem@{moveItem}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{moveItem()}{moveItem()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::move\+Item (\begin{DoxyParamCaption}\item[{int}]{from\+Idx,  }\item[{int}]{to\+Idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ad7d6c965f0ca7df887618107cc7cf2cc}\label{classluna_1_1nodes_1_1item_list_node_ad7d6c965f0ca7df887618107cc7cf2cc}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!removeItem@{removeItem}}
+\index{removeItem@{removeItem}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{removeItem()}{removeItem()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::remove\+Item (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_abd1cca26dbe65ec1407619f495fb230c}\label{classluna_1_1nodes_1_1item_list_node_abd1cca26dbe65ec1407619f495fb230c}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!select@{select}}
+\index{select@{select}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{select()}{select()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::select (\begin{DoxyParamCaption}\item[{int}]{Idx,  }\item[{bool}]{single = {\ttfamily true} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a69f1d1360c96376ae721b3450b51872f}\label{classluna_1_1nodes_1_1item_list_node_a69f1d1360c96376ae721b3450b51872f}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setCurrent@{setCurrent}}
+\index{setCurrent@{setCurrent}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setCurrent()}{setCurrent()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Current (\begin{DoxyParamCaption}\item[{int}]{current }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ad8031aace906b2e35c01c1581a40a390}\label{classluna_1_1nodes_1_1item_list_node_ad8031aace906b2e35c01c1581a40a390}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemCount@{setItemCount}}
+\index{setItemCount@{setItemCount}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemCount()}{setItemCount()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Count (\begin{DoxyParamCaption}\item[{int}]{count }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a89dc1821c9a1df24cdbbb801e8adb37f}\label{classluna_1_1nodes_1_1item_list_node_a89dc1821c9a1df24cdbbb801e8adb37f}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemCustomBgColor@{setItemCustomBgColor}}
+\index{setItemCustomBgColor@{setItemCustomBgColor}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemCustomBgColor()}{setItemCustomBgColor()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Custom\+Bg\+Color (\begin{DoxyParamCaption}\item[{int}]{p\+Idx,  }\item[{const glm\+::vec4 \&}]{p\+Custom\+Bg\+Color }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_acefebd7faef6a93b6dacbaffa41d9893}\label{classluna_1_1nodes_1_1item_list_node_acefebd7faef6a93b6dacbaffa41d9893}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemCustomFgColor@{setItemCustomFgColor}}
+\index{setItemCustomFgColor@{setItemCustomFgColor}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemCustomFgColor()}{setItemCustomFgColor()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Custom\+Fg\+Color (\begin{DoxyParamCaption}\item[{int}]{p\+Idx,  }\item[{const glm\+::vec4 \&}]{p\+Custom\+Fg\+Color }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a60c7d5cb28e9c9382746c46235ed3a12}\label{classluna_1_1nodes_1_1item_list_node_a60c7d5cb28e9c9382746c46235ed3a12}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemDisabled@{setItemDisabled}}
+\index{setItemDisabled@{setItemDisabled}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemDisabled()}{setItemDisabled()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Disabled (\begin{DoxyParamCaption}\item[{int}]{p\+Idx,  }\item[{bool}]{disabled }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_af010893241e6c2bed6e24d3908d1a3eb}\label{classluna_1_1nodes_1_1item_list_node_af010893241e6c2bed6e24d3908d1a3eb}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemIcon@{setItemIcon}}
+\index{setItemIcon@{setItemIcon}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemIcon()}{setItemIcon()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Icon (\begin{DoxyParamCaption}\item[{int}]{p\+Idx,  }\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&}]{p\+Icon }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a4dacd1ce5f20b209c3ee15a5f9094ade}\label{classluna_1_1nodes_1_1item_list_node_a4dacd1ce5f20b209c3ee15a5f9094ade}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemLanguage@{setItemLanguage}}
+\index{setItemLanguage@{setItemLanguage}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemLanguage()}{setItemLanguage()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Language (\begin{DoxyParamCaption}\item[{int}]{p\+Idx,  }\item[{const std\+::string \&}]{language }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_af8af8e96e11f6d61238bf7a4b085931e}\label{classluna_1_1nodes_1_1item_list_node_af8af8e96e11f6d61238bf7a4b085931e}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemSelectable@{setItemSelectable}}
+\index{setItemSelectable@{setItemSelectable}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemSelectable()}{setItemSelectable()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Selectable (\begin{DoxyParamCaption}\item[{int}]{p\+Idx,  }\item[{bool}]{selectable }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a2d61a34b8f61e8d68cc3bebc3a62a9b8}\label{classluna_1_1nodes_1_1item_list_node_a2d61a34b8f61e8d68cc3bebc3a62a9b8}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemTagIcon@{setItemTagIcon}}
+\index{setItemTagIcon@{setItemTagIcon}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemTagIcon()}{setItemTagIcon()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Tag\+Icon (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+idx,  }\item[{const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1texture}{renderer\+::texture}} $>$ \&}]{p\+Tag\+Icon }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_ac0663afdfa6d0ee42c90d6dd64cad81d}\label{classluna_1_1nodes_1_1item_list_node_ac0663afdfa6d0ee42c90d6dd64cad81d}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!setItemText@{setItemText}}
+\index{setItemText@{setItemText}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{setItemText()}{setItemText()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::set\+Item\+Text (\begin{DoxyParamCaption}\item[{int}]{p\+Idx,  }\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1nodes_1_1item_list_node_a249ebd1d8fb234de9435ec9fa73e2cec}\label{classluna_1_1nodes_1_1item_list_node_a249ebd1d8fb234de9435ec9fa73e2cec}} 
+\index{luna::nodes::itemListNode@{luna::nodes::itemListNode}!shape@{shape}}
+\index{shape@{shape}!luna::nodes::itemListNode@{luna::nodes::itemListNode}}
+\doxyparagraph{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily void luna\+::nodes\+::item\+List\+Node\+::shape (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+idx }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/control\+Nodes/\mbox{\hyperlink{item_list_node_8h}{item\+List\+Node.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/control\+Nodes/\mbox{\hyperlink{item_list_node_8cpp}{item\+List\+Node.\+cpp}}\end{DoxyCompactItemize}

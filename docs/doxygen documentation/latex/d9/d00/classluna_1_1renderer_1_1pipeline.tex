@@ -35,11 +35,22 @@ virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a1f756b834df7f8e
 virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a8d94b1bc8ff92206862332b644ddc77e}{bind\+Textures}} (const std\+::vector$<$ uint64\+\_\+t $>$ texture\+Handles, const uint64\+\_\+t index\+Set)=0
 \begin{DoxyCompactList}\small\item\em binds textures in to there respective texture\+Arrays. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_aea4856bf4c1a3652937fb94c01b4b2a5}{clear}} ()=0
-\begin{DoxyCompactList}\small\item\em clears all draw\+Commands. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em clears all draw\+Commands. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a3a72e6d6958094a3fc534f0dad8a5401}{get\+Dimensions}} ()
+\item 
+glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a86cb25f6529151d8163806acc6e7d6ee}{get\+Window\+Mouse\+Pos}} ()
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_ab4ed62f2705e4254cf13896862c81863}{test}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_abcbc1d490c43536b8f2ae2ee158c70fa}{window\+Mouse\+Pos}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1pipeline_a325905862c1af3c99f0c3c208fbbd6d1}{window\+Dimensions}}
 \end{DoxyCompactItemize}
 
 
@@ -194,6 +205,18 @@ flush the renderer pipline and render a frame.
 
 Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a5a362aa2aac55e29a1953b3c2efcfe04}{luna\+::vulkan\+::vulkan\+Pipeline}}.
 
+\mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a3a72e6d6958094a3fc534f0dad8a5401}\label{classluna_1_1renderer_1_1pipeline_a3a72e6d6958094a3fc534f0dad8a5401}} 
+\index{luna::renderer::pipeline@{luna::renderer::pipeline}!getDimensions@{getDimensions}}
+\index{getDimensions@{getDimensions}!luna::renderer::pipeline@{luna::renderer::pipeline}}
+\doxyparagraph{\texorpdfstring{getDimensions()}{getDimensions()}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::renderer\+::pipeline\+::get\+Dimensions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a86cb25f6529151d8163806acc6e7d6ee}\label{classluna_1_1renderer_1_1pipeline_a86cb25f6529151d8163806acc6e7d6ee}} 
+\index{luna::renderer::pipeline@{luna::renderer::pipeline}!getWindowMousePos@{getWindowMousePos}}
+\index{getWindowMousePos@{getWindowMousePos}!luna::renderer::pipeline@{luna::renderer::pipeline}}
+\doxyparagraph{\texorpdfstring{getWindowMousePos()}{getWindowMousePos()}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::renderer\+::pipeline\+::get\+Window\+Mouse\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 \doxysubsubsection{Member Data Documentation}
@@ -202,6 +225,18 @@ Implemented in \mbox{\hyperlink{classluna_1_1vulkan_1_1vulkan_pipeline_a5a362aa2
 \index{test@{test}!luna::renderer::pipeline@{luna::renderer::pipeline}}
 \doxyparagraph{\texorpdfstring{test}{test}}
 {\footnotesize\ttfamily int luna\+::renderer\+::pipeline\+::test}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_a325905862c1af3c99f0c3c208fbbd6d1}\label{classluna_1_1renderer_1_1pipeline_a325905862c1af3c99f0c3c208fbbd6d1}} 
+\index{luna::renderer::pipeline@{luna::renderer::pipeline}!windowDimensions@{windowDimensions}}
+\index{windowDimensions@{windowDimensions}!luna::renderer::pipeline@{luna::renderer::pipeline}}
+\doxyparagraph{\texorpdfstring{windowDimensions}{windowDimensions}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::renderer\+::pipeline\+::window\+Dimensions\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1pipeline_abcbc1d490c43536b8f2ae2ee158c70fa}\label{classluna_1_1renderer_1_1pipeline_abcbc1d490c43536b8f2ae2ee158c70fa}} 
+\index{luna::renderer::pipeline@{luna::renderer::pipeline}!windowMousePos@{windowMousePos}}
+\index{windowMousePos@{windowMousePos}!luna::renderer::pipeline@{luna::renderer::pipeline}}
+\doxyparagraph{\texorpdfstring{windowMousePos}{windowMousePos}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::renderer\+::pipeline\+::window\+Mouse\+Pos\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

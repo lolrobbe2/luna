@@ -1,0 +1,141 @@
+\hypertarget{classluna_1_1object_d_b}{}\doxysubsection{luna\+::object\+DB Class Reference}
+\label{classluna_1_1object_d_b}\index{luna::objectDB@{luna::objectDB}}
+
+
+object database class. @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!  
+
+
+
+
+{\ttfamily \#include $<$object\+DB.\+h$>$}
+
+
+
+Collaboration diagram for luna\+::object\+DB\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d00/classluna_1_1object_d_b__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{class\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T , class A $>$ }\\static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void \mbox{\hyperlink{classluna_1_1object_d_b_ad3bf0d0c732af549d287152227c5d594}{add\+Class}} ()
+\item 
+{\footnotesize template$<$class T $>$ }\\static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void \mbox{\hyperlink{classluna_1_1object_d_b_aa98c38f206a4d3cea0628bf3823fa58e}{remove\+Root\+Class}} ()
+\item 
+{\footnotesize template$<$class T $>$ }\\static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void \mbox{\hyperlink{classluna_1_1object_d_b_a7c78b0fe32053777986f7b77747feed4}{register\+Class}} ()
+\item 
+{\footnotesize template$<$class T $>$ }\\static \mbox{\hyperlink{classluna_1_1object}{object}} $\ast$ \mbox{\hyperlink{classluna_1_1object_d_b_afa2e2de3b6764089090016f7564d8f4f}{creator}} ()
+\item 
+static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void \mbox{\hyperlink{classluna_1_1object_d_b_a82b7ba20acecb0a19e939b99e6a184ce}{postinitialize\+\_\+handler}} (void $\ast$)
+\item 
+{\footnotesize template$<$class T $>$ }\\static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} T $\ast$ \mbox{\hyperlink{classluna_1_1object_d_b_a93ca908e37f7a45f3c3e1d8d3c09e84c}{\+\_\+post\+\_\+initialize}} (T $\ast$p\+\_\+obj)
+\item 
+static void \mbox{\hyperlink{classluna_1_1object_d_b_a7f841e87e2e85e81da0d15075ef9e02c}{create\+Instance}} (const std\+::string \&class\+Name, \mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}})
+\item 
+static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{class\+Info}} $\ast$ \mbox{\hyperlink{classluna_1_1object_d_b_ad631968f98930553b75536a32c25c077}{get\+Ptr}} (const std\+::string class\+Name)
+\item 
+{\footnotesize template$<$class T $>$ }\\static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} std\+::string \mbox{\hyperlink{classluna_1_1object_d_b_aa47285d73578f542af6e485f1255abb2}{get\+Class\+Name}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{class\+Info}} $\ast$ $>$ \mbox{\hyperlink{classluna_1_1object_d_b_a4e6d70185a471dbb099e4a6b8db4791e}{root\+Class\+Database}}
+\item 
+static std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{class\+Info}} $>$ \mbox{\hyperlink{classluna_1_1object_d_b_a069f2ce188c4be71ae93fbe30472b3a1}{class\+Database}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+object database class. @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!! 
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classluna_1_1object_d_b_a93ca908e37f7a45f3c3e1d8d3c09e84c}\label{classluna_1_1object_d_b_a93ca908e37f7a45f3c3e1d8d3c09e84c}} 
+\index{luna::objectDB@{luna::objectDB}!\_post\_initialize@{\_post\_initialize}}
+\index{\_post\_initialize@{\_post\_initialize}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{\_post\_initialize()}{\_post\_initialize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} T $\ast$ luna\+::object\+DB\+::\+\_\+post\+\_\+initialize (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+\_\+obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_ad3bf0d0c732af549d287152227c5d594}\label{classluna_1_1object_d_b_ad3bf0d0c732af549d287152227c5d594}} 
+\index{luna::objectDB@{luna::objectDB}!addClass@{addClass}}
+\index{addClass@{addClass}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{addClass()}{addClass()}}
+{\footnotesize\ttfamily template$<$class T , class A $>$ \\
+static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void luna\+::object\+DB\+::add\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_a7f841e87e2e85e81da0d15075ef9e02c}\label{classluna_1_1object_d_b_a7f841e87e2e85e81da0d15075ef9e02c}} 
+\index{luna::objectDB@{luna::objectDB}!createInstance@{createInstance}}
+\index{createInstance@{createInstance}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{createInstance()}{createInstance()}}
+{\footnotesize\ttfamily void luna\+::object\+DB\+::create\+Instance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{class\+Name,  }\item[{\mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_afa2e2de3b6764089090016f7564d8f4f}\label{classluna_1_1object_d_b_afa2e2de3b6764089090016f7564d8f4f}} 
+\index{luna::objectDB@{luna::objectDB}!creator@{creator}}
+\index{creator@{creator}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{creator()}{creator()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static \mbox{\hyperlink{classluna_1_1object}{object}} $\ast$ luna\+::object\+DB\+::creator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_aa47285d73578f542af6e485f1255abb2}\label{classluna_1_1object_d_b_aa47285d73578f542af6e485f1255abb2}} 
+\index{luna::objectDB@{luna::objectDB}!getClassName@{getClassName}}
+\index{getClassName@{getClassName}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{getClassName()}{getClassName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} std\+::string luna\+::object\+DB\+::get\+Class\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_ad631968f98930553b75536a32c25c077}\label{classluna_1_1object_d_b_ad631968f98930553b75536a32c25c077}} 
+\index{luna::objectDB@{luna::objectDB}!getPtr@{getPtr}}
+\index{getPtr@{getPtr}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{getPtr()}{getPtr()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{class\+Info}} $\ast$ luna\+::object\+DB\+::get\+Ptr (\begin{DoxyParamCaption}\item[{const std\+::string}]{class\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_a82b7ba20acecb0a19e939b99e6a184ce}\label{classluna_1_1object_d_b_a82b7ba20acecb0a19e939b99e6a184ce}} 
+\index{luna::objectDB@{luna::objectDB}!postinitialize\_handler@{postinitialize\_handler}}
+\index{postinitialize\_handler@{postinitialize\_handler}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{postinitialize\_handler()}{postinitialize\_handler()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void luna\+::object\+DB\+::postinitialize\+\_\+handler (\begin{DoxyParamCaption}\item[{void $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_a7c78b0fe32053777986f7b77747feed4}\label{classluna_1_1object_d_b_a7c78b0fe32053777986f7b77747feed4}} 
+\index{luna::objectDB@{luna::objectDB}!registerClass@{registerClass}}
+\index{registerClass@{registerClass}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{registerClass()}{registerClass()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void luna\+::object\+DB\+::register\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_aa98c38f206a4d3cea0628bf3823fa58e}\label{classluna_1_1object_d_b_aa98c38f206a4d3cea0628bf3823fa58e}} 
+\index{luna::objectDB@{luna::objectDB}!removeRootClass@{removeRootClass}}
+\index{removeRootClass@{removeRootClass}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{removeRootClass()}{removeRootClass()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static \mbox{\hyperlink{core_8h_aa325473f074fe4975f233c6688e6c23f}{\+\_\+\+ALWAYS\+\_\+\+INLINE\+\_\+}} void luna\+::object\+DB\+::remove\+Root\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classluna_1_1object_d_b_a069f2ce188c4be71ae93fbe30472b3a1}\label{classluna_1_1object_d_b_a069f2ce188c4be71ae93fbe30472b3a1}} 
+\index{luna::objectDB@{luna::objectDB}!classDatabase@{classDatabase}}
+\index{classDatabase@{classDatabase}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{classDatabase}{classDatabase}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{class\+Info}}$>$ luna\+::object\+DB\+::class\+Database\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1object_d_b_a4e6d70185a471dbb099e4a6b8db4791e}\label{classluna_1_1object_d_b_a4e6d70185a471dbb099e4a6b8db4791e}} 
+\index{luna::objectDB@{luna::objectDB}!rootClassDatabase@{rootClassDatabase}}
+\index{rootClassDatabase@{rootClassDatabase}!luna::objectDB@{luna::objectDB}}
+\doxyparagraph{\texorpdfstring{rootClassDatabase}{rootClassDatabase}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structluna_1_1object_d_b_1_1class_info}{class\+Info}}$\ast$$>$ luna\+::object\+DB\+::root\+Class\+Database\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/object/\mbox{\hyperlink{object_d_b_8h}{object\+DB.\+h}}\item 
+C\+:/\+Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/object/\mbox{\hyperlink{object_d_b_8cpp}{object\+DB.\+cpp}}\end{DoxyCompactItemize}
