@@ -1,5 +1,8 @@
 # luna software engine
+
 [![License](https://img.shields.io/github/license/TheCherno/Hazel.svg)](https://github.com/lolrobbe2/luna/blob/luna_experimental/LICENSE.txt)
+[![GitHub all releases](https://img.shields.io/github/downloads/lolrobbe2/luna/total)](https://github.com/lolrobbe2/luna/files/11061199/apollo.zip)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/lolrobbe2/luna?include_prereleases)](https://github.com/lolrobbe2/luna/releases)
 ## goals
 
 to create a simple to use software engine capable of running commercial software.
