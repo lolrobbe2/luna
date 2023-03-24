@@ -3,11 +3,15 @@
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-Vk\+Buffer \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_aaf36a25361227eba2bb06b2d6c619dc4}{source\+Buffer}}
+uint64\+\_\+t \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a881769f857dcd87c90462ece03cecbfd}{buffer\+Offset}}
+\item 
+Vk\+Buffer \& \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a1f0227ab11bab340dc71de3e7f28f1a3}{source\+Buffer}}
 \item 
 Vk\+Image \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a273226f760b8d2fdf900fc2e27747a24}{Vulkan\+Image}}
 \item 
 Vk\+Format \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a99e90fc340dbaa4ad494f954cd02af1f}{Image\+Format}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a36a8fc132f3e1756de472c8551eee97d}{sub\+Image\+Height}}
 \item 
 glm\+::vec3 \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a6c48c610502bf9d068ba1749318b5129}{dimensions}}
 \item 
@@ -16,6 +20,12 @@ glm\+::vec3 \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer
 
 
 \doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a881769f857dcd87c90462ece03cecbfd}\label{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a881769f857dcd87c90462ece03cecbfd}} 
+\index{luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}!bufferOffset@{bufferOffset}}
+\index{bufferOffset@{bufferOffset}!luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}}
+\doxyparagraph{\texorpdfstring{bufferOffset}{bufferOffset}}
+{\footnotesize\ttfamily uint64\+\_\+t luna\+::utils\+::vulkan\+Allocator\+::transfer\+Command\+::buffer\+Offset}
+
 \mbox{\Hypertarget{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a6c48c610502bf9d068ba1749318b5129}\label{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a6c48c610502bf9d068ba1749318b5129}} 
 \index{luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}!dimensions@{dimensions}}
 \index{dimensions@{dimensions}!luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}}
@@ -34,11 +44,17 @@ glm\+::vec3 \mbox{\hyperlink{structluna_1_1utils_1_1vulkan_allocator_1_1transfer
 \doxyparagraph{\texorpdfstring{offset}{offset}}
 {\footnotesize\ttfamily glm\+::vec3 luna\+::utils\+::vulkan\+Allocator\+::transfer\+Command\+::offset}
 
-\mbox{\Hypertarget{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_aaf36a25361227eba2bb06b2d6c619dc4}\label{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_aaf36a25361227eba2bb06b2d6c619dc4}} 
+\mbox{\Hypertarget{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a1f0227ab11bab340dc71de3e7f28f1a3}\label{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a1f0227ab11bab340dc71de3e7f28f1a3}} 
 \index{luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}!sourceBuffer@{sourceBuffer}}
 \index{sourceBuffer@{sourceBuffer}!luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}}
 \doxyparagraph{\texorpdfstring{sourceBuffer}{sourceBuffer}}
-{\footnotesize\ttfamily Vk\+Buffer luna\+::utils\+::vulkan\+Allocator\+::transfer\+Command\+::source\+Buffer}
+{\footnotesize\ttfamily Vk\+Buffer\& luna\+::utils\+::vulkan\+Allocator\+::transfer\+Command\+::source\+Buffer}
+
+\mbox{\Hypertarget{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a36a8fc132f3e1756de472c8551eee97d}\label{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a36a8fc132f3e1756de472c8551eee97d}} 
+\index{luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}!subImageHeight@{subImageHeight}}
+\index{subImageHeight@{subImageHeight}!luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}}
+\doxyparagraph{\texorpdfstring{subImageHeight}{subImageHeight}}
+{\footnotesize\ttfamily glm\+::vec2 luna\+::utils\+::vulkan\+Allocator\+::transfer\+Command\+::sub\+Image\+Height}
 
 \mbox{\Hypertarget{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a273226f760b8d2fdf900fc2e27747a24}\label{structluna_1_1utils_1_1vulkan_allocator_1_1transfer_command_a273226f760b8d2fdf900fc2e27747a24}} 
 \index{luna::utils::vulkanAllocator::transferCommand@{luna::utils::vulkanAllocator::transferCommand}!VulkanImage@{VulkanImage}}

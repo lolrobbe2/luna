@@ -22,6 +22,7 @@ IncludeDir["vkb"] =   "%{wks.location}/luna/thirdParty/Vkbootstrap/src"
 IncludeDir["stb"] =   "%{wks.location}/luna/thirdParty/stb"
 IncludeDir["spd"] =   "%{wks.location}/luna/thirdParty/spdlog/include"
 IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
+IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
 
 IncludeDir["luna"] = "%{wks.location}/luna/src"
 
@@ -63,7 +64,9 @@ project "luna"
         "%{IncludeDir.stb}",
         "%{IncludeDir.vkb}",
         "%{IncludeDir.imgui}",
+        "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.luna}"
+        
     }
 
     buildoptions
@@ -96,6 +99,7 @@ project "luna"
             "VkBootstrap",
             "imGui",
             "stb",
+            "yaml-cpp",
             "vulkan-1"
         }
         filter "configurations:debug"
@@ -107,6 +111,7 @@ project "luna"
             "LN_DEBUG"
            
         }
+        runtime "Debug"
         symbols "On"
   
         filter "configurations:release"
@@ -118,6 +123,7 @@ project "luna"
             "LN_RELEASE"
            
         }
+        runtime "Release"
         optimize "On"
 
         filter "configurations:distribution"
@@ -129,8 +135,14 @@ project "luna"
             "LN_DISTRIBUTION"
            
         }
+        runtime "Release"
         symbols "Off"
         optimize "On"
+        buildoptions 
+        {
+            "-mwindows"
+        }
+
 
 
 
@@ -181,17 +193,21 @@ project "sandbox"
         }
         
         filter "configurations:debug"
-       
+        runtime "Debug"
         symbols "On"
   
         filter "configurations:release"
-       
+        runtime "Release"
         optimize "On"
 
         filter "configurations:distribution"
-       
+        runtime "Release"
         symbols "Off"
         optimize "On"
+        buildoptions 
+        {
+            "-mwindows"
+        }
 
 project "apollo"
     location "apollo"
@@ -235,18 +251,23 @@ project "apollo"
         systemversion "latest"
         defines
         {
-            "_WINDLL"
+            "_WINDLL",
         }
         
         filter "configurations:debug"
-    
+        runtime "Debug"
         symbols "On"
 
         filter "configurations:release"
-    
+        runtime "Release"
         optimize "On"
 
         filter "configurations:distribution"
-    
+        runtime "Release"
         symbols "Off"
         optimize "On"
+        buildoptions 
+        {
+            "-mwindows"
+        }
+

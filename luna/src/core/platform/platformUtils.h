@@ -8,7 +8,8 @@ namespace luna
 		class LN_API os
 		{
 		public:
-			static std::string openFilaDialog(std::string filter);
+			static std::string openFilaDialog(const char* filter);
+			static std::string saveFileDialog(const char* filter);
 		};
 	}
 }

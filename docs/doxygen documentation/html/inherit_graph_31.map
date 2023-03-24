@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d5/d00/classluna_1_1renderer_1_1vertex_array.html" title=" " coords="5,13,180,38"/>
-<area shape="rect" id="node2" href="$dc/d00/classluna_1_1vulkan_1_1vulkan_vertex_array.html" title=" " coords="228,5,400,45"/>
+<area shape="rect" id="node1" href="$d6/d00/classluna_1_1renderer_1_1device.html" title="the device class is the code representation of the physical device or GPU." coords="5,5,151,31"/>
+<area shape="rect" id="node2" href="$d0/d00/classluna_1_1vulkan_1_1vulkan_device.html" title=" " coords="199,5,371,31"/>
 </map>

@@ -2,6 +2,7 @@
 #include <lnpch.h>
 #include <core/application.h>
 #include <core/scene/scene.h>
+#include <core/object/classRegister.h>
 namespace luna
 {
 	namespace application
@@ -19,6 +20,7 @@ namespace luna
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
+			nodes::classRegister::registerClasses();
 			LN_PROFILE_END_SESSION();
 			
 		}

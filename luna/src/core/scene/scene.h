@@ -4,6 +4,7 @@
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
 #include <core/utils/timestep.h>
+#include <core/object/objectDB.h>
 namespace luna 
 {
 	class LN_API Node;
@@ -11,6 +12,7 @@ namespace luna
 	{
 	public:
 		scene() = default;
+		~scene();
 		template<typename T>
 		T& addNode(std::string name = std::string())
 		{
@@ -27,7 +29,7 @@ namespace luna
 		template<typename T>
 		void onComponentAdded(Node Node, T& component)
 		{
-
+			
 		}
 
 		template<typename... components>
@@ -37,8 +39,16 @@ namespace luna
 		}
 		void onUpdateEditor(utils::timestep ts);
 		
+		void onUpdate(utils::timestep ts);
+		entt::entity create() 
+		{
+			return m_Registry.create();
+		}
+
+		void onEvent(Event& event);
 	private:
 		friend class Node;
+		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
@@ -49,15 +59,18 @@ namespace luna
 
 	};
 	
-	class LN_API Node 
+	class LN_API Node : public object
 	{
 	public:
+
 		Node() = default;
 		Node(entt::entity handle, luna::scene* scene);
+		Node(uint64_t id, luna::scene* scene);
 		Node(scene* scene);
 		virtual ~Node() = default;
 		void setName(std::string name);
 		void addChild(Node node);
+		virtual void init(scene* scene) override;
 
 		friend class scene;
 		friend class sceneHierarchyPanel;
@@ -97,7 +110,7 @@ namespace luna
 		operator bool() const { return entityHandle != entt::null; }
 		operator entt::entity() const { return entityHandle; }
 		operator uint32_t() const { return (uint32_t)entityHandle; }
-
+		operator scene* () const { return scene; };
 		uuid getUUID() { return getComponent<idComponent>().id; }
 		const std::string& getName() {
 			if(hasComponent<tagComponent>()) return getComponent<tagComponent>().tag; 
@@ -113,9 +126,10 @@ namespace luna
 		{
 			return !(*this == other);
 		}
+
 	protected:
 		entt::entity entityHandle{ entt::null };
-		scene* scene;
+		scene* scene = nullptr;
 	};
 	
 }

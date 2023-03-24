@@ -1,5 +1,5 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/lnpch.h">
-<area shape="rect" id="node1" title=" " coords="820,5,972,60"/>
+<area shape="rect" id="node1" title=" " coords="868,5,1020,60"/>
 <area shape="rect" id="node2" title=" " coords="5,115,67,141"/>
 <area shape="rect" id="node3" title=" " coords="91,115,151,141"/>
 <area shape="rect" id="node4" title=" " coords="175,115,230,141"/>
@@ -12,13 +12,14 @@
 <area shape="rect" id="node11" title=" " coords="767,115,839,141"/>
 <area shape="rect" id="node12" title=" " coords="863,115,929,141"/>
 <area shape="rect" id="node13" title=" " coords="953,115,1034,141"/>
-<area shape="rect" id="node14" href="$de/d00/platform_8h.html" title=" " coords="1058,115,1217,141"/>
-<area shape="rect" id="node15" title=" " coords="1241,115,1346,141"/>
-<area shape="rect" id="node16" title=" " coords="1370,115,1526,141"/>
-<area shape="rect" id="node17" title=" " coords="1551,115,1655,141"/>
-<area shape="rect" id="node18" title=" " coords="1679,115,1743,141"/>
-<area shape="rect" id="node19" title=" " coords="1767,108,1911,148"/>
-<area shape="rect" id="node20" title=" " coords="1935,115,2028,141"/>
-<area shape="rect" id="node21" title=" " coords="2052,115,2145,141"/>
-<area shape="rect" id="node22" title=" " coords="2170,115,2225,141"/>
+<area shape="rect" id="node14" title=" " coords="1058,115,1126,141"/>
+<area shape="rect" id="node15" href="$de/d00/platform_8h.html" title=" " coords="1150,115,1309,141"/>
+<area shape="rect" id="node16" title=" " coords="1333,115,1438,141"/>
+<area shape="rect" id="node17" title=" " coords="1462,115,1618,141"/>
+<area shape="rect" id="node18" title=" " coords="1643,115,1747,141"/>
+<area shape="rect" id="node19" title=" " coords="1771,115,1835,141"/>
+<area shape="rect" id="node20" title=" " coords="1859,108,2003,148"/>
+<area shape="rect" id="node21" title=" " coords="2027,115,2120,141"/>
+<area shape="rect" id="node22" title=" " coords="2144,115,2237,141"/>
+<area shape="rect" id="node23" title=" " coords="2262,115,2317,141"/>
 </map>

@@ -1,5 +1,4 @@
 #pragma once
-
 #include <core/rendering/shader.h>
 namespace luna
 {

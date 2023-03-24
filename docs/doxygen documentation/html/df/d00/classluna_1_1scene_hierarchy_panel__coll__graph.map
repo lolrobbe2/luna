@@ -1,7 +1,7 @@
 <map id="luna::sceneHierarchyPanel" name="luna::sceneHierarchyPanel">
-<area shape="rect" id="node1" title=" " coords="2137,290,2315,315"/>
-<area shape="rect" id="node2" href="$da/d00/classluna_1_1scene.html" title=" " coords="1711,290,1800,315"/>
-<area shape="rect" id="node17" href="$dc/d00/classluna_1_1_node.html" title=" " coords="1888,321,1972,346"/>
+<area shape="rect" id="node1" title=" " coords="2175,343,2352,369"/>
+<area shape="rect" id="node2" href="$da/d00/classluna_1_1scene.html" title=" " coords="1729,290,1819,315"/>
+<area shape="rect" id="node17" href="$dc/d00/classluna_1_1_node.html" title=" " coords="1925,343,2009,369"/>
 <area shape="rect" id="node3" href="$d5/d00/classluna_1_1utils_1_1object_storage.html" title=" " coords="1411,283,1577,323"/>
 <area shape="rect" id="node4" href="$d0/d00/classluna_1_1utils_1_1vector_cache.html" title=" " coords="1110,143,1267,183"/>
 <area shape="rect" id="node5" title=" " coords="401,199,553,225"/>
@@ -16,4 +16,7 @@
 <area shape="rect" id="node16" title=" " coords="748,351,912,391"/>
 <area shape="rect" id="node14" title=" " coords="187,249,225,274"/>
 <area shape="rect" id="node15" href="$d5/d00/classluna_1_1utils_1_1object_storage.html" title="cached object memory class with a key handle." coords="1105,351,1272,391"/>
+<area shape="rect" id="node18" href="$dd/d00/classluna_1_1object.html" title=" " coords="1729,354,1819,379"/>
+<area shape="rect" id="node19" title=" " coords="1927,405,2007,430"/>
+<area shape="rect" id="node20" title=" " coords="1711,404,1837,444"/>
 </map>

@@ -9,7 +9,6 @@ var searchData=
   ['nodes_6',['nodes',['../d8/d00/namespaceluna_1_1nodes.html',1,'luna']]],
   ['platform_7',['platform',['../d0/d00/namespaceluna_1_1platform.html',1,'luna']]],
   ['renderer_8',['renderer',['../df/d00/namespaceluna_1_1renderer.html',1,'luna']]],
-  ['scene_9',['scene',['../d3/d00/namespaceluna_1_1scene.html',1,'luna']]],
-  ['utils_10',['utils',['../dc/d00/namespaceluna_1_1utils.html',1,'luna']]],
-  ['vulkan_11',['vulkan',['../df/d00/namespaceluna_1_1vulkan.html',1,'luna']]]
+  ['utils_9',['utils',['../dc/d00/namespaceluna_1_1utils.html',1,'luna']]],
+  ['vulkan_10',['vulkan',['../df/d00/namespaceluna_1_1vulkan.html',1,'luna']]]
 ];

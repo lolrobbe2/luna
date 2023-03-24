@@ -79,20 +79,27 @@ namespace luna
 			 * 
 			 * \param buffer
 			 */
-			static void destroyBuffer(const VkBuffer& buffer);
+			static void destroyBuffer(VkBuffer& buffer);
 			/**
 			 * @brief uploads a texture to the gpu .
 			 * 
 			 * \param buffer dataBuffer that stores texelData
 			 * \param image handle to copy texelData in to. 
 			 */
-			static void uploadTexture(const VkBuffer& buffer,const VkImage& image, const VkFormat& imageFormat, const glm::vec3& imageDimensions, const glm::vec3& imageOffset = {0,0,0});
+			static void uploadTexture(VkBuffer& buffer,const VkImage& image, const VkFormat& imageFormat, const glm::vec3& imageDimensions, const glm::vec3& imageOffset = {0,0,0}, const glm::vec2& subImageDimensions = {0,0}, const uint64_t bufferOffset = 0);
 			/**
 			 * @brief executes all recorded transferCommands.
 			 * 
 			 */
 			static void flush();
-
+			/**
+			 * @brief returns a supported VK_FORMAT given a channel amount from 1-4,
+			 * if no supported format can be found VK_FORMAT_UNDEFINED will be returned
+			 * 
+			 * \param usageFlags
+			 * \param channels
+			 * \return 
+			 */
 			static VkFormat getSuitableFormat(const VkImageUsageFlags& usageFlags, const uint32_t& channels);
 		private:
 			/**
@@ -113,9 +120,11 @@ namespace luna
 			};
 			struct transferCommand
 			{
-				VkBuffer sourceBuffer;
+				uint64_t bufferOffset;
+				VkBuffer& sourceBuffer;
 				VkImage VulkanImage;
 				VkFormat ImageFormat;
+				glm::vec2 subImageHeight;
 				glm::vec3 dimensions;
 				glm::vec3 offset;
 			};

@@ -39,14 +39,14 @@ static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a57da3
 \begin{DoxyCompactList}\small\item\em destroys the Vk\+Image\+View. \end{DoxyCompactList}\item 
 static Vk\+Result \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aa2d9d1e2f443a5a1681348fcea9c3fcf}{create\+Buffer}} (Vk\+Buffer $\ast$p\+Buffer, const size\+\_\+t \&alloc\+Size, const Vk\+Buffer\+Usage\+Flags \&usage, const Vma\+Memory\+Usage \&memory\+Usage, const Vma\+Allocation\+Create\+Flags \&alloc\+Flags=0)
 \begin{DoxyCompactList}\small\item\em creates a Vk\+Buffer object. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_acc9cee87a45184efe3676ac1896e27af}{destroy\+Buffer}} (const Vk\+Buffer \&buffer)
+static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a56cca0869f1835e3299b1f62a6b05533}{destroy\+Buffer}} (Vk\+Buffer \&buffer)
 \begin{DoxyCompactList}\small\item\em destroys the Vk\+Buffer object. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_aecb1938923f8e82b6d6d71d683a6d43f}{upload\+Texture}} (const Vk\+Buffer \&buffer, const Vk\+Image \&image, const Vk\+Format \&image\+Format, const glm\+::vec3 \&image\+Dimensions, const glm\+::vec3 \&image\+Offset=\{0, 0, 0\})
+static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a588f7bfab8b9922583f9720c579f9141}{upload\+Texture}} (Vk\+Buffer \&buffer, const Vk\+Image \&image, const Vk\+Format \&image\+Format, const glm\+::vec3 \&image\+Dimensions, const glm\+::vec3 \&image\+Offset=\{0, 0, 0\}, const glm\+::vec2 \&sub\+Image\+Dimensions=\{0, 0\}, const uint64\+\_\+t buffer\+Offset=0)
 \begin{DoxyCompactList}\small\item\em uploads a texture to the gpu . \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a8be0f55661fadb6da3f66103a27e12a4}{flush}} ()
 \begin{DoxyCompactList}\small\item\em executes all recorded transfer\+Commands. \end{DoxyCompactList}\item 
 static Vk\+Format \mbox{\hyperlink{classluna_1_1utils_1_1vulkan_allocator_a092a7652ec495aaffe0b3bc1dddf8c7e}{get\+Suitable\+Format}} (const Vk\+Image\+Usage\+Flags \&usage\+Flags, const uint32\+\_\+t \&channels)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em returns a supported VK\+\_\+\+FORMAT given a channel amount from 1-\/4, if no supported format can be found VK\+\_\+\+FORMAT\+\_\+\+UNDEFINED will be returned \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -144,11 +144,11 @@ creates a Vk\+Image\+View object.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_acc9cee87a45184efe3676ac1896e27af}\label{classluna_1_1utils_1_1vulkan_allocator_acc9cee87a45184efe3676ac1896e27af}} 
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a56cca0869f1835e3299b1f62a6b05533}\label{classluna_1_1utils_1_1vulkan_allocator_a56cca0869f1835e3299b1f62a6b05533}} 
 \index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!destroyBuffer@{destroyBuffer}}
 \index{destroyBuffer@{destroyBuffer}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
 \doxyparagraph{\texorpdfstring{destroyBuffer()}{destroyBuffer()}}
-{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::destroy\+Buffer (\begin{DoxyParamCaption}\item[{const Vk\+Buffer \&}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::destroy\+Buffer (\begin{DoxyParamCaption}\item[{Vk\+Buffer \&}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -229,6 +229,20 @@ Vma\+Allocation\+Info
 \doxyparagraph{\texorpdfstring{getSuitableFormat()}{getSuitableFormat()}}
 {\footnotesize\ttfamily Vk\+Format luna\+::utils\+::vulkan\+Allocator\+::get\+Suitable\+Format (\begin{DoxyParamCaption}\item[{const Vk\+Image\+Usage\+Flags \&}]{usage\+Flags,  }\item[{const uint32\+\_\+t \&}]{channels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+returns a supported VK\+\_\+\+FORMAT given a channel amount from 1-\/4, if no supported format can be found VK\+\_\+\+FORMAT\+\_\+\+UNDEFINED will be returned 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usage\+Flags} & \\
+\hline
+{\em channels} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 \mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_ae50dca323c85203f3c71b2d0d396f529}\label{classluna_1_1utils_1_1vulkan_allocator_ae50dca323c85203f3c71b2d0d396f529}} 
 \index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!init@{init}}
 \index{init@{init}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
@@ -277,11 +291,11 @@ transitions the image layout.
 {\em Vk\+Command\+Buffer} & command\+Bufffer \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_aecb1938923f8e82b6d6d71d683a6d43f}\label{classluna_1_1utils_1_1vulkan_allocator_aecb1938923f8e82b6d6d71d683a6d43f}} 
+\mbox{\Hypertarget{classluna_1_1utils_1_1vulkan_allocator_a588f7bfab8b9922583f9720c579f9141}\label{classluna_1_1utils_1_1vulkan_allocator_a588f7bfab8b9922583f9720c579f9141}} 
 \index{luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}!uploadTexture@{uploadTexture}}
 \index{uploadTexture@{uploadTexture}!luna::utils::vulkanAllocator@{luna::utils::vulkanAllocator}}
 \doxyparagraph{\texorpdfstring{uploadTexture()}{uploadTexture()}}
-{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::upload\+Texture (\begin{DoxyParamCaption}\item[{const Vk\+Buffer \&}]{buffer,  }\item[{const Vk\+Image \&}]{image,  }\item[{const Vk\+Format \&}]{image\+Format,  }\item[{const glm\+::vec3 \&}]{image\+Dimensions,  }\item[{const glm\+::vec3 \&}]{image\+Offset = {\ttfamily \{0,0,0\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily void luna\+::utils\+::vulkan\+Allocator\+::upload\+Texture (\begin{DoxyParamCaption}\item[{Vk\+Buffer \&}]{buffer,  }\item[{const Vk\+Image \&}]{image,  }\item[{const Vk\+Format \&}]{image\+Format,  }\item[{const glm\+::vec3 \&}]{image\+Dimensions,  }\item[{const glm\+::vec3 \&}]{image\+Offset = {\ttfamily \{0,0,0\}},  }\item[{const glm\+::vec2 \&}]{sub\+Image\+Dimensions = {\ttfamily \{0,0\}},  }\item[{const uint64\+\_\+t}]{buffer\+Offset = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

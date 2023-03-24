@@ -133,6 +133,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad298117c4031819dc757e7393756b093"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e81fd1aa99b10f49ef3ac8a346e112d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a9e81fd1aa99b10f49ef3ac8a346e112d">isLoaded</a> () const =0</td></tr>
 <tr class="separator:a9e81fd1aa99b10f49ef3ac8a346e112d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e45a4f7e46b9cacd0ce931e09d27dbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a9e45a4f7e46b9cacd0ce931e09d27dbb">setDestroy</a> (const bool &amp;<a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#ab9ce465e9bcb2162e692c8696186cd79">destroy</a>)</td></tr>
+<tr class="separator:a9e45a4f7e46b9cacd0ce931e09d27dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb5336556af6daf644abf0afee1bd46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a4bb5336556af6daf644abf0afee1bd46">setUv</a> (const glm::vec2 &amp;_uvStart, const glm::vec2 &amp;_uvEnd)</td></tr>
+<tr class="separator:a4bb5336556af6daf644abf0afee1bd46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc39ddb4505a2c47ba5aa0e49a53e874"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#abc39ddb4505a2c47ba5aa0e49a53e874">getUv</a> ()</td></tr>
+<tr class="separator:abc39ddb4505a2c47ba5aa0e49a53e874"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e6c3b296f70fc8b7cbe6dde20a2e4a1"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a6e6c3b296f70fc8b7cbe6dde20a2e4a1">handle</a> ()</td></tr>
 <tr class="separator:a6e6c3b296f70fc8b7cbe6dde20a2e4a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -140,9 +146,13 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad01c5e42ba32c49355cd8e414ee64c40"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html">texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#ad01c5e42ba32c49355cd8e414ee64c40">create</a> (const std::string &amp;filePath)</td></tr>
 <tr class="separator:ad01c5e42ba32c49355cd8e414ee64c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e35d8198bf587c5035eab5a1c3f87b7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html">texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a0e35d8198bf587c5035eab5a1c3f87b7">create</a> (const uint64_t &amp;<a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a6e6c3b296f70fc8b7cbe6dde20a2e4a1">handle</a>, const glm::vec2 &amp;dimensions)</td></tr>
+<tr class="separator:a0e35d8198bf587c5035eab5a1c3f87b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:ab9ce465e9bcb2162e692c8696186cd79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#ab9ce465e9bcb2162e692c8696186cd79">destroy</a> = true</td></tr>
+<tr class="separator:ab9ce465e9bcb2162e692c8696186cd79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a442c52e8d217b48b88583ab551e18194"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a442c52e8d217b48b88583ab551e18194">_handle</a></td></tr>
 <tr class="separator:a442c52e8d217b48b88583ab551e18194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeffd09f2cdfb89f3fc1033e345a87790"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#aeffd09f2cdfb89f3fc1033e345a87790">data</a></td></tr>
@@ -151,6 +161,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a4aef0110e75cfea3933ed9f50c7f89d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5c7d9d66dbff6e868d69503757793d0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#ab5c7d9d66dbff6e868d69503757793d0">height</a></td></tr>
 <tr class="separator:ab5c7d9d66dbff6e868d69503757793d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b9ac9da65fa48c2f2ee39d7f843461"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#ac5b9ac9da65fa48c2f2ee39d7f843461">uvStart</a> = {0.0f,0.0f}</td></tr>
+<tr class="separator:ac5b9ac9da65fa48c2f2ee39d7f843461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e23e345821b8adccf5eaf30948b468"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html#a97e23e345821b8adccf5eaf30948b468">uvEnd</a> = { 1.0f,1.0f }</td></tr>
+<tr class="separator:a97e23e345821b8adccf5eaf30948b468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >base texture class. </p>
@@ -211,7 +225,7 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="ad01c5e42ba32c49355cd8e414ee64c40" name="ad01c5e42ba32c49355cd8e414ee64c40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad01c5e42ba32c49355cd8e414ee64c40">&#9670;&#160;</a></span>create()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad01c5e42ba32c49355cd8e414ee64c40">&#9670;&#160;</a></span>create() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,6 +239,42 @@ Protected Attributes</h2></td></tr>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>filePath</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e35d8198bf587c5035eab5a1c3f87b7" name="a0e35d8198bf587c5035eab5a1c3f87b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e35d8198bf587c5035eab5a1c3f87b7">&#9670;&#160;</a></span>create() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/namespaceluna.html#ac8dc8be643504d1935e8e08d0f7d1d87">ref</a>&lt; <a class="el" href="../../dd/d00/classluna_1_1renderer_1_1texture.html">texture</a> &gt; luna::renderer::texture::create </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>dimensions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -287,6 +337,31 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="../../d4/d00/classluna_1_1vulkan_1_1vulkan_texture.html#a075d330eb620b30e80850363dd3eaf55">luna::vulkan::vulkanTexture</a>.</p>
+
+</div>
+</div>
+<a id="abc39ddb4505a2c47ba5aa0e49a53e874" name="abc39ddb4505a2c47ba5aa0e49a53e874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc39ddb4505a2c47ba5aa0e49a53e874">&#9670;&#160;</a></span>getUv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; glm::vec2 &gt; luna::renderer::texture::getUv </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -407,6 +482,68 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a9e45a4f7e46b9cacd0ce931e09d27dbb" name="a9e45a4f7e46b9cacd0ce931e09d27dbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e45a4f7e46b9cacd0ce931e09d27dbb">&#9670;&#160;</a></span>setDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::texture::setDestroy </td>
+          <td>(</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>destroy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4bb5336556af6daf644abf0afee1bd46" name="a4bb5336556af6daf644abf0afee1bd46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bb5336556af6daf644abf0afee1bd46">&#9670;&#160;</a></span>setUv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void luna::renderer::texture::setUv </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>_uvStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>_uvEnd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a442c52e8d217b48b88583ab551e18194" name="a442c52e8d217b48b88583ab551e18194"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a442c52e8d217b48b88583ab551e18194">&#9670;&#160;</a></span>_handle</h2>
@@ -452,6 +589,28 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab9ce465e9bcb2162e692c8696186cd79" name="ab9ce465e9bcb2162e692c8696186cd79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ce465e9bcb2162e692c8696186cd79">&#9670;&#160;</a></span>destroy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool luna::renderer::texture::destroy = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab5c7d9d66dbff6e868d69503757793d0" name="ab5c7d9d66dbff6e868d69503757793d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5c7d9d66dbff6e868d69503757793d0">&#9670;&#160;</a></span>height</h2>
 
@@ -463,6 +622,50 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">uint32_t luna::renderer::texture::height</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a97e23e345821b8adccf5eaf30948b468" name="a97e23e345821b8adccf5eaf30948b468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97e23e345821b8adccf5eaf30948b468">&#9670;&#160;</a></span>uvEnd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 luna::renderer::texture::uvEnd = { 1.0f,1.0f }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5b9ac9da65fa48c2f2ee39d7f843461" name="ac5b9ac9da65fa48c2f2ee39d7f843461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5b9ac9da65fa48c2f2ee39d7f843461">&#9670;&#160;</a></span>uvStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 luna::renderer::texture::uvStart = {0.0f,0.0f}</td>
         </tr>
       </table>
   </td>

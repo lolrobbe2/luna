@@ -18,9 +18,23 @@
 	#define ENABLE_VALIDATION_LAYERS
 #endif // _DEBUG
 
+#ifndef _ALWAYS_INLINE_
+#if defined(__GNUC__)
+#define _ALWAYS_INLINE_ __attribute__((always_inline)) inline
+#elif defined(_MSC_VER)
+#define _ALWAYS_INLINE_ __forceinline
+#else
+#define _ALWAYS_INLINE_ inline
+#endif
+#endif
+
+#ifndef stringify
+#define stringify( name ) #name
+#endif
+
 #define MAJOR 0
 #define MINOR 0 
-#define PATCH 5
+#define PATCH 7
 namespace luna
 {
 	template<typename T>

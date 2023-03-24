@@ -2,6 +2,7 @@ var classluna_1_1vulkan_1_1window =
 [
     [ "eventCallbackFn", "d7/d00/classluna_1_1vulkan_1_1window.html#a14df75ef2a6abfb73bed3aa3cecd76d6", null ],
     [ "~window", "d7/d00/classluna_1_1vulkan_1_1window.html#aff65add0ca3ca8329387991a181a9d99", null ],
+    [ "getCursorPos", "d7/d00/classluna_1_1vulkan_1_1window.html#a4a7374df483001b45af303748d194b86", null ],
     [ "getHeight", "d7/d00/classluna_1_1vulkan_1_1window.html#a96c98b4e44f7fb3bacc328845cd415cb", null ],
     [ "getWidth", "d7/d00/classluna_1_1vulkan_1_1window.html#a227c90dbf154016a68c80505bbc80460", null ],
     [ "getWindow", "d7/d00/classluna_1_1vulkan_1_1window.html#add34b613de071ba6e381249cefc6c51c", null ],

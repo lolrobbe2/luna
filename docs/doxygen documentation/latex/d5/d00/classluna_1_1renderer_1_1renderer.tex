@@ -31,6 +31,10 @@ static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a301fe59cdfcf8a1b
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a70238c9cb6fd163229ca4454ad8eaadd}{Submit}} (const \mbox{\hyperlink{namespaceluna_ac8dc8be643504d1935e8e08d0f7d1d87}{ref}}$<$ \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} $>$ \&\mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}}, std\+::vector$<$ uint64\+\_\+t $>$ textures, const uint64\+\_\+t \&index\+Count=0)
 \begin{DoxyCompactList}\small\item\em submits a \mbox{\hyperlink{classluna_1_1renderer_1_1vertex_array}{vertex\+Array}} to be rendered containing vertex\+Buffers and 1 \mbox{\hyperlink{classluna_1_1renderer_1_1index_buffer}{index\+Buffer}}. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a6d3cc118bda57598c1d5c5524b8bce15}{end\+Scene}} ()
+\item 
+static glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a43fcab970f459dc7f20ffe6ad9664920}{get\+Scene\+Dimensions}} ()
+\item 
+static glm\+::vec2 \mbox{\hyperlink{classluna_1_1renderer_1_1renderer_a0e99d842ffb764d5a1e80c8e9029b0f8}{get\+Scene\+Mouse\+Pos}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -74,7 +78,19 @@ create a frame in the render pipline based on the given input.
 \doxyparagraph{\texorpdfstring{endScene()}{endScene()}}
 {\footnotesize\ttfamily void luna\+::renderer\+::renderer\+::end\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-brief ends the scene. \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}\label{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}} 
+brief ends the scene. \mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a43fcab970f459dc7f20ffe6ad9664920}\label{classluna_1_1renderer_1_1renderer_a43fcab970f459dc7f20ffe6ad9664920}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!getSceneDimensions@{getSceneDimensions}}
+\index{getSceneDimensions@{getSceneDimensions}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{getSceneDimensions()}{getSceneDimensions()}}
+{\footnotesize\ttfamily static glm\+::vec2 luna\+::renderer\+::renderer\+::get\+Scene\+Dimensions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_a0e99d842ffb764d5a1e80c8e9029b0f8}\label{classluna_1_1renderer_1_1renderer_a0e99d842ffb764d5a1e80c8e9029b0f8}} 
+\index{luna::renderer::renderer@{luna::renderer::renderer}!getSceneMousePos@{getSceneMousePos}}
+\index{getSceneMousePos@{getSceneMousePos}!luna::renderer::renderer@{luna::renderer::renderer}}
+\doxyparagraph{\texorpdfstring{getSceneMousePos()}{getSceneMousePos()}}
+{\footnotesize\ttfamily static glm\+::vec2 luna\+::renderer\+::renderer\+::get\+Scene\+Mouse\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}\label{classluna_1_1renderer_1_1renderer_ae03c7718cd0e231dbb9b89c8ecbf944f}} 
 \index{luna::renderer::renderer@{luna::renderer::renderer}!init@{init}}
 \index{init@{init}!luna::renderer::renderer@{luna::renderer::renderer}}
 \doxyparagraph{\texorpdfstring{init()}{init()}}

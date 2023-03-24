@@ -1,10 +1,11 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/vulkan/utils/vulkanAllocator.h">
-<area shape="rect" id="node1" title=" " coords="663,5,815,75"/>
+<area shape="rect" id="node1" title=" " coords="834,5,986,75"/>
 <area shape="rect" id="node2" href="$d6/d00/renderer_8cpp.html" title=" " coords="5,123,164,192"/>
-<area shape="rect" id="node3" href="$d7/d00/vulkan_index_buffer_8cpp.html" title=" " coords="189,123,397,192"/>
-<area shape="rect" id="node4" href="$d2/d00/vulkan_pipeline_8cpp.html" title=" " coords="421,123,612,192"/>
-<area shape="rect" id="node5" href="$de/d00/vulkan_swapchain_8cpp.html" title=" " coords="636,123,843,192"/>
-<area shape="rect" id="node6" href="$d7/d00/vulkan_texture_8cpp.html" title=" " coords="867,123,1054,192"/>
-<area shape="rect" id="node7" href="$d5/d00/vulkan_vertex_buffer_8cpp.html" title=" " coords="1079,123,1293,192"/>
-<area shape="rect" id="node8" href="$dd/d00/vulkan_allocator_8cpp.html" title=" " coords="1317,123,1484,192"/>
+<area shape="rect" id="node3" href="$d7/d00/scene_serializer_8cpp.html" title=" " coords="189,130,447,185"/>
+<area shape="rect" id="node4" href="$d7/d00/vulkan_index_buffer_8cpp.html" title=" " coords="471,123,679,192"/>
+<area shape="rect" id="node5" href="$d2/d00/vulkan_pipeline_8cpp.html" title=" " coords="704,123,895,192"/>
+<area shape="rect" id="node6" href="$de/d00/vulkan_swapchain_8cpp.html" title=" " coords="919,123,1125,192"/>
+<area shape="rect" id="node7" href="$d7/d00/vulkan_texture_8cpp.html" title=" " coords="1150,123,1337,192"/>
+<area shape="rect" id="node8" href="$d5/d00/vulkan_vertex_buffer_8cpp.html" title=" " coords="1361,123,1576,192"/>
+<area shape="rect" id="node9" href="$dd/d00/vulkan_allocator_8cpp.html" title=" " coords="1600,123,1767,192"/>
 </map>

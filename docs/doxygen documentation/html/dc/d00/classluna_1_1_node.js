@@ -2,6 +2,7 @@ var classluna_1_1_node =
 [
     [ "Node", "dc/d00/classluna_1_1_node.html#a5c46428efaf6b79ff60c5c9ae4c4cde4", null ],
     [ "Node", "dc/d00/classluna_1_1_node.html#a31a8bb7a6c753905c1af864d17e263f6", null ],
+    [ "Node", "dc/d00/classluna_1_1_node.html#a936441453206bc94a2e8d6852620b431", null ],
     [ "Node", "dc/d00/classluna_1_1_node.html#a765b2b01833fca2e47baa85f22ec0b22", null ],
     [ "~Node", "dc/d00/classluna_1_1_node.html#ab303f2276d1f718dbf4a6fd43650106c", null ],
     [ "addChild", "dc/d00/classluna_1_1_node.html#a9b5a7565b73887396eafa31a86fedb01", null ],
@@ -11,8 +12,10 @@ var classluna_1_1_node =
     [ "getName", "dc/d00/classluna_1_1_node.html#a0bee1c8ccfc7733d4cccee1c9dc1d241", null ],
     [ "getUUID", "dc/d00/classluna_1_1_node.html#adacc6898fd3f641f5745102cd4c1e412", null ],
     [ "hasComponent", "dc/d00/classluna_1_1_node.html#ad8f7466e81c87186079cf26c128602a8", null ],
+    [ "init", "dc/d00/classluna_1_1_node.html#a253604c4c5c79fb303c04de4402a1622", null ],
     [ "operator bool", "dc/d00/classluna_1_1_node.html#a4201804d3ccb130f48bb0b6628f71286", null ],
     [ "operator entt::entity", "dc/d00/classluna_1_1_node.html#a7465cbff6942965319779cc0e4c37225", null ],
+    [ "operator scene *", "dc/d00/classluna_1_1_node.html#a8fbe2abcc7801d80b2fb7779ca61b895", null ],
     [ "operator uint32_t", "dc/d00/classluna_1_1_node.html#ae9403fc05a80ee2a992aea02eb954280", null ],
     [ "operator!=", "dc/d00/classluna_1_1_node.html#ae090d25be88d313708c95fc51d140407", null ],
     [ "operator==", "dc/d00/classluna_1_1_node.html#a1800fa0fd47a1d6fac23e1990c4011f9", null ],

@@ -66,9 +66,13 @@ namespace luna
 			 *
 			 */
 			virtual void clear() = 0;
+
+			glm::vec2 getDimensions() { return windowDimensions; };
+			glm::vec2 getWindowMousePos() { return windowMousePos; };
 			int test;
 		protected:
-			
+			glm::vec2 windowMousePos;
+			glm::vec2 windowDimensions;
 		};
 	}
 }

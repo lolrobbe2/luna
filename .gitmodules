@@ -22,3 +22,6 @@
 [submodule "luna/thirdparty/stb"]
 	path = luna/thirdparty/stb
 	url = https://github.com/nothings/stb
+[submodule "luna/thirdParty/yaml-cpp"]
+	path = luna/thirdParty/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp

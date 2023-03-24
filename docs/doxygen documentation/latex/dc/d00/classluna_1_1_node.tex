@@ -11,12 +11,13 @@ Inheritance diagram for luna\+::Node\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=334pt]{dd/d00/classluna_1_1_node__inherit__graph}
+\includegraphics[width=350pt]{dd/d00/classluna_1_1_node__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for luna\+::Node\+:\nopagebreak
+Collaboration diagram for luna\+::Node\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,6 +31,8 @@ Collaboration diagram for luna\+::Node\+:\nopagebreak
 \item 
 \mbox{\hyperlink{classluna_1_1_node_a31a8bb7a6c753905c1af864d17e263f6}{Node}} (entt\+::entity handle, \mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}})
 \item 
+\mbox{\hyperlink{classluna_1_1_node_a936441453206bc94a2e8d6852620b431}{Node}} (uint64\+\_\+t id, \mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}})
+\item 
 \mbox{\hyperlink{classluna_1_1_node_a765b2b01833fca2e47baa85f22ec0b22}{Node}} (\mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}})
 \item 
 virtual \mbox{\hyperlink{classluna_1_1_node_ab303f2276d1f718dbf4a6fd43650106c}{$\sim$\+Node}} ()=default
@@ -37,6 +40,8 @@ virtual \mbox{\hyperlink{classluna_1_1_node_ab303f2276d1f718dbf4a6fd43650106c}{$
 void \mbox{\hyperlink{classluna_1_1_node_a4b4a732c3dc11d62a07d3eb1687908d5}{set\+Name}} (std\+::string name)
 \item 
 void \mbox{\hyperlink{classluna_1_1_node_a9b5a7565b73887396eafa31a86fedb01}{add\+Child}} (\mbox{\hyperlink{classluna_1_1_node}{Node}} node)
+\item 
+virtual void \mbox{\hyperlink{classluna_1_1_node_a253604c4c5c79fb303c04de4402a1622}{init}} (\mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$\mbox{\hyperlink{classluna_1_1scene}{scene}}) override
 \item 
 {\footnotesize template$<$typename T , typename... Args$>$ }\\T \& \mbox{\hyperlink{classluna_1_1_node_a6cbab4eebefa40730a6cb8b476711fdf}{add\+Component}} (Args \&\&... args)
 \item 
@@ -54,6 +59,8 @@ void \mbox{\hyperlink{classluna_1_1_node_a9b5a7565b73887396eafa31a86fedb01}{add\
 \item 
 \mbox{\hyperlink{classluna_1_1_node_ae9403fc05a80ee2a992aea02eb954280}{operator uint32\+\_\+t}} () const
 \item 
+\mbox{\hyperlink{classluna_1_1_node_a8fbe2abcc7801d80b2fb7779ca61b895}{operator scene $\ast$}} () const
+\item 
 \mbox{\hyperlink{classluna_1_1uuid}{uuid}} \mbox{\hyperlink{classluna_1_1_node_adacc6898fd3f641f5745102cd4c1e412}{get\+UUID}} ()
 \item 
 const std\+::string \& \mbox{\hyperlink{classluna_1_1_node_a0bee1c8ccfc7733d4cccee1c9dc1d241}{get\+Name}} ()
@@ -67,7 +74,7 @@ bool \mbox{\hyperlink{classluna_1_1_node_ae090d25be88d313708c95fc51d140407}{oper
 \item 
 entt\+::entity \mbox{\hyperlink{classluna_1_1_node_ae1a1e214d6ad503cc5a97d6347bc257f}{entity\+Handle}} \{ entt\+::null \}
 \item 
-\mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$ \mbox{\hyperlink{classluna_1_1_node_a06f3f43a84ea09b745ae1b554a6cc711}{scene}}
+\mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$ \mbox{\hyperlink{classluna_1_1_node_a06f3f43a84ea09b745ae1b554a6cc711}{scene}} = nullptr
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -82,19 +89,25 @@ class \mbox{\hyperlink{classluna_1_1_node_a48b3f9b09f4657212c6681f3fe94289c}{sce
 \mbox{\Hypertarget{classluna_1_1_node_a5c46428efaf6b79ff60c5c9ae4c4cde4}\label{classluna_1_1_node_a5c46428efaf6b79ff60c5c9ae4c4cde4}} 
 \index{luna::Node@{luna::Node}!Node@{Node}}
 \index{Node@{Node}!luna::Node@{luna::Node}}
-\doxyparagraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxyparagraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
 {\footnotesize\ttfamily luna\+::\+Node\+::\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 \mbox{\Hypertarget{classluna_1_1_node_a31a8bb7a6c753905c1af864d17e263f6}\label{classluna_1_1_node_a31a8bb7a6c753905c1af864d17e263f6}} 
 \index{luna::Node@{luna::Node}!Node@{Node}}
 \index{Node@{Node}!luna::Node@{luna::Node}}
-\doxyparagraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxyparagraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily luna\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{entt\+::entity}]{handle,  }\item[{\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classluna_1_1_node_a936441453206bc94a2e8d6852620b431}\label{classluna_1_1_node_a936441453206bc94a2e8d6852620b431}} 
+\index{luna::Node@{luna::Node}!Node@{Node}}
+\index{Node@{Node}!luna::Node@{luna::Node}}
+\doxyparagraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily luna\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{id,  }\item[{\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classluna_1_1_node_a765b2b01833fca2e47baa85f22ec0b22}\label{classluna_1_1_node_a765b2b01833fca2e47baa85f22ec0b22}} 
 \index{luna::Node@{luna::Node}!Node@{Node}}
 \index{Node@{Node}!luna::Node@{luna::Node}}
-\doxyparagraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxyparagraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
 {\footnotesize\ttfamily luna\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classluna_1_1_node_ab303f2276d1f718dbf4a6fd43650106c}\label{classluna_1_1_node_ab303f2276d1f718dbf4a6fd43650106c}} 
@@ -152,6 +165,20 @@ T \& luna\+::\+Node\+::get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParam
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 bool luna\+::\+Node\+::has\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classluna_1_1_node_a253604c4c5c79fb303c04de4402a1622}\label{classluna_1_1_node_a253604c4c5c79fb303c04de4402a1622}} 
+\index{luna::Node@{luna::Node}!init@{init}}
+\index{init@{init}!luna::Node@{luna::Node}}
+\doxyparagraph{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void luna\+::\+Node\+::init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classluna_1_1scene}{luna\+::scene}} $\ast$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classluna_1_1object_ae44158658cfffdb6cb76d3a95489bc1b}{luna\+::object}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classluna_1_1nodes_1_1button_node_aa554ecb069d2f1a851c793f722ae4f5a}{luna\+::nodes\+::button\+Node}}, \mbox{\hyperlink{classluna_1_1nodes_1_1image_button_node_a57642b66633eb32dddc890ce25389faa}{luna\+::nodes\+::image\+Button\+Node}}, \mbox{\hyperlink{classluna_1_1nodes_1_1color_rect_node_ad80dc4100ab68d386c7cd364e8dfadc1}{luna\+::nodes\+::color\+Rect\+Node}}, \mbox{\hyperlink{classluna_1_1nodes_1_1control_node_ac6ac273a90719364637c7e881bfea2c5}{luna\+::nodes\+::control\+Node}}, \mbox{\hyperlink{classluna_1_1nodes_1_1item_list_node_a505ec294a750b2e79837b000e10738f0}{luna\+::nodes\+::item\+List\+Node}}, \mbox{\hyperlink{classluna_1_1nodes_1_1label_node_a89ec705d3a57610dffc08dd546809c22}{luna\+::nodes\+::label\+Node}}, and \mbox{\hyperlink{classluna_1_1nodes_1_1sprite_node_a8ff70fb9f121d5c52a7d8bc4e0aec1fc}{luna\+::nodes\+::sprite\+Node}}.
+
 \mbox{\Hypertarget{classluna_1_1_node_a4201804d3ccb130f48bb0b6628f71286}\label{classluna_1_1_node_a4201804d3ccb130f48bb0b6628f71286}} 
 \index{luna::Node@{luna::Node}!operator bool@{operator bool}}
 \index{operator bool@{operator bool}!luna::Node@{luna::Node}}
@@ -163,6 +190,12 @@ bool luna\+::\+Node\+::has\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParam
 \index{operator entt::entity@{operator entt::entity}!luna::Node@{luna::Node}}
 \doxyparagraph{\texorpdfstring{operator entt::entity()}{operator entt::entity()}}
 {\footnotesize\ttfamily luna\+::\+Node\+::operator entt\+::entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classluna_1_1_node_a8fbe2abcc7801d80b2fb7779ca61b895}\label{classluna_1_1_node_a8fbe2abcc7801d80b2fb7779ca61b895}} 
+\index{luna::Node@{luna::Node}!operator scene $\ast$@{operator scene $\ast$}}
+\index{operator scene $\ast$@{operator scene $\ast$}!luna::Node@{luna::Node}}
+\doxyparagraph{\texorpdfstring{operator scene $\ast$()}{operator scene *()}}
+{\footnotesize\ttfamily luna\+::\+Node\+::operator \mbox{\hyperlink{classluna_1_1scene}{scene}} $\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classluna_1_1_node_ae9403fc05a80ee2a992aea02eb954280}\label{classluna_1_1_node_ae9403fc05a80ee2a992aea02eb954280}} 
 \index{luna::Node@{luna::Node}!operator uint32\_t@{operator uint32\_t}}
@@ -223,7 +256,7 @@ void luna\+::\+Node\+::remove\+Component (\begin{DoxyParamCaption}{ }\end{DoxyPa
 \index{luna::Node@{luna::Node}!scene@{scene}}
 \index{scene@{scene}!luna::Node@{luna::Node}}
 \doxyparagraph{\texorpdfstring{scene}{scene}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1scene}{scene}}$\ast$ luna\+::\+Node\+::scene\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classluna_1_1scene}{scene}}$\ast$ luna\+::\+Node\+::scene = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

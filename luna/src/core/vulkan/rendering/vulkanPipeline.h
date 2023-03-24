@@ -213,6 +213,9 @@ namespace luna
 			void fnDrawIndexed(const ref<renderer::vertexArray>& vertexArray, const uint64_t& descriptorIndex,const std::vector<uint64_t>& textures, const int& indexCount);
 
 			VkResult createDescriptorSetLayout();
+
+			VkAccessFlags getAccessFlag(VkImageLayout layout);
+			VkPipelineStageFlags getStageFlag(VkImageLayout layout);
 		private:
 					//TODO improve variables usage.
 

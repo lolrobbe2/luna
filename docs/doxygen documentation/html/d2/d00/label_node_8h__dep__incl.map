@@ -1,5 +1,7 @@
-<map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/ui/labelNode.h">
-<area shape="rect" id="node1" title=" " coords="135,5,332,60"/>
-<area shape="rect" id="node2" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="5,108,224,177"/>
-<area shape="rect" id="node3" href="$d0/d00/label_node_8cpp.html" title=" " coords="248,115,459,170"/>
+<map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/controlNodes/labelNode.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/nodes/controlNodes/labelNode.h">
+<area shape="rect" id="node1" title=" " coords="229,5,419,75"/>
+<area shape="rect" id="node2" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="5,123,224,192"/>
+<area shape="rect" id="node3" href="$d0/d00/class_register_8h.html" title=" " coords="248,123,400,192"/>
+<area shape="rect" id="node5" href="$d0/d00/label_node_8cpp.html" title=" " coords="425,123,615,192"/>
+<area shape="rect" id="node4" href="$df/d00/application_8cpp.html" title=" " coords="228,240,420,295"/>
 </map>

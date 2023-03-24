@@ -40,7 +40,24 @@ namespace luna
 			 * @brief ends the 2D renderer scene.
 			 */
 			static void endScene();
-			static void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font,const std::string labelText);
+			/**
+			 * @brief .
+			 * 
+			 * \param position
+			 * \param size
+			 * \param font
+			 * \param labelText
+			 */
+			static bool drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font,const std::string labelText);
+			
+			/**
+			 * @brief draws a texture quad.
+			 *
+			 * \param const glm::vec3& position starting position
+			 * \param const glm::vec2& size starting size;
+			 * \param const glm::vec3& color rgb color value
+			*/
+			static bool drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex);
 			/**
 			 * @brief draws a texture quad.
 			 *
@@ -48,7 +65,7 @@ namespace luna
 			 * \param const glm::vec2& size starting size;
 			 * \param const glm::vec3& color rgb color value
 			 */
-			static void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture);
+			static bool drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture);
 			/**
 			 * @brief draws a texture quad.
 			 * 
@@ -56,7 +73,7 @@ namespace luna
 			 * \param const glm::vec4 color
 			 * \param const ref<texture>& texture
 			 */
-			static void drawQuad(const glm::mat4 transform,const glm::vec4 color, const ref<texture>& texture);
+			static bool drawQuad(const glm::mat4 transform,const glm::vec4 color, const ref<texture>& texture);
 			/**
 			 * @brief draws a quad.
 			 *
@@ -64,20 +81,20 @@ namespace luna
 			 * \param const glm::vec2& size starting size;
 			 * \param const glm::vec3& color rgb color value
 			 */
-			static void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
+			static bool drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 			/**
 			 * @brief draws a quad.
 			 * 
 			 * \param const glm::vec3& position starting position
 			 * \param const glm::vec2& size starting size;
 			 */
-			static void drawQuad(const glm::vec3& position, const glm::vec2& size);
+			static bool drawQuad(const glm::vec3& position, const glm::vec2& size);
 			/**
 			 * @brief draws a quad.
 			 * 
 			 * \param const glm::mat4& transform starting transformation.
 			 */
-			static void drawQuad(const glm::mat4& transform,const glm::vec4& color);
+			static bool drawQuad(const glm::mat4& transform,const glm::vec4& color);
 			/**
 			 * @brief flushes all the draw commands to the base renderer.
 			 * @see renderer::renderer
@@ -87,7 +104,6 @@ namespace luna
 			 * @brief returns renderer2D stats.
 			 */
 			static statistics getStats();
-
 		private:
 			static uint64_t textureInBatch(const uint64_t& handle);
 			inline static ref<texture> blankImage;

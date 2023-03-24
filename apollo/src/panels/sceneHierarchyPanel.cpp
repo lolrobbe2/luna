@@ -1,10 +1,14 @@
 #include "sceneHierarchyPanel.h"
-#include <nodes/ui/spriteNode.h>
-#include <nodes/ui/labelNode.h>
+//node includes start
+#include <nodes/controlNodes/spriteNode.h>
+#include <nodes/controlNodes/labelNode.h>
+#include <nodes/controlNodes/buttonNode.h>
+#include <nodes/controlNodes/itemListNode.h>
+//node includes end
 #include <core/rendering/renderer2D.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <core/platform/platformUtils.h>
-
+#include <core/object/objectDB.h>
 namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
@@ -44,28 +48,15 @@ namespace luna
 				ImGui::SetWindowPos({windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
 				if (ImGui::Button("exit node selection", ImVec2(200, 20)))
 				{
-					m_ListSelected = 0;
+					m_ListSelected = "";
 					ImGui::CloseCurrentPopup();
 				}
 				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
 				if(ImGui::Button("add selected node",ImVec2(200,20)))
 				{
-					//TODO implement register node type method;
-					switch (m_ListSelected)
-					{
-					case node:
-						m_Context->addNode<Node>("node");
-						break;
-					case spriteNode:
-						m_Context->addNode<nodes::spriteNode>("spriteNode");
-						break;
-					case labelNode:
-						m_Context->addNode<nodes::labelNode>("labelNode");
-						break;
-					default:
-						break;
-					}
-					m_ListSelected = 0;
+					//LN_CORE_INFO("node added: {0}",m_ListSelected);
+					objectDB::createInstance(m_ListSelected, m_Context);
+					m_ListSelected = "";
 					ImGui::CloseCurrentPopup();
 				}
 				drawNodeSelectionList();
@@ -109,7 +100,6 @@ namespace luna
 			if (payload != nullptr && payload->DataSize == 0)
 			{
 				Node.addChild(m_SelectionContext);
-				
 			}
 			ImGui::EndDragDropTarget();
 		}
@@ -126,7 +116,7 @@ namespace luna
 		{
 			if (Node.hasComponent<childComponent>())
 			{
-				ImGui::Indent(indent + addIndent);
+				ImGui::Indent(addIndent);
 				auto& childs = Node.getComponent<childComponent>().childs;
 				
 				for (auto child : childs)
@@ -137,7 +127,7 @@ namespace luna
 						drawEntityNode(_Node, indent + addIndent);
 					}
 				}
-				ImGui::Unindent(indent + addIndent);
+				ImGui::Unindent(addIndent);
 			}
 
 			ImGui::TreePop();
@@ -147,6 +137,7 @@ namespace luna
 	}
 	void sceneHierarchyPanel::drawComponents(Node Node)
 	{
+		if (!Node.scene || Node.entityHandle == entt::null ) return;
 		if (Node.hasComponent<idComponent>())
 		{
 			auto& id = Node.getComponent<idComponent>();
@@ -160,10 +151,7 @@ namespace luna
 		if(Node.hasComponent<tagComponent>())
 		{
 			auto& tag = Node.getComponent<tagComponent>().tag;
-			char buffer[256];
-			memset(buffer, 0, sizeof(buffer));
-			strcpy_s(buffer, tag.c_str());
-			if (ImGui::InputText("name", buffer, sizeof(buffer)))tag = std::string(buffer);
+			inputText("name", tag);
 			ImGui::Separator();
 		}
 		if(Node.hasComponent<transformComponent>())
@@ -182,23 +170,23 @@ namespace luna
 		if (Node.hasComponent<spriteRendererComponent>())
 		{
 			auto& sprite = Node.getComponent<spriteRendererComponent>();
-			if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
+			if (sprite.showInEditor)
 			{
-				ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
-				char buffer[256];
-				memset(buffer, 0, sizeof(buffer));
-				strcpy_s(buffer, sprite.filePath.c_str());
-				if (ImGui::InputText("file path", buffer, sizeof(buffer))) sprite.filePath = std::string(buffer);
-				ImGui::SameLine();
-				if(ImGui::Button("select image"))
+				if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
 				{
-					sprite.filePath = luna::platform::os::openFilaDialog("image (*.png)\0*.png\0");
-					sprite.texture = renderer::texture::create(sprite.filePath);
-				}
+					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
+					inputText("filePath", sprite.filePath);
+					ImGui::SameLine();
+					if (ImGui::Button("select image"))
+					{
+						sprite.filePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						sprite.texture = renderer::texture::create(sprite.filePath);
+					}
 
-				ImGui::TreePop();
+					ImGui::TreePop();
+				}
+				ImGui::Separator();
 			}
-			ImGui::Separator();
 		}
 		if (Node.hasComponent<labelRendererComponent>())
 		{
@@ -206,60 +194,143 @@ namespace luna
 			if (ImGui::TreeNodeEx((void*)typeid(labelRendererComponent).hash_code(), 0, "label"))
 			{
 				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
-				char buffer[256];
-				memset(buffer, 0, sizeof(buffer));
-				strcpy_s(buffer, label.filePath.c_str());
-				if (ImGui::InputText("file path", buffer, sizeof(buffer))) label.filePath = std::string(buffer);
+				inputText("file path", label.filePath);
 				ImGui::SameLine();
-				if (ImGui::Button("select image"))
+				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
 					label.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
 					label.font = renderer::font::create(label.filePath);
 				}
-				char labelBuffer[256];
-				memset(labelBuffer, 0, sizeof(labelBuffer));
-				strcpy_s(labelBuffer, label.text.c_str());
-				if (ImGui::InputText("label text", labelBuffer, sizeof(labelBuffer))) label.text = std::string(labelBuffer);
+				inputText("label text", label.text);
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
 		}
+		if(Node.hasComponent<rectComponent>())
+		{
+			auto& rect = Node.getComponent<rectComponent>();
+			if (ImGui::TreeNodeEx((void*)typeid(rectComponent).hash_code(), 0, "color rect"))
+			{
+				ImGui::DragFloat4("color", glm::value_ptr(rect.color), 0.1f);
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
+		if (Node.hasComponent<buttonComponent>())
+		{
+			auto& button = Node.getComponent<buttonComponent>();
+			if (button.showInEditor)
+			{
+				if (ImGui::TreeNodeEx((void*)typeid(buttonComponent).hash_code(), 0, "button"))
+				{
+					if (ImGui::Button("select normal image"))
+					{
+						button.normalFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.normalTexture = renderer::texture::create(button.normalFilePath);
+					}
+					inputText("normal Image", button.normalFilePath);
+
+
+					if (ImGui::Button("select hover image"))
+					{
+						button.hoverFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.hoverTexture = renderer::texture::create(button.hoverFilePath);
+
+					}
+					inputText("hover Image", button.hoverFilePath);
+
+					if (ImGui::Button("select pressed image"))
+					{
+						button.pressedFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.pressedTexture = renderer::texture::create(button.pressedFilePath);
+					}
+					inputText("pressed Image", button.pressedFilePath);
+
+
+					ImGui::TreePop();
+				}
+				ImGui::Separator();
+			}
+		}
+		if (Node.hasComponent<itemList>())
+		{
+			auto& itemList = Node.getComponent<luna::itemList>();
+			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "itemList"))
+			{
+				const char* items[] = { "single","multi" };
+				static int currentItem;
+					
+				ImGui::Combo("select mode", &currentItem, items,2);
+				
+				if (currentItem == 0) itemList.selectMode = luna::itemList::SELECT_SINGLE;
+				else itemList.selectMode = luna::itemList::SELECT_MULTI;
+					
+				if (ImGui::Button("select font"))
+				{
+					//hotpink color code (227,28,121)
+					itemList.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
+					itemList.font = renderer::font::create(itemList.filePath);
+				}
+				if (ImGui::Button("add item"))
+				{
+					nodes::itemListNode itemListNode(Node);
+					itemListNode.addItem("test");
+				}
+				int itemNum = 0;
+				if (ImGui::BeginChild("items"))
+				{
+					for (item& item : itemList.items)
+					{
+						std::string itemText = "item " + std::to_string(itemNum);
+
+						if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, itemText.c_str()))
+						{
+							inputText(itemText, item.text);
+							ImGui::TreePop();
+						}
+						itemNum++;
+					}
+				}
+				ImGui::EndChild();
+			
+				//TODO renderer part.
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
+
 	}
 
 
 	void sceneHierarchyPanel::drawNodeSelectionList()
 	{
-		ImGuiTreeNodeFlags flags = (m_ListSelected == node) ? ImGuiTreeNodeFlags_Selected : 0;
-		bool isOpenNode = ImGui::TreeNodeEx("node", ImGuiTreeNodeFlags_OpenOnArrow | flags, "node");
-		if(isOpenNode)
+		for (auto& [key, value] : objectDB::rootClassDatabase) 
 		{
-			if (ImGui::IsItemClicked()) m_ListSelected = node;
-			ImGui::TreePop();
+			addNodeSelection(key,value);
 		}
-
-		flags = (m_ListSelected == controlNode) ? ImGuiTreeNodeFlags_Selected : 0;
-		if (ImGui::TreeNodeEx("control node", ImGuiTreeNodeFlags_OpenOnArrow | flags, "control node"))
+			
+	}
+	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName,objectDB::classInfo* classInfo)
+	{
+		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeName) ? ImGuiTreeNodeFlags_Selected : 0;
+		bool isOpenNode = ImGui::TreeNodeEx(nodeName.c_str(), ImGuiTreeNodeFlags_OpenOnArrow | flags, nodeName.c_str());
+		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) m_ListSelected = nodeName;
+		if (isOpenNode) ImGui::TreePop();
+		if (classInfo && isOpenNode)
 		{
-			
-			if (ImGui::IsItemClicked()) m_ListSelected = controlNode;
-			
 			ImGui::Indent(10);
-			flags = (m_ListSelected == (spriteNode || labelNode)) ? ImGuiTreeNodeFlags_Selected : 0;
-			if (ImGui::TreeNodeEx("spriteNode", ImGuiTreeNodeFlags_OpenOnArrow | flags, "spriteNode"))
-			{
-				if (ImGui::IsItemClicked()) m_ListSelected = spriteNode;
-				ImGui::TreePop();
-			}
-
-			if (ImGui::TreeNodeEx("labelNode", ImGuiTreeNodeFlags_OpenOnArrow | flags, "labelNode"))
-			{
-				if (ImGui::IsItemClicked()) m_ListSelected = labelNode;
-				ImGui::TreePop();
-			}
-			ImGui::Indent(0);
-			ImGui::TreePop();
-
+			for (auto childClass : classInfo->children) addNodeSelection(childClass->className, childClass);
+			ImGui::Unindent(10);
 		}
+	
+		return isOpenNode;
+	}
+	void sceneHierarchyPanel::inputText(const std::string& name,std::string& stringBuffer)
+	{
+		char buffer[256];
+		memset(buffer, 0, sizeof(buffer));
+		strcpy_s(buffer, stringBuffer.c_str());
+		if (ImGui::InputText(name.c_str(), buffer, sizeof(buffer))) stringBuffer = std::string(buffer);
 	}
 }

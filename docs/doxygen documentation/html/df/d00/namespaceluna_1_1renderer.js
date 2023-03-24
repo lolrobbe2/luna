@@ -78,5 +78,6 @@ var namespaceluna_1_1renderer =
       [ "mat3", "df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dba645a5fcbd75a76b6f6106a998b599524", null ],
       [ "mat4", "df/d00/namespaceluna_1_1renderer.html#a5ba0d97d5965fb3f0cb40ea96e4f57dbaf58f53f29a327d79100b1bb12026bca2", null ]
     ] ],
+    [ "outOfView", "df/d00/namespaceluna_1_1renderer.html#ab4d4f9989fdbaa96e8837441a4cbe979", null ],
     [ "rendererData", "df/d00/namespaceluna_1_1renderer.html#a98a3d639a0aeaf8bc830d3d67e7e3ed6", null ]
 ];

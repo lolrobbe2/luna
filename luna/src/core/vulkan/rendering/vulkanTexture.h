@@ -11,7 +11,7 @@ namespace luna
 		{
 		public:
 			vulkanTexture(const std::string& filePath);
-			vulkanTexture(void* texelData, const glm::vec2& dimensions);
+			vulkanTexture(const uint64_t& handle, const glm::vec2& dimensions);
 			virtual ~vulkanTexture();
 
 			virtual uint32_t getWidth() const override;
@@ -103,6 +103,7 @@ namespace luna
 			virtual ~vulkanFont() = default;
 			virtual ref<renderer::texture> getGlyph(char character) override;
 			virtual glm::vec2 getAdvance(char character) override;
+			virtual glm::vec2 getScale(char character) override;
 		private:
 			/**
 			 * @brief allocates and creates the atlas texture from wich glyph can be sampled from.
@@ -130,7 +131,7 @@ namespace luna
 			};
 			const static int width = 4800;
 			const static int height = 4800;
-	
+			VkBuffer testBuffer = VK_NULL_HANDLE;
 			std::vector<VkBuffer> buffer;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;

@@ -1,6 +1,7 @@
 #pragma once
 #include <core/utils/layer.h>
 #include <panels/sceneHierarchyPanel.h>
+#include <core/events/keyEvent.h>
 namespace luna
 {
 	class editorLayer : public utils::layer
@@ -14,7 +15,10 @@ namespace luna
 		virtual void onUpdate(utils::timestep ts)  override;
 		virtual void onImGuiRender()  override;
 		virtual void onEvent(Event& event) override;
+		bool onKeyPressedEvent(keyPressedEvent& Event);
 	private:
+		void saveAs();
+		void open();
 		ref<scene> activeScene;
 		ref<sceneHierarchyPanel> scenePanel;
 	};

@@ -26,15 +26,21 @@ namespace luna
 
 			virtual bool isLoaded() const = 0;
 
-			//virtual bool operator==(const texture& other) const = 0;
-
+			inline void setDestroy(const bool& destroy) { this->destroy = destroy; };
+			inline void setUv(const glm::vec2& _uvStart,const glm::vec2& _uvEnd) { uvStart = _uvStart; uvEnd = _uvEnd; };
+			std::vector<glm::vec2> getUv() { return{ { uvStart.x, uvStart.y }, { uvEnd.x, uvStart.y }, { uvEnd.x, uvEnd.y }, { uvStart.x, uvEnd.y } }; };
 			static ref<texture> create(const std::string& filePath);
+			static ref<texture> create(const uint64_t& handle,const glm::vec2& dimensions);
 			inline uint64_t handle() { return _handle; };
 		protected:
+			bool destroy = true;
 			uint64_t _handle;
 			void* data;
 			uint32_t width;
 			uint32_t height;
+			glm::vec2 uvStart = {0.0f,0.0f};
+			glm::vec2 uvEnd = { 1.0f,1.0f };
+
 		};
 		/**
 		 * @brief texture2D api.
@@ -83,17 +89,21 @@ namespace luna
 		{
 		public:
 			//16*300 (width) = 4800
-			//14*300 (height) = 4200
+			//16*300 (height) = 4200
 			//32 dec - 127 decimal;
 			virtual ~font() = default;
 			virtual ref<texture> getGlyph(char character) = 0;
 			virtual glm::vec2 getAdvance(char character) = 0;
+			virtual glm::vec2 getScale(char charcater) = 0;
 			uint64_t handle() { return _handle; };
 			static ref<font> create(const std::string& filePath);
 		protected:
+			const static char startIndex = 0;
 			stbtt_fontinfo fontInfo;
 			uint64_t _handle;
 			void* data;
+			std::vector<glm::vec2> glypScales;
+			std::vector<glm::vec2> glypAdvances;
 		private:
 
 		};

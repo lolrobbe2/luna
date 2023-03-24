@@ -1,5 +1,13 @@
 <map id="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/mouseCodes.h" name="C:/Users/robbe/source/repos/lolrobbe2/luna/luna/src/core/events/mouseCodes.h">
-<area shape="rect" id="node1" title=" " coords="29,5,181,75"/>
-<area shape="rect" id="node2" href="$db/d00/mouse_event_8h.html" title=" " coords="29,123,181,192"/>
+<area shape="rect" id="node1" title=" " coords="321,5,473,75"/>
+<area shape="rect" id="node2" href="$db/d00/mouse_event_8h.html" title=" " coords="233,123,385,192"/>
+<area shape="rect" id="node10" href="$de/d00/input_8h.html" title=" " coords="457,130,609,185"/>
 <area shape="rect" id="node3" href="$d1/d00/windows_window_8cpp.html" title=" " coords="5,240,204,309"/>
+<area shape="rect" id="node4" href="$da/d00/scene_8cpp.html" title=" " coords="37,365,241,419"/>
+<area shape="rect" id="node5" href="$da/d00/item_list_node_8h.html" title=" " coords="280,240,471,309"/>
+<area shape="rect" id="node6" href="$d6/d00/scene_hierarchy_panel_8cpp.html" title=" " coords="266,357,485,427"/>
+<area shape="rect" id="node7" href="$d0/d00/class_register_8h.html" title=" " coords="509,357,661,427"/>
+<area shape="rect" id="node9" href="$de/d00/item_list_node_8cpp.html" title=" " coords="685,357,876,427"/>
+<area shape="rect" id="node8" href="$df/d00/application_8cpp.html" title=" " coords="489,475,681,529"/>
+<area shape="rect" id="node11" href="$d9/d00/editor_layer_8cpp.html" title=" " coords="495,247,669,302"/>
 </map>

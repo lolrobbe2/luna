@@ -55,6 +55,9 @@ namespace luna
 			 * 
 			 */
 			static void endScene();
+			inline static glm::vec2 getSceneDimensions() { return rendererPipeline->getDimensions(); };
+
+			inline static glm::vec2 getSceneMousePos() { return rendererPipeline->getWindowMousePos(); };
 		private:
 			inline static ref<device> rendererDevice; //the main renderDevice (GPU handle)
 			inline static ref<pipeline> rendererPipeline;// the main graphics pipeline

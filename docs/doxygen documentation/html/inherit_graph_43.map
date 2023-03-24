@@ -1,3 +1,8 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$da/d00/classluna_1_1utils_1_1layer_stack.html" title=" " coords="5,5,153,31"/>
+<area shape="rect" id="node1" href="$dd/d00/classluna_1_1renderer_1_1texture.html" title="base texture class." coords="5,61,155,87"/>
+<area shape="rect" id="node2" href="$d4/d00/classluna_1_1renderer_1_1texture2_d.html" title="texture2D api." coords="209,8,375,33"/>
+<area shape="rect" id="node4" href="$db/d00/classluna_1_1renderer_1_1texture_atlas.html" title="textureAtlas api." coords="203,61,381,87"/>
+<area shape="rect" id="node6" href="$d4/d00/classluna_1_1vulkan_1_1vulkan_texture.html" title="texture implementation in vulkan." coords="203,111,381,136"/>
+<area shape="rect" id="node3" href="$d0/d00/classluna_1_1vulkan_1_1vulkan_texture2_d.html" title="texture2D api." coords="429,5,623,31"/>
+<area shape="rect" id="node5" href="$d8/d00/classluna_1_1vulkan_1_1vulkan_texture_atlas.html" title="textureAtlas api." coords="437,55,615,95"/>
 </map>

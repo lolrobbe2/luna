@@ -1,0 +1,28 @@
+scene: name
+nodes:
+  - Node:
+      id: 14780562269329931610
+      node type: Node
+      tagComponent:
+        tag: Node
+      childComponent:
+        childId's: [4382792361574518952, 2362694251883723436]
+  - Node:
+      id: 12461016359447832479
+      node type: Node
+      tagComponent:
+        tag: Node
+  - Node:
+      id: 2362694251883723436
+      node type: Node
+      tagComponent:
+        tag: Node
+      parentComponent:
+        parentId: 14780562269329931610
+  - Node:
+      id: 4382792361574518952
+      node type: Node
+      tagComponent:
+        tag: Node
+      parentComponent:
+        parentId: 14780562269329931610
