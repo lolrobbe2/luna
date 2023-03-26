@@ -24,6 +24,7 @@ IncludeDir["spd"] =   "%{wks.location}/luna/thirdParty/spdlog/include"
 IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
 IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
 
+
 IncludeDir["luna"] = "%{wks.location}/luna/src"
 
 LibraryDir = {}
@@ -65,6 +66,7 @@ project "luna"
         "%{IncludeDir.vkb}",
         "%{IncludeDir.imgui}",
         "%{IncludeDir.yaml_cpp}",
+        "%{IncludeDir.mono}",
         "%{IncludeDir.luna}"
         
     }
@@ -95,6 +97,7 @@ project "luna"
             "%{Library.ShaderC}",
 			"%{Library.SPIRV_Cross}",
 			"%{Library.SPIRV_Cross_GLSL}",
+            "%{Library.mono}",
             "GLFW",
             "VkBootstrap",
             "imGui",

@@ -41,3 +41,4 @@ luna/tirdParty/obj/
 #log files
 *.log
 *.json
+/luna/src/core/scripting/scriptEngine.cpp
