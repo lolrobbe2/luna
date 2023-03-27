@@ -22,7 +22,7 @@ namespace luna
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, channels);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY,{(unsigned int)width,(unsigned int)height,1},imageFormat);
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
-				memcpy(data, (void*)image, width * height * channels);
+				memcpy_s(data, width * height * channels, (void*)image, width * height * channels);
 				stbi_image_free(image);
 				utils::vulkanAllocator::uploadTexture(buffer, imageHandle,imageFormat, { width,height,channels });
 				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
@@ -89,7 +89,7 @@ namespace luna
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
-				memcpy(data, (void*)image, width * height * 4);
+				memcpy_s(data,width * height * 4, (void*)image, width * height * 4);
 				stbi_image_free(image);
 				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
 				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
@@ -114,7 +114,7 @@ namespace luna
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
 				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
-				memcpy(data, (void*)image, width * height * channels);
+				memcpy_s(data, width * height * 4, (void*)image, width * height * channels);
 				stbi_image_free(image);
 				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
 				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
@@ -278,6 +278,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 			utils::vulkanAllocator::createBuffer(&testBuffer, 4800 * 4800, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+			size_t bufferSize = utils::vulkanAllocator::getAllocationInfo((uint64_t)testBuffer).size;
 			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)testBuffer).pMappedData;
 			glyph* bufferPtr = (glyph*)bufferBase;
 			uint64_t offset = 0;
@@ -292,20 +293,11 @@ namespace luna
 				
 				if (fontGlyph) 
 				{
-					/*
-					
-					glypScales.push_back(scale);
-					glypAdvances.push_back({ offsetx,offsety});
-					buffer.push_back(VK_NULL_HANDLE);
-					utils::vulkanAllocator::createBuffer(&buffer[index], 300 * 300, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-					memcpy(utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer[index]).pMappedData, fontGlyph, sizeof(glyph));
-					if(imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(this->buffer[index], imageHandle, imageFormat, {300,300,1}, {x * 300,y * 300,0});
-					*/
 					int y = index / 16;
 					int x = index % 16;
 					glypScales.push_back(scale);
 					glypAdvances.push_back({ offsetx,offsety });
-					memcpy(bufferPtr, fontGlyph, sizeof(glyph));
+					memcpy_s(bufferPtr,bufferSize, fontGlyph, sizeof(glyph));
 					bufferPtr++;
 					if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(this->testBuffer, imageHandle, imageFormat, { 300,300,1 },{ x * 300,y * 300,0 },{300,300},offset);
 					offset += sizeof(glyph);
@@ -314,7 +306,6 @@ namespace luna
 				{
 					glypScales.push_back({ 1.0f,1.0f });
 					glypAdvances.push_back({0.0f,0.0f });
-					//buffer.push_back(VK_NULL_HANDLE);
 					bufferPtr++;
 					offset += sizeof(glyph);
 				}

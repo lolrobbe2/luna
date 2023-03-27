@@ -54,6 +54,34 @@ namespace luna
 
 			return std::string();
 		}
+		std::vector<unsigned char> os::openFile(const std::string& filePath)
+		{
+			std::ifstream stream(filePath, std::ios::binary | std::ios::ate);
+
+			if (!stream)
+			{
+				LN_CORE_ERROR("could not open file at {0}", filePath);
+				return std::vector<unsigned char>();
+			}
+
+			std::streampos end = stream.tellg();
+			stream.seekg(0, std::ios::beg);
+			uint32_t size = end - stream.tellg();
+
+			if (size == 0)
+			{
+				LN_CORE_ERROR("file is empty at {0}", filePath);
+				return std::vector<unsigned char>();
+			}
+
+			unsigned char* buffer = new unsigned char[size];
+			stream.read((char*)buffer, size);
+			stream.close();
+			std::vector<unsigned char> file;
+			file.resize(size);
+			memcpy_s(file.data(), file.size(), buffer, size);
+			return file;
+		}
 	}
 }
 
