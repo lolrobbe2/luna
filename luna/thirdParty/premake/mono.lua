@@ -1,10 +1,2 @@
-IncludeDir["mono"] =  "%{wks.location}/luna/thirdParty/mono/include"
-LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/%{cfg.buildcfg}"
-filter "configurations:debug"
-    Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
-filter "configurations:release"
-    Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
-filter "configurations:distribution"
-    LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release"
-    Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
+
 

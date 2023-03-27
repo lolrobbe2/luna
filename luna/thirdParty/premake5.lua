@@ -6,6 +6,5 @@ include "premake/VkBootstrap.lua"
 include "premake/ImGui.lua"
 include "premake/stb.lua"
 include "premake/yaml-cpp"
-include "premake/mono.lua"
 
 group ""

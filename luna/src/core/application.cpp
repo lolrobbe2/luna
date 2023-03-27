@@ -3,6 +3,7 @@
 #include <core/application.h>
 #include <core/scene/scene.h>
 #include <core/object/classRegister.h>
+#include <core/scripting/scriptingEngine.h>
 namespace luna
 {
 	namespace application
@@ -21,6 +22,9 @@ namespace luna
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
 			nodes::classRegister::registerClasses();
+			scripting::scriptingEngine::init();
+			auto assambly = scripting::scriptingEngine::loadCSharpAssembly("bin/lib/scriptCore.dll");
+			scripting::scriptingEngine::printAssamblyTypes(assambly);
 			LN_PROFILE_END_SESSION();
 			
 		}
@@ -28,6 +32,7 @@ namespace luna
 		{
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
 			renderer::renderer2D::shutdown();
+			scripting::scriptingEngine::shutdown();
 			LN_PROFILE_END_SESSION();
 		}
 

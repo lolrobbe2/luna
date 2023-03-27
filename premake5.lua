@@ -1,4 +1,8 @@
 buildmessage ("message")
+flags
+{
+    "MultiProcessorCompile"
+}
 startproject "sandbox"
 workspace "luna"
     architecture "x64"
@@ -23,7 +27,7 @@ IncludeDir["stb"] =   "%{wks.location}/luna/thirdParty/stb"
 IncludeDir["spd"] =   "%{wks.location}/luna/thirdParty/spdlog/include"
 IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
 IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
-
+IncludeDir["mono"] =  "%{wks.location}/luna/thirdParty/mono/include"
 
 IncludeDir["luna"] = "%{wks.location}/luna/src"
 
@@ -38,6 +42,7 @@ Library["ShaderC"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
 Library["SPIRV_Cross"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
 Library["SPIRV_Cross_GLSL"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
 Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
+
 
 
 include "luna/thirdParty/"
@@ -97,7 +102,6 @@ project "luna"
             "%{Library.ShaderC}",
 			"%{Library.SPIRV_Cross}",
 			"%{Library.SPIRV_Cross_GLSL}",
-            "%{Library.mono}",
             "GLFW",
             "VkBootstrap",
             "imGui",
@@ -106,45 +110,63 @@ project "luna"
             "vulkan-1"
         }
         filter "configurations:debug"
-        defines
-        {
-            "_CRT_SECURE_NO_WARNINGS",
-            "LN_BUILD_DLL",
-            "_WINDLL",
-            "LN_DEBUG"
-           
-        }
-        runtime "Debug"
-        symbols "On"
+            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
+            Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
+            links
+            {
+                "%{Library.mono}"
+            }
+            defines
+            {
+                "_CRT_SECURE_NO_WARNINGS",
+                "LN_BUILD_DLL",
+                "_WINDLL",
+                "LN_DEBUG"
+            
+            }
+            runtime "Debug"
+            symbols "On"
   
         filter "configurations:release"
-        defines
-        {
-            "_CRT_SECURE_NO_WARNINGS",
-            "LN_BUILD_DLL",
-            "_WINDLL",
-            "LN_RELEASE"
-           
-        }
-        runtime "Release"
-        optimize "On"
+            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
+            Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
+            links
+            {
+                "%{Library.mono}"
+            }
+            defines
+            {
+                "_CRT_SECURE_NO_WARNINGS",
+                "LN_BUILD_DLL",
+                "_WINDLL",
+                "LN_RELEASE"
+            
+            }
+            runtime "Release"
+            optimize "On"
 
         filter "configurations:distribution"
-        defines
-        {
-            "_CRT_SECURE_NO_WARNINGS",
-            "LN_BUILD_DLL",
-            "_WINDLL",
-            "LN_DISTRIBUTION"
-           
-        }
-        runtime "Release"
-        symbols "Off"
-        optimize "On"
-        buildoptions 
-        {
-            "-mwindows"
-        }
+            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
+            Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
+            links
+            {
+                "%{Library.mono}"
+            }
+            defines
+            {
+                "_CRT_SECURE_NO_WARNINGS",
+                "LN_BUILD_DLL",
+                "_WINDLL",
+                "LN_DISTRIBUTION"
+            
+            }
+            runtime "Release"
+            symbols "Off"
+            optimize "On"
+            buildoptions 
+            {
+                "-mwindows"
+            }
 
 project "scriptCore"
     location "scriptCore"
