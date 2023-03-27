@@ -146,9 +146,16 @@ project "luna"
             "-mwindows"
         }
 
-
-
-
+project "scriptCore"
+    location "scriptCore"
+    kind "SharedLib"
+    language "c#"
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    files
+    {
+        "%{prj.name}/src/**.cs"
+    }
  
 project "sandbox"
     location "sandbox"
