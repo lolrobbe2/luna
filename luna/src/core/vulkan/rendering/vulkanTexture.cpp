@@ -45,7 +45,6 @@ namespace luna
 			if (!destroy) return;
 			utils::vulkanAllocator::destroyImageView(imageViewHandle);
 			utils::vulkanAllocator::destroyImage(imageHandle);
-			
 		}
 		uint32_t vulkanTexture::getWidth() const
 		{
@@ -228,6 +227,11 @@ namespace luna
 				fontFile.close();
 			}
 		}
+		vulkanFont::~vulkanFont() 
+		{
+			utils::vulkanAllocator::destroyImageView(imageViewHandle);
+			utils::vulkanAllocator::destroyImage(imageHandle);
+		}
 		ref<renderer::texture> vulkanFont::getGlyph(char character)
 		{
 			LN_PROFILE_FUNCTION();
@@ -277,9 +281,9 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
-			utils::vulkanAllocator::createBuffer(&testBuffer, 4800 * 4800, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-			size_t bufferSize = utils::vulkanAllocator::getAllocationInfo((uint64_t)testBuffer).size;
-			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)testBuffer).pMappedData;
+			utils::vulkanAllocator::createBuffer(&imageBuffer, 4800 * 4800, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+			size_t bufferSize = utils::vulkanAllocator::getAllocationInfo((uint64_t)imageBuffer).size;
+			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)imageBuffer).pMappedData;
 			glyph* bufferPtr = (glyph*)bufferBase;
 			uint64_t offset = 0;
 			for (size_t i = startIndex; i < 256; i++)
@@ -299,7 +303,7 @@ namespace luna
 					glypAdvances.push_back({ offsetx,offsety });
 					memcpy_s(bufferPtr,bufferSize, fontGlyph, sizeof(glyph));
 					bufferPtr++;
-					if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(this->testBuffer, imageHandle, imageFormat, { 300,300,1 },{ x * 300,y * 300,0 },{300,300},offset);
+					if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(imageBuffer, imageHandle, imageFormat, { 300,300,1 },{ x * 300,y * 300,0 },{300,300},offset);
 					offset += sizeof(glyph);
 				}
 				else 

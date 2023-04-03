@@ -109,8 +109,8 @@ namespace luna
 			ImGui::SaveIniSettingsToDisk("guiConfig.ini");
 			ref<renderer::device> device = std::dynamic_pointer_cast<vulkan::vulkanPipeline>(pipeline)->layout.device;
 			vkb::Device vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->getDeviceHandles().device;
-
-			vkDestroyDescriptorPool(vDevice, imguiPool, nullptr);
+			std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->destroyViewport();
+			//vkDestroyDescriptorPool(vDevice, imguiPool, nullptr);
 			ImGui_ImplVulkan_Shutdown();
 		}
 	}

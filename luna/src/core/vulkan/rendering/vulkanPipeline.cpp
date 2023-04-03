@@ -68,9 +68,13 @@ namespace luna
 			{
 				vkDestroyShaderModule(device, shaderModule, nullptr);
 			}
-			vkDestroyRenderPass(device, renderPass, nullptr);
-			vkDestroyPipeline(device, pipeline, nullptr);
-			vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
+			destroySyncStructures();
+			if(renderPass) vkDestroyRenderPass(device, renderPass, nullptr);
+			if(pipeline) vkDestroyPipeline(device, pipeline, nullptr);
+			if(pipelineLayout) vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
+			renderPass = VK_NULL_HANDLE;
+			pipelineLayout = VK_NULL_HANDLE;
+			pipeline = VK_NULL_HANDLE;
 		}
 
 		void vulkanPipeline::createCommands()

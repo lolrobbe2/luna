@@ -8,7 +8,7 @@ namespace luna
 		class vertexArray
 		{
 		public:
-			virtual ~vertexArray(){};
+			virtual ~vertexArray() { vertexBuffers.clear(); indexBuffer.~shared_ptr(); };
 
 			virtual void bind() const = 0;
 			virtual void unbind() const = 0;

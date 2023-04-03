@@ -81,11 +81,12 @@ namespace luna
 		{
 			LN_PROFILE_SCOPE("shutdown renderer2D");
 			renderer::beginScene(); //to clear draw commands
-			rendererData.vertexArray = nullptr;
-			rendererData.quadIndexBuffer = nullptr;
+			renderer::endScene();
+			rendererData.vertexArray.~shared_ptr();
+			rendererData.quadIndexBuffer.~shared_ptr();
 
-			rendererData.quadVertexBuffer = nullptr;
-
+			rendererData.quadVertexBuffer.~shared_ptr();
+			blankImage.~shared_ptr();
 			renderer::shutdown();
 		}
 
@@ -94,7 +95,7 @@ namespace luna
 			LN_PROFILE_SCOPE("begin scene");
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
-			//we use memset because it gets fully transformed in to pure assembly an is thus the fastest way to reset the vertewBUffer.
+			//we use memset because it gets fully transformed in to pure assembly an is thus the fastest way to reset the vertexBUffer.
 			memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;

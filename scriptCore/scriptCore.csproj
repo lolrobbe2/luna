@@ -56,6 +56,7 @@
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'distribution|x64' ">
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\CSharpTester.cs" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

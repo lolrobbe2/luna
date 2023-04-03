@@ -1,7 +1,7 @@
 #include <lnpch.h>
 #include <core/vulkan/device/vulkanDevice.h>
 #include <core/utils/shaderLibrary.h>
-
+#include <core/vulkan/utils/vulkanAllocator.h>
 
 namespace luna
 {
@@ -37,10 +37,12 @@ namespace luna
 
 		void vulkanDevice::destroyContext()
 		{
-			swapchain->~vulkanSwapchain();
-			vkDestroySurfaceKHR(deviceHandle.instance, surface, nullptr);
-			vkDestroyDevice(deviceHandle.device, nullptr);
-			vkDestroyInstance(deviceHandle.instance, nullptr);
+			swapchain.~shared_ptr();
+			swapchain = nullptr;
+			utils::vulkanAllocator::shutdown();
+			vkb::destroy_surface(deviceHandle.instance, surface);
+			vkb::destroy_device(deviceHandle.device);
+			vkb::destroy_instance(deviceHandle.instance);
 		}
 		//TODO needs to be placed in swapchain.
 		VkResult vulkanDevice::createFramebuffers(VkRenderPass renderPass)

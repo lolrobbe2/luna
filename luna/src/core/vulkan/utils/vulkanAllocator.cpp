@@ -144,7 +144,6 @@ namespace luna
 			uint64_t handle = (uint64_t)*pBuffer;
 			vmaAllocation vmaAlloc = { allocation,allocationInfo };
 			allocations.putValue(&handle, vmaAlloc);
-			
 			return bufferCreateResult;
 		}
 		void vulkanAllocator::destroyBuffer(VkBuffer& buffer)

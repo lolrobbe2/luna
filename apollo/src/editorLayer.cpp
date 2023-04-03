@@ -18,6 +18,7 @@ namespace luna
 	}
 	void editorLayer::onDetach()
 	{
+		activeScene.~shared_ptr();
 	}
 	void editorLayer::onUpdate(utils::timestep ts)
 	{

@@ -18,7 +18,6 @@ namespace luna
 			virtual ~device() {};
 			virtual void createContext() = 0;
 			virtual void destroyContext()  = 0;
-			
 			/**
 			 * @brief this is the reference to the main window.
 			 */

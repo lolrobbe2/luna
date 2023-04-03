@@ -38,9 +38,9 @@ namespace luna
 		}
 		void renderer::shutdown()
 		{
-			gui = nullptr;
-			rendererPipeline = nullptr;
-			rendererDevice = nullptr; 
+			gui.~shared_ptr();
+			rendererPipeline.~shared_ptr();
+			rendererDevice.~shared_ptr();
 		}
 
 		void renderer::createFrame()

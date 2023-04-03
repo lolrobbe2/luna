@@ -23,7 +23,7 @@ namespace luna
 			renderer::renderer2D::init();
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
-			auto assambly = scripting::scriptingEngine::loadCSharpAssembly("bin/lib/scriptCore.dll");
+			auto assambly = scripting::scriptingEngine::loadCSharpAssembly("mono/lib/scriptCore.dll");
 			scripting::scriptingEngine::printAssamblyTypes(assambly);
 			LN_PROFILE_END_SESSION();
 			
@@ -31,8 +31,10 @@ namespace luna
 		application::~application()
 		{
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
+			layerStack.~layerStack();
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
+
 			LN_PROFILE_END_SESSION();
 		}
 

@@ -7,6 +7,7 @@ namespace luna
 		
 		void scriptingEngine::init()
 		{
+			
 			mono_set_assemblies_path("mono/lib");
 
 			MonoDomain* rootDomain = mono_jit_init("lunaRt");
@@ -17,7 +18,7 @@ namespace luna
 			}
 			s_RootDomain = rootDomain;
 
-			s_AppDomain = mono_domain_create_appdomain("MyAppDomain", nullptr);
+			s_AppDomain = mono_domain_create_appdomain("lunaDomain", nullptr);
 			mono_domain_set(s_AppDomain, true);
 		}
 		void scriptingEngine::shutdown()
