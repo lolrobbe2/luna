@@ -1,17 +1,23 @@
 ﻿using System;
 
-public class CSharpTesting
+namespace Luna
 {
-    public float MyPublicFloatVar = 5.0f;
-
-    public void PrintFloatVar()
+    public class Main
     {
-        Console.WriteLine("MyPublicFloatVar = {0:F}", MyPublicFloatVar);
-    }
+        public float MyPublicFloatVar = 5.0f;
+        public Main()
+        {
+            PrintFloatVar();
+        }
+        public void PrintFloatVar()
+        {
+            Console.WriteLine("MyPublicFloatVar = {0:F}", MyPublicFloatVar);
+        }
 
-    private void IncrementFloatVar(float value)
-    {
-        MyPublicFloatVar += value;
-    }
+        private void IncrementFloatVar(float value)
+        {
+            MyPublicFloatVar += value;
+        }
 
+    }
 }

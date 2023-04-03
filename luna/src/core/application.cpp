@@ -23,8 +23,7 @@ namespace luna
 			renderer::renderer2D::init();
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
-			auto assambly = scripting::scriptingEngine::loadCSharpAssembly("mono/lib/scriptCore.dll");
-			scripting::scriptingEngine::printAssamblyTypes(assambly);
+
 			LN_PROFILE_END_SESSION();
 			
 		}

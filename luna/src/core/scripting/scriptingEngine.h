@@ -27,6 +27,7 @@ namespace luna
 		private:
 			inline static MonoDomain* s_RootDomain;
 			inline static MonoDomain* s_AppDomain;
+			inline static MonoClass* s_AppClass;
 		};
 	}
 }
