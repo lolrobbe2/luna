@@ -178,6 +178,10 @@ project "scriptCore"
     {
         "%{prj.name}/src/**.cs"
     }
+        postbuildcommands
+    {
+        ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}apollo/mono/lib")
+    }
  
 project "sandbox"
     location "sandbox"

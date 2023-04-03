@@ -22,11 +22,12 @@ namespace luna
 			mono_domain_set(s_AppDomain, true);
 			auto assambly = loadCSharpAssembly("mono/lib/scriptCore.dll");
 			printAssamblyTypes(assambly);
-
+			/*
 			MonoImage* assemblyImage = mono_assembly_get_image(assambly);
 			MonoClass* monoCLass = mono_class_from_name(assemblyImage, "Luna", "Main");
 			MonoObject* instance = mono_object_new(s_AppDomain, monoCLass);
 			mono_runtime_object_init(instance);
+			*/
 		}
 		void scriptingEngine::shutdown()
 		{
