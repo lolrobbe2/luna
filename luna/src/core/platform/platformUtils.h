@@ -11,6 +11,7 @@ namespace luna
 			static std::string openFilaDialog(const char* filter);
 			static std::string saveFileDialog(const char* filter);
 			static std::vector<unsigned char> openFile(const std::string& filePath);
+			static std::string getCurrentWorkingDirectory();
 		};
 	}
 }

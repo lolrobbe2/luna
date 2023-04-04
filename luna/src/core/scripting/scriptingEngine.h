@@ -1,8 +1,10 @@
 #pragma once
 #include <core/core.h>
+#include <core/scene/scene.h>
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/attrdefs.h>
+
 
 namespace luna
 {
@@ -21,16 +23,15 @@ namespace luna
 			};
 			static void init();
 			static void shutdown();
+			static void initMono();
+			static bool loadAssembly(const std::filesystem::path& filepath);
+			static bool loadAppAssembly(const std::filesystem::path& filepath);
 			static MonoAssembly* loadCSharpAssembly(const std::string& assemblyPath);
 			static uint8_t getFieldAccessibility(MonoClassField* field);
 			static void printAssamblyTypes(MonoAssembly* assembly);
-
-			_ALWAYS_INLINE_ static MonoImage* getImage() { return s_AppImage; };
+			static scene* getContext();
 		private:
-			inline static MonoDomain* s_RootDomain;
-			inline static MonoDomain* s_AppDomain;
-			inline static MonoClass* s_AppClass;
-			inline static MonoImage* s_AppImage;
+
 		};
 
 		/**
@@ -45,8 +46,6 @@ namespace luna
 
 		private:
 			MonoClass* root;
-			std::map<std::string, MonoMethod*> methods;
-			std::map<std::string, MonoMethod*> signals;
 		};
 
 		class scriptClass

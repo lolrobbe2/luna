@@ -4,7 +4,7 @@
 #include <GLFW/glfw3native.h>
 #include <core/application.h>
 #include <core/input.h>
-
+#include <filesystem>
 namespace luna 
 {
 	namespace platform
@@ -81,6 +81,11 @@ namespace luna
 			file.resize(size);
 			memcpy_s(file.data(), file.size(), buffer, size);
 			return file;
+		}
+		std::string os::getCurrentWorkingDirectory()
+		{
+			char buff[FILENAME_MAX];
+			return _getcwd(buff, FILENAME_MAX);
 		}
 	}
 }

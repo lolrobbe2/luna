@@ -1,39 +1,111 @@
 #include "scriptingEngine.h"
 #include <core/platform/platformUtils.h>
+#include <mono/metadata/mono-debug.h>
+#include <mono/metadata/threads.h>
 namespace luna
 {
 	namespace scripting
 	{
 		
+		struct scriptEngineData 
+		{
+			MonoDomain* rootDomain;
+			MonoDomain* appDomain;
+			MonoAssembly* coreAssembly;
+			MonoImage* coreImage;
+
+			MonoAssembly* appAssembly;
+			MonoImage* appImage;
+			scene* m_Context;
+
+			std::filesystem::path coreAssemblyFilepath;
+			std::filesystem::path appAssemblyFilepath;
+
+			bool enableDebugging = false;
+
+			scene* sceneContext = nullptr;
+		};
+
+		static scriptEngineData* s_Data = nullptr;
+
 		void scriptingEngine::init()
 		{
-			
-			mono_set_assemblies_path("mono/lib");
 
-			MonoDomain* rootDomain = mono_jit_init("lunaRt");
-			if (rootDomain == nullptr)
-			{
-				LN_CORE_ERROR("could not init jit");
-				return;
-			}
-			s_RootDomain = rootDomain;
-
-			s_AppDomain = mono_domain_create_appdomain("lunaDomain", nullptr);
-			mono_domain_set(s_AppDomain, true);
-			auto assambly = loadCSharpAssembly("mono/lib/scriptCore.dll");
-			printAssamblyTypes(assambly);
+			if (!loadAssembly("mono/lib/scriptCore.dll")) return LN_CORE_ERROR("[scrriptingEngine] could not load scriptCore.dll");
+			if(!loadAppAssembly()){}
 			
-			s_AppImage = mono_assembly_get_image(assambly);
-			MonoClass* monoCLass = mono_class_from_name(s_AppImage, "Luna", "Main");
-			MonoObject* instance = mono_object_new(s_AppDomain, monoCLass);
-			mono_runtime_object_init(instance);
-			MonoClass* otherMonoCLass = mono_class_get_parent(monoCLass);
-			const char* name = mono_class_get_name(otherMonoCLass);
-			LN_CORE_INFO("other class name = {0}", name);
 		}
+
 		void scriptingEngine::shutdown()
 		{
+			mono_domain_set(mono_get_root_domain(), false);
+
+			mono_domain_unload(s_Data->appDomain);
+			s_Data->appDomain = nullptr;
+
+			mono_jit_cleanup(s_Data->rootDomain);
+			s_Data->rootDomain = nullptr;
+
+			delete s_Data;
 		}
+
+		void scriptingEngine::initMono() 
+		{
+			mono_set_dirs(platform::os::getCurrentWorkingDirectory().c_str(), "mono/etc");
+
+			if (s_Data->enableDebugging)
+			{
+				const char* argv[2] = {
+					"--debugger-agent=transport=dt_socket,address=127.0.0.1:2550,server=y,suspend=n,loglevel=3,logfile=MonoDebugger.log",
+					"--soft-breakpoints"
+				};
+
+				mono_jit_parse_options(2, (char**)argv);
+				mono_debug_init(MONO_DEBUG_FORMAT_MONO);
+			}
+
+			MonoDomain* rootDomain = mono_jit_init("LunaJitRt");
+			if (!rootDomain) LN_CORE_INFO("could not init LunaJitRt");
+
+			// Store the root domain pointer
+			s_Data->rootDomain = rootDomain;
+
+			if (s_Data->enableDebugging)
+				mono_debug_domain_create(s_Data->rootDomain);
+
+			mono_thread_set_main(mono_thread_current());
+		}
+
+		bool scriptingEngine::loadAssembly(const std::filesystem::path& filepath)
+		{
+			// Create an App Domain
+			s_Data->appDomain = mono_domain_create_appdomain("lunaScriptRt", nullptr);
+			mono_domain_set(s_Data->appDomain, true);
+
+			s_Data->coreAssemblyFilepath = filepath;//todo pdb
+			s_Data->coreAssembly = loadCSharpAssembly((const char*)filepath.c_str());
+			if (!s_Data->coreAssembly)
+				return false;
+
+			s_Data->coreImage = mono_assembly_get_image(s_Data->coreAssembly);
+			return true;
+		}
+
+		bool scriptingEngine::loadAppAssembly(const std::filesystem::path& filepath)
+		{
+			s_Data->appAssemblyFilepath = filepath;
+			s_Data->appAssembly = loadCSharpAssembly((const char*)filepath.c_str());
+			if (s_Data->appAssembly)
+				return false;
+
+			s_Data->appImage = mono_assembly_get_image(s_Data->appAssembly);
+			/* TODO hot reloading code
+			s_Data->appAssemblyFileWatcher = createScope<filewatch::FileWatch<std::string>>(filepath.string(), OnAppAssemblyFileSystemEvent);
+			s_Data->assemblyReloadPending = false;
+			*/
+			return true;
+		}
+
 		MonoAssembly* scriptingEngine::loadCSharpAssembly(const std::string& assemblyPath)
 		{
 			std::vector<unsigned char> fileData = platform::os::openFile(assemblyPath);

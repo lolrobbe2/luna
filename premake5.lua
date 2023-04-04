@@ -3,6 +3,9 @@ flags
 {
     "MultiProcessorCompile"
 }
+
+
+
 startproject "sandbox"
 workspace "luna"
     architecture "x64"
@@ -46,6 +49,7 @@ Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
 
 
 include "luna/thirdParty/"
+group"core"
 project "luna"
     location "luna"
     kind "SharedLib"
@@ -182,7 +186,7 @@ project "scriptCore"
     {
         ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}apollo/mono/lib")
     }
- 
+group""
 project "sandbox"
     location "sandbox"
     kind "ConsoleApp"
@@ -244,7 +248,7 @@ project "sandbox"
         {
             "-mwindows"
         }
-
+group"core"
 project "apollo"
     location "apollo"
     kind "ConsoleApp"
@@ -306,4 +310,4 @@ project "apollo"
         {
             "-mwindows"
         }
-
+group""

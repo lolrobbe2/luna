@@ -5,7 +5,7 @@ namespace Luna
 {
     class ControlNode : Node
     {
-        void onUpdate()
+        void ready()
         {
             SetName("test");
         }
