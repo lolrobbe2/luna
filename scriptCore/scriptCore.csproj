@@ -21,7 +21,8 @@
     <OutputPath>..\bin\debug-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\debug-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -33,7 +34,8 @@
     <OutputPath>..\bin\release-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\release-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -45,7 +47,8 @@
     <OutputPath>..\bin\distribution-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\distribution-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -56,7 +59,8 @@
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'distribution|x64' ">
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\CSharpTester.cs" />
+    <Compile Include="src\controlNodes\controlNode.cs" />
+    <Compile Include="src\Node.cs" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

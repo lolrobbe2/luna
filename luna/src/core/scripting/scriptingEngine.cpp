@@ -22,12 +22,14 @@ namespace luna
 			mono_domain_set(s_AppDomain, true);
 			auto assambly = loadCSharpAssembly("mono/lib/scriptCore.dll");
 			printAssamblyTypes(assambly);
-			/*
-			MonoImage* assemblyImage = mono_assembly_get_image(assambly);
-			MonoClass* monoCLass = mono_class_from_name(assemblyImage, "Luna", "Main");
+			
+			s_AppImage = mono_assembly_get_image(assambly);
+			MonoClass* monoCLass = mono_class_from_name(s_AppImage, "Luna", "Main");
 			MonoObject* instance = mono_object_new(s_AppDomain, monoCLass);
 			mono_runtime_object_init(instance);
-			*/
+			MonoClass* otherMonoCLass = mono_class_get_parent(monoCLass);
+			const char* name = mono_class_get_name(otherMonoCLass);
+			LN_CORE_INFO("other class name = {0}", name);
 		}
 		void scriptingEngine::shutdown()
 		{
@@ -96,5 +98,21 @@ namespace luna
 				LN_CORE_INFO("type def: {0}.{1}", nameSpace, name);
 			}
 		}
-	}
+
+
+		rootClass::rootClass(MonoClass* childClass)
+		{
+			
+		}
+
+		scriptClass::scriptClass(std::string nodeName)
+		{
+			mono_class_from_name(scriptingEngine::getImage(), "luna", nodeName.c_str());
+			readyMethod = mono_class_get_method_from_name(baseClass, "ready", 0);
+			processMethod = mono_class_get_method_from_name(baseClass, "process", 1);
+			physicsProcessMethod = mono_class_get_method_from_name(baseClass, "physicsProcess", 1);
+
+		}
+
+}
 }
