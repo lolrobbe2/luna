@@ -3,8 +3,11 @@ using Luna;
 
 namespace Luna
 {
-    class controlNode : node
+    class ControlNode : Node
     {
-
+        void onUpdate()
+        {
+            SetName("test");
+        }
     }
 }

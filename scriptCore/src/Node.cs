@@ -3,10 +3,22 @@ using System.Runtime.CompilerServices;
 
 namespace Luna
 {
-    class node
+    class Node
     {
+        /// <summary>
+        /// sets the node name
+        /// </summary>
+        /// <param name="name">string name</param>
+        public void SetName(string name) { NodeSetName(NodeId, name); }
+
+        /*internal calls perNode*/
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        internal extern static void setName(string name);
+        internal extern static void NodeSetName(ulong NodeId,string name);
+
+        protected Node() { NodeId = 0; }
+        internal Node(ulong id) { NodeId = id; }
+
+        public readonly ulong NodeId;
     }
 
 }
