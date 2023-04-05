@@ -7,6 +7,14 @@ namespace luna
 	namespace scripting
 	{
 		
+
+		_ALWAYS_INLINE_ static std::string pascalToCamel(const std::string& pascalText)
+		{
+			std::string camelText = pascalText;
+			camelText[0] = std::tolower(pascalText[0]);
+			return camelText;
+		}
+
 		struct scriptEngineData 
 		{
 			MonoDomain* rootDomain;
@@ -35,6 +43,11 @@ namespace luna
 			if (!loadAssembly("mono/lib/scriptCore.dll")) return LN_CORE_ERROR("[scriptingEngine] could not load scriptCore.dll");
 			if (!loadAppAssembly("mono/lib/sharpSandbox.dll")) return LN_CORE_ERROR("[scriptingEngine] could not load app assembly dll");
 			
+			printAssamblyTypes(s_Data->coreAssembly);
+			printAssamblyTypes(s_Data->appAssembly);
+
+			loadCoreClasses();
+			loadAppClasses();
 			LN_CORE_INFO("started scriptingEngine");
 		}
 
@@ -174,25 +187,83 @@ namespace luna
 			}
 		}
 
+		void scriptingEngine::loadCoreClasses() 
+		{
+			const MonoTableInfo* typeDefinitionsTable = mono_image_get_table_info(s_Data->coreImage, MONO_TABLE_TYPEDEF);
+			int32_t numTypes = mono_table_info_get_rows(typeDefinitionsTable);
+
+			for (int32_t i = 1; i < numTypes; i++)
+			{
+				uint32_t cols[MONO_TYPEDEF_SIZE];
+				mono_metadata_decode_row(typeDefinitionsTable, i, cols, MONO_TYPEDEF_SIZE);
+
+				const char* nameSpace = mono_metadata_string_heap(s_Data->coreImage, cols[MONO_TYPEDEF_NAMESPACE]);
+				const char* className = mono_metadata_string_heap(s_Data->coreImage, cols[MONO_TYPEDEF_NAME]);
+				
+				std::string fullName;
+				if (strlen(nameSpace) != 0)
+					fullName = fmt::format("{}.{}", nameSpace, className);
+				else
+					fullName = className;
+
+				MonoClass* monoClass = mono_class_from_name(s_Data->coreImage, nameSpace, className);
+				std::string camelCaseClassName = pascalToCamel(className);
+				if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
+				else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace( camelCaseClassName, rootClass(monoClass) );
+				else LN_CORE_WARN("could not find {0} inside ObjectDB", camelCaseClassName);
+			}
+			//mono_field_get_value()
+		}
+
+		void scriptingEngine::loadAppClasses() 
+		{
+			const MonoTableInfo* typeDefinitionsTable = mono_image_get_table_info(s_Data->appImage, MONO_TABLE_TYPEDEF);
+			int32_t numTypes = mono_table_info_get_rows(typeDefinitionsTable);
+
+			for (int32_t i = 1; i < numTypes; i++)
+			{
+				uint32_t cols[MONO_TYPEDEF_SIZE];
+				mono_metadata_decode_row(typeDefinitionsTable, i, cols, MONO_TYPEDEF_SIZE);
+
+				const char* nameSpace = mono_metadata_string_heap(s_Data->appImage, cols[MONO_TYPEDEF_NAMESPACE]);
+				const char* className = mono_metadata_string_heap(s_Data->appImage, cols[MONO_TYPEDEF_NAME]);
+
+				std::string fullName;
+				if (strlen(nameSpace) != 0)
+					fullName = fmt::format("{}.{}", nameSpace, className);
+				else
+					fullName = className;
+
+				MonoClass* monoClass = mono_class_from_name(s_Data->appImage, nameSpace, className);
+				MonoClass* monoParentClass = mono_class_get_parent(monoClass);
+				std::string parentName = mono_class_get_name(monoParentClass);
+				if (!(rootClasses.find(pascalToCamel(parentName)) != rootClasses.end() || parentName == "Node"))
+				{
+					LN_CORE_WARN("[scriptingEgine] unrecognized class found {}.{}", nameSpace, className);
+					break;
+				}
+				appClasses.emplace(className,scriptClass(monoClass, rootClasses.find(pascalToCamel(parentName))->second));
+			}
+
+		}
+
 		scene* scriptingEngine::getContext()
 		{
 			return s_Data->m_Context;
 		}
 
 
-		rootClass::rootClass(MonoClass* childClass)
+		rootClass::rootClass(MonoClass* childClass) : root(childClass)
 		{
 			
 		}
 
-		scriptClass::scriptClass(std::string nodeName)
+		scriptClass::scriptClass(MonoClass* _childClass, MonoClass* _baseClass) : childClass(_childClass),baseClass(_baseClass)
 		{
-			mono_class_from_name(s_Data->appImage, "luna", nodeName.c_str());
 			readyMethod = mono_class_get_method_from_name(baseClass, "ready", 0);
 			processMethod = mono_class_get_method_from_name(baseClass, "process", 1);
 			physicsProcessMethod = mono_class_get_method_from_name(baseClass, "physicsProcess", 1);
 
 		}
-
-}
+	}
 }

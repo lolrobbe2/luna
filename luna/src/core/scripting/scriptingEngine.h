@@ -10,6 +10,37 @@ namespace luna
 {
 	namespace scripting
 	{
+
+		/**
+		 * @brief a root class represents the C# node implementation from wich the instantiated class inhertits.
+		 */
+		class rootClass
+		{
+		public:
+			rootClass() = default;
+			rootClass(MonoClass* childClass);
+			virtual ~rootClass() = default;
+			operator MonoClass* () { return root; };
+		private:
+			MonoClass* root;
+		};
+
+		class scriptClass
+		{
+		public:
+			scriptClass() = default;
+			scriptClass(MonoClass* childClass,MonoClass* baseClass);
+			virtual ~scriptClass() = default;
+
+		private:
+			MonoClass* childClass;
+			MonoClass* baseClass;
+
+			MonoMethod* readyMethod = nullptr;
+			MonoMethod* processMethod = nullptr;
+			MonoMethod* physicsProcessMethod = nullptr;
+		};
+
 		class scriptingEngine
 		{
 		public: 
@@ -29,39 +60,15 @@ namespace luna
 			static MonoAssembly* loadCSharpAssembly(const std::string& assemblyPath);
 			static uint8_t getFieldAccessibility(MonoClassField* field);
 			static void printAssamblyTypes(MonoAssembly* assembly);
+			static void loadCoreClasses();
+			static void loadAppClasses();
 			static scene* getContext();
 		private:
-
+			inline static std::map<std::string, rootClass> rootClasses;
+			inline static std::map<std::string, scriptClass> appClasses;
 		};
 
-		/**
-		 * @brief a root class represents the C# node implementation from wich the instantiated class inhertits.
-		 */
-		class rootClass
-		{
-		public:
-			rootClass() = default;
-			rootClass(MonoClass* childClass);
-			~rootClass();
 
-		private:
-			MonoClass* root;
-		};
 
-		class scriptClass
-		{
-		public:
-			scriptClass() = default;
-			scriptClass(std::string nodeName);
-			~scriptClass();
-
-		private:
-			MonoClass* childClass;
-			MonoClass* baseClass;
-
-			MonoMethod* readyMethod = nullptr;
-			MonoMethod* processMethod = nullptr;
-			MonoMethod* physicsProcessMethod = nullptr;
-		};
 	}
 }

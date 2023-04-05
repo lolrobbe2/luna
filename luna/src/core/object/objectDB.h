@@ -39,6 +39,17 @@ namespace luna
 			classInfo* parentClass = nullptr;
 			std::string className = "";
 		};
+		_ALWAYS_INLINE_ static bool isClassRegistered(std::string className)
+		{
+			return rootClassDatabase.find(className) != rootClassDatabase.end() || classDatabase.find(className) != classDatabase.end();
+		}
+
+		template<class T>
+		_ALWAYS_INLINE_ static bool isClassRegistered() 
+		{
+			return isClassRegistered(getClassName<T>()); 
+		};
+
 		template<class T,class A>
 		_ALWAYS_INLINE_ static void addClass()
 		{
