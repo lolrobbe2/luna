@@ -30,10 +30,12 @@ namespace luna
 
 		void scriptingEngine::init()
 		{
+			initMono();
 
-			if (!loadAssembly("mono/lib/scriptCore.dll")) return LN_CORE_ERROR("[scrriptingEngine] could not load scriptCore.dll");
-			if(!loadAppAssembly()){}
+			if (!loadAssembly("mono/lib/scriptCore.dll")) return LN_CORE_ERROR("[scriptingEngine] could not load scriptCore.dll");
+			if (!loadAppAssembly("mono/lib/sharpSandbox.dll")) return LN_CORE_ERROR("[scriptingEngine] could not load app assembly dll");
 			
+			LN_CORE_INFO("started scriptingEngine");
 		}
 
 		void scriptingEngine::shutdown()
@@ -51,6 +53,7 @@ namespace luna
 
 		void scriptingEngine::initMono() 
 		{
+			s_Data = new scriptEngineData();
 			mono_set_dirs(platform::os::getCurrentWorkingDirectory().c_str(), "mono/etc");
 
 			if (s_Data->enableDebugging)
@@ -83,7 +86,7 @@ namespace luna
 			mono_domain_set(s_Data->appDomain, true);
 
 			s_Data->coreAssemblyFilepath = filepath;//todo pdb
-			s_Data->coreAssembly = loadCSharpAssembly((const char*)filepath.c_str());
+			s_Data->coreAssembly = loadCSharpAssembly(filepath.generic_string());
 			if (!s_Data->coreAssembly)
 				return false;
 
@@ -94,8 +97,8 @@ namespace luna
 		bool scriptingEngine::loadAppAssembly(const std::filesystem::path& filepath)
 		{
 			s_Data->appAssemblyFilepath = filepath;
-			s_Data->appAssembly = loadCSharpAssembly((const char*)filepath.c_str());
-			if (s_Data->appAssembly)
+			s_Data->appAssembly = loadCSharpAssembly(filepath.generic_string());
+			if (!s_Data->appAssembly)
 				return false;
 
 			s_Data->appImage = mono_assembly_get_image(s_Data->appAssembly);
@@ -171,6 +174,11 @@ namespace luna
 			}
 		}
 
+		scene* scriptingEngine::getContext()
+		{
+			return s_Data->m_Context;
+		}
+
 
 		rootClass::rootClass(MonoClass* childClass)
 		{
@@ -179,7 +187,7 @@ namespace luna
 
 		scriptClass::scriptClass(std::string nodeName)
 		{
-			mono_class_from_name(scriptingEngine::getImage(), "luna", nodeName.c_str());
+			mono_class_from_name(s_Data->appImage, "luna", nodeName.c_str());
 			readyMethod = mono_class_get_method_from_name(baseClass, "ready", 0);
 			processMethod = mono_class_get_method_from_name(baseClass, "process", 1);
 			physicsProcessMethod = mono_class_get_method_from_name(baseClass, "physicsProcess", 1);

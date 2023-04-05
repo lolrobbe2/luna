@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{63011CE8-4FB9-5D35-B8C0-3691A497F825}</ProjectGuid>
+    <ProjectGuid>{145A6C82-8039-EB1D-8951-76F4F5AF517F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>scriptCore</RootNamespace>
-    <AssemblyName>scriptCore</AssemblyName>
+    <RootNamespace>sandbox</RootNamespace>
+    <AssemblyName>sandbox</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,10 +18,10 @@
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\debug-windows-x86_64\x64\scriptCore\</OutputPath>
-    <BaseIntermediateOutputPath>..\bin-int\debug-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
+    <OutputPath>..\bin\debug-windows-x86_64\x64\sandbox\</OutputPath>
+    <BaseIntermediateOutputPath>..\bin-int\debug-windows-x86_64\x64\sandbox\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>_WINDLL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -30,10 +30,10 @@
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\release-windows-x86_64\x64\scriptCore\</OutputPath>
-    <BaseIntermediateOutputPath>..\bin-int\release-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
+    <OutputPath>..\bin\release-windows-x86_64\x64\sandbox\</OutputPath>
+    <BaseIntermediateOutputPath>..\bin-int\release-windows-x86_64\x64\sandbox\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>_WINDLL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -42,10 +42,10 @@
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\distribution-windows-x86_64\x64\scriptCore\</OutputPath>
-    <BaseIntermediateOutputPath>..\bin-int\distribution-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
+    <OutputPath>..\bin\distribution-windows-x86_64\x64\sandbox\</OutputPath>
+    <BaseIntermediateOutputPath>..\bin-int\distribution-windows-x86_64\x64\sandbox\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>_WINDLL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -56,10 +56,17 @@
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'distribution|x64' ">
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Node.cs" />
-    <Compile Include="src\controlNodes\controlNode.cs" />
+    <None Include="src\sandbox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\luna\luna.vcxproj">
+      <Project>{B5489A7C-A17F-9B0D-4A6C-81103682170F}</Project>
+      <Name>luna</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\scriptCore\scriptCore.csproj">
+      <Project>{63011CE8-4FB9-5D35-B8C0-3691A497F825}</Project>
+      <Name>scriptCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

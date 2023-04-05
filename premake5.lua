@@ -186,6 +186,18 @@ project "scriptCore"
     {
         ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}apollo/mono/lib")
     }
+
+    filter "configurations:debug"
+        optimize "Off"
+        symbols "Default"
+  
+    filter "configurations:release"
+        optimize "On"
+        symbols "Default"
+
+    filter "configurations:distribution"
+        optimize "Full"
+        symbols "Off"
 group""
 project "sandbox"
     location "sandbox"
@@ -233,17 +245,17 @@ project "sandbox"
         }
         
         filter "configurations:debug"
-        runtime "Debug"
-        symbols "On"
+            runtime "Debug"
+            symbols "On"
   
         filter "configurations:release"
-        runtime "Release"
-        optimize "On"
+            runtime "Release"
+            optimize "On"
 
         filter "configurations:distribution"
-        runtime "Release"
-        symbols "Off"
-        optimize "On"
+            runtime "Release"
+            symbols "Off"
+            optimize "On"
         buildoptions 
         {
             "-mwindows"
@@ -311,3 +323,33 @@ project "apollo"
             "-mwindows"
         }
 group""
+project "sharpSandbox"
+    location "sharpSandbox"
+    kind "SharedLib"
+    language "c#"
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    files
+    {
+        "%{prj.name}/src/**.cs"
+    }
+    links
+    {
+        "scriptCore"
+    }
+    postbuildcommands
+    {
+        ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}apollo/mono/lib")
+    }
+
+        filter "configurations:debug"
+            optimize "Off"
+            symbols "Default"
+  
+        filter "configurations:release"
+            optimize "On"
+            symbols "Default"
+
+        filter "configurations:distribution"
+            optimize "Full"
+            symbols "Off"

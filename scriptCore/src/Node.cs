@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Luna
 {
-    class Node
+    public class Node
     {
         /// <summary>
         /// sets the node name
