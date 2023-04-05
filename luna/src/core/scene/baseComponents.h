@@ -28,6 +28,13 @@ namespace luna
 			: tag(tag) {}
 	};
 
+	struct scriptComponent
+	{
+		std::string className;
+		scriptComponent() = default;
+		scriptComponent(const scriptComponent&) = default;
+	};
+
 	struct transformComponent
 	{
 		glm::vec3 translation = { 0.0f, 0.0f, 0.0f };

@@ -62,6 +62,11 @@ namespace luna
 			static void printAssamblyTypes(MonoAssembly* assembly);
 			static void loadCoreClasses();
 			static void loadAppClasses();
+			_ALWAYS_INLINE_ static std::vector<std::string> getAppClassNames() {
+				std::vector<std::string> appClassNames;
+				for (auto const& appClass : appClasses) { appClassNames.emplace_back(appClass.first); };
+				return appClassNames;
+			}
 			static scene* getContext();
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
