@@ -18,6 +18,7 @@ namespace luna
 			this->scene = scene;
 			entityHandle = scene->create();
 			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(spriteNode);
+			addComponent<scriptComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 			/*sprite Node Components*/
 			addComponent<transformComponent>();

@@ -8,4 +8,12 @@ namespace sharpSandbox
             SetName("testing");
         }
     }
+
+    internal class test2 : Node
+    {
+        public void Ready()
+        {
+            SetName("testing");
+        }
+    }
 }

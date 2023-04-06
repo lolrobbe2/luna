@@ -225,6 +225,7 @@ namespace luna
 		entityHandle = scene->create();
 		
 		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
+		addComponent<scriptComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
 }

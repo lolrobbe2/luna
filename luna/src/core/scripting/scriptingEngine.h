@@ -62,9 +62,9 @@ namespace luna
 			static void printAssamblyTypes(MonoAssembly* assembly);
 			static void loadCoreClasses();
 			static void loadAppClasses();
-			_ALWAYS_INLINE_ static std::vector<std::string> getAppClassNames() {
-				std::vector<std::string> appClassNames;
-				for (auto const& appClass : appClasses) { appClassNames.emplace_back(appClass.first); };
+			static std::vector<const char*> getAppClassNames() {
+				std::vector<const char*> appClassNames;
+				for (auto const& appClass : appClasses) { appClassNames.emplace_back(appClass.first.c_str()); };
 				return appClassNames;
 			}
 			static scene* getContext();
@@ -72,8 +72,5 @@ namespace luna
 			inline static std::map<std::string, rootClass> rootClasses;
 			inline static std::map<std::string, scriptClass> appClasses;
 		};
-
-
-
 	}
 }

@@ -9,6 +9,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <core/platform/platformUtils.h>
 #include <core/object/objectDB.h>
+#include <core/scripting/scriptUtils.h>
 namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
@@ -147,6 +148,20 @@ namespace luna
 			ImGui::LabelText(result.c_str(), "id");
 			ImGui::Separator();
 
+		}
+		if (Node.hasComponent<scriptComponent>())
+		{
+			auto& script = Node.getComponent<idComponent>();			
+			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "script"))
+			{
+				const char** items = utils::scriptUtils::getAppClassNames().data();
+				static int currentItem;
+
+				
+				ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size());
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
 		}
 		if(Node.hasComponent<tagComponent>())
 		{
