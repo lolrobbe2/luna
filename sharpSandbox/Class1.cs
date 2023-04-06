@@ -3,17 +3,14 @@ namespace sharpSandbox
 {
     internal class test : Node
     {
-        public void Ready()
+        override public void Ready()
         {
             SetName("testing");
         }
-    }
 
-    internal class test2 : Node
-    {
-        public void Ready()
+        override public void Process(ulong delta)
         {
-            SetName("testing");
+
         }
     }
 }
