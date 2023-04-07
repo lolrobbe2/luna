@@ -1,9 +1,20 @@
 #include "methodDB.h"
 #include <core/scripting/scriptingEngine.h>
-#define LN_ADD_INTERNAL_CALL(Name) mono_add_internal_call("Hazel.InternalCalls::" #Name, Name)
-
+#define LN_ADD_INTERNAL_CALL(Class,Function) luna::methodDB::bindInternalFunction<Class>(#Function,Function);
+#define LN_ADD_EXTERNAL_CALL(Class,Function) //TODO
 namespace luna
 {
+	struct methodDBData
+	{
+		//TODO change map with hashed objStorage.
+		
+	};
+
+	void methodDB::bindFunctions()
+	{
+		LN_ADD_INTERNAL_CALL(Node, setName);
+	}
+
 	void methodDB::setName(uuid nodeId, MonoString* name)
 	{
 		Node node = { nodeId,scripting::scriptingEngine::getContext() };

@@ -6,8 +6,6 @@ namespace luna
 {
 	namespace scripting
 	{
-		
-
 		_ALWAYS_INLINE_ static std::string pascalToCamel(const std::string& pascalText)
 		{
 			std::string camelText = pascalText;
