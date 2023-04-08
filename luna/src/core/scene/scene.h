@@ -71,7 +71,7 @@ namespace luna
 		void setName(std::string name);
 		void addChild(Node node);
 		virtual void init(scene* scene) override;
-
+		virtual void bindMethods() override;
 		friend class scene;
 		friend class sceneHierarchyPanel;
 

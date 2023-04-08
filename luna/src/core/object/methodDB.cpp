@@ -1,8 +1,5 @@
 #include "methodDB.h"
 #include <core/scripting/scriptingEngine.h>
-#define LN_ADD_INTERNAL_CALL(Class,Function) luna::methodDB::bindInternalFunction<Class>(#Function,Function);
-#define LN_ADD_EXTERNAL_CALL(Class,Function) //TODO
-
 #ifndef TYPED_METHOD_BIND
 class __UnexistingClass;
 #define MB_T __UnexistingClass
@@ -21,6 +18,7 @@ namespace luna
 	#endif
 	struct Method
 	{
+		MonoMethod* externalMethod;
 		void (MB_T::*method)(P...) = nullptr;
 		int argsCount;
 	};
@@ -31,20 +29,30 @@ namespace luna
 		std::map<std::string,Method<>> methodMap;
 	};
 
-	static s_Data = new methodDBData();
+	static methodDBData* s_Data = new methodDBData();
 
-	void methodDB::init() {
+	void methodDB::init()
+	{
 
 	}
+
+	void methodDB::bindObjectFunctions(const std::string& className) 
+	{
+		objectDB::classInfo* info = objectDB::getPtr(className);
+		if (!info) return LN_CORE_ERROR("object class not registered {0}",className);
+		Node* node = (Node*)info->creation_func();
+		node->bindMethods();
+	}
+
 
 	void methodDB::bindFunctions()
 	{
-		LN_ADD_INTERNAL_CALL(Node, setName);
+		for (const std::string& objectName : scripting::scriptingEngine::getAppClassNames()) 
+		{
+			bindObjectFunctions(objectName);
+		}
 	}
 
-	void methodDB::setName(uuid nodeId, MonoString* name)
-	{
-		Node node = { nodeId,scripting::scriptingEngine::getContext() };
-		node.setName(mono_string_to_utf8(name));
-	}
+
+	/* internall functions*/
 }

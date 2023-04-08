@@ -47,6 +47,9 @@ namespace luna
 		}
 		
 		ImGui::EndMainMenuBar();
+
+		
+		
 		scenePanel->onImGuiRender();
 
 	}

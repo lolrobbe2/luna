@@ -2,10 +2,19 @@
 #include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
 #include <nodes/controlNodes/itemListNode.h>
+#include <core/object/methodDB.h>
+#include <core/scripting/scriptingEngine.h>
 namespace luna
 {
-
-	
+	namespace scripting 
+	{
+		static void setName(uuid nodeId, MonoString* name)
+		{
+			Node node = { nodeId,scripting::scriptingEngine::getContext() };
+			node.setName(mono_string_to_utf8(name));
+		}
+	}
+	//Node implmentation
 	static void draw(Node node)
 	{
 		LN_PROFILE_FUNCTION();
@@ -228,4 +237,13 @@ namespace luna
 		addComponent<scriptComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
+
+	void Node::bindMethods() 
+	{
+		LN_ADD_INTERNAL_CALL(Node, scripting::setName);
+	}
+
+
+
 }
+ 

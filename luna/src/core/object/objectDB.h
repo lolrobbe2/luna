@@ -19,11 +19,15 @@
 namespace luna
 {
 	class scene;
+	/**
+	 * @brief object class.
+	 * @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
+	 */
 	class LN_API object
 	{
 	public:
 		virtual void init(scene* scene) = 0;
-		virtual void bindMethods(){};
+		virtual	void bindMethods() = 0;
 	};
 	/**
 	 * @brief object database class.
