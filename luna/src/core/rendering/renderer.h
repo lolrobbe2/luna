@@ -32,6 +32,8 @@ namespace luna
 			 * 
 			 */
 			static void newFrame();
+			
+			LN_API static ImTextureID getWindowImage();
 			/**
 			 * @brief starts recording a new scene.
 			 * 
@@ -56,7 +58,7 @@ namespace luna
 			 */
 			static void endScene();
 			inline static glm::vec2 getSceneDimensions() { return rendererPipeline->getDimensions(); };
-
+			LN_API inline static ImVec2 getSceneGuiDimensions() { return { rendererPipeline->getDimensions().x,rendererPipeline->getDimensions().y }; };
 			inline static glm::vec2 getSceneMousePos() { return rendererPipeline->getWindowMousePos(); };
 		private:
 			inline static ref<device> rendererDevice; //the main renderDevice (GPU handle)

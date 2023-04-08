@@ -57,6 +57,12 @@ namespace luna
 			rendererPipeline->flush();
 		}
 
+		ImTextureID renderer::getWindowImage()
+		{
+			if (rendererPipeline) return rendererPipeline->getWindowImage();
+			return nullptr;
+		}
+
 		void renderer::beginScene()
 		{
 			rendererPipeline->clear();

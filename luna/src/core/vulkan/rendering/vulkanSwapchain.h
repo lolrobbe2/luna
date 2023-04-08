@@ -96,7 +96,7 @@ namespace luna
 			 * 
 			 * \param VkDescriptorSet image descriptor.
 			 */
-			inline VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
+			_ALWAYS_INLINE_ VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
 
 			std::vector<VkImage> sceneViewportImages;
 			vkb::Swapchain mSwapchain;

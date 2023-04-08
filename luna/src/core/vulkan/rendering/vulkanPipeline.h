@@ -40,6 +40,12 @@ namespace luna
 			 */
 			virtual void destroyPipeline() override;
 			/**
+			 * returns current frameBuffer descriptor handle.
+			 *
+			 * \return
+			 */
+			virtual ImTextureID getWindowImage() override;
+			/**
 			 * @brief creates the renderer commands for the pipeline.
 			 * 
 			 */
