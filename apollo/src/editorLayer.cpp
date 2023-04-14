@@ -27,16 +27,7 @@ namespace luna
 	}
 	void editorLayer::onImGuiRender()
 	{
-		
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
-		
-		if (ImGui::Begin("scene"));
-		{
-			ImGui::Image(renderer::renderer::getWindowImage(), renderer::renderer::getSceneGuiDimensions());
-		}
 
-		ImGui::PopStyleVar(1);
-		ImGui::End();
 
 		if(ImGui::BeginMainMenuBar())
 		{
@@ -58,7 +49,37 @@ namespace luna
 		
 		ImGui::EndMainMenuBar();
 
-		
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
+
+		if (ImGui::Begin("scene"));
+		{
+			ImVec2 scrollPos = ImGui::GetCursorScreenPos();
+			ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+			ImVec2 mousePos = ImGui::GetMousePos();
+			glm::vec2 windowMousePos;
+			windowMousePos.x = mousePos.x - scrollPos.x;
+			windowMousePos.y = mousePos.y - scrollPos.y;
+			renderer::renderer::setSceneMouse(windowMousePos);
+			renderer::renderer::setSceneDimensions({ viewportPanelSize.x, viewportPanelSize.y });
+
+			std::string text = (activeScene->m_IsRunning) ? "stop" : "play";
+			ImVec2 buttonSize = { ImGui::GetContentRegionAvail().x + 1.0f,30.0f };
+			ImGui::Image(renderer::renderer::getWindowImage(), ImGui::GetContentRegionAvail());
+			ImGui::SameLine(0.000001f);
+			if(ImGui::Button(text.c_str(), buttonSize));
+			{
+				if (ImGui::IsItemClicked())
+				{
+					activeScene->m_IsRunning = !activeScene->m_IsRunning;
+					if (activeScene->m_IsRunning) activeScene->onPlayScene();
+					else activeScene->onStopScene();
+				}
+			}
+			
+		}
+
+		ImGui::PopStyleVar(1);
+		ImGui::End();
 		
 		scenePanel->onImGuiRender();
 

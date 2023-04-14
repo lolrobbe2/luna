@@ -104,6 +104,7 @@ namespace luna
 
 	void scene::onUpdate(utils::timestep ts)
 	{
+		if (!m_IsRunning) return;
 		glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
 		if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 		else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
@@ -150,8 +151,10 @@ namespace luna
 			if (!found) itemListComponent.current = -1;
 		}
 	}
+
 	void scene::onEvent(Event& event)
 	{
+		if (!m_IsRunning) return;
 		if(event.getEventType() == eventType::MouseButtonPressed)
 		{
 			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
@@ -185,6 +188,30 @@ namespace luna
 		}
 
 	}
+
+	void scene::onPlayScene()
+	{
+		auto scriptComponents = m_Registry.view<scriptComponent,idComponent>();
+		for (auto entity : scriptComponents)
+		{
+			auto script = m_Registry.get<scriptComponent>(entity);
+			if (script.scritpInstance) LN_CORE_ERROR("scriptInstance was not nullptr");
+			else script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), m_Registry.get<idComponent>(entity).id);
+		}
+	}
+
+	void scene::onStopScene()
+	{
+		auto scriptComponents = m_Registry.view<scriptComponent, idComponent>();
+		for (auto entity : scriptComponents)
+		{
+			auto script = m_Registry.get<scriptComponent>(entity);
+			if (script.scritpInstance) delete script.scritpInstance;
+			script.scritpInstance = nullptr;
+		
+		}
+	}
+
 	Node::Node(uint64_t id, luna::scene* scene)
 	{
 		auto idComponents = scene->m_Registry.group<idComponent,tagComponent>();
@@ -205,6 +232,7 @@ namespace luna
 		: entityHandle(handle), scene(scene)
 	{
 	}
+
 	Node::Node(luna::scene* scene)
 	{
 		this->scene = scene;
@@ -212,12 +240,14 @@ namespace luna
 		addComponent<idComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
+
 	void Node::setName(std::string name)
 	{
 		if (hasComponent<tagComponent>()) getComponent<tagComponent>().tag = name;
 		else addComponent<tagComponent>(name);
 		
 	}
+
 	void Node::addChild(Node node)
 	{
 		LN_CORE_INFO("adding node {0} as a child to {1} .", node.getUUID().getId(), getUUID().getId());

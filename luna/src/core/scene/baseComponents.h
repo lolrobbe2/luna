@@ -4,9 +4,8 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/glm.hpp>
 #include <core/debug/uuid.h>
-
 #include <core/rendering/texture.h>
-
+#include <core/scripting/scriptUtils.h>
 namespace luna
 {
 	struct idComponent
@@ -31,6 +30,7 @@ namespace luna
 	struct scriptComponent
 	{
 		std::string className;
+		utils::scriptInstance* scritpInstance;
 		scriptComponent() = default;
 		scriptComponent(const scriptComponent&) = default;
 	};

@@ -182,13 +182,17 @@ namespace luna
 			ImGui::NewFrame();
 			ImGuiViewport* viewport = ImGui::GetMainViewport();
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
-
+			/*
 			ImVec2 scrollPos = ImGui::GetCursorScreenPos();
 			ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 			ImVec2 mousePos = ImGui::GetMousePos();
+			*/
+			currentFrameBuffer = vDevice->swapchain->getViewportImage(currentFrame);
+			/*
 			windowMousePos.x = mousePos.x - scrollPos.x;
 			windowMousePos.y = mousePos.y - scrollPos.y;
 			windowDimensions = { viewportPanelSize.x,viewportPanelSize.y };
+			*/
 		}
 		void vulkanPipeline::end() const
 		{
@@ -248,7 +252,7 @@ namespace luna
 			// _renderFence will now block until the graphic commands finish execution
 			drawCommands.clear();
 
-
+			
 			VkPresentInfoKHR presentInfo = {};
 			presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
 			presentInfo.pNext = nullptr;

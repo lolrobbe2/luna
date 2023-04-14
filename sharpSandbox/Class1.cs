@@ -1,11 +1,14 @@
 ﻿using Luna;
+using System;
+
 namespace sharpSandbox
 {
-    internal class test : Node
+    internal class Test : Node
     {
         override public void Ready()
         {
-            SetName("testing");
+            Console.WriteLine("helloNode");
+            //SetName("testing");
         }
 
         override public void Process(ulong delta)

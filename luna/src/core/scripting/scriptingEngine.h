@@ -31,15 +31,21 @@ namespace luna
 			scriptClass() = default;
 			scriptClass(MonoClass* childClass,MonoClass* baseClass);
 			virtual ~scriptClass() = default;
-
-		private:
-			MonoClass* childClass;
-			MonoClass* baseClass;
-
+			MonoObject* instance();
+			void queueFree();
+			
+			MonoMethod* constructor = nullptr;
 			MonoMethod* readyMethod = nullptr;
 			MonoMethod* processMethod = nullptr;
 			MonoMethod* physicsProcessMethod = nullptr;
+		
+			MonoClass* childClass;
+			MonoClass* baseClass;
+
+			
 		};
+
+
 
 		class scriptingEngine
 		{
@@ -68,9 +74,12 @@ namespace luna
 				return appClassNames;
 			}
 			static scene* getContext();
+			void createInstance(const std::string& className, uuid entityId);
+			static MonoObject* instanciate(MonoClass* monoClass);
+			static scriptClass* getScriptClass(const std::string& className) { return appClasses.find(className)->second; }
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
-			inline static std::map<std::string, scriptClass> appClasses;
+			inline static std::map<std::string, scriptClass*> appClasses;
 		};
 	}
 }

@@ -46,10 +46,13 @@ namespace luna
 		}
 
 		void onEvent(Event& event);
+		void onPlayScene();
+		void onStopScene();
 	private:
 		friend class Node;
 		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
+		friend class editorLayer;
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 		bool m_IsRunning = false;

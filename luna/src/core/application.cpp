@@ -10,9 +10,7 @@ namespace luna
 	{
 		static application* instance;
 		application::application()
-		{
-			//TODO images with less than 3 channels RGB 
-
+		{ 
 			LN_PROFILE_BEGIN_SESSION("luna engine startup", "./debug/luna-profile-startUp.json");
 			instance = this;
 			Log::Init();

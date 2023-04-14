@@ -151,14 +151,15 @@ namespace luna
 		}
 		if (Node.hasComponent<scriptComponent>())
 		{
-			auto& script = Node.getComponent<idComponent>();			
+			auto& script = Node.getComponent<scriptComponent>();			
 			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "script"))
 			{
 				const char** items = utils::scriptUtils::getAppClassNames().data();
 				static int currentItem;
-
-				
-				ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size());
+				static std::string className = items[currentItem];
+				ImGui::LabelText("className", script.className.c_str());
+				if(ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size()));
+					if (className.size()) script.className = className;
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
@@ -347,5 +348,9 @@ namespace luna
 		memset(buffer, 0, sizeof(buffer));
 		strcpy_s(buffer, stringBuffer.c_str());
 		if (ImGui::InputText(name.c_str(), buffer, sizeof(buffer))) stringBuffer = std::string(buffer);
+	}
+	void sceneHierarchyPanel::onPlay()
+	{
+		
 	}
 }

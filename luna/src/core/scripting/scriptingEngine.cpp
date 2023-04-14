@@ -1,5 +1,6 @@
 #include "scriptingEngine.h"
 #include <core/platform/platformUtils.h>
+#include <core/utils/objectStorage.h>
 #include <mono/metadata/mono-debug.h>
 #include <mono/metadata/threads.h>
 namespace luna
@@ -30,6 +31,7 @@ namespace luna
 			bool enableDebugging = false;
 
 			scene* sceneContext = nullptr;
+
 		};
 
 		static scriptEngineData* s_Data = nullptr;
@@ -142,6 +144,7 @@ namespace luna
 			// Don't forget to free the file data. i wont !
 			return assembly;
 		}
+
 		uint8_t scriptingEngine::getFieldAccessibility(MonoClassField* field)
 		{
 			
@@ -168,6 +171,7 @@ namespace luna
 			}
 			return (uint8_t)accessibility::None;
 		}
+
 		void scriptingEngine::printAssamblyTypes(MonoAssembly* assembly)
 		{
 			MonoImage* image = mono_assembly_get_image(assembly);
@@ -240,7 +244,8 @@ namespace luna
 					LN_CORE_WARN("[scriptingEgine] unrecognized class found {}.{}", nameSpace, className);
 					break;
 				}
-				appClasses.emplace(className,scriptClass(monoClass, rootClasses.find(pascalToCamel(parentName))->second));
+				scriptClass* scriptCLass = new scriptClass(monoClass, rootClasses.find(pascalToCamel(parentName))->second);
+				appClasses.emplace(className,scriptCLass);
 			}
 
 		}
@@ -251,17 +256,39 @@ namespace luna
 		}
 
 
-		rootClass::rootClass(MonoClass* childClass) : root(childClass)
+		MonoObject* scriptingEngine::instanciate(MonoClass* monoClass) 
+		{
+			MonoObject* instance = mono_object_new(s_Data->appDomain, monoClass);
+			mono_runtime_object_init(instance);
+			return instance;
+		}
+
+		rootClass::rootClass(MonoClass* baseClass) : root(baseClass)
 		{
 			
 		}
 
 		scriptClass::scriptClass(MonoClass* _childClass, MonoClass* _baseClass) : childClass(_childClass),baseClass(_baseClass)
 		{
-			readyMethod = mono_class_get_method_from_name(baseClass, "ready", 0);
-			processMethod = mono_class_get_method_from_name(baseClass, "process", 1);
-			physicsProcessMethod = mono_class_get_method_from_name(baseClass, "physicsProcess", 1);
-
+			LN_CORE_INFO("creating scriptCLass: {0}", mono_class_get_name(childClass));
+			constructor = mono_class_get_method_from_name(baseClass, ".ctor", 1);
+			readyMethod = mono_class_get_method_from_name(childClass, "Ready", 0);
+			processMethod = mono_class_get_method_from_name(childClass, "Process", 1);
+			physicsProcessMethod = mono_class_get_method_from_name(childClass, "PhysicsProcess", 1);
 		}
+
+
+		MonoObject* scriptClass::instance()
+		{
+			LN_CORE_INFO("instancing class: {0}", mono_class_get_name(childClass));
+			return scriptingEngine::instanciate(childClass);
+		}
+
+		void scriptClass::queueFree()
+		{
+		}
+
+
+
 	}
 }

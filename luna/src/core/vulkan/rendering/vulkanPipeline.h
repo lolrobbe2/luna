@@ -44,7 +44,7 @@ namespace luna
 			 *
 			 * \return
 			 */
-			virtual ImTextureID getWindowImage() override;
+			_ALWAYS_INLINE_ virtual ImTextureID getWindowImage() override;
 			/**
 			 * @brief creates the renderer commands for the pipeline.
 			 * 
