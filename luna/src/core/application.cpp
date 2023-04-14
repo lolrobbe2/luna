@@ -23,6 +23,7 @@ namespace luna
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
 			methodDB::init();
+			Log::RegisterMethods();
 			LN_PROFILE_END_SESSION();
 			
 		}

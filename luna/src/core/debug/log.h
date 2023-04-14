@@ -9,18 +9,40 @@
 #include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
 #include <core/platform/platform.h>
+
+extern "C" {
+	typedef struct _MonoClass MonoClass;
+	typedef struct _MonoObject MonoObject;
+	typedef struct _MonoMethod MonoMethod;
+	typedef struct _MonoAssembly MonoAssembly;
+	typedef struct _MonoImage MonoImage;
+	typedef struct _MonoClassField MonoClassField;
+	typedef struct _MonoString MonoString;
+}
 namespace luna {
 
 	class LN_API Log
 	{
 	public:
 		static void Init();
+		static void RegisterMethods();
 		static std::shared_ptr<spdlog::logger> GetCoreLogger() { return s_CoreLogger; }
 		static std::shared_ptr<spdlog::logger> GetClientLogger(){ return s_ClientLogger; }
+		
+		
+		
 	private:
+		static void TraceInternal(MonoString* string);
+		static void InfoInternal(MonoString* string);
+		static void WarnInternal(MonoString* string);
+		static void ErrorInternal(MonoString* string);
+		static void CriticalInternal(MonoString* string);
+
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
+
+
 
 }
 
