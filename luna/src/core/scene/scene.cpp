@@ -6,14 +6,13 @@
 #include <core/scripting/scriptingEngine.h>
 namespace luna
 {
-	namespace scripting 
+
+	static void NodeSetName(uuid nodeId, MonoString* name)
 	{
-		static void setName(uuid nodeId, MonoString* name)
-		{
-			Node node = { nodeId,scripting::scriptingEngine::getContext() };
-			node.setName(mono_string_to_utf8(name));
-		}
+		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		node.setName(mono_string_to_utf8(name));
 	}
+	
 	//Node implmentation
 	static void draw(Node node)
 	{
@@ -196,7 +195,7 @@ namespace luna
 		{
 			auto script = m_Registry.get<scriptComponent>(entity);
 			if (script.scritpInstance) LN_CORE_ERROR("scriptInstance was not nullptr");
-			else script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), m_Registry.get<idComponent>(entity).id);
+			else if(script.className.size()) script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), m_Registry.get<idComponent>(entity).id);
 		}
 	}
 
@@ -270,7 +269,7 @@ namespace luna
 
 	void Node::bindMethods() 
 	{
-		LN_ADD_INTERNAL_CALL(Node, scripting::setName);
+		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
 	}
 
 

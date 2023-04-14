@@ -4,6 +4,7 @@
 #include <core/scene/scene.h>
 #include <core/object/classRegister.h>
 #include <core/scripting/scriptingEngine.h>
+#include <core/object/methodDB.h>
 namespace luna
 {
 	namespace application
@@ -21,7 +22,7 @@ namespace luna
 			renderer::renderer2D::init();
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
-
+			methodDB::init();
 			LN_PROFILE_END_SESSION();
 			
 		}

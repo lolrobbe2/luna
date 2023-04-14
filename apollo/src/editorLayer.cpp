@@ -15,6 +15,7 @@ namespace luna
 	{
 		LN_CORE_INFO("added editor!");
 		scenePanel->setContext(activeScene);
+		utils::scriptUtils::setContext(activeScene.get());
 	}
 	void editorLayer::onDetach()
 	{

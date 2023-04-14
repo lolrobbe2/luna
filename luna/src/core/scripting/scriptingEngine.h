@@ -58,6 +58,14 @@ namespace luna
 				Protected = BIT(2),
 				Public = BIT(3)
 			};
+			_ALWAYS_INLINE_ static std::string pascalToCamel(const std::string& pascalText)
+			{
+				std::string camelText = pascalText;
+				camelText[0] = std::tolower(pascalText[0]);
+				return camelText;
+			}
+
+
 			static void init();
 			static void shutdown();
 			static void initMono();
@@ -73,7 +81,14 @@ namespace luna
 				for (auto const& appClass : appClasses) { appClassNames.emplace_back(appClass.first.c_str()); };
 				return appClassNames;
 			}
+
+			static std::vector<const char*> getCoreClassNames() {
+				std::vector<const char*> coreClassNames;
+				for (auto const& coreClass : rootClasses) { coreClassNames.emplace_back(coreClass.first.c_str()); };
+				return coreClassNames;
+			}
 			static scene* getContext();
+			static void secContext(scene* scene);
 			void createInstance(const std::string& className, uuid entityId);
 			static MonoObject* instanciate(MonoClass* monoClass);
 			static scriptClass* getScriptClass(const std::string& className) { return appClasses.find(className)->second; }

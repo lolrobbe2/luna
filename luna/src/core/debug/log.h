@@ -2,7 +2,6 @@
 
 #define GLM_ENABLE_EXPERIMENTAL
 
-
 // This ignores all warnings raised inside External headers
 #pragma warning (push, 0)
 #include <glm/gtx/string_cast.hpp>

@@ -21,8 +21,7 @@
     <OutputPath>..\bin\debug-windows-x86_64\x64\sharpSandbox\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\debug-windows-x86_64\x64\sharpSandbox\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -34,8 +33,7 @@
     <OutputPath>..\bin\release-windows-x86_64\x64\sharpSandbox\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\release-windows-x86_64\x64\sharpSandbox\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -47,8 +45,7 @@
     <OutputPath>..\bin\distribution-windows-x86_64\x64\sharpSandbox\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\distribution-windows-x86_64\x64\sharpSandbox\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -59,7 +56,7 @@
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'distribution|x64' ">
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="src\Class1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\scriptCore\scriptCore.csproj">

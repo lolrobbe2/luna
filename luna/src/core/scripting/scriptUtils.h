@@ -8,13 +8,15 @@ namespace luna
 	{
 		class scriptClass;
 	}
-	
+	class scene;
 	namespace utils 
 	{
+		
 		class LN_API scriptUtils
 		{
 		public:
 			static std::vector<const char*> getAppClassNames();
+			static void setContext(scene* scene);
 		};
 
 		class scriptInstance {

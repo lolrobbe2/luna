@@ -7,8 +7,8 @@ namespace sharpSandbox
     {
         override public void Ready()
         {
-            Console.WriteLine("helloNode");
-            //SetName("testing");
+            //Console.WriteLine("helloNode");
+            SetName("testing");
         }
 
         override public void Process(ulong delta)

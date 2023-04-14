@@ -7,13 +7,6 @@ namespace luna
 {
 	namespace scripting
 	{
-		_ALWAYS_INLINE_ static std::string pascalToCamel(const std::string& pascalText)
-		{
-			std::string camelText = pascalText;
-			camelText[0] = std::tolower(pascalText[0]);
-			return camelText;
-		}
-
 		struct scriptEngineData 
 		{
 			MonoDomain* rootDomain;
@@ -29,9 +22,6 @@ namespace luna
 			std::filesystem::path appAssemblyFilepath;
 
 			bool enableDebugging = false;
-
-			scene* sceneContext = nullptr;
-
 		};
 
 		static scriptEngineData* s_Data = nullptr;
@@ -253,6 +243,11 @@ namespace luna
 		scene* scriptingEngine::getContext()
 		{
 			return s_Data->m_Context;
+		}
+
+		void scriptingEngine::secContext(scene* scene)
+		{
+			s_Data->m_Context = scene;
 		}
 
 

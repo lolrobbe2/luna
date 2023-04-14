@@ -9,6 +9,11 @@ namespace luna
 			return scripting::scriptingEngine::getAppClassNames();
 		}
 
+		void scriptUtils::setContext(scene* scene)
+		{
+			scripting::scriptingEngine::secContext(scene);
+		}
+
 		scriptInstance::scriptInstance(scripting::scriptClass* scriptClass, uuid entity)
 			: m_ScriptClass(scriptClass), entityId(entity)
 		{

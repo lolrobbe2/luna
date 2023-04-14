@@ -30,7 +30,7 @@ namespace Luna
         public virtual void Process(ulong delta) { }
         /*internal calls per node*/
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        internal extern static void NodeSetName(ulong NodeId,string name);
+        static extern void NodeSetName(ulong NodeId,string name);
 
         protected Node() { NodeId = 0; }
         internal Node(ulong id) { NodeId = id; }

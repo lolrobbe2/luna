@@ -27,11 +27,15 @@ namespace luna
 	void methodDB::bindInternalFunction(const std::string& functionName,const void* functionPtr)
 	{
 		std::stringstream fullName(typeid(T).name());
-		std::vector<std::string> seglist;
+		std::stringstream funcName(functionName);
+		std::vector<std::string> classSeglist;
+		std::vector<std::string> functionNameSeglist;
 		std::string segment;
-		while (std::getline(fullName, segment, ':')) seglist.push_back(segment);
-		const std::string className = seglist.back();
-		const std::string functionSignature = "luna." + className + "::" + functionName;
+		while (std::getline(fullName, segment, ':')) classSeglist.push_back(segment);
+		while (std::getline(funcName, segment, ':')) functionNameSeglist.push_back(segment);
+
+		const std::string className = classSeglist.back();
+		const std::string functionSignature = "Luna." + className + "::" + functionNameSeglist.back();
 		mono_add_internal_call(functionSignature.c_str(),functionPtr);
 	}
 }

@@ -33,11 +33,12 @@ namespace luna
 
 	void methodDB::init()
 	{
-
+		bindFunctions();
 	}
 
 	void methodDB::bindObjectFunctions(const std::string& className) 
 	{
+		const std::string name = className == "Node" ? "Node" : scripting::scriptingEngine::pascalToCamel(className);
 		objectDB::classInfo* info = objectDB::getPtr(className);
 		if (!info) return LN_CORE_ERROR("object class not registered {0}",className);
 		Node* node = (Node*)info->creation_func();
@@ -47,7 +48,7 @@ namespace luna
 
 	void methodDB::bindFunctions()
 	{
-		for (const std::string& objectName : scripting::scriptingEngine::getAppClassNames()) 
+		for (const std::string& objectName : scripting::scriptingEngine::getCoreClassNames()) 
 		{
 			bindObjectFunctions(objectName);
 		}
