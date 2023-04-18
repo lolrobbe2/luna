@@ -6,8 +6,7 @@ namespace sharpSandbox
     {
         override public void Ready()
         {
-            string name = Os.GetName();
-            Log.Warn("os name:{0}",name);
+            Log.Info("current version = {0}", Os.GetVersion());
         }
 
         override public void Process(ulong delta)

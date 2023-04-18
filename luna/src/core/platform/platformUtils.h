@@ -12,8 +12,12 @@ namespace luna
 			static std::string saveFileDialog(const char* filter);
 			static std::vector<unsigned char> openFile(const std::string& filePath);
 			static std::string getCurrentWorkingDirectory();
+			static std::string getVersion();
 			static std::string getName();
 			static std::string getLocale();
+			static std::string getLocaleLanguage();
+			static int getProcessId();
+			static std::string getExecutablePath();
 		};
 	}
 	class Os
@@ -25,7 +29,10 @@ namespace luna
 		static MonoString* SaveFileDialog(MonoString* filter);
 		static MonoString* GetCurrentWorkingDirectory();
 		static MonoString* GetName();
+		static MonoString* GetVersion();
 		static MonoString* GetLocale();
+		static MonoString* GetLocaleLanguage();
+		static int GetProcessId();
 
 	};
 }

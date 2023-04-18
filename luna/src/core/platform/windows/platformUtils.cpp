@@ -5,8 +5,9 @@
 #include <core/application.h>
 #include <core/input.h>
 #include <filesystem>
-
+#include <locale.h>
 #include <core/object/methodDB.h>
+#include <string_view>
 namespace luna 
 {
 	namespace platform
@@ -88,7 +89,25 @@ namespace luna
 		{
 			char buffer[FILENAME_MAX];
 			_getcwd(buffer, FILENAME_MAX);
-			return buffer;
+			std::string workingDir = std::string(buffer, buffer+FILENAME_MAX);
+			while (workingDir.find("\\") != std::string::npos) workingDir.replace(workingDir.find("\\"), sizeof("\\") - 1, "/");
+
+			return workingDir;
+		}
+
+		std::string os::getVersion() {
+			typedef LONG NTSTATUS;
+			typedef NTSTATUS(WINAPI* RtlGetVersionPtr)(PRTL_OSVERSIONINFOW);
+			RtlGetVersionPtr version_ptr = (RtlGetVersionPtr)GetProcAddress(GetModuleHandleA("ntdll.dll"), "RtlGetVersion");
+			if (version_ptr != nullptr) {
+				RTL_OSVERSIONINFOW fow;
+				ZeroMemory(&fow, sizeof(fow));
+				fow.dwOSVersionInfoSize = sizeof(fow);
+				if (version_ptr(&fow) == 0x00000000) {
+					return std::to_string((int64_t)fow.dwMajorVersion) + "." + std::to_string((int64_t)fow.dwMinorVersion) + "." + std::to_string((int64_t)fow.dwBuildNumber);
+				}
+			}
+			return "";
 		}
 
 		std::string os::getName()
@@ -98,9 +117,39 @@ namespace luna
 
 		std::string os::getLocale()
 		{
-			return std::locale().name();
+			LCID lcid = GetThreadLocale();
+			wchar_t name[LOCALE_NAME_MAX_LENGTH];
+			if (LCIDToLocaleName(lcid, name, LOCALE_NAME_MAX_LENGTH, 0) == 0)
+				LN_CORE_ERROR("an error occured",GetLastError());
+			else {
+				std::wstring ws(name);
+				return std::string(ws.begin(), ws.end());
+			}
+			return "en";
 		}
 		
+		std::string os::getLocaleLanguage() {
+			
+			std::stringstream locale(getLocale());
+			std::vector<std::string> languageSeglist;
+			std::string segment;
+			while (std::getline(locale, segment, '-')) languageSeglist.push_back(segment);
+			return languageSeglist.front();
+		}
+
+		int os::getProcessId()
+		{
+			return _getpid();;
+		}
+
+		std::string os::getExecutablePath() {
+			WCHAR bufname[4096];
+			GetModuleFileNameW(nullptr, bufname, 4096);
+			std::wstring ws(bufname);
+			std::string executablePath = std::string(ws.begin(), ws.end());
+			while(executablePath.find("\\") != std::string::npos) executablePath.replace(executablePath.find("\\"), sizeof("\\") - 1, "/");
+			return executablePath;
+		}
 	}
 	void Os::RegisterMethods()
 	{
@@ -108,6 +157,10 @@ namespace luna
 		LN_ADD_INTERNAL_CALL(Os, SaveFileDialog);
 		LN_ADD_INTERNAL_CALL(Os, GetCurrentWorkingDirectory);
 		LN_ADD_INTERNAL_CALL(Os, GetName);
+		LN_ADD_INTERNAL_CALL(Os, GetVersion);
+		LN_ADD_INTERNAL_CALL(Os, GetLocale);
+		LN_ADD_INTERNAL_CALL(Os, GetLocaleLanguage);
+		LN_ADD_INTERNAL_CALL(Os, GetProcessId);
 	}
 
 	MonoString* Os::OpenFileDialog(MonoString* filter)
@@ -131,9 +184,22 @@ namespace luna
 		return mono_string_new_wrapper(platform::os::getName().c_str());
 	}
 
+	MonoString* Os::GetVersion()
+	{
+		return mono_string_new_wrapper(platform::os::getVersion().c_str());
+	}
+
 	MonoString* Os::GetLocale()
 	{
 		return mono_string_new_wrapper(platform::os::getLocale().c_str());
+	}
+
+	MonoString* Os::GetLocaleLanguage()
+	{
+		return mono_string_new_wrapper(platform::os::getLocaleLanguage().c_str());
+	}
+	int Os::GetProcessId() {
+		return platform::os::getProcessId();
 	}
 }
 

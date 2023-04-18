@@ -42,5 +42,26 @@ namespace Luna
         /// <returns>string os name</returns>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern string GetName();
+
+        /// <summary>
+        /// returns the os version.
+        /// </summary>
+        /// <returns>MajorVersion.MinorVersion.Patch</returns>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public static extern string GetVersion();
+
+        /// <summary>
+        /// returns the users locale 
+        /// 
+        /// </summary>
+        /// <returns>string of format en-EN</returns>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public static extern string GetLocale();
+        /// <summary>
+        /// returns the users current language.
+        /// </summary>
+        /// <returns>string of format en</returns>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public static extern string GetLocaleLanguage();
     }
 }
