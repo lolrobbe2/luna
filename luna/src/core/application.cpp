@@ -23,7 +23,6 @@ namespace luna
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
 			methodDB::init();
-			Log::RegisterMethods();
 			LN_PROFILE_END_SESSION();
 			
 		}
@@ -45,7 +44,7 @@ namespace luna
 
 				mWindow->onUpdate();
 				LN_PROFILE_SCOPE("drawing");
-				float time = glfwGetTime();
+				double time = glfwGetTime();
 				utils::timestep timestep = time - lastFrameTime;
 				lastFrameTime = time;
 				if (!minimized)

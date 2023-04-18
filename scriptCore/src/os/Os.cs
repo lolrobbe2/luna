@@ -1,9 +1,8 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace Luna
 {
-    static public class Os
+    public class Os
     {
         /// <summary>
         /// opens a platform specific openFIleDialog.
@@ -14,7 +13,7 @@ namespace Luna
         /// </example>
         /// </summary>
         /// <param name="filter"></param>
-        /// <returns></returns>
+        /// <returns>string: open file path</returns>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern string OpenFileDialog(string filter);
 
@@ -27,13 +26,20 @@ namespace Luna
         /// </example>
         /// </summary>
         /// <param name="filter"></param>
-        /// <returns></returns>
+        /// <returns>string: save file path</returns>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern string SaveFileDialog(string filter);
+
+        /// <summary>
+        /// returns the current working directory
+        /// </summary>
+        /// <returns>string: absolute path of current working directory </returns>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public static extern string GetCurrentWorkingDirectory();
         /// <summary>
         /// returns the current osName.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>string os name</returns>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern string GetName();
     }

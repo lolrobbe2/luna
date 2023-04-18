@@ -8,7 +8,7 @@ class __UnexistingClass;
 #endif
 
 #include <core/debug/log.h>
-
+#include <core/platform/platformUtils.h>
 
 namespace luna
 {
@@ -35,6 +35,7 @@ namespace luna
 	void methodDB::init()
 	{
 		bindFunctions();
+		bindStaticFunctions();
 	}
 
 	void methodDB::bindObjectFunctions(const std::string& className) 
@@ -58,6 +59,7 @@ namespace luna
 	void methodDB::bindStaticFunctions()
 	{
 		Log::RegisterMethods();
+		Os::RegisterMethods();
 	}
 
 

@@ -86,24 +86,54 @@ namespace luna
 		}
 		std::string os::getCurrentWorkingDirectory()
 		{
-			char buff[FILENAME_MAX];
-			return _getcwd(buff, FILENAME_MAX);
+			char buffer[FILENAME_MAX];
+			_getcwd(buffer, FILENAME_MAX);
+			return buffer;
 		}
-		void os::bindStaticFunctions()
+
+		std::string os::getName()
 		{
-			LN_ADD_INTERNAL_CALL(os, luna::os::OpenFileDialogInternal);
-			LN_ADD_INTERNAL_CALL(os, luna::os::SaveFileDialogInternal);
+			return LN_PLATFORM_NAME;
 		}
+
+		std::string os::getLocale()
+		{
+			return std::locale().name();
+		}
+		
 	}
-	MonoString* os::OpenFileDialogInternal(MonoString* filter)
+	void Os::RegisterMethods()
+	{
+		LN_ADD_INTERNAL_CALL(Os, OpenFileDialog);
+		LN_ADD_INTERNAL_CALL(Os, SaveFileDialog);
+		LN_ADD_INTERNAL_CALL(Os, GetCurrentWorkingDirectory);
+		LN_ADD_INTERNAL_CALL(Os, GetName);
+	}
+
+	MonoString* Os::OpenFileDialog(MonoString* filter)
 	{
 		std::string filePath = platform::os::openFileDialog(mono_string_to_utf8(filter));
 		return mono_string_new_wrapper(filePath.c_str());
 	}
-	MonoString* os::SaveFileDialogInternal(MonoString* filter)
+	MonoString* Os::SaveFileDialog(MonoString* filter)
 	{
 		std::string filePath = platform::os::saveFileDialog(mono_string_to_utf8(filter));
 		return mono_string_new_wrapper(filePath.c_str());
+	}
+
+	MonoString* Os::GetCurrentWorkingDirectory()
+	{
+		return mono_string_new_wrapper(platform::os::getCurrentWorkingDirectory().c_str());
+	}
+
+	MonoString* Os::GetName() 
+	{
+		return mono_string_new_wrapper(platform::os::getName().c_str());
+	}
+
+	MonoString* Os::GetLocale()
+	{
+		return mono_string_new_wrapper(platform::os::getLocale().c_str());
 	}
 }
 

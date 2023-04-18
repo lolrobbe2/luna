@@ -53,7 +53,7 @@ namespace luna
 			ref<vulkan::window> mWindow;
 			scene scene;
 			utils::layerStack layerStack;
-			float lastFrameTime = 0.0f;
+			double lastFrameTime = 0.0f;
 			bool running = true;
 			bool minimized = false;
 		private:

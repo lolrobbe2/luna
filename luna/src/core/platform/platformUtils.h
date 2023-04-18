@@ -12,13 +12,20 @@ namespace luna
 			static std::string saveFileDialog(const char* filter);
 			static std::vector<unsigned char> openFile(const std::string& filePath);
 			static std::string getCurrentWorkingDirectory();
-			static void bindStaticFunctions();
+			static std::string getName();
+			static std::string getLocale();
 		};
 	}
-	class LN_API os
+	class Os
 	{
 	public:
-		static MonoString* OpenFileDialogInternal(MonoString* filter);
-		static MonoString* SaveFileDialogInternal(MonoString* filter);
+		static void RegisterMethods();
+	private:
+		static MonoString* OpenFileDialog(MonoString* filter);
+		static MonoString* SaveFileDialog(MonoString* filter);
+		static MonoString* GetCurrentWorkingDirectory();
+		static MonoString* GetName();
+		static MonoString* GetLocale();
+
 	};
 }
