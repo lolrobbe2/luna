@@ -41,24 +41,24 @@ namespace luna {
 		LN_ADD_INTERNAL_CALL(Log, CriticalInternal)
 	}
 
-	inline void Log::TraceInternal(MonoString* string)
+	_ALWAYS_INLINE_ void Log::TraceInternal(MonoString* string)
 	{
 		LN_TRACE(std::string(mono_string_to_utf8(string)));
 	}
 
-	inline void Log::InfoInternal(MonoString* string)
+	_ALWAYS_INLINE_ void Log::InfoInternal(MonoString* string)
 	{
 		LN_INFO(std::string(mono_string_to_utf8(string)));
 	}
-	inline void Log::WarnInternal(MonoString* string)
+	_ALWAYS_INLINE_ void Log::WarnInternal(MonoString* string)
 	{
 		LN_WARN(std::string(mono_string_to_utf8(string)));
 	}
-	inline void Log::ErrorInternal(MonoString* string)
+	_ALWAYS_INLINE_ void Log::ErrorInternal(MonoString* string)
 	{
 		LN_ERROR(std::string(mono_string_to_utf8(string)));
 	}
-	inline void Log::CriticalInternal(MonoString* string)
+	_ALWAYS_INLINE_ void Log::CriticalInternal(MonoString* string)
 	{
 		LN_CRITICAL(std::string(mono_string_to_utf8(string)));
 	}

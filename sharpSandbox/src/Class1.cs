@@ -1,5 +1,4 @@
 ﻿using Luna;
-using System;
 
 namespace sharpSandbox
 {
@@ -7,14 +6,8 @@ namespace sharpSandbox
     {
         override public void Ready()
         {
-            //Console.WriteLine("helloNode");
-            string name = "John Doe";
-            int age = 26;
-            Log.Trace("Hi, my name is {0}. I am {1} years old", name, age);
-            Log.Info("Hi, my name is {0}. I am {1} years old", name, age);
-            Log.Warn("Hi, my name is {0}. I am {1} years old", name, age);
-            Log.Error("Hi, my name is {0}. I am {1} years old", name, age);
-            Log.Critical("Hi, my name is {0}. I am {1} years old", name, age);
+            string filePath = Luna.Os.OpenFileDialog("image\0*.png;*.jpeg;*.jpg\0");
+            Luna.Log.Warn("open file:{0}",filePath);
         }
 
         override public void Process(ulong delta)

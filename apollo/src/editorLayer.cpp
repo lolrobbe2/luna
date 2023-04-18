@@ -125,7 +125,7 @@ namespace luna
 	}
 	void editorLayer::open()
 	{
-		std::string filePath = platform::os::openFilaDialog("luna scene\0*.lscn\0");
+		std::string filePath = platform::os::openFileDialog("luna scene\0*.lscn\0");
 		if (!filePath.size()) return;
 
 		scenePanel = nullptr;

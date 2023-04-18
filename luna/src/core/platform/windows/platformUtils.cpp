@@ -5,11 +5,13 @@
 #include <core/application.h>
 #include <core/input.h>
 #include <filesystem>
+
+#include <core/object/methodDB.h>
 namespace luna 
 {
 	namespace platform
 	{
-		std::string os::openFilaDialog(const char* filter)
+		std::string os::openFileDialog(const char* filter)
 		{
 			OPENFILENAMEA ofn;
 			CHAR szFile[260] = { 0 };
@@ -87,6 +89,21 @@ namespace luna
 			char buff[FILENAME_MAX];
 			return _getcwd(buff, FILENAME_MAX);
 		}
+		void os::bindStaticFunctions()
+		{
+			LN_ADD_INTERNAL_CALL(os, luna::os::OpenFileDialogInternal);
+			LN_ADD_INTERNAL_CALL(os, luna::os::SaveFileDialogInternal);
+		}
+	}
+	MonoString* os::OpenFileDialogInternal(MonoString* filter)
+	{
+		std::string filePath = platform::os::openFileDialog(mono_string_to_utf8(filter));
+		return mono_string_new_wrapper(filePath.c_str());
+	}
+	MonoString* os::SaveFileDialogInternal(MonoString* filter)
+	{
+		std::string filePath = platform::os::saveFileDialog(mono_string_to_utf8(filter));
+		return mono_string_new_wrapper(filePath.c_str());
 	}
 }
 
@@ -111,7 +128,8 @@ namespace luna
 
 		glm::vec2 input::getMousePosition()
 		{
-			auto* window = static_cast<GLFWwindow*>(application::application::get().getWindow().getWindow());		double xpos, ypos;
+			auto* window = static_cast<GLFWwindow*>(application::application::get().getWindow().getWindow());		
+			double xpos, ypos;
 			glfwGetCursorPos(window, &xpos, &ypos);
 
 			return { (float)xpos, (float)ypos };

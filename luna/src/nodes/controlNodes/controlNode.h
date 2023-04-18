@@ -13,6 +13,12 @@ namespace luna
 			virtual ~controlNode() = default;
 			virtual void init(luna::scene* scene) override;
 			virtual void guiEvent(Event& event);
+			float getOffset();
+			//rect2 getRect()
+			void grabClickFocus();
+			void grabFocus();
+			bool hasFocus();
+			void releaseFocus();
 		};
 	}
 }

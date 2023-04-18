@@ -7,6 +7,7 @@ class __UnexistingClass;
 #define MB_T T
 #endif
 
+#include <core/debug/log.h>
 
 
 namespace luna
@@ -52,6 +53,11 @@ namespace luna
 		{
 			bindObjectFunctions(objectName);
 		}
+	}
+
+	void methodDB::bindStaticFunctions()
+	{
+		Log::RegisterMethods();
 	}
 
 

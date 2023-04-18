@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace Luna
 {
@@ -22,13 +21,14 @@ namespace Luna
         /// </example>
         /// </summary>
         public virtual void Ready() { }
-        /// <summary>
+        /// <summary>control
         /// runs every frame.
 
         /// <param name="delta">time since previuous frame.</param>
         /// </summary>
         public virtual void Process(ulong delta) { }
         /*internal calls per node*/
+
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         static extern void NodeSetName(ulong NodeId,string name);
 

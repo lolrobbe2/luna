@@ -20,6 +20,7 @@ namespace luna
 	private:
 		static void bindObjectFunctions(const std::string& className);
 		static void bindFunctions();
+		static void bindStaticFunctions();
 	};
 
 
