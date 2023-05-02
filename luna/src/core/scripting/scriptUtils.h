@@ -21,12 +21,14 @@ namespace luna
 
 		class scriptInstance {
 		public:
-			scriptInstance(scripting::scriptClass* scriptClass, uuid entity);
+			scriptInstance(scripting::scriptClass* scriptClass, uint32_t entityHandle);
 			~scriptInstance();
+			MonoObject* getInstance() { return instance; };
 		private: 
 			scripting::scriptClass* m_ScriptClass;
+			uint32_t handle;
 			uuid entityId;
-			void* instance;
+			MonoObject* instance;
 		};
 	}
 }

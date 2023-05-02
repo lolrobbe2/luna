@@ -73,6 +73,8 @@ namespace luna
 		virtual ~Node() = default;
 		void setName(std::string name);
 		void addChild(Node node);
+		std::vector<Node> getChildren();
+		
 		virtual void init(scene* scene) override;
 		virtual void bindMethods() override;
 		friend class scene;

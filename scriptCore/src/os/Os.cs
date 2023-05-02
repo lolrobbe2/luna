@@ -63,5 +63,12 @@ namespace Luna
         /// <returns>string of format en</returns>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern string GetLocaleLanguage();
+
+        /// <summary>
+        /// returns the main processId as an integer.
+        /// </summary>
+        /// <returns>int processId </returns>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public static extern int GetProcessId();
     }
 }

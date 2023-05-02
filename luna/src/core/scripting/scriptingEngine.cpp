@@ -20,8 +20,8 @@ namespace luna
 
 			std::filesystem::path coreAssemblyFilepath;
 			std::filesystem::path appAssemblyFilepath;
-
-			bool enableDebugging = false;
+ 
+			bool enableDebugging = true;
 		};
 
 		static scriptEngineData* s_Data = nullptr;
@@ -68,6 +68,7 @@ namespace luna
 
 				mono_jit_parse_options(2, (char**)argv);
 				mono_debug_init(MONO_DEBUG_FORMAT_MONO);
+				LN_CORE_WARN("[scriptingEngine] initialized mono in debug mode");
 			}
 
 			MonoDomain* rootDomain = mono_jit_init("LunaJitRt");
@@ -128,9 +129,25 @@ namespace luna
 				return nullptr;
 			}
 
+			if (s_Data->enableDebugging)
+			{
+				std::filesystem::path pdbPath = assemblyPath;
+				pdbPath.replace_extension(".pdb");
+
+				if (std::filesystem::exists(pdbPath))
+				{
+					
+					auto pdbFileData = platform::os::openFile(pdbPath.string());
+					mono_debug_open_image_from_memory(image, (const mono_byte*)pdbFileData.data(), pdbFileData.size());
+					LN_CORE_INFO("Loaded PDB {}", pdbPath);
+					pdbFileData.resize(0);
+				}
+			}
+			fileData.resize(0);
 			MonoAssembly* assembly = mono_assembly_load_from_full(image, assemblyPath.c_str(), &status, 0);
 			mono_image_close(image);
-
+			
+		
 			// Don't forget to free the file data. i wont !
 			return assembly;
 		}
@@ -240,6 +257,7 @@ namespace luna
 
 		}
 
+
 		scene* scriptingEngine::getContext()
 		{
 			return s_Data->m_Context;
@@ -262,6 +280,10 @@ namespace luna
 		{
 			
 		}
+		MonoArray* rootClass::createArray(const size_t arraySize)
+		{
+			return mono_array_new(s_Data->appDomain, root, arraySize);
+		}
 
 		scriptClass::scriptClass(MonoClass* _childClass, MonoClass* _baseClass) : childClass(_childClass),baseClass(_baseClass)
 		{
@@ -275,7 +297,6 @@ namespace luna
 
 		MonoObject* scriptClass::instance()
 		{
-			LN_CORE_INFO("instancing class: {0}", mono_class_get_name(childClass));
 			return scriptingEngine::instanciate(childClass);
 		}
 

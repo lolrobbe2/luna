@@ -1,7 +1,8 @@
 #include <lnpch.h>
+#pragma warning (push,0)
+
 #include <core/debug/log.h>
 
-#pragma warning disable
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #pragma warning(pop)

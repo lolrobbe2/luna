@@ -19,6 +19,7 @@ namespace luna
 		public:
 			rootClass() = default;
 			rootClass(MonoClass* childClass);
+			MonoArray* createArray(const size_t arraySize);
 			virtual ~rootClass() = default;
 			operator MonoClass* () { return root; };
 		private:
@@ -92,9 +93,21 @@ namespace luna
 			void createInstance(const std::string& className, uuid entityId);
 			static MonoObject* instanciate(MonoClass* monoClass);
 			static scriptClass* getScriptClass(const std::string& className) { return appClasses.find(className)->second; }
+			template<class type>
+			static MonoArray* createArray(const size_t size);
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
 			inline static std::map<std::string, scriptClass*> appClasses;
+
 		};
+
+		template<class type>
+		MonoArray* scriptingEngine::createArray(const size_t size)
+		{
+			std::string className = LN_CLASS_STRINGIFY(type);
+			if (rootClasses.find(className) == rootClasses.end()) return nullptr;
+			return rootClasses[className].createArray(size);
+		}
+
 	}
 }

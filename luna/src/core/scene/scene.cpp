@@ -7,12 +7,27 @@
 namespace luna
 {
 
-	static void NodeSetName(uuid nodeId, MonoString* name)
+	static void NodeSetName(entt::entity nodeHandle, MonoString* name)
 	{
-		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		Node node = { nodeHandle,scripting::scriptingEngine::getContext() };
 		node.setName(mono_string_to_utf8(name));
 	}
 	
+	static MonoArray* NodeGetChildren(entt::entity nodeId) 
+	{
+		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		auto children = node.getChildren();
+		MonoArray* nodeArray = scripting::scriptingEngine::createArray<Node>(children.size());
+		for (size_t i = 0; i < children.size(); i++)
+		{
+			Node childNode{ children[i],scripting::scriptingEngine::getContext()};
+			
+			MonoObject* nodeObject = childNode.getComponent<scriptComponent>().scritpInstance->getInstance();
+			mono_array_set(nodeArray, MonoObject*, i, nodeObject);
+		}
+		return nodeArray;
+	}
+
 	//Node implmentation
 	static void draw(Node node)
 	{
@@ -257,6 +272,19 @@ namespace luna
 		else addComponent<childComponent>().childs.push_back(node);
 	}
 
+	std::vector<Node> Node::getChildren()
+	{
+		std::vector<Node> children;
+		if (hasComponent<childComponent>())
+		{
+			auto children = getComponent<childComponent>().childs;
+			for (auto child : children) {
+				children.emplace_back(Node(child, scene));
+			}
+		}
+		return children;
+	}
+
 	void Node::init(luna::scene* scene)
 	{
 		this->scene = scene;
@@ -270,6 +298,7 @@ namespace luna
 	void Node::bindMethods() 
 	{
 		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
+		LN_ADD_INTERNAL_CALL(Node, NodeGetChildren);
 	}
 
 

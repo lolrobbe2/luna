@@ -104,7 +104,7 @@ namespace luna
 				ZeroMemory(&fow, sizeof(fow));
 				fow.dwOSVersionInfoSize = sizeof(fow);
 				if (version_ptr(&fow) == 0x00000000) {
-					return std::to_string((int64_t)fow.dwMajorVersion) + "." + std::to_string((int64_t)fow.dwMinorVersion) + "." + std::to_string((int64_t)fow.dwBuildNumber);
+					return fmt::format("{0}.{1}.{2}", (int64_t)fow.dwMajorVersion, (int64_t)fow.dwMinorVersion, (int64_t)fow.dwBuildNumber);
 				}
 			}
 			return "";
