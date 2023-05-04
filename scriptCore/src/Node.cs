@@ -12,19 +12,7 @@ namespace Luna
         /// <param name="name">string name</param>
         public void SetName(string name) { NodeSetName(NodeId, name); }
         
-        public Node[] GetChildren() {
-            IntPtr[] ptr = NodeGetChildren(NodeId);
-            Log.Info("array size = {0}",ptr.Length);
-            /*
-            Node[] children = new Node[ptr.Length];
-            for (int i = 0; i < ptr.Length; i++)
-            {
-  
-                Marshal.PtrToStructure(ptr[i], node);
-            }
-            */
-            return new Node[1]; 
-        }
+        public Node[] GetChildren() { return NodeGetChildren(NodeId);}
         /// <summary>
         /// runs on node creation.
         /// <example>
@@ -49,7 +37,7 @@ namespace Luna
         static extern void NodeSetName(ulong NodeId,string name);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static extern IntPtr[] NodeGetChildren(ulong NodeId);
+        static extern Node[] NodeGetChildren(ulong NodeId);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         static extern int NodeGetChildrenSize(ulong NodeId);

@@ -105,6 +105,7 @@ namespace luna
 		MonoArray* scriptingEngine::createArray(const size_t size)
 		{
 			std::string className = LN_CLASS_STRINGIFY(type);
+			className = pascalToCamel(className);
 			if (rootClasses.find(className) == rootClasses.end()) return nullptr;
 			return rootClasses[className].createArray(size);
 		}

@@ -17,14 +17,15 @@ namespace luna
 	{
 		Node node = { nodeId,scripting::scriptingEngine::getContext() };
 		auto children = node.getChildren();
+
 		MonoArray* nodeArray = scripting::scriptingEngine::createArray<Node>(children.size());
 		for (size_t i = 0; i < children.size(); i++)
 		{
-			Node childNode{ children[i],scripting::scriptingEngine::getContext()};
-			
-			MonoObject* nodeObject = childNode.getComponent<scriptComponent>().scritpInstance->getInstance();
+			auto& script = children[i].getComponent<scriptComponent>();
+			MonoObject* nodeObject = script.scritpInstance->getInstance();
 			mono_array_set(nodeArray, MonoObject*, i, nodeObject);
 		}
+		
 		return nodeArray;
 	}
 
@@ -208,9 +209,14 @@ namespace luna
 		auto scriptComponents = m_Registry.view<scriptComponent,idComponent>();
 		for (auto entity : scriptComponents)
 		{
-			auto script = m_Registry.get<scriptComponent>(entity);
+			auto& script = m_Registry.get<scriptComponent>(entity);
 			if (script.scritpInstance) LN_CORE_ERROR("scriptInstance was not nullptr");
-			else if(script.className.size()) script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), m_Registry.get<idComponent>(entity).id);
+			else if (script.className.size()) script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), (uint32_t)entity);
+		}
+		for (auto entity : scriptComponents)
+		{
+			auto& script = m_Registry.get<scriptComponent>(entity);
+			if (script.scritpInstance) script.scritpInstance->ready();
 		}
 	}
 
@@ -277,9 +283,9 @@ namespace luna
 		std::vector<Node> children;
 		if (hasComponent<childComponent>())
 		{
-			auto children = getComponent<childComponent>().childs;
-			for (auto child : children) {
-				children.emplace_back(Node(child, scene));
+			auto childrenID = getComponent<childComponent>().childs;
+			for (auto child : childrenID) {
+				children.push_back(Node(child, scene));
 			}
 		}
 		return children;

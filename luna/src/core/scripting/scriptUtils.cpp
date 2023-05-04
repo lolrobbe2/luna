@@ -20,11 +20,14 @@ namespace luna
 			instance = scripting::scriptingEngine::instanciate(m_ScriptClass->childClass);
 			void* param = &handle;
 			mono_runtime_invoke(m_ScriptClass->constructor, instance, &param, nullptr);
-			mono_runtime_invoke(m_ScriptClass->readyMethod, instance, nullptr, nullptr);
 		}
 
 		scriptInstance::~scriptInstance() {
-			delete instance;
+			//delete instance;
+		}
+		void scriptInstance::ready()
+		{
+			 mono_runtime_invoke(m_ScriptClass->readyMethod, instance, nullptr, nullptr);
 		}
 	}
 }

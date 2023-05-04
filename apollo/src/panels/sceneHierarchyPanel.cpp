@@ -154,12 +154,18 @@ namespace luna
 			auto& script = Node.getComponent<scriptComponent>();			
 			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "script"))
 			{
-				const char** items = utils::scriptUtils::getAppClassNames().data();
-				static int currentItem;
-				static std::string className = items[currentItem];
+				auto appClassNames = utils::scriptUtils::getAppClassNames();
+				const char** items = appClassNames.data();
+				int currentItem = script.currentItem;
 				ImGui::LabelText("className", script.className.c_str());
 				if(ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size()));
-					if (className.size()) script.className = className;
+				{
+					
+				}
+				if (currentItem != -1) {
+					script.currentItem = currentItem;
+					script.className = std::string(items[currentItem]);
+				}
 				ImGui::TreePop();
 			}
 			ImGui::Separator();

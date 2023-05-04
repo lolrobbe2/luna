@@ -68,7 +68,6 @@ namespace luna
 
 				mono_jit_parse_options(2, (char**)argv);
 				mono_debug_init(MONO_DEBUG_FORMAT_MONO);
-				LN_CORE_WARN("[scriptingEngine] initialized mono in debug mode");
 			}
 
 			MonoDomain* rootDomain = mono_jit_init("LunaJitRt");
@@ -143,10 +142,10 @@ namespace luna
 					pdbFileData.resize(0);
 				}
 			}
-			fileData.resize(0);
+			
 			MonoAssembly* assembly = mono_assembly_load_from_full(image, assemblyPath.c_str(), &status, 0);
 			mono_image_close(image);
-			
+			fileData.resize(0);
 		
 			// Don't forget to free the file data. i wont !
 			return assembly;
