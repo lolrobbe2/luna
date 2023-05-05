@@ -29,6 +29,32 @@ namespace luna
 		return nodeArray;
 	}
 
+	static MonoObject* NodeGetParent(entt::entity nodeId)
+	{
+		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		Node parent = node.getParent();
+		if (parent) {
+			return parent.getComponent<scriptComponent>().scritpInstance->getInstance();
+		}
+		return nullptr;
+	}
+
+	static void NodeAddSibling(entt::entity nodeId, entt::entity siblingId)
+	{
+		Node sibling = { nodeId,scripting::scriptingEngine::getContext() };
+		sibling.getParent().addChild(Node(siblingId, scripting::scriptingEngine::getContext()));
+	}
+
+	static void NodeAddChild(entt::entity nodeId, entt::entity childId) 
+	{
+		Node parent = { nodeId,scripting::scriptingEngine::getContext() };
+		parent.addChild(Node(childId, scripting::scriptingEngine::getContext()));
+	}
+
+	static entt::entity NodeCreateNew()
+	{
+		return Node(scripting::scriptingEngine::getContext());
+	}
 	//Node implmentation
 	static void draw(Node node)
 	{
@@ -226,7 +252,6 @@ namespace luna
 		for (auto entity : scriptComponents)
 		{
 			auto script = m_Registry.get<scriptComponent>(entity);
-			if (script.scritpInstance) delete script.scritpInstance;
 			script.scritpInstance = nullptr;
 		
 		}
@@ -236,7 +261,7 @@ namespace luna
 	{
 		auto idComponents = scene->m_Registry.group<idComponent,tagComponent>();
 		this->scene = scene;
-		
+		if (id == -1) return;
 		for (auto entity : idComponents)
 		{
 			auto [testId,tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);
@@ -291,6 +316,16 @@ namespace luna
 		return children;
 	}
 
+	Node Node::getParent() 
+	{
+		if (hasComponent<parentComponent>()) {
+			auto& parentComp = getComponent<parentComponent>();
+			Node parent{ parentComp.parentId,scene };
+			return parent;
+		}
+		return Node(-1,scene);
+	}
+
 	void Node::init(luna::scene* scene)
 	{
 		this->scene = scene;
@@ -305,9 +340,10 @@ namespace luna
 	{
 		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
 		LN_ADD_INTERNAL_CALL(Node, NodeGetChildren);
+		LN_ADD_INTERNAL_CALL(Node, NodeGetParent);
+		LN_ADD_INTERNAL_CALL(Node, NodeAddSibling);
+		LN_ADD_INTERNAL_CALL(Node, NodeAddChild);
+		LN_ADD_INTERNAL_CALL(Node, NodeCreateNew);
 	}
-
-
-
 }
  

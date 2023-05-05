@@ -74,6 +74,7 @@ namespace luna
 		void setName(std::string name);
 		void addChild(Node node);
 		std::vector<Node> getChildren();
+		Node getParent();
 		
 		virtual void init(scene* scene) override;
 		virtual void bindMethods() override;
@@ -108,7 +109,6 @@ namespace luna
 		template<typename T>
 		void removeComponent()
 		{
-			//HZ_CORE_ASSERT(HasComponent<T>(), "Node does not have component!");
 			scene->m_Registry.remove<T>(entityHandle);
 		}
 

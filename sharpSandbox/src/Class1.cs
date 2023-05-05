@@ -8,9 +8,7 @@ namespace sharpSandbox
         {
             string version = Os.GetVersion();
             Log.Info("current version = {0}",version);
-            Node[] children = GetChildren();
-            //Node[] children = GetChildren();
-            children[0].SetName("meep meep");
+            Children[0].SetName("meep meep");
             Log.Info("children size");
         }
 
@@ -24,9 +22,7 @@ namespace sharpSandbox
     {
         override public void Ready()
         {
-            string version = Os.GetVersion();
-            Log.Info("current version = {0}", version);
-            
+            Parent.SetName("welp");
         }
 
         override public void Process(ulong delta)
