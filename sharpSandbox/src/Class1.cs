@@ -1,4 +1,5 @@
 ﻿using Luna;
+using System.Security.Cryptography.X509Certificates;
 
 namespace sharpSandbox
 {
@@ -18,11 +19,12 @@ namespace sharpSandbox
         }
     }
 
-    internal class Empty : Node
+    internal class Empty : ControlNode
     {
         override public void Ready()
         {
             Parent.SetName("welp");
+            Position.X = 0;
         }
 
         override public void Process(ulong delta)
