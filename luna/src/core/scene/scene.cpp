@@ -7,54 +7,7 @@
 namespace luna
 {
 
-	static void NodeSetName(entt::entity nodeHandle, MonoString* name)
-	{
-		Node node = { nodeHandle,scripting::scriptingEngine::getContext() };
-		node.setName(mono_string_to_utf8(name));
-	}
 	
-	static MonoArray* NodeGetChildren(entt::entity nodeId) 
-	{
-		Node node = { nodeId,scripting::scriptingEngine::getContext() };
-		auto children = node.getChildren();
-
-		MonoArray* nodeArray = scripting::scriptingEngine::createArray<Node>(children.size());
-		for (size_t i = 0; i < children.size(); i++)
-		{
-			auto& script = children[i].getComponent<scriptComponent>();
-			MonoObject* nodeObject = script.scritpInstance->getInstance();
-			mono_array_set(nodeArray, MonoObject*, i, nodeObject);
-		}
-		
-		return nodeArray;
-	}
-
-	static MonoObject* NodeGetParent(entt::entity nodeId)
-	{
-		Node node = { nodeId,scripting::scriptingEngine::getContext() };
-		Node parent = node.getParent();
-		if (parent) {
-			return parent.getComponent<scriptComponent>().scritpInstance->getInstance();
-		}
-		return nullptr;
-	}
-
-	static void NodeAddSibling(entt::entity nodeId, entt::entity siblingId)
-	{
-		Node sibling = { nodeId,scripting::scriptingEngine::getContext() };
-		sibling.getParent().addChild(Node(siblingId, scripting::scriptingEngine::getContext()));
-	}
-
-	static void NodeAddChild(entt::entity nodeId, entt::entity childId) 
-	{
-		Node parent = { nodeId,scripting::scriptingEngine::getContext() };
-		parent.addChild(Node(childId, scripting::scriptingEngine::getContext()));
-	}
-
-	static entt::entity NodeCreateNew()
-	{
-		return Node(scripting::scriptingEngine::getContext());
-	}
 	//Node implmentation
 	static void draw(Node node)
 	{
@@ -257,6 +210,61 @@ namespace luna
 		}
 	}
 
+#pragma region NODE
+
+	/*-----------------------------------------------------------------------*/
+	/*                                glue                                 */
+	/*-----------------------------------------------------------------------*/
+
+
+	static void NodeSetName(entt::entity nodeHandle, MonoString* name)
+	{
+		Node node = { nodeHandle,scripting::scriptingEngine::getContext() };
+		node.setName(mono_string_to_utf8(name));
+	}
+
+	static MonoArray* NodeGetChildren(entt::entity nodeId)
+	{
+		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		auto children = node.getChildren();
+
+		MonoArray* nodeArray = scripting::scriptingEngine::createArray<Node>(children.size());
+		for (size_t i = 0; i < children.size(); i++)
+		{
+			auto& script = children[i].getComponent<scriptComponent>();
+			MonoObject* nodeObject = script.scritpInstance->getInstance();
+			mono_array_set(nodeArray, MonoObject*, i, nodeObject);
+		}
+
+		return nodeArray;
+	}
+
+	static MonoObject* NodeGetParent(entt::entity nodeId)
+	{
+		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		Node parent = node.getParent();
+		if (parent) {
+			return parent.getComponent<scriptComponent>().scritpInstance->getInstance();
+		}
+		return nullptr;
+	}
+
+	static void NodeAddSibling(entt::entity nodeId, entt::entity siblingId)
+	{
+		Node sibling = { nodeId,scripting::scriptingEngine::getContext() };
+		sibling.getParent().addChild(Node(siblingId, scripting::scriptingEngine::getContext()));
+	}
+
+	static void NodeAddChild(entt::entity nodeId, entt::entity childId)
+	{
+		Node parent = { nodeId,scripting::scriptingEngine::getContext() };
+		parent.addChild(Node(childId, scripting::scriptingEngine::getContext()));
+	}
+
+	static entt::entity NodeCreateNew()
+	{
+		return Node(scripting::scriptingEngine::getContext());
+	}
 	Node::Node(uint64_t id, luna::scene* scene)
 	{
 		auto idComponents = scene->m_Registry.group<idComponent,tagComponent>();
@@ -345,5 +353,9 @@ namespace luna
 		LN_ADD_INTERNAL_CALL(Node, NodeAddChild);
 		LN_ADD_INTERNAL_CALL(Node, NodeCreateNew);
 	}
+
+#pragma endregion
+
 }
- 
+
+

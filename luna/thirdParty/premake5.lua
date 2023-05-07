@@ -4,7 +4,9 @@ group "thirdParty"
 include "premake/GLFW.lua"
 include "premake/VkBootstrap.lua"
 include "premake/ImGui.lua"
+include "premake/imguizmo.lua"
 include "premake/stb.lua"
 include "premake/yaml-cpp"
+
 
 group ""

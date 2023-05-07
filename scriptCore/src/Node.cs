@@ -101,7 +101,7 @@ namespace Luna
         /// <summary>
         /// creates a new node at runtime
         /// </summary>
-        protected Node() { NodeId = NodeCreateNew(); }
+        protected Node() { NodeId = 0; }
         internal Node(ulong id) { NodeId = id; }
 
         public readonly ulong NodeId;

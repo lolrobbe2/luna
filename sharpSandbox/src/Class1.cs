@@ -9,7 +9,6 @@ namespace sharpSandbox
         {
             string version = Os.GetVersion();
             Log.Info("current version = {0}",version);
-            Children[0].SetName("meep meep");
             Log.Info("children size");
         }
 
@@ -23,7 +22,7 @@ namespace sharpSandbox
     {
         override public void Ready()
         {
-            Parent.SetName("welp");
+            
             Position.X = 0;
         }
 

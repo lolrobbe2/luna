@@ -29,6 +29,7 @@ IncludeDir["vkb"] =   "%{wks.location}/luna/thirdParty/Vkbootstrap/src"
 IncludeDir["stb"] =   "%{wks.location}/luna/thirdParty/stb"
 IncludeDir["spd"] =   "%{wks.location}/luna/thirdParty/spdlog/include"
 IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
+IncludeDir["imguizmo"] = "%{wks.location}/luna/thirdParty/imguizmo"
 IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
 IncludeDir["mono"] =  "%{wks.location}/luna/thirdParty/mono/include"
 
@@ -74,6 +75,7 @@ project "luna"
         "%{IncludeDir.stb}",
         "%{IncludeDir.vkb}",
         "%{IncludeDir.imgui}",
+        "%{IncludeDir.imguizmo}",
         "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.mono}",
         "%{IncludeDir.luna}"

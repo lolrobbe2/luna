@@ -12,6 +12,7 @@ namespace luna
 			controlNode(luna::scene* scene);
 			virtual ~controlNode() = default;
 			virtual void init(luna::scene* scene) override;
+			virtual void bindMethods() override;
 			virtual void guiEvent(Event& event);
 			float getOffset();
 			//rect2 getRect()
@@ -19,6 +20,8 @@ namespace luna
 			void grabFocus();
 			bool hasFocus();
 			void releaseFocus();
+			glm::vec2 getPosition();
+			void setPosition(glm::vec2 position);
 		};
 	}
 }

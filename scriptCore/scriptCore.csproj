@@ -21,8 +21,7 @@
     <OutputPath>..\bin\debug-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\debug-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -34,8 +33,7 @@
     <OutputPath>..\bin\release-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\release-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -47,8 +45,7 @@
     <OutputPath>..\bin\distribution-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\distribution-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -62,11 +59,11 @@
     <Reference Include="mono-2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\math\Vector2.cs" />
-    <Compile Include="src\math\Vector3.cs" />
     <Compile Include="src\Node.cs" />
     <Compile Include="src\controlNodes\controlNode.cs" />
     <Compile Include="src\debug\Log.cs" />
+    <Compile Include="src\math\Vector2.cs" />
+    <Compile Include="src\math\Vector3.cs" />
     <Compile Include="src\os\Os.cs" />
   </ItemGroup>
   <ItemGroup>
