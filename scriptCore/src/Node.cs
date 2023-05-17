@@ -104,7 +104,7 @@ namespace Luna
         protected Node() { NodeId = 0; }
         internal Node(ulong id) { NodeId = id; }
 
-        public readonly ulong NodeId;
+        public readonly ulong NodeId = 0;
         #endregion
 
         #region QOL variables;

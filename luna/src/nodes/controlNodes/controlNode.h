@@ -22,6 +22,8 @@ namespace luna
 			void releaseFocus();
 			glm::vec2 getPosition();
 			void setPosition(glm::vec2 position);
+			glm::vec2 getScale();
+			void setScale(glm::vec2 position);
 		};
 	}
 }

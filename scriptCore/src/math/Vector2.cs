@@ -2,7 +2,7 @@
 
 namespace Luna
 {
-    public struct Vector2
+    public class Vector2
     {
         public float X, Y;
 

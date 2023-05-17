@@ -66,6 +66,12 @@ namespace luna
 				return camelText;
 			}
 
+			_ALWAYS_INLINE_ static std::string camelToPascal(const std::string& pascalText)
+			{
+				std::string camelText = pascalText;
+				camelText[0] = std::toupper(pascalText[0]);
+				return camelText;
+			}
 
 			static void init();
 			static void shutdown();

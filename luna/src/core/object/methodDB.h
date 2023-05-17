@@ -7,6 +7,12 @@
 #include <mono/metadata/attrdefs.h>
 namespace luna
 {
+	_ALWAYS_INLINE_ static std::string camelToPascal(const std::string& pascalText)
+	{
+		std::string camelText = pascalText;
+		camelText[0] = std::toupper(pascalText[0]);
+		return camelText;
+	}
 	/**
 	 * @brief holds all the internal and external functions + corresponding binding code.
 	 */
@@ -35,7 +41,7 @@ namespace luna
 		while (std::getline(fullName, segment, ':')) classSeglist.push_back(segment);
 		while (std::getline(funcName, segment, ':')) functionNameSeglist.push_back(segment);
 
-		const std::string className = classSeglist.back();
+		const std::string className = camelToPascal(classSeglist.back());
 		const std::string functionSignature = "Luna." + className + "::" + functionNameSeglist.back();
 		mono_add_internal_call(functionSignature.c_str(),functionPtr);
 	}

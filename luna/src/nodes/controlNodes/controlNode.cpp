@@ -19,7 +19,15 @@ namespace luna
 			controlNode(nodeId, scripting::scriptingEngine::getContext()).setPosition(*inPosition);
 		}
 
+		static void ControlNodeGetScale(entt::entity nodeId, glm::vec2* outScale)
+		{
+			*outScale = controlNode(nodeId, scripting::scriptingEngine::getContext()).getScale();
+		}
 
+		static void ControlNodeSetScale(entt::entity nodeId, glm::vec2* inScale)
+		{
+			controlNode(nodeId, scripting::scriptingEngine::getContext()).setScale(*inScale);
+		}
 
 
 
@@ -50,6 +58,8 @@ namespace luna
 		{
 			LN_ADD_INTERNAL_CALL(controlNode, ControlNodeGetPosition);
 			LN_ADD_INTERNAL_CALL(controlNode, ControlNodeSetPosition);
+			LN_ADD_INTERNAL_CALL(controlNode, ControlNodeGetScale);
+			LN_ADD_INTERNAL_CALL(controlNode, ControlNodeSetScale);
 		}
 		void controlNode::guiEvent(Event& event) 
 		{
@@ -65,6 +75,18 @@ namespace luna
 			auto& transform = getComponent<transformComponent>();
 			transform.translation.x = position.x;
 			transform.translation.y = position.y;
+		}
+
+		glm::vec2 controlNode::getScale()
+		{
+			return getComponent<transformComponent>().scale;
+		}
+
+		void controlNode::setScale(glm::vec2 position)
+		{
+			auto& transform = getComponent<transformComponent>();
+			transform.scale.x = position.x;
+			transform.scale.y = position.y;
 		}
 	}
 }

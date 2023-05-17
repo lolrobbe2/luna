@@ -22,8 +22,7 @@ namespace sharpSandbox
     {
         override public void Ready()
         {
-            
-            Position.X = 0;
+            Position.X = 10;
         }
 
         override public void Process(ulong delta)
