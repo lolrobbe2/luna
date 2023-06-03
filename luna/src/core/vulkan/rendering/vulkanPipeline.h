@@ -40,12 +40,14 @@ namespace luna
 			 * 
 			 */
 			virtual void destroyPipeline() override;
+			#ifndef DISABLE_IMGUI
 			/**
 			 * returns current frameBuffer descriptor handle.
 			 *
 			 * \return
 			 */
 			_ALWAYS_INLINE_ virtual ImTextureID getWindowImage() override;
+			#endif //!DISABLE_IMGUI
 			/**
 			 * @brief creates the renderer commands for the pipeline.
 			 * 

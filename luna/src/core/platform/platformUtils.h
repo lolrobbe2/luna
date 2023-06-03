@@ -18,6 +18,8 @@ namespace luna
 			static std::string getLocaleLanguage();
 			static int getProcessId();
 			static std::string getExecutablePath();
+			static void setConsoleVisibility(bool visible);
+			static void createConsole();
 		};
 	}
 	class Os

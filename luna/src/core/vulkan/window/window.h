@@ -1,7 +1,6 @@
 #pragma once
 #ifndef WINDOW
 #define WINDOW
-
 #include <lnpch.h>
 #include <core/core.h>
 #include <core/events/event.h>
@@ -12,7 +11,6 @@ namespace luna
 {
 	namespace vulkan
 	{
-		
 		struct windowSpec
 		{
 			uint32_t width;

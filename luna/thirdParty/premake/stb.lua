@@ -1,6 +1,8 @@
 project "stb"
 	kind "StaticLib"
 	language "C++"
+	configmap 
+	{ }
 	staticruntime "off"
 	files
 	{

@@ -25,6 +25,7 @@ namespace luna {
 	{
 	public:
 		static void Init();
+		static void Reinit();
 		static void RegisterMethods();
 		static std::shared_ptr<spdlog::logger> GetCoreLogger() { return s_CoreLogger; }
 		static std::shared_ptr<spdlog::logger> GetClientLogger(){ return s_ClientLogger; }

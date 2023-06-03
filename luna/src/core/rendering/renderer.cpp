@@ -42,7 +42,9 @@ namespace luna
 		}
 		void renderer::shutdown()
 		{
+		#ifndef DISABLE_IMGUI
 			gui.~shared_ptr();
+		#endif DISABLE_IMGUI
 			rendererPipeline.~shared_ptr();
 			rendererDevice.~shared_ptr();
 		}

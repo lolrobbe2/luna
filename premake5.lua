@@ -6,7 +6,7 @@ flags
 
 
 
-startproject "sandbox"
+startproject "apollo"
 workspace "luna"
     architecture "x64"
     
@@ -16,7 +16,9 @@ workspace "luna"
         "release",
         "distribution"
     }
-    
+     platforms { "runtime64", "editor64"}
+
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 buildmessage("$(VULKAN_SDK)/include")
@@ -55,7 +57,6 @@ project "luna"
     location "luna"
     kind "SharedLib"
     language "c++"
-    
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
@@ -91,19 +92,19 @@ project "luna"
     {
         "$(VULKAN_SDK)/Lib", 
     }
-    postbuildcommands
-    {
-        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
-        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo"),
-        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/runtime")
-    }
+
+filter "platforms:runtime64"
+defines 
+{
+    "DISABLE_IMGUI"
+}
+
     filter "system:windows"
     
         cppdialect "c++17"
         staticruntime "on"
         systemversion "latest"
         symbols "on"
-
         links
         {
             "%{Library.ShaderC}",
@@ -115,6 +116,13 @@ project "luna"
             "stb",
             "yaml-cpp",
             "vulkan-1"
+        }
+        postbuildcommands
+        {
+            ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
+            ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo"),
+            ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/runtime")
+
         }
         filter "configurations:debug"
             LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
@@ -149,6 +157,7 @@ project "luna"
                 "LN_RELEASE"
             
             }
+
             runtime "Release"
             optimize "On"
 
@@ -174,12 +183,14 @@ project "luna"
             {
                 "-mwindows"
             }
+
+
 group""
 project "sandbox"
+    entrypoint ("mainCRTStartup")
     location "sandbox"
     kind "ConsoleApp"
     language "c++"
-
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
@@ -238,10 +249,10 @@ project "sandbox"
         }
 group"core"
 project "apollo"
+    entrypoint ("mainCRTStartup")
     location "apollo"
     kind "ConsoleApp"
     language "c++"
-
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
@@ -273,6 +284,8 @@ project "apollo"
     {
         "/MD",
     }
+
+    
     filter "system:windows"
         cppdialect "c++17"
         staticruntime "on"
@@ -300,10 +313,10 @@ project "apollo"
         }
 
 project "runtime"
+    entrypoint ("mainCRTStartup")
     location "runtime"
-    kind "ConsoleApp"
+    kind "WindowedApp"
     language "c++"
-
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
@@ -327,12 +340,15 @@ project "runtime"
    
     links
     {
-        
         "luna"
     }
     buildoptions 
     {
         "/MD",
+    }
+    defines 
+    {
+        "DISABLE_IMGUI"
     }
     filter "system:windows"
         cppdialect "c++17"
@@ -342,23 +358,18 @@ project "runtime"
         {
             "_WINDLL"
         }
-        
-        filter "configurations:debug"
+        filter {"configurations:debugRuntime" , "configurations:debug"}
             runtime "Debug"
             symbols "On"
   
-        filter "configurations:release"
+        filter "configurations:releaseRuntime"
             runtime "Release"
             optimize "On"
 
-        filter "configurations:distribution"
+        filter "configurations:distributionRuntime"
             runtime "Release"
             symbols "Off"
             optimize "On"
-        buildoptions 
-        {
-            "-mwindows"
-        }
 group""
 
 

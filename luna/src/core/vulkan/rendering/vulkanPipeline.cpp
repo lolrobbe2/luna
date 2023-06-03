@@ -131,7 +131,7 @@ namespace luna
 
 			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 			//transition dst image
-#ifndef DISABLE_IMGUI
+		#ifndef DISABLE_IMGUI
 			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 			//transition src image
 			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
@@ -164,9 +164,9 @@ namespace luna
 			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
-		#endif //!DISABLE_IMGUI
-			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 
+			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
+		#endif //!DISABLE_IMGUI
 
 
 			//TODO gpu driven rendering (VkDrawIndirect);

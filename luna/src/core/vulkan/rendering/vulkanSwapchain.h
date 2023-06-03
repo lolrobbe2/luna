@@ -99,12 +99,10 @@ namespace luna
 			 */
 			_ALWAYS_INLINE_ VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
 			std::vector<VkImage> sceneViewportImages;
+			std::vector<VkDescriptorSet> m_Dset;
 		#endif //!DISABLE_IMGUI
 			vkb::Swapchain mSwapchain;
 			std::vector<VkFramebuffer> frameBuffers;
-		#ifndef DISABLE_IMGUI
-			std::vector<VkDescriptorSet> m_Dset;
-		#endif //!#ifndef DISABLE_IMGUI
 		private:
 			/**
 			 * @brief destroys the device bound swapchain.
@@ -121,7 +119,9 @@ namespace luna
 			bool init = false;
 			VkSampler viewportSampler;
 			VkSurfaceCapabilitiesKHR surfaceCapaBilities;
+#ifndef DISABLE_IMGUI
 			std::vector<VkImageView> sceneViewportImageViews;
+		#endif //!DISABLE_IMGUI
 		};
 	}
 }

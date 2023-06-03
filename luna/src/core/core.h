@@ -6,6 +6,11 @@
 #define LN_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 #define LN_TYPE_TO_NAME(type) #type;
 
+#ifdef CONFIG_ERROR
+	#error selected configuration is not supported by his project
+#endif //!CONFIG_ERROR
+
+
 #pragma warning(push, 0)
 #include <memory>
 #include <core/debug/log.h>

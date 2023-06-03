@@ -150,6 +150,20 @@ namespace luna
 			while(executablePath.find("\\") != std::string::npos) executablePath.replace(executablePath.find("\\"), sizeof("\\") - 1, "/");
 			return executablePath;
 		}
+		void os::setConsoleVisibility(bool visible)
+		{
+			::ShowWindow(::GetConsoleWindow(), visible ? SW_HIDE : SW_SHOW);
+		}
+		void os::createConsole()
+		{
+			AllocConsole();
+			AttachConsole(GetCurrentProcessId());
+			freopen("CON", "w", stdout);
+			freopen("CON", "w", stderr);
+			freopen("CON", "r", stdin);
+			Log::Reinit();
+			LN_CORE_INFO("attached console window");
+		}
 	}
 	void Os::RegisterMethods()
 	{

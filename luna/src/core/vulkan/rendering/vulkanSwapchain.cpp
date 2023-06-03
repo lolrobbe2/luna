@@ -120,7 +120,7 @@ namespace luna
             samplerInfo.mipLodBias = 0.0f;
             samplerInfo.minLod = 0.0f;
             samplerInfo.maxLod = 0.0f;
-
+            #ifndef DISABLE_IMGUI
             sceneViewportImages.resize(maxFramesInFlight);
             sceneViewportImageViews.resize(maxFramesInFlight);
             for (size_t i = 0; i < maxFramesInFlight; i++)
@@ -128,7 +128,7 @@ namespace luna
                 utils::vulkanAllocator::createImage(&sceneViewportImages[i], VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE,{ mSwapchain.extent.width,mSwapchain.extent.height,1 }, mSwapchain.image_format);
                 utils::vulkanAllocator::createImageView(&sceneViewportImageViews[i], sceneViewportImages[i], mSwapchain.image_format, VkImageAspectFlagBits::VK_IMAGE_ASPECT_COLOR_BIT);
             }
-
+            #endif //!DISABLE_IMGUI
             vkCreateSampler(mSwapchainSpec.device, &samplerInfo, nullptr, &viewportSampler);
         #ifndef DISABLE_IMGUI
             m_Dset.resize(maxFramesInFlight);
@@ -139,37 +139,41 @@ namespace luna
         }
         VkResult vulkanSwapchain::recreateViewport(uint32_t maxFramesInFlight)
         {
+        #ifndef DISABLE_IMGUI
             LN_PROFILE_FUNCTION();
             sceneViewportImages.resize(maxFramesInFlight);
             sceneViewportImageViews.resize(maxFramesInFlight);
             for (size_t i = 0; i < maxFramesInFlight; i++)
             {
-            #ifndef DISABLE_IMGUI
+
                 ImGui_ImplVulkan_RemoveTexture(m_Dset[i]);
-            #endif //!DISABLE_IMGUI
+
                 utils::vulkanAllocator::destroyImageView(sceneViewportImageViews[i]);
                 utils::vulkanAllocator::destroyImage(sceneViewportImages[i]);
                 utils::vulkanAllocator::createImage(&sceneViewportImages[i], VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE, { mSwapchain.extent.width,mSwapchain.extent.height,1 }, mSwapchain.image_format);
                 utils::vulkanAllocator::createImageView(&sceneViewportImageViews[i], sceneViewportImages[i], mSwapchain.image_format, VkImageAspectFlagBits::VK_IMAGE_ASPECT_COLOR_BIT);
-            #ifndef DISABLE_IMGUI
+
                 m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, sceneViewportImageViews[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
-            #endif //!DISABLE_IMGUI
             }
+        #endif //!DISABLE_IMGUI
+
             return VK_SUCCESS;
         }
         VkResult vulkanSwapchain::destroyViewport() 
         {
+        #ifndef DISABLE_IMGUI
             for (size_t i = 0; i < sceneViewportImages.size(); i++)
             {
-            #ifndef DISABLE_IMGUI
+
                 ImGui_ImplVulkan_RemoveTexture(m_Dset[i]);
                 utils::vulkanAllocator::destroyImageView(sceneViewportImageViews[i]);
                 utils::vulkanAllocator::destroyImage(sceneViewportImages[i]);
-            #endif //!DISABLE_IMGUI
+
             }
             m_Dset.resize(0);
             sceneViewportImages.resize(0);
             sceneViewportImageViews.resize(0);
+        #endif //!DISABLE_IMGUI
             return VK_SUCCESS;
         }
 	}
