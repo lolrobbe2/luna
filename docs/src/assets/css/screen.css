@@ -1,5 +1,5 @@
 header {
-    top: 0;
+    position: fixed;
     margin: auto;
     display: flex;
     align-items: center;
@@ -68,7 +68,7 @@ body ,html{
 
     height: 100%;
     background-attachment: fixed;
-    background-position: center;
+    background-position: 0% 5.3rem;
     background-repeat: no-repeat;
     background-size: cover;
 
