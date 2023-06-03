@@ -297,6 +297,67 @@ project "apollo"
         {
             "-mwindows"
         }
+
+project "runtime"
+    location "runtime"
+    kind "ConsoleApp"
+    language "c++"
+
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    files
+    {
+        "%{prj.name}/src/**.h",
+        "%{prj.name}/src/**.cpp"
+    }
+    includedirs
+    {
+        "$(VULKAN_SDK)/include",
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.spd}",
+        "%{IncludeDir.vma}",
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.vkb}",
+        "%{IncludeDir.luna}",
+        "%{prj.name}/src"
+    }
+   
+    links
+    {
+        
+        "luna"
+    }
+    buildoptions 
+    {
+        "/MD",
+    }
+    filter "system:windows"
+        cppdialect "c++17"
+        staticruntime "on"
+        systemversion "latest"
+        defines
+        {
+            "_WINDLL"
+        }
+        
+        filter "configurations:debug"
+            runtime "Debug"
+            symbols "On"
+  
+        filter "configurations:release"
+            runtime "Release"
+            optimize "On"
+
+        filter "configurations:distribution"
+            runtime "Release"
+            symbols "Off"
+            optimize "On"
+        buildoptions 
+        {
+            "-mwindows"
+        }
 group""
 
 
