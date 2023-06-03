@@ -1,5 +1,7 @@
 #pragma once 
 #include <core/vulkan/rendering/vulkanPipeline.h>
+#ifndef DISABLE_IMGUI
+
 namespace luna
 {
 	namespace gui
@@ -21,3 +23,5 @@ namespace luna
 		};
 	}
 }
+
+#endif // DISABLE_IMGUI

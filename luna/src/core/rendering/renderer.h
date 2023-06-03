@@ -2,7 +2,9 @@
 #include <core/vulkan/window/window.h>
 #include <core/rendering/device.h>
 #include <core/rendering/pipeline.h>
+#ifndef DISABLE_IMGUI
 #include <core/vulkan/gui/vulkanImgui.h> //TODO make base gui header
+#endif //!DISABLE_IMGUI
 #include <core/rendering/vertexArray.h>
 namespace luna
 {
@@ -32,8 +34,9 @@ namespace luna
 			 * 
 			 */
 			static void newFrame();
-			
+		#ifndef DISABLE_IMGUI
 			LN_API _ALWAYS_INLINE_ static ImTextureID getWindowImage();
+		#endif // !DISABLE_IMGUI
 			/**
 			 * @brief starts recording a new scene.
 			 * 
@@ -58,7 +61,9 @@ namespace luna
 			 */
 			static void endScene();
 			inline static glm::vec2 getSceneDimensions() { return rendererPipeline->getDimensions(); };
+		#ifndef DISABLE_IMGUI
 			LN_API inline static ImVec2 getSceneGuiDimensions() { return { rendererPipeline->getDimensions().x,rendererPipeline->getDimensions().y }; };
+		#endif // !DISABLE_IMGUI
 			inline static glm::vec2 getSceneMousePos() { return rendererPipeline->getWindowMousePos(); };
 			LN_API inline static void setSceneDimensions(const glm::vec2& sceneDimensions) { rendererPipeline->setDimensions(sceneDimensions); };
 			LN_API inline static void setSceneMouse(const glm::vec2& sceneMousePos) { rendererPipeline->setWindowMousePos(sceneMousePos); };
@@ -66,7 +71,9 @@ namespace luna
 			inline static ref<device> rendererDevice; //the main renderDevice (GPU handle)
 			inline static ref<pipeline> rendererPipeline;// the main graphics pipeline
 			inline static renderer::pipelineLayout layout; //the main graphics pipline layout
+		#ifndef DISABLE_IMGUI
 			inline static ref<gui::vulkanImgui> gui;
+		#endif //!DISABLE_IMGUI
 			inline static bool Selected;
 		};
 	}

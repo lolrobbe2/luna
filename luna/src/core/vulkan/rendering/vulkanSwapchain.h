@@ -91,17 +91,20 @@ namespace luna
 			 * \param VkFrameBuffer the framebuffer handle.
 			 */
 			inline VkFramebuffer getFrameBuffer(uint8_t index) { return frameBuffers[index]; };
+		#ifndef DISABLE_IMGUI
 			/**
 			 * @brief returns a ViewportImage descriptor.
 			 * 
 			 * \param VkDescriptorSet image descriptor.
 			 */
 			_ALWAYS_INLINE_ VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
-
 			std::vector<VkImage> sceneViewportImages;
+		#endif //!DISABLE_IMGUI
 			vkb::Swapchain mSwapchain;
 			std::vector<VkFramebuffer> frameBuffers;
+		#ifndef DISABLE_IMGUI
 			std::vector<VkDescriptorSet> m_Dset;
+		#endif //!#ifndef DISABLE_IMGUI
 		private:
 			/**
 			 * @brief destroys the device bound swapchain.

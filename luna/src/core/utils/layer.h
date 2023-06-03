@@ -19,7 +19,9 @@ namespace luna
 			virtual void onAttach() {}
 			virtual void onDetach() {}
 			virtual void onUpdate(timestep ts) {}
+		#ifndef DISABLE_IMGUI
 			virtual void onImGuiRender() {}
+		#endif //!DISABLE_IMGUI
 			virtual void onEvent(Event& event) {}
 			const std::string& getName() const { return m_DebugName; }
 		protected:

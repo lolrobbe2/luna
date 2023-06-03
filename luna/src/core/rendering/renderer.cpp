@@ -8,7 +8,9 @@
 #include <core/vulkan/rendering/vulkanIndexBuffer.h>
 #include <core/utils/shaderLibrary.h>
 #include <core/vulkan/utils/vulkanAllocator.h>
+#ifndef DISABLE_IMGUI
 #include <imgui_demo.cpp>
+#endif // !DISABLE_IMGUI
 namespace luna
 {
 	namespace renderer
@@ -30,7 +32,9 @@ namespace luna
 				layout.pipelineShaders.push_back(utils::shaderLibrary::get("fragment.glsl"));
 				layout.pipelineShaders.push_back(utils::shaderLibrary::get("vertex.glsl"));
 				renderer::rendererPipeline = ref<pipeline>(new vulkan::vulkanPipeline(layout));
+			#ifndef DISABLE_IMGUI
 				renderer::gui = ref<gui::vulkanImgui>(new gui::vulkanImgui(renderer::rendererPipeline));
+			#endif //!DISABLE_IMGUI
 				break;
 			default:
 				break;		
@@ -56,13 +60,13 @@ namespace luna
 			
 			rendererPipeline->flush();
 		}
-
+	#ifndef DISABLE_IMGUI
 		ImTextureID renderer::getWindowImage()
 		{
 			if (rendererPipeline) return rendererPipeline->getWindowImage();
 			return nullptr;
 		}
-
+	#endif // !DISABLE_IMGUI
 		void renderer::beginScene()
 		{
 			rendererPipeline->clear();

@@ -1,8 +1,9 @@
 #pragma once
 
-
+#ifndef DISABLE_IMGUI
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_vulkan.h>
+#endif //!DISABLE_IMGUI
 #include <core/rendering/pipeline.h>
 #include <core/vulkan/device/vulkanCmdPool.h>
 #include <core/vulkan/utils/vulkanDescriptorPool.h>
@@ -246,7 +247,9 @@ namespace luna
 				glm::vec2 color;
 			};
 			VkRenderPass renderPass;
+		#ifndef DISABLE_IMGUI
 			VkRenderPass imGuiRenderPass;
+		#endif //!DISABLE_IMGUI
 			VkPipelineLayout pipelineLayout;
 			VkPipeline pipeline;
 			

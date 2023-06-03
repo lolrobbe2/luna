@@ -5,7 +5,9 @@
 #include <lnpch.h>
 #include <core/core.h>
 #include <core/events/event.h>
+#ifndef DISABLE_IMGUI
 #include <imgui.h>
+#endif //!DISABLE_IMGUI
 namespace luna
 {
 	namespace vulkan

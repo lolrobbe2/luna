@@ -3,7 +3,9 @@
 #include <core/events/applicationEvent.h>
 #include <core/events/keyEvent.h>
 #include <core/events/mouseEvent.h>
+#ifndef DISABLE_IMGUI
 #include <backends/imgui_impl_glfw.h>
+#endif //DISABLE_IMGUI
 namespace luna
 {
 	namespace vulkan
@@ -103,7 +105,9 @@ namespace luna
 			glfwSetKeyCallback(_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
+			#ifndef DISABLE_IMGUI
 				ImGui_ImplGlfw_KeyCallback(window, key, scancode, action, mods);
+			#endif //DISABLE_IMGUI
 				switch (action)
 				{
 					case GLFW_RELEASE:
@@ -129,7 +133,9 @@ namespace luna
 			glfwSetMouseButtonCallback(_window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
+			#ifndef DISABLE_IMGUI
 				ImGui_ImplGlfw_MouseButtonCallback(window, button, action, mods);
+			#endif //DISABLE_IMGUI
 				switch (action)
 				{
 					case GLFW_RELEASE:
@@ -164,7 +170,9 @@ namespace luna
 			glfwSetScrollCallback(_window, [](GLFWwindow* window, double xoffset, double yoffset) 
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
+			#ifndef DISABLE_IMGUI
 				ImGui_ImplGlfw_ScrollCallback(window, xoffset, yoffset);
+			#endif //DISABLE_IMGUI
 				mouseScrolledEvent scrollEvent((float)xoffset, (float)yoffset);
 				winData.eventCallbackFn(scrollEvent);
 			});
@@ -172,16 +180,19 @@ namespace luna
 			glfwSetCursorPosCallback(_window, [](GLFWwindow* window, double xpos, double ypos)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
+			#ifndef DISABLE_IMGUI
 				ImGui_ImplGlfw_CursorPosCallback(window, xpos, ypos);
+			#endif //DISABLE_IMGUI
 				mouseMovedEvent moveEvent((float)xpos, (float)ypos);
 				winData.eventCallbackFn(moveEvent);
 			});
 			//imgui specific callbacks
+			#ifndef DISABLE_IMGUI
 			glfwSetCharCallback(_window, [](GLFWwindow* window, unsigned int codepoint)
 			{
 				ImGui_ImplGlfw_CharCallback(window, codepoint);
 			});
-			
+			#endif //DISABLE_IMGUI
 		}
 		void windowsWindow::shutDown()
 		{

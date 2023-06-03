@@ -23,8 +23,10 @@
 #include <VkBootstrapDispatch.h>
 #include <GLFW/glfw3.h>
 
+#ifndef DISABLE_IMGUI
 #include <imgui.h>
 #include <backends/imgui_impl_glfw.h>
+#endif //!DISABLE_IMGUI
 #include <glm/glm.hpp>
 #include <stb_image.h>
 /*scene system includes*/

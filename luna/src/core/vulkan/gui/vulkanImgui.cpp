@@ -1,8 +1,10 @@
+#ifndef DISABLE_IMGUI
 #include "vulkanImgui.h"
 #include <core/vulkan/device/vulkanDevice.h>	
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_vulkan.h>
 #include <core/vulkan/rendering/vulkanPipeline.h>
+
 namespace luna
 {
 	namespace gui
@@ -115,3 +117,4 @@ namespace luna
 		}
 	}
 }
+#endif // DISABLE_IMGUI

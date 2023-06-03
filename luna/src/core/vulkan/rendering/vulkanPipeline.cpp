@@ -1,11 +1,14 @@
 #include "vulkanPipeline.h"
 #include <core/vulkan/device/vulkanDevice.h>
+#ifndef DISABLE_IMGUI
 #include <backends/imgui_impl_vulkan.cpp>
+#include <imgui_internal.h>
+#endif //!DISABLE_IMGUI
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <core/vulkan/rendering/vulkanVertexBuffer.h>
 #include <core/vulkan/rendering/vulkanIndexBuffer.h>
 #include <core/platform/platform.h>
-#include <imgui_internal.h>
+
 namespace luna
 {
 	namespace vulkan
@@ -76,14 +79,14 @@ namespace luna
 			pipelineLayout = VK_NULL_HANDLE;
 			pipeline = VK_NULL_HANDLE;
 		}
-
+	#ifndef DISABLE_IMGUI
 		ImTextureID vulkanPipeline::getWindowImage()
 		{
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 
 			return vDevice->swapchain->getViewportImage(currentFrame);
 		}
-
+	#endif // !DISABLE_IMGUI
 		void vulkanPipeline::createCommands()
 		{
 			LN_PROFILE_FUNCTION();
@@ -128,7 +131,7 @@ namespace luna
 
 			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 			//transition dst image
-
+#ifndef DISABLE_IMGUI
 			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
 			//transition src image
 			transitionImageLayout(vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], vDevice->swapchain->mSwapchain.image_format, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
@@ -161,6 +164,7 @@ namespace luna
 			vkCmdBeginRenderPass(commandPool->operator=(commandBuffers[currentFrame]), &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandPool->operator=(commandBuffers[currentFrame]));
+		#endif //!DISABLE_IMGUI
 			vkCmdEndRenderPass(commandPool->operator=(commandBuffers[currentFrame]));
 
 
@@ -176,18 +180,22 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			descriptorsetIndex = 1;
+		#ifndef DISABLE_IMGUI
 			ImGui_ImplVulkan_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			//imgui commands
 			ImGui::NewFrame();
 			ImGuiViewport* viewport = ImGui::GetMainViewport();
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
+		
 			/*
 			ImVec2 scrollPos = ImGui::GetCursorScreenPos();
 			ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 			ImVec2 mousePos = ImGui::GetMousePos();
 			*/
+
 			currentFrameBuffer = vDevice->swapchain->getViewportImage(currentFrame);
+		#endif //!DISABLE_IMGUI
 			/*
 			windowMousePos.x = mousePos.x - scrollPos.x;
 			windowMousePos.y = mousePos.y - scrollPos.y;
@@ -197,9 +205,11 @@ namespace luna
 		void vulkanPipeline::end() const
 		{
 			LN_PROFILE_FUNCTION();
+		#ifndef DISABLE_IMGUI
 			ImGui::Render();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
+		#endif //!DISABLE_IMGUI
 
 		}
 		void vulkanPipeline::flush()

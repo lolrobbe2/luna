@@ -57,15 +57,16 @@ namespace luna
 							layer->onUpdate(timestep);
 					}
 					renderer::renderer2D::endScene();
+					#ifndef DISABLE_IMGUI
 					{
 						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
 						for (utils::layer* layer : layerStack)
 							layer->onImGuiRender();
 					}
+					#endif
 					renderer::renderer::newFrame();
 				}
-				
 			}
 			LN_PROFILE_END_SESSION();
 		}
