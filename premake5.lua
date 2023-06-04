@@ -139,7 +139,7 @@ filter "system:windows"
         }
         defines
         {
-            "_CRT_SECURE_NO_WARNINGS",
+            
             "LN_BUILD_DLL",
             "_WINDLL",
             "LN_DEBUG"

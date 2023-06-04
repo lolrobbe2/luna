@@ -21,6 +21,9 @@ namespace luna
 			ref<vulkanDevice> device = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
 			this->layout = layout;
 			maxFramesInFlight = device->swapchain->mSwapchain.image_count - 1;
+	#ifdef DISABLE_IMGUI
+			windowDimensions = { device->window->getWidth(),device->window->getHeight() };
+	#endif
 			commandPoolSpec.device = device->getDeviceHandles().device;
 			commandPoolSpec.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 			commandPoolSpec.queueFamilyIndex = device->getQueueIndex(vkb::QueueType::present);
@@ -233,7 +236,9 @@ namespace luna
 				vDevice->swapchain->recreateSwapchain();
 				vDevice->createFramebuffers(renderPass);
 				vDevice->swapchain->recreateViewport(maxFramesInFlight);
-
+		#ifdef DISABLE_IMGUI
+						windowDimensions = { vDevice->window->getWidth(),vDevice->window->getHeight() };
+		#endif
 				return;
 			}
 			vkResetFences(vDevice->getDeviceHandles().device, 1, &inFlightFences[currentFrame]);

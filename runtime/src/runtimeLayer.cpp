@@ -1,12 +1,14 @@
 #include "runtimeLayer.h"
+#include <core/rendering/renderer.h>
 #include <core/input.h>
 #include <core/platform/platformUtils.h>
+#include <core/events/mouseEvent.h>
 
 namespace luna
 {
 	runtimeLayer::runtimeLayer(const std::string& name)
 	{
-		platform::os::createConsole();
+		//platform::os::createConsole();
 		LN_CORE_INFO("creating runtime layer");
 		initConfig = ref<config::init>(new config::init());
 		startupScene = ref<scene>(initConfig->getStartScene());
@@ -30,6 +32,14 @@ namespace luna
 	
 	void runtimeLayer::onEvent(Event& Event)
 	{
+		if (Event.getEventType() == eventType::MouseMoved) {
+			mouseMovedEvent mouseEvent = static_cast<mouseMovedEvent&>(Event);
+			glm::vec2 mousePos;
+			mousePos.x = mouseEvent.GetX();
+			mousePos.y = mouseEvent.GetY();
+		
+			renderer::renderer::setSceneMouse(mousePos);
+		}
 		startupScene->onEvent(Event);
 	}
 
