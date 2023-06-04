@@ -3,6 +3,7 @@
 #include <core/utils/layer.h>
 #include <core/scene/scene.h>
 #include <core/events/keyEvent.h>
+#include <core/config/init.h>
 namespace luna
 {
 	class runtimeLayer : public utils::layer
@@ -16,6 +17,7 @@ namespace luna
 		virtual void onUpdate(utils::timestep ts) override;
 		virtual void onEvent(Event& event) override;
 	private:
+		ref<config::init> initConfig;
 		ref<scene> startupScene;
 	};
 }

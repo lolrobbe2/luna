@@ -1,0 +1,3 @@
+startup:
+    startscene: build/scenes/testScene.lscn
+    

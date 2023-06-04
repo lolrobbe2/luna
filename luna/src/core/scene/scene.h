@@ -53,6 +53,7 @@ namespace luna
 		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
 		friend class editorLayer;
+		friend class runtimeLayer;
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 		bool m_IsRunning = false;

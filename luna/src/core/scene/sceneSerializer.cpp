@@ -460,19 +460,11 @@ namespace luna
 	luna::scene* sceneSerializer::deSerialize(const std::string& filePath)
 	{
 		LN_PROFILE_SCOPE("loading and deserializing");
-		auto prevTime = std::chrono::system_clock::now();
-		auto currentTime = std::chrono::system_clock::now();
-		std::ifstream stream(filePath);
-		std::stringstream strstream;
-		strstream << stream.rdbuf();
-		stream.close();
-		YAML::Node data = YAML::Load(strstream.str());
-		strstream.clear();
-		currentTime = std::chrono::system_clock::now();
-		double diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
-		LN_CORE_INFO("file loading took {0} ms", diff_ms);
+		YAML::Node data = YAML::LoadFile(filePath);//YAML::Load(strstream.str());
+
+		
 		if (!data["scene"]) return nullptr;
-		prevTime = std::chrono::system_clock::now();
+
 		scene* scene = new luna::scene();
 
 		std::string sceneName = data["scene"].as<std::string>();
@@ -484,11 +476,9 @@ namespace luna
 			Node node{ entity,scene };
 			deSerializeNode(node, serializedNode["Node"]);
 		}
-		currentTime = std::chrono::system_clock::now();
-		diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
-		LN_CORE_INFO("deserializing took {0} ms", diff_ms);
+	
 		LN_PROFILE_SCOPE("node tree assembly");
-		prevTime = std::chrono::system_clock::now();
+	
 		auto childGroup = scene->m_Registry.view<childUintComponent>();
 		for (auto& entity : childGroup)
 		{
@@ -502,9 +492,7 @@ namespace luna
 			parent.removeComponent<childUintComponent>();
 			childGroup = scene->m_Registry.view<childUintComponent>();
 		}
-		currentTime = std::chrono::system_clock::now();
-		diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
-		LN_CORE_INFO("node tree assembly took {0} ms", diff_ms);
+		LN_CORE_INFO("finished deserializing scene");
 		return scene;
 	}
 

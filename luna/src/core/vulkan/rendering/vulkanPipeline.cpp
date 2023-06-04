@@ -302,7 +302,7 @@ namespace luna
 		void vulkanPipeline::clear()
 		{
 			LN_PROFILE_FUNCTION();
-			drawCommands.clear();
+			drawCommands.resize(0);
 		}
 		void vulkanPipeline::createShaderStages()
 		{

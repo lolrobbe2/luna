@@ -75,7 +75,6 @@ project "luna"
         "%{IncludeDir.vma}",
         "%{IncludeDir.stb}",
         "%{IncludeDir.vkb}",
-        "%{IncludeDir.imgui}",
         "%{IncludeDir.imguizmo}",
         "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.mono}",
@@ -90,7 +89,7 @@ project "luna"
     
     libdirs
     {
-        "$(VULKAN_SDK)/Lib", 
+        "$(VULKAN_SDK)/Lib",
     }
 
 filter "platforms:runtime64"
@@ -98,91 +97,98 @@ defines
 {
     "DISABLE_IMGUI"
 }
+filter "platforms:editor64"
+includedirs 
+{
+    "%{IncludeDir.imgui}"
+}
+links 
+{
+    "imGui"
+}
 
-    filter "system:windows"
-    
-        cppdialect "c++17"
-        staticruntime "on"
-        systemversion "latest"
-        symbols "on"
+filter "system:windows"
+    cppdialect "c++17"
+    staticruntime "on"
+    systemversion "latest"
+    symbols "on"
+    links
+    {
+        "%{Library.ShaderC}",
+		"%{Library.SPIRV_Cross}",
+		"%{Library.SPIRV_Cross_GLSL}",
+        "GLFW",
+        "VkBootstrap",
+        "stb",
+        "yaml-cpp",
+        "vulkan-1"
+    }
+    postbuildcommands
+    {
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo"),
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/runtime")
+    }
+
+    filter "configurations:debug"
+        LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
+        Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
         links
         {
-            "%{Library.ShaderC}",
-			"%{Library.SPIRV_Cross}",
-			"%{Library.SPIRV_Cross_GLSL}",
-            "GLFW",
-            "VkBootstrap",
-            "imGui",
-            "stb",
-            "yaml-cpp",
-            "vulkan-1"
+            "%{Library.mono}"
         }
-        postbuildcommands
+        defines
         {
-            ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
-            ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo"),
-            ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/runtime")
-
+            "_CRT_SECURE_NO_WARNINGS",
+            "LN_BUILD_DLL",
+            "_WINDLL",
+            "LN_DEBUG"
+        
         }
-        filter "configurations:debug"
-            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
-            Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
-            links
-            {
-                "%{Library.mono}"
-            }
-            defines
-            {
-                "_CRT_SECURE_NO_WARNINGS",
-                "LN_BUILD_DLL",
-                "_WINDLL",
-                "LN_DEBUG"
-            
-            }
-            runtime "Debug"
-            symbols "On"
-  
-        filter "configurations:release"
-            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
-            Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
-            links
-            {
-                "%{Library.mono}"
-            }
-            defines
-            {
-                "_CRT_SECURE_NO_WARNINGS",
-                "LN_BUILD_DLL",
-                "_WINDLL",
-                "LN_RELEASE"
-            
-            }
+        runtime "Debug"
+        symbols "On"
 
-            runtime "Release"
-            optimize "On"
+    filter "configurations:release"
+        LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
+        Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
+        links
+        {
+            "%{Library.mono}"
+        }
+        defines
+        {
+            "_CRT_SECURE_NO_WARNINGS",
+            "LN_BUILD_DLL",
+            "_WINDLL",
+            "LN_RELEASE"
+        
+        }
 
-        filter "configurations:distribution"
-            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
-            Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
-            links
-            {
-                "%{Library.mono}"
-            }
-            defines
-            {
-                "_CRT_SECURE_NO_WARNINGS",
-                "LN_BUILD_DLL",
-                "_WINDLL",
-                "LN_DISTRIBUTION"
-            
-            }
-            runtime "Release"
-            symbols "Off"
-            optimize "On"
-            buildoptions 
-            {
-                "-mwindows"
-            }
+        runtime "Release"
+        optimize "On"
+
+    filter "configurations:distribution"
+        LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
+        Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
+        links
+        {
+            "%{Library.mono}"
+        }
+        defines
+        {
+            "_CRT_SECURE_NO_WARNINGS",
+            "LN_BUILD_DLL",
+            "_WINDLL",
+            "LN_DISTRIBUTION"
+        
+        }
+        runtime "Release"
+        symbols "Off"
+        optimize "On"
+        buildoptions 
+        {
+            "-mwindows"
+        }
 
 
 group""
@@ -334,6 +340,7 @@ project "runtime"
         "%{IncludeDir.vma}",
         "%{IncludeDir.stb}",
         "%{IncludeDir.vkb}",
+        "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.luna}",
         "%{prj.name}/src"
     }

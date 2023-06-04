@@ -95,8 +95,9 @@ namespace luna
 			LN_PROFILE_SCOPE("begin scene");
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
+			//we don NOT use memset because it cause EXTREME flickering
 			//we use memset because it gets fully transformed in to pure assembly an is thus the fastest way to reset the vertexBUffer.
-			memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
+			//memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
