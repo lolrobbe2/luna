@@ -49,7 +49,8 @@ namespace luna
 
 		struct textureAssetMetaData {
 			assetMetaData baseMetaData; //standard metadata that each asset has.
-
+			uint64_t width, height, channels;
+			uint64_t imageByteSize;
 		};
 #pragma pack(pop)
 	}
