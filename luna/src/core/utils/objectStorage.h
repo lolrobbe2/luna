@@ -131,6 +131,12 @@ namespace luna
 				}
 
 			}
+
+			void clear() 
+			{
+				objectCache.clear();
+				objectMemory.clear();
+			}
 		private:
 			vectorCache<value> objectCache; // fast constantly used memory
 			std::unordered_map<storageObject, value> objectMemory; //slower longterm object storage.

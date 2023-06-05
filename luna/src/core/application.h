@@ -51,7 +51,6 @@ namespace luna
 		private:
 			friend class os;
 			ref<vulkan::window> mWindow;
-			scene scene;
 			utils::layerStack layerStack;
 			double lastFrameTime = 0.0f;
 			bool running = true;

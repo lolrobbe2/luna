@@ -75,7 +75,9 @@ namespace luna
 
 	scene::~scene() 
 	{
+		enttityStorage.clear();
 		m_Registry.clear();
+		
 	}
 
 	template<typename T>

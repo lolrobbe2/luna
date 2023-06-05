@@ -169,6 +169,14 @@ namespace luna
 				}
 				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, value());
 			}
+			/**
+			* @brief clears the value cache of its contents
+			*/
+			void clear() 
+			{
+				handleCache.clear();
+				valueCache.clear();
+			}
 		protected:
 
 			uint64_t maxCacheSize;

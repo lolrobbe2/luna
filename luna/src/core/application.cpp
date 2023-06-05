@@ -32,7 +32,7 @@ namespace luna
 			layerStack.~layerStack();
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
-
+			mWindow->~window();
 			LN_PROFILE_END_SESSION();
 			
 		}
