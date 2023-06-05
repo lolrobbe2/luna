@@ -54,7 +54,7 @@ namespace luna
 
 			descriptorPool->createDescriptorSets(descriptorSets);
 			createPipeline(layout);
-			drawCommands.reserve(1000);
+			//drawCommands.resize(1000);
 
 		}
 		void vulkanPipeline::createPipeline(const renderer::pipelineLayout& layout)
@@ -307,13 +307,13 @@ namespace luna
 		void vulkanPipeline::clear()
 		{
 			LN_PROFILE_FUNCTION();
-			drawCommands.resize(0);
+			drawCommands.clear();
 		}
 		void vulkanPipeline::createShaderStages()
 		{
 			LN_PROFILE_FUNCTION();
-			shaderStages.resize(0);
-			shaderModules.resize(0);
+			shaderStages.clear();
+			shaderModules.clear();
 			for (const auto& shader : layout.pipelineShaders)
 			{
 				VkPipelineShaderStageCreateInfo stageInfo;
@@ -377,7 +377,7 @@ namespace luna
 			if (shader->stage != renderer::shaderStageVertex) return;
 			VkVertexInputBindingDescription bindingDescription;
 			bindingDescription.stride = 0;
-			inputDescriptions[shader->shaderName].bindings.resize(0);
+			inputDescriptions[shader->shaderName].bindings.clear();
 			for (size_t i = shader->shaderLayout.size() - 1; i > 0; i--)
 			{
 				if ((shader->shaderLayout[i].type == renderer::Uniform) || (shader->shaderLayout[i].type == renderer::PushConstant) || (shader->shaderLayout[i].type == renderer::StorageBuffer) && shader->shaderLayout[i].resourceClass != renderer::stageInputs && bindingDescription.stride > shader->shaderLayout[i].stride) break;
@@ -393,7 +393,7 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			if (shader->stage != renderer::shaderStageVertex) return;
-			inputDescriptions[shader->shaderName].attributes.resize(0);
+			inputDescriptions[shader->shaderName].attributes.clear();
 			for (const auto& shaderResource : shader->shaderLayout)
 			{
 				if (!((shaderResource.type != renderer::Uniform) && (shaderResource.type != renderer::PushConstant) && (shaderResource.type != renderer::StorageBuffer) && shaderResource.resourceClass == renderer::stageInputs)) break;
@@ -414,7 +414,7 @@ namespace luna
 			vkCreatePipelineLayout(vDevice->getDeviceHandles().device, &pipelineLayoutCreateInfo(), nullptr, &pipelineLayout);
 			createShaderStages();
 			createInputStates();
-			vertexInputStates.resize(0);
+			vertexInputStates.clear();
 			for (const auto& shader : layout.pipelineShaders)
 			{
 				if (shader->stage == renderer::shaderStageVertex) vertexInputStates.push_back(createVertexInputState(shader));

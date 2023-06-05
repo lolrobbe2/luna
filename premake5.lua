@@ -91,21 +91,25 @@ project "luna"
     {
         "$(VULKAN_SDK)/Lib",
     }
-
+    defines 
+    {
+        "_CRT_SECURE_NO_WARNINGS"
+    }
 filter "platforms:runtime64"
-defines 
-{
-    "DISABLE_IMGUI"
-}
+    defines 
+    {
+        "DISABLE_IMGUI"
+    }
+
 filter "platforms:editor64"
-includedirs 
-{
-    "%{IncludeDir.imgui}"
-}
-links 
-{
-    "imGui"
-}
+    includedirs 
+    {
+        "%{IncludeDir.imgui}"
+    }
+    links 
+    {
+        "imGui"
+    }
 
 filter "system:windows"
     cppdialect "c++17"
@@ -129,7 +133,10 @@ filter "system:windows"
         ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo"),
         ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/runtime")
     }
-
+    defines 
+    {
+        "_CRT_SECURE_NO_WARNINGS"
+    }
     filter "configurations:debug"
         LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
         Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
@@ -139,7 +146,6 @@ filter "system:windows"
         }
         defines
         {
-            
             "LN_BUILD_DLL",
             "_WINDLL",
             "LN_DEBUG"
@@ -157,7 +163,7 @@ filter "system:windows"
         }
         defines
         {
-            "_CRT_SECURE_NO_WARNINGS",
+            
             "LN_BUILD_DLL",
             "_WINDLL",
             "LN_RELEASE"
@@ -176,7 +182,7 @@ filter "system:windows"
         }
         defines
         {
-            "_CRT_SECURE_NO_WARNINGS",
+            
             "LN_BUILD_DLL",
             "_WINDLL",
             "LN_DISTRIBUTION"
@@ -255,7 +261,6 @@ project "sandbox"
         }
 group"core"
 project "apollo"
-    entrypoint ("mainCRTStartup")
     location "apollo"
     kind "ConsoleApp"
     language "c++"

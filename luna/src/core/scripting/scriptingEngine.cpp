@@ -139,13 +139,13 @@ namespace luna
 					auto pdbFileData = platform::os::openFile(pdbPath.string());
 					mono_debug_open_image_from_memory(image, (const mono_byte*)pdbFileData.data(), pdbFileData.size());
 					LN_CORE_INFO("Loaded PDB {}", pdbPath);
-					pdbFileData.resize(0);
+					pdbFileData.clear();
 				}
 			}
 			
 			MonoAssembly* assembly = mono_assembly_load_from_full(image, assemblyPath.c_str(), &status, 0);
 			mono_image_close(image);
-			fileData.resize(0);
+			fileData.clear();
 		
 			// Don't forget to free the file data. i wont !
 			return assembly;

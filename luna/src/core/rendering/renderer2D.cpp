@@ -101,7 +101,7 @@ namespace luna
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
-			rendererData.textures.resize(0);
+			rendererData.textures.clear();
 			rendererData.textures.push_back(blankImage->handle());
 		}
 

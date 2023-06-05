@@ -72,7 +72,7 @@ namespace luna
                 vkDestroyFramebuffer(mSwapchain.device, frameBuffers[i], nullptr);
             }
       
-            frameBuffers.resize(0);
+            frameBuffers.clear();
             vkb::destroy_swapchain(mSwapchain);
 			return VK_SUCCESS;
 		}
@@ -170,9 +170,9 @@ namespace luna
                 utils::vulkanAllocator::destroyImage(sceneViewportImages[i]);
 
             }
-            m_Dset.resize(0);
-            sceneViewportImages.resize(0);
-            sceneViewportImageViews.resize(0);
+            m_Dset.clear();
+            sceneViewportImages.clear();
+            sceneViewportImageViews.clear();
         #endif //!DISABLE_IMGUI
             return VK_SUCCESS;
         }

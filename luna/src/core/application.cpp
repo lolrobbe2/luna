@@ -34,6 +34,7 @@ namespace luna
 			scripting::scriptingEngine::shutdown();
 
 			LN_PROFILE_END_SESSION();
+			
 		}
 
 		void application::run()
