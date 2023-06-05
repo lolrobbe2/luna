@@ -36,6 +36,9 @@ namespace luna
 
 //disable padding to not have extra bytes.
 #pragma pack(push, 1)
+		/**
+		* @brief basic asset data, this info is dirrectly available from the assetManager without casting.
+		*/
 		struct assetMetaData {
 			assetHandle handle; //unique identifier of the asset
 			unsigned char name[_MAX_FNAME]; //name of the asset
