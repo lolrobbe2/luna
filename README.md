@@ -1,5 +1,8 @@
 # luna software engine
+
 [![License](https://img.shields.io/github/license/TheCherno/Hazel.svg)](https://github.com/lolrobbe2/luna/blob/luna_experimental/LICENSE.txt)
+[![GitHub all releases](https://img.shields.io/github/downloads/lolrobbe2/luna/total)](https://github.com/lolrobbe2/luna/files/11061199/apollo.zip)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/lolrobbe2/luna?include_prereleases)](https://github.com/lolrobbe2/luna/releases)
 ## goals
 
 to create a simple to use software engine capable of running commercial software.
@@ -22,4 +25,10 @@ to create a simple to use software engine capable of running commercial software
 ## website:
    - <a href="https://lolrobbe2.github.io/luna/doxygen%20documentation/html/index.html" target="_blank">engine source documentation</a>
    -  <a href="https://lolrobbe2.github.io/luna" target="_blank">egine website</a>
+## releases:
+  <a href="https://github.com/lolrobbe2/luna/releases" target="_blank">engine releases</a> 
+### download:
+1. download the zip folder called appolo/sandbox.
+2. extract the zip folder.
+3. run sandbox/appolo.exe.
 # enjoy :)
