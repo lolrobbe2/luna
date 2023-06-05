@@ -15,9 +15,11 @@ namespace luna
 	{
 		LN_CORE_INFO("added editor!");
 		scenePanel->setContext(activeScene);
+		utils::scriptUtils::setContext(activeScene.get());
 	}
 	void editorLayer::onDetach()
 	{
+		activeScene.~shared_ptr();
 	}
 	void editorLayer::onUpdate(utils::timestep ts)
 	{
@@ -26,7 +28,8 @@ namespace luna
 	}
 	void editorLayer::onImGuiRender()
 	{
-		
+
+
 		if(ImGui::BeginMainMenuBar())
 		{
 			if (ImGui::BeginMenu("file")) 
@@ -46,6 +49,39 @@ namespace luna
 		}
 		
 		ImGui::EndMainMenuBar();
+
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
+
+		if (ImGui::Begin("scene"));
+		{
+			ImVec2 scrollPos = ImGui::GetCursorScreenPos();
+			ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+			ImVec2 mousePos = ImGui::GetMousePos();
+			glm::vec2 windowMousePos;
+			windowMousePos.x = mousePos.x - scrollPos.x;
+			windowMousePos.y = mousePos.y - scrollPos.y;
+			renderer::renderer::setSceneMouse(windowMousePos);
+			renderer::renderer::setSceneDimensions({ viewportPanelSize.x, viewportPanelSize.y });
+
+			std::string text = (activeScene->m_IsRunning) ? "stop" : "play";
+			ImVec2 buttonSize = { ImGui::GetContentRegionAvail().x + 1.0f,30.0f };
+			ImGui::Image(renderer::renderer::getWindowImage(), ImGui::GetContentRegionAvail());
+			ImGui::SameLine(0.000001f);
+			if(ImGui::Button(text.c_str(), buttonSize));
+			{
+				if (ImGui::IsItemClicked())
+				{
+					activeScene->m_IsRunning = !activeScene->m_IsRunning;
+					if (activeScene->m_IsRunning) activeScene->onPlayScene();
+					else activeScene->onStopScene();
+				}
+			}
+			
+		}
+
+		ImGui::PopStyleVar(1);
+		ImGui::End();
+		
 		scenePanel->onImGuiRender();
 
 	}
@@ -89,7 +125,7 @@ namespace luna
 	}
 	void editorLayer::open()
 	{
-		std::string filePath = platform::os::openFilaDialog("luna scene\0*.lscn\0");
+		std::string filePath = platform::os::openFileDialog("luna scene\0*.lscn\0");
 		if (!filePath.size()) return;
 
 		scenePanel = nullptr;

@@ -3,15 +3,15 @@
 #include <core/application.h>
 #include <core/scene/scene.h>
 #include <core/object/classRegister.h>
+#include <core/scripting/scriptingEngine.h>
+#include <core/object/methodDB.h>
 namespace luna
 {
 	namespace application
 	{
 		static application* instance;
 		application::application()
-		{
-			//TODO images with less than 3 channels RGB 
-
+		{ 
 			LN_PROFILE_BEGIN_SESSION("luna engine startup", "./debug/luna-profile-startUp.json");
 			instance = this;
 			Log::Init();
@@ -21,13 +21,18 @@ namespace luna
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
 			nodes::classRegister::registerClasses();
+			scripting::scriptingEngine::init();
+			methodDB::init();
 			LN_PROFILE_END_SESSION();
 			
 		}
 		application::~application()
 		{
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
+			layerStack.~layerStack();
 			renderer::renderer2D::shutdown();
+			scripting::scriptingEngine::shutdown();
+
 			LN_PROFILE_END_SESSION();
 		}
 
@@ -39,7 +44,7 @@ namespace luna
 
 				mWindow->onUpdate();
 				LN_PROFILE_SCOPE("drawing");
-				float time = glfwGetTime();
+				double time = glfwGetTime();
 				utils::timestep timestep = time - lastFrameTime;
 				lastFrameTime = time;
 				if (!minimized)

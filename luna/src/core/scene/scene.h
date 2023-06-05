@@ -46,10 +46,13 @@ namespace luna
 		}
 
 		void onEvent(Event& event);
+		void onPlayScene();
+		void onStopScene();
 	private:
 		friend class Node;
 		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
+		friend class editorLayer;
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 		bool m_IsRunning = false;
@@ -70,8 +73,11 @@ namespace luna
 		virtual ~Node() = default;
 		void setName(std::string name);
 		void addChild(Node node);
+		std::vector<Node> getChildren();
+		Node getParent();
+		
 		virtual void init(scene* scene) override;
-
+		virtual void bindMethods() override;
 		friend class scene;
 		friend class sceneHierarchyPanel;
 
@@ -103,7 +109,6 @@ namespace luna
 		template<typename T>
 		void removeComponent()
 		{
-			//HZ_CORE_ASSERT(HasComponent<T>(), "Node does not have component!");
 			scene->m_Registry.remove<T>(entityHandle);
 		}
 

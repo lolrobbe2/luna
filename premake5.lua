@@ -1,4 +1,11 @@
 buildmessage ("message")
+flags
+{
+    "MultiProcessorCompile"
+}
+
+
+
 startproject "sandbox"
 workspace "luna"
     architecture "x64"
@@ -22,7 +29,9 @@ IncludeDir["vkb"] =   "%{wks.location}/luna/thirdParty/Vkbootstrap/src"
 IncludeDir["stb"] =   "%{wks.location}/luna/thirdParty/stb"
 IncludeDir["spd"] =   "%{wks.location}/luna/thirdParty/spdlog/include"
 IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
+IncludeDir["imguizmo"] = "%{wks.location}/luna/thirdParty/imguizmo"
 IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
+IncludeDir["mono"] =  "%{wks.location}/luna/thirdParty/mono/include"
 
 IncludeDir["luna"] = "%{wks.location}/luna/src"
 
@@ -39,7 +48,9 @@ Library["SPIRV_Cross_GLSL"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
 Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
 
 
+
 include "luna/thirdParty/"
+group"core"
 project "luna"
     location "luna"
     kind "SharedLib"
@@ -64,7 +75,9 @@ project "luna"
         "%{IncludeDir.stb}",
         "%{IncludeDir.vkb}",
         "%{IncludeDir.imgui}",
+        "%{IncludeDir.imguizmo}",
         "%{IncludeDir.yaml_cpp}",
+        "%{IncludeDir.mono}",
         "%{IncludeDir.luna}"
         
     }
@@ -103,50 +116,64 @@ project "luna"
             "vulkan-1"
         }
         filter "configurations:debug"
-        defines
-        {
-            "_CRT_SECURE_NO_WARNINGS",
-            "LN_BUILD_DLL",
-            "_WINDLL",
-            "LN_DEBUG"
-           
-        }
-        runtime "Debug"
-        symbols "On"
+            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
+            Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
+            links
+            {
+                "%{Library.mono}"
+            }
+            defines
+            {
+                "_CRT_SECURE_NO_WARNINGS",
+                "LN_BUILD_DLL",
+                "_WINDLL",
+                "LN_DEBUG"
+            
+            }
+            runtime "Debug"
+            symbols "On"
   
         filter "configurations:release"
-        defines
-        {
-            "_CRT_SECURE_NO_WARNINGS",
-            "LN_BUILD_DLL",
-            "_WINDLL",
-            "LN_RELEASE"
-           
-        }
-        runtime "Release"
-        optimize "On"
+            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
+            Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
+            links
+            {
+                "%{Library.mono}"
+            }
+            defines
+            {
+                "_CRT_SECURE_NO_WARNINGS",
+                "LN_BUILD_DLL",
+                "_WINDLL",
+                "LN_RELEASE"
+            
+            }
+            runtime "Release"
+            optimize "On"
 
         filter "configurations:distribution"
-        defines
-        {
-            "_CRT_SECURE_NO_WARNINGS",
-            "LN_BUILD_DLL",
-            "_WINDLL",
-            "LN_DISTRIBUTION"
-           
-        }
-        runtime "Release"
-        symbols "Off"
-        optimize "On"
-        buildoptions 
-        {
-            "-mwindows"
-        }
-
-
-
-
- 
+            LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/release/"
+            Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
+            links
+            {
+                "%{Library.mono}"
+            }
+            defines
+            {
+                "_CRT_SECURE_NO_WARNINGS",
+                "LN_BUILD_DLL",
+                "_WINDLL",
+                "LN_DISTRIBUTION"
+            
+            }
+            runtime "Release"
+            symbols "Off"
+            optimize "On"
+            buildoptions 
+            {
+                "-mwindows"
+            }
+group""
 project "sandbox"
     location "sandbox"
     kind "ConsoleApp"
@@ -193,22 +220,22 @@ project "sandbox"
         }
         
         filter "configurations:debug"
-        runtime "Debug"
-        symbols "On"
+            runtime "Debug"
+            symbols "On"
   
         filter "configurations:release"
-        runtime "Release"
-        optimize "On"
+            runtime "Release"
+            optimize "On"
 
         filter "configurations:distribution"
-        runtime "Release"
-        symbols "Off"
-        optimize "On"
+            runtime "Release"
+            symbols "Off"
+            optimize "On"
         buildoptions 
         {
             "-mwindows"
         }
-
+group"core"
 project "apollo"
     location "apollo"
     kind "ConsoleApp"
@@ -270,4 +297,79 @@ project "apollo"
         {
             "-mwindows"
         }
+group""
 
+
+
+workspace "luna scripting"
+    architecture "x64"
+    
+    configurations
+    {
+        "debug",
+        "release",
+        "distribution"
+    }
+
+project "sharpSandbox"
+    location "sharpSandbox"
+    kind "SharedLib"
+    language "c#"
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    files
+    {
+        "%{prj.name}/src/**.cs"
+    }
+    links
+    {
+        "scriptCore"
+    }
+    postbuildcommands
+    {
+        ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}apollo/mono/lib")
+    }
+
+        filter "configurations:debug"
+            optimize "Off"
+            symbols "Default"
+  
+        filter "configurations:release"
+            optimize "On"
+            symbols "Default"
+
+        filter "configurations:distribution"
+            optimize "Full"
+            symbols "Off"
+project "scriptCore"
+    location "scriptCore"
+    kind "SharedLib"
+    language "c#"
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    files
+    {
+        "%{prj.name}/src/**.cs"
+    }
+        postbuildcommands
+    {
+        ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}apollo/mono/lib")
+    }
+
+    links
+    {
+        "mono-2.0"
+    }
+
+    filter "configurations:debug"
+        optimize "Off"
+        symbols "Default"
+  
+    filter "configurations:release"
+        optimize "On"
+        symbols "Default"
+
+    filter "configurations:distribution"
+        optimize "Full"
+        symbols "Off"
+            

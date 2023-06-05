@@ -74,6 +74,12 @@ namespace luna
 			 */
 			VkResult recreateViewport(uint32_t maxFramesInFlight);
 			/**
+			 * @brief destroys imgui viewport objects + engine viewport objects.
+			 * 
+			 * \return VK_SUCCESS
+			 */
+			VkResult destroyViewport();
+			/**
 			 * @brief returns the surface format.
 			 * 
 			 * \param VkFormat
@@ -90,7 +96,8 @@ namespace luna
 			 * 
 			 * \param VkDescriptorSet image descriptor.
 			 */
-			inline VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
+			_ALWAYS_INLINE_ VkDescriptorSet getViewportImage(uint8_t currentFrame) { return m_Dset[currentFrame]; };
+
 			std::vector<VkImage> sceneViewportImages;
 			vkb::Swapchain mSwapchain;
 			std::vector<VkFramebuffer> frameBuffers;

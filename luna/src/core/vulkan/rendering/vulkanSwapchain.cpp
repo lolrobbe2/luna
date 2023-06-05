@@ -63,7 +63,14 @@ namespace luna
 		VkResult vulkanSwapchain::destroySwapchain()
 		{
             LN_PROFILE_FUNCTION();
+      
             vkDeviceWaitIdle(mSwapchainSpec.device);
+            for (size_t i = 0; i < frameBuffers.size(); i++)
+            {
+                vkDestroyFramebuffer(mSwapchain.device, frameBuffers[i], nullptr);
+            }
+      
+            frameBuffers.resize(0);
             vkb::destroy_swapchain(mSwapchain);
 			return VK_SUCCESS;
 		}
@@ -140,6 +147,19 @@ namespace luna
                 utils::vulkanAllocator::createImageView(&sceneViewportImageViews[i], sceneViewportImages[i], mSwapchain.image_format, VkImageAspectFlagBits::VK_IMAGE_ASPECT_COLOR_BIT);
                 m_Dset[i] = ImGui_ImplVulkan_AddTexture(viewportSampler, sceneViewportImageViews[i], VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
             }
+            return VK_SUCCESS;
+        }
+        VkResult vulkanSwapchain::destroyViewport() 
+        {
+            for (size_t i = 0; i < sceneViewportImages.size(); i++)
+            {
+                ImGui_ImplVulkan_RemoveTexture(m_Dset[i]);
+                utils::vulkanAllocator::destroyImageView(sceneViewportImageViews[i]);
+                utils::vulkanAllocator::destroyImage(sceneViewportImages[i]);
+            }
+            m_Dset.resize(0);
+            sceneViewportImages.resize(0);
+            sceneViewportImageViews.resize(0);
             return VK_SUCCESS;
         }
 	}

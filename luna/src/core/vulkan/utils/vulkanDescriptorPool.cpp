@@ -16,6 +16,11 @@ namespace luna
 			layout = createDescriptorLayouts(shaderLayout, flags);
 			createDescriptorWrites(shaderLayout);
 		}
+		vulkanDescriptorPool::~vulkanDescriptorPool()
+		{
+			vkDestroyDescriptorSetLayout(device->getDeviceHandles().device, layout, nullptr);
+			vkDestroyDescriptorPool(device->getDeviceHandles().device,descriptorPool,nullptr);
+		}
 		VkResult vulkanDescriptorPool::createDescriptorSets(std::vector<ref<vulkanDescriptorSet>>& descriptorSets)
 		{
 			//remeber descriptorSets handles have not been initialized;
@@ -137,6 +142,10 @@ namespace luna
 			this->device = device;
 			this->descriptorWrites = descriptorWrites;
 			for (auto& write : this->descriptorWrites) write.dstSet = descriptorSet;
+		}
+		void vulkanDescriptorSet::destroy()
+		{
+			//not needed freed by pool.
 		}
 		VkResult vulkanDescriptorSet::write(const uint32_t& descriptorIndex, void* pDescriptorInfo)
 		{

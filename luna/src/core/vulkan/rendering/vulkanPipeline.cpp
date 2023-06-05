@@ -68,9 +68,20 @@ namespace luna
 			{
 				vkDestroyShaderModule(device, shaderModule, nullptr);
 			}
-			vkDestroyRenderPass(device, renderPass, nullptr);
-			vkDestroyPipeline(device, pipeline, nullptr);
-			vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
+			destroySyncStructures();
+			if(renderPass) vkDestroyRenderPass(device, renderPass, nullptr);
+			if(pipeline) vkDestroyPipeline(device, pipeline, nullptr);
+			if(pipelineLayout) vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
+			renderPass = VK_NULL_HANDLE;
+			pipelineLayout = VK_NULL_HANDLE;
+			pipeline = VK_NULL_HANDLE;
+		}
+
+		ImTextureID vulkanPipeline::getWindowImage()
+		{
+			ref<vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkanDevice>(layout.device);
+
+			return vDevice->swapchain->getViewportImage(currentFrame);
 		}
 
 		void vulkanPipeline::createCommands()
@@ -171,21 +182,17 @@ namespace luna
 			ImGui::NewFrame();
 			ImGuiViewport* viewport = ImGui::GetMainViewport();
 			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
-
-			ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
-			if (ImGui::Begin("scene"));
-			{
-				ImVec2 scrollPos = ImGui::GetCursorScreenPos();
-				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				ImVec2 mousePos = ImGui::GetMousePos();
-				windowMousePos.x = mousePos.x - scrollPos.x;
-				windowMousePos.y = mousePos.y - scrollPos.y;
-				windowDimensions = { viewportPanelSize.x,viewportPanelSize.y };
-				ImGui::Image(vDevice->swapchain->getViewportImage(currentFrame), viewportPanelSize);
-			}
-			
-			ImGui::PopStyleVar(1);
-			ImGui::End();
+			/*
+			ImVec2 scrollPos = ImGui::GetCursorScreenPos();
+			ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+			ImVec2 mousePos = ImGui::GetMousePos();
+			*/
+			currentFrameBuffer = vDevice->swapchain->getViewportImage(currentFrame);
+			/*
+			windowMousePos.x = mousePos.x - scrollPos.x;
+			windowMousePos.y = mousePos.y - scrollPos.y;
+			windowDimensions = { viewportPanelSize.x,viewportPanelSize.y };
+			*/
 		}
 		void vulkanPipeline::end() const
 		{
@@ -245,7 +252,7 @@ namespace luna
 			// _renderFence will now block until the graphic commands finish execution
 			drawCommands.clear();
 
-
+			
 			VkPresentInfoKHR presentInfo = {};
 			presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
 			presentInfo.pNext = nullptr;

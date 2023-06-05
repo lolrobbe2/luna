@@ -63,6 +63,8 @@ namespace luna
 			 * \return VK_SUCCESS when buffer creation whas succesful
 			 */
 			VkResult createFramebuffers(VkRenderPass renderPass);
+
+			_ALWAYS_INLINE_ void destroyViewport() { swapchain->destroyViewport(); };
 		private:
 			/**
 			 * @name primaryHelperFunctions helper functions used to create the device

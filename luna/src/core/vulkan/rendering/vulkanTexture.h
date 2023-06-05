@@ -100,7 +100,7 @@ namespace luna
 			//14*300 (height) = 4200
 			//32 dec - 127 decimal;
 			vulkanFont(const std::string& filePath);
-			virtual ~vulkanFont() = default;
+			virtual ~vulkanFont();
 			virtual ref<renderer::texture> getGlyph(char character) override;
 			virtual glm::vec2 getAdvance(char character) override;
 			virtual glm::vec2 getScale(char character) override;
@@ -131,8 +131,7 @@ namespace luna
 			};
 			const static int width = 4800;
 			const static int height = 4800;
-			VkBuffer testBuffer = VK_NULL_HANDLE;
-			std::vector<VkBuffer> buffer;
+			VkBuffer imageBuffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;
 		};

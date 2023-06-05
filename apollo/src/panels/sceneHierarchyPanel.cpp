@@ -9,6 +9,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <core/platform/platformUtils.h>
 #include <core/object/objectDB.h>
+#include <core/scripting/scriptUtils.h>
 namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
@@ -148,6 +149,27 @@ namespace luna
 			ImGui::Separator();
 
 		}
+		if (Node.hasComponent<scriptComponent>())
+		{
+			auto& script = Node.getComponent<scriptComponent>();			
+			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "script"))
+			{
+				auto appClassNames = utils::scriptUtils::getAppClassNames();
+				const char** items = appClassNames.data();
+				int currentItem = script.currentItem;
+				ImGui::LabelText("className", script.className.c_str());
+				if(ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size()));
+				{
+					
+				}
+				if (currentItem != -1) {
+					script.currentItem = currentItem;
+					script.className = std::string(items[currentItem]);
+				}
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
 		if(Node.hasComponent<tagComponent>())
 		{
 			auto& tag = Node.getComponent<tagComponent>().tag;
@@ -179,7 +201,7 @@ namespace luna
 					ImGui::SameLine();
 					if (ImGui::Button("select image"))
 					{
-						sprite.filePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						sprite.filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
 						sprite.texture = renderer::texture::create(sprite.filePath);
 					}
 
@@ -199,7 +221,7 @@ namespace luna
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
-					label.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
+					label.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
 					label.font = renderer::font::create(label.filePath);
 				}
 				inputText("label text", label.text);
@@ -226,7 +248,7 @@ namespace luna
 				{
 					if (ImGui::Button("select normal image"))
 					{
-						button.normalFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.normalFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
 						button.normalTexture = renderer::texture::create(button.normalFilePath);
 					}
 					inputText("normal Image", button.normalFilePath);
@@ -234,7 +256,7 @@ namespace luna
 
 					if (ImGui::Button("select hover image"))
 					{
-						button.hoverFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.hoverFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
 						button.hoverTexture = renderer::texture::create(button.hoverFilePath);
 
 					}
@@ -242,7 +264,7 @@ namespace luna
 
 					if (ImGui::Button("select pressed image"))
 					{
-						button.pressedFilePath = luna::platform::os::openFilaDialog("image\0*.png;*.jpeg;*.jpg\0");
+						button.pressedFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
 						button.pressedTexture = renderer::texture::create(button.pressedFilePath);
 					}
 					inputText("pressed Image", button.pressedFilePath);
@@ -269,7 +291,7 @@ namespace luna
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
-					itemList.filePath = luna::platform::os::openFilaDialog("font (*.ttf)\0*.ttf\0");
+					itemList.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
 					itemList.font = renderer::font::create(itemList.filePath);
 				}
 				if (ImGui::Button("add item"))
@@ -332,5 +354,9 @@ namespace luna
 		memset(buffer, 0, sizeof(buffer));
 		strcpy_s(buffer, stringBuffer.c_str());
 		if (ImGui::InputText(name.c_str(), buffer, sizeof(buffer))) stringBuffer = std::string(buffer);
+	}
+	void sceneHierarchyPanel::onPlay()
+	{
+		
 	}
 }

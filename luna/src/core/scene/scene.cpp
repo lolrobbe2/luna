@@ -2,10 +2,13 @@
 #include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
 #include <nodes/controlNodes/itemListNode.h>
+#include <core/object/methodDB.h>
+#include <core/scripting/scriptingEngine.h>
 namespace luna
 {
 
 	
+	//Node implmentation
 	static void draw(Node node)
 	{
 		LN_PROFILE_FUNCTION();
@@ -95,6 +98,7 @@ namespace luna
 
 	void scene::onUpdate(utils::timestep ts)
 	{
+		if (!m_IsRunning) return;
 		glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
 		if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 		else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
@@ -141,8 +145,10 @@ namespace luna
 			if (!found) itemListComponent.current = -1;
 		}
 	}
+
 	void scene::onEvent(Event& event)
 	{
+		if (!m_IsRunning) return;
 		if(event.getEventType() == eventType::MouseButtonPressed)
 		{
 			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
@@ -176,11 +182,94 @@ namespace luna
 		}
 
 	}
+
+	void scene::onPlayScene()
+	{
+		auto scriptComponents = m_Registry.view<scriptComponent,idComponent>();
+		for (auto entity : scriptComponents)
+		{
+			auto& script = m_Registry.get<scriptComponent>(entity);
+			if (script.scritpInstance) LN_CORE_ERROR("scriptInstance was not nullptr");
+			else if (script.className.size()) script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), (uint32_t)entity);
+		}
+		for (auto entity : scriptComponents)
+		{
+			auto& script = m_Registry.get<scriptComponent>(entity);
+			if (script.scritpInstance) script.scritpInstance->ready();
+		}
+	}
+
+	void scene::onStopScene()
+	{
+		auto scriptComponents = m_Registry.view<scriptComponent, idComponent>();
+		for (auto entity : scriptComponents)
+		{
+			auto script = m_Registry.get<scriptComponent>(entity);
+			script.scritpInstance = nullptr;
+		
+		}
+	}
+
+#pragma region NODE
+
+	/*-----------------------------------------------------------------------*/
+	/*                                glue                                 */
+	/*-----------------------------------------------------------------------*/
+
+
+	static void NodeSetName(entt::entity nodeHandle, MonoString* name)
+	{
+		Node node = { nodeHandle,scripting::scriptingEngine::getContext() };
+		node.setName(mono_string_to_utf8(name));
+	}
+
+	static MonoArray* NodeGetChildren(entt::entity nodeId)
+	{
+		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		auto children = node.getChildren();
+
+		MonoArray* nodeArray = scripting::scriptingEngine::createArray<Node>(children.size());
+		for (size_t i = 0; i < children.size(); i++)
+		{
+			auto& script = children[i].getComponent<scriptComponent>();
+			MonoObject* nodeObject = script.scritpInstance->getInstance();
+			mono_array_set(nodeArray, MonoObject*, i, nodeObject);
+		}
+
+		return nodeArray;
+	}
+
+	static MonoObject* NodeGetParent(entt::entity nodeId)
+	{
+		Node node = { nodeId,scripting::scriptingEngine::getContext() };
+		Node parent = node.getParent();
+		if (parent) {
+			return parent.getComponent<scriptComponent>().scritpInstance->getInstance();
+		}
+		return nullptr;
+	}
+
+	static void NodeAddSibling(entt::entity nodeId, entt::entity siblingId)
+	{
+		Node sibling = { nodeId,scripting::scriptingEngine::getContext() };
+		sibling.getParent().addChild(Node(siblingId, scripting::scriptingEngine::getContext()));
+	}
+
+	static void NodeAddChild(entt::entity nodeId, entt::entity childId)
+	{
+		Node parent = { nodeId,scripting::scriptingEngine::getContext() };
+		parent.addChild(Node(childId, scripting::scriptingEngine::getContext()));
+	}
+
+	static entt::entity NodeCreateNew()
+	{
+		return Node(scripting::scriptingEngine::getContext());
+	}
 	Node::Node(uint64_t id, luna::scene* scene)
 	{
 		auto idComponents = scene->m_Registry.group<idComponent,tagComponent>();
 		this->scene = scene;
-		
+		if (id == -1) return;
 		for (auto entity : idComponents)
 		{
 			auto [testId,tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);
@@ -196,6 +285,7 @@ namespace luna
 		: entityHandle(handle), scene(scene)
 	{
 	}
+
 	Node::Node(luna::scene* scene)
 	{
 		this->scene = scene;
@@ -203,12 +293,14 @@ namespace luna
 		addComponent<idComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
+
 	void Node::setName(std::string name)
 	{
 		if (hasComponent<tagComponent>()) getComponent<tagComponent>().tag = name;
 		else addComponent<tagComponent>(name);
 		
 	}
+
 	void Node::addChild(Node node)
 	{
 		LN_CORE_INFO("adding node {0} as a child to {1} .", node.getUUID().getId(), getUUID().getId());
@@ -219,12 +311,51 @@ namespace luna
 		else addComponent<childComponent>().childs.push_back(node);
 	}
 
+	std::vector<Node> Node::getChildren()
+	{
+		std::vector<Node> children;
+		if (hasComponent<childComponent>())
+		{
+			auto childrenID = getComponent<childComponent>().childs;
+			for (auto child : childrenID) {
+				children.push_back(Node(child, scene));
+			}
+		}
+		return children;
+	}
+
+	Node Node::getParent() 
+	{
+		if (hasComponent<parentComponent>()) {
+			auto& parentComp = getComponent<parentComponent>();
+			Node parent{ parentComp.parentId,scene };
+			return parent;
+		}
+		return Node(-1,scene);
+	}
+
 	void Node::init(luna::scene* scene)
 	{
 		this->scene = scene;
 		entityHandle = scene->create();
 		
 		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
+		addComponent<scriptComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
+
+	void Node::bindMethods() 
+	{
+		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
+		LN_ADD_INTERNAL_CALL(Node, NodeGetChildren);
+		LN_ADD_INTERNAL_CALL(Node, NodeGetParent);
+		LN_ADD_INTERNAL_CALL(Node, NodeAddSibling);
+		LN_ADD_INTERNAL_CALL(Node, NodeAddChild);
+		LN_ADD_INTERNAL_CALL(Node, NodeCreateNew);
+	}
+
+#pragma endregion
+
 }
+
+

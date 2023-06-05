@@ -28,6 +28,12 @@ namespace luna
 			 */
 			virtual void destroyPipeline() = 0;
 			/**
+			 * returns current frameBuffer handle.
+			 * 
+			 * \return 
+			 */
+			virtual ImTextureID getWindowImage() = 0;
+			/**
 			 * @brief creates platform specific commands for the rendererPipeline using engine drawCommands.
 			 * 
 			 */
@@ -67,9 +73,13 @@ namespace luna
 			 */
 			virtual void clear() = 0;
 
+
 			glm::vec2 getDimensions() { return windowDimensions; };
 			glm::vec2 getWindowMousePos() { return windowMousePos; };
+			void setDimensions(const glm::vec2& dimensions) { windowDimensions = dimensions; };
+			void setWindowMousePos(const glm::vec2& windowMousePos) { this->windowMousePos = windowMousePos; };
 			int test;
+			ImTextureID currentFrameBuffer;
 		protected:
 			glm::vec2 windowMousePos;
 			glm::vec2 windowDimensions;

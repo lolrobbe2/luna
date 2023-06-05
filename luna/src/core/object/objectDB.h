@@ -19,11 +19,15 @@
 namespace luna
 {
 	class scene;
+	/**
+	 * @brief object class.
+	 * @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
+	 */
 	class LN_API object
 	{
 	public:
 		virtual void init(scene* scene) = 0;
-		virtual void bindMethods(){};
+		virtual	void bindMethods() = 0;
 	};
 	/**
 	 * @brief object database class.
@@ -39,6 +43,17 @@ namespace luna
 			classInfo* parentClass = nullptr;
 			std::string className = "";
 		};
+		_ALWAYS_INLINE_ static bool isClassRegistered(std::string className)
+		{
+			return rootClassDatabase.find(className) != rootClassDatabase.end() || classDatabase.find(className) != classDatabase.end();
+		}
+
+		template<class T>
+		_ALWAYS_INLINE_ static bool isClassRegistered() 
+		{
+			return isClassRegistered(getClassName<T>()); 
+		};
+
 		template<class T,class A>
 		_ALWAYS_INLINE_ static void addClass()
 		{

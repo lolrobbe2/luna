@@ -21,7 +21,7 @@ namespace luna
 
 		vulkanCmdPool::~vulkanCmdPool()
 		{
-
+			vkDestroyCommandPool(sCommandPoolSpec.device, commandPool, nullptr);
 		}
 
 		VkResult vulkanCmdPool::createNewBuffer( virtualCmdBuffer* commandBuffer,const uint32_t& commandBufferCount,const VkCommandBufferLevel& commandBufferLevel)

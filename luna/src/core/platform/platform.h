@@ -1,10 +1,13 @@
 #pragma once
 #if defined(_WIN32) || defined(_WIN64)
 	#define LN_PLATFORM_WINDOWS
+	#define LN_PLATFORM_NAME "windows"
 #elif defined (macintosh) || defined(Macintosh) || defined(__APPLE__) ||defined(__MACH__)
 	#define LN_PLATFORM_MAC
+	#define LN_PLATFORM_NAME "macintosh"
 #elif defined(__linux__ )|| defined(linux) ||defined( __linux)
 	#define LN_PLATFORM_LINUX
+	#define LN_PLATFORM_NAME "linux"
 #endif // defined(_WIN32 || _WIN64)
 
 

@@ -9,6 +9,7 @@
 #include <core/utils/layerStack.h>
 #include <core/scene/scene.h>
 
+
 int main(int argc, char** argv);
 
 namespace luna
@@ -50,12 +51,9 @@ namespace luna
 		private:
 			friend class os;
 			ref<vulkan::window> mWindow;
-			ref<renderer::texture> logicGatesImage;
-			ref<renderer::texture> statueImage;
-			ref<renderer::texture> upgradeImage;
 			scene scene;
 			utils::layerStack layerStack;
-			float lastFrameTime = 0.0f;
+			double lastFrameTime = 0.0f;
 			bool running = true;
 			bool minimized = false;
 		private:
