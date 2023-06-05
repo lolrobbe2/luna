@@ -32,6 +32,7 @@ IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
 IncludeDir["imguizmo"] = "%{wks.location}/luna/thirdParty/imguizmo"
 IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
 IncludeDir["mono"] =  "%{wks.location}/luna/thirdParty/mono/include"
+IncludeDir["ZLIB"] =  "%{wks.location}/luna/thirdParty/zlib"
 
 IncludeDir["luna"] = "%{wks.location}/luna/src"
 
@@ -78,6 +79,7 @@ project "luna"
         "%{IncludeDir.imguizmo}",
         "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.mono}",
+        "%{IncludeDir.ZLIB}",
         "%{IncludeDir.luna}"
         
     }
@@ -113,7 +115,8 @@ project "luna"
             "imGui",
             "stb",
             "yaml-cpp",
-            "vulkan-1"
+            "vulkan-1",
+            "zlib"
         }
         filter "configurations:debug"
             LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
