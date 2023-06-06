@@ -12,6 +12,7 @@ namespace luna
 		public:
 			vulkanTexture(const std::string& filePath);
 			vulkanTexture(const uint64_t& handle, const glm::vec2& dimensions);
+			vulkanTexture(uint64_t handle, VkBuffer buffer, VkImage imageHandle, VkImageView imageViewHandle, const glm::vec2& dimensions);
 			virtual ~vulkanTexture();
 
 			virtual uint32_t getWidth() const override;
@@ -25,6 +26,7 @@ namespace luna
 
 			virtual bool isLoaded() const override;
 
+			virtual assets::assetType getType() const override;
 		protected:
 			VkBuffer buffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;

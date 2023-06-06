@@ -40,6 +40,12 @@ namespace luna
 			width = dimensions.x;
 			height = dimensions.y;
 		}
+		vulkanTexture::vulkanTexture(uint64_t handle, VkBuffer buffer, VkImage imageHandle, VkImageView imageViewHandle, const glm::vec2& dimensions) : buffer(buffer),imageHandle(imageHandle),imageViewHandle(imageViewHandle)
+		{
+			width = dimensions.x;
+			height = dimensions.y; 
+			_handle = handle;
+		}
 		vulkanTexture::~vulkanTexture()
 		{
 			if (!destroy) return;
@@ -70,6 +76,11 @@ namespace luna
 		bool vulkanTexture::isLoaded() const
 		{
 			return false;
+		}
+
+		assets::assetType vulkanTexture::getType() const
+		{
+			return assets::assetType::texture;
 		}
 		
 

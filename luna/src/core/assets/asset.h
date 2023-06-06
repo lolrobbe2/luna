@@ -6,19 +6,19 @@ namespace luna
 	namespace assets 
 	{
 		using assetHandle = uuid;
-		using assetType = uint64_t;
-		enum assetType
+		enum assetType : uint16_t
 		{
-			none,
+			none = 0,
 			texture,
 			font,
 			scene,
 		};
 
+
 		class asset
 		{
 		public:
-			assetHandle handle; //auto generate handle
+			assetHandle assetHandle; //auto generate handle
 			virtual assetType getType() const = 0;
 		private:
 
@@ -39,7 +39,7 @@ namespace luna
 		/**
 		* @brief basic asset data, this info is dirrectly available from the assetManager without casting.
 		*/
-		struct assetMetaData {
+		struct assetMetadata {
 			assetHandle handle; //unique identifier of the asset
 			unsigned char name[_MAX_FNAME]; //name of the asset
 			unsigned char filePath[_MAX_PATH];
@@ -48,7 +48,7 @@ namespace luna
 		};
 
 		struct textureAssetMetaData {
-			assetMetaData baseMetaData; //standard metadata that each asset has.
+			assetMetadata baseMetaData; //standard metadata that each asset has.
 			uint64_t width, height, channels;
 			uint64_t imageByteSize;
 		};

@@ -1,6 +1,7 @@
 #pragma once
 #include <core/vulkan/window/window.h>
 #include <stb_truetype.h>
+#include <core/assets/asset.h>
 
 namespace luna
 {
@@ -10,7 +11,7 @@ namespace luna
 		 * @brief base texture class.
 		 * @note see specific platform implementation for explenation with functions
 		 */
-		class LN_API texture
+		class LN_API texture : assets::asset
 		{
 		public:
 			virtual ~texture() = default;
@@ -35,11 +36,11 @@ namespace luna
 		protected:
 			bool destroy = true;
 			uint64_t _handle;
-			void* data;
+			void* data; //TODO remove to asset importer
 			uint32_t width;
 			uint32_t height;
-			glm::vec2 uvStart = {0.0f,0.0f};
-			glm::vec2 uvEnd = { 1.0f,1.0f };
+			glm::vec2 uvStart = { 0.0f,0.0f }; //hardcoded not part of asset metadata
+			glm::vec2 uvEnd = { 1.0f,1.0f }; //hardcoded not part of asset metadata
 
 		};
 		/**
