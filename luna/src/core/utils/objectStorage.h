@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace utils
 	{
-		typedef uint64_t storageObject;
+		using storageObject = uint64_t;
 		enum storageResult
 		{
 			storageInvalidHandle = 0,
@@ -130,6 +130,15 @@ namespace luna
 					break;
 				}
 
+			}
+
+			/**
+			* @brief checks if a given key exists inside the objectStorage.
+			*/
+			bool hasValue(storageObject key)
+			{
+				if (objectCahce.hasValue(key)) return true;
+				return objectMemory.find(key) != objectMemory.end();
 			}
 		private:
 			vectorCache<value> objectCache; // fast constantly used memory
