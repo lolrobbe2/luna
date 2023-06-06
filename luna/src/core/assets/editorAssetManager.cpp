@@ -86,22 +86,13 @@ namespace luna
 			importFile.write((char*)assetMetadata, getMetadataStructSize(assetMetadata->assetType));
 			importFile.close();
 
-			{
-				/*hide import folder very valuable*/
-				int attr = GetFileAttributesA("import");
-				if ((attr & FILE_ATTRIBUTE_HIDDEN) == 0) {
-					SetFileAttributesA("import", attr | FILE_ATTRIBUTE_HIDDEN);
-				}
+			
+			/*hide import folder very valuable*/
+			int attr = GetFileAttributesA("import");
+			if ((attr & FILE_ATTRIBUTE_HIDDEN) == 0) {
+				SetFileAttributesA("import", attr | FILE_ATTRIBUTE_HIDDEN);
 			}
-
-			{
-				/*hide import file even more valuable (pls don use ls -a)*/
-				int attr = GetFileAttributesA((LPCSTR)filePath.c_str());
-				if ((attr & FILE_ATTRIBUTE_HIDDEN) == 0) {
-					SetFileAttributesA((LPCSTR)filePath.c_str(), attr | FILE_ATTRIBUTE_HIDDEN);
-				}
-			}
-
+			
 		}
 	}
 }
