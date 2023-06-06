@@ -13,17 +13,31 @@ namespace luna
 		void editorAssetManager::loadImportedAssetsMetadata()
 		{
 			std::vector<std::filesystem::path> assetMetadataPaths;
-			for (auto& dir_entry: std::filesystem::recursive_directory_iterator("import"))
 			{
-				if (dir_entry.path().extension() == ".limp") {
-					assetMetadataPaths.push_back(dir_entry.path());
+				for (auto& dir_entry : std::filesystem::recursive_directory_iterator("import"))
+				{
+					if (dir_entry.path().extension() == ".limp") {
+						assetMetadataPaths.push_back(dir_entry.path());
+					}
 				}
 			}
+			assetMetadata tempMetadata;
+			for(std::filesystem::path importPath : assetMetadataPaths)
+			{
+				std::ifstream importFile(importPath);
+				importFile.read((char*)&tempMetadata, sizeof(assetMetadata));
+				importFile.seekg(0);
+
+				assetMetadata* assetMetadata = getMetadataPointer(tempMetadata.assetType);
+				importFile.read((char*)assetMetadata, getMetadataStructSize(tempMetadata.assetType));
+				assetMetadataStorage.putValue((utils::storageObject*)&assetMetadata->handle, assetMetadata);
+			}
+			
 		}
 		void editorAssetManager::loadAsset(assetHandle handle, const assetType type)
 		{
 			ref<asset> importedAsset = assetImporter::importAsset(handle,assetMetadataStorage[handle].second);
-			utils::storageObject* key = (utils::storageObject*)(uint64_t)handle.getId();
+			utils::storageObject* key = (utils::storageObject*)&handle;
 			if (importedAsset.get()) assetStorage.putValue(key, importedAsset);
 		}
 		bool editorAssetManager::isAssetHandleValid(assetHandle handle)
