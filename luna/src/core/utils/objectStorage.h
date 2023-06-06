@@ -137,7 +137,7 @@ namespace luna
 			*/
 			bool hasValue(storageObject key)
 			{
-				if (objectCahce.hasValue(key)) return true;
+				if (objectCache.hasValue(key)) return true;
 				return objectMemory.find(key) != objectMemory.end();
 			}
 		private:

@@ -11,7 +11,7 @@ namespace luna
 		 * @brief base texture class.
 		 * @note see specific platform implementation for explenation with functions
 		 */
-		class LN_API texture : assets::asset
+		class LN_API texture : public assets::asset
 		{
 		public:
 			virtual ~texture() = default;

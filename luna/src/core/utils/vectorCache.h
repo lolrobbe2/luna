@@ -176,9 +176,9 @@ namespace luna
 			bool hasValue(cacheObject key) {
 				for (uint64_t iterator = 0; iterator < handleCache.size(); iterator++)
 				{
-					if (currentKey == key) return true;
+					if (handleCache[iterator] == key) return true;
 				}
-				return false
+				return false;
 			}
 		protected:
 

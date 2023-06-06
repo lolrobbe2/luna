@@ -41,8 +41,8 @@ namespace luna
 		*/
 		struct assetMetadata {
 			assetHandle handle; //unique identifier of the asset
-			unsigned char name[_MAX_FNAME]; //name of the asset
-			unsigned char filePath[_MAX_PATH];
+			char name[_MAX_FNAME]; //name of the asset
+			char filePath[_MAX_PATH];
 			uint64_t fileSizeBytes;
 			assetType assetType;
 		};

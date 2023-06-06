@@ -11,7 +11,8 @@ namespace luna
 		{
 			textureAssetMetaData* textureMetaData = (textureAssetMetaData*)metadata;
 			std::string filePath = reinterpret_cast<char*>(textureMetaData->baseMetaData.filePath);
-			filePath += reinterpret_cast<char*>(textureMetaData->baseMetaData.filePath);
+			filePath += "/";
+			filePath += reinterpret_cast<char*>(textureMetaData->baseMetaData.name);
 			std::ifstream textureFile(filePath);
 
 			VkBuffer buffer = VK_NULL_HANDLE;
@@ -38,11 +39,10 @@ namespace luna
 				textureMetaData->channels = channels;
 				textureMetaData->width = (uint32_t)width;
 				textureMetaData->height = (uint32_t)height;
+				textureMetaData->baseMetaData.fileSizeBytes = textureFile.tellg();
 				textureFile.close();
 
-				ref<renderer::texture> texture = ref<renderer::texture>(new vulkan::vulkanTexture(_handle, buffer, imageHandle, imageViewHandle, glm::vec2({ width,height })));
-
-				return std::dynamic_pointer_cast<asset>(texture);
+				return ref<asset>(new vulkan::vulkanTexture(_handle, buffer, imageHandle, imageViewHandle, glm::vec2({ width,height })));
 			}
 			return ref<asset>();
 		}
