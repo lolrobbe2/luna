@@ -12,6 +12,13 @@ namespace luna
 		}
 		void editorAssetManager::loadImportedAssetsMetadata()
 		{
+			std::vector<std::filesystem::path> assetMetadataPaths;
+			for (auto& dir_entry: std::filesystem::recursive_directory_iterator("import"))
+			{
+				if (dir_entry.path().extension() == ".limp") {
+					assetMetadataPaths.push_back(dir_entry.path());
+				}
+			}
 		}
 		void editorAssetManager::loadAsset(assetHandle handle, const assetType type)
 		{

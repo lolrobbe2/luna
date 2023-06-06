@@ -1,32 +1,31 @@
-[22:35:24] [trace] LUNA: instance creation result = 0
-[22:35:24] [trace] LUNA: surface creation result = 0
-[22:35:24] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[22:35:24] [trace] LUNA: device selection result = 0
-[22:35:24] [trace] LUNA: logical device creation result = 0
-[22:35:24] [trace] LUNA: swapchain creation result = 0
-[22:35:24] [trace] LUNA: reflecting shader: false
-[22:35:24] [trace] LUNA: creating shader Layout
-[22:35:24] [trace] LUNA: created shaderLayout
-[22:35:24] [trace] LUNA: reflecting shader: false
-[22:35:24] [trace] LUNA: creating shader Layout
-[22:35:24] [trace] LUNA: created shaderLayout
-[22:35:24] [info] LUNA: commandbuffer create info = 0
-[22:35:24] [info] LUNA: vma allocator creation result = 0
-[22:35:24] [info] LUNA: creating vulkan shadermodule, result = 0
-[22:35:24] [info] LUNA: creating vulkan shadermodule, result = 0
-[22:35:24] [info] LUNA: imgui descriptor pool creation result = 0
-[22:35:24] [info] LUNA: imgui init for GLFW-vulkan = true
-[22:35:24] [info] LUNA: imgui init vulkan = true
-[22:35:25] [info] LUNA: imgui init complete
-[22:35:25] [info] LUNA: class registered: controlNode
-[22:35:25] [info] LUNA: class registered: Node
-[22:35:25] [info] LUNA: class registered: labelNode
-[22:35:25] [info] LUNA: class registered: spriteNode
-[22:35:25] [info] LUNA: class registered: buttonNode
-[22:35:25] [info] LUNA: class registered: itemListNode
-[22:35:25] [info] LUNA: class registered: colorRectNode
-[22:35:25] [info] LUNA: class registered: imageButtonNode
-[22:35:25] [error] LUNA: could not open file at mono/lib/scriptCore.dll
-[22:35:25] [error] LUNA: [scriptingEngine] could not load scriptCore.dll
-[22:35:25] [trace] APP: started app
-[22:35:57] [error] LUNA: Validation Error: [ VUID-VkImageMemoryBarrier-image-parameter ] Object 0: handle = 0x194aa407d80, type = VK_OBJECT_TYPE_INSTANCE; | MessageID = 0xe5f1f8f4 | Invalid VkImage Object 0xc82a830000000099. The Vulkan spec states: image must be a valid VkImage handle (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkImageMemoryBarrier-image-parameter)
+[22:48:54] [trace] LUNA: instance creation result = 0
+[22:48:54] [trace] LUNA: surface creation result = 0
+[22:48:55] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[22:48:55] [trace] LUNA: device selection result = 0
+[22:48:55] [trace] LUNA: logical device creation result = 0
+[22:48:55] [trace] LUNA: swapchain creation result = 0
+[22:48:55] [trace] LUNA: reflecting shader: false
+[22:48:55] [trace] LUNA: creating shader Layout
+[22:48:55] [trace] LUNA: created shaderLayout
+[22:48:55] [trace] LUNA: reflecting shader: false
+[22:48:55] [trace] LUNA: creating shader Layout
+[22:48:55] [trace] LUNA: created shaderLayout
+[22:48:55] [info] LUNA: commandbuffer create info = 0
+[22:48:55] [info] LUNA: vma allocator creation result = 0
+[22:48:55] [info] LUNA: creating vulkan shadermodule, result = 0
+[22:48:55] [info] LUNA: creating vulkan shadermodule, result = 0
+[22:48:55] [info] LUNA: imgui descriptor pool creation result = 0
+[22:48:55] [info] LUNA: imgui init for GLFW-vulkan = true
+[22:48:55] [info] LUNA: imgui init vulkan = true
+[22:48:55] [info] LUNA: imgui init complete
+[22:48:55] [info] LUNA: class registered: controlNode
+[22:48:55] [info] LUNA: class registered: Node
+[22:48:55] [info] LUNA: class registered: labelNode
+[22:48:55] [info] LUNA: class registered: spriteNode
+[22:48:55] [info] LUNA: class registered: buttonNode
+[22:48:55] [info] LUNA: class registered: itemListNode
+[22:48:55] [info] LUNA: class registered: colorRectNode
+[22:48:55] [info] LUNA: class registered: imageButtonNode
+[22:48:55] [error] LUNA: could not open file at mono/lib/scriptCore.dll
+[22:48:55] [error] LUNA: [scriptingEngine] could not load scriptCore.dll
+[22:48:55] [trace] APP: started app

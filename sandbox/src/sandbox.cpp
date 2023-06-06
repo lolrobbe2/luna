@@ -8,7 +8,8 @@ public:
 	{
 		LN_TRACE("started app");
 		luna::assets::editorAssetManager* assetManager = new luna::assets::editorAssetManager();
-		assetManager->importAsset("src/assets/media/statue.png", luna::assets::texture);
+		//assetManager->importAsset("src/assets/media/statue.png", luna::assets::texture);
+		assetManager->loadImportedAssetsMetadata();
 	}
 	virtual ~sandbox() //base breaker function
 	{
