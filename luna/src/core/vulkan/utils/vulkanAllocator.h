@@ -131,7 +131,7 @@ namespace luna
 			inline static ref<renderer::device> pDevice; //ref to graphics device.
 			inline static VmaAllocator sAllocator; //allocator handle.
 			inline static objectStorage<vmaAllocation> allocations;
-			inline static std::vector<transferCommand> transferCommands;
+			inline static std::vector<transferCommand> transferCommands; //TODO make attomic var
 			inline static ref<vulkan::vulkanCmdPool> commandPool = nullptr;
 			inline static VkQueue transferQueue; //for later; thanks past robbe!
 

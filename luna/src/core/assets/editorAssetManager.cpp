@@ -27,7 +27,6 @@ namespace luna
 				std::ifstream importFile(importPath);
 				importFile.read((char*)&tempMetadata, sizeof(assetMetadata));
 				importFile.seekg(0);
-
 				assetMetadata* assetMetadata = getMetadataPointer(tempMetadata.assetType);
 				importFile.read((char*)assetMetadata, getMetadataStructSize(tempMetadata.assetType));
 				assetMetadataStorage.putValue((utils::storageObject*)&assetMetadata->handle, assetMetadata);

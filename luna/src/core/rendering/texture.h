@@ -86,25 +86,20 @@ namespace luna
 			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;
 		};
 
-		class LN_API font 
+		class LN_API font : public assets::asset
 		{
 		public:
-			//16*300 (width) = 4800
-			//16*300 (height) = 4200
-			//32 dec - 127 decimal;
 			virtual ~font() = default;
 			virtual ref<texture> getGlyph(char character) = 0;
 			virtual glm::vec2 getAdvance(char character) = 0;
 			virtual glm::vec2 getScale(char charcater) = 0;
 			uint64_t handle() { return _handle; };
-			static ref<font> create(const std::string& filePath);
+			static ref<font> create(const std::string& filePath); //will be depreacted
 		protected:
 			const static char startIndex = 0;
-			stbtt_fontinfo fontInfo;
 			uint64_t _handle;
-			void* data;
-			std::vector<glm::vec2> glypScales;
-			std::vector<glm::vec2> glypAdvances;
+			glm::vec2 glyphScales[FONT_ATLAS_GLYPH_AMOUNT];
+			glm::vec2 glyphAdvances[FONT_ATLAS_GLYPH_AMOUNT];
 		private:
 
 		};

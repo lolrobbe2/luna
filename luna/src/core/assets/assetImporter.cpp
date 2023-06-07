@@ -1,12 +1,14 @@
 #include "assetImporter.h"
 #include <core/assets/importers/textureImporter.h>
+#include <core/assets/importers/fontImporter.h>
 namespace luna 
 {
     namespace assets
     {
         using AssetImportFunction = std::function<ref<asset>(assetHandle, assetMetadata*)>;
         static std::map<assetType, AssetImportFunction> s_AssetImportFunctions = {
-            { assetType::texture, textureImporter::importTexture }
+            { assetType::texture, textureImporter::importTexture },
+            { assetType::font   , fontImporter::importFont       },
         };
         ref<asset> assetImporter::importAsset(assetHandle handle,assetMetadata* metadata)
         {

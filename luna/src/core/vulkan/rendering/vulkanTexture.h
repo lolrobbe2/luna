@@ -98,41 +98,17 @@ namespace luna
 		class LN_API vulkanFont : public renderer::font
 		{
 		public:
-			//16*300 (width) = 4800
-			//14*300 (height) = 4200
-			//32 dec - 127 decimal;
 			vulkanFont(const std::string& filePath);
+			vulkanFont(VkBuffer imageBuffer, VkImage imageHandle, VkImageView imageViewHandle,glm::vec2* glypScales, glm::vec2* glypAdvances);
 			virtual ~vulkanFont();
+
 			virtual ref<renderer::texture> getGlyph(char character) override;
+
 			virtual glm::vec2 getAdvance(char character) override;
 			virtual glm::vec2 getScale(char character) override;
+
+			virtual assets::assetType getType() const override;
 		private:
-			/**
-			 * @brief allocates and creates the atlas texture from wich glyph can be sampled from.
-			 *
-			 */
-			void createFontTexture();
-			/**
-			 * @brief creates a font glyph and gurantees the texture height and width to be 300 by 300 pixels.
-			 *
-			 * \param const stbtt_fontinfo* info
-			 * \param int codePoint (char code to create glyph from)
-			 * \param float* xscale: relative scale to get 1.0f width back. (300 / xscale)
-			 * \param float* yscale: relative scale to get 1.0f height back. (300 / yscale)
-			 * \param int* newXoff: relative xoffset.
-			 * \param newYoff: relative yoffset.
-			 * \return stbi_uc* pointer to texure data.
-			 */
-			stbi_uc* createGlyph(const stbtt_fontinfo* info, int codePoint, float* xscale, float* yscale, int* newXoff, int* newYoff);
-			
-			void writeGlyphsIntoBuffer();
-		private:
-			struct glyph
-			{
-				stbi_uc _glyph[300*300];
-			};
-			const static int width = 4800;
-			const static int height = 4800;
 			VkBuffer imageBuffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;

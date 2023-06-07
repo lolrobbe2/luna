@@ -9,12 +9,12 @@ namespace luna
 
 		ref<asset> textureImporter::importTexture(assetHandle handle, assetMetadata* metadata)
 		{
-			textureAssetMetaData* textureMetaData = (textureAssetMetaData*)metadata;
+			textureAssetMetadata* textureMetaData = (textureAssetMetadata*)metadata;
 			std::string filePath = reinterpret_cast<char*>(textureMetaData->baseMetaData.filePath);
 			filePath += "/";
 			filePath += reinterpret_cast<char*>(textureMetaData->baseMetaData.name);
 			std::ifstream textureFile(filePath);
-
+			metadata->fileSizeBytes = std::filesystem::file_size(filePath);
 			VkBuffer buffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;
 			VkImageView imageViewHandle = VK_NULL_HANDLE;
