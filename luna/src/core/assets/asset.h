@@ -6,11 +6,18 @@
 #define GLYPH_START_INDEX 0
 #define FONT_ATLAS_WIDTH 1600
 #define FONT_ATLAS_HEIGHT 1600
+
 #define GLYPH_WIDTH 100
 #define GLYPH_HEIGHT 100
+
 #define FONT_ATLAS_ROWS (FONT_ATLAS_WIDTH / GLYPH_WIDTH)
 #define FONT_ATLAS_COLUMNS (FONT_ATLAS_HEIGHT / GLYPH_HEIGHT)
 #define FONT_ATLAS_GLYPH_AMOUNT (FONT_ATLAS_ROWS * FONT_ATLAS_COLUMNS)
+
+#define GET_FONT_ATLAS_OFFSET_ROWS(xindex) (GLYPH_WIDTH * xindex)
+#define GET_FONT_ATLAS_OFFSET_COLUMNS(yindex) (GLYPH_HEIGHT * yindex)
+
+#define GET_FONT_BUFFER_OFFSET(xindex,yindex) (GET_FONT_ATLAS_OFFSET_ROWS(xindex) * GET_FONT_ATLAS_OFFSET_COLUMNS(yindex))
 #pragma endregion
 
 namespace luna 
@@ -67,7 +74,7 @@ namespace luna
 
 		struct fontAtlas
 		{
-			stbi_uc fontImage[4800 * 4800];
+			stbi_uc fontImage[FONT_ATLAS_WIDTH * FONT_ATLAS_WIDTH];
 		};
 		//new image height = 240
 		struct fontAssetMetadata {

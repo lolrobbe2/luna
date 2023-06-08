@@ -1,0 +1,2 @@
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\premake\bin\debug\stb.lib.lastcodeanalysissucceeded
+C:\Users\robbe\source\repos\lolrobbe2\luna\luna\thirdParty\premake\obj\debug\NativeCodeAnalysis.read.1.tlog

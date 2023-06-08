@@ -245,7 +245,7 @@ namespace luna
 		{
 			memcpy_s((void*)this->glyphScales, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2), glyphScales, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2));
 			memcpy_s((void*)this->glyphAdvances, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2), glyphAdvances, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2));
-
+			_handle = (uint64_t)imageViewHandle;
 		}
 		vulkanFont::~vulkanFont() 
 		{

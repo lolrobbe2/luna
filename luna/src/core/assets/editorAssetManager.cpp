@@ -54,7 +54,7 @@ namespace luna
 			memcpy(metaData->filePath, path.c_str(), path.size());
 			memcpy(metaData->name, filename.c_str(), filename.size());
 			ref<asset> importedAsset = assetImporter::importAsset(metaData->handle, metaData);
-			saveImportData(metaData);
+			if(importedAsset.get()) saveImportData(metaData);
 		}
 		assetMetadata* editorAssetManager::getMetadataPointer(const assetType type)
 		{
@@ -64,9 +64,9 @@ namespace luna
 				LN_CORE_WARN("assetType::none is not valid");
 				return nullptr;
 			case luna::assets::texture:
-				return (assetMetadata*) new textureAssetMetaData();
+				return (assetMetadata*) new textureAssetMetadata();
 			case luna::assets::font:
-				return nullptr;
+				return (assetMetadata*) new fontAssetMetadata();
 			case luna::assets::scene:
 				return nullptr;
 			default:
@@ -81,9 +81,9 @@ namespace luna
 			case luna::assets::none:
 				break;
 			case luna::assets::texture:
-				return sizeof(textureAssetMetaData);
+				return sizeof(textureAssetMetadata);
 			case luna::assets::font:
-				break;
+				return sizeof(fontAssetMetadata);
 			case luna::assets::scene:
 				break;
 			default:
