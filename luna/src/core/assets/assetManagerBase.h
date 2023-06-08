@@ -16,8 +16,14 @@ namespace luna
 			* @brief loads a valid assetHandle from the imported assets. (doesn not load .limp file this is allready loaded)
 			*/
 			virtual void loadAsset(assetHandle handle,const assetType type) = 0;
+			/**
+			* @brief checks the metaDataStorage if an asset has been imported.
+			*/
 			virtual bool isAssetHandleValid(assetHandle handle) = 0;
-
+			/**
+			* @brief checks the assetStorage if the asset has been loaded.
+			*/
+			virtual bool isAssetHandleLoaded(assetHandle handle) = 0;
 			/**
 			* @brief imports an asset that has not been registered/ has a .limp file
 			*/

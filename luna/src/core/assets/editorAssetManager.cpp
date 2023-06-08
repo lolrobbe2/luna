@@ -33,6 +33,12 @@ namespace luna
 			}
 			
 		}
+		ref<asset> editorAssetManager::getAsset(assetHandle handle)
+		{
+			if (!isAssetHandleValid(handle)) LN_CORE_ERROR("asset has not been imported, handle: {}", handle);
+
+			return ref<asset>();	 
+		}
 		void editorAssetManager::loadAsset(assetHandle handle, const assetType type)
 		{
 			ref<asset> importedAsset = assetImporter::importAsset(handle,assetMetadataStorage[handle].second);
