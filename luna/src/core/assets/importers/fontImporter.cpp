@@ -167,6 +167,8 @@ namespace luna
 			filePath += "/";
 			filePath += reinterpret_cast<char*>(fontMetadata->baseMetaData.name);
 
+			metadata->fileSizeBytes = std::filesystem::file_size(filePath);
+
 			stbtt_fontinfo fontInfo;
 
 			VkBuffer imageBuffer = VK_NULL_HANDLE;

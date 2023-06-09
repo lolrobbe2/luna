@@ -152,7 +152,7 @@ namespace luna
 			if (buffer == VK_NULL_HANDLE) return;
 			ref<vulkan::vulkanDevice> vDevice = std::dynamic_pointer_cast<vulkan::vulkanDevice>(pDevice);
 			vkDeviceWaitIdle(vDevice->getDeviceHandles().device);
-			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer].second;
+			vmaAllocation bufferAllocation = allocations[(uint64_t)buffer];
 			vmaDestroyBuffer(sAllocator, buffer, bufferAllocation.allocation);
 			allocations.eraseValue((uint64_t)buffer);
 			buffer = VK_NULL_HANDLE;

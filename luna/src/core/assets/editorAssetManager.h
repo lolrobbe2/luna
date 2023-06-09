@@ -13,6 +13,7 @@ namespace luna
 			virtual ref<asset> getAsset(assetHandle handle);
 			virtual void loadAsset(assetHandle handle, const assetType type) override;
 			virtual bool isAssetHandleValid(assetHandle handle) override;
+			virtual bool isAssetHandleLoaded(assetHandle handle) override;
 			virtual void importAsset(const std::string& filePath, const assetType type) override;
 		private:
 			static assetMetadata* getMetadataPointer(const assetType type);

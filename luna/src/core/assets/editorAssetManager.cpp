@@ -35,13 +35,12 @@ namespace luna
 		}
 		ref<asset> editorAssetManager::getAsset(assetHandle handle)
 		{
-			if (!isAssetHandleValid(handle)) LN_CORE_ERROR("asset has not been imported, handle: {}", handle);
-
-			return ref<asset>();	 
+			if (!isAssetHandleValid(handle)) { LN_CORE_ERROR("asset has not been imported, handle: {}", handle); return ref<asset>(); }
+			return assetStorage[handle];
 		}
 		void editorAssetManager::loadAsset(assetHandle handle, const assetType type)
 		{
-			ref<asset> importedAsset = assetImporter::importAsset(handle,assetMetadataStorage[handle].second);
+			ref<asset> importedAsset = assetImporter::importAsset(handle,assetMetadataStorage[handle]);
 			utils::storageObject* key = (utils::storageObject*)&handle;
 			if (importedAsset.get()) assetStorage.putValue(key, importedAsset);
 		}
@@ -49,6 +48,12 @@ namespace luna
 		{
 			return assetMetadataStorage.hasValue(handle);
 		}
+
+		bool editorAssetManager::isAssetHandleLoaded(assetHandle handle)
+		{
+			return assetStorage.hasValue(handle);
+		}
+
 		void editorAssetManager::importAsset(const std::string& filePath,const assetType type)
 		{
 			assetMetadata* metaData = getMetadataPointer(type);
