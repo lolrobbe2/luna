@@ -27,6 +27,7 @@ namespace luna
 			virtual bool isLoaded() const override;
 
 			virtual assets::assetType getType() const override;
+			virtual void createGuiImage() override;
 		protected:
 			VkBuffer buffer = VK_NULL_HANDLE;
 			VkImage imageHandle = VK_NULL_HANDLE;

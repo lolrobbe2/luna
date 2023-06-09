@@ -34,7 +34,7 @@ namespace luna
 		};
 
 
-		class asset
+		class LN_API asset
 		{
 		public:
 			assetHandle assetHandle; //auto generate handle

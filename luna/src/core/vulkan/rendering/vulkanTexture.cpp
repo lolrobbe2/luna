@@ -1,6 +1,7 @@
 #include "vulkanTexture.h"
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <core/vulkan/device/vulkanDevice.h>
+#include <core/rendering/renderer.h>
 #include <lnpch.h>
 
 namespace luna
@@ -45,13 +46,13 @@ namespace luna
 			width = dimensions.x;
 			height = dimensions.y; 
 			_handle = handle;
-			destroy = false;
 		}
 		vulkanTexture::~vulkanTexture()
 		{
 			if (!destroy) return;
 			utils::vulkanAllocator::destroyImageView(imageViewHandle);
 			utils::vulkanAllocator::destroyImage(imageHandle);
+			if (textureHandle != 0) renderer::renderer::removeImGuiImage(textureHandle);
 		}
 		uint32_t vulkanTexture::getWidth() const
 		{
@@ -82,6 +83,11 @@ namespace luna
 		assets::assetType vulkanTexture::getType() const
 		{
 			return assets::assetType::texture;
+		}
+
+		void vulkanTexture::createGuiImage()
+		{
+			textureHandle = renderer::renderer::registerImGuiImage((uint64_t)imageViewHandle);
 		}
 		
 

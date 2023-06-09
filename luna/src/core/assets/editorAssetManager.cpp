@@ -5,7 +5,7 @@ namespace luna
 	namespace assets 
 	{
 		static utils::objectStorage<assetMetadata*> assetMetadataStorage;
-
+		static std::map<std::string, assetHandle> translationMap;
 		editorAssetManager::~editorAssetManager()
 		{
 			//assetMetadataStorage.clear(); TODO other branch
@@ -14,6 +14,7 @@ namespace luna
 		{
 			std::vector<std::filesystem::path> assetMetadataPaths;
 			{
+				if (!std::filesystem::exists("import")) return;
 				for (auto& dir_entry : std::filesystem::recursive_directory_iterator("import"))
 				{
 					if (dir_entry.path().extension() == ".limp") {
@@ -30,15 +31,28 @@ namespace luna
 				assetMetadata* assetMetadata = getMetadataPointer(tempMetadata.assetType);
 				importFile.read((char*)assetMetadata, getMetadataStructSize(tempMetadata.assetType));
 				assetMetadataStorage.putValue((utils::storageObject*)&assetMetadata->handle, assetMetadata);
+				translationMap.insert({ assetMetadata->name,assetMetadata->handle });
 			}
 			
 		}
 		ref<asset> editorAssetManager::getAsset(assetHandle handle)
 		{
-			if (!isAssetHandleValid(handle)) { LN_CORE_ERROR("asset has not been imported, handle: {}", handle); return ref<asset>(); }
-			return assetStorage[handle];
+			if (!isAssetHandleValid(handle))
+			{
+				LN_CORE_ERROR("asset has not been imported! \n handle = {0}", ((uuid)handle));
+				return ref<asset>();
+			}
+			if (!isAssetHandleLoaded(handle))
+				loadAsset(handle);
+			return assetStorage.getValue(handle.getId()).second;
 		}
-		void editorAssetManager::loadAsset(assetHandle handle, const assetType type)
+		ref<asset> editorAssetManager::getAsset(const std::string& name)
+		{
+			auto result = translationMap.find(name);
+			if(result != translationMap.end()) return getAsset(result->second);
+			return ref<asset>();
+		}
+		void editorAssetManager::loadAsset(assetHandle handle)
 		{
 			ref<asset> importedAsset = assetImporter::importAsset(handle,assetMetadataStorage[handle]);
 			utils::storageObject* key = (utils::storageObject*)&handle;
@@ -54,7 +68,7 @@ namespace luna
 			return assetStorage.hasValue(handle);
 		}
 
-		void editorAssetManager::importAsset(const std::string& filePath,const assetType type)
+		assetHandle editorAssetManager::importAsset(const std::string& filePath,const assetType type)
 		{
 			assetMetadata* metaData = getMetadataPointer(type);
 			metaData->assetType = type;
@@ -62,13 +76,20 @@ namespace luna
 
 			std::string path = _filePath.parent_path().string();
 			std::string filename = _filePath.filename().string();
+			if (translationMap.find(filename) != translationMap.end()) return 0;
 			memcpy(metaData->filePath, path.c_str(), path.size());
 			memcpy(metaData->name, filename.c_str(), filename.size());
 			ref<asset> importedAsset = assetImporter::importAsset(metaData->handle, metaData);
 			if (importedAsset.get()) { 
+				importedAsset->assetHandle = metaData->handle;
 				saveImportData(metaData); 
+				assetMetadataStorage.putValue((utils::storageObject*)&metaData->handle, metaData);
+				translationMap.insert({ metaData->name,metaData->handle });
 				assetStorage.putValue((utils::storageObject*)&metaData->handle, importedAsset);
+				return metaData->handle;
 			}
+			return 0; //invalid, as in importing failed!
+			
 		}
 		assetMetadata* editorAssetManager::getMetadataPointer(const assetType type)
 		{

@@ -33,6 +33,9 @@ namespace luna
 			static ref<texture> create(const std::string& filePath);
 			static ref<texture> create(const uint64_t& handle,const glm::vec2& dimensions);
 			inline uint64_t handle() { return _handle; };
+
+			virtual void createGuiImage() = 0;
+			_ALWAYS_INLINE_ ImTextureID getGuiImageHandle() { return textureHandle; }
 		protected:
 			bool destroy = true;
 			uint64_t _handle;
@@ -41,6 +44,7 @@ namespace luna
 			uint32_t height;
 			glm::vec2 uvStart = { 0.0f,0.0f }; //hardcoded not part of asset metadata
 			glm::vec2 uvEnd = { 1.0f,1.0f }; //hardcoded not part of asset metadata
+			ImTextureID textureHandle;
 
 		};
 		/**
