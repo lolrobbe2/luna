@@ -62,6 +62,8 @@ namespace luna
 	}
 	void contentBrowserPanel::onImGuiRender()
 	{
+		static bool openPopup = false;
+
 		if (ImGui::Begin("content browser"))
 		{
 			if (m_CurrentDirectory != m_BaseDirectory)
@@ -89,12 +91,15 @@ namespace luna
 				const auto& path = directoryEntry.path();
 				std::string filenameString = path.filename().string();
 
-				ImGui::PushID(filenameString.c_str());
-
+				//ImGui::PushID(filenameString.c_str());
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered,ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
 				ref<vulkan::vulkanTexture> icon = std::dynamic_pointer_cast<vulkan::vulkanTexture>(getIcon(directoryEntry, hovered == filenameString));
 
 
 				ImGui::ImageButton(icon->getGuiImageHandle(), {thumbnailSize, thumbnailSize}, {0, 0}, {1, 1});
+				ImGui::PopStyleColor(1);
+				ImGui::PopStyleColor(1);
 				if (ImGui::IsItemHovered()) 
 					hovered = filenameString;
 				else if (hovered == filenameString)
@@ -104,16 +109,20 @@ namespace luna
 				{
 					if (directoryEntry.is_directory())
 						m_CurrentDirectory /= path.filename();
+					else openPopup = true;
 
 				}
 				ImGui::TextWrapped(filenameString.c_str());
 
 				ImGui::NextColumn();
-
-				ImGui::PopID();
 			}
+
 		}
 		ImGui::End();
+		if (openPopup) {
+			ImGui::OpenPopup("import asset");
+			importPopup(openPopup);
+		}
 	}
 	ref<assets::asset> contentBrowserPanel::getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
 	{
@@ -139,5 +148,31 @@ namespace luna
 			return lscnIcon;
 		}
 		return fileIcon;
+	}
+
+	void contentBrowserPanel::importPopup(bool& openPopup)
+	{
+		if (ImGui::BeginPopupModal("import asset", nullptr, ImGuiWindowFlags_NoMove))
+		{
+			ImGui::SetWindowSize(ImVec2(750, 375));
+			ImVec2 windowPos = ImGui::GetMainViewport()->GetCenter();
+			ImGui::SetWindowPos({ windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
+			ImGui::SetCursorPos(ImVec2(20, 315));
+			ImGui::SetWindowFontScale(2);
+			if (ImGui::Button("no", ImVec2(200, 40)))
+			{
+				openPopup = false;
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SameLine(ImGui::GetContentRegionAvail().x - 210);
+			if (ImGui::Button("import asset", ImVec2(200, 40)))
+			{
+				//LN_CORE_INFO("node added: {0}",m_ListSelected);
+				openPopup = false;
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SetWindowFontScale(1);
+			ImGui::EndPopup();
+		}
 	}
 }

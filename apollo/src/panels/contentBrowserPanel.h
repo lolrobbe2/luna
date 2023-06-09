@@ -11,6 +11,8 @@ namespace luna
 	private:
 		ref<assets::asset> getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered);
 
+		void importPopup(bool& openPopup);
+
 
 		std::filesystem::path m_BaseDirectory;
 		std::filesystem::path m_CurrentDirectory;
