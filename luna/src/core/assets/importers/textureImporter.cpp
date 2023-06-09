@@ -9,6 +9,7 @@ namespace luna
 
 		ref<asset> textureImporter::importTexture(assetHandle handle, assetMetadata* metadata)
 		{
+			LN_PROFILE_FUNCTION();
 			textureAssetMetadata* textureMetaData = (textureAssetMetadata*)metadata;
 			std::string filePath = reinterpret_cast<char*>(textureMetaData->baseMetaData.filePath);
 			filePath += "/";
@@ -38,10 +39,10 @@ namespace luna
 			
 			memcpy_s(data, imageSize, (void*)image, imageSize);
 			stbi_image_free(image);
-			
+
+			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
 			utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels }); //TODO threadpool
-			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT); 
-			
+			//utils::vulkanAllocator::flush();
 			uint64_t _handle = (uint64_t)imageViewHandle;
 
 			textureMetaData->channels = channels;

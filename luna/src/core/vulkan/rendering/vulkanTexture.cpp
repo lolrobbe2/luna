@@ -45,6 +45,7 @@ namespace luna
 			width = dimensions.x;
 			height = dimensions.y; 
 			_handle = handle;
+			destroy = false;
 		}
 		vulkanTexture::~vulkanTexture()
 		{

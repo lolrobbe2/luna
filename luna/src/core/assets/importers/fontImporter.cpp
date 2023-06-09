@@ -65,7 +65,7 @@ namespace luna
 
 			return stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, &xoff, &yoff);
 		}
-
+		/*  DEPRECATED keeping it around in case the other thing does not work!
 		static void writeGlyphsIntoBuffer(VkBuffer* imageBuffer, VkImage& imageHandle, const stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphAdvances, VkFormat imageFormat)
 		{
 			LN_PROFILE_FUNCTION();
@@ -105,7 +105,7 @@ namespace luna
 			utils::vulkanAllocator::flush();
 			//utils::vulkanAllocator::downloadTexture()
 		}
-
+		*/
 		static void writeGlyphToBuffer(imageScanline* baseptr, scanlineGlyph* glyph, int x, int y)
 		{
 			//step 1 find first top left point
@@ -122,7 +122,7 @@ namespace luna
 			}
 		}
 
-		static void* writeGlyphsIntoBuffer2(VkBuffer* imageBuffer, VkImage& imageHandle, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphAdvances, VkFormat imageFormat)
+		static void* writeGlyphsIntoBuffer(VkBuffer* imageBuffer, VkImage& imageHandle, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphAdvances, VkFormat imageFormat)
 		{
 			LN_PROFILE_FUNCTION();
 			utils::vulkanAllocator::createBuffer(imageBuffer, FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
@@ -185,7 +185,7 @@ namespace luna
 				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
 
 				createFontTexture(FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, &imageHandle, &imageViewHandle, imageFormat);
-				void* data = writeGlyphsIntoBuffer2(&imageBuffer, imageHandle, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances, imageFormat);
+				void* data = writeGlyphsIntoBuffer(&imageBuffer, imageHandle, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances, imageFormat);
 				
 				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), data, sizeof(fontAtlas));
 				LN_CORE_TRACE("succesfuly loaded fontFile! {}", filePath);

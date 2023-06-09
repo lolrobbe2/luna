@@ -157,7 +157,7 @@ namespace luna
 			allocations.eraseValue((uint64_t)buffer);
 			buffer = VK_NULL_HANDLE;
 		}
-		void vulkanAllocator::uploadTexture(VkBuffer& buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions, const glm::vec3& imageOffset,const glm::vec2& subImageDimensions,const uint64_t bufferOffset)
+		void vulkanAllocator::uploadTexture(VkBuffer buffer, const VkImage& image,const VkFormat& imageFormat,const glm::vec3& imageDimensions, const glm::vec3& imageOffset,const glm::vec2& subImageDimensions,const uint64_t bufferOffset)
 		{
 			transferCommands.push_back({ bufferOffset,buffer,image,imageFormat,subImageDimensions,imageDimensions,imageOffset });
 		}

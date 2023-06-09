@@ -65,7 +65,10 @@ namespace luna
 			memcpy(metaData->filePath, path.c_str(), path.size());
 			memcpy(metaData->name, filename.c_str(), filename.size());
 			ref<asset> importedAsset = assetImporter::importAsset(metaData->handle, metaData);
-			if(importedAsset.get()) saveImportData(metaData);
+			if (importedAsset.get()) { 
+				saveImportData(metaData); 
+				assetStorage.putValue((utils::storageObject*)&metaData->handle, importedAsset);
+			}
 		}
 		assetMetadata* editorAssetManager::getMetadataPointer(const assetType type)
 		{

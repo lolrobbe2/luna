@@ -86,7 +86,7 @@ namespace luna
 			 * \param buffer dataBuffer that stores texelData
 			 * \param image handle to copy texelData in to. 
 			 */
-			static void uploadTexture(VkBuffer& buffer,const VkImage& image, const VkFormat& imageFormat, const glm::vec3& imageDimensions, const glm::vec3& imageOffset = {0,0,0}, const glm::vec2& subImageDimensions = {0,0}, const uint64_t bufferOffset = 0);
+			static void uploadTexture(VkBuffer buffer,const VkImage& image, const VkFormat& imageFormat, const glm::vec3& imageDimensions, const glm::vec3& imageOffset = {0,0,0}, const glm::vec2& subImageDimensions = {0,0}, const uint64_t bufferOffset = 0);
 			/**
 			 * @brief executes all recorded transferCommands.
 			 * 
@@ -121,7 +121,7 @@ namespace luna
 			struct transferCommand
 			{
 				uint64_t bufferOffset;
-				VkBuffer& sourceBuffer;
+				VkBuffer sourceBuffer;
 				VkImage VulkanImage;
 				VkFormat ImageFormat;
 				glm::vec2 subImageHeight;
