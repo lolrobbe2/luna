@@ -39,8 +39,9 @@ namespace luna
 			memcpy_s(data, imageSize, (void*)image, imageSize);
 			stbi_image_free(image);
 			
-			utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
-			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT); //TODO threadpool
+			utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels }); //TODO threadpool
+			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT); 
+			
 			uint64_t _handle = (uint64_t)imageViewHandle;
 
 			textureMetaData->channels = channels;

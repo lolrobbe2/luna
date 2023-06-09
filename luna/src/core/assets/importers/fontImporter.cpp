@@ -30,7 +30,7 @@ namespace luna
 
 
 		/**
-		 * @brief allocates and creates the atlas texture from wich glyph can be sampled from.
+		 * @brief allocates and creates the atlas texture from wich glyphs can be sampled from.
 		 *
 		 */
 		static void createFontTexture(int width, int height, VkImage* imageHandle, VkImageView* imageViewHandle, VkFormat imageFormat)
@@ -126,7 +126,6 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			utils::vulkanAllocator::createBuffer(imageBuffer, FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-			size_t bufferSize = utils::vulkanAllocator::getAllocationInfo((uint64_t)*imageBuffer).size;
 			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)*imageBuffer).pMappedData;
 			imageScanline* bufferPtr = (imageScanline*)bufferBase;
 			uint64_t offset = 0;
