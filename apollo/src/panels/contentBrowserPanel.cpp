@@ -7,14 +7,21 @@ namespace luna
 	{
 		m_BaseDirectory = std::filesystem::current_path();
 		m_CurrentDirectory = m_BaseDirectory;
+
 		assets::assetManager::importAsset("src/resources/directoryIcon.png",assets::texture);
 		assets::assetManager::importAsset("src/resources/directoryIconHovered.png", assets::texture);
 		
 		assets::assetManager::importAsset("src/resources/icon_png.png", assets::texture);
 		assets::assetManager::importAsset("src/resources/icon_png_hovered.png", assets::texture);
 		
+		assets::assetManager::importAsset("src/resources/icon_jpg.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/icon_jpg_hovered.png", assets::texture);
+
 		assets::assetManager::importAsset("src/resources/icon_ttf.png", assets::texture);
 		assets::assetManager::importAsset("src/resources/icon_ttf_hovered.png", assets::texture);
+
+		assets::assetManager::importAsset("src/resources/icon_lscn.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/icon_lscn_hovered.png", assets::texture);
 
 		assets::assetManager::importAsset("src/resources/fileIcon.png", assets::texture);
 
@@ -25,8 +32,14 @@ namespace luna
 		pngIcon = assets::assetManager::getAsset("icon_png.png");
 		pngHoveredIcon = assets::assetManager::getAsset("icon_png_hovered.png");
 
+		jpgIcon = assets::assetManager::getAsset("icon_jpg.png");
+		jpgHoveredIcon = assets::assetManager::getAsset("icon_jpg_hovered.png");
+
 		ttfIcon = assets::assetManager::getAsset("icon_ttf.png");
 		ttfHoveredIcon = assets::assetManager::getAsset("icon_ttf_hovered.png");
+
+		lscnIcon = assets::assetManager::getAsset("icon_lscn.png");
+		lscnHoveredIcon = assets::assetManager::getAsset("icon_lscn_hovered.png");
 		
 		fileIcon = assets::assetManager::getAsset("fileIcon.png");
 		
@@ -36,8 +49,14 @@ namespace luna
 		std::dynamic_pointer_cast<vulkan::vulkanTexture>(pngIcon)->createGuiImage();
 		std::dynamic_pointer_cast<vulkan::vulkanTexture>(pngHoveredIcon)->createGuiImage();
 
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(jpgIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(jpgHoveredIcon)->createGuiImage();
+
 		std::dynamic_pointer_cast<vulkan::vulkanTexture>(ttfIcon)->createGuiImage();
 		std::dynamic_pointer_cast<vulkan::vulkanTexture>(ttfHoveredIcon)->createGuiImage();
+
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(lscnIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(lscnHoveredIcon)->createGuiImage();
 		
 		std::dynamic_pointer_cast<vulkan::vulkanTexture>(fileIcon)->createGuiImage();
 	}
@@ -107,9 +126,17 @@ namespace luna
 			if (hovered) return  pngHoveredIcon;
 			return pngIcon;
 		}
+		else if (directoryEntry.path().extension().string() == ".jpg") {
+			if (hovered) return  jpgHoveredIcon;
+			return jpgIcon;
+		}
 		else if (directoryEntry.path().extension().string() == ".ttf") {
 			if (hovered) return  ttfHoveredIcon;
 			return ttfIcon;
+		}
+		else if (directoryEntry.path().extension().string() == ".lscn") {
+			if (hovered) return  lscnHoveredIcon;
+			return lscnIcon;
 		}
 		return fileIcon;
 	}

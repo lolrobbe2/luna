@@ -20,8 +20,14 @@ namespace luna
 		ref<assets::asset> pngIcon;
 		ref<assets::asset> pngHoveredIcon;
 
+		ref<assets::asset> jpgIcon;
+		ref<assets::asset> jpgHoveredIcon;
+
 		ref<assets::asset> ttfIcon;
 		ref<assets::asset> ttfHoveredIcon;
+
+		ref<assets::asset> lscnIcon;
+		ref<assets::asset> lscnHoveredIcon;
 
 		ref<assets::asset> fileIcon;
 
