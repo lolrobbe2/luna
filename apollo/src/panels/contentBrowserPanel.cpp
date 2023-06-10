@@ -71,7 +71,7 @@ namespace luna
 		{
 			
 			if(ImGui::GetWindowWidth() > 530) largeIcons();
-			smallIcons();
+			else smallIcons();
 		}
 		ImGui::End();
 		if (openPopup) {
@@ -207,45 +207,51 @@ namespace luna
 
 	}
 
-	bool contentBrowserPanel::button(assetDirectory& directoryEntry)
+	bool contentBrowserPanel::button(assetDirectory& directoryEntry,int indent)
 	{
 		const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getIcon(directoryEntry.entry,directoryEntry.hovered));
+
+		
+		
+		//ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
 
 		if (directoryEntry.hovered) {
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.259, 0.588, 0.98,1.0f });
 			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.259, 0.588, 0.98,1.0f });
-		} else {
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0, 0.0, 0.0,0.0f });
-			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0, 0.0, 0.0,0.0f });
 		}
-		ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0, 0));
+		else {
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.059f, 0.059f, 0.059f,1.0f });
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.059f, 0.059f, 0.059f,1.0f });
+		}
 		if (ImGui::ImageButton(icon->getGuiImageHandle(), { 40,40 })) {
 			directoryEntry.open = !directoryEntry.open;
 		}
 
-		
-		if (ImGui::IsItemHovered()) directoryEntry.hovered = true;
-		else directoryEntry.hovered = false;
+		bool hovered;
+		if (ImGui::IsItemHovered()) hovered = true;
+		else hovered = false;
 
-		ImGui::SameLine();
+		ImGui::SameLine(indent+55);
 
-		
-		if (ImGui::Button(directoryEntry.entry.path().filename().string().c_str(),{ImGui::GetWindowWidth(),50})) {
+		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2{ 0.0f,0.5f });
+		if (ImGui::Button(directoryEntry.entry.path().filename().string().c_str(),{ImGui::GetWindowWidth(),45})) {
 			directoryEntry.open = !directoryEntry.open;
 		}
 		ImGui::PopStyleVar();
 
-		if (ImGui::IsItemHovered()) directoryEntry.hovered = true;
+		if (ImGui::IsItemHovered() || hovered) {
+			directoryEntry.hovered = true;
+		}
 		else directoryEntry.hovered = false;
 		ImGui::PopStyleColor(2);
 		if(directoryEntry.open)
 		{
-			ImGui::Indent(40);
+			ImGui::Indent(30);
 			for (auto& childDirectoryEntry : directoryEntry.childDir)
 			{
-				button(childDirectoryEntry);
+				button(childDirectoryEntry,indent+30);
 			}
-			ImGui::Unindent(40);
+			ImGui::Unindent(30);
 		}
 		return false;
 	}

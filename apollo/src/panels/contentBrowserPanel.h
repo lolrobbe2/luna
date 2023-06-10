@@ -26,7 +26,7 @@ namespace luna
 		void smallIcons();
 		void smallIconsDir(const std::filesystem::path& dir);
 
-		bool button(assetDirectory& directoryEntry);
+		bool button(assetDirectory& directoryEntry, int indent = 0);
 
 		void initAssetDir();
 		void initChildAssetDir(const std::filesystem::path& childDirPath,assetDirectory& dir);
