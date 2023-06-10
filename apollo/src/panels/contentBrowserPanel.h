@@ -31,6 +31,12 @@ namespace luna
 		void initAssetDir();
 		void initChildAssetDir(const std::filesystem::path& childDirPath,assetDirectory& dir);
 
+		void loadNormalIcons();
+		void setNormalIcons();
+		void setNormalGuiIcons();
+
+		void loadSmallIcons();
+
 		std::filesystem::path m_BaseDirectory;
 		std::filesystem::path m_CurrentDirectory;
 		ref<assets::asset> directoryIcon;
