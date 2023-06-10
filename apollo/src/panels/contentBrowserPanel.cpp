@@ -2,6 +2,7 @@
 #include <core/vulkan/rendering/vulkanTexture.h>
 namespace luna
 {
+	std::map<std::string, bool> selectedMap;
 
 	contentBrowserPanel::contentBrowserPanel()
 	{
@@ -59,64 +60,18 @@ namespace luna
 		std::dynamic_pointer_cast<vulkan::vulkanTexture>(lscnHoveredIcon)->createGuiImage();
 		
 		std::dynamic_pointer_cast<vulkan::vulkanTexture>(fileIcon)->createGuiImage();
+
+		initAssetDir();
 	}
 	void contentBrowserPanel::onImGuiRender()
 	{
-		static bool openPopup = false;
+		
 
 		if (ImGui::Begin("content browser"))
 		{
-			if (m_CurrentDirectory != m_BaseDirectory)
-			{
-				if (ImGui::Button("<-"))
-				{
-					m_CurrentDirectory = m_CurrentDirectory.parent_path();
-				}
-			}
-
-			static float padding = 16.0f;
-			static float thumbnailSize = 128.0f;
-			float cellSize = thumbnailSize + padding;
-
-			float panelWidth = ImGui::GetContentRegionAvail().x;
-			int columnCount = (int)(panelWidth / cellSize);
-			if (columnCount < 1)
-				columnCount = 1;
-
-			ImGui::Columns(columnCount, 0, false);
-
-			for (auto& directoryEntry : std::filesystem::directory_iterator(m_CurrentDirectory))
-			{
-				static std::string hovered;
-				const auto& path = directoryEntry.path();
-				std::string filenameString = path.filename().string();
-
-				//ImGui::PushID(filenameString.c_str());
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
-				ImGui::PushStyleColor(ImGuiCol_ButtonHovered,ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
-				ref<vulkan::vulkanTexture> icon = std::dynamic_pointer_cast<vulkan::vulkanTexture>(getIcon(directoryEntry, hovered == filenameString));
-
-
-				ImGui::ImageButton(icon->getGuiImageHandle(), {thumbnailSize, thumbnailSize}, {0, 0}, {1, 1});
-				ImGui::PopStyleColor(1);
-				ImGui::PopStyleColor(1);
-				if (ImGui::IsItemHovered()) 
-					hovered = filenameString;
-				else if (hovered == filenameString)
-					hovered = "";
-
-				if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-				{
-					if (directoryEntry.is_directory())
-						m_CurrentDirectory /= path.filename();
-					else openPopup = true;
-
-				}
-				ImGui::TextWrapped(filenameString.c_str());
-
-				ImGui::NextColumn();
-			}
-
+			
+			if(ImGui::GetWindowWidth() > 530) largeIcons();
+			smallIcons();
 		}
 		ImGui::End();
 		if (openPopup) {
@@ -173,6 +128,149 @@ namespace luna
 			}
 			ImGui::SetWindowFontScale(1);
 			ImGui::EndPopup();
+		}
+	}
+
+	void contentBrowserPanel::largeIcons() 
+	{
+		if (m_CurrentDirectory != m_BaseDirectory)
+		{
+			if (ImGui::Button("<-"))
+			{
+				m_CurrentDirectory = m_CurrentDirectory.parent_path();
+			}
+		}
+
+		static float padding = 16.0f;
+		static float thumbnailSize = 128.0f;
+		float cellSize = thumbnailSize + padding;
+
+		float panelWidth = ImGui::GetContentRegionAvail().x;
+		int columnCount = (int)(panelWidth / cellSize);
+		if (columnCount < 1)
+			columnCount = 1;
+
+		ImGui::Columns(columnCount, 0, false);
+
+		for (auto& directoryEntry : std::filesystem::directory_iterator(m_CurrentDirectory))
+		{
+
+
+			static std::string hovered;
+			const auto& path = directoryEntry.path();
+			std::string filenameString = path.filename().string();
+
+			if ((GetFileAttributesA(path.string().c_str()) & FILE_ATTRIBUTE_HIDDEN) == 0) {   //TODO make multi platform.
+				//ImGui::PushID(filenameString.c_str());
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
+				ref<vulkan::vulkanTexture> icon = std::dynamic_pointer_cast<vulkan::vulkanTexture>(getIcon(directoryEntry, hovered == filenameString));
+
+
+				ImGui::ImageButton(icon->getGuiImageHandle(), { thumbnailSize, thumbnailSize }, { 0, 0 }, { 1, 1 });
+				ImGui::PopStyleColor(1);
+				ImGui::PopStyleColor(1);
+				if (ImGui::IsItemHovered())
+					hovered = filenameString;
+				else if (hovered == filenameString)
+					hovered = "";
+
+				if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+				{
+					if (directoryEntry.is_directory())
+						m_CurrentDirectory /= path.filename();
+					else openPopup = true;
+
+				}
+				ImGui::TextWrapped(filenameString.c_str());
+
+				ImGui::NextColumn();
+			}
+
+		}
+	}
+	void contentBrowserPanel::smallIcons()
+	{
+		for (auto& directoryEntry : assetDir)
+		{
+			button(directoryEntry);
+		}
+	}
+	void contentBrowserPanel::smallIconsDir(const std::filesystem::path& dir)
+	{
+		ImGui::Indent(10);
+		for (auto& directoryEntry : assetDir)
+		{
+			button(directoryEntry);
+		}
+		ImGui::Unindent(10);
+
+	}
+
+	bool contentBrowserPanel::button(assetDirectory& directoryEntry)
+	{
+		const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getIcon(directoryEntry.entry,directoryEntry.hovered));
+
+		if (directoryEntry.hovered) {
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.259, 0.588, 0.98,1.0f });
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.259, 0.588, 0.98,1.0f });
+		} else {
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0, 0.0, 0.0,0.0f });
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0, 0.0, 0.0,0.0f });
+		}
+		ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0, 0));
+		if (ImGui::ImageButton(icon->getGuiImageHandle(), { 40,40 })) {
+			directoryEntry.open = !directoryEntry.open;
+		}
+
+		
+		if (ImGui::IsItemHovered()) directoryEntry.hovered = true;
+		else directoryEntry.hovered = false;
+
+		ImGui::SameLine();
+
+		
+		if (ImGui::Button(directoryEntry.entry.path().filename().string().c_str(),{ImGui::GetWindowWidth(),50})) {
+			directoryEntry.open = !directoryEntry.open;
+		}
+		ImGui::PopStyleVar();
+
+		if (ImGui::IsItemHovered()) directoryEntry.hovered = true;
+		else directoryEntry.hovered = false;
+		ImGui::PopStyleColor(2);
+		if(directoryEntry.open)
+		{
+			ImGui::Indent(40);
+			for (auto& childDirectoryEntry : directoryEntry.childDir)
+			{
+				button(childDirectoryEntry);
+			}
+			ImGui::Unindent(40);
+		}
+		return false;
+	}
+	void contentBrowserPanel::initAssetDir()
+	{
+		for (auto& directoryEntry : std::filesystem::directory_iterator(m_BaseDirectory))
+		{
+			if ((GetFileAttributesA(directoryEntry.path().string().c_str()) & FILE_ATTRIBUTE_HIDDEN) == 0) {
+				assetDirectory dir;
+				if (directoryEntry.is_directory()) initChildAssetDir(directoryEntry.path(), dir);
+				dir.entry = directoryEntry;
+				assetDir.push_back(dir);
+			}
+		}
+	}
+	void contentBrowserPanel::initChildAssetDir(const std::filesystem::path& childDirPath,assetDirectory& parentDir)
+	{
+		for (auto& directoryEntry : std::filesystem::directory_iterator(childDirPath))
+		{
+			if ((GetFileAttributesA(directoryEntry.path().string().c_str()) & FILE_ATTRIBUTE_HIDDEN) == 0) {
+				assetDirectory dir;
+				if (directoryEntry.is_directory()) initChildAssetDir(directoryEntry.path(),dir);
+				dir.entry = directoryEntry;
+				parentDir.childDir.push_back(dir);
+			}
 		}
 	}
 }

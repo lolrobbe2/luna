@@ -3,8 +3,17 @@
 
 namespace luna 
 {
+	struct assetDirectory
+	{
+	public:
+		bool open = false;
+		bool hovered = false;
+		std::filesystem::directory_entry entry;
+		std::vector<assetDirectory> childDir;
+	};
 	class contentBrowserPanel
 	{
+
 	public:
 		contentBrowserPanel();
 		void onImGuiRender();
@@ -13,6 +22,14 @@ namespace luna
 
 		void importPopup(bool& openPopup);
 
+		void largeIcons();
+		void smallIcons();
+		void smallIconsDir(const std::filesystem::path& dir);
+
+		bool button(assetDirectory& directoryEntry);
+
+		void initAssetDir();
+		void initChildAssetDir(const std::filesystem::path& childDirPath,assetDirectory& dir);
 
 		std::filesystem::path m_BaseDirectory;
 		std::filesystem::path m_CurrentDirectory;
@@ -33,6 +50,11 @@ namespace luna
 
 		ref<assets::asset> fileIcon;
 
+		std::filesystem::path currentImportSelected;
+
+		bool openPopup = false;
+
+		std::vector<assetDirectory> assetDir;
 	};
 }
 
