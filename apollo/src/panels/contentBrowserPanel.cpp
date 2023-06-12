@@ -4,6 +4,21 @@ namespace luna
 {
 	std::map<std::string, bool> selectedMap;
 
+	std::unordered_map<std::string,assets::assetType> allowedImportExtensions = {
+		{".png",assets::texture},
+		{".jpg",assets::texture},
+		{".bmp",assets::texture},
+		{".ttf",assets::font}
+	};
+
+	const char* assetTypeToString[] = {
+	stringify(NONE),
+	stringify(TEXTURE),
+	stringify(FONT),
+	};
+
+	std::filesystem::path importPath;
+
 	contentBrowserPanel::contentBrowserPanel()
 	{
 		m_BaseDirectory = std::filesystem::current_path();
@@ -13,6 +28,10 @@ namespace luna
 		setNormalIcons();
 		setNormalGuiIcons();
 
+		loadSmallIcons();
+		setSmallIcons();
+		setSmallGuiIcons();
+
 		initAssetDir();
 	}
 	void contentBrowserPanel::onImGuiRender()
@@ -21,14 +40,26 @@ namespace luna
 
 		if (ImGui::Begin("content browser"))
 		{
-			
 			if(ImGui::GetWindowWidth() > 530) largeIcons();
 			else smallIcons();
 		}
 		ImGui::End();
 		if (openPopup) {
-			ImGui::OpenPopup("import asset");
-			importPopup(openPopup);
+			ImGui::OpenPopup("asset manager");
+			if (ImGui::BeginPopupModal("asset manager", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |ImGuiWindowFlags_NoResize))
+			{
+				ImGui::SetWindowSize(ImVec2(750, 375));
+				ImVec2 windowPos = ImGui::GetMainViewport()->GetCenter();
+				ImGui::SetWindowPos({ windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
+				
+				if (!assets::assetManager::isAssetHandleValid(importPath.filename().string())) {
+					importPopup(openPopup);
+				}
+				else {
+					showAssetInfo(importPath.filename().string());
+				}
+				ImGui::EndPopup();
+			}
 		}
 	}
 	ref<assets::asset> contentBrowserPanel::getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
@@ -57,13 +88,39 @@ namespace luna
 		return fileIcon;
 	}
 
+	ref<assets::asset> contentBrowserPanel::getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
+	{
+		if (directoryEntry.is_directory())
+		{
+			if (hovered) return smallDirectoryHoveredIcon;
+			return smallDirectoryIcon;
+		}
+		else if (directoryEntry.path().extension().string() == ".png") {
+			if (hovered) return  smallPngHoveredIcon;
+			return smallPngIcon;
+		}
+		else if (directoryEntry.path().extension().string() == ".jpg") {
+			if (hovered) return  smallJpgHoveredIcon;
+			return smallJpgIcon;
+		}
+		else if (directoryEntry.path().extension().string() == ".ttf") {
+			if (hovered) return  smallTtfHoveredIcon;
+			return smallTtfIcon;
+		}
+		else if (directoryEntry.path().extension().string() == ".lscn") {
+			if (hovered) return  smallLscnHoveredIcon;
+			return smallLscnIcon;
+		}
+		if (hovered) return smallFileIconHovered;
+		return smallFileIcon;
+	}
+
 	void contentBrowserPanel::importPopup(bool& openPopup)
 	{
-		if (ImGui::BeginPopupModal("import asset", nullptr, ImGuiWindowFlags_NoMove))
-		{
-			ImGui::SetWindowSize(ImVec2(750, 375));
-			ImVec2 windowPos = ImGui::GetMainViewport()->GetCenter();
-			ImGui::SetWindowPos({ windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
+			std::string text = "would you like to import: ";
+			text += importPath.filename().string();
+			ImGui::Text(text.c_str());
+
 			ImGui::SetCursorPos(ImVec2(20, 315));
 			ImGui::SetWindowFontScale(2);
 			if (ImGui::Button("no", ImVec2(200, 40)))
@@ -79,8 +136,7 @@ namespace luna
 				ImGui::CloseCurrentPopup();
 			}
 			ImGui::SetWindowFontScale(1);
-			ImGui::EndPopup();
-		}
+
 	}
 
 	void contentBrowserPanel::largeIcons() 
@@ -131,7 +187,10 @@ namespace luna
 				{
 					if (directoryEntry.is_directory())
 						m_CurrentDirectory /= path.filename();
-					else openPopup = true;
+					else if (allowedImportExtensions.find(directoryEntry.path().extension().string()) != allowedImportExtensions.end()) {
+						openPopup = true;
+						importPath = directoryEntry.path();
+					}
 
 				}
 				ImGui::TextWrapped(filenameString.c_str());
@@ -161,7 +220,7 @@ namespace luna
 
 	bool contentBrowserPanel::button(assetDirectory& directoryEntry,int indent)
 	{
-		const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getIcon(directoryEntry.entry,directoryEntry.hovered));
+		const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getSmallIcon(directoryEntry.entry,directoryEntry.hovered));
 
 		
 		
@@ -183,6 +242,14 @@ namespace luna
 		if (ImGui::IsItemHovered()) hovered = true;
 		else hovered = false;
 
+		if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+		{
+			if (allowedImportExtensions.find(directoryEntry.entry.path().extension().string()) != allowedImportExtensions.end()) {
+				openPopup = true;
+				importPath = directoryEntry.entry.path();
+			}
+		}
+
 		ImGui::SameLine(indent+55);
 
 		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2{ 0.0f,0.5f });
@@ -195,6 +262,15 @@ namespace luna
 			directoryEntry.hovered = true;
 		}
 		else directoryEntry.hovered = false;
+
+		if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+		{
+			if (allowedImportExtensions.find(directoryEntry.entry.path().extension().string()) != allowedImportExtensions.end()) {
+				openPopup = true;
+				importPath = directoryEntry.entry.path();
+			}
+		}
+
 		ImGui::PopStyleColor(2);
 		if(directoryEntry.open)
 		{
@@ -252,7 +328,6 @@ namespace luna
 
 		assets::assetManager::importAsset("src/resources/normal/fileIcon.png", assets::texture);
 
-
 	}
 
 	void contentBrowserPanel::setNormalIcons()
@@ -297,6 +372,191 @@ namespace luna
 
 	void contentBrowserPanel::loadSmallIcons()
 	{
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png_hovered.png", assets::texture);
+
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg_hovered.png", assets::texture);
+
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf_hovered.png", assets::texture);
+
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn_hovered.png", assets::texture);
+
+		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon_hovered.png", assets::texture);
+	}
+
+	void contentBrowserPanel::setSmallIcons()
+	{
+		smallDirectoryIcon = assets::assetManager::getAsset("directoryIcon.png");
+		smallDirectoryHoveredIcon = assets::assetManager::getAsset("directoryIconHovered.png");
+
+		smallPngIcon = assets::assetManager::getAsset("small_icon_png.png");
+		smallPngHoveredIcon = assets::assetManager::getAsset("small_icon_png_hovered.png");
+
+		smallJpgIcon = assets::assetManager::getAsset("small_icon_jpg.png");
+		smallJpgHoveredIcon = assets::assetManager::getAsset("small_icon_jpg_hovered.png");
+
+		smallTtfIcon = assets::assetManager::getAsset("small_icon_ttf.png");
+		smallTtfHoveredIcon = assets::assetManager::getAsset("small_icon_ttf_hovered.png");
+
+		smallLscnIcon = assets::assetManager::getAsset("small_icon_lscn.png");
+		smallLscnHoveredIcon = assets::assetManager::getAsset("small_icon_lscn_hovered.png");
+
+		smallFileIcon = assets::assetManager::getAsset("small_fileIcon.png");
+		smallFileIconHovered = assets::assetManager::getAsset("small_fileIcon_hovered.png");
+	}
+	void contentBrowserPanel::setSmallGuiIcons()
+	{
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallDirectoryIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallDirectoryHoveredIcon)->createGuiImage();
+
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallPngIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallPngHoveredIcon)->createGuiImage();
+
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallJpgIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallJpgHoveredIcon)->createGuiImage();
+
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallTtfIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallTtfHoveredIcon)->createGuiImage();
+
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallLscnIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallLscnHoveredIcon)->createGuiImage();
+
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallFileIcon)->createGuiImage();
+		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallFileIconHovered)->createGuiImage();
+	}
+	void contentBrowserPanel::showAssetInfo(const std::string& filename)
+	{
+		assets::assetMetadata* metaData = assets::assetManager::getAssetMetadata(filename);
+		std::string sizeText;
+#pragma region basicMetadata
+		if (ImGui::BeginTable(filename.c_str(), 2, ImGuiTableFlags_Borders))
+		{
+			ImGui::SetWindowFontScale(1.2);
+
+			ImGui::TableNextColumn();
+			ImGui::TableHeader("type");
+			ImGui::TableNextColumn();
+			ImGui::TableHeader("value");
+			ImGui::TableNextColumn();
+			ImGui::Text("handle");
+			ImGui::TableNextColumn();
+			ImGui::Text(std::to_string(metaData->handle).c_str());
+			ImGui::TableNextColumn();
+			ImGui::Text("name");
+			ImGui::TableNextColumn();
+			ImGui::Text(metaData->name);
+			ImGui::TableNextColumn();
+			ImGui::Text("filepath");
+			ImGui::TableNextColumn();
+			ImGui::Text(metaData->filePath);
+			ImGui::TableNextColumn();
+			ImGui::Text("asset-type");
+			ImGui::TableNextColumn();
+			ImGui::Text(assetTypeToString[metaData->assetType]);
+			ImGui::TableNextColumn();
+			ImGui::Text("size on disk");
+			ImGui::TableNextColumn();
+			uint64_t size = metaData->fileSizeBytes;
+			float adjustedSize;
+			if (size < 1000) 
+			{
+				adjustedSize = size;
+				sizeText = "%f B";
+			}
+			else if (size > 1000 && size < 1000000) 
+			{
+				adjustedSize = (float)size / 1000.0f;
+				sizeText = "%.2f ";
+				sizeText += " KB";
+			}
+			else if (size > 1000000 && size < 1000000000)
+			{
+				adjustedSize = (float)size / 1000000.0f;
+				sizeText = "%.2f ";
+				sizeText += " MB";
+			} 
+			else
+			{
+				adjustedSize = (float)size / 1000000000.0f;
+				sizeText = "%.2f ";
+				sizeText += " GB";
+			}
+			ImGui::Text(sizeText.c_str(),adjustedSize);
+
+
+			ImGui::EndTable();
+		}
+		ImGui::Spacing();
+#pragma endregion	
+		if (ImGui::BeginTable(filename.c_str(), 2, ImGuiTableFlags_Borders))
+		{
+			ImGui::SetWindowFontScale(1.2);
+
+			ImGui::TableNextColumn();
+			ImGui::TableHeader("type");
+			ImGui::TableNextColumn();
+			ImGui::TableHeader("value");
+			ImGui::TableNextColumn();
+			switch (metaData->assetType)
+			{
+			case assets::texture:
+			{
+				assets::textureAssetMetadata* textureMetadata = (assets::textureAssetMetadata*)metaData;
+				ImGui::Text("width");
+				ImGui::TableNextColumn();
+				ImGui::Text(std::to_string(textureMetadata->width).c_str());
+				ImGui::TableNextColumn();
+				ImGui::Text("height");
+				ImGui::TableNextColumn();
+				ImGui::Text(std::to_string(textureMetadata->height).c_str());
+				ImGui::TableNextColumn();
+				ImGui::Text("channels");
+				ImGui::TableNextColumn();
+				ImGui::Text(std::to_string(textureMetadata->channels).c_str());
+				ImGui::TableNextColumn();
+				ImGui::Text("imageDataSize (uncompressed)");
+				ImGui::TableNextColumn();
+				uint64_t size = textureMetadata->imageSize;
+				float adjustedSize;
+				if (size < 1000)
+				{
+					adjustedSize = size;
+					sizeText = "%f B";
+					
+				}
+				else if (size > 1000 && size < 1000000)
+				{
+					adjustedSize = (float)size / 1000.0f;
+					sizeText = "%.2f ";
+					sizeText += " KB";
+				}
+				else if (size > 1000000 && size < 1000000000)
+				{
+					adjustedSize = (float)size / 1000000.0f;
+					sizeText = "%.2f ";
+					sizeText += " MB";
+				}
+				else
+				{
+					adjustedSize = (float)size / 1000000000.0f;
+					sizeText = "%.2f ";
+					sizeText += " GB";
+				}
+				ImGui::Text(sizeText.c_str(), adjustedSize);
+			}
+			default:
+				break;
+			}
+			ImGui::EndTable();
+			if (ImGui::Button("exit",ImVec2(730,20))) {
+				openPopup = false;
+			}
+		}
+		ImGui::SetWindowFontScale(1);
 
 	}
 }

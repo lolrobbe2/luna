@@ -19,7 +19,7 @@ namespace luna
 		void onImGuiRender();
 	private:
 		ref<assets::asset> getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered);
-
+		ref<assets::asset> getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered);
 		void importPopup(bool& openPopup);
 
 		void largeIcons();
@@ -36,9 +36,14 @@ namespace luna
 		void setNormalGuiIcons();
 
 		void loadSmallIcons();
+		void setSmallIcons();
+		void setSmallGuiIcons();
+
+		void showAssetInfo(const std::string& filename);
 
 		std::filesystem::path m_BaseDirectory;
 		std::filesystem::path m_CurrentDirectory;
+#pragma region normalIcons
 		ref<assets::asset> directoryIcon;
 		ref<assets::asset> directoryHoveredIcon;
 
@@ -55,7 +60,26 @@ namespace luna
 		ref<assets::asset> lscnHoveredIcon;
 
 		ref<assets::asset> fileIcon;
+#pragma endregion
+#pragma region smallIcons
+		ref<assets::asset> smallDirectoryIcon;
+		ref<assets::asset> smallDirectoryHoveredIcon;
 
+		ref<assets::asset> smallPngIcon;
+		ref<assets::asset> smallPngHoveredIcon;
+
+		ref<assets::asset> smallJpgIcon;
+		ref<assets::asset> smallJpgHoveredIcon;
+
+		ref<assets::asset> smallTtfIcon;
+		ref<assets::asset> smallTtfHoveredIcon;
+
+		ref<assets::asset> smallLscnIcon;
+		ref<assets::asset> smallLscnHoveredIcon;
+
+		ref<assets::asset> smallFileIcon;
+		ref<assets::asset> smallFileIconHovered;
+#pragma endregion
 		std::filesystem::path currentImportSelected;
 
 		bool openPopup = false;

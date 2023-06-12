@@ -52,6 +52,14 @@ namespace luna
 			if(result != translationMap.end()) return getAsset(result->second);
 			return ref<asset>();
 		}
+		assetMetadata* editorAssetManager::getAssetMetadata(assetHandle handle)
+		{
+			return  assetMetadataStorage.getValue(handle.getId()).second;;
+		}
+		assetMetadata* editorAssetManager::getAssetMetadata(const std::string& filename)
+		{
+			return getAssetMetadata(translationMap[filename]);
+		}
 		void editorAssetManager::loadAsset(assetHandle handle)
 		{
 			ref<asset> importedAsset = assetImporter::importAsset(handle,assetMetadataStorage[handle]);
@@ -61,6 +69,11 @@ namespace luna
 		bool editorAssetManager::isAssetHandleValid(assetHandle handle)
 		{
 			return assetMetadataStorage.hasValue(handle);
+		}
+
+		bool editorAssetManager::isAssetHandleValid(const std::string& filename)
+		{
+			return translationMap.find(filename) != translationMap.end();
 		}
 
 		bool editorAssetManager::isAssetHandleLoaded(assetHandle handle)

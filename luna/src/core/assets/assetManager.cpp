@@ -33,9 +33,24 @@ namespace luna
 		{
 			return assetManagerRef->getAsset(name);
 		}
+
+		assetMetadata* assetManager::getAssetMetadata(const std::string& filename)
+		{
+			return assetManagerRef->getAssetMetadata(filename);
+		}
+
+		assetMetadata* assetManager::getAssetMetadata(const assetHandle handle)
+		{
+			return assetManagerRef->getAssetMetadata(handle);
+		}
+
 		bool assetManager::isAssetHandleValid(assetHandle handle)
 		{
 			return assetManagerRef->isAssetHandleValid(handle);
+		}
+		bool assetManager::isAssetHandleValid(const std::string& filename)
+		{
+			return assetManagerRef->isAssetHandleValid(filename);
 		}
 		bool assetManager::isAssetHandleLoaded(assetHandle handle)
 		{

@@ -9,11 +9,15 @@ namespace luna
 		public:
 			editorAssetManager() = default;
 			virtual ~editorAssetManager();
+
 			virtual void loadImportedAssetsMetadata() override;
-			virtual ref<asset> getAsset(assetHandle handle);
-			virtual ref<asset> getAsset(const std::string& name);
+			virtual ref<asset> getAsset(assetHandle handle) override;
+			virtual ref<asset> getAsset(const std::string& name) override;
+			virtual assetMetadata* getAssetMetadata(assetHandle handle) override;
+			virtual assetMetadata* getAssetMetadata(const std::string& filename) override;
 			virtual void loadAsset(assetHandle handle) override;
 			virtual bool isAssetHandleValid(assetHandle handle) override;
+			virtual bool isAssetHandleValid(const std::string& filename) override;
 			virtual bool isAssetHandleLoaded(assetHandle handle) override;
 			virtual assetHandle importAsset(const std::string& filePath, const assetType type) override;
 		private:
