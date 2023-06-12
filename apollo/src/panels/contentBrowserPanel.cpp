@@ -117,9 +117,7 @@ namespace luna
 
 	void contentBrowserPanel::importPopup(bool& openPopup)
 	{
-			std::string text = "would you like to import: ";
-			text += importPath.filename().string();
-			ImGui::Text(text.c_str());
+			ImGui::Text("would you like to import: %S" , importPath.filename().c_str());
 
 			ImGui::SetCursorPos(ImVec2(20, 315));
 			ImGui::SetWindowFontScale(2);
@@ -133,6 +131,8 @@ namespace luna
 			{
 				//LN_CORE_INFO("node added: {0}",m_ListSelected);
 				openPopup = false;
+				auto assetType = allowedImportExtensions.find(importPath.extension().string());
+				if (assetType != allowedImportExtensions.end()) assets::assetManager::importAsset(importPath.string(), assetType->second);
 				ImGui::CloseCurrentPopup();
 			}
 			ImGui::SetWindowFontScale(1);
@@ -490,8 +490,8 @@ namespace luna
 
 			ImGui::EndTable();
 		}
-		ImGui::Spacing();
 #pragma endregion	
+#pragma region specificData
 		if (ImGui::BeginTable(filename.c_str(), 2, ImGuiTableFlags_Borders))
 		{
 			ImGui::SetWindowFontScale(1.2);
@@ -548,6 +548,17 @@ namespace luna
 				}
 				ImGui::Text(sizeText.c_str(), adjustedSize);
 			}
+			case assets::font:
+			{
+				assets::fontAssetMetadata* fontMetadata = (assets::fontAssetMetadata*)metaData;
+				ImGui::Text("width");
+				ImGui::TableNextColumn();
+				ImGui::Text(std::to_string(fontMetadata->width).c_str());
+				ImGui::TableNextColumn();
+				ImGui::Text("height");
+				ImGui::TableNextColumn();
+				ImGui::Text(std::to_string(fontMetadata->height).c_str());
+			}
 			default:
 				break;
 			}
@@ -556,6 +567,7 @@ namespace luna
 				openPopup = false;
 			}
 		}
+#pragma endregion 
 		ImGui::SetWindowFontScale(1);
 
 	}
