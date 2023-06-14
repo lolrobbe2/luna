@@ -198,12 +198,13 @@ namespace luna
 				if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
 				{
 					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
-					inputText("filePath", sprite.filePath);
+					//inputText("filePath", sprite.filePath);
 					ImGui::SameLine();
 					if (ImGui::Button("select image"))
 					{
 						sprite.filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						sprite.texture = renderer::texture::create(sprite.filePath);
+						ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
+						sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
 					}
 
 					ImGui::TreePop();
@@ -302,7 +303,9 @@ namespace luna
 				{
 					//hotpink color code (227,28,121)
 					itemList.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
-					itemList.font = renderer::font::create(itemList.filePath);
+					ref<assets::asset> font = assets::assetManager::getAsset(itemList.filePath.filename().string());
+					//itemList.handle = assets::assetManager::getAssetMetadata(itemList.filePath.filename().string())->handle;
+					itemList.font = std::dynamic_pointer_cast<renderer::font>(font);
 				}
 				if (ImGui::Button("add item"))
 				{

@@ -61,7 +61,7 @@ namespace luna
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
 		ref<renderer::texture> texture;
-		std::string filePath;
+		std::filesystem::path filePath;
 		float TilingFactor = 1.0f;
 		bool showInEditor = true;
 		bool outOfBounds = false;
@@ -80,7 +80,7 @@ namespace luna
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
 		ref<renderer::font> font;
 		uint64_t handle;
-		std::string fontName;
+		std::filesystem::path filePath;
 		std::string text;
 		float TilingFactor = 1.0f;
 
@@ -183,7 +183,7 @@ namespace luna
 		int currentColumns = 1;
 
 		ref<renderer::font> font;
-		std::string filePath;
+		std::filesystem::path filePath;
 
 		itemList() = default;
 		itemList(const itemList&) = default;

@@ -252,7 +252,7 @@ namespace luna
 		sprite.TilingFactor = spriteComponent["tilingFactor"].as<float>();
 		sprite.showInEditor = spriteComponent["shownInEditor"].as<bool>();
 		
-		if (sprite.filePath.size() && sprite.showInEditor) sprite.texture = renderer::texture::create(sprite.filePath);
+		if (std::filesystem::exists(sprite.filePath)) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(), assets::texture)));
 	}
 
 	static void deSerializeLabelRenderer(luna::Node& node, YAML::Node& serializedNode)
@@ -261,11 +261,11 @@ namespace luna
 		auto& labelComponent = serializedNode["labelRendererComponent"];
 		auto& label = node.addComponent<labelRendererComponent>();
 		label.color = labelComponent["color"].as<glm::vec4>();
-		//label.filePath = labelComponent["filePath"].as<std::string>();
+		label.filePath = labelComponent["filePath"].as<std::string>();
 		label.text = labelComponent["text"].as<std::string>();
 		label.TilingFactor = labelComponent["tilingFactor"].as<float>();
 		
-		//if(label.filePath.size()) label.font = renderer::font::create(label.filePath);
+		if (std::filesystem::exists(label.filePath)) label.font = std::dynamic_pointer_cast<renderer::font>(assets::assetManager::getAsset(assets::assetManager::importAsset(label.filePath.string(), assets::texture)));
 	}
 	static void deserializeButton(luna::Node& node, YAML::Node& serializedNode)
 	{
@@ -299,7 +299,7 @@ namespace luna
 		itemList.allowReselect = itemListComponent["allowReselect"].as<bool>();
 		itemList.allowRmbSelect = itemListComponent["allowRmbSelect"].as<bool>();
 		itemList.items = itemListComponent["items"].as<std::vector<luna::item>>();
-		if (itemList.filePath.size()) itemList.font = renderer::font::create(itemList.filePath);
+		if (std::filesystem::exists(itemList.filePath)) itemList.font = std::dynamic_pointer_cast<renderer::font>(assets::assetManager::getAsset(assets::assetManager::importAsset(itemList.filePath.string(), assets::texture)));
 	}
 	static void deSerializeNode(luna::Node& node,YAML::Node& serializedNode)
 	{
@@ -377,7 +377,7 @@ namespace luna
 		out << YAML::Key << "spriteRendererComponent";
 		out << YAML::BeginMap; //begin sprite map
 		out << YAML::Key << "color" << YAML::Value << spriteRenderer.color;
-		out << YAML::Key << "filePath" << YAML::Value << spriteRenderer.filePath;
+		out << YAML::Key << "filePath" << YAML::Value << spriteRenderer.filePath.string();
 		out << YAML::Key << "tilingFactor" << YAML::Value << spriteRenderer.TilingFactor;
 		out << YAML::Key << "shownInEditor" << YAML::Value << spriteRenderer.showInEditor;
 		out << YAML::EndMap; //end sprite map
@@ -422,7 +422,7 @@ namespace luna
 		auto& itemList = node.getComponent<luna::itemList>();
 		out << YAML::Key << "itemListComponent";
 		out << YAML::BeginMap; //begin itemList map
-		out << YAML::Key << "filePath" << YAML::Value << itemList.filePath;
+		out << YAML::Key << "filePath" << YAML::Value << itemList.filePath.string();
 		out << YAML::Key << "allowReselect" << YAML::Value << itemList.allowReselect;
 		out << YAML::Key << "allowRmbSelect" << YAML::Value << itemList.allowRmbSelect;
 		out << YAML::Key << "items" << YAML::Value << YAML::BeginSeq;
