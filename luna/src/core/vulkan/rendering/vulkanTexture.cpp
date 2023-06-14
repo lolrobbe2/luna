@@ -266,12 +266,12 @@ namespace luna
 			//GLYPH_WIDTH / getScale(character).x  (normalizing the textures 0.0f-1.0f)
 
 			ref<renderer::texture> glyph = renderer::texture::create(_handle, { GLYPH_WIDTH / getScale(character).x,GLYPH_HEIGHT / getScale(character).y });
-			int index = character - startIndex;
-			int yStart = index / FONT_ATLAS_COLUMNS;
-			int xStart = index % FONT_ATLAS_ROWS;
-			if (!(xStart < FONT_ATLAS_ROWS && yStart < FONT_ATLAS_COLUMNS)) return nullptr; //character out of scope;
-			glm::vec2 uvStart = { (float)xStart / FONT_ATLAS_ROWS,(float)yStart / FONT_ATLAS_COLUMNS };
-			glm::vec2 uvEnd = { (float)(xStart + 1) / FONT_ATLAS_ROWS,(float)(yStart+1) / FONT_ATLAS_COLUMNS };
+			int index = character;
+			int yStart = index / 16;
+			int xStart = index % 16;
+			if (!(xStart < 16 && yStart < 16)) return nullptr; //character out of scope;
+			glm::vec2 uvStart = { (float)xStart / 16,(float)yStart / 16 };
+			glm::vec2 uvEnd = { (float)(xStart + 1) / 16,(float)(yStart+1) / 16 };
 			glyph->setUv(uvStart, uvEnd);
 			glyph->setDestroy(false); //make sure the fontAtlas is not destroyed;
 			return glyph;

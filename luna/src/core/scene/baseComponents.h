@@ -79,7 +79,8 @@ namespace luna
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
 		ref<renderer::font> font;
-		std::string filePath;
+		uint64_t handle;
+		std::string fontName;
 		std::string text;
 		float TilingFactor = 1.0f;
 

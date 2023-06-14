@@ -10,6 +10,7 @@
 #include <core/platform/platformUtils.h>
 #include <core/object/objectDB.h>
 #include <core/scripting/scriptUtils.h>
+#include <core/assets/assetManager.h>
 namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
@@ -216,13 +217,22 @@ namespace luna
 			if (ImGui::TreeNodeEx((void*)typeid(labelRendererComponent).hash_code(), 0, "label"))
 			{
 				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
-				inputText("file path", label.filePath);
 				ImGui::SameLine();
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
-					label.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
-					label.font = renderer::font::create(label.filePath);
+					std::filesystem::path filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
+					if (assets::assetManager::isAssetHandleValid(filePath.filename().string())) {
+						ref<assets::asset> font = assets::assetManager::getAsset(filePath.filename().string());
+						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
+						label.font = std::dynamic_pointer_cast<renderer::font>(font);
+					} else {
+						label.handle = assets::assetManager::importAsset(filePath.string(), assets::font);
+						ref<assets::asset> font = assets::assetManager::getAsset(label.handle);
+						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
+						label.font = std::dynamic_pointer_cast<renderer::font>(font);
+					}
+					
 				}
 				inputText("label text", label.text);
 				ImGui::TreePop();

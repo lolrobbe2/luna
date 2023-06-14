@@ -261,11 +261,11 @@ namespace luna
 		auto& labelComponent = serializedNode["labelRendererComponent"];
 		auto& label = node.addComponent<labelRendererComponent>();
 		label.color = labelComponent["color"].as<glm::vec4>();
-		label.filePath = labelComponent["filePath"].as<std::string>();
+		//label.filePath = labelComponent["filePath"].as<std::string>();
 		label.text = labelComponent["text"].as<std::string>();
 		label.TilingFactor = labelComponent["tilingFactor"].as<float>();
 		
-		if(label.filePath.size()) label.font = renderer::font::create(label.filePath);
+		//if(label.filePath.size()) label.font = renderer::font::create(label.filePath);
 	}
 	static void deserializeButton(luna::Node& node, YAML::Node& serializedNode)
 	{
@@ -389,7 +389,7 @@ namespace luna
 		out << YAML::Key << "labelRendererComponent";
 		out << YAML::BeginMap; //begin sprite map
 		out << YAML::Key << "color" << YAML::Value << labelRenderer.color;
-		out << YAML::Key << "filePath" << YAML::Value << labelRenderer.filePath;
+		//out << YAML::Key << "filePath" << YAML::Value << labelRenderer.filePath;
 		out << YAML::Key << "text" << YAML::Value << labelRenderer.text;
 		out << YAML::Key << "tilingFactor" << YAML::Value << labelRenderer.TilingFactor;
 		out << YAML::EndMap; //end sprite map

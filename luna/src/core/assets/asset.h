@@ -15,9 +15,9 @@
 #define FONT_ATLAS_GLYPH_AMOUNT (FONT_ATLAS_ROWS * FONT_ATLAS_COLUMNS)
 
 #define GET_FONT_ATLAS_OFFSET_ROWS(xindex) (GLYPH_WIDTH * xindex)
-#define GET_FONT_ATLAS_OFFSET_COLUMNS(yindex) (GLYPH_HEIGHT * yindex)
+#define GET_FONT_ATLAS_OFFSET_COLUMNS(yindex) (FONT_ATLAS_WIDTH * yindex)
 
-#define GET_FONT_BUFFER_OFFSET(xindex,yindex) (GET_FONT_ATLAS_OFFSET_ROWS(xindex) * GET_FONT_ATLAS_OFFSET_COLUMNS(yindex))
+#define GET_FONT_BUFFER_OFFSET(xindex,yindex) (GET_FONT_ATLAS_OFFSET_ROWS(xindex) + GET_FONT_ATLAS_OFFSET_COLUMNS(yindex))
 #pragma endregion
 
 namespace luna 
