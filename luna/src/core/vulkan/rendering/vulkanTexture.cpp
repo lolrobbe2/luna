@@ -11,29 +11,7 @@ namespace luna
 		vulkanTexture::vulkanTexture(const std::string& filePath)
 		{
 			LN_PROFILE_FUNCTION();
-			std::ifstream textureFile(filePath);
-			if(textureFile.is_open() && textureFile.good())
-			{
-				int width, height, channels;  
-				stbi_uc* image =  stbi_load(filePath.c_str(), &width, &height, &channels, 4);
-				if (channels == 3) channels = 4; //RGB formats are most likely not supported! so convert to quad channels.
-				uint64_t imageSize = width * height * channels;
-					
-				utils::vulkanAllocator::createBuffer(&buffer,imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, channels);
-				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY,{(unsigned int)width,(unsigned int)height,1},imageFormat);
-				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
-				memcpy_s(data, width * height * channels, (void*)image, width * height * channels);
-				stbi_image_free(image);
-				utils::vulkanAllocator::uploadTexture(buffer, imageHandle,imageFormat, { width,height,channels });
-				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
-				_handle = (uint64_t)imageViewHandle;
-				this->width = (uint32_t)width;
-				this->height = (uint32_t)height;
-				textureFile.close();
-				return;
-			}
-			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
+			LN_CORE_ERROR("deprecated!");
 		}
 		vulkanTexture::vulkanTexture(const uint64_t& handle, const glm::vec2& dimensions)
 		{

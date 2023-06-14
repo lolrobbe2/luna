@@ -89,7 +89,7 @@ namespace luna
 
 			std::string path = _filePath.parent_path().string();
 			std::string filename = _filePath.filename().string();
-			if (translationMap.find(filename) != translationMap.end()) return 0;
+			if (translationMap.find(filename) != translationMap.end()) return translationMap[filename];
 			memcpy(metaData->filePath, path.c_str(), path.size());
 			memcpy(metaData->name, filename.c_str(), filename.size());
 			ref<asset> importedAsset = assetImporter::importAsset(metaData->handle, metaData);

@@ -1,7 +1,7 @@
 #include "sceneSerializer.h"
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <yaml-cpp/yaml.h>
-
+#include <core/assets/assetManager.h>
 
 namespace YAML {
 
@@ -278,9 +278,9 @@ namespace luna
 		button.showInEditor = buttonComponent["shownInEditor"].as<bool>();
 		
 		
-		if (button.normalFilePath.size()) button.normalTexture = renderer::texture::create(button.normalFilePath);
-		if (button.hoverFilePath.size()) button.hoverTexture = renderer::texture::create(button.hoverFilePath);
-		if (button.pressedFilePath.size()) button.pressedTexture = renderer::texture::create(button.pressedFilePath);
+		if (std::filesystem::exists(button.normalFilePath)) button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.normalFilePath.string()));
+		if (std::filesystem::exists(button.hoverFilePath)) button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.hoverFilePath.string()));
+		if (std::filesystem::exists(button.pressedFilePath)) button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.pressedFilePath.string()));
 		
 	}
 	static void deserializeColorRect(luna::Node& node, YAML::Node& serializedNode)
@@ -409,9 +409,9 @@ namespace luna
 		auto& button = node.getComponent<buttonComponent>();
 		out << YAML::Key << "buttonComponent";
 		out << YAML::BeginMap; //begin button map
-		out << YAML::Key << "normalFilePath" << YAML::Value << button.normalFilePath;
-		out << YAML::Key << "hoverFilePath" << YAML::Value << button.hoverFilePath;
-		out << YAML::Key << "pressedFilePath" << YAML::Value << button.pressedFilePath;
+		out << YAML::Key << "normalFilePath" << YAML::Value << button.normalFilePath.string();
+		out << YAML::Key << "hoverFilePath" << YAML::Value << button.hoverFilePath.string();
+		out << YAML::Key << "pressedFilePath" << YAML::Value << button.pressedFilePath.string();
 		out << YAML::Key << "shownInEditor" << YAML::Value << button.showInEditor;
 		out << YAML::EndMap; // end button map
 

@@ -21,9 +21,10 @@ namespace luna
 
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
+			assets::assetManager::init(true);
+			/*required valid asset manager!*/
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
-			assets::assetManager::init(true);
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
 			methodDB::init();

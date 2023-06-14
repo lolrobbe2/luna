@@ -26,6 +26,7 @@ namespace luna
 			stbi_image_free(image);
 
 			utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { textureMetadata->width,textureMetadata->height,textureMetadata->channels }); //TODO threadpool
+			utils::vulkanAllocator::flush();
 		}
 
 		ref<asset> textureLoader::loadTexture(assetHandle handle, assetMetadata* metadata)

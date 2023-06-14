@@ -259,25 +259,25 @@ namespace luna
 					if (ImGui::Button("select normal image"))
 					{
 						button.normalFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.normalTexture = renderer::texture::create(button.normalFilePath);
+						button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.normalFilePath.string()));
 					}
-					inputText("normal Image", button.normalFilePath);
+					inputText("normal Image", button.normalFilePath.string());
 
 
 					if (ImGui::Button("select hover image"))
 					{
 						button.hoverFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.hoverTexture = renderer::texture::create(button.hoverFilePath);
+						button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.hoverFilePath.string()));
 
 					}
-					inputText("hover Image", button.hoverFilePath);
+					inputText("hover Image", button.hoverFilePath.string());
 
 					if (ImGui::Button("select pressed image"))
 					{
 						button.pressedFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.pressedTexture = renderer::texture::create(button.pressedFilePath);
+						button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.pressedFilePath.string()));
 					}
-					inputText("pressed Image", button.pressedFilePath);
+					inputText("pressed Image", button.pressedFilePath.string());
 
 
 					ImGui::TreePop();

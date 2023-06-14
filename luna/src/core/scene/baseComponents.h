@@ -95,9 +95,9 @@ namespace luna
 		ref<renderer::texture> normalTexture; 
 		ref<renderer::texture> hoverTexture;
 		ref<renderer::texture> pressedTexture;
-		std::string normalFilePath;
-		std::string hoverFilePath;
-		std::string pressedFilePath;
+		std::filesystem::path normalFilePath;
+		std::filesystem::path hoverFilePath;
+		std::filesystem::path pressedFilePath;
 
 		bool hover = 0;//release/no hover = 0, hover 1;  
 		bool pressed = 0;
