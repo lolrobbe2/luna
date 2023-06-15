@@ -19,6 +19,8 @@ namespace luna
 	private:
 		void saveAs();
 		void open();
+		void createProject();
+		void openProject();
 		ref<scene> activeScene;
 		ref<sceneHierarchyPanel> scenePanel;
 	};

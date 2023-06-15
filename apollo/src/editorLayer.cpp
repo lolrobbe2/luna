@@ -8,6 +8,7 @@ namespace luna
 {
 	editorLayer::editorLayer(const std::string& name)
 	{
+		m_DebugName = name;
 		activeScene = ref<scene>(new scene());
 		scenePanel = ref<sceneHierarchyPanel>(new sceneHierarchyPanel());
 	}
@@ -32,6 +33,18 @@ namespace luna
 
 		if(ImGui::BeginMainMenuBar())
 		{
+			if (ImGui::BeginMenu("project"))
+			{
+				if(ImGui::MenuItem("create new","Ctrl+N"))
+				{
+					createProject();
+				}
+				if (ImGui::MenuItem("open", "Ctrl+Shift+O"))
+				{
+					openProject();
+				}
+				ImGui::EndMenu();
+			}
 			if (ImGui::BeginMenu("file")) 
 			{
 				if (ImGui::MenuItem("save as", "Ctrl+Shift+S"))
@@ -110,9 +123,15 @@ namespace luna
 		case input::O:
 			if (controlPressed)
 			{
-				open();
+				if (shiftPressed) 
+				{
+					openProject();
+				} else {
+					open();
+				}
 			}
 			break;
+
 		default:
 			break;
 		}
@@ -135,5 +154,13 @@ namespace luna
 		scenePanel->setContext(activeScene);
 		scenePanel->setSelectedNode(Node());
 		
+	}
+	void editorLayer::createProject()
+	{
+		LN_CORE_INFO("createProject");
+	}
+	void editorLayer::openProject()
+	{
+		LN_CORE_INFO("openProject");
 	}
 }
