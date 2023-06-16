@@ -17,6 +17,6 @@ namespace luna
 		virtual void onEvent(Event& event);
 
 	private:
-		void inputText(const std::string& name, std::string& stringBuffer,float width, const std::string& hint);
+		void inputText(const std::string& name, std::string& stringBuffer,float width = 0.0f, const std::string& hint = "");
 	};
 }
