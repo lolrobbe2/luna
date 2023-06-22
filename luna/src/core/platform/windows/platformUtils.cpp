@@ -1,5 +1,8 @@
 #include <core/platform/platformUtils.h>
 #ifdef LN_PLATFORM_WINDOWS
+
+#include <shlobj_core.h>
+
 #include <commdlg.h>
 #include <GLFW/glfw3native.h>
 #include <core/application.h>
@@ -139,7 +142,7 @@ namespace luna
 
 		int os::getProcessId()
 		{
-			return _getpid();;
+			return _getpid();
 		}
 
 		std::string os::getExecutablePath() {
@@ -150,7 +153,64 @@ namespace luna
 			while(executablePath.find("\\") != std::string::npos) executablePath.replace(executablePath.find("\\"), sizeof("\\") - 1, "/");
 			return executablePath;
 		}
-	}
+
+		std::string filesystem::getSystemFolderPath(const folderTypes folderType)
+		{
+			//uses shlobj_core.h
+			wchar_t Folder[MAX_PATH];
+			int CSIDL;
+			switch (folderType)
+			{
+			case luna::platform::desktop:
+				CSIDL = CSIDL_DESKTOP;
+				break;
+			case luna::platform::desktopDir:
+				CSIDL = CSIDL_DESKTOPDIRECTORY;
+				break;
+			case luna::platform::documents:
+				CSIDL = CSIDL_MYDOCUMENTS;
+				break;
+			case luna::platform::music:
+				CSIDL = CSIDL_MYMUSIC;
+				break;
+			case luna::platform::video:
+				CSIDL = CSIDL_MYVIDEO;
+				break;
+			case luna::platform::fonts:
+				CSIDL = CSIDL_FONTS;
+				break;
+			case luna::platform::appData:
+				CSIDL = CSIDL_APPDATA;
+				break;
+			case luna::platform::root:
+				return "C:\\";
+				break;
+			case luna::platform::programFiles:
+				CSIDL = CSIDL_PROGRAM_FILES;
+				break;
+			case luna::platform::programFilesX86:
+				CSIDL = CSIDL_PROGRAM_FILESX86;
+				break;
+			case luna::platform::recycleBin:
+				CSIDL = CSIDL_BITBUCKET;
+				break;
+			default:
+				LN_CORE_ERROR("could not find special folder!");
+				return "meep meep could not find anything!";
+			}
+			HRESULT hr = SHGetFolderPathW(0, CSIDL, 0, 0, Folder);
+			if (SUCCEEDED(hr))
+			{
+				char str[MAX_PATH];
+				wcstombs(str, Folder, MAX_PATH - 1);
+				return str;
+			}
+			LN_CORE_ERROR("could not find special folder!");
+			return "meep meep could not find anything!";
+		}
+}
+
+#pragma region osGlue
 	void Os::RegisterMethods()
 	{
 		LN_ADD_INTERNAL_CALL(Os, OpenFileDialog);
@@ -201,7 +261,9 @@ namespace luna
 	int Os::GetProcessId() {
 		return platform::os::getProcessId();
 	}
+#pragma endregion
 }
+
 
 
 namespace luna 

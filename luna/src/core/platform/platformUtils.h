@@ -5,6 +5,21 @@ namespace luna
 {
 	namespace platform
 	{
+		enum folderTypes 
+		{
+			desktop,
+			desktopDir,	
+			documents,
+			music,
+			video,
+			fonts,
+			appData,
+			root, //windows = C:/
+			programFiles,//windows = C:/Program Files
+			programFilesX86,//windows = C:/Program Files (x86)
+			recycleBin, 
+			MAX_ENUM
+		};
 		class LN_API os
 		{
 		public:
@@ -18,6 +33,14 @@ namespace luna
 			static std::string getLocaleLanguage();
 			static int getProcessId();
 			static std::string getExecutablePath();
+		};
+
+		class LN_API filesystem
+		{
+		public:
+			static std::string getSystemFolderPath(const folderTypes folderType);
+		private:
+
 		};
 	}
 	class Os
@@ -35,4 +58,6 @@ namespace luna
 		static int GetProcessId();
 
 	};
+
+	
 }

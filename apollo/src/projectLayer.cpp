@@ -1,4 +1,6 @@
+#include <core/platform/platformUtils.h>
 #include "projectLayer.h"
+
 namespace luna 
 {
 	static std::string filter;
@@ -9,12 +11,14 @@ namespace luna
 	static std::string projectName = "New Project";
 	static std::string projectDir = "";
 #pragma endregion
-	static bool newProjectPopup;
+	static bool importProjectPopup;
 	static std::string projectImportPath = "";
 #pragma region projectImport
 	projectLayer::projectLayer(const std::string& name)
 	{
 		m_DebugName = name;
+
+		
 	}
 	void projectLayer::onAttach()
 	{
@@ -69,6 +73,7 @@ namespace luna
 			{
 				if (ImGui::IsItemHovered() && ImGui::IsItemClicked()) {
 					newProjectPopup = !newProjectPopup;
+					projectName = "New Project";
 				}
 			}
 			ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.839f, 0.518f, 0.0f, 1.0f));
@@ -84,6 +89,9 @@ namespace luna
 			ImGui::BeginGroup();
 			if (ImGui::Button("Import", ImVec2(-1.0f, 0.0f)));
 			{
+				if (ImGui::IsItemHovered() && ImGui::IsItemClicked()) {
+					importProjectPopup = !importProjectPopup;
+				}
 			}
 			if (ImGui::Button("Scan", ImVec2(-1.0f, 0.0f)));
 			{
@@ -110,13 +118,13 @@ namespace luna
 		}
 		ImGui::End();
 		if (newProjectPopup) ImGui::OpenPopup("CreateNewProject");	
+		if (importProjectPopup) ImGui::OpenPopup("ImportProject");
 
 		ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
 		ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x * 0.5f, viewport->WorkSize.y * 0.5f));
 		
-		if (ImGui::BeginPopup("CreateNewProject", ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar))
+		if (ImGui::BeginPopupModal("CreateNewProject", nullptr,ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
 		{
-			projectName = "New Project";
 			ImGui::Text("Projectname:");
 			inputText("##projectNameInput", projectName, viewport->WorkSize.x * 0.35f);
 			ImGui::SameLine();
@@ -152,9 +160,29 @@ namespace luna
 		ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
 		ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x * 0.5f, viewport->WorkSize.y * 0.2f));
 
-		if (ImGui::BeginPopup("ImportProject", ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar))
+		if (ImGui::BeginPopupModal("ImportProject",nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
 		{
+			ImGui::Text("Project Path:");
+			inputText("##importPath", projectImportPath, viewport->WorkSize.x * 0.5f * 0.8f);
+			ImGui::SameLine();
+			ImGui::Button("Browse", ImVec2(-1.0f, 0.0f));
+			
+			ImGui::SetCursorPosY(viewport->WorkSize.y * 0.5f * 0.3f);
+			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + viewport->WorkSize.x * 0.5f * 0.15f);
+			if (ImGui::Button("Create and Edit ", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+			{
 
+			}
+			ImGui::SameLine(viewport->WorkSize.x * 0.25f);
+			if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+			{
+
+			}
+			if (ImGui::IsItemClicked()) {
+				importProjectPopup = false;
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::EndPopup();
 		}
 
 		ImGui::PopStyleColor(4);
