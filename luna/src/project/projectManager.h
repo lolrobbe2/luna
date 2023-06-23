@@ -30,6 +30,10 @@ namespace luna
 			static ref<project> createProject(const std::string& name,const std::filesystem::path& startScene,const std::filesystem::path& assetDirectory,const std::filesystem::path& scriptModulePath,const std::filesystem::path& projectDirectory);
 			
 			static void setActive(const ref<project> project);
+			/**
+			* @brief does not remove the actual project! but removes the appdata reference
+			*/
+			static void removeProject(const ref<project> project);
 		};
 	}
 }

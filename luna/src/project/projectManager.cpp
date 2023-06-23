@@ -4,8 +4,8 @@ namespace luna
 {
 	namespace project 
 	{
-		static project activeProject;
-		static std::vector<project> projects;
+		static ref<project> activeProject;
+		static std::vector<ref<project>> projects;
 		void projectManager::init()
 		{
 			std::string appDataPath = platform::filesystem::getSystemFolderPath(platform::appData);
@@ -22,20 +22,20 @@ namespace luna
 
 		const std::filesystem::path& projectManager::getProjectDirectory()
 		{
-			return activeProject.getConfig().projectDirectory;
+			return activeProject->getConfig().projectDirectory;
 		}
 
 		std::filesystem::path projectManager::getAssetDirectory()
 		{
-			return getProjectDirectory() / activeProject.getConfig().assetDirectory;
+			return getProjectDirectory() / activeProject->getConfig().assetDirectory;
 		}
 		std::filesystem::path projectManager::getScriptModulePath()
 		{
-			return getProjectDirectory() / activeProject.getConfig().scriptModulePath;
+			return getProjectDirectory() / activeProject->getConfig().scriptModulePath;
 		}
 		std::filesystem::path projectManager::getStartScenePath()
 		{
-			return getProjectDirectory() / activeProject.getConfig().startScene;
+			return getProjectDirectory() / activeProject->getConfig().startScene;
 		}
 		ref<project> projectManager::createProject(const projectConfig& config)
 		{
@@ -48,6 +48,11 @@ namespace luna
 		void projectManager::setActive(const ref<project> project)
 		{
 			activeProject = project;
+		}
+		void projectManager::removeProject(const ref<project> project) 
+		{
+			std::filesystem::path projectAppdataPath = platform::filesystem::getSystemFolderPath(platform::appData) + "\\luna\\projects\\" + project->getConfig().name + ".lprj";
+			std::filesystem::remove(projectAppdataPath);
 		}
 	}
 }

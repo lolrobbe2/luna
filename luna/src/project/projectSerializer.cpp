@@ -1,4 +1,5 @@
 #include "projectSerializer.h"
+#include <core/platform/platformUtils.h>
 #include <yaml-cpp/yaml.h>
 namespace luna 
 {
@@ -16,6 +17,14 @@ namespace luna
             out << YAML::Key << "startScenePath" << YAML::Value << project->getConfig().startScene.string();
             out << YAML::EndSeq;
             out << YAML::EndMap;
+            if (out.good())
+            {
+                std::ofstream outputFile(platform::filesystem::getSystemFolderPath(platform::appData) + "\\luna\\projects\\" + project->getConfig().name + ".lprj");
+                outputFile << out.c_str();
+                return true;
+            }
+            LN_CORE_ERROR("YAML write error");
+            LN_CORE_ERROR(out.GetLastError());
             return false;
         }
         bool projectSerializer::deSerialize(ref<project> project)
