@@ -6,7 +6,7 @@ namespace luna
 	{
 		class projectGeneratorVS
 		{
-			void generateProject(const std::string& name);
+			void generateProject(const std::string& name, const std::filesystem::path& dirPath);
 		};
 	}
 }
