@@ -4,9 +4,10 @@ namespace luna
 {
 	namespace project 
 	{
-		class projectGeneratorVS
+		class LN_API projectGeneratorVS
 		{
-			void generateProject(const std::string& name, const std::filesystem::path& dirPath);
+		public:
+			static void generateProject(const std::string& name, const std::filesystem::path& dirPath);
 		};
 	}
 }

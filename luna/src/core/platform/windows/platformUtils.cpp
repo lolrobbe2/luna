@@ -90,12 +90,15 @@ namespace luna
 		}
 		std::string os::getCurrentWorkingDirectory()
 		{
+			/*
 			char buffer[FILENAME_MAX];
 			_getcwd(buffer, FILENAME_MAX);
 			std::string workingDir = std::string(buffer, buffer+FILENAME_MAX);
 			while (workingDir.find("\\") != std::string::npos) workingDir.replace(workingDir.find("\\"), sizeof("\\") - 1, "/");
 
 			return workingDir;
+			*/
+			return std::filesystem::current_path().string();
 		}
 
 		std::string os::getVersion() {

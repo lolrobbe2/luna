@@ -1,13 +1,14 @@
 #pragma once
+#include <core/platform/platformUtils.h>
 #include <project/projectManager.h>
-#include <project/visualStudio/solutionGenerator.h>
+#include <project/visualStudio/projectGeneratorVS.h>
 #include <luna.h>
 class sandbox : public luna::application::application
 {
 public:
 	sandbox() //base function
 	{
-		luna::project::solutionGenerator::generateSolution(nullptr);
+		luna::project::projectGeneratorVS::generateProject("test",luna::platform::os::getCurrentWorkingDirectory());
 		//luna::project::projectManager::init();
 	}
 	virtual ~sandbox() //base breaker function
