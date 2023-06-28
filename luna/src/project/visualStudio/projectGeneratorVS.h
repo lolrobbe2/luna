@@ -8,6 +8,7 @@ namespace luna
 		{
 		public:
 			static void generateProject(const std::string& name, const std::filesystem::path& dirPath);
+			static const std::stringstream& generatePremakeFile(const std::string& name, const std::filesystem::path& dirPath);
 		};
 	}
 }

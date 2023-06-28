@@ -1,31 +1,31 @@
-[18:44:05] [trace] LUNA: instance creation result = 0
-[18:44:05] [trace] LUNA: surface creation result = 0
-[18:44:05] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
-[18:44:05] [trace] LUNA: device selection result = 0
-[18:44:05] [trace] LUNA: logical device creation result = 0
-[18:44:05] [trace] LUNA: swapchain creation result = 0
-[18:44:05] [trace] LUNA: reflecting shader: false
-[18:44:05] [trace] LUNA: creating shader Layout
-[18:44:05] [trace] LUNA: created shaderLayout
-[18:44:05] [trace] LUNA: reflecting shader: false
-[18:44:05] [trace] LUNA: creating shader Layout
-[18:44:05] [trace] LUNA: created shaderLayout
-[18:44:05] [info] LUNA: commandbuffer create info = 0
-[18:44:05] [info] LUNA: vma allocator creation result = 0
-[18:44:05] [info] LUNA: creating vulkan shadermodule, result = 0
-[18:44:05] [info] LUNA: creating vulkan shadermodule, result = 0
-[18:44:05] [info] LUNA: imgui descriptor pool creation result = 0
-[18:44:05] [info] LUNA: imgui init for GLFW-vulkan = true
-[18:44:05] [info] LUNA: imgui init vulkan = true
-[18:44:05] [info] LUNA: imgui init complete
-[18:44:05] [info] LUNA: class registered: controlNode
-[18:44:05] [info] LUNA: class registered: Node
-[18:44:05] [info] LUNA: class registered: labelNode
-[18:44:05] [info] LUNA: class registered: spriteNode
-[18:44:05] [info] LUNA: class registered: buttonNode
-[18:44:05] [info] LUNA: class registered: itemListNode
-[18:44:05] [info] LUNA: class registered: colorRectNode
-[18:44:05] [info] LUNA: class registered: imageButtonNode
-[18:44:06] [error] LUNA: could not open file at mono/lib/scriptCore.dll
-[18:44:06] [error] LUNA: [scriptingEngine] could not load scriptCore.dll
-[18:44:06] [info] LUNA: creating visualStudio solution
+[14:45:26] [trace] LUNA: instance creation result = 0
+[14:45:26] [trace] LUNA: surface creation result = 0
+[14:45:26] [info] LUNA: chosen gpu = AMD Radeon(TM) Graphics
+[14:45:26] [trace] LUNA: device selection result = 0
+[14:45:26] [trace] LUNA: logical device creation result = 0
+[14:45:26] [trace] LUNA: swapchain creation result = 0
+[14:45:26] [trace] LUNA: reflecting shader: false
+[14:45:26] [trace] LUNA: creating shader Layout
+[14:45:27] [trace] LUNA: created shaderLayout
+[14:45:27] [trace] LUNA: reflecting shader: false
+[14:45:27] [trace] LUNA: creating shader Layout
+[14:45:27] [trace] LUNA: created shaderLayout
+[14:45:27] [info] LUNA: commandbuffer create info = 0
+[14:45:27] [info] LUNA: vma allocator creation result = 0
+[14:45:27] [info] LUNA: creating vulkan shadermodule, result = 0
+[14:45:27] [info] LUNA: creating vulkan shadermodule, result = 0
+[14:45:27] [info] LUNA: imgui descriptor pool creation result = 0
+[14:45:27] [info] LUNA: imgui init for GLFW-vulkan = true
+[14:45:27] [info] LUNA: imgui init vulkan = true
+[14:45:27] [info] LUNA: imgui init complete
+[14:45:27] [info] LUNA: class registered: controlNode
+[14:45:27] [info] LUNA: class registered: Node
+[14:45:27] [info] LUNA: class registered: labelNode
+[14:45:27] [info] LUNA: class registered: spriteNode
+[14:45:27] [info] LUNA: class registered: buttonNode
+[14:45:27] [info] LUNA: class registered: itemListNode
+[14:45:27] [info] LUNA: class registered: colorRectNode
+[14:45:27] [info] LUNA: class registered: imageButtonNode
+[14:45:27] [error] LUNA: could not open file at mono/lib/scriptCore.dll
+[14:45:27] [error] LUNA: [scriptingEngine] could not load scriptCore.dll
+[14:45:27] [info] LUNA: creating visualStudio solution
