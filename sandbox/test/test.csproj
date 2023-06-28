@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Start.cs" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

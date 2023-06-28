@@ -4,18 +4,28 @@ namespace luna
 {
 	namespace project 
 	{
-		void projectGeneratorVS::generateProject(const std::string& name, const std::filesystem::path& dirPath)
+		void projectGeneratorVS::generateProject(const std::string& name,const std::filesystem::path& dirPath)
 		{
 			generatePremakeFile(name, dirPath);
 
 			if (!std::filesystem::is_directory(std::filesystem::absolute(dirPath)))
 				return LN_CORE_ERROR("premake.lua directory is not a directory: {}", std::filesystem::absolute(dirPath).string());
-			std::filesystem::path premakeFilePath = dirPath.native();
+			std::filesystem::path premakeFilePath = platform::os::getCurrentWorkingDirectory();
 			premakeFilePath.concat("\\premake5.lua");
 			std::ofstream buildFile(premakeFilePath);
-			buildFile << generatePremakeFile(name, dirPath).str();
+			buildFile << generatePremakeFile(name, dirPath);
 			buildFile.close();
 			
+			std::filesystem::path srcDir = dirPath;
+			srcDir.concat("\\src");
+			std::filesystem::create_directories(srcDir);
+
+			std::filesystem::path exampleFilePath = srcDir;
+			exampleFilePath.concat("\\Start.cs");
+			std::ofstream exampleFile(exampleFilePath);
+			exampleFile << generateExampleFile();
+			exampleFile.close();
+
 			try
 			{
 				LN_CORE_INFO("creating visualStudio solution");
@@ -32,16 +42,9 @@ namespace luna
 				LN_CORE_CRITICAL("unkown error occured while trying to create visualStudio solution");
 			}
 
-			const std::filesystem::path srcDir = dirPath.string().append("\\src");
-			std::filesystem::create_directories(srcDir);
-
-			std::filesystem::path startFilePath = dirPath.native();
-			premakeFilePath.concat("\\src\\Start.lua");
-			std::ofstream buildFile(premakeFilePath);
-			buildFile << generatePremakeFile(name, dirPath).str();
-			buildFile.close();
+			std::filesystem::remove_all(premakeFilePath);
 		}
-		const std::stringstream& projectGeneratorVS::generatePremakeFile(const std::string& name, const std::filesystem::path& dirPath)
+		std::string projectGeneratorVS::generatePremakeFile(const std::string& name, const std::filesystem::path& dirPath)
 		{
 			//the premake5.lua file needs to be made this way otherwise we cant enter some custom data like project name and such!
 			std::stringstream luaFile;
@@ -73,10 +76,16 @@ namespace luna
 			luaFile << "	language \"c#\"" << std::endl;
 			luaFile << "    targetdir(\"%{wks.location}/bin/\" .. outputdir .. \"/x64/%{prj.name}\")" << std::endl;
 			luaFile << "	objdir(\"%{wks.location}/bin-int/\" .. outputdir .. \"/x64/%{prj.name}\")" << std::endl;
+			luaFile << "    files" << std::endl;
+			luaFile << "	{" << std::endl;
+			luaFile << "		\"%{prj.name}/src/**.cs\"" << std::endl;
+			luaFile << "	}" << std::endl;
+
 			luaFile << "    links" << std::endl;
 			luaFile << "		{" << std::endl;
 			luaFile << "			\"%{Library.scriptCore}\"" << std::endl;
 			luaFile << "		}" << std::endl;
+
 			luaFile << "	filter \"configurations:debug\"" << std::endl;
 			luaFile << "		optimize \"Off\"" << std::endl;
 			luaFile << "		symbols \"Default\"" << std::endl;
@@ -88,9 +97,9 @@ namespace luna
 			luaFile << "	filter \"configurations:distribution\"" << std::endl;
 			luaFile << "		optimize \"Full\"" << std::endl;
 			luaFile << "		symbols \"Off\"" << std::endl;
-			return luaFile;
+			return luaFile.str();
 		}
-		const std::stringstream& projectGeneratorVS::geerateExampleFile(const std::string& name, const std::filesystem::path& dirPath) 
+		std::string projectGeneratorVS::generateExampleFile() 
 		{
 			std::stringstream exampleFile;
 			exampleFile << "internal class start : Node" << std::endl;
@@ -105,7 +114,7 @@ namespace luna
 
 			exampleFile << "	}" << std::endl;
 			exampleFile << "}" << std::endl;
-			return exampleFile;
+			return exampleFile.str();
 		}
 	}
 }
