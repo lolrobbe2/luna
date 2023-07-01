@@ -8,6 +8,7 @@ namespace luna
 	{
 	public:
 		projectLayer(const std::string& name = "luna layer");
+		projectLayer(utils::layer* layer, const std::string& name = "luna layer");
 		virtual ~projectLayer() = default;
 
 		virtual void onAttach();
@@ -18,5 +19,6 @@ namespace luna
 
 	private:
 		void inputText(const std::string& name, std::string& stringBuffer,float width = 0.0f, const std::string& hint = "");
+		utils::layer* _editorLayer = nullptr;
 	};
 }

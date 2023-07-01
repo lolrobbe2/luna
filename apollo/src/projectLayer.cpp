@@ -22,11 +22,15 @@ namespace luna
 	projectLayer::projectLayer(const std::string& name)
 	{
 		m_DebugName = name;
-
-		
+	}
+	projectLayer::projectLayer(utils::layer* layer, const std::string& name) 
+	{
+		m_DebugName = name;
+		_editorLayer = layer;
 	}
 	void projectLayer::onAttach()
 	{
+		if(_editorLayer) application::application::get().popLayer(_editorLayer);
 	}
 	void projectLayer::onDetach()
 	{

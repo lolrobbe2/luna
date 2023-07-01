@@ -5,6 +5,8 @@
 #include <core/scene/sceneSerializer.h>
 #include <core/application.h>
 
+#include <projectLayer.h>
+
 #include <project/visualStudio/projectGeneratorVS.h>
 #include <project/projectManager.h>
 #include <project/projectSerializer.h>
@@ -51,9 +53,9 @@ namespace luna
 				{
 					openProject();
 				}
-				if (ImGui::MenuItem("close project", "Ctrl+Alt+L"))
+				if (ImGui::MenuItem("close project", "Ctrl+Shift+L"))
 				{
-					
+					application::application::get().pushLayer(new projectLayer(this));
 				}
 				ImGui::EndMenu();
 			}
@@ -147,6 +149,13 @@ namespace luna
 			{
 				CreateNewProject = true;
 			}
+			break;
+		case input::L:
+			if (controlPressed && shiftPressed)
+			{
+				application::application::get().pushLayer(new projectLayer(this));
+			}
+			break;
 		default:
 			break;
 		}
