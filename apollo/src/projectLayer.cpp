@@ -9,15 +9,15 @@
 namespace luna 
 {
 	static std::string filter;
+	static ref<project::project> selected;
 	static int currentItem = 0;
 
 #pragma region projectSetup
-	static bool newProjectPopup;
 	static std::string projectName = "New Project";
 	static std::filesystem::path projectDir = "";
 #pragma endregion
 	static bool importProjectPopup;
-	static std::string projectImportPath = "";
+	static std::filesystem::path projectImportPath = "";
 #pragma region projectImport
 	projectLayer::projectLayer(const std::string& name)
 	{
@@ -77,10 +77,94 @@ namespace luna
 			if(ImGui::Button("New Project",ImVec2(-1.0f,0.0f)));
 			{
 				if (ImGui::IsItemHovered() && ImGui::IsItemClicked()) {
-					newProjectPopup = !newProjectPopup;
+					ImGui::OpenPopup("CreateNewProject");
 					projectName = "New Project";
 				}
 			}
+
+			ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
+			ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x * 0.5f, viewport->WorkSize.y * 0.5f));
+
+			if (ImGui::BeginPopupModal("CreateNewProject", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
+			{
+				ImGui::Text("Projectname:");
+				inputText("##projectNameInput", projectName, viewport->WorkSize.x * 0.35f);
+				ImGui::SameLine();
+				if (ImGui::Button("Create Folder", ImVec2(-1.0f, 0.0f)))
+				{
+					std::string folderName = std::filesystem::path(projectDir).filename().string();
+					if (std::filesystem::exists(projectDir) && folderName != projectName)
+					{
+						std::string tempProjectDir = projectDir.string();
+						tempProjectDir.pop_back();
+						tempProjectDir += "\\";
+						tempProjectDir += projectName;
+						tempProjectDir += "\0";
+						projectDir = tempProjectDir;
+						std::filesystem::create_directories(projectDir);
+
+					}
+				}
+				if (std::filesystem::exists(std::filesystem::absolute(projectDir)) && !std::filesystem::is_empty(std::filesystem::absolute(projectDir)))
+				{
+					ImGui::GetFont()->Scale = oldSize;
+					ImGui::PushFont(ImGui::GetFont());
+					ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.933f, 0.824f, 0.008f, 1.0f));
+
+					std::string warningText = "current directory is not empty, it is highly recommended to select an empty folder!";
+
+					auto windowWidth = ImGui::GetWindowSize().x;
+					auto textWidth = ImGui::CalcTextSize(warningText.c_str()).x;
+
+					ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
+					ImGui::Text(warningText.c_str());
+					ImGui::PopStyleColor();
+					ImGui::GetFont()->Scale *= 1.5f;
+					ImGui::PopFont();
+				}
+				ImGui::Text("Project directory");
+				std::string temp = projectDir.string();
+				inputText("##projectDir", temp, viewport->WorkSize.x * 0.35f);
+				projectDir = temp;
+				ImGui::SameLine();
+				if (ImGui::Button("Browse", ImVec2(-1.0f, 0.0f)))
+				{
+					projectDir = platform::os::openFolderDialog();
+				}
+				ImGui::SetCursorPosY(viewport->WorkSize.y * 0.5f * 0.9f);
+				ImGui::SetCursorPosX(ImGui::GetCursorPosX() + viewport->WorkSize.x * 0.5f * 0.15f);
+				if (ImGui::Button("Create and Edit ", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+				{
+					project::projectGeneratorVS::generateProject(projectName, projectDir);
+
+					project::projectConfig config;
+					config.projectDirectory = projectDir;
+					config.name = projectName;
+					config.assetDirectory = "assets";
+					config.scriptModulePath = "bin";
+					config.startScene = "undefined";
+
+					std::filesystem::create_directories(config.assetDirectory);
+
+					ref<project::project> newProject = project::projectManager::createProject(config);
+					project::projectSerializer::serialize(newProject);
+
+					project::projectManager::setActive(newProject);
+
+					std::filesystem::current_path(config.projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
+
+					application::application::get().pushLayer(new editorLayer(this));
+				}
+				ImGui::SameLine(viewport->WorkSize.x * 0.25f);
+				if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+				{
+				}
+				if (ImGui::IsItemClicked()) {
+					ImGui::CloseCurrentPopup();
+				}
+				ImGui::EndPopup();
+			}
+
 			ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.839f, 0.518f, 0.0f, 1.0f));
 			//ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.y * 0.05f, viewport->WorkPos.y + viewport->WorkSize.y * 0.05f));
 
@@ -94,8 +178,25 @@ namespace luna
 					description += project->getConfig().name;
 					description += "\nlocation: ";
 					description += project->getConfig().projectDirectory.string();
-					if (ImGui::Button(description.c_str(), ImVec2(-1.0f, viewport->WorkSize.y * 0.07f)))
+					static bool selectionChanged;
+					if(selected && selected->getConfig().name == project->getConfig().name)
 					{
+						ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.537f, 0.11f, 1.0f));
+						if (ImGui::Button(description.c_str(), ImVec2(-1.0f, viewport->WorkSize.y * 0.07f)))
+						{
+
+							project::projectManager::setActive(project);
+
+							std::filesystem::current_path(selected->getConfig().projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
+
+							application::application::get().pushLayer(new editorLayer(this));
+						}
+						ImGui::PopStyleColor();
+					} else {
+						if (ImGui::Button(description.c_str(), ImVec2(-1.0f, viewport->WorkSize.y * 0.07f)))
+						{
+							selected = project;
+						}
 					}
 				}
 				ImGui::PopStyleVar();
@@ -107,9 +208,59 @@ namespace luna
 			if (ImGui::Button("Import", ImVec2(-1.0f, 0.0f)));
 			{
 				if (ImGui::IsItemHovered() && ImGui::IsItemClicked()) {
-					importProjectPopup = !importProjectPopup;
+					ImGui::OpenPopup("ImportProject");
 				}
 			}
+
+
+			ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
+			ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x * 0.5f, viewport->WorkSize.y * 0.2f));
+
+			if (ImGui::BeginPopupModal("ImportProject", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
+			{
+				ImGui::Text("Project Path:");
+				std::string temp = projectImportPath.string();
+				inputText("##importPath", temp, viewport->WorkSize.x * 0.5f * 0.8f);
+				projectImportPath = temp;
+				ImGui::SameLine();
+				if (ImGui::Button("Browse", ImVec2(-1.0f, 0.0f)))
+				{
+					projectImportPath = platform::os::openFileDialog("luna project\0*.lprj\0");
+				}
+
+				ImGui::SetCursorPosY(viewport->WorkSize.y * 0.5f * 0.3f);
+				ImGui::SetCursorPosX(ImGui::GetCursorPosX() + viewport->WorkSize.x * 0.5f * 0.15f);
+				if (ImGui::Button("Import and Edit ", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+				{
+					if (std::filesystem::exists(projectImportPath) && projectImportPath.extension() == ".lprj")
+					{
+						projectDir = projectImportPath.parent_path();
+						ref<project::project> importProject = project::projectSerializer::deSerialize(projectImportPath);
+						importProject->getConfig().projectDirectory = projectDir;
+						project::projectGeneratorVS::generateProject(projectName, projectDir);
+
+						project::projectSerializer::serialize(importProject);
+
+						project::projectManager::setActive(importProject);
+
+						project::projectManager::createProject(importProject->getConfig());
+						std::filesystem::current_path(projectDir); //set currentworking dirrectory to project directory so that the relative directory's work.
+
+						application::application::get().pushLayer(new editorLayer(this));
+					}
+				}
+				ImGui::SameLine(viewport->WorkSize.x * 0.25f);
+				if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+				{
+
+				}
+				if (ImGui::IsItemClicked()) {
+					importProjectPopup = false;
+					ImGui::CloseCurrentPopup();
+				}
+				ImGui::EndPopup();
+			}
+
 			if (ImGui::Button("Scan", ImVec2(-1.0f, 0.0f)));
 			{
 			}
@@ -117,6 +268,12 @@ namespace luna
 			ImGui::Separator();
 			if (ImGui::Button("Edit", ImVec2(-1.0f, 0.0f)));
 			{
+				if (ImGui::IsItemClicked() && selected) {
+					project::projectManager::setActive(selected);
+					std::filesystem::current_path(selected->getConfig().projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
+
+					application::application::get().pushLayer(new editorLayer(this));
+				}
 			}
 			if (ImGui::Button("Run", ImVec2(-1.0f, 0.0f)));
 			{
@@ -126,6 +283,10 @@ namespace luna
 			}
 			if (ImGui::Button("Remove", ImVec2(-1.0f, 0.0f)));
 			{
+				if(ImGui::IsItemClicked() && selected != nullptr)
+				{
+					project::projectManager::removeProject(selected);
+				}
 			}
 			if (ImGui::Button("Remove Missing", ImVec2(-1.0f, 0.0f)));
 			{
@@ -134,121 +295,6 @@ namespace luna
 			ImGui::PopStyleColor();
 		}
 		ImGui::End();
-		if (newProjectPopup) ImGui::OpenPopup("CreateNewProject");	
-		if (importProjectPopup) ImGui::OpenPopup("ImportProject");
-
-		ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
-		ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x * 0.5f, viewport->WorkSize.y * 0.5f));
-		
-		if (ImGui::BeginPopupModal("CreateNewProject", nullptr,ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
-		{
-			ImGui::Text("Projectname:");
-			inputText("##projectNameInput", projectName, viewport->WorkSize.x * 0.35f);
-			ImGui::SameLine();
-			if (ImGui::Button("Create Folder", ImVec2(-1.0f, 0.0f)))
-			{
-				std::string folderName = std::filesystem::path(projectDir).filename().string();
-				if (std::filesystem::exists(projectDir) && folderName != projectName)
-				{
-					std::string tempProjectDir = projectDir.string();
-					tempProjectDir.pop_back();
-					tempProjectDir += "\\";
-					tempProjectDir += projectName;
-					tempProjectDir += "\0";
-					projectDir = tempProjectDir;
-					std::filesystem::create_directories(projectDir);
-
-				}
-			}
-			if (std::filesystem::exists(std::filesystem::absolute(projectDir)) && !std::filesystem::is_empty(std::filesystem::absolute(projectDir)))
-			{
-				ImGui::GetFont()->Scale = oldSize;
-				ImGui::PushFont(ImGui::GetFont());
-				ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.933f, 0.824f, 0.008f, 1.0f));
-
-				std::string warningText = "current directory is not empty, it is highly recommended to select an empty folder!";
-
-				auto windowWidth = ImGui::GetWindowSize().x;
-				auto textWidth = ImGui::CalcTextSize(warningText.c_str()).x;
-
-				ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
-				ImGui::Text(warningText.c_str());
-				ImGui::PopStyleColor();
-				ImGui::GetFont()->Scale *= 1.5f;
-				ImGui::PopFont();
-			}
-			ImGui::Text("Project directory");
-			std::string temp = projectDir.string();
-			inputText("##projectDir",temp , viewport->WorkSize.x * 0.35f);
-			projectDir = temp;
-			ImGui::SameLine();
-			if (ImGui::Button("Browse", ImVec2(-1.0f, 0.0f))) 
-			{
-				projectDir = platform::os::openFolderDialog();
-			}
-			ImGui::SetCursorPosY(viewport->WorkSize.y * 0.5f * 0.9f);
-			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + viewport->WorkSize.x * 0.5f * 0.15f);
-			if (ImGui::Button("Create and Edit ", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
-			{
-				project::projectGeneratorVS::generateProject(projectName, projectDir);
-
-				project::projectConfig config;
-				config.projectDirectory = projectDir;
-				config.name = projectName;
-				config.assetDirectory = "assets";
-				config.scriptModulePath = "bin";
-				config.startScene = "undefined";
-
-				std::filesystem::create_directories(config.assetDirectory);
-
-				ref<project::project> newProject = project::projectManager::createProject(config);
-				project::projectSerializer::serialize(newProject);
-
-				project::projectManager::setActive(newProject);
-
-				std::filesystem::current_path(config.projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
-				
-				application::application::get().pushLayer(new editorLayer(this));
-			}
-			ImGui::SameLine(viewport->WorkSize.x * 0.25f );
-			if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
-			{
-
-			}
-			if (ImGui::IsItemClicked()) {
-				newProjectPopup = false;
-				ImGui::CloseCurrentPopup();
-			}
-			ImGui::EndPopup();
-		}
-
-		ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
-		ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x * 0.5f, viewport->WorkSize.y * 0.2f));
-
-		if (ImGui::BeginPopupModal("ImportProject",nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
-		{
-			ImGui::Text("Project Path:");
-			inputText("##importPath", projectImportPath, viewport->WorkSize.x * 0.5f * 0.8f);
-			ImGui::SameLine();
-			ImGui::Button("Browse", ImVec2(-1.0f, 0.0f));
-			
-			ImGui::SetCursorPosY(viewport->WorkSize.y * 0.5f * 0.3f);
-			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + viewport->WorkSize.x * 0.5f * 0.15f);
-			if (ImGui::Button("Create and Edit ", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
-			{
-				
-			}
-			ImGui::SameLine(viewport->WorkSize.x * 0.25f);
-			if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
-			{
-
-			}
-			if (ImGui::IsItemClicked()) {
-				importProjectPopup = false;
-				ImGui::CloseCurrentPopup();
-			}
-			ImGui::EndPopup();
-		}
 
 		ImGui::PopStyleColor(4);
 		ImGui::GetFont()->Scale = oldSize;

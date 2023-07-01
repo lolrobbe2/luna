@@ -25,7 +25,7 @@ namespace luna
 			ofn.lStructSize = sizeof(OPENFILENAME);
 			ofn.hwndOwner = glfwGetWin32Window((GLFWwindow*) application::application::get().getWindow().getWindow());
 			ofn.lpstrFile = szFile;
-			ofn.nMaxFile = sizeof(szFile);
+			ofn.nMaxFile = MAX_PATH;
 			if (GetCurrentDirectoryA(256, currentDir))
 				ofn.lpstrInitialDir = currentDir;
 			ofn.lpstrFilter = filter;

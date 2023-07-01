@@ -5,9 +5,14 @@
 #include <core/scene/sceneSerializer.h>
 #include <core/application.h>
 
+#include <project/visualStudio/projectGeneratorVS.h>
+#include <project/projectManager.h>
+#include <project/projectSerializer.h>
+
 namespace luna
 {
-	
+	static bool CreateNewProject = false;
+
 	editorLayer::editorLayer(layer* prjLayer,const std::string& name)
 	{
 		this->prjLayer = prjLayer;
@@ -34,18 +39,21 @@ namespace luna
 	void editorLayer::onImGuiRender()
 	{
 
-
 		if(ImGui::BeginMainMenuBar())
 		{
 			if (ImGui::BeginMenu("project"))
 			{
 				if(ImGui::MenuItem("create new","Ctrl+N"))
 				{
-					createProject();
+					CreateNewProject = true;
 				}
 				if (ImGui::MenuItem("open", "Ctrl+Shift+O"))
 				{
 					openProject();
+				}
+				if (ImGui::MenuItem("close project", "Ctrl+Alt+L"))
+				{
+					
 				}
 				ImGui::EndMenu();
 			}
@@ -62,11 +70,10 @@ namespace luna
 				}
 				ImGui::EndMenu();
 			}
-
+			ImGui::EndMainMenuBar();
 		}
-		
-		ImGui::EndMainMenuBar();
-
+		if(CreateNewProject) ImGui::OpenPopup("CreateNewProject");
+		createProjectPopup();
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 
 		if (ImGui::Begin("scene"));
@@ -129,16 +136,22 @@ namespace luna
 			{
 				if (shiftPressed) 
 				{
-					openProject();
+
 				} else {
 					open();
 				}
 			}
 			break;
-
+		case input::N:
+			if(controlPressed)
+			{
+				CreateNewProject = true;
+			}
 		default:
 			break;
 		}
+
+
 	}
 	void editorLayer::saveAs()
 	{
@@ -161,10 +174,103 @@ namespace luna
 	}
 	void editorLayer::createProject()
 	{
-		LN_CORE_INFO("createProject");
+		
+	}
+	void editorLayer::createProjectPopup()
+	{
+		static std::string projectName;
+		static std::filesystem::path projectDir;
+		ImGuiViewport* viewport = ImGui::GetMainViewport();
+
+		if (ImGui::BeginPopupModal("CreateNewProject", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
+		{
+			ImGui::Text("Projectname:");
+			inputText("##projectNameInput", projectName, viewport->WorkSize.x * 0.35f);
+			ImGui::SameLine();
+			if (ImGui::Button("Create Folder", ImVec2(-1.0f, 0.0f)))
+			{
+				std::string folderName = std::filesystem::path(projectDir).filename().string();
+				if (std::filesystem::exists(projectDir) && folderName != projectName)
+				{
+					std::string tempProjectDir = projectDir.string();
+					tempProjectDir.pop_back();
+					tempProjectDir += "\\";
+					tempProjectDir += projectName;
+					tempProjectDir += "\0";
+					projectDir = tempProjectDir;
+					std::filesystem::create_directories(projectDir);
+
+				}
+			}
+			if (std::filesystem::exists(std::filesystem::absolute(projectDir)) && !std::filesystem::is_empty(std::filesystem::absolute(projectDir)))
+			{
+				ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.933f, 0.824f, 0.008f, 1.0f));
+
+				std::string warningText = "current directory is not empty, it is highly recommended to select an empty folder!";
+
+				auto windowWidth = ImGui::GetWindowSize().x;
+				auto textWidth = ImGui::CalcTextSize(warningText.c_str()).x;
+
+				ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
+				ImGui::Text(warningText.c_str());
+				ImGui::PopStyleColor();
+			}
+			ImGui::Text("Project directory");
+			std::string temp = projectDir.string();
+			inputText("##projectDir", temp, viewport->WorkSize.x * 0.35f);
+			projectDir = temp;
+			ImGui::SameLine();
+			if (ImGui::Button("Browse", ImVec2(-1.0f, 0.0f)))
+			{
+				projectDir = platform::os::openFolderDialog();
+			}
+			ImGui::SetCursorPosY(viewport->WorkSize.y * 0.5f * 0.9f);
+			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + viewport->WorkSize.x * 0.5f * 0.15f);
+			if (ImGui::Button("Create and Edit ", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+			{
+				project::projectGeneratorVS::generateProject(projectName, projectDir);
+
+				project::projectConfig config;
+				config.projectDirectory = projectDir;
+				config.name = projectName;
+				config.assetDirectory = "assets";
+				config.scriptModulePath = "bin";
+				config.startScene = "undefined";
+
+				std::filesystem::create_directories(config.assetDirectory);
+
+				ref<project::project> newProject = project::projectManager::createProject(config);
+				project::projectSerializer::serialize(newProject);
+
+				project::projectManager::setActive(newProject);
+
+				std::filesystem::current_path(config.projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
+
+				CreateNewProject = false;
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SameLine(viewport->WorkSize.x * 0.25f);
+			if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+			{
+				CreateNewProject = false;
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::EndPopup();
+		}
 	}
 	void editorLayer::openProject()
 	{
 		LN_CORE_INFO("openProject");
+	}
+
+	void editorLayer::inputText(const std::string& name, std::string& stringBuffer, float width, const std::string& hint)
+	{
+		if (width) ImGui::PushItemWidth(width);
+		char buffer[256];
+		memset(buffer, 0, sizeof(buffer));
+		strcpy_s(buffer, stringBuffer.c_str());
+		if (hint == "" && ImGui::InputText(name.c_str(), buffer, sizeof(buffer))) stringBuffer = std::string(buffer);
+		else if (hint != "" && ImGui::InputTextWithHint(name.c_str(), hint.c_str(), buffer, sizeof(buffer))) stringBuffer = std::string(buffer);
+		if (width) ImGui::PopItemWidth();
 	}
 }
