@@ -4,8 +4,9 @@ namespace luna
 {
 	namespace project
 	{
-		class projectSerializer
+		class LN_API projectSerializer
 		{
+		public:
 			static bool serialize(ref<project> project);
 			static bool deSerialize(ref<project> project);
 		};

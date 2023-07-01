@@ -4,27 +4,55 @@ namespace luna
 {
 	namespace project 
 	{
-		void projectGeneratorVS::generateProject(const std::string& name,const std::filesystem::path& dirPath)
+		void projectGeneratorVS::generateProject(const std::string& name,std::filesystem::path& dirPath)
 		{
+			std::string tempDirPath = dirPath.string();
+			if (tempDirPath.back() == '\0') tempDirPath.pop_back(); //make non c-style string because we cannont append to that.
+			dirPath = tempDirPath;
 			generatePremakeFile(name, dirPath);
 
 			if (!std::filesystem::is_directory(std::filesystem::absolute(dirPath)))
 				return LN_CORE_ERROR("premake.lua directory is not a directory: {}", std::filesystem::absolute(dirPath).string());
 			std::filesystem::path premakeFilePath = platform::os::getCurrentWorkingDirectory();
-			premakeFilePath.concat("\\premake5.lua");
+			premakeFilePath += "\\premake5.lua";
 			std::ofstream buildFile(premakeFilePath);
 			buildFile << generatePremakeFile(name, dirPath);
 			buildFile.close();
 			
 			std::filesystem::path srcDir = dirPath;
-			srcDir.concat("\\src");
+			srcDir += "\\src";
 			std::filesystem::create_directories(srcDir);
 
+			std::filesystem::path libDir = dirPath;
+			libDir += "\\lib";
+			std::filesystem::create_directories(libDir);
+
+			std::filesystem::path xmlDir = dirPath;
+			xmlDir += "\\lib";
+
 			std::filesystem::path exampleFilePath = srcDir;
-			exampleFilePath.concat("\\Start.cs");
+			exampleFilePath += "\\Start.cs";
 			std::ofstream exampleFile(exampleFilePath);
 			exampleFile << generateExampleFile();
 			exampleFile.close();
+
+			
+			if(std::filesystem::exists("mono\\lib\\scriptCore.dll"))
+			{
+				
+				std::string dllPath = libDir.string();
+				dllPath += "\\scriptCore.dll\0";
+				if (std::filesystem::exists(dllPath)) std::filesystem::remove_all(dllPath); //precaustinary messure
+				std::filesystem::copy_file("mono\\lib\\scriptCore.dll",dllPath);
+			}
+
+			if (std::filesystem::exists("mono\\lib\\scriptCore.xml"))
+			{
+				std::string xmlPath = libDir.string();
+				xmlPath += "\\scriptCore.xml\0";
+				if (std::filesystem::exists(xmlPath)) std::filesystem::remove_all(xmlPath); //precaustinary messure
+				std::filesystem::copy_file("mono\\lib\\scriptCore.xml", xmlPath);
+			}
 
 			try
 			{
@@ -41,6 +69,8 @@ namespace luna
 			{
 				LN_CORE_CRITICAL("unkown error occured while trying to create visualStudio solution");
 			}
+			
+			
 
 			std::filesystem::remove_all(premakeFilePath);
 		}
@@ -78,7 +108,7 @@ namespace luna
 			luaFile << "	objdir(\"%{wks.location}/bin-int/\" .. outputdir .. \"/x64/%{prj.name}\")" << std::endl;
 			luaFile << "    files" << std::endl;
 			luaFile << "	{" << std::endl;
-			luaFile << "		\"%{prj.name}/src/**.cs\"" << std::endl;
+			luaFile << "		\"%{wks.location}/src/**.cs\"" << std::endl;
 			luaFile << "	}" << std::endl;
 
 			luaFile << "    links" << std::endl;
@@ -102,6 +132,7 @@ namespace luna
 		std::string projectGeneratorVS::generateExampleFile() 
 		{
 			std::stringstream exampleFile;
+			exampleFile << "using Luna;" << std::endl <<std::endl;
 			exampleFile << "internal class start : Node" << std::endl;
 			exampleFile << "{" << std::endl;
 			exampleFile << "	override public void Ready()" << std::endl;

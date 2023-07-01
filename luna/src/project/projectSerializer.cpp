@@ -19,8 +19,11 @@ namespace luna
             out << YAML::EndMap;
             if (out.good())
             {
-                std::ofstream outputFile(platform::filesystem::getSystemFolderPath(platform::appData) + "\\luna\\projects\\" + project->getConfig().name + ".lprj");
-                outputFile << out.c_str();
+                std::ofstream appDataProjectFile(platform::filesystem::getSystemFolderPath(platform::appData) + "\\luna\\projects\\" + project->getConfig().name + ".lprj");
+                appDataProjectFile << out.c_str();
+
+                std::ofstream localProjectFile(project->getConfig().projectDirectory.string() + "\\" + project->getConfig().name + ".lprj");
+                localProjectFile << out.c_str();
                 return true;
             }
             LN_CORE_ERROR("YAML write error");

@@ -3,6 +3,7 @@
 
 #include <shlobj_core.h>
 
+
 #include <commdlg.h>
 #include <GLFW/glfw3native.h>
 #include <core/application.h>
@@ -18,7 +19,7 @@ namespace luna
 		std::string os::openFileDialog(const char* filter)
 		{
 			OPENFILENAMEA ofn;
-			CHAR szFile[260] = { 0 };
+			CHAR szFile[MAX_PATH] = { 0 };
 			CHAR currentDir[256] = { 0 };
 			ZeroMemory(&ofn, sizeof(OPENFILENAME));
 			ofn.lStructSize = sizeof(OPENFILENAME);
@@ -36,10 +37,53 @@ namespace luna
 
 			return std::string();
 		}
+		std::string os::openFolderDialog()
+		{
+			std::string selectedFolder = "";
+
+			// Create an instance of the File Open Dialog
+			IFileDialog* pFileDialog = nullptr;
+			HRESULT hr = CoCreateInstance(CLSID_FileOpenDialog, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pFileDialog));
+			if (SUCCEEDED(hr))
+			{
+				// Set options to select folders only
+				DWORD options;
+				pFileDialog->GetOptions(&options);
+				pFileDialog->SetOptions(options | FOS_PICKFOLDERS);
+
+				// Show the dialog
+				if (SUCCEEDED(pFileDialog->Show(nullptr)))
+				{
+					// Get the selected folder path
+					IShellItem* pResult = nullptr;
+					if (SUCCEEDED(pFileDialog->GetResult(&pResult)))
+					{
+						PWSTR folderPath;
+						if (SUCCEEDED(pResult->GetDisplayName(SIGDN_FILESYSPATH, &folderPath)))
+						{
+							// Convert the wide string to narrow string
+							int bufferSize = WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, nullptr, 0, nullptr, nullptr);
+							if (bufferSize > 0)
+							{
+								std::string narrowPath(bufferSize, '\0');
+								WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, narrowPath.data(), bufferSize, nullptr, nullptr);
+								selectedFolder = narrowPath;
+							}
+							CoTaskMemFree(folderPath);
+						}
+						pResult->Release();
+					}
+				}
+
+				pFileDialog->Release();
+			}
+
+			return selectedFolder;
+		}
 		std::string os::saveFileDialog(const char* filter)
 		{
 			OPENFILENAMEA ofn;
-			CHAR szFile[260] = { 0 };
+			CHAR szFile[MAX_PATH] = { 0 };
 			CHAR currentDir[256] = { 0 };
 			ZeroMemory(&ofn, sizeof(OPENFILENAME));
 			ofn.lStructSize = sizeof(OPENFILENAME);
@@ -90,14 +134,6 @@ namespace luna
 		}
 		std::string os::getCurrentWorkingDirectory()
 		{
-			/*
-			char buffer[FILENAME_MAX];
-			_getcwd(buffer, FILENAME_MAX);
-			std::string workingDir = std::string(buffer, buffer+FILENAME_MAX);
-			while (workingDir.find("\\") != std::string::npos) workingDir.replace(workingDir.find("\\"), sizeof("\\") - 1, "/");
-
-			return workingDir;
-			*/
 			return std::filesystem::current_path().string();
 		}
 

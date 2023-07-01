@@ -24,6 +24,7 @@ namespace luna
 		{
 		public:
 			static std::string openFileDialog(const char* filter);
+			static std::string openFolderDialog();
 			static std::string saveFileDialog(const char* filter);
 			static std::vector<unsigned char> openFile(const std::string& filePath);
 			static std::string getCurrentWorkingDirectory();
