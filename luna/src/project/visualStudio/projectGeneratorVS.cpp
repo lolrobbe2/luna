@@ -1,5 +1,6 @@
 #include "projectGeneratorVS.h"
 #include <core/platform/platformUtils.h>
+
 namespace luna 
 {
 	namespace project 
@@ -52,6 +53,7 @@ namespace luna
 				xmlPath += "\\scriptCore.xml\0";
 				if (std::filesystem::exists(xmlPath)) std::filesystem::remove_all(xmlPath); //precaustinary messure
 				std::filesystem::copy_file("mono\\lib\\scriptCore.xml", xmlPath);
+				
 			}
 
 			try
@@ -70,8 +72,6 @@ namespace luna
 				LN_CORE_CRITICAL("unkown error occured while trying to create visualStudio solution");
 			}
 			
-			
-
 			std::filesystem::remove_all(premakeFilePath);
 		}
 		std::string projectGeneratorVS::generatePremakeFile(const std::string& name, const std::filesystem::path& dirPath)

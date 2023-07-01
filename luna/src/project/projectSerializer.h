@@ -8,7 +8,7 @@ namespace luna
 		{
 		public:
 			static bool serialize(ref<project> project);
-			static bool deSerialize(ref<project> project);
+			static ref<project> deSerialize(const std::filesystem::path& projectPath);
 		};
 	}
 }

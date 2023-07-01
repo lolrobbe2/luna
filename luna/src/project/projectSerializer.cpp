@@ -1,6 +1,7 @@
 #include "projectSerializer.h"
 #include <core/platform/platformUtils.h>
 #include <yaml-cpp/yaml.h>
+
 namespace luna 
 {
     namespace project
@@ -10,12 +11,12 @@ namespace luna
             YAML::Emitter out;
             out << YAML::BeginMap;
             out << YAML::Key << "projectName" << YAML::Value << project->getConfig().name;
-            out << YAML::Key << "projectPaths" << YAML::Value << YAML::BeginSeq;
+            out << YAML::Key << "projectPaths" << YAML::Value << YAML::BeginMap;
             out << YAML::Key << "assetDirectory" << YAML::Value << project->getConfig().assetDirectory.string();
             out << YAML::Key << "projectDirectory" << YAML::Value << std::filesystem::absolute(project->getConfig().projectDirectory).string();
             out << YAML::Key << "scriptModulePath" << YAML::Value << project->getConfig().scriptModulePath.string();
             out << YAML::Key << "startScenePath" << YAML::Value << project->getConfig().startScene.string();
-            out << YAML::EndSeq;
+            out << YAML::EndMap;
             out << YAML::EndMap;
             if (out.good())
             {
@@ -30,9 +31,9 @@ namespace luna
             LN_CORE_ERROR(out.GetLastError());
             return false;
         }
-        bool projectSerializer::deSerialize(ref<project> project)
+        ref<project> projectSerializer::deSerialize(const std::filesystem::path& projectPath)
         {
-            std::ifstream stream(project->getConfig().projectDirectory);
+            std::ifstream stream(projectPath);
             if (!stream.is_open()) return false;
             std::stringstream strstream;
             strstream << stream.rdbuf();
@@ -40,18 +41,19 @@ namespace luna
 
             YAML::Node data = YAML::Load(strstream.str());
             
+            
 
-            projectConfig& config = project->getConfig();
+            projectConfig config;
             
             config.name = data["projectName"].as<std::string>();
             
 
             YAML::Node projectPaths = data["projectPaths"];
 
-            config.projectDirectory = data["projectDirectory"].as<std::string>();
-            config.assetDirectory = data["assetDirectory"].as<std::string>();
-            config.scriptModulePath = data["scriptModulePath"].as<std::string>();
-            config.startScene = data["startScenePath"].as<std::string>();
+            config.projectDirectory = projectPaths["projectDirectory"].as<std::string>();
+            config.assetDirectory = projectPaths["assetDirectory"].as<std::string>();
+            config.scriptModulePath = projectPaths["scriptModulePath"].as<std::string>();
+            config.startScene = projectPaths["startScenePath"].as<std::string>();
             
             if (config.assetDirectory.is_absolute())
                 LN_CORE_WARN("asset directory path should be relative!");
@@ -61,7 +63,7 @@ namespace luna
                 LN_CORE_WARN("start scene path should be relative!");
             if (config.projectDirectory.is_relative())
                 LN_CORE_WARN("project directory path should be absolute");
-            return true;
+            return ref<project>(new project(config));
         }
     }
 }

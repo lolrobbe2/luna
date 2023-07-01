@@ -7,7 +7,7 @@ namespace luna
 	class editorLayer : public utils::layer
 	{
 	public:
-		editorLayer(const std::string& name = "editor layer");
+		editorLayer(layer* prjLayer, const std::string& name = "editor layer");
 		virtual ~editorLayer() = default;
 		
 		virtual void onAttach() override;
@@ -21,6 +21,7 @@ namespace luna
 		void open();
 		void createProject();
 		void openProject();
+		layer* prjLayer = nullptr;
 		ref<scene> activeScene;
 		ref<sceneHierarchyPanel> scenePanel;
 	};

@@ -1,4 +1,5 @@
 #include <core/platform/platformUtils.h>
+#include <project/projectSerializer.h>
 #include "projectManager.h"
 namespace luna 
 {
@@ -14,9 +15,13 @@ namespace luna
 			if (!std::filesystem::exists(lunaProjectPath)) {
 				std::filesystem::create_directories(lunaProjectPath);
 			}
-			for (auto projects : std::filesystem::directory_iterator(lunaProjectPath))
+			for (auto localProject : std::filesystem::directory_iterator(lunaProjectPath))
 			{
-
+				std::filesystem::path projectPath = localProject.path();
+				if (projectPath.extension() == ".lprj")
+				{	
+					projects.push_back(projectSerializer::deSerialize(projectPath));
+				}
 			}
 		}
 
@@ -54,5 +59,7 @@ namespace luna
 			std::filesystem::path projectAppdataPath = platform::filesystem::getSystemFolderPath(platform::appData) + "\\luna\\projects\\" + project->getConfig().name + ".lprj";
 			std::filesystem::remove(projectAppdataPath);
 		}
+
+		std::vector<ref<project>> projectManager::getProjects() { return projects; }
 	}
 }

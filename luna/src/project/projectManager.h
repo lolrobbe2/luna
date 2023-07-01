@@ -34,6 +34,7 @@ namespace luna
 			* @brief does not remove the actual project! but removes the appdata reference
 			*/
 			static void removeProject(const ref<project> project);
+			static std::vector<ref<project>> getProjects();
 		};
 	}
 }

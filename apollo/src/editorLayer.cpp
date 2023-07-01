@@ -3,17 +3,21 @@
 #include <core/input.h>
 #include <core/platform/platformUtils.h>
 #include <core/scene/sceneSerializer.h>
+#include <core/application.h>
 
 namespace luna
 {
-	editorLayer::editorLayer(const std::string& name)
+	
+	editorLayer::editorLayer(layer* prjLayer,const std::string& name)
 	{
+		this->prjLayer = prjLayer;
 		m_DebugName = name;
 		activeScene = ref<scene>(new scene());
 		scenePanel = ref<sceneHierarchyPanel>(new sceneHierarchyPanel());
 	}
 	void editorLayer::onAttach()
 	{
+		if (prjLayer) application::application::get().popLayer(prjLayer);
 		LN_CORE_INFO("added editor!");
 		scenePanel->setContext(activeScene);
 		utils::scriptUtils::setContext(activeScene.get());

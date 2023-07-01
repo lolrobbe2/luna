@@ -2,6 +2,8 @@
 #include <project/visualStudio/projectGeneratorVS.h>
 #include <project/projectManager.h>
 #include <project/projectSerializer.h>
+#include <core/application.h>
+#include <editorLayer.h>
 #include "projectLayer.h"
 
 namespace luna 
@@ -85,6 +87,18 @@ namespace luna
 			//ImGui::SetNextWindowViewport(viewport->ID);
 			if (ImGui::BeginChild("project view", ImVec2(viewport->WorkSize.x * 0.745, viewport->WorkSize.y * 0.94f), ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking))
 			{
+				ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.03f, 0.5f));
+				for(ref<project::project> project : project::projectManager::getProjects())
+				{
+					std::string description = "name: ";
+					description += project->getConfig().name;
+					description += "\nlocation: ";
+					description += project->getConfig().projectDirectory.string();
+					if (ImGui::Button(description.c_str(), ImVec2(-1.0f, viewport->WorkSize.y * 0.07f)))
+					{
+					}
+				}
+				ImGui::PopStyleVar();
 			}
 			ImGui::EndChild();
 			//ImGui::SetCursorPosX(viewport->WorkSize.x * 0.75);
@@ -193,6 +207,8 @@ namespace luna
 				project::projectManager::setActive(newProject);
 
 				std::filesystem::current_path(config.projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
+				
+				application::application::get().pushLayer(new editorLayer(this));
 			}
 			ImGui::SameLine(viewport->WorkSize.x * 0.25f );
 			if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))

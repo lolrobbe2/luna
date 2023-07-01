@@ -117,6 +117,13 @@ namespace luna
 			layerStack.pushOverlay(layer);
 			layer->onAttach();
 		}
+		void application::popLayer(utils::layer* layer)
+		{
+			LN_PROFILE_FUNCTION();
+
+			layerStack.popLayer(layer);
+			layer->onDetach();
+		}
 		application& application::get()
 		{
 			return *instance;
