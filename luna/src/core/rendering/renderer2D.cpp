@@ -1,4 +1,5 @@
 #include "renderer2D.h"
+#include <core/assets/assetManager.h>
 namespace luna
 {
 	namespace renderer 
@@ -41,8 +42,8 @@ namespace luna
 		void renderer2D::init()
 		{
 			LN_PROFILE_SCOPE("renderer2D init");
-			
-			blankImage = texture::create("./src/assets/media/blank.png");
+			ref<assets::asset> blankImageAsset = assets::assetManager::getAsset(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
+			blankImage = std::dynamic_pointer_cast<texture>(blankImageAsset);
 			rendererData.quadVertexBuffer = vertexBuffer::create(rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadVertexBufferBase = (quadVertex*)rendererData.quadVertexBuffer->data;
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;

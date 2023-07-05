@@ -28,3 +28,6 @@
 [submodule "luna/thirdParty/imguizmo"]
 	path = luna/thirdParty/imguizmo
 	url = https://github.com/CedricGuillemet/ImGuizmo
+[submodule "luna/thirdparty/zlib"]
+	path = luna/thirdparty/zlib
+	url = https://github.com/madler/zlib

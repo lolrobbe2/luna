@@ -5,6 +5,7 @@
 #include <core/object/classRegister.h>
 #include <core/scripting/scriptingEngine.h>
 #include <core/object/methodDB.h>
+#include <core/assets/assetManager.h>
 namespace luna
 {
 	namespace application
@@ -16,8 +17,12 @@ namespace luna
 			instance = this;
 			Log::Init();
 			LN_PROFILE_SCOPE("engine startup");
+
+
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
+			assets::assetManager::init(true);
+			/*required valid asset manager!*/
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
 			nodes::classRegister::registerClasses();
@@ -32,7 +37,7 @@ namespace luna
 			layerStack.~layerStack();
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
-
+			mWindow->~window();
 			LN_PROFILE_END_SESSION();
 		}
 

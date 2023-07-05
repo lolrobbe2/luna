@@ -206,7 +206,7 @@ namespace luna {
 }
 #undef LN_PROFILE
 #ifndef LN_PROFILE
-	#define LN_PROFILE 0
+	#define LN_PROFILE 1
 #endif // !LN_PROFILE
 
 #if LN_PROFILE

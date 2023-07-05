@@ -7,6 +7,6 @@ include "premake/ImGui.lua"
 include "premake/imguizmo.lua"
 include "premake/stb.lua"
 include "premake/yaml-cpp"
-
+include "premake/zlib"
 
 group ""

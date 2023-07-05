@@ -1,6 +1,7 @@
 #pragma once
 #include <core/vulkan/window/window.h>
 #include <stb_truetype.h>
+#include <core/assets/asset.h>
 
 namespace luna
 {
@@ -10,7 +11,7 @@ namespace luna
 		 * @brief base texture class.
 		 * @note see specific platform implementation for explenation with functions
 		 */
-		class LN_API texture
+		class LN_API texture : public assets::asset
 		{
 		public:
 			virtual ~texture() = default;
@@ -32,14 +33,18 @@ namespace luna
 			static ref<texture> create(const std::string& filePath);
 			static ref<texture> create(const uint64_t& handle,const glm::vec2& dimensions);
 			inline uint64_t handle() { return _handle; };
+
+			virtual void createGuiImage() = 0;
+			_ALWAYS_INLINE_ ImTextureID getGuiImageHandle() { return textureHandle; }
 		protected:
 			bool destroy = true;
 			uint64_t _handle;
-			void* data;
+			void* data; //TODO remove to asset importer
 			uint32_t width;
 			uint32_t height;
-			glm::vec2 uvStart = {0.0f,0.0f};
-			glm::vec2 uvEnd = { 1.0f,1.0f };
+			glm::vec2 uvStart = { 0.0f,0.0f }; //hardcoded not part of asset metadata
+			glm::vec2 uvEnd = { 1.0f,1.0f }; //hardcoded not part of asset metadata
+			ImTextureID textureHandle;
 
 		};
 		/**
@@ -85,25 +90,20 @@ namespace luna
 			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;
 		};
 
-		class LN_API font 
+		class LN_API font : public assets::asset
 		{
 		public:
-			//16*300 (width) = 4800
-			//16*300 (height) = 4200
-			//32 dec - 127 decimal;
 			virtual ~font() = default;
 			virtual ref<texture> getGlyph(char character) = 0;
 			virtual glm::vec2 getAdvance(char character) = 0;
 			virtual glm::vec2 getScale(char charcater) = 0;
 			uint64_t handle() { return _handle; };
-			static ref<font> create(const std::string& filePath);
+			static ref<font> create(const std::string& filePath); //will be depreacted
 		protected:
 			const static char startIndex = 0;
-			stbtt_fontinfo fontInfo;
 			uint64_t _handle;
-			void* data;
-			std::vector<glm::vec2> glypScales;
-			std::vector<glm::vec2> glypAdvances;
+			glm::vec2 glyphScales[FONT_ATLAS_GLYPH_AMOUNT];
+			glm::vec2 glyphAdvances[FONT_ATLAS_GLYPH_AMOUNT];
 		private:
 
 		};

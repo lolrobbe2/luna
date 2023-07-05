@@ -41,6 +41,7 @@ namespace luna
 
 		ref<font> font::create(const std::string& filePath)
 		{
+			LN_CORE_WARN("this function is deprecated by the assetManger");
 			switch (vulkan::window::graphicsApi)
 			{
 			case vulkan::NONE:
