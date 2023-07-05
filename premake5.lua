@@ -347,6 +347,7 @@ project "scriptCore"
     language "c#"
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    documentationFile ""
     files
     {
         "%{prj.name}/src/**.cs"
