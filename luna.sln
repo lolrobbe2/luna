@@ -23,8 +23,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stb", "luna\thirdParty\prem
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yaml-cpp", "luna\thirdParty\premake\yaml-cpp.vcxproj", "{88F1A057-74BE-FB62-9DD7-E90A890331F1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "luna\thirdParty\premake\zlib.vcxproj", "{16CFA17C-0206-A30D-ABF2-881097081F0F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		debug|x64 = debug|x64
@@ -86,12 +84,6 @@ Global
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1}.distribution|x64.Build.0 = distribution|x64
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1}.release|x64.ActiveCfg = release|x64
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1}.release|x64.Build.0 = release|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.debug|x64.ActiveCfg = debug|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.debug|x64.Build.0 = debug|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.distribution|x64.ActiveCfg = distribution|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.distribution|x64.Build.0 = distribution|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.release|x64.ActiveCfg = release|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.release|x64.Build.0 = release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +97,5 @@ Global
 		{76AD0322-627A-5E2D-8B93-4CD577BF93BB} = {5792A83A-438B-C78C-6CBD-AC115815A798}
 		{6EAB880B-DAB4-887C-6330-9F7CCF38947C} = {5792A83A-438B-C78C-6CBD-AC115815A798}
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1} = {5792A83A-438B-C78C-6CBD-AC115815A798}
-		{16CFA17C-0206-A30D-ABF2-881097081F0F} = {5792A83A-438B-C78C-6CBD-AC115815A798}
 	EndGlobalSection
 EndGlobal

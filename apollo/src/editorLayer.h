@@ -1,9 +1,7 @@
 #pragma once
 #include <core/utils/layer.h>
 #include <panels/sceneHierarchyPanel.h>
-#include <panels/contentBrowserPanel.h>
 #include <core/events/keyEvent.h>
-
 namespace luna
 {
 	class editorLayer : public utils::layer
@@ -23,7 +21,6 @@ namespace luna
 		void open();
 		ref<scene> activeScene;
 		ref<sceneHierarchyPanel> scenePanel;
-		ref<contentBrowserPanel> contentPanel;
 	};
 }
 

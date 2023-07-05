@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _UUID
 #define _UUID
-#include <core/core.h>
+#include "core/core.h"
 namespace luna
 {
 	/**

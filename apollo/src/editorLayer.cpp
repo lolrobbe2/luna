@@ -10,7 +10,6 @@ namespace luna
 	{
 		activeScene = ref<scene>(new scene());
 		scenePanel = ref<sceneHierarchyPanel>(new sceneHierarchyPanel());
-		contentPanel = ref<contentBrowserPanel>(new contentBrowserPanel());
 	}
 	void editorLayer::onAttach()
 	{
@@ -84,7 +83,6 @@ namespace luna
 		ImGui::End();
 		
 		scenePanel->onImGuiRender();
-		contentPanel->onImGuiRender();
 
 	}
 	void editorLayer::onEvent(Event& Event)
