@@ -46,7 +46,7 @@ namespace luna
 			 */
 			void pushLayer(utils::layer* layer);
 			void pushOverlay(utils::layer* layer);
-
+			void popLayer(utils::layer* layer);
 			static application& get();
 		private:
 			friend class os;

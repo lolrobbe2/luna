@@ -5,7 +5,7 @@ namespace luna
 {
 	namespace utils
 	{
-		typedef uint64_t cacheObject;
+		using cacheObject = uint64_t;
 		enum cacheResult
 		{
 			cacheMiss = 0,
@@ -169,10 +169,21 @@ namespace luna
 				}
 				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, value());
 			}
+
+			/**
+			* @brief checks if the cache contains a value with a certain key
+			*/
+			bool hasValue(cacheObject key) {
+				for (uint64_t iterator = 0; iterator < handleCache.size(); iterator++)
+				{
+					if (handleCache[iterator] == key) return true;
+				}
+				return false;
+			}
 		protected:
 
 			uint64_t maxCacheSize;
-			std::vector<uint64_t> handleCache; //use seperate vector to allow the entire vector to remain in cache.
+			std::vector<cacheObject> handleCache; //use seperate vector to allow the entire vector to remain in cache.
 			std::vector<value> valueCache; //same principle value size is unkown -> valueCache might not fit in cahce completely.
 			mutable std::mutex lockGuard;
 		};

@@ -1,13 +1,15 @@
 #pragma once
 #include <core/utils/layer.h>
 #include <panels/sceneHierarchyPanel.h>
+#include <panels/contentBrowserPanel.h>
 #include <core/events/keyEvent.h>
+
 namespace luna
 {
 	class editorLayer : public utils::layer
 	{
 	public:
-		editorLayer(const std::string& name = "editor layer");
+		editorLayer(layer* prjLayer, const std::string& name = "editor layer");
 		virtual ~editorLayer() = default;
 		
 		virtual void onAttach() override;
@@ -19,8 +21,13 @@ namespace luna
 	private:
 		void saveAs();
 		void open();
+		void openProjectPopup();
+		void createProjectPopup();
+		void inputText(const std::string& name, std::string& stringBuffer, float width, const std::string& hint = "");
+		layer* prjLayer = nullptr;
 		ref<scene> activeScene;
 		ref<sceneHierarchyPanel> scenePanel;
+		ref<contentBrowserPanel> contentPanel;
 	};
 }
 
