@@ -27,7 +27,6 @@
 #include <backends/imgui_impl_glfw.h>
 #include <glm/glm.hpp>
 #include <stb_image.h>
-#include <stb_image_write.h>
 /*scene system includes*/
 #include <entt.h>
 #pragma warning(pop)

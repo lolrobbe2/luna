@@ -7,8 +7,7 @@ project "stb"
 		"../stb.c",
 		"../stb/stb_include.h",
 		"../stb/stb_image.h",
-		"../stb/stb_truetype.h",
-		"../stb/stb_image_write.h"
+		"../stb/stb_truetype.h"
 	}
 	buildoptions 
 	{
@@ -25,7 +24,7 @@ project "stb"
 		systemversion "latest"
 		defines
 		{
-
+			"STB_IMAGE_IMPLEMENTATION"
 		}
 
 	filter "configurations:debug"

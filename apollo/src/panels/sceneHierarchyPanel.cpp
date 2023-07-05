@@ -10,7 +10,6 @@
 #include <core/platform/platformUtils.h>
 #include <core/object/objectDB.h>
 #include <core/scripting/scriptUtils.h>
-#include <core/assets/assetManager.h>
 namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
@@ -198,13 +197,12 @@ namespace luna
 				if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
 				{
 					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
-					//inputText("filePath", sprite.filePath);
+					inputText("filePath", sprite.filePath);
 					ImGui::SameLine();
 					if (ImGui::Button("select image"))
 					{
 						sprite.filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-						sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+						sprite.texture = renderer::texture::create(sprite.filePath);
 					}
 
 					ImGui::TreePop();
@@ -218,22 +216,13 @@ namespace luna
 			if (ImGui::TreeNodeEx((void*)typeid(labelRendererComponent).hash_code(), 0, "label"))
 			{
 				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
+				inputText("file path", label.filePath);
 				ImGui::SameLine();
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
-					std::filesystem::path filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
-					if (assets::assetManager::isAssetHandleValid(filePath.filename().string())) {
-						ref<assets::asset> font = assets::assetManager::getAsset(filePath.filename().string());
-						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
-						label.font = std::dynamic_pointer_cast<renderer::font>(font);
-					} else {
-						label.handle = assets::assetManager::importAsset(filePath.string(), assets::font);
-						ref<assets::asset> font = assets::assetManager::getAsset(label.handle);
-						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
-						label.font = std::dynamic_pointer_cast<renderer::font>(font);
-					}
-					
+					label.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
+					label.font = renderer::font::create(label.filePath);
 				}
 				inputText("label text", label.text);
 				ImGui::TreePop();
@@ -260,25 +249,25 @@ namespace luna
 					if (ImGui::Button("select normal image"))
 					{
 						button.normalFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.normalFilePath.string()));
+						button.normalTexture = renderer::texture::create(button.normalFilePath);
 					}
-					inputText("normal Image", button.normalFilePath.string());
+					inputText("normal Image", button.normalFilePath);
 
 
 					if (ImGui::Button("select hover image"))
 					{
 						button.hoverFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.hoverFilePath.string()));
+						button.hoverTexture = renderer::texture::create(button.hoverFilePath);
 
 					}
-					inputText("hover Image", button.hoverFilePath.string());
+					inputText("hover Image", button.hoverFilePath);
 
 					if (ImGui::Button("select pressed image"))
 					{
 						button.pressedFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.pressedFilePath.string()));
+						button.pressedTexture = renderer::texture::create(button.pressedFilePath);
 					}
-					inputText("pressed Image", button.pressedFilePath.string());
+					inputText("pressed Image", button.pressedFilePath);
 
 
 					ImGui::TreePop();
@@ -303,9 +292,7 @@ namespace luna
 				{
 					//hotpink color code (227,28,121)
 					itemList.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
-					ref<assets::asset> font = assets::assetManager::getAsset(itemList.filePath.filename().string());
-					//itemList.handle = assets::assetManager::getAssetMetadata(itemList.filePath.filename().string())->handle;
-					itemList.font = std::dynamic_pointer_cast<renderer::font>(font);
+					itemList.font = renderer::font::create(itemList.filePath);
 				}
 				if (ImGui::Button("add item"))
 				{

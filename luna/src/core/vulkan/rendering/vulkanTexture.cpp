@@ -1,7 +1,6 @@
 #include "vulkanTexture.h"
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <core/vulkan/device/vulkanDevice.h>
-#include <core/rendering/renderer.h>
 #include <lnpch.h>
 
 namespace luna
@@ -11,7 +10,29 @@ namespace luna
 		vulkanTexture::vulkanTexture(const std::string& filePath)
 		{
 			LN_PROFILE_FUNCTION();
-			LN_CORE_ERROR("deprecated!");
+			std::ifstream textureFile(filePath);
+			if(textureFile.is_open() && textureFile.good())
+			{
+				int width, height, channels;  
+				stbi_uc* image =  stbi_load(filePath.c_str(), &width, &height, &channels, 4);
+				if (channels == 3) channels = 4; //RGB formats are most likely not supported! so convert to quad channels.
+				uint64_t imageSize = width * height * channels;
+					
+				utils::vulkanAllocator::createBuffer(&buffer,imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, channels);
+				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY,{(unsigned int)width,(unsigned int)height,1},imageFormat);
+				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
+				memcpy_s(data, width * height * channels, (void*)image, width * height * channels);
+				stbi_image_free(image);
+				utils::vulkanAllocator::uploadTexture(buffer, imageHandle,imageFormat, { width,height,channels });
+				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
+				_handle = (uint64_t)imageViewHandle;
+				this->width = (uint32_t)width;
+				this->height = (uint32_t)height;
+				textureFile.close();
+				return;
+			}
+			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
 		}
 		vulkanTexture::vulkanTexture(const uint64_t& handle, const glm::vec2& dimensions)
 		{
@@ -19,16 +40,9 @@ namespace luna
 			width = dimensions.x;
 			height = dimensions.y;
 		}
-		vulkanTexture::vulkanTexture(uint64_t handle, VkBuffer buffer, VkImage imageHandle, VkImageView imageViewHandle, const glm::vec2& dimensions) : buffer(buffer),imageHandle(imageHandle),imageViewHandle(imageViewHandle)
-		{
-			width = dimensions.x;
-			height = dimensions.y; 
-			_handle = handle;
-		}
 		vulkanTexture::~vulkanTexture()
 		{
 			if (!destroy) return;
-			if (textureHandle != 0) renderer::renderer::removeImGuiImage(textureHandle);
 			utils::vulkanAllocator::destroyImageView(imageViewHandle);
 			utils::vulkanAllocator::destroyImage(imageHandle);
 		}
@@ -56,16 +70,6 @@ namespace luna
 		bool vulkanTexture::isLoaded() const
 		{
 			return false;
-		}
-
-		assets::assetType vulkanTexture::getType() const
-		{
-			return assets::assetType::texture;
-		}
-
-		void vulkanTexture::createGuiImage()
-		{
-			textureHandle = renderer::renderer::registerImGuiImage((uint64_t)imageViewHandle);
 		}
 		
 
@@ -206,8 +210,6 @@ namespace luna
 		vulkanFont::vulkanFont(const std::string& filePath)
 		{
 			LN_PROFILE_FUNCTION();
-			LN_CORE_WARN("deprecated");
-			/*
 			std::ifstream fontFile(filePath, std::ios::binary);
 			if (fontFile.is_open() && fontFile.good())
 			{
@@ -224,27 +226,17 @@ namespace luna
 				else LN_CORE_ERROR("incorrect file format, expected .ttf!");
 				fontFile.close();
 			}
-			*/
-		}
-		vulkanFont::vulkanFont(VkBuffer imageBuffer, VkImage imageHandle, VkImageView imageViewHandle, glm::vec2* glyphScales, glm::vec2* glyphAdvances) : imageBuffer(imageBuffer),imageHandle(imageHandle),imageViewHandle(imageViewHandle)
-		{
-			memcpy_s((void*)this->glyphScales, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2), glyphScales, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2));
-			memcpy_s((void*)this->glyphAdvances, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2), glyphAdvances, FONT_ATLAS_GLYPH_AMOUNT * sizeof(glm::vec2));
-			_handle = (uint64_t)imageViewHandle;
 		}
 		vulkanFont::~vulkanFont() 
 		{
-			utils::vulkanAllocator::destroyImageView(imageViewHandle );
+			utils::vulkanAllocator::destroyImageView(imageViewHandle);
 			utils::vulkanAllocator::destroyImage(imageHandle);
 		}
 		ref<renderer::texture> vulkanFont::getGlyph(char character)
 		{
 			LN_PROFILE_FUNCTION();
-
-			//GLYPH_WIDTH / getScale(character).x  (normalizing the textures 0.0f-1.0f)
-
-			ref<renderer::texture> glyph = renderer::texture::create(_handle, { GLYPH_WIDTH / getScale(character).x,GLYPH_HEIGHT / getScale(character).y });
-			int index = character;
+			ref<renderer::texture> glyph = renderer::texture::create(_handle, { 300.0f / getScale(character).x,300.0f / getScale(character).y });
+			int index = character - startIndex;
 			int yStart = index / 16;
 			int xStart = index % 16;
 			if (!(xStart < 16 && yStart < 16)) return nullptr; //character out of scope;
@@ -257,15 +249,72 @@ namespace luna
 		
 		glm::vec2 vulkanFont::getAdvance(char character)
 		{
-			return glyphAdvances[character];
+			return glypAdvances[character];
 		}
 		glm::vec2 vulkanFont::getScale(char character)
 		{
-			return glyphScales[character];
+			return glypScales[character];
 		}
-		assets::assetType vulkanFont::getType() const
+		void vulkanFont::createFontTexture() 
 		{
-			return assets::assetType::font;
+			int imageSize = width * height;
+			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
+			VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
+			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
+			_handle = (uint64_t)imageViewHandle;
+		}
+
+		stbi_uc* vulkanFont::createGlyph(const stbtt_fontinfo* info,int codePoint, float* xscale, float* yscale, int* newXoff,int* newYoff)
+		{
+			LN_PROFILE_FUNCTION();
+			int charWidth, charHeight;
+			int xoff, yoff;
+			stbtt_GetCodepointBitmap(info, 1, 1,codePoint , &charWidth, &charHeight, newXoff, newYoff);
+			*xscale = 299.0f / (float)charWidth; //299.0f instead of 300.0f beacuse of floating point "error".
+			*yscale = 299.0f / (float)charHeight; //299.0f instead of 300.0f beacuse of floating point "error".
+			int newCharWidth, newCharHeight;
+			
+			return stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, &xoff, &yoff);
+		}
+
+		void vulkanFont::writeGlyphsIntoBuffer()
+		{
+			LN_PROFILE_FUNCTION();
+			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 0);
+			utils::vulkanAllocator::createBuffer(&imageBuffer, 4800 * 4800, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
+			size_t bufferSize = utils::vulkanAllocator::getAllocationInfo((uint64_t)imageBuffer).size;
+			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)imageBuffer).pMappedData;
+			glyph* bufferPtr = (glyph*)bufferBase;
+			uint64_t offset = 0;
+			for (size_t i = startIndex; i < 256; i++)
+			{
+				
+				int index = i - startIndex;
+				glm::vec2 scale;
+				int offsetx, offsety;
+	
+				stbi_uc* fontGlyph = createGlyph(&fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
+				
+				if (fontGlyph) 
+				{
+					int y = index / 16;
+					int x = index % 16;
+					glypScales.push_back(scale);
+					glypAdvances.push_back({ offsetx,offsety });
+					memcpy_s(bufferPtr,bufferSize, fontGlyph, sizeof(glyph));
+					bufferPtr++;
+					if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(imageBuffer, imageHandle, imageFormat, { 300,300,1 },{ x * 300,y * 300,0 },{300,300},offset);
+					offset += sizeof(glyph);
+				}
+				else 
+				{
+					glypScales.push_back({ 1.0f,1.0f });
+					glypAdvances.push_back({0.0f,0.0f });
+					bufferPtr++;
+					offset += sizeof(glyph);
+				}
+			}
+			utils::vulkanAllocator::flush();
 		}
 	}
 }
