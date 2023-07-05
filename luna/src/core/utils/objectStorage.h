@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace utils
 	{
-		using storageObject = uint64_t;
+		typedef uint64_t storageObject;
 		enum storageResult
 		{
 			storageInvalidHandle = 0,
@@ -17,7 +17,7 @@ namespace luna
 		template<typename value> class objectStorage
 		{
 		public:
-			value operator[](const uint64_t key) { return getValue(key, value()).second; };
+			std::pair<storageResult, value> operator[](const storageObject& key) { return getValue(key, value()); };
 			/**
 			 * @brief deafault constructor whith default cache size of 200.
 			 * @note this constructor is recommended for dafult use.
@@ -130,15 +130,6 @@ namespace luna
 					break;
 				}
 
-			}
-
-			/**
-			* @brief checks if a given key exists inside the objectStorage.
-			*/
-			bool hasValue(storageObject key)
-			{
-				if (objectCache.hasValue(key)) return true;
-				return objectMemory.find(key) != objectMemory.end();
 			}
 		private:
 			vectorCache<value> objectCache; // fast constantly used memory

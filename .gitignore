@@ -42,6 +42,3 @@ luna/tirdParty/obj/
 *.log
 *.json
 /luna/src/core/scripting/scriptEngine.cpp
-*.tlog
-*.xml
-*.sarif

@@ -1,5 +1,4 @@
 #include "buttonNode.h"
-#include <core/assets/assetManager.h>
 namespace luna
 {
 	namespace nodes
@@ -35,10 +34,9 @@ namespace luna
 			button.hoverFilePath = "src/assets/media/buttons/button2.png";
 			button.pressedFilePath = "src/assets/media/buttons/button3.png";
 
-
-			button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.normalFilePath.string(),assets::texture)));
-			button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::texture)));
-			button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::texture)));
+			button.normalTexture = renderer::texture::create(button.normalFilePath);
+			button.hoverTexture = renderer::texture::create(button.hoverFilePath);
+			button.pressedTexture = renderer::texture::create(button.pressedFilePath);
 		}
 	}
 }
