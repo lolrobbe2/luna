@@ -25,6 +25,12 @@ namespace luna
 			}
 		}
 
+
+		const std::string& projectManager::getName()
+		{
+			return activeProject->getConfig().name;
+		}
+
 		const std::filesystem::path& projectManager::getProjectDirectory()
 		{
 			return activeProject->getConfig().projectDirectory;

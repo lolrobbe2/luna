@@ -19,9 +19,8 @@ namespace luna
 	private:
 		void saveAs();
 		void open();
-		void createProject();
+		void openProjectPopup();
 		void createProjectPopup();
-		void openProject();
 		void inputText(const std::string& name, std::string& stringBuffer, float width, const std::string& hint = "");
 		layer* prjLayer = nullptr;
 		ref<scene> activeScene;

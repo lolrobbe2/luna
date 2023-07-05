@@ -11,6 +11,7 @@ namespace luna
 		public:
 			static void init();
 
+			static const std::string& getName();
 			/**
 			* @brief returns the directory of the active project.
 			*/

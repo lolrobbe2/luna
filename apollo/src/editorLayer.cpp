@@ -13,7 +13,8 @@
 
 namespace luna
 {
-	static bool CreateNewProject = false;
+	static bool createNewProject = false;
+	static bool	openProject = false;
 
 	editorLayer::editorLayer(layer* prjLayer,const std::string& name)
 	{
@@ -47,11 +48,11 @@ namespace luna
 			{
 				if(ImGui::MenuItem("create new","Ctrl+N"))
 				{
-					CreateNewProject = true;
+					createNewProject = true;
 				}
 				if (ImGui::MenuItem("open", "Ctrl+Shift+O"))
 				{
-					openProject();
+					openProject = true;
 				}
 				if (ImGui::MenuItem("close project", "Ctrl+Shift+L"))
 				{
@@ -74,8 +75,10 @@ namespace luna
 			}
 			ImGui::EndMainMenuBar();
 		}
-		if(CreateNewProject) ImGui::OpenPopup("CreateNewProject");
+		if(createNewProject) ImGui::OpenPopup("createNewProject");
 		createProjectPopup();
+		
+		openProjectPopup();
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 
 		if (ImGui::Begin("scene"));
@@ -138,7 +141,7 @@ namespace luna
 			{
 				if (shiftPressed) 
 				{
-
+					openProject = true;
 				} else {
 					open();
 				}
@@ -147,7 +150,7 @@ namespace luna
 		case input::N:
 			if(controlPressed)
 			{
-				CreateNewProject = true;
+				createNewProject = true;
 			}
 			break;
 		case input::L:
@@ -181,20 +184,99 @@ namespace luna
 		scenePanel->setSelectedNode(Node());
 		
 	}
-	void editorLayer::createProject()
+
+	void editorLayer::openProjectPopup()
 	{
+		if (!openProject)
+			return;
+
+		// Get the size of the parent window
+		ImGuiViewport* viewport = ImGui::GetMainViewport();
+		ImVec2 parentWindowSize = viewport->Size;
 		
+
+		// Calculate the size and position of the popup
+		ImVec2 popupSize(parentWindowSize.x * 0.5f, parentWindowSize.y * 0.5f);
+
+
+
+		ImGui::OpenPopup("Open Project");
+		float startCursorX;
+		ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
+		ImGui::SetNextWindowSize(popupSize);
+		if (ImGui::BeginPopupModal("Open Project", &openProject, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
+		{
+			startCursorX = ImGui::GetCursorPosX();
+			ImGui::Text("Open Project");
+
+			// Project List
+			if (ImGui::ListBoxHeader("##ProjectList", ImVec2(-1, popupSize.y - 100)))
+			{
+				for (const auto& project : project::projectManager::getProjects())
+				{
+					// Display project name on top and directory at the bottom
+					if (project->getConfig().name != project::projectManager::getName()) 
+					{
+						std::string itemText = project->getConfig().name + "\n" + project->getConfig().projectDirectory.string();
+						if (ImGui::Selectable(itemText.c_str()))
+						{
+							// Perform the action of opening the selected project
+							// Add your code here
+
+							project::projectManager::setActive(project);
+
+							std::filesystem::current_path(project->getConfig().projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
+
+							openProject = false;
+							ImGui::CloseCurrentPopup();
+						}
+					}
+				}
+
+				ImGui::ListBoxFooter();
+			}
+
+			ImGui::SetCursorPosY(startCursorX  + popupSize.y * 0.9f);
+			// Open Button
+			if (ImGui::Button("Open", ImVec2(ImGui::GetContentRegionAvail().x * 0.5f, 0)))
+			{
+				// Perform the action of opening the selected project
+				// Add your code here
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SameLine();
+
+			// Cancel Button
+			if (ImGui::Button("Cancel", ImVec2(-1.0f, 0)))
+			{
+				// Close the popup without selecting a project
+				openProject = false;
+				ImGui::CloseCurrentPopup();
+			}
+
+			ImGui::EndPopup();
+		}
 	}
+
 	void editorLayer::createProjectPopup()
 	{
 		static std::string projectName;
 		static std::filesystem::path projectDir;
 		ImGuiViewport* viewport = ImGui::GetMainViewport();
+		ImVec2 parentWindowSize = viewport->Size;
 
-		if (ImGui::BeginPopupModal("CreateNewProject", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
+
+		// Calculate the size and position of the popup
+		ImVec2 popupSize(parentWindowSize.x * 0.5f, parentWindowSize.y * 0.5f);
+
+		float startCursorY = ImGui::GetCursorPosY();
+
+		ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + viewport->WorkSize.x * 0.25f, viewport->WorkPos.y + viewport->WorkSize.y * 0.25f));
+		ImGui::SetNextWindowSize(popupSize);
+		if (ImGui::BeginPopupModal("createNewProject", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar))
 		{
 			ImGui::Text("Projectname:");
-			inputText("##projectNameInput", projectName, viewport->WorkSize.x * 0.35f);
+			inputText("##projectNameInput", projectName, ImGui::GetContentRegionAvail().x * 0.7f);
 			ImGui::SameLine();
 			if (ImGui::Button("Create Folder", ImVec2(-1.0f, 0.0f)))
 			{
@@ -226,16 +308,15 @@ namespace luna
 			}
 			ImGui::Text("Project directory");
 			std::string temp = projectDir.string();
-			inputText("##projectDir", temp, viewport->WorkSize.x * 0.35f);
+			inputText("##projectDir", temp, ImGui::GetContentRegionAvail().x * 0.7f);
 			projectDir = temp;
 			ImGui::SameLine();
 			if (ImGui::Button("Browse", ImVec2(-1.0f, 0.0f)))
 			{
 				projectDir = platform::os::openFolderDialog();
 			}
-			ImGui::SetCursorPosY(viewport->WorkSize.y * 0.5f * 0.9f);
-			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + viewport->WorkSize.x * 0.5f * 0.15f);
-			if (ImGui::Button("Create and Edit ", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+			ImGui::SetCursorPosY(startCursorY + popupSize.y * 0.85f);
+			if (ImGui::Button("Create and Edit ", ImVec2(ImGui::GetContentRegionAvail().x * 0.5f, 0.0f)))
 			{
 				project::projectGeneratorVS::generateProject(projectName, projectDir);
 
@@ -255,21 +336,17 @@ namespace luna
 
 				std::filesystem::current_path(config.projectDirectory); //set currentworking dirrectory to project directory so that the relative directory's work.
 
-				CreateNewProject = false;
+				createNewProject = false;
 				ImGui::CloseCurrentPopup();
 			}
-			ImGui::SameLine(viewport->WorkSize.x * 0.25f);
-			if (ImGui::Button("Cancel", ImVec2(viewport->WorkSize.x * 0.5f * 0.3f, 0.0f)))
+			ImGui::SameLine();
+			if (ImGui::Button("Cancel", ImVec2(-1.0f, 0.0f)))
 			{
-				CreateNewProject = false;
+				createNewProject = false;
 				ImGui::CloseCurrentPopup();
 			}
 			ImGui::EndPopup();
 		}
-	}
-	void editorLayer::openProject()
-	{
-		LN_CORE_INFO("openProject");
 	}
 
 	void editorLayer::inputText(const std::string& name, std::string& stringBuffer, float width, const std::string& hint)
