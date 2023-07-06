@@ -28,10 +28,9 @@ namespace luna
 			/**
 			 * @brief creates vectorCache with default cache size is of 200 
 			 */
-			vectorCache()
+			vectorCache() : maxCacheSize(200)
 			{
 				LN_PROFILE_FUNCTION();
-				maxCacheSize = 200;
 				handleCache.reserve(maxCacheSize);
 				valueCache.reserve(maxCacheSize);
 			};
@@ -40,10 +39,9 @@ namespace luna
 			 * 
 			 * \param maxCacheSize
 			 */
-			vectorCache(size_t maxCacheSize)
+			vectorCache(size_t maxCacheSize) : maxCacheSize(maxCacheSize)
 			{
 				LN_PROFILE_FUNCTION();
-				this->maxCacheSize = maxCacheSize;
 				handleCache.reserve(maxCacheSize);
 				valueCache.reserve(maxCacheSize);
 			};
@@ -52,7 +50,7 @@ namespace luna
 			 */
 			~vectorCache()
 			{
-				std::lock_guard<std::mutex>cacheGuard(this->lockGuard);
+				std::lock_guard<std::mutex> cacheGuard(lockGuard);
 				handleCache.~vector();
 				valueCache.~vector();
 			};
@@ -67,19 +65,24 @@ namespace luna
 			{
 				LN_PROFILE_FUNCTION();
 				if (*key == 0) *key = uuid();
-				std::lock_guard<std::mutex>(this->lockGuard);
-				
-				handleCache.insert(handleCache.begin(), *key);
-				valueCache.insert(valueCache.begin(), _value);
-				if (handleCache.size() > maxCacheSize)
+				std::lock_guard<std::mutex> cacheGuard(lockGuard);
+
+				if (handleCache.size() >= maxCacheSize)
 				{
-					value overFlowValue = valueCache.back();
+					value overFlowValue = std::move(valueCache.back());
 					cacheObject overFlowKey = handleCache.back();
-					handleCache.resize(maxCacheSize);
-					valueCache.resize(maxCacheSize);
-					return std::pair<cacheObject, value>(overFlowKey, overFlowValue); // returns true in case of cache overflow.
+					handleCache.pop_back();
+					valueCache.pop_back();
+					handleCache.insert(handleCache.begin(), *key);
+					valueCache.insert(valueCache.begin(), std::move(_value));
+					return std::make_pair(overFlowKey, std::move(overFlowValue)); // returns true in case of cache overflow.
 				}
-				return std::pair<cacheObject, value>(false, value()); //returns false incase there is no cache overflow.
+				else
+				{
+					handleCache.insert(handleCache.begin(), *key);
+					valueCache.insert(valueCache.begin(), std::move(_value));
+					return std::make_pair(false, value()); // returns false incase there is no cache overflow.
+				}
 			};
 			/**
 			 * @brief gets a stored cahe value using the key handle.
@@ -90,26 +93,24 @@ namespace luna
 			std::pair<cacheResult, value> getValue(cacheObject key)
 			{
 				LN_PROFILE_FUNCTION();
+
+				if (key == 0) return std::make_pair(cacheResult::cacheInvalidHandle, value());
 				//lock mutex to block other threads from accesing it.
-				if(key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
-				std::lock_guard<std::mutex>(this->lockGuard);
+				std::lock_guard<std::mutex> cacheGuard(lockGuard);
 
 				//find cahePair based on key. 
-
-				for (size_t iterator = 0; iterator < handleCache.size(); iterator++) //iterate iver handle cache.
+				auto it = findHandle(key);
+				if (it != handleCache.end())
 				{
-					cacheObject currentKey = handleCache[iterator];
-					if (currentKey == key)
-					{
-						value requesteCacheObject = valueCache[iterator];
-						handleCache.erase(handleCache.begin() + iterator);
-						valueCache.erase(valueCache.begin() + iterator);
-						handleCache.insert(handleCache.begin(), key);
-						valueCache.insert(valueCache.begin(), requesteCacheObject);
-						//return cache hit and value.
-						return std::pair<cacheResult, value>(cacheResult::cacheHit, requesteCacheObject);
-					}
+					value requestedCacheObject = std::move(it->second);
+					handleCache.erase(it);
+					valueCache.erase(valueCache.begin() + std::distance(handleCache.begin(), it));
+					handleCache.insert(handleCache.begin(), key);
+					valueCache.insert(valueCache.begin(), requestedCacheObject);
+					return std::make_pair(cacheResult::cacheHit, std::move(requestedCacheObject));
 				}
+
+				return std::make_pair(cacheResult::cacheMiss, value());
 				//if value is not found return empty value and cache miss.
 				return std::pair<cacheResult, value>(cacheResult::cacheMiss, value());
 			};
@@ -155,30 +156,28 @@ namespace luna
 			std::pair<cacheResult, value> eraseValue(cacheObject key)
 			{
 				LN_PROFILE_FUNCTION();
-				if (key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
-				std::lock_guard<std::mutex>(this->lockGuard);
-				for (uint64_t iterator = 0; iterator < handleCache.size(); iterator++)
+				if (key == 0) return std::make_pair(cacheResult::cacheInvalidHandle, value());
+				std::lock_guard<std::mutex> cacheGuard(lockGuard);
+
+				auto it = findHandle(key);
+				if (it != handleCache.end())
 				{
-					cacheObject currentKey = handleCache[iterator];
-					if (currentKey == key)
-					{
-						handleCache.erase(handleCache.begin() + iterator);
-						valueCache.erase(valueCache.begin() + iterator);
-						return std::pair<cacheResult, value>(cacheResult::cacheOpSucces, value());
-					}
+					size_t index = std::distance(handleCache.begin(), it);
+					value erasedValue = std::move(valueCache[index]);
+					handleCache.erase(it);
+					valueCache.erase(valueCache.begin() + index);
+					return std::make_pair(cacheResult::cacheOpSuccess, std::move(erasedValue));
 				}
-				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, value());
+
+				return std::make_pair(cacheResult::cacheOpFailed, value());
 			}
 
 			/**
 			* @brief checks if the cache contains a value with a certain key
 			*/
-			bool hasValue(cacheObject key) {
-				for (uint64_t iterator = 0; iterator < handleCache.size(); iterator++)
-				{
-					if (handleCache[iterator] == key) return true;
-				}
-				return false;
+			bool hasValue(cacheObject key) 
+			{
+				return findHandle(key) != handleCache.end();	
 			}
 
 			/**
@@ -196,6 +195,11 @@ namespace luna
 			std::vector<cacheObject> handleCache; //use seperate vector to allow the entire vector to remain in cache.
 			std::vector<value> valueCache; //same principle value size is unkown -> valueCache might not fit in cahce completely.
 			mutable std::mutex lockGuard;
+
+			typename std::vector<cacheObject>::iterator findHandle(cacheObject key)
+			{
+				return std::find(handleCache.begin(), handleCache.end(), key);
+			}
 		};
 	}
 }
