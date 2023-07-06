@@ -14,7 +14,6 @@ namespace luna
 		{
 			std::vector<std::filesystem::path> assetMetadataPaths;
 			{
-				if (!std::filesystem::exists("import")) return;
 				for (auto& dir_entry : std::filesystem::recursive_directory_iterator("import"))
 				{
 					if (dir_entry.path().extension() == ".limp") {

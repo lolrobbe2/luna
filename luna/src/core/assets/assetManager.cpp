@@ -9,7 +9,7 @@ namespace luna
 		{
 
 			if (editor) assetManagerRef = ref<assetManagerBase>(new editorAssetManager());
-			//else LN_CORE_ERROR("runtime asset manager not implemented!");
+			else LN_CORE_ERROR("runtime asset manager not implemented!");
 
 			assetManagerRef->loadImportedAssetsMetadata();
 		}
