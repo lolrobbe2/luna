@@ -180,6 +180,16 @@ namespace luna
 				}
 				return false;
 			}
+
+			/**
+			* @brief clears the objectStorage of their key/value pairs.
+			*/
+			void clear()
+			{
+				std::lock_guard<std::mutex>(this->lockGuard);
+				handleCache.clear();
+				valueCache.clear();
+			}
 		protected:
 
 			uint64_t maxCacheSize;

@@ -140,6 +140,16 @@ namespace luna
 				if (objectCache.hasValue(key)) return true;
 				return objectMemory.find(key) != objectMemory.end();
 			}
+
+			/**
+			* @brief clears the objectstorage of all value's
+			*/
+
+			void clear() 
+			{
+				objectCache.clear();
+				objectMemory.clear();
+			}
 		private:
 			vectorCache<value> objectCache; // fast constantly used memory
 			std::unordered_map<storageObject, value> objectMemory; //slower longterm object storage.
