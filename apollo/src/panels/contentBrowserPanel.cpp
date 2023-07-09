@@ -1,5 +1,7 @@
 #include "contentBrowserPanel.h"
 #include <core/vulkan/rendering/vulkanTexture.h>
+#include <core/platform/platformUtils.h>
+#include <project/projectManager.h>
 namespace luna
 {
 	std::map<std::string, bool> selectedMap;
@@ -310,7 +312,7 @@ namespace luna
 
 	void contentBrowserPanel::loadNormalIcons()
 	{
-
+		assets::assetManager::setImportDirectory(platform::filesystem::getEngineRootPath());
 		assets::assetManager::importAsset("src/resources/normal/directoryIcon.png", assets::texture);
 		assets::assetManager::importAsset("src/resources/normal/directoryIconHovered.png", assets::texture);
 
@@ -328,6 +330,7 @@ namespace luna
 
 		assets::assetManager::importAsset("src/resources/normal/fileIcon.png", assets::texture);
 
+		assets::assetManager::setImportDirectory("");
 	}
 
 	void contentBrowserPanel::setNormalIcons()

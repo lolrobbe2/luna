@@ -8,10 +8,15 @@ namespace luna
 		static std::map<std::string, assetHandle> translationMap;
 		editorAssetManager::~editorAssetManager()
 		{
-			//assetMetadataStorage.clear(); TODO other branch
+			assetMetadataStorage.clear(); 
+			translationMap.clear();
 		}
-		void editorAssetManager::loadImportedAssetsMetadata()
+		void editorAssetManager::loadImportedAssetMetadata()
 		{
+			if (!std::filesystem::exists("import")) return;
+			assetMetadataStorage.clear();
+			translationMap.clear();
+			
 			std::vector<std::filesystem::path> assetMetadataPaths;
 			{
 				for (auto& dir_entry : std::filesystem::recursive_directory_iterator("import"))
@@ -89,15 +94,15 @@ namespace luna
 			std::string path = _filePath.parent_path().string();
 			std::string filename = _filePath.filename().string();
 			if (translationMap.find(filename) != translationMap.end()) return translationMap[filename];
-			memcpy(metaData->filePath, path.c_str(), path.size());
-			memcpy(metaData->name, filename.c_str(), filename.size());
+			memcpy_s(metaData->filePath, _MAX_PATH, path.c_str(), path.size());
+			memcpy_s(metaData->name, _MAX_FNAME,filename.c_str(), filename.size());
 			ref<asset> importedAsset = assetImporter::importAsset(metaData->handle, metaData);
 			if (importedAsset.get()) { 
 				importedAsset->assetHandle = metaData->handle;
 				saveImportData(metaData); 
 				assetMetadataStorage.putValue((utils::storageObject*)&metaData->handle, metaData);
 				translationMap.insert({ metaData->name,metaData->handle });
-				assetStorage.putValue((utils::storageObject*)&metaData->handle, importedAsset);
+				assetStorage.putValue((utils::storageObject*)&metaData->handle, std::move(importedAsset));
 				return metaData->handle;
 			}
 			return 0; //invalid, as in importing failed!

@@ -11,7 +11,7 @@ namespace luna
 			cacheMiss = 0,
 			cacheHit = 1,
 			cacheInvalidHandle = 2,
-			cacheOpSucces = 3,
+			cacheOpSuccess = 3,
 			cacheOpFailed = 4,
 			CACHE_MAX_ENUM = 5
 		};
@@ -102,7 +102,7 @@ namespace luna
 				auto it = findHandle(key);
 				if (it != handleCache.end())
 				{
-					value requestedCacheObject = std::move(it->second);
+					value requestedCacheObject = valueCache[std::distance(handleCache.begin(), it)];
 					handleCache.erase(it);
 					valueCache.erase(valueCache.begin() + std::distance(handleCache.begin(), it));
 					handleCache.insert(handleCache.begin(), key);
@@ -124,25 +124,19 @@ namespace luna
 			std::pair<cacheResult, value> setValue(cacheObject key, value _value)
 			{
 				LN_PROFILE_FUNCTION();
-				if (key == 0) return std::pair<cacheResult, value>(cacheResult::cacheInvalidHandle, value());
-				std::lock_guard<std::mutex>(this->lockGuard);
 
-				for (size_t iterator = 0; iterator < handleCache.size(); iterator++)
+
+				if (key == 0) return std::make_pair(cacheResult::cacheInvalidHandle, value());
+				std::lock_guard<std::mutex> cacheGuard(lockGuard);
+
+				auto it = findHandle(key);
+				if (it != handleCache.end())
 				{
-					cacheObject currentKey = handleCache[iterator];
-					if (currentKey == key)
-					{
-						//erase value from cache
-						handleCache.erase(handleCache.begin() + iterator);
-						valueCache.erase(valueCache.begin() + iterator);
-						//put value in front of cache
-						handleCache.insert(cache.begin(), key);
-						valueCache.insert(valueCache.begin(), _value);
-						//return cache hit and value.
-						return std::pair<cacheResult, value>(cacheResult::cacheOpSucces, _value);
-					}
+					valueCache[std::distance(handleCache.begin(), it)] = std::move(_value);
+					return std::make_pair(cacheResult::cacheOpSuccess, valueCache[std::distance(handleCache.begin(), it)]);
 				}
-				return std::pair<cacheResult, value>(cacheResult::cacheOpFailed, _value);
+
+				return std::make_pair(cacheResult::cacheOpFailed, _value);
 			}
 
 			/**
@@ -150,7 +144,7 @@ namespace luna
 			 * 
 			 * \param cacheObject key
 			 * \param value _value
-			 * \return cacheOpSucces when value whas succesfully erased
+			 * \return cacheOpSuccess when value whas succesfully erased
 			 * \return cacheOpFailed when value could not be found or some other operation failed
 			 */
 			std::pair<cacheResult, value> eraseValue(cacheObject key)
@@ -166,7 +160,7 @@ namespace luna
 					value erasedValue = std::move(valueCache[index]);
 					handleCache.erase(it);
 					valueCache.erase(valueCache.begin() + index);
-					return std::make_pair(cacheResult::cacheOpSuccess, std::move(erasedValue));
+					return std::pair<cacheResult,value>(cacheResult::cacheOpSuccess, erasedValue);
 				}
 
 				return std::make_pair(cacheResult::cacheOpFailed, value());
@@ -193,7 +187,7 @@ namespace luna
 
 			uint64_t maxCacheSize;
 			std::vector<cacheObject> handleCache; //use seperate vector to allow the entire vector to remain in cache.
-			std::vector<value> valueCache; //same principle value size is unkown -> valueCache might not fit in cahce completely.
+			std::vector<value> valueCache; //same principle value byte size is unkown -> valueCache might not fit in cahce completely.
 			mutable std::mutex lockGuard;
 
 			typename std::vector<cacheObject>::iterator findHandle(cacheObject key)

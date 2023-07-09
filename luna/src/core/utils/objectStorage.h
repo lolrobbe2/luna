@@ -49,6 +49,7 @@ namespace luna
 				std::pair<cacheObject, value> result = objectCache.putValue(key, _value);
 				if (result.first)
 				{
+					std::lock_guard<std::shared_mutex> heapGuard(heapMutex);
 					objectMemory.insert({ result.first,result.second });
 					return { storageOpSucces, _value };
 				}
@@ -108,10 +109,8 @@ namespace luna
 					}
 				case cacheResult::cacheInvalidHandle:
 					return { storageInvalidHandle,value() };
-					return
-				default:
-					break;
 				}
+				return { storageInvalidHandle,value() };
 			}
 			std::pair<storageResult, value> eraseValue(const storageObject& key)
 			{
@@ -119,17 +118,15 @@ namespace luna
 				std::pair<cacheResult, value> result = objectCache.eraseValue(key);
 				switch (result.first)
 				{
-				case cacheResult::cacheOpSucces:
+				case cacheResult::cacheOpSuccess:
 					return { storageOpSucces,result.second };
 				case cacheResult::cacheOpFailed:
 					objectMemory.erase(key);
 					return { storageOpSucces,value() };
 				case cacheResult::cacheInvalidHandle:
 					return { storageInvalidHandle,value() };
-				default:
-					break;
 				}
-
+				return { storageInvalidHandle,value() };
 			}
 
 			/**
@@ -153,6 +150,7 @@ namespace luna
 		private:
 			vectorCache<value> objectCache; // fast constantly used memory
 			std::unordered_map<storageObject, value> objectMemory; //slower longterm object storage.
+			mutable std::shared_mutex heapMutex;
 		};
 	}
 }

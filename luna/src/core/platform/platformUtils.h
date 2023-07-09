@@ -40,6 +40,7 @@ namespace luna
 		{
 		public:
 			static std::string getSystemFolderPath(const folderTypes folderType);
+			static std::filesystem::path getEngineRootPath();
 		private:
 
 		};

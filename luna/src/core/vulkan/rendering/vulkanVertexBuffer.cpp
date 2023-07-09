@@ -34,7 +34,7 @@ namespace luna
 			this->size = size;
 			utils::vulkanAllocator::createBuffer(&vkVertexBuffer, size, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 			this->data = utils::vulkanAllocator::getAllocationInfo((uint64_t)vkVertexBuffer).pMappedData;
-			memcpy(this->data, data, size);
+			memcpy_s(this->data,this->size, data, size);
 		}
 
 	}

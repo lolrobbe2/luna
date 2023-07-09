@@ -66,7 +66,7 @@ namespace luna
 			LN_API inline static void setSceneMouse(const glm::vec2& sceneMousePos) { rendererPipeline->setWindowMousePos(sceneMousePos); };
 
 			LN_API _ALWAYS_INLINE_ static ImTextureID registerImGuiImage(const uint64_t handle) {return rendererPipeline->registerImGuiImage(handle); }
-			LN_API _ALWAYS_INLINE_ static void removeImGuiImage(const ImTextureID handle) { rendererPipeline->removeImGuiImage(handle); }
+			LN_API _ALWAYS_INLINE_ static void removeImGuiImage(ImTextureID& handle) { rendererPipeline->removeImGuiImage(handle); }
 		private:
 			inline static ref<device> rendererDevice; //the main renderDevice (GPU handle)
 			inline static ref<pipeline> rendererPipeline;// the main graphics pipeline

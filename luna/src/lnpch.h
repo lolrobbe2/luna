@@ -13,6 +13,9 @@
 #include <fstream>
 #include <filesystem>
 #include <stddef.h>
+
+#include <shared_mutex>
+
 /*personal engine includes*/
 #include <core/platform/platform.h>
 /*thirdparty includes*/

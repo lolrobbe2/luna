@@ -10,7 +10,7 @@ namespace luna
 			size = count;
 			utils::vulkanAllocator::createBuffer(&vkIndexBuffer, sizeof(uint32_t) * count,VkBufferUsageFlagBits::VK_BUFFER_USAGE_INDEX_BUFFER_BIT ,VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
 			data = (uint32_t*)utils::vulkanAllocator::getAllocationInfo((uint64_t)vkIndexBuffer).pMappedData;
-			memcpy(data, indices, sizeof(uint32_t) * count);
+			memcpy_s(data, sizeof(uint32_t) * size, indices, sizeof(uint32_t) * count);
 		}
 		vulkanIndexBuffer::vulkanIndexBuffer(uint32_t count)
 		{

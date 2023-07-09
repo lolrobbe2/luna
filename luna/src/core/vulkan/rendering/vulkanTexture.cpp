@@ -28,7 +28,7 @@ namespace luna
 		vulkanTexture::~vulkanTexture()
 		{
 			if (!destroy) return;
-			if (textureHandle != 0) renderer::renderer::removeImGuiImage(textureHandle);
+			//if (textureHandle != 0) renderer::renderer::removeImGuiImage(textureHandle);
 			utils::vulkanAllocator::destroyImageView(imageViewHandle);
 			utils::vulkanAllocator::destroyImage(imageHandle);
 		}

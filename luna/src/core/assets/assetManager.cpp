@@ -4,14 +4,31 @@ namespace luna
 {
 	namespace assets
 	{
+		static std::filesystem::path importPath;
 
 		void assetManager::init(bool editor)
 		{
-
 			if (editor) assetManagerRef = ref<assetManagerBase>(new editorAssetManager());
 			else LN_CORE_ERROR("runtime asset manager not implemented!");
+		}
 
-			assetManagerRef->loadImportedAssetsMetadata();
+
+		void assetManager::setImportDirectory(const std::filesystem::path& directory)
+		{	
+			if (std::filesystem::is_directory(directory))
+			{
+				importPath = directory;
+				if (importPath.string().back() != '\\' || importPath.string().back() != '/')
+					importPath += '\\';
+			}
+			else
+				LN_CORE_ERROR("{} is not a directory", directory);
+
+		}
+
+		void assetManager::loadImportedAssetMetaData()
+		{
+			assetManagerRef->loadImportedAssetMetadata();
 		}
 		void assetManager::loadAsset(assetHandle handle)
 		{
@@ -58,7 +75,15 @@ namespace luna
 		}
 		assetHandle assetManager::importAsset(const std::string& filePath, const assetType type)
 		{
+			if(std::filesystem::path(filePath).is_relative())
+			{
+				std::string intermediate = importPath.string();
+				intermediate += filePath;
+				return assetManagerRef->importAsset(intermediate, type);
+
+			}
 			return assetManagerRef->importAsset(filePath,type);
 		}
+
 	}
 }

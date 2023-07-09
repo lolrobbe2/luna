@@ -8,7 +8,10 @@ namespace luna
 		{
 		public:
 			static void init(bool editor);
-
+			/**
+			* simular to std::filesystem::currentPath() but this function does not override the std::filesystem::currentPath.
+			*/
+			static void setImportDirectory(const std::filesystem::path& directory);
 			/**
 			* @brief returns an important asset and loads it if needed.
 			*/
@@ -35,6 +38,8 @@ namespace luna
 			 * @brief imports an asset that has not been registered/ has a .limp file
 			 */
 			static assetHandle importAsset(const std::string& filePath, const assetType type);
+			static void loadImportedAssetMetaData();
+
 		private:
 			static void loadAsset(assetHandle handle);
 			inline static ref<assetManagerBase> assetManagerRef;

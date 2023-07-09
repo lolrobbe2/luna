@@ -15,7 +15,7 @@ namespace luna
 			virtual ref<asset> getAsset(const std::string& name) = 0;
 			virtual assetMetadata* getAssetMetadata(assetHandle handle) = 0;
 			virtual assetMetadata* getAssetMetadata(const std::string& filename) = 0;
-			virtual void loadImportedAssetsMetadata() = 0;
+			virtual void loadImportedAssetMetadata() = 0;
 			/**
 			* @brief loads a valid assetHandle from the imported assets. (doesn not load .limp file this is allready loaded)
 			*/

@@ -12,10 +12,13 @@
 #include <locale.h>
 #include <core/object/methodDB.h>
 #include <string_view>
+
 namespace luna 
 {
 	namespace platform
 	{
+		const static std::filesystem::path engineRootPath = std::filesystem::current_path();
+
 		std::string os::openFileDialog(const char* filter)
 		{
 			OPENFILENAMEA ofn;
@@ -132,6 +135,7 @@ namespace luna
 			memcpy_s(file.data(), file.size(), buffer, size);
 			return file;
 		}
+	
 		std::string os::getCurrentWorkingDirectory()
 		{
 			return std::filesystem::current_path().string();
@@ -246,6 +250,10 @@ namespace luna
 			}
 			LN_CORE_ERROR("could not find special folder!");
 			return "meep meep could not find anything!";
+		}
+		std::filesystem::path filesystem::getEngineRootPath()
+		{
+			return engineRootPath;
 		}
 }
 

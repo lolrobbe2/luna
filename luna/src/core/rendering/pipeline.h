@@ -34,7 +34,7 @@ namespace luna
 			 */
 			virtual ImTextureID getWindowImage() = 0; 
 			virtual ImTextureID registerImGuiImage(const uint64_t handle) = 0;
-			virtual void removeImGuiImage(const ImTextureID handle) = 0;
+			virtual void removeImGuiImage(ImTextureID& handle) = 0;
 			/**
 			 * @brief creates platform specific commands for the rendererPipeline using engine drawCommands.
 			 * 

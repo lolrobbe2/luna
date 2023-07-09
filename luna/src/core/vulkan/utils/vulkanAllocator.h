@@ -46,7 +46,7 @@ namespace luna
 			 * \param image
 			 * \return 
 			 */
-			static VkResult destroyImage(const VkImage& image);
+			static VkResult destroyImage(VkImage& image);
 			/**
 			 * @brief creates a VkImageView object.
 			 * 
@@ -63,7 +63,7 @@ namespace luna
 			 * \param imageView
 			 * \return 
 			 */
-			static VkResult destroyImageView(const VkImageView& imageView);
+			static VkResult destroyImageView(VkImageView& imageView);
 			/**
 			 * @brief creates a VkBuffer object.
 			 * 

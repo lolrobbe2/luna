@@ -10,7 +10,7 @@ namespace luna
 			editorAssetManager() = default;
 			virtual ~editorAssetManager();
 
-			virtual void loadImportedAssetsMetadata() override;
+			virtual void loadImportedAssetMetadata() override;
 			virtual ref<asset> getAsset(assetHandle handle) override;
 			virtual ref<asset> getAsset(const std::string& name) override;
 			virtual assetMetadata* getAssetMetadata(assetHandle handle) override;

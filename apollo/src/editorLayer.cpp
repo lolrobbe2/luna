@@ -21,6 +21,9 @@ namespace luna
 		this->prjLayer = prjLayer;
 		m_DebugName = name;
 		activeScene = ref<scene>(new scene());
+
+		assets::assetManager::loadImportedAssetMetaData();
+
 		scenePanel = ref<sceneHierarchyPanel>(new sceneHierarchyPanel());
 		contentPanel = ref<contentBrowserPanel>(new contentBrowserPanel());
 	}

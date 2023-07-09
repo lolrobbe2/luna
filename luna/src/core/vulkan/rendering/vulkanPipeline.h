@@ -44,7 +44,7 @@ namespace luna
 			 */
 			_ALWAYS_INLINE_ virtual ImTextureID getWindowImage() override;
 			_ALWAYS_INLINE_ virtual ImTextureID registerImGuiImage(const uint64_t handle) { return  ImGui_ImplVulkan_AddTexture(sampler->getHandle(), (VkImageView)handle, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL); }
-			_ALWAYS_INLINE_ virtual void removeImGuiImage(const ImTextureID handle) { ImGui_ImplVulkan_RemoveTexture((VkDescriptorSet)handle); }
+			_ALWAYS_INLINE_ virtual void removeImGuiImage(ImTextureID& handle) { ImGui_ImplVulkan_RemoveTexture((VkDescriptorSet)handle); handle = VK_NULL_HANDLE; }
 			/**
 			 * @brief creates the renderer commands for the pipeline.
 			 * 
