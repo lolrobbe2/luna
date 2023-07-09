@@ -13,9 +13,26 @@
 #include <core/assets/assetManager.h>
 namespace luna
 {
+	sceneHierarchyPanel::sceneHierarchyPanel()
+	{
+		smallDirectoryIcon = assets::assetManager::getAsset("directoryIcon.png");
+		smallPngIcon = assets::assetManager::getAsset("small_icon_png.png");
+		smallJpgIcon = assets::assetManager::getAsset("small_icon_jpg.png");
+		smallTtfIcon = assets::assetManager::getAsset("small_icon_ttf.png");
+		smallLscnIcon = assets::assetManager::getAsset("small_icon_lscn.png");
+		smallFileIcon = assets::assetManager::getAsset("small_fileIcon.png");
+	}
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
 	{
 		setContext(context);
+
+		smallDirectoryIcon = assets::assetManager::getAsset("directoryIcon.png");
+		smallPngIcon = assets::assetManager::getAsset("small_icon_png.png");
+		smallJpgIcon = assets::assetManager::getAsset("small_icon_jpg.png");
+		smallTtfIcon = assets::assetManager::getAsset("small_icon_ttf.png");
+		smallLscnIcon = assets::assetManager::getAsset("small_icon_lscn.png");
+		smallFileIcon = assets::assetManager::getAsset("small_fileIcon.png");
+
 	}
 
 	void sceneHierarchyPanel::setContext(const ref<scene>& context)
@@ -199,14 +216,34 @@ namespace luna
 				{
 					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
 					//inputText("filePath", sprite.filePath);
-					ImGui::SameLine();
-					if (ImGui::Button("select image"))
+					if(sprite.filePath.string() != "")
 					{
-						sprite.filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-						sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+						const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getSmallIcon(sprite.filePath));
+						if(ImGui::ImageButton(icon->getGuiImageHandle(),ImVec2(60,60)))
+						{
+							const std::string filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
+							if (filePath != "")
+							{
+								sprite.filePath = filePath;
+								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
+								sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+							}
+						}
+						ImGui::SameLine();
+						ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 30.0f);
+						ImGui::Text(sprite.filePath.filename().string().c_str());
+					} else {
+						if (ImGui::Button("select \n image", ImVec2(60, 60)))
+						{
+							const std::string filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
+							if (filePath != "")
+							{
+								sprite.filePath = filePath;
+								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
+								sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+							}
+						}
 					}
-
 					ImGui::TreePop();
 				}
 				ImGui::Separator();
@@ -371,5 +408,22 @@ namespace luna
 	void sceneHierarchyPanel::onPlay()
 	{
 		
+	}
+
+	ref<assets::asset> sceneHierarchyPanel::getSmallIcon(const std::filesystem::path& assetFilePath)
+	{
+		if (assetFilePath.extension().string() == ".png") {
+			
+			return smallPngIcon;
+		}
+		else if (assetFilePath.extension().string() == ".jpg") {
+		
+			return smallJpgIcon;
+		}
+		else if (assetFilePath.extension().string() == ".ttf") {
+		
+			return smallTtfIcon;
+		}
+		return smallFileIcon;
 	}
 }

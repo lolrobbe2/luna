@@ -8,7 +8,7 @@ namespace luna
 
 
 	public:
-		sceneHierarchyPanel() = default;
+		sceneHierarchyPanel();
 		sceneHierarchyPanel(const ref<scene>& scene);
 		void setContext(const ref<scene>& scene);
 
@@ -28,6 +28,7 @@ namespace luna
 
 		void inputText(const std::string& name, std::string& stringBuffer);
 		void onPlay();
+		ref<assets::asset> getSmallIcon(const std::filesystem::path& assetFilePath);
 		void onStop();
 	private:
 
@@ -36,6 +37,21 @@ namespace luna
 		Node m_SelectionContext;
 		Node m_Selected;
 		std::string m_ListSelected = "";
+
+#pragma region smallIcons
+		ref<assets::asset> smallDirectoryIcon;
+
+		ref<assets::asset> smallPngIcon;
+
+		ref<assets::asset> smallJpgIcon;
+
+		ref<assets::asset> smallTtfIcon;
+
+		ref<assets::asset> smallLscnIcon;
+
+		ref<assets::asset> smallFileIcon;
+#pragma endregion
+
 	};
 	template<typename T>
 	inline void sceneHierarchyPanel::displayAddComponentEntry(const std::string& entryName)

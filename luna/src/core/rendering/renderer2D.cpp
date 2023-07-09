@@ -97,7 +97,7 @@ namespace luna
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
 			//we use memset because it gets fully transformed in to pure assembly an is thus the fastest way to reset the vertexBUffer.
-			memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
+			//memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
@@ -172,7 +172,7 @@ namespace luna
 			if (outOfBounds == 4)
 			{
 				rendererData.quadVertexBufferPtr -= 4;
-				memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
+				//memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
 				return true;
 			}
 			rendererData.quadIndexCount += 6;
@@ -209,7 +209,7 @@ namespace luna
 			if (outOfBounds == 4)
 			{
 				rendererData.quadVertexBufferPtr -= 4;
-				memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
+				//memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
 				return true;
 			}
 			rendererData.quadIndexCount += 6;
@@ -249,7 +249,7 @@ namespace luna
 			if (outOfBounds == 4) 
 			{
 				rendererData.quadVertexBufferPtr -= 4;
-				memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
+				//memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
 				return true;
 			}
 			rendererData.quadIndexCount += 6;
