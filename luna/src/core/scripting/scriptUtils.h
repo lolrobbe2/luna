@@ -17,6 +17,7 @@ namespace luna
 		public:
 			static std::vector<const char*> getAppClassNames();
 			static void setContext(scene* scene);
+			static void reloadAssamblies();
 		};
 
 		class scriptInstance {

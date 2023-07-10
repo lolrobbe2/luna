@@ -48,7 +48,7 @@ namespace luna
 
 
 
-		class scriptingEngine
+		class LN_API scriptingEngine
 		{
 		public: 
 			enum class accessibility : uint8_t
@@ -83,6 +83,7 @@ namespace luna
 			static void printAssamblyTypes(MonoAssembly* assembly);
 			static void loadCoreClasses();
 			static void loadAppClasses();
+			static void reloadAssembly();
 			static std::vector<const char*> getAppClassNames() {
 				std::vector<const char*> appClassNames;
 				for (auto const& appClass : appClasses) { appClassNames.emplace_back(appClass.first.c_str()); };

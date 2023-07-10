@@ -123,7 +123,7 @@ namespace luna
 			while (std::getline(fullName, segment, ':')) seglist.push_back(segment);
 			return seglist.back();
 		}
-		inline static std::unordered_map<std::string, classInfo*> rootClassDatabase; //stors base classes
+		inline static std::unordered_map<std::string, classInfo*> rootClassDatabase; //stores base classes
 		inline static std::unordered_map<std::string, classInfo> classDatabase;
 	};
 }

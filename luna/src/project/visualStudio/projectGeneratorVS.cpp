@@ -25,7 +25,7 @@ namespace luna
 			std::filesystem::create_directories(srcDir);
 
 			std::filesystem::path libDir = dirPath;
-			libDir += "\\lib";
+			libDir += "\\mono\\lib";
 			std::filesystem::create_directories(libDir);
 
 			std::filesystem::path xmlDir = dirPath;
@@ -96,7 +96,7 @@ namespace luna
 			luaFile << "	outputdir = \"%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\"" << std::endl;
 
 			luaFile << "	LibraryDir = {}" << std::endl;
-			luaFile << "	LibraryDir[\"scriptCore\"] = \"%{wks.location}/lib/\"" << std::endl;
+			luaFile << "	LibraryDir[\"scriptCore\"] = \"%{wks.location}/mono/lib/\"" << std::endl;
 
 			luaFile << "	Library = {}" << std::endl;
 			luaFile << "	Library[\"scriptCore\"] = \"%{LibraryDir.scriptCore}/scriptCore.dll\"" << std::endl;
@@ -104,8 +104,8 @@ namespace luna
 
 			luaFile << "	kind \"SharedLib\"" << std::endl;
 			luaFile << "	language \"c#\"" << std::endl;
-			luaFile << "    targetdir(\"%{wks.location}/bin/\" .. outputdir .. \"/x64/%{prj.name}\")" << std::endl;
-			luaFile << "	objdir(\"%{wks.location}/bin-int/\" .. outputdir .. \"/x64/%{prj.name}\")" << std::endl;
+			luaFile << "    targetdir(\"%{wks.location}/mono/lib\")" << std::endl;
+			luaFile << "	objdir(\"%{wks.location}/build/bin-int/\" .. outputdir .. \"/x64/%{prj.name}\")" << std::endl;
 			luaFile << "    files" << std::endl;
 			luaFile << "	{" << std::endl;
 			luaFile << "		\"%{wks.location}/src/**.cs\"" << std::endl;

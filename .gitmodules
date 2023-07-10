@@ -31,3 +31,6 @@
 [submodule "luna/thirdparty/zlib"]
 	path = luna/thirdparty/zlib
 	url = https://github.com/madler/zlib
+[submodule "luna/thirdParty/fileWatcher"]
+	path = luna/thirdParty/fileWatcher
+	url = https://github.com/SpartanJ/efsw

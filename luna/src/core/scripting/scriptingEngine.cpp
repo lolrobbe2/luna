@@ -3,6 +3,9 @@
 #include <core/utils/objectStorage.h>
 #include <mono/metadata/mono-debug.h>
 #include <mono/metadata/threads.h>
+#include <core/utils/fileWatch.h>
+
+#include <project/projectManager.h>
 namespace luna
 {
 	namespace scripting
@@ -18,6 +21,9 @@ namespace luna
 			MonoImage* appImage;
 			scene* m_Context;
 
+			scope<filewatch::FileWatch<std::string>> appAssemblyFileWatcher;
+			bool assemblyReloadPending = false;
+
 			std::filesystem::path coreAssemblyFilepath;
 			std::filesystem::path appAssemblyFilepath;
  
@@ -26,12 +32,24 @@ namespace luna
 
 		static scriptEngineData* s_Data = nullptr;
 
+		static void onAppAssemblyFileSystemEvent(const std::string& path, const filewatch::Event change_type)
+		{
+			if (!s_Data->assemblyReloadPending && change_type == filewatch::Event::modified)
+			{
+				s_Data->assemblyReloadPending = true;
+
+
+				s_Data->appAssemblyFileWatcher.reset();
+				scriptingEngine::reloadAssembly();
+			}
+		}
+
 		void scriptingEngine::init()
 		{
 			initMono();
 
 			if (!loadAssembly("mono/lib/scriptCore.dll")) return LN_CORE_ERROR("[scriptingEngine] could not load scriptCore.dll");
-			if (!loadAppAssembly("mono/lib/sharpSandbox.dll")) return LN_CORE_ERROR("[scriptingEngine] could not load app assembly dll");
+			if (!loadAppAssembly(fmt::format("mono/lib/{}.dll", project::projectManager::getName()))) return LN_CORE_ERROR("[scriptingEngine] could not load app assembly dll");
 			
 			printAssamblyTypes(s_Data->coreAssembly);
 			printAssamblyTypes(s_Data->appAssembly);
@@ -105,10 +123,10 @@ namespace luna
 				return false;
 
 			s_Data->appImage = mono_assembly_get_image(s_Data->appAssembly);
-			/* TODO hot reloading code
-			s_Data->appAssemblyFileWatcher = createScope<filewatch::FileWatch<std::string>>(filepath.string(), OnAppAssemblyFileSystemEvent);
+
+			s_Data->appAssemblyFileWatcher = createScope<filewatch::FileWatch<std::string>>(filepath.string(), onAppAssemblyFileSystemEvent);
 			s_Data->assemblyReloadPending = false;
-			*/
+			
 			return true;
 		}
 
@@ -197,6 +215,7 @@ namespace luna
 
 		void scriptingEngine::loadCoreClasses() 
 		{
+			rootClasses.clear();
 			const MonoTableInfo* typeDefinitionsTable = mono_image_get_table_info(s_Data->coreImage, MONO_TABLE_TYPEDEF);
 			int32_t numTypes = mono_table_info_get_rows(typeDefinitionsTable);
 
@@ -225,6 +244,10 @@ namespace luna
 
 		void scriptingEngine::loadAppClasses() 
 		{
+			if (!std::filesystem::exists(s_Data->appAssemblyFilepath)) return;
+			
+			appClasses.clear();
+
 			const MonoTableInfo* typeDefinitionsTable = mono_image_get_table_info(s_Data->appImage, MONO_TABLE_TYPEDEF);
 			int32_t numTypes = mono_table_info_get_rows(typeDefinitionsTable);
 
@@ -256,6 +279,20 @@ namespace luna
 
 		}
 
+		void scriptingEngine::reloadAssembly()
+		{
+			mono_domain_set(mono_get_root_domain(), false);
+
+			mono_domain_unload(s_Data->appDomain);
+
+			loadAssembly(s_Data->coreAssemblyFilepath);
+			s_Data->appAssemblyFilepath = fmt::format("mono/lib/{}.dll", project::projectManager::getName());
+			loadAppAssembly(s_Data->appAssemblyFilepath);
+		
+			loadCoreClasses();
+			loadAppClasses();
+			LN_CORE_INFO("reloaded scriptComponents");
+		}
 
 		scene* scriptingEngine::getContext()
 		{

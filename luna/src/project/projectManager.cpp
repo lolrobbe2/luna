@@ -5,7 +5,7 @@ namespace luna
 {
 	namespace project 
 	{
-		static ref<project> activeProject;
+		static ref<project> activeProject = nullptr;
 		static std::vector<ref<project>> projects;
 		void projectManager::init()
 		{
@@ -26,9 +26,10 @@ namespace luna
 		}
 
 
-		const std::string& projectManager::getName()
+		std::string projectManager::getName()
 		{
-			return activeProject->getConfig().name;
+			if(activeProject) return activeProject->getConfig().name;
+			return "sharpSandbox";
 		}
 
 		const std::filesystem::path& projectManager::getProjectDirectory()

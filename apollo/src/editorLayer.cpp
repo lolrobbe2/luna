@@ -11,6 +11,7 @@
 #include <project/projectManager.h>
 #include <project/projectSerializer.h>
 
+#include <core/scripting/scriptUtils.h>
 namespace luna
 {
 	static bool createNewProject = false;
@@ -26,6 +27,8 @@ namespace luna
 
 		scenePanel = ref<sceneHierarchyPanel>(new sceneHierarchyPanel());
 		contentPanel = ref<contentBrowserPanel>(new contentBrowserPanel());
+
+		utils::scriptUtils::reloadAssamblies();
 	}
 	void editorLayer::onAttach()
 	{

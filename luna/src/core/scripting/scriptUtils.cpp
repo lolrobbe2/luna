@@ -14,6 +14,10 @@ namespace luna
 			scripting::scriptingEngine::secContext(scene);
 		}
 
+		void scriptUtils::reloadAssamblies()
+		{
+			scripting::scriptingEngine::reloadAssembly();
+		}
 		scriptInstance::scriptInstance(scripting::scriptClass* scriptClass, uint32_t entityHandle) : m_ScriptClass(scriptClass) , handle(entityHandle)
 		{
 			LN_CORE_INFO("instancing class: {0}", mono_class_get_name(m_ScriptClass->childClass));
