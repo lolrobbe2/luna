@@ -1,7 +1,21 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Luna
 {
+    //shamefully copied from godot docs and moddified!
+    /// <summary>
+    /// <para>
+    /// <br>Nodes are Luna's building blocks. They can be assigned as the child of another node,</br> 
+    /// <br>resulting in a tree arrangement. A given node can contain any number of nodes as children </br> 
+    /// <br>with the requirement that all siblings (direct children of a node) should have unique id's.</br> 
+    /// </para>
+    /// 
+    /// <para>
+    /// <br>A tree of nodes is called a scene. Scenes can be saved to the disk and then instantiated into other scenes.</br> 
+    /// <br> This allows for very high flexibility in the architecture and data model of Luna projects.</br> 
+    /// </para>
+    /// </summary>
     public class Node : LunaObject
     {
         #region public Methods
