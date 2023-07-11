@@ -160,17 +160,6 @@
             <param name="text"></param>
             <param name="args"></param>
         </member>
-        <member name="T:Luna.Object">
-            <summary>
-            NOT THE C# OBJECT!
-            </summary>
-        </member>
-        <member name="M:Luna.Object.EmitSignal(System.String)">
-            <summary>
-             emits all signals with
-            </summary>
-            <param name="signalName"></param>
-        </member>
         <member name="M:Luna.Os.OpenFileDialog(System.String)">
             <summary>
             opens a platform specific openFIleDialog.
@@ -231,18 +220,6 @@
             returns the main processId as an integer.
             </summary>
             <returns>int processId </returns>
-        </member>
-        <member name="T:Luna.Signal">
-            <summary>
-            this is the signal attribute
-            </summary>
-        </member>
-        <member name="M:Luna.Signal.EmitSignal(System.Object,System.String)">
-            <summary>
-            emits the all the siganls with the corresponding name connected to this node.
-            </summary>
-            <param name="callerObject"></param>
-            <param name="signal"></param>
         </member>
     </members>
 </doc>
