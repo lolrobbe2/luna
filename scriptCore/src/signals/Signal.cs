@@ -18,7 +18,7 @@ namespace Luna
         /// <param name="emitterObject">the object that emits </param>
         /// <param name="signalName"></param>
         /// <param name="args"></param>
-        static public void EmitSignal(object emitterObject,string signalName, params dynamic[] args) { SignalEmitSignal(((Object)emitterObject).ObjectId, signalName,args); }
+        static public void EmitSignal(object emitterObject,string signalName, params dynamic[] args) { SignalEmitSignal(((LunaObject)emitterObject).ObjectId, signalName,args); }
         /// <summary>
         /// calls all the signals with the corresponding name and signature regardless of with node the signal is connected to.
         /// 
