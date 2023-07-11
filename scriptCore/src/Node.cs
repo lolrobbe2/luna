@@ -1,10 +1,8 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace Luna
 {
-    public class Node
+    public class Node : Object
     {
         #region public Methods
         /// <summary>
@@ -12,19 +10,19 @@ namespace Luna
         /// </summary>
         /// <remarks>Use add_child instead of this method if you don't need the child node to be added below a specific node in the list of children.</remarks>
         /// <param name="node"></param>
-        public void AddSibling(Node node) { NodeAddSibling(NodeId, node.NodeId); }
+        public void AddSibling(Node node) { NodeAddSibling(ObjectId, node.ObjectId); }
         /// <summary>
         /// Adds a child node. Nodes can have any number of children. 
         /// Child nodes are automatically deleted when the parent node is deleted, so an entire scene can be removed by deleting its topmost node.
         /// </summary>
         /// <param name="node"></param>
-        public void AddChild(Node node) { NodeAddChild(NodeId, node.NodeId); }
+        public void AddChild(Node node) { NodeAddChild(ObjectId, node.ObjectId); }
 
         /// <summary>
         /// sets the node name
         /// </summary>
         /// <param name="name">string name</param>
-        public void SetName(string name) { NodeSetName(NodeId, name); }
+        public void SetName(string name) { NodeSetName(ObjectId, name); }
         /// <summary>
         /// <para>Returns a child node by its index (see get_child_count). This method is often used for iterating all children of a node.</para>
         /// Negative indices access the children from the last one.
@@ -47,12 +45,12 @@ namespace Luna
         /// returns an array of the nodes children.
         /// </summary>
         /// <returns></returns>
-        public Node[] GetChildren() { return NodeGetChildren(NodeId);}
+        public Node[] GetChildren() { return NodeGetChildren(ObjectId);}
         /// <summary>
         /// returns the parent Node or Null when the node is a root node.
         /// </summary>
         /// <returns>Node parent</returns>
-        public Node GetParent() { return NodeGetParent(NodeId); }
+        public Node GetParent() { return NodeGetParent(ObjectId); }
         #endregion
 
         #region engineHooks
@@ -79,23 +77,23 @@ namespace Luna
         #region InternalCalls
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static extern void NodeSetName(ulong NodeId,string name);
+        static extern void NodeSetName(ulong ObjectId,string name);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static extern void NodeGetName(ulong NodeId,out string name);
+        static extern void NodeGetName(ulong ObjectId,out string name);
 
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static extern void NodeAddSibling(ulong NodeId, ulong SiblingNodeId);
+        static extern void NodeAddSibling(ulong ObjectId, ulong SiblingNodeId);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static extern void NodeAddChild(ulong NodeId, ulong SiblingNodeId);
+        static extern void NodeAddChild(ulong ObjectId, ulong SiblingNodeId);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static extern Node[] NodeGetChildren(ulong NodeId);
+        static extern Node[] NodeGetChildren(ulong ObjectId);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static extern Node NodeGetParent(ulong NodeId);
+        static extern Node NodeGetParent(ulong ObjectId);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         static extern ulong NodeCreateNew();
@@ -105,10 +103,8 @@ namespace Luna
         /// <summary>
         /// creates a new node at runtime
         /// </summary>
-        protected Node() { NodeId = 0; }
-        internal Node(ulong id) { NodeId = id; }
-
-        public readonly ulong NodeId = 0;
+        protected Node() : base(0) { }
+        internal Node(ulong id) : base(id) { }
         #endregion
 
         #region QOL variables;
@@ -125,7 +121,7 @@ namespace Luna
         /// <summary>
         /// node name
         /// </summary>
-        protected string Name { get { NodeGetName(NodeId, out string Name); return Name; } set => NodeSetName(NodeId,value); }
+        protected string Name { get { NodeGetName(ObjectId, out string Name); return Name; } set => NodeSetName(ObjectId,value); }
 
         #endregion
     }
