@@ -318,6 +318,11 @@ namespace luna
 			return instance;
 		}
 
+		MonoString* scriptingEngine::createMonoString(const std::string& string)
+		{
+			return mono_string_new(s_Data->appDomain,string.c_str());
+		}
+
 		rootClass::rootClass(MonoClass* baseClass) : root(baseClass)
 		{
 			
@@ -345,8 +350,5 @@ namespace luna
 		void scriptClass::queueFree()
 		{
 		}
-
-
-
 	}
 }

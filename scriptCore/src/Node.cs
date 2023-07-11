@@ -82,6 +82,10 @@ namespace Luna
         static extern void NodeSetName(ulong NodeId,string name);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        static extern void NodeGetName(ulong NodeId,out string name);
+
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         static extern void NodeAddSibling(ulong NodeId, ulong SiblingNodeId);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -118,6 +122,10 @@ namespace Luna
         /// parent Node of the current node.
         /// </summary>
         protected Node Parent => GetParent();
+        /// <summary>
+        /// node name
+        /// </summary>
+        protected string Name { get { NodeGetName(NodeId, out string Name); return Name; } set => NodeSetName(NodeId,value); }
 
         #endregion
     }

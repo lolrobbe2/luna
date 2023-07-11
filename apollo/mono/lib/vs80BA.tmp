@@ -80,11 +80,6 @@
             parent Node of the current node.
             </summary>
         </member>
-        <member name="P:Luna.Node.Name">
-            <summary>
-            node name
-            </summary>
-        </member>
         <member name="M:Luna.Log.Trace(System.String,System.Object[])">
             <summary>
             app trace log to cli and logfile

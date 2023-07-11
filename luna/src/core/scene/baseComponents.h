@@ -19,7 +19,7 @@ namespace luna
 
 	struct tagComponent
 	{
-		std::string tag;
+		std::string tag = "Node";
 
 		tagComponent() = default;
 		tagComponent(const tagComponent&) = default;

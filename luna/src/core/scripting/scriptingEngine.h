@@ -34,6 +34,8 @@ namespace luna
 			virtual ~scriptClass() = default;
 			MonoObject* instance();
 			void queueFree();
+
+			void process(float deltaTime);
 			
 			MonoMethod* constructor = nullptr;
 			MonoMethod* readyMethod = nullptr;
@@ -102,6 +104,7 @@ namespace luna
 			static scriptClass* getScriptClass(const std::string& className) { return appClasses.find(className)->second; }
 			template<class type>
 			static MonoArray* createArray(const size_t size);
+			static MonoString* createMonoString(const std::string& string);
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
 			inline static std::map<std::string, scriptClass*> appClasses;

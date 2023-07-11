@@ -33,5 +33,10 @@ namespace luna
 		{
 			 mono_runtime_invoke(m_ScriptClass->readyMethod, instance, nullptr, nullptr);
 		}
+		void scriptInstance::process(float deltaTime)
+		{
+			void* param = &deltaTime;
+			if (m_ScriptClass->processMethod) mono_runtime_invoke(m_ScriptClass->processMethod, instance,&param, nullptr);
+		}
 	}
 }

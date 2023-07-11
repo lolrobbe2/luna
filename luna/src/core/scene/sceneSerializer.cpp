@@ -216,6 +216,14 @@ namespace luna
 		auto& tagComponent = serializedNode["tagComponent"];
 		node.addComponent<luna::tagComponent>().tag = tagComponent["tag"].as<std::string>();
 	}
+
+	static void deSerializeScript(luna::Node& node, YAML::Node& serializedNode)
+	{
+		if (!serializedNode["scriptComponent"]) return;
+		auto& scriptComponent = serializedNode["scriptComponent"];
+		node.addComponent<luna::scriptComponent>().className = scriptComponent["className"].as<std::string>();
+	}
+
 	static void deSerializeParent(luna::Node& node, YAML::Node& serializedNode)
 	{
 		if (!serializedNode["parentComponent"]) return;
@@ -307,6 +315,7 @@ namespace luna
 		id.id = serializedNode["id"].as<uint64_t>();
 		id.typeName = serializedNode["node type"].as<std::string>();
 		deSerializeTag(node, serializedNode);
+		deSerializeScript(node, serializedNode);
 		deSerializeParent(node, serializedNode);
 		deSerializeChildren(node, serializedNode);
 		deSerializeTransform(node, serializedNode);
@@ -357,6 +366,15 @@ namespace luna
 		out << YAML::BeginMap; //begin tag map
 		out << YAML::Key << "tag" << YAML::Value << tag.tag;
 		out << YAML::EndMap; //endTagMap
+	}
+	static void serializeScript(YAML::Emitter& out, luna::Node& node)
+	{
+		if (!node.hasComponent<scriptComponent>()) return;
+		auto& script = node.getComponent<scriptComponent>();
+		out << YAML::Key << "scriptComponent";
+		out << YAML::BeginMap; //begin scriptmap
+		out << YAML::Key << "className" << YAML::Value << script.className;
+		out << YAML::EndMap; //endScriptMap
 	}
 	static void serializeTransform(YAML::Emitter& out, luna::Node& node)
 	{
@@ -442,6 +460,7 @@ namespace luna
 		out << YAML::Key << "id" << YAML::Value << node.getComponent<idComponent>().id.getId();
 		out << YAML::Key << "node type" << YAML::Value << node.getComponent<idComponent>().typeName;
 		serializeTag(out, node);
+		serializeScript(out, node);
 		serializeParentComponent(out, node);
 		serializeChildComponent(out, node);
 		serializeTransform(out, node);
@@ -502,6 +521,7 @@ namespace luna
 			parent.removeComponent<childUintComponent>();
 			childGroup = scene->m_Registry.view<childUintComponent>();
 		}
+		scene->resetScriptComponent();
 		currentTime = std::chrono::system_clock::now();
 		diff_ms = std::chrono::duration <double, std::milli>(currentTime - prevTime).count();
 		LN_CORE_INFO("node tree assembly took {0} ms", diff_ms);

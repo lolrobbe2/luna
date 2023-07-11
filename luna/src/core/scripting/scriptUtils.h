@@ -25,6 +25,7 @@ namespace luna
 			scriptInstance(scripting::scriptClass* scriptClass, uint32_t entityHandle);
 			~scriptInstance();
 			void ready();
+			void process(float deltaTime);
 			MonoObject* getInstance() { return instance; };
 		private: 
 			scripting::scriptClass* m_ScriptClass;

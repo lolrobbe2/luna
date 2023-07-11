@@ -49,6 +49,7 @@ namespace luna
 		void onPlayScene();
 		void onStopScene();
 		void resetScriptComponent();
+		void process(utils::timestep ts);
 	private:
 		friend class Node;
 		friend class sceneSerializer;
@@ -118,9 +119,8 @@ namespace luna
 		operator uint32_t() const { return (uint32_t)entityHandle; }
 		operator scene* () const { return scene; };
 		uuid getUUID() { return getComponent<idComponent>().id; }
-		const std::string& getName() {
-			if(hasComponent<tagComponent>()) return getComponent<tagComponent>().tag; 
-			else return addComponent<tagComponent>().tag;
+		std::string& getName() {
+			return getComponent<tagComponent>().tag;
 		}
 
 		bool operator==(const Node& other) const

@@ -38,6 +38,7 @@ namespace luna
 	void sceneHierarchyPanel::setContext(const ref<scene>& context)
 	{
 		m_Context = context.get();
+		utils::scriptUtils::setContext(m_Context);
 	}
 
 	void sceneHierarchyPanel::onImGuiRender()
@@ -81,12 +82,11 @@ namespace luna
 				drawNodeSelectionList();
 				ImGui::EndPopup();
 			}
-
-			m_Context->m_Registry.each([&](auto entityID)
-			{
-				Node Node{ entityID , m_Context };
-				if(!Node.hasComponent<parentComponent>()) drawEntityNode(Node,0);
-			});
+			auto view = m_Context->m_Registry.view<idComponent,tagComponent>(entt::exclude<parentComponent>);
+			for (auto entityID : view) {
+				Node Node{ entityID , m_Context }; 
+				drawEntityNode(Node, 0);
+			}
 
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
 				m_Selected = {};

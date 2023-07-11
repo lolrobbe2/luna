@@ -4,6 +4,7 @@
 #include <nodes/controlNodes/itemListNode.h>
 #include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
+#include <queue>
 namespace luna
 {
 
@@ -99,6 +100,9 @@ namespace luna
 	void scene::onUpdate(utils::timestep ts)
 	{
 		if (!m_IsRunning) return;
+
+		process(ts);
+
 		glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
 		if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 		else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
@@ -233,6 +237,46 @@ namespace luna
 		}
 	}
 
+	void scene::process(utils::timestep ts)
+	{
+		// Create a queue to store entities
+		std::queue<entt::entity> entityQueue;
+
+		// Add the initial entities to the queue
+		auto view = m_Registry.view<idComponent, tagComponent>(entt::exclude<parentComponent>);
+		for (auto entityID : view) {
+			Node node{ entityID, this };
+			if (node.hasComponent<scriptComponent>() && node.getComponent<scriptComponent>().scritpInstance) {
+				node.getComponent<scriptComponent>().scritpInstance->process(ts);
+			}
+			// Check if the entity has child entities
+			auto childView = m_Registry.view<parentComponent>();
+			if (!childView.empty()) {
+				entityQueue.push(entityID);
+			}
+		}
+
+		// Process entities in a breadth-first manner
+		while (!entityQueue.empty()) {
+			entt::entity entityID = entityQueue.front();
+			entityQueue.pop();
+
+			Node node{ entityID, this };
+
+			// Check if the entity has a childComponent
+			if (node.hasComponent<childComponent>()) {
+				auto& children = node.getComponent<childComponent>().childs;
+				for (auto childEntityID : children) {
+					Node childNode{ childEntityID, this };
+					if (childNode.hasComponent<scriptComponent>()) {
+						childNode.getComponent<scriptComponent>().scritpInstance->process(ts);
+					}
+					entityQueue.push(childEntityID);
+				}
+			}
+		}
+	}
+
 #pragma region NODE
 
 	/*-----------------------------------------------------------------------*/
@@ -246,6 +290,11 @@ namespace luna
 		node.setName(mono_string_to_utf8(name));
 	}
 
+	static void NodeGetName(entt::entity nodeHandle, MonoString** name)
+	{
+		Node node = { nodeHandle,scripting::scriptingEngine::getContext() };
+		*name = scripting::scriptingEngine::createMonoString(node.getName());
+	}
 	static MonoArray* NodeGetChildren(entt::entity nodeId)
 	{
 		Node node = { nodeId,scripting::scriptingEngine::getContext() };
@@ -314,6 +363,7 @@ namespace luna
 		this->scene = scene;
 		entityHandle = scene->create();
 		addComponent<idComponent>();
+		addComponent<scriptComponent>();
 		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 	}
 
@@ -370,6 +420,7 @@ namespace luna
 	void Node::bindMethods() 
 	{
 		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
+		LN_ADD_INTERNAL_CALL(Node, NodeGetName);
 		LN_ADD_INTERNAL_CALL(Node, NodeGetChildren);
 		LN_ADD_INTERNAL_CALL(Node, NodeGetParent);
 		LN_ADD_INTERNAL_CALL(Node, NodeAddSibling);
