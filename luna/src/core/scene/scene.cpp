@@ -204,9 +204,32 @@ namespace luna
 		auto scriptComponents = m_Registry.view<scriptComponent, idComponent>();
 		for (auto entity : scriptComponents)
 		{
-			auto script = m_Registry.get<scriptComponent>(entity);
+			auto& script = m_Registry.get<scriptComponent>(entity);
 			script.scritpInstance = nullptr;
 		
+		}
+	}
+
+	void scene::resetScriptComponent()
+	{
+		auto scriptComponents = m_Registry.view<scriptComponent, idComponent>();
+
+		auto appClassNames = utils::scriptUtils::getAppClassNames();
+		std::vector<std::string> stringAppClassNames;
+		stringAppClassNames.reserve(appClassNames.size()); // Reserve memory for efficiency
+
+		for (const char* c : appClassNames) {
+			stringAppClassNames.emplace_back(c); // Construct std::string from const char* and add it to the vector
+		}
+
+		for (auto entity : scriptComponents)
+		{
+			auto& script = m_Registry.get<scriptComponent>(entity);
+	
+			auto it = std::find(stringAppClassNames.begin(), stringAppClassNames.end(), script.className);
+			if (it != stringAppClassNames.end())
+				script.currentItem = std::distance(stringAppClassNames.begin(), it);
+			else script.currentItem = -1;
 		}
 	}
 

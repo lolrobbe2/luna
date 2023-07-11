@@ -52,6 +52,9 @@ namespace luna
 				double time = glfwGetTime();
 				utils::timestep timestep = time - lastFrameTime;
 				lastFrameTime = time;
+
+				executeMainThreadQueue();
+
 				if (!minimized)
 				{
 					renderer::renderer2D::BeginScene();
@@ -107,6 +110,24 @@ namespace luna
 			minimized = false;
 			return false;
 		}
+
+		void application::submitToMainThread(const std::function<void()>& function)
+		{
+			std::scoped_lock<std::mutex> lock(mainThreadQueueMutex);
+
+			mainThreadQueue.emplace_back(function);
+		}
+
+		void application::executeMainThreadQueue()
+		{
+			std::scoped_lock<std::mutex> lock(mainThreadQueueMutex);
+
+			for (auto& func : mainThreadQueue)
+				func();
+
+			mainThreadQueue.clear();
+		}
+
 		void application::pushLayer(utils::layer* layer)
 		{
 			LN_PROFILE_FUNCTION();

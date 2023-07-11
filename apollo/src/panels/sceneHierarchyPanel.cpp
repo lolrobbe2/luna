@@ -178,11 +178,10 @@ namespace luna
 				ImGui::LabelText("className", script.className.c_str());
 				if(ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size()));
 				{
-					
-				}
-				if (currentItem != -1) {
-					script.currentItem = currentItem;
-					script.className = std::string(items[currentItem]);
+					if (currentItem != -1) {
+						script.currentItem = currentItem;
+						script.className = std::string(items[currentItem]);
+					}
 				}
 				ImGui::TreePop();
 			}

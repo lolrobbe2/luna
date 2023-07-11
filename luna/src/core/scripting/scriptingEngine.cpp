@@ -6,6 +6,8 @@
 #include <core/utils/fileWatch.h>
 
 #include <project/projectManager.h>
+
+#include <core/application.h>
 namespace luna
 {
 	namespace scripting
@@ -38,9 +40,11 @@ namespace luna
 			{
 				s_Data->assemblyReloadPending = true;
 
-
-				s_Data->appAssemblyFileWatcher.reset();
-				scriptingEngine::reloadAssembly();
+				application::application::get().submitToMainThread([]()
+				{
+					s_Data->appAssemblyFileWatcher.reset();
+					scriptingEngine::reloadAssembly();
+				});
 			}
 		}
 
@@ -291,6 +295,8 @@ namespace luna
 		
 			loadCoreClasses();
 			loadAppClasses();
+
+			if(s_Data->m_Context) s_Data->m_Context->resetScriptComponent();
 			LN_CORE_INFO("reloaded scriptComponents");
 		}
 

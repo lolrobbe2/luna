@@ -39,6 +39,8 @@ namespace luna
 			vulkan::window& getWindow() { return *mWindow; }
 			bool onWindowClose(windowCloseEvent& e);
 			bool onWindowResize(windowResizeEvent& e);
+			void submitToMainThread(const std::function<void()>& function);
+			void executeMainThreadQueue();
 			/**
 			 * @brief pushes a layer to the layerstack.
 			 * 
@@ -56,6 +58,9 @@ namespace luna
 			double lastFrameTime = 0.0f;
 			bool running = true;
 			bool minimized = false;
+
+			std::vector<std::function<void()>> mainThreadQueue;
+			std::mutex mainThreadQueueMutex;
 		private:
 
 			friend int ::main(int argc, char** argv);

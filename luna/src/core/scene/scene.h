@@ -48,6 +48,7 @@ namespace luna
 		void onEvent(Event& event);
 		void onPlayScene();
 		void onStopScene();
+		void resetScriptComponent();
 	private:
 		friend class Node;
 		friend class sceneSerializer;
