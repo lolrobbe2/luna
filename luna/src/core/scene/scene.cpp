@@ -354,7 +354,7 @@ namespace luna
 	}
 
 	Node::Node(entt::entity handle, luna::scene* scene)
-		: entityHandle(handle), scene(scene)
+		: object(handle,scene)
 	{
 	}
 

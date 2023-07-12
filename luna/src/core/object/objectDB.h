@@ -1,5 +1,6 @@
 #pragma once
 #include <core/core.h>
+#include <entt.h>
 #include <type_traits>
 
 #ifndef LN_REGISTER_CLASS
@@ -21,17 +22,50 @@ namespace luna
 	class scene;
 	/**
 	 * @brief object class.
-	 * @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
+	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
 	 */
 	class LN_API object
 	{
 	public:
+		object() = default;
+		object(entt::entity handle, luna::scene* scene) : entityHandle(handle), scene(scene) {};
+		object(uint64_t id, luna::scene* scene);
 		virtual void init(scene* scene) = 0;
 		virtual	void bindMethods() = 0;
+		void emitSignal(std::string& functionName, void** params);
+
+		template<typename T, typename... Args>
+		T& addComponent(Args&&... args);
+
+		template<typename T, typename... Args>
+		T& addOrReplaceComponent(Args&&... args);
+
+		template<typename T>
+		T& getComponent()
+		{
+			return scene->m_Registry.get<T>(entityHandle);
+		}
+		template<typename T>
+		bool hasComponent()
+		{
+			return scene->m_Registry.all_of<T>(entityHandle);
+		}
+		template<typename T>
+		void removeComponent()
+		{
+			scene->m_Registry.remove<T>(entityHandle);
+		}
+
+
+	protected:
+		friend class scene;
+		entt::entity entityHandle{ entt::null };
+		luna::scene* scene = nullptr;
+
 	};
 	/**
 	 * @brief object database class.
-	 * @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
+	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
 	 */
 	class LN_API objectDB
 	{
@@ -59,7 +93,7 @@ namespace luna
 		{
 			classInfo* infoA = getPtr(getClassName<A>());
 			classInfo* infoT = getPtr(getClassName<T>());
-			if (!infoT) LN_REGISTER_CLASS(T)
+			if(!infoT) LN_REGISTER_CLASS(T)
 			if(!infoA) LN_REGISTER_CLASS(A)
 			if(!infoA) infoA = getPtr(getClassName<A>()); // parent node type
 			if(!infoT) infoT = getPtr(getClassName<T>());

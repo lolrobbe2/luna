@@ -1,5 +1,6 @@
 #include "objectDB.h"
 #include <core/scene/scene.h>
+#include <core/scripting/scriptingEngine.h>
 namespace luna
 {
 
@@ -12,4 +13,25 @@ namespace luna
 		node->setName(className);
 	}
 	
+	void object::emitSignal(std::string& functionName, void** params)
+	{
+		
+	}
+
+	template<typename T, typename... Args>
+	T& object::addComponent(Args&&... args)
+	{
+		//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
+		T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
+		scene->onComponentAdded<T>(*this, component);
+		return component;
+	}
+
+	template<typename T, typename... Args>
+	T& object::addOrReplaceComponent(Args&&... args)
+	{
+		T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
+		scene->onComponentAdded<T>(*this, component);
+		return component;
+	}
 }

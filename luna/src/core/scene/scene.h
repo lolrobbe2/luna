@@ -1,6 +1,5 @@
 #pragma once
 #include "lnpch.h"
-#include <entt.h>
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
 #include <core/utils/timestep.h>
@@ -52,6 +51,7 @@ namespace luna
 		void process(utils::timestep ts);
 	private:
 		friend class Node;
+		friend class object;
 		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
 		friend class editorLayer;
@@ -71,53 +71,22 @@ namespace luna
 		Node() = default;
 		Node(entt::entity handle, luna::scene* scene);
 		Node(uint64_t id, luna::scene* scene);
-		Node(scene* scene);
+		Node(luna::scene* scene);
 		virtual ~Node() = default;
 		void setName(std::string name);
 		void addChild(Node node);
 		std::vector<Node> getChildren();
 		Node getParent();
 		
-		virtual void init(scene* scene) override;
+		virtual void init(luna::scene* scene) override;
 		virtual void bindMethods() override;
 		friend class scene;
 		friend class sceneHierarchyPanel;
 
-		template<typename T, typename... Args>
-		T& addComponent(Args&&... args)
-		{
-			//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
-			T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
-			scene->onComponentAdded<T>(*this, component);
-			return component;
-		}
-		template<typename T, typename... Args>
-		T& addOrReplaceComponent(Args&&... args)
-		{
-			T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-			scene->onComponentAdded<T>(*this, component);
-			return component;
-		}
-		template<typename T>
-		T& getComponent()
-		{
-			return scene->m_Registry.get<T>(entityHandle);
-		}
-		template<typename T>
-		bool hasComponent()
-		{
-			return scene->m_Registry.all_of<T>(entityHandle);
-		}
-		template<typename T>
-		void removeComponent()
-		{
-			scene->m_Registry.remove<T>(entityHandle);
-		}
-
 		operator bool() const { return entityHandle != entt::null; }
 		operator entt::entity() const { return entityHandle; }
 		operator uint32_t() const { return (uint32_t)entityHandle; }
-		operator scene* () const { return scene; };
+		operator luna::scene* () const { return scene; };
 		uuid getUUID() { return getComponent<idComponent>().id; }
 		std::string& getName() {
 			return getComponent<tagComponent>().tag;
@@ -132,10 +101,6 @@ namespace luna
 		{
 			return !(*this == other);
 		}
-
-	protected:
-		entt::entity entityHandle{ entt::null };
-		scene* scene = nullptr;
 	};
 	
 }
