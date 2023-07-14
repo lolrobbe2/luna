@@ -34,4 +34,22 @@ namespace luna
 		scene->onComponentAdded<T>(*this, component);
 		return component;
 	}
+
+	template<typename T>
+	T& object::getComponent()
+	{
+		return scene->m_Registry.get<T>(entityHandle);
+	}
+
+	template<typename T>
+	bool object::hasComponent()
+	{
+		return scene->m_Registry.all_of<T>(entityHandle);
+	}
+
+	template<typename T>
+	void object::removeComponent()
+	{
+		scene->m_Registry.remove<T>(entityHandle);
+	}
 }

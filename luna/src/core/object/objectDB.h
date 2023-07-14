@@ -41,21 +41,13 @@ namespace luna
 		T& addOrReplaceComponent(Args&&... args);
 
 		template<typename T>
-		T& getComponent()
-		{
-			return scene->m_Registry.get<T>(entityHandle);
-		}
-		template<typename T>
-		bool hasComponent()
-		{
-			return scene->m_Registry.all_of<T>(entityHandle);
-		}
-		template<typename T>
-		void removeComponent()
-		{
-			scene->m_Registry.remove<T>(entityHandle);
-		}
+		T& getComponent();
 
+		template<typename T>
+		bool hasComponent();
+
+		template<typename T>
+		void removeComponent();
 
 	protected:
 		friend class scene;
