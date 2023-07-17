@@ -2,6 +2,7 @@
 #include <core/core.h>
 #include <entt.h>
 #include <type_traits>
+#include <core/scene/baseComponents.h>
 
 #ifndef LN_REGISTER_CLASS
 #define LN_REGISTER_CLASS(mClass) objectDB::registerClass<mClass>();
@@ -19,7 +20,7 @@
 #endif // !LN_CLASS_STRINGIFY
 namespace luna
 {
-	class scene;
+	class LN_API scene;
 	/**
 	 * @brief object class.
 	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
@@ -30,29 +31,44 @@ namespace luna
 		object() = default;
 		object(entt::entity handle, luna::scene* scene) : entityHandle(handle), scene(scene) {};
 		object(uint64_t id, luna::scene* scene);
-		virtual void init(scene* scene) = 0;
-		virtual	void bindMethods() = 0;
+		virtual void init(scene* scene);
+		virtual	void bindMethods();
 		void emitSignal(std::string& functionName, void** params);
 
+		void connectSignal(uint64_t objectID, std::string& functionName);
 		template<typename T, typename... Args>
-		T& addComponent(Args&&... args);
-
+		T& addComponent(Args&&... args)
+		{
+			//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
+			T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
+			//scene->onComponentAdded<T>(*this, component);
+			return component;
+		}
 		template<typename T, typename... Args>
 		T& addOrReplaceComponent(Args&&... args);
 
 		template<typename T>
-		T& getComponent();
+		T& getComponent()
+		{
+			return scene->m_Registry.get<T>(entityHandle);
+		}
 
 		template<typename T>
-		bool hasComponent();
-
+		bool hasComponent()
+		{
+			return scene->m_Registry.all_of<T>(entityHandle);
+		}
 		template<typename T>
-		void removeComponent();
+		void removeComponent()
+		{
+			scene->m_Registry.remove<T>(entityHandle);
+		}
+		uuid getUUID() { return getComponent<idComponent>().id; }
 
 	protected:
-		friend class scene;
+		friend class luna::scene;
 		entt::entity entityHandle{ entt::null };
-		luna::scene* scene = nullptr;
+		scene* scene = nullptr;
 
 	};
 	/**

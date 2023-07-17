@@ -1,6 +1,8 @@
 #include "controlNode.h"
 #include <core/scripting/scriptingEngine.h>
 #include <core/object/methodDB.h>
+#include <core/scene/node.h>
+
 namespace luna 
 {
 	namespace nodes

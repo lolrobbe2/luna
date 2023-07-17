@@ -9,7 +9,8 @@ class __UnexistingClass;
 
 #include <core/debug/log.h>
 #include <core/platform/platformUtils.h>
-
+#include <core/object/signal.h>
+#include <core/scene/node.h>
 namespace luna
 {
 	#ifdef TYPED_METHOD_BIND
@@ -60,6 +61,7 @@ namespace luna
 	{
 		Log::RegisterMethods();
 		Os::RegisterMethods();
+		Signal::RegisterMethods();
 	}
 
 

@@ -1,10 +1,12 @@
 ﻿using Luna;
-using Luna;
+
 
 namespace sharpSandbox
 {
     internal class Test : Node
     {
+        [Signal]
+        public delegate void buttonClicked(int button);
         override public void Ready()
         {
             string version = Os.GetVersion();

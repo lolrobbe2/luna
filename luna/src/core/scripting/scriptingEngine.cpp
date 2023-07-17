@@ -8,6 +8,8 @@
 #include <project/projectManager.h>
 
 #include <core/application.h>
+
+#include <core/object/objectDB.h>
 namespace luna
 {
 	namespace scripting
@@ -323,9 +325,41 @@ namespace luna
 			return mono_string_new(s_Data->appDomain,string.c_str());
 		}
 
+		std::vector<signal> scriptingEngine::getSignalsFromClass(MonoClass* monoClass)
+		{
+			std::vector<signal> signals;
+
+			// Get the class's method iterator
+			MonoMethod* method = nullptr;
+			void* iter = nullptr;
+			while ((method = mono_class_get_methods(monoClass, &iter))) {
+				// Check if the method has the signal attribute
+				if (hasSignalAttribute(method))
+				{
+					// Create a signal instance for the method and add it to the vector
+					signal classSignal;
+					classSignal.signalName = mono_method_get_name(method);
+					classSignal.signalMethod = method;
+					signals.push_back(classSignal);
+				}
+			}
+
+			return signals;
+		}
+
+		bool scriptingEngine::hasSignalAttribute(MonoMethod* method) {
+			MonoCustomAttrInfo* attrInfo = mono_custom_attrs_from_method(method);
+			if (!attrInfo) {
+				return false;
+			}
+			bool hasAttribute = mono_custom_attrs_has_attr(attrInfo, rootClasses.find("signal")->second);
+			mono_custom_attrs_free(attrInfo);
+
+			return hasAttribute;
+		}
+
 		rootClass::rootClass(MonoClass* baseClass) : root(baseClass)
 		{
-			
 		}
 		MonoArray* rootClass::createArray(const size_t arraySize)
 		{
@@ -339,6 +373,10 @@ namespace luna
 			readyMethod = mono_class_get_method_from_name(childClass, "Ready", 0);
 			processMethod = mono_class_get_method_from_name(childClass, "Process", 1);
 			physicsProcessMethod = mono_class_get_method_from_name(childClass, "PhysicsProcess", 1);
+
+			implementedSignals = scriptingEngine::getSignalsFromClass(baseClass);
+			auto childClassSignals = scriptingEngine::getSignalsFromClass(childClass);
+			implementedSignals.insert(implementedSignals.end(), childClassSignals.begin(), childClassSignals.end());
 		}
 
 
@@ -349,6 +387,24 @@ namespace luna
 
 		void scriptClass::queueFree()
 		{
+		}
+		void scriptClass::invokeSignal(std::string& signalName,void* obj, void** params)
+		{
+			auto findSignalByName = [&](const signal& s) {
+				return s.signalName == signalName;
+			};
+
+			// Find the signal by its name
+			auto signalIterator = std::find_if(implementedSignals.begin(), implementedSignals.end(), findSignalByName);
+
+			// Check if the signal was found
+			if (signalIterator != implementedSignals.end()) {
+				// Signal found!
+				signal& foundSignal = *signalIterator;
+				mono_runtime_invoke(foundSignal.signalMethod, obj, params, nullptr);
+				return;
+			}
+			LN_CORE_ERROR("[scripting] could not find signal");
 		}
 	}
 }

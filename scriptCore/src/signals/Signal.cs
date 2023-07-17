@@ -9,8 +9,8 @@ namespace Luna
     /// this is the signal attribute/ class
     /// </summary>
     public class Signal : System.Attribute
-    {
-        Signal() { }
+    {   
+        public Signal() { }
 
         /// <summary>
         /// emits the all the signals with the corresponding name and signature connected to this node.

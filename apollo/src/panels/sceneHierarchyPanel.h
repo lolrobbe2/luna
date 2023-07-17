@@ -1,5 +1,6 @@
 #pragma once
 #include <core/scene/scene.h>
+#include <core/scene/node.h>
 namespace luna
 {
 	class sceneHierarchyPanel

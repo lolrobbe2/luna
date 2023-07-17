@@ -8,48 +8,48 @@ namespace luna
 	{
 		classInfo* info = getPtr(className);
 		if (!info) return;
-		Node* node = (Node*)info->creation_func();
+		object* node = (object*)info->creation_func();
 		node->init(scene);
-		node->setName(className);
+		if (node->hasComponent<tagComponent>()) node->getComponent<tagComponent>().tag = className;
+		else node->addComponent<tagComponent>(className);
 	}
 	
-	void object::emitSignal(std::string& functionName, void** params)
+	object::object(uint64_t id, luna::scene* scene)
+	{
+	}
+
+	void object::init(luna::scene* scene)
+	{
+		addComponent<idComponent>();
+		addComponent<signalComponent>();
+	}
+
+	void object::bindMethods()
 	{
 		
 	}
 
-	template<typename T, typename... Args>
-	T& object::addComponent(Args&&... args)
+	void object::emitSignal(std::string& functionName, void** params)
 	{
-		//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
-		T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
-		scene->onComponentAdded<T>(*this, component);
-		return component;
+		auto it = getComponent<signalComponent>().connectedSignals.find(functionName);
+		if (it != getComponent<signalComponent>().connectedSignals.end()) {
+			for (const auto& targetNodeId : it->second) {
+				object targetNode = { targetNodeId, scene };
+				targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(functionName, params);
+			}
+		}
+	}
+
+	void object::connectSignal(uint64_t objectID, std::string& signalName)
+	{
+		getComponent<signalComponent>().connectedSignals[signalName].push_back(objectID);
 	}
 
 	template<typename T, typename... Args>
 	T& object::addOrReplaceComponent(Args&&... args)
 	{
 		T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-		scene->onComponentAdded<T>(*this, component);
+		//scene->onComponentAdded<T>(*this, component);
 		return component;
-	}
-
-	template<typename T>
-	T& object::getComponent()
-	{
-		return scene->m_Registry.get<T>(entityHandle);
-	}
-
-	template<typename T>
-	bool object::hasComponent()
-	{
-		return scene->m_Registry.all_of<T>(entityHandle);
-	}
-
-	template<typename T>
-	void object::removeComponent()
-	{
-		scene->m_Registry.remove<T>(entityHandle);
 	}
 }

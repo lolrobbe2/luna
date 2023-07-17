@@ -36,6 +36,11 @@ namespace luna
 		scriptComponent(const scriptComponent&) = default;
 	};
 
+	struct signalComponent 
+	{
+		std::unordered_map<std::string, std::vector<uint64_t>> connectedSignals;
+	};
+
 	struct transformComponent
 	{
 		glm::vec3 translation = { 0.0f, 0.0f, 0.0f };
