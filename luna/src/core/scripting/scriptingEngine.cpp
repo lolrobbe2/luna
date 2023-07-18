@@ -222,9 +222,9 @@ namespace luna
 		void scriptingEngine::loadCoreClasses() 
 		{
 			rootClasses.clear();
+
 			const MonoTableInfo* typeDefinitionsTable = mono_image_get_table_info(s_Data->coreImage, MONO_TABLE_TYPEDEF);
 			int32_t numTypes = mono_table_info_get_rows(typeDefinitionsTable);
-
 			for (int32_t i = 1; i < numTypes; i++)
 			{
 				uint32_t cols[MONO_TYPEDEF_SIZE];
@@ -233,17 +233,23 @@ namespace luna
 				const char* nameSpace = mono_metadata_string_heap(s_Data->coreImage, cols[MONO_TYPEDEF_NAMESPACE]);
 				const char* className = mono_metadata_string_heap(s_Data->coreImage, cols[MONO_TYPEDEF_NAME]);
 				
-				std::string fullName;
-				if (strlen(nameSpace) != 0)
-					fullName = fmt::format("{}.{}", nameSpace, className);
-				else
-					fullName = className;
 
-				MonoClass* monoClass = mono_class_from_name(s_Data->coreImage, nameSpace, className);
-				std::string camelCaseClassName = pascalToCamel(className);
-				if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
-				else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace( camelCaseClassName, rootClass(monoClass) );
-				else LN_CORE_WARN("could not find {0} inside ObjectDB", camelCaseClassName);
+
+				std::string fullName;
+				MonoClass* monoClass = nullptr;
+				if (strlen(nameSpace) != 0) {
+					fullName = fmt::format("{}.{}", nameSpace, className);
+					monoClass = mono_class_from_name(s_Data->coreImage, nameSpace, className);
+				}
+				else {
+					fullName = className;
+					monoClass = mono_class_from_name(s_Data->coreImage, nameSpace, fullName.c_str());
+				}
+		
+					std::string camelCaseClassName = pascalToCamel(className);
+					if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
+					else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
+					else LN_CORE_WARN("could not find {0} inside ObjectDB", camelCaseClassName);	
 			}
 			//mono_field_get_value()
 		}
@@ -325,41 +331,12 @@ namespace luna
 			return mono_string_new(s_Data->appDomain,string.c_str());
 		}
 
-		std::vector<signal> scriptingEngine::getSignalsFromClass(MonoClass* monoClass)
-		{
-			std::vector<signal> signals;
 
-			// Get the class's method iterator
-			MonoMethod* method = nullptr;
-			void* iter = nullptr;
-			while ((method = mono_class_get_methods(monoClass, &iter))) {
-				// Check if the method has the signal attribute
-				if (hasSignalAttribute(method))
-				{
-					// Create a signal instance for the method and add it to the vector
-					signal classSignal;
-					classSignal.signalName = mono_method_get_name(method);
-					classSignal.signalMethod = method;
-					signals.push_back(classSignal);
-				}
-			}
-
-			return signals;
-		}
-
-		bool scriptingEngine::hasSignalAttribute(MonoMethod* method) {
-			MonoCustomAttrInfo* attrInfo = mono_custom_attrs_from_method(method);
-			if (!attrInfo) {
-				return false;
-			}
-			bool hasAttribute = mono_custom_attrs_has_attr(attrInfo, rootClasses.find("signal")->second);
-			mono_custom_attrs_free(attrInfo);
-
-			return hasAttribute;
-		}
 
 		rootClass::rootClass(MonoClass* baseClass) : root(baseClass)
 		{
+			MonoMethod* method= nullptr;
+
 		}
 		MonoArray* rootClass::createArray(const size_t arraySize)
 		{
@@ -374,9 +351,18 @@ namespace luna
 			processMethod = mono_class_get_method_from_name(childClass, "Process", 1);
 			physicsProcessMethod = mono_class_get_method_from_name(childClass, "PhysicsProcess", 1);
 
-			implementedSignals = scriptingEngine::getSignalsFromClass(baseClass);
-			auto childClassSignals = scriptingEngine::getSignalsFromClass(childClass);
-			implementedSignals.insert(implementedSignals.end(), childClassSignals.begin(), childClassSignals.end());
+			MonoMethod* method;
+			void* iter = nullptr;
+
+			while ((method = mono_class_get_methods(baseClass, &iter)) != nullptr)
+			{
+				LN_CORE_INFO("method: {0}", mono_method_get_name(method));
+				MonoCustomAttrInfo* info = mono_custom_attrs_from_method(method);
+				if (info && mono_custom_attrs_has_attr(info, mono_class_from_name(s_Data->coreImage, "Luna", "Signal")))
+				{
+					availableSignals.push_back({ mono_method_get_name(method) ,method });
+				}
+			}
 		}
 
 

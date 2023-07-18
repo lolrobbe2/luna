@@ -48,7 +48,7 @@ namespace luna
 		
 			MonoClass* childClass;
 			MonoClass* baseClass;
-
+			std::vector<signal> availableSignals;
 			std::vector<signal> implementedSignals;
 		};
 
@@ -110,7 +110,8 @@ namespace luna
 			static MonoArray* createArray(const size_t size);
 			static MonoString* createMonoString(const std::string& string);
 			static std::vector<signal> getSignalsFromClass(MonoClass* monoClass);
-			static bool hasSignalAttribute(MonoMethod* method);
+			static bool hasSignalAttribute(MonoClass* monoClass);
+			static bool classHasAttributes(MonoClass* monoClass);
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
 			inline static std::map<std::string, scriptClass*> appClasses;

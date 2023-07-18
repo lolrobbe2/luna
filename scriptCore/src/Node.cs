@@ -73,18 +73,19 @@ namespace Luna
         /// </summary>
         /// <param name="node"></param>
         [Signal]
-        public delegate void ChildEnteredTree(Node node);
+        public virtual void ChildEnteredTree(Node node) { }
         /// <summary>
         /// Emitted when a child node is about to exit the scene tree, either because it is being removed or freed directly, or because this node is exiting the tree.
         /// </summary>
         /// <param name="node"></param>
         [Signal]
-        public delegate void ChildExitingTree(Node node);
+        public virtual void ChildExitingTree(Node node) { }
         /// <summary>
         /// emitted when the node is ready. Comes after ready callback and follows the same rules.
         /// </summary>
         [Signal]
-        public delegate void _Ready();
+        public virtual void _ReadyEventHandler() { }
+        
         #endregion
 
         #region engineHooks

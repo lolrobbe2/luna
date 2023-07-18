@@ -65,19 +65,19 @@
             </summary>
             <returns>Node parent</returns>
         </member>
-        <member name="M:Luna.Node.ChildEnteredTreeEventHandler(Luna.Node)">
+        <member name="T:Luna.Node.ChildEnteredTree">
             <summary>
             Emitted when a child node enters the scene tree, either because it entered on its own or because this node entered with it.
             </summary>
             <param name="node"></param>
         </member>
-        <member name="M:Luna.Node.ChildExitingTreeEventHandler(Luna.Node)">
+        <member name="T:Luna.Node.ChildExitingTree">
             <summary>
             Emitted when a child node is about to exit the scene tree, either because it is being removed or freed directly, or because this node is exiting the tree.
             </summary>
             <param name="node"></param>
         </member>
-        <member name="M:Luna.Node._ReadyEventHandler">
+        <member name="T:Luna.Node._Ready">
             <summary>
             emitted when the node is ready. Comes after ready callback and follows the same rules.
             </summary>
