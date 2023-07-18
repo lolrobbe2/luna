@@ -4,20 +4,6 @@
         <name>scriptCore</name>
     </assembly>
     <members>
-        <member name="T:Luna.Node">
-            <summary>
-            <para>
-            <br>Nodes are Luna's building blocks. They can be assigned as the child of another node,</br> 
-            <br>resulting in a tree arrangement. A given node can contain any number of nodes as children </br> 
-            <br>with the requirement that all siblings (direct children of a node) should have unique id's.</br> 
-            </para>
-            
-            <para>
-            <br>A tree of nodes is called a scene. Scenes can be saved to the disk and then instantiated into other scenes.</br> 
-            <br> This allows for very high flexibility in the architecture and data model of Luna projects.</br> 
-            </para>
-            </summary>
-        </member>
         <member name="M:Luna.Node.AddSibling(Luna.Node)">
             <summary>
             Adds a sibling node to current's node parent, at the same level as that node, right below it.
@@ -64,23 +50,6 @@
             returns the parent Node or Null when the node is a root node.
             </summary>
             <returns>Node parent</returns>
-        </member>
-        <member name="T:Luna.Node.ChildEnteredTree">
-            <summary>
-            Emitted when a child node enters the scene tree, either because it entered on its own or because this node entered with it.
-            </summary>
-            <param name="node"></param>
-        </member>
-        <member name="T:Luna.Node.ChildExitingTree">
-            <summary>
-            Emitted when a child node is about to exit the scene tree, either because it is being removed or freed directly, or because this node is exiting the tree.
-            </summary>
-            <param name="node"></param>
-        </member>
-        <member name="T:Luna.Node._Ready">
-            <summary>
-            emitted when the node is ready. Comes after ready callback and follows the same rules.
-            </summary>
         </member>
         <member name="M:Luna.Node.Ready">
             <summary>
@@ -191,32 +160,16 @@
             <param name="text"></param>
             <param name="args"></param>
         </member>
-        <member name="T:Luna.LunaObject">
+        <member name="T:Luna.Object">
             <summary>
-            base class for all engine types except storage types like vector types.
+            NOT THE C# OBJECT!
             </summary>
         </member>
-        <member name="M:Luna.LunaObject.EmitSignal(System.String,System.Object[])">
+        <member name="M:Luna.Object.EmitSignal(System.String)">
             <summary>
-            emits the all the signals with the corresponding name and signature connected to this node.
+             emits all signals with
             </summary>
-            <param name="signalName">the name of the signal to be called (name of the declared delagate function)</param>
-            <param name="args">arguments to be passed to all the called signals</param>
-        </member>
-        <member name="M:Luna.LunaObject.EmitGlobalSignal(System.String,System.Object[])">
-            <summary>
-            calls all the signals with the corresponding name and signature regardless of with node the signal is connected to.
-            
-            this is usefull for when you want a bunch of objects to do something at the sam time.
-            </summary>
-            <param name="signalName">signal name to emit</param>
-            <param name="args">arguments to pass to the signal</param>
-        </member>
-        <member name="F:Luna.LunaObject.Invalid">
-            <summary>
-            this constant variable represents a invalid object,
-            and ivalid object will have a 0 as ObjectId.
-            </summary>
+            <param name="signalName"></param>
         </member>
         <member name="M:Luna.Os.OpenFileDialog(System.String)">
             <summary>
@@ -281,25 +234,15 @@
         </member>
         <member name="T:Luna.Signal">
             <summary>
-            this is the signal attribute/ class
+            this is the signal attribute
             </summary>
         </member>
-        <member name="M:Luna.Signal.EmitSignal(System.Object,System.String,System.Object[])">
+        <member name="M:Luna.Signal.EmitSignal(System.Object,System.String)">
             <summary>
-            emits the all the signals with the corresponding name and signature connected to this node.
+            emits the all the siganls with the corresponding name connected to this node.
             </summary>
-            <param name="emitterObject">the object that emits </param>
-            <param name="signalName"></param>
-            <param name="args"></param>
-        </member>
-        <member name="M:Luna.Signal.EmitGlobalSignal(System.String,System.Object[])">
-            <summary>
-            calls all the signals with the corresponding name and signature regardless of with node the signal is connected to.
-            
-            this is usefull for when you want a bunch of objects to do something at the sam time.
-            </summary>
-            <param name="signalName">signal name to emit</param>
-            <param name="args">arguments to pass to the signal</param>
+            <param name="callerObject"></param>
+            <param name="signal"></param>
         </member>
     </members>
 </doc>

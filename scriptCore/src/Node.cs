@@ -67,6 +67,26 @@ namespace Luna
         public Node GetParent() { return NodeGetParent(ObjectId); }
         #endregion
 
+        #region signals
+        /// <summary>
+        /// Emitted when a child node enters the scene tree, either because it entered on its own or because this node entered with it.
+        /// </summary>
+        /// <param name="node"></param>
+        [Signal]
+        public delegate void ChildEnteredTree(Node node);
+        /// <summary>
+        /// Emitted when a child node is about to exit the scene tree, either because it is being removed or freed directly, or because this node is exiting the tree.
+        /// </summary>
+        /// <param name="node"></param>
+        [Signal]
+        public delegate void ChildExitingTree(Node node);
+        /// <summary>
+        /// emitted when the node is ready. Comes after ready callback and follows the same rules.
+        /// </summary>
+        [Signal]
+        public delegate void _Ready();
+        #endregion
+
         #region engineHooks
         /// <summary>
         /// runs on node creation.
