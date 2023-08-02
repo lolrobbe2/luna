@@ -351,18 +351,14 @@ namespace luna
 			processMethod = mono_class_get_method_from_name(childClass, "Process", 1);
 			physicsProcessMethod = mono_class_get_method_from_name(childClass, "PhysicsProcess", 1);
 
-			MonoMethod* method;
-			void* iter = nullptr;
+			//get all the declared signals
+			//signals can be declared in C# by creating a virtual function with the Signal attribute.
+			
+			getAvailableSignals(baseClass); 
+			getAvailableSignals(childClass);
 
-			while ((method = mono_class_get_methods(baseClass, &iter)) != nullptr)
-			{
-				LN_CORE_INFO("method: {0}", mono_method_get_name(method));
-				MonoCustomAttrInfo* info = mono_custom_attrs_from_method(method);
-				if (info && mono_custom_attrs_has_attr(info, mono_class_from_name(s_Data->coreImage, "Luna", "Signal")))
-				{
-					availableSignals.push_back({ mono_method_get_name(method) ,method });
-				}
-			}
+			getImplementedSignals();
+
 		}
 
 
@@ -391,6 +387,46 @@ namespace luna
 				return;
 			}
 			LN_CORE_ERROR("[scripting] could not find signal");
+		}
+
+		std::vector<std::string> scriptClass::getSignals()
+		{
+			std::vector<std::string> signalNames;
+			for (auto& signal: availableSignals)
+			{
+				signalNames.push_back(signal.signalName);
+			}
+			return signalNames;
+		}
+
+		void scriptClass::getAvailableSignals(MonoClass* monoClass)
+		{
+			MonoMethod* method;
+			void* iter = nullptr;
+
+			while ((method = mono_class_get_methods(monoClass, &iter)) != nullptr)
+			{
+				LN_CORE_INFO("method: {0}", mono_method_get_name(method));
+				MonoCustomAttrInfo* info = mono_custom_attrs_from_method(method);
+				if (info && mono_custom_attrs_has_attr(info, mono_class_from_name(s_Data->coreImage, "Luna", "Signal")))
+				{
+					MonoMethodSignature* signature = mono_method_signature(method);
+					uint8_t paramAmount = mono_signature_get_param_count(signature);
+					availableSignals.push_back({ mono_method_get_name(method),paramAmount ,method });
+				}
+				//mono_method_get_flags();
+			}
+		}
+
+		void scriptClass::getImplementedSignals()
+		{
+			for (const signal& signal : availableSignals)
+			{
+				MonoMethod* implmentedSignal = mono_class_get_method_from_name(childClass, signal.signalName.c_str(), signal.paramCount);
+				if (implmentedSignal) {
+					implementedSignals.push_back({ signal.signalName,signal.paramCount ,implmentedSignal });
+				}
+			}
 		}
 	}
 }

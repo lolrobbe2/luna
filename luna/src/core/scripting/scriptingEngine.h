@@ -13,6 +13,7 @@ namespace luna
 		struct signal
 		{
 			std::string signalName;
+			uint8_t paramCount;
 			MonoMethod* signalMethod;
 		};
 		/**
@@ -41,6 +42,9 @@ namespace luna
 
 			void process(float deltaTime);
 			void invokeSignal(std::string& signalName, void* obj, void** params);
+			std::vector<std::string> getSignals();
+			void getAvailableSignals(MonoClass* monoClass);
+			void getImplementedSignals();
 			MonoMethod* constructor = nullptr;
 			MonoMethod* readyMethod = nullptr;
 			MonoMethod* processMethod = nullptr;

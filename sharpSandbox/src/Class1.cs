@@ -5,6 +5,10 @@ namespace sharpSandbox
 {
     internal class Test : Node
     {
+        public override void ChildEnteredTree(Node node)
+        {
+            Log.Info("test");
+        }
         override public void Ready()
         {
             string version = Os.GetVersion();
