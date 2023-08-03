@@ -96,6 +96,19 @@ namespace luna
 			ImGui::Begin("properties");
 			if(m_Selected) drawComponents(m_Selected);
 			ImGui::End();
+
+			ImGui::Begin("Signals");
+			if (m_Selected) 
+			{
+				for (auto& signalName : m_Selected.getSignalNames())
+				{
+					if (ImGui::Button(signalName.c_str(), ImVec2(-1, 0)))
+					{
+						LN_CORE_ERROR("pressed signal button: {0}", signalName);
+					}
+				}
+			}
+			ImGui::End();
 		}
 
 	}

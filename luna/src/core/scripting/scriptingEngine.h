@@ -10,12 +10,6 @@ namespace luna
 {
 	namespace scripting
 	{
-		struct signal
-		{
-			std::string signalName;
-			uint8_t paramCount;
-			MonoMethod* signalMethod;
-		};
 		/**
 		 * @brief a root class represents the C# node implementation from wich the instantiated class inhertits.
 		 */
@@ -42,7 +36,6 @@ namespace luna
 
 			void process(float deltaTime);
 			void invokeSignal(std::string& signalName, void* obj, void** params);
-			std::vector<std::string> getSignals();
 			void getAvailableSignals(MonoClass* monoClass);
 			void getImplementedSignals();
 			MonoMethod* constructor = nullptr;
@@ -52,7 +45,6 @@ namespace luna
 		
 			MonoClass* childClass;
 			MonoClass* baseClass;
-			std::vector<signal> availableSignals;
 			std::vector<signal> implementedSignals;
 		};
 

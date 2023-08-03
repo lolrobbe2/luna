@@ -20,7 +20,7 @@ namespace luna
 
 	void object::init(luna::scene* scene)
 	{
-		addComponent<idComponent>();
+		addComponent<idComponent>().typeName = stringify(object);
 		addComponent<signalComponent>();
 	}
 
@@ -43,6 +43,11 @@ namespace luna
 	void object::connectSignal(uint64_t objectID, std::string& signalName)
 	{
 		getComponent<signalComponent>().connectedSignals[signalName].push_back(objectID);
+	}
+
+	std::vector<std::string> object::getSignalNames()
+	{
+		return signalDB::getSignalNames(getComponent<idComponent>().typeName).value();
 	}
 
 	template<typename T, typename... Args>

@@ -36,6 +36,7 @@ namespace luna
 		void emitSignal(std::string& functionName, void** params);
 
 		void connectSignal(uint64_t objectID, std::string& functionName);
+		std::vector<std::string> getSignalNames();
 		template<typename T, typename... Args>
 		T& addComponent(Args&&... args)
 		{

@@ -356,9 +356,6 @@ namespace luna
 			
 			getAvailableSignals(baseClass); 
 			getAvailableSignals(childClass);
-
-			getImplementedSignals();
-
 		}
 
 
@@ -389,16 +386,6 @@ namespace luna
 			LN_CORE_ERROR("[scripting] could not find signal");
 		}
 
-		std::vector<std::string> scriptClass::getSignals()
-		{
-			std::vector<std::string> signalNames;
-			for (auto& signal: availableSignals)
-			{
-				signalNames.push_back(signal.signalName);
-			}
-			return signalNames;
-		}
-
 		void scriptClass::getAvailableSignals(MonoClass* monoClass)
 		{
 			MonoMethod* method;
@@ -412,7 +399,7 @@ namespace luna
 				{
 					MonoMethodSignature* signature = mono_method_signature(method);
 					uint8_t paramAmount = mono_signature_get_param_count(signature);
-					availableSignals.push_back({ mono_method_get_name(method),paramAmount ,method });
+					signalDB::registerSignal(signal({ mono_method_get_name(method),paramAmount ,method }),std::string(mono_class_get_name(monoClass)));
 				}
 				//mono_method_get_flags();
 			}
@@ -420,13 +407,7 @@ namespace luna
 
 		void scriptClass::getImplementedSignals()
 		{
-			for (const signal& signal : availableSignals)
-			{
-				MonoMethod* implmentedSignal = mono_class_get_method_from_name(childClass, signal.signalName.c_str(), signal.paramCount);
-				if (implmentedSignal) {
-					implementedSignals.push_back({ signal.signalName,signal.paramCount ,implmentedSignal });
-				}
-			}
+			
 		}
 	}
 }

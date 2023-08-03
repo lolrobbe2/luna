@@ -1,6 +1,7 @@
 #pragma once
 #include <core/core.h>
 #include <core/debug/uuid.h>
+#include <core/object/signal.h>
 
 namespace luna
 {
