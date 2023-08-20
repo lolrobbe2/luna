@@ -10,6 +10,12 @@ namespace luna
 		MonoMethod* signalMethod;
 	};
 
+	struct connectedSignal
+	{
+		MonoObject* connectedObj;
+		MonoMethod* signalMethodPtr;
+	};
+
 	class Signal
 	{
 	public:
@@ -24,12 +30,12 @@ namespace luna
 	public:
 		static void registerSignal(signal& signal, std::string& className);
 		static void deregisterSignal(std::string& signalName, std::string& className);
-		static std::optional<std::vector<std::string>> getSignalNames(std::string& className);
+		static std::vector<std::string> getSignalNames(std::string& className);
 		template<typename T> 
-		static std::optional<std::vector<std::string>> getSignalNames();
+		static std::vector<std::string> getSignalNames();
 	};
 	template<typename T>
-	inline std::optional<std::vector<std::string>> signalDB::getSignalNames()
+	inline std::vector<std::string> signalDB::getSignalNames()
 	{
 		return getSignalNames(stringify(T));
 	}

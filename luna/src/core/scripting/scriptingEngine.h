@@ -4,6 +4,8 @@
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/attrdefs.h>
+#include <mono/metadata/object.h>
+
 
 
 namespace luna
@@ -36,7 +38,6 @@ namespace luna
 
 			void process(float deltaTime);
 			void invokeSignal(std::string& signalName, void* obj, void** params);
-			void getAvailableSignals(MonoClass* monoClass);
 			void getImplementedSignals();
 			MonoMethod* constructor = nullptr;
 			MonoMethod* readyMethod = nullptr;
@@ -45,7 +46,6 @@ namespace luna
 		
 			MonoClass* childClass;
 			MonoClass* baseClass;
-			std::vector<signal> implementedSignals;
 		};
 
 
@@ -105,9 +105,9 @@ namespace luna
 			template<class type>
 			static MonoArray* createArray(const size_t size);
 			static MonoString* createMonoString(const std::string& string);
-			static std::vector<signal> getSignalsFromClass(MonoClass* monoClass);
-			static bool hasSignalAttribute(MonoClass* monoClass);
-			static bool classHasAttributes(MonoClass* monoClass);
+			static void getAvailableSignals(MonoClass* monoClass);
+			static MonoMethodSignature* getSignature(MonoMethod* method);
+			static bool hasFlag(MonoMethod* method, uint32_t flag);
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
 			inline static std::map<std::string, scriptClass*> appClasses;

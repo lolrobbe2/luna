@@ -15,6 +15,8 @@ namespace luna
 
 		void onImGuiRender();
 
+		void drawSignals(std::string& typeName);
+
 		Node getSelectedNode() const { return m_SelectionContext; }
 		void setSelectedNode(Node Node);
 	private:
@@ -31,6 +33,7 @@ namespace luna
 		void onPlay();
 		ref<assets::asset> getSmallIcon(const std::filesystem::path& assetFilePath);
 		void onStop();
+		void drawSignalConnectWindow();
 	private:
 
 		uint64_t addIndent = 5;

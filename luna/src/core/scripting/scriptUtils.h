@@ -28,12 +28,14 @@ namespace luna
 			void ready();
 			void process(float deltaTime);
 			void invokeSignal(std::string& signalName, void** params);
+			void connectSignal(const signal& signal,MonoObject* object);
 			MonoObject* getInstance() { return instance; };
 		private: 
 			scripting::scriptClass* m_ScriptClass;
 			uint32_t handle;
 			uuid entityId;
 			MonoObject* instance;
+			std::unordered_map<std::string,std::vector<connectedSignal>> connectedSignals;
 		};
 	}
 }

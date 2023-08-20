@@ -100,17 +100,30 @@ namespace luna
 			ImGui::Begin("Signals");
 			if (m_Selected) 
 			{
-				for (auto& signalName : m_Selected.getSignalNames())
-				{
-					if (ImGui::Button(signalName.c_str(), ImVec2(-1, 0)))
-					{
-						LN_CORE_ERROR("pressed signal button: {0}", signalName);
-					}
-				}
+				drawSignals(m_Selected.getComponent<idComponent>().typeName);
+				drawSignalConnectWindow();
 			}
 			ImGui::End();
 		}
 
+	}
+	void sceneHierarchyPanel::drawSignals(std::string& typeName)
+	{
+		auto& signals = signalDB::getSignalNames(typeName);
+		if(signals.size()) ImGui::Text(typeName.c_str());
+		for (auto& signalName : signals)
+		{
+			ImGui::Button(signalName.c_str(), ImVec2(-1, 0));
+			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
+			{
+				//LN_CORE_ERROR("pressed signal button: {0}", signalName);
+				ImGui::OpenPopup("connect signal");
+			}
+		}
+		if (objectDB::getPtr(typeName)->parentClass)
+		{
+			drawSignals(objectDB::getPtr(typeName)->parentClass->className);
+		}
 	}
 
 	void sceneHierarchyPanel::setSelectedNode(Node Node)
@@ -438,4 +451,26 @@ namespace luna
 		}
 		return smallFileIcon;
 	}
+
+	void sceneHierarchyPanel::drawSignalConnectWindow()
+	{
+		ImVec2 nextWindowSize = { ImGui::GetMainViewport()->WorkSize.x / 2.0f, ImGui::GetMainViewport()->WorkSize.y / 2.0f };
+		ImGui::SetNextWindowSize(nextWindowSize);
+		if (ImGui::BeginPopupModal("connect signal", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove))
+		{
+			if(ImGui::BeginChild("##nodeSelection"))
+			{
+				ImGui::EndChild();
+			}
+
+			if(ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.1f, 0.0f)))
+			{
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("cancel", ImVec2(-1.0f, 0.0f))) ImGui::CloseCurrentPopup();
+			ImGui::EndPopup();
+		}
+	}
+
+	
 }

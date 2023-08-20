@@ -49,9 +49,10 @@ namespace luna
 			if(res !=  signalsIterator->second.end()) signalsIterator->second.erase(res);
 		}
 	}
-	std::optional<std::vector<std::string>> signalDB::getSignalNames(std::string& className)
+	std::vector<std::string> signalDB::getSignalNames(std::string& className)
 	{
-		auto it = registeredSignals.find(className);
+		std::string newClassName = camelToPascal(className);
+		auto it = registeredSignals.find(newClassName);
 		if (it != registeredSignals.end()) {
 			const auto& [_, signals] = *it;
 
@@ -63,7 +64,7 @@ namespace luna
 			return signalNames;
 		}
 
-		return std::nullopt;
+		return std::vector<std::string>();
 	}
 #pragma endregion signalDB
 }

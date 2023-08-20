@@ -47,7 +47,7 @@ namespace luna
 
 	std::vector<std::string> object::getSignalNames()
 	{
-		return signalDB::getSignalNames(getComponent<idComponent>().typeName).value();
+		return signalDB::getSignalNames(getComponent<idComponent>().typeName);
 	}
 
 	template<typename T, typename... Args>

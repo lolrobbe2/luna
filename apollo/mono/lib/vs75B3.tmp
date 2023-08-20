@@ -116,26 +116,6 @@
             node name
             </summary>
         </member>
-        <member name="M:Luna.ControlNode.FocusEntered">
-            <summary>
-            Emitted when the node gains focus
-            </summary>
-        </member>
-        <member name="M:Luna.ControlNode.FocusExited">
-            <summary>
-            Emitted when the node loses focus
-            </summary>
-        </member>
-        <member name="M:Luna.ControlNode.MouseEntered">
-            <summary>
-            Emitted when the mouse enters the control's Rect area, provided its mouse_filter lets the event reach it.
-            </summary>
-        </member>
-        <member name="M:Luna.ControlNode.MouseExited">
-            <summary>
-            Emitted when the mouse leaves the control's Rect area, provided its mouse_filter lets the event reach it.
-            </summary>
-        </member>
         <member name="M:Luna.Log.Trace(System.String,System.Object[])">
             <summary>
             app trace log to cli and logfile

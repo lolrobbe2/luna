@@ -12,6 +12,29 @@ namespace Luna
         protected void WarpMouse(Vector2 position) { ControlNodeWarpMouse(ObjectId, position); }
         #endregion
 
+        #region signals
+        /// <summary>
+        /// Emitted when the node gains focus
+        /// </summary>
+        [Signal]
+        public virtual void FocusEntered() { }
+        /// <summary>
+        /// Emitted when the node loses focus
+        /// </summary>
+        [Signal]
+        public virtual void FocusExited() { }
+        /// <summary>
+        /// Emitted when the mouse enters the control's Rect area, provided its mouse_filter lets the event reach it.
+        /// </summary>
+        [Signal]
+        public virtual void MouseEntered() { }
+        /// <summary>
+        /// Emitted when the mouse leaves the control's Rect area, provided its mouse_filter lets the event reach it.
+        /// </summary>
+        [Signal]
+        public virtual void MouseExited() { }
+        #endregion
+
         #region internal calls
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         static extern Vector2 ControlNodeGetPosition(ulong ObjectId,out Vector2 translation);

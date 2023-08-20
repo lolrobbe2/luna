@@ -41,5 +41,23 @@ namespace luna
 		void scriptInstance::invokeSignal(std::string& signalName, void** params)
 		{
 		}
+		void scriptInstance::connectSignal(const signal& signal, MonoObject* object)
+		{
+			auto& mapIter = connectedSignals.find(signal.signalName);
+			if(mapIter != connectedSignals.end()) // found signal by name
+			{
+				auto& vectorIter = std::find_if(mapIter->second.begin(), mapIter->second.end(), [&](connectedSignal signal) {
+					return signal.connectedObj == object;
+					});
+				if (vectorIter == mapIter->second.end())
+				{
+					MonoMethod* signalImplementation = mono_class_get_method_from_name(m_ScriptClass->childClass, signal.signalName.c_str(), signal.paramCount);
+					//MonoMethodSignature* signalSignature = scripting::scriptingEngine::getSignature(signalImplementation);
+					if (scripting::scriptingEngine::hasFlag(signalImplementation, MONO_METHOD_ATTR_VIRTUAL)) {
+						mapIter->second.push_back({ object,signal.signalMethod });
+					}
+				}
+			}
+		}
 	}
 }
