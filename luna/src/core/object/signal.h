@@ -33,6 +33,7 @@ namespace luna
 		static std::vector<std::string> getSignalNames(std::string& className);
 		template<typename T> 
 		static std::vector<std::string> getSignalNames();
+		static const signal& getSignalByName(std::string& className, std::string& signalName);
 	};
 	template<typename T>
 	inline std::vector<std::string> signalDB::getSignalNames()

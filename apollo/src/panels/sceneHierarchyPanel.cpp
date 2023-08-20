@@ -117,6 +117,7 @@ namespace luna
 			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
 			{
 				//LN_CORE_ERROR("pressed signal button: {0}", signalName);
+				m_SelectedSignal = signalName;
 				ImGui::OpenPopup("connect signal");
 			}
 		}
@@ -460,17 +461,51 @@ namespace luna
 		{
 			if(ImGui::BeginChild("##nodeSelection"))
 			{
+				auto view = m_Context->m_Registry.view<idComponent, tagComponent>(entt::exclude<parentComponent>);
+				for (auto entityID : view) {
+					Node Node{ entityID , m_Context };
+					drawSignalNode(Node, 0);
+				}
 				ImGui::EndChild();
 			}
 
-			if(ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.1f, 0.0f)))
+			if(ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.15f, 0.0f)))
 			{
+				m_Selected.connectSignal(m_SignalSelected.getUUID(), m_SelectedSignal);
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("cancel", ImVec2(-1.0f, 0.0f))) ImGui::CloseCurrentPopup();
 			ImGui::EndPopup();
 		}
 	}
+	void sceneHierarchyPanel::drawSignalNode(Node& node,uint32_t indent)
+	{
+		std::string buttonText = node.getName();
+		ImGuiTreeNodeFlags flags = (m_SignalSelected == node) ? ImGuiTreeNodeFlags_Selected : 0;
+		bool isOpen = ImGui::TreeNodeEx((void*)node.getUUID().getId(), ImGuiTreeNodeFlags_OpenOnArrow | flags, buttonText.c_str());
+	
+		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) m_SignalSelected = node;
 
+		if (isOpen) 
+		{
+			if (node.hasComponent<childComponent>())
+			{
+				ImGui::Indent(addIndent);
+				auto& childs = node.getComponent<childComponent>().childs;
+
+				for (auto child : childs)
+				{
+					luna::Node _Node{ child,m_Context };
+					if (_Node.getComponent<parentComponent>().parentId == node.getComponent<idComponent>().id)
+					{
+						drawSignalNode(_Node, indent + addIndent);
+					}
+				}
+				ImGui::Unindent(addIndent);
+			}
+
+			ImGui::TreePop();
+		}
+	}
 	
 }

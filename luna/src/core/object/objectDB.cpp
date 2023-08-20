@@ -42,7 +42,9 @@ namespace luna
 
 	void object::connectSignal(uint64_t objectID, std::string& signalName)
 	{
-		getComponent<signalComponent>().connectedSignals[signalName].push_back(objectID);
+		const signal& signal = signalDB::getSignalByName(getComponent<idComponent>().typeName, signalName);
+		MonoObject* csharpObject = object(objectID, scene).getComponent<scriptComponent>().scritpInstance->getInstance();
+		getComponent<scriptComponent>().scritpInstance->connectSignal(signal, csharpObject);
 	}
 
 	std::vector<std::string> object::getSignalNames()

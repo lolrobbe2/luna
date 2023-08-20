@@ -12,7 +12,7 @@ namespace luna
 	}
 	void Signal::SignalEmitSignal(uint64_t emitterObjectId, std::string signal, void** args)
 	{
-		
+		 
 	}
 	void Signal::SignalEmitGlobalSignal(uint64_t emitterObjectId, std::string signal, void** args)
 	{
@@ -65,6 +65,24 @@ namespace luna
 		}
 
 		return std::vector<std::string>();
+	}
+	const signal& signalDB::getSignalByName(std::string& className, std::string& signalName)
+	{
+		std::string newClassName = camelToPascal(className);
+		auto it = registeredSignals.find(newClassName);
+		if (it != registeredSignals.end()) //class /type found
+		{
+			auto signalIt = std::find_if(it->second.begin(), it->second.end(), [&](signal m_signal) {
+				return m_signal.signalName == signalName;
+				});
+			if (signalIt != it->second.end()) return *signalIt;
+			
+			LN_CORE_ERROR("could not find registered signal inside class, check all registered signals! {0}",signalName);
+			return signal();
+		}
+
+		LN_CORE_ERROR("could not find class in signalDB! {0}",className);
+		return signal();
 	}
 #pragma endregion signalDB
 }

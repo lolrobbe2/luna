@@ -34,12 +34,15 @@ namespace luna
 		ref<assets::asset> getSmallIcon(const std::filesystem::path& assetFilePath);
 		void onStop();
 		void drawSignalConnectWindow();
+		void drawSignalNode(Node& node, uint32_t indent);
 	private:
 
 		uint64_t addIndent = 5;
 		scene* m_Context;
 		Node m_SelectionContext;
 		Node m_Selected;
+		Node m_SignalSelected;
+		std::string m_SelectedSignal;
 		std::string m_ListSelected = "";
 
 #pragma region smallIcons

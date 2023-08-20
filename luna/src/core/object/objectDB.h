@@ -34,7 +34,9 @@ namespace luna
 		virtual void init(scene* scene);
 		virtual	void bindMethods();
 		void emitSignal(std::string& functionName, void** params);
-
+		/**
+		* @brief connects a signal to a object, that ether being itself or another object.
+		*/
 		void connectSignal(uint64_t objectID, std::string& functionName);
 		std::vector<std::string> getSignalNames();
 		template<typename T, typename... Args>
