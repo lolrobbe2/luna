@@ -14,8 +14,19 @@ namespace luna
 		else node->addComponent<tagComponent>(className);
 	}
 	
-	object::object(uint64_t id, luna::scene* scene)
+	object::object(uint64_t id, luna::scene* scene) : scene(scene)
 	{
+		auto idComponents = scene->m_Registry.view<idComponent, tagComponent>();
+		if (id == -1) return;
+		for (auto entity : idComponents)
+		{
+			auto [testId, tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);
+			if (testId.id == id) {
+				entityHandle = entity;
+				if (!hasComponent<idComponent>()) addComponent<idComponent>().id = id;
+				return;
+			}
+		}
 	}
 
 	void object::init(luna::scene* scene)
@@ -34,7 +45,7 @@ namespace luna
 		auto it = getComponent<signalComponent>().connectedSignals.find(functionName);
 		if (it != getComponent<signalComponent>().connectedSignals.end()) {
 			for (const auto& targetNodeId : it->second) {
-				object targetNode = { targetNodeId, scene };
+				object targetNode = { targetNodeId.connectedObj, scene };
 				targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(functionName, params);
 			}
 		}
@@ -43,8 +54,33 @@ namespace luna
 	void object::connectSignal(uint64_t objectID, std::string& signalName)
 	{
 		const signal& signal = signalDB::getSignalByName(getComponent<idComponent>().typeName, signalName);
-		MonoObject* csharpObject = object(objectID, scene).getComponent<scriptComponent>().scritpInstance->getInstance();
-		getComponent<scriptComponent>().scritpInstance->connectSignal(signal, csharpObject);
+		auto& connectedSignals = getComponent<signalComponent>().connectedSignals;
+
+		const std::string& className = object((entt::entity)objectID, scripting::scriptingEngine::getContext()).getComponent<scriptComponent>().className;
+		
+		MonoClass* childClass = nullptr;
+		if(className != "") childClass = scripting::scriptingEngine::getScriptClass(className)->childClass;
+
+		if (!connectedSignals.empty()) {
+			auto mapIter = connectedSignals.find(signal.signalName); //signalName already registered/ has connections
+			if (mapIter != connectedSignals.end())
+			{
+				auto vecIter = std::find_if(mapIter->second.begin(), mapIter->second.end(), [&](connectedSignal signal) {return signal.connectedObj != objectID; });
+				if (vecIter != mapIter->second.end())
+					return mapIter->second.push_back({ objectID,mono_class_get_method_from_name(childClass,signal.signalName.c_str(),signal.paramCount) });
+				
+				LN_CORE_ERROR("signal {0} already connected to node {1}", signal.signalName, object((entt::entity)objectID, scripting::scriptingEngine::getContext()).getComponent<idComponent>().id.getId());
+			}
+		}
+		std::vector<connectedSignal> signals;
+		if (childClass) 
+		{
+			signals.push_back({ objectID, mono_class_get_method_from_name(childClass,signal.signalName.c_str(),signal.paramCount) });
+			connectedSignals.insert({ signal.signalName,signals });
+			return;
+		}
+
+		LN_CORE_ERROR("[scripting engine]: scriptClass undefined (check if the correct class has been selected in the properties panel)");
 	}
 
 	std::vector<std::string> object::getSignalNames()

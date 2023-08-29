@@ -471,7 +471,7 @@ namespace luna
 
 			if(ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.15f, 0.0f)))
 			{
-				m_Selected.connectSignal(m_SignalSelected.getUUID(), m_SelectedSignal);
+				m_Selected.connectSignal((uint64_t)m_SignalSelected.entityHandle, m_SelectedSignal);
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("cancel", ImVec2(-1.0f, 0.0f))) ImGui::CloseCurrentPopup();

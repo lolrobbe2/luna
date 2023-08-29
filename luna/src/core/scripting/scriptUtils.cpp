@@ -1,5 +1,6 @@
 #include "scriptUtils.h"
 #include <core/scripting/scriptingEngine.h>
+#include <core/object/objectDB.h>
 namespace luna
 {
 	namespace utils
@@ -41,23 +42,19 @@ namespace luna
 		void scriptInstance::invokeSignal(std::string& signalName, void** params)
 		{
 		}
-		void scriptInstance::connectSignal(const signal& signal, MonoObject* object)
+		void scriptInstance::connectSignal(const signal& signal,uint64_t entity)
 		{
-			auto& mapIter = connectedSignals.find(signal.signalName);
-			if(mapIter != connectedSignals.end()) // found signal by name
-			{
-				auto& vectorIter = std::find_if(mapIter->second.begin(), mapIter->second.end(), [&](connectedSignal signal) {
-					return signal.connectedObj == object;
-					});
-				if (vectorIter == mapIter->second.end())
-				{
-					MonoMethod* signalImplementation = mono_class_get_method_from_name(m_ScriptClass->childClass, signal.signalName.c_str(), signal.paramCount);
-					//MonoMethodSignature* signalSignature = scripting::scriptingEngine::getSignature(signalImplementation);
-					if (scripting::scriptingEngine::hasFlag(signalImplementation, MONO_METHOD_ATTR_VIRTUAL)) {
-						mapIter->second.push_back({ object,signal.signalMethod });
-					}
-				}
+			/*
+			MonoMethod* signalImplementation = mono_class_get_method_from_name(m_ScriptClass->childClass, signal.signalName.c_str(), signal.paramCount);
+			if (scripting::scriptingEngine::hasFlag(signalImplementation, MONO_METHOD_ATTR_VIRTUAL)) {
+				mapIter->second.push_back({ entity,signal.signalMethod });
 			}
+			*/
+
+		}
+		MonoClass* scriptInstance::getClass()
+		{
+			return m_ScriptClass->childClass;
 		}
 	}
 }

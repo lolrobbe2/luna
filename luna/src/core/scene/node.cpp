@@ -67,19 +67,9 @@ namespace luna
 		return Node(scripting::scriptingEngine::getContext());
 	}
 	Node::Node(uint64_t id, luna::scene* scene)
+		: object(id,scene)
 	{
-		auto idComponents = scene->m_Registry.group<idComponent, tagComponent>();
-		this->scene = scene;
-		if (id == -1) return;
-		for (auto entity : idComponents)
-		{
-			auto [testId, tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);
-			if (testId.id == id) {
-				entityHandle = entity;
-				if (!hasComponent<idComponent>()) addComponent<idComponent>().id = id;
-				return;
-			}
-		}
+		
 	}
 
 	Node::Node(entt::entity handle, luna::scene* scene)
@@ -93,7 +83,8 @@ namespace luna
 		entityHandle = scene->create();
 		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
 		addComponent<scriptComponent>();
-		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
+		addComponent<signalComponent>();
+		LN_CORE_INFO("node uuid = {0}, node quikID = {1}", getUUID().getId(),(uint32_t)entityHandle);
 	}
 
 	void Node::setName(std::string name)
@@ -143,7 +134,8 @@ namespace luna
 
 		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
 		addComponent<scriptComponent>();
-		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
+		addComponent<signalComponent>();
+		LN_CORE_INFO("node uuid = {0}, node quikID = {1}", getUUID().getId(), (uint32_t)entityHandle);
 	}
 
 	void Node::bindMethods()

@@ -38,7 +38,7 @@ namespace luna
 
 	struct signalComponent 
 	{
-		std::unordered_map<std::string, std::vector<uint64_t>> connectedSignals;
+		std::unordered_map<std::string, std::vector<connectedSignal>> connectedSignals;
 	};
 
 	struct transformComponent

@@ -12,7 +12,7 @@ namespace luna
 
 	struct connectedSignal
 	{
-		MonoObject* connectedObj;
+		uint64_t connectedObj;
 		MonoMethod* signalMethodPtr;
 	};
 
