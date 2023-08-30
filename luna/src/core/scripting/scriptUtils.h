@@ -27,7 +27,7 @@ namespace luna
 			~scriptInstance();
 			void ready();
 			void process(float deltaTime);
-			void invokeSignal(std::string& signalName, void** params);
+			void invokeSignal(const connectedSignal& signal, void** params);
 			void connectSignal(const signal& signal, uint64_t entity);
 			MonoObject* getInstance() { return instance; };
 			MonoClass* getClass();

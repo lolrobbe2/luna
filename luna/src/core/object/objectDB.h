@@ -10,6 +10,9 @@
 #ifndef LN_CLASS
 #define LN_CLASS(mClass,mInherits) objectDB::addClass<mClass,mInherits>();
 #endif // !LN_CLASS
+#ifndef LN_EMIT_SIGNAL
+#define  LN_EMIT_SIGNAL(signalName,...) this->emitSignal(signalName,__VA_ARGS__)
+#endif // !LN_EMIT_SIGNAL
 
 
 #ifndef LN_CLASS_STRINGIFY
@@ -32,10 +35,13 @@ namespace luna
 		object(entt::entity handle, luna::scene* scene) : entityHandle(handle), scene(scene) {};
 		object(uint64_t id, luna::scene* scene);
 		virtual void init(scene* scene);
-		virtual	void bindMethods();
-		void emitSignal(std::string& functionName, void** params);
+		virtual	void bindMethods(); 
+		template <typename ... ArgsT>
+		void emitSignal(const char* functionName, ArgsT && ... inArgs );
 		/**
 		* @brief connects a signal to a object, that ether being itself or another object.
+		* 
+		* @param uint64_t objectID (quikID entt::entity)
 		*/
 		void connectSignal(uint64_t objectID, std::string& functionName);
 		std::vector<std::string> getSignalNames();

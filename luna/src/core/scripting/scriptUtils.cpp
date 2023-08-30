@@ -39,8 +39,9 @@ namespace luna
 			void* param = &deltaTime;
 			if (m_ScriptClass->processMethod) mono_runtime_invoke(m_ScriptClass->processMethod, instance,&param, nullptr);
 		}
-		void scriptInstance::invokeSignal(std::string& signalName, void** params)
+		void scriptInstance::invokeSignal(const connectedSignal& signal, void** params)
 		{
+			mono_runtime_invoke(signal.signalMethodPtr, instance, params, nullptr);
 		}
 		void scriptInstance::connectSignal(const signal& signal,uint64_t entity)
 		{
