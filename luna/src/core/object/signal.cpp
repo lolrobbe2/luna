@@ -1,6 +1,8 @@
 #include "signal.h"
 
 #include <core/object/methodDB.h>
+#include <core/object/objectDB.h>
+#include <core/scripting/scriptingEngine.h>
 
 namespace luna
 {
@@ -12,7 +14,7 @@ namespace luna
 	}
 	void Signal::SignalEmitSignal(uint64_t emitterObjectId, std::string signal, void** args)
 	{
-		 
+		object((entt::entity)emitterObjectId, scripting::scriptingEngine::getContext()).emitSignal(signal.c_str(), args);
 	}
 	void Signal::SignalEmitGlobalSignal(uint64_t emitterObjectId, std::string signal, void** args)
 	{

@@ -84,8 +84,17 @@ namespace Luna
         /// emitted when the node is ready. Comes after ready callback and follows the same rules.
         /// </summary>
         [Signal]
-        public virtual void _ReadyEventHandler() { }
-        
+        public virtual void Ready() { }
+        /// <summary>
+        /// Emitted when the node enters the tree.
+        /// </summary>
+        [Signal]
+        public virtual void treeEntered() { }
+        /// <summary>
+        /// Emitted after the node exits the tree and is no longer active.
+        /// </summary>
+        [Signal]
+        public virtual void treeExited() { }
         #endregion
 
         #region engineHooks
