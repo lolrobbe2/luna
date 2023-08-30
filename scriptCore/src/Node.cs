@@ -89,12 +89,12 @@ namespace Luna
         /// Emitted when the node enters the tree.
         /// </summary>
         [Signal]
-        public virtual void treeEntered() { }
+        public virtual void TreeEntered() { }
         /// <summary>
         /// Emitted after the node exits the tree and is no longer active.
         /// </summary>
         [Signal]
-        public virtual void treeExited() { }
+        public virtual void TreeExited() { }
         #endregion
 
         #region engineHooks
@@ -109,7 +109,7 @@ namespace Luna
         /// </code>
         /// </example>
         /// </summary>
-        public virtual void Ready() { }
+        public virtual void _Ready() { }
         /// <summary>control
         /// runs every frame.
 
@@ -147,7 +147,7 @@ namespace Luna
         /// <summary>
         /// creates a new node at runtime
         /// </summary>
-        protected Node() : base(0) { }
+        protected Node() : base(0) { EmitSignal("TreeEntered"); }
         internal Node(ulong id) : base(id) { }
         #endregion
 
