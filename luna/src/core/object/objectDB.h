@@ -43,7 +43,7 @@ namespace luna
 		* 
 		* @param uint64_t objectID (quikID entt::entity)
 		*/
-		void connectSignal(uint64_t objectID, std::string& functionName);
+		void connectSignal(uint64_t objectID,const std::string& functionName);
 		std::vector<std::string> getSignalNames();
 		template<typename T, typename... Args>
 		T& addComponent(Args&&... args)

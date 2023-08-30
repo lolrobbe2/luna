@@ -207,7 +207,18 @@ namespace luna
 				{
 					if (currentItem != -1) {
 						script.currentItem = currentItem;
-						script.className = std::string(items[currentItem]);
+						if (script.className != std::string(items[currentItem]))
+						{
+							script.className = std::string(items[currentItem]);
+							auto connectedSignals = Node.getComponent<signalComponent>().connectedSignals;
+							Node.getComponent<signalComponent>().connectedSignals.clear();
+							for (auto& [name, connectedSignals] : connectedSignals)
+							{
+								for (connectedSignal signal : connectedSignals) {
+									Node.connectSignal(signal.connectedObj, name);
+								}
+							}
+						}
 					}
 				}
 				ImGui::TreePop();
@@ -455,7 +466,7 @@ namespace luna
 
 	void sceneHierarchyPanel::drawSignalConnectWindow()
 	{
-		ImVec2 nextWindowSize = { ImGui::GetMainViewport()->WorkSize.x / 2.0f, ImGui::GetMainViewport()->WorkSize.y / 2.0f };
+		ImVec2 nextWindowSize = { ImGui::GetMainViewport()->WorkSize.x / 2.0f, ImGui::GetMainViewport()->WorkSize.y / 2.15f };
 		ImGui::SetNextWindowSize(nextWindowSize);
 		if (ImGui::BeginPopupModal("connect signal", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove))
 		{
@@ -472,6 +483,7 @@ namespace luna
 			if(ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.15f, 0.0f)))
 			{
 				m_Selected.connectSignal((uint64_t)m_SignalSelected.entityHandle, m_SelectedSignal);
+				ImGui::CloseCurrentPopup();
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("cancel", ImVec2(-1.0f, 0.0f))) ImGui::CloseCurrentPopup();

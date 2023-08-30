@@ -60,7 +60,7 @@ namespace luna
 		}
 	}
 
-	void object::connectSignal(uint64_t objectID, std::string& signalName)
+	void object::connectSignal(uint64_t objectID,const std::string& signalName)
 	{
 		const signal& signal = signalDB::getSignalByName(getComponent<idComponent>().typeName, signalName);
 		auto& connectedSignals = getComponent<signalComponent>().connectedSignals;
@@ -88,8 +88,9 @@ namespace luna
 			connectedSignals.insert({ signal.signalName,signals });
 			return;
 		}
+		signals.push_back({ objectID,nullptr });
+		connectedSignals.insert({ signal.signalName,signals });
 
-		LN_CORE_ERROR("[scripting engine]: scriptClass undefined (check if the correct class has been selected in the properties panel)");
 	}
 
 	std::vector<std::string> object::getSignalNames()

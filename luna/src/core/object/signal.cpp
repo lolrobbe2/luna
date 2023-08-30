@@ -66,7 +66,7 @@ namespace luna
 
 		return std::vector<std::string>();
 	}
-	const signal& signalDB::getSignalByName(std::string& className, std::string& signalName)
+	const signal& signalDB::getSignalByName(std::string& className,const std::string& signalName)
 	{
 		std::string newClassName = camelToPascal(className);
 		auto it = registeredSignals.find(newClassName);
