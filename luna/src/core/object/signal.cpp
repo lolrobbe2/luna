@@ -16,14 +16,12 @@ namespace luna
 	{
 		int length = mono_array_length(args);
 		void** nativeArray = new void* [length];
-		//argsPack = std::tuple_cat(argsPack, std::make_tuple("test"));
 		for (size_t i = 0; i < length; ++i) {
-			// Cast the MonoArray elements to the desired type and assign them to the void** array
-			// Replace 'ElementType' with the actual type of the elements in MonoArray
+			// Cast the MonoArray elements to MonoObject to keep them uniform
 			nativeArray[i] = (void*)&(mono_array_get(args,MonoObject, i));
 		}
-		if(length) object((entt::entity)emitterObjectId, scripting::scriptingEngine::getContext()).emitSignal(std::string(mono_string_to_utf8(signalName)).c_str(), nativeArray);
-		else object((entt::entity)emitterObjectId, scripting::scriptingEngine::getContext()).emitSignal(std::string(mono_string_to_utf8(signalName)).c_str(), nullptr);
+		if(length) object((entt::entity)emitterObjectId, scripting::scriptingEngine::getContext()).emitSignalParams(std::string(mono_string_to_utf8(signalName)).c_str(), nativeArray);
+		else object((entt::entity)emitterObjectId, scripting::scriptingEngine::getContext()).emitSignalParams(std::string(mono_string_to_utf8(signalName)).c_str(), nullptr);
 	}
 	void Signal::SignalEmitGlobalSignal(uint64_t emitterObjectId, std::string signal, void** args)
 	{

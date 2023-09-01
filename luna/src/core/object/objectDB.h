@@ -36,16 +36,29 @@ namespace luna
 		object(uint64_t id, luna::scene* scene);
 		virtual void init(scene* scene);
 		virtual	void bindMethods(); 
+		/**
+		* @brief emits a signal by name to all the nodes to wich the signal is connected
+		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
+		*/
 		template <typename ... ArgsT>
-		void emitSignal(const char* functionName, ArgsT && ... inArgs )
+		void emitSignal(const char* functionName, ArgsT && ... inMonoArgs )
+		{ 
+			std::vector<void*> args = { static_cast<void*>(&inMonoArgs)... };
+			if(args.size() == 0) emitSignalParams(functionName, args.data());
+			else emitSignalParams(functionName, nullptr);
+		}
+		/**
+		* @brief emits a signal by name to all the nodes to wich the signal is connected
+		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
+		*/
+		void emitSignalParams(const char* functionName, void** monoParams)
 		{
 			auto it = getComponent<signalComponent>().connectedSignals.find(functionName);
-			std::vector<void*> pointers = { static_cast<void*>(&inArgs)... };
 			if (it != getComponent<signalComponent>().connectedSignals.end()) {
-				if (pointers.size()) {
+				if (monoParams) {
 					for (const auto& targetNodeId : it->second) {
 						object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
-						targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, nullptr);
+						targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, monoParams);
 					}
 					return;
 				}

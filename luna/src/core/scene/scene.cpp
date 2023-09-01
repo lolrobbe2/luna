@@ -186,7 +186,7 @@ namespace luna
 			auto& script = m_Registry.get<scriptComponent>(entity);
 			if (script.scritpInstance) {
 				script.scritpInstance->ready();
-				object((entt::entity)entity, scripting::scriptingEngine::getContext()).emitSignal("_ReadyEventHandler");
+				object(entity, scripting::scriptingEngine::getContext()).emitSignal("_Ready");
 			}
 
 		}
