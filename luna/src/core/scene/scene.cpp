@@ -3,6 +3,7 @@
 #include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
 #include <nodes/controlNodes/itemListNode.h>
+#include <nodes/controlNodes/buttonNode.h>
 #include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
 #include <queue>
@@ -23,15 +24,6 @@ namespace luna
 		if(node.hasComponent<spriteRendererComponent>())
 		{
 			auto& sprite = node.getComponent<spriteRendererComponent>();
-			
-			if(node.hasComponent<buttonComponent>())
-			{
-
-				auto& button = node.getComponent<buttonComponent>();
-				if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
-				else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
-				else sprite.texture = button.normalTexture;
-			}
 			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);	
 		}
 		if(node.hasComponent<rectComponent>())
@@ -124,26 +116,15 @@ namespace luna
 		process(ts);
 
 		glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+		
+		normailizedMousePos.x -= 0.5f;
+		normailizedMousePos.y -= 0.5f;
+		/*
 		if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 		else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
 		if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
 		else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
-
-
-		auto buttonGroup = m_Registry.view<transformComponent, buttonComponent, spriteRendererComponent>();
-		for (auto entity : buttonGroup)
-		{
-			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
-			if (sprite.outOfBounds) break;
-
-			glm::vec2 leftCorner = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f };
-			glm::vec2 rightCorner = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
-			leftCorner /= 2.0f; //origin coordinates are in center!
-			rightCorner /= 2.0f;//origin coordinates are in center!
-
-			button.hover = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
-		}
-
+		*/
 		auto itemListGroup = m_Registry.view<transformComponent, itemList>();
 
 		for (auto entity : itemListGroup)
@@ -173,31 +154,7 @@ namespace luna
 	void scene::onEvent(Event& event)
 	{
 		if (!m_IsRunning) return;
-		if(event.getEventType() == eventType::MouseButtonPressed)
-		{
-			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
-			if (mouseEvent->getMouseButton() == Mouse::ButtonLeft) {
-				auto buttonComponentGroup = m_Registry.view<buttonComponent,transformComponent>();
-				for (auto entity : buttonComponentGroup)
-				{
-					auto [button,transform] =  buttonComponentGroup.get<buttonComponent,transformComponent>(entity);
-					button.pressed = true;
-				}
-			}
-		} 
-		else if(event.getEventType() == eventType::MouseButtonReleased)
-		{
-			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
-			if (mouseEvent->getMouseButton() == Mouse::ButtonLeft) 
-			{
-				auto buttonComponentGroup = m_Registry.view<buttonComponent, transformComponent>();
-				for (auto entity : buttonComponentGroup)
-				{
-					auto [button, transform] = buttonComponentGroup.get<buttonComponent, transformComponent>(entity);
-					button.pressed = false;
-				}
-			}
-		}
+
 		auto itemLists = m_Registry.view<itemList>();
 		for (auto entity : itemLists)
 		{
@@ -205,6 +162,12 @@ namespace luna
 			node.guiInputEvent(event);
 		}
 
+		auto buttons = m_Registry.view<buttonComponent>();
+		for (auto entity : buttons)	
+		{
+			nodes::buttonNode node(entity, this);
+			node.guiEvent(event);
+		}
 	}
 
 	void scene::onPlayScene()
@@ -214,7 +177,9 @@ namespace luna
 		{
 			auto& script = m_Registry.get<scriptComponent>(entity);
 			if (script.scritpInstance) LN_CORE_ERROR("scriptInstance was not nullptr");
-			else if (script.className.size()) script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), (uint32_t)entity);
+			else if (script.className.size()) 
+				new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), (uint32_t)entity);
+			
 		}
 		for (auto entity : scriptComponents)
 		{

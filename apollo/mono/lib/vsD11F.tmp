@@ -4,43 +4,6 @@
         <name>scriptCore</name>
     </assembly>
     <members>
-        <member name="F:Luna.ButtonNode.ActionMode.ACTION_MODE_BUTTON_PRESS">
-            <summary>
-            Require just a press to consider the button clicked.
-            </summary>
-        </member>
-        <member name="F:Luna.ButtonNode.ActionMode.ACTION_MODE_BUTTON_RELEASE">
-            <summary>
-            Require a press and a subsequent release before considering the button clicked.
-            </summary>
-        </member>
-        <member name="M:Luna.ButtonNode.ButtonDown">
-            <summary>
-            Emitted when the button starts being held down.
-            </summary>
-        </member>
-        <member name="M:Luna.ButtonNode.ButtonUp">
-            <summary>
-            Emitted when the button stops being held down.
-            </summary>
-        </member>
-        <member name="M:Luna.ButtonNode.Pressed">
-            <summary>
-            <para>Emitted when the button is toggled or pressed. This is on <see cref="M:Luna.ButtonNode.ButtonDown"></see> if <see cref="T:Luna.ButtonNode.ActionMode"/> is
-            <see cref="F:Luna.ButtonNode.ActionMode.ACTION_MODE_BUTTON_PRESS"/> and on <see cref="M:Luna.ButtonNode.ButtonUp"/> otherwise.</para>
-            <para>If you need to know the button's pressed state (and toggle_mode is active), use <see cref="M:Luna.ButtonNode.Toggled(System.Boolean)"/> instead.</para>
-            </summary>
-        </member>
-        <member name="P:Luna.ButtonNode.ToggleMode">
-            <summary>
-            <para>If true, the button is in toggle mode. Makes the button flip state between pressed and unpressed each time <br/> its area is clicked.</para>   
-            </summary>
-        </member>
-        <member name="P:Luna.ButtonNode.Mode">
-            <summary>
-            Determines when the button is considered clicked, one of the <see cref="T:Luna.ButtonNode.ActionMode"/> constants.
-            </summary>
-        </member>
         <member name="T:Luna.Node">
             <summary>
             <para>
@@ -114,7 +77,7 @@
             </summary>
             <param name="node"></param>
         </member>
-        <member name="M:Luna.Node._Ready">
+        <member name="M:Luna.Node.Ready">
             <summary>
             emitted when the node is ready. Comes after ready callback and follows the same rules.
             </summary>
@@ -129,7 +92,7 @@
             Emitted after the node exits the tree and is no longer active.
             </summary>
         </member>
-        <member name="M:Luna.Node.Ready">
+        <member name="M:Luna.Node._Ready">
             <summary>
             runs on node creation.
             <example>
@@ -356,14 +319,6 @@
             emits the all the signals with the corresponding name and signature connected to this node.
             </summary>
             <param name="emitterObject">the object that emits </param>
-            <param name="signalName"></param>
-            <param name="args"></param>
-        </member>
-        <member name="M:Luna.Signal.EmitSignal(System.UInt64,System.String,System.Object[])">
-            <summary>
-            emits the all the signals with the corresponding name and signature connected to this node.
-            </summary>
-            <param name="emitterObjectId">the objectId of the object that emits </param>
             <param name="signalName"></param>
             <param name="args"></param>
         </member>

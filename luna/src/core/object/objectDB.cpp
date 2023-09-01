@@ -40,25 +40,7 @@ namespace luna
 	{
 		
 	}
-	template <typename ... ArgsT>
-	void object::emitSignal(const char* functionName,ArgsT && ... inArgs)
-	{
-		auto it = getComponent<signalComponent>().connectedSignals.find(functionName);
-		std::vector<void*> pointers = { static_cast<void*>(&inArgs)... };
-		if (it != getComponent<signalComponent>().connectedSignals.end()) {
-			if (pointers.size()) {
-				for (const auto& targetNodeId : it->second) {
-					object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
-					targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, pointers.data());
-				}
-				return;
-			} 
-			for (const auto& targetNodeId : it->second) {
-				object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
-				targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, nullptr);
-			}
-		}
-	}
+
 
 	void object::connectSignal(uint64_t objectID,const std::string& signalName)
 	{

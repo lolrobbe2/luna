@@ -44,6 +44,7 @@ namespace luna
 			entityHandle = scene->create();
 			addComponent<idComponent>();
 			addComponent<transformComponent>();
+			addComponent<signalComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 

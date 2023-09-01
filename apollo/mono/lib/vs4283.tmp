@@ -114,7 +114,7 @@
             </summary>
             <param name="node"></param>
         </member>
-        <member name="M:Luna.Node._Ready">
+        <member name="M:Luna.Node.Ready">
             <summary>
             emitted when the node is ready. Comes after ready callback and follows the same rules.
             </summary>
@@ -129,7 +129,7 @@
             Emitted after the node exits the tree and is no longer active.
             </summary>
         </member>
-        <member name="M:Luna.Node.Ready">
+        <member name="M:Luna.Node._Ready">
             <summary>
             runs on node creation.
             <example>
@@ -356,14 +356,6 @@
             emits the all the signals with the corresponding name and signature connected to this node.
             </summary>
             <param name="emitterObject">the object that emits </param>
-            <param name="signalName"></param>
-            <param name="args"></param>
-        </member>
-        <member name="M:Luna.Signal.EmitSignal(System.UInt64,System.String,System.Object[])">
-            <summary>
-            emits the all the signals with the corresponding name and signature connected to this node.
-            </summary>
-            <param name="emitterObjectId">the objectId of the object that emits </param>
             <param name="signalName"></param>
             <param name="args"></param>
         </member>

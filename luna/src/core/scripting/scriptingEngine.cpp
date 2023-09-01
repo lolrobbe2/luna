@@ -249,7 +249,6 @@ namespace luna
 					std::string camelCaseClassName = pascalToCamel(className);
 					if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
 					else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
-					else LN_CORE_WARN("could not find {0} inside ObjectDB", camelCaseClassName);	
 					getAvailableSignals(monoClass);
 				
 			}
@@ -336,6 +335,7 @@ namespace luna
 
 		void scriptingEngine::getAvailableSignals(MonoClass* monoClass)
 		{
+			if (!monoClass) return;
 			MonoMethod* method;
 			void* iter = nullptr;
 

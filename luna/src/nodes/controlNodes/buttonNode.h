@@ -26,6 +26,7 @@ namespace luna
 			 */
 			buttonNode(luna::scene* scene);
 			virtual void init(luna::scene* scene) override;
+			virtual void guiEvent(Event& event) override;
 
 		};
 	}

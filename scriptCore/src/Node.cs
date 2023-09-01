@@ -84,7 +84,7 @@ namespace Luna
         /// emitted when the node is ready. Comes after ready callback and follows the same rules.
         /// </summary>
         [Signal]
-        public virtual void Ready() { }
+        public virtual void _Ready() { }
         /// <summary>
         /// Emitted when the node enters the tree.
         /// </summary>
@@ -109,7 +109,7 @@ namespace Luna
         /// </code>
         /// </example>
         /// </summary>
-        public virtual void _Ready() { }
+        public virtual void Ready() { }
         /// <summary>control
         /// runs every frame.
 
@@ -147,7 +147,7 @@ namespace Luna
         /// <summary>
         /// creates a new node at runtime
         /// </summary>
-        protected Node() : base(0) { EmitSignal("TreeEntered"); }
+        protected Node() : base(0) { }
         internal Node(ulong id) : base(id) { }
         #endregion
 

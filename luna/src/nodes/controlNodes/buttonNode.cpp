@@ -1,5 +1,7 @@
 #include "buttonNode.h"
 #include <core/assets/assetManager.h>
+#include <core/events/mouseEvent.h>
+#include <core/rendering/renderer.h>
 namespace luna
 {
 	namespace nodes
@@ -14,16 +16,19 @@ namespace luna
 			addComponent<buttonComponent>();
 
 		}
-		void buttonNode::init(luna::scene* scene)
+		void buttonNode::init(luna::scene* scene) 
 		{
 			this->scene = scene;
 			entityHandle = scene->create();
 			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(buttonNode);
 			addComponent<scriptComponent>();
+			addComponent<signalComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 			/*sprite Node Components*/
 			addComponent<transformComponent>();
-			addComponent<spriteRendererComponent>().showInEditor = false;
+			auto& sprite = addComponent<spriteRendererComponent>();
+			sprite.showInEditor = false;
+		
 			auto& button = addComponent<buttonComponent>();
 			CHAR currentDir[256] = { 0 };
 			std::string currentDirectory;
@@ -39,6 +44,59 @@ namespace luna
 			button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.normalFilePath.string(),assets::texture)));
 			button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::texture)));
 			button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::texture)));
+			
+			sprite.texture = button.normalTexture;
+		}
+		void buttonNode::guiEvent(Event& event)
+		{
+			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			normailizedMousePos.x -= 0.5f;
+			normailizedMousePos.y -= 0.5f;
+			spriteRendererComponent& sprite = getComponent<spriteRendererComponent>();
+			buttonComponent& button = getComponent<buttonComponent>();
+			if (event.getEventType() == eventType::MouseMoved)
+			{
+				mouseMovedEvent* mouseMoveEvent = (mouseMovedEvent*)&event;
+				if (!getComponent<spriteRendererComponent>().outOfBounds) {
+
+					transformComponent& transform = getComponent<transformComponent>();
+					glm::vec2 leftCorner = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f };
+					glm::vec2 rightCorner = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
+					leftCorner /= 2.0f; //origin coordinates are in center!
+					rightCorner /= 2.0f;//origin coordinates are in center!
+					buttonComponent& button = getComponent<buttonComponent>();
+					bool previousHover = button.hover;
+					button.hover = (leftCorner.x < normailizedMousePos.x && leftCorner.y < normailizedMousePos.y && rightCorner.x > normailizedMousePos.x && rightCorner.y > normailizedMousePos.y);
+					if (button.hover) sprite.texture = button.hoverTexture;
+					else if(button.hover != previousHover) sprite.texture = button.normalTexture;
+				}
+			}
+			if (event.getEventType() == eventType::MouseButtonPressed) 
+			{
+				mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
+				if (mouseEvent->getMouseButton() == Mouse::ButtonLeft)
+				{
+					button.pressed = true;
+					if (button.hover) 
+					{
+						sprite.texture = button.pressedTexture;
+						LN_EMIT_SIGNAL("ButtonDown"); 
+					}
+				}
+			}
+			else if (event.getEventType() == eventType::MouseButtonReleased)
+			{
+				mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
+				if (mouseEvent->getMouseButton() == Mouse::ButtonLeft)
+				{
+					button.pressed = false;
+					if (button.hover) 
+					{
+						sprite.texture = button.normalTexture;
+						LN_EMIT_SIGNAL("ButtonUp");
+					}
+				}
+			}
 		}
 	}
 }

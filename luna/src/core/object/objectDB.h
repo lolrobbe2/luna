@@ -37,7 +37,24 @@ namespace luna
 		virtual void init(scene* scene);
 		virtual	void bindMethods(); 
 		template <typename ... ArgsT>
-		void emitSignal(const char* functionName, ArgsT && ... inArgs );
+		void emitSignal(const char* functionName, ArgsT && ... inArgs )
+		{
+			auto it = getComponent<signalComponent>().connectedSignals.find(functionName);
+			std::vector<void*> pointers = { static_cast<void*>(&inArgs)... };
+			if (it != getComponent<signalComponent>().connectedSignals.end()) {
+				if (pointers.size()) {
+					for (const auto& targetNodeId : it->second) {
+						object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
+						targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, nullptr);
+					}
+					return;
+				}
+				for (const auto& targetNodeId : it->second) {
+					object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
+					targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, nullptr);
+				}
+			}
+		}
 		/**
 		* @brief connects a signal to a object, that ether being itself or another object.
 		* 

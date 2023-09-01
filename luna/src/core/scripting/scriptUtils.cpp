@@ -24,7 +24,9 @@ namespace luna
 			LN_CORE_INFO("instancing class: {0}", mono_class_get_name(m_ScriptClass->childClass));
 			instance = scripting::scriptingEngine::instanciate(m_ScriptClass->childClass);
 			void* param = &handle;
+			object((entt::entity)entityHandle, scripting::scriptingEngine::getContext()).getComponent<scriptComponent>().scritpInstance = this;
 			mono_runtime_invoke(m_ScriptClass->constructor, instance, &param, nullptr);
+			object((entt::entity)entityHandle, scripting::scriptingEngine::getContext()).emitSignal("TreeEntered");
 		}
 
 		scriptInstance::~scriptInstance() {

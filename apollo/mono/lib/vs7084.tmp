@@ -114,7 +114,7 @@
             </summary>
             <param name="node"></param>
         </member>
-        <member name="M:Luna.Node._Ready">
+        <member name="M:Luna.Node.Ready">
             <summary>
             emitted when the node is ready. Comes after ready callback and follows the same rules.
             </summary>
@@ -129,7 +129,7 @@
             Emitted after the node exits the tree and is no longer active.
             </summary>
         </member>
-        <member name="M:Luna.Node.Ready">
+        <member name="M:Luna.Node._Ready">
             <summary>
             runs on node creation.
             <example>
