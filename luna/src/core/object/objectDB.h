@@ -44,8 +44,8 @@ namespace luna
 		void emitSignal(const char* functionName, ArgsT && ... inMonoArgs )
 		{ 
 			std::vector<void*> args = { static_cast<void*>(&inMonoArgs)... };
-			if(args.size() == 0) emitSignalParams(functionName, args.data());
-			else emitSignalParams(functionName, nullptr);
+			if(args.size() == 0) emitSignalParams(functionName, nullptr);
+			else emitSignalParams(functionName, args.data());
 		}
 		/**
 		* @brief emits a signal by name to all the nodes to wich the signal is connected

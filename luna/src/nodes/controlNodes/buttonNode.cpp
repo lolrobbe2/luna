@@ -119,7 +119,19 @@ namespace luna
 					bool previousHover = button.hover;
 					button.hover = (leftCorner.x < normailizedMousePos.x && leftCorner.y < normailizedMousePos.y && rightCorner.x > normailizedMousePos.x && rightCorner.y > normailizedMousePos.y);
 					if (button.hover) sprite.texture = button.hoverTexture;
-					else if(button.hover != previousHover) sprite.texture = button.normalTexture;
+					else if (button.hover != previousHover) {
+						if (getToggleMode()) { 
+							if (button.pressed)
+							{
+								sprite.texture = button.pressedTexture;
+							} 
+							else
+							{
+								sprite.texture = button.normalTexture;
+							}
+						}
+						else sprite.texture = button.normalTexture;
+					}
 				}
 			}
 			if (event.getEventType() == eventType::MouseButtonPressed) 
@@ -136,7 +148,7 @@ namespace luna
 							LN_EMIT_SIGNAL("Pressed"); 
 							if(getToggleMode()) 
 							{
-								button.pressed != button.pressed;
+								button.pressed = !button.pressed;
 								if (button.pressed) sprite.texture = button.pressedTexture;
 								else sprite.texture = button.normalTexture;
 								LN_EMIT_SIGNAL("Toggled", button.pressed);
@@ -168,7 +180,7 @@ namespace luna
 							LN_EMIT_SIGNAL("Pressed");
 							if (getToggleMode())
 							{
-								button.pressed != button.pressed;
+								button.pressed = !button.pressed;
 								if (button.pressed) sprite.texture = button.pressedTexture;
 								else sprite.texture = button.normalTexture;
 								LN_EMIT_SIGNAL("Toggled", button.pressed);
