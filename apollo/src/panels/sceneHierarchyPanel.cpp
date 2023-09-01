@@ -327,6 +327,10 @@ namespace luna
 		if (Node.hasComponent<buttonComponent>())
 		{
 			auto& button = Node.getComponent<buttonComponent>();
+			const char* items[] = { "ACTION_MODE_BUTTON_PRESS","ACTION_MODE_BUTTON_RELEASE" };
+
+			ImGui::Combo("action mode", (int*)& button.actionMode, items, 2);
+			ImGui::Checkbox("toggle mode", &button.toggleMode);
 			if (button.showInEditor)
 			{
 				if (ImGui::TreeNodeEx((void*)typeid(buttonComponent).hash_code(), 0, "button"))

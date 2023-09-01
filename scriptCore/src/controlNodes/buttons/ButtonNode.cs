@@ -41,6 +41,10 @@ namespace Luna
         /// </summary>
         [Signal]
         public virtual void Pressed() { }
+        /// <summary>
+        /// Emitted when the button was just toggled between pressed and normal states (only if <see cref="ToggleMode"/> is active). The new state is contained in the ButtonPressed argument.
+        /// </summary>
+        /// <param name="ButtonPressed"></param>
         [Signal]
         public virtual void Toggled(bool ButtonPressed) { }
         #endregion

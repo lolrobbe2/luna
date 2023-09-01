@@ -2,10 +2,41 @@
 #include <core/assets/assetManager.h>
 #include <core/events/mouseEvent.h>
 #include <core/rendering/renderer.h>
+#include <core/scripting/scriptingEngine.h>
+#include <core/object/methodDB.h>
 namespace luna
 {
 	namespace nodes
 	{
+		static bool ButtonNodeGetHovered(entt::entity handle)
+		{
+			return buttonNode(handle, scripting::scriptingEngine::getContext()).isHovered();
+		}
+		static void ButtonNodeSetToggleMode(entt::entity handle,bool mode)
+		{
+			buttonNode(handle, scripting::scriptingEngine::getContext()).setToggleMode(mode);
+		}
+		static bool ButtonNodeGetToggleMode(entt::entity handle) 
+		{
+			return buttonNode(handle, scripting::scriptingEngine::getContext()).getToggleMode();
+		}
+		static void ButtonNodeSetActionMode(entt::entity handle , actionMode mode)
+		{
+			buttonNode(handle, scripting::scriptingEngine::getContext()).setActionMode(mode);
+		}
+		static actionMode ButtonNodeGetActionMode(entt::entity handle)
+		{
+			return buttonNode(handle, scripting::scriptingEngine::getContext()).getActionMode();
+		}
+		void buttonNode::bindMethods()
+		{
+			LN_ADD_INTERNAL_CALL(buttonNode, ButtonNodeGetHovered);
+			LN_ADD_INTERNAL_CALL(buttonNode, ButtonNodeSetToggleMode);
+			LN_ADD_INTERNAL_CALL(buttonNode, ButtonNodeGetToggleMode);
+			LN_ADD_INTERNAL_CALL(buttonNode, ButtonNodeSetActionMode);
+			LN_ADD_INTERNAL_CALL(buttonNode, ButtonNodeGetActionMode);
+		}
+
 		buttonNode::buttonNode(entt::entity handle, luna::scene* scene) : spriteNode(handle, scene)
 		{
 
@@ -15,6 +46,26 @@ namespace luna
 			getComponent<spriteRendererComponent>().showInEditor = false;
 			addComponent<buttonComponent>();
 
+		}
+		bool buttonNode::isHovered()
+		{
+			return getComponent<buttonComponent>().hover;
+		}
+		void buttonNode::setToggleMode(bool mode)
+		{
+			getComponent<buttonComponent>().toggleMode = mode;
+		}
+		bool buttonNode::getToggleMode()
+		{
+			return getComponent<buttonComponent>().toggleMode;
+		}
+		void buttonNode::setActionMode(actionMode mode)
+		{
+			getComponent<buttonComponent>().actionMode = mode;
+		}
+		actionMode buttonNode::getActionMode()
+		{
+			return getComponent<buttonComponent>().actionMode;
 		}
 		void buttonNode::init(luna::scene* scene) 
 		{
@@ -76,11 +127,29 @@ namespace luna
 				mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
 				if (mouseEvent->getMouseButton() == Mouse::ButtonLeft)
 				{
-					button.pressed = true;
 					if (button.hover) 
 					{
-						sprite.texture = button.pressedTexture;
+						
 						LN_EMIT_SIGNAL("ButtonDown"); 
+						if (getActionMode() == ACTION_MODE_BUTTON_PRESS) 
+						{ 
+							LN_EMIT_SIGNAL("Pressed"); 
+							if(getToggleMode()) 
+							{
+								button.pressed != button.pressed;
+								if (button.pressed) sprite.texture = button.pressedTexture;
+								else sprite.texture = button.normalTexture;
+								LN_EMIT_SIGNAL("Toggled", button.pressed);
+							}
+							else 
+							{
+								sprite.texture = button.pressedTexture;
+							}
+						} 
+						else 
+						{
+							sprite.texture = button.pressedTexture;
+						}
 					}
 				}
 			}
@@ -89,11 +158,30 @@ namespace luna
 				mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
 				if (mouseEvent->getMouseButton() == Mouse::ButtonLeft)
 				{
-					button.pressed = false;
-					if (button.hover) 
+					
+					if (button.hover)
 					{
-						sprite.texture = button.normalTexture;
+
 						LN_EMIT_SIGNAL("ButtonUp");
+						if (getActionMode() == ACTION_MODE_BUTTON_RELEASE)
+						{
+							LN_EMIT_SIGNAL("Pressed");
+							if (getToggleMode())
+							{
+								button.pressed != button.pressed;
+								if (button.pressed) sprite.texture = button.pressedTexture;
+								else sprite.texture = button.normalTexture;
+								LN_EMIT_SIGNAL("Toggled", button.pressed);
+							}
+							else
+							{
+								sprite.texture = button.normalTexture;
+							}
+						} 
+						else 
+						{
+							sprite.texture = button.normalTexture;
+						}
 					}
 				}
 			}

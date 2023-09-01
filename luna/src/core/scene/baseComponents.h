@@ -94,7 +94,17 @@ namespace luna
 		labelRendererComponent(const std::string& text)
 			: text(text) {}
 	};
-
+	enum actionMode : uint16_t
+	{
+		/// <summary>
+		/// Require just a press to consider the button clicked.
+		/// </summary>
+		ACTION_MODE_BUTTON_PRESS = 0,
+		/// <summary>
+		/// Require a press and a subsequent release before considering the button clicked.
+		/// </summary>
+		ACTION_MODE_BUTTON_RELEASE = 1
+	};
 	struct buttonComponent
 	{
 		ref<renderer::texture> normalTexture; 
@@ -107,6 +117,8 @@ namespace luna
 		bool hover = 0;//release/no hover = 0, hover 1;  
 		bool pressed = 0;
 		bool showInEditor = true;
+		bool toggleMode = false;
+		actionMode actionMode = ACTION_MODE_BUTTON_RELEASE;
 		buttonComponent() = default;
 		buttonComponent(const buttonComponent&) = default;
 	};
