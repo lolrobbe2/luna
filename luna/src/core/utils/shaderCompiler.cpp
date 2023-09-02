@@ -6,7 +6,7 @@ namespace luna
 	{
 		shaderCompiler::shaderCompiler()
 		{
-			
+
 		}
 		std::vector<uint32_t> shaderCompiler::compile(compileSpec compileSpec)
 		{
@@ -19,10 +19,10 @@ namespace luna
 				LN_CORE_ERROR("SPIR is not supported");
 				break;
 			case luna::utils::SPIR_V:
-				
+
 				compileSpec.compileOptions.SetTargetEnvironment(shaderc_target_env_vulkan, shaderc_env_version_vulkan_1_2);
-				
-				compileResult = compiler.CompileGlslToSpv(compileSpec.source.data(),compileSpec.source.size(), compileSpec.shaderKind, compileSpec.fileName.c_str());
+
+				compileResult = compiler.CompileGlslToSpv(compileSpec.source.data(), compileSpec.source.size(), compileSpec.shaderKind, compileSpec.fileName.c_str());
 				break;
 			case luna::utils::GLSL:
 				LN_CORE_ERROR("GLSL is not supported");
@@ -31,21 +31,21 @@ namespace luna
 				LN_CORE_ERROR("You need to select a shader language!");
 				break;
 			}
-			if(compileResult.GetErrorMessage().size() > 0) LN_CORE_ERROR("compile error: {0}",compileResult.GetErrorMessage());
-			else LN_CORE_TRACE("reflecting shader: {0}",reflect(std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend()),compileSpec.reflect));
+			if (compileResult.GetErrorMessage().size() > 0) LN_CORE_ERROR("compile error: {0}", compileResult.GetErrorMessage());
+			else LN_CORE_TRACE("reflecting shader: {0}", reflect(std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend()), compileSpec.reflect));
 			return std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
 		}
-		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData,bool reflect)
+		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData, bool reflect)
 		{
 			LN_PROFILE_FUNCTION();
 			if (!reflect)return reflect;
 			spirv_cross::Compiler compiler(shaderData);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
-			
+
 			LN_CORE_TRACE("    {0} uniform buffers", resources.uniform_buffers.size());
 			LN_CORE_TRACE("    {0} push constants", resources.push_constant_buffers.size());
 			LN_CORE_TRACE("    {0} resources", resources.separate_images.size());
-			LN_CORE_TRACE("    {0} stage inputs",resources.stage_inputs.size());
+			LN_CORE_TRACE("    {0} stage inputs", resources.stage_inputs.size());
 			LN_CORE_TRACE("    {0} stage outputs", resources.stage_outputs.size());
 			LN_CORE_TRACE("Uniform buffers:");
 			for (const auto& resource : resources.uniform_buffers)
@@ -70,7 +70,7 @@ namespace luna
 			{
 				LN_CORE_TRACE("  {0}", stageInput.name);
 				LN_CORE_TRACE("    id = {0}", stageInput.id);
-				LN_CORE_TRACE("    offset = {0}",compiler.get_decoration(stageInput.id, spv::DecorationXfbStride));
+				LN_CORE_TRACE("    offset = {0}", compiler.get_decoration(stageInput.id, spv::DecorationXfbStride));
 				LN_CORE_TRACE("    location = {0}", compiler.get_decoration(stageInput.id, spv::DecorationLocation));
 				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageInput, compiler));
 			}
@@ -88,11 +88,11 @@ namespace luna
 				LN_CORE_TRACE("  {0}", seperateImage.name);
 				LN_CORE_TRACE("    id = {0}", seperateImage.id);
 				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(seperateImage, compiler));
-				if(compiler.get_type(seperateImage.type_id).array.size()) LN_CORE_TRACE("    amount = {0}", compiler.get_type(seperateImage.type_id).array[0]);
+				if (compiler.get_type(seperateImage.type_id).array.size()) LN_CORE_TRACE("    amount = {0}", compiler.get_type(seperateImage.type_id).array[0]);
 			}
 			return reflect;
 		}
-		std::string shaderCompiler::getResourceTypeName(const spirv_cross::Resource& resource,const spirv_cross::Compiler& compiler)
+		std::string shaderCompiler::getResourceTypeName(const spirv_cross::Resource& resource, const spirv_cross::Compiler& compiler)
 		{
 			LN_PROFILE_FUNCTION();
 			spirv_cross::SPIRType::BaseType baseType = compiler.get_type(resource.base_type_id).basetype;
@@ -145,7 +145,6 @@ namespace luna
 				return "Double";
 			case spirv_cross::SPIRType::Struct:
 				return "Struct";
-				break;
 			case spirv_cross::SPIRType::Image:
 				return "Image";
 			case spirv_cross::SPIRType::SampledImage:
@@ -165,7 +164,7 @@ namespace luna
 			default:
 				return "undetermined";
 			}
-			
+
 		}
 	}
 }

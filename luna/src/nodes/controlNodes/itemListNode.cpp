@@ -1,5 +1,6 @@
 #include "itemListNode.h"
 #include <core/rendering/renderer2D.h>
+/* DISCLAIMER ALOT of code has been shamelesly copied from godot src*/
 namespace luna 
 {
 	namespace nodes
@@ -294,7 +295,6 @@ namespace luna
 			itemList.items.resize(count);
 			
 			itemList.shapeChanged = true;
-			//notify_property_list_changed();
 		}
 		int itemListNode::getItemCount()
 		{
