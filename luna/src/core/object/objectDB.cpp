@@ -1,13 +1,14 @@
 #include "objectDB.h"
 #include <core/scene/scene.h>
 #include <core/scripting/scriptingEngine.h>
+#include <core/debug/debugMacros.h>
 namespace luna
 {
 
 	void objectDB::createInstance(const std::string& className, scene* scene)
 	{
 		classInfo* info = getPtr(className);
-		if (!info) return;
+		LN_ERR_FAIL_NULL_MSG(info, "class was not found");
 		object* node = (object*)info->creation_func();
 		node->init(scene);
 		if (node->hasComponent<tagComponent>()) node->getComponent<tagComponent>().tag = className;
@@ -17,7 +18,7 @@ namespace luna
 	object::object(uint64_t id, luna::scene* scene) : scene(scene)
 	{
 		auto idComponents = scene->m_Registry.view<idComponent, tagComponent>();
-		if (id == -1) return;
+		LN_ERR_FAIL_COND_MSG(id == -1,"native id was invalid");
 		for (auto entity : idComponents)
 		{
 			auto [testId, tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);

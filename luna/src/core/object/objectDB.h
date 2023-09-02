@@ -7,6 +7,7 @@
 #ifndef LN_REGISTER_CLASS
 #define LN_REGISTER_CLASS(mClass) objectDB::registerClass<mClass>();
 #endif // !LN_REGISTER_CLASS
+#include <core/debug/debugMacros.h>
 #ifndef LN_CLASS
 #define LN_CLASS(mClass,mInherits) objectDB::addClass<mClass,mInherits>();
 #endif // !LN_CLASS
@@ -32,7 +33,7 @@ namespace luna
 	{
 	public:
 		object() = default;
-		object(entt::entity handle, luna::scene* scene) : entityHandle(handle), scene(scene) {};
+		object(entt::entity handle, luna::scene* scene) : entityHandle(handle), scene(scene) { LN_ERR_FAIL_COND_MSG(handle == entt::null,"invalid node quikID!"); };
 		object(uint64_t id, luna::scene* scene);
 		virtual void init(scene* scene);
 		virtual	void bindMethods(); 

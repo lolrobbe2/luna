@@ -109,20 +109,20 @@
   */
 
 #define LN_ERR_FAIL_NULL(m_param) \
-	{ if ( !m_param ) {	\
+	if ( !m_param ) {	\
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR,__FILE__,__LINE__,"Parameter ' " stringify(m_param)" ' is null.");	\
 		return;	 \
-	}	else ((void)0) }	
+	}	else ((void)0) 	
 
   /**
    * Ensures a pointer `m_param` is not null.
    * If it is null, prints `m_msg` and the current function returns.
    */
 #define LN_ERR_FAIL_NULL_MSG(m_param,m_msg) \
-	{ if ( !m_param ) {	\
+	if ( !m_param ) {	\
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}",FUNCTION_STR,__FILE__,__LINE__,"Parameter ' " stringify(m_param)" ' is null.",m_msg);	\
 		return;	 \
-	}	else ((void)0) }
+	}	else ((void)0) 
 
    /**
 	* Try using `LN_ERR_FAIL_NULL_V_MSG`.
@@ -135,7 +135,7 @@
 	if (!m_param) { \
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}", FUNCTION_STR, __FILE__, __LINE__, "Parameter ' " stringify(m_param)" ' is null.");	\
 		return m_retval;	 \
-	} else ((void)0) }
+	} else ((void)0) 
 
 	/**
 	 * Ensures a pointer `m_param` is not null.
@@ -145,7 +145,7 @@
 	if (!m_param) { \
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}", FUNCTION_STR, __FILE__, __LINE__, "Parameter ' " stringify(m_param)" ' is null.", m_msg);	\
 		return m_retval;	 \
-	} else ((void)0) }
+	} else ((void)0) 
 
 	 /**
 	  * Try using `LN_ERR_FAIL_COND_MSG`.
@@ -156,16 +156,16 @@
 	  * Ensures `m_cond` is false.
 	  * If `m_cond` is true, the current function returns.
 	  */
-#define ERR_FAIL_COND(m_cond)                                                                          \
+#define LN_ERR_FAIL_COND(m_cond)                                                                          \
 	if (unlikely(m_cond)) {                                                                            \
-		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true."); \
+		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true."); \
 		return;                                                                                        \
 	} else                                                                                             \
 		((void)0)
 
-#define ERR_FAIL_COND_MSG(m_cond)                                                                          \
+#define LN_ERR_FAIL_COND_MSG(m_cond,m_msg)                                                                          \
 	if (unlikely(m_cond)) {                                                                            \
-		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true.",m_msg); \
+		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true.",m_msg); \
 		return;                                                                                        \
 	} else                                                                                             \
 		((void)0)
