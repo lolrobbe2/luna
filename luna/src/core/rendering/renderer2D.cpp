@@ -1,5 +1,6 @@
 #include "renderer2D.h"
 #include <core/assets/assetManager.h>
+#include <core/debug/debugMacros.h>
 namespace luna
 {
 	namespace renderer 
@@ -133,7 +134,7 @@ namespace luna
 			}
 			const float normalizedDimensionX = 1.0f / renderer::getSceneDimensions().x * size.x;
 			const float normalizedDimensionY = 1.0f / renderer::getSceneDimensions().y * size.y;
-			if (!font) return false;
+			LN_ERR_FAIL_NULL_V_MSG(!font, false, "font was invalid!");
 			uint8_t outOfBounds = 0;
 			for (size_t i = 0; i < labelText.size(); i++) 
 			{
@@ -172,7 +173,6 @@ namespace luna
 			if (outOfBounds == 4)
 			{
 				rendererData.quadVertexBufferPtr -= 4;
-				//memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
 				return true;
 			}
 			rendererData.quadIndexCount += 6;
@@ -270,13 +270,10 @@ namespace luna
 		uint64_t renderer2D::textureInBatch(const uint64_t& handle)
 		{
 			LN_PROFILE_FUNCTION();
-			for (size_t i = 1; i < rendererData.textures.size(); i++)
-			{
-				if (rendererData.textures[i] == handle) return i;
-			}
-			return 0;
+			auto it = std::find_if(rendererData.textures.begin(), rendererData.textures.end(), [&](size_t textureHandle) {return textureHandle == handle; });
+			
+			if (it == rendererData.textures.end()) return 0;
+			return std::distance(rendererData.textures.begin(), it);
 		}
-
-	
 	}
 }

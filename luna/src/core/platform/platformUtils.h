@@ -1,6 +1,7 @@
 #pragma once
 #include "lnpch.h"
 #include <core/core.h>
+#include <core/debug/debugMacros.h>
 namespace luna 
 {
 	namespace platform

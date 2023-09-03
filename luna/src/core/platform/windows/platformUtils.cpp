@@ -111,21 +111,13 @@ namespace luna
 		{
 			std::ifstream stream(filePath, std::ios::binary | std::ios::ate);
 
-			if (!stream)
-			{
-				LN_CORE_ERROR("could not open file at {0}", filePath);
-				return std::vector<unsigned char>();
-			}
+			LN_ERR_FAIL_NULL_V_MSG(stream, std::vector<unsigned char>(), "could not open file at " + filePath);
 
 			std::streampos end = stream.tellg();
 			stream.seekg(0, std::ios::beg);
 			uint32_t size = end - stream.tellg();
 
-			if (size == 0)
-			{
-				LN_CORE_ERROR("file is empty at {0}", filePath);
-				return std::vector<unsigned char>();
-			}
+			LN_ERR_FAIL_NULL_V_MSG(size, std::vector<unsigned char>(), "file is empty at " + filePath);
 
 			unsigned char* buffer = new unsigned char[size];
 			stream.read((char*)buffer, size);
@@ -145,15 +137,13 @@ namespace luna
 			typedef LONG NTSTATUS;
 			typedef NTSTATUS(WINAPI* RtlGetVersionPtr)(PRTL_OSVERSIONINFOW);
 			RtlGetVersionPtr version_ptr = (RtlGetVersionPtr)GetProcAddress(GetModuleHandleA("ntdll.dll"), "RtlGetVersion");
-			if (version_ptr != nullptr) {
-				RTL_OSVERSIONINFOW fow;
-				ZeroMemory(&fow, sizeof(fow));
-				fow.dwOSVersionInfoSize = sizeof(fow);
-				if (version_ptr(&fow) == 0x00000000) {
-					return fmt::format("{0}.{1}.{2}", (int64_t)fow.dwMajorVersion, (int64_t)fow.dwMinorVersion, (int64_t)fow.dwBuildNumber);
-				}
+			LN_ERR_FAIL_NULL_V_MSG(version_ptr, std::string(), "version_ptr was null");
+			RTL_OSVERSIONINFOW fow;
+			ZeroMemory(&fow, sizeof(fow));
+			fow.dwOSVersionInfoSize = sizeof(fow);
+			if (version_ptr(&fow) == 0x00000000) {
+				return fmt::format("{0}.{1}.{2}", (int64_t)fow.dwMajorVersion, (int64_t)fow.dwMinorVersion, (int64_t)fow.dwBuildNumber);
 			}
-			return "";
 		}
 
 		std::string os::getName()
@@ -165,13 +155,9 @@ namespace luna
 		{
 			LCID lcid = GetThreadLocale();
 			wchar_t name[LOCALE_NAME_MAX_LENGTH];
-			if (LCIDToLocaleName(lcid, name, LOCALE_NAME_MAX_LENGTH, 0) == 0)
-				LN_CORE_ERROR("an error occured",GetLastError());
-			else {
-				std::wstring ws(name);
-				return std::string(ws.begin(), ws.end());
-			}
-			return "en";
+			LN_ERR_FAIL_NULL_V_MSG(LCIDToLocaleName(lcid, name, LOCALE_NAME_MAX_LENGTH, 0), "en", "an error occured" + GetLastError());
+			std::wstring ws(name);
+			return std::string(ws.begin(), ws.end());
 		}
 		
 		std::string os::getLocaleLanguage() {
