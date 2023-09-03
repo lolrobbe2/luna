@@ -50,13 +50,12 @@ namespace luna
 	void signalDB::deregisterSignal(std::string& signalName, std::string& className)
 	{
 		auto& signalsIterator = registeredSignals.find(className);
-		if (signalsIterator != registeredSignals.end())
-		{
-			auto& res = std::find_if(signalsIterator->second.begin(), signalsIterator->second.end(), [&](signal m_signal) {
-				return m_signal.signalName == signalName;
-				});
-			if(res !=  signalsIterator->second.end()) signalsIterator->second.erase(res);
-		}
+		LN_ERR_FAIL_COND_MSG(signalsIterator == registeredSignals.end(), "class was not found! (" + className + ")");
+
+		auto& res = std::find_if(signalsIterator->second.begin(), signalsIterator->second.end(), [&](signal m_signal) {
+			return m_signal.signalName == signalName;
+			});
+		if (res != signalsIterator->second.end()) signalsIterator->second.erase(res);
 	}
 	std::vector<std::string> signalDB::getSignalNames(std::string& className)
 	{
