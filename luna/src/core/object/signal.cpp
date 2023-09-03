@@ -79,19 +79,15 @@ namespace luna
 	{
 		std::string newClassName = camelToPascal(className);
 		auto it = registeredSignals.find(newClassName);
-		if (it != registeredSignals.end()) //class /type found
-		{
-			auto signalIt = std::find_if(it->second.begin(), it->second.end(), [&](signal m_signal) {
-				return m_signal.signalName == signalName;
-				});
-			if (signalIt != it->second.end()) return *signalIt;
-			
-			LN_CORE_ERROR("could not find registered signal inside class, check all registered signals! {0}",signalName);
-			return signal();
-		}
+		LN_ERR_FAIL_COND_V_MSG(it == registeredSignals.end(), signal(), "could not find class in signalDB! " + className);
+	
+		auto signalIt = std::find_if(it->second.begin(), it->second.end(), [&](signal m_signal) {
+			return m_signal.signalName == signalName;
+			});
 
-		LN_CORE_ERROR("could not find class in signalDB! {0}",className);
-		return signal();
+		LN_ERR_FAIL_COND_V_MSG(signalIt == it->second.end(), signal(), "could not find registered signal inside class, check all registered signals! " + signalName);
+		return *signalIt;
+		
 	}
 #pragma endregion signalDB
 }

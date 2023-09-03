@@ -169,3 +169,16 @@
 		return;                                                                                        \
 	} else                                                                                             \
 		((void)0)
+#define LN_ERR_FAIL_COND_V(m_cond,m_retval)                                                                          \
+	if (unlikely(m_cond)) {                                                                            \
+		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true."); \
+		return m_retval;                                                                                        \
+	} else                                                                                             \
+		((void)0)
+
+#define LN_ERR_FAIL_COND_V_MSG(m_cond,m_retval,m_msg)                                                                          \
+	if (unlikely(m_cond)) {                                                                            \
+		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true.",m_msg); \
+		return m_retval;                                                                                        \
+	} else                                                                                             \
+		((void)0)
