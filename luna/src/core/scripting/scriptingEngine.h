@@ -4,13 +4,14 @@
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/attrdefs.h>
+#include <mono/metadata/object.h>
+
 
 
 namespace luna
 {
 	namespace scripting
 	{
-
 		/**
 		 * @brief a root class represents the C# node implementation from wich the instantiated class inhertits.
 		 */
@@ -36,7 +37,8 @@ namespace luna
 			void queueFree();
 
 			void process(float deltaTime);
-			
+			void invokeSignal(std::string& signalName, void* obj, void** params);
+			void getImplementedSignals();
 			MonoMethod* constructor = nullptr;
 			MonoMethod* readyMethod = nullptr;
 			MonoMethod* processMethod = nullptr;
@@ -44,8 +46,6 @@ namespace luna
 		
 			MonoClass* childClass;
 			MonoClass* baseClass;
-
-			
 		};
 
 
@@ -105,6 +105,9 @@ namespace luna
 			template<class type>
 			static MonoArray* createArray(const size_t size);
 			static MonoString* createMonoString(const std::string& string);
+			static void getAvailableSignals(MonoClass* monoClass);
+			static MonoMethodSignature* getSignature(MonoMethod* method);
+			static bool hasFlag(MonoMethod* method, uint32_t flag);
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
 			inline static std::map<std::string, scriptClass*> appClasses;

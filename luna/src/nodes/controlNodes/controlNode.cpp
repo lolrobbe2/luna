@@ -1,6 +1,8 @@
 #include "controlNode.h"
 #include <core/scripting/scriptingEngine.h>
 #include <core/object/methodDB.h>
+#include <core/scene/node.h>
+
 namespace luna 
 {
 	namespace nodes
@@ -42,6 +44,7 @@ namespace luna
 			entityHandle = scene->create();
 			addComponent<idComponent>();
 			addComponent<transformComponent>();
+			addComponent<signalComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 

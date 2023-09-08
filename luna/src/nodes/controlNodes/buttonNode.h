@@ -25,8 +25,14 @@ namespace luna
 			 * \param scene
 			 */
 			buttonNode(luna::scene* scene);
+			bool isHovered();
+			void setToggleMode(bool mode);
+			bool getToggleMode();
+			void setActionMode(actionMode mode);
+			actionMode getActionMode();
 			virtual void init(luna::scene* scene) override;
-
+			virtual void guiEvent(Event& event) override;
+			virtual void bindMethods() override;
 		};
 	}
 }

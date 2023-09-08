@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>scriptCore</name>
+    </assembly>
+    <members>
+        <member name="M:Luna.Node.AddSibling(Luna.Node)">
+            <summary>
+            Adds a sibling node to current's node parent, at the same level as that node, right below it.
+            </summary>
+            <remarks>Use add_child instead of this method if you don't need the child node to be added below a specific node in the list of children.</remarks>
+            <param name="node"></param>
+        </member>
+        <member name="M:Luna.Node.AddChild(Luna.Node)">
+            <summary>
+            Adds a child node. Nodes can have any number of children. 
+            Child nodes are automatically deleted when the parent node is deleted, so an entire scene can be removed by deleting its topmost node.
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:Luna.Node.SetName(System.String)">
+            <summary>
+            sets the node name
+            </summary>
+            <param name="name">string name</param>
+        </member>
+        <member name="M:Luna.Node.GetChild(System.Int32)">
+            <summary>
+            <para>Returns a child node by its index (see get_child_count). This method is often used for iterating all children of a node.</para>
+            Negative indices access the children from the last one.
+            </summary>
+            <see cref="!:GetNode()"/>
+            <param name="idx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.Node.GetChildCount">
+            <summary>
+            returns the amount of children the node has.
+            </summary>
+            <returns>int ChildCount</returns>
+        </member>
+        <member name="M:Luna.Node.GetChildren">
+            <summary>
+            returns an array of the nodes children.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.Node.GetParent">
+            <summary>
+            returns the parent Node or Null when the node is a root node.
+            </summary>
+            <returns>Node parent</returns>
+        </member>
+        <member name="M:Luna.Node.Ready">
+            <summary>
+            runs on node creation.
+            <example>
+            <code>
+            override public void Ready()
+            {
+                SetName("testing");
+            }
+            </code>
+            </example>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Luna.Node.Process(System.UInt64)" -->
+        <member name="M:Luna.Node.#ctor">
+            <summary>
+            creates a new node at runtime
+            </summary>
+        </member>
+        <member name="P:Luna.Node.Children">
+            <summary>
+            Child nodes of the current node.
+            </summary>
+        </member>
+        <member name="P:Luna.Node.Parent">
+            <summary>
+            parent Node of the current node.
+            </summary>
+        </member>
+        <member name="P:Luna.Node.Name">
+            <summary>
+            node name
+            </summary>
+        </member>
+        <member name="M:Luna.Log.Trace(System.String,System.Object[])">
+            <summary>
+            app trace log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Trace("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Info(System.String,System.Object[])">
+            <summary>
+            app Info log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Info("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Warn(System.String,System.Object[])">
+            <summary>
+            app Warn log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Warn("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Error(System.String,System.Object[])">
+            <summary>
+            app Error log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Error("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Critical(System.String,System.Object[])">
+            <summary>
+            app Critical log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Critical("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Luna.Object">
+            <summary>
+            NOT THE C# OBJECT!
+            </summary>
+        </member>
+        <member name="M:Luna.Object.EmitSignal(System.String)">
+            <summary>
+             emits all signals with
+            </summary>
+            <param name="signalName"></param>
+        </member>
+        <member name="M:Luna.Os.OpenFileDialog(System.String)">
+            <summary>
+            opens a platform specific openFIleDialog.
+            <example>
+            <code>
+            string openFilePath = OpenFileDialog("image\0*.png;*.jpeg;*.jpg\0");
+            </code>
+            </example>
+            </summary>
+            <param name="filter"></param>
+            <returns>string: open file path</returns>
+        </member>
+        <member name="M:Luna.Os.SaveFileDialog(System.String)">
+            <summary>
+            opens a platform specific saveFIleDialog.
+            <example>
+            <code>
+            string saveFilePath = SaveFileDialog("image\0*.png;*.jpeg;*.jpg\0");
+            </code>
+            </example>
+            </summary>
+            <param name="filter"></param>
+            <returns>string: save file path</returns>
+        </member>
+        <member name="M:Luna.Os.GetCurrentWorkingDirectory">
+            <summary>
+            returns the current working directory
+            </summary>
+            <returns>string: absolute path of current working directory </returns>
+        </member>
+        <member name="M:Luna.Os.GetName">
+            <summary>
+            returns the current osName.
+            </summary>
+            <returns>string os name</returns>
+        </member>
+        <member name="M:Luna.Os.GetVersion">
+            <summary>
+            returns the os version.
+            </summary>
+            <returns>MajorVersion.MinorVersion.Patch</returns>
+        </member>
+        <member name="M:Luna.Os.GetLocale">
+            <summary>
+            returns the users locale 
+            
+            </summary>
+            <returns>string of format en-EN</returns>
+        </member>
+        <member name="M:Luna.Os.GetLocaleLanguage">
+            <summary>
+            returns the users current language.
+            </summary>
+            <returns>string of format en</returns>
+        </member>
+        <member name="M:Luna.Os.GetProcessId">
+            <summary>
+            returns the main processId as an integer.
+            </summary>
+            <returns>int processId </returns>
+        </member>
+        <member name="T:Luna.Signal">
+            <summary>
+            this is the signal attribute
+            </summary>
+        </member>
+        <member name="M:Luna.Signal.EmitSignal(System.Object,System.String)">
+            <summary>
+            emits the all the siganls with the corresponding name connected to this node.
+            </summary>
+            <param name="callerObject"></param>
+            <param name="signal"></param>
+        </member>
+    </members>
+</doc>

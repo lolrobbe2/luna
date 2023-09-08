@@ -10,10 +10,10 @@ namespace luna
             switch (vulkan::window::graphicsApi)
             {
             case vulkan::NONE:
-                LN_CORE_INFO(" none shaders not implemented");
+                LN_CORE_INFO(" none vertexArray not implemented");
                 break;
             case vulkan::OPENGL:
-                LN_CORE_INFO(" opengl shaders not implemented");
+                LN_CORE_INFO(" opengl veretexArray not implemented");
                 break;
             case vulkan::VULKAN:
                 return ref<vertexArray>(new vulkan::vulkanVertexArray());

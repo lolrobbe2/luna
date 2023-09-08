@@ -1,5 +1,6 @@
 #pragma once
 #include <core/scene/scene.h>
+#include <core/scene/node.h>
 namespace luna
 {
 	class sceneHierarchyPanel
@@ -13,6 +14,8 @@ namespace luna
 		void setContext(const ref<scene>& scene);
 
 		void onImGuiRender();
+
+		void drawSignals(std::string& typeName);
 
 		Node getSelectedNode() const { return m_SelectionContext; }
 		void setSelectedNode(Node Node);
@@ -30,12 +33,16 @@ namespace luna
 		void onPlay();
 		ref<assets::asset> getSmallIcon(const std::filesystem::path& assetFilePath);
 		void onStop();
+		void drawSignalConnectWindow();
+		void drawSignalNode(Node& node, uint32_t indent);
 	private:
 
 		uint64_t addIndent = 5;
 		scene* m_Context;
 		Node m_SelectionContext;
 		Node m_Selected;
+		Node m_SignalSelected;
+		std::string m_SelectedSignal;
 		std::string m_ListSelected = "";
 
 #pragma region smallIcons

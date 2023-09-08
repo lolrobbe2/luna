@@ -1,12 +1,12 @@
 #pragma once
 #include "lnpch.h"
-#include <entt.h>
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
 #include <core/utils/timestep.h>
-#include <core/object/objectDB.h>
+
 namespace luna 
 {
+	class LN_API object;
 	class LN_API Node;
 	class LN_API scene
 	{
@@ -14,23 +14,13 @@ namespace luna
 		scene() = default;
 		~scene();
 		template<typename T>
-		T& addNode(std::string name = std::string())
-		{
+		T& addNode(std::string name = std::string());
 
-			T Node{ this };
-			LN_CORE_INFO("added Node, type = {0}", typeid(T).name());
-			Node.setName(name);
-			// TODO: insert return statement here
-			return Node;
-		};
 		template<typename T>
 		bool destroyNode(const T& Node);
 
 		template<typename T>
-		void onComponentAdded(Node Node, T& component)
-		{
-			
-		}
+		void onComponentAdded(Node Node, T& component);
 
 		template<typename... components>
 		auto getAllEntitiesWith()
@@ -52,6 +42,7 @@ namespace luna
 		void process(utils::timestep ts);
 	private:
 		friend class Node;
+		friend class object;
 		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
 		friend class editorLayer;
@@ -63,81 +54,7 @@ namespace luna
 		utils::objectStorage<entt::entity> enttityStorage;
 
 	};
-	
-	class LN_API Node : public object
-	{
-	public:
-
-		Node() = default;
-		Node(entt::entity handle, luna::scene* scene);
-		Node(uint64_t id, luna::scene* scene);
-		Node(scene* scene);
-		virtual ~Node() = default;
-		void setName(std::string name);
-		void addChild(Node node);
-		std::vector<Node> getChildren();
-		Node getParent();
 		
-		virtual void init(scene* scene) override;
-		virtual void bindMethods() override;
-		friend class scene;
-		friend class sceneHierarchyPanel;
-
-		template<typename T, typename... Args>
-		T& addComponent(Args&&... args)
-		{
-			//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
-			T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
-			scene->onComponentAdded<T>(*this, component);
-			return component;
-		}
-		template<typename T, typename... Args>
-		T& addOrReplaceComponent(Args&&... args)
-		{
-			T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-			scene->onComponentAdded<T>(*this, component);
-			return component;
-		}
-		template<typename T>
-		T& getComponent()
-		{
-			return scene->m_Registry.get<T>(entityHandle);
-		}
-		template<typename T>
-		bool hasComponent()
-		{
-			return scene->m_Registry.all_of<T>(entityHandle);
-		}
-		template<typename T>
-		void removeComponent()
-		{
-			scene->m_Registry.remove<T>(entityHandle);
-		}
-
-		operator bool() const { return entityHandle != entt::null; }
-		operator entt::entity() const { return entityHandle; }
-		operator uint32_t() const { return (uint32_t)entityHandle; }
-		operator scene* () const { return scene; };
-		uuid getUUID() { return getComponent<idComponent>().id; }
-		std::string& getName() {
-			return getComponent<tagComponent>().tag;
-		}
-
-		bool operator==(const Node& other) const
-		{
-			return entityHandle == other.entityHandle && scene == other.scene;
-		}
-
-		bool operator!=(const Node& other) const
-		{
-			return !(*this == other);
-		}
-
-	protected:
-		entt::entity entityHandle{ entt::null };
-		scene* scene = nullptr;
-	};
-	
 }
 
 

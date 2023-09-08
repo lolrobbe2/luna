@@ -9,7 +9,9 @@ class __UnexistingClass;
 
 #include <core/debug/log.h>
 #include <core/platform/platformUtils.h>
-
+#include <core/object/signal.h>
+#include <core/scene/node.h>
+#include <core/debug/debugMacros.h>
 namespace luna
 {
 	#ifdef TYPED_METHOD_BIND
@@ -42,7 +44,7 @@ namespace luna
 	{
 		const std::string name = className == "node" ? "Node" : scripting::scriptingEngine::pascalToCamel(className);
 		objectDB::classInfo* info = objectDB::getPtr(name);
-		if (!info) return LN_CORE_ERROR("object class not registered {0}",name);
+		LN_ERR_FAIL_NULL_MSG(info,"object class not registered in objectDB: " + name);
 		Node* node = (Node*)info->creation_func();
 		node->bindMethods();
 	}
@@ -60,6 +62,7 @@ namespace luna
 	{
 		Log::RegisterMethods();
 		Os::RegisterMethods();
+		Signal::RegisterMethods();
 	}
 
 

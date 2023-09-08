@@ -96,8 +96,35 @@ namespace luna
 			ImGui::Begin("properties");
 			if(m_Selected) drawComponents(m_Selected);
 			ImGui::End();
+
+			ImGui::Begin("Signals");
+			if (m_Selected) 
+			{
+				drawSignals(m_Selected.getComponent<idComponent>().typeName);
+				drawSignalConnectWindow();
+			}
+			ImGui::End();
 		}
 
+	}
+	void sceneHierarchyPanel::drawSignals(std::string& typeName)
+	{
+		auto& signals = signalDB::getSignalNames(typeName);
+		if(signals.size()) ImGui::Text(typeName.c_str());
+		for (auto& signalName : signals)
+		{
+			ImGui::Button(signalName.c_str(), ImVec2(-1, 0));
+			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
+			{
+				//LN_CORE_ERROR("pressed signal button: {0}", signalName);
+				m_SelectedSignal = signalName;
+				ImGui::OpenPopup("connect signal");
+			}
+		}
+		if (objectDB::getPtr(typeName)->parentClass)
+		{
+			drawSignals(objectDB::getPtr(typeName)->parentClass->className);
+		}
 	}
 
 	void sceneHierarchyPanel::setSelectedNode(Node Node)
@@ -180,7 +207,18 @@ namespace luna
 				{
 					if (currentItem != -1) {
 						script.currentItem = currentItem;
-						script.className = std::string(items[currentItem]);
+						if (script.className != std::string(items[currentItem]))
+						{
+							script.className = std::string(items[currentItem]);
+							auto connectedSignals = Node.getComponent<signalComponent>().connectedSignals;
+							Node.getComponent<signalComponent>().connectedSignals.clear();
+							for (auto& [name, connectedSignals] : connectedSignals)
+							{
+								for (connectedSignal signal : connectedSignals) {
+									Node.connectSignal(signal.connectedObj, name);
+								}
+							}
+						}
 					}
 				}
 				ImGui::TreePop();
@@ -289,6 +327,10 @@ namespace luna
 		if (Node.hasComponent<buttonComponent>())
 		{
 			auto& button = Node.getComponent<buttonComponent>();
+			const char* items[] = { "ACTION_MODE_BUTTON_PRESS","ACTION_MODE_BUTTON_RELEASE" };
+
+			ImGui::Combo("action mode", (int*)& button.actionMode, items, 2);
+			ImGui::Checkbox("toggle mode", &button.toggleMode);
 			if (button.showInEditor)
 			{
 				if (ImGui::TreeNodeEx((void*)typeid(buttonComponent).hash_code(), 0, "button"))
@@ -425,4 +467,61 @@ namespace luna
 		}
 		return smallFileIcon;
 	}
+
+	void sceneHierarchyPanel::drawSignalConnectWindow()
+	{
+		ImVec2 nextWindowSize = { ImGui::GetMainViewport()->WorkSize.x / 2.0f, ImGui::GetMainViewport()->WorkSize.y / 2.15f };
+		ImGui::SetNextWindowSize(nextWindowSize);
+		if (ImGui::BeginPopupModal("connect signal", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove))
+		{
+			if(ImGui::BeginChild("##nodeSelection"))
+			{
+				auto view = m_Context->m_Registry.view<idComponent, tagComponent>(entt::exclude<parentComponent>);
+				for (auto entityID : view) {
+					Node Node{ entityID , m_Context };
+					drawSignalNode(Node, 0);
+				}
+				ImGui::EndChild();
+			}
+
+			if(ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.15f, 0.0f)))
+			{
+				m_Selected.connectSignal((uint64_t)m_SignalSelected.entityHandle, m_SelectedSignal);
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("cancel", ImVec2(-1.0f, 0.0f))) ImGui::CloseCurrentPopup();
+			ImGui::EndPopup();
+		}
+	}
+	void sceneHierarchyPanel::drawSignalNode(Node& node,uint32_t indent)
+	{
+		std::string buttonText = node.getName();
+		ImGuiTreeNodeFlags flags = (m_SignalSelected == node) ? ImGuiTreeNodeFlags_Selected : 0;
+		bool isOpen = ImGui::TreeNodeEx((void*)node.getUUID().getId(), ImGuiTreeNodeFlags_OpenOnArrow | flags, buttonText.c_str());
+	
+		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) m_SignalSelected = node;
+
+		if (isOpen) 
+		{
+			if (node.hasComponent<childComponent>())
+			{
+				ImGui::Indent(addIndent);
+				auto& childs = node.getComponent<childComponent>().childs;
+
+				for (auto child : childs)
+				{
+					luna::Node _Node{ child,m_Context };
+					if (_Node.getComponent<parentComponent>().parentId == node.getComponent<idComponent>().id)
+					{
+						drawSignalNode(_Node, indent + addIndent);
+					}
+				}
+				ImGui::Unindent(addIndent);
+			}
+
+			ImGui::TreePop();
+		}
+	}
+	
 }

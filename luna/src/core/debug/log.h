@@ -18,6 +18,7 @@ extern "C" {
 	typedef struct _MonoImage MonoImage;
 	typedef struct _MonoClassField MonoClassField;
 	typedef struct _MonoString MonoString;
+	typedef struct _MonoArray MonoArray;
 }
 namespace luna {
 

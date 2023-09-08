@@ -45,3 +45,4 @@ luna/tirdParty/obj/
 *.tlog
 *.xml
 *.sarif
+/.vs

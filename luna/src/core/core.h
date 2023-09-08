@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 #ifndef CORE
 #define CORE
 #define BIT(x) (1<<x)

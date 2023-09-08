@@ -1,13 +1,19 @@
 #pragma once
 #include <core/core.h>
+#include <entt.h>
 #include <type_traits>
+#include <core/scene/baseComponents.h>
 
 #ifndef LN_REGISTER_CLASS
 #define LN_REGISTER_CLASS(mClass) objectDB::registerClass<mClass>();
 #endif // !LN_REGISTER_CLASS
+#include <core/debug/debugMacros.h>
 #ifndef LN_CLASS
 #define LN_CLASS(mClass,mInherits) objectDB::addClass<mClass,mInherits>();
 #endif // !LN_CLASS
+#ifndef LN_EMIT_SIGNAL
+#define  LN_EMIT_SIGNAL(signalName,...) this->emitSignal(signalName,__VA_ARGS__)
+#endif // !LN_EMIT_SIGNAL
 
 
 #ifndef LN_CLASS_STRINGIFY
@@ -18,20 +24,96 @@
 #endif // !LN_CLASS_STRINGIFY
 namespace luna
 {
-	class scene;
+	class LN_API scene;
 	/**
 	 * @brief object class.
-	 * @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
+	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
 	 */
 	class LN_API object
 	{
 	public:
-		virtual void init(scene* scene) = 0;
-		virtual	void bindMethods() = 0;
+		object() = default;
+		object(entt::entity handle, luna::scene* scene) : entityHandle(handle), scene(scene) { LN_ERR_FAIL_COND_MSG(handle == entt::null,"invalid node quikID!"); };
+		object(uint64_t id, luna::scene* scene);
+		virtual void init(scene* scene);
+		virtual	void bindMethods(); 
+		/**
+		* @brief emits a signal by name to all the nodes to wich the signal is connected
+		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
+		*/
+		template <typename ... ArgsT>
+		void emitSignal(const char* functionName, ArgsT && ... inMonoArgs )
+		{ 
+			std::vector<void*> args = { static_cast<void*>(&inMonoArgs)... };
+			if(args.size() == 0) emitSignalParams(functionName, nullptr);
+			else emitSignalParams(functionName, args.data());
+		}
+		/**
+		* @brief emits a signal by name to all the nodes to wich the signal is connected
+		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
+		*/
+		void emitSignalParams(const char* functionName, void** monoParams)
+		{
+			auto it = getComponent<signalComponent>().connectedSignals.find(functionName);
+			if (it != getComponent<signalComponent>().connectedSignals.end()) {
+				if (monoParams) {
+					for (const auto& targetNodeId : it->second) {
+						object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
+						targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, monoParams);
+					}
+					return;
+				}
+				for (const auto& targetNodeId : it->second) {
+					object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
+					targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, nullptr);
+				}
+			}
+		}
+		/**
+		* @brief connects a signal to a object, that ether being itself or another object.
+		* 
+		* @param uint64_t objectID (quikID entt::entity)
+		*/
+		void connectSignal(uint64_t objectID,const std::string& functionName);
+		std::vector<std::string> getSignalNames();
+		template<typename T, typename... Args>
+		T& addComponent(Args&&... args)
+		{
+			//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
+			T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
+			//scene->onComponentAdded<T>(*this, component);
+			return component;
+		}
+		template<typename T, typename... Args>
+		T& addOrReplaceComponent(Args&&... args);
+
+		template<typename T>
+		T& getComponent()
+		{
+			return scene->m_Registry.get<T>(entityHandle);
+		}
+
+		template<typename T>
+		bool hasComponent()
+		{
+			return scene->m_Registry.all_of<T>(entityHandle);
+		}
+		template<typename T>
+		void removeComponent()
+		{
+			scene->m_Registry.remove<T>(entityHandle);
+		}
+		uuid getUUID() { return getComponent<idComponent>().id; }
+
+	protected:
+		friend class luna::scene;
+		entt::entity entityHandle{ entt::null };
+		scene* scene = nullptr;
+
 	};
 	/**
 	 * @brief object database class.
-	 * @warn DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
+	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
 	 */
 	class LN_API objectDB
 	{
@@ -59,7 +141,7 @@ namespace luna
 		{
 			classInfo* infoA = getPtr(getClassName<A>());
 			classInfo* infoT = getPtr(getClassName<T>());
-			if (!infoT) LN_REGISTER_CLASS(T)
+			if(!infoT) LN_REGISTER_CLASS(T)
 			if(!infoA) LN_REGISTER_CLASS(A)
 			if(!infoA) infoA = getPtr(getClassName<A>()); // parent node type
 			if(!infoT) infoT = getPtr(getClassName<T>());

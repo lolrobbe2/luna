@@ -3,6 +3,7 @@
 #include <core/vulkan/device/vulkanDevice.h>
 #include <core/rendering/renderer.h>
 #include <lnpch.h>
+#include <core/debug/debugMacros.h>
 
 namespace luna
 {
@@ -76,24 +77,21 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			std::ifstream textureFile(filePath);
-			if (textureFile.is_open() && textureFile.good())
-			{
-				int width, height, channels;
-				stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 0);
-				uint64_t imageSize = width * height * channels;
-				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
-				VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
-				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
-				memcpy_s(data,width * height * 4, (void*)image, width * height * 4);
-				stbi_image_free(image);
-				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
-				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
-				_handle = (uint64_t)imageViewHandle;
+			LN_ERR_FAIL_COND_MSG(textureFile.is_open() && textureFile.good(), "could not open texture file at: " + filePath);
 
-				textureFile.close();
-				return;
-			}
-			LN_CORE_CRITICAL("could not open texture file at: {0}", filePath);
+			int width, height, channels;
+			stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 0);
+			uint64_t imageSize = width * height * channels;
+			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 4);
+			VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
+			data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
+			memcpy_s(data, width * height * 4, (void*)image, width * height * 4);
+			stbi_image_free(image);
+			utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
+			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
+			_handle = (uint64_t)imageViewHandle;
+
+			textureFile.close();
 		}
 
 		vulkanTextureAtlas::vulkanTextureAtlas(const std::string& filePath, const glm::vec2& texDimensions)
@@ -207,24 +205,6 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			LN_CORE_WARN("deprecated");
-			/*
-			std::ifstream fontFile(filePath, std::ios::binary);
-			if (fontFile.is_open() && fontFile.good())
-			{
-				
-				std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(fontFile), {});
-				
-				
-				if (stbtt_InitFont(&fontInfo, buffer.data(), 0))
-				{
-					createFontTexture();
-					writeGlyphsIntoBuffer();
-					LN_CORE_TRACE("succesfuly loaded fontFile! {0}", filePath);
-				}
-				else LN_CORE_ERROR("incorrect file format, expected .ttf!");
-				fontFile.close();
-			}
-			*/
 		}
 		vulkanFont::vulkanFont(VkBuffer imageBuffer, VkImage imageHandle, VkImageView imageViewHandle, glm::vec2* glyphScales, glm::vec2* glyphAdvances) : imageBuffer(imageBuffer),imageHandle(imageHandle),imageViewHandle(imageViewHandle)
 		{
@@ -247,7 +227,7 @@ namespace luna
 			int index = character;
 			int yStart = index / 16;
 			int xStart = index % 16;
-			if (!(xStart < 16 && yStart < 16)) return nullptr; //character out of scope;
+			LN_ERR_FAIL_COND_V_MSG(!(xStart < 16 && yStart < 16), nullptr, "character out of bounds!");
 			glm::vec2 uvStart = { (float)xStart / 16,(float)yStart / 16 };
 			glm::vec2 uvEnd = { (float)(xStart + 1) / 16,(float)(yStart+1) / 16 };
 			glyph->setUv(uvStart, uvEnd);

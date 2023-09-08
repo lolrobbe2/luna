@@ -27,7 +27,7 @@ namespace luna
 			 * @brief constructor with custom cache size.
 			 * @note recommended to not go above cacheSize of 1000 else cache could become slow!
 			 * @note recommended to use the deafult constructor unless you know what you are doing!
-			 * 
+			 *
 			 * \param size_t cacheSize
 			 */
 			objectStorage(size_t cacheSize)
@@ -37,13 +37,13 @@ namespace luna
 			/**
 			 * @brief puts a value in the object storage.
 			 * @note if the value of *key !=  it whill use this value instead of generating one.
-			 * 
+			 *
 			 * \param storageObject* key pointer to key
 			 * \param value _value value/object to be stored.
 			 * \return std::pair<storageResult, value> value is the input value.
 			 * @see storageResult
 			 */
-			std::pair<storageResult, value> putValue(storageObject* key,const value& _value)
+			std::pair<storageResult, value> putValue(storageObject* key, const value& _value)
 			{
 				LN_PROFILE_FUNCTION();
 				std::pair<cacheObject, value> result = objectCache.putValue(key, _value);
@@ -54,17 +54,17 @@ namespace luna
 					return { storageOpSucces, _value };
 				}
 				return { storageOpSucces,_value };
-				
+
 			}
 			/**
 			 * @brief gets a value from the object storage.
-			 * 
+			 *
 			 * \param storageObject key
 			 * \param value _value
 			 * \return std::pair<storageResult, value> value is the input value.
 			 * @see storageResult
 			 */
-			std::pair<storageResult, value> getValue(const storageObject& key,const value& _value = value())
+			std::pair<storageResult, value> getValue(const storageObject& key, const value& _value = value())
 			{
 				LN_PROFILE_FUNCTION();
 				std::pair<cacheResult, value> result = objectCache.getValue(key);
@@ -86,13 +86,13 @@ namespace luna
 			}
 			/**
 			 * @brief sets the value of a given key.
-			 * 
+			 *
 			 * \param storageObject key
 			 * \param value _value
 			 * \return std::pair<storageResult, value> value is the input value.
 			 * @see storageResult
 			 */
-			std::pair<storageResult, value> setValue(const storageObject& key,const value& _value)
+			std::pair<storageResult, value> setValue(const storageObject& key, const value& _value)
 			{
 				LN_PROFILE_FUNCTION();
 				std::pair<cacheResult, value> result = objectCache.setValue(key, _value);
@@ -105,7 +105,7 @@ namespace luna
 					if (iterator != objectMemory.end())
 					{
 						iterator->second = _value;
-						return {storageOpSucces,_value}
+						return { storageOpSucces,_value }
 					}
 				case cacheResult::cacheInvalidHandle:
 					return { storageInvalidHandle,value() };
@@ -142,7 +142,7 @@ namespace luna
 			* @brief clears the objectstorage of all value's
 			*/
 
-			void clear() 
+			void clear()
 			{
 				objectCache.clear();
 				objectMemory.clear();

@@ -1,10 +1,14 @@
 #include "scene.h"
+#include "node.h"
 #include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
 #include <nodes/controlNodes/itemListNode.h>
+#include <nodes/controlNodes/buttonNode.h>
 #include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
 #include <queue>
+
+
 namespace luna
 {
 
@@ -20,15 +24,6 @@ namespace luna
 		if(node.hasComponent<spriteRendererComponent>())
 		{
 			auto& sprite = node.getComponent<spriteRendererComponent>();
-			
-			if(node.hasComponent<buttonComponent>())
-			{
-
-				auto& button = node.getComponent<buttonComponent>();
-				if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
-				else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
-				else sprite.texture = button.normalTexture;
-			}
 			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);	
 		}
 		if(node.hasComponent<rectComponent>())
@@ -80,11 +75,28 @@ namespace luna
 	}
 
 	template<typename T>
+	T& scene::addNode(std::string name)
+	{
+
+		T Node{ this };
+		LN_CORE_INFO("added Node, type = {0}", typeid(T).name());
+		Node.setName(name);
+		// TODO: insert return statement here
+		return Node;
+	};
+
+	template<typename T>
 	bool scene::destroyNode(const T& Node)
 	{
 		enttityStorage.eraseValue(Node.getUUID());
 		m_Registry.destroy(Node);
 		return false;
+	}
+
+	template<typename T>
+	void scene::onComponentAdded(Node Node, T& component)
+	{
+
 	}
 
 	void scene::onUpdateEditor(utils::timestep ts)
@@ -104,26 +116,15 @@ namespace luna
 		process(ts);
 
 		glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+		
+		normailizedMousePos.x -= 0.5f;
+		normailizedMousePos.y -= 0.5f;
+		/*
 		if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 		else normailizedMousePos.x = -0.5f + normailizedMousePos.x;
 		if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
 		else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
-
-
-		auto buttonGroup = m_Registry.view<transformComponent, buttonComponent, spriteRendererComponent>();
-		for (auto entity : buttonGroup)
-		{
-			auto [transform, button, sprite] = buttonGroup.get<transformComponent, buttonComponent, spriteRendererComponent>(entity);
-			if (sprite.outOfBounds) break;
-
-			glm::vec2 leftCorner = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.y - transform.scale.y / 2.0f };
-			glm::vec2 rightCorner = { transform.translation.x + transform.scale.x / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
-			leftCorner /= 2.0f; //origin coordinates are in center!
-			rightCorner /= 2.0f;//origin coordinates are in center!
-
-			button.hover = (leftCorner.x < normailizedMousePos.x&& leftCorner.y < normailizedMousePos.y&& rightCorner.x > normailizedMousePos.x&& rightCorner.y > normailizedMousePos.y);
-		}
-
+		*/
 		auto itemListGroup = m_Registry.view<transformComponent, itemList>();
 
 		for (auto entity : itemListGroup)
@@ -153,31 +154,7 @@ namespace luna
 	void scene::onEvent(Event& event)
 	{
 		if (!m_IsRunning) return;
-		if(event.getEventType() == eventType::MouseButtonPressed)
-		{
-			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
-			if (mouseEvent->getMouseButton() == Mouse::ButtonLeft) {
-				auto buttonComponentGroup = m_Registry.view<buttonComponent,transformComponent>();
-				for (auto entity : buttonComponentGroup)
-				{
-					auto [button,transform] =  buttonComponentGroup.get<buttonComponent,transformComponent>(entity);
-					button.pressed = true;
-				}
-			}
-		} 
-		else if(event.getEventType() == eventType::MouseButtonReleased)
-		{
-			mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
-			if (mouseEvent->getMouseButton() == Mouse::ButtonLeft) 
-			{
-				auto buttonComponentGroup = m_Registry.view<buttonComponent, transformComponent>();
-				for (auto entity : buttonComponentGroup)
-				{
-					auto [button, transform] = buttonComponentGroup.get<buttonComponent, transformComponent>(entity);
-					button.pressed = false;
-				}
-			}
-		}
+
 		auto itemLists = m_Registry.view<itemList>();
 		for (auto entity : itemLists)
 		{
@@ -185,6 +162,12 @@ namespace luna
 			node.guiInputEvent(event);
 		}
 
+		auto buttons = m_Registry.view<buttonComponent>();
+		for (auto entity : buttons)	
+		{
+			nodes::buttonNode node(entity, this);
+			node.guiEvent(event);
+		}
 	}
 
 	void scene::onPlayScene()
@@ -194,12 +177,18 @@ namespace luna
 		{
 			auto& script = m_Registry.get<scriptComponent>(entity);
 			if (script.scritpInstance) LN_CORE_ERROR("scriptInstance was not nullptr");
-			else if (script.className.size()) script.scritpInstance = new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), (uint32_t)entity);
+			else if (script.className.size()) 
+				new utils::scriptInstance(scripting::scriptingEngine::getScriptClass(script.className), (uint32_t)entity);
+			
 		}
 		for (auto entity : scriptComponents)
 		{
 			auto& script = m_Registry.get<scriptComponent>(entity);
-			if (script.scritpInstance) script.scritpInstance->ready();
+			if (script.scritpInstance) {
+				script.scritpInstance->ready();
+				object(entity, scripting::scriptingEngine::getContext()).emitSignal("_Ready");
+			}
+
 		}
 	}
 
@@ -276,160 +265,6 @@ namespace luna
 			}
 		}
 	}
-
-#pragma region NODE
-
-	/*-----------------------------------------------------------------------*/
-	/*                                glue                                 */
-	/*-----------------------------------------------------------------------*/
-
-
-	static void NodeSetName(entt::entity nodeHandle, MonoString* name)
-	{
-		Node node = { nodeHandle,scripting::scriptingEngine::getContext() };
-		node.setName(mono_string_to_utf8(name));
-	}
-
-	static void NodeGetName(entt::entity nodeHandle, MonoString** name)
-	{
-		Node node = { nodeHandle,scripting::scriptingEngine::getContext() };
-		*name = scripting::scriptingEngine::createMonoString(node.getName());
-	}
-	static MonoArray* NodeGetChildren(entt::entity nodeId)
-	{
-		Node node = { nodeId,scripting::scriptingEngine::getContext() };
-		auto children = node.getChildren();
-
-		MonoArray* nodeArray = scripting::scriptingEngine::createArray<Node>(children.size());
-		for (size_t i = 0; i < children.size(); i++)
-		{
-			auto& script = children[i].getComponent<scriptComponent>();
-			MonoObject* nodeObject = script.scritpInstance->getInstance();
-			mono_array_set(nodeArray, MonoObject*, i, nodeObject);
-		}
-
-		return nodeArray;
-	}
-
-	static MonoObject* NodeGetParent(entt::entity nodeId)
-	{
-		Node node = { nodeId,scripting::scriptingEngine::getContext() };
-		Node parent = node.getParent();
-		if (parent) {
-			return parent.getComponent<scriptComponent>().scritpInstance->getInstance();
-		}
-		return nullptr;
-	}
-
-	static void NodeAddSibling(entt::entity nodeId, entt::entity siblingId)
-	{
-		Node sibling = { nodeId,scripting::scriptingEngine::getContext() };
-		sibling.getParent().addChild(Node(siblingId, scripting::scriptingEngine::getContext()));
-	}
-
-	static void NodeAddChild(entt::entity nodeId, entt::entity childId)
-	{
-		Node parent = { nodeId,scripting::scriptingEngine::getContext() };
-		parent.addChild(Node(childId, scripting::scriptingEngine::getContext()));
-	}
-
-	static entt::entity NodeCreateNew()
-	{
-		return Node(scripting::scriptingEngine::getContext());
-	}
-	Node::Node(uint64_t id, luna::scene* scene)
-	{
-		auto idComponents = scene->m_Registry.group<idComponent,tagComponent>();
-		this->scene = scene;
-		if (id == -1) return;
-		for (auto entity : idComponents)
-		{
-			auto [testId,tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);
-			if (testId.id == id) {
-				entityHandle = entity;
-				if (!hasComponent<idComponent>()) addComponent<idComponent>().id = id;
-				return;
-			}
-		}
-	}
-
-	Node::Node(entt::entity handle, luna::scene* scene)
-		: entityHandle(handle), scene(scene)
-	{
-	}
-
-	Node::Node(luna::scene* scene)
-	{
-		this->scene = scene;
-		entityHandle = scene->create();
-		addComponent<idComponent>();
-		addComponent<scriptComponent>();
-		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
-	}
-
-	void Node::setName(std::string name)
-	{
-		if (hasComponent<tagComponent>()) getComponent<tagComponent>().tag = name;
-		else addComponent<tagComponent>(name);
-		
-	}
-
-	void Node::addChild(Node node)
-	{
-		LN_CORE_INFO("adding node {0} as a child to {1} .", node.getUUID().getId(), getUUID().getId());
-		if (node.hasComponent<parentComponent>()) node.getComponent<parentComponent>().parentId = getComponent<idComponent>().id;
-		else node.addComponent<parentComponent>().parentId = getComponent<idComponent>().id;
-	
-		if (hasComponent<childComponent>()) getComponent<childComponent>().childs.push_back(node);
-		else addComponent<childComponent>().childs.push_back(node);
-	}
-
-	std::vector<Node> Node::getChildren()
-	{
-		std::vector<Node> children;
-		if (hasComponent<childComponent>())
-		{
-			auto childrenID = getComponent<childComponent>().childs;
-			for (auto child : childrenID) {
-				children.push_back(Node(child, scene));
-			}
-		}
-		return children;
-	}
-
-	Node Node::getParent() 
-	{
-		if (hasComponent<parentComponent>()) {
-			auto& parentComp = getComponent<parentComponent>();
-			Node parent{ parentComp.parentId,scene };
-			return parent;
-		}
-		return Node(-1,scene);
-	}
-
-	void Node::init(luna::scene* scene)
-	{
-		this->scene = scene;
-		entityHandle = scene->create();
-		
-		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
-		addComponent<scriptComponent>();
-		LN_CORE_INFO("node uuid = {0}", getUUID().getId());
-	}
-
-	void Node::bindMethods() 
-	{
-		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
-		LN_ADD_INTERNAL_CALL(Node, NodeGetName);
-		LN_ADD_INTERNAL_CALL(Node, NodeGetChildren);
-		LN_ADD_INTERNAL_CALL(Node, NodeGetParent);
-		LN_ADD_INTERNAL_CALL(Node, NodeAddSibling);
-		LN_ADD_INTERNAL_CALL(Node, NodeAddChild);
-		LN_ADD_INTERNAL_CALL(Node, NodeCreateNew);
-	}
-
-#pragma endregion
-
 }
 
 
