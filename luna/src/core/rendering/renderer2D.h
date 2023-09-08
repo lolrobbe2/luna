@@ -57,7 +57,7 @@ namespace luna
 			 * \param const glm::vec2& size starting size;
 			 * \param const glm::vec3& color rgb color value
 			*/
-			_ALWAYS_INLINE_ static bool drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex);
+			_ALWAYS_INLINE_ static bool drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex, glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f });
 			/**
 			 * @brief draws a texture quad.
 			 *
@@ -104,6 +104,7 @@ namespace luna
 			 * @brief returns renderer2D stats.
 			 */
 			static statistics getStats();
+			_ALWAYS_INLINE_ static uint64_t checkHandle(const uint64_t handle);
 		private:
 			_ALWAYS_INLINE_ static uint64_t textureInBatch(const uint64_t& handle);
 			inline static ref<texture> blankImage;

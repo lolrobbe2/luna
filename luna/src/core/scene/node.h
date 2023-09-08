@@ -21,7 +21,8 @@ namespace luna
 		virtual void bindMethods() override;
 		friend class scene;
 		friend class sceneHierarchyPanel;
-
+		entt::entity getQuikId() { return entityHandle; };
+		luna::scene* getScene() { return scene; };
 		operator bool() const { return entityHandle != entt::null; }
 		operator entt::entity() const { return entityHandle; }
 		operator uint32_t() const { return (uint32_t)entityHandle; }

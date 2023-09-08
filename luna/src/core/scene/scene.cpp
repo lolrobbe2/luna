@@ -3,7 +3,9 @@
 #include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
 #include <nodes/controlNodes/itemListNode.h>
+#include <nodes/canvasItem.h>
 #include <nodes/controlNodes/buttonNode.h>
+#include <nodes/canvasItem.h>
 #include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
 #include <queue>
@@ -21,6 +23,10 @@ namespace luna
 		if (node.hasComponent<childComponent>()) for (auto child : node.getComponent<childComponent>().childs) childNodes.push_back(Node(child, node));
 		if (!node.hasComponent<transformComponent>()) { for (Node child : childNodes) draw(child); return; }
 		auto& transform = node.getComponent<transformComponent>();
+		if(node.hasComponent<canvasComponent>())
+		{
+			node.getComponent<canvasComponent>().drawFunction();
+		}
 		if(node.hasComponent<spriteRendererComponent>())
 		{
 			auto& sprite = node.getComponent<spriteRendererComponent>();

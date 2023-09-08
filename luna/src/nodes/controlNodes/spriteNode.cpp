@@ -3,11 +3,11 @@ namespace luna
 {
 	namespace nodes
 	{
-		spriteNode::spriteNode(entt::entity handle, luna::scene* scene) : controlNode(handle,scene)
+		spriteNode::spriteNode(entt::entity handle, luna::scene* scene) : canvasItem(handle,scene)
 		{
 
 		}
-		spriteNode::spriteNode(luna::scene* scene) : controlNode(scene)
+		spriteNode::spriteNode(luna::scene* scene) : canvasItem(scene)
 		{
 			addComponent<transformComponent>();
 			addComponent<spriteRendererComponent>();
@@ -19,11 +19,16 @@ namespace luna
 			entityHandle = scene->create();
 			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(spriteNode);
 			addComponent<scriptComponent>();
-			addComponent<signalComponent>();
+			
+			addComponent<canvasComponent>().drawFunction = [&]() { spriteNode(entityHandle,scene).draw(); };
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 			/*sprite Node Components*/
 			addComponent<transformComponent>();
 			addComponent<spriteRendererComponent>();
+		}
+		void spriteNode::draw()
+		{
+			LN_CORE_ERROR("sprite draw!");
 		}
 	}
 }
