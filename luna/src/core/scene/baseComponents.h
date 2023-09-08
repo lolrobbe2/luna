@@ -76,6 +76,19 @@ namespace luna
 		spriteRendererComponent(const glm::vec4& color)
 			: color(color) {}
 	};
+	/**
+	* @brief function pointer that points to the custom draw implementation of a canvasItem
+	*/
+	typedef void (*drawFuncPtr)(void);
+
+	struct canvasComponent
+	{
+		drawFuncPtr drawFunction;
+		glm::vec4 modulate { 1.0f, 1.0f, 1.0f, 1.0f };
+		glm::vec4 selfModulate { 1.0f, 1.0f, 1.0f, 1.0f };
+		bool visible = true;
+	};
+
 	struct rectComponent
 	{
 		glm::vec4 color{ 1.0f,1.0f,1.0f,1.0f };
