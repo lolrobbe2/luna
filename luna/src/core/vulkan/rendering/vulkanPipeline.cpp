@@ -151,7 +151,6 @@ namespace luna
 			imageCopy.dstSubresource.baseArrayLayer = 0;
 			imageCopy.dstSubresource.layerCount = 1;
 
-
 			vkCmdCopyImage(commandPool->operator=(commandBuffers[currentFrame]), vDevice->swapchain->mSwapchain.get_images().value()[swapchainImageIndex], VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, vDevice->swapchain->sceneViewportImages[currentFrame], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &imageCopy);
 
 			transitionImageLayout(vDevice->swapchain->sceneViewportImages[currentFrame], VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, commandPool->operator=(commandBuffers[currentFrame]));
@@ -696,7 +695,7 @@ namespace luna
 			for (size_t i = 0; i < maxFramesInFlight; i++)
 			{
 				vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) ||
-					vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
+				vkCreateFence(vDevice->getDeviceHandles().device, &fenceInfo, nullptr, &inFlightFences[i]);
 			}
 			for (size_t i = 0; i < vDevice->swapchain->mSwapchain.image_count; i++) vkCreateSemaphore(vDevice->getDeviceHandles().device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]);
 

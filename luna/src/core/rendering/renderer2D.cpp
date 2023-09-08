@@ -1,6 +1,8 @@
 #include "renderer2D.h"
 #include <core/assets/assetManager.h>
 #include <core/debug/debugMacros.h>
+#include <core/debug/typedefs.h>
+#define RGB255_TO_RGB1(color) { color.x * 0.00392156862f,color.y * 0.00392156862f,color.z * 0.00392156862f,1.0f };
 namespace luna
 {
 	namespace renderer 
@@ -25,6 +27,7 @@ namespace luna
 			uint32_t quadIndexCount = 0;
 			quadVertex* quadVertexBufferBase = nullptr;
 			quadVertex* quadVertexBufferPtr = nullptr;
+			quadVertex* quadVertexBufferPreviousPtr = nullptr;
 			uint32_t* quadIndices = nullptr;
 			std::vector<uint64_t> textures;
 			glm::vec4 quadVertexPositions[4];
@@ -37,7 +40,7 @@ namespace luna
 
 		static bool outOfView(const glm::vec4& vert)
 		{
-			return (vert.x > 1.0 || vert.x < -1.0) || (vert.y > 1.0 || vert.y < -1.0);
+			return (vert.x < -1.0 || vert.x > 1.0) || (vert.y < -1.0 || vert.y > 1.0);
 		}
 
 		void renderer2D::init()
@@ -48,6 +51,7 @@ namespace luna
 			rendererData.quadVertexBuffer = vertexBuffer::create(rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadVertexBufferBase = (quadVertex*)rendererData.quadVertexBuffer->data;
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
+			rendererData.quadVertexBufferPreviousPtr = rendererData.quadVertexBufferBase;
 			rendererData.quadIndexBuffer = indexBuffer::create(rendererData.maxIndices);
 			rendererData.quadIndices = rendererData.quadIndexBuffer->data;
 
@@ -98,7 +102,7 @@ namespace luna
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
 			//we use memset because it gets fully transformed in to pure assembly an is thus the fastest way to reset the vertexBUffer.
-			//memset(rendererData.quadVertexBufferBase, 0, rendererData.maxVertices * sizeof(quadVertex));
+			//NEEDED FOR TEXT RENDERING!
 			rendererData.quadIndexCount = 0;
 			rendererData.stats.drawCalls = 0;
 			rendererData.stats.quadCount = 0;
@@ -111,6 +115,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			flush();
 
+			rendererData.quadVertexBufferPreviousPtr =  rendererData.quadVertexBufferPtr;
 			renderer::endScene();
 		}
 		bool renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText)
@@ -124,17 +129,17 @@ namespace luna
 			 * 
 			 */
 			LN_PROFILE_FUNCTION();
+			//LN_ERR_FAIL_NULL_V_MSG(font, true, "font was invalid!");
 			float xAdvance = 0.0f;
 			rendererData.isText = true;
 			const ref<texture> spaceGlyph = font->getGlyph('_');
 			uint64_t handleIndex = textureInBatch(font->handle());
 			if (!handleIndex) {
+				handleIndex = rendererData.textures.size();
 				rendererData.textures.push_back(font->handle());
-				handleIndex = rendererData.textures.size() - 1;
 			}
 			const float normalizedDimensionX = 1.0f / renderer::getSceneDimensions().x * size.x;
 			const float normalizedDimensionY = 1.0f / renderer::getSceneDimensions().y * size.y;
-			LN_ERR_FAIL_NULL_V_MSG(!font, false, "font was invalid!");
 			uint8_t outOfBounds = 0;
 			for (size_t i = 0; i < labelText.size(); i++) 
 			{
@@ -190,8 +195,8 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			uint64_t handle = textureInBatch(texture->handle());
 			if (!handle) {
+				handle = rendererData.textures.size();
 				rendererData.textures.push_back(texture->handle());
-				handle = rendererData.textures.size() - 1;
 			}
 			const std::vector<glm::vec2> textureCoords = texture->getUv();
 			constexpr size_t quadVertexCount = 4;
@@ -209,7 +214,6 @@ namespace luna
 			if (outOfBounds == 4)
 			{
 				rendererData.quadVertexBufferPtr -= 4;
-				//memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
 				return true;
 			}
 			rendererData.quadIndexCount += 6;
@@ -238,7 +242,7 @@ namespace luna
 			uint8_t outOfBounds = 0;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
-				rendererData.quadVertexBufferPtr->color = { color.x * 1 / 255.0f,color.y * 1 / 255.0f,color.z * 1 / 255.0f,1.0f };
+				rendererData.quadVertexBufferPtr->color = RGB255_TO_RGB1(color);
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				outOfBounds += outOfView(rendererData.quadVertexBufferPtr->vert);
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
@@ -249,7 +253,6 @@ namespace luna
 			if (outOfBounds == 4) 
 			{
 				rendererData.quadVertexBufferPtr -= 4;
-				//memset(rendererData.quadVertexBufferPtr, 0, 4 * sizeof(quadVertex));
 				return true;
 			}
 			rendererData.quadIndexCount += 6;
@@ -259,6 +262,8 @@ namespace luna
 		void renderer2D::flush()
 		{
 			LN_PROFILE_FUNCTION();
+			std::ptrdiff_t numElementsToClear = rendererData.quadVertexBufferPreviousPtr - rendererData.quadVertexBufferPtr;
+			if(numElementsToClear > 0)std::fill(rendererData.quadVertexBufferPtr, rendererData.quadVertexBufferPtr + numElementsToClear, quadVertex());
 			renderer::Submit(rendererData.vertexArray ,rendererData.textures, rendererData.quadIndexCount);
 			rendererData.stats.drawCalls++;
 		}
@@ -271,9 +276,7 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			auto it = std::find_if(rendererData.textures.begin(), rendererData.textures.end(), [&](size_t textureHandle) {return textureHandle == handle; });
-			
-			if (it == rendererData.textures.end()) return 0;
-			return std::distance(rendererData.textures.begin(), it);
+			return rendererData.textures.end() - it; //zero wil be return when the texture is not in the bacth and subsequently reaches rendererData.textures.end() and returns 0.
 		}
 	}
 }

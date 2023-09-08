@@ -17,17 +17,13 @@ namespace luna
 	
 	object::object(uint64_t id, luna::scene* scene) : scene(scene)
 	{
+		LN_ERR_FAIL_COND_MSG(id == -1, "native id was invalid");
+
 		auto idComponents = scene->m_Registry.view<idComponent, tagComponent>();
-		LN_ERR_FAIL_COND_MSG(id == -1,"native id was invalid");
-		for (auto entity : idComponents)
-		{
-			auto [testId, tag] = scene->m_Registry.get<idComponent, tagComponent>(entity);
-			if (testId.id == id) {
-				entityHandle = entity;
-				if (!hasComponent<idComponent>()) addComponent<idComponent>().id = id;
-				return;
-			}
-		}
+
+		auto it = std::find_if(idComponents.begin(), idComponents.end(), [&](entt::entity entity) { return getComponent<idComponent>().id == id; });
+
+		if (it != idComponents.end()) entityHandle = *it;
 	}
 
 	void object::init(luna::scene* scene)
@@ -50,8 +46,9 @@ namespace luna
 
 		const std::string& className = object((entt::entity)objectID, scripting::scriptingEngine::getContext()).getComponent<scriptComponent>().className;
 		
-		MonoClass* childClass = nullptr;
-		if(className != "") childClass = scripting::scriptingEngine::getScriptClass(className)->childClass;
+		LN_ERR_FAIL_COND_MSG(className == "", "className was invalid!");
+
+		MonoClass* childClass = scripting::scriptingEngine::getScriptClass(className)->childClass;
 
 		if (!connectedSignals.empty()) {
 			auto mapIter = connectedSignals.find(signal.signalName); //signalName already registered/ has connections
@@ -60,8 +57,6 @@ namespace luna
 				auto vecIter = std::find_if(mapIter->second.begin(), mapIter->second.end(), [&](connectedSignal signal) {return signal.connectedObj != objectID; });
 				if (vecIter != mapIter->second.end())
 					return mapIter->second.push_back({ objectID,mono_class_get_method_from_name(childClass,signal.signalName.c_str(),signal.paramCount) });
-				
-				LN_CORE_ERROR("signal {0} already connected to node {1}", signal.signalName, object((entt::entity)objectID, scripting::scriptingEngine::getContext()).getComponent<idComponent>().id.getId());
 			}
 		}
 		std::vector<connectedSignal> signals;
@@ -85,7 +80,6 @@ namespace luna
 	T& object::addOrReplaceComponent(Args&&... args)
 	{
 		T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-		//scene->onComponentAdded<T>(*this, component);
 		return component;
 	}
 }
