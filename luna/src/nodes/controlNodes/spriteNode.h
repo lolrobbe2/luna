@@ -1,5 +1,8 @@
 #pragma once
 #include <nodes/canvasItem.h>
+#ifndef LN_DRAW_LAMBDA
+	#define LN_DRAW_LAMBDA(nodeClass) [&]() { nodeClass(entityHandle,scene).draw(); }
+#endif
 namespace luna 
 {
 	namespace nodes

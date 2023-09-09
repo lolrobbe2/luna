@@ -14,7 +14,7 @@ namespace luna
 		}
 		canvasItem::canvasItem(luna::scene* scene) : controlNode(scene)
 		{
-			addComponent<canvasComponent>().drawFunction = [&]() { canvasItem(entityHandle, scene).draw(); };
+			addComponent<canvasComponent>().drawFunction = LN_DRAW_LAMDA()
 
 		}
 

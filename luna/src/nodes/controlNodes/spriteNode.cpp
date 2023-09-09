@@ -20,7 +20,7 @@ namespace luna
 			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(spriteNode);
 			addComponent<scriptComponent>();
 			
-			addComponent<canvasComponent>().drawFunction = [&]() { spriteNode(entityHandle,scene).draw(); };
+			addComponent<canvasComponent>().drawFunction = LN_DRAW_LAMBDA(spriteNode);
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 			/*sprite Node Components*/
 			addComponent<transformComponent>();

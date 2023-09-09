@@ -4,7 +4,11 @@
 
 #ifndef PT_TO_PX
 #define PT_TO_PX(Point) Point * ( 72 / 96 )
-#endif // !1
+#endif // !PT_TO_PX
+
+#ifndef LN_DRAW_LAMBDA
+#define LN_DRAW_LAMBDA(nodeClass) [&]() { nodeClass(entityHandle,scene).draw(); }
+#endif
 namespace luna 
 {
 	class color
