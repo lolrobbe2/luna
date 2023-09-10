@@ -27,15 +27,7 @@ namespace luna
 		{
 			node.getComponent<canvasComponent>().drawFunction();
 		}
-		if(node.hasComponent<spriteRendererComponent>())
-		{
-		
-		}
-		if(node.hasComponent<rectComponent>())
-		{
-			auto& rect = node.getComponent<rectComponent>();
-			renderer::renderer2D::drawQuad(transform.translation, transform.scale, rect.color);
-		}
+
 		if(node.hasComponent<labelRendererComponent>())
 		{
 			auto& label = node.getComponent<labelRendererComponent>();

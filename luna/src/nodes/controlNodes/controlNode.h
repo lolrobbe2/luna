@@ -1,11 +1,10 @@
 #pragma once
-#include <core/scene/scene.h>
-#include <core/scene/node.h>
+#include <nodes/canvasItem.h>
 namespace luna 
 {
 	namespace nodes 
 	{
-		class LN_API controlNode : public luna::Node
+		class LN_API controlNode : public canvasItem
 		{
 		public:
 			controlNode() = default;

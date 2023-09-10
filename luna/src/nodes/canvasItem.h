@@ -1,5 +1,5 @@
 #pragma once
-#include <nodes/controlNodes/controlNode.h>
+#include <core/scene/node.h>
 #include <core/scene/scene.h>
 
 #ifndef PT_TO_PX
@@ -27,7 +27,7 @@ namespace luna
 	namespace nodes 
 	{
 
-		class canvasItem : public controlNode
+		class canvasItem : public Node
 		{
 		public:
 			canvasItem() = default;
