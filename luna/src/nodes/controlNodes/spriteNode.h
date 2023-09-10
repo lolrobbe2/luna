@@ -1,8 +1,6 @@
 #pragma once
 #include <nodes/canvasItem.h>
-#ifndef LN_DRAW_LAMBDA
-	#define LN_DRAW_LAMBDA(nodeClass) [&]() { nodeClass(entityHandle,scene).draw(); }
-#endif
+
 namespace luna 
 {
 	namespace nodes
@@ -30,7 +28,6 @@ namespace luna
 			virtual void init(luna::scene* scene) override;
 			virtual ~spriteNode() = default;
 			virtual void draw() override;
-			void executeDraw();
 		};
 	}
 }

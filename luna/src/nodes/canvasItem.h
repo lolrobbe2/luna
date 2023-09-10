@@ -7,7 +7,7 @@
 #endif // !PT_TO_PX
 
 #ifndef LN_DRAW_LAMBDA
-#define LN_DRAW_LAMBDA(nodeClass) [&]() { nodeClass(entityHandle,scene).draw(); }
+#define LN_DRAW_LAMBDA(nodeClass) [=]() { nodeClass(entityHandle,scene).draw(); }
 #endif
 namespace luna 
 {

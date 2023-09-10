@@ -14,8 +14,7 @@ namespace luna
 		}
 		canvasItem::canvasItem(luna::scene* scene) : controlNode(scene)
 		{
-			addComponent<canvasComponent>().drawFunction = LN_DRAW_LAMDA()
-
+			addComponent<canvasComponent>().drawFunction = LN_DRAW_LAMBDA(canvasItem);
 		}
 
 		void canvasItem::drawChar(ref<renderer::font> font, glm::vec2 pos, char chr, int font_size, color modulate) 
@@ -39,9 +38,6 @@ namespace luna
 			glm::vec3 position3 = { position.x,position.y,0.0f };
 			glm::vec2 normSize = { texture->getWidth() / renderer::renderer::getSceneGuiDimensions().x,texture->getHeight() / renderer::renderer::getSceneGuiDimensions().y };
 			renderer::renderer2D::drawQuad(position3, normSize, texture); 
-		}
-		void canvasItem::executeDraw() {
-			
 		}
 	}
 }

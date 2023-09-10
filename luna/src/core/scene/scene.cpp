@@ -29,8 +29,7 @@ namespace luna
 		}
 		if(node.hasComponent<spriteRendererComponent>())
 		{
-			auto& sprite = node.getComponent<spriteRendererComponent>();
-			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);	
+		
 		}
 		if(node.hasComponent<rectComponent>())
 		{
