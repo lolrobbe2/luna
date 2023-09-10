@@ -263,7 +263,8 @@ namespace luna
 							{
 								sprite.filePath = filePath;
 								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-								sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								if (texture) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(), assets::texture));
 							}
 						}
 						ImGui::SameLine();
@@ -277,7 +278,8 @@ namespace luna
 							{
 								sprite.filePath = filePath;
 								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-								sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								if (texture) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(),assets::texture));
 							}
 						}
 					}
