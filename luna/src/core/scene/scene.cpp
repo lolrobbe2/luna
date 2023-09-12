@@ -28,11 +28,6 @@ namespace luna
 			node.getComponent<canvasComponent>().drawFunction();
 		}
 
-		if(node.hasComponent<labelRendererComponent>())
-		{
-			auto& label = node.getComponent<labelRendererComponent>();
-			if (label.font) renderer::renderer2D::drawLabel(transform.translation, { transform.scale.x,transform.scale.y }, label.font, label.text);
-		}
 		if (node.hasComponent<itemList>())
 		{
 			auto& itemListComponent = node.getComponent<itemList>();

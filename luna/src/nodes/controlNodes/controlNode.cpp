@@ -34,26 +34,20 @@ namespace luna
 
 
 		controlNode::controlNode(entt::entity handle, luna::scene* scene)
-			: Node(handle,scene)
+			: canvasItem(handle,scene)
 		{
 
 		}
 		controlNode::controlNode(luna::scene* scene)
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>();
+			canvasItem::init(scene);
 			addComponent<transformComponent>();
-			addComponent<signalComponent>();
-			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 
 		void controlNode::init(luna::scene* scene)
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(controlNode);
-			addComponent<scriptComponent>();
+			canvasItem::init(scene);
+			LN_TYPE_TO_NAME(controlNode);
 			addComponent<transformComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}

@@ -15,7 +15,8 @@ namespace luna
 		public:
 			_ALWAYS_INLINE_ static void registerClasses()
 			{
-				LN_CLASS(controlNode, Node);
+				LN_CLASS(canvasItem, Node);
+				LN_CLASS(controlNode, canvasItem);
 				LN_CLASS(labelNode, controlNode);
 				LN_CLASS(spriteNode, controlNode);
 				LN_CLASS(buttonNode, controlNode);

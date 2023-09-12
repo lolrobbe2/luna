@@ -293,8 +293,8 @@ namespace luna
 			auto& label = Node.getComponent<labelRendererComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(labelRendererComponent).hash_code(), 0, "label"))
 			{
-				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
-				ImGui::SameLine();
+				ImGui::ColorPicker4("color", glm::value_ptr(label.color));
+				//ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
@@ -312,6 +312,8 @@ namespace luna
 					
 				}
 				inputText("label text", label.text);
+				ImGui::InputInt("font size", &label.fontSize);
+				ImGui::DragFloat2("pos", glm::value_ptr(label.pos));
 				ImGui::TreePop();
 			}
 			ImGui::Separator();

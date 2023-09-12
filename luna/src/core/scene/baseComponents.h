@@ -97,7 +97,8 @@ namespace luna
 		std::filesystem::path filePath;
 		std::string text;
 		float TilingFactor = 1.0f;
-
+		glm::vec2 pos;
+		int fontSize;
 		labelRendererComponent() = default;
 		labelRendererComponent(const labelRendererComponent&) = default;
 		labelRendererComponent(const std::string& text)

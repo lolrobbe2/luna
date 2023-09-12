@@ -5,16 +5,24 @@ namespace luna
 {
 	namespace nodes 
 	{
-		canvasItem::canvasItem(entt::entity handle, luna::scene* scene) : controlNode(handle,scene)
+		canvasItem::canvasItem(entt::entity handle, luna::scene* scene) : Node(handle,scene)
 		{
 		
 		}
 		canvasItem::canvasItem(uint64_t id, luna::scene* scene)
 		{
 		}
-		canvasItem::canvasItem(luna::scene* scene) : controlNode(scene)
+		canvasItem::canvasItem(luna::scene* scene) : Node(scene)
 		{
 			addComponent<canvasComponent>().drawFunction = LN_DRAW_LAMBDA(canvasItem);
+		}
+
+		void canvasItem::init(luna::scene* scene)
+		{
+
+			Node::init(scene);
+			LN_TYPE_TO_NAME(canvasItem);
+			LN_CANVAS_COMPONENT(canvasItem);
 		}
 
 		void canvasItem::drawChar(ref<renderer::font> font, glm::vec2 pos, char chr, int font_size, color modulate) 
@@ -29,7 +37,7 @@ namespace luna
 		void canvasItem::drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate)
 		{
 			transformComponent transform = getComponent<transformComponent>();
-			int pxNorm = PT_TO_PX(font_size) / renderer::renderer::getSceneGuiDimensions().y;
+			float pxNorm = PT_TO_PX(font_size);
 			glm::vec3 position{ pos.x,pos.y,1.0f };
 			renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font,string);
 		}

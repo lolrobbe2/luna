@@ -22,6 +22,10 @@
  */
 #define LN_CLASS_STRINGIFY(mClass) objectDB::getClassName<mClass>();
 #endif // !LN_CLASS_STRINGIFY
+
+#ifndef LN_CLASS_TYPE_NAME
+#define LN_CLASS_TYPE_NAME(mClass) getComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(m_Class)
+#endif
 namespace luna
 {
 	class LN_API scene;
@@ -85,7 +89,11 @@ namespace luna
 			return component;
 		}
 		template<typename T, typename... Args>
-		T& addOrReplaceComponent(Args&&... args);
+		T& addOrReplaceComponent(Args&&... args)
+		{
+			T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
+			return component;
+		}
 
 		template<typename T>
 		T& getComponent()

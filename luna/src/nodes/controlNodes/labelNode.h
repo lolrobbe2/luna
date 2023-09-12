@@ -27,6 +27,7 @@ namespace luna
 			labelNode(luna::scene* scene);
 			virtual void init(luna::scene* scene) override;
 			virtual ~labelNode() = default;
+			virtual void draw() override;
 		private:
 
 		};

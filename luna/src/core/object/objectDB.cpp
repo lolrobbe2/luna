@@ -28,6 +28,10 @@ namespace luna
 
 	void object::init(luna::scene* scene)
 	{
+
+		this->scene = scene;
+		entityHandle = scene->create();
+
 		addComponent<idComponent>().typeName = stringify(object);
 		addComponent<signalComponent>();
 		LN_EMIT_SIGNAL("_ReadyEventHandler");
@@ -76,10 +80,5 @@ namespace luna
 		return signalDB::getSignalNames(getComponent<idComponent>().typeName);
 	}
 
-	template<typename T, typename... Args>
-	T& object::addOrReplaceComponent(Args&&... args)
-	{
-		T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-		return component;
-	}
+
 }

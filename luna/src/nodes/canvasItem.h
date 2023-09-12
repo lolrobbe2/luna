@@ -3,12 +3,16 @@
 #include <core/scene/scene.h>
 
 #ifndef PT_TO_PX
-#define PT_TO_PX(Point) Point * ( 72 / 96 )
+#define PT_TO_PX(Point) (Point * ( 72 / 96 ))
 #endif // !PT_TO_PX
 
 #ifndef LN_DRAW_LAMBDA
-#define LN_DRAW_LAMBDA(nodeClass) [=]() { nodeClass(entityHandle,scene).draw(); }
+#define LN_DRAW_LAMBDA(mClass) [=]() { mClass(entityHandle,scene).draw(); }
 #endif
+#ifndef LN_CANVAS_COMPONENT
+#define LN_CANVAS_COMPONENT(mClass) addOrReplaceComponent<canvasComponent>().drawFunction = LN_DRAW_LAMBDA(mClass)
+#endif // !LN_CANVAS_COMPONENT
+
 namespace luna 
 {
 	class color
@@ -16,6 +20,7 @@ namespace luna
 	public:
 		color() = default;
 		color(float r, float g, float b, float a) :r(r), g(g), b(b), a(a) {};
+		color(glm::vec4 color) { r = color.x, g = color.y, b = color.z, a = color.w; };
 		virtual ~color() = default;
 		operator glm::vec4() { return { r,g,b,a }; };
 
@@ -35,11 +40,13 @@ namespace luna
 			canvasItem(uint64_t id, luna::scene* scene);
 			canvasItem(luna::scene* scene);
 			
+			virtual void init(luna::scene* scene) override;
+
 			void drawChar(ref<renderer::font> font, glm::vec2 pos, char chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
 			void drawString(ref<renderer::font> font, glm::vec2 pos, std::string chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
 			void drawTexture(ref<renderer::texture> texture, glm::vec2 position, color modulate);
 			void executeDraw();
-			virtual void draw() { LN_CORE_INFO("canvasItem"); };
+			virtual void draw() {};
 		};
 	}
 	namespace colors
