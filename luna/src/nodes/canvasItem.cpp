@@ -21,7 +21,7 @@ namespace luna
 		{
 
 			Node::init(scene);
-			LN_TYPE_TO_NAME(canvasItem);
+			LN_CLASS_TYPE_NAME(canvasItem);
 			LN_CANVAS_COMPONENT(canvasItem);
 		}
 

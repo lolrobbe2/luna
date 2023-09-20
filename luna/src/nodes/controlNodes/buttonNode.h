@@ -33,6 +33,7 @@ namespace luna
 			virtual void init(luna::scene* scene) override;
 			virtual void guiEvent(Event& event) override;
 			virtual void bindMethods() override;
+			virtual void draw() override;
 		};
 	}
 }

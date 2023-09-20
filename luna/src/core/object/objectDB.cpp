@@ -50,7 +50,7 @@ namespace luna
 
 		const std::string& className = object((entt::entity)objectID, scripting::scriptingEngine::getContext()).getComponent<scriptComponent>().className;
 		
-		LN_ERR_FAIL_COND_MSG(className == "", "className was invalid!");
+		LN_ERR_FAIL_COND_MSG(className == "", "className was invalid! (check properties if a class was selected!)");
 
 		MonoClass* childClass = scripting::scriptingEngine::getScriptClass(className)->childClass;
 

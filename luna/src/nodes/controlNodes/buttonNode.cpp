@@ -1,7 +1,7 @@
 #include "buttonNode.h"
 #include <core/assets/assetManager.h>
 #include <core/events/mouseEvent.h>
-#include <core/rendering/renderer.h>
+#include <core/rendering/renderer2D.h>
 #include <core/scripting/scriptingEngine.h>
 #include <core/object/methodDB.h>
 namespace luna
@@ -37,6 +37,17 @@ namespace luna
 			LN_ADD_INTERNAL_CALL(buttonNode, ButtonNodeGetActionMode);
 		}
 
+		void buttonNode::draw()
+		{
+			auto& transform = getComponent<transformComponent>();
+			auto& button = getComponent<buttonComponent>();
+			auto& sprite = getComponent<spriteRendererComponent>();
+			if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
+			else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
+			else sprite.texture = button.normalTexture;
+			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
+		}
+
 		buttonNode::buttonNode(entt::entity handle, luna::scene* scene) : spriteNode(handle, scene)
 		{
 
@@ -69,15 +80,14 @@ namespace luna
 		}
 		void buttonNode::init(luna::scene* scene) 
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(buttonNode);
-			addComponent<scriptComponent>();
-			addComponent<signalComponent>();
+			spriteNode::init(scene);
+			LN_CLASS_TYPE_NAME(buttonNode);
+			LN_CANVAS_COMPONENT(buttonNode);
+
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 			/*sprite Node Components*/
-			addComponent<transformComponent>();
-			auto& sprite = addComponent<spriteRendererComponent>();
+			LN_CANVAS_COMPONENT(buttonNode);
+			auto& sprite = getComponent<spriteRendererComponent>();
 			sprite.showInEditor = false;
 		
 			auto& button = addComponent<buttonComponent>();

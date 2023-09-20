@@ -27,37 +27,6 @@ namespace luna
 		{
 			node.getComponent<canvasComponent>().drawFunction();
 		}
-
-		if (node.hasComponent<itemList>())
-		{
-			auto& itemListComponent = node.getComponent<itemList>();
-			glm::vec3 translation {0.0f,0.0f,0.0f};
-			glm::vec3 customTransform = { 0.0f,0.0f,0.0f };
-			static glm::vec2 glyphDimensions;
-			if (itemListComponent.font) glyphDimensions = glm::vec2(itemListComponent.font->getGlyph('A')->getWidth(), itemListComponent.font->getGlyph('A')->getHeight());
-			glm::vec2 advance{};
-			advance.x = (glyphDimensions.x / renderer::renderer::getSceneDimensions().x) + transform.translation.x;
-			advance.y = (glyphDimensions.y / renderer::renderer::getSceneDimensions().y) + transform.translation.y;
-			for(item& item : itemListComponent.items)
-			{
-				glm::vec2 size{ 15,3 };
-				size.x *= transform.scale.x;
-				size.y *= transform.scale.y;
-				if (renderer::renderer2D::drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg))
-				{ 
-					item.selectable = false;
-					return;
-				} else item.selectable = true;;
-				
-				renderer::renderer2D::drawQuad(translation + transform.translation,size, item.customFg);
-				customTransform = translation;
-				customTransform = customTransform - glm::vec3(size.x / 2,-size.y / 4.0f, 0.0f);
-				if (itemListComponent.font) renderer::renderer2D::drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text);
-				item.rectCache.start = size;
-				item.rectCache.position = translation;
-				translation.y += size.y;
-			}
-		}
 		for (Node child : childNodes) draw(child);
 	}
 
@@ -182,6 +151,7 @@ namespace luna
 			}
 
 		}
+		m_IsRunning = true;
 	}
 
 	void scene::onStopScene()
@@ -190,9 +160,11 @@ namespace luna
 		for (auto entity : scriptComponents)
 		{
 			auto& script = m_Registry.get<scriptComponent>(entity);
+			delete script.scritpInstance;
 			script.scritpInstance = nullptr;
 		
 		}
+		m_IsRunning = false;
 	}
 
 	void scene::resetScriptComponent()

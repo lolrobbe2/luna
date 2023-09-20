@@ -129,7 +129,7 @@ namespace luna
 	void Node::init(luna::scene* scene)
 	{
 		object::init(scene);
-		getComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
+		LN_CLASS_TYPE_NAME(Node);
 		addComponent<scriptComponent>();
 	}
 

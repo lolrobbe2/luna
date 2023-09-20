@@ -215,6 +215,18 @@ namespace luna
 		itemList() = default;
 		itemList(const itemList&) = default;
 	};
+	struct rangeComponent {
+		double val = 0.0;
+		double min = 0.0;
+		double max = 100.0;
+		double step = 1.0;
+		double page = 0.0;
+		bool exp_ratio = false;
+		bool allow_greater = false;
+		bool allow_lesser = false;
+		bool rounded = false;
+		std::unordered_set<entt::entity> owners;
+	};
 	/*
 		node tree components:
 		these components represent the node tree

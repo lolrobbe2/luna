@@ -61,7 +61,7 @@ namespace luna {
 	}
 	_ALWAYS_INLINE_ void Log::CriticalInternal(MonoString* string)
 	{
-		LN_CRITICAL(std::string(mono_string_to_utf8(string)));
+		LN_CRITICAL (std::string(mono_string_to_utf8(string)));
 	}
 
 

@@ -47,7 +47,7 @@ namespace luna
 		void controlNode::init(luna::scene* scene)
 		{
 			canvasItem::init(scene);
-			LN_TYPE_TO_NAME(controlNode);
+			LN_CLASS_TYPE_NAME(controlNode);
 			addComponent<transformComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}

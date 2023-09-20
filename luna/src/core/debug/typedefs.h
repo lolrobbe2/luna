@@ -30,6 +30,10 @@ template <typename T, typename T2, typename T3>
 constexpr auto CLAMP(const T m_a, const T2 m_min, const T3 m_max) {
 	return m_a < m_min ? m_min : (m_a > m_max ? m_max : m_a);
 }
+template <typename T, typename T2, typename T3>
+constexpr auto isEqualApprox(const T m_a, const T2 m_b, const T3 tolerance) {
+	return ABS(m_a - m_b) < tolerance;
+}
 
 // Generic swap template.
 #ifndef SWAP

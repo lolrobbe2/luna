@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
+    <Compile Include="src\controlNodes\range\range.cs" />
     <Compile Include="src\Node.cs" />
     <Compile Include="src\controlNodes\controlNode.cs" />
     <Compile Include="src\debug\Log.cs" />
@@ -75,8 +76,7 @@
     <Compile Include="src\os\Os.cs" />
     <Compile Include="src\signals\Signal.cs" />
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

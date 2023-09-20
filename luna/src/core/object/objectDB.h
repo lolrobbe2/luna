@@ -24,7 +24,7 @@
 #endif // !LN_CLASS_STRINGIFY
 
 #ifndef LN_CLASS_TYPE_NAME
-#define LN_CLASS_TYPE_NAME(mClass) getComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(m_Class)
+#define LN_CLASS_TYPE_NAME(mClass) getComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(mClass)
 #endif
 namespace luna
 {

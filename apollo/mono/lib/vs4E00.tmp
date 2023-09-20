@@ -31,12 +31,6 @@
             <para>If you need to know the button's pressed state (and toggle_mode is active), use <see cref="M:Luna.ButtonNode.Toggled(System.Boolean)"/> instead.</para>
             </summary>
         </member>
-        <member name="M:Luna.ButtonNode.Toggled(System.Boolean)">
-            <summary>
-            Emitted when the button was just toggled between pressed and normal states (only if <see cref="P:Luna.ButtonNode.ToggleMode"/> is active). The new state is contained in the ButtonPressed argument.
-            </summary>
-            <param name="ButtonPressed"></param>
-        </member>
         <member name="P:Luna.ButtonNode.ToggleMode">
             <summary>
             <para>If true, the button is in toggle mode. Makes the button flip state between pressed and unpressed each time <br/> its area is clicked.</para>   
@@ -45,65 +39,6 @@
         <member name="P:Luna.ButtonNode.Mode">
             <summary>
             Determines when the button is considered clicked, one of the <see cref="T:Luna.ButtonNode.ActionMode"/> constants.
-            </summary>
-        </member>
-        <member name="M:Luna.Range.Changed">
-            <summary>
-            Emitted when MinValue, MaxValue, Page, or Step change.
-            </summary>
-        </member>
-        <member name="M:Luna.Range.ValuecChanged(System.Single)">
-            <summary>
-            Emitted when value changes. When used on a Slider, this is called continuously while dragging (potentially every frame). If you are performing an expensive operation in a function connected to value_changed, consider using a debouncing Timer to call the function less often.
-            </summary>
-            <remarks>
-            Unlike signals such as LineEdit.text_changed, value_changed is also emitted when value is set directly via code.
-            </remarks>
-            <param name="value"></param>
-        </member>
-        <member name="P:Luna.Range.AllowGreater">
-            <summary>
-            If true, value may be greater than MaxValue.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.AllowLesser">
-            <summary>
-            If true, value may be less than MinValue.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.ExpEdit">
-            <summary>
-            If true, and minValue is greater than 0, value will be represented exponentially rather than linearly.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.MaxValue">
-            <summary>
-            Maximum value. Range is clamped if value is greater than MaxValue.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.MinValue">
-            <summary>
-            Minimum value. Range is clamped if value is less than MinVlue.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.Page">
-            <summary>
-            Page size. Used mainly for ScrollBar. ScrollBar's length is its size multiplied by page over the difference between MinValue and MaxValue.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.Ratio">
-            <summary>
-            The value mapped between 0 and 1.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.Step">
-            <summary>
-            If greater than 0, value will always be rounded to a multiple of this property's value. If rounded is also true, value will first be rounded to a multiple of this property's value, then rounded to the nearest integer.
-            </summary>
-        </member>
-        <member name="P:Luna.Range.Value">
-            <summary>
-            Range's current value. Changing this property (even via code) will trigger <see cref="M:Luna.Range.Changed"/> signal. Use SetValueNoSignal if you want to avoid it.
             </summary>
         </member>
         <member name="T:Luna.Node">
