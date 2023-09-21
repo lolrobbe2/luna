@@ -1,6 +1,7 @@
 #include "range.h"
 #include <core/scripting/scriptingEngine.h>
 #include <core/debug/typedefs.h>
+#include <core/object/methodDB.h>
 namespace luna 
 {
 	namespace nodes
@@ -130,6 +131,36 @@ namespace luna
 		}
 		void range::bindMethods()
 		{
+			LN_ADD_INTERNAL_CALL(range, RangeSetAllowGreater);
+			LN_ADD_INTERNAL_CALL(range, RangeIsGreaterAllowed);
+
+			LN_ADD_INTERNAL_CALL(range, RangeSetAllowLesser);
+			LN_ADD_INTERNAL_CALL(range, RangeIsLesserAllowed);
+
+			LN_ADD_INTERNAL_CALL(range, RangeSetExpRatio);
+			LN_ADD_INTERNAL_CALL(range, RangeIsRatioExp);
+
+			LN_ADD_INTERNAL_CALL(range, RangeSetMax);
+			LN_ADD_INTERNAL_CALL(range, RangeGetMax);
+
+			LN_ADD_INTERNAL_CALL(range, RangeGetMin);
+			LN_ADD_INTERNAL_CALL(range, RangeSetMin);
+
+			LN_ADD_INTERNAL_CALL(range, RangeSetPage);
+			LN_ADD_INTERNAL_CALL(range, RangeGetPage);
+
+			LN_ADD_INTERNAL_CALL(range, RangeGetAsRatio);
+			LN_ADD_INTERNAL_CALL(range, RangeSetAsRatio);
+
+			LN_ADD_INTERNAL_CALL(range, RangeIsUsingRoundedvalues);
+			LN_ADD_INTERNAL_CALL(range, RangeSetUseRoundedValues);
+
+			LN_ADD_INTERNAL_CALL(range, RangeGetStep);
+			LN_ADD_INTERNAL_CALL(range, RangeSetStep);
+
+			LN_ADD_INTERNAL_CALL(range, RangeGetValue);
+			LN_ADD_INTERNAL_CALL(range, RangeSetValue);
+			LN_ADD_INTERNAL_CALL(range, RangeSetValueNoSignal);
 		}
 		void range::setAllowGreater(bool value)
 		{
