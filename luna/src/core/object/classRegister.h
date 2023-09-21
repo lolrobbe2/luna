@@ -6,6 +6,8 @@
 #include <nodes/controlNodes/spriteNode.h>
 #include <nodes/controlNodes/itemListNode.h>
 #include <nodes/controlNodes/colorRectNode.h>
+#include <nodes/controlNodes/range/range.h>
+#include <nodes/controlNodes/range/scrollBar.h>
 namespace luna
 {
 	namespace nodes
@@ -24,7 +26,8 @@ namespace luna
 				LN_CLASS(colorRectNode, controlNode);
 				LN_CLASS(lineEditNode, controlNode);
 				LN_CLASS(imageButtonNode, buttonNode);
-
+				LN_CLASS(range, controlNode);
+				LN_CLASS(scrollBar,range);
 
 			}
 		};

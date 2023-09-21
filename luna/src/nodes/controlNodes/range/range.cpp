@@ -128,6 +128,8 @@ namespace luna
 		}
 		void range::init(luna::scene* scene)
 		{
+			controlNode::init(scene);
+			LN_CLASS_TYPE_NAME(range);
 		}
 		void range::bindMethods()
 		{

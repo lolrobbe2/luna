@@ -7,10 +7,11 @@
 #endif // !PT_TO_PX
 
 #ifndef LN_DRAW_LAMBDA
-#define LN_DRAW_LAMBDA(mClass) [=]() { mClass(entityHandle,scene).draw(); }
+#define LN_DRAW_LAMBDA()  [this]() { this->draw(); }
 #endif
 #ifndef LN_CANVAS_COMPONENT
-#define LN_CANVAS_COMPONENT(mClass) addOrReplaceComponent<canvasComponent>().drawFunction = LN_DRAW_LAMBDA(mClass)
+#define LN_CANVAS_COMPONENT() addOrReplaceComponent<canvasComponent>().drawFunction = [this]() { this->draw(); }
+
 #endif // !LN_CANVAS_COMPONENT
 
 namespace luna 

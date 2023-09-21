@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
     <Compile Include="src\controlNodes\range\range.cs" />
+    <Compile Include="src\controlNodes\range\ScrollBar.cs" />
     <Compile Include="src\Node.cs" />
     <Compile Include="src\controlNodes\controlNode.cs" />
     <Compile Include="src\debug\Log.cs" />

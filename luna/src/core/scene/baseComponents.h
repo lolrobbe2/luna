@@ -54,11 +54,13 @@ namespace luna
 
 		glm::mat4 getTransform() const
 		{
-			glm::mat4 rotation = glm::toMat4(glm::quat(rotation));
+			glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), translation);
+			glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
+				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
+				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+			glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scale);
 
-			return glm::translate(glm::mat4(1.0f), translation)
-				* rotation
-				* glm::scale(glm::mat4(1.0f), scale);
+			return translationMatrix * rotationMatrix * scaleMatrix;
 		}
 	};
 
@@ -133,21 +135,47 @@ namespace luna
 		buttonComponent(const buttonComponent&) = default;
 	};
 	
-	struct item {
-		struct rectangle
+	struct scrollComponent 
+	{
+		bool orientation; //up = true,down = false.
+
+		bool hover = false;
+		bool pressed = false;
+		bool active = false;
+		bool scrolling = false;
+		double target_scroll = 0.0;
+		bool smooth_scroll_enabled = false;
+	};
+	struct rectangle
+	{
+		//origin is in center
+		glm::vec2 start = glm::vec2(0.0f); //left top corner
+		glm::vec2 end = glm::vec2(0.0f); //right bottom corner
+
+		glm::vec2 position;
+		_ALWAYS_INLINE_ bool hasPoint(const glm::vec2& point) { return (start.x == point.x || end.x == point.x) && (start.y == point.y || end.y == point.y); };
+		_ALWAYS_INLINE_ float width() { return end.x - start.x; };
+		_ALWAYS_INLINE_ float height() { return end.y - start.y; };
+
+		_ALWAYS_INLINE_ void setWidth(float width) { end.x -= width / 2; start.x += width / 2; };
+		_ALWAYS_INLINE_ float distanceTo(const glm::vec2& pos) { return glm::length(position - pos); };
+		_ALWAYS_INLINE_ glm::mat4 getTransform()
 		{
-			//origin is in center
-			glm::vec2 start = glm::vec2(0.0f); //left top corner
-			glm::vec2 end = glm::vec2(0.0f); //right bottom corner
+			// Calculate translation matrix
+			glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(position, 0.0f));
 
-			glm::vec2 position;
-			_ALWAYS_INLINE_ bool hasPoint(const glm::vec2& point) { return (start.x == point.x || end.x == point.x) && (start.y == point.y || end.y == point.y); };
-			_ALWAYS_INLINE_ float width() { return end.x - start.x; };
-			_ALWAYS_INLINE_ float height() { return end.y - start.y; };
+			// Calculate scaling matrix
+			glm::mat4 scaling = glm::scale(glm::mat4(1.0f), glm::vec3(width(), height(), 1.0f));
 
-			_ALWAYS_INLINE_ void setWidth(float width) { end.x -= width / 2; start.x += width / 2; };
-			_ALWAYS_INLINE_ float distanceTo(const glm::vec2& pos) { return glm::length(position - pos); };
-		};
+			// Combine translation and scaling to get the transformation matrix
+			glm::mat4 transform = translation * scaling;
+
+			return transform;
+		}
+	};
+
+	struct item {
+		
 		ref<renderer::texture> icon;
 		bool iconTransposed = false;
 		glm::vec2 iconRegion;

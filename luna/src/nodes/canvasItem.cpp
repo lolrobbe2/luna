@@ -14,7 +14,7 @@ namespace luna
 		}
 		canvasItem::canvasItem(luna::scene* scene) : Node(scene)
 		{
-			addComponent<canvasComponent>().drawFunction = LN_DRAW_LAMBDA(canvasItem);
+			LN_CANVAS_COMPONENT(canvasItem);
 		}
 
 		void canvasItem::init(luna::scene* scene)

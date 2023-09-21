@@ -185,7 +185,7 @@ namespace luna
 		return out;
 	}
 
-	YAML::Emitter& operator<<(YAML::Emitter& out, const item::rectangle& v)
+	YAML::Emitter& operator<<(YAML::Emitter& out, const rectangle& v)
 	{
 		out << YAML::BeginMap; //begin item map
 		out << YAML::Key << "start" << YAML::Value << v.start;
