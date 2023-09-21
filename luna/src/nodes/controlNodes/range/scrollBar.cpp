@@ -64,14 +64,15 @@ namespace luna
 		{
 			LN_ERR_FAIL_COND_MSG(entityHandle == (entt::entity)-1, "invalid entity");
 			renderer::renderer2D::drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,0.8f});
-			renderer::renderer2D::drawQuad(getThumbTrackRect().getTransform(), { 228.0f,223.0f,235.0f,1.0f });
+			renderer::renderer2D::drawQuad(getThumbTrackTransform(), { 228.0f,223.0f,235.0f,1.0f });
 		}
-		rectangle scrollBar::getThumbTrackRect()
+		glm::mat4 scrollBar::getThumbTrackTransform()
 		{
-			rectangle thumbRect;
-			thumbRect.start = getComponent<transformComponent>().scale * 0.05f;
-			thumbRect.end = getComponent<transformComponent>().scale * 0.1f;
-			return thumbRect;
+			transformComponent component = getComponent<transformComponent>();
+			getComponent<scrollComponent>().orientation ? component.scale.x *= 0.2f : component.scale.x *= 0.9f;
+			getComponent<scrollComponent>().orientation ? component.scale.y *= 0.9f : component.scale.y *= 0.2f;
+
+			return component.getTransform();
 		}
 	}
 }

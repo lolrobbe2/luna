@@ -15,8 +15,9 @@ namespace luna
 			virtual void bindMethods() override;
 			virtual void guiEvent(Event& event) override;
 			virtual void draw() override;
+			
 		private:
-			rectangle getThumbTrackRect();
+			glm::mat4 getThumbTrackTransform();
 		};
 	}
 }
