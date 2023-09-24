@@ -247,7 +247,7 @@ namespace luna
 		double val = 0.0;
 		double min = 0.0;
 		double max = 100.0;
-		double step = 1.0;
+		double step = 0.01;
 		double page = 0.0;
 		bool exp_ratio = false;
 		bool allow_greater = false;

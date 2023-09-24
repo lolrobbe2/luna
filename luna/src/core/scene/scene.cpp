@@ -6,6 +6,7 @@
 #include <nodes/canvasItem.h>
 #include <nodes/controlNodes/buttonNode.h>
 #include <nodes/canvasItem.h>
+#include <nodes/controlNodes/range/scrollBar.h>
 #include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
 #include <queue>
@@ -40,7 +41,6 @@ namespace luna
 	{
 
 		T Node{ this };
-		LN_CORE_INFO("added Node, type = {0}", typeid(T).name());
 		Node.setName(name);
 		// TODO: insert return statement here
 		return Node;
@@ -86,6 +86,7 @@ namespace luna
 		if (normailizedMousePos.y > 0.5f) normailizedMousePos.y -= 0.5f;
 		else normailizedMousePos.y = -0.5f + normailizedMousePos.y;
 		*/
+		/*
 		auto itemListGroup = m_Registry.view<transformComponent, itemList>();
 
 		for (auto entity : itemListGroup)
@@ -110,6 +111,7 @@ namespace luna
 			}
 			if (!found) itemListComponent.current = -1;
 		}
+		*/	
 	}
 
 	void scene::onEvent(Event& event)
@@ -127,6 +129,12 @@ namespace luna
 		for (auto entity : buttons)	
 		{
 			nodes::buttonNode node(entity, this);
+			node.guiEvent(event);
+		}
+		auto scrollBars = m_Registry.view<scrollComponent>();
+		for (auto entity : scrollBars)
+		{
+			nodes::scrollBar node(entity, this);
 			node.guiEvent(event);
 		}
 	}

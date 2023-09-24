@@ -17,7 +17,8 @@ namespace luna
 			virtual void draw() override;
 			
 		private:
-			glm::mat4 getThumbTrackTransform();
+			transformComponent getThumbTrackTransform();
+			bool isThumbTrackHovered(transformComponent transform);
 		};
 	}
 }

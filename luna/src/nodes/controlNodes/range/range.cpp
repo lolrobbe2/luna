@@ -129,6 +129,7 @@ namespace luna
 		void range::init(luna::scene* scene)
 		{
 			controlNode::init(scene);
+			addComponent<rangeComponent>();
 			LN_CLASS_TYPE_NAME(range);
 		}
 		void range::bindMethods()
@@ -214,8 +215,14 @@ namespace luna
 		}
 		void range::setPage(float value)
 		{
-			if (getPage() == value) return;
-			getComponent<rangeComponent>().page = value;
+			double pageValidated = CLAMP(value, 0, getMax() - getMin());
+			if (getPage() == pageValidated) {
+				return;
+			}
+
+			getComponent<rangeComponent>().page = pageValidated;
+			setValue(getValue());
+		
 			LN_EMIT_SIGNAL("Changed");
 		}
 		float range::getPage()
@@ -312,7 +319,7 @@ namespace luna
 			}
 
 			if (getStep() > 0) {
-				value = glm::round((value - getMin()) / getMin()) * getStep() + getMin();
+				value = glm::round((value - getMin()) / getStep()) * getStep() + getMin();
 			}
 
 			if (isUsingRoundedvalues()) {
