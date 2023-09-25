@@ -65,7 +65,7 @@ namespace luna
 			}
 			catch (const std::exception& e)
 			{
-				LN_CORE_ERROR("an error occured while trying to create visualStudio solution! {}", e.what());
+				LN_CORE_ERROR("an error occured while trying to create visualStudio solution! {0}", e.what());
 			}
 			catch (...)
 			{

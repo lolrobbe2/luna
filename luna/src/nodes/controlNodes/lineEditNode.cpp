@@ -14,15 +14,8 @@ namespace luna
 
 		void lineEditNode::init(luna::scene* scene)
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(lineEditNode);
-			addComponent<scriptComponent>();
-			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
-			/*label Node Components*/
-			addComponent<transformComponent>();
-			addComponent<spriteRendererComponent>();
-			addComponent<labelRendererComponent>();
+			controlNode::init(scene);
+			LN_CLASS_TYPE_NAME(controlNode);
 		}
 	}
 }

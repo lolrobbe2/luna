@@ -26,8 +26,11 @@ namespace luna
 				LN_CLASS(colorRectNode, controlNode);
 				LN_CLASS(lineEditNode, controlNode);
 				LN_CLASS(imageButtonNode, buttonNode);
+
 				LN_CLASS(range, controlNode);
 				LN_CLASS(scrollBar,range);
+				LN_CLASS(HScrollBar, scrollBar);
+				LN_CLASS(VScrollBar, scrollBar);
 
 			}
 		};

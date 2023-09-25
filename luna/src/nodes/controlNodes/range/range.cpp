@@ -237,10 +237,10 @@ namespace luna
 			if (isRatioExp() && getMin() >= 0) {
 				double exp_min = getMin() == 0 ? 0.0 : glm::log(getMin()) / glm::log((double)2);
 				double exp_max = glm::log(getMax()) / glm::log((double)2);
-				v = glm::pow(2, exp_min + (exp_max - exp_min) * getComponent<rangeComponent>().val);
+				v = glm::pow(2, exp_min + (exp_max - exp_min) * value);
 			}
 			else {
-				double percent = (getMax() - getMin()) * getComponent<rangeComponent>().val;
+				double percent = (getMax() - getMin()) * value;
 				if (getStep() > 0) {
 					double steps = round(percent / getStep());
 					v = steps * getStep() + getMin();

@@ -137,7 +137,7 @@ namespace luna
 	
 	struct scrollComponent 
 	{
-		bool orientation; //up = true,down = false.
+		bool orientation; //vertical = true,horizontal = false.
 
 		bool hover = false;
 		bool pressed = false;
