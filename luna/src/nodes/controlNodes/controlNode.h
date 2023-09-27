@@ -1,5 +1,8 @@
 #pragma once
 #include <nodes/canvasItem.h>
+#ifndef LN_EVENT_COMPONENT
+#define LN_EVENT_COMPONENT() addOrReplaceComponent<eventComponent>().guiEvent = [this](Event& event) { this->guiEvent(event); }
+#endif
 namespace luna 
 {
 	namespace nodes 

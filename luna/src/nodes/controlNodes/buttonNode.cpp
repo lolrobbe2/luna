@@ -83,7 +83,7 @@ namespace luna
 			spriteNode::init(scene);
 			LN_CLASS_TYPE_NAME(buttonNode);
 			LN_CANVAS_COMPONENT(buttonNode);
-
+			LN_EVENT_COMPONENT();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 			/*sprite Node Components*/
 			LN_CANVAS_COMPONENT(buttonNode);

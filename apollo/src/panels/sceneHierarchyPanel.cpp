@@ -416,6 +416,21 @@ namespace luna
 			}
 			ImGui::Separator();
 		}
+		if(Node.hasComponent<lineEditComponent>())
+		{
+			auto& lineEdit = Node.getComponent<luna::lineEditComponent>();
+			if (ImGui::TreeNodeEx((void*)typeid(luna::lineEditComponent).hash_code(), 0, "itemList"))
+			{
+				if (ImGui::Button("select font"))
+				{
+					lineEdit.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
+					ref<assets::asset> font = assets::assetManager::getAsset(lineEdit.filePath.filename().string());
+					lineEdit.font = std::dynamic_pointer_cast<renderer::font>(font);
+				}
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
 
 	}
 

@@ -42,6 +42,7 @@ namespace luna
 		{
 			canvasItem::init(scene);
 			addComponent<transformComponent>();
+			LN_EVENT_COMPONENT();
 		}
 
 		void controlNode::init(luna::scene* scene)

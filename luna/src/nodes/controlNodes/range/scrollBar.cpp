@@ -19,7 +19,8 @@ namespace luna
 		{
 			range::init(scene);
 			LN_CLASS_TYPE_NAME(scrollBar);
-			LN_CANVAS_COMPONENT(scrollBar);
+			LN_CANVAS_COMPONENT();
+			LN_EVENT_COMPONENT();
 			addComponent<scrollComponent>();
 			LN_CORE_INFO("node uuid = {0}", (uint32_t)entityHandle);
 

@@ -38,9 +38,9 @@ namespace luna
 
 		static renderer2DData rendererData;
 
-		static bool outOfView(const glm::vec4& vert)
+		_ALWAYS_INLINE_ static bool outOfView(const glm::vec4& vert,const glm::vec4& bounds = {-1.0f,1.0f,-1.0f,1.0f})
 		{
-			return (vert.x < -1.0 || vert.x > 1.0) || (vert.y < -1.0 || vert.y > 1.0);
+			return (vert.x < bounds.x || vert.x > bounds.y) || (vert.y < bounds.z || vert.y > bounds.w);
 		}
 
 		void renderer2D::init()
@@ -114,11 +114,10 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			flush();
-
 			rendererData.quadVertexBufferPreviousPtr =  rendererData.quadVertexBufferPtr;
 			renderer::endScene();
 		}
-		bool renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText)
+		bool renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText, const glm::vec4& bounds, uint8_t& startOutBounds)
 		{
 
 			/**
@@ -141,14 +140,19 @@ namespace luna
 				const ref<texture> glyph = font->getGlyph(labelText[i]);
 				const glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() };
 				xAdvance += font->getAdvance(labelText[i]).x * normalizedDimensionX;
-				outOfBounds += drawCharQuad({ xAdvance + position.x,position.y + font->getAdvance(labelText[i]).y * normalizedDimensionY,position.z }, size, glyph, checkHandle(font->handle()));
+				if (drawCharQuad({ xAdvance + position.x,position.y + font->getAdvance(labelText[i]).y * normalizedDimensionY,position.z }, size, glyph, checkHandle(font->handle()), { 1.0f,1.0f,1.0f,1.0f }, bounds)) 
+				{
+					outOfBounds++;
+					startOutBounds = i;
+				}
 				if (labelText[i] == ' ') xAdvance += spaceGlyph->getWidth() * normalizedDimensionX;
 				else xAdvance += glyph->getWidth() * normalizedDimensionX;
 			}
+			
 			rendererData.isText = false;
 			return outOfBounds == labelText.size();
 		} 
-		bool renderer2D::drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex,glm::vec4 color)
+		bool renderer2D::drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex,glm::vec4 color,glm::vec4 bounds)
 		{
 			LN_PROFILE_FUNCTION();
 			constexpr size_t quadVertexCount = 4;
@@ -164,20 +168,21 @@ namespace luna
 			{
 				rendererData.quadVertexBufferPtr->color = color;
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadCharVertexPositions[i];
-				outOfBounds += outOfView(rendererData.quadVertexBufferPtr->vert);
+				outOfBounds += outOfView(rendererData.quadVertexBufferPtr->vert,bounds);
 				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
 				rendererData.quadVertexBufferPtr->textureIndex = handleIndex;
 				rendererData.quadVertexBufferPtr->text = rendererData.isText;
 				rendererData.quadVertexBufferPtr++;
 			}
-			if (outOfBounds == 4)
+			if (outOfBounds)
 			{
-				rendererData.quadVertexBufferPtr -= 4;
+				rendererData.quadVertexBufferPtr -= outOfBounds;
 				return true;
 			}
 			rendererData.quadIndexCount += 6;
 			rendererData.stats.quadCount++;
 			return false;
+			
 		}
 		bool renderer2D::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture)
 		{
@@ -205,7 +210,7 @@ namespace luna
 			{
 				rendererData.quadVertexBufferPtr -= 4;
 				return true;
-			}
+			} 
 			rendererData.quadIndexCount += 6;
 			rendererData.stats.quadCount++;
 			return false;
@@ -253,7 +258,7 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			std::ptrdiff_t numElementsToClear = rendererData.quadVertexBufferPreviousPtr - rendererData.quadVertexBufferPtr;
-			if(numElementsToClear > 0)std::fill(rendererData.quadVertexBufferPtr, rendererData.quadVertexBufferPtr + numElementsToClear, quadVertex());
+			if(numElementsToClear > 0) std::fill(rendererData.quadVertexBufferPtr, rendererData.quadVertexBufferPtr + numElementsToClear, quadVertex());
 			renderer::Submit(rendererData.vertexArray ,rendererData.textures, rendererData.quadIndexCount);
 			rendererData.stats.drawCalls++;
 		}

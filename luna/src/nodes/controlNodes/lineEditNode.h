@@ -24,7 +24,12 @@ namespace luna
 			lineEditNode(luna::scene* scene);
 			virtual void init(luna::scene* scene) override;
 			virtual ~lineEditNode() = default;
+			virtual void draw() override;
+			virtual void guiEvent(Event& event) override;
+			void updateMetrics();
 		private:
+			bool isHovered();
+			bool isOutOfBounds(float& xAdvance, glm::vec2& normalizedDimensions, ref<renderer::font> font, char character);
 		};
 	}
 }

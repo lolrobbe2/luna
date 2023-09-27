@@ -48,7 +48,7 @@ namespace luna
 			 * \param font
 			 * \param labelText
 			 */
-			_ALWAYS_INLINE_ static bool drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font,const std::string labelText);
+			_ALWAYS_INLINE_ static bool drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font,const std::string labelText, const glm::vec4& bounds, uint8_t& startOutBounds);
 			
 			/**
 			 * @brief draws a texture quad.
@@ -57,7 +57,7 @@ namespace luna
 			 * \param const glm::vec2& size starting size;
 			 * \param const glm::vec3& color rgb color value
 			*/
-			_ALWAYS_INLINE_ static bool drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex, glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f });
+			_ALWAYS_INLINE_ static bool drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex, glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f }, glm::vec4 bounds = { -1.0f,1.0f,-1.0f,1.0f });
 			/**
 			 * @brief draws a texture quad.
 			 *

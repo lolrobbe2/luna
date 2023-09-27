@@ -36,10 +36,18 @@ namespace luna
 
 		void canvasItem::drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate)
 		{
-			transformComponent transform = getComponent<transformComponent>();
-			float pxNorm = PT_TO_PX(font_size);
+			float pxNorm = (font_size * 1.333);
+			pxNorm /= renderer::renderer::getSceneDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
-			renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font,string);
+			uint8_t outOfBounds;
+			renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font,string,{-1.0f,1.0f,-1.0f,1.0f},outOfBounds);
+		}
+		void canvasItem::drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate,glm::vec4& bounds, uint8_t& outOfBounds)
+		{
+			float pxNorm = (font_size * 1.333);
+			pxNorm /= renderer::renderer::getSceneDimensions().y;
+			glm::vec3 position{ pos.x,pos.y,1.0f };
+			renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font, string, bounds, outOfBounds);
 		}
 		void canvasItem::drawTexture(ref<renderer::texture> texture, glm::vec2 position, color modulate = color(1, 1, 1, 1))
 		{

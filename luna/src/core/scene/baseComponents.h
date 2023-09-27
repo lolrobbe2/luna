@@ -41,6 +41,10 @@ namespace luna
 		std::unordered_map<std::string, std::vector<connectedSignal>> connectedSignals;
 	};
 
+	struct eventComponent
+	{
+		std::function<void(Event&)> guiEvent;
+	};
 	struct transformComponent
 	{
 		glm::vec3 translation = { 0.0f, 0.0f, 0.0f };
@@ -254,6 +258,19 @@ namespace luna
 		bool allow_lesser = false;
 		bool rounded = false;
 		std::unordered_set<entt::entity> owners;
+	};
+
+	struct lineEditComponent
+	{
+		uint8_t caretPosition;
+		std::string text;
+		std::string drawText;
+		std::filesystem::path filePath;
+		bool selected = false;
+		uint8_t points = 16;
+		uint8_t indexOutOfBounds = 0;
+		glm::vec4 bounds;
+		ref<renderer::font> font;
 	};
 	/*
 		node tree components:

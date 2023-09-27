@@ -124,19 +124,13 @@ namespace luna
 			nodes::itemListNode node(entity, this);
 			node.guiInputEvent(event);
 		}
-
-		auto buttons = m_Registry.view<buttonComponent>();
-		for (auto entity : buttons)	
+		auto eventComponents = m_Registry.view<eventComponent>();
+		for (auto entity : eventComponents)
 		{
-			nodes::buttonNode node(entity, this);
-			node.guiEvent(event);
+			Node node(entity, this);
+			node.getComponent<eventComponent>().guiEvent(event);
 		}
-		auto scrollBars = m_Registry.view<scrollComponent>();
-		for (auto entity : scrollBars)
-		{
-			nodes::scrollBar node(entity, this);
-			node.guiEvent(event);
-		}
+		
 	}
 
 	void scene::onPlayScene()

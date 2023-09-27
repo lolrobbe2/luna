@@ -179,6 +179,10 @@ namespace luna
 			//imgui specific callbacks
 			glfwSetCharCallback(_window, [](GLFWwindow* window, unsigned int codepoint)
 			{
+				windowData& data = *(windowData*)glfwGetWindowUserPointer(window);
+
+				keyTypedEvent event(codepoint);
+				data.eventCallbackFn(event);
 				ImGui_ImplGlfw_CharCallback(window, codepoint);
 			});
 			

@@ -48,6 +48,8 @@ namespace luna
 			void drawTexture(ref<renderer::texture> texture, glm::vec2 position, color modulate);
 			void executeDraw();
 			virtual void draw() {};
+		protected:
+			void drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate, glm::vec4& bounds, uint8_t& outOfBounds);
 		};
 	}
 	namespace colors
