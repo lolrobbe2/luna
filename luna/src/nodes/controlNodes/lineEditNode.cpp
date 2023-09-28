@@ -2,9 +2,13 @@
 #include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
 #include <core/events/keyEvent.h>
+
+#include <core/application.h>
+
 #define UNSELECTED_COLOR {204.0f,136.935f, 28.05f, 1.0f}
 #define SELECTED_COLOR {255, 172.89, 37.995, 1.0f} 
 #define NORMALIZED_BORDER_SIZE 0.03f
+
 namespace luna
 {
 	namespace nodes
@@ -30,41 +34,63 @@ namespace luna
 		{
 			auto& lineEdit = getComponent<lineEditComponent>();
 			auto transform = getComponent<transformComponent>();
-			transform.scale += NORMALIZED_BORDER_SIZE;
+			auto transform2 = getComponent<transformComponent>();
+			transform2.translation.x -= transform.scale.x / 2.0f - transform2.scale.x * 0.03f;
+
+			transform.setScale(transform.scale + NORMALIZED_BORDER_SIZE);
 			glm::vec4 rectColor;
-			getComponent<lineEditComponent>().selected ? rectColor = SELECTED_COLOR : rectColor = UNSELECTED_COLOR;
+			lineEdit.selected ? rectColor = SELECTED_COLOR : rectColor = UNSELECTED_COLOR;
 			renderer::renderer2D::drawQuad(transform.getTransform(), rectColor);
 			renderer::renderer2D::drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,1.0f});
-			if (getComponent<lineEditComponent>().font) drawString(getComponent<lineEditComponent>().font, transform.translation, getComponent<lineEditComponent>().drawText,16,color(), lineEdit.bounds, lineEdit.indexOutOfBounds);
+
+			if (lineEdit.font) drawString(lineEdit.font, transform2.translation, lineEdit.drawText,16,color(), lineEdit.bounds, lineEdit.indexOutOfBounds);
 		}
 
 		void lineEditNode::guiEvent(Event& event)
 		{
+			auto& lineEdit = getComponent<lineEditComponent>();
+			
+			if (event.getEventType() == eventType::MouseMoved)
+			{
+				bool prevHovered = lineEdit.hovered;
+				lineEdit.hovered = isHovered();
+				if (prevHovered != lineEdit.hovered)
+				{
+					if(prevHovered)
+					{
+						application::application::get().getWindow().setCursorShape(vulkan::ARROW);
+					}
+					else 
+					{
+						application::application::get().getWindow().setCursorShape(vulkan::IBEAM);
+					}
+				}
+			}
 			if(event.getEventType() == eventType::MouseButtonPressed)
 			{
 				mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
 				if(mouseEvent->getMouseButton() == Mouse::ButtonLeft)
 				{
-					if (isHovered())
+					if(lineEdit.hovered)
 					{
-						getComponent<lineEditComponent>().selected = !getComponent<lineEditComponent>().selected;
+						lineEdit.selected = !lineEdit.selected;
 					}
-					else { getComponent<lineEditComponent>().selected = false; }
+					else { lineEdit.selected = false; }
 				}
 			}
 			if (event.getEventType() == eventType::KeyTyped)
 			{
 				
 				keyTypedEvent* keyBoardEvent = (keyTypedEvent*)&event;
-				getComponent<lineEditComponent>().text += keyBoardEvent->getkeyCode();
-				getComponent<lineEditComponent>().drawText = getComponent<lineEditComponent>().text;
+				lineEdit.text += keyBoardEvent->getkeyCode();
+				lineEdit.drawText = lineEdit.text;
 				updateMetrics();
 			}
 			if (event.getEventType() == eventType::KeyPressed)
 			{
 				keyPressedEvent* keyPressed = (keyPressedEvent*)&event;
-				if (keyPressed->getkeyCode() == input::Backspace) getComponent<lineEditComponent>().text.pop_back();
-				getComponent<lineEditComponent>().drawText = getComponent<lineEditComponent>().text;
+				if (keyPressed->getkeyCode() == input::Backspace && lineEdit.text.size()) lineEdit.text.pop_back();
+				lineEdit.drawText = lineEdit.text;
 				updateMetrics();
 			}
 		}
@@ -73,20 +99,10 @@ namespace luna
 		{
 			auto& lineEdit = getComponent<lineEditComponent>();
 			auto transform = getComponent<transformComponent>();
-			float pxNorm = (lineEdit.points * 1.333);
-			pxNorm /= renderer::renderer::getSceneDimensions().y;
-			float xAdvance = 0.0f;
 			lineEdit.bounds = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.x + transform.scale.x / 2.0f, transform.translation.y - transform.scale.y / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
 			if (!lineEdit.font) return;
 			lineEdit.drawText = lineEdit.text;
 			if(lineEdit.indexOutOfBounds)lineEdit.drawText.resize(lineEdit.indexOutOfBounds);
-			
-				
-			
-						
-			
-			
-			
 		}
 		bool lineEditNode::isHovered()
 		{

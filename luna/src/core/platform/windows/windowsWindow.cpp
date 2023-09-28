@@ -4,6 +4,8 @@
 #include <core/events/keyEvent.h>
 #include <core/events/mouseEvent.h>
 #include <backends/imgui_impl_glfw.h>
+#include <GLFW/glfw3native.h>
+#include <WinUser.h>
 namespace luna
 {
 	namespace vulkan
@@ -35,6 +37,12 @@ namespace luna
 			double xpos, ypos;
 			glfwGetCursorPos(_window, &xpos, &ypos);
 			return {xpos,ypos};
+		}
+		void windowsWindow::setCursorShape(const cursorShape shape) const
+		{
+			SetSystemCursor(LoadCursor(NULL, IDC_IBEAM), 32512);
+			//glfwSetInputMode(_window, GLFW_CURSOR, shape);
+			//glfwSetCursor(_window, glfwCreateStandardCursor(shape));
 		}
 		void windowsWindow::init(const vulkan::windowSpec& windowInfo)
 		{

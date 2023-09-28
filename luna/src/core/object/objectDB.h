@@ -28,6 +28,10 @@
 #endif
 namespace luna
 {
+	enum notificationType
+	{
+		TRANSFORM_UPDATED
+	};
 	class LN_API scene;
 	/**
 	 * @brief object class.
@@ -45,6 +49,7 @@ namespace luna
 		* @brief emits a signal by name to all the nodes to wich the signal is connected
 		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
 		*/
+		virtual void notification(const notificationType type) {};
 		template <typename ... ArgsT>
 		void emitSignal(const char* functionName, ArgsT && ... inMonoArgs )
 		{ 
