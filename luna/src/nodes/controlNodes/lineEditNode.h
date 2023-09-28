@@ -29,6 +29,7 @@ namespace luna
 			void updateMetrics();
 		private:
 			bool isHovered();
+			void calculateTransforms();
 			bool isOutOfBounds(float& xAdvance, glm::vec2& normalizedDimensions, ref<renderer::font> font, char character);
 		};
 	}
