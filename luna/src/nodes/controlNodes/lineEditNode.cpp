@@ -119,6 +119,44 @@ namespace luna
 			bool hover = (leftCorner.x < normailizedMousePos.x && leftCorner.y < normailizedMousePos.y && rightCorner.x > normailizedMousePos.x && rightCorner.y > normailizedMousePos.y);
 			return hover;
 		}
+
+		void lineEditNode::calculateTransforms()
+		{
+			auto& lineEdit = getComponent<lineEditComponent>();
+			auto transform = getComponent<transformComponent>();
+
+
+			float xAdvance = 0.0f;
+			const ref<renderer::texture> spaceGlyph = lineEdit.font->getGlyph('_');
+			const glm::vec2 normalizedDimensions = { 1.0f / renderer::renderer::getSceneDimensions().x * transform.scale.x, 1.0f / renderer::renderer::getSceneDimensions().y * transform.scale.y };
+			uint8_t outOfBounds = 0;
+			const glm::mat4 scale = glm::scale(glm::mat4(1.0f), { transform.scale.x,  transform.scale.y, 1.0f }) * glm::scale(glm::mat4(1.0f), { normalizedDimensions.x, normalizedDimensions.y, 1.0f });
+
+			for (size_t i = 0; i < lineEdit.text.size(); i++)
+			{
+				const ref<renderer::texture> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
+				const glm::vec2 dimensions = { glyph->getWidth(), glyph->getHeight() };
+				xAdvance += lineEdit.font->getAdvance(lineEdit.text[i]).x * normalizedDimensions.x;
+
+				const glm::vec2 dimensions = { glyph->getWidth(), glyph->getHeight() };
+				const glm::vec2 normalizedDimensions = dimensions / renderer::renderer::getSceneDimensions();
+
+				const glm::vec3 position = { xAdvance + position.x, position.y + lineEdit.font->getAdvance(lineEdit.text[i]).y * normalizedDimensions.y, position.z };
+				// Precompute the transformation matrix
+				const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * scale;
+					
+					//drawCharQuad(, size, glyph, checkHandle(font->handle()), { 1.0f, 1.0f, 1.0f, 1.0f }, bounds))
+				if (lineEdit.text[i] == ' ')
+				{
+					xAdvance += spaceGlyph->getWidth() * normalizedDimensions.x;
+				}
+				else
+				{
+					xAdvance += dimensions.x * normalizedDimensions.x;
+				}
+			}
+
+		}
 		
 	}
 }

@@ -26,12 +26,12 @@
 #ifndef LN_CLASS_TYPE_NAME
 #define LN_CLASS_TYPE_NAME(mClass) getComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(mClass)
 #endif
+
+#ifndef LN_NOTIFICATION_FUNC
+#define LN_NOTIFICATION_FUNC() getComponent<idComponent>().notificationFunc = [this](const notificationType type) { this->notification(type); }
+#endif
 namespace luna
 {
-	enum notificationType
-	{
-		TRANSFORM_UPDATED
-	};
 	class LN_API scene;
 	/**
 	 * @brief object class.
@@ -45,11 +45,12 @@ namespace luna
 		object(uint64_t id, luna::scene* scene);
 		virtual void init(scene* scene);
 		virtual	void bindMethods(); 
+		/*@brief emits a notification to a node or module*/
+		virtual void notification(const notificationType type) {};
 		/**
 		* @brief emits a signal by name to all the nodes to wich the signal is connected
 		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
 		*/
-		virtual void notification(const notificationType type) {};
 		template <typename ... ArgsT>
 		void emitSignal(const char* functionName, ArgsT && ... inMonoArgs )
 		{ 
