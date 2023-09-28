@@ -28,6 +28,10 @@ namespace luna
 
 	void object::init(luna::scene* scene)
 	{
+
+		this->scene = scene;
+		entityHandle = scene->create();
+
 		addComponent<idComponent>().typeName = stringify(object);
 		addComponent<signalComponent>();
 		LN_EMIT_SIGNAL("_ReadyEventHandler");
@@ -38,6 +42,10 @@ namespace luna
 		
 	}
 
+	void object::notification(const notificationType type)
+	{
+	}
+
 
 	void object::connectSignal(uint64_t objectID,const std::string& signalName)
 	{
@@ -46,7 +54,7 @@ namespace luna
 
 		const std::string& className = object((entt::entity)objectID, scripting::scriptingEngine::getContext()).getComponent<scriptComponent>().className;
 		
-		LN_ERR_FAIL_COND_MSG(className == "", "className was invalid!");
+		LN_ERR_FAIL_COND_MSG(className == "", "className was invalid! (check properties if a class was selected!)");
 
 		MonoClass* childClass = scripting::scriptingEngine::getScriptClass(className)->childClass;
 
@@ -76,10 +84,5 @@ namespace luna
 		return signalDB::getSignalNames(getComponent<idComponent>().typeName);
 	}
 
-	template<typename T, typename... Args>
-	T& object::addOrReplaceComponent(Args&&... args)
-	{
-		T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-		return component;
-	}
+
 }

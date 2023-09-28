@@ -16,6 +16,7 @@ namespace luna
 
 			void setColor(const glm::vec4& color);
 			glm::vec4 getColor();
+			virtual void draw() override;
 		};
 	}
 }

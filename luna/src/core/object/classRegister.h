@@ -6,6 +6,8 @@
 #include <nodes/controlNodes/spriteNode.h>
 #include <nodes/controlNodes/itemListNode.h>
 #include <nodes/controlNodes/colorRectNode.h>
+#include <nodes/controlNodes/range/range.h>
+#include <nodes/controlNodes/range/scrollBar.h>
 namespace luna
 {
 	namespace nodes
@@ -15,7 +17,8 @@ namespace luna
 		public:
 			_ALWAYS_INLINE_ static void registerClasses()
 			{
-				LN_CLASS(controlNode, Node);
+				LN_CLASS(canvasItem, Node);
+				LN_CLASS(controlNode, canvasItem);
 				LN_CLASS(labelNode, controlNode);
 				LN_CLASS(spriteNode, controlNode);
 				LN_CLASS(buttonNode, controlNode);
@@ -24,6 +27,10 @@ namespace luna
 				LN_CLASS(lineEditNode, controlNode);
 				LN_CLASS(imageButtonNode, buttonNode);
 
+				LN_CLASS(range, controlNode);
+				LN_CLASS(scrollBar,range);
+				LN_CLASS(HScrollBar, scrollBar);
+				LN_CLASS(VScrollBar, scrollBar);
 
 			}
 		};

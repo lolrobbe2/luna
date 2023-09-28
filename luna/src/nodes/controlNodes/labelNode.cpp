@@ -15,14 +15,15 @@ namespace luna
 
 		void labelNode::init(luna::scene* scene) 
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(labelNode);
-			addComponent<scriptComponent>();
-			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
-			/*label Node Components*/
-			addComponent<transformComponent>();
+			controlNode::init(scene);
+			LN_TYPE_TO_NAME(labelNode);
+			LN_CANVAS_COMPONENT(labelNode);
 			addComponent<labelRendererComponent>();
+		}
+		void labelNode::draw()
+		{
+			auto& label = getComponent<labelRendererComponent>();
+			if (label.font) drawString(label.font, label.pos,label.text, label.fontSize, label.color);//drawLabel(transform.translation, { transform.scale.x,transform.scale.y }, label.font, label.text);
 		}
 	}
 }

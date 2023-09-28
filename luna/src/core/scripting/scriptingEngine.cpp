@@ -295,6 +295,11 @@ namespace luna
 
 		void scriptingEngine::reloadAssembly()
 		{
+			if(s_Data->m_Context && s_Data->m_Context->isRunning())
+			{
+				s_Data->m_Context->onStopScene();
+				LN_CORE_ERROR("scene was still running while a new DLL has been found!");
+			}
 			mono_domain_set(mono_get_root_domain(), false);
 
 			mono_domain_unload(s_Data->appDomain);

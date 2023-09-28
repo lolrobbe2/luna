@@ -84,7 +84,6 @@ namespace luna
 		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
 		addComponent<scriptComponent>();
 		addComponent<signalComponent>();
-		LN_CORE_INFO("node uuid = {0}, node quikID = {1}", getUUID().getId(),(uint32_t)entityHandle);
 	}
 
 	void Node::setName(std::string name)
@@ -129,13 +128,9 @@ namespace luna
 
 	void Node::init(luna::scene* scene)
 	{
-		this->scene = scene;
-		entityHandle = scene->create();
-
-		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
+		object::init(scene);
+		LN_CLASS_TYPE_NAME(Node);
 		addComponent<scriptComponent>();
-		addComponent<signalComponent>();
-		LN_CORE_INFO("node uuid = {0}, node quikID = {1}", getUUID().getId(), (uint32_t)entityHandle);
 	}
 
 	void Node::bindMethods()

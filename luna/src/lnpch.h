@@ -28,6 +28,7 @@
 
 #include <imgui.h>
 #include <backends/imgui_impl_glfw.h>
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <stb_image.h>
 #include <stb_image_write.h>

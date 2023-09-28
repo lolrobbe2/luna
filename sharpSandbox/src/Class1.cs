@@ -3,7 +3,7 @@
 
 namespace sharpSandbox
 {
-    internal class Test : Node
+    internal class Test : Range
     {
         public override void ChildEnteredTree(Node node)
         {
@@ -17,7 +17,7 @@ namespace sharpSandbox
 
         override public void Process(ulong delta)
         {
-            EmitSignal("ChildEnteredTree");
+            
         }
     }
 }

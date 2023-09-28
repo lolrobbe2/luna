@@ -1,6 +1,7 @@
 #include "assetImporter.h"
 #include <core/assets/importers/textureImporter.h>
 #include <core/assets/importers/fontImporter.h>
+#include <core/debug/debugMacros.h>
 namespace luna 
 {
     namespace assets
@@ -12,12 +13,7 @@ namespace luna
         };
         ref<asset> assetImporter::importAsset(assetHandle handle,assetMetadata* metadata)
         {
-            if (s_assetImportFunctions.find(metadata->assetType) == s_assetImportFunctions.end())
-            {
-                LN_CORE_ERROR("No importer available for asset type: {}", (uint16_t)metadata->assetType);
-                return nullptr;
-            }
-
+            LN_ERR_FAIL_COND_V_MSG(s_assetImportFunctions.find(metadata->assetType) == s_assetImportFunctions.end(), nullptr, "No importer available for asset type!");
             return s_assetImportFunctions.at(metadata->assetType)(handle, metadata);
         }
     }

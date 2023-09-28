@@ -48,6 +48,7 @@ namespace luna
 			 * \return glm::vec2
 			 */
 			virtual glm::vec2 getCursorPos() const override;
+			virtual void setCursorShape(const cursorShape shape) const override;
 		private: 
 			/**
 			 * initializes the window and also GLFW if need be.

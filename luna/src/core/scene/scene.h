@@ -40,12 +40,14 @@ namespace luna
 		void onStopScene();
 		void resetScriptComponent();
 		void process(utils::timestep ts);
-	private:
+		bool isRunning() { return m_IsRunning; }
+	protected:
 		friend class Node;
 		friend class object;
 		friend class sceneSerializer;
 		friend class sceneHierarchyPanel;
 		friend class editorLayer;
+		friend class scriptingEngine;
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 		bool m_IsRunning = false;

@@ -22,8 +22,16 @@
  */
 #define LN_CLASS_STRINGIFY(mClass) objectDB::getClassName<mClass>();
 #endif // !LN_CLASS_STRINGIFY
+
+#ifndef LN_CLASS_TYPE_NAME
+#define LN_CLASS_TYPE_NAME(mClass) getComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(mClass)
+#endif
 namespace luna
 {
+	enum notificationType
+	{
+		TRANSFORM_UPDATED
+	};
 	class LN_API scene;
 	/**
 	 * @brief object class.
@@ -41,6 +49,7 @@ namespace luna
 		* @brief emits a signal by name to all the nodes to wich the signal is connected
 		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
 		*/
+		virtual void notification(const notificationType type) {};
 		template <typename ... ArgsT>
 		void emitSignal(const char* functionName, ArgsT && ... inMonoArgs )
 		{ 
@@ -85,7 +94,11 @@ namespace luna
 			return component;
 		}
 		template<typename T, typename... Args>
-		T& addOrReplaceComponent(Args&&... args);
+		T& addOrReplaceComponent(Args&&... args)
+		{
+			T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
+			return component;
+		}
 
 		template<typename T>
 		T& getComponent()

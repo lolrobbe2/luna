@@ -12,7 +12,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			textureAssetMetadata* textureMetaData = (textureAssetMetadata*)metadata;
 			std::string filePath = reinterpret_cast<char*>(textureMetaData->baseMetaData.filePath);
-			filePath += "/";
+			filePath += "\\";
 			filePath += reinterpret_cast<char*>(textureMetaData->baseMetaData.name);
 
 			metadata->fileSizeBytes = std::filesystem::file_size(filePath);

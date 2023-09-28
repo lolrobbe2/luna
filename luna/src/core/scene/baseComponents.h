@@ -8,11 +8,16 @@
 #include <core/scripting/scriptUtils.h>
 namespace luna
 {
+	enum notificationType
+	{
+		TRANSFORM_UPDATED
+	};
 	struct idComponent
 	{
 		uuid id;
 		std::string typeName;
 		operator uint64_t() { return id; }
+		std::function<void(notificationType)> notificationFunc;
 		idComponent() = default;
 		idComponent(const idComponent&) = default;
 	};
@@ -41,8 +46,13 @@ namespace luna
 		std::unordered_map<std::string, std::vector<connectedSignal>> connectedSignals;
 	};
 
+	struct eventComponent
+	{
+		std::function<void(Event&)> guiEvent;
+	};
 	struct transformComponent
 	{
+		/*
 		glm::vec3 translation = { 0.0f, 0.0f, 0.0f };
 		glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
 		glm::vec3 scale = { 1.0f, 1.0f, 1.0f };
@@ -54,12 +64,65 @@ namespace luna
 
 		glm::mat4 getTransform() const
 		{
-			glm::mat4 rotation = glm::toMat4(glm::quat(rotation));
+			glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), translation);
+			glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
+				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
+				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+			glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scale);
 
-			return glm::translate(glm::mat4(1.0f), translation)
-				* rotation
-				* glm::scale(glm::mat4(1.0f), scale);
+			return translationMatrix * rotationMatrix * scaleMatrix;
 		}
+		*/
+
+		glm::vec3 translation = { 0.0f, 0.0f, 0.0f };
+		glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
+		glm::vec3 scale = { 1.0f, 1.0f, 1.0f };
+
+		transformComponent() = default;
+		transformComponent(const transformComponent&) = default;
+		transformComponent(const glm::vec3& translation)
+			: translation(translation) {}
+
+		void setTranslation(const glm::vec3& newTranslation)
+		{
+			translation = newTranslation;
+			recalculateTransform();
+		}
+
+		void setRotation(const glm::vec3& newRotation)
+		{
+			rotation = newRotation;
+			recalculateTransform();
+		}
+
+		void setScale(const glm::vec3& newScale)
+		{
+			scale = newScale;
+			recalculateTransform();
+		}
+
+		// Private method to recalculate the transform matrix
+		void recalculateTransform()
+		{
+			transformMatrix = glm::mat4(1.0f); // Initialize as identity matrix
+			glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), translation);
+			glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
+				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
+				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+			glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scale);
+
+			transformMatrix = translationMatrix * rotationMatrix * scaleMatrix;
+		}
+
+		// Getter method for the transform matrix
+		glm::mat4 getTransform() const
+		{
+			return transformMatrix;
+		}
+
+	private:
+		// Store the transform matrix internally
+		glm::mat4 transformMatrix = glm::mat4(1.0f); // Initialize as identity matrix
 	};
 
 	struct spriteRendererComponent
@@ -76,6 +139,15 @@ namespace luna
 		spriteRendererComponent(const glm::vec4& color)
 			: color(color) {}
 	};
+	namespace nodes{class canvasItem;}
+	struct canvasComponent
+	{
+		std::function<void()> drawFunction;
+		glm::vec4 modulate { 1.0f, 1.0f, 1.0f, 1.0f };
+		glm::vec4 selfModulate { 1.0f, 1.0f, 1.0f, 1.0f };
+		bool visible = true;
+	};
+
 	struct rectComponent
 	{
 		glm::vec4 color{ 1.0f,1.0f,1.0f,1.0f };
@@ -88,7 +160,8 @@ namespace luna
 		std::filesystem::path filePath;
 		std::string text;
 		float TilingFactor = 1.0f;
-
+		glm::vec2 pos;
+		int fontSize;
 		labelRendererComponent() = default;
 		labelRendererComponent(const labelRendererComponent&) = default;
 		labelRendererComponent(const std::string& text)
@@ -123,21 +196,47 @@ namespace luna
 		buttonComponent(const buttonComponent&) = default;
 	};
 	
-	struct item {
-		struct rectangle
+	struct scrollComponent 
+	{
+		bool orientation; //vertical = true,horizontal = false.
+
+		bool hover = false;
+		bool pressed = false;
+		bool active = false;
+		bool scrolling = false;
+		double target_scroll = 0.0;
+		bool smooth_scroll_enabled = false;
+	};
+	struct rectangle
+	{
+		//origin is in center
+		glm::vec2 start = glm::vec2(0.0f); //left top corner
+		glm::vec2 end = glm::vec2(0.0f); //right bottom corner
+
+		glm::vec2 position;
+		_ALWAYS_INLINE_ bool hasPoint(const glm::vec2& point) { return (start.x == point.x || end.x == point.x) && (start.y == point.y || end.y == point.y); };
+		_ALWAYS_INLINE_ float width() { return end.x - start.x; };
+		_ALWAYS_INLINE_ float height() { return end.y - start.y; };
+
+		_ALWAYS_INLINE_ void setWidth(float width) { end.x -= width / 2; start.x += width / 2; };
+		_ALWAYS_INLINE_ float distanceTo(const glm::vec2& pos) { return glm::length(position - pos); };
+		_ALWAYS_INLINE_ glm::mat4 getTransform()
 		{
-			//origin is in center
-			glm::vec2 start = glm::vec2(0.0f); //left top corner
-			glm::vec2 end = glm::vec2(0.0f); //right bottom corner
+			// Calculate translation matrix
+			glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(position, 0.0f));
 
-			glm::vec2 position;
-			_ALWAYS_INLINE_ bool hasPoint(const glm::vec2& point) { return (start.x == point.x || end.x == point.x) && (start.y == point.y || end.y == point.y); };
-			_ALWAYS_INLINE_ float width() { return end.x - start.x; };
-			_ALWAYS_INLINE_ float height() { return end.y - start.y; };
+			// Calculate scaling matrix
+			glm::mat4 scaling = glm::scale(glm::mat4(1.0f), glm::vec3(width(), height(), 1.0f));
 
-			_ALWAYS_INLINE_ void setWidth(float width) { end.x -= width / 2; start.x += width / 2; };
-			_ALWAYS_INLINE_ float distanceTo(const glm::vec2& pos) { return glm::length(position - pos); };
-		};
+			// Combine translation and scaling to get the transformation matrix
+			glm::mat4 transform = translation * scaling;
+
+			return transform;
+		}
+	};
+
+	struct item {
+		
 		ref<renderer::texture> icon;
 		bool iconTransposed = false;
 		glm::vec2 iconRegion;
@@ -204,6 +303,32 @@ namespace luna
 
 		itemList() = default;
 		itemList(const itemList&) = default;
+	};
+	struct rangeComponent {
+		double val = 0.0;
+		double min = 0.0;
+		double max = 100.0;
+		double step = 0.01;
+		double page = 0.0;
+		bool exp_ratio = false;
+		bool allow_greater = false;
+		bool allow_lesser = false;
+		bool rounded = false;
+		std::unordered_set<entt::entity> owners;
+	};
+
+	struct lineEditComponent
+	{
+		uint8_t caretPosition;
+		std::string text;
+		std::string drawText;
+		std::filesystem::path filePath;
+		bool selected = false;
+		bool hovered = false;
+		uint8_t points = 16;
+		uint8_t indexOutOfBounds = 0;
+		glm::vec4 bounds;
+		ref<renderer::font> font;
 	};
 	/*
 		node tree components:

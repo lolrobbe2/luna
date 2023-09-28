@@ -1,11 +1,13 @@
 #pragma once
-#include <core/scene/scene.h>
-#include <core/scene/node.h>
+#include <nodes/canvasItem.h>
+#ifndef LN_EVENT_COMPONENT
+#define LN_EVENT_COMPONENT() addOrReplaceComponent<eventComponent>().guiEvent = [this](Event& event) { this->guiEvent(event); }
+#endif
 namespace luna 
 {
 	namespace nodes 
 	{
-		class LN_API controlNode : public luna::Node
+		class LN_API controlNode : public canvasItem
 		{
 		public:
 			controlNode() = default;

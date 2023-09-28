@@ -1,4 +1,5 @@
 #include "colorRectNode.h"
+#include <core/rendering/renderer2D.h>
 namespace luna 
 { 
 	namespace nodes
@@ -11,7 +12,6 @@ namespace luna
 			entityHandle = scene->create();
 			addComponent<idComponent>();
 			addComponent<transformComponent>();
-			addComponent<rectComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 
@@ -22,16 +22,21 @@ namespace luna
 			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(colorRectNode);
 			addComponent<scriptComponent>();
 			addComponent<transformComponent>();
-			addComponent<rectComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 		void colorRectNode::setColor(const glm::vec4& color)
 		{
-			getComponent<rectComponent>().color = color;
+			getComponent<canvasComponent>().modulate = color;
 		}
 		glm::vec4 colorRectNode::getColor()
 		{
-			return getComponent<rectComponent>().color;
+			return getComponent<canvasComponent>().modulate ;
+		}
+		void colorRectNode::draw()
+		{
+			auto& canvasComp = getComponent<canvasComponent>();
+			auto& transform = getComponent<transformComponent>();
+			renderer::renderer2D::drawQuad(transform.translation, transform.scale, canvasComp.modulate);
 		}
 	}
 }

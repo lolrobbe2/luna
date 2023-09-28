@@ -236,10 +236,12 @@ namespace luna
 			auto& transform = Node.getComponent<transformComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(transformComponent).hash_code(), 0, "transform"))
 			{
-
-				ImGui::DragFloat3("position", glm::value_ptr(transform.translation), 0.25f);
-				ImGui::DragFloat3("rotation", glm::value_ptr(transform.rotation), 0.25f);
-				ImGui::DragFloat3("scale", glm::value_ptr(transform.scale), 0.25f);
+				glm::vec3 translation = transform.translation;
+				glm::vec3 rotation = transform.rotation;
+				glm::vec3 scale = transform.scale;
+				if (ImGui::DragFloat3("position", glm::value_ptr(transform.translation), 0.25f)) { transform.setTranslation(translation); }
+				if (ImGui::DragFloat3("rotation", glm::value_ptr(transform.rotation), 0.25f)) { transform.setRotation(rotation); }
+				if (ImGui::DragFloat3("scale", glm::value_ptr(transform.scale), 0.25f)) { transform.setScale(scale); }
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
@@ -263,7 +265,8 @@ namespace luna
 							{
 								sprite.filePath = filePath;
 								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-								sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								if (texture) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(), assets::texture));
 							}
 						}
 						ImGui::SameLine();
@@ -277,7 +280,8 @@ namespace luna
 							{
 								sprite.filePath = filePath;
 								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-								sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								if (texture) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
+								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(),assets::texture));
 							}
 						}
 					}
@@ -291,8 +295,8 @@ namespace luna
 			auto& label = Node.getComponent<labelRendererComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(labelRendererComponent).hash_code(), 0, "label"))
 			{
-				ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
-				ImGui::SameLine();
+				ImGui::ColorPicker4("color", glm::value_ptr(label.color));
+				//ImGui::DragFloat4("color", glm::value_ptr(label.color), 0.25f);
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
@@ -310,6 +314,8 @@ namespace luna
 					
 				}
 				inputText("label text", label.text);
+				ImGui::InputInt("font size", &label.fontSize);
+				ImGui::DragFloat2("pos", glm::value_ptr(label.pos));
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
@@ -408,6 +414,21 @@ namespace luna
 				ImGui::EndChild();
 			
 				//TODO renderer part.
+				ImGui::TreePop();
+			}
+			ImGui::Separator();
+		}
+		if(Node.hasComponent<lineEditComponent>())
+		{
+			auto& lineEdit = Node.getComponent<luna::lineEditComponent>();
+			if (ImGui::TreeNodeEx((void*)typeid(luna::lineEditComponent).hash_code(), 0, "itemList"))
+			{
+				if (ImGui::Button("select font"))
+				{
+					lineEdit.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
+					ref<assets::asset> font = assets::assetManager::getAsset(lineEdit.filePath.filename().string());
+					lineEdit.font = std::dynamic_pointer_cast<renderer::font>(font);
+				}
 				ImGui::TreePop();
 			}
 			ImGui::Separator();

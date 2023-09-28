@@ -16,6 +16,7 @@ namespace luna
 			itemListNode(entt::entity handle, luna::scene* scene);
 			itemListNode(luna::scene* scene);
 			virtual void init(luna::scene* scene) override;
+			virtual void draw() override;
 
 			int addItem(const std::string& pItem, const ref<renderer::texture>& pTexture = ref<renderer::texture>(), bool selectable = true);
 			int addIconItem(const ref<renderer::texture>& pItem, bool selectable = true);
@@ -78,6 +79,8 @@ namespace luna
 			bool mouseMotionEvent(mouseMovedEvent& Event);
 
 			bool mouseEvent(Event& Event);
+
+			void checkShapeChanged();
 
 			void shape(int p_idx);
 		};

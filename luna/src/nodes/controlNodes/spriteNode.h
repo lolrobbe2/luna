@@ -1,5 +1,6 @@
 #pragma once
 #include <nodes/controlNodes/controlNode.h>
+
 namespace luna 
 {
 	namespace nodes
@@ -26,6 +27,7 @@ namespace luna
 			spriteNode(luna::scene* scene);
 			virtual void init(luna::scene* scene) override;
 			virtual ~spriteNode() = default;
+			virtual void draw() override;
 		};
 	}
 }
