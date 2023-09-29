@@ -19,6 +19,10 @@ namespace luna
 		{
 			scripting::scriptingEngine::reloadAssembly();
 		}
+		MonoString* scriptUtils::createMonoString(const std::string& string)
+		{
+			return mono_string_new(mono_get_root_domain(), string.c_str());
+		}
 		scriptInstance::scriptInstance(scripting::scriptClass* scriptClass, uint32_t entityHandle) : m_ScriptClass(scriptClass) , handle(entityHandle)
 		{
 			LN_CORE_INFO("instancing class: {0}", mono_class_get_name(m_ScriptClass->childClass));

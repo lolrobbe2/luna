@@ -19,6 +19,7 @@ namespace luna
 			static std::vector<const char*> getAppClassNames();
 			static void setContext(scene* scene);
 			static void reloadAssamblies();
+			static MonoString* createMonoString(const std::string& string);
 		};
 
 		class scriptInstance {

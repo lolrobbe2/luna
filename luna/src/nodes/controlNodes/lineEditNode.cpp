@@ -87,15 +87,22 @@ namespace luna
 				
 				keyTypedEvent* keyBoardEvent = (keyTypedEvent*)&event;
 				lineEdit.text += keyBoardEvent->getkeyCode();
-				lineEdit.drawText = lineEdit.text;
+				LN_EMIT_SIGNAL("TextChanged", utils::scriptUtils::createMonoString(lineEdit.text));
 				calculateTransforms();
 			}
 			if (event.getEventType() == eventType::KeyPressed)
 			{
 				keyPressedEvent* keyPressed = (keyPressedEvent*)&event;
-				if (keyPressed->getkeyCode() == input::Backspace && lineEdit.text.size()) lineEdit.text.pop_back();
-				lineEdit.drawText = lineEdit.text;
-				calculateTransforms();
+				if (keyPressed->getkeyCode() == input::Backspace && lineEdit.text.size()) 
+				{
+					lineEdit.text.pop_back();
+					LN_EMIT_SIGNAL("TextChanged", utils::scriptUtils::createMonoString(lineEdit.text));
+					calculateTransforms();
+				}
+				if(keyPressed->getkeyCode() == input::Enter)
+				{
+					LN_EMIT_SIGNAL("TextSubmitted", utils::scriptUtils::createMonoString(lineEdit.text));
+				}
 			}
 			if(event.getEventType() == eventType::MouseScrolled) 
 			{
