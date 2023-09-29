@@ -316,13 +316,14 @@ namespace luna
 			glm::mat4 transformMatrix = glm::mat4(1.0f); // Initialize as identity matrix
 		};
 		uint8_t caretPosition;
+		uint8_t scrollPosition = 0;
 		std::string text;
 		std::string drawText;
 		std::filesystem::path filePath;
 		bool selected = false;
 		bool hovered = false;
+		bool outOfBounds = false;
 		uint8_t points = 16;
-		uint8_t indexOutOfBounds = 0;
 		glm::vec4 bounds;
 		glm::mat4 outerBorderTransform;
 		std::vector<character> charTransforms;

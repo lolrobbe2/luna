@@ -38,10 +38,7 @@ namespace luna
 			glfwGetCursorPos(_window, &xpos, &ypos);
 			return {xpos,ypos};
 		}
-		void windowsWindow::setCursorShape(const cursorShape shape) const
-		{
-			SetSystemCursor(LoadCursor(NULL, IDC_IBEAM), 32512);
-		}
+		
 		void windowsWindow::init(const vulkan::windowSpec& windowInfo)
 		{
 			LN_PROFILE_FUNCTION();

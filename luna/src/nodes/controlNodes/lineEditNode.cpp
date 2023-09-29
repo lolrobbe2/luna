@@ -4,6 +4,8 @@
 #include <core/events/keyEvent.h>
 
 #include <core/application.h>
+#include <core/debug/typedefs.h>
+#include <core/platform/platformUtils.h>
 
 #define UNSELECTED_COLOR {204.0f,136.935f, 28.05f, 1.0f}
 #define SELECTED_COLOR {255, 172.89, 37.995, 1.0f} 
@@ -60,11 +62,11 @@ namespace luna
 				{
 					if(prevHovered)
 					{
-						application::application::get().getWindow().setCursorShape(vulkan::ARROW);
+						platform::os::setCursorShape(platform::ARROW);
 					}
 					else 
 					{
-						application::application::get().getWindow().setCursorShape(vulkan::IBEAM);
+						platform::os::setCursorShape(platform::IBEAM);
 					}
 				}
 			}
@@ -95,17 +97,24 @@ namespace luna
 				lineEdit.drawText = lineEdit.text;
 				calculateTransforms();
 			}
+			if(event.getEventType() == eventType::MouseScrolled) 
+			{
+				mouseScrolledEvent* scrolledEvent = (mouseScrolledEvent*)&event;
+				if (scrolledEvent->getYOffset() < 0) //MOUSE_DOWN
+				{
+					lineEdit.scrollPosition = CLAMP(lineEdit.scrollPosition + 1,0,lineEdit.text.size() - 1);
+					calculateTransforms();
+				}
+
+				if (scrolledEvent->getYOffset() > 0) //MOUSE_UP
+				{
+					lineEdit.scrollPosition = CLAMP(lineEdit.scrollPosition - 1, 0, lineEdit.text.size() - 1);
+					calculateTransforms();
+				}	
+			}
 		}
 
-		void lineEditNode::updateMetrics()
-		{
-			auto& lineEdit = getComponent<lineEditComponent>();
-			auto transform = getComponent<transformComponent>();
-			lineEdit.bounds = { transform.translation.x - transform.scale.x / 2.0f,transform.translation.x + transform.scale.x / 2.0f, transform.translation.y - transform.scale.y / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
-			if (!lineEdit.font) return;
-			lineEdit.drawText = lineEdit.text;
-			if(lineEdit.indexOutOfBounds)lineEdit.drawText.resize(lineEdit.indexOutOfBounds);
-		}
+		
 		bool lineEditNode::isHovered()
 		{
 			auto transform = getComponent<transformComponent>();
@@ -137,7 +146,7 @@ namespace luna
 			const glm::vec2 normalizedDimensions = glm::vec2(pxNorm,pxNorm) / renderer::renderer::getSceneDimensions(); // Calculate normalized dimensions based on size relative to scene dimensions.
 			std::vector<lineEditComponent::character> characters; // Vector to store character transforms.
 			
-			for (size_t i = 0; i < lineEdit.text.size(); i++)
+			for (size_t i = lineEdit.scrollPosition; i < lineEdit.text.size(); i++)
 			{
 				const ref<renderer::texture> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
 				const glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() };
@@ -149,12 +158,15 @@ namespace luna
 					* glm::scale(glm::mat4(1.0f), { pxNorm, pxNorm, 1.0f })
 					* glm::scale(glm::mat4(1.0f), { normalizedCharDimensions.x, normalizedCharDimensions.y, 1.0f });
 
-				// Store the character's transformation matrix and glyph in the vector.
+				// Check if the character is out of bounds.
 				if (isOutOfBounds(transformMat, lineEdit.bounds))
 				{
 					lineEdit.charTransforms = characters;
+					lineEdit.outOfBounds = true;
 					return;
 				}
+				// Store the character's transformation matrix and glyph in the vector.
+
 				characters.emplace_back(transformMat, glyph);
 
 				// Update xAdvance based on character width.
@@ -167,17 +179,10 @@ namespace luna
 					xAdvance += glyph->getWidth() * normalizedDimensions.x;
 				}
 
-				// Check if the character is out of bounds.
-				/*
-				if (outOfView(transform, bounds))
-				{
-					startOutBounds = i;
-					break; // No need to continue checking if one character is out of bounds.
-				}
-				*/
+	
 			}
 			lineEdit.charTransforms = characters;
-
+			lineEdit.outOfBounds = false;
 		}
 		bool lineEditNode::isOutOfBounds(const glm::mat4 transform,const glm::vec4& bounds)
 		{

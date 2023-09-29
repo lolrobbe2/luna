@@ -183,6 +183,41 @@ namespace luna
 			return executablePath;
 		}
 
+		void os::setCursorShape(const cursorShape shape) 
+		{
+			switch (shape)
+			{
+			case ARROW:
+				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				break;
+			case IBEAM:
+				SetSystemCursor(LoadCursor(NULL, IDC_IBEAM), 32512);
+				break;
+			case CROSSHAIR:
+				SetSystemCursor(LoadCursor(NULL, IDC_CROSS), 32512);
+				break;
+			case HAND:
+				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				break;
+			case HRESIZE:
+				SetSystemCursor(LoadCursor(NULL, IDC_SIZEWE), 32512);
+				break;
+			case VRESIZE:
+				SetSystemCursor(LoadCursor(NULL, IDC_SIZENS), 32512);
+				break;
+			case APP_STARTING:
+				SetSystemCursor(LoadCursor(NULL, IDC_APPSTARTING), 32512);
+				break;
+			case WAITING:
+				SetSystemCursor(LoadCursor(NULL, IDC_WAIT), 32512);
+				break;
+			default:
+				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				break;
+			}
+
+		}
+
 		std::string filesystem::getSystemFolderPath(const folderTypes folderType)
 		{
 			//uses shlobj_core.h
@@ -241,6 +276,7 @@ namespace luna
 		{
 			return engineRootPath;
 		}
+		
 }
 
 #pragma region osGlue

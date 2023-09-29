@@ -21,6 +21,17 @@ namespace luna
 			recycleBin, 
 			MAX_ENUM
 		};
+		enum cursorShape
+		{
+			ARROW,
+			IBEAM,
+			CROSSHAIR,
+			HAND,
+			HRESIZE,
+			VRESIZE,
+			APP_STARTING,
+			WAITING
+		};
 		class LN_API os
 		{
 		public:
@@ -35,6 +46,7 @@ namespace luna
 			static std::string getLocaleLanguage();
 			static int getProcessId();
 			static std::string getExecutablePath();
+			static void setCursorShape(const cursorShape shape);
 		};
 
 		class LN_API filesystem

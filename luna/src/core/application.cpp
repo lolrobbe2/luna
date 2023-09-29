@@ -6,6 +6,7 @@
 #include <core/scripting/scriptingEngine.h>
 #include <core/object/methodDB.h>
 #include <core/assets/assetManager.h>
+#include <core/platform/platformUtils.h>
 namespace luna
 {
 	namespace application
@@ -14,6 +15,8 @@ namespace luna
 		application::application()
 		{ 
 			LN_PROFILE_BEGIN_SESSION("luna engine startup", "./debug/luna-profile-startUp.json");
+			platform::os::setCursorShape(platform::APP_STARTING);
+
 			instance = this;
 			Log::Init();
 			LN_PROFILE_SCOPE("engine startup");
@@ -28,6 +31,7 @@ namespace luna
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
 			methodDB::init();
+			platform::os::setCursorShape(platform::ARROW);
 			LN_PROFILE_END_SESSION();
 			
 		}
@@ -35,6 +39,7 @@ namespace luna
 		{
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
 			layerStack.~layerStack();
+			platform::os::setCursorShape(platform::ARROW);
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
 			mWindow->~window();
