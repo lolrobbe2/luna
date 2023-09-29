@@ -30,7 +30,7 @@ namespace luna
 		private:
 			bool isHovered();
 			void calculateTransforms();
-			bool isOutOfBounds(float& xAdvance, glm::vec2& normalizedDimensions, ref<renderer::font> font, char character);
+			bool isOutOfBounds(const glm::mat4 transform, const glm::vec4& bounds);
 		};
 	}
 }

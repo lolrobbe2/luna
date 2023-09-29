@@ -239,9 +239,21 @@ namespace luna
 				glm::vec3 translation = transform.translation;
 				glm::vec3 rotation = transform.rotation;
 				glm::vec3 scale = transform.scale;
-				if (ImGui::DragFloat3("position", glm::value_ptr(transform.translation), 0.25f)) { transform.setTranslation(translation); }
-				if (ImGui::DragFloat3("rotation", glm::value_ptr(transform.rotation), 0.25f)) { transform.setRotation(rotation); }
-				if (ImGui::DragFloat3("scale", glm::value_ptr(transform.scale), 0.25f)) { transform.setScale(scale); }
+				if (ImGui::DragFloat3("position", glm::value_ptr(translation), 0.25f)) 
+				{
+					Node.getComponent<idComponent>().notificationFunc(TRANSFORM_UPDATED);
+					transform.setTranslation(translation);
+				}
+				if (ImGui::DragFloat3("rotation", glm::value_ptr(rotation), 0.25f))
+				{ 
+					Node.getComponent<idComponent>().notificationFunc(TRANSFORM_UPDATED);
+					transform.setRotation(rotation);
+				}
+				if (ImGui::DragFloat3("scale", glm::value_ptr(scale), 0.25f)) 
+				{
+					Node.getComponent<idComponent>().notificationFunc(TRANSFORM_UPDATED);
+					transform.setScale(scale); 
+				}
 				ImGui::TreePop();
 			}
 			ImGui::Separator();

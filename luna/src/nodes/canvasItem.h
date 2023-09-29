@@ -19,7 +19,7 @@ namespace luna
 	class color
 	{
 	public:
-		color() = default;
+		color() { r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; };
 		color(float r, float g, float b, float a) :r(r), g(g), b(b), a(a) {};
 		color(glm::vec4 color) { r = color.x, g = color.y, b = color.z, a = color.w; };
 		virtual ~color() = default;
@@ -44,7 +44,9 @@ namespace luna
 			virtual void init(luna::scene* scene) override;
 
 			void drawChar(ref<renderer::font> font, glm::vec2 pos, char chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
+			void drawChar(const lineEditComponent::character character, ref<renderer::font> font, color modulate = color(1, 1, 1, 1));
 			void drawString(ref<renderer::font> font, glm::vec2 pos, std::string chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
+			void drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<renderer::font> font);
 			void drawTexture(ref<renderer::texture> texture, glm::vec2 position, color modulate);
 			void executeDraw();
 			virtual void draw() {};

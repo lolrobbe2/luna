@@ -41,8 +41,6 @@ namespace luna
 		void windowsWindow::setCursorShape(const cursorShape shape) const
 		{
 			SetSystemCursor(LoadCursor(NULL, IDC_IBEAM), 32512);
-			//glfwSetInputMode(_window, GLFW_CURSOR, shape);
-			//glfwSetCursor(_window, glfwCreateStandardCursor(shape));
 		}
 		void windowsWindow::init(const vulkan::windowSpec& windowInfo)
 		{

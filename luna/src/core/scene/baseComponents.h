@@ -17,7 +17,7 @@ namespace luna
 		uuid id;
 		std::string typeName;
 		operator uint64_t() { return id; }
-		std::function<void(notificationType)> notificationFunc;
+		std::function<void(notificationType)> notificationFunc = [](notificationType type) {};
 		idComponent() = default;
 		idComponent(const idComponent&) = default;
 	};
@@ -84,12 +84,9 @@ namespace luna
 		{
 			transformMatrix = glm::mat4(1.0f); // Initialize as identity matrix
 			glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), translation);
-			glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
-				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
-				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 			glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scale);
 
-			transformMatrix = translationMatrix * rotationMatrix * scaleMatrix;
+			transformMatrix = translationMatrix * glm::toMat4(glm::quat(rotation)) * scaleMatrix;
 		}
 
 		// Getter method for the transform matrix
@@ -299,50 +296,15 @@ namespace luna
 	{
 		struct character
 		{
-			glm::vec3 translation = { 0.0f, 0.0f, 0.0f };
-			glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
-			glm::vec3 scale = { 1.0f, 1.0f, 1.0f };
-
 			ref<renderer::texture> glyph;
 
 			character() = default;
 			character(const character&) = default;
-			character(const glm::vec3& translation,const glm::vec3 scale,ref<renderer::texture> glyph)
-				: translation(translation),scale(scale),glyph(glyph) {
-				recalculateTransform();
+			character(glm::mat4 transform,ref<renderer::texture> glyph)
+				: transformMatrix(transform), glyph(glyph) {
 			}
 
-			void setTranslation(const glm::vec3& newTranslation)
-			{
-				translation = newTranslation;
-				recalculateTransform();
-			}
-
-			void setRotation(const glm::vec3& newRotation)
-			{
-				rotation = newRotation;
-				recalculateTransform();
-			}
-
-			void setScale(const glm::vec3& newScale)
-			{
-				scale = newScale;
-				recalculateTransform();
-			}
-
-			// Private method to recalculate the transform matrix
-			void recalculateTransform()
-			{
-				transformMatrix = glm::mat4(1.0f); // Initialize as identity matrix
-				glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), translation);
-				glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
-					* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
-					* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-				glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scale);
-
-				transformMatrix = translationMatrix * rotationMatrix * scaleMatrix;
-			}
-
+			
 			// Getter method for the transform matrix
 			glm::mat4 getTransform() const
 			{

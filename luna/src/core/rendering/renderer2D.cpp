@@ -129,30 +129,6 @@ namespace luna
 			 */
 			LN_PROFILE_FUNCTION();
 			//LN_ERR_FAIL_NULL_V_MSG(font, true, "font was invalid!");
-			/*
-			float xAdvance = 0.0f;
-			rendererData.isText = true;
-			const ref<texture> spaceGlyph = font->getGlyph('_');
-			const float normalizedDimensionX = 1.0f / renderer::getSceneDimensions().x * size.x;
-			const float normalizedDimensionY = 1.0f / renderer::getSceneDimensions().y * size.y;
-			uint8_t outOfBounds = 0;
-			for (size_t i = 0; i < labelText.size(); i++) 
-			{
-				const ref<texture> glyph = font->getGlyph(labelText[i]);
-				const glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() };
-				xAdvance += font->getAdvance(labelText[i]).x * normalizedDimensionX;
-				if (drawCharQuad({ xAdvance + position.x,position.y + font->getAdvance(labelText[i]).y * normalizedDimensionY,position.z }, size, glyph, checkHandle(font->handle()), { 1.0f,1.0f,1.0f,1.0f }, bounds)) 
-				{
-					outOfBounds++;
-					startOutBounds = i;
-				}
-				if (labelText[i] == ' ') xAdvance += spaceGlyph->getWidth() * normalizedDimensionX;
-				else xAdvance += glyph->getWidth() * normalizedDimensionX;
-			}
-			
-			rendererData.isText = false;
-			return outOfBounds == labelText.size();
-			*/
 			float xAdvance = 0.0f;
 			rendererData.isText = true;
 			const ref<texture> spaceGlyph = font->getGlyph('_');
@@ -184,38 +160,30 @@ namespace luna
 			rendererData.isText = false;
 			return outOfBounds == labelText.size();
 		} 
-		bool renderer2D::drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex,glm::vec4 color,glm::vec4 bounds)
+		void renderer2D::drawCharQuad(const glm::mat4& transform,const ref<texture> texture,glm::vec4 color, uint64_t handle)
 		{
-			/*
 			LN_PROFILE_FUNCTION();
 			constexpr size_t quadVertexCount = 4;
 
-			const glm::vec2 dimensions = { texture->getWidth(),texture->getHeight() };
-			const glm::vec2 normalizedDimensions = dimensions / renderer::getSceneDimensions();
-			const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f })
-				* glm::scale(glm::mat4(1.0f), { normalizedDimensions.x, normalizedDimensions.y, 1.0f });
 			const std::vector<glm::vec2> textureCoords = texture->getUv();
-			uint8_t outOfBounds = 0;
+			quadVertex* vertexPtr = rendererData.quadVertexBufferPtr;  // Store a pointer to the vertex buffer for optimization
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
-				rendererData.quadVertexBufferPtr->color = color;
-				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadCharVertexPositions[i];
-				outOfBounds += outOfView(rendererData.quadVertexBufferPtr->vert,bounds);
-				rendererData.quadVertexBufferPtr->textureCoords = textureCoords[i];
-				rendererData.quadVertexBufferPtr->textureIndex = handleIndex;
-				rendererData.quadVertexBufferPtr->text = rendererData.isText;
-				rendererData.quadVertexBufferPtr++;
+				vertexPtr->color = color;
+				vertexPtr->vert = transform * rendererData.quadCharVertexPositions[i];
+				vertexPtr->textureCoords = textureCoords[i];
+				vertexPtr->textureIndex = checkHandle(handle);
+				vertexPtr->text = true;
+				vertexPtr++;
 			}
-			if (outOfBounds)
-			{
-				rendererData.quadVertexBufferPtr -= outOfBounds;
-				return true;
-			}
+			
+			rendererData.quadVertexBufferPtr = vertexPtr;  // Update the vertex buffer pointer
 			rendererData.quadIndexCount += 6;
 			rendererData.stats.quadCount++;
-			return false;
-			*/
+		}
+		bool renderer2D::drawCharQuad(const glm::vec3& position, const glm::vec2& size, const ref<texture>& texture,uint64_t handleIndex,glm::vec4 color,glm::vec4 bounds)
+		{
+		
 			LN_PROFILE_FUNCTION();
 			constexpr size_t quadVertexCount = 4;
 
