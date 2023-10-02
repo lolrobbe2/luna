@@ -17,7 +17,7 @@ namespace luna
 		uuid id;
 		std::string typeName;
 		operator uint64_t() { return id; }
-		std::function<void(notificationType)> notificationFunc;
+		std::function<void(notificationType)> notificationFunc = [](notificationType type) {};
 		idComponent() = default;
 		idComponent(const idComponent&) = default;
 	};
@@ -52,28 +52,6 @@ namespace luna
 	};
 	struct transformComponent
 	{
-		/*
-		glm::vec3 translation = { 0.0f, 0.0f, 0.0f };
-		glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
-		glm::vec3 scale = { 1.0f, 1.0f, 1.0f };
-
-		transformComponent() = default;
-		transformComponent(const transformComponent&) = default;
-		transformComponent(const glm::vec3& translation)
-			: translation(translation) {}
-
-		glm::mat4 getTransform() const
-		{
-			glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), translation);
-			glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
-				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
-				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-			glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scale);
-
-			return translationMatrix * rotationMatrix * scaleMatrix;
-		}
-		*/
-
 		glm::vec3 translation = { 0.0f, 0.0f, 0.0f };
 		glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
 		glm::vec3 scale = { 1.0f, 1.0f, 1.0f };
@@ -106,12 +84,9 @@ namespace luna
 		{
 			transformMatrix = glm::mat4(1.0f); // Initialize as identity matrix
 			glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), translation);
-			glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
-				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
-				* glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 			glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scale);
 
-			transformMatrix = translationMatrix * rotationMatrix * scaleMatrix;
+			transformMatrix = translationMatrix * glm::toMat4(glm::quat(rotation)) * scaleMatrix;
 		}
 
 		// Getter method for the transform matrix
@@ -319,15 +294,39 @@ namespace luna
 
 	struct lineEditComponent
 	{
+		struct character
+		{
+			ref<renderer::texture> glyph;
+
+			character() = default;
+			character(const character&) = default;
+			character(glm::mat4 transform,ref<renderer::texture> glyph)
+				: transformMatrix(transform), glyph(glyph) {
+			}
+
+			
+			// Getter method for the transform matrix
+			glm::mat4 getTransform() const
+			{
+				return transformMatrix;
+			}
+
+		private:
+			// Store the transform matrix internally
+			glm::mat4 transformMatrix = glm::mat4(1.0f); // Initialize as identity matrix
+		};
 		uint8_t caretPosition;
+		uint8_t scrollPosition = 0;
 		std::string text;
 		std::string drawText;
 		std::filesystem::path filePath;
 		bool selected = false;
 		bool hovered = false;
+		bool outOfBounds = false;
 		uint8_t points = 16;
-		uint8_t indexOutOfBounds = 0;
 		glm::vec4 bounds;
+		glm::mat4 outerBorderTransform;
+		std::vector<character> charTransforms;
 		ref<renderer::font> font;
 	};
 	/*

@@ -42,10 +42,6 @@ namespace luna
 		
 	}
 
-	void object::notification(const notificationType type)
-	{
-	}
-
 
 	void object::connectSignal(uint64_t objectID,const std::string& signalName)
 	{

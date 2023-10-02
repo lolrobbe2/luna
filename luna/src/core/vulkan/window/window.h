@@ -28,15 +28,6 @@ namespace luna
 			VULKAN = 1,
 			OPENGL = 2
 		};
-		enum cursorShape
-		{
-			ARROW = GLFW_ARROW_CURSOR,
-			IBEAM = GLFW_IBEAM_CURSOR,
-			CROSSHAIR = GLFW_CROSSHAIR_CURSOR,
-			HAND = GLFW_HAND_CURSOR,
-			HRESIZE = GLFW_HRESIZE_CURSOR,
-			VRESIZE = GLFW_VRESIZE_CURSOR
-		};
 		//using renderApi = uint8_t;
 		
 		/**
@@ -62,7 +53,6 @@ namespace luna
 			virtual void setEventCallBack(const eventCallbackFn& callback) = 0;
 			virtual void* getWindow() = 0;
 			virtual glm::vec2 getCursorPos() const = 0;
-			virtual void setCursorShape(const cursorShape shape) const = 0;
 			windowSpec windowSpec;
 		};
 	}

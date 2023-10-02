@@ -34,6 +34,11 @@ namespace luna
 			renderer::renderer2D::drawCharQuad(position, { pxNorm,pxNorm }, charGlyph, renderer::renderer2D::checkHandle(charGlyph->handle()), modulate);
 		}
 
+		void canvasItem::drawChar(const lineEditComponent::character character, ref<renderer::font> font, color modulate)
+		{
+			renderer::renderer2D::drawCharQuad(character.getTransform(), character.glyph, modulate,font->handle());
+		}
+
 		void canvasItem::drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate)
 		{
 			float pxNorm = (font_size * 1.333);
@@ -41,6 +46,13 @@ namespace luna
 			glm::vec3 position{ pos.x,pos.y,1.0f };
 			uint8_t outOfBounds;
 			renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font,string,{-1.0f,1.0f,-1.0f,1.0f},outOfBounds);
+		}
+		void canvasItem::drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<renderer::font> font)
+		{
+			for (auto& character : transforms)
+			{
+				drawChar(character, font,modulate);
+			}
 		}
 		void canvasItem::drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate,glm::vec4& bounds, uint8_t& outOfBounds)
 		{

@@ -26,10 +26,12 @@ namespace luna
 			virtual ~lineEditNode() = default;
 			virtual void draw() override;
 			virtual void guiEvent(Event& event) override;
+			virtual void notification(const notificationType type) override;
 			void updateMetrics();
 		private:
 			bool isHovered();
-			bool isOutOfBounds(float& xAdvance, glm::vec2& normalizedDimensions, ref<renderer::font> font, char character);
+			void calculateTransforms();
+			bool isOutOfBounds(const glm::mat4 transform, const glm::vec4& bounds);
 		};
 	}
 }

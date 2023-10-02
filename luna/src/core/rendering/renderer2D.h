@@ -51,6 +51,11 @@ namespace luna
 			_ALWAYS_INLINE_ static bool drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font,const std::string labelText, const glm::vec4& bounds, uint8_t& startOutBounds);
 			
 			/**
+			* @brief draws a char quad.
+			* @warning this function does not positional calculation;
+			*/
+			_ALWAYS_INLINE_ static void drawCharQuad(const glm::mat4& transform, const ref<texture> texture,glm::vec4 color, uint64_t handle);
+			/**
 			 * @brief draws a texture quad.
 			 *
 			 * \param const glm::vec3& position starting position
