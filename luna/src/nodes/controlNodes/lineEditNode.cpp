@@ -74,7 +74,7 @@ namespace luna
 			{
 				mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
 				if(mouseEvent->getMouseButton() == Mouse::ButtonLeft)
-				{
+				{ 
 					if(lineEdit.hovered)
 					{
 						lineEdit.selected = !lineEdit.selected;
@@ -82,7 +82,7 @@ namespace luna
 					else { lineEdit.selected = false; }
 				}
 			}
-			if (event.getEventType() == eventType::KeyTyped)
+			if (lineEdit.selected && event.getEventType() == eventType::KeyTyped)
 			{
 				
 				keyTypedEvent* keyBoardEvent = (keyTypedEvent*)&event;
@@ -90,7 +90,7 @@ namespace luna
 				LN_EMIT_SIGNAL("TextChanged", utils::scriptUtils::createMonoString(lineEdit.text));
 				calculateTransforms();
 			}
-			if (event.getEventType() == eventType::KeyPressed)
+			if (lineEdit.selected && event.getEventType() == eventType::KeyPressed)
 			{
 				keyPressedEvent* keyPressed = (keyPressedEvent*)&event;
 				if (keyPressed->getkeyCode() == input::Backspace && lineEdit.text.size()) 
@@ -104,7 +104,7 @@ namespace luna
 					LN_EMIT_SIGNAL("TextSubmitted", utils::scriptUtils::createMonoString(lineEdit.text));
 				}
 			}
-			if(event.getEventType() == eventType::MouseScrolled) 
+			if(lineEdit.selected && event.getEventType() == eventType::MouseScrolled)
 			{
 				mouseScrolledEvent* scrolledEvent = (mouseScrolledEvent*)&event;
 				if (scrolledEvent->getYOffset() < 0) //MOUSE_DOWN
@@ -118,6 +118,18 @@ namespace luna
 					lineEdit.scrollPosition = CLAMP(lineEdit.scrollPosition - 1, 0, lineEdit.text.size() - 1);
 					calculateTransforms();
 				}	
+			}
+		}
+
+		void lineEditNode::notification(const notificationType type)
+		{
+			switch (type)
+			{
+			case luna::TRANSFORM_UPDATED:
+				calculateTransforms();
+				break;
+			default:
+				break;
 			}
 		}
 

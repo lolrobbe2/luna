@@ -269,11 +269,12 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			uint64_t handle = 0;
-			constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+			const glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 			constexpr size_t quadVertexCount = 4;
 			uint8_t outOfBounds = 0;
 			for (size_t i = 0; i < quadVertexCount; i++)
 			{
+				
 				rendererData.quadVertexBufferPtr->color = RGB255_TO_RGB1(color);
 				rendererData.quadVertexBufferPtr->vert = transform * rendererData.quadVertexPositions[i];	
 				outOfBounds += outOfView(rendererData.quadVertexBufferPtr->vert);
