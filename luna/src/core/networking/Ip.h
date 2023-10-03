@@ -1,5 +1,5 @@
 #pragma once
-/*
+
 #include <core/debug/typedefs.h>
 #include <core/utils/semaphore.h>
 #include <core/networking/ipAddress.h>
@@ -49,7 +49,7 @@ namespace luna
 				std::list<ipAddress> ip_addresses;
 			};
 
-			static ipAddress resolveHostname(const std::string& p_hostname, Type p_type = TYPE_ANY);
+			static std::string resolveHostname(const std::string& p_hostname, Type p_type = TYPE_ANY);
 			static std::vector<std::string> resolveHostnameAddresses(const std::string& p_hostname, Type p_type = TYPE_ANY);
 			// async resolver hostname
 			static ResolverID resolveHostnameQueueItem(const std::string& p_hostname, Type p_type = TYPE_ANY);
@@ -70,5 +70,5 @@ namespace luna
 		};
 	}
 }
-*/
+
 

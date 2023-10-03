@@ -1,5 +1,4 @@
-/*#
-include "Ip.h"
+#include "Ip.h"
 #include <core/debug/debugMacros.h>
 namespace luna 
 {
@@ -164,9 +163,9 @@ namespace luna
 
 		static _IP_ResolverPrivate* resolver;
 
-		ipAddress Ip::resolveHostname(const std::string& p_hostname, Ip::Type p_type) {
+		std::string Ip::resolveHostname(const std::string& p_hostname, Ip::Type p_type) {
 			const std::vector<std::string> addresses = resolveHostnameAddresses(p_hostname, p_type);
-			return addresses.size() ? (ipAddress)addresses[0] : ipAddress();
+			return addresses.size() ? addresses[0] : ipAddress();
 		}
 
 		std::vector<std::string> Ip::resolveHostnameAddresses(const std::string& p_hostname, Type p_type) {
@@ -410,13 +409,13 @@ namespace luna
 			int s = getaddrinfo(p_hostname.data(), nullptr, &hints, &result);
 			if (s != 0) 
 			{
-				//LN_CORE_WARN("getaddrinfo failed! Cannot resolve hostname.");
+				LN_CORE_WARN("getaddrinfo failed! Cannot resolve hostname.");
 				return;
 			}
 
 			if (result == nullptr || result->ai_addr == nullptr) 
 			{
-				//LN_CORE_WARN("Invalid response from getaddrinfo");
+				LN_CORE_WARN("Invalid response from getaddrinfo");
 				if (result) return freeaddrinfo(result);
 			}
 
@@ -430,7 +429,7 @@ namespace luna
 					continue;
 				}
 				ipAddress ip = _sockaddr2ip(next->ai_addr);
-				if (ip.isValid() && std::find(r_addresses.begin(),r_addresses.end(),ip) != r_addresses.end()) {
+				if (ip.isValid()) {
 					r_addresses.push_back(ip);
 				}
 				next = next->ai_next;
@@ -457,7 +456,7 @@ namespace luna
 					continue; // will go back and alloc the right size
 				}
 
-				//LN_ERR_FAIL_MSG("Call to GetAdaptersAddresses failed with error " + std::to_string(err) + ".");
+				LN_ERR_FAIL_MSG("Call to GetAdaptersAddresses failed with error " + std::to_string(err) + ".");
 			}
 
 			IP_ADAPTER_ADDRESSES* adapter = addrs;
@@ -465,8 +464,8 @@ namespace luna
 			while (adapter != nullptr) {
 				Interface_Info info;
 				info.name = adapter->AdapterName;
-				//std::wstring temp = std::wstring(adapter->FriendlyName);
-				//info.name_friendly = 
+				std::wstring temp = std::wstring(adapter->FriendlyName);
+				info.name_friendly = std::string(temp.begin(), temp.end());
 				info.index = std::to_string(adapter->IfIndex);
 
 				IP_ADAPTER_UNICAST_ADDRESS* address = adapter->FirstUnicastAddress;
@@ -535,4 +534,3 @@ namespace luna
 
 	}
 }
-*/

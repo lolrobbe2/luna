@@ -56,7 +56,7 @@ project "luna"
     location "luna"
     kind "SharedLib"
     language "c++"
-    
+    toolset "v142"
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
@@ -181,6 +181,7 @@ project "sandbox"
     location "sandbox"
     kind "ConsoleApp"
     language "c++"
+    toolset "v142"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
@@ -243,6 +244,7 @@ project "apollo"
     location "apollo"
     kind "ConsoleApp"
     language "c++"
+    toolset "v142"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")

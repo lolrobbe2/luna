@@ -1,4 +1,4 @@
-/*
+
 #include "ipAddress.h"
 #include <core/debug/debugMacros.h>
 namespace luna 
@@ -85,7 +85,7 @@ namespace luna
 					}
 				}
 				else {
-					//LN_ERR_FAIL_MSG("Invalid character in IPv6 address: " + p_string + ".");
+					LN_ERR_FAIL_MSG("Invalid character in IPv6 address: " + p_string + ".");
 				}
 			}
 
@@ -138,7 +138,7 @@ namespace luna
 		}
 
 		const uint8_t* ipAddress::getIpv4() {
-			//LN_ERR_FAIL_COND_V_MSG(!isIpv4(), &(field8[12]), "IPv4 requested, but current IP is IPv6."); // Not the correct IPv4 (it's an IPv6), but we don't want to return a null pointer risking an engine crash.
+			LN_ERR_FAIL_COND_V_MSG(!isIpv4(), &(field8[12]), "IPv4 requested, but current IP is IPv6."); // Not the correct IPv4 (it's an IPv6), but we don't want to return a null pointer risking an engine crash.
 			return &(field8[12]);
 		}
 
@@ -214,4 +214,3 @@ namespace luna
 		}
 	}
 }
-*/

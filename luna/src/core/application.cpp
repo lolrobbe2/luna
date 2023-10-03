@@ -7,6 +7,7 @@
 #include <core/object/methodDB.h>
 #include <core/assets/assetManager.h>
 #include <core/platform/platformUtils.h>
+#include <core/networking/Ip.h>
 namespace luna
 {
 	namespace application
@@ -31,6 +32,8 @@ namespace luna
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
 			methodDB::init();
+			networking::Ip::init();
+			LN_CORE_INFO("facebook ip:{0}" ,networking::Ip::resolveHostname("facebook.com", networking::Ip::TYPE_IPV6));
 			platform::os::setCursorShape(platform::ARROW);
 			LN_PROFILE_END_SESSION();
 			
@@ -40,6 +43,7 @@ namespace luna
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
 			layerStack.~layerStack();
 			platform::os::setCursorShape(platform::ARROW);
+			networking::Ip::shutdown();
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
 			mWindow->~window();

@@ -1,6 +1,7 @@
 #pragma once
-/*
+
 #include <core/core.h>
+
 namespace luna
 {
 	namespace networking
@@ -41,7 +42,10 @@ namespace luna
 						ret = ret + ":";
 					}
 					uint16_t num = (field8[i * 2] << 8) + field8[i * 2 + 1];
-					ret = ret + std::to_string(num);
+					std::stringstream sstream;
+					sstream << std::hex << num;
+					std::string result = sstream.str();
+					ret += result;
 				}
 
 				return ret;
@@ -94,4 +98,3 @@ namespace luna
 	}
 }
 
-*/
