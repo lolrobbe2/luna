@@ -27,7 +27,6 @@ namespace luna
 			virtual void draw() override;
 			virtual void guiEvent(Event& event) override;
 			virtual void notification(const notificationType type) override;
-			void updateMetrics();
 		private:
 			bool isHovered();
 			void calculateTransforms();

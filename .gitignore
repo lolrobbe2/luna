@@ -46,3 +46,4 @@ luna/tirdParty/obj/
 *.xml
 *.sarif
 /.vs
+/luna/thirdParty/spdlog

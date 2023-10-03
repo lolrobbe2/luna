@@ -65,34 +65,34 @@
  */
 #define LN_ERR_FAIL_INDEX(m_index, m_size)                                                                         \
 	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                     \
-		LN_CORE_ERROR(,"an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}"FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size)); \
+		LN_CORE_ERROR("an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}",FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size)); \
 		return;                                                                                                 \
 	} else                                                                                                      \
 		((void)0)
 
 #define LN_ERR_FAIL_INDEX_MSG(m_index, m_size,m_msg)                                                                         \
 	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                     \
-		LN_CORE_ERROR(,"an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}, msg{7}"FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size),m_msg); \
+		LN_CORE_ERROR("an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}, msg{7}",FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size),m_msg); \
 		return;                                                                                                 \
 	} else                                                                                                      \
 		((void)0)
 
 #define LN_ERR_FAIL_INDEX_V(m_index, m_size, m_retval)                                                                         \
 	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                     \
-		LN_CORE_ERROR(,"an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}"FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size)); \
-		return;                                                                                                 \
+		LN_CORE_ERROR("an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}",FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size)); \
+		return m_retval;                                                                                                 \
 	} else                                                                                                      \
 		((void)0)
 
 #define LN_ERR_FAIL_INDEX_V_MSG(m_index, m_size, m_retval, m_msg)                                                                         \
 	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                     \
-		LN_CORE_ERROR(,"an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}, msg{7}"FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size),m_msg); \
-		return;                                                                                                 \
+		LN_CORE_ERROR("an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}, msg{7}",FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size),m_msg); \
+		return m_retval;                                                                                                 \
 	} else                                                                                                      \
 		((void)0)
 #define CRASH_BAD_INDEX(m_index, m_size)                                                                                         \
 	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                      \
-		LN_CORE_ERROR(,"an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}"FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size)); \
+		LN_CORE_ERROR("an index error occured at line:{2} in function:{0} in file:{0}! index = {3}, file = {4}, index param = {5}, size param = {6}",FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, stringify(m_index), stringify(m_size)); \
 		LN_FLUSH_STDOUT;                                                                                                    \
 		GENERATE_TRAP();                                                                                                         \
 	} else                                                                                                                       \
@@ -110,7 +110,7 @@
 
 #define LN_ERR_FAIL_NULL(m_param) \
 	if ( !m_param ) {	\
-		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR,__FILE__,__LINE__,"Parameter ' " stringify(m_param)" ' is null.");	\
+		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR,__FILE__,__LINE__,"Parameter ' ",stringify(m_param)" ' is null.");	\
 		return;	 \
 	}	else ((void)0) 	
 
@@ -181,4 +181,33 @@
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true.",m_msg); \
 		return m_retval;                                                                                        \
 	} else                                                                                             \
+		((void)0)
+
+	  // Generic error macros.
+
+	  /**
+	   * Try using `ERR_FAIL_COND_MSG` or `ERR_FAIL_MSG`.
+	   * Only use this macro if more complex error detection or recovery is required, and
+	   * there is no sensible error message.
+	   *
+	   * The current function returns.
+	   */
+#define LN_ERR_FAIL()                                                                     \
+	if (true) {                                                                        \
+		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR, __FILE__, __LINE__, "Method/function failed."); \
+		return;                                                                        \
+	} else                                                                             \
+		((void)0)
+
+	   /**
+		* Try using `ERR_FAIL_COND_MSG`.
+		* Only use this macro if more complex error detection or recovery is required.
+		*
+		* Prints `m_msg`, and the current function returns.
+		*/
+#define LN_ERR_FAIL_MSG(m_msg)                                                                   \
+	if (true) {                                                                               \
+				LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3},msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Method/function failed.",m_msg); \
+		return;                                                                               \
+	} else                                                                                    \
 		((void)0)

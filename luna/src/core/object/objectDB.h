@@ -90,32 +90,32 @@ namespace luna
 		T& addComponent(Args&&... args)
 		{
 			//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
-			T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
+			T& component = this->scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
 			//scene->onComponentAdded<T>(*this, component);
 			return component;
 		}
 		template<typename T, typename... Args>
 		T& addOrReplaceComponent(Args&&... args)
 		{
-			T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
+			T& component = this->scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
 			return component;
 		}
 
 		template<typename T>
 		T& getComponent()
 		{
-			return scene->m_Registry.get<T>(entityHandle);
+			return this->scene->m_Registry.get<T>(entityHandle);
 		}
 
 		template<typename T>
 		bool hasComponent()
 		{
-			return scene->m_Registry.all_of<T>(entityHandle);
+			return this->scene->m_Registry.all_of<T>(entityHandle);
 		}
 		template<typename T>
 		void removeComponent()
 		{
-			scene->m_Registry.remove<T>(entityHandle);
+			this->scene->m_Registry.remove<T>(entityHandle);
 		}
 		uuid getUUID() { return getComponent<idComponent>().id; }
 

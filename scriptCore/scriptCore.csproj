@@ -21,8 +21,7 @@
     <OutputPath>..\bin\debug-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\debug-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\debug-windows-x86_64\x64\scriptCore\scriptCore.xml</DocumentationFile>
@@ -35,8 +34,7 @@
     <OutputPath>..\bin\release-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\release-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\release-windows-x86_64\x64\scriptCore\scriptCore.xml</DocumentationFile>
@@ -49,8 +47,7 @@
     <OutputPath>..\bin\distribution-windows-x86_64\x64\scriptCore\</OutputPath>
     <BaseIntermediateOutputPath>..\bin-int\distribution-windows-x86_64\x64\scriptCore\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\distribution-windows-x86_64\x64\scriptCore\scriptCore.xml</DocumentationFile>
@@ -65,12 +62,12 @@
     <Reference Include="mono-2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
-    <Compile Include="src\controlNodes\label\LineEditNode.cs" />
-    <Compile Include="src\controlNodes\range\range.cs" />
-    <Compile Include="src\controlNodes\range\ScrollBar.cs" />
     <Compile Include="src\Node.cs" />
+    <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
     <Compile Include="src\controlNodes\controlNode.cs" />
+    <Compile Include="src\controlNodes\label\LineEditNode.cs" />
+    <Compile Include="src\controlNodes\range\ScrollBar.cs" />
+    <Compile Include="src\controlNodes\range\range.cs" />
     <Compile Include="src\debug\Log.cs" />
     <Compile Include="src\math\Vector2.cs" />
     <Compile Include="src\math\Vector3.cs" />
@@ -78,7 +75,8 @@
     <Compile Include="src\os\Os.cs" />
     <Compile Include="src\signals\Signal.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -54,6 +54,7 @@ namespace luna
 			void drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate, glm::vec4& bounds, uint8_t& outOfBounds);
 		};
 	}
+#pragma warning( disable : 4305 )
 	namespace colors
 	{
 		const color ALICE_BLUE = color(0.941176, 0.972549, 1, 1);
@@ -203,6 +204,7 @@ namespace luna
 		const color YELLOW = color(1, 1, 0, 1);
 		const color YELLOW_GREEN = color(0.603922, 0.803922, 0.196078, 1);
 	}
+#pragma (pop)
 }
 
 

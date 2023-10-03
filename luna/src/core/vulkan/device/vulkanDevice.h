@@ -121,7 +121,7 @@ namespace luna
 			 * \param pUserData
 			 * \return 
 			 */
-			static VKAPI_ATTR VkBool32 VKAPI_CALL vulkanDevice::debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+			static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
 				VkDebugUtilsMessageTypeFlagsEXT messageTypes,
 				const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
 				void* pUserData);
