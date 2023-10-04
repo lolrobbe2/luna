@@ -10,7 +10,7 @@
 	#include <iphlpapi.h>
 	#pragma comment(lib, "Ws2_32.lib") //ws2tcip
 	#pragma comment(lib, "IPHLPAPI.lib") //iphlpapi
-
+	using socketHandle = SOCKET;
 	#else // UNIX
 
 	#include <netdb.h>
@@ -44,7 +44,10 @@ namespace luna
 		enum socketError {
 			SUCCESS,
 			INIT_FAILED,
-			BIND_FAILED
+			BIND_FAILED,
+			CONNECT_FAILED,
+			INVALID_IP_ADDRESS,
+			ALREADY_INIT
 		};
 
 		enum protocol {
@@ -52,12 +55,13 @@ namespace luna
 			UDP // Unicersal Datagram Protocol
 		};
 
-		using socketHandle = void*;
+	
 		struct socketComponent {
 			ipAddress address;
-			socketHandle netSocket = nullptr;
+			socketHandle netSocket = INVALID_SOCKET;
 			std::string host;
 			protocol proto;
+			uint16_t getFamily();
 		};
 		class netSocket : public object
 		{
@@ -67,8 +71,11 @@ namespace luna
 			netSocket(uint64_t id, luna::scene* scene) { LN_CORE_WARN("DEPRECATED"); };
 			virtual void init(luna::scene* scene);
 			virtual	void bindMethods();
-			socketError bind(int port, const std::string& host,const protocol proto);
-			socketError connectToHost(int port, const std::string& host, const protocol proto);
+			virtual void destroy();
+			virtual socketError bind(int port, const std::string& host,const protocol proto);
+			virtual socketError connectToHost(int port, const std::string& host, const protocol proto);
+			int getLocalPort();
+			int getConnectedPort();
 		private:
 			
 		};
