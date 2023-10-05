@@ -1,6 +1,13 @@
 
 #include "ipAddress.h"
 #include <core/debug/debugMacros.h>
+#include <core/object/methodDB.h>
+#include <core/scripting/scriptingEngine.h>
+
+static MonoClassField* ipField;
+static MonoClassField* validField;
+static MonoClassField* wildCardField;
+
 namespace luna 
 {
 	namespace networking 
@@ -20,37 +27,37 @@ namespace luna
 
 	
 
-		static void _parse_hex(const std::string& p_string, int p_start, uint8_t* p_dst) {
-			uint16_t ret = 0;
-			for (int i = p_start; i < p_start + 4; i++) {
-				if (i >= p_string.length()) {
-					break;
+			static void _parse_hex(const std::string& p_string, int p_start, uint8_t* p_dst) {
+				uint16_t ret = 0;
+				for (int i = p_start; i < p_start + 4; i++) {
+					if (i >= p_string.length()) {
+						break;
+					}
+
+					int n = 0;
+					char32_t c = p_string[i];
+					if (isdigit(c)) {
+						n = c - '0';
+					}
+					else if (c >= 'a' && c <= 'f') {
+						n = 10 + (c - 'a');
+					}
+					else if (c >= 'A' && c <= 'F') {
+						n = 10 + (c - 'A');
+					}
+					else if (c == ':') {
+						break;
+					}
+					else {
+						//LN_ERR_FAIL_MSG("Invalid character in IPv6 address: " + p_string + ".");
+					}
+					ret = ret << 4;
+					ret += n;
 				}
 
-				int n = 0;
-				char32_t c = p_string[i];
-				if (isdigit(c)) {
-					n = c - '0';
-				}
-				else if (c >= 'a' && c <= 'f') {
-					n = 10 + (c - 'a');
-				}
-				else if (c >= 'A' && c <= 'F') {
-					n = 10 + (c - 'A');
-				}
-				else if (c == ':') {
-					break;
-				}
-				else {
-					//LN_ERR_FAIL_MSG("Invalid character in IPv6 address: " + p_string + ".");
-				}
-				ret = ret << 4;
-				ret += n;
+				p_dst[0] = ret >> 8;
+				p_dst[1] = ret & 0xff;
 			}
-
-			p_dst[0] = ret >> 8;
-			p_dst[1] = ret & 0xff;
-		}
 
 		void ipAddress::parseIpv6(const std::string& p_string) {
 			static const int parts_total = 8;
@@ -122,9 +129,28 @@ namespace luna
 			}
 			
 			
-			//LN_ERR_FAIL_COND_MSG(slices != 4, "Invalid IP address string: " + ip + ".");
-			
-			
+			std::vector<std::string> slices;
+			std::string slice;
+			size_t start = 0;
+			size_t end = ip.find('.');
+			while (end != std::string::npos) {
+				slice = ip.substr(start, end - start);
+				slices.push_back(slice);
+				start = end + 1;
+				end = ip.find('.', start);
+			}
+
+
+			// Add the last slice
+			slice = ip.substr(start);
+			slices.push_back(slice);
+
+			LN_ERR_FAIL_COND_MSG(slices.size() != 4, "Invalid IP address string: " + ip + ".");
+
+
+			for (int i = 0; i < 4; i++) {
+				p_ret[i] = std::stoi(slices[i]); // Convert each slice to an integer
+			}
 		}
 
 		void ipAddress::clear() {
@@ -194,7 +220,8 @@ namespace luna
 			p_dst[3] = (p_n >> 0) & 0xff;
 		}
 
-		ipAddress::ipAddress(uint32_t p_a, uint32_t p_b, uint32_t p_c, uint32_t p_d, bool is_v6) {
+		ipAddress::ipAddress(uint32_t p_a, uint32_t p_b, uint32_t p_c, uint32_t p_d, bool is_v6)
+		{
 			clear();
 			valid = true;
 			if (!is_v6) {
@@ -211,6 +238,17 @@ namespace luna
 				_32_to_buf(&field8[8], p_c);
 				_32_to_buf(&field8[12], p_d);
 			}
+		}
+
+		static bool IpAddressIsIpv4(ipAddress* ipAddress)
+		{
+			return ipAddress->isIpv4();
+		}
+
+		
+		void ipAddress::registerMethods()
+		{
+		
 		}
 	}
 }

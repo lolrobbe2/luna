@@ -108,9 +108,11 @@ namespace luna
 			static void getAvailableSignals(MonoClass* monoClass);
 			static MonoMethodSignature* getSignature(MonoMethod* method);
 			static bool hasFlag(MonoMethod* method, uint32_t flag);
+			static MonoClass* getStandAloneClass(const std::string& className) { return standAloneClasses.find(className)->second; }
 		private:
 			inline static std::map<std::string, rootClass> rootClasses;
 			inline static std::map<std::string, scriptClass*> appClasses;
+			inline static std::map<std::string, MonoClass*> standAloneClasses;
 
 		};
 

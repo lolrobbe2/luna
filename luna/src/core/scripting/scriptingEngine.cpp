@@ -246,10 +246,11 @@ namespace luna
 					monoClass = mono_class_from_name(s_Data->coreImage, nameSpace, fullName.c_str());
 				}
 				
-					std::string camelCaseClassName = pascalToCamel(className);
-					if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
-					else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
-					getAvailableSignals(monoClass);
+				std::string camelCaseClassName = pascalToCamel(className);
+				if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
+				else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
+				else standAloneClasses.emplace(camelCaseClassName, monoClass);
+				getAvailableSignals(monoClass);
 				
 			}
 			//mono_field_get_value()

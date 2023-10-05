@@ -1,4 +1,5 @@
 #include <core/object/objectDB.h>
+#include <core/scene/scene.h>
 #include <core/networking/Ip.h>
 
 #if defined(UNIX_ENABLED) || defined(LN_PLATFORM_WINDOWS)

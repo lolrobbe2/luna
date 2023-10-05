@@ -90,7 +90,7 @@ namespace luna
 		T& addComponent(Args&&... args)
 		{
 			//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
-			T& component = this->scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
+			T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
 			//scene->onComponentAdded<T>(*this, component);
 			return component;
 		}
@@ -104,13 +104,13 @@ namespace luna
 		template<typename T>
 		T& getComponent()
 		{
-			return this->scene->m_Registry.get<T>(entityHandle);
+			return scene->m_Registry.get<T>(entityHandle);
 		}
 
 		template<typename T>
 		bool hasComponent()
 		{
-			return this->scene->m_Registry.all_of<T>(entityHandle);
+			return scene->m_Registry.all_of<T>(entityHandle);
 		}
 		template<typename T>
 		void removeComponent()

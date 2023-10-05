@@ -1,7 +1,6 @@
 #pragma once
 
 #include <core/core.h>
-
 namespace luna
 {
 	namespace networking
@@ -91,10 +90,14 @@ namespace luna
 			const uint8_t* getIpv6();
 			void setIpv6(const uint8_t* p_buf);
 
+			static void registerMethods();
+
 			ipAddress(const std::string& p_string);
 			ipAddress(uint32_t p_a, uint32_t p_b, uint32_t p_c, uint32_t p_d, bool is_v6 = false);
 			ipAddress() { clear(); }
 		};
+
+	
 	}
 }
 

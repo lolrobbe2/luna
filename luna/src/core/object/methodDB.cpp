@@ -12,6 +12,7 @@ class __UnexistingClass;
 #include <core/object/signal.h>
 #include <core/scene/node.h>
 #include <core/debug/debugMacros.h>
+#include <core/networking/ipAddress.h>
 namespace luna
 {
 	#ifdef TYPED_METHOD_BIND
@@ -63,6 +64,7 @@ namespace luna
 		Log::RegisterMethods();
 		Os::RegisterMethods();
 		Signal::RegisterMethods();
+		networking::ipAddress::registerMethods();
 	}
 
 
