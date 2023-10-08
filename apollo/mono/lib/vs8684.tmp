@@ -4,11 +4,6 @@
         <name>scriptCore</name>
     </assembly>
     <members>
-        <member name="M:CharExtensions.IsXDigit(System.Char)">
-            <summary>
-            Is a character 0-9 a-f A-F ?
-            </summary>
-        </member>
         <member name="T:Luna.Node">
             <summary>
             <para>

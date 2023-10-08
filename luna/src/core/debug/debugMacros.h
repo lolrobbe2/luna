@@ -211,3 +211,30 @@
 		return;                                                                               \
 	} else                                                                                    \
 		((void)0)
+
+		/**
+		 * Try using `ERR_FAIL_COND_V_MSG` or `ERR_FAIL_V_MSG`.
+		 * Only use this macro if more complex error detection or recovery is required, and
+		 * there is no sensible error message.
+		 *
+		 * The current function returns `m_retval`.
+		 */
+#define LN_ERR_FAIL_V(m_retval)                                                                     \
+	if (true) {                                                                        \
+		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR, __FILE__, __LINE__, "Method/function failed."); \
+		return m_retval;                                                                        \
+	} else                                                                             \
+		((void)0)
+
+		/**
+		 * Try using `ERR_FAIL_COND_V_MSG`.
+		 * Only use this macro if more complex error detection or recovery is required.
+		 *
+		 * Prints `m_msg`, and the current function returns.
+		 */
+#define LN_ERR_FAIL_V_MSG(m_retval,m_msg)                                                                   \
+	if (true) {                                                                               \
+				LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3},msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Method/function failed.",m_msg); \
+		return m_retval;                                                                               \
+	} else                                                                                    \
+		((void)0)

@@ -44,16 +44,26 @@ namespace luna
 	{
 		enum socketError {
 			SUCCESS,
+			FAILED,
 			INIT_FAILED,
 			BIND_FAILED,
 			CONNECT_FAILED,
 			INVALID_IP_ADDRESS,
-			ALREADY_INIT
+			ALREADY_INIT,
+			CONNECTION_CLOSED,
+			OUT_OF_BUFFER_MEMORY,
+			BUSY
 		};
 
 		enum protocol {
 			TCP, // Transmission Control Protocol
 			UDP // Unicersal Datagram Protocol
+		};
+
+		enum pollType {
+			POLL_TYPE_IN,
+			POLL_TYPE_OUT,
+			POLL_TYPE_IN_OUT
 		};
 
 	
@@ -63,6 +73,7 @@ namespace luna
 			std::string host;
 			protocol proto;
 			uint16_t getFamily();
+			Ip::Type getType();
 		};
 		class netSocket : public object
 		{
@@ -75,6 +86,14 @@ namespace luna
 			virtual void destroy();
 			virtual socketError bind(int port, const std::string& host,const protocol proto);
 			virtual socketError connectToHost(int port, const std::string& host, const protocol proto);
+			virtual socketError receive(uint8_t* p_buffer, int p_len, int& r_read);
+			virtual socketError receiveFrom(uint8_t* p_buffer, int len, int& r_read, ipAddress& r_ip, uint16_t& r_port, bool p_peek = false);
+			virtual socketError send(const uint8_t* p_buffer, int len, int& r_sent);
+			virtual socketError sendto(const uint8_t* p_buffer, int len, int& r_sent, ipAddress p_ip, uint16_t p_port);
+			virtual ref<netSocket> accept(ipAddress& r_ip, uint16_t& r_port);
+			virtual bool isOpen();
+			virtual int getAvailableBytes();
+			virtual socketError poll(pollType p_type, int timeout);	
 			int getLocalPort();
 			int getConnectedPort();
 		private:

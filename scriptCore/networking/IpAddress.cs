@@ -1,8 +1,23 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+
+public static class CharExtensions
+{
+    /// <summary>
+    /// Is a character 0-9 a-f A-F ?
+    /// </summary>
+    public static bool IsXDigit(this char c)
+    {
+        if ('0' <= c && c <= '9') return true;
+        if ('a' <= c && c <= 'f') return true;
+        if ('A' <= c && c <= 'F') return true;
+        return false;
+    }
+}
 namespace Luna
 {
+
     [StructLayout(LayoutKind.Explicit)]
     public struct ipField
     {
@@ -47,10 +62,8 @@ namespace Luna
                     ret += ":";
                 }
                 UInt16 num = (ushort)((ipField.field8[i * 2] << 8) + ipField.field8[i * 2 + 1]);
-                
                
-               
-                ret += num.ToString("X4");
+                ret += num.ToString("X4").ToLower();
             }
 
             return ret;
@@ -155,7 +168,7 @@ namespace Luna
                     part_ipv4 = true;
 
                 }
-                else if (char.IsDigit(c))
+                else if (c.IsXDigit())
                 {
                     if (!part_found)
                     {
@@ -190,18 +203,11 @@ namespace Luna
 
                 if (part_ipv4 && i == parts_idx - 1)
                 {
-                    byte[] tempField = new byte[ipField.field16.Length * 2];
-                    Buffer.BlockCopy(ipField.field16, 0, tempField, 0, tempField.Length);
-                    parseIpv4(ipAddress, parts[i], tempField, idx); // should be the last one
-                    Buffer.BlockCopy(tempField, 0, ipField.field16, 0, tempField.Length);
+                    parseIpv4(ipAddress, parts[i], ipField.field8, idx * 2); // should be the last one                    
                 }
                 else
                 {
-                    byte[] tempField = new byte[ipField.field16.Length * 2];
-                    Buffer.BlockCopy(ipField.field16, 0, tempField, 0, tempField.Length);
-                    _parse_hex(ipAddress, parts[i], tempField, idx++);
-                    Buffer.BlockCopy(tempField, 0, ipField.field16, 0, tempField.Length);
-
+                    _parse_hex(ipAddress, parts[i], ipField.field8, idx++ * 2);
                 }
             }
         }
@@ -217,9 +223,30 @@ namespace Luna
         public bool IsValid() { return valid; }
         public bool IsIpv4()
         {
-            return (ipField.field32[0] == 0 && ipField.field32[1] == 0 && ipField.field16[4] == 0 && ipField.field16[5] == 0xffff); ;
+            return (ipField.field32[0] == 0 && ipField.field32[1] == 0 && ipField.field16[4] == 0 && ipField.field16[5] == 0xffff); 
         }
 
+        public void setIpv4(byte[] buffer) 
+        {
+            ipField tempIpField = new ipField();
+            tempIpField.field8 = buffer;
+            if(!(ipField.field32[0] == 0 && ipField.field32[1] == 0 && ipField.field16[4] == 0 && ipField.field16[5] == 0xffff)) { Log.Error("Invalid Ipv4 adress!"); return; }
+            ipField.field8 = buffer;
+        }
+
+        public void setIpv6(byte[] buffer)
+        {
+            ipField tempIpField = new ipField();
+            tempIpField.field8 = buffer;
+            if ((ipField.field32[0] == 0 && ipField.field32[1] == 0 && ipField.field16[4] == 0 && ipField.field16[5] == 0xffff)) { Log.Error("Invalid Ipv6 adress!"); return; }
+            ipField.field8 = buffer;
+        }
+
+        /// <summary>
+        /// ONLY USE THIS FUNCTION FOR INTERNALL USE.
+        /// </summary>
+        /// <returns>the raw ip array</returns>
+        public byte[] getIpRaw () { return ipField.field8; }
         private void parseIpv4(String IpString, int Start, byte[] p_ret, int StartIndex)
         {
             string Ip;
@@ -233,7 +260,7 @@ namespace Luna
             }
 
             string[] SlicedIpString = IpString.Split('.');
-            if (SlicedIpString.Length != 4) { Log.Error("Invalid IP address string: {0} .", IpString); return; }
+            if (SlicedIpString.Length != 4) { Log.Error("Invalid IP address string: {0}.", IpString); return; }
             for (int i = 0; i < 4; i++)
             {
                 p_ret[StartIndex + i] = Byte.Parse(SlicedIpString[i]);
@@ -265,7 +292,7 @@ namespace Luna
                 }
                 else
                 {
-                    //LN_ERR_FAIL_MSG("Invalid character in IPv6 address: " + p_string + ".");
+                    Log.Error("Invalid character in IPv6 address: {0}." ,p_string);
                 }
                 ret = (ushort)(ret << 4);
                 ret += (ushort)n;

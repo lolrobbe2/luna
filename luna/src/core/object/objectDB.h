@@ -118,7 +118,7 @@ namespace luna
 			this->scene->m_Registry.remove<T>(entityHandle);
 		}
 		uuid getUUID() { return getComponent<idComponent>().id; }
-
+		operator entt::entity() { return entityHandle; }
 	protected:
 		friend class luna::scene;
 		entt::entity entityHandle{ entt::null };
