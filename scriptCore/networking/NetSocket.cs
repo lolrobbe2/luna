@@ -65,8 +65,8 @@ namespace Luna
         SocketError ConnetToHost(int Port, string Host, Protocol Protocol) { return NetSocketConnectToHost(ObjectId, Port, Host, Protocol); }
               
         SocketError Recieve(byte[] buffer,int length) { buffer = new byte[length]; return NetSocketReceive(ObjectId,buffer, length); }
-        SocketError RecieveFrom(byte[] buffer,IpAddress address,int length, UInt16 port, bool peek) { buffer = new byte[length]; return NetSocketReceiveFrom(ObjectId,buffer, address.getIpRaw(), port, peek); }
-
+        SocketError RecieveFrom(byte[] buffer,IpAddress address,int length, UInt16 port, bool peek) { if (buffer.Length < length) { Log.Error("buffer size was to small: size was {} bytes.", buffer.Length); return SocketError.OUT_OF_BUFFER_MEMORY; } return NetSocketReceiveFrom(ObjectId,buffer, address.getIpRaw(), port, peek); }
+        SocketError Send(byte[] buffer, int length) { return NetSocketSend(ObjectId, buffer, length); }
         /// <summary>
         /// function to create a NetSocket module
         /// </summary>
@@ -83,6 +83,8 @@ namespace Luna
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         static extern SocketError NetSocketReceiveFrom(ulong ObjectId,byte[] buffer, byte[] address, UInt16 port, bool peek);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        static extern SocketError NetSocketSend(ulong ObjectId, byte[] buffer, int len);
         /// <summary>
         /// externall call to destroy the socket
         /// </summary>

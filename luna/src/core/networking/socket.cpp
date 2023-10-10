@@ -341,33 +341,29 @@ namespace luna
 
 		static socketError NetSocketReceive(entt::entity objectId,MonoArray* byteArray, int length)
 		{
-			std::vector<uint8_t>receive;
-			receive.resize(length);
-
+			uint8_t* p_receieveBuffer = (uint8_t*)mono_array_addr_with_size(byteArray, length,0);
+			
 			int read;
-			socketError error = netSocket(objectId, scripting::scriptingEngine::getContext()).receive(receive.data(), length, read);
+			socketError error = netSocket(objectId, scripting::scriptingEngine::getContext()).receive(p_receieveBuffer, length, read);
 
 			if (error != SUCCESS) return error;
+			return SUCCESS;
+		}
+		static socketError NetSocketReceiveFrom(entt::entity objectId, MonoArray* byteArray, MonoArray* addressArray, int length,uint16_t port,bool peek)
+		{
+			uint8_t* p_receieveBuffer = (uint8_t*)mono_array_addr_with_size(byteArray, length, 0);
 
-			for (int i = 0; i < length; ++i) mono_array_set(byteArray, uint8_t, i, receive[i]);
+			int read;
+			ipAddress* address = (ipAddress*)mono_array_addr_with_size(addressArray, length, 0);;
+			socketError error = netSocket(objectId, scripting::scriptingEngine::getContext()).receiveFrom(p_receieveBuffer, length, read,*address,port,peek); //internall 
+
+			if (error != SUCCESS) return error;
 			return SUCCESS;
 		}
 
-		static socketError NetSocketReceiveFrom(entt::entity objectId, MonoArray* byteArray, MonoArray* addressArray, int length,uint16_t port,bool peek)
+		static socketError NetSocketSend(entt::entity objectId, MonoArray* byteArray,int len)
 		{
-			std::vector<uint8_t>receive;
-			receive.resize(length);
-			int read;
-			ipAddress address;
-			socketError error = netSocket(objectId, scripting::scriptingEngine::getContext()).receiveFrom(receive.data(), length, read,address,port,peek);
-
-			if (error != SUCCESS) return error;
-
-			for (int i = 0; i < length; ++i) mono_array_set(byteArray, uint8_t, i, receive[i]);//fill data packet
-
-			const uint8_t* ipAddress = address.getIpv6();
-			for (int i = 0; i < sizeof(uint8_t) * 16; ++i) mono_array_set(byteArray, uint8_t, i, ipAddress[i]);//fill out ipAddress array
-			return SUCCESS;
+			uint8_t* packetData = (uint8_t*)mono_array_addr_with_size(byteArray, len,0);	
 		}
 		
 	}
