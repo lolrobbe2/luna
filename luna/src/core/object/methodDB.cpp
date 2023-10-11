@@ -13,6 +13,7 @@ class __UnexistingClass;
 #include <core/scene/node.h>
 #include <core/debug/debugMacros.h>
 #include <core/networking/ipAddress.h>
+#include <core/networking/socket.h>
 namespace luna
 {
 	#ifdef TYPED_METHOD_BIND
@@ -65,6 +66,7 @@ namespace luna
 		Os::RegisterMethods();
 		Signal::RegisterMethods();
 		networking::ipAddress::registerMethods();
+		networking::netSocket().bindMethods();
 	}
 
 

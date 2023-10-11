@@ -5,6 +5,61 @@ namespace luna
 {
 	namespace networking 
 	{
+#pragma region Glue
+		static entt::entity NetSocketCreate()
+		{
+			netSocket socket;
+			socket.init(scripting::scriptingEngine::getContext());
+			return socket;
+		}
+		static socketError NetSocketBind(entt::entity objectId, int port, MonoString* host, protocol proto)
+		{
+			return netSocket(objectId, scripting::scriptingEngine::getContext()).bind(port, mono_string_to_utf8(host), proto);
+		}
+
+		static socketError NetSocketConnectToHost(entt::entity objectId, int port, MonoString* host, protocol proto)
+		{
+			return netSocket(objectId, scripting::scriptingEngine::getContext()).connectToHost(port, mono_string_to_utf8(host), proto);
+		}
+
+		static void NetSocketDestroy(entt::entity objectId)
+		{
+			netSocket(objectId, scripting::scriptingEngine::getContext()).destroy();
+		}
+
+		static socketError NetSocketReceive(entt::entity objectId, MonoArray* byteArray, int length)
+		{
+			uint8_t* p_receieveBuffer = (uint8_t*)mono_array_addr_with_size(byteArray, length, 0);
+
+			int read;
+			return netSocket(objectId, scripting::scriptingEngine::getContext()).receive(p_receieveBuffer, length, read);
+		}
+		static socketError NetSocketReceiveFrom(entt::entity objectId, MonoArray* byteArray, MonoArray* addressArray, int length, uint16_t port, bool peek)
+		{
+			uint8_t* p_receieveBuffer = (uint8_t*)mono_array_addr_with_size(byteArray, length, 0);
+
+			int read;
+			ipAddress* address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
+			return netSocket(objectId, scripting::scriptingEngine::getContext()).receiveFrom(p_receieveBuffer, length, read, *address, port, peek); //internall 
+		}
+
+		static socketError NetSocketSend(entt::entity objectId, MonoArray* byteArray, int len)
+		{
+			uint8_t* p_packetData = (uint8_t*)mono_array_addr_with_size(byteArray, len, 0);
+			int r_sent = 0;
+			return netSocket(objectId, scripting::scriptingEngine::getContext()).send(p_packetData, len, r_sent);
+		}
+		static socketError NetSocketSendTo(entt::entity objectId, MonoArray* byteArray, int len, MonoArray* addressArray, uint16_t port)
+		{
+			int r_sent = 0;
+			uint8_t* p_packetData = (uint8_t*)mono_array_addr_with_size(byteArray, len, 0);
+			ipAddress* p_address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
+			return netSocket(objectId, scripting::scriptingEngine::getContext()).sendto(p_packetData, len, r_sent, *p_address, port);
+		}
+
+#pragma endregion
+
+
 		void netSocket::init(luna::scene* scene)
 		{
 			object::init(scene);
@@ -13,6 +68,11 @@ namespace luna
 		void netSocket::bindMethods()
 		{
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketCreate);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketDestroy);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketBind);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketConnectToHost);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketReceive);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketReceiveFrom);
 		}
 
 		void netSocket::destroy()
@@ -25,10 +85,10 @@ namespace luna
 		static bool winSockStarted = false;
 		static WSADATA wsaData;
 
-		static socketError createSocket(socketComponent& socketData, const std::string& host, const protocol proto)
+		static socketError createSocket(socketComponent& socketData, const protocol proto)
 		{
 
-			LN_ERR_FAIL_COND_V_MSG(socketData.netSocket == INVALID_SOCKET, socketError::ALREADY_INIT, "you cannot initalize a socket twice!");
+			LN_ERR_FAIL_COND_V_MSG(socketData.netSocket != INVALID_SOCKET, socketError::ALREADY_INIT, "you cannot initalize a socket twice!");
 
 			if (!winSockStarted) {
 				int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -36,13 +96,8 @@ namespace luna
 				winSockStarted = true;
 			}
 
-			struct addrinfo* result = NULL;
 			struct addrinfo hints;
-
-			ipAddress address = Ip::resolveHostname(host);
-
-			LN_ERR_FAIL_COND_V_MSG(address.isValid(), socketError::INVALID_IP_ADDRESS, "ipAddress/ hostname was invalid!");
-
+			
 			ZeroMemory(&hints, sizeof(hints));
 
 			switch (proto)
@@ -59,7 +114,7 @@ namespace luna
 			}
 			hints.ai_socktype = SOCK_STREAM;
 			hints.ai_flags = AI_PASSIVE;
-			SOCKET sock = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
+			SOCKET sock = socket(hints.ai_family, hints.ai_socktype, hints.ai_protocol);
 
 			LN_ERR_FAIL_COND_V_MSG(sock == INVALID_SOCKET, socketError::INIT_FAILED, "socket creation failed with error: " + std::to_string(WSAGetLastError()));
 			socketData.netSocket = sock;
@@ -85,10 +140,15 @@ namespace luna
 		socketError netSocket::bind(int port, const std::string& host, const protocol proto)
 		{
 			auto& socketData = getComponent<socketComponent>();
-			socketError result = createSocket(socketData, host, proto);
+			socketError result = createSocket(socketData, proto);
 
-			LN_ERR_FAIL_COND_V_MSG(result != socketError::SUCCESS || result != socketError::ALREADY_INIT, result, "something went wrong during socket creation!");
+			LN_ERR_FAIL_COND_V_MSG(!(result == socketError::SUCCESS || result == socketError::ALREADY_INIT), result, "something went wrong during socket creation!");
 			
+			ipAddress address{ host };
+			if (!address.isValid())address = Ip::resolveHostname(host);
+			socketData.address = address;
+			LN_ERR_FAIL_COND_V_MSG(!address.isValid(), socketError::INVALID_IP_ADDRESS, "ipAddress/ hostname was invalid!");
+
 			LN_ERR_FAIL_COND_V_MSG(bindSocket(socketData.netSocket, socketData.address, port, socketData.getFamily()) == SOCKET_ERROR, socketError::BIND_FAILED, "could not bind socket: " + std::to_string(WSAGetLastError()));
 
 			return socketError::SUCCESS;
@@ -103,7 +163,7 @@ namespace luna
 		socketError netSocket::connectToHost(int port, const std::string& host, const protocol proto)
 		{
 			auto& socketData = getComponent<socketComponent>();
-			socketError result = createSocket(socketData, host, proto);
+			socketError result = createSocket(socketData, proto);
 
 			LN_ERR_FAIL_COND_V_MSG(result != socketError::SUCCESS || result != socketError::ALREADY_INIT, result, "socket creation failed with error: " + std::to_string(WSAGetLastError()));
 
@@ -214,6 +274,7 @@ namespace luna
 
 		ref<netSocket> netSocket::accept(ipAddress& r_ip, uint16_t& r_port)
 		{
+
 			return ref<netSocket>();
 		}
 
@@ -316,55 +377,5 @@ namespace luna
 			
 			return address.isIpv4() ? Ip::TYPE_IPV4: Ip::TYPE_IPV6;
 		}
-	
-
-		static entt::entity NetSocketCreate()
-		{
-			netSocket socket;
-			socket.init(scripting::scriptingEngine::getContext());
-			return socket;
-		}
-		static socketError NetSocketBind(entt::entity objectId,int port, MonoString* host,protocol proto)
-		{
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).bind(port, mono_string_to_utf8(host), proto);
-		}
-
-		static socketError NetSocketConnectToHost(entt::entity objectId, int port, MonoString* host, protocol proto)
-		{
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).connectToHost(port, mono_string_to_utf8(host), proto);
-		}
-
-		static void NetSocketDestroy(entt::entity objectId)
-		{
-			netSocket(objectId, scripting::scriptingEngine::getContext()).destroy();	
-		}
-
-		static socketError NetSocketReceive(entt::entity objectId,MonoArray* byteArray, int length)
-		{
-			uint8_t* p_receieveBuffer = (uint8_t*)mono_array_addr_with_size(byteArray, length,0);
-			
-			int read;
-			socketError error = netSocket(objectId, scripting::scriptingEngine::getContext()).receive(p_receieveBuffer, length, read);
-
-			if (error != SUCCESS) return error;
-			return SUCCESS;
-		}
-		static socketError NetSocketReceiveFrom(entt::entity objectId, MonoArray* byteArray, MonoArray* addressArray, int length,uint16_t port,bool peek)
-		{
-			uint8_t* p_receieveBuffer = (uint8_t*)mono_array_addr_with_size(byteArray, length, 0);
-
-			int read;
-			ipAddress* address = (ipAddress*)mono_array_addr_with_size(addressArray, length, 0);;
-			socketError error = netSocket(objectId, scripting::scriptingEngine::getContext()).receiveFrom(p_receieveBuffer, length, read,*address,port,peek); //internall 
-
-			if (error != SUCCESS) return error;
-			return SUCCESS;
-		}
-
-		static socketError NetSocketSend(entt::entity objectId, MonoArray* byteArray,int len)
-		{
-			uint8_t* packetData = (uint8_t*)mono_array_addr_with_size(byteArray, len,0);	
-		}
-		
 	}
 }

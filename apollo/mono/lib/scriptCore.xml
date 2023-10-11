@@ -4,10 +4,70 @@
         <name>scriptCore</name>
     </assembly>
     <members>
-        <member name="M:CharExtensions.IsXDigit(System.Char)">
+        <member name="T:Luna.SocketError">
             <summary>
-            Is a character 0-9 a-f A-F ?
+            Enumaration of socketErrors
             </summary>
+        </member>
+        <member name="T:Luna.Protocol">
+            <summary>
+            Enumeration of socket protocols
+            </summary>
+        </member>
+        <member name="T:Luna.NetSocket">
+            <summary>
+            This is bare bones Network socket that is multiplatform.
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.#ctor">
+            <summary>
+            NetSocket constructor.
+            creates a uninitialized socket
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.Finalize">
+            <summary>
+            closes the socket.
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.Bind(System.Int32,System.String,Luna.Protocol)">
+            <summary>
+            <para>Opens the TCP socket, and binds it to the specified local address.</para>
+            <para>This method is generally not needed, and only used to force the subsequent call to <see cref="!:ConnectToHost"/> to use the specified <see cref="!:Host"/> and <see cref="!:Port"/> as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+            </para>
+            </summary>
+            <param name="port">the port to bind the socket to</param>
+            <param name="host">the hsot name. for example google.com</param>
+            <param name="protocol"> <see cref="T:Luna.Protocol"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.NetSocket.ConnetToHost(System.Int32,System.String,Luna.Protocol)">
+            <summary>
+            Connects to the specified host:port pair. A hostname will be resolved if valid. Returns <see cref="F:Luna.SocketError.SUCCESS"/>.OK on success.
+            </summary>
+            <param name="Port"></param>
+            <param name="Host"></param>
+            <param name="Protocol"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.NetSocket.NetSocketCreate">
+            <summary>
+            function to create a NetSocket module
+            </summary>
+            <returns>entityHandle</returns>
+        </member>
+        <member name="M:Luna.NetSocket.NetSocketDestroy(System.UInt64)">
+            <summary>
+            externall call to destroy the socket
+            </summary>
+            <param name="ObjectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.IpAddress.getIpRaw">
+            <summary>
+            ONLY USE THIS FUNCTION FOR INTERNALL USE.
+            </summary>
+            <returns>the raw ip array</returns>
         </member>
         <member name="T:Luna.Node">
             <summary>
@@ -467,6 +527,11 @@
             </summary>
             <param name="signalName">signal name to emit</param>
             <param name="args">arguments to pass to the signal</param>
+        </member>
+        <member name="M:CharExtensions.IsXDigit(System.Char)">
+            <summary>
+            Is a character 0-9 a-f A-F ?
+            </summary>
         </member>
     </members>
 </doc>
