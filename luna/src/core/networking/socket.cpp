@@ -120,15 +120,20 @@ namespace luna
 			socketData.netSocket = sock;
 			return socketError::SUCCESS;
 		}
+		static ipAddress _sockaddr2ip(struct sockaddr* p_addr) {
+			ipAddress ip;
 
+			
+
+			return ip;
+		}
 		_ALWAYS_INLINE_ static sockaddr_in* ipAddressNative(ipAddress& address, int port, uint16_t family)
 		{
-			sockaddr_in* serverAddr = new sockaddr_in();
-			serverAddr->sin_family = family;
-			serverAddr->sin_port = port;
-			if (address.isIpv4()) memcpy(&serverAddr->sin_addr, address.getIpv4(), sizeof(IN_ADDR));
-			else memcpy(&serverAddr->sin_addr, address.getIpv6(), sizeof(IN6_ADDR)); 
-			return serverAddr;
+			sockaddr_in* service = new sockaddr_in();
+			service->sin_family = family;
+			service->sin_port = htons(port);
+			service->sin_addr.s_addr = inet_addr(((std::string)address).c_str());
+			return service;
 		}
 
 		_ALWAYS_INLINE_ static int bindSocket(SOCKET sock, ipAddress& address, int port, uint16_t family)
@@ -144,7 +149,7 @@ namespace luna
 
 			LN_ERR_FAIL_COND_V_MSG(!(result == socketError::SUCCESS || result == socketError::ALREADY_INIT), result, "something went wrong during socket creation!");
 			
-			ipAddress address{ host };
+			ipAddress address = ipAddress(host);
 			if (!address.isValid())address = Ip::resolveHostname(host);
 			socketData.address = address;
 			LN_ERR_FAIL_COND_V_MSG(!address.isValid(), socketError::INVALID_IP_ADDRESS, "ipAddress/ hostname was invalid!");

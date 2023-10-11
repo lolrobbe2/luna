@@ -195,7 +195,7 @@ namespace luna
 				wildcard = true;
 
 			}
-			else if (p_string.find(":") >= 0) {
+			else if (p_string.find(":") != std::string::npos) {
 				// IPv6
 				parseIpv6(p_string);
 				valid = true;
