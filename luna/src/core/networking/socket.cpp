@@ -58,8 +58,45 @@ namespace luna
 		}
 
 #pragma endregion
+		size_t static _set_addr_storage(struct sockaddr_storage* p_addr,ipAddress& p_ip, uint16_t p_port, Ip::Type p_ip_type) {
+			memset(p_addr, 0, sizeof(struct sockaddr_storage));
+			if (p_ip_type == Ip::TYPE_IPV6 || p_ip_type == Ip::TYPE_ANY) { // IPv6 socket
+
+				// IPv6 only socket with IPv4 address
+				LN_ERR_FAIL_COND_V(!p_ip.isWildcard() && p_ip_type == Ip::TYPE_IPV6 && p_ip.isIpv4(), 0);
+
+				struct sockaddr_in6* addr6 = (struct sockaddr_in6*)p_addr;
+				addr6->sin6_family = AF_INET6;
+				addr6->sin6_port = htons(p_port);
+				if (p_ip.isValid()) {
+					memcpy(&addr6->sin6_addr.s6_addr, p_ip.getIpv6(), 16);
+				}
+				else {
+					addr6->sin6_addr = in6addr_any;
+				}
+				return sizeof(sockaddr_in6);
+			}
+			else { // IPv4 socket
+
+				// IPv4 socket with IPv6 address
+				LN_ERR_FAIL_COND_V(!p_ip.isWildcard() && !p_ip.isIpv4(), 0);
+
+				struct sockaddr_in* addr4 = (struct sockaddr_in*)p_addr;
+				addr4->sin_family = AF_INET;
+				addr4->sin_port = htons(p_port); // short, network byte order
+				if (p_ip.isValid()) {
+					memcpy(&addr4->sin_addr.s_addr, p_ip.getIpv4(), 4);
+				}
+				else {
+					addr4->sin_addr.s_addr = INADDR_ANY;
+				}
+
+				return sizeof(sockaddr_in);
+			}
+		}
 
 
+		void netSocket::terminate() { WSACleanup(); }
 		void netSocket::init(luna::scene* scene)
 		{
 			object::init(scene);
@@ -78,6 +115,7 @@ namespace luna
 		void netSocket::destroy()
 		{
 			closesocket(getComponent<socketComponent>().netSocket);
+			getComponent<socketComponent>().netSocket = INVALID_SOCKET;
 		}
 
 #ifdef LN_PLATFORM_WINDOWS
@@ -100,46 +138,30 @@ namespace luna
 			
 			ZeroMemory(&hints, sizeof(hints));
 
-			switch (proto)
-			{
-			case luna::networking::TCP:
-				hints.ai_protocol = IPPROTO_TCP;
-				break;
-			case luna::networking::UDP:
-				hints.ai_protocol = IPPROTO_UDP;
-				break;
-			default:
-				LN_CORE_ERROR("invalid protocol selected!");
-				return socketError::INIT_FAILED;
-			}
-			hints.ai_socktype = SOCK_STREAM;
-			hints.ai_flags = AI_PASSIVE;
-			SOCKET sock = socket(hints.ai_family, hints.ai_socktype, hints.ai_protocol);
+			int family = socketData.getType() == Ip::TYPE_IPV4 ? AF_INET : AF_INET6;
+			int protocol = proto == TCP ? IPPROTO_TCP : IPPROTO_UDP;
+			int type = proto == TCP ? SOCK_STREAM : SOCK_DGRAM;
+			socketData.netSocket = ::socket(family,type, protocol);
 
-			LN_ERR_FAIL_COND_V_MSG(sock == INVALID_SOCKET, socketError::INIT_FAILED, "socket creation failed with error: " + std::to_string(WSAGetLastError()));
-			socketData.netSocket = sock;
+			LN_ERR_FAIL_COND_V_MSG(socketData.netSocket == INVALID_SOCKET, socketError::INIT_FAILED, "socket creation failed with error: " + std::to_string(WSAGetLastError()));
+
 			return socketError::SUCCESS;
-		}
-		static ipAddress _sockaddr2ip(struct sockaddr* p_addr) {
-			ipAddress ip;
-
-			
-
-			return ip;
 		}
 		_ALWAYS_INLINE_ static sockaddr_in* ipAddressNative(ipAddress& address, int port, uint16_t family)
 		{
 			sockaddr_in* service = new sockaddr_in();
 			service->sin_family = family;
-			service->sin_port = htons(port);
-			service->sin_addr.s_addr = inet_addr(((std::string)address).c_str());
+			service->sin_port = port;
+			if (address.isWildcard()) service->sin_addr.s_addr = INADDR_ANY;
+			else service->sin_addr.s_addr = inet_addr(((std::string)address).c_str());
 			return service;
 		}
 
-		_ALWAYS_INLINE_ static int bindSocket(SOCKET sock, ipAddress& address, int port, uint16_t family)
+		_ALWAYS_INLINE_ static int bindSocket(SOCKET sock, socketComponent& socketData, int port)
 		{
-			sockaddr_in* serverAddr = ipAddressNative(address, port, family);
-			return bind(sock, (sockaddr*)serverAddr , sizeof(serverAddr));
+			size_t addrSize = _set_addr_storage(&socketData.addr, socketData.address, port, socketData.getType());
+			LN_CORE_INFO("addr = {0}", sizeof(sockaddr));
+			return ::bind(sock, (struct sockaddr*)&socketData.addr, addrSize);
 		}
 
 		socketError netSocket::bind(int port, const std::string& host, const protocol proto)
@@ -150,20 +172,45 @@ namespace luna
 			LN_ERR_FAIL_COND_V_MSG(!(result == socketError::SUCCESS || result == socketError::ALREADY_INIT), result, "something went wrong during socket creation!");
 			
 			ipAddress address = ipAddress(host);
-			if (!address.isValid())address = Ip::resolveHostname(host);
+			if (!address.isWildcard() && !address.isValid()) address = Ip::resolveHostname(host);
 			socketData.address = address;
-			LN_ERR_FAIL_COND_V_MSG(!address.isValid(), socketError::INVALID_IP_ADDRESS, "ipAddress/ hostname was invalid!");
 
-			LN_ERR_FAIL_COND_V_MSG(bindSocket(socketData.netSocket, socketData.address, port, socketData.getFamily()) == SOCKET_ERROR, socketError::BIND_FAILED, "could not bind socket: " + std::to_string(WSAGetLastError()));
-
+			LN_ERR_FAIL_COND_V_MSG(!address.isValid() && !address.isWildcard(), socketError::INVALID_IP_ADDRESS, "ipAddress/ hostname was invalid!");
+			
+			LN_ERR_FAIL_COND_V_MSG(bindSocket(socketData.netSocket, socketData, port) != 0, socketError::BIND_FAILED, "could not bind socket: " + std::to_string(WSAGetLastError()));
+			
 			return socketError::SUCCESS;
 		}
 
-		_ALWAYS_INLINE_ static int connect(SOCKET sock, ipAddress& address, int port, uint16_t family)
+		_ALWAYS_INLINE_ static int connect(SOCKET sock, ipAddress& address, int port, uint16_t family,Ip::Type ipType)
 		{
-			sockaddr_in* serverAddr = ipAddressNative(address, port, family);
-			return connect(sock, (sockaddr*)serverAddr, sizeof(serverAddr));
+			struct sockaddr_storage addr;
+			size_t addrSize = _set_addr_storage(&addr, address, port, ipType);
+
+			return ::connect(sock, (sockaddr*)&addr, addrSize);
 		}
+
+		static void setIpPort(struct sockaddr_storage* p_addr, ipAddress* r_ip, uint16_t* r_port) {
+			if (p_addr->ss_family == AF_INET) {
+				struct sockaddr_in* addr4 = (struct sockaddr_in*)p_addr;
+				if (r_ip) {
+					r_ip->setIpv4((uint8_t*)&(addr4->sin_addr.s_addr));
+				}
+				if (r_port) {
+					*r_port = ntohs(addr4->sin_port);
+				}
+			}
+			else if (p_addr->ss_family == AF_INET6) {
+				struct sockaddr_in6* addr6 = (struct sockaddr_in6*)p_addr;
+				if (r_ip) {
+					r_ip->setIpv6(addr6->sin6_addr.s6_addr);
+				}
+				if (r_port) {
+					*r_port = ntohs(addr6->sin6_port);
+				}
+			}
+		}
+
 
 		socketError netSocket::connectToHost(int port, const std::string& host, const protocol proto)
 		{
@@ -172,7 +219,7 @@ namespace luna
 
 			LN_ERR_FAIL_COND_V_MSG(result != socketError::SUCCESS || result != socketError::ALREADY_INIT, result, "socket creation failed with error: " + std::to_string(WSAGetLastError()));
 
-			LN_ERR_FAIL_COND_V_MSG(connect(socketData.netSocket, socketData.address, port, socketData.getFamily()) == SOCKET_ERROR, socketError::CONNECT_FAILED, "could not connect socket to host: " + std::to_string(WSAGetLastError()));
+			LN_ERR_FAIL_COND_V_MSG(connect(socketData.netSocket, socketData.address, port, socketData.getFamily(),socketData.getType()) == SOCKET_ERROR, socketError::CONNECT_FAILED, "could not connect socket to host: " + std::to_string(WSAGetLastError()));
 
 			return socketError();
 		}
@@ -279,8 +326,24 @@ namespace luna
 
 		ref<netSocket> netSocket::accept(ipAddress& r_ip, uint16_t& r_port)
 		{
+			ref<netSocket> out;
+			LN_ERR_FAIL_COND_V(!isOpen(), out);
+
+			struct sockaddr_storage their_addr;
+			socklen_t size = sizeof(their_addr);
+			socketHandle fd = ::accept(getComponent<socketComponent>().netSocket, (struct sockaddr*)&their_addr, &size);
+			LN_ERR_FAIL_COND_V_MSG(fd == INVALID_SOCKET, out, "something went wrong trting to accept an incomming socket! error code: " + std::to_string(WSAGetLastError())); 
 
 			return ref<netSocket>();
+		}
+
+		socketError netSocket::listen(int maxPendding)
+		{
+			auto& socketData = getComponent<socketComponent>();
+			int clampedPending = SOMAXCONN_HINT(maxPendding);
+			if (clampedPending != maxPendding)LN_CORE_WARN("maxPendding count should be between 200 and 65535, addjusted to fit!");
+			LN_ERR_FAIL_COND_V_MSG(::listen(socketData.netSocket, clampedPending) != SOCKET_ERROR, FAILED, "something went wrong when trying to listen on the socket, error: " + std::to_string(WSAGetLastError()));
+			return SUCCESS;
 		}
 
 		bool netSocket::isOpen()
@@ -355,6 +418,14 @@ namespace luna
 			return ready ? SUCCESS : BUSY;
 		}
 
+		void netSocket::setSocket(socketHandle handle, ipAddress address, int port)
+		{
+			auto& socketData =  getComponent<socketComponent>();
+			socketData.address = address;
+			socketData.netSocket = handle;
+
+		}
+
 		int netSocket::getLocalPort()
 		{
 			struct sockaddr_in sin;
@@ -373,7 +444,7 @@ namespace luna
 #endif 	//LN_PLATFORM_WINDOWS
 		uint16_t socketComponent::getFamily()
 		{
-			if (address.isIpv4())return AF_INET;
+			if (address.isIpv4()) return AF_INET;
 			else return AF_INET6;
 		}
 

@@ -7,10 +7,7 @@
 	#define WIN32_LEAN_AND_MEAN
 	#include <winsock2.h>
 	#include <ws2tcpip.h>
-	#include <ws2def.h>
-	#include <iphlpapi.h>
 	#pragma comment(lib, "Ws2_32.lib") //ws2tcip
-	#pragma comment(lib, "IPHLPAPI.lib") //iphlpapi
 	using socketHandle = SOCKET;
 	#else // UNIX
 
@@ -68,6 +65,7 @@ namespace luna
 
 	
 		struct socketComponent {
+			struct sockaddr_storage addr;
 			ipAddress address;
 			socketHandle netSocket = INVALID_SOCKET;
 			std::string host;
@@ -81,6 +79,7 @@ namespace luna
 			netSocket() = default;
 			netSocket(entt::entity handle, luna::scene* scene) : object(handle, scene) {};
 			netSocket(uint64_t id, luna::scene* scene) { LN_CORE_WARN("DEPRECATED"); };
+			static void terminate();
 			virtual void init(luna::scene* scene);
 			virtual	void bindMethods();
 			virtual void destroy();
@@ -91,9 +90,11 @@ namespace luna
 			virtual socketError send(const uint8_t* p_buffer, int len, int& r_sent);
 			virtual socketError sendto(const uint8_t* p_buffer, int len, int& r_sent, ipAddress p_ip, uint16_t p_port);
 			virtual ref<netSocket> accept(ipAddress& r_ip, uint16_t& r_port);
+			virtual socketError listen(int maxPendding);
 			virtual bool isOpen();
 			virtual int getAvailableBytes();
 			virtual socketError poll(pollType p_type, int timeout);	
+			void setSocket(socketHandle handle, ipAddress address, int port);
 			int getLocalPort();
 			int getConnectedPort();
 		private:

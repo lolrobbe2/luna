@@ -45,6 +45,7 @@ namespace Luna
         /// </summary>
         ~NetSocket() { NetSocketDestroy(ObjectId); }
 
+        public void Destroy() { NetSocketDestroy(ObjectId); }
         /// <summary>
         /// <para>Opens the TCP socket, and binds it to the specified local address.</para>
         /// <para>This method is generally not needed, and only used to force the subsequent call to <see cref="ConnectToHost"/> to use the specified <see cref="Host"/> and <see cref="Port"/> as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.

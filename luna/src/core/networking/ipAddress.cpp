@@ -27,37 +27,37 @@ namespace luna
 
 	
 
-			static void _parse_hex(const std::string& p_string, int p_start, uint8_t* p_dst) {
-				uint16_t ret = 0;
-				for (int i = p_start; i < p_start + 4; i++) {
-					if (i >= p_string.length()) {
-						break;
-					}
-
-					int n = 0;
-					char32_t c = p_string[i];
-					if (isdigit(c)) {
-						n = c - '0';
-					}
-					else if (c >= 'a' && c <= 'f') {
-						n = 10 + (c - 'a');
-					}
-					else if (c >= 'A' && c <= 'F') {
-						n = 10 + (c - 'A');
-					}
-					else if (c == ':') {
-						break;
-					}
-					else {
-						//LN_ERR_FAIL_MSG("Invalid character in IPv6 address: " + p_string + ".");
-					}
-					ret = ret << 4;
-					ret += n;
+		static void _parse_hex(const std::string& p_string, int p_start, uint8_t* p_dst) {
+			uint16_t ret = 0;
+			for (int i = p_start; i < p_start + 4; i++) {
+				if (i >= p_string.length()) {
+					break;
 				}
 
-				p_dst[0] = ret >> 8;
-				p_dst[1] = ret & 0xff;
+				int n = 0;
+				char32_t c = p_string[i];
+				if (isdigit(c)) {
+					n = c - '0';
+				}
+				else if (c >= 'a' && c <= 'f') {
+					n = 10 + (c - 'a');
+				}
+				else if (c >= 'A' && c <= 'F') {
+					n = 10 + (c - 'A');
+				}
+				else if (c == ':') {
+					break;
+				}
+				else {
+					//LN_ERR_FAIL_MSG("Invalid character in IPv6 address: " + p_string + ".");
+				}
+				ret = ret << 4;
+				ret += n;
 			}
+
+			p_dst[0] = ret >> 8;
+			p_dst[1] = ret & 0xff;
+		}
 
 		void ipAddress::parseIpv6(const std::string& p_string) {
 			static const int parts_total = 8;
@@ -144,7 +144,6 @@ namespace luna
 			// Add the last slice
 			slice = ip.substr(start);
 			slices.push_back(slice);
-
 			LN_ERR_FAIL_COND_MSG(slices.size() != 4, "Invalid IP address string: " + ip + ".");
 
 

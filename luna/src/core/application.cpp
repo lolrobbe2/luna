@@ -7,7 +7,7 @@
 #include <core/object/methodDB.h>
 #include <core/assets/assetManager.h>
 #include <core/platform/platformUtils.h>
-#include <core/networking/Ip.h>
+#include <core/networking/socket.h>
 namespace luna
 {
 	namespace application
@@ -46,6 +46,7 @@ namespace luna
 			layerStack.~layerStack();
 			platform::os::setCursorShape(platform::ARROW);
 			networking::Ip::shutdown();
+			networking::netSocket::terminate();
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
 			mWindow->~window();
