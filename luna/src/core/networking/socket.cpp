@@ -121,7 +121,6 @@ namespace luna
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketReceiveFrom);
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketSend);
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketSendTo);
-			LN_ADD_INTERNAL_CALL(netSocket, NetSocketReceiveFrom);
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketAccept);
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketListen);
 		}
