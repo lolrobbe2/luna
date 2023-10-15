@@ -39,7 +39,11 @@ namespace Luna
         /// creates a uninitialized socket
         /// </summary>
         public NetSocket() : base(NetSocketCreate()) { }
-
+        /// <summary>
+        /// NetSocket constructor.
+        /// creates a potentiolay initialized socket
+        /// </summary>
+        public NetSocket(ulong ObjectId) : base(ObjectId) { } 
         /// <summary>
         /// closes the socket.
         /// </summary>
@@ -70,6 +74,10 @@ namespace Luna
         public SocketError Send(byte[] buffer, int length) { return NetSocketSend(ObjectId, buffer, length); }
         public SocketError SendTo(byte[] buffer,int len,IpAddress address,UInt16 port) { return NetSocketSendTo(ObjectId, buffer, len, address.getIpRaw(), port); }
 
+        public NetSocket Accept(IpAddress address,ref int port)
+        {
+            return new NetSocket(NetSocketAccept(ObjectId, address.getIpRaw(), out port));
+        }
         /// <summary>
         /// function to create a NetSocket module
         /// </summary>
@@ -90,6 +98,9 @@ namespace Luna
         static extern SocketError NetSocketSend(ulong ObjectId, byte[] buffer, int len);
         [MethodImpl(MethodImplOptions.InternalCall)]
         static extern SocketError NetSocketSendTo(ulong ObjectId, byte[] buffer, int len, byte[] ipAddress, int port);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        static extern ulong NetSocketAccept(ulong ObjectId, byte[] address,out int port);
+
         /// <summary>
         /// externall call to destroy the socket
         /// </summary>

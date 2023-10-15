@@ -94,7 +94,7 @@ namespace luna
 			virtual bool isOpen();
 			virtual int getAvailableBytes();
 			virtual socketError poll(pollType p_type, int timeout);	
-			void setSocket(socketHandle handle, ipAddress address, int port);
+			void setSocket(socketHandle handle, ipAddress address);
 			int getLocalPort();
 			int getConnectedPort();
 		private:

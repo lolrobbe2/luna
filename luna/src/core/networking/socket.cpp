@@ -56,6 +56,15 @@ namespace luna
 			ipAddress* p_address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
 			return netSocket(objectId, scripting::scriptingEngine::getContext()).sendto(p_packetData, len, r_sent, *p_address, port);
 		}
+		static entt::entity NetSocketAccept(entt::entity objectId, MonoArray* addressArray,uint16_t* r_port)
+		{
+			ipAddress* p_address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
+			return *netSocket(objectId, scripting::scriptingEngine::getContext()).accept(*p_address, *r_port);
+		}
+		static socketError NetSocketListen(entt::entity objectId,int maxPendding)
+		{
+			return netSocket(objectId, scripting::scriptingEngine::getContext()).listen(maxPendding);
+		}
 
 #pragma endregion
 		size_t static _set_addr_storage(struct sockaddr_storage* p_addr,ipAddress& p_ip, uint16_t p_port, Ip::Type p_ip_type) {
@@ -110,6 +119,11 @@ namespace luna
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketConnectToHost);
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketReceive);
 			LN_ADD_INTERNAL_CALL(netSocket, NetSocketReceiveFrom);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketSend);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketSendTo);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketReceiveFrom);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketAccept);
+			LN_ADD_INTERNAL_CALL(netSocket, NetSocketListen);
 		}
 
 		void netSocket::destroy()
@@ -160,7 +174,6 @@ namespace luna
 		_ALWAYS_INLINE_ static int bindSocket(SOCKET sock, socketComponent& socketData, int port)
 		{
 			size_t addrSize = _set_addr_storage(&socketData.addr, socketData.address, port, socketData.getType());
-			LN_CORE_INFO("addr = {0}", sizeof(sockaddr));
 			return ::bind(sock, (struct sockaddr*)&socketData.addr, addrSize);
 		}
 
@@ -189,28 +202,6 @@ namespace luna
 
 			return ::connect(sock, (sockaddr*)&addr, addrSize);
 		}
-
-		static void setIpPort(struct sockaddr_storage* p_addr, ipAddress* r_ip, uint16_t* r_port) {
-			if (p_addr->ss_family == AF_INET) {
-				struct sockaddr_in* addr4 = (struct sockaddr_in*)p_addr;
-				if (r_ip) {
-					r_ip->setIpv4((uint8_t*)&(addr4->sin_addr.s_addr));
-				}
-				if (r_port) {
-					*r_port = ntohs(addr4->sin_port);
-				}
-			}
-			else if (p_addr->ss_family == AF_INET6) {
-				struct sockaddr_in6* addr6 = (struct sockaddr_in6*)p_addr;
-				if (r_ip) {
-					r_ip->setIpv6(addr6->sin6_addr.s6_addr);
-				}
-				if (r_port) {
-					*r_port = ntohs(addr6->sin6_port);
-				}
-			}
-		}
-
 
 		socketError netSocket::connectToHost(int port, const std::string& host, const protocol proto)
 		{
@@ -324,17 +315,42 @@ namespace luna
 			return socketError::SUCCESS;
 		}
 
+
+		_ALWAYS_INLINE_ static void setIpPort(struct sockaddr_storage* p_addr, ipAddress* r_ip, uint16_t* r_port) {
+			if (p_addr->ss_family == AF_INET) {
+				struct sockaddr_in* addr4 = (struct sockaddr_in*)p_addr;
+				if (r_ip) {
+					r_ip->setIpv4((uint8_t*)&(addr4->sin_addr.s_addr));
+				}
+				if (r_port) {
+					*r_port = ntohs(addr4->sin_port);
+				}
+			}
+			else if (p_addr->ss_family == AF_INET6) {
+				struct sockaddr_in6* addr6 = (struct sockaddr_in6*)p_addr;
+				if (r_ip) {
+					r_ip->setIpv6(addr6->sin6_addr.s6_addr);
+				}
+				if (r_port) {
+					*r_port = ntohs(addr6->sin6_port);
+				}
+			}
+		}
+
 		ref<netSocket> netSocket::accept(ipAddress& r_ip, uint16_t& r_port)
 		{
-			ref<netSocket> out;
+			ref<netSocket> out = createRef<netSocket>(NetSocketCreate(),scripting::scriptingEngine::getContext());
 			LN_ERR_FAIL_COND_V(!isOpen(), out);
 
-			struct sockaddr_storage their_addr;
-			socklen_t size = sizeof(their_addr);
-			socketHandle fd = ::accept(getComponent<socketComponent>().netSocket, (struct sockaddr*)&their_addr, &size);
-			LN_ERR_FAIL_COND_V_MSG(fd == INVALID_SOCKET, out, "something went wrong trting to accept an incomming socket! error code: " + std::to_string(WSAGetLastError())); 
+			struct sockaddr_storage theirAddr;
+			socklen_t size = sizeof(theirAddr);
+			socketHandle fd = ::accept(getComponent<socketComponent>().netSocket, (struct sockaddr*)&theirAddr, &size);
+			LN_ERR_FAIL_COND_V_MSG(fd == INVALID_SOCKET, ref<netSocket>(), "something went wrong trying to accept an incomming socket connection! error code: " + std::to_string(WSAGetLastError()));
 
-			return ref<netSocket>();
+			setIpPort(&theirAddr, &r_ip, &r_port);
+
+			out->setSocket(fd, r_ip);
+			return out;
 		}
 
 		socketError netSocket::listen(int maxPendding)
@@ -418,7 +434,7 @@ namespace luna
 			return ready ? SUCCESS : BUSY;
 		}
 
-		void netSocket::setSocket(socketHandle handle, ipAddress address, int port)
+		void netSocket::setSocket(socketHandle handle, ipAddress address)
 		{
 			auto& socketData =  getComponent<socketComponent>();
 			socketData.address = address;
