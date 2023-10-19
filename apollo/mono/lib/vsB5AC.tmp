@@ -4,26 +4,6 @@
         <name>scriptCore</name>
     </assembly>
     <members>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_NONE">
-            <summary>DNS hostname resolver status: No status.</summary>
-        </member>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_WAITING">
-            <summary>DNS hostname resolver status: Waiting.</summary>
-        </member>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_DONE">
-            <summary>DNS hostname resolver status: Done.</summary>
-        </member>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_ERROR">
-            <summary>DNS hostname resolver status: Error.</summary>
-        </member>
-        <member name="M:Luna.Ip.ResolveHostname(System.String,Luna.Ip.Type)">
-            <summary>
-            Returns a given hostname's IPv4 or IPv6 address as a string when resolved (blocking-type method). The address type returned depends on the Type constant given as IpType.
-            </summary>
-            <param name="Hostname">hostname to resolve</param>
-            <param name="IpType"> type enum for Ip type</param>
-            <returns></returns>
-        </member>
         <member name="T:Luna.SocketError">
             <summary>
             Enumaration of socketErrors
@@ -37,19 +17,12 @@
         <member name="T:Luna.NetSocket">
             <summary>
             This is bare bones Network socket that is multiplatform.
-            USE with CARE try to use the higher level networking options first.
             </summary>
         </member>
         <member name="M:Luna.NetSocket.#ctor">
             <summary>
             NetSocket constructor.
             creates a uninitialized socket
-            </summary>
-        </member>
-        <member name="M:Luna.NetSocket.#ctor(System.UInt64)">
-            <summary>
-            NetSocket constructor.
-            creates a potentiolay initialized socket
             </summary>
         </member>
         <member name="M:Luna.NetSocket.Finalize">

@@ -35,6 +35,7 @@ namespace luna
 		class LN_API os
 		{
 		public:
+			static void init();
 			static std::string openFileDialog(const char* filter);
 			static std::string openFolderDialog();
 			static std::string saveFileDialog(const char* filter);
@@ -47,6 +48,11 @@ namespace luna
 			static int getProcessId();
 			static std::string getExecutablePath();
 			static void setCursorShape(const cursorShape shape);
+			static uint64_t getTicksUsec();
+			static uint64_t getTicksMsec();
+		private:
+			inline static uint64_t ticksStart;
+			inline static uint64_t ticksPerSecond = 10000000; //1 win tick = 100ns
 		};
 
 		class LN_API filesystem

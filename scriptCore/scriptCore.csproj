@@ -26,6 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\debug-windows-x86_64\x64\scriptCore\scriptCore.xml</DocumentationFile>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'release|x64' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -40,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\release-windows-x86_64\x64\scriptCore\scriptCore.xml</DocumentationFile>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'distribution|x64' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -54,6 +56,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\distribution-windows-x86_64\x64\scriptCore\scriptCore.xml</DocumentationFile>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'debug|x64' ">
     <Reference Include="mono-2.0" />
@@ -65,6 +68,7 @@
     <Reference Include="mono-2.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="networking\Ip.cs" />
     <Compile Include="networking\NetSocket.cs" />
     <Compile Include="networking\IpAddress.cs" />
     <Compile Include="src\Node.cs" />

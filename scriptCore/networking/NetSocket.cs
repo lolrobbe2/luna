@@ -31,6 +31,7 @@ namespace Luna
     };
     /// <summary>
     /// This is bare bones Network socket that is multiplatform.
+    /// USE with CARE try to use the higher level networking options first.
     /// </summary>
     public class NetSocket : LunaObject
     {
@@ -73,11 +74,8 @@ namespace Luna
         public SocketError RecieveFrom(byte[] buffer,IpAddress address,int length, UInt16 port, bool peek) { if (buffer.Length < length) { Log.Error("buffer size was to small: size was {} bytes.", buffer.Length); return SocketError.OUT_OF_BUFFER_MEMORY; } return NetSocketReceiveFrom(ObjectId,buffer, address.getIpRaw(), port, peek); }
         public SocketError Send(byte[] buffer, int length) { return NetSocketSend(ObjectId, buffer, length); }
         public SocketError SendTo(byte[] buffer,int len,IpAddress address,UInt16 port) { return NetSocketSendTo(ObjectId, buffer, len, address.getIpRaw(), port); }
-
-        public NetSocket Accept(IpAddress address,ref int port)
-        {
-            return new NetSocket(NetSocketAccept(ObjectId, address.getIpRaw(), out port));
-        }
+        public NetSocket Accept(IpAddress address,ref int port) { return new NetSocket(NetSocketAccept(ObjectId, address.getIpRaw(), out port)); }
+        public SocketError Listen(int maxPending = 200) { return NetSocketListen(ObjectId, maxPending); }
         /// <summary>
         /// function to create a NetSocket module
         /// </summary>
@@ -100,6 +98,8 @@ namespace Luna
         static extern SocketError NetSocketSendTo(ulong ObjectId, byte[] buffer, int len, byte[] ipAddress, int port);
         [MethodImpl(MethodImplOptions.InternalCall)]
         static extern ulong NetSocketAccept(ulong ObjectId, byte[] address,out int port);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        static extern SocketError NetSocketListen(ulong ObjectId,int maxPendding);
 
         /// <summary>
         /// externall call to destroy the socket

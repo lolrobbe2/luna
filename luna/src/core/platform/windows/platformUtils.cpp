@@ -19,6 +19,11 @@ namespace luna
 	{
 		const static std::filesystem::path engineRootPath = std::filesystem::current_path();
 
+		void os::init()
+		{
+			QueryPerformanceCounter((LARGE_INTEGER*)&ticksStart);
+		}
+
 		std::string os::openFileDialog(const char* filter)
 		{
 			OPENFILENAMEA ofn;
@@ -216,6 +221,42 @@ namespace luna
 				break;
 			}
 
+		}
+
+		uint64_t os::getTicksUsec()
+		{
+			uint64_t ticks;
+
+			// This is the number of clock ticks since start
+			QueryPerformanceCounter((LARGE_INTEGER*)&ticks);
+			// Subtract the ticks at game start to get
+			// the ticks since the game started
+			ticks -= ticksStart;
+
+			// Divide by frequency to get the time in seconds
+			// original calculation shown below is subject to overflow
+			// with high ticks_per_second and a number of days since the last reboot.
+			// time = ticks * 1000000L / ticks_per_second;
+
+			// we can prevent this by either using 128 bit math
+			// or separating into a calculation for seconds, and the fraction
+			uint64_t seconds = ticks / ticksPerSecond;
+
+			// compiler will optimize these two into one divide
+			uint64_t leftover = ticks % ticksPerSecond;
+
+			// remainder
+			uint64_t time = (leftover * 1000000L) / ticksPerSecond;
+
+			// seconds
+			time += seconds * 1000000L;
+
+			return time;
+		}
+
+		uint64_t os::getTicksMsec() 
+		{
+			return getTicksUsec() / 1000ULL;
 		}
 
 		std::string filesystem::getSystemFolderPath(const folderTypes folderType)

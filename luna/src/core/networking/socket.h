@@ -1,6 +1,7 @@
 #include <core/object/objectDB.h>
 #include <core/scene/scene.h>
 #include <core/networking/Ip.h>
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 
 #if defined(UNIX_ENABLED) || defined(LN_PLATFORM_WINDOWS)
 	#ifdef LN_PLATFORM_WINDOWS
@@ -49,10 +50,12 @@ namespace luna
 			ALREADY_INIT,
 			CONNECTION_CLOSED,
 			OUT_OF_BUFFER_MEMORY,
-			BUSY
+			BUSY,
+			SOCKET_INVALID
 		};
 
 		enum protocol {
+			NONE,
 			TCP, // Transmission Control Protocol
 			UDP // Unicersal Datagram Protocol
 		};
@@ -66,12 +69,21 @@ namespace luna
 	
 		struct socketComponent {
 			struct sockaddr_storage addr;
+			bool open;
 			ipAddress address;
+			uint16_t port;
 			socketHandle netSocket = INVALID_SOCKET;
-			std::string host;
 			protocol proto;
 			uint16_t getFamily();
 			Ip::Type getType();
+		};
+
+		struct tcpComponent
+		{
+			ipAddress peerHost;
+			uint16_t peerPort;
+			int status;
+			int timeout;
 		};
 		class netSocket : public object
 		{
@@ -83,6 +95,7 @@ namespace luna
 			virtual void init(luna::scene* scene);
 			virtual	void bindMethods();
 			virtual void destroy();
+			virtual socketError open(const protocol proto);
 			virtual socketError bind(int port, const std::string& host,const protocol proto);
 			virtual socketError connectToHost(int port, const std::string& host, const protocol proto);
 			virtual socketError receive(uint8_t* p_buffer, int p_len, int& r_read);
@@ -91,12 +104,15 @@ namespace luna
 			virtual socketError sendto(const uint8_t* p_buffer, int len, int& r_sent, ipAddress p_ip, uint16_t p_port);
 			virtual ref<netSocket> accept(ipAddress& r_ip, uint16_t& r_port);
 			virtual socketError listen(int maxPendding);
+			virtual bool isValid();
 			virtual bool isOpen();
 			virtual int getAvailableBytes();
 			virtual socketError poll(pollType p_type, int timeout);	
 			void setSocket(socketHandle handle, ipAddress address);
 			int getLocalPort();
 			int getConnectedPort();
+			void setReuseAddressEnabled(bool p_enabled);
+			void setBlockingEnabled(bool enabled);
 		private:
 			
 		};

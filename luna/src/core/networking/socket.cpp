@@ -67,6 +67,9 @@ namespace luna
 		}
 
 #pragma endregion
+
+
+#pragma region nativeImplmentation
 		size_t static _set_addr_storage(struct sockaddr_storage* p_addr,ipAddress& p_ip, uint16_t p_port, Ip::Type p_ip_type) {
 			memset(p_addr, 0, sizeof(struct sockaddr_storage));
 			if (p_ip_type == Ip::TYPE_IPV6 || p_ip_type == Ip::TYPE_ANY) { // IPv6 socket
@@ -86,25 +89,24 @@ namespace luna
 				return sizeof(sockaddr_in6);
 			}
 			else { // IPv4 socket
-
+				
 				// IPv4 socket with IPv6 address
 				LN_ERR_FAIL_COND_V(!p_ip.isWildcard() && !p_ip.isIpv4(), 0);
 
 				struct sockaddr_in* addr4 = (struct sockaddr_in*)p_addr;
 				addr4->sin_family = AF_INET;
 				addr4->sin_port = htons(p_port); // short, network byte order
+			
 				if (p_ip.isValid()) {
 					memcpy(&addr4->sin_addr.s_addr, p_ip.getIpv4(), 4);
 				}
 				else {
 					addr4->sin_addr.s_addr = INADDR_ANY;
 				}
-
-				return sizeof(sockaddr_in);
+				
+				return sizeof(*addr4);
 			}
 		}
-
-
 		void netSocket::terminate() { WSACleanup(); }
 		void netSocket::init(luna::scene* scene)
 		{
@@ -127,8 +129,18 @@ namespace luna
 
 		void netSocket::destroy()
 		{
-			closesocket(getComponent<socketComponent>().netSocket);
-			getComponent<socketComponent>().netSocket = INVALID_SOCKET;
+			socketComponent& socketData = getComponent<socketComponent>();
+			closesocket(socketData.netSocket);
+			socketData.netSocket = INVALID_SOCKET;
+			socketData.address = ipAddress();
+			socketData.proto = NONE;
+			socketData.open = false;
+		}
+
+		socketError netSocket::open(const protocol proto)
+		{
+			auto& socketData = getComponent<socketComponent>();
+			return createSocket(socketData, proto);
 		}
 
 #ifdef LN_PLATFORM_WINDOWS
@@ -140,6 +152,7 @@ namespace luna
 		{
 
 			LN_ERR_FAIL_COND_V_MSG(socketData.netSocket != INVALID_SOCKET, socketError::ALREADY_INIT, "you cannot initalize a socket twice!");
+			LN_ERR_FAIL_COND_V_MSG(proto != NONE, socketError::FAILED, "NONE is not a valid protocol select TCP or UDP as valid protocols!");
 
 			if (!winSockStarted) {
 				int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -190,7 +203,7 @@ namespace luna
 			LN_ERR_FAIL_COND_V_MSG(!address.isValid() && !address.isWildcard(), socketError::INVALID_IP_ADDRESS, "ipAddress/ hostname was invalid!");
 			
 			LN_ERR_FAIL_COND_V_MSG(bindSocket(socketData.netSocket, socketData, port) != 0, socketError::BIND_FAILED, "could not bind socket: " + std::to_string(WSAGetLastError()));
-			
+			socketData.port = port;
 			return socketError::SUCCESS;
 		}
 
@@ -207,11 +220,19 @@ namespace luna
 			auto& socketData = getComponent<socketComponent>();
 			socketError result = createSocket(socketData, proto);
 
-			LN_ERR_FAIL_COND_V_MSG(result != socketError::SUCCESS || result != socketError::ALREADY_INIT, result, "socket creation failed with error: " + std::to_string(WSAGetLastError()));
+			LN_ERR_FAIL_COND_V_MSG(result != socketError::SUCCESS && result != socketError::ALREADY_INIT, result, "socket creation failed with error: " + std::to_string(WSAGetLastError()));
+
+			ipAddress address = ipAddress(host);
+			if (!address.isWildcard() && !address.isValid()) address = Ip::resolveHostname(host);
+			socketData.address = address;
+
+			LN_ERR_FAIL_COND_V_MSG(!address.isValid() && !address.isWildcard(), socketError::INVALID_IP_ADDRESS, "ipAddress/ hostname was invalid!");
+
 
 			LN_ERR_FAIL_COND_V_MSG(connect(socketData.netSocket, socketData.address, port, socketData.getFamily(),socketData.getType()) == SOCKET_ERROR, socketError::CONNECT_FAILED, "could not connect socket to host: " + std::to_string(WSAGetLastError()));
-
-			return socketError();
+			
+			socketData.port = port;
+			return socketError::SUCCESS;
 		}
 
 		socketError netSocket::receive(uint8_t* p_buffer, int len, int& r_read)
@@ -355,15 +376,22 @@ namespace luna
 		socketError netSocket::listen(int maxPendding)
 		{
 			auto& socketData = getComponent<socketComponent>();
+			LN_ERR_FAIL_COND_V_MSG(!isValid(), socketError::SOCKET_INVALID, "socket handle was not valid");
 			int clampedPending = SOMAXCONN_HINT(maxPendding);
 			if (clampedPending != maxPendding)LN_CORE_WARN("maxPendding count should be between 200 and 65535, addjusted to fit!");
 			LN_ERR_FAIL_COND_V_MSG(::listen(socketData.netSocket, clampedPending) != SOCKET_ERROR, FAILED, "something went wrong when trying to listen on the socket, error: " + std::to_string(WSAGetLastError()));
+			socketData.open = true;
 			return SUCCESS;
+		}
+
+		bool netSocket::isValid()
+		{
+			return getComponent<socketComponent>().netSocket != INVALID_SOCKET;
 		}
 
 		bool netSocket::isOpen()
 		{
-			return getComponent<socketComponent>().netSocket != INVALID_SOCKET;
+			return getComponent<socketComponent>().open;
 		}
 
 		int netSocket::getAvailableBytes()
@@ -451,8 +479,13 @@ namespace luna
 			}
 			else 
 			{
-				LN_CORE_ERROR("shit happend! goodluck");
+				LN_CORE_CRITICAL("shit happend! goodluck");
 			}
+			return 0;
+		}
+
+		int netSocket::getConnectedPort()
+		{
 			return 0;
 		}
 
@@ -466,7 +499,43 @@ namespace luna
 		Ip::Type socketComponent::getType()
 		{
 			
-			return address.isIpv4() ? Ip::TYPE_IPV4: Ip::TYPE_IPV6;
+			return address.isIpv4() || address.isWildcard() ? Ip::TYPE_IPV4 : Ip::TYPE_IPV6;
 		}
+
+		void netSocket::setReuseAddressEnabled(bool p_enabled) {
+			LN_ERR_FAIL_COND(!isOpen());
+
+			// On Windows, enabling SO_REUSEADDR actually would also enable reuse port, very bad on TCP. Denying...
+			// Windows does not have this option, SO_REUSEADDR in this magical world means SO_REUSEPORT
+#ifdef LN_PLATFORM_WINDOWS
+			int par = p_enabled ? 1 : 0;
+			if (setsockopt(getComponent<socketComponent>().netSocket, SOL_SOCKET, SO_REUSEADDR, (char*)&par, sizeof(int)) < 0) {
+				LN_CORE_WARN("Unable to set socket REUSEADDR option!");
+			}
+#endif
+		}
+		void netSocket::setBlockingEnabled(bool enabled) {
+			LN_ERR_FAIL_COND(!isOpen());
+
+			int ret = 0;
+#if defined(LN_PLATFORM_WINDOWS)
+			unsigned long par = enabled ? 0 : 1;
+			ret = ioctlsocket(getComponent<socketComponent>().netSocket, FIONBIO, &par);
+#else
+			int opts = fcntl(_sock, F_GETFL);
+			if (p_enabled) {
+				ret = fcntl(_sock, F_SETFL, opts & ~O_NONBLOCK);
+			}
+			else {
+				ret = fcntl(_sock, F_SETFL, opts | O_NONBLOCK);
+			}
+#endif
+
+			if (ret != 0) {
+				LN_CORE_WARN("Unable to change non-block mode");
+			}
+		}
+#pragma endregion
+
 	}
 }

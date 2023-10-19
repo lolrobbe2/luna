@@ -64,7 +64,7 @@ namespace luna
 				value < std::numeric_limits<T>::min() / val)) ||
 				(val < 0 && (value < std::numeric_limits<T>::max() / val ||
 					value > std::numeric_limits<T>::min() / val))) {
-				//throw std::overflow_error("Arithmetic overflow");
+					LN_CORE_CRITICAL("Arithmetic overflow");
 			}
 		}
 	};
@@ -230,18 +230,18 @@ namespace luna
 
 		Ip::ResolverStatus Ip::getResolveItemStatus(ResolverID p_id) {
 			
-			//LN_ERR_FAIL_INDEX_V_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, Ip::RESOLVER_STATUS_NONE, "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" + std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
+			LN_ERR_FAIL_INDEX_V_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, Ip::RESOLVER_STATUS_NONE, "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" + std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
 
 			Ip::ResolverStatus res = resolver->queue[p_id].status.get();
 			if (res == Ip::RESOLVER_STATUS_NONE) {
-				//LN_CORE_ERROR("Condition status == Ip::RESOLVER_STATUS_NONE");
+				LN_CORE_ERROR("Condition status == Ip::RESOLVER_STATUS_NONE");
 				return Ip::RESOLVER_STATUS_NONE;
 			}
 			return res;
 		}
 
 		ipAddress Ip::getResolveItemAddress(ResolverID p_id){
-			//LN_ERR_FAIL_INDEX_V_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, ipAddress(), "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" +std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
+			LN_ERR_FAIL_INDEX_V_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, ipAddress(), "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" +std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
 
 			std::lock_guard lock(resolver->mutex);
 
@@ -266,7 +266,7 @@ namespace luna
 
 		std::vector<std::string> Ip::getResolveItemAddresses(ResolverID p_id) 
 		{
-			//LN_ERR_FAIL_INDEX_V_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, std::vector<std::string>(), "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" + std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
+			LN_ERR_FAIL_INDEX_V_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, std::vector<std::string>(), "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" + std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
 			std::lock_guard lock(resolver->mutex);
 
 			if (resolver->queue[p_id].status.get() != Ip::RESOLVER_STATUS_DONE) {
@@ -286,7 +286,7 @@ namespace luna
 		}
 
 		void Ip::eraseResolveItem(ResolverID p_id) {
-			//LN_ERR_FAIL_INDEX_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" + std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
+			LN_ERR_FAIL_INDEX_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" + std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
 
 			resolver->queue[p_id].status.set(Ip::RESOLVER_STATUS_NONE);
 		}
