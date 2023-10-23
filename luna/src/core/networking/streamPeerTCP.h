@@ -23,6 +23,7 @@ namespace luna
 			streamPeerTCP() = default;
 			streamPeerTCP(entt::entity handle, luna::scene* scene) : netSocket(handle, scene) {};
 			streamPeerTCP(uint64_t id, luna::scene* scene) { LN_CORE_WARN("DEPRECATED"); };
+			virtual void bindMethods() override;
 			virtual socketError poll();
 			socketError write(const uint8_t* data, int bytes, int& sent, bool block);
 			socketError read(uint8_t* buffer, int bytes, int& received, bool block);

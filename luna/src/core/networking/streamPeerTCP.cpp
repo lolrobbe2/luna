@@ -1,5 +1,6 @@
 #include "streamPeerTCP.h"
 #include <core/platform/platformUtils.h>
+#include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
 namespace luna 
 {
@@ -66,7 +67,21 @@ namespace luna
 			uint8_t* p_buffer = (uint8_t*)mono_array_addr_with_size(buffer, mono_array_length(buffer), 0);
 			return OBJ_GET(streamPeerTCP).getData(p_buffer, mono_array_length(buffer));
 		}
+		static socketError StreamPeerTCPGetPartialData(entt::entity objectId, MonoArray* buffer, int* p_received)
+		{
+			uint8_t* p_buffer = (uint8_t*)mono_array_addr_with_size(buffer, mono_array_length(buffer), 0);
+			return OBJ_GET(streamPeerTCP).getPartialData(p_buffer, mono_array_length(buffer), *p_received);
+		}
 #pragma endregion
+		void streamPeerTCP::bindMethods()
+		{
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPBind);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPConnectToHost);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPPoll);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetStatus);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetConnectedPort);
+		}
+
 		socketError streamPeerTCP::poll()
 		{
 			tcpComponent& tcpData = getComponent<tcpComponent>();
@@ -180,32 +195,37 @@ namespace luna
 				int read = 0;
 				err = netSocket::receive(buffer + totalRead, toRead, read);
 
-				if (err != SUCCESS) {
+				if (err != SUCCESS) 
+				{
 					if (err != BUSY) {
 						disconnectFromHost();
 						return FAILED;
 					}
 
-					if (!block) {
+					if (!block) 
+					{
 						received = totalRead;
 						return SUCCESS;
 					}
 
 					err = netSocket::poll(POLL_TYPE_IN, -1);
 
-					if (err != SUCCESS) {
+					if (err != SUCCESS) 
+					{
 						disconnectFromHost();
 						return FAILED;
 					}
 
 				}
-				else if (read == 0) {
+				else if (read == 0)
+				{
 					disconnectFromHost();
 					received = totalRead;
 					return FILE_EOF;
 
 				}
-				else {
+				else 
+				{
 					toRead -= read;
 					totalRead += read;
 
