@@ -6,6 +6,7 @@ namespace luna
 	{
 		class TCPServer : netSocket
 		{
+		public:
 			TCPServer() = default;
 			TCPServer(entt::entity handle, luna::scene* scene) : netSocket(handle, scene) {};
 			TCPServer(uint64_t id, luna::scene* scene) { LN_CORE_WARN("DEPRECATED"); };

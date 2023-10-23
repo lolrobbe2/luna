@@ -14,17 +14,17 @@ namespace luna
 		}
 		static socketError NetSocketBind(entt::entity objectId, int port, MonoString* host, protocol proto)
 		{
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).bind(port, mono_string_to_utf8(host), proto);
+			return OBJ_GET(netSocket).bind(port, mono_string_to_utf8(host), proto);
 		}
 
 		static socketError NetSocketConnectToHost(entt::entity objectId, int port, MonoString* host, protocol proto)
 		{
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).connectToHost(port, mono_string_to_utf8(host), proto);
+			return OBJ_GET(netSocket).connectToHost(port, mono_string_to_utf8(host), proto);
 		}
 
 		static void NetSocketDestroy(entt::entity objectId)
 		{
-			netSocket(objectId, scripting::scriptingEngine::getContext()).destroy();
+			OBJ_GET(netSocket).destroy();
 		}
 
 		static socketError NetSocketReceive(entt::entity objectId, MonoArray* byteArray, int length)
@@ -32,7 +32,7 @@ namespace luna
 			uint8_t* p_receieveBuffer = (uint8_t*)mono_array_addr_with_size(byteArray, length, 0);
 
 			int read;
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).receive(p_receieveBuffer, length, read);
+			return OBJ_GET(netSocket).receive(p_receieveBuffer, length, read);
 		}
 		static socketError NetSocketReceiveFrom(entt::entity objectId, MonoArray* byteArray, MonoArray* addressArray, int length, uint16_t port, bool peek)
 		{
@@ -40,30 +40,30 @@ namespace luna
 
 			int read;
 			ipAddress* address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).receiveFrom(p_receieveBuffer, length, read, *address, port, peek); //internall 
+			return OBJ_GET(netSocket).receiveFrom(p_receieveBuffer, length, read, *address, port, peek); //internall 
 		}
 
 		static socketError NetSocketSend(entt::entity objectId, MonoArray* byteArray, int len)
 		{
 			uint8_t* p_packetData = (uint8_t*)mono_array_addr_with_size(byteArray, len, 0);
 			int r_sent = 0;
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).send(p_packetData, len, r_sent);
+			return OBJ_GET(netSocket).send(p_packetData, len, r_sent);
 		}
 		static socketError NetSocketSendTo(entt::entity objectId, MonoArray* byteArray, int len, MonoArray* addressArray, uint16_t port)
 		{
 			int r_sent = 0;
 			uint8_t* p_packetData = (uint8_t*)mono_array_addr_with_size(byteArray, len, 0);
 			ipAddress* p_address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).sendto(p_packetData, len, r_sent, *p_address, port);
+			return OBJ_GET(netSocket).sendto(p_packetData, len, r_sent, *p_address, port);
 		}
 		static entt::entity NetSocketAccept(entt::entity objectId, MonoArray* addressArray,uint16_t* r_port)
 		{
 			ipAddress* p_address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
-			return *netSocket(objectId, scripting::scriptingEngine::getContext()).accept(*p_address, *r_port);
+			return *OBJ_GET(netSocket).accept(*p_address, *r_port);
 		}
 		static socketError NetSocketListen(entt::entity objectId,int maxPendding)
 		{
-			return netSocket(objectId, scripting::scriptingEngine::getContext()).listen(maxPendding);
+			return OBJ_GET(netSocket).listen(maxPendding);
 		}
 
 #pragma endregion
@@ -533,6 +533,17 @@ namespace luna
 
 			if (ret != 0) {
 				LN_CORE_WARN("Unable to change non-block mode");
+			}
+		}
+		void netSocket::setTcpNoDelayEnabled(bool enabled) 
+		{
+			LN_ERR_FAIL_COND(!isOpen());
+			socketComponent& socketData = getComponent<socketComponent>();
+			LN_ERR_FAIL_COND(socketData.getFamily() != TCP); // Not TCP
+
+			int par = enabled ? 1 : 0;
+			if (setsockopt(socketData.netSocket, IPPROTO_TCP, TCP_NODELAY, (char*)(&par), sizeof(int)) < 0) {
+				LN_CORE_ERROR("Unable to set TCP no delay option");
 			}
 		}
 #pragma endregion

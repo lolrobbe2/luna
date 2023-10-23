@@ -51,7 +51,8 @@ namespace luna
 			CONNECTION_CLOSED,
 			OUT_OF_BUFFER_MEMORY,
 			BUSY,
-			SOCKET_INVALID
+			SOCKET_INVALID,
+			FILE_EOF
 		};
 
 		enum protocol {
@@ -113,6 +114,8 @@ namespace luna
 			int getConnectedPort();
 			void setReuseAddressEnabled(bool p_enabled);
 			void setBlockingEnabled(bool enabled);
+			void setTcpNoDelayEnabled(bool enabled);
+
 		private:
 			
 		};

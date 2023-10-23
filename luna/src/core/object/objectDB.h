@@ -30,6 +30,12 @@
 #ifndef LN_NOTIFICATION_FUNC
 #define LN_NOTIFICATION_FUNC() getComponent<idComponent>().notificationFunc = [this](const notificationType type) { this->notification(type); }
 #endif
+
+#ifndef OBJ_GET
+//gets an object in the current context given an entt::entity named objectId
+#define OBJ_GET(className) className(objectId,scripting::scriptingEngine::getContext())
+#endif // OBJ_GET
+
 namespace luna
 {
 	class LN_API scene;
