@@ -18,7 +18,9 @@ namespace Luna
         ALREADY_INIT,
         CONNECTION_CLOSED,
         OUT_OF_BUFFER_MEMORY,
-        BUSY
+        BUSY,
+        SOCKET_INVALID,
+        FILE_EOF
     };
 
     /// <summary>
@@ -26,12 +28,13 @@ namespace Luna
     /// </summary>
     public enum Protocol
     {
-        TCP, // Transmission Control Protocol
-        UDP // Unicersal Datagram Protocol
+        ///<summary>Transmission Control Protocol</summary> 
+        TCP, ///<summary>Universal Datagram Protocol</summary>
+        UDP
     };
     /// <summary>
     /// This is bare bones Network socket that is multiplatform.
-    /// USE with CARE try to use the higher level networking options first.
+    /// USE with CARE try to use the higher level networking options first. exmaple HTTPclient
     /// </summary>
     public class NetSocket : LunaObject
     {

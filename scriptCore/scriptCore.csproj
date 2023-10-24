@@ -71,6 +71,7 @@
     <Compile Include="networking\Ip.cs" />
     <Compile Include="networking\NetSocket.cs" />
     <Compile Include="networking\IpAddress.cs" />
+    <Compile Include="networking\StreamPeerTCP.cs" />
     <Compile Include="src\Node.cs" />
     <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
     <Compile Include="src\controlNodes\controlNode.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="src\signals\Signal.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="networking\web\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

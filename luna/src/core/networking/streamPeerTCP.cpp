@@ -7,6 +7,13 @@ namespace luna
 	namespace networking 
 	{
 #pragma region glue
+
+		static entt::entity StreamPeerTCPCreate()
+		{
+			streamPeerTCP streamPeer;
+			streamPeer.init(scripting::scriptingEngine::getContext());
+			return streamPeer;
+		}
 		static socketError StreamPeerTCPBind(entt::entity objectId,int port,MonoArray* addressArray)
 		{
 			ipAddress* address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
@@ -72,6 +79,10 @@ namespace luna
 			uint8_t* p_buffer = (uint8_t*)mono_array_addr_with_size(buffer, mono_array_length(buffer), 0);
 			return OBJ_GET(streamPeerTCP).getPartialData(p_buffer, mono_array_length(buffer), *p_received);
 		}
+		static int StreamPeerTCPGetAvailableBytes(entt::entity objectId)
+		{
+			return OBJ_GET(streamPeerTCP).getAvailableBytes();
+		}
 #pragma endregion
 		void streamPeerTCP::bindMethods()
 		{
@@ -79,7 +90,22 @@ namespace luna
 			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPConnectToHost);
 			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPPoll);
 			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetStatus);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetConnectedHost);
 			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetConnectedPort);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetLocalPort);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPDisconnectFromHost);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPSetNoDelay);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPPutData);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPPutPartialData);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetData);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetPartialData);
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPGetAvailableBytes);
+		}
+
+		void streamPeerTCP::init(luna::scene* scene)
+		{
+			netSocket::init(scripting::scriptingEngine::getContext());
+			addComponent<tcpComponent>();
 		}
 
 		socketError streamPeerTCP::poll()
@@ -290,7 +316,7 @@ namespace luna
 			netSocket::setBlockingEnabled(false);
 			return netSocket::bind(port,host,TCP);
 		}
-
+ 
 		socketError streamPeerTCP::connectToHost(const ipAddress& host, int port)
 		{
 			tcpComponent& tcpData = getComponent<tcpComponent>();
@@ -332,6 +358,11 @@ namespace luna
 		int streamPeerTCP::getLocalPort()
 		{
 			return getComponent<socketComponent>().port;
+		}
+
+		int streamPeerTCP::getAvailableBytes()
+		{
+			return netSocket::getAvailableBytes();
 		}
 
 		ipAddress streamPeerTCP::getConnectedhost()

@@ -36,7 +36,7 @@ namespace Luna
         ipField ipField = new ipField();
         bool valid = new bool();
         bool wildcard = new bool();
-
+        static public implicit operator IpAddress(string ipAddress) => new IpAddress(ipAddress);
         public string ToString()
         {
             if (wildcard)

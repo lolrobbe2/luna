@@ -17,13 +17,14 @@ namespace luna
 			STATUS_ERROR,
 		};
 
-		class streamPeerTCP : netSocket
+		class streamPeerTCP : netSocket //no public(keyword) is used to restrict externall usage of the netSocket functions
 		{
 		public:
 			streamPeerTCP() = default;
 			streamPeerTCP(entt::entity handle, luna::scene* scene) : netSocket(handle, scene) {};
 			streamPeerTCP(uint64_t id, luna::scene* scene) { LN_CORE_WARN("DEPRECATED"); };
 			virtual void bindMethods() override;
+			virtual void init(luna::scene* scene);
 			virtual socketError poll();
 			socketError write(const uint8_t* data, int bytes, int& sent, bool block);
 			socketError read(uint8_t* buffer, int bytes, int& received, bool block);
@@ -45,7 +46,9 @@ namespace luna
 
 			virtual int getLocalPort();
 			//get info
+			int getAvailableBytes();
 			ipAddress getConnectedhost();
+			operator entt::entity() { return entityHandle; } //needs to be done because netsocket functions cannot be externally accesible only internally
 
 		protected:
 			friend class TCPServer;
