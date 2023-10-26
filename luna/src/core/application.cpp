@@ -35,7 +35,7 @@ namespace luna
 			networking::Ip::init();
 			//LN_CORE_INFO("facebook ip:{0}" ,networking::Ip::resolveHostname("facebook.com", networking::Ip::TYPE_IPV6));
 			networking::ipAddress address{ "127.0.0.1" };
-			LN_CORE_INFO("address: {0}", (std::string)address);
+			LN_CORE_INFO("address: {0}", address.operator std::string());
 			platform::os::setCursorShape(platform::ARROW);
 			LN_PROFILE_END_SESSION();
 			

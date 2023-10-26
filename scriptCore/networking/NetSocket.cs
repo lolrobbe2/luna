@@ -54,8 +54,9 @@ namespace Luna
         ~NetSocket() { NetSocketDestroy(ObjectId); }
 
         public void Destroy() { NetSocketDestroy(ObjectId); }
+        public SocketError Open(Protocol Proto) { return NetSocketOpen(ObjectId, Proto); }
         /// <summary>
-        /// <para>Opens the TCP socket, and binds it to the specified local address.</para>
+        /// <para>Opens the socket, and binds it to the specified local address.</para>
         /// <para>This method is generally not needed, and only used to force the subsequent call to <see cref="ConnectToHost"/> to use the specified <see cref="Host"/> and <see cref="Port"/> as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
         /// </para>
         /// </summary>
@@ -63,7 +64,7 @@ namespace Luna
         /// <param name="host">the hsot name. for example google.com</param>
         /// <param name="protocol"> <see cref="Protocol"/></param>
         /// <returns></returns>
-        public SocketError Bind(int port,string host,Protocol protocol) { return NetSocketBind(ObjectId, port, host, protocol); }
+        public SocketError Bind(int port,string host) { return NetSocketBind(ObjectId, port, host); }
         /// <summary>
         /// Connects to the specified host:port pair. A hostname will be resolved if valid. Returns <see cref="SocketError.SUCCESS"/>.OK on success.
         /// </summary>
@@ -71,7 +72,7 @@ namespace Luna
         /// <param name="Host"></param>
         /// <param name="Protocol"></param>
         /// <returns></returns>
-        public SocketError ConnetToHost(int Port, string Host, Protocol Protocol) { return NetSocketConnectToHost(ObjectId, Port, Host, Protocol); }
+        public SocketError ConnetToHost(int Port, string Host) { return NetSocketConnectToHost(ObjectId, Port, Host); }
               
         public SocketError Recieve(byte[] buffer,int length) { buffer = new byte[length]; return NetSocketReceive(ObjectId,buffer, length); }
         public SocketError RecieveFrom(byte[] buffer,IpAddress address,int length, UInt16 port, bool peek) { if (buffer.Length < length) { Log.Error("buffer size was to small: size was {} bytes.", buffer.Length); return SocketError.OUT_OF_BUFFER_MEMORY; } return NetSocketReceiveFrom(ObjectId,buffer, address.getIpRaw(), port, peek); }
@@ -85,11 +86,12 @@ namespace Luna
         /// <returns>entityHandle</returns>
         [MethodImpl(MethodImplOptions.InternalCall)]
         static extern ulong NetSocketCreate();
-
         [MethodImpl(MethodImplOptions.InternalCall)]
-        static extern SocketError NetSocketBind(ulong ObjectId,int Port,string Host,Protocol proto);
+        static extern SocketError NetSocketOpen(ulong ObjectId,Protocol proto);
         [MethodImpl(MethodImplOptions.InternalCall)]
-        static extern SocketError NetSocketConnectToHost(ulong ObjectId, int Port, string Host, Protocol proto);
+        static extern SocketError NetSocketBind(ulong ObjectId,int Port,string Host);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        static extern SocketError NetSocketConnectToHost(ulong ObjectId, int Port, string Host);
         [MethodImpl(MethodImplOptions.InternalCall)]
         static extern SocketError NetSocketReceive(ulong ObjectId,byte[] buffer,int lenght);
 

@@ -7,9 +7,9 @@ namespace luna
 {
 	namespace networking
 	{
-		using status = int;
+		
 
-		enum status 
+		enum status : int
 		{
 			STATUS_NONE,
 			STATUS_CONNECTING,

@@ -8,7 +8,6 @@
 	#define WIN32_LEAN_AND_MEAN
 	#include <winsock2.h>
 	#include <ws2tcpip.h>
-	#pragma comment(lib, "Ws2_32.lib") //ws2tcip
 	using socketHandle = SOCKET;
 	#else // UNIX
 
@@ -38,6 +37,25 @@
 #endif
 namespace luna 
 {
+#ifdef LN_PLATFORM_WINDOWS
+	static std::string getWinsockError()
+	{
+		int eno = WSAGetLastError();
+		char erbuf[40];
+		LN_CORE_INFO("socket error code: {0}", eno);
+		FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ARGUMENT_ARRAY,
+			NULL, eno, 0, erbuf, sizeof(erbuf), NULL); OutputDebugStringA(erbuf);
+		return std::string(erbuf);
+	}
+	static std::string getWinsockError(int eno)
+	{
+		char erbuf[40];
+		LN_CORE_INFO("socket error code: {0}", eno);
+		FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ARGUMENT_ARRAY,
+			NULL, eno, 0, erbuf, sizeof(erbuf), NULL); OutputDebugStringA(erbuf);
+		return std::string(erbuf);
+	}
+#endif
 	namespace networking 
 	{
 		enum socketError {
@@ -98,7 +116,7 @@ namespace luna
 			virtual void destroy();
 			virtual socketError open(const protocol proto);
 			virtual socketError bind(int port, const std::string& host,const protocol proto);
-			virtual socketError connectToHost(int port, const std::string& host, const protocol proto);
+			virtual socketError connectToHost(int port, const std::string& host);
 			virtual socketError receive(uint8_t* p_buffer, int p_len, int& r_read);
 			virtual socketError receiveFrom(uint8_t* p_buffer, int len, int& r_read, ipAddress& r_ip, uint16_t& r_port, bool p_peek = false);
 			virtual socketError send(const uint8_t* p_buffer, int len, int& r_sent);

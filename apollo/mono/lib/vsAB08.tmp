@@ -80,9 +80,9 @@
             closes the socket.
             </summary>
         </member>
-        <member name="M:Luna.NetSocket.Bind(System.Int32,System.String)">
+        <member name="M:Luna.NetSocket.Bind(System.Int32,System.String,Luna.Protocol)">
             <summary>
-            <para>Opens the socket, and binds it to the specified local address.</para>
+            <para>Opens the TCP socket, and binds it to the specified local address.</para>
             <para>This method is generally not needed, and only used to force the subsequent call to <see cref="!:ConnectToHost"/> to use the specified <see cref="!:Host"/> and <see cref="!:Port"/> as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
             </para>
             </summary>
@@ -91,7 +91,7 @@
             <param name="protocol"> <see cref="T:Luna.Protocol"/></param>
             <returns></returns>
         </member>
-        <member name="M:Luna.NetSocket.ConnetToHost(System.Int32,System.String)">
+        <member name="M:Luna.NetSocket.ConnetToHost(System.Int32,System.String,Luna.Protocol)">
             <summary>
             Connects to the specified host:port pair. A hostname will be resolved if valid. Returns <see cref="F:Luna.SocketError.SUCCESS"/>.OK on success.
             </summary>
@@ -220,12 +220,6 @@
             </summary>
             <param name="Buffer"></param>
             <param name="Received"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetAvailableBytes">
-            <summary>
-            Returns the number of bytes this StreamPeer has available.
-            </summary>
             <returns></returns>
         </member>
         <member name="M:Luna.StreamPeerTCP.StreamPeerTCPCreate">

@@ -21,8 +21,9 @@ namespace luna
 		}
 		static socketError StreamPeerTCPConnectToHost(entt::entity objectId, MonoArray* addressArray,int port)
 		{
-			ipAddress* address = (ipAddress*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0);
-			return OBJ_GET(streamPeerTCP).connectToHost(*address, port);
+			ipAddress address; 
+			address.setIpv6((uint8_t*)mono_array_addr_with_size(addressArray, mono_array_length(addressArray), 0));
+			return OBJ_GET(streamPeerTCP).connectToHost(address, port);
 		}
 
 		static socketError StreamPeerTCPPoll(entt::entity objectId)
@@ -86,6 +87,7 @@ namespace luna
 #pragma endregion
 		void streamPeerTCP::bindMethods()
 		{
+			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPCreate);
 			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPBind);
 			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPConnectToHost);
 			LN_ADD_INTERNAL_CALL(streamPeerTCP, StreamPeerTCPPoll);
@@ -134,7 +136,7 @@ namespace luna
 			}
 			else if (tcpData.status != STATUS_CONNECTING) return SUCCESS;
 
-			socketError err = netSocket::connectToHost(tcpData.peerPort, tcpData.peerHost,TCP);
+			socketError err = netSocket::connectToHost(tcpData.peerPort, tcpData.peerHost);
 
 			if (err == SUCCESS) {
 				tcpData.status = STATUS_CONNECTED;
@@ -273,7 +275,7 @@ namespace luna
 		}
 
 		status streamPeerTCP::getStatus() {
-			return getComponent<tcpComponent>().status;
+			return (status)getComponent<tcpComponent>().status;
 		}
 
 
@@ -320,25 +322,23 @@ namespace luna
 		socketError streamPeerTCP::connectToHost(const ipAddress& host, int port)
 		{
 			tcpComponent& tcpData = getComponent<tcpComponent>();
-			LN_ERR_FAIL_COND_V(!netSocket::isValid(), socketError::INIT_FAILED);
+			LN_ERR_FAIL_COND_V(netSocket::isValid(), socketError::INIT_FAILED);
 			LN_ERR_FAIL_COND_V(tcpData.status != STATUS_NONE, socketError::ALREADY_INIT);
 			LN_ERR_FAIL_COND_V(!host.isValid(), socketError::INVALID_IP_ADDRESS);
 			LN_ERR_FAIL_COND_V_MSG(port < 1 || port > 65535, socketError::FAILED, "The remote port number must be between 1 and 65535 (inclusive).");
 
 			if (!netSocket::isOpen()) {
-				Ip::Type ip_type = host.isIpv4() ? Ip::TYPE_IPV4 : Ip::TYPE_IPV6;
 				socketError err = netSocket::open(TCP);
 				if (err != SUCCESS) {
 					return err;
-				}
-				netSocket::setBlockingEnabled(false);
+				}  
 			}
 
-			tcpData.timeout = platform::os::getTicksMsec() + 5000; //5000 msec timeout delay = 5sec
-			socketError err = connectToHost(host, port);
-
+			socketError err = netSocket::connectToHost(port, host);
+			
 			if (err == SUCCESS) {
 				tcpData.status = STATUS_CONNECTED;
+				netSocket::setBlockingEnabled(false); //needs to be here because socket uses getAddrinfo and needs to be blocking wich it is by default!
 			}
 			else if (err == BUSY) {
 				tcpData.status = STATUS_CONNECTING;
@@ -348,6 +348,7 @@ namespace luna
 				disconnectFromHost();
 				return FAILED;
 			}
+			tcpData.timeout = platform::os::getTicksMsec() + 5000; //5000 msec timeout delay = 5sec
 
 			tcpData.peerHost = host;
 			tcpData.peerPort = port;

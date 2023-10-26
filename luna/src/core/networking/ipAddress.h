@@ -49,6 +49,7 @@ namespace luna
 
 				return ret;
 			}
+			
 
 			bool operator==(const ipAddress& p_ip) const {
 				if (p_ip.valid != valid) {

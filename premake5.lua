@@ -116,7 +116,10 @@ project "luna"
             "stb",
             "yaml-cpp",
             "vulkan-1",
-            "zlib"
+            "zlib",
+            "Ws2_32",
+            "Mswsock.lib",
+            "AdvApi32.lib"
         }
         filter "configurations:debug"
             LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"

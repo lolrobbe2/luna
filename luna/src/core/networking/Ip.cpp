@@ -1,5 +1,6 @@
 #include "Ip.h"
 #include <core/debug/debugMacros.h>
+#include <core/object/methodDB.h>
 namespace luna 
 {
 
@@ -70,7 +71,27 @@ namespace luna
 	};
 	namespace networking 
 	{
-	
+#pragma region glue
+		static MonoString* ResolveHostname(MonoString* Hostname, Ip::Type IpType = Ip::Type::TYPE_ANY)
+		{
+			ipAddress address{ Ip::resolveHostname(mono_string_to_utf8(Hostname),IpType) };
+			std::string strAddress = address;
+			return mono_string_new(mono_get_root_domain(),strAddress.c_str());
+		}
+
+		static MonoArray* ResolveHostNameAddresses(MonoString* Hostname, Ip::Type IpType = Ip::Type::TYPE_ANY)
+		{
+			std::vector<std::string> addresses = Ip::resolveHostnameAddresses(mono_string_to_utf8(Hostname), IpType);
+			MonoArray* hostAddresses =  mono_array_new(mono_get_root_domain(), mono_get_string_class(), addresses.size());
+			int i = 0;
+			for(std::string hostAddress : addresses)
+			{
+				mono_array_set(hostAddresses, MonoString*, i, mono_string_new(mono_get_root_domain(), hostAddress.c_str()));
+				i++;
+			}
+			return hostAddresses;
+		}
+#pragma endregion
 		struct _IP_ResolverPrivate 
 		{
 		public:
@@ -279,7 +300,7 @@ namespace luna
 			std::vector<std::string> result;
 			for (int i = 0; i < res.size(); ++i) {
 				if (res[i].isValid()) {
-					result.push_back(std::string(res[i]));
+					result.push_back(res[i]);
 				}
 			}
 			return result;
@@ -316,7 +337,10 @@ namespace luna
 
 		void Ip::RegisterMethods()
 		{
+			LN_ADD_INTERNAL_CALL(Ip, ResolveHostname);
+			LN_ADD_INTERNAL_CALL(Ip, ResolveHostNameAddresses);
 		}
+
 
 		void Ip::init()
 		{
