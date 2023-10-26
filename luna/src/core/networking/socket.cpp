@@ -261,7 +261,7 @@ namespace luna
 			
 			//size_t size = _set_addr_storage(&addr, address, port, ipType);
 			
-			return ::WSAConnect(sock, result->ai_addr, result->ai_addrlen,nullptr,nullptr,nullptr,nullptr);
+			return ::WSAConnect(sock, result->ai_addr, result->ai_addrlen,nullptr,nullptr,nullptr,nullptr); //;;connect does weird stuff sometimes!
 		}
 			
 		socketError netSocket::connectToHost(int port, const std::string& host)
