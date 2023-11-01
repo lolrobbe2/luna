@@ -3,7 +3,6 @@
 
 #include <shlobj_core.h>
 
-
 #include <commdlg.h>
 #include <GLFW/glfw3native.h>
 #include <core/application.h>
