@@ -34,9 +34,9 @@ namespace luna
 
 	struct scriptComponent
 	{
-		std::string className;
+		std::string className = "noot noot";
 		int currentItem = -1;
-		utils::scriptInstance* scritpInstance;
+		utils::scriptInstance* scritpInstance = nullptr;
 		scriptComponent() = default;
 		scriptComponent(const scriptComponent&) = default;
 	};
@@ -188,7 +188,7 @@ namespace luna
 		glm::vec2 start = glm::vec2(0.0f); //left top corner
 		glm::vec2 end = glm::vec2(0.0f); //right bottom corner
 
-		glm::vec2 position;
+		glm::vec2 position = glm::vec2(0.0f);
 		_ALWAYS_INLINE_ bool hasPoint(const glm::vec2& point) { return (start.x == point.x || end.x == point.x) && (start.y == point.y || end.y == point.y); };
 		_ALWAYS_INLINE_ float width() { return end.x - start.x; };
 		_ALWAYS_INLINE_ float height() { return end.y - start.y; };

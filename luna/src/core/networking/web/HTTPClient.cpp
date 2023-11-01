@@ -1,8 +1,22 @@
 #include "HTTPClient.h"
+#include <core/object/methodDB.h>
+#include <core/scripting/scriptingEngine.h>
 namespace luna 
 {
 	namespace networking 
 	{
+#pragma region glue 
+		static socketError HTTPClientConnectToHost(entt::entity objectId,MonoString* hostName,int port)
+		{
+			return OBJ_GET(HTTPClient).connectToHost(mono_string_to_utf8(hostName), port);
+		}
+		static void HTTPClientRequest(entt::entity objectId, const HTTPClient::method method, MonoString* destination, MonoString* headersJsonString, MonoString* body)
+		{
+			OBJ_GET(HTTPClient).request(method, mono_string_to_utf8(destination), std::string(mono_string_to_utf8(headersJsonString)), mono_string_to_utf8(body));
+		}
+#pragma endregion
+
+#pragma region native implmentation
 		enum class value_t : std::uint8_t
 		{
 			null,             ///< null value
@@ -17,11 +31,21 @@ namespace luna
 			discarded         ///< discarded by the parser callback function
 		};
 
+		void HTTPClient::bindMethods()
+		{
+			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientConnectToHost);
+		}
+
 		socketError HTTPClient::connectToHost(const std::string& hostName, int port)
 		{
 			ipAddress address(hostName);
 			ipAddress finalizedAddress = address.isValid() || address.isWildcard() ? address : Ip::resolveHostname(hostName);
 			return streamPeerTCP::connectToHost(finalizedAddress, port);
+		}
+		void HTTPClient::request(const method requestMethod,const std::string& destination, utils::json headers, std::string body)
+		{
+			std::string requestString = generateRequest(requestMethod, destination, headers, body);
+			streamPeerTCP::putData((const uint8_t*)requestString.data(), requestString.size());
 		}
 		const std::string& HTTPClient::generateRequest(const method requestMethod, const std::string& destination, utils::json headers, std::string body)
 		{
@@ -118,8 +142,15 @@ namespace luna
 					break;
 				}
 			}
-			// TODO: insert return statement here
+
+			if(requestMethod != method::GET) //GET cannot have a body
+			{
+				requestBody += body;
+			}
+			
+			return requestBody;
 		}
 	}
+#pragma endregion
 }
 

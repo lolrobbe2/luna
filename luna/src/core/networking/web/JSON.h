@@ -22,7 +22,8 @@ namespace luna
 		{
 		public:
 			json() = default;
-			json(std::filesystem::path path);
+			json(const std::filesystem::path& path);
+			json(const std::string& jsonString);
 			~json();    
 			json operator [] (const std::string& key) { return json(jsonData[key]); }
 			operator nlohmann::json() { return jsonData; }
