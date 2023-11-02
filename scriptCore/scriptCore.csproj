@@ -65,10 +65,11 @@
     <Reference Include="mono-2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="networking\Ip.cs" />
-    <Compile Include="networking\IpAddress.cs" />
-    <Compile Include="networking\NetSocket.cs" />
-    <Compile Include="networking\StreamPeerTCP.cs" />
+    <Compile Include="src\networking\Ip.cs" />
+    <Compile Include="src\networking\IpAddress.cs" />
+    <Compile Include="src\networking\NetSocket.cs" />
+    <Compile Include="src\networking\StreamPeerTCP.cs" />
+    <Compile Include="src\networking\web\HTTPClient.cs" />
     <Compile Include="src\Node.cs" />
     <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
     <Compile Include="src\controlNodes\controlNode.cs" />
@@ -81,10 +82,9 @@
     <Compile Include="src\object\Object.cs" />
     <Compile Include="src\os\Os.cs" />
     <Compile Include="src\signals\Signal.cs" />
+    <Compile Include="src\utils\Json.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="networking\web\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -14,6 +14,11 @@ namespace luna
 		{
 			OBJ_GET(HTTPClient).request(method, mono_string_to_utf8(destination), std::string(mono_string_to_utf8(headersJsonString)), mono_string_to_utf8(body));
 		}
+
+		static bool HTTPClientHasResponse(entt::entity objectId) 
+		{
+			return OBJ_GET(HTTPClient).hasResponse();
+		}
 #pragma endregion
 
 #pragma region native implmentation
@@ -34,6 +39,8 @@ namespace luna
 		void HTTPClient::bindMethods()
 		{
 			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientConnectToHost);
+			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientRequest);
+			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientHasResponse);
 		}
 
 		socketError HTTPClient::connectToHost(const std::string& hostName, int port)
@@ -46,6 +53,16 @@ namespace luna
 		{
 			std::string requestString = generateRequest(requestMethod, destination, headers, body);
 			streamPeerTCP::putData((const uint8_t*)requestString.data(), requestString.size());
+		}
+		bool HTTPClient::hasResponse()
+		{
+			streamPeerTCP::poll();
+			if (streamPeerTCP::getStatus() == STATUS_CONNECTED)
+			{
+				return streamPeerTCP::getAvailableBytes();
+			} 
+			else if(streamPeerTCP::getStatus() == STATUS_ERROR) LN_CORE_ERROR("[HTTP] an error occured while polling the http client!");
+			return false;
 		}
 		const std::string& HTTPClient::generateRequest(const method requestMethod, const std::string& destination, utils::json headers, std::string body)
 		{

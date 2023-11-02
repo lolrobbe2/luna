@@ -36,6 +36,7 @@ namespace luna
 			* @brief sends a request to the connected host
 			*/
 			void request(const method requestMethod,const std::string& destination,utils::json headers, std::string body);//TODO json 
+			bool hasResponse();
 		private:
 			const std::string& generateRequest(const method requestMethod, const std::string& destination, utils::json headers,std::string body);
 		};
