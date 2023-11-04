@@ -41,8 +41,6 @@ namespace luna
 			operator entt::entity() { return *(streamPeerTCP*)this; } //needs to be done because streamPeerTCP functions cannot be externally accesible only internally
 			friend class utils::json;
 		private:
-			socketError getHttpData(uint8_t* p_buffer, int p_bytes, int& r_received);
-
 			std::string generateRequest(const method requestMethod, const std::string& destination, utils::json headers,std::string body);
 		};
 	}

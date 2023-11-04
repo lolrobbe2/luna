@@ -66,9 +66,9 @@ namespace luna
 			ipAddress finalizedAddress = address.isValid() || address.isWildcard() ? address : Ip::resolveHostname(hostName);
 			return streamPeerTCP::connectToHost(finalizedAddress, port);
 		}
-		void HTTPClient::request(const method requestMethod,const std::string& destination, utils::json headers, std::string body)
+		void HTTPClient::request(const method requestMethod, const std::string& destination, utils::json headers, std::string body)
 		{
-			while(streamPeerTCP::getStatus() != STATUS_CONNECTED)
+			while (streamPeerTCP::getStatus() != STATUS_CONNECTED)
 			{
 				if (streamPeerTCP::getStatus() == STATUS_ERROR) return LN_CORE_ERROR("[HTTP]error host was not connected!");
 				streamPeerTCP::poll();
@@ -77,35 +77,6 @@ namespace luna
 			LN_CORE_INFO("\r\n" + requestString);
 			socketError error = streamPeerTCP::putData((const uint8_t*)requestString.data(), requestString.size());
 			LN_ERR_FAIL_COND_MSG(error != SUCCESS, "could not send reqeust, reason: " + std::to_string(error));
-		}
-
-		socketError HTTPClient::getHttpData(uint8_t* p_buffer, int p_bytes, int& r_received) {
-			if (streamPeerTCP::isBlocking()) {
-				// We can't use StreamPeer.get_data, since when reaching EOF we will get an
-				// error without knowing how many bytes we received.
-				socketError err = socketError::OUT_OF_BUFFER_MEMORY;
-				int read = 0;
-				int left = p_bytes;
-				r_received = 0;
-				while (left > 0) {
-					err = streamPeerTCP::getPartialData(p_buffer + r_received, left, read);
-					if (err == SUCCESS) {
-						r_received += read;
-					}
-					else if (err == OUT_OF_BUFFER_MEMORY) {
-						r_received += read;
-						return err;
-					}
-					else {
-						return err;
-					}
-					left -= read;
-				}
-				return err;
-			}
-			else {
-				return streamPeerTCP::getPartialData(p_buffer, p_bytes, r_received);
-			}
 		}
 
 		bool HTTPClient::hasResponse()
