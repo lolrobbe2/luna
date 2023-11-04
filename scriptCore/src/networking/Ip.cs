@@ -2,7 +2,6 @@
 
 namespace Luna
 {
-    using ResolverId = int;
     public class Ip
     {
        /// <summary>
@@ -58,5 +57,13 @@ namespace Luna
         /// <returns>an ipAddress</returns
         [MethodImpl(MethodImplOptions.InternalCall)]
         public static extern string[] ResolveHostnameAddresses(string Hostname,Type IpType = Type.TYPE_ANY);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        static extern string GetHostnameFromIP(byte[] IpAdressRaw);
+        /// <summary>
+        /// returns the hostname of a resolved ipAdress
+        /// </summary>
+        /// <param name="ipAddress"><see cref="IpAddress"/>address to get hostname from</param>
+        /// <returns>0.0.0.0 when the ipAdress has not been resolved from a hostname</returns>
+        public static string GetHostnameFromIP(IpAddress ipAddress) { return GetHostnameFromIP(ipAddress.getIpRaw()); }
     }
 }

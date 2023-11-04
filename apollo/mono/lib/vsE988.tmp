@@ -41,19 +41,6 @@
             <returns>an ipAddress</returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:Luna.Ip.ResolveHostnameAddresses(System.String,Luna.Ip.Type)" -->
-        <member name="M:Luna.Ip.GetHostnameFromIP(Luna.IpAddress)">
-            <summary>
-            returns the hostname of a resolved ipAdress
-            </summary>
-            <param name="ipAddress"><see cref="T:Luna.IpAddress"/>address to get hostname from</param>
-            <returns>0.0.0.0 when the ipAdress has not been resolved from a hostname</returns>
-        </member>
-        <member name="M:Luna.IpAddress.getIpRaw">
-            <summary>
-            ONLY USE THIS FUNCTION FOR INTERNALL USE.
-            </summary>
-            <returns>the raw ip array</returns>
-        </member>
         <member name="T:Luna.SocketError">
             <summary>
             Enumaration of socketErrors
@@ -125,6 +112,12 @@
             </summary>
             <param name="ObjectId"></param>
             <returns></returns>
+        </member>
+        <member name="M:Luna.IpAddress.getIpRaw">
+            <summary>
+            ONLY USE THIS FUNCTION FOR INTERNALL USE.
+            </summary>
+            <returns>the raw ip array</returns>
         </member>
         <member name="T:Luna.StreamPeerTCP">
             <summary>
@@ -236,36 +229,6 @@
             <returns></returns>
         </member>
         <member name="M:Luna.StreamPeerTCP.StreamPeerTCPCreate">
-            <summary>
-            function to create a StreamPeerTCP module
-            </summary>
-            <returns>entityHandle</returns>
-        </member>
-        <member name="M:Luna.HTTPClient.ConnectToHost(System.String,System.Int32)">
-            <summary>
-            connects the http client to a host http server.
-            </summary>
-            <remarks>will also connect to non http servers, it just won't be able to now wath to do with the HTTP response</remarks>
-            <param name="Host">can be an <see cref="T:Luna.IpAddress"/></param>
-            <param name="port"> number inclusive between 0-65536</param>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when connetion to host whas succesful</returns>
-        </member>
-        <member name="M:Luna.HTTPClient.Request(Luna.HTTPClient.Method,System.String,Luna.Json,System.String)">
-            <summary>
-            sends an HTPP request to the connected host.
-            </summary>
-            <param name="Method">http method to be used <see cref="T:Luna.HTTPClient.Method"/></param>
-            <param name="Destination"></param>
-            <param name="Headers"></param>
-            <param name="body"></param>
-        </member>
-        <member name="M:Luna.HTTPClient.HasResponse">
-            <summary>
-            checks the HTTPClient if a response is available.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.HTTPClient.HTTPClientCreate">
             <summary>
             function to create a StreamPeerTCP module
             </summary>
@@ -729,11 +692,6 @@
             </summary>
             <param name="signalName">signal name to emit</param>
             <param name="args">arguments to pass to the signal</param>
-        </member>
-        <member name="T:Luna.Json">
-            <summary>
-            custom implementation of JSON
-            </summary>
         </member>
         <member name="M:CharExtensions.IsXDigit(System.Char)">
             <summary>

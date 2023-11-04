@@ -5,7 +5,7 @@ namespace luna
 {
 	namespace networking
 	{
-		class HTTPClient : streamPeerTCP
+		class HTTPClient : streamPeerTCP,netSocket
 		{
 		public:
 			enum method
@@ -35,10 +35,15 @@ namespace luna
 			/**
 			* @brief sends a request to the connected host
 			*/
-			void request(const method requestMethod,const std::string& destination,utils::json headers, std::string body);//TODO json 
+			void request(const method requestMethod,const std::string& destination,utils::json headers, std::string body);
+			//TODO json 
 			bool hasResponse();
+			operator entt::entity() { return *(streamPeerTCP*)this; } //needs to be done because streamPeerTCP functions cannot be externally accesible only internally
+			friend class utils::json;
 		private:
-			const std::string& generateRequest(const method requestMethod, const std::string& destination, utils::json headers,std::string body);
+			socketError getHttpData(uint8_t* p_buffer, int p_bytes, int& r_received);
+
+			std::string generateRequest(const method requestMethod, const std::string& destination, utils::json headers,std::string body);
 		};
 	}
 }

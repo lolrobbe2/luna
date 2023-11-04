@@ -26,6 +26,9 @@ namespace luna
 				LN_CORE_ERROR("[JSON] error occured during string parsing, error msg: {0}", err.what());
 			}
 		}
+		json::~json()
+		{
+		}
 		json::json(const nlohmann::json& obj)
 		{
 			jsonData = obj;

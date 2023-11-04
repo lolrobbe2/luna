@@ -49,7 +49,7 @@ namespace luna
 			int getAvailableBytes();
 			ipAddress getConnectedhost();
 			operator entt::entity() { return entityHandle; } //needs to be done because netsocket functions cannot be externally accesible only internally
-
+			virtual bool isBlocking()override { return netSocket::isBlocking(); }
 		protected:
 			friend class TCPServer;
 			void setSocket(ref<netSocket> socket);

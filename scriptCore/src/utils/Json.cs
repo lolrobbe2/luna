@@ -4,8 +4,10 @@ using System.Collections.Generic;
 namespace Luna
 {
 
-
-    class Json
+    /// <summary>
+    /// custom implementation of JSON
+    /// </summary>
+    public class Json
     {
         private readonly Dictionary<string, object> data;
 
@@ -123,7 +125,7 @@ namespace Luna
                 else
                 {
                     Log.Error("Error: Key {0} not found in JSON object",key);
-                    return null; // Or throw an exception if you prefer
+                    return null;
                 }
             }
         }

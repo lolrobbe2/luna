@@ -59,7 +59,7 @@ namespace luna
 
 			static void _resolve_hostname(std::vector<ipAddress>& r_addresses, const std::string& p_hostname, Type p_type = TYPE_ANY);
 			static std::vector<std::string> getResolveItemAddresses(ResolverID p_id) ;
-
+			static std::string getHostnameFromIP(const ipAddress& ip);
 			static void getLocalInterfaces(std::unordered_map<std::string, Interface_Info>* r_interfaces);
 			static void eraseResolveItem(ResolverID p_id);
 

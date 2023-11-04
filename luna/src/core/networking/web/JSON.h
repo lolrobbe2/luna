@@ -1,6 +1,6 @@
 #pragma once
-#include <core/utils/json.h>
 #include <lnpch.h>
+#include <core/utils/json.h>
 #include <core/debug/debugMacros.h>
 #define JSON_OP(className) operator className()\
 {\
@@ -32,9 +32,10 @@ namespace luna
 			JSON_OP(uint16_t)
 			JSON_OP(uint32_t)
 			JSON_OP(uint64_t)
+			nlohmann::json jsonData;
 		private:
 			json(const nlohmann::json& obj);
-			nlohmann::json jsonData;
+		
 		};
 	}
 }

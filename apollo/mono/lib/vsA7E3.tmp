@@ -41,13 +41,6 @@
             <returns>an ipAddress</returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:Luna.Ip.ResolveHostnameAddresses(System.String,Luna.Ip.Type)" -->
-        <member name="M:Luna.Ip.GetHostnameFromIP(Luna.IpAddress)">
-            <summary>
-            returns the hostname of a resolved ipAdress
-            </summary>
-            <param name="ipAddress"><see cref="T:Luna.IpAddress"/>address to get hostname from</param>
-            <returns>0.0.0.0 when the ipAdress has not been resolved from a hostname</returns>
-        </member>
         <member name="M:Luna.IpAddress.getIpRaw">
             <summary>
             ONLY USE THIS FUNCTION FOR INTERNALL USE.
@@ -258,12 +251,6 @@
             <param name="Destination"></param>
             <param name="Headers"></param>
             <param name="body"></param>
-        </member>
-        <member name="M:Luna.HTTPClient.HasResponse">
-            <summary>
-            checks the HTTPClient if a response is available.
-            </summary>
-            <returns></returns>
         </member>
         <member name="M:Luna.HTTPClient.HTTPClientCreate">
             <summary>

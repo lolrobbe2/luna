@@ -89,6 +89,7 @@ namespace luna
 		struct socketComponent {
 			struct sockaddr_storage addr;
 			bool open;
+			bool blocking = true;
 			ipAddress address;
 			uint16_t port;
 			socketHandle netSocket = INVALID_SOCKET;
@@ -125,6 +126,7 @@ namespace luna
 			virtual socketError listen(int maxPendding);
 			virtual bool isValid();
 			virtual bool isOpen();
+			virtual bool isBlocking();
 			virtual int getAvailableBytes();
 			virtual socketError poll(pollType p_type, int timeout);	
 			void setSocket(socketHandle handle, ipAddress address);

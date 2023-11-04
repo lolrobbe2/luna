@@ -174,7 +174,7 @@ namespace luna
 			socketData.netSocket = ::socket(family,type, protocol);
 
 			LN_ERR_FAIL_COND_V_MSG(socketData.netSocket == INVALID_SOCKET, socketError::INIT_FAILED, "socket creation failed with error: " + getWinsockError());
-
+			socketData.open = true;
 			return socketError::SUCCESS;
 		}
 
@@ -293,11 +293,18 @@ namespace luna
 		socketError netSocket::receive(uint8_t* p_buffer, int len, int& r_read)
 		{
 			LN_ERR_FAIL_COND_V_MSG(!isOpen(), socketError::INIT_FAILED,"socket was not initialized");
-			r_read = recv(getComponent<socketComponent>().netSocket, (char*)p_buffer, len, 0);
+			r_read = ::recv(getComponent<socketComponent>().netSocket, (char*)p_buffer, len, 0);
 			if (r_read > 0) return socketError::SUCCESS;
 			if (r_read == 0) return socketError::CONNECTION_CLOSED;
-			else if (r_read == WSAEMSGSIZE) return socketError::OUT_OF_BUFFER_MEMORY;
-			LN_CORE_ERROR("recv failed, errror:{0}", WSAGetLastError());
+			int err = WSAGetLastError();
+			if (err == WSAEWOULDBLOCK) {
+				return socketError::BUSY;
+			}
+			if (err == WSAEMSGSIZE || err == WSAENOBUFS) {
+				return socketError::OUT_OF_BUFFER_MEMORY;
+			}
+			LN_CORE_ERROR("something whent wrong receiving bytes: {0}", getWinsockError());
+			return socketError::FAILED;
 		}
 
 		socketError netSocket::receiveFrom(uint8_t* p_buffer, int len, int& r_read, ipAddress& ipAddress, uint16_t& port, bool p_peek)
@@ -306,7 +313,7 @@ namespace luna
 			struct sockaddr_storage from;
 			socklen_t sockLen = sizeof(struct sockaddr_storage);
 			memset(&from, 0, sockLen);
-			int result = recvfrom(getComponent<socketComponent>().netSocket, (char*)p_buffer, len, p_peek ? MSG_PEEK : 0, (struct sockaddr*)&from, &sockLen);
+			int result = ::recvfrom(getComponent<socketComponent>().netSocket, (char*)p_buffer, len, p_peek ? MSG_PEEK : 0, (struct sockaddr*)&from, &sockLen);
 			if (result > 0) return socketError::SUCCESS;
 			if (result == 0) return socketError::CONNECTION_CLOSED;
 			else if (result == WSAEMSGSIZE) return socketError::OUT_OF_BUFFER_MEMORY;
@@ -435,7 +442,6 @@ namespace luna
 			int clampedPending = SOMAXCONN_HINT(maxPendding);
 			if (clampedPending != maxPendding)LN_CORE_WARN("maxPendding count should be between 200 and 65535, addjusted to fit!");
 			LN_ERR_FAIL_COND_V_MSG(::listen(socketData.netSocket, clampedPending) != SOCKET_ERROR, FAILED, "something went wrong when trying to listen on the socket, error: " + getWinsockError());
-			socketData.open = true;
 			return SUCCESS;
 		}
 
@@ -447,6 +453,11 @@ namespace luna
 		bool netSocket::isOpen()
 		{
 			return getComponent<socketComponent>().open;
+		}
+
+		bool netSocket::isBlocking()
+		{
+			return getComponent<socketComponent>().blocking;
 		}
 
 		int netSocket::getAvailableBytes()
@@ -570,7 +581,7 @@ namespace luna
 #endif
 		}
 		void netSocket::setBlockingEnabled(bool enabled) {
-			LN_ERR_FAIL_COND(isOpen());
+			LN_ERR_FAIL_COND(!isOpen());
 
 			int ret = 0;
 #if defined(LN_PLATFORM_WINDOWS)
@@ -589,6 +600,7 @@ namespace luna
 			if (ret != 0) {
 				LN_CORE_WARN("Unable to change non-block mode");
 			}
+			else getComponent<socketComponent>().blocking = enabled;
 		}
 		void netSocket::setTcpNoDelayEnabled(bool enabled) 
 		{

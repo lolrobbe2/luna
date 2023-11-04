@@ -15,6 +15,7 @@ class __UnexistingClass;
 //networking
 #include <core/networking/ipAddress.h>
 #include <core/networking/streamPeerTCP.h>
+#include <core/networking/web/HTTPClient.h>
 
 namespace luna
 {
@@ -71,6 +72,7 @@ namespace luna
 		networking::ipAddress::registerMethods();
 		networking::netSocket().bindMethods();
 		networking::streamPeerTCP().bindMethods();
+		networking::HTTPClient().bindMethods();
 	}
 
 

@@ -91,6 +91,12 @@ namespace luna
 			}
 			return hostAddresses;
 		}
+
+		static MonoString* GetHostnameFromIP(MonoArray* ipAdressRaw)
+		{
+			ipAddress* address = (ipAddress*)mono_array_addr_with_size(ipAdressRaw, mono_array_length(ipAdressRaw), 0);
+			return mono_string_new(mono_get_root_domain(), Ip::getHostnameFromIP(*address).c_str());
+		}
 #pragma endregion
 		struct _IP_ResolverPrivate 
 		{
@@ -179,6 +185,10 @@ namespace luna
 
 			static std::string getCacheKey(std::string p_hostname, Ip::Type p_type) {
 				return std::to_string(p_type) + p_hostname;
+			}
+			static std::string getHostnameFromCacheKey(const std::string& cacheKey) {
+				// Assuming that the Type part is at the beginning
+				return cacheKey.substr(1); // Exclude the Type part to get the hostname
 			}
 		};
 
@@ -306,6 +316,19 @@ namespace luna
 			return result;
 		}
 
+		std::string Ip::getHostnameFromIP(const ipAddress& ip)
+		{
+			for (const auto& entry : resolver->cache) {
+				const std::vector<ipAddress>& addresses = entry.second;
+				for (const ipAddress& address : addresses) {
+					if (address == ip) {
+						return _IP_ResolverPrivate::getHostnameFromCacheKey(entry.first); // Found a matching IP address
+					}
+				}
+			}
+			return "0.0.0.0"; // IP address not found in the cache
+		}
+
 		void Ip::eraseResolveItem(ResolverID p_id) {
 			LN_ERR_FAIL_INDEX_MSG(p_id, Ip::RESOLVER_MAX_QUERIES, "Too many concurrent DNS resolver queries (" + std::to_string(p_id) + ", but should be" + std::to_string(Ip::RESOLVER_MAX_QUERIES) + " at most).Try performing less network requests at once.");
 
@@ -339,6 +362,7 @@ namespace luna
 		{
 			LN_ADD_INTERNAL_CALL(Ip, ResolveHostname);
 			LN_ADD_INTERNAL_CALL(Ip, ResolveHostNameAddresses);
+			LN_ADD_INTERNAL_CALL(Ip,GetHostnameFromIP)
 		}
 
 
