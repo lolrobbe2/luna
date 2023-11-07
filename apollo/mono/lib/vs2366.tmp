@@ -241,11 +241,6 @@
             </summary>
             <returns>entityHandle</returns>
         </member>
-        <member name="T:Luna.HTTPClient.Status">
-            <summary>
-            current status of the HTTPClient
-            </summary>
-        </member>
         <member name="M:Luna.HTTPClient.ConnectToHost(System.String,System.Int32)">
             <summary>
             connects the http client to a host http server.
@@ -269,22 +264,6 @@
             checks the HTTPClient if a response is available.
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:Luna.HTTPClient.Poll">
-            <summary>
-            Polls the HTPPClient for incomming response
-            </summary>
-            <remarks>
-            as soon a the http client is receiving a response <see cref="M:Luna.HTTPClient.HasResponse"/> will return true.
-            but at this point the body might nog have been fully received. To know when the response body has not been fully received <see cref="F:Luna.HTTPClient.Status.STATUS_RECEIVING"/> use the <see cref="M:Luna.HTTPClient.GetStatus"/> function.
-            </remarks>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when polling whas succesful</returns>
-        </member>
-        <member name="M:Luna.HTTPClient.GetStatus">
-            <summary>
-            function to get the current HTTPClient <see cref="T:Luna.HTTPClient.Status"/>
-            </summary>
-            <returns><see cref="T:Luna.HTTPClient.Status"/></returns>
         </member>
         <member name="M:Luna.HTTPClient.HTTPClientCreate">
             <summary>

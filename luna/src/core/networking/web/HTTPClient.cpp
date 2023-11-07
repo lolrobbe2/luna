@@ -7,7 +7,13 @@ namespace luna
 	{
 		struct HTTPResponseComponent 
 		{
-
+			HTTPClient::status httpstatus;
+			std::vector<uint8_t> data;
+			uint16_t responseCode; //TODO enum;
+			utils::json headers;
+			std::vector<uint8_t> body;
+			bool readingHeaders = true;
+			uint64_t bodyStartIndex;
 		};
 #pragma region glue 
 		static entt::entity HTTPClientCreate()
@@ -28,6 +34,16 @@ namespace luna
 		static bool HTTPClientHasResponse(entt::entity objectId) 
 		{
 			return OBJ_GET(HTTPClient).hasResponse();
+		}
+
+		static socketError HTTPClientPoll(entt::entity objectId)
+		{
+			return OBJ_GET(HTTPClient).poll();
+		}
+
+		static HTTPClient::status HTTPClientGetStatus(entt::entity objectId) 
+		{
+			return OBJ_GET(HTTPClient).getStatus();
 		}
 #pragma endregion
 
@@ -52,12 +68,13 @@ namespace luna
 			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientConnectToHost);
 			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientRequest);
 			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientHasResponse);
-	
+			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientPoll);
 		}
 
 		void HTTPClient::init(luna::scene* scene)
 		{
 			streamPeerTCP::init(scene);
+			streamPeerTCP::addComponent<HTTPResponseComponent>();
 		}
 
 		socketError HTTPClient::connectToHost(const std::string& hostName, int port)
@@ -68,44 +85,71 @@ namespace luna
 		}
 		void HTTPClient::request(const method requestMethod, const std::string& destination, utils::json headers, std::string body)
 		{
+			status& clientStatus = getComponent<HTTPResponseComponent>().httpstatus;
 			while (streamPeerTCP::getStatus() != STATUS_CONNECTED)
 			{
 				if (streamPeerTCP::getStatus() == STATUS_ERROR) return LN_CORE_ERROR("[HTTP]error host was not connected!");
 				streamPeerTCP::poll();
 			}
 			std::string requestString = generateRequest(requestMethod, destination, headers, body);
-			LN_CORE_INFO("\r\n" + requestString);
 			socketError error = streamPeerTCP::putData((const uint8_t*)requestString.data(), requestString.size());
+			clientStatus = status::STATUS_REQUESTING;
 			LN_ERR_FAIL_COND_MSG(error != SUCCESS, "could not send reqeust, reason: " + std::to_string(error));
+			clientStatus = status::STATUS_ERROR;
 		}
 
 		bool HTTPClient::hasResponse()
 		{
-			
+			return getStatus() == STATUS_RECEIVING;
+		}
+		socketError HTTPClient::poll()
+		{
 			if (streamPeerTCP::getStatus() == STATUS_CONNECTED)
 			{
-				std::vector<std::uint8_t> responseData;
+				HTTPResponseComponent& responseComponent = getComponent<HTTPResponseComponent>();
 				std::array<std::uint8_t, 4096> tempBuffer{ 0 };
 				int received;
-				for(;;)
+				//NOTE http responses are delivered in chunks so read them in chunks!
+				socketError error = streamPeerTCP::getPartialData(tempBuffer.data(), tempBuffer.size(), received);
+				if (error == FAILED) return socketError::FAILED;
+				responseComponent.httpstatus = STATUS_RECEIVING;
+				responseComponent.data.insert(responseComponent.data.end(), tempBuffer.begin(), tempBuffer.begin() + received);
+				if(responseComponent.readingHeaders) 
 				{
-					//NOTE http responses are delivered in chunks so read them in chunks!
-					socketError error = streamPeerTCP::getPartialData(tempBuffer.data(), tempBuffer.size(), received);
-					if (error == FAILED) return false;
-					responseData.insert(responseData.end(), tempBuffer.begin(), tempBuffer.begin() + received);
-					if (received == 0 && responseData.size() != 0) { // disconnected
-						LN_CORE_INFO(std::string((char*)responseData.data()));
-						return true;
+					std::string headers;
+					std::string delimeter = "\r\n\r\n";
+
+					std::string responseData = std::string(responseComponent.data.begin(), responseComponent.data.end());
+					
+					size_t pos = responseData.find(delimeter);
+					if (pos != std::string::npos) {
+						headers = responseData.substr(0, pos);
+						responseComponent.bodyStartIndex = pos + 4;
+						parseHeaders(headers);
+						responseComponent.readingHeaders = false;
+						return SUCCESS;
 					}
 				}
-					
-			} 
-			else if(streamPeerTCP::getStatus() == STATUS_ERROR) LN_CORE_ERROR("[HTTP] an error occured while polling the http client!");
-			else if(streamPeerTCP::getStatus() == STATUS_CONNECTING) 
-			{
-				streamPeerTCP::poll();
+				if (!responseComponent.readingHeaders) {
+					bool contentLoaded = responseComponent.data.size() == responseComponent.bodyStartIndex + atoi(responseComponent.headers.jsonData["Content-Length"].get<std::string>().c_str());
+					if (received == 0  && contentLoaded) { // disconnected
+						responseComponent.httpstatus = STATUS_NONE;
+						return SUCCESS;
+					}
+				}
+				return SUCCESS;
+				
+				
 			}
-			return false;
+			else if (streamPeerTCP::getStatus() == STATUS_ERROR) {
+				LN_CORE_ERROR("[HTTP] an error occured while polling the http client!");
+				return socketError::FAILED;
+			}
+		}
+		HTTPClient::status HTTPClient::getStatus()
+		{
+			return getComponent<HTTPResponseComponent>().httpstatus;
+
 		}
 		std::string HTTPClient::generateRequest(const method requestMethod, const std::string& destination, utils::json headers, std::string body)
 		{
@@ -213,6 +257,45 @@ namespace luna
 			}
 			requestBody += "\r\n";
 			return requestBody;
+		}
+		void HTTPClient::parseHeaders(const std::string& headersString)
+		{
+			std::string str = headersString;
+			std::vector<std::string> headers;
+			size_t start = 0;
+			size_t found = str.find("\r\n");
+
+			while (found != std::string::npos) {
+				headers.push_back(str.substr(start, found - start));
+				start = found + 2; // Move past the "\r\n"
+				found = str.find("\r\n", start);
+			}
+
+			if (start < str.length()) {
+				headers.push_back(str.substr(start)); // Add the remainder of the string
+			}
+			nlohmann::json& jsonHeaders = getComponent<HTTPResponseComponent>().headers.jsonData;
+			std::string reponseCode = headers[0];
+			headers.erase(headers.begin());
+			for (std::string header : headers)
+			{
+				std::vector<std::string> result;
+				const static std::string delimiter = ":";
+				size_t start = 0;
+				size_t found = header.find(delimiter);
+
+				while (found != std::string::npos) {
+					result.push_back(header.substr(start, found - start));
+					start = found + delimiter.length();
+					found = header.find(delimiter, start);
+				}
+
+				if (start < header.length()) {
+					result.push_back(header.substr(start + 1));
+				}
+				jsonHeaders[result[0]] = result[1];
+			}
+			LN_CORE_INFO("parsedHeaders = \n {0}", jsonHeaders.dump(4));
 		}
 	}
 #pragma endregion

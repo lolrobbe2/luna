@@ -36,6 +36,25 @@
 #define OBJ_GET(className) className(objectId,scripting::scriptingEngine::getContext())
 #endif // OBJ_GET
 
+#ifndef OBJ_ROOT
+/*
+* @brief adds the basic object functions when private inheritence has been used!
+*/
+#define OBJ_ROOT(className) \
+template<typename T, typename... Args> \
+T& addComponent(Args&&... args) {return className::addComponent<T>(std::forward<Args&&>()...);} \
+template<typename T, typename... Args> \
+T& addOrReplaceComponent(Args&&... args) \
+{ \
+	return classNamme::addOrReplaceComponent<T>(std::forward<Args&&>()...); \
+} \
+template<typename T>\
+T& getComponent()\
+{\
+	return className::getComponent<T>();\
+}
+#endif // !OBJ_ROOT
+
 namespace luna
 {
 	class LN_API scene;

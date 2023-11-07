@@ -20,6 +20,7 @@ namespace luna
 		class streamPeerTCP : netSocket //no public(keyword) is used to restrict externall usage of the netSocket functions
 		{
 		public:
+			OBJ_ROOT(netSocket);
 			streamPeerTCP() = default;
 			streamPeerTCP(entt::entity handle, luna::scene* scene) : netSocket(handle, scene) {};
 			streamPeerTCP(uint64_t id, luna::scene* scene) { LN_CORE_WARN("DEPRECATED"); };
