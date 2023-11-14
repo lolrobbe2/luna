@@ -17,7 +17,7 @@ jobs:
         with:
           path: |
             luna/thirdParty
-          key: ${{ runner.os }}-submodules-${{ github.sha }}
+          key: ${{ runner.os }}-submodules-${{ github.ref_name }}
           
       - name: Checkout luna repo
         uses: actions/checkout@v3
@@ -43,14 +43,14 @@ jobs:
         with:
           path: |
             luna/thirdParty
-          key: ${{ runner.os }}-submodules-${{ github.sha }}
+          key: ${{ runner.os }}-submodules-${{  github.ref_name }}
       - name: Cache bin-int
         uses: actions/cache@v3
         with:
           path: |
             luna/thirdParty
             bin-int
-          key: ${{ runner.os }}-bin-int-${{ github.sha }}
+          key: ${{ runner.os }}-bin-int-${{  github.ref_name }}
           
       - name: Checkout luna repo
         uses: actions/checkout@v3
