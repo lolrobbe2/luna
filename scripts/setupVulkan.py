@@ -4,8 +4,7 @@ import platform
 import subprocess
 import threading
 import time
-
-import urllib3
+import urllib.request
 
 
 vulkan_major_version = "1.3."
@@ -26,6 +25,7 @@ def is_vulkan_installed():
         )
         return False
 
+
 def get_installed_vulkan_path():
     return os.environ.get("VULKAN_SDK")
 
@@ -33,7 +33,8 @@ def get_installed_vulkan_path():
 def get_installed_vulkan_version():
     vulkan_sdk_path = get_installed_vulkan_path()
     # Assume the latest version is the one with the highest numeric value
-    if vulkan_sdk_path is None: return None
+    if vulkan_sdk_path is None:
+        return None
     return vulkan_sdk_path.split("\\")[-1]
 
 

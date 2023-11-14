@@ -2,7 +2,6 @@ import argparse
 import os
 import subprocess
 import platform
-import urllib.request
 import threading
 import time
 import zipfile
