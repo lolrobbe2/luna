@@ -1,0 +1,42 @@
+name: build_windows
+
+on: [push]
+
+env:
+  CORE_SOLUTION_FILE_PATH: luna.sln
+  SCRIPTING_SOLUTION_FILE_PATH: luna scripting.sln
+
+jobs:
+ 
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        build-configuration: [debug,release,distribution]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          repository: 'lolrobbe2/luna'
+          submodules: true
+          lfs: true
+  
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v1.0.1
+      
+      - name: Set up Python 
+        uses: actions/setup-python@v4 
+        with:
+          python-version: 'pypy3.9'
+  
+      - name: generate solution files and install vulkan
+        run: .\build.bat
+  
+      - name: build core engine
+        working-directory: ${{env.GITHUB_WORKSPACE}}
+        run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.CORE_SOLUTION_FILE_PATH }}
+
+      - name: build scripting engine
+        working-directory: ${{env.GITHUB_WORKSPACE}}
+        run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SCRIPTING_SOLUTION_FILE_PATH }}
