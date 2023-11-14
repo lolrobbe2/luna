@@ -17,32 +17,25 @@ jobs:
         build-configuration: [debug, release, distribution]
 
     steps:
-      - name: Checkout Repository and Cache Submodules
-        uses: actions/cache@v3
-        id: cache-submodules
+      - name: Checkout Repository and Cache
+        uses: actions/cache@v2
+        id: cache-repository
         with:
           path: |
-            luna/thirdParty
-          key: ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}
+            .
+          key: ${{ runner.os }}-repository-${{ github.repository }}
           restore-keys: |
-            ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}-${{ github.repository }}
-            ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}
+            ${{ runner.os }}-repository--${{ github.repository }}
 
       - name: Checkout Repository
-        if: steps.cache-submodules.outputs.cache-hit != 'true'
-        uses: actions/checkout@v4
+        if: steps.cache-repository.outputs.cache-hit != 'true'
+        uses: actions/checkout@v2
         with:
           submodules: recursive
           lfs: true
 
-      - name: Cache Repository
-        if: steps.cache-submodules.outputs.cache-hit != 'true'
-        uses: actions/cache@v3
-        with:
-          path: |
-            !luna/thirdParty
-          key: ${{ runner.os }}-repository-${{ hashFiles('.git', '**/*') }}
-
+      - name: Fetch Latest Changes
+        run: git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
