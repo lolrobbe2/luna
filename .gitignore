@@ -47,3 +47,4 @@ luna/tirdParty/obj/
 *.sarif
 /.vs
 /luna/thirdParty/spdlog
+/scripts/__pycache__
