@@ -61,7 +61,7 @@ def install_vulkan(force_install=False):
         print(" > force installing vulkan!")
     # Download the Vulkan SDK installer
     installer_path = "vulkan_sdk_installer.exe"
-    urllib3.request.urlretrieve(vulkanSDKDownloadUrl, installer_path)
+    urllib.request.urlretrieve(vulkanSDKDownloadUrl, installer_path)
 
     # Run the installer in a separate thread
     install_thread = threading.Thread(

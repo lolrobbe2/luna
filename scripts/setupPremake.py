@@ -21,7 +21,7 @@ def run_premake_vs2022():
 
 def download_and_extract_premake():
     zip_file_path = "premake.zip"
-    urllib3.request.urlretrieve(premake_download_url, zip_file_path)
+    urllib.request.urlretrieve(premake_download_url, zip_file_path)
 
     with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
         # Extract premake5.exe to the vendor folder
