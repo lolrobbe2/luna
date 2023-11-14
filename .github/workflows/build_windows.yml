@@ -26,6 +26,7 @@ jobs:
           path: |
             luna/thirdParty
           key: ${{ runner.os }}-submodules
+          
       - name: Update git submodules
         if: steps.cache-submodule.outputs.cache-hit != 'true'
         uses: actions/checkout@v3
@@ -47,7 +48,7 @@ jobs:
         uses: humbletim/setup-vulkan-sdk@v1.2.0
         with:
           vulkan-query-version: 1.3.216.0
-          vulkan-components: Vulkan-Headers, Vulkan-Loader, SPIRV-Cross, SPIRV-Tools, Glslang, SPIRV-Reflect
+          vulkan-components: Vulkan-Headers, Vulkan-Loader
           vulkan-use-cache: true
           
       - name: Generate solution files and install Vulkan
