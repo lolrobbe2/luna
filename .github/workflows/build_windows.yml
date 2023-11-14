@@ -30,9 +30,7 @@ jobs:
         with:
           python-version: 'pypy3.9'
       - name: install python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Replace with the actual path if you have a requirements file
+        run: pip install urllib3
 
         
       - name: generate solution files and install vulkan
