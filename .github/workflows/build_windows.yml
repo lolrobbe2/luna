@@ -23,7 +23,7 @@ jobs:
           lfs: true
   
       - name: Set up MSBuild
-        uses: microsoft/setup-msbuild@v1.0.1
+        uses: microsoft/setup-msbuild@v1.1
       
       - name: Set up Python 
         uses: actions/setup-python@v4 
