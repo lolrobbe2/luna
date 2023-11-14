@@ -31,16 +31,17 @@ def get_installed_vulkan_path():
 
 
 def get_installed_vulkan_version():
-    vulkan_sdk_path = get_installed_vulkan_path()
-    # Assume the latest version is the one with the highest numeric value
-    print(vulkan_sdk_path)
-    if vulkan_sdk_path is None:
-        return None
-    elif "VULKAN_SDK" in vulkan_sdk_path:
-        print(os.environ.get("VULKAN_SDK_VERSION"))
-        
-        return vulkan_install_version
-    return vulkan_sdk_path.split("\\")[-1]
+    vulkan_version = os.environ.get("VULKAN_SDK_VERSION")
+    if vulkan_version is None:
+        vulkan_sdk_path = get_installed_vulkan_path()
+        # Assume the latest version is the one with the highest numeric value
+        print(vulkan_sdk_path)
+        if vulkan_sdk_path is None:
+            return None
+        else:
+            return vulkan_sdk_path.split("\\")[-1]
+    else:
+        return vulkan_version
 
 
 def install_vulkan(force_install=False):

@@ -43,7 +43,7 @@ Library = {}
 
 Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
 
-Library["ShaderC"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
+Library["ShaderC"] = "%{wks.location}/vendor/shaderc_shared.lib"
 Library["SPIRV_Cross"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
 Library["SPIRV_Cross_GLSL"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
 Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
@@ -79,7 +79,6 @@ project "luna"
         "%{IncludeDir.imguizmo}",
         "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.mono}",
-        "%{IncludeDir.ZLIB}",
         "%{IncludeDir.luna}"
         
     }
@@ -116,7 +115,6 @@ project "luna"
             "stb",
             "yaml-cpp",
             "vulkan-1",
-            "zlib",
             "Ws2_32",
             "Mswsock.lib",
             "AdvApi32.lib"
