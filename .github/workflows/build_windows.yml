@@ -18,16 +18,30 @@ jobs:
 
     steps:
       - name: Checkout Repository and Cache Submodules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
+        id: cache-submodules
         with:
           path: |
-            submodules
+            luna/thirdParty
           key: ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}
+          restore-keys: |
+            ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}-${{ github.repository }}
+            ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}
+
       - name: Checkout Repository
+        if: steps.cache-submodules.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           submodules: recursive
           lfs: true
+
+      - name: Cache Repository
+        if: steps.cache-submodules.outputs.cache-hit != 'true'
+        uses: actions/cache@v3
+        with:
+          path: |
+            !luna/thirdParty
+          key: ${{ runner.os }}-repository-${{ hashFiles('.git', '**/*') }}
 
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
