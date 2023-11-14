@@ -2,8 +2,7 @@ name: build_windows
 
 on:
   push:
-    branches:
-      - main
+
 
 env:
   CORE_SOLUTION_FILE_PATH: luna.sln
