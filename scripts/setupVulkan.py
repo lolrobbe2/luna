@@ -32,17 +32,13 @@ def get_installed_vulkan_path():
 
 def get_installed_vulkan_version():
     vulkan_sdk_path = get_installed_vulkan_path()
-    try:
-        # Assume the latest version is the one with the highest numeric value
-        return vulkan_sdk_path.split("\\")[-1]
-    except (OSError, ValueError):
-        pass
-    return None
+    # Assume the latest version is the one with the highest numeric value
+    if vulkan_sdk_path is None: return None
+    return vulkan_sdk_path.split("\\")[-1]
 
 
 def install_vulkan(force_install=False):
     # Replace 'YOUR_VULKAN_SDK_DOWNLOAD_URL' with the actual download link of the Vulkan SDK
-    download_url = "YOUR_VULKAN_SDK_DOWNLOAD_URL"
     if not force_install:
         permission_granted = False
         while not permission_granted:
@@ -64,7 +60,7 @@ def install_vulkan(force_install=False):
         print(" > force installing vulkan!")
     # Download the Vulkan SDK installer
     installer_path = "vulkan_sdk_installer.exe"
-    urllib3.request.urlretrieve(download_url, installer_path)
+    urllib3.request.urlretrieve(vulkanSDKDownloadUrl, installer_path)
 
     # Run the installer in a separate thread
     install_thread = threading.Thread(
