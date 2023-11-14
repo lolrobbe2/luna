@@ -310,7 +310,7 @@ group""
 
 
 
-workspace "luna scripting"
+workspace "lunaScripting"
     architecture "x64"
     
     configurations
