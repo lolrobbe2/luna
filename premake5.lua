@@ -334,7 +334,7 @@ project "sharpSandbox"
     }
     postbuildcommands
     {
-        ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
+        ("{copy}  %{cfg.buildtarget.relpath} %{wks.location}/apollo/mono/lib")
     }
 
         filter "configurations:debug"
