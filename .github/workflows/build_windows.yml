@@ -9,33 +9,53 @@ env:
   SCRIPTING_SOLUTION_FILE_PATH: lunaScripting.sln
 
 jobs:
-  build:
+  setup:
     runs-on: windows-latest
-
-    strategy:
-      matrix:
-        build-configuration: [debug, release, distribution]
-
     steps:
-      - name: Checkout luna repo
-        uses: actions/checkout@v3
       - name: Cache Submodules
-        id: cache-submodule
         uses: actions/cache@v3
         with:
           path: |
             luna/thirdParty
-          key: ${{ runner.os }}-submodules
+          key: ${{ runner.os }}-submodules-${{ github.sha }}
           
-      - name: Update git submodules
-        if: steps.cache-submodule.outputs.cache-hit != 'true'
+      - name: Checkout luna repo
         uses: actions/checkout@v3
         with:
           submodules: recursive
           
-      - name: Fetch Latest Changes
-        run: git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
-        
+      - name: Prepare Vulkan SDK
+        uses: humbletim/setup-vulkan-sdk@v1.2.0
+        with:
+          vulkan-query-version: 1.3.216.0
+          vulkan-components: Vulkan-Headers, Vulkan-Loader, SPIRV-Cross
+          vulkan-use-cache: true
+     
+  build:
+   needs: setup
+   runs-on: windows-latest
+   strategy:
+      matrix:
+        build-configuration: [debug, release, distribution]
+   steps:
+      - name: Cache Submodules
+        uses: actions/cache@v3
+        with:
+          path: |
+            luna/thirdParty
+          key: ${{ runner.os }}-submodules-${{ github.sha }}
+      - name: Cache bin-int
+        uses: actions/cache@v3
+        with:
+          path: |
+            luna/thirdParty
+            bin-int
+          key: ${{ runner.os }}-bin-int-${{ github.sha }}
+          
+      - name: Checkout luna repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
@@ -53,7 +73,6 @@ jobs:
           
       - name: Generate solution files and install Vulkan
         run: .\build.bat
-
       - name: Build Core Engine
         working-directory: ${{ env.GITHUB_WORKSPACE }}
         run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ env.CORE_SOLUTION_FILE_PATH }}
