@@ -32,7 +32,6 @@ IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
 IncludeDir["imguizmo"] = "%{wks.location}/luna/thirdParty/imguizmo"
 IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
 IncludeDir["mono"] =  "%{wks.location}/luna/thirdParty/mono/include"
-IncludeDir["ZLIB"] =  "%{wks.location}/luna/thirdParty/zlib"
 
 IncludeDir["luna"] = "%{wks.location}/luna/src"
 
@@ -46,7 +45,7 @@ Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
 Library["ShaderC"] = "%{wks.location}/vendor/shaderc_shared.lib"
 Library["SPIRV_Cross"] = "%{wks.location}/vendor/spirv-cross-core.lib"
 Library["SPIRV_Cross_GLSL"] = "%{wks.location}/vendor/spirv-cross-glsl.lib"
-Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
+Library["SPIRV_Tools"] = "%{wks.location}/vendor/SPIRV-Tools.lib"
 
 
 
