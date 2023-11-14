@@ -1,2 +1,3 @@
-vendor\premake5 vs2022
+@echo off
+python build.py
 pause

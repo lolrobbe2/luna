@@ -5,6 +5,7 @@ import platform
 import urllib.request
 import threading
 import time
+import zipfile
 
 # Define the version number separately
 vulkan_major_version = "1.3."
@@ -88,7 +89,7 @@ def install_vulkan(force_install=False):
     while install_thread.is_alive():
         print("\033[A                             \033[A")
         print("installing vulkan:")
-        for i in dots_printed:
+        for i in range(dots_printed):
             print(".", end="", flush=True)
         dots_printed += 1
         time.sleep(1)
@@ -105,6 +106,10 @@ def install_vulkan(force_install=False):
 
 
 def install_vulkan_thread(installer_path):
+    subprocess.run([installer_path, "/S"], check=True)
+
+
+def install_premake_thread(installer_path):
     subprocess.run([installer_path, "/S"], check=True)
 
 
@@ -125,50 +130,82 @@ def vulkan(force_install):
 def run_premake_vs2022():
     subprocess.run(["vendor\\premake5", "vs2019"], check=True)
 
+
+def download_and_extract_premake():
+    zip_file_path = "premake.zip"
+    urllib.request.urlretrieve(premake_download_url, zip_file_path)
+
+    with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
+        # Extract premake5.exe to the vendor folder
+        zip_ref.extract("premake5.exe", "vendor")
+
+    # Cleanup: Delete the downloaded ZIP file
+    os.remove(zip_file_path)
+
+
 def install_premake(force_install=False):
-    #ask for permission to install premake
+    # ask for permission to install premake
     if not force_install:
         permissionGranted = False
         while not permissionGranted:
             reply = (
-                str(
-                    input(
-                        "Would you like to install premake {0:s}? [Y/N]: ".format(
-                            vulkan_install_version
-                        )
-                    )
-                )
+                str(input("Would you like to install premake {0:s}? [Y/N]: "))
                 .lower()
                 .strip()[:1]
             )
             if reply == "n":
                 return
             permissionGranted = reply == "y"
+    else:
+        print("force installing premake")
+        
+    #start downloading and extracting
+    download_thread = threading.Thread(target=download_and_extract_premake)
+    download_thread.start()
 
-def premake():
+    dots_printed = 0
+    while download_thread.is_alive():
+        print("\033[A                             \033[A")
+        print("installing premake:")
+        for i in range(dots_printed):
+            print(".", end="", flush=True)
+        dots_printed += 1
+        time.sleep(1)
+        if dots_printed == 3:
+            dots_printed = 0
+    
+    print("installed premake succesfully")
+
+
+def premake(force_install):
     print("\n/*------------------------------------------*/")
     print("/*                   premake                */")
     print("/*------------------------------------------*/\n")
     if not is_premake_installed():
         print("premake not installed")
+        install_premake(force_install)
     else:
         run_premake_vs2022()
         print("Premake5 executed successfully.")
 
 
 def main():
-    #parse options
+    # parse options
     parser = argparse.ArgumentParser(description="Install Vulkan SDK and Premake.")
     parser.add_argument(
-        "--force-vulkan", action="store_true", help="Install Vulkan SDK without asking for permission."
+        "--force-vulkan",
+        action="store_true",
+        help="Install Vulkan SDK without asking for permission.",
     )
     parser.add_argument(
-        "--force-premake", action="store_true", help="Install Vulkan SDK without asking for permission."
+        "--force-premake",
+        action="store_true",
+        help="Install premake without asking for permission.",
     )
     args = parser.parse_args()
 
     vulkan(args.force_vulkan)
-    premake()
+    premake(args.force_premake)
 
 
 if __name__ == "__main__":
