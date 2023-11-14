@@ -16,6 +16,8 @@ namespace Luna
             data = new Dictionary<string, object>();
         }
 
+        public Json(string jsonString) { data = Parse(jsonString).data; }
+
         public void Add(string key, string value)
         {
             data[key] = value;
@@ -70,11 +72,28 @@ namespace Luna
         public static Json Parse(string json)
         {
             Json result = new Json();
-
             if (json.StartsWith("{") && json.EndsWith("}"))
             {
                 json = json.Substring(1, json.Length - 2);
-                string[] pairs = json.Split(',');
+
+                string[] pairs = json.Split((",").ToCharArray());
+                {
+                    List<string> newPairs = new List<string>();
+
+                    //reasamble pairs because value can contain a comma (,)
+                    foreach (var pair in pairs)
+                    {
+                        if (pair.Contains(":"))
+                        {
+                            newPairs.Add(pair);
+                        }
+                        else
+                        {
+                            newPairs[newPairs.Count - 1] += "," + pair;
+                        }
+                    }
+                    pairs = newPairs.ToArray();
+                }
 
                 foreach (var pair in pairs)
                 {
@@ -98,7 +117,7 @@ namespace Luna
                         }
                         else
                         {
-                            Log.Error("Error: Invalid JSON format for value of key {0}",key);
+                            result.Add(key, value);
                         }
                     }
                     else

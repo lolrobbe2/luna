@@ -69,10 +69,12 @@ namespace Luna
             return ret;
         }
 
-        public IpAddress() {
+        public IpAddress() 
+        {
             ipField.field8 = new byte[16];
          
-            Clear(); }
+            Clear(); 
+        }
         public IpAddress(UInt32 p_a, UInt32 p_b, UInt32 p_c, UInt32 p_d, bool is_v6 = false)
         {
             ipField.field8 = new byte[16];

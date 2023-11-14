@@ -9,9 +9,9 @@ namespace luna
 		{
 			HTTPClient::status httpstatus;
 			std::vector<uint8_t> data;
+			std::string message;
 			uint16_t responseCode; //TODO enum;
 			utils::json headers;
-			std::vector<uint8_t> body;
 			bool readingHeaders = true;
 			uint64_t bodyStartIndex;
 		};
@@ -45,6 +45,20 @@ namespace luna
 		{
 			return OBJ_GET(HTTPClient).getStatus();
 		}
+
+		static MonoArray* HTTPClientGetBody(entt::entity objectId)
+		{
+			std::vector<uint8_t> body = OBJ_GET(HTTPClient).getBody();
+			MonoArray* monoBody = mono_array_new(mono_get_root_domain(), mono_get_byte_class(), body.size());
+			char* nativeArray = mono_array_addr_with_size(monoBody, body.size(), 0);
+			memcpy_s(nativeArray, mono_array_length(monoBody), body.data(), body.size());
+			return monoBody;
+		}
+
+		static MonoString* HTTPClientGetHeaders(entt::entity objectId)
+		{
+			return mono_string_new(mono_get_root_domain(), OBJ_GET(HTTPClient).getHeaders().jsonData.dump().c_str());
+		}
 #pragma endregion
 
 #pragma region native implmentation
@@ -69,6 +83,9 @@ namespace luna
 			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientRequest);
 			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientHasResponse);
 			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientPoll);
+			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientGetStatus);
+			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientGetBody);
+			LN_ADD_INTERNAL_CALL(HTTPClient, HTTPClientGetHeaders);
 		}
 
 		void HTTPClient::init(luna::scene* scene)
@@ -122,18 +139,25 @@ namespace luna
 					std::string responseData = std::string(responseComponent.data.begin(), responseComponent.data.end());
 					
 					size_t pos = responseData.find(delimeter);
-					if (pos != std::string::npos) {
+
+					if (pos != std::string::npos) 
+					{
 						headers = responseData.substr(0, pos);
 						responseComponent.bodyStartIndex = pos + 4;
+
 						parseHeaders(headers);
+
 						responseComponent.readingHeaders = false;
 						return SUCCESS;
 					}
 				}
-				if (!responseComponent.readingHeaders) {
-					bool contentLoaded = responseComponent.data.size() == responseComponent.bodyStartIndex + atoi(responseComponent.headers.jsonData["Content-Length"].get<std::string>().c_str());
+
+				if (!responseComponent.readingHeaders)
+				{
+					
+					bool contentLoaded = responseComponent.data.size() == responseComponent.bodyStartIndex + atoi(responseComponent.headers.jsonData["content-length"].get<std::string>().c_str());
 					if (received == 0  && contentLoaded) { // disconnected
-						responseComponent.httpstatus = STATUS_NONE;
+						responseComponent.httpstatus = STATUS_DONE;
 						return SUCCESS;
 					}
 				}
@@ -150,6 +174,22 @@ namespace luna
 		{
 			return getComponent<HTTPResponseComponent>().httpstatus;
 
+		}
+		HTTPClient::responseCode HTTPClient::getResponseCode()
+		{
+			return OK;
+		}
+		std::vector<uint8_t> HTTPClient::getBody()
+		{
+			LN_ERR_FAIL_COND_V_MSG(getStatus() != status::STATUS_DONE,std::vector<uint8_t>(),"body has not been fully received");
+			HTTPResponseComponent& component = getComponent<HTTPResponseComponent>();
+			return std::vector<uint8_t>(component.data.begin() + component.bodyStartIndex,component.data.end());
+		}
+		utils::json HTTPClient::getHeaders()
+		{
+			HTTPResponseComponent& component = getComponent<HTTPResponseComponent>();
+			LN_ERR_FAIL_COND_V_MSG(component.readingHeaders, utils::json(), "headers have not been parsed yet");
+			return component.headers;
 		}
 		std::string HTTPClient::generateRequest(const method requestMethod, const std::string& destination, utils::json headers, std::string body)
 		{
@@ -266,7 +306,9 @@ namespace luna
 			size_t found = str.find("\r\n");
 
 			while (found != std::string::npos) {
-				headers.push_back(str.substr(start, found - start));
+				std::string header = str.substr(start, found - start);
+				transform(header.begin(), header.end(), header.begin(), ::tolower);
+				headers.push_back(header);
 				start = found + 2; // Move past the "\r\n"
 				found = str.find("\r\n", start);
 			}
@@ -275,7 +317,7 @@ namespace luna
 				headers.push_back(str.substr(start)); // Add the remainder of the string
 			}
 			nlohmann::json& jsonHeaders = getComponent<HTTPResponseComponent>().headers.jsonData;
-			std::string reponseCode = headers[0];
+			parseResponse(headers[0]);
 			headers.erase(headers.begin());
 			for (std::string header : headers)
 			{
@@ -284,18 +326,36 @@ namespace luna
 				size_t start = 0;
 				size_t found = header.find(delimiter);
 
-				while (found != std::string::npos) {
+				while (found != std::string::npos)
+				{
 					result.push_back(header.substr(start, found - start));
 					start = found + delimiter.length();
 					found = header.find(delimiter, start);
 				}
 
-				if (start < header.length()) {
-					result.push_back(header.substr(start + 1));
-				}
+				if (start < header.length()) result.push_back(header.substr(start + 1));
 				jsonHeaders[result[0]] = result[1];
 			}
-			LN_CORE_INFO("parsedHeaders = \n {0}", jsonHeaders.dump(4));
+		}
+		void HTTPClient::parseResponse(std::string responseString)
+		{
+			HTTPResponseComponent& component = getComponent<HTTPResponseComponent>();
+			std::vector<std::string> result;
+			const static std::string delimiter = " ";
+			size_t start = 0;
+			size_t found = responseString.find(delimiter);
+
+			while (found != std::string::npos)
+			{
+				result.push_back(responseString.substr(start, found - start));
+				start = found + delimiter.length();
+				found = responseString.find(delimiter, start);
+			}
+
+			if (start < responseString.length()) result.push_back(responseString.substr(start + 1));
+
+			component.responseCode = atoi(result[1].c_str());
+			//component.message = result[3];
 		}
 	}
 #pragma endregion

@@ -10,10 +10,12 @@ namespace Luna
         STATUS_CONNECTING,
         STATUS_CONNECTED,
         STATUS_ERROR,
-    };  
+    };
     /// <summary>
     /// TCP client stream.
     /// <para>this module allows you to connect to TCPservers or is returned by a TCPserver as a connection</para>
+    /// <see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html">Help:</see>
+    /// <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#methods-overview">Method Overview: </see></para>
     /// </summary>
     public class StreamPeerTCP : LunaObject
     {
@@ -24,24 +26,27 @@ namespace Luna
         /// <summary>
         /// Opens the TCP socket, and binds it to the specified local address.
         /// This method is generally not needed, and only used to force the subsequent call to connect_to_host to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
-        /// 
+        /// <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-bindint-port-ipaddress--host">Help:</see></para>
         /// </summary>
+        /// 
         /// <param name="Port">valid port between 0-65536 inclusive</param>
         /// <param name="Host">Valid ipv4/6 address or hostname (example.com) default = "*" </param>
         /// <returns><see cref="SocketError.SUCCESS"/> on success.</returns>
+
         public SocketError Bind(int Port, IpAddress Host) { return StreamPeerTCPBind(ObjectId, Port, Host.getIpRaw()); }
         /// <summary>
         /// Opens the TCP socket, and binds it to the specified local address.
-        /// This method is generally not needed, and only used to force the subsequent call to connect_to_host to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
-        /// 
+        /// This method is generally not needed, and only used to force the subsequent call to ConnectToHost to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+        /// <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-bindint-port-ipaddress--host">Help:</see></para>
         /// </summary>
         /// <param name="Port">valid port between 0-65536 inclusive</param>
         /// <returns><see cref="SocketError.SUCCESS"/> on success.</returns>
         public SocketError Bind(int Port) { return StreamPeerTCPBind(ObjectId, Port, new IpAddress("*").getIpRaw()); }
         /// <summary>
-        /// Connects to the specified host:port pair. A hostname will be resolved if valid.
+        /// Connects to the specified host:port pair.
+        /// <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-connecttohostipaddress--hostint-port">Help:</see></para>
         /// </summary>
-        /// <param name="Host">Valid ipv4/6 address or hostname (example.com)</param>
+        /// <param name="Host">Valid ipv4/6 address</param>
         /// <param name="Port">valid port between 0-65536 inclusive</param>
         /// <returns><see cref="SocketError.SUCCESS"/> on success.</returns>
         public SocketError ConnectToHost(IpAddress Host,int Port) { return StreamPeerTCPConnectToHost(ObjectId, Host.getIpRaw(), Port); }

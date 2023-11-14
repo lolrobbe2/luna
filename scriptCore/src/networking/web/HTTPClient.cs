@@ -27,7 +27,8 @@ namespace Luna
             STATUS_CONNECTED,
             STATUS_ERROR,
             STATUS_REQUESTING,
-            STATUS_RECEIVING
+            STATUS_RECEIVING,
+            STATUS_DONE
         };
 
         public HTTPClient() : base(HTTPClientCreate()) { }
@@ -66,6 +67,17 @@ namespace Luna
         /// </summary>
         /// <returns><see cref="Status"/></returns>
         public Status GetStatus() { return HTTPClientGetStatus(ObjectId); }
+        /// <summary>
+        /// returns the respnse body as a byte array.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] GetBody() { return HTTPClientGetBody(ObjectId);}
+        /// <summary>
+        /// returns the response headers as a <see cref="Json"/> object.
+        /// </summary>
+        /// <returns><see cref="Json"/> headers</returns>
+        public Json GetHeaders() { return new Json(HTTPClientGetHeaders(ObjectId)); }
+
         #region glue
 
         /// <summary>
@@ -84,6 +96,10 @@ namespace Luna
         static extern SocketError HTTPClientPoll(ulong ObjectId);
         [MethodImpl(MethodImplOptions.InternalCall)]
         static extern Status HTTPClientGetStatus(ulong ObjectId);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        static extern byte[] HTTPClientGetBody(ulong ObjectId);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        static extern string HTTPClientGetHeaders(ulong ObjectId);
         #endregion
     }
 }
