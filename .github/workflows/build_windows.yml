@@ -6,7 +6,7 @@ on:
 
 env:
   CORE_SOLUTION_FILE_PATH: luna.sln
-  SCRIPTING_SOLUTION_FILE_PATH: "luna scripting.sln"
+  SCRIPTING_SOLUTION_FILE_PATH: lunaScripting.sln
 
 jobs:
   build:
