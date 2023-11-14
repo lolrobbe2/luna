@@ -29,7 +29,10 @@ jobs:
         uses: actions/setup-python@v4 
         with:
           python-version: 'pypy3.9'
-  
+      - name: install python dependencies
+        run: pip install urllib3
+
+        
       - name: generate solution files and install vulkan
         run: .\build.bat
   
