@@ -16,12 +16,24 @@ jobs:
         build-configuration: [debug,release,distribution]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/cache@v2
         with:
           repository: 'lolrobbe2/luna'
           submodules: true
           lfs: true
-  
+          path: |
+            submodules
+        key: ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}
+      
+         
+
+      
+
+
+      
+    - name: Initialize and Update Submodules
+      run: |
+        git submodule update --init --recursive  
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
       
