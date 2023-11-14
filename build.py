@@ -45,11 +45,11 @@ def main():
     os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
     os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
 
-
     outputdir = "distribution-windows-x86_64"
     os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
     os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
 
+    os.makedirs("apollo/mono/lib", exist_ok= True)
 
 
 if __name__ == "__main__":
