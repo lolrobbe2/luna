@@ -177,6 +177,8 @@ project "luna"
             {
                 "-mwindows"
             }
+        filter { "action:vs*" } -- Visual Studio-specific configuration
+            buildoptions { "/w" } -- Suppress all warnings
 group""
 project "sandbox"
     location "sandbox"
