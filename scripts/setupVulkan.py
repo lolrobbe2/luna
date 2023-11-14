@@ -99,6 +99,7 @@ def vulkan(force_install):
     print("\n/*-----------------------------------------*/")
     print("/*                   vulkan                */")
     print("/*-----------------------------------------*/\n")
+    print(force_install)
     if not is_vulkan_installed():
         print("Vulkan SDK not found. Installing...")
         install_vulkan(force_install)

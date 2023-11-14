@@ -24,7 +24,15 @@ def main():
         action="store_true",
         help="Install premake without asking for permission.",
     )
+
+    parser.add_argument(
+        "--force-python",
+        action="store_true",
+        help="Install pyhton packages without asking for permission.",
+    )
     args = parser.parse_args()
+
+    PythonRequirements.Validate(args.force_python)
 
     vulkan(args.force_vulkan)
     premake(args.force_premake)
