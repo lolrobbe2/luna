@@ -49,3 +49,5 @@ luna/tirdParty/obj/
 /luna/thirdParty/spdlog
 /scripts/__pycache__
 lunaScripting.sln
+premake5.lua
+scriptCore/scriptCore.csproj
