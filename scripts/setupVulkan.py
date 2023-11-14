@@ -17,7 +17,7 @@ vulkanSDKDownloadUrl = f"https://sdk.lunarg.com/sdk/download/{vulkan_install_ver
 def is_vulkan_installed():
     if get_installed_vulkan_version() is None:
         return False
-    elif vulkan_major_version in get_installed_vulkan_version() or get_installed_vulkan_version() == "VULKAN_SDK":
+    elif vulkan_major_version in get_installed_vulkan_version():
         return True
     else:
         print(
@@ -33,8 +33,11 @@ def get_installed_vulkan_path():
 def get_installed_vulkan_version():
     vulkan_sdk_path = get_installed_vulkan_path()
     # Assume the latest version is the one with the highest numeric value
+    print(vulkan_sdk_path)
     if vulkan_sdk_path is None:
         return None
+    elif "VULKAN_SDK" in vulkan_sdk_path:
+        return vulkan_install_version
     return vulkan_sdk_path.split("\\")[-1]
 
 
