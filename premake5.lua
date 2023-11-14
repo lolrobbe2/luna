@@ -56,7 +56,7 @@ project "luna"
     location "luna"
     kind "SharedLib"
     language "c++"
-    
+    toolset "v142"
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     files
@@ -116,7 +116,10 @@ project "luna"
             "stb",
             "yaml-cpp",
             "vulkan-1",
-            "zlib"
+            "zlib",
+            "Ws2_32",
+            "Mswsock.lib",
+            "AdvApi32.lib"
         }
         filter "configurations:debug"
             LibraryDir["mono"] = "%{wks.location}/luna/thirdParty/mono/lib/debug/"
@@ -181,6 +184,7 @@ project "sandbox"
     location "sandbox"
     kind "ConsoleApp"
     language "c++"
+    toolset "v142"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
@@ -243,6 +247,7 @@ project "apollo"
     location "apollo"
     kind "ConsoleApp"
     language "c++"
+    toolset "v142"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")

@@ -56,10 +56,10 @@ namespace luna
 
 			if (!loadAssembly("mono/lib/scriptCore.dll")) return LN_CORE_ERROR("[scriptingEngine] could not load scriptCore.dll");
 			if (!loadAppAssembly(fmt::format("mono/lib/{}.dll", project::projectManager::getName()))) return LN_CORE_ERROR("[scriptingEngine] could not load app assembly dll");
-			
+#ifdef LN_SCRIPTING_VERBOSE
 			printAssamblyTypes(s_Data->coreAssembly);
 			printAssamblyTypes(s_Data->appAssembly);
-
+#endif
 			loadCoreClasses();
 			loadAppClasses();
 			LN_CORE_INFO("started scriptingEngine");
@@ -246,10 +246,11 @@ namespace luna
 					monoClass = mono_class_from_name(s_Data->coreImage, nameSpace, fullName.c_str());
 				}
 				
-					std::string camelCaseClassName = pascalToCamel(className);
-					if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
-					else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
-					getAvailableSignals(monoClass);
+				std::string camelCaseClassName = pascalToCamel(className);
+				if ((std::string)className == "Node") rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
+				else if (objectDB::isClassRegistered(camelCaseClassName)) rootClasses.emplace(camelCaseClassName, rootClass(monoClass));
+				else standAloneClasses.emplace(camelCaseClassName, monoClass);
+				getAvailableSignals(monoClass);
 				
 			}
 			//mono_field_get_value()
@@ -346,7 +347,7 @@ namespace luna
 
 			while ((method = mono_class_get_methods(monoClass, &iter)) != nullptr)
 			{
-				LN_CORE_INFO("method: {0}", mono_method_get_name(method));
+				//LN_CORE_INFO("method: {0}", mono_method_get_name(method));
 				MonoCustomAttrInfo* info = mono_custom_attrs_from_method(method);
 				if (info && mono_custom_attrs_has_attr(info, mono_class_from_name(s_Data->coreImage, "Luna", "Signal")))
 				{
@@ -354,7 +355,6 @@ namespace luna
 					uint8_t paramAmount = mono_signature_get_param_count(signature);
 					signalDB::registerSignal(signal({ mono_method_get_name(method),paramAmount ,method }), std::string(mono_class_get_name(monoClass)));
 				}
-				//mono_method_get_flags();
 			}
 		}
 
@@ -382,7 +382,7 @@ namespace luna
 
 		scriptClass::scriptClass(MonoClass* _childClass, MonoClass* _baseClass) : childClass(_childClass),baseClass(_baseClass)
 		{
-			LN_CORE_INFO("creating scriptCLass: {0}", mono_class_get_name(childClass));
+			//LN_CORE_INFO("creating scriptCLass: {0}", mono_class_get_name(childClass));
 			constructor = mono_class_get_method_from_name(baseClass, ".ctor", 1);
 			readyMethod = mono_class_get_method_from_name(childClass, "Ready", 0);
 			processMethod = mono_class_get_method_from_name(childClass, "Process", 1);
@@ -404,22 +404,7 @@ namespace luna
 		}
 		void scriptClass::invokeSignal(std::string& signalName,void* obj, void** params)
 		{
-			/*
-			auto findSignalByName = [&](const signal& s) {
-				return s.signalName == signalName;
-			};
 
-			// Find the signal by its name
-			auto signalIterator = std::find_if(implementedSignals.begin(), implementedSignals.end(), findSignalByName);
-
-			// Check if the signal was found
-			if (signalIterator != implementedSignals.end()) {
-				// Signal found!
-				signal& foundSignal = *signalIterator;
-				mono_runtime_invoke(foundSignal.signalMethod, obj, params, nullptr);
-				return;
-			}
-			LN_CORE_ERROR("[scripting] could not find signal");*/
 		}
 
 		void scriptClass::getImplementedSignals()

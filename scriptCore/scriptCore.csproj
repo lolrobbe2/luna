@@ -65,18 +65,24 @@
     <Reference Include="mono-2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
-    <Compile Include="src\controlNodes\label\LineEditNode.cs" />
-    <Compile Include="src\controlNodes\range\range.cs" />
-    <Compile Include="src\controlNodes\range\ScrollBar.cs" />
+    <Compile Include="src\networking\Ip.cs" />
+    <Compile Include="src\networking\IpAddress.cs" />
+    <Compile Include="src\networking\NetSocket.cs" />
+    <Compile Include="src\networking\StreamPeerTCP.cs" />
+    <Compile Include="src\networking\web\HTTPClient.cs" />
     <Compile Include="src\Node.cs" />
+    <Compile Include="src\controlNodes\buttons\ButtonNode.cs" />
     <Compile Include="src\controlNodes\controlNode.cs" />
+    <Compile Include="src\controlNodes\label\LineEditNode.cs" />
+    <Compile Include="src\controlNodes\range\ScrollBar.cs" />
+    <Compile Include="src\controlNodes\range\range.cs" />
     <Compile Include="src\debug\Log.cs" />
     <Compile Include="src\math\Vector2.cs" />
     <Compile Include="src\math\Vector3.cs" />
     <Compile Include="src\object\Object.cs" />
     <Compile Include="src\os\Os.cs" />
     <Compile Include="src\signals\Signal.cs" />
+    <Compile Include="src\utils\Json.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

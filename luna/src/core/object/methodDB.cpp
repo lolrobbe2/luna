@@ -12,6 +12,11 @@ class __UnexistingClass;
 #include <core/object/signal.h>
 #include <core/scene/node.h>
 #include <core/debug/debugMacros.h>
+//networking
+#include <core/networking/ipAddress.h>
+#include <core/networking/streamPeerTCP.h>
+#include <core/networking/web/HTTPClient.h>
+
 namespace luna
 {
 	#ifdef TYPED_METHOD_BIND
@@ -63,6 +68,11 @@ namespace luna
 		Log::RegisterMethods();
 		Os::RegisterMethods();
 		Signal::RegisterMethods();
+		networking::Ip::RegisterMethods();
+		networking::ipAddress::registerMethods();
+		networking::netSocket().bindMethods();
+		networking::streamPeerTCP().bindMethods();
+		networking::HTTPClient().bindMethods();
 	}
 
 

@@ -62,10 +62,10 @@ namespace luna
 
 	void scene::onUpdateEditor(utils::timestep ts)
 	{
-		scene* _scene = this;
+		scene* scene = this;
 		m_Registry.each([&](auto entityID)
 			{
-				Node Node{ entityID ,  _scene};
+				Node Node{ entityID ,  scene};
 				if (!m_Registry.all_of<parentComponent>(entityID)) draw(Node);
 			});
 	}

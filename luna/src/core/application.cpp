@@ -7,6 +7,7 @@
 #include <core/object/methodDB.h>
 #include <core/assets/assetManager.h>
 #include <core/platform/platformUtils.h>
+#include <core/networking/socket.h>
 namespace luna
 {
 	namespace application
@@ -31,6 +32,7 @@ namespace luna
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
 			methodDB::init();
+			networking::Ip::init();
 			platform::os::setCursorShape(platform::ARROW);
 			LN_PROFILE_END_SESSION();
 			
@@ -40,6 +42,8 @@ namespace luna
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
 			layerStack.~layerStack();
 			platform::os::setCursorShape(platform::ARROW);
+			networking::Ip::shutdown();
+			networking::netSocket::terminate();
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
 			mWindow->~window();

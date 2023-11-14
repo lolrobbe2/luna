@@ -1,0 +1,702 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>scriptCore</name>
+    </assembly>
+    <members>
+        <member name="T:Luna.Ip.ResolverStatus">
+            <summary>
+            Status enum of the hostanem resolver.
+            </summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_NONE">
+            <summary>DNS hostname resolver status: No status.</summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_WAITING">
+            <summary>DNS hostname resolver status: Waiting.</summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_DONE">
+            <summary>DNS hostname resolver status: Done.</summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_ERROR">
+            <summary>DNS hostname resolver status: Error.</summary>
+        </member>
+        <member name="M:Luna.Ip.ResolveHostname(System.String,Luna.Ip.Type)">
+            <summary>
+            Returns a given hostname's IPv4 or IPv6 address as a string when resolved (blocking-type method). The address type returned depends on the Type constant given as IpType.
+            </summary>
+            <param name="Hostname">hostname to resolve</param>
+            <param name="IpType"> type enum for Ip type</param>
+            <returns>an ipAddress in string notation</returns>
+        </member>
+        <member name="M:Luna.Ip.ResolveHostnameAddress(System.String,Luna.Ip.Type)">
+            <summary>
+            Returns a given hostname's IPv4 or IPv6 address as a string when resolved (blocking-type method). The address type returned depends on the Type constant given as IpType.
+            <para>
+            same as <see cref="M:Luna.Ip.ResolveHostname(System.String,Luna.Ip.Type)"/>, but string has been converted to IpAddress object.
+            </para>
+            </summary>
+            <param name="Hostname">hostname to resolve</param>
+            <param name="IpType"> type enum for Ip type</param>
+            <returns>an ipAddress</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Luna.Ip.ResolveHostnameAddresses(System.String,Luna.Ip.Type)" -->
+        <member name="T:Luna.SocketError">
+            <summary>
+            Enumaration of socketErrors
+            </summary>
+        </member>
+        <member name="T:Luna.Protocol">
+            <summary>
+            Enumeration of socket protocols
+            </summary>
+        </member>
+        <member name="F:Luna.Protocol.TCP">
+            <summary>Transmission Control Protocol</summary> 
+        </member>
+        <member name="F:Luna.Protocol.UDP">
+            <summary>Universal Datagram Protocol</summary>
+        </member>
+        <member name="T:Luna.NetSocket">
+            <summary>
+            This is bare bones Network socket that is multiplatform.
+            USE with CARE try to use the higher level networking options first. exmaple HTTPclient
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.#ctor">
+            <summary>
+            NetSocket constructor.
+            creates a uninitialized socket
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.#ctor(System.UInt64)">
+            <summary>
+            NetSocket constructor.
+            creates a potentiolay initialized socket
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.Finalize">
+            <summary>
+            closes the socket.
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.Bind(System.Int32,System.String)">
+            <summary>
+            <para>Opens the socket, and binds it to the specified local address.</para>
+            <para>This method is generally not needed, and only used to force the subsequent call to <see cref="!:ConnectToHost"/> to use the specified <see cref="!:Host"/> and <see cref="!:Port"/> as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+            </para>
+            </summary>
+            <param name="port">the port to bind the socket to</param>
+            <param name="host">the hsot name. for example google.com</param>
+            <param name="protocol"> <see cref="T:Luna.Protocol"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.NetSocket.ConnetToHost(System.Int32,System.String)">
+            <summary>
+            Connects to the specified host:port pair. A hostname will be resolved if valid. Returns <see cref="F:Luna.SocketError.SUCCESS"/>.OK on success.
+            </summary>
+            <param name="Port"></param>
+            <param name="Host"></param>
+            <param name="Protocol"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.NetSocket.NetSocketCreate">
+            <summary>
+            function to create a NetSocket module
+            </summary>
+            <returns>entityHandle</returns>
+        </member>
+        <member name="M:Luna.NetSocket.NetSocketDestroy(System.UInt64)">
+            <summary>
+            externall call to destroy the socket
+            </summary>
+            <param name="ObjectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.IpAddress.getIpRaw">
+            <summary>
+            ONLY USE THIS FUNCTION FOR INTERNALL USE.
+            </summary>
+            <returns>the raw ip array</returns>
+        </member>
+        <member name="T:Luna.StreamPeerTCP">
+            <summary>
+            TCP client stream.
+            <para>this module allows you to connect to TCPservers or is returned by a TCPserver as a connection</para>
+            </summary>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.#ctor">
+            <summary>
+            creates a StreamPeerTCP module
+            </summary>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.Bind(System.Int32,Luna.IpAddress)">
+            <summary>
+            Opens the TCP socket, and binds it to the specified local address.
+            This method is generally not needed, and only used to force the subsequent call to connect_to_host to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+            
+            </summary>
+            <param name="Port">valid port between 0-65536 inclusive</param>
+            <param name="Host">Valid ipv4/6 address or hostname (example.com) default = "*" </param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.Bind(System.Int32)">
+            <summary>
+            Opens the TCP socket, and binds it to the specified local address.
+            This method is generally not needed, and only used to force the subsequent call to connect_to_host to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+            
+            </summary>
+            <param name="Port">valid port between 0-65536 inclusive</param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.ConnectToHost(Luna.IpAddress,System.Int32)">
+            <summary>
+            Connects to the specified host:port pair. A hostname will be resolved if valid.
+            </summary>
+            <param name="Host">Valid ipv4/6 address or hostname (example.com)</param>
+            <param name="Port">valid port between 0-65536 inclusive</param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.Poll">
+            <summary>
+            Poll the socket, updating its state. <see cref="M:Luna.StreamPeerTCP.GetStatus"/>.
+            </summary>
+            <returns>SocketError</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetStatus">
+            <summary>
+            Returns the status of the connection, see <see cref="T:Luna.Status"/>.
+            </summary>
+            <returns><see cref="T:Luna.Status"/></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetConnectedHost">
+            <summary>
+            Returns the IP of this peer.
+            </summary>
+            <returns>IpAddress of peer</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetConnectedPort">
+            <summary>
+            Returns the port of this peer.
+            </summary>
+            <returns>Returns the port of this peer.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetLoaclPort">
+            <summary>
+            Returns the local port to which this peer is bound.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.DisconnectFromHost">
+            <summary>
+            Disconnects from host.
+            </summary>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.PutData(System.Byte[])">
+            <summary>
+            Sends a chunk of data through the connection, blocking if necessary until the data is done sending. This function returns an <see cref="T:Luna.SocketError"/> code.
+            </summary>
+            <param name="Data">byte array</param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when data has been send succesfully.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.PutPartialData(System.Byte[],System.Int32@)">
+            <summary>
+            Sends a partial chunk of data through the connection. This function returns an <see cref="T:Luna.SocketError"/> code.
+            </summary>
+            <param name="Data"></param>
+            <param name="BytesSent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetData(System.Byte[])">
+            <summary>
+            Gets data and fills the Buffer Array
+            </summary>
+            <param name="Buffer">byte array to wich the data will be placed into</param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetPartialData(System.Byte[],System.Int32@)">
+            <summary>
+            Gets partial data and fills the Buffer Array.
+            </summary>
+            <param name="Buffer"></param>
+            <param name="Received"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetAvailableBytes">
+            <summary>
+            Returns the number of bytes this StreamPeer has available.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.StreamPeerTCPCreate">
+            <summary>
+            function to create a StreamPeerTCP module
+            </summary>
+            <returns>entityHandle</returns>
+        </member>
+        <member name="T:Luna.Node">
+            <summary>
+            <para>
+            <br>Nodes are Luna's building blocks. They can be assigned as the child of another node,</br> 
+            <br>resulting in a tree arrangement. A given node can contain any number of nodes as children </br> 
+            <br>with the requirement that all siblings (direct children of a node) should have unique id's.</br> 
+            </para>
+            
+            <para>
+            <br>A tree of nodes is called a scene. Scenes can be saved to the disk and then instantiated into other scenes.</br> 
+            <br> This allows for very high flexibility in the architecture and data model of Luna projects.</br> 
+            </para>
+            </summary>
+        </member>
+        <member name="M:Luna.Node.AddSibling(Luna.Node)">
+            <summary>
+            Adds a sibling node to current's node parent, at the same level as that node, right below it.
+            </summary>
+            <remarks>Use add_child instead of this method if you don't need the child node to be added below a specific node in the list of children.</remarks>
+            <param name="node"></param>
+        </member>
+        <member name="M:Luna.Node.AddChild(Luna.Node)">
+            <summary>
+            Adds a child node. Nodes can have any number of children. 
+            Child nodes are automatically deleted when the parent node is deleted, so an entire scene can be removed by deleting its topmost node.
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:Luna.Node.SetName(System.String)">
+            <summary>
+            sets the node name
+            </summary>
+            <param name="name">string name</param>
+        </member>
+        <member name="M:Luna.Node.GetChild(System.Int32)">
+            <summary>
+            <para>Returns a child node by its index (see get_child_count). This method is often used for iterating all children of a node.</para>
+            Negative indices access the children from the last one.
+            </summary>
+            <see cref="!:GetNode()"/>
+            <param name="idx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.Node.GetChildCount">
+            <summary>
+            returns the amount of children the node has.
+            </summary>
+            <returns>int ChildCount</returns>
+        </member>
+        <member name="M:Luna.Node.GetChildren">
+            <summary>
+            returns an array of the nodes children.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.Node.GetParent">
+            <summary>
+            returns the parent Node or Null when the node is a root node.
+            </summary>
+            <returns>Node parent</returns>
+        </member>
+        <member name="M:Luna.Node.ChildEnteredTree(Luna.Node)">
+            <summary>
+            Emitted when a child node enters the scene tree, either because it entered on its own or because this node entered with it.
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:Luna.Node.ChildExitingTree(Luna.Node)">
+            <summary>
+            Emitted when a child node is about to exit the scene tree, either because it is being removed or freed directly, or because this node is exiting the tree.
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:Luna.Node._Ready">
+            <summary>
+            emitted when the node is ready. Comes after ready callback and follows the same rules.
+            </summary>
+        </member>
+        <member name="M:Luna.Node.TreeEntered">
+            <summary>
+            Emitted when the node enters the tree.
+            </summary>
+        </member>
+        <member name="M:Luna.Node.TreeExited">
+            <summary>
+            Emitted after the node exits the tree and is no longer active.
+            </summary>
+        </member>
+        <member name="M:Luna.Node.Ready">
+            <summary>
+            runs on node creation.
+            <example>
+            <code>
+            override public void Ready()
+            {
+                SetName("testing");
+            }
+            </code>
+            </example>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Luna.Node.Process(System.UInt64)" -->
+        <member name="M:Luna.Node.#ctor">
+            <summary>
+            creates a new node at runtime
+            </summary>
+        </member>
+        <member name="P:Luna.Node.Children">
+            <summary>
+            Child nodes of the current node.
+            </summary>
+        </member>
+        <member name="P:Luna.Node.Parent">
+            <summary>
+            parent Node of the current node.
+            </summary>
+        </member>
+        <member name="P:Luna.Node.Name">
+            <summary>
+            node name
+            </summary>
+        </member>
+        <member name="F:Luna.ButtonNode.ActionMode.ACTION_MODE_BUTTON_PRESS">
+            <summary>
+            Require just a press to consider the button clicked.
+            </summary>
+        </member>
+        <member name="F:Luna.ButtonNode.ActionMode.ACTION_MODE_BUTTON_RELEASE">
+            <summary>
+            Require a press and a subsequent release before considering the button clicked.
+            </summary>
+        </member>
+        <member name="M:Luna.ButtonNode.ButtonDown">
+            <summary>
+            Emitted when the button starts being held down.
+            </summary>
+        </member>
+        <member name="M:Luna.ButtonNode.ButtonUp">
+            <summary>
+            Emitted when the button stops being held down.
+            </summary>
+        </member>
+        <member name="M:Luna.ButtonNode.Pressed">
+            <summary>
+            <para>Emitted when the button is toggled or pressed. This is on <see cref="M:Luna.ButtonNode.ButtonDown"></see> if <see cref="T:Luna.ButtonNode.ActionMode"/> is
+            <see cref="F:Luna.ButtonNode.ActionMode.ACTION_MODE_BUTTON_PRESS"/> and on <see cref="M:Luna.ButtonNode.ButtonUp"/> otherwise.</para>
+            <para>If you need to know the button's pressed state (and toggle_mode is active), use <see cref="M:Luna.ButtonNode.Toggled(System.Boolean)"/> instead.</para>
+            </summary>
+        </member>
+        <member name="M:Luna.ButtonNode.Toggled(System.Boolean)">
+            <summary>
+            Emitted when the button was just toggled between pressed and normal states (only if <see cref="P:Luna.ButtonNode.ToggleMode"/> is active). The new state is contained in the ButtonPressed argument.
+            </summary>
+            <param name="ButtonPressed"></param>
+        </member>
+        <member name="P:Luna.ButtonNode.ToggleMode">
+            <summary>
+            <para>If true, the button is in toggle mode. Makes the button flip state between pressed and unpressed each time <br/> its area is clicked.</para>   
+            </summary>
+        </member>
+        <member name="P:Luna.ButtonNode.Mode">
+            <summary>
+            Determines when the button is considered clicked, one of the <see cref="T:Luna.ButtonNode.ActionMode"/> constants.
+            </summary>
+        </member>
+        <member name="M:Luna.ControlNode.FocusEntered">
+            <summary>
+            Emitted when the node gains focus
+            </summary>
+        </member>
+        <member name="M:Luna.ControlNode.FocusExited">
+            <summary>
+            Emitted when the node loses focus
+            </summary>
+        </member>
+        <member name="M:Luna.ControlNode.MouseEntered">
+            <summary>
+            Emitted when the mouse enters the control's Rect area, provided its mouse_filter lets the event reach it.
+            </summary>
+        </member>
+        <member name="M:Luna.ControlNode.MouseExited">
+            <summary>
+            Emitted when the mouse leaves the control's Rect area, provided its mouse_filter lets the event reach it.
+            </summary>
+        </member>
+        <member name="M:Luna.LineEditNode.TextChanged(System.String)">
+            <summary>
+            Emitted when the text changes.
+            </summary>
+            <param name="NewText"></param>
+        </member>
+        <member name="M:Luna.LineEditNode.TextSubmitted(System.String)">
+            <summary>
+            Emitted when the user presses the enter key on the LineEdit.
+            </summary>
+            <param name="NewText"></param>
+        </member>
+        <member name="T:Luna.ScrollBar">
+            <summary>
+            Abstract base class for scrollbars, typically used to navigate through content that extends beyond the visible area of a control. Scrollbars are Range-based controls.
+            </summary>
+        </member>
+        <member name="M:Luna.ScrollBar.Srolling">
+            <summary>
+            Emitted when the scrollbar is being scrolled.
+            </summary>
+        </member>
+        <member name="M:Luna.Range.Changed">
+            <summary>
+            Emitted when MinValue, MaxValue, Page, or Step change.
+            </summary>
+        </member>
+        <member name="M:Luna.Range.ValuecChanged(System.Single)">
+            <summary>
+            Emitted when value changes. When used on a Slider, this is called continuously while dragging (potentially every frame). If you are performing an expensive operation in a function connected to value_changed, consider using a debouncing Timer to call the function less often.
+            </summary>
+            <remarks>
+            Unlike signals such as LineEdit.text_changed, value_changed is also emitted when value is set directly via code.
+            </remarks>
+            <param name="value"></param>
+        </member>
+        <member name="P:Luna.Range.AllowGreater">
+            <summary>
+            If true, value may be greater than MaxValue.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.AllowLesser">
+            <summary>
+            If true, value may be less than MinValue.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.ExpEdit">
+            <summary>
+            If true, and minValue is greater than 0, value will be represented exponentially rather than linearly.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.MaxValue">
+            <summary>
+            Maximum value. Range is clamped if value is greater than MaxValue.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.MinValue">
+            <summary>
+            Minimum value. Range is clamped if value is less than MinVlue.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.Page">
+            <summary>
+            Page size. Used mainly for ScrollBar. ScrollBar's length is its size multiplied by page over the difference between MinValue and MaxValue.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.Ratio">
+            <summary>
+            The value mapped between 0 and 1.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.Step">
+            <summary>
+            If greater than 0, value will always be rounded to a multiple of this property's value. If rounded is also true, value will first be rounded to a multiple of this property's value, then rounded to the nearest integer.
+            </summary>
+        </member>
+        <member name="P:Luna.Range.Value">
+            <summary>
+            Range's current value. Changing this property (even via code) will trigger <see cref="M:Luna.Range.Changed"/> signal. Use SetValueNoSignal if you want to avoid it.
+            </summary>
+        </member>
+        <member name="M:Luna.Log.Trace(System.String,System.Object[])">
+            <summary>
+            app trace log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Trace("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Info(System.String,System.Object[])">
+            <summary>
+            app Info log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Info("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Warn(System.String,System.Object[])">
+            <summary>
+            app Warn log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Warn("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Error(System.String,System.Object[])">
+            <summary>
+            app Error log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Error("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Log.Critical(System.String,System.Object[])">
+            <summary>
+            app Critical log to cli and logfile
+            
+            <example>
+            <code>
+            string name = "John Doe";
+            int age = 26;
+            Log.Critical("Hi, my name is {0}. I am {1} years old", name, age);
+            </code>
+            </example>
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Luna.LunaObject">
+            <summary>
+            base class for all engine types except storage types like vector types.
+            </summary>
+        </member>
+        <member name="M:Luna.LunaObject.EmitSignal(System.String,System.Object[])">
+            <summary>
+            emits the all the signals with the corresponding name and signature connected to this node.
+            </summary>
+            <param name="signalName">the name of the signal to be called (name of the declared delagate function)</param>
+            <param name="args">arguments to be passed to all the called signals</param>
+        </member>
+        <member name="M:Luna.LunaObject.EmitGlobalSignal(System.String,System.Object[])">
+            <summary>
+            calls all the signals with the corresponding name and signature regardless of with node the signal is connected to.
+            
+            this is usefull for when you want a bunch of objects to do something at the sam time.
+            </summary>
+            <param name="signalName">signal name to emit</param>
+            <param name="args">arguments to pass to the signal</param>
+        </member>
+        <member name="F:Luna.LunaObject.Invalid">
+            <summary>
+            this constant variable represents a invalid object,
+            and ivalid object will have a 0 as ObjectId.
+            </summary>
+        </member>
+        <member name="M:Luna.Os.OpenFileDialog(System.String)">
+            <summary>
+            opens a platform specific openFIleDialog.
+            <example>
+            <code>
+            string openFilePath = OpenFileDialog("image\0*.png;*.jpeg;*.jpg\0");
+            </code>
+            </example>
+            </summary>
+            <param name="filter"></param>
+            <returns>string: open file path</returns>
+        </member>
+        <member name="M:Luna.Os.SaveFileDialog(System.String)">
+            <summary>
+            opens a platform specific saveFIleDialog.
+            <example>
+            <code>
+            string saveFilePath = SaveFileDialog("image\0*.png;*.jpeg;*.jpg\0");
+            </code>
+            </example>
+            </summary>
+            <param name="filter"></param>
+            <returns>string: save file path</returns>
+        </member>
+        <member name="M:Luna.Os.GetCurrentWorkingDirectory">
+            <summary>
+            returns the current working directory
+            </summary>
+            <returns>string: absolute path of current working directory </returns>
+        </member>
+        <member name="M:Luna.Os.GetName">
+            <summary>
+            returns the current osName.
+            </summary>
+            <returns>string os name</returns>
+        </member>
+        <member name="M:Luna.Os.GetVersion">
+            <summary>
+            returns the os version.
+            </summary>
+            <returns>MajorVersion.MinorVersion.Patch</returns>
+        </member>
+        <member name="M:Luna.Os.GetLocale">
+            <summary>
+            returns the users locale 
+            
+            </summary>
+            <returns>string of format en-EN</returns>
+        </member>
+        <member name="M:Luna.Os.GetLocaleLanguage">
+            <summary>
+            returns the users current language.
+            </summary>
+            <returns>string of format en</returns>
+        </member>
+        <member name="M:Luna.Os.GetProcessId">
+            <summary>
+            returns the main processId as an integer.
+            </summary>
+            <returns>int processId </returns>
+        </member>
+        <member name="T:Luna.Signal">
+            <summary>
+            this is the signal attribute/ class
+            </summary>
+        </member>
+        <member name="M:Luna.Signal.EmitSignal(System.Object,System.String,System.Object[])">
+            <summary>
+            emits the all the signals with the corresponding name and signature connected to this node.
+            </summary>
+            <param name="emitterObject">the object that emits </param>
+            <param name="signalName"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Signal.EmitSignal(System.UInt64,System.String,System.Object[])">
+            <summary>
+            emits the all the signals with the corresponding name and signature connected to this node.
+            </summary>
+            <param name="emitterObjectId">the objectId of the object that emits </param>
+            <param name="signalName"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Luna.Signal.EmitGlobalSignal(System.String,System.Object[])">
+            <summary>
+            calls all the signals with the corresponding name and signature regardless of with node the signal is connected to.
+            
+            this is usefull for when you want a bunch of objects to do something at the sam time.
+            </summary>
+            <param name="signalName">signal name to emit</param>
+            <param name="args">arguments to pass to the signal</param>
+        </member>
+        <member name="M:CharExtensions.IsXDigit(System.Char)">
+            <summary>
+            Is a character 0-9 a-f A-F ?
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -30,6 +30,31 @@
 #ifndef LN_NOTIFICATION_FUNC
 #define LN_NOTIFICATION_FUNC() getComponent<idComponent>().notificationFunc = [this](const notificationType type) { this->notification(type); }
 #endif
+
+#ifndef OBJ_GET
+//gets an object in the current context given an entt::entity named objectId
+#define OBJ_GET(className) className(objectId,scripting::scriptingEngine::getContext())
+#endif // OBJ_GET
+
+#ifndef OBJ_ROOT
+/*
+* @brief adds the basic object functions when private inheritence has been used!
+*/
+#define OBJ_ROOT(className) \
+template<typename T, typename... Args> \
+T& addComponent(Args&&... args) {return className::addComponent<T>(std::forward<Args&&>()...);} \
+template<typename T, typename... Args> \
+T& addOrReplaceComponent(Args&&... args) \
+{ \
+	return classNamme::addOrReplaceComponent<T>(std::forward<Args&&>()...); \
+} \
+template<typename T>\
+T& getComponent()\
+{\
+	return className::getComponent<T>();\
+}
+#endif // !OBJ_ROOT
+
 namespace luna
 {
 	class LN_API scene;
@@ -97,7 +122,7 @@ namespace luna
 		template<typename T, typename... Args>
 		T& addOrReplaceComponent(Args&&... args)
 		{
-			T& component = scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
+			T& component = this->scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
 			return component;
 		}
 
@@ -115,10 +140,10 @@ namespace luna
 		template<typename T>
 		void removeComponent()
 		{
-			scene->m_Registry.remove<T>(entityHandle);
+			this->scene->m_Registry.remove<T>(entityHandle);
 		}
 		uuid getUUID() { return getComponent<idComponent>().id; }
-
+		operator entt::entity() { return entityHandle; }
 	protected:
 		friend class luna::scene;
 		entt::entity entityHandle{ entt::null };

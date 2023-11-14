@@ -38,13 +38,13 @@ namespace luna
 			_ALWAYS_INLINE_ ImTextureID getGuiImageHandle() { return textureHandle; }
 		protected:
 			bool destroy = true;
-			uint64_t _handle;
+			uint64_t _handle = 0;
 			void* data; //TODO remove to asset importer
-			uint32_t width;
-			uint32_t height;
+			uint32_t width = 0;
+			uint32_t height = 0;
 			glm::vec2 uvStart = { 0.0f,0.0f }; //hardcoded not part of asset metadata
 			glm::vec2 uvEnd = { 1.0f,1.0f }; //hardcoded not part of asset metadata
-			ImTextureID textureHandle;
+			ImTextureID textureHandle = 0;
 
 		};
 		/**
@@ -84,8 +84,8 @@ namespace luna
 			virtual glm::vec2 getTextureUv(const glm::vec2& textureindex) = 0; // for texture atlasses;
 
 		private:
-			uint32_t tileWidth;
-			uint32_t tileHeight;
+			uint32_t tileWidth = 0;
+			uint32_t tileHeight = 0;
 
 			std::vector<std::vector<glm::vec2>> tileCustomTexCoords;
 		};
