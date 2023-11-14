@@ -38,6 +38,7 @@ def get_installed_vulkan_version():
         return None
     elif "VULKAN_SDK" in vulkan_sdk_path:
         print(os.environ.get("VULKAN_SDK_VERSION"))
+        
         return vulkan_install_version
     return vulkan_sdk_path.split("\\")[-1]
 
