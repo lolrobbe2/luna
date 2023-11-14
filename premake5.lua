@@ -94,11 +94,12 @@ project "luna"
     }
     postbuildcommands
     {
-        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
+        ('{COPY} "%{cfg.buildtarget.relpath}" "%{wks.location}/bin/' .. outputdir .. '/x64/sandbox"'),
         ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo")
     }
     filter "system:windows"
-    
+        os.mkdir("%{wks.location}/bin/" .. outputdir .. "/x64/sandbox")
+        os.mkdir("%{wks.location}/bin/" .. outputdir .. "/x64/apollo")
         cppdialect "c++17"
         staticruntime "on"
         systemversion "latest"

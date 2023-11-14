@@ -36,6 +36,21 @@ def main():
     vulkan(args.force_vulkan)
     premake(args.force_premake)
 
+    print("generating directories")
+    outputdir = "debug-windows-x86_64"
+    os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
+    os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
+
+    outputdir = "release-windows-x86_64"
+    os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
+    os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
+
+
+    outputdir = "distribution-windows-x86_64"
+    os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
+    os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
+
+
 
 if __name__ == "__main__":
     main()
