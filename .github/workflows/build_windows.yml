@@ -12,14 +12,18 @@ jobs:
   setup:
     runs-on: windows-latest
     steps:
-      - name: Cache Submodules
+      - name: Cache Repo
+        id: cache-repo
         uses: actions/cache@v3
         with:
           path: |
-            luna/thirdParty
-          key: ${{ runner.os }}-submodules-${{ github.sha }}
+            **
+            !bin/
+            !bin-int/
+          key: ${{ runner.os }}-repos-${{ github.ref_name }}
           
       - name: Checkout luna repo
+        if: steps.cache-repo.outputs.cache-hit != 'true'
         uses: actions/checkout@v3
         with:
           submodules: recursive
@@ -38,21 +42,24 @@ jobs:
       matrix:
         build-configuration: [debug, release, distribution]
    steps:
-      - name: Cache Submodules
+      - name: Cache Repo
+        id: cache-repo
         uses: actions/cache@v3
         with:
           path: |
-            luna/thirdParty
-          key: ${{ runner.os }}-submodules-${{ github.sha }}
+            **
+            !bin/
+            !bin-int/
+          key: ${{ runner.os }}-repos-${{ github.ref_name }}
       - name: Cache bin-int
         uses: actions/cache@v3
         with:
           path: |
-            luna/thirdParty
             bin-int
-          key: ${{ runner.os }}-bin-int-${{ github.sha }}
+          key: ${{ runner.os }}-bin-int-${{  github.ref_name }}
           
       - name: Checkout luna repo
+        if: steps.cache-repo.outputs.cache-hit != 'true'
         uses: actions/checkout@v3
         with:
           submodules: recursive
