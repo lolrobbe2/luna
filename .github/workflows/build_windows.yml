@@ -24,16 +24,10 @@ jobs:
           path: |
             submodules
         key: ${{ runner.os }}-submodules-${{ hashFiles('**/.gitmodules') }}
-      
-         
 
-      
-
-
-      
-    - name: Initialize and Update Submodules
-      run: |
-        git submodule update --init --recursive  
+      - name: Initialize and Update Submodules
+        run: |
+          git submodule update --init --recursive  
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
       
@@ -41,10 +35,7 @@ jobs:
         uses: actions/setup-python@v4 
         with:
           python-version: 'pypy3.9'
-      - name: install python dependencies
-        run: pip install urllib3
-
-        
+       
       - name: generate solution files and install vulkan
         run: .\build.bat
   
@@ -52,6 +43,6 @@ jobs:
         working-directory: ${{env.GITHUB_WORKSPACE}}
         run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.CORE_SOLUTION_FILE_PATH }}
 
-      - name: build scripting engine
-        working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SCRIPTING_SOLUTION_FILE_PATH }}
+    - name: build scripting engine
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SCRIPTING_SOLUTION_FILE_PATH }}
