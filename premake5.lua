@@ -317,7 +317,38 @@ workspace "lunaScripting"
         "release",
         "distribution"
     }
+project "scriptCore"
+    location "scriptCore"
+    kind "SharedLib"
+    language "c#"
+    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
+    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    documentationFile ""
+    files
+    {
+        "%{prj.name}/src/**.cs"
+    }
+        postbuildcommands
+    {
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}apollo/mono/lib")
+    }
 
+    links
+    {
+        "mono-2.0"
+    }
+
+    filter "configurations:debug"
+        optimize "Off"
+        symbols "Default"
+    filter "configurations:release"
+        optimize "On"
+        symbols "Default"
+
+    filter "configurations:distribution"
+        optimize "Full"
+        symbols "Off"
+            
 project "sharpSandbox"
     location "sharpSandbox"
     kind "SharedLib"
@@ -348,36 +379,3 @@ project "sharpSandbox"
         filter "configurations:distribution"
             optimize "Full"
             symbols "Off"
-project "scriptCore"
-    location "scriptCore"
-    kind "SharedLib"
-    language "c#"
-    targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
-    objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
-    documentationFile ""
-    files
-    {
-        "%{prj.name}/src/**.cs"
-    }
-        postbuildcommands
-    {
-        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}apollo/mono/lib")
-    }
-
-    links
-    {
-        "mono-2.0"
-    }
-
-    filter "configurations:debug"
-        optimize "Off"
-        symbols "Default"
-  
-    filter "configurations:release"
-        optimize "On"
-        symbols "Default"
-
-    filter "configurations:distribution"
-        optimize "Full"
-        symbols "Off"
-            
