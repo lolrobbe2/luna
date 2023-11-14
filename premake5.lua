@@ -44,8 +44,8 @@ Library = {}
 Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
 
 Library["ShaderC"] = "%{wks.location}/vendor/shaderc_shared.lib"
-Library["SPIRV_Cross"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
-Library["SPIRV_Cross_GLSL"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
+Library["SPIRV_Cross"] = "%{wks.location}/vendor/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL"] = "%{wks.location}/vendor/spirv-cross-glsl.lib"
 Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
 
 

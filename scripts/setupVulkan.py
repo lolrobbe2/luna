@@ -35,7 +35,6 @@ def get_installed_vulkan_version():
     if vulkan_version is None:
         vulkan_sdk_path = get_installed_vulkan_path()
         # Assume the latest version is the one with the highest numeric value
-        print(vulkan_sdk_path)
         if vulkan_sdk_path is None:
             return None
         else:
