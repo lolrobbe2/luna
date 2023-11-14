@@ -332,22 +332,31 @@ project "sharpSandbox"
     {
         "scriptCore"
     }
-    postbuildcommands
-    {
-        ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
-    }
+   
 
-        filter "configurations:debug"
-            optimize "Off"
-            symbols "Default"
+    filter "configurations:debug"
+        optimize "Off"
+        symbols "Default"
+        postbuildcommands
+        {
+            ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
+        }
   
-        filter "configurations:release"
-            optimize "On"
-            symbols "Default"
+    filter "configurations:release"
+        optimize "On"
+        symbols "Default"
+        postbuildcommands
+        {
+            ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
+        }
 
-        filter "configurations:distribution"
-            optimize "Full"
-            symbols "Off"
+    filter "configurations:distribution"
+        postbuildcommands
+        {
+            ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
+        }
+        optimize "Full"
+        symbols "Off"
 project "scriptCore"
     location "scriptCore"
     kind "SharedLib"
@@ -359,10 +368,7 @@ project "scriptCore"
     {
         "%{prj.name}/src/**.cs"
     }
-        postbuildcommands
-    {
-        ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}apollo/mono/lib")
-    }
+   
 
     links
     {
@@ -370,14 +376,26 @@ project "scriptCore"
     }
 
     filter "configurations:debug"
+        postbuildcommands
+        {
+            ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
+        }
         optimize "Off"
         symbols "Default"
   
     filter "configurations:release"
+        postbuildcommands
+        {
+            ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
+        }
         optimize "On"
         symbols "Default"
 
     filter "configurations:distribution"
+        postbuildcommands
+        {
+            ("{copy} %{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name} %{wks.location}/apollo/mono/lib")
+        }
         optimize "Full"
         symbols "Off"
             
