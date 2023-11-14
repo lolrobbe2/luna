@@ -21,7 +21,7 @@ jobs:
             !bin/
             !bin-int/
           key: ${{ runner.os }}-repos-${{ github.ref_name }}
-          
+          max-age: 1h
       - name: Checkout luna repo
         if: steps.cache-repo.outputs.cache-hit != 'true'
         uses: actions/checkout@v3
@@ -51,6 +51,7 @@ jobs:
             !bin/
             !bin-int/
           key: ${{ runner.os }}-repos-${{ github.ref_name }}
+          max-age: 1h
       - name: Cache bin-int
         uses: actions/cache@v3
         with:
@@ -63,6 +64,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
+      - name: Cache get branch origin
+        if: steps.cache-repo.outputs.cache-hit == 'true'
+        run: git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
+        
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
