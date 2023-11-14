@@ -21,7 +21,6 @@ jobs:
             !bin/
             !bin-int/
           key: ${{ runner.os }}-repos-${{ github.ref_name }}
-          max-age: 1h
       - name: Checkout luna repo
         if: steps.cache-repo.outputs.cache-hit != 'true'
         uses: actions/checkout@v3
@@ -51,7 +50,6 @@ jobs:
             !bin/
             !bin-int/
           key: ${{ runner.os }}-repos-${{ github.ref_name }}
-          max-age: 1h
       - name: Cache bin-int
         uses: actions/cache@v3
         with:
