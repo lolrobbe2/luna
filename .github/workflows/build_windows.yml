@@ -42,7 +42,7 @@ jobs:
     strategy:
       matrix:
          build-configuration: [debug, release, distribution]
-         configuration: [core, scripting]
+         configuration: [CORE, SCRIPTING]
 
     env:
       CORE_SOLUTION_FILE_PATH: luna.sln
@@ -71,4 +71,4 @@ jobs:
             ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}-
   
       - name: Build ${matrix.configuration} Engine
-        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} env.${{matrix.configuration}}_SOLUTION_FILE_PATH }}
+        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{env.${{matrix.configuration}}_SOLUTION_FILE_PATH }}
