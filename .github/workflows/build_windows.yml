@@ -14,8 +14,6 @@ jobs:
           path: |
             ${{ github.workspace }}
           key: ${{ runner.os }}-repo-cache
-          restore-keys: |
-            ${{ runner.os }}-repo-cache
       - name: Checkout luna repo
         uses: actions/checkout@v3
         with:
