@@ -38,12 +38,6 @@ jobs:
           key: ${{ runner.os }}-bin-int-${{  github.ref_name }}-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-bin-int-${{ github.ref_name }}-
-          
-      - name: Checkout luna repo
-        if: steps.cache-repo.outputs.cache-hit != 'true'
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
 
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
