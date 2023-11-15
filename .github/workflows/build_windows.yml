@@ -12,6 +12,10 @@ jobs:
   setup:
     runs-on: windows-latest
     steps:
+      - name: Checkout luna repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - name: Cache Repo
         id: cache-repo
         uses: actions/cache@v3
@@ -21,12 +25,6 @@ jobs:
             !bin/
             !bin-int/
           key: ${{ runner.os }}-repos-${{ github.ref_name }}
-      - name: Checkout luna repo
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
-     
-        
       - name: Prepare Vulkan SDK
         uses: humbletim/setup-vulkan-sdk@v1.2.0
         with:
