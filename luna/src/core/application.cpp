@@ -18,6 +18,7 @@ namespace luna
 			LN_PROFILE_BEGIN_SESSION("luna engine startup", "./debug/luna-profile-startUp.json");
 			platform::os::setCursorShape(platform::APP_STARTING);
 
+
 			instance = this;
 			Log::Init();
 			LN_PROFILE_SCOPE("engine startup");
