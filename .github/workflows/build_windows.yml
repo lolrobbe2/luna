@@ -46,8 +46,8 @@ jobs:
         configuration: [luna.sln, lunaScripting.sln]
 
     env:
-      CORE_SOLUTION_FILE_PATH: ${{ matrix.configuration == 'luna.sln' && env.CORE_SOLUTION_FILE_PATH || '' }}
-      SCRIPTING_SOLUTION_FILE_PATH: ${{ matrix.configuration == 'lunaScripting.sln' && env.SCRIPTING_SOLUTION_FILE_PATH || '' }}
+      CORE_SOLUTION_FILE_PATH: luna.sln
+      SCRIPTING_SOLUTION_FILE_PATH: lunaScripting.sln
 
     steps:
       - name: Set up MSBuild
