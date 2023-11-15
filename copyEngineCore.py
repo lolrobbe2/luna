@@ -36,11 +36,17 @@ def main():
     os.chdir(script_directory)
     print(os.getcwd())
     outputdir = "debug-windows-x86_64"
-    copy_folder_contents(f"bin/{outputdir}/x64/scriptCore/", "apollo/mono/lib")
+    copy_folder_contents(f"bin/{outputdir}/x64/luna/", f"bin/{outputdir}/x64/sandbox/")
+    copy_folder_contents(f"bin/{outputdir}/x64/luna/", f"bin/{outputdir}/x64/apollo/")
+
     outputdir = "release-windows-x86_64"
-    copy_folder_contents(f"bin/{outputdir}/x64/scriptCore/", "apollo/mono/lib")
+    copy_folder_contents(f"bin/{outputdir}/x64/luna/", f"bin/{outputdir}/x64/sandbox/")
+    copy_folder_contents(f"bin/{outputdir}/x64/luna/", f"bin/{outputdir}/x64/apollo/")
+
     outputdir = "distribution-windows-x86_64"
-    copy_folder_contents(f"bin/{outputdir}/x64/scriptCore/", "apollo/mono/lib")
+    copy_folder_contents(f"bin/{outputdir}/x64/luna", f"bin/{outputdir}/x64/sandbox/")
+    copy_folder_contents(f"bin/{outputdir}/x64/luna/", f"bin/{outputdir}/x64/apollo/")
+
 
 
 if __name__ == "__main__":
