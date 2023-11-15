@@ -2,29 +2,16 @@ name: build_windows
 
 on:
   push:
-  
+
 jobs:
   setup:
     runs-on: windows-latest
 
     steps:
-      - name: Cache entire repository
-        uses: actions/cache@v2
-        with:
-          path: |
-            ${{ github.workspace }}
-          key: ${{ runner.os }}-repo-cache
       - name: Checkout luna repo
         uses: actions/checkout@v3
         with:
           submodules: recursive
-
-      - name: Prepare Vulkan SDK
-        uses: humbletim/setup-vulkan-sdk@v1.2.0
-        with:
-          vulkan-query-version: 1.3.216.0
-          vulkan-components: Vulkan-Headers, Vulkan-Loader, SPIRV-Cross
-          vulkan-use-cache: true
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -33,6 +20,14 @@ jobs:
 
       - name: Generate solution files and install Vulkan
         run: .\build.bat
+
+
+      - name: Archive repository
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: repo-archive
+          path: ${{ github.workspace }}
 
   build:
     needs: setup
@@ -49,31 +44,20 @@ jobs:
     steps:
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
-
-      - name: Prepare Vulkan SDK
-        uses: humbletim/setup-vulkan-sdk@v1.2.0
-        with:
-          vulkan-query-version: 1.3.216.0
-          vulkan-components: Vulkan-Headers, Vulkan-Loader, SPIRV-Cross
-          vulkan-use-cache: true
-      - name: Cache entire repository
-        uses: actions/cache@v3
-        with:
-          path: |
-            ${{ github.workspace }}
-          key: ${{ runner.os }}-repo-cache
-          restore-keys: |
-            ${{ runner.os }}-repo-cache
-      - name: Cache specific build directories
-        if: matrix.configuration != 'lunaScripting.sln'
+      - name: Cache specific directories
         uses: actions/cache@v3
         with:
           path: |
             ${{ github.workspace }}/bin-int
             ${{ github.workspace }}/bin
-          key: ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}
+          key: ${{ runner.os }}-bin-dirs-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}
-  
+            ${{ runner.os }}-bin-dirs-
+      - name: Download repository archive
+        uses: actions/download-artifact@v2
+        with:
+          name: repo-archive
+
       - name: Build ${{matrix.configuration}} Engine
         run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ matrix.configuration }}
+      
