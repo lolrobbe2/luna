@@ -7,13 +7,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Cache entire repository
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ${{ github.workspace }}
           key: ${{ runner.os }}-repo-cache-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-repo-cache${{ github.sha }}
+            ${{ runner.os }}-repo-cache-
       - name: Checkout luna repo
         uses: actions/checkout@v3
         with:
@@ -54,9 +54,9 @@ jobs:
         with:
           path: |
             ${{ github.workspace }}
-          key: ${{ runner.os }}-repo-cache${{ github.sha }}
+          key: ${{ runner.os }}-repo-cache-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-repo-cache
+            ${{ runner.os }}-repo-cache-
       - name: Cache specific build directories
         if: matrix.configuration != 'lunaScripting.sln'
         uses: actions/cache@v3
