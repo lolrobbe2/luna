@@ -2,6 +2,7 @@ name: build_windows
 
 on:
   push:
+  
 jobs:
   setup:
     runs-on: windows-latest
@@ -41,12 +42,12 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-         build-configuration: [debug, release, distribution]
-         configuration: [luna.sln, lunaScripting.sln]
+        build-configuration: [debug, release, distribution]
+        configuration: [luna.sln, lunaScripting.sln]
 
     env:
-      CORE_SOLUTION_FILE_PATH: luna.sln
-      SCRIPTING_SOLUTION_FILE_PATH: lunaScripting.sln
+      CORE_SOLUTION_FILE_PATH: ${{ matrix.configuration == 'luna.sln' && env.CORE_SOLUTION_FILE_PATH || '' }}
+      SCRIPTING_SOLUTION_FILE_PATH: ${{ matrix.configuration == 'lunaScripting.sln' && env.SCRIPTING_SOLUTION_FILE_PATH || '' }}
 
     steps:
       - name: Set up MSBuild
@@ -58,7 +59,14 @@ jobs:
           vulkan-query-version: 1.3.216.0
           vulkan-components: Vulkan-Headers, Vulkan-Loader, SPIRV-Cross
           vulkan-use-cache: true
-          
+      - name: Cache entire repository
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ github.workspace }}
+          key: ${{ runner.os }}-entire-repo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-entire-repo-
       - name: Cache specific build directories
         if: matrix.configuration != 'lunaScripting.sln'
         uses: actions/cache@v2
@@ -70,5 +78,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}-
   
-      - name: Build ${matrix.configuration} Engine
-        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{matrix.configuration}}
+      - name: Build ${{matrix.configuration}} Engine
+        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ matrix.configuration }}
