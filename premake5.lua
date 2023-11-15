@@ -94,7 +94,7 @@ project "luna"
     }
     postbuildcommands
     {
-         ("@python %{wks.location}copyEngineCore.py")
+        ("@python %{wks.location}copyEngineCore.py")
     }
     filter "system:windows"
         cppdialect "c++17"
@@ -325,7 +325,7 @@ project "sharpSandbox"
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
     postbuildcommands
     {
-        ('{copy} "%{wks.location}/bin/' .. outputdir .. '/x64/%{prj.name}" "%{wks.location}/apollo/mono/lib"')
+        ("@python %{wks.location}copyScriptCore.py")
     }
     files
     {

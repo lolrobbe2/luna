@@ -37,10 +37,14 @@ def main():
     print(os.getcwd())
     outputdir = "debug-windows-x86_64"
     copy_folder_contents(f"bin/{outputdir}/x64/scriptCore/", "apollo/mono/lib")
+    copy_folder_contents(f"bin/{outputdir}/x64/sharpSandbox/", "apollo/mono/lib")
+
     outputdir = "release-windows-x86_64"
     copy_folder_contents(f"bin/{outputdir}/x64/scriptCore/", "apollo/mono/lib")
+    copy_folder_contents(f"bin/{outputdir}/x64/sharpSandbox/", "apollo/mono/lib")
     outputdir = "distribution-windows-x86_64"
     copy_folder_contents(f"bin/{outputdir}/x64/scriptCore/", "apollo/mono/lib")
+    copy_folder_contents(f"bin/{outputdir}/x64/sharpSandbox/", "apollo/mono/lib")
 
 
 if __name__ == "__main__":
