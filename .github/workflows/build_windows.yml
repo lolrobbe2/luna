@@ -29,8 +29,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # Use the version you need
+          python-version: '3.x'  # Use the version you need
 
+      - name: Generate solution files and install Vulkan
+        run: .\build.bat
+
+      - name: Archive entire repository
+        uses: actions/upload-artifact@v2
+        with:
+          name: entire-repo
+          path: |
+            .  # Include the entire repository
+          
   build:
     needs: setup
     runs-on: windows-latest
@@ -38,31 +48,16 @@ jobs:
       matrix:
         build-configuration: [debug, release, distribution]
     steps:
-      - name: Cache bin-int
-        uses: actions/cache@v3
+      - name: Download entire repository
+        uses: actions/download-artifact@v2
         with:
-          path: |
-            bin-int
-          key: ${{ runner.os }}-bin-int-${{ github.ref_name }}-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-bin-int-${{ github.ref_name }}-
-
-      - name: Cache bin
-        uses: actions/cache@v3
-        with:
-          path: |
-            bin
-          key: ${{ runner.os }}-bin-${{ github.ref_name }}-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-bin-${{ github.ref_name }}-
-
-      - name: Generate solution files and install Vulkan
-        run: .\build.bat
+          name: entire-repo
+          path: ${{ github.workspace }}
 
       - name: Build Core Engine
-        working-directory: ${{ env.GITHUB_WORKSPACE }}
+        working-directory: ${{ github.workspace }}
         run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ env.CORE_SOLUTION_FILE_PATH }}
 
       - name: Build Scripting Engine
-        working-directory: ${{ env.GITHUB_WORKSPACE }}
-        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ env.SCRIPTING_SOLUTION_FILE_PATH }}
+        working-directory: ${{ github.workspace }}
+        run: msbu
