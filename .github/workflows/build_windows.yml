@@ -33,9 +33,9 @@ jobs:
         with:
           path: |
             ${{ github.workspace }}
-          key: ${{ runner.os }}-entire-repo-${{ github.sha }}
+          key: ${{ runner.os }}-repo-cache
           restore-keys: |
-            ${{ runner.os }}-entire-repo-
+            ${{ runner.os }}-repo-cache
 
   build:
     needs: setup
@@ -60,23 +60,23 @@ jobs:
           vulkan-components: Vulkan-Headers, Vulkan-Loader, SPIRV-Cross
           vulkan-use-cache: true
       - name: Cache entire repository
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ${{ github.workspace }}
-          key: ${{ runner.os }}-entire-repo-${{ github.sha }}
+          key: ${{ runner.os }}-repo-cache
           restore-keys: |
-            ${{ runner.os }}-entire-repo-
+            ${{ runner.os }}-repo-cache
       - name: Cache specific build directories
         if: matrix.configuration != 'lunaScripting.sln'
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ${{ github.workspace }}/bin-int
             ${{ github.workspace }}/bin
-          key: ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}-${{ github.sha }}
+          key: ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}
           restore-keys: |
-            ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}-
+            ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}
   
       - name: Build ${{matrix.configuration}} Engine
         run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ matrix.configuration }}
