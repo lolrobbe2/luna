@@ -362,7 +362,7 @@ project "scriptCore"
     }
     postbuildcommands
     {
-        ('{copy} "%{wks.location}/bin/' .. outputdir .. '/x64/%{prj.name}" "%{wks.location}/apollo/mono/lib"')
+        ("@python %{wks.location}copyScriptCore.py")
     }
 
     links
