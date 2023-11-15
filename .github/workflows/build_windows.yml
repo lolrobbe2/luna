@@ -2,11 +2,6 @@ name: build_windows
 
 on:
   push:
-
-env:
-  CORE_SOLUTION_FILE_PATH: luna.sln
-  SCRIPTING_SOLUTION_FILE_PATH: lunaScripting.sln
-
 jobs:
   setup:
     runs-on: windows-latest
@@ -50,8 +45,8 @@ jobs:
          configuration: [core, scripting]
 
     env:
-      CORE_SOLUTION_FILE_PATH: ${{ env.CORE_SOLUTION_FILE_PATH }}
-      SCRIPTING_SOLUTION_FILE_PATH: ${{ env.SCRIPTING_SOLUTION_FILE_PATH }}
+      CORE_SOLUTION_FILE_PATH: luna.sln
+      SCRIPTING_SOLUTION_FILE_PATH: lunaScripting.sln
 
     steps:
       - name: Set up MSBuild
