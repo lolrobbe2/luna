@@ -2,6 +2,8 @@ name: build_windows
 
 on:
   push:
+    branches:
+      - main
 
 env:
   CORE_SOLUTION_FILE_PATH: luna.sln
@@ -29,18 +31,20 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Use the version you need
+          python-version: '3.9'  # Use the version you need
 
       - name: Generate solution files and install Vulkan
         run: .\build.bat
 
-      - name: Archive entire repository
-        uses: actions/upload-artifact@v2
+      - name: Cache entire repository
+        uses: actions/cache@v3
         with:
-          name: entire-repo
           path: |
             .  # Include the entire repository
-          
+          key: ${{ runner.os }}-entire-repo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-entire-repo-
+
   build:
     needs: setup
     runs-on: windows-latest
@@ -48,16 +52,21 @@ jobs:
       matrix:
         build-configuration: [debug, release, distribution]
     steps:
-      - name: Download entire repository
-        uses: actions/download-artifact@v2
+      - name: Restore entire repository from cache
+        uses: actions/cache@v3
         with:
-          name: entire-repo
-          path: ${{ github.workspace }}
+          path: |
+            .  # Include the entire repository
+          key: ${{ runner.os }}-entire-repo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-entire-repo-
+
+      - name: List files in the restored repository
+        run: |
+          ls -R .
 
       - name: Build Core Engine
-        working-directory: ${{ github.workspace }}
         run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ env.CORE_SOLUTION_FILE_PATH }}
 
       - name: Build Scripting Engine
-        working-directory: ${{ github.workspace }}
-        run: msbu
+        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ env.SCRIPTING_SOLUTION_FILE_PATH }}
