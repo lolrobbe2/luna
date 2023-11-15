@@ -39,7 +39,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            .  # Include the entire repository
+            ${{ github.workspace }}
           key: ${{ runner.os }}-entire-repo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-entire-repo-
@@ -55,7 +55,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            .  # Include the entire repository
+            ${{ github.workspace }}
           key: ${{ runner.os }}-entire-repo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-entire-repo-
