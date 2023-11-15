@@ -38,7 +38,14 @@ jobs:
           key: ${{ runner.os }}-bin-int-${{  github.ref_name }}-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-bin-int-${{ github.ref_name }}-
-
+      - name: Cache bin
+        uses: actions/cache@v3
+        with:
+          path: |
+            bin
+          key: ${{ runner.os }}-bin-${{  github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-bin-${{ github.ref_name }}-
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
