@@ -94,7 +94,7 @@ project "luna"
     }
     postbuildcommands
     {
-        ('{COPY} "%{cfg.buildtarget.relpath}" "%{wks.location}/bin/' .. outputdir .. '/x64/sandbox"'),
+        ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/sandbox"),
         ("{copy} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/x64/apollo")
     }
     filter "system:windows"
@@ -362,7 +362,7 @@ project "scriptCore"
     }
     postbuildcommands
     {
-        ("@python %{wks.location}copyScriptCore.py")
+        ("@python %{wks.location}/copyScriptCore.py")
     }
 
     links
