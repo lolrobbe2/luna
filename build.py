@@ -40,16 +40,21 @@ def main():
     outputdir = "debug-windows-x86_64"
     os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
     os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
+    with open(f"bin/{outputdir}/x64/scriptCore/scriptCore.dll", "w") as f:
+        pass
 
     outputdir = "release-windows-x86_64"
     os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
     os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
+    with open(f"bin/{outputdir}/x64/scriptCore/scriptCore.dll", "w") as f:
+        pass
 
     outputdir = "distribution-windows-x86_64"
     os.makedirs(f"bin/{outputdir}/x64/sandbox", exist_ok=True)
     os.makedirs(f"bin/{outputdir}/x64/apollo", exist_ok=True)
-
-    os.makedirs("apollo/mono/lib", exist_ok= True)
+    with open(f"bin/{outputdir}/x64/scriptCore/scriptCore.dll", "w") as f:
+        pass
+    os.makedirs("apollo/mono/lib", exist_ok=True)
 
 
 if __name__ == "__main__":
