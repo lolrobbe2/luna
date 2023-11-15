@@ -73,6 +73,8 @@ jobs:
   cleanup:
     needs: build
     runs-on: ubuntu-latest
+    env:
+          GH_TOKEN: ${{ github.token }}
     steps:
       - name: Install gh-actions-cache extension
         run: gh extension install actions/gh-actions-cache
