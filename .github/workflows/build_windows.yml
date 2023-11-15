@@ -46,8 +46,8 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        build-configuration: [debug, release, distribution]
-        config: [core, scripting]
+         build-configuration: [debug, release, distribution]
+         configuration: [core, scripting]
 
     env:
       CORE_SOLUTION_FILE_PATH: ${{ env.CORE_SOLUTION_FILE_PATH }}
@@ -63,21 +63,17 @@ jobs:
           vulkan-query-version: 1.3.216.0
           vulkan-components: Vulkan-Headers, Vulkan-Loader, SPIRV-Cross
           vulkan-use-cache: true
-
-      - name: List files in the repository
-        run: |
-          ls -R ${{ github.workspace }}
-
+          
       - name: Cache specific build directories
-        if: matrix.config != 'scripting'
+        if: matrix.configuration != 'scripting'
         uses: actions/cache@v2
         with:
           path: |
             ${{ github.workspace }}/bin-int
             ${{ github.workspace }}/bin
-          key: ${{ runner.os }}-specific-build-dirs-${{ matrix.config }}-${{ github.sha }}
+          key: ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-specific-build-dirs-${{ matrix.config }}-
+            ${{ runner.os }}-specific-build-dirs-${{ matrix.configuration }}-
   
-      - name: Build ${config} Engine
-        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ env.${matrix.config}_SOLUTION_FILE_PATH }}
+      - name: Build ${matrix.configuration} Engine
+        run: msbuild /m /p:Configuration=${{ matrix.build-configuration }} ${{ env.${matrix.configuration}_SOLUTION_FILE_PATH }}
