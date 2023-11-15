@@ -22,13 +22,10 @@ jobs:
             !bin-int/
           key: ${{ runner.os }}-repos-${{ github.ref_name }}
       - name: Checkout luna repo
-        if: steps.cache-repo.outputs.cache-hit != 'true'
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: Cache get branch origin
-        if: steps.cache-repo.outputs.cache-hit == 'true'
-        run: git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
+     
         
       - name: Prepare Vulkan SDK
         uses: humbletim/setup-vulkan-sdk@v1.2.0
