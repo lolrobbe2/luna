@@ -1,5 +1,6 @@
 #include "shaderCompiler.h"
 #include "lnpch.h"
+#include <core/utils/shaderc.hpp>
 namespace luna
 {
 	namespace utils

@@ -47,3 +47,7 @@ luna/tirdParty/obj/
 *.sarif
 /.vs
 /luna/thirdParty/spdlog
+/scripts/__pycache__
+lunaScripting.sln
+premake5.lua
+scriptCore/scriptCore.csproj

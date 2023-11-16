@@ -29,6 +29,10 @@ project "imGui"
 	{
 		"/MD",
 	}
+	defines
+    {
+        "IMGUI_API=__declspec(dllexport)"
+    }
 	filter "configurations:debug"
 		runtime "Debug"
 		symbols "on"

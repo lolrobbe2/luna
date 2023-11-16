@@ -1,5 +1,5 @@
 #include <core/core.h>
-#include <shaderc/shaderc.hpp>
+#include <core/utils/shaderc.hpp>
 #include <spirv_cross/spirv_cross.hpp>
 #include <spirv_cross/spirv_glsl.hpp>
 namespace luna

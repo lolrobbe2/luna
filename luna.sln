@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
+# Visual Studio Version 16
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sandbox", "sandbox\sandbox.vcxproj", "{145A6C82-8039-EB1D-8951-76F4F5AF517F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{352CD55D-21E4-16AB-8AEB-EF0676C2B19B}"
@@ -20,8 +20,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stb", "luna\thirdParty\premake\stb.vcxproj", "{6EAB880B-DAB4-887C-6330-9F7CCF38947C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yaml-cpp", "luna\thirdParty\premake\yaml-cpp.vcxproj", "{88F1A057-74BE-FB62-9DD7-E90A890331F1}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "luna\thirdParty\premake\zlib.vcxproj", "{16CFA17C-0206-A30D-ABF2-881097081F0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,12 +76,6 @@ Global
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1}.distribution|x64.Build.0 = distribution|x64
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1}.release|x64.ActiveCfg = release|x64
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1}.release|x64.Build.0 = release|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.debug|x64.ActiveCfg = debug|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.debug|x64.Build.0 = debug|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.distribution|x64.ActiveCfg = distribution|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.distribution|x64.Build.0 = distribution|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.release|x64.ActiveCfg = release|x64
-		{16CFA17C-0206-A30D-ABF2-881097081F0F}.release|x64.Build.0 = release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +88,5 @@ Global
 		{E00FA80F-4C24-D0C0-15A6-73208179CCF1} = {5792A83A-438B-C78C-6CBD-AC115815A798}
 		{6EAB880B-DAB4-887C-6330-9F7CCF38947C} = {5792A83A-438B-C78C-6CBD-AC115815A798}
 		{88F1A057-74BE-FB62-9DD7-E90A890331F1} = {5792A83A-438B-C78C-6CBD-AC115815A798}
-		{16CFA17C-0206-A30D-ABF2-881097081F0F} = {5792A83A-438B-C78C-6CBD-AC115815A798}
 	EndGlobalSection
 EndGlobal

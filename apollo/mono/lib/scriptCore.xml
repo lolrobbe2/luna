@@ -4,310 +4,6 @@
         <name>scriptCore</name>
     </assembly>
     <members>
-        <member name="T:Luna.Ip.ResolverStatus">
-            <summary>
-            Status enum of the hostanem resolver.
-            </summary>
-        </member>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_NONE">
-            <summary>DNS hostname resolver status: No status.</summary>
-        </member>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_WAITING">
-            <summary>DNS hostname resolver status: Waiting.</summary>
-        </member>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_DONE">
-            <summary>DNS hostname resolver status: Done.</summary>
-        </member>
-        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_ERROR">
-            <summary>DNS hostname resolver status: Error.</summary>
-        </member>
-        <member name="M:Luna.Ip.ResolveHostname(System.String,Luna.Ip.Type)">
-            <summary>
-            Returns a given hostname's IPv4 or IPv6 address as a string when resolved (blocking-type method). The address type returned depends on the Type constant given as IpType.
-            </summary>
-            <param name="Hostname">hostname to resolve</param>
-            <param name="IpType"> type enum for Ip type</param>
-            <returns>an ipAddress in string notation</returns>
-        </member>
-        <member name="M:Luna.Ip.ResolveHostnameAddress(System.String,Luna.Ip.Type)">
-            <summary>
-            Returns a given hostname's IPv4 or IPv6 address as a string when resolved (blocking-type method). The address type returned depends on the Type constant given as IpType.
-            <para>
-            same as <see cref="M:Luna.Ip.ResolveHostname(System.String,Luna.Ip.Type)"/>, but string has been converted to IpAddress object.
-            </para>
-            </summary>
-            <param name="Hostname">hostname to resolve</param>
-            <param name="IpType"> type enum for Ip type</param>
-            <returns>an ipAddress</returns>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:Luna.Ip.ResolveHostnameAddresses(System.String,Luna.Ip.Type)" -->
-        <member name="M:Luna.Ip.GetHostnameFromIP(Luna.IpAddress)">
-            <summary>
-            returns the hostname of a resolved ipAdress
-            </summary>
-            <param name="ipAddress"><see cref="T:Luna.IpAddress"/>address to get hostname from</param>
-            <returns>0.0.0.0 when the ipAdress has not been resolved from a hostname</returns>
-        </member>
-        <member name="M:Luna.IpAddress.getIpRaw">
-            <summary>
-            ONLY USE THIS FUNCTION FOR INTERNALL USE.
-            </summary>
-            <returns>the raw ip array</returns>
-        </member>
-        <member name="T:Luna.SocketError">
-            <summary>
-            Enumaration of socketErrors
-            </summary>
-        </member>
-        <member name="T:Luna.Protocol">
-            <summary>
-            Enumeration of socket protocols
-            </summary>
-        </member>
-        <member name="F:Luna.Protocol.TCP">
-            <summary>Transmission Control Protocol</summary> 
-        </member>
-        <member name="F:Luna.Protocol.UDP">
-            <summary>Universal Datagram Protocol</summary>
-        </member>
-        <member name="T:Luna.NetSocket">
-            <summary>
-            This is bare bones Network socket that is multiplatform.
-            USE with CARE try to use the higher level networking options first. exmaple HTTPclient
-            </summary>
-        </member>
-        <member name="M:Luna.NetSocket.#ctor">
-            <summary>
-            NetSocket constructor.
-            creates a uninitialized socket
-            </summary>
-        </member>
-        <member name="M:Luna.NetSocket.#ctor(System.UInt64)">
-            <summary>
-            NetSocket constructor.
-            creates a potentiolay initialized socket
-            </summary>
-        </member>
-        <member name="M:Luna.NetSocket.Finalize">
-            <summary>
-            closes the socket.
-            </summary>
-        </member>
-        <member name="M:Luna.NetSocket.Bind(System.Int32,System.String)">
-            <summary>
-            <para>Opens the socket, and binds it to the specified local address.</para>
-            <para>This method is generally not needed, and only used to force the subsequent call to <see cref="!:ConnectToHost"/> to use the specified <see cref="!:Host"/> and <see cref="!:Port"/> as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
-            </para>
-            </summary>
-            <param name="port">the port to bind the socket to</param>
-            <param name="host">the hsot name. for example google.com</param>
-            <param name="protocol"> <see cref="T:Luna.Protocol"/></param>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.NetSocket.ConnetToHost(System.Int32,System.String)">
-            <summary>
-            Connects to the specified host:port pair. A hostname will be resolved if valid. Returns <see cref="F:Luna.SocketError.SUCCESS"/>.OK on success.
-            </summary>
-            <param name="Port"></param>
-            <param name="Host"></param>
-            <param name="Protocol"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.NetSocket.NetSocketCreate">
-            <summary>
-            function to create a NetSocket module
-            </summary>
-            <returns>entityHandle</returns>
-        </member>
-        <member name="M:Luna.NetSocket.NetSocketDestroy(System.UInt64)">
-            <summary>
-            externall call to destroy the socket
-            </summary>
-            <param name="ObjectId"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Luna.StreamPeerTCP">
-            <summary>
-            TCP client stream.
-            <para>this module allows you to connect to TCPservers or is returned by a TCPserver as a connection</para>
-            <see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html">Help:</see>
-            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#methods-overview">Method Overview: </see></para>
-            </summary>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.#ctor">
-            <summary>
-            creates a StreamPeerTCP module
-            </summary>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.Bind(System.Int32,Luna.IpAddress)">
-            <summary>
-            Opens the TCP socket, and binds it to the specified local address.
-            This method is generally not needed, and only used to force the subsequent call to connect_to_host to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
-            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-bindint-port-ipaddress--host">Help:</see></para>
-            </summary>
-            
-            <param name="Port">valid port between 0-65536 inclusive</param>
-            <param name="Host">Valid ipv4/6 address or hostname (example.com) default = "*" </param>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.Bind(System.Int32)">
-            <summary>
-            Opens the TCP socket, and binds it to the specified local address.
-            This method is generally not needed, and only used to force the subsequent call to ConnectToHost to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
-            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-bindint-port-ipaddress--host">Help:</see></para>
-            </summary>
-            <param name="Port">valid port between 0-65536 inclusive</param>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.ConnectToHost(Luna.IpAddress,System.Int32)">
-            <summary>
-            Connects to the specified host:port pair.
-            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-connecttohostipaddress--hostint-port">Help:</see></para>
-            </summary>
-            <param name="Host">Valid ipv4/6 address</param>
-            <param name="Port">valid port between 0-65536 inclusive</param>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.Poll">
-            <summary>
-            Poll the socket, updating its state. <see cref="M:Luna.StreamPeerTCP.GetStatus"/>.
-            </summary>
-            <returns>SocketError</returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetStatus">
-            <summary>
-            Returns the status of the connection, see <see cref="T:Luna.Status"/>.
-            </summary>
-            <returns><see cref="T:Luna.Status"/></returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetConnectedHost">
-            <summary>
-            Returns the IP of this peer.
-            </summary>
-            <returns>IpAddress of peer</returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetConnectedPort">
-            <summary>
-            Returns the port of this peer.
-            </summary>
-            <returns>Returns the port of this peer.</returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetLoaclPort">
-            <summary>
-            Returns the local port to which this peer is bound.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.DisconnectFromHost">
-            <summary>
-            Disconnects from host.
-            </summary>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.PutData(System.Byte[])">
-            <summary>
-            Sends a chunk of data through the connection, blocking if necessary until the data is done sending. This function returns an <see cref="T:Luna.SocketError"/> code.
-            </summary>
-            <param name="Data">byte array</param>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when data has been send succesfully.</returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.PutPartialData(System.Byte[],System.Int32@)">
-            <summary>
-            Sends a partial chunk of data through the connection. This function returns an <see cref="T:Luna.SocketError"/> code.
-            </summary>
-            <param name="Data"></param>
-            <param name="BytesSent"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetData(System.Byte[])">
-            <summary>
-            Gets data and fills the Buffer Array
-            </summary>
-            <param name="Buffer">byte array to wich the data will be placed into</param>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetPartialData(System.Byte[],System.Int32@)">
-            <summary>
-            Gets partial data and fills the Buffer Array.
-            </summary>
-            <param name="Buffer"></param>
-            <param name="Received"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.GetAvailableBytes">
-            <summary>
-            Returns the number of bytes this StreamPeer has available.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.StreamPeerTCP.StreamPeerTCPCreate">
-            <summary>
-            function to create a StreamPeerTCP module
-            </summary>
-            <returns>entityHandle</returns>
-        </member>
-        <member name="T:Luna.HTTPClient.Status">
-            <summary>
-            current status of the HTTPClient
-            </summary>
-        </member>
-        <member name="M:Luna.HTTPClient.ConnectToHost(System.String,System.Int32)">
-            <summary>
-            connects the http client to a host http server.
-            </summary>
-            <remarks>will also connect to non http servers, it just won't be able to now wath to do with the HTTP response</remarks>
-            <param name="Host">can be an <see cref="T:Luna.IpAddress"/></param>
-            <param name="port"> number inclusive between 0-65536</param>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when connetion to host whas succesful</returns>
-        </member>
-        <member name="M:Luna.HTTPClient.Request(Luna.HTTPClient.Method,System.String,Luna.Json,System.String)">
-            <summary>
-            sends an HTPP request to the connected host.
-            </summary>
-            <param name="Method">http method to be used <see cref="T:Luna.HTTPClient.Method"/></param>
-            <param name="Destination"></param>
-            <param name="Headers"></param>
-            <param name="body"></param>
-        </member>
-        <member name="M:Luna.HTTPClient.HasResponse">
-            <summary>
-            checks the HTTPClient if a response is available.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.HTTPClient.Poll">
-            <summary>
-            Polls the HTPPClient for incomming response
-            </summary>
-            <remarks>
-            as soon a the http client is receiving a response <see cref="M:Luna.HTTPClient.HasResponse"/> will return true.
-            but at this point the body might nog have been fully received. To know when the response body has not been fully received <see cref="F:Luna.HTTPClient.Status.STATUS_RECEIVING"/> use the <see cref="M:Luna.HTTPClient.GetStatus"/> function.
-            </remarks>
-            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when polling whas succesful</returns>
-        </member>
-        <member name="M:Luna.HTTPClient.GetStatus">
-            <summary>
-            function to get the current HTTPClient <see cref="T:Luna.HTTPClient.Status"/>
-            </summary>
-            <returns><see cref="T:Luna.HTTPClient.Status"/></returns>
-        </member>
-        <member name="M:Luna.HTTPClient.GetBody">
-            <summary>
-            returns the respnse body as a byte array.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Luna.HTTPClient.GetHeaders">
-            <summary>
-            returns the response headers as a <see cref="T:Luna.Json"/> object.
-            </summary>
-            <returns><see cref="T:Luna.Json"/> headers</returns>
-        </member>
-        <member name="M:Luna.HTTPClient.HTTPClientCreate">
-            <summary>
-            function to create a StreamPeerTCP module
-            </summary>
-            <returns>entityHandle</returns>
-        </member>
         <member name="T:Luna.Node">
             <summary>
             <para>
@@ -648,6 +344,310 @@
             </summary>
             <param name="text"></param>
             <param name="args"></param>
+        </member>
+        <member name="T:Luna.Ip.ResolverStatus">
+            <summary>
+            Status enum of the hostanem resolver.
+            </summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_NONE">
+            <summary>DNS hostname resolver status: No status.</summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_WAITING">
+            <summary>DNS hostname resolver status: Waiting.</summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_DONE">
+            <summary>DNS hostname resolver status: Done.</summary>
+        </member>
+        <member name="F:Luna.Ip.ResolverStatus.RESOLVER_STATUS_ERROR">
+            <summary>DNS hostname resolver status: Error.</summary>
+        </member>
+        <member name="M:Luna.Ip.ResolveHostname(System.String,Luna.Ip.Type)">
+            <summary>
+            Returns a given hostname's IPv4 or IPv6 address as a string when resolved (blocking-type method). The address type returned depends on the Type constant given as IpType.
+            </summary>
+            <param name="Hostname">hostname to resolve</param>
+            <param name="IpType"> type enum for Ip type</param>
+            <returns>an ipAddress in string notation</returns>
+        </member>
+        <member name="M:Luna.Ip.ResolveHostnameAddress(System.String,Luna.Ip.Type)">
+            <summary>
+            Returns a given hostname's IPv4 or IPv6 address as a string when resolved (blocking-type method). The address type returned depends on the Type constant given as IpType.
+            <para>
+            same as <see cref="M:Luna.Ip.ResolveHostname(System.String,Luna.Ip.Type)"/>, but string has been converted to IpAddress object.
+            </para>
+            </summary>
+            <param name="Hostname">hostname to resolve</param>
+            <param name="IpType"> type enum for Ip type</param>
+            <returns>an ipAddress</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Luna.Ip.ResolveHostnameAddresses(System.String,Luna.Ip.Type)" -->
+        <member name="M:Luna.Ip.GetHostnameFromIP(Luna.IpAddress)">
+            <summary>
+            returns the hostname of a resolved ipAdress
+            </summary>
+            <param name="ipAddress"><see cref="T:Luna.IpAddress"/>address to get hostname from</param>
+            <returns>0.0.0.0 when the ipAdress has not been resolved from a hostname</returns>
+        </member>
+        <member name="M:Luna.IpAddress.getIpRaw">
+            <summary>
+            ONLY USE THIS FUNCTION FOR INTERNALL USE.
+            </summary>
+            <returns>the raw ip array</returns>
+        </member>
+        <member name="T:Luna.SocketError">
+            <summary>
+            Enumaration of socketErrors
+            </summary>
+        </member>
+        <member name="T:Luna.Protocol">
+            <summary>
+            Enumeration of socket protocols
+            </summary>
+        </member>
+        <member name="F:Luna.Protocol.TCP">
+            <summary>Transmission Control Protocol</summary> 
+        </member>
+        <member name="F:Luna.Protocol.UDP">
+            <summary>Universal Datagram Protocol</summary>
+        </member>
+        <member name="T:Luna.NetSocket">
+            <summary>
+            This is bare bones Network socket that is multiplatform.
+            USE with CARE try to use the higher level networking options first. exmaple HTTPclient
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.#ctor">
+            <summary>
+            NetSocket constructor.
+            creates a uninitialized socket
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.#ctor(System.UInt64)">
+            <summary>
+            NetSocket constructor.
+            creates a potentiolay initialized socket
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.Finalize">
+            <summary>
+            closes the socket.
+            </summary>
+        </member>
+        <member name="M:Luna.NetSocket.Bind(System.Int32,System.String)">
+            <summary>
+            <para>Opens the socket, and binds it to the specified local address.</para>
+            <para>This method is generally not needed, and only used to force the subsequent call to <see cref="!:ConnectToHost"/> to use the specified <see cref="!:Host"/> and <see cref="!:Port"/> as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+            </para>
+            </summary>
+            <param name="port">the port to bind the socket to</param>
+            <param name="host">the hsot name. for example google.com</param>
+            <param name="protocol"> <see cref="T:Luna.Protocol"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.NetSocket.ConnetToHost(System.Int32,System.String)">
+            <summary>
+            Connects to the specified host:port pair. A hostname will be resolved if valid. Returns <see cref="F:Luna.SocketError.SUCCESS"/>.OK on success.
+            </summary>
+            <param name="Port"></param>
+            <param name="Host"></param>
+            <param name="Protocol"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.NetSocket.NetSocketCreate">
+            <summary>
+            function to create a NetSocket module
+            </summary>
+            <returns>entityHandle</returns>
+        </member>
+        <member name="M:Luna.NetSocket.NetSocketDestroy(System.UInt64)">
+            <summary>
+            externall call to destroy the socket
+            </summary>
+            <param name="ObjectId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Luna.StreamPeerTCP">
+            <summary>
+            TCP client stream.
+            <para>this module allows you to connect to TCPservers or is returned by a TCPserver as a connection</para>
+            <see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html">Help:</see>
+            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#methods-overview">Method Overview: </see></para>
+            </summary>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.#ctor">
+            <summary>
+            creates a StreamPeerTCP module
+            </summary>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.Bind(System.Int32,Luna.IpAddress)">
+            <summary>
+            Opens the TCP socket, and binds it to the specified local address.
+            This method is generally not needed, and only used to force the subsequent call to connect_to_host to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-bindint-port-ipaddress--host">Help:</see></para>
+            </summary>
+            
+            <param name="Port">valid port between 0-65536 inclusive</param>
+            <param name="Host">Valid ipv4/6 address or hostname (example.com) default = "*" </param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.Bind(System.Int32)">
+            <summary>
+            Opens the TCP socket, and binds it to the specified local address.
+            This method is generally not needed, and only used to force the subsequent call to ConnectToHost to use the specified host and port as source address.This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-bindint-port-ipaddress--host">Help:</see></para>
+            </summary>
+            <param name="Port">valid port between 0-65536 inclusive</param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.ConnectToHost(Luna.IpAddress,System.Int32)">
+            <summary>
+            Connects to the specified host:port pair.
+            <para><see href="https://lolrobbe2.github.io/lunaDocs/docs/networking/streamPeerTCP.html#socketerror-connecttohostipaddress--hostint-port">Help:</see></para>
+            </summary>
+            <param name="Host">Valid ipv4/6 address</param>
+            <param name="Port">valid port between 0-65536 inclusive</param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> on success.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.Poll">
+            <summary>
+            Poll the socket, updating its state. <see cref="M:Luna.StreamPeerTCP.GetStatus"/>.
+            </summary>
+            <returns>SocketError</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetStatus">
+            <summary>
+            Returns the status of the connection, see <see cref="T:Luna.Status"/>.
+            </summary>
+            <returns><see cref="T:Luna.Status"/></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetConnectedHost">
+            <summary>
+            Returns the IP of this peer.
+            </summary>
+            <returns>IpAddress of peer</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetConnectedPort">
+            <summary>
+            Returns the port of this peer.
+            </summary>
+            <returns>Returns the port of this peer.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetLoaclPort">
+            <summary>
+            Returns the local port to which this peer is bound.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.DisconnectFromHost">
+            <summary>
+            Disconnects from host.
+            </summary>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.PutData(System.Byte[])">
+            <summary>
+            Sends a chunk of data through the connection, blocking if necessary until the data is done sending. This function returns an <see cref="T:Luna.SocketError"/> code.
+            </summary>
+            <param name="Data">byte array</param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when data has been send succesfully.</returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.PutPartialData(System.Byte[],System.Int32@)">
+            <summary>
+            Sends a partial chunk of data through the connection. This function returns an <see cref="T:Luna.SocketError"/> code.
+            </summary>
+            <param name="Data"></param>
+            <param name="BytesSent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetData(System.Byte[])">
+            <summary>
+            Gets data and fills the Buffer Array
+            </summary>
+            <param name="Buffer">byte array to wich the data will be placed into</param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetPartialData(System.Byte[],System.Int32@)">
+            <summary>
+            Gets partial data and fills the Buffer Array.
+            </summary>
+            <param name="Buffer"></param>
+            <param name="Received"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.GetAvailableBytes">
+            <summary>
+            Returns the number of bytes this StreamPeer has available.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.StreamPeerTCP.StreamPeerTCPCreate">
+            <summary>
+            function to create a StreamPeerTCP module
+            </summary>
+            <returns>entityHandle</returns>
+        </member>
+        <member name="T:Luna.HTTPClient.Status">
+            <summary>
+            current status of the HTTPClient
+            </summary>
+        </member>
+        <member name="M:Luna.HTTPClient.ConnectToHost(System.String,System.Int32)">
+            <summary>
+            connects the http client to a host http server.
+            </summary>
+            <remarks>will also connect to non http servers, it just won't be able to now wath to do with the HTTP response</remarks>
+            <param name="Host">can be an <see cref="T:Luna.IpAddress"/></param>
+            <param name="port"> number inclusive between 0-65536</param>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when connetion to host whas succesful</returns>
+        </member>
+        <member name="M:Luna.HTTPClient.Request(Luna.HTTPClient.Method,System.String,Luna.Json,System.String)">
+            <summary>
+            sends an HTPP request to the connected host.
+            </summary>
+            <param name="Method">http method to be used <see cref="T:Luna.HTTPClient.Method"/></param>
+            <param name="Destination"></param>
+            <param name="Headers"></param>
+            <param name="body"></param>
+        </member>
+        <member name="M:Luna.HTTPClient.HasResponse">
+            <summary>
+            checks the HTTPClient if a response is available.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.HTTPClient.Poll">
+            <summary>
+            Polls the HTPPClient for incomming response
+            </summary>
+            <remarks>
+            as soon a the http client is receiving a response <see cref="M:Luna.HTTPClient.HasResponse"/> will return true.
+            but at this point the body might nog have been fully received. To know when the response body has not been fully received <see cref="F:Luna.HTTPClient.Status.STATUS_RECEIVING"/> use the <see cref="M:Luna.HTTPClient.GetStatus"/> function.
+            </remarks>
+            <returns><see cref="F:Luna.SocketError.SUCCESS"/> when polling whas succesful</returns>
+        </member>
+        <member name="M:Luna.HTTPClient.GetStatus">
+            <summary>
+            function to get the current HTTPClient <see cref="T:Luna.HTTPClient.Status"/>
+            </summary>
+            <returns><see cref="T:Luna.HTTPClient.Status"/></returns>
+        </member>
+        <member name="M:Luna.HTTPClient.GetBody">
+            <summary>
+            returns the respnse body as a byte array.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Luna.HTTPClient.GetHeaders">
+            <summary>
+            returns the response headers as a <see cref="T:Luna.Json"/> object.
+            </summary>
+            <returns><see cref="T:Luna.Json"/> headers</returns>
+        </member>
+        <member name="M:Luna.HTTPClient.HTTPClientCreate">
+            <summary>
+            function to create a StreamPeerTCP module
+            </summary>
+            <returns>entityHandle</returns>
         </member>
         <member name="T:Luna.LunaObject">
             <summary>
