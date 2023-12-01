@@ -6,20 +6,16 @@ namespace luna
 	{
 		class commandPool
 		{
-			/**
-			 * @brief starts recording a commandBuffer.
-			 * @param virtualCommandBuffer commandBuffer handle.
-			 * @param const VkCommandBufferUsageFlags& usageFlags
-			 */
-			VkResult begin(const VkCommandBuffer buffer, const VkCommandBufferUsageFlags& usageFlags);
-			/**
-			* @brief stops recording the commandBuffer.
-			* @param virtualCommandBuffer commandBuffer handle.
-			*/
-			VkResult end(const VkCommandBuffer buffer);
+			
 		private:
-			VkCommandPool commandPool;
-			std::thread runner;
+			VkCommandPool m_commandPool = VK_NULL_HANDLE;
+			std::thread runner; 
+			std::mutex runnerMutex;
+			VkQueue queue = VK_NULL_HANDLE;
+			const VkDevice* device;
+		protected:
+			friend class device;
+			commandPool(const VkQueue queue,const uint32_t queueFamilyIndex, const VkCommandPoolCreateFlags flags, const VkDevice* device);
 		};
 	}
 }

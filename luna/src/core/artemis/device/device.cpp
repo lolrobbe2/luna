@@ -223,12 +223,28 @@ namespace luna
         }
         VkQueue device::getQueue(vkb::QueueType type, bool dedicated)
         {
-            return dedicated ? _device.get_dedicated_queue(type) = _device.get_queue(type);
+            return dedicated ? _device.get_dedicated_queue(type).value() : _device.get_queue(type).value();
         }
+        uint32_t device::getQueueFamilyIndex(vkb::QueueType type, bool dedicated)
+        {
+            return dedicated ? _device.get_dedicated_queue_index(type).value() : _device.get_queue_index(type).value();
+        }
+
         bool device::hasDedicatedQueue(vkb::QueueType type)
         {
             auto result = _device.get_dedicated_queue_index(type);
             return result.has_value();
+        }
+        const ref<commandPool> device::getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags)
+        {
+            //release the vkqueue!
+            {
+                VkQueue queue = getQueue(type, true);
+                if (queue != VK_NULL_HANDLE)
+                    return ref<commandPool>(new commandPool(queue, getQueueFamilyIndex(type, true), createFlags, _device));
+            
+            }
+            return ref<commandPool>(new commandPool(getQueue(type, false),getQueueFamilyIndex(type,false),createFlags,_device));
         }
         VKAPI_ATTR VkBool32 VKAPI_CALL device::debugCallback(
             VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
