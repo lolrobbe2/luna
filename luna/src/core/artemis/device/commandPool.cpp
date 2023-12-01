@@ -4,6 +4,10 @@ namespace luna
 {
 	namespace artemis 
 	{
+		ref<commandBuffer> commandPool::getCommandBuffer()
+		{
+			return new commandBuffer();
+		}
 		commandPool::commandPool(const VkQueue queue, const uint32_t queueFamilyIndex,const VkCommandPoolCreateFlags flags,const VkDevice* device)
 		{
 			VkCommandPoolCreateInfo commandPoolCreateInfo{ VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO };

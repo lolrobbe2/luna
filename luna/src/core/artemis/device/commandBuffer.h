@@ -9,7 +9,13 @@ namespace luna
 		{
 		protected: 
 			friend class commandPool;
-			commandBuffer(const VkCommandPool commandPool, const VkCommandBufferLevel& commandBufferLevel);
+			commandBuffer(const VkCommandPool commandPool, const VkCommandBufferLevel& commandBufferLevel,const VkDevice device);
+			bool begin(const VkCommandBufferUsageFlags flags);
+			void end();
+			bool isRecording() { return recording; }
+		private:
+			bool recording = false;
+			VkCommandBuffer m_commandBuffer;
 		};
 	}
 }

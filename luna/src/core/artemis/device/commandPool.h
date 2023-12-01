@@ -1,12 +1,13 @@
 #pragma once
 #include <core/platform/windows/windowsWindow.h>
+#include <core/artemis/device/commandBuffer.h>
 namespace luna
 {
 	namespace artemis 
 	{
 		class commandPool
 		{
-			
+			ref<commandBuffer> getCommandBuffer();
 		private:
 			VkCommandPool m_commandPool = VK_NULL_HANDLE;
 			std::thread runner; 
