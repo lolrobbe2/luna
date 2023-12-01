@@ -8,6 +8,7 @@
 #include <core/assets/assetManager.h>
 #include <core/platform/platformUtils.h>
 #include <core/networking/socket.h>
+#include <core/artemis/device/device.h>
 namespace luna
 {
 	namespace application
@@ -25,15 +26,19 @@ namespace luna
 
 
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
-			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
+			//mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
+			artemis::device device(mWindow);
+			LN_CORE_INFO("started vulkan device");
 			/*required valid asset manager!*/
+			/*
 			renderer::renderer::init(mWindow);
 			renderer::renderer2D::init();
 			nodes::classRegister::registerClasses();
 			scripting::scriptingEngine::init();
 			methodDB::init();
 			networking::Ip::init();
+			*/
 			platform::os::setCursorShape(platform::ARROW);
 			LN_PROFILE_END_SESSION();
 			
@@ -43,10 +48,13 @@ namespace luna
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
 			layerStack.~layerStack();
 			platform::os::setCursorShape(platform::ARROW);
+			
+			/*
 			networking::Ip::shutdown();
 			networking::netSocket::terminate();
 			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
+			*/
 			mWindow->~window();
 			LN_PROFILE_END_SESSION();
 		}

@@ -1,101 +1,102 @@
 #include "device.h"
 #include <core/debug/debugMacros.h>
-namespace luna 
+namespace luna
 {
-	namespace artemis 
-	{
-		device::device(const ref<vulkan::window>& Window)
-		{
-			createInstance();
-			VkResult result = glfwCreateWindowSurface(instance, (GLFWwindow*)window->getWindow(), nullptr, &surface);
-			LN_ERR_FAIL_COND_MSG(result != VK_SUCCESS, "[Artemis] an error occured during surface creation, result: " + std::to_string(result));
+    namespace artemis
+    {
+        device::device(const ref<vulkan::window>& Window)
+        {
+            createInstance();
+            VkResult result = glfwCreateWindowSurface(instance, (GLFWwindow*)Window->getWindow(), nullptr, &surface);
+            LN_ERR_FAIL_COND_MSG(result != VK_SUCCESS, "[Artemis] an error occured during surface creation, result: " + std::to_string(result));
             pickPhysicalDevice();
             createLogicalDevice();
-		}
-		///instance creation
-		VkResult device::createInstance()
-		{
-			vkb::InstanceBuilder instanceBuilder;
-			instanceBuilder.set_app_name("luna")
-				.set_engine_name("Artemis")
-				.set_engine_version(MAJOR, MINOR, PATCH)
-				.use_default_debug_messenger()
-				.set_debug_callback(debugCallback)
-				.require_api_version(1, 2, 0);
+            window = Window;
+        }
+        ///instance creation
+        VkResult device::createInstance()
+        {
+            vkb::InstanceBuilder instanceBuilder;
+            instanceBuilder.set_app_name("luna")
+                .set_engine_name("Artemis")
+                .set_engine_version(MAJOR, MINOR, PATCH)
+                .use_default_debug_messenger()
+                .set_debug_callback(debugCallback)
+                .require_api_version(1, 2, 0);
 #ifdef LN_DEBUG
-			instanceBuilder.request_validation_layers(true);
+            instanceBuilder.request_validation_layers(true);
 #else
-			instanceBuilder.request_validation_layers(false);
+            instanceBuilder.request_validation_layers(false);
 #endif // LN_DEBUG
 
-			for (const auto& extension : getRequiredExtensions())
-			{
-				instanceBuilder.enable_extension(extension);
-			}
-			auto result = instanceBuilder.build();
+            for (const auto& extension : getRequiredExtensions())
+            {
+                instanceBuilder.enable_extension(extension);
+            }
+            auto result = instanceBuilder.build();
 
-			LN_ERR_FAIL_COND_V_MSG(result.vk_result() != VK_SUCCESS, result.vk_result(), "[Artemis] and error ocured during instance creation, msg:" + result.full_error().type.message());
+            LN_ERR_FAIL_COND_V_MSG(!result, result.vk_result(), "[Artemis] and error ocured during instance creation, msg:" + result.full_error().type.message());
 
-			instance = result.value();
-			appInfo.apiVersion = VKB_VK_API_VERSION_1_2;
-			return VK_SUCCESS;
-		}
+            instance = result.value();
+            appInfo.apiVersion = VKB_VK_API_VERSION_1_2;
+            return VK_SUCCESS;
+        }
 
-		std::vector<const char*> device::getRequiredExtensions()
-		{
-			uint32_t glfwExtensionCount = 0;
-			const char** glfwExtensions;
-			glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+        std::vector<const char*> device::getRequiredExtensions()
+        {
+            uint32_t glfwExtensionCount = 0;
+            const char** glfwExtensions;
+            glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
-			std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+            std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 
-			return extensions;
-		}
+            return extensions;
+        }
 
-		//physical device/gpu 
-		VkResult device::pickPhysicalDevice()
-		{
-			vkb::PhysicalDeviceSelector deviceSelector{ instance };
-			VkPhysicalDeviceFeatures features{};
-			VkPhysicalDeviceVulkan12Features features12{ VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES };
+        //physical device/gpu 
+        VkResult device::pickPhysicalDevice()
+        {
+            vkb::PhysicalDeviceSelector deviceSelector{ instance };
+            VkPhysicalDeviceFeatures features{};
+            VkPhysicalDeviceVulkan12Features features12{ VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES };
 
-			deviceSelector
-				.set_minimum_version(1, 2)
-				.set_surface(surface);
-			auto tempPhysicalDevice = deviceSelector.select().value();
-			if (tempPhysicalDevice.physical_device != VK_NULL_HANDLE)
-			{
+            deviceSelector
+                .set_minimum_version(1, 2)
+                .set_surface(surface);
+            auto tempPhysicalDevice = deviceSelector.select().value();
+            if (tempPhysicalDevice.physical_device != VK_NULL_HANDLE)
+            {
 
-				vkGetPhysicalDeviceFeatures(tempPhysicalDevice, &supportedFeatures);
-                LN_ERR_FAIL_COND_V_MSG(isFeatureSupported(SHADER_SAMPLED_IMAGE_ARRAY_DYNAMIC_INDEXING),VkResult::VK_ERROR_FEATURE_NOT_PRESENT,"[Artemis] feature not supported: SHADER_SAMPLED_IMAGE_ARRAY_DYNAMIC_INDEXING");
-                LN_ERR_FAIL_COND_V_MSG(isFeatureSupported(MULTI_VIEWPORT), VkResult::VK_ERROR_FEATURE_NOT_PRESENT, "[Artemis] feature not present: MULTI_VIEWPORT"); 
-                
+                vkGetPhysicalDeviceFeatures(tempPhysicalDevice, &supportedFeatures);
+                LN_ERR_FAIL_COND_V_MSG(!isFeatureSupported(SHADER_SAMPLED_IMAGE_ARRAY_DYNAMIC_INDEXING), VkResult::VK_ERROR_FEATURE_NOT_PRESENT, "[Artemis] feature not supported: SHADER_SAMPLED_IMAGE_ARRAY_DYNAMIC_INDEXING");
+                LN_ERR_FAIL_COND_V_MSG(!isFeatureSupported(MULTI_VIEWPORT), VkResult::VK_ERROR_FEATURE_NOT_PRESENT, "[Artemis] feature not present: MULTI_VIEWPORT");
                 features.multiViewport = VK_TRUE;
                 features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE; //shaderStorageImageArrayDynamicIndexing : specifies whether arrays of storage images can be indexed by dynamically uniform integer expressions in shader code
 
-				auto result = deviceSelector
-					.set_required_features(features)
-					.set_required_features_12(features12)
-					.select();
-				LN_ERR_FAIL_COND_V_MSG(result.vk_result() != VK_SUCCESS,result.vk_result(),result.error().message());
-				
-				physicalDevice = result.value();
-				
-				return result.vk_result();
-			}
-			return VK_ERROR_DEVICE_LOST;
-		}
+                auto result = deviceSelector
+                    .set_required_features(features)
+                    .set_required_features_12(features12)
+                    .select();
+                LN_ERR_FAIL_COND_V_MSG(!result, result.vk_result(), result.error().message());
+
+                physicalDevice = result.value();
+
+                return VK_SUCCESS;
+            }
+            return VK_ERROR_DEVICE_LOST;
+        }
 
         VkResult device::createLogicalDevice()
         {
             vkb::DeviceBuilder deviceBuilder{ physicalDevice };
             auto result = deviceBuilder.build();
-            LN_ERR_FAIL_COND_V_MSG(result.vk_result() != VK_SUCCESS, result.vk_result(), "[Artemis] could not create logical device: " + result.error().message());
+            LN_ERR_FAIL_COND_V_MSG(!result, result.vk_result(), "[Artemis] could not create logical device: " + result.error().message());
             _device = result.value();
             return VK_SUCCESS;
         }
 
-		bool device::isFeatureSupported(physicalDeviceFeatures feature) {
+        bool device::isFeatureSupported(physicalDeviceFeatures feature) 
+        {
             switch (feature) {
             case ROBUST_BUFFER_ACCESS:
                 return (supportedFeatures.robustBufferAccess == VK_TRUE);
@@ -208,17 +209,54 @@ namespace luna
             case INHERITED_QUERIES:
                 return (supportedFeatures.inheritedQueries == VK_TRUE);
             default:
-                LN_ERR_FAIL_MSG("[Artemis] unkown feature!");
-                return false; // Unknown feature
-		}
+                LN_ERR_FAIL_V_MSG("[Artemis] unkown feature!",false);
+            }
+            LN_ERR_FAIL_V_MSG("[Artemis] unkown feature!", false);
 
-       
-	}
-    VkSurfaceCapabilitiesKHR device::surfaceCapabilities()
-    {
-        VkSurfaceCapabilitiesKHR temp;
-        VkResult result = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, &temp);
-        LN_ERR_FAIL_COND_V_MSG(result != VK_SUCCESS, temp, "[Artemis] and error occured while trying to get device surface capabilities, VkResult: " + std::to_string(result));
-        return temp;
+        }
+        VkSurfaceCapabilitiesKHR device::surfaceCapabilities()
+        {
+            VkSurfaceCapabilitiesKHR temp;
+            VkResult result = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, &temp);
+            LN_ERR_FAIL_COND_V_MSG(result != VK_SUCCESS, temp, "[Artemis] and error occured while trying to get device surface capabilities, VkResult: " + std::to_string(result));
+            return temp;
+        }
+        VkQueue device::getQueue(vkb::QueueType type, bool dedicated)
+        {
+            return dedicated ? _device.get_dedicated_queue(type) = _device.get_queue(type);
+        }
+        bool device::hasDedicatedQueue(vkb::QueueType type)
+        {
+            auto result = _device.get_dedicated_queue_index(type);
+            return result.has_value();
+        }
+        VKAPI_ATTR VkBool32 VKAPI_CALL device::debugCallback(
+            VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
+            VkDebugUtilsMessageTypeFlagsEXT                  messageTypes,
+            const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
+            void* pUserData)
+        {
+            switch (messageSeverity)
+            {
+            case VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT:
+                LN_CORE_TRACE("[Artemis] msg: \r\n {0}",pCallbackData->pMessage);
+                break;
+            case VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT:
+                LN_CORE_INFO("[Artemis] msg: \r\n {0}", pCallbackData->pMessage);
+                break;
+            case VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT:
+                LN_CORE_WARN("[Artemis] msg: \r\n {0}", pCallbackData->pMessage);
+                break;
+            case VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT:
+                LN_CORE_ERROR("[Artemis] msg: \r\n {0}", pCallbackData->pMessage);
+                break;
+            case VK_DEBUG_UTILS_MESSAGE_SEVERITY_FLAG_BITS_MAX_ENUM_EXT:
+                break;
+            default:
+                LN_CORE_CRITICAL("[Artemis] msg: \r\n {0}", pCallbackData->pMessage);
+                break;
+            }
+            return VK_SUCCESS;
+        };
     }
 }

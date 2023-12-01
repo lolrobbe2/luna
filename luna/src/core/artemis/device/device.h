@@ -68,6 +68,10 @@ namespace luna
 			device(const ref<vulkan::window>& Window);
             bool isFeatureSupported(physicalDeviceFeatures feature);
             VkSurfaceCapabilitiesKHR surfaceCapabilities();
+
+            VkQueue getQueue(vkb::QueueType type,bool dedicated = false);
+            bool hasDedicatedQueue(vkb::QueueType type);
+            
 		private:
 			VkResult createInstance();
 
