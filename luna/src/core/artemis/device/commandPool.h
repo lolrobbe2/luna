@@ -1,17 +1,22 @@
 #pragma once
 #include <core/platform/windows/windowsWindow.h>
 #include <core/artemis/device/commandBuffer.h>
+#include <core/artemis/device/semaphore.h>
+#include <core/artemis/device/semaphore.h>
+#include <core/artemis/device/fence.h>
 namespace luna
 {
 	namespace artemis 
 	{
 		class commandPool
 		{
-			ref<commandBuffer> getCommandBuffer();
+		public:
+			ref<commandBuffer> getCommandBuffer(const VkCommandBufferLevel level = VK_COMMAND_BUFFER_LEVEL_PRIMARY) const;
+			void flush(const std::vector<commandBuffer>& buffers, const std::vector<semaphore>& signalSemaphores, const std::vector<semaphore>& waitSemaphores, const fence& fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool seperateThread);
 		private:
 			VkCommandPool m_commandPool = VK_NULL_HANDLE;
 			std::thread runner; 
-			std::mutex runnerMutex;
+		    mutable std::mutex runnerMutex;
 			VkQueue queue = VK_NULL_HANDLE;
 			const VkDevice* device;
 		protected:

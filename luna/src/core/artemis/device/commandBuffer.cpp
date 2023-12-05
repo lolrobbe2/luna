@@ -4,13 +4,16 @@ namespace luna
 {
 	namespace artemis
 	{
-		commandBuffer::commandBuffer(const VkCommandPool commandPool, const VkCommandBufferLevel& commandBufferLevel,const VkDevice device)
+		commandBuffer::commandBuffer(const VkCommandPool* commandPool, const VkCommandBufferLevel& commandBufferLevel,const VkDevice* device)
 		{
 			VkCommandBufferAllocateInfo info{ VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO ,nullptr};
 			info.commandBufferCount = 1;
-			info.commandPool = commandPool;
+			info.commandPool = *commandPool;
 			info.level = commandBufferLevel;
-			vkAllocateCommandBuffers(device, &info, &m_commandBuffer);
+			VkResult res = vkAllocateCommandBuffers(*device, &info, &m_commandBuffer);
+			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] failed to allocate commandBuffer, VkResult: " + std::to_string(res));
+			_commandPool = commandPool;
+			_device = device;
 		}
 		bool commandBuffer::begin(const VkCommandBufferUsageFlags flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT)
 		{

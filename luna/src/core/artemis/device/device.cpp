@@ -241,10 +241,18 @@ namespace luna
             {
                 VkQueue queue = getQueue(type, true);
                 if (queue != VK_NULL_HANDLE)
-                    return ref<commandPool>(new commandPool(queue, getQueueFamilyIndex(type, true), createFlags, _device));
+                    return ref<commandPool>(new commandPool(queue, getQueueFamilyIndex(type, true), createFlags, &_device.device));
             
             }
-            return ref<commandPool>(new commandPool(getQueue(type, false),getQueueFamilyIndex(type,false),createFlags,_device));
+            return ref<commandPool>(new commandPool(getQueue(type, false),getQueueFamilyIndex(type,false),createFlags,&_device.device));
+        }
+        const ref<semaphore> device::getSemaphore(const VkSemaphoreCreateFlags flags) const
+        {
+            return ref<semaphore>(new semaphore(&_device.device,flags));
+        }
+        const ref<fence> device::getFence(const VkFenceCreateFlags flags) const
+        {
+            return ref<fence>(new fence(&_device.device,flags));
         }
         VKAPI_ATTR VkBool32 VKAPI_CALL device::debugCallback(
             VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,

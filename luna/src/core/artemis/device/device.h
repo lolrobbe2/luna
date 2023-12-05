@@ -1,6 +1,7 @@
 #pragma once
 #include <core/platform/windows/windowsWindow.h>
 #include <core/artemis/device/commandPool.h>
+
 namespace luna 
 {
 	namespace artemis 
@@ -73,7 +74,9 @@ namespace luna
             VkQueue getQueue(vkb::QueueType type,bool dedicated = false);
             uint32_t getQueueFamilyIndex(vkb::QueueType type, bool dedicated = false);
             bool hasDedicatedQueue(vkb::QueueType type);
-            const ref<commandPool> getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags);
+            _ALWAYS_INLINE_ const ref<commandPool> getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags);
+            _ALWAYS_INLINE_ const ref<semaphore> getSemaphore(const VkSemaphoreCreateFlags flags) const;
+            _ALWAYS_INLINE_ const ref<fence> getFence(const VkFenceCreateFlags flags) const;
 		private:
 			VkResult createInstance();
 
