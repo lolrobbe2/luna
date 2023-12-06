@@ -17,7 +17,7 @@ namespace luna
 		}
 		bool commandBuffer::begin(const VkCommandBufferUsageFlags flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT)
 		{
-			LN_ERR_FAIL_COND_MSG(recording, "you cannot call begin() on a commandBuffer that is allready recording");
+			LN_ERR_FAIL_COND_V_MSG(recording,false, "you cannot call begin() on a commandBuffer that is allready recording");
 			VkCommandBufferBeginInfo commandBufferBeginInfo = { VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO };
 			commandBufferBeginInfo.flags = flags;
 			commandBufferBeginInfo.pInheritanceInfo = nullptr;

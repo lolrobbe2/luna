@@ -235,24 +235,28 @@ namespace luna
             auto result = _device.get_dedicated_queue_index(type);
             return result.has_value();
         }
-        const ref<commandPool> device::getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags)
+        ref<commandPool> device::getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags)
         {
             //release the vkqueue!
+            if(type == vkb::QueueType::transfer || type == vkb::QueueType::compute)
             {
                 VkQueue queue = getQueue(type, true);
                 if (queue != VK_NULL_HANDLE)
                     return ref<commandPool>(new commandPool(queue, getQueueFamilyIndex(type, true), createFlags, &_device.device));
-            
             }
             return ref<commandPool>(new commandPool(getQueue(type, false),getQueueFamilyIndex(type,false),createFlags,&_device.device));
         }
-        const ref<semaphore> device::getSemaphore(const VkSemaphoreCreateFlags flags) const
+        ref<semaphore> device::getSemaphore(const VkSemaphoreCreateFlags flags) const
         {
             return ref<semaphore>(new semaphore(&_device.device,flags));
         }
-        const ref<fence> device::getFence(const VkFenceCreateFlags flags) const
+        ref<fence> device::getFence(const VkFenceCreateFlags flags) const
         {
             return ref<fence>(new fence(&_device.device,flags));
+        }
+        ref<swapchain> device::getSwapchain()
+        {
+            return ref<swapchain>(new swapchain(&_device,window->getWidth(),window->getHeight(), surfaceCapabilities().minImageCount + 1));
         }
         VKAPI_ATTR VkBool32 VKAPI_CALL device::debugCallback(
             VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,

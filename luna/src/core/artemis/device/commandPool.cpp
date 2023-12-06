@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace artemis 
 	{
-		void _flush(const VkQueue queue, const std::vector<commandBuffer>& buffers, const std::vector<semaphore>& signalSemaphores, const std::vector<semaphore>& waitSemaphores, const fence& fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool seperateThread,std::mutex* mutex) 
+		void commandPool::_flush(VkQueue queue, const std::vector<commandBuffer>& buffers, const std::vector<semaphore>& signalSemaphores, const std::vector<semaphore>& waitSemaphores, const fence& fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool separateThread)
 		{
 			VkSubmitInfo submitInfo{ VK_STRUCTURE_TYPE_SUBMIT_INFO };
 			submitInfo.commandBufferCount = buffers.size();
@@ -33,25 +33,25 @@ namespace luna
 
 				submitInfo.pWaitSemaphores = pWaitSemaphores;
 			}
-			if (seperateThread) mutex->lock();
+			if (separateThread) runnerMutex.lock();
 			VkResult res = vkQueueSubmit(queue, 1, &submitInfo, fence);
-			if (seperateThread) mutex->unlock();
+			if (separateThread) runnerMutex.unlock();
 			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] unable to flush commandBuffers to queue");
 		}
 		
-		ref<commandBuffer> commandPool::getCommandBuffer(const VkCommandBufferLevel level) const
+	    ref<commandBuffer> commandPool::getCommandBuffer(const VkCommandBufferLevel level) const
 		{
-			return createRef<commandBuffer>(&m_commandPool,level,&device);
+			return ref<commandBuffer>(new commandBuffer(& m_commandPool, level, device));
 		}
-		void commandPool::flush(const std::vector<commandBuffer>& buffers ,const std::vector<semaphore>& signalSemaphores,const std::vector<semaphore>& waitSemaphores,const fence& fence,const VkPipelineStageFlags* pWaitDstStageMask,const bool seperateThread) 
+		void commandPool::flush(const std::vector<commandBuffer>& buffers ,const std::vector<semaphore>& signalSemaphores,const std::vector<semaphore>& waitSemaphores,const fence& fence,const VkPipelineStageFlags* pWaitDstStageMask,const bool separateThread) 
 		{
-			if(seperateThread) 
+			if(separateThread) 
 			{
-				runner.swap(std::thread(_flush, queue, buffers, signalSemaphores, waitSemaphores, fence, pWaitDstStageMask, seperateThread, &runnerMutex));
+				runner.swap(std::thread(std::bind(&commandPool::_flush, this, queue, buffers, signalSemaphores, waitSemaphores, fence, pWaitDstStageMask, separateThread)));
 			}
 			else 
 			{
-				_flush(queue, buffers, signalSemaphores, waitSemaphores, fence, pWaitDstStageMask, seperateThread, nullptr);
+				_flush(queue, buffers, signalSemaphores, waitSemaphores, fence, pWaitDstStageMask, separateThread);
 			}
 		}
 		commandPool::commandPool(const VkQueue queue, const uint32_t queueFamilyIndex,const VkCommandPoolCreateFlags flags,const VkDevice* device)
