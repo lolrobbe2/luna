@@ -1,6 +1,7 @@
 #include "shader.h"
 #include <core/vulkan/window/window.h>
 #include <core/vulkan/rendering/vulkanShader.h>
+#include "shader.h"
 namespace luna
 {
     namespace renderer
@@ -44,3 +45,4 @@ namespace luna
         }
     }
 }
+
