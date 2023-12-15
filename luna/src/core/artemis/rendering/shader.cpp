@@ -6,7 +6,7 @@ namespace luna
 {
 	namespace artemis
 	{
-		shader::shader(const VkDevice* device,const std::string& filepath, const shaderStage stage)
+		shader::shader(const VkDevice* device,const std::string& filepath, const shaderStage stage,const std::string& entrypoint)
 		{
 			std::ifstream file;
 			shaderName = std::filesystem::path{ filepath }.filename().string();
@@ -55,6 +55,7 @@ namespace luna
 
 			_stage = stage;
 			this->device = device;
+			this->entrypoint = entrypoint;
 		}
 		void shader::createLayout()
 		{

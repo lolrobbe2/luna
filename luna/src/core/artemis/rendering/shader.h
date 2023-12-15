@@ -90,13 +90,38 @@ namespace luna
 		class shader
 		{
 		public:
-			shader(const VkDevice* device,const std::string& filepath, const shaderStage stage);
+			shader(const VkDevice* device,const std::string& filepath, const shaderStage stage, const std::string& entrypoint = "main");
 			operator const VkShaderModule() const { return _module; };
 			const VkShaderModule native() const { return _module; };
 
 			operator const shaderStage() const { return _stage; };
 			const shaderStage nativeStage() const { return _stage; };
 
+			operator const std::string&() const{ return shaderName; };
+			const std::string& name() const { return shaderName; };
+			const std::string& entryPoint() const { return entrypoint; };
+			operator const VkShaderStageFlagBits() const { return stage(); };
+			const VkShaderStageFlagBits stage() const {
+				switch (_stage)
+				{
+				case shaderStageVertex:
+					return VK_SHADER_STAGE_VERTEX_BIT;
+				case shaderStageTessellationControl:
+					return VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT;
+				case shaderStageTessellationEvaluation:
+					return VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT;
+				case shaderStageGeometry:
+					return VK_SHADER_STAGE_GEOMETRY_BIT;
+				case shaderStageFragment:
+					return VK_SHADER_STAGE_FRAGMENT_BIT;
+				case shaderStageCompute:
+					return VK_SHADER_STAGE_COMPUTE_BIT;
+				default:
+					return VK_SHADER_STAGE_ALL;
+				}
+			}
+
+			const std::vector<shaderResource> layout() { return shaderLayout; };
 			~shader() { vkDestroyShaderModule(*device, _module, nullptr); };
 
 		private:
@@ -118,9 +143,9 @@ namespace luna
 			void createOffsets(std::vector<shaderResource>* layout);
 			void createShaderModule();
 			std::string shaderName;
+			std::string entrypoint;
 			shaderStage _stage;
 			std::vector<shaderResource> shaderLayout;
-			shaderStage stage;
 			std::vector<uint32_t> shaderSrc;
 			VkShaderModule _module;
 			const VkDevice* device;

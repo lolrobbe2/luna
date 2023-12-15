@@ -594,7 +594,6 @@ namespace luna
 			colorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;
 			colorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
 			colorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;
-
 			return colorBlendAttachment;
 		}
 

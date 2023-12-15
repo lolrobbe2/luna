@@ -1,5 +1,6 @@
 #include "device.h"
 #include <core/debug/debugMacros.h>
+#include <core/utils/shaderLibrary.h>
 namespace luna
 {
     namespace artemis
@@ -12,6 +13,7 @@ namespace luna
             pickPhysicalDevice();
             createLogicalDevice();
             window = Window;
+            utils::shaderLibrary::init(&_device.device);
         }
         ///instance creation
         VkResult device::createInstance()
