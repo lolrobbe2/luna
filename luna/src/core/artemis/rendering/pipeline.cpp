@@ -66,6 +66,57 @@ namespace luna
 			return *this;
 		}
 
+		pipelineBuilder pipelineBuilder::addViewport(const VkViewport viewport)
+		{
+			viewports.push_back(viewport);
+			return *this;
+		}
+
+		pipelineBuilder pipelineBuilder::addScissor(const VkRect2D scissor)
+		{
+			scissors.push_back(scissor);
+			return *this;
+		}
+
+		pipelineBuilder pipelineBuilder::addDynamicState(const VkDynamicState dynamicState)
+		{
+			dynamicStates.push_back(dynamicState);
+			return *this;
+		}
+
+		pipelineBuilder pipelineBuilder::enableBlending(bool enable)
+		{
+			colorBlendAttachementState.blendEnable = enable ? VK_TRUE : VK_FALSE;
+			return *this;
+		}
+
+		pipelineBuilder pipelineBuilder::setColorBlendingParams(const VkBlendFactor srcColor ,const VkBlendFactor dstColor ,const VkBlendOp blendOp)
+		{
+			colorBlendAttachementState.srcColorBlendFactor = srcColor;
+			colorBlendAttachementState.dstColorBlendFactor = dstColor;
+			colorBlendAttachementState.colorBlendOp = blendOp;
+			return *this;
+		}
+
+		pipelineBuilder pipelineBuilder::setAlphaBlendingParams(const VkBlendFactor srcColor, const VkBlendFactor dstColor, const VkBlendOp blendOp)
+		{
+			colorBlendAttachementState.srcAlphaBlendFactor = srcColor;
+			colorBlendAttachementState.dstAlphaBlendFactor = dstColor;
+			colorBlendAttachementState.alphaBlendOp = blendOp;
+			return *this;
+		}
+
+		pipelineBuilder pipelineBuilder::setColorMask(const bool red, const bool green, const bool blue, const bool alpha)
+		{
+			if (red) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_R_BIT;
+			if (green) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_G_BIT;
+			if (blue) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_B_BIT;
+
+			if (red) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_A_BIT;
+
+			return *this;
+		}
+
 		VkFormat pipelineBuilder::getResourceFormat(const typeId resourceType) const
 		{
 			LN_PROFILE_FUNCTION();
@@ -102,6 +153,7 @@ namespace luna
 			case Half:
 				return VK_FORMAT_R16_SFLOAT;
 			default:
+				LN_CORE_ERROR("[Artemis] resourceType not recognized!");
 				return VK_FORMAT_MAX_ENUM;
 			}
 		}
