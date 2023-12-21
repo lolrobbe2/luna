@@ -76,15 +76,45 @@ namespace luna
 
 		renderPassBuilder renderPassBuilder::addSubPassDependency(const VkSubpassDescription srcSubpass, const VkSubpassDescription dstSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
 		{
+			subpassDependency dependancy{ srcStageMask,dstStageMask,srcAccessMask,dstAccessMask,dependencyFlags };
+			return addSubPassDependency(srcSubpass, dstSubpass,dependancy);
+		}
+
+		renderPassBuilder renderPassBuilder::addSubPassDependency(const VkSubpassDescription srcSubpass, const VkSubpassDescription dstSubpass, const subpassDependency dependancy)
+		{
+			auto searchRes1 = std::find(subPasses.begin(), subPasses.end(), srcSubpass);
+			auto searchRes2 = std::find(subPasses.begin(), subPasses.end(), dstSubpass);
 			VkSubpassDependency dependency;
-			dependency.srcSubpass = std::find(subPasses.begin(), subPasses.end(), srcSubpass) - subPasses.begin();
-			dependency.dstSubpass = std::find(subPasses.begin(), subPasses.end(), dstSubpass) - subPasses.begin();
-			dependency.srcAccessMask = srcAccessMask;
-			dependency.dstAccessMask = dstAccessMask;
-			dependency.srcStageMask = srcStageMask;
-			dependency.dstStageMask = dstStageMask;
-			dependency.dependencyFlags = dependencyFlags;
+			dependency.srcSubpass = searchRes1 != subPasses.end() ? searchRes1 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
+			dependency.dstSubpass = searchRes2 != subPasses.end() ? searchRes2 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
+			dependency.srcAccessMask = dependancy.srcAccessMask;
+			dependency.dstAccessMask = dependancy.dstAccessMask;
+			dependency.srcStageMask = dependancy.srcStageMask;
+			dependency.dstStageMask = dependancy.dstStageMask;
+			dependency.dependencyFlags = dependancy.dependencyFlags;
 			subpassDependencys.push_back(dependency);
+			return *this;;
+		}
+
+		renderPassBuilder renderPassBuilder::addSubPassDependency(const VkSubpassDescription srcSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
+		{
+			subpassDependency dependancy{ srcStageMask,dstStageMask,srcAccessMask,dstAccessMask,dependencyFlags };
+			return addSubPassDependency(srcSubpass, dependancy);
+		}
+
+		renderPassBuilder renderPassBuilder::addSubPassDependency(const VkSubpassDescription srcSubpass, const subpassDependency dependency)
+		{
+			auto searchRes1 = std::find(subPasses.begin(), subPasses.end(), srcSubpass);
+
+			VkSubpassDependency _dependency;
+			_dependency.srcSubpass = searchRes1 != subPasses.end() ? searchRes1 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
+			_dependency.dstSubpass = VK_SUBPASS_EXTERNAL;
+			_dependency.srcAccessMask = dependency.srcAccessMask;
+			_dependency.dstAccessMask = dependency.dstAccessMask;
+			_dependency.srcStageMask = dependency.srcStageMask;
+			_dependency.dstStageMask = dependency.dstStageMask;
+			_dependency.dependencyFlags = dependency.dependencyFlags;
+			subpassDependencys.push_back(_dependency);
 			return *this;
 		}
 

@@ -67,6 +67,7 @@ namespace luna
 		class device
 		{
 		public:
+            device() = default;
 			device(const ref<vulkan::window>& Window);
             bool isFeatureSupported(physicalDeviceFeatures feature);
             VkSurfaceCapabilitiesKHR surfaceCapabilities();
@@ -78,6 +79,9 @@ namespace luna
             ref<semaphore> getSemaphore(const VkSemaphoreCreateFlags flags) const;
             ref<fence> getFence(const VkFenceCreateFlags flags) const;
             ref<swapchain> getSwapchain();
+
+            operator const VkDevice* () { return &_device.device; }
+            operator const VkDevice* () { return &_device.device; }
 		private:
 			VkResult createInstance();
 

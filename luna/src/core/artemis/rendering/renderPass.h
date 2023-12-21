@@ -4,6 +4,18 @@ namespace luna
 {
 	namespace artemis 
 	{
+		/*
+		* @brief helper type for the renderPass builder same as VkSubpassDependency,
+		* @brief but without src/dst subPass as this is determined by the renderPass builder.
+		*/
+		typedef struct subpassDependency {
+			VkPipelineStageFlags    srcStageMask;
+			VkPipelineStageFlags    dstStageMask;
+			VkAccessFlags           srcAccessMask;
+			VkAccessFlags           dstAccessMask;
+			VkDependencyFlags       dependencyFlags;
+		} subpassDependency;
+
 		class subPassBuilder
 		{
 		public:
@@ -32,8 +44,15 @@ namespace luna
 			renderPassBuilder addSubPass(const VkSubpassDescription description);
 			renderPassBuilder addCreateFlag(const VkRenderPassCreateFlagBits flag) { flags |= flag; return *this; };
 			renderPassBuilder addAttachementDescription(const VkAttachmentDescription description);
+			
 			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const VkSubpassDescription dstSubpass,const VkPipelineStageFlags srcStageMask,const VkPipelineStageFlags dstStageMask,const VkAccessFlags srcAccessMask,const VkAccessFlags dstAccessMask,const VkDependencyFlags dependencyFlags);
+			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const VkSubpassDescription dstSubpass,const subpassDependency dependancy);
+			
+			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags);
+			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const subpassDependency dependancy);
+			
 			renderPassBuilder addSubPassDependency(const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags);
+			
 			renderPass build();
 		private:
 			std::vector<VkSubpassDescription> subPasses;

@@ -9,6 +9,7 @@
 #include <core/utils/shaderLibrary.h>
 #include <core/vulkan/utils/vulkanAllocator.h>
 #include <imgui_demo.cpp>
+#include "renderer.h"
 namespace luna
 {
 	namespace renderer
@@ -87,3 +88,5 @@ namespace luna
 
 	}
 }
+
+
