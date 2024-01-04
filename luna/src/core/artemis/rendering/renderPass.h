@@ -1,66 +1,9 @@
 #pragma once
-#include <core/platform/windows/windowsWindow.h>
+#include <core/artemis/rendering/builders/subPassBuilder.h>
 namespace luna 
 {
 	namespace artemis 
-	{
-		/*
-		* @brief helper type for the renderPass builder same as VkSubpassDependency,
-		* @brief but without src/dst subPass as this is determined by the renderPass builder.
-		*/
-		typedef struct subpassDependency {
-			VkPipelineStageFlags    srcStageMask;
-			VkPipelineStageFlags    dstStageMask;
-			VkAccessFlags           srcAccessMask;
-			VkAccessFlags           dstAccessMask;
-			VkDependencyFlags       dependencyFlags;
-		} subpassDependency;
-
-		class subPassBuilder
-		{
-		public:
-			subPassBuilder setBindPoint(const VkPipelineBindPoint point) { description.pipelineBindPoint = point; return *this; }
-			subPassBuilder addInputAttachement(const VkImageLayout layout);
-			subPassBuilder addColorAttachement(const VkImageLayout layout);
-			subPassBuilder setDepthStencilAttachement(VkImageLayout layout);
-			VkSubpassDescription build();
-		private:
-			std::vector<VkImageLayout> inputAttachements;
-			std::vector<VkImageLayout> colorAttachements;
-			VkImageLayout depthStencilAttachement;
-
-			std::vector<VkImageLayout> preserveAttachements;
-			VkSubpassDescription description;
-		};
-		
-
-		/**
-		* @brief easely build a renderpass
-		*/
-		class renderPassBuilder
-		{
-		public:
-			renderPassBuilder(const VkDevice* device) { this->device = device; }
-			renderPassBuilder addSubPass(const VkSubpassDescription description);
-			renderPassBuilder addCreateFlag(const VkRenderPassCreateFlagBits flag) { flags |= flag; return *this; };
-			renderPassBuilder addAttachementDescription(const VkAttachmentDescription description);
-			
-			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const VkSubpassDescription dstSubpass,const VkPipelineStageFlags srcStageMask,const VkPipelineStageFlags dstStageMask,const VkAccessFlags srcAccessMask,const VkAccessFlags dstAccessMask,const VkDependencyFlags dependencyFlags);
-			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const VkSubpassDescription dstSubpass,const subpassDependency dependancy);
-			
-			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags);
-			renderPassBuilder addSubPassDependency(const VkSubpassDescription srcSubpass, const subpassDependency dependancy);
-			
-			renderPassBuilder addSubPassDependency(const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags);
-			
-			renderPass build();
-		private:
-			std::vector<VkSubpassDescription> subPasses;
-			std::vector<VkAttachmentDescription> attachementDescriptions;
-			std::vector<VkSubpassDependency> subpassDependencys;
-			VkRenderPassCreateFlags flags = 0;
-			const VkDevice* device;
-		};
+	{		
 		class renderPass
 		{
 		public:
@@ -71,6 +14,34 @@ namespace luna
 			VkRenderPass m_renderPass;
 			const VkDevice* device;
 		};
+		/**
+		* @brief easely build a renderpass
+		*/
+		class renderPassBuilder
+		{
+		public:
+			renderPassBuilder(const VkDevice* device) { this->device = device; }
+			renderPassBuilder addSubPass(const subpassDescription description);
+			renderPassBuilder addCreateFlag(const VkRenderPassCreateFlagBits flag) { flags |= flag; return *this; };
+			
+			renderPassBuilder addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass,const VkPipelineStageFlags srcStageMask,const VkPipelineStageFlags dstStageMask,const VkAccessFlags srcAccessMask,const VkAccessFlags dstAccessMask,const VkDependencyFlags dependencyFlags);
+			renderPassBuilder addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass,const subpassDependency dependancy);
+			
+			renderPassBuilder addSubPassDependency(const subpassDescription srcSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags);
+			renderPassBuilder addSubPassDependency(const subpassDescription srcSubpass, const subpassDependency dependancy);
+			
+			renderPassBuilder addSubPassDependency(const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags);
+			renderPassBuilder addSubPassDependency(const subpassDependency dependency);
+			renderPass build();
+		private:
+			static void addAttachements(const std::vector<attachement>& attachments, std::vector<VkAttachmentDescription>& descriptions);
+			std::vector<VkAttachmentDescription> generateAttachementDescriptions();
+			std::vector<subpassDescription> subPasses;
+			std::vector<VkSubpassDependency> subpassDependencys;
+			VkRenderPassCreateFlags flags = 0;
+			const VkDevice* device;
+		};
+		
 	}
 }
 

@@ -7,7 +7,7 @@ namespace luna
 		class frameBuffer
 		{
 		protected:
-			frameBuffer();
+			frameBuffer(const VkDevice* device);
 		private:
 			VkFramebuffer m_frameBuffer;
 		};

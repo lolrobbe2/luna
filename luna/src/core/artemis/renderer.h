@@ -1,6 +1,5 @@
 #pragma once
 #include <core/artemis/device/device.h>
-#include <core/artemis/rendering/renderPass.h>
 namespace luna 
 {
 	namespace artemis 

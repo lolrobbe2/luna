@@ -1,5 +1,4 @@
 #pragma once
-#include <core/platform/windows/windowsWindow.h>
 #include <core/artemis/device/commandBuffer.h>
 #include <core/artemis/device/semaphore.h>
 #include <core/artemis/device/semaphore.h>

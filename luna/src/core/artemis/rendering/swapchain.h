@@ -1,6 +1,6 @@
 #pragma once
 #include <core/platform/windows/windowsWindow.h>
-
+#define NULL_ATTACHEMENT_REF UINT32_MAX
 namespace luna 
 {
 	namespace artemis 

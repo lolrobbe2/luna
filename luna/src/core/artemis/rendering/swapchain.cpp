@@ -28,6 +28,8 @@ namespace luna
 			LN_ERR_FAIL_COND_MSG(!res, "[Artemis] something went wrong when trying to create the swapchain, msg: " + res.error().message());
 			m_swapchain = res.value();
 		}
+		
+	
 	}
 }
 

@@ -21,7 +21,7 @@ namespace luna
 		pipelineBuilder pipelineBuilder::createBindingDescription(const ref<shader> shader)
 		{
 			LN_PROFILE_FUNCTION();
-			if (shader->stage() != VK_SHADER_STAGE_VERTEX_BIT) return;
+			if (shader->stage() != VK_SHADER_STAGE_VERTEX_BIT) return *this;
 			VkVertexInputBindingDescription bindingDescription;
 			bindingDescription.stride = 0;
 			inputDescriptions[shader->name()].bindings.resize(0);
@@ -38,7 +38,7 @@ namespace luna
 		pipelineBuilder pipelineBuilder::createAttributeDescription(const ref<shader> shader)
 		{
 			LN_PROFILE_FUNCTION();
-			if (shader->stage() != VK_SHADER_STAGE_VERTEX_BIT) return;
+			if (shader->stage() != VK_SHADER_STAGE_VERTEX_BIT) return *this;
 			inputDescriptions[shader->name()].attributes.resize(0);
 			for (const auto& shaderResource : shader->layout())
 			{

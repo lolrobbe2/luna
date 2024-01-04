@@ -1,6 +1,5 @@
 #pragma once
-#include <core/vulkan/window/window.h>
-
+#include  <core/platform/windows/windowsWindow.h>
 namespace luna 
 {
 	namespace artemis 

@@ -32,7 +32,7 @@ namespace luna
 			swapchainspec.window = window;
 			swapchain = std::shared_ptr<vulkan::vulkanSwapchain> (new vulkan::vulkanSwapchain(swapchainspec));
 			
-			utils::shaderLibrary::init();
+			//utils::shaderLibrary::init(&deviceHandle.device);
 		}
 
 		void vulkanDevice::destroyContext()

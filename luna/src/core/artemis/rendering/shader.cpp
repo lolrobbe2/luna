@@ -6,7 +6,7 @@ namespace luna
 {
 	namespace artemis
 	{
-		shader::shader(const VkDevice* device,const std::string& filepath, const shaderStage stage,const std::string& entrypoint)
+		shader::shader(const VkDevice* device,const std::string& filepath, const shaderStage stage,const std::string& entrypoint) : _stage(stage)
 		{
 			std::ifstream file;
 			shaderName = std::filesystem::path{ filepath }.filename().string();
@@ -24,7 +24,6 @@ namespace luna
 			utils::compileSpec compileSpec;
 			compileSpec.fileName = shaderName;
 			compileSpec.source = buffer;
-			this->stage = stage;
 			switch (stage)
 			{
 			case shaderStageVertex:
@@ -70,7 +69,7 @@ namespace luna
 			for (const auto& resource : resources.separate_samplers) shaderLayout.push_back(getShaderResource(resource, shaderSrc, separateSamplers));
 
 			//for (const auto& resource : resources.stage_outputs) shaderLayout.push_back(getShaderResource(resource, shaderSrc,stageOutputs));
-			if (stage == shaderStageVertex)
+			if (_stage == shaderStageVertex)
 			{
 				std::sort(std::begin(shaderLayout), std::end(shaderLayout), [](const shaderResource& a,
 					const shaderResource& b) {return a.location < b.location; });

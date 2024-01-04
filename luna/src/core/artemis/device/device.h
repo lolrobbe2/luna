@@ -1,7 +1,7 @@
 #pragma once
-#include <core/platform/windows/windowsWindow.h>
 #include <core/artemis/device/commandPool.h>
-#include <core/artemis/rendering/swapchain.h>
+#include <core/artemis/rendering/renderPass.h>
+
 namespace luna 
 {
 	namespace artemis 
@@ -81,7 +81,7 @@ namespace luna
             ref<swapchain> getSwapchain();
 
             operator const VkDevice* () { return &_device.device; }
-            operator const VkDevice* () { return &_device.device; }
+            operator const VkDevice () { return _device.device; }
 		private:
 			VkResult createInstance();
 

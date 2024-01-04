@@ -28,8 +28,8 @@ namespace luna
 			case vulkan::VULKAN:
 				renderer::rendererDevice = ref<device>(new vulkan::vulkanDevice(window));
 				layout.device = rendererDevice;
-				layout.pipelineShaders.push_back(utils::shaderLibrary::get("fragment.glsl"));
-				layout.pipelineShaders.push_back(utils::shaderLibrary::get("vertex.glsl"));
+				//layout.pipelineShaders.push_back(utils::shaderLibrary::get("fragment.glsl"));
+				//layout.pipelineShaders.push_back(utils::shaderLibrary::get("vertex.glsl"));
 				renderer::rendererPipeline = ref<pipeline>(new vulkan::vulkanPipeline(layout));
 				renderer::gui = ref<gui::vulkanImgui>(new gui::vulkanImgui(renderer::rendererPipeline));
 				break;
