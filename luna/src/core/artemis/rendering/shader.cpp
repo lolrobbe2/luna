@@ -51,10 +51,12 @@ namespace luna
 			shaderSrc = compiler.compile(compileSpec);
 		
 			createLayout();
+			
 
 			_stage = stage;
 			this->device = device;
 			this->entrypoint = entrypoint;
+			createShaderModule();
 		}
 		void shader::createLayout()
 		{

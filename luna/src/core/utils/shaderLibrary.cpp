@@ -6,7 +6,9 @@ namespace luna
 	{
 		void shaderLibrary::init(const VkDevice* device)
 		{
-			LN_ERR_FAIL_COND_MSG(*_device != VK_NULL_HANDLE, "[Artemis] shaderLibrary has already been initialized");
+			
+			LN_ERR_FAIL_COND_MSG(_device != nullptr && *_device != VK_NULL_HANDLE, "[Artemis] shaderLibrary has already been initialized");
+			_device = (VkDevice*)device;
 			load("src/assets/fragment.glsl",artemis::shaderStageFragment);
 			load("src/assets/vertex.glsl",artemis::shaderStageVertex);
 		}
@@ -19,6 +21,13 @@ namespace luna
 		ref<artemis::shader> shaderLibrary::get(const std::string& shaderName)
 		{
 			return shaders[shaderName];
+		}
+		void shaderLibrary::shutdown()
+		{
+			for(auto& [key,shader] : shaders)
+			{
+				shader.reset();
+			}
 		}
 	}
 }

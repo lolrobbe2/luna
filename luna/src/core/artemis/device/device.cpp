@@ -15,6 +15,12 @@ namespace luna
             window = Window;
             utils::shaderLibrary::init(&_device.device);
         }
+
+        device::~device()
+        {
+            utils::shaderLibrary::shutdown();
+        }
+
         ///instance creation
         VkResult device::createInstance()
         {

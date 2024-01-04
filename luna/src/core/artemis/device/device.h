@@ -69,6 +69,7 @@ namespace luna
 		public:
             device() = default;
 			device(const ref<vulkan::window>& Window);
+            ~device();
             bool isFeatureSupported(physicalDeviceFeatures feature);
             VkSurfaceCapabilitiesKHR surfaceCapabilities();
 
