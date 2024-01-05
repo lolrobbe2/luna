@@ -10,7 +10,7 @@ namespace luna
 		{
 		public:
 			operator VkAttachmentReference() {
-				return { reference->attachment,referenceLayout };
+				return *reference;
 			}
 			operator VkAttachmentDescription()
 			{
@@ -20,15 +20,15 @@ namespace luna
 		protected:
 			friend class attachementBuilder;
 			friend class renderPassBuilder;
-			friend class subpassBuilder;
+			friend class subPassBuilder;
 			attachement(VkAttachmentDescription attachement);
 			void setAttachementRef(uint64_t ref);
-			void setReferenceLayout(VkImageLayout layout) { referenceLayout = layout; }
+			void setReferenceLayout(VkImageLayout layout) { reference->layout = layout; }
 
 		private:
 			VkAttachmentDescription _attachement;
 			VkImageLayout referenceLayout;
-			ref<VkAttachmentReference> reference;
+			ref<VkAttachmentReference> reference = createRef<VkAttachmentReference>();
 		};
 	}
 }

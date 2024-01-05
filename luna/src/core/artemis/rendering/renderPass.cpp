@@ -15,25 +15,25 @@ namespace luna
 	
 
 
-		renderPassBuilder renderPassBuilder::addSubPass(const subpassDescription description)
+		renderPassBuilder& renderPassBuilder::addSubPass(const subpassDescription description)
 		{
 			subPasses.push_back(description);
 			return *this;
 		}
 
-		renderPassBuilder renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
+		renderPassBuilder& renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
 		{
 			subpassDependency dependancy{ srcStageMask,dstStageMask,srcAccessMask,dstAccessMask,dependencyFlags };
 			return addSubPassDependency(srcSubpass, dstSubpass,dependancy);
 		}
 
-		renderPassBuilder renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass, const subpassDependency dependancy)
+		renderPassBuilder& renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass, const subpassDependency dependancy)
 		{
 			auto searchRes1 = std::find(subPasses.begin(), subPasses.end(), srcSubpass);
 			auto searchRes2 = std::find(subPasses.begin(), subPasses.end(), dstSubpass);
 			VkSubpassDependency dependency;
-			//dependency.srcSubpass = searchRes1 != subPasses.end() ? searchRes1 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
-			//dependency.dstSubpass = searchRes2 != subPasses.end() ? searchRes2 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
+			dependency.srcSubpass = searchRes1 != subPasses.end() ? searchRes1 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
+			dependency.dstSubpass = searchRes2 != subPasses.end() ? searchRes2 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
 			dependency.srcAccessMask = dependancy.srcAccessMask;
 			dependency.dstAccessMask = dependancy.dstAccessMask;
 			dependency.srcStageMask = dependancy.srcStageMask;
@@ -43,18 +43,18 @@ namespace luna
 			return *this;
 		}
 
-		renderPassBuilder renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
+		renderPassBuilder& renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
 		{
 			subpassDependency dependancy{ srcStageMask,dstStageMask,srcAccessMask,dstAccessMask,dependencyFlags };
 			return addSubPassDependency(srcSubpass, dependancy);
 		}
 
-		renderPassBuilder renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDependency dependency)
+		renderPassBuilder& renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDependency dependency)
 		{
 			auto searchRes1 = std::find(subPasses.begin(), subPasses.end(), srcSubpass);
 
 			VkSubpassDependency _dependency;
-			//_dependency.srcSubpass = searchRes1 != subPasses.end() ? searchRes1 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
+			_dependency.srcSubpass = searchRes1 != subPasses.end() ? searchRes1 - subPasses.begin() + 1 : 0; //increment by one because VK_SUBPASS_EXTERNALL is 0 Unsigned!
 			_dependency.dstSubpass = VK_SUBPASS_EXTERNAL;
 			_dependency.srcAccessMask = dependency.srcAccessMask;
 			_dependency.dstAccessMask = dependency.dstAccessMask;
@@ -65,17 +65,17 @@ namespace luna
 			return *this;
 		}
 
-		renderPassBuilder renderPassBuilder::addSubPassDependency(const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
+		renderPassBuilder& renderPassBuilder::addSubPassDependency(const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
 		{
 			subpassDependency dependancy{ srcStageMask,dstStageMask,srcAccessMask,dstAccessMask,dependencyFlags };
 			return addSubPassDependency(dependancy);
 		}
 
-		renderPassBuilder renderPassBuilder::addSubPassDependency(const subpassDependency dependency)
+		renderPassBuilder& renderPassBuilder::addSubPassDependency(const subpassDependency dependency)
 		{
 			VkSubpassDependency _dependency;
 			_dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
-			_dependency.dstSubpass = VK_SUBPASS_EXTERNAL;
+			_dependency.dstSubpass = 0;
 			_dependency.srcAccessMask = dependency.srcAccessMask;
 			_dependency.dstAccessMask = dependency.dstAccessMask;
 			_dependency.srcStageMask = dependency.srcStageMask;
@@ -95,7 +95,7 @@ namespace luna
 
 			info.pAttachments = attachementDescriptions.data();
 			info.pDependencies = subpassDependencys.data();
-			//info.pSubpasses = subPasses.data();
+			info.pSubpasses = generateSubpassDescriptions();
 			return renderPass(device,&info);
 		}
 
@@ -125,5 +125,14 @@ namespace luna
 			return descriptions;
 		}
 
+		const VkSubpassDescription* renderPassBuilder::generateSubpassDescriptions()
+		{
+			subpassDescriptions.resize(0);
+			for(subpassDescription subpass : subPasses)
+			{
+				subpassDescriptions.push_back(subpass);
+			}
+			return subpassDescriptions.data();
+		}
 	}
 }

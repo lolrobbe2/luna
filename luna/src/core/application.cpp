@@ -8,7 +8,7 @@
 #include <core/assets/assetManager.h>
 #include <core/platform/platformUtils.h>
 #include <core/networking/socket.h>
-#include <core/artemis/device/device.h>
+#include <core/artemis/renderer.h>
 namespace luna
 {
 	namespace application
@@ -28,9 +28,9 @@ namespace luna
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			//mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
-			artemis::device device(mWindow);
-			auto commandPool = device.getCommandPool(vkb::QueueType::graphics, 0);
-			auto commandBuffer = commandPool->getCommandBuffer();
+			artemis::renderer renderer(mWindow);
+			//auto commandPool = device.getCommandPool(vkb::QueueType::graphics, 0);
+			//auto commandBuffer = commandPool->getCommandBuffer();
 			LN_CORE_INFO("started vulkan device");
 			/*required valid asset manager!*/
 			/*
@@ -78,21 +78,21 @@ namespace luna
 				
 				if (!minimized)
 				{
-					renderer::renderer2D::BeginScene();
+					//renderer::renderer2D::BeginScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnUpdate");
 
 						for (utils::layer* layer : layerStack)
 							layer->onUpdate(timestep);
 					}
-					renderer::renderer2D::endScene();
+					//renderer::renderer2D::endScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
 						for (utils::layer* layer : layerStack)
 							layer->onImGuiRender();
 					}
-					renderer::renderer::newFrame();
+					//renderer::renderer::newFrame();
 				}
 			}
 			LN_PROFILE_END_SESSION();

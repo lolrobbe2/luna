@@ -4,21 +4,23 @@ namespace luna
 	namespace artemis 
 	{
 
-		subPassBuilder subPassBuilder::addInputAttachement(const attachement attachement)
+		subPassBuilder& subPassBuilder::addInputAttachement(attachement attachement,const VkImageLayout referenceLayout)
 		{
-			inputAttachements.push_back(attachement);
+			attachement.reference->layout = referenceLayout;
+			description.inputAttachments.push_back(attachement);
 			return *this;
 		}
 
-		subPassBuilder subPassBuilder::addColorAttachement(const attachement attachement)
+		subPassBuilder& subPassBuilder::addColorAttachement(attachement attachement,const VkImageLayout referenceLayout)
 		{
-			colorAttachements.push_back(attachement);
+			attachement.reference->layout= referenceLayout;
+			description.colorAttachments.push_back(attachement);
 			return *this;
 		}
 
-		subPassBuilder subPassBuilder::setDepthStencilAttachement(const attachement attachement)
+		subPassBuilder& subPassBuilder::setDepthStencilAttachement(const attachement attachement)
 		{
-			depthStencilAttachement = attachement;
+			description.depthStencilAttachment = attachement;
 			return *this;
 		}
 

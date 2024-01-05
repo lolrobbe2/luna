@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace artemis 
 	{
-		class renderer
+		class LN_API renderer
 		{
 		public:
 			renderer(const ref<vulkan::window>& window);

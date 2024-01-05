@@ -86,6 +86,7 @@ namespace luna
 		void renderer2D::shutdown()
 		{
 			LN_PROFILE_SCOPE("shutdown renderer2D");
+			/*
 			renderer::beginScene(); //to clear draw commands
 			renderer::endScene();
 			rendererData.vertexArray.~shared_ptr();
@@ -94,11 +95,13 @@ namespace luna
 			rendererData.quadVertexBuffer.~shared_ptr();
 			blankImage.~shared_ptr();
 			renderer::shutdown();
+			*/
 		}
 
 		void renderer2D::BeginScene()
 		{
 			LN_PROFILE_SCOPE("begin scene");
+			/*
 			renderer::beginScene();
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;
 			//we use memset because it gets fully transformed in to pure assembly an is thus the fastest way to reset the vertexBUffer.
@@ -108,14 +111,17 @@ namespace luna
 			rendererData.stats.quadCount = 0;
 			rendererData.textures.resize(0);
 			rendererData.textures.push_back(blankImage->handle());
+			*/
 		}
 
 		void renderer2D::endScene()
 		{
+			/*
 			LN_PROFILE_FUNCTION();
 			flush();
 			rendererData.quadVertexBufferPreviousPtr =  rendererData.quadVertexBufferPtr;
 			renderer::endScene();
+			*/
 		}
 		bool renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText, const glm::vec4& bounds, uint8_t& startOutBounds)
 		{
@@ -295,10 +301,12 @@ namespace luna
 		void renderer2D::flush()
 		{
 			LN_PROFILE_FUNCTION();
+			/*
 			std::ptrdiff_t numElementsToClear = rendererData.quadVertexBufferPreviousPtr - rendererData.quadVertexBufferPtr;
 			if(numElementsToClear > 0) std::fill(rendererData.quadVertexBufferPtr, rendererData.quadVertexBufferPtr + numElementsToClear, quadVertex());
 			renderer::Submit(rendererData.vertexArray ,rendererData.textures, rendererData.quadIndexCount);
 			rendererData.stats.drawCalls++;
+			*/
 		}
 
 		renderer2D::statistics renderer2D::getStats()

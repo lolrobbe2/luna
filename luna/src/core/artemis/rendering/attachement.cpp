@@ -6,6 +6,7 @@ namespace luna
 		attachement::attachement(VkAttachmentDescription attachement)
 		{
 			_attachement = attachement;
+			reference = createRef<VkAttachmentReference>();
 			reference->attachment = NULL_ATTACHEMENT_REF;
 		}
 
