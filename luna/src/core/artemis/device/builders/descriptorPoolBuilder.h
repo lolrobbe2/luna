@@ -1,6 +1,7 @@
 #pragma once
 #include <core/platform/windows/windowsWindow.h>
 #define DESCRIPTOR_TYPE_AMOUNT 16
+
 #define SAMPLER_AMOUNT 0
 #define COMBINED_IMAGE_SAMPLER_AMOUNT 1
 #define SAMPLED_IMAGE_AMOUNT 2
@@ -48,7 +49,9 @@ namespace luna
 
 
 		private:
+			void setDescriptorTypes();
 			const VkDevice* p_device;
+			VkDescriptorPoolCreateInfo info{ VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO };
 			VkDescriptorPoolSize poolSizes[DESCRIPTOR_TYPE_AMOUNT];
 		};
 	}
