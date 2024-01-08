@@ -7,7 +7,7 @@ namespace luna
 		{
 			this->device = device;
 		}
-		pipelineBuilder pipelineBuilder::addShaderStage(const ref<shader> shader, const VkPipelineShaderStageCreateFlags flags)
+		pipelineBuilder& pipelineBuilder::addShaderStage(const ref<shader> shader, const VkPipelineShaderStageCreateFlags flags)
 		{
 			VkPipelineShaderStageCreateInfo info{ VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO };
 			info.flags = flags;
@@ -18,7 +18,7 @@ namespace luna
 			return createBindingDescription(shader).createAttributeDescription(shader).createVertexInputState(shader);
 		}
 
-		pipelineBuilder pipelineBuilder::createBindingDescription(const ref<shader> shader)
+		pipelineBuilder& pipelineBuilder::createBindingDescription(const ref<shader> shader)
 		{
 			LN_PROFILE_FUNCTION();
 			if (shader->stage() != VK_SHADER_STAGE_VERTEX_BIT) return *this;
@@ -35,7 +35,7 @@ namespace luna
 				return *this;
 			}
 		}
-		pipelineBuilder pipelineBuilder::createAttributeDescription(const ref<shader> shader)
+		pipelineBuilder& pipelineBuilder::createAttributeDescription(const ref<shader> shader)
 		{
 			LN_PROFILE_FUNCTION();
 			if (shader->stage() != VK_SHADER_STAGE_VERTEX_BIT) return *this;
@@ -54,7 +54,7 @@ namespace luna
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::createVertexInputState(const ref<shader> shader, VkPipelineVertexInputStateCreateFlags flags)
+		pipelineBuilder& pipelineBuilder::createVertexInputState(const ref<shader> shader, VkPipelineVertexInputStateCreateFlags flags)
 		{
 			if (shader->stage() != VK_SHADER_STAGE_VERTEX_BIT) return *this;
 
@@ -66,31 +66,31 @@ namespace luna
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::addViewport(const VkViewport viewport)
+		pipelineBuilder& pipelineBuilder::addViewport(const VkViewport viewport)
 		{
 			viewports.push_back(viewport);
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::addScissor(const VkRect2D scissor)
+		pipelineBuilder& pipelineBuilder::addScissor(const VkRect2D scissor)
 		{
 			scissors.push_back(scissor);
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::addDynamicState(const VkDynamicState dynamicState)
+		pipelineBuilder& pipelineBuilder::addDynamicState(const VkDynamicState dynamicState)
 		{
 			dynamicStates.push_back(dynamicState);
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::enableBlending(bool enable)
+		pipelineBuilder& pipelineBuilder::enableBlending(bool enable)
 		{
 			colorBlendAttachementState.blendEnable = enable ? VK_TRUE : VK_FALSE;
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::setColorBlendingParams(const VkBlendFactor srcColor ,const VkBlendFactor dstColor ,const VkBlendOp blendOp)
+		pipelineBuilder& pipelineBuilder::setColorBlendingParams(const VkBlendFactor srcColor ,const VkBlendFactor dstColor ,const VkBlendOp blendOp)
 		{
 			colorBlendAttachementState.srcColorBlendFactor = srcColor;
 			colorBlendAttachementState.dstColorBlendFactor = dstColor;
@@ -98,7 +98,7 @@ namespace luna
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::setAlphaBlendingParams(const VkBlendFactor srcColor, const VkBlendFactor dstColor, const VkBlendOp blendOp)
+		pipelineBuilder& pipelineBuilder::setAlphaBlendingParams(const VkBlendFactor srcColor, const VkBlendFactor dstColor, const VkBlendOp blendOp)
 		{
 			colorBlendAttachementState.srcAlphaBlendFactor = srcColor;
 			colorBlendAttachementState.dstAlphaBlendFactor = dstColor;
@@ -106,7 +106,7 @@ namespace luna
 			return *this;
 		}
 
-		pipelineBuilder pipelineBuilder::setColorMask(const bool red, const bool green, const bool blue, const bool alpha)
+		pipelineBuilder& pipelineBuilder::setColorMask(const bool red, const bool green, const bool blue, const bool alpha)
 		{
 			if (red) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_R_BIT;
 			if (green) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_G_BIT;

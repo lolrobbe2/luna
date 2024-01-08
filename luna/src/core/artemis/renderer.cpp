@@ -6,10 +6,11 @@ namespace luna
 	{
 		renderer::renderer(const ref<vulkan::window>& window)
 		{
+			LN_PROFILE_FUNCTION();
 			c_device = device(window);
 			p_swapChain = c_device.getSwapchain();
-			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics, 0);
-			p_transferCommandPool = c_device.getCommandPool(vkb::QueueType::transfer, 0);
+			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
+			p_transferCommandPool = c_device.getCommandPool(vkb::QueueType::transfer);
 
 			attachementBuilder attachementBuilder{p_swapChain};
 			attachementBuilder

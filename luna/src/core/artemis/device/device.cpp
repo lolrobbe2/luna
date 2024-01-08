@@ -266,6 +266,10 @@ namespace luna
         {
             return ref<swapchain>(new swapchain(&_device,window->getWidth(),window->getHeight(), surfaceCapabilities().minImageCount + 1));
         }
+        descriptorPoolBuilder device::getDescriptorPoolBuilder(const ref<shader> shader)
+        {
+            return descriptorPoolBuilder(&_device.device,shader);
+        }
         VKAPI_ATTR VkBool32 VKAPI_CALL device::debugCallback(
             VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
             VkDebugUtilsMessageTypeFlagsEXT                  messageTypes,

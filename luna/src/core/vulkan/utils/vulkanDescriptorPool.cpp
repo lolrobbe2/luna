@@ -185,7 +185,7 @@ namespace luna
 			default:
 				break;
 			}
-			vkDeviceWaitIdle(device->getDeviceHandles().device);
+			vkDeviceWaitIdle(device->getDeviceHandles().device); //innificient!
 			vkUpdateDescriptorSets(device->getDeviceHandles().device, 1, &descriptorWrites[descriptorIndex], 0, nullptr);
 			return VkResult();
 		}

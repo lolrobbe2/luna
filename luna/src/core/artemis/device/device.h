@@ -1,7 +1,7 @@
 #pragma once
 #include <core/artemis/device/commandPool.h>
 #include <core/artemis/rendering/renderPass.h>
-
+#include <core/artemis/device/builders/descriptorPoolBuilder.h>
 namespace luna 
 {
 	namespace artemis 
@@ -76,11 +76,11 @@ namespace luna
             VkQueue getQueue(vkb::QueueType type,bool dedicated = false);
             uint32_t getQueueFamilyIndex(vkb::QueueType type, bool dedicated = false);
             bool hasDedicatedQueue(vkb::QueueType type);
-            ref<commandPool> getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags);
+            ref<commandPool> getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags = 0);
             ref<semaphore> getSemaphore(const VkSemaphoreCreateFlags flags) const;
             ref<fence> getFence(const VkFenceCreateFlags flags) const;
             ref<swapchain> getSwapchain();
-
+            descriptorPoolBuilder getDescriptorPoolBuilder(const ref<shader> shader);
             operator const VkDevice* () { return &_device.device; }
             operator const VkDevice () { return _device.device; }
 		private:
