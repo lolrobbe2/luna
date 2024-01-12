@@ -7,6 +7,7 @@ namespace luna
 		class descriptorPool
 		{
 		protected:
+			friend class descriptorPoolBuilder;
 			descriptorPool(const VkDevice* device, VkDescriptorPoolCreateInfo info, std::vector<VkWriteDescriptorSet>& descriptorWrites);
 		public:
 			operator VkDescriptorPool() { return _descriptorPool; }

@@ -1,5 +1,6 @@
 #pragma once
-#include <core/platform/windows/windowsWindow.h>
+#include <core/artemis/rendering/shader.h>
+#include <core/artemis/device/descriptorPool.h>
 #define DESCRIPTOR_TYPE_AMOUNT 16
 
 #define SAMPLER_AMOUNT 0
@@ -47,10 +48,12 @@ namespace luna
 			descriptorPoolBuilder& setMutableValveAmount(uint32_t amount)			  { poolSizes[MUTABLE_VALVE_AMOUNT].descriptorCount = amount; }
 			descriptorPoolBuilder& setInlineUniformBlockExtAmount(uint32_t amount)    { poolSizes[INLINE_UNIFORM_BLOCK_EXT_AMOUNT].descriptorCount = amount; }
 			descriptorPoolBuilder& setMaxSets(uint32_t maxAmount = 100)					  { info.maxSets = maxAmount; }
-
+			descriptorPool build();
 		private:
 			void setDescriptorTypes();
+			std::vector<VkWriteDescriptorSet>& createDescriptorWrites();
 			const VkDevice* p_device;
+			ref<shader> p_shader;
 			VkDescriptorPoolCreateInfo info{ VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO };
 			VkDescriptorPoolSize poolSizes[DESCRIPTOR_TYPE_AMOUNT];
 		};
