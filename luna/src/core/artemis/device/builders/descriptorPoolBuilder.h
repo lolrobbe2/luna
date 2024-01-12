@@ -46,7 +46,7 @@ namespace luna
 			descriptorPoolBuilder& setAccelerationStructureNvAmount(uint32_t amount)  { poolSizes[ACCELERATION_STRUCTURE_NV_AMOUNT].descriptorCount = amount; }
 			descriptorPoolBuilder& setMutableValveAmount(uint32_t amount)			  { poolSizes[MUTABLE_VALVE_AMOUNT].descriptorCount = amount; }
 			descriptorPoolBuilder& setInlineUniformBlockExtAmount(uint32_t amount)    { poolSizes[INLINE_UNIFORM_BLOCK_EXT_AMOUNT].descriptorCount = amount; }
-
+			descriptorPoolBuilder& setMaxSets(uint32_t maxAmount = 100)					  { info.maxSets = maxAmount; }
 
 		private:
 			void setDescriptorTypes();

@@ -9,7 +9,8 @@ namespace luna
 			p_device = device;
             setDescriptorTypes();
             info.poolSizeCount = DESCRIPTOR_TYPE_AMOUNT;
-            
+            info.pPoolSizes = poolSizes;
+            info.maxSets = 100;
            
 		}
 		void descriptorPoolBuilder::setDescriptorTypes()
