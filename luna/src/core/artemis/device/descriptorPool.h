@@ -1,5 +1,5 @@
 #pragma once
-#include <core/platform/windows/windowsWindow.h>
+#include <core/artemis/device/descriptorSet.h>
 namespace luna 
 {
 	namespace artemis 
@@ -9,6 +9,7 @@ namespace luna
 		protected:
 			friend class descriptorPoolBuilder;
 			descriptorPool(const VkDevice* device, VkDescriptorPoolCreateInfo info, std::vector<VkWriteDescriptorSet>& descriptorWrites);
+			descriptorSet allocateDescriptorSet();
 		public:
 			operator VkDescriptorPool() { return _descriptorPool; }
 			operator VkDescriptorPool*() { return &_descriptorPool; }
@@ -17,6 +18,7 @@ namespace luna
 			operator VkDescriptorSetLayout*() { return &layout; }
 		
 		private:
+			const VkDevice* p_device;
 			VkDescriptorPool _descriptorPool;
 			VkDescriptorSetLayout layout;
 			std::vector<VkWriteDescriptorSet> descriptorWrites;
