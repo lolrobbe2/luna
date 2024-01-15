@@ -28,6 +28,7 @@ namespace luna
 			 * 
 			 */
 			void run();
+			void initCore();
 			/**
 			 * @brief the main event callback of the application.
 			 * 

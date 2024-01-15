@@ -9,7 +9,12 @@ namespace luna
 		protected:
 			friend class descriptorPoolBuilder;
 			descriptorPool(const VkDevice* device, VkDescriptorPoolCreateInfo info, std::vector<VkWriteDescriptorSet>& descriptorWrites);
-			descriptorSet allocateDescriptorSet();
+			/**
+			* @brief allocates a descripor set from this pool.
+			* @brief WARNING the descriptor set gets destroyed when the destructor is called! 
+			*/
+			descriptorSet& allocateDescriptorSet();
+			std::vector<descriptorSet>& allocateDescriptorSets();
 		public:
 			operator VkDescriptorPool() { return _descriptorPool; }
 			operator VkDescriptorPool*() { return &_descriptorPool; }

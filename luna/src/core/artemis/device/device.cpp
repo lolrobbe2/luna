@@ -18,7 +18,7 @@ namespace luna
 
         device::~device()
         {
-            utils::shaderLibrary::shutdown();
+            
         }
 
         ///instance creation

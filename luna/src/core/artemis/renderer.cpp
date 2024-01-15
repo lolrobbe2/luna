@@ -1,5 +1,6 @@
 #include "renderer.h"
 #include "rendering/builders/attachementBuilder.h"
+#include <core/utils/shaderLibrary.h>
 namespace luna 
 {
 	namespace artemis 
@@ -35,6 +36,10 @@ namespace luna
 				.addSubPassDependency(dependancy);
 			renderPass renderPass = _renderPassBuilder.build();
 
+			descriptorPoolBuilder poolBuilder = c_device.getDescriptorPoolBuilder(utils::shaderLibrary::get("fragment.glsl"));;
+			poolBuilder.setSamplerAmount(100).setStorageImageAmount(500);
+
+			descriptorPool pool = poolBuilder.build();
 		}
 	}
 }

@@ -12,6 +12,7 @@ namespace luna
             info.poolSizeCount = DESCRIPTOR_TYPE_AMOUNT;
             info.pPoolSizes = poolSizes;
             info.maxSets = 100;
+
 			
            
 		}
@@ -38,7 +39,7 @@ namespace luna
             poolSizes[MUTABLE_VALVE_AMOUNT] = { VK_DESCRIPTOR_TYPE_MUTABLE_VALVE, 0 };
             poolSizes[INLINE_UNIFORM_BLOCK_EXT_AMOUNT] = { VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT, 0 };
 		}
-		std::vector<VkWriteDescriptorSet>& descriptorPoolBuilder::createDescriptorWrites()
+		std::vector<VkWriteDescriptorSet> descriptorPoolBuilder::createDescriptorWrites()
 		{
 			LN_PROFILE_FUNCTION();
 			std::vector<VkWriteDescriptorSet> descriptorWrites;
