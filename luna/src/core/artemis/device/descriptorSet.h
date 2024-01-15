@@ -4,6 +4,9 @@ namespace luna
 {
 	namespace artemis 
 	{
+		/// <summary>
+		/// remebember descriptorSet& not descriptorSet otherwise the descriptorSet will be destroyed before you can use it
+		/// </summary>
 		class descriptorSet
 		{
 		public: 

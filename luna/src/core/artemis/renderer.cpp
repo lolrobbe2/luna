@@ -40,6 +40,9 @@ namespace luna
 			poolBuilder.setSamplerAmount(100).setStorageImageAmount(500);
 
 			descriptorPool pool = poolBuilder.build();
+
+			descriptorSet& set = pool.allocateDescriptorSet();
+			
 		}
 	}
 }

@@ -18,7 +18,7 @@ namespace luna
 		}
 		descriptorPool descriptorPoolBuilder::build()
 		{
-			return descriptorPool(p_device,info,createDescriptorWrites());
+			return descriptorPool(p_device,info,createDescriptorWrites(),createLayout(layoutFlags));
 		}
 		void descriptorPoolBuilder::setDescriptorTypes()
 		{
@@ -81,6 +81,58 @@ namespace luna
 				}
 			}
 			return descriptorWrites;
+		}
+		const VkDescriptorSetLayout descriptorPoolBuilder::createLayout(VkDescriptorSetLayoutCreateFlags flags)
+		{
+
+			LN_PROFILE_FUNCTION();
+			VkDescriptorSetLayout setLayout;
+			VkDescriptorSetLayoutCreateInfo setLayoutCreateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO };
+			std::vector<VkDescriptorSetLayoutBinding> resourceLayoutBindings;
+			std::vector<shaderResource> shaderLayout = p_shader->layout();
+			for (size_t i =  shaderLayout.size() - 1; i > 0; i--)
+			{
+				VkDescriptorSetLayoutBinding resourceLayoutBinding;
+				switch (shaderLayout[i].resourceClass)
+				{
+				case uniformBuffers:
+					LN_CORE_ERROR("uniform buffers not implemented!");
+					break;
+				case storageBuffers:
+					LN_CORE_ERROR("storage buffers not implemented!");
+					break;
+				case storageImages:
+					resourceLayoutBinding.binding = shaderLayout[i].binding;
+					resourceLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE;
+					resourceLayoutBinding.descriptorCount = shaderLayout[i].amount;
+					resourceLayoutBinding.pImmutableSamplers = nullptr;
+					resourceLayoutBinding.stageFlags = VkShaderStageFlagBits::VK_SHADER_STAGE_FRAGMENT_BIT;
+					resourceLayoutBindings.push_back(resourceLayoutBinding);
+					break;
+				case sampledImages:
+					break;
+				default:
+
+					switch (shaderLayout[i].type)
+					{
+					case Sampler:
+						resourceLayoutBinding.binding = shaderLayout[i].binding;
+						resourceLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER;
+						resourceLayoutBinding.descriptorCount = 1; //TODO make dynamic!!!
+						resourceLayoutBinding.pImmutableSamplers = nullptr;
+						resourceLayoutBinding.stageFlags = VkShaderStageFlagBits::VK_SHADER_STAGE_FRAGMENT_BIT;
+						resourceLayoutBindings.push_back(resourceLayoutBinding);
+					default:
+						break;
+					}
+				}
+			}
+			setLayoutCreateInfo.bindingCount = resourceLayoutBindings.size();
+			setLayoutCreateInfo.pBindings = resourceLayoutBindings.data();
+			setLayoutCreateInfo.flags = flags;
+			setLayoutCreateInfo.pNext = nullptr;
+			vkCreateDescriptorSetLayout(*p_device, &setLayoutCreateInfo, nullptr, &setLayout);
+			return setLayout;
 		}
 	}
 }

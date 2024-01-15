@@ -87,7 +87,7 @@ namespace luna
 			std::string name;
 			std::vector<shaderResource> members{};
 		};
-		class LN_API shader
+		class shader
 		{
 		public:
 			shader(const VkDevice* device,const std::string& filepath, const shaderStage stage, const std::string& entrypoint = "main");

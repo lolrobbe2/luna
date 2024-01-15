@@ -99,7 +99,7 @@ namespace luna
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			//mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
-			artemis::renderer renderer = artemis::renderer(mWindow);
+			//artemis::renderer renderer = artemis::renderer(mWindow);
 		}
 
 		void application::onEvent(Event& e)
