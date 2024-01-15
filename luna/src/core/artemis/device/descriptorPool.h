@@ -12,7 +12,7 @@ namespace luna
 			 * @brief WARNING the descriptor set gets destroyed when the destructor is called!
 			 */
 			descriptorSet& allocateDescriptorSet();
-			std::vector<descriptorSet>& allocateDescriptorSets();
+			std::vector<descriptorSet>& allocateDescriptorSets(uint32_t amount);
 		protected:
 			friend class descriptorPoolBuilder;
 			descriptorPool(const VkDevice* device, VkDescriptorPoolCreateInfo info, std::vector<VkWriteDescriptorSet>& descriptorWrites,VkDescriptorSetLayout layout);

@@ -17,7 +17,7 @@ namespace luna
 
 			info.pPoolSizes = poolSizes.data();
 			info.poolSizeCount = poolSizes.size();
-
+			info.flags |= VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
 			VkResult createResult = vkCreateDescriptorPool(*device, &info, nullptr, &tempDescriptorPool);
 			LN_ERR_FAIL_COND_MSG(createResult != VK_SUCCESS, "[Artemis] unable to create descriptor set, VkResult:  " + std::to_string(createResult));
 			
@@ -34,11 +34,28 @@ namespace luna
 			allocateInfo.pSetLayouts = &layout;
 			VkDescriptorSet set;
 			vkAllocateDescriptorSets(*p_device, &allocateInfo, &set);
-			return descriptorSet(set,&_descriptorPool,descriptorWrites);
+			return *new descriptorSet(p_device,set,&_descriptorPool,descriptorWrites);
 		}
-		std::vector<descriptorSet>& descriptorPool::allocateDescriptorSets()
+		std::vector<descriptorSet>& descriptorPool::allocateDescriptorSets(uint32_t amount)
 		{
-			return std::vector<descriptorSet>();
+			VkDescriptorSetAllocateInfo allocateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO };
+			allocateInfo.descriptorPool = _descriptorPool;
+			allocateInfo.descriptorSetCount = amount;
+			std::vector<VkDescriptorSetLayout> layouts(amount, layout);
+			allocateInfo.pSetLayouts = layouts.data();
+			std::vector<VkDescriptorSet> nativeSets(amount);
+			VkResult allocRes = vkAllocateDescriptorSets(*p_device, &allocateInfo, nativeSets.data());
+			
+			LN_ERR_FAIL_COND_V_MSG(allocRes != VK_SUCCESS, std::vector<descriptorSet>(), "[Artemis] an error occured during descriptorSet allocation, VkResult: " + VK_RESULT(allocRes));
+
+			std::vector<descriptorSet>* sets = new std::vector<descriptorSet>();
+			sets->reserve(amount); //reserve upfront for performance reasons
+
+			for (VkDescriptorSet set : nativeSets)
+			{
+				sets->push_back({p_device, set,&_descriptorPool,descriptorWrites });
+			}
+			return *sets;
 		}
 	}
 }

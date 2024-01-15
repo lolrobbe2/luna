@@ -8,7 +8,6 @@
 #include <core/assets/assetManager.h>
 #include <core/platform/platformUtils.h>
 #include <core/networking/socket.h>
-#include <core/artemis/renderer.h>
 namespace luna
 {
 	namespace application
@@ -99,7 +98,7 @@ namespace luna
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			//mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
-			//artemis::renderer renderer = artemis::renderer(mWindow);
+			artemis::renderer renderer = artemis::renderer(mWindow);
 		}
 
 		void application::onEvent(Event& e)

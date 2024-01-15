@@ -7,7 +7,7 @@ namespace luna
 		class renderer
 		{
 		public:
-			renderer(const ref<vulkan::window>& window);
+			LN_API renderer(const ref<vulkan::window>& window);
 		private:
 			device c_device;
 			ref<swapchain> p_swapChain;

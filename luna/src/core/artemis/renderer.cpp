@@ -36,13 +36,14 @@ namespace luna
 				.addSubPassDependency(dependancy);
 			renderPass renderPass = _renderPassBuilder.build();
 
-			descriptorPoolBuilder poolBuilder = c_device.getDescriptorPoolBuilder(utils::shaderLibrary::get("fragment.glsl"));;
-			poolBuilder.setSamplerAmount(100).setStorageImageAmount(500);
+			descriptorPoolBuilder poolBuilder = c_device.getDescriptorPoolBuilder(shaderLibrary::get("fragment.glsl"));;
+			poolBuilder.setSamplerAmount(100).setStorageImageAmount(32*100);
 
 			descriptorPool pool = poolBuilder.build();
 
 			descriptorSet& set = pool.allocateDescriptorSet();
 			
+			std::vector<descriptorSet>& sets = pool.allocateDescriptorSets(98);
 		}
 	}
 }

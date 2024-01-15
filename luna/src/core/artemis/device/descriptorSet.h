@@ -14,7 +14,7 @@ namespace luna
 			~descriptorSet() { free(); }
 		protected:
 			friend class descriptorPool;
-			descriptorSet(const VkDescriptorSet descriptorSet, const VkDescriptorPool* p_descriptorPool, std::vector<VkWriteDescriptorSet>& descriptorWrites);
+			descriptorSet(const VkDevice* p_device,const VkDescriptorSet descriptorSet, const VkDescriptorPool* p_descriptorPool, std::vector<VkWriteDescriptorSet>& descriptorWrites);
 		private:
 			VkDescriptorSet _descriptorSet;
 			const VkDescriptorPool* p_descriptorPool;

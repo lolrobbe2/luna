@@ -6,6 +6,8 @@
 #include <core/utils/objectStorage.h>
 #include <core/utils/layerStack.h>
 #include <core/scene/scene.h>
+#include <core/artemis/renderer.h>
+
 
 
 int main(int argc, char** argv);

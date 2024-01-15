@@ -13,7 +13,7 @@ namespace luna
             pickPhysicalDevice();
             createLogicalDevice();
             window = Window;
-            utils::shaderLibrary::init(&_device.device);
+            shaderLibrary::init(&_device.device);
         }
 
         device::~device()

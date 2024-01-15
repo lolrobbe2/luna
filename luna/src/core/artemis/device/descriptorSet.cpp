@@ -14,7 +14,7 @@ namespace luna
 			LN_ERR_FAIL_COND_MSG(freeRes != VK_SUCCESS, "[Artemis] an error occured when freeing a descriptorSet, VkResult: " + std::to_string(freeRes));
 			_descriptorSet = VK_NULL_HANDLE; 
 		}
-		descriptorSet::descriptorSet(const VkDescriptorSet descriptorSet, const VkDescriptorPool* p_descriptorPool, std::vector<VkWriteDescriptorSet>& descriptorWrites) : _descriptorSet(descriptorSet),p_descriptorPool(p_descriptorPool),descriptorWrites(descriptorWrites)
+		descriptorSet::descriptorSet(const VkDevice* p_device,const VkDescriptorSet descriptorSet, const VkDescriptorPool* p_descriptorPool, std::vector<VkWriteDescriptorSet>& descriptorWrites) : p_device(p_device),_descriptorSet(descriptorSet),p_descriptorPool(p_descriptorPool),descriptorWrites(descriptorWrites)
 		{
 		}
 	}
