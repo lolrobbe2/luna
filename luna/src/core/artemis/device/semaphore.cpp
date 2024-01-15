@@ -11,7 +11,7 @@ namespace luna
 			info.pNext = nullptr;
 			LN_ERR_FAIL_COND_MSG(*device == VK_NULL_HANDLE, "[Artemis] failed to create semaphore because device has not been initialized or has been invalidated!");
 			VkResult res = vkCreateSemaphore(*device, &info, nullptr, &_semaphore);
-			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] failed to create semaphore, VkResult: " + std::to_string(res));
+			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] failed to create semaphore, VkResult: " + VK_RESULT(res));
 			this->device = device;
 		}
 	}

@@ -1,5 +1,6 @@
 #include "descriptorPoolBuilder.h"
 #include <core/artemis/rendering/shader.h>
+#include <core/debug/debugMacros.h>
 namespace luna
 {
 	namespace artemis 
@@ -131,7 +132,10 @@ namespace luna
 			setLayoutCreateInfo.pBindings = resourceLayoutBindings.data();
 			setLayoutCreateInfo.flags = flags;
 			setLayoutCreateInfo.pNext = nullptr;
-			vkCreateDescriptorSetLayout(*p_device, &setLayoutCreateInfo, nullptr, &setLayout);
+			VkResult createRes = vkCreateDescriptorSetLayout(*p_device, &setLayoutCreateInfo, nullptr, &setLayout);
+			
+			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, VK_NULL_HANDLE, "[Artemis] an error occured whilst creating the descriptorSet layout, VkResult: " + VK_RESULT(createRes));
+
 			return setLayout;
 		}
 	}

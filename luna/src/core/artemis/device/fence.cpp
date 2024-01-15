@@ -11,7 +11,7 @@ namespace luna
 			info.flags = flags;
 			info.pNext = nullptr;
 			VkResult res = vkCreateFence(*device, &info, nullptr, &_fence);
-			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] an error occured while trying to create fence, VkResult: " + std::to_string(res));
+			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] an error occured while trying to create fence, VkResult: " + VK_RESULT(res));
 			_device = device;
 		}
 	}

@@ -14,7 +14,7 @@ namespace luna
 		}
 		void shaderLibrary::load(const std::string& filePath,const shaderStage& stage)
 		{
-			ref<shader> shader =createRef<artemis::shader>(_device, filePath, stage);
+			ref<shader> shader = createRef<artemis::shader>(_device, filePath, stage);
 			LN_ERR_FAIL_NULL_MSG(shader, "[Artemis] unable to create shader");
 			shaders.insert({ *shader,shader });
 		}

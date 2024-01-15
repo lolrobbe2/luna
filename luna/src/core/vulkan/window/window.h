@@ -1,7 +1,9 @@
 #pragma once
 #ifndef WINDOW
 #define WINDOW
-
+/**
+* @brief transforms A VkResult value to an std::string.
+*/
 #ifndef VK_RESULT
 #define VK_RESULT(res) getVkResultString(res)
 #endif

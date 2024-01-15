@@ -8,7 +8,7 @@ namespace luna
 		renderPass::renderPass(const VkDevice* device,const VkRenderPassCreateInfo* info)
 		{
 			VkResult res = vkCreateRenderPass(*device, info, nullptr, &m_renderPass);
-			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "an error occured when creating renderPass, VkResult: " + std::to_string(res));
+			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "an error occured when creating renderPass, VkResult: " + VK_RESULT(res));
 			this->device = device;
 		}
 

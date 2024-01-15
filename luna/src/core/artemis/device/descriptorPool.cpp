@@ -19,7 +19,7 @@ namespace luna
 			info.poolSizeCount = poolSizes.size();
 			info.flags |= VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
 			VkResult createResult = vkCreateDescriptorPool(*device, &info, nullptr, &tempDescriptorPool);
-			LN_ERR_FAIL_COND_MSG(createResult != VK_SUCCESS, "[Artemis] unable to create descriptor set, VkResult:  " + std::to_string(createResult));
+			LN_ERR_FAIL_COND_MSG(createResult != VK_SUCCESS, "[Artemis] unable to create descriptor set, VkResult:  " + VK_RESULT(createResult));
 			
 			p_device = device;
 			_descriptorPool = tempDescriptorPool;

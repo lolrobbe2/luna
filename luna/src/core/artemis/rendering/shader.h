@@ -90,7 +90,7 @@ namespace luna
 		class shader
 		{
 		public:
-			shader(const VkDevice* device, const std::string& filepath, const shaderStage stage, const std::string& entrypoint = "main");
+			LN_API shader(const VkDevice* device, const std::string& filepath, const shaderStage stage, const std::string& entrypoint = "main");
 
 			operator const VkShaderModule() const { return _module; };
 			const VkShaderModule native() const { return _module; };

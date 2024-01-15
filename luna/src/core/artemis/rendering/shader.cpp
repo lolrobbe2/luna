@@ -260,7 +260,7 @@ namespace luna
 			shaderModuleCreateInfo.pCode = shaderSrc.data();
 
 			VkResult res = vkCreateShaderModule(*device, &shaderModuleCreateInfo, nullptr,&_module);
-			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] an error occured during shader module creation, VkResult: " + std::to_string(res));
+			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] an error occured during shader module creation, VkResult: " + VK_RESULT(res));
 		}	
 	}
 }
