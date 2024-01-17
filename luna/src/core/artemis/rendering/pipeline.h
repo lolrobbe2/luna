@@ -5,10 +5,15 @@ namespace luna
 {
 	namespace artemis 
 	{
+		enum pipelineType
+		{
+			GRAPHICS,
+			COMPUTE
+		};
 		class pipelineBuilder 
 		{
 		public:
-			pipelineBuilder(const VkDevice* device);
+			pipelineBuilder(const VkDevice* p_device);
 			/**
 			* @brief adds a shaderStage from a given shader
 			* @brief creates binding & attribute descriptions automaticcaly when the shaders shaderStage is vertexStage 
@@ -34,6 +39,10 @@ namespace luna
 			pipelineBuilder& setColorBlendingParams(const VkBlendFactor srcColor = VK_BLEND_FACTOR_SRC_ALPHA, const VkBlendFactor dstColor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA, const VkBlendOp blendOp = VK_BLEND_OP_ADD);
 			pipelineBuilder& setAlphaBlendingParams(const VkBlendFactor srcColor, const VkBlendFactor dstColor, const VkBlendOp blendOp);
 			pipelineBuilder& setColorMask(const bool red,const bool green,const bool blue,const bool alpha);
+			pipelineBuilder& setPipelineType(const pipelineType type);
+			pipelineBuilder& setCreateFlags(const VkPipelineCreateFlags createFlags = 0);
+			pipelineBuilder& setTopology(const VkPrimitiveTopology topology);
+			ref<pipeline> build();
 		private:
 			VkFormat getResourceFormat(const typeId resourceType) const;
 			std::vector<VkPipelineShaderStageCreateInfo> shaderStages;
@@ -52,10 +61,19 @@ namespace luna
 			std::vector<VkDynamicState> dynamicStates;
 
 			VkPipelineColorBlendAttachmentState colorBlendAttachementState;
-			const VkDevice* device;
+			
+			pipelineType type;
+			VkPrimitiveTopology topology;
+			VkPipelineCreateFlags createFlags;
+			const VkDevice* p_device;
 		};
 		class pipeline
 		{
+		public:
+			pipeline(VkGraphicsPipelineCreateInfo createInfo);
+			pipeline(VkComputePipelineCreateInfo createInfo);
+		private:
+			pipelineType type;
 		};
 	}
 }

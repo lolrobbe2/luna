@@ -3,9 +3,9 @@ namespace luna
 {
 	namespace artemis 
 	{
-		pipelineBuilder::pipelineBuilder(const VkDevice* device)
+		pipelineBuilder::pipelineBuilder(const VkDevice* p_device)
 		{
-			this->device = device;
+			this->p_device = p_device;
 		}
 		pipelineBuilder& pipelineBuilder::addShaderStage(const ref<shader> shader, const VkPipelineShaderStageCreateFlags flags)
 		{
@@ -117,6 +117,66 @@ namespace luna
 			return *this;
 		}
 
+		pipelineBuilder& pipelineBuilder::setPipelineType(const pipelineType type)
+		{
+			this->type = type;
+			return *this;
+		}
+
+		pipelineBuilder& pipelineBuilder::setCreateFlags(const VkPipelineCreateFlags createFlags)
+		{
+			this->createFlags = createFlags;
+			return *this;
+		}
+
+		ref<pipeline> pipelineBuilder::build()
+		{
+			if (type == GRAPHICS)
+			{
+				VkPipelineColorBlendStateCreateInfo* pColorBlendState = new VkPipelineColorBlendStateCreateInfo();//FREED when the pipeline is destroyed?
+				pColorBlendState->sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
+				pColorBlendState->attachmentCount = 1;
+				pColorBlendState->pAttachments = &colorBlendAttachementState;
+				pColorBlendState->logicOpEnable = VK_FALSE;
+
+				VkPipelineDynamicStateCreateInfo* pDynamicStateCreateInfo = new VkPipelineDynamicStateCreateInfo();//FREED when the pipeline is destroyed?
+				pDynamicStateCreateInfo->sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
+				pDynamicStateCreateInfo->dynamicStateCount = dynamicStates.size();
+				pDynamicStateCreateInfo->flags = 0; //NOT SUPPORTED!
+				pDynamicStateCreateInfo->pNext = nullptr;
+				pDynamicStateCreateInfo->pDynamicStates = dynamicStates.data();
+
+				VkPipelineViewportStateCreateInfo* pViewportState = new VkPipelineViewportStateCreateInfo();
+				pViewportState->sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
+				pViewportState->pNext = nullptr;
+				pViewportState->viewportCount = viewports.size();
+				pViewportState->pViewports = viewports.data();
+				pViewportState->scissorCount = scissors.size();
+				pViewportState->pScissors = scissors.data();
+
+				VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState = new VkPipelineInputAssemblyStateCreateInfo();
+				pInputAssemblyState->sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
+				pInputAssemblyState->pNext = nullptr;
+				pInputAssemblyState->topology = topology;
+				pInputAssemblyState->primitiveRestartEnable = VK_FALSE;//NOT SUPPORTED!
+				
+
+				VkGraphicsPipelineCreateInfo createInfo{ VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO };
+				createInfo.basePipelineHandle = VK_NULL_HANDLE; //NOT SUPPORTED!
+				createInfo.basePipelineIndex = 0; //NOT_SUPPORTED!
+				createInfo.flags = createFlags;
+
+				
+				createInfo.pColorBlendState = pColorBlendState;
+				createInfo.pDepthStencilState = nullptr; //not needed since 3D is not supported!
+				createInfo.pDynamicState = pDynamicStateCreateInfo;
+				createInfo.pInputAssemblyState = pInputAssemblyState;
+				createInfo.pMultisampleState = 
+				return createRef<pipeline>(createInfo); 
+			}
+			return ref<pipeline>();
+		}
+
 		VkFormat pipelineBuilder::getResourceFormat(const typeId resourceType) const
 		{
 			LN_PROFILE_FUNCTION();
@@ -157,6 +217,14 @@ namespace luna
 				return VK_FORMAT_MAX_ENUM;
 			}
 		}
-	}
+		pipeline::pipeline(VkGraphicsPipelineCreateInfo createInfo)
+		{
+			type = GRAPHICS;
+		}
+		pipeline::pipeline(VkComputePipelineCreateInfo createInfo)
+		{
+			type = COMPUTE;
+		}
+}
 }
 

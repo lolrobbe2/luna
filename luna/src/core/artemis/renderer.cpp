@@ -43,7 +43,6 @@ namespace luna
 
 			descriptorSet& set = pool.allocateDescriptorSet();
 			
-			std::vector<descriptorSet>& sets = pool.allocateDescriptorSets(98);
 		}
 	}
 }
