@@ -1,4 +1,5 @@
 #include "pipeline.h"
+#include <core/debug/debugMacros.h>
 namespace luna 
 {
 	namespace artemis 
@@ -129,6 +130,24 @@ namespace luna
 			return *this;
 		}
 
+		pipelineBuilder& pipelineBuilder::setTopology(const VkPrimitiveTopology topology)
+		{
+			this->topology = topology;
+			return *this;
+		}
+
+		pipelineBuilder& pipelineBuilder::setPolygonMode(const VkPolygonMode polygonMode)
+		{
+			this->polygonMode = polygonMode;
+			return *this;
+		}
+
+		pipelineBuilder& pipelineBuilder::addDescriptorSetLayout(const VkDescriptorSetLayout layout)
+		{
+			setLayouts.insert(layout);
+			return *this;
+		}
+
 		ref<pipeline> pipelineBuilder::build()
 		{
 			if (type == GRAPHICS)
@@ -139,12 +158,17 @@ namespace luna
 				pColorBlendState->pAttachments = &colorBlendAttachementState;
 				pColorBlendState->logicOpEnable = VK_FALSE;
 
+
+				LN_ERR_FAIL_COND_V_MSG(dynamicStates.size() == 0, ref<pipeline>(), "[Artemis] a graphics pipeline must have atleast 1 dynamic state!");
 				VkPipelineDynamicStateCreateInfo* pDynamicStateCreateInfo = new VkPipelineDynamicStateCreateInfo();//FREED when the pipeline is destroyed?
 				pDynamicStateCreateInfo->sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
 				pDynamicStateCreateInfo->dynamicStateCount = dynamicStates.size();
 				pDynamicStateCreateInfo->flags = 0; //NOT SUPPORTED!
 				pDynamicStateCreateInfo->pNext = nullptr;
 				pDynamicStateCreateInfo->pDynamicStates = dynamicStates.data();
+
+				LN_ERR_FAIL_COND_V_MSG(viewports.size() == 0, ref<pipeline>(), "[Artemis] a graphics pipeline must have atleast 1 viewport!");
+				LN_ERR_FAIL_COND_V_MSG(scissors.size() == 0, ref<pipeline>(), "[Artemis] a graphics pipeline must have atleast 1 viewport scissor!");
 
 				VkPipelineViewportStateCreateInfo* pViewportState = new VkPipelineViewportStateCreateInfo();
 				pViewportState->sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
@@ -160,19 +184,71 @@ namespace luna
 				pInputAssemblyState->topology = topology;
 				pInputAssemblyState->primitiveRestartEnable = VK_FALSE;//NOT SUPPORTED!
 				
+				VkPipelineMultisampleStateCreateInfo* pMultisampleState = new VkPipelineMultisampleStateCreateInfo();
+				pMultisampleState->sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
+				pMultisampleState->pNext = nullptr;
+
+				pMultisampleState->sampleShadingEnable = VK_FALSE;
+				//multisampling defaulted to no multisampling (1 sample per pixel)
+				pMultisampleState->rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
+				pMultisampleState->minSampleShading = 1.0f;
+				pMultisampleState->pSampleMask = nullptr;
+				pMultisampleState->alphaToCoverageEnable = VK_FALSE;
+				pMultisampleState->alphaToOneEnable = VK_FALSE;
+
+				VkPipelineRasterizationStateCreateInfo* pRasterizationState = new VkPipelineRasterizationStateCreateInfo();
+				pRasterizationState->sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
+				pRasterizationState->pNext = nullptr;
+
+				pRasterizationState->depthClampEnable = VK_FALSE;
+				//discards all primitives before the rasterization stage if enabled which we don't want
+				pRasterizationState->rasterizerDiscardEnable = VK_FALSE;
+
+				pRasterizationState->polygonMode = polygonMode;
+				pRasterizationState->lineWidth = 1.0f;
+				//no backface cull
+				pRasterizationState->cullMode = VK_CULL_MODE_BACK_BIT;
+				pRasterizationState->frontFace = VK_FRONT_FACE_CLOCKWISE;
+				//no depth bias
+				pRasterizationState->depthBiasEnable = VK_FALSE;
+
+
+				LN_ERR_FAIL_COND_V_MSG(setLayouts.size() == 0, ref<pipeline>(), "[Artemis] a graphics pipeline must have atleast 1 descriptorSetLayout!");
+				VkPipelineLayout pipelineLayout;
+				VkPipelineLayoutCreateInfo layoutCreateInfo{};
+				layoutCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+				layoutCreateInfo.pNext = nullptr;
+
+				//empty defaults
+				layoutCreateInfo.flags = 0;
+				layoutCreateInfo.setLayoutCount = setLayouts.size();
+				layoutCreateInfo.pSetLayouts = std::vector<VkDescriptorSetLayout>(setLayouts.begin(), setLayouts.end()).data();
+				layoutCreateInfo.pushConstantRangeCount = 0;
+				layoutCreateInfo.pPushConstantRanges = nullptr; //no pushConstants
+				VkResult layoutCreateRes = vkCreatePipelineLayout(*p_device, &layoutCreateInfo, nullptr, &pipelineLayout);
+				LN_ERR_FAIL_COND_V_MSG(layoutCreateRes != VK_SUCCESS, ref<pipeline>(), "[Artemis] and error occured when creating the graphics pipeline layout, VkResult: " + VK_RESULT(layoutCreateRes));
 
 				VkGraphicsPipelineCreateInfo createInfo{ VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO };
 				createInfo.basePipelineHandle = VK_NULL_HANDLE; //NOT SUPPORTED!
 				createInfo.basePipelineIndex = 0; //NOT_SUPPORTED!
 				createInfo.flags = createFlags;
+				std::vector<VkPipelineVertexInputStateCreateInfo>  vertexInputState;
+				vertexInputState.reserve(vertexInputCreateInfo.size());
 
-				
+				std::transform(vertexInputCreateInfo.begin(), vertexInputCreateInfo.end(), std::back_inserter(vertexInputState),
+					[](const auto& pair) { return pair.second; });
+				createInfo.pVertexInputState = vertexInputState.data();
 				createInfo.pColorBlendState = pColorBlendState;
 				createInfo.pDepthStencilState = nullptr; //not needed since 3D is not supported!
 				createInfo.pDynamicState = pDynamicStateCreateInfo;
 				createInfo.pInputAssemblyState = pInputAssemblyState;
-				createInfo.pMultisampleState = 
+				createInfo.pMultisampleState = pMultisampleState;
+				createInfo.pRasterizationState = pRasterizationState;
+				createInfo.layout = pipelineLayout;
 				return createRef<pipeline>(createInfo); 
+			} else 
+			{
+				
 			}
 			return ref<pipeline>();
 		}
@@ -217,12 +293,16 @@ namespace luna
 				return VK_FORMAT_MAX_ENUM;
 			}
 		}
-		pipeline::pipeline(VkGraphicsPipelineCreateInfo createInfo)
+		pipeline::pipeline(const VkDevice* p_device, VkGraphicsPipelineCreateInfo createInfo) : p_device(p_device)
 		{
 			type = GRAPHICS;
+			LN_ERR_FAIL_COND_MSG(*p_device == VK_NULL_HANDLE, "[Artmis] device handle was VK_NULL_HANDLE (invalid)");
+			VkResult createRes = vkCreateGraphicsPipelines(*p_device, VK_NULL_HANDLE, 1, &createInfo, nullptr, &_pipeline);
+			LN_ERR_FAIL_COND_MSG(createRes != VK_SUCCESS, "[Artemis] an error occured during graphics pipeline creation, VkResult: " + VK_RESULT(createRes));
 		}
-		pipeline::pipeline(VkComputePipelineCreateInfo createInfo)
+		pipeline::pipeline(const VkDevice* p_device, VkComputePipelineCreateInfo createInfo) : p_device(p_device)
 		{
+		
 			type = COMPUTE;
 		}
 }

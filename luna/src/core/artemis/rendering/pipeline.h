@@ -41,12 +41,14 @@ namespace luna
 			pipelineBuilder& setColorMask(const bool red,const bool green,const bool blue,const bool alpha);
 			pipelineBuilder& setPipelineType(const pipelineType type);
 			pipelineBuilder& setCreateFlags(const VkPipelineCreateFlags createFlags = 0);
-			pipelineBuilder& setTopology(const VkPrimitiveTopology topology);
+			pipelineBuilder& setTopology(const VkPrimitiveTopology topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
+			pipelineBuilder& setPolygonMode(const VkPolygonMode polygonMode);
+			pipelineBuilder& addDescriptorSetLayout(const VkDescriptorSetLayout layout);
 			ref<pipeline> build();
 		private:
 			VkFormat getResourceFormat(const typeId resourceType) const;
 			std::vector<VkPipelineShaderStageCreateInfo> shaderStages;
-
+			std::unordered_set<VkDescriptorSetLayout> setLayouts; //use set so you can't accidentaly add a layout twice!
 			struct vertexInputDescription {
 
 				std::vector<VkVertexInputBindingDescription> bindings;
@@ -63,17 +65,20 @@ namespace luna
 			VkPipelineColorBlendAttachmentState colorBlendAttachementState;
 			
 			pipelineType type;
-			VkPrimitiveTopology topology;
+			VkPrimitiveTopology topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
+			VkPolygonMode polygonMode = VK_POLYGON_MODE_FILL;
 			VkPipelineCreateFlags createFlags;
 			const VkDevice* p_device;
 		};
 		class pipeline
 		{
 		public:
-			pipeline(VkGraphicsPipelineCreateInfo createInfo);
-			pipeline(VkComputePipelineCreateInfo createInfo);
+			pipeline(const VkDevice* p_device, VkGraphicsPipelineCreateInfo createInfo);
+			pipeline(const VkDevice* p_device, VkComputePipelineCreateInfo createInfo);
 		private:
 			pipelineType type;
+			VkPipeline _pipeline;
+			const VkDevice* p_device;
 		};
 	}
 }
