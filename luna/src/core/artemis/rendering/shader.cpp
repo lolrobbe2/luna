@@ -28,35 +28,47 @@ namespace luna
 			{
 			case shaderStageVertex:
 				compileSpec.shaderKind = shaderc_shader_kind::shaderc_vertex_shader;
+				shaderStageCreateInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
 				break;
 			case shaderStageTessellationControl:
 				compileSpec.shaderKind = shaderc_shader_kind::shaderc_tess_control_shader;
+				shaderStageCreateInfo.stage = VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT;
 				break;
 			case shaderStageTessellationEvaluation:
 				compileSpec.shaderKind = shaderc_shader_kind::shaderc_tess_evaluation_shader;
+				shaderStageCreateInfo.stage = VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT;
 				break;
 			case shaderStageGeometry:
 				compileSpec.shaderKind = shaderc_shader_kind::shaderc_geometry_shader;
+				shaderStageCreateInfo.stage = VK_SHADER_STAGE_GEOMETRY_BIT;
 				break;
 			case shaderStageFragment:
 				compileSpec.shaderKind = shaderc_shader_kind::shaderc_fragment_shader;
+				shaderStageCreateInfo.stage = VK_SHADER_STAGE_FRAGMENT_BIT;
 				break;
 			case shaderStageCompute:
 				compileSpec.shaderKind = shaderc_shader_kind::shaderc_compute_shader;
+				shaderStageCreateInfo.stage = VK_SHADER_STAGE_COMPUTE_BIT;
 				break;
 			default:
 				compileSpec.shaderKind = shaderc_shader_kind::shaderc_anyhit_shader;
+				shaderStageCreateInfo.stage = VK_SHADER_STAGE_ANY_HIT_BIT_KHR;
 				break;
 			}
 			shaderSrc = compiler.compile(compileSpec);
 		
 			createLayout();
 			
-
 			_stage = stage;
 			this->device = device;
 			this->entrypoint = entrypoint;
+
 			createShaderModule();
+
+			shaderStageCreateInfo.pName = entrypoint.c_str();
+			shaderStageCreateInfo.pSpecializationInfo = nullptr; //no specilization!
+			shaderStageCreateInfo.module = _module;
+			shaderStageCreateInfo.flags = 0;
 		}
 		void shader::createLayout()
 		{

@@ -98,6 +98,8 @@ namespace luna
 			operator const shaderStage() const { return _stage; };
 			const shaderStage nativeStage() const { return _stage; };
 
+			operator VkPipelineShaderStageCreateInfo() const { return shaderStageCreateInfo; }
+			const VkPipelineShaderStageCreateInfo stageCreateInfo() const { return shaderStageCreateInfo; }
 			operator const std::string&() const{ return shaderName; };
 			const std::string& name() const { return shaderName; };
 			const std::string& entryPoint() const { return entrypoint; };
@@ -149,6 +151,7 @@ namespace luna
 			std::vector<shaderResource> shaderLayout;
 			std::vector<uint32_t> shaderSrc;
 			VkShaderModule _module;
+			VkPipelineShaderStageCreateInfo shaderStageCreateInfo;
 			const VkDevice* device;
 		};
 	}

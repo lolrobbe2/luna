@@ -11,6 +11,7 @@ namespace luna
 			_device = (VkDevice*)device;
 			load("src/assets/fragment.glsl",shaderStageFragment);
 			load("src/assets/vertex.glsl",shaderStageVertex);
+			load("src/assets/quadVertexGenerator.glsl", shaderStageCompute);
 		}
 		void shaderLibrary::load(const std::string& filePath,const shaderStage& stage)
 		{
