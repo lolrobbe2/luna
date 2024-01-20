@@ -20,7 +20,7 @@ namespace luna
 			bool recording = false;
 			const VkDevice* _device;
 			const VkCommandPool* _commandPool;
-			VkCommandBuffer m_commandBuffer;
+			VkCommandBuffer m_commandBuffer = VK_NULL_HANDLE;
 		protected:
 			friend class commandPool;
 			commandBuffer(const VkCommandPool* commandPool, const VkCommandBufferLevel& commandBufferLevel, const VkDevice* device);

@@ -11,7 +11,7 @@ namespace luna
 			friend class renderPassBuilder;
 			renderPass(const VkDevice* device, const VkRenderPassCreateInfo* info);
 		private:
-			VkRenderPass m_renderPass;
+			VkRenderPass m_renderPass = VK_NULL_HANDLE;
 			const VkDevice* device;
 		};
 		/**

@@ -3,6 +3,7 @@
 #include <core/core.h>
 namespace luna 
 {
+	//shamelesly take from hazel2D because it works wonders.
 
 	// Events in luna are currently blocking, meaning when an event occurs it
 	// immediately gets dispatched and must be dealt with right then an there.

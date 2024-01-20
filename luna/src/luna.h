@@ -1,7 +1,7 @@
 #pragma once
 #include <core/application.h>
 
-extern luna::application::application*  luna::application::createApplication();
+
 int main(int argc, char** argv)
 {
 

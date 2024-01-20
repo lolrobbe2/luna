@@ -15,7 +15,7 @@ namespace luna
 			friend class device;
 			semaphore(const VkDevice* device, const VkSemaphoreCreateFlags flags);
 			const VkDevice* device; //weak_ref to device handle does not need to call delete.
-			VkSemaphore _semaphore;
+			VkSemaphore _semaphore = VK_NULL_HANDLE;
 		};
 	}
 }

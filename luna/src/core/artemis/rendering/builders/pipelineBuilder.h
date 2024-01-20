@@ -7,7 +7,6 @@ namespace luna
 		class pipelineBuilder
 		{
 		public:
-			pipelineBuilder(const VkDevice* p_device);
 			/**
 			* @brief adds a shaderStage from a given shader
 			* @brief creates binding & attribute descriptions automaticcaly when the shaders shaderStage is vertexStage
@@ -40,6 +39,9 @@ namespace luna
 			pipelineBuilder& setPolygonMode(const VkPolygonMode polygonMode);
 			pipelineBuilder& addDescriptorSetLayout(const VkDescriptorSetLayout layout);
 			ref<pipeline> build();
+		protected:
+			friend class device;
+			pipelineBuilder(const VkDevice* p_device);
 		private:
 			VkFormat getResourceFormat(const typeId resourceType) const;
 			std::vector<VkPipelineShaderStageCreateInfo> shaderStages;

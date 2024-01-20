@@ -243,7 +243,7 @@ namespace luna
 				createInfo.pMultisampleState = pMultisampleState;
 				createInfo.pRasterizationState = pRasterizationState;
 				createInfo.layout = pipelineLayout;
-				return createRef<pipeline>(createInfo);
+				return createRef<pipeline>(p_device,createInfo);
 			}
 			else
 			{

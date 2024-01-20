@@ -16,20 +16,20 @@ namespace luna
 {
 	namespace application
 	{
-		class  application
+		class LN_API  application
 		{
 		public:
 			/**
 			 * @brief application constructor, initializes the application and engine.
 			 * 
 			 */
-			LN_API application();
-			LN_API virtual ~application();
+			application();
+			virtual ~application();
 			/**
 			 * @brief the main loop of the application.
 			 * 
 			 */
-			LN_API void run();
+			void run();
 			void initCore();
 			/**
 			 * @brief the main event callback of the application.
@@ -47,9 +47,9 @@ namespace luna
 			 * 
 			 * \param utils::layer* layer  (layer to be pushed to the stack)
 			 */
-			LN_API void pushLayer(utils::layer* layer);
-			LN_API void pushOverlay(utils::layer* layer);
-			LN_API void popLayer(utils::layer* layer);
+			void pushLayer(utils::layer* layer);
+			void pushOverlay(utils::layer* layer);
+			void popLayer(utils::layer* layer);
 			static application& get();
 		private:
 			friend class os;
@@ -69,7 +69,7 @@ namespace luna
 		/**
 		 * @brief creates the application and returns a pointer to the appliccation.
 		 */
-		LN_API application* createApplication();
+		extern application* createApplication();
 	}
 }
 

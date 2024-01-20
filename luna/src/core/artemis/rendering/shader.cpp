@@ -24,6 +24,7 @@ namespace luna
 			utils::compileSpec compileSpec;
 			compileSpec.fileName = shaderName;
 			compileSpec.source = buffer;
+			compileSpec.reflect = true;
 			switch (stage)
 			{
 			case shaderStageVertex:

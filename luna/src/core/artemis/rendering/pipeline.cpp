@@ -4,7 +4,10 @@ namespace luna
 {
 	namespace artemis 
 	{
-	
+		pipeline::pipeline()
+		{
+			type = NONE;
+		}
 		pipeline::pipeline(const VkDevice* p_device, VkGraphicsPipelineCreateInfo createInfo) : p_device(p_device)
 		{
 			type = GRAPHICS;

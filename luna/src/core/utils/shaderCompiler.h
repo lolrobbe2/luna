@@ -47,7 +47,7 @@ namespace luna
 			 * \param reflect reflect yes or no.
 			 * \return param reflect.
 			 */
-			bool reflect(const std::vector<uint32_t>& shaderData, bool reflect);
+			bool reflect(const std::vector<uint32_t>& shaderData, bool reflect,const std::string& name);
 			/**
 			 * @brief returns the resource type name ex mat4 returns "Mat4".
 			 * 
@@ -56,6 +56,8 @@ namespace luna
 			 * \return the type name of the resource as an std::string.
 			 */
 			std::string getResourceTypeName(const spirv_cross::Resource& resource, const spirv_cross::Compiler& compiler);
+			void printHeader(const std::filesystem::path& filePath);
+			void printSubHeader(const std::string& subHeader);
 		};
 	}
 }

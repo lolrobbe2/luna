@@ -33,63 +33,90 @@ namespace luna
 				break;
 			}
 			if (compileResult.GetErrorMessage().size() > 0) LN_CORE_ERROR("compile error: {0}", compileResult.GetErrorMessage());
-			else LN_CORE_TRACE("reflecting shader: {0}", reflect(std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend()), compileSpec.reflect));
+			else LN_CORE_TRACE("reflecting shader: {0}", reflect(std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend()), compileSpec.reflect,compileSpec.fileName));
 			return std::vector<uint32_t>(compileResult.cbegin(), compileResult.cend());
 		}
-		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData, bool reflect)
+		bool shaderCompiler::reflect(const std::vector<uint32_t>& shaderData, bool reflect, const std::string& name)
 		{
 			LN_PROFILE_FUNCTION();
 			if (!reflect)return reflect;
 			spirv_cross::Compiler compiler(shaderData);
 			spirv_cross::ShaderResources resources = compiler.get_shader_resources();
-
+		
+			printHeader(name);
+			printSubHeader("contents");
 			LN_CORE_TRACE("    {0} uniform buffers", resources.uniform_buffers.size());
 			LN_CORE_TRACE("    {0} push constants", resources.push_constant_buffers.size());
 			LN_CORE_TRACE("    {0} resources", resources.separate_images.size());
 			LN_CORE_TRACE("    {0} stage inputs", resources.stage_inputs.size());
 			LN_CORE_TRACE("    {0} stage outputs", resources.stage_outputs.size());
-			LN_CORE_TRACE("Uniform buffers:");
-			for (const auto& resource : resources.uniform_buffers)
+			LN_CORE_TRACE("    {0} storage buffers", resources.storage_buffers.size());
+			if (resources.uniform_buffers.size())
 			{
-				const auto& bufferType = compiler.get_type(resource.base_type_id);
-				uint32_t bufferSize = compiler.get_declared_struct_size(bufferType);
-				uint32_t binding = compiler.get_decoration(resource.id, spv::DecorationBinding);
-				int memberCount = bufferType.member_types.size();
-				LN_CORE_TRACE("  {0}", resource.name);
-				LN_CORE_TRACE("    Size = {0}", bufferSize);
-				LN_CORE_TRACE("    Binding = {0}", binding);
-				LN_CORE_TRACE("    Members = {0}", memberCount);
+				printSubHeader("Uniform buffers");
+				for (const auto& resource : resources.uniform_buffers)
+				{
+					const auto& bufferType = compiler.get_type(resource.base_type_id);
+					uint32_t bufferSize = compiler.get_declared_struct_size(bufferType);
+					uint32_t binding = compiler.get_decoration(resource.id, spv::DecorationBinding);
+					int memberCount = bufferType.member_types.size();
+					LN_CORE_TRACE("  {0}", resource.name);
+					LN_CORE_TRACE("    Size = {0}", bufferSize);
+					LN_CORE_TRACE("    Binding = {0}", binding);
+					LN_CORE_TRACE("    Members = {0}", memberCount);
+				}
 			}
-			LN_CORE_TRACE("push constants:");
-			for (const auto& pushConstant : resources.push_constant_buffers)
+			if (resources.push_constant_buffers.size())
 			{
-				LN_CORE_TRACE("  {0}", pushConstant.name);
+				printSubHeader("push constants");
+				for (const auto& pushConstant : resources.push_constant_buffers)
+				{
+					LN_CORE_TRACE("  {0}", pushConstant.name);
+				}
 			}
-			//compiler.get_decoration(spv::DecorationDescriptorSet) deduce discriptorset layout;
-			LN_CORE_TRACE("stage inputs:");
-			for (const auto& stageInput : resources.stage_inputs)
+			if (resources.stage_inputs.size())
 			{
-				LN_CORE_TRACE("  {0}", stageInput.name);
-				LN_CORE_TRACE("    id = {0}", stageInput.id);
-				LN_CORE_TRACE("    offset = {0}", compiler.get_decoration(stageInput.id, spv::DecorationXfbStride));
-				LN_CORE_TRACE("    location = {0}", compiler.get_decoration(stageInput.id, spv::DecorationLocation));
-				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageInput, compiler));
+				printSubHeader("stage inputs");
+				for (const auto& stageInput : resources.stage_inputs)
+				{
+					LN_CORE_TRACE("  {0}", stageInput.name);
+					LN_CORE_TRACE("    id = {0}", stageInput.id);
+					LN_CORE_TRACE("    offset = {0}", compiler.get_decoration(stageInput.id, spv::DecorationXfbStride));
+					LN_CORE_TRACE("    location = {0}", compiler.get_decoration(stageInput.id, spv::DecorationLocation));
+					LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageInput, compiler));
+				}
 			}
-			LN_CORE_TRACE("stage outputs:");
-			for (const auto& stageOutput : resources.stage_outputs)
+			if (resources.stage_outputs.size())
 			{
-				LN_CORE_TRACE("  {0}", stageOutput.name);
-				LN_CORE_TRACE("    id = {0}", stageOutput.id);
-				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageOutput, compiler));
+				printSubHeader("stage outputs");
+				for (const auto& stageOutput : resources.stage_outputs)
+				{
+					LN_CORE_TRACE("  {0}", stageOutput.name);
+					LN_CORE_TRACE("    id = {0}", stageOutput.id);
+					LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(stageOutput, compiler));
 
+				}
 			}
-			LN_CORE_TRACE("resources :");
-			for (const auto& seperateImage : resources.separate_images)
+			if (resources.separate_images.size())
 			{
-				LN_CORE_TRACE("  {0}", seperateImage.name);
-				LN_CORE_TRACE("    id = {0}", seperateImage.id);
-				LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(seperateImage, compiler));
-				if (compiler.get_type(seperateImage.type_id).array.size()) LN_CORE_TRACE("    amount = {0}", compiler.get_type(seperateImage.type_id).array[0]);
+				printSubHeader("resources");
+				for (const auto& seperateImage : resources.separate_images)
+				{
+					LN_CORE_TRACE("  {0}", seperateImage.name);
+					LN_CORE_TRACE("    id = {0}", seperateImage.id);
+					LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(seperateImage, compiler));
+					if (compiler.get_type(seperateImage.type_id).array.size()) LN_CORE_TRACE("    amount = {0}", compiler.get_type(seperateImage.type_id).array[0]);
+				}
+			}
+			if (resources.storage_buffers.size())
+			{
+				printSubHeader("storage buffers");
+				for (const auto& storageBuffer : resources.storage_buffers)
+				{
+					LN_CORE_TRACE("  {0}", storageBuffer.name);
+					LN_CORE_TRACE("    id = {0}", storageBuffer.id);
+					LN_CORE_TRACE("    typeName = {0}", getResourceTypeName(storageBuffer, compiler));
+				}
 			}
 			return reflect;
 		}
@@ -167,5 +194,46 @@ namespace luna
 			}
 
 		}
+
+		void shaderCompiler::printHeader(const std::filesystem::path& filePath)
+		{
+			// Length of the input text
+			std::string name = filePath.filename().string();
+			size_t textLength = name.length();
+
+			// Length of the surrounding '|' characters
+			size_t surroundingLength = 88; // Change this to the desired length
+
+			// Calculate the number of '|' characters on each side
+			size_t paddingLength = (surroundingLength - textLength - 2) / 2; // Subtract 2 for the '|' characters
+
+			// Construct the output string with '|' characters on both sides
+			std::string middleText = "|" + std::string(paddingLength, ' ') + name + std::string(paddingLength, ' ') + "|";
+		
+			LN_CORE_ERROR("========================================================================================");
+			LN_CORE_ERROR(middleText);
+			LN_CORE_ERROR("========================================================================================");
+		}
+
+		void shaderCompiler::printSubHeader(const std::string& subHeader)
+		{
+			// Length of the input text
+
+			size_t textLength = subHeader.length();
+
+			// Length of the surrounding '|' characters
+			size_t surroundingLength = 58; // Change this to the desired length
+
+			// Calculate the number of '|' characters on each side
+			size_t paddingLength = (surroundingLength - textLength - 2) / 2; // Subtract 2 for the '|' characters
+
+			// Construct the output string with '|' characters on both sides
+			std::string middleText = "|" + std::string(paddingLength, ' ') + subHeader + std::string(paddingLength, ' ') + "|";
+
+			LN_CORE_WARN("==========================================================");
+			LN_CORE_WARN(middleText);
+			LN_CORE_WARN("==========================================================");
+		}
+		
 	}
 }

@@ -25,8 +25,8 @@ namespace luna
 		
 		private:
 			const VkDevice* p_device;
-			VkDescriptorPool _descriptorPool;
-			VkDescriptorSetLayout layout;
+			VkDescriptorPool _descriptorPool = VK_NULL_HANDLE;
+			VkDescriptorSetLayout layout = VK_NULL_HANDLE;
 			std::vector<VkWriteDescriptorSet> descriptorWrites;
 		};
 	}

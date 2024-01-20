@@ -17,7 +17,7 @@ namespace luna
 			fence(const VkDevice* device, const VkFenceCreateFlags flags);
 		private:
 			const VkDevice* _device;
-			VkFence _fence;
+			VkFence _fence = VK_NULL_HANDLE;
 		};
 	}
 }

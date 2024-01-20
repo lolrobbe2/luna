@@ -270,6 +270,10 @@ namespace luna
         {
             return descriptorPoolBuilder(&_device.device,shader);
         }
+        pipelineBuilder device::getPipelineBuilder()
+        {
+            return pipelineBuilder(&_device.device);
+        }
         VKAPI_ATTR VkBool32 VKAPI_CALL device::debugCallback(
             VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
             VkDebugUtilsMessageTypeFlagsEXT                  messageTypes,

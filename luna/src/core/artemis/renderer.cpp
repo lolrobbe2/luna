@@ -43,6 +43,7 @@ namespace luna
 
 			descriptorSet& set = pool.allocateDescriptorSet();
 			
+			pipelineBuilder pipelineBuilder = c_device.getPipelineBuilder();
 		}
 	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <core/artemis/device/commandPool.h>
 #include <core/artemis/rendering/renderPass.h>
+#include <core/artemis/rendering/builders/pipelineBuilder.h>
 #include <core/artemis/device/builders/descriptorPoolBuilder.h>
 namespace luna 
 {
@@ -81,6 +82,7 @@ namespace luna
             ref<fence> getFence(const VkFenceCreateFlags flags) const;
             ref<swapchain> getSwapchain();
             descriptorPoolBuilder getDescriptorPoolBuilder(const ref<shader> shader);
+            pipelineBuilder getPipelineBuilder();
             operator const VkDevice* () { return &_device.device; }
             operator const VkDevice () { return _device.device; }
 		private:
