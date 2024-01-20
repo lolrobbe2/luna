@@ -11,6 +11,7 @@ namespace luna
 		{
 		public: 
 			void free();
+			descriptorSet() = default;
 			~descriptorSet() { free(); }
 		protected:
 			friend class descriptorPool;

@@ -3,6 +3,7 @@
 #include <core/artemis/rendering/renderPass.h>
 #include <core/artemis/rendering/builders/pipelineBuilder.h>
 #include <core/artemis/device/builders/descriptorPoolBuilder.h>
+#include <core/artemis/rendering/sampler.h>
 namespace luna 
 {
 	namespace artemis 
@@ -81,6 +82,7 @@ namespace luna
             ref<semaphore> getSemaphore(const VkSemaphoreCreateFlags flags) const;
             ref<fence> getFence(const VkFenceCreateFlags flags) const;
             ref<swapchain> getSwapchain();
+            ref<sampler> getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode = VK_SAMPLER_ADDRESS_MODE_REPEAT);
             descriptorPoolBuilder getDescriptorPoolBuilder(const ref<shader> shader);
             pipelineBuilder getPipelineBuilder();
             operator const VkDevice* () { return &_device.device; }

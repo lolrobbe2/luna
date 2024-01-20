@@ -7,6 +7,7 @@ namespace luna
 		class descriptorPool
 		{
 		public:
+			descriptorPool() = default;
 			/**
 			 * @brief allocates a descripor set from this pool.
 			 * @brief WARNING the descriptor set gets destroyed when the destructor is called!

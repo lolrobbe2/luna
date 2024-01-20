@@ -66,7 +66,7 @@ namespace luna
 
 			createShaderModule();
 
-			shaderStageCreateInfo.pName = entrypoint.c_str();
+			shaderStageCreateInfo.pName = this->entrypoint.c_str();
 			shaderStageCreateInfo.pSpecializationInfo = nullptr; //no specilization!
 			shaderStageCreateInfo.module = _module;
 			shaderStageCreateInfo.flags = 0;
@@ -220,6 +220,7 @@ namespace luna
 				else if (typeClass == storageBuffers)
 				{
 					resource.type = StorageBuffer;
+					resource.amount = 1;
 				}
 			}
 			break;

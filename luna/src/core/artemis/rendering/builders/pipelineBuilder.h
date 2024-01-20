@@ -64,7 +64,7 @@ namespace luna
 			pipelineType type;
 			VkPrimitiveTopology topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
 			VkPolygonMode polygonMode = VK_POLYGON_MODE_FILL;
-			VkPipelineCreateFlags createFlags;
+			VkPipelineCreateFlags createFlags = 0;
 			const VkDevice* p_device;
 		};
 	}

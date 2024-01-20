@@ -54,7 +54,11 @@ namespace luna
 					LN_CORE_ERROR("uniform buffers not implemented!");
 					break;
 				case storageBuffers:
-					LN_CORE_ERROR("storage buffers not implemented!");
+					if (descriptorWrites.size() <= resource.binding) descriptorWrites.resize(resource.binding + 1);
+					descriptorWrites[resource.binding].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+					descriptorWrites[resource.binding].descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
+					descriptorWrites[resource.binding].descriptorCount = resource.amount;
+					descriptorWrites[resource.binding].dstBinding = resource.binding;
 					break;
 				case storageImages:
 					if (descriptorWrites.size() <= resource.binding) descriptorWrites.resize(resource.binding + 1);
@@ -91,7 +95,8 @@ namespace luna
 			VkDescriptorSetLayoutCreateInfo setLayoutCreateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO };
 			std::vector<VkDescriptorSetLayoutBinding> resourceLayoutBindings;
 			std::vector<shaderResource> shaderLayout = p_shader->layout();
-			for (size_t i =  shaderLayout.size() - 1; i > 0; i--)
+			//question: why did i ever reverse this for loop.
+			for (size_t i = 0; i < shaderLayout.size(); i++)
 			{
 				VkDescriptorSetLayoutBinding resourceLayoutBinding;
 				switch (shaderLayout[i].resourceClass)
@@ -100,7 +105,12 @@ namespace luna
 					LN_CORE_ERROR("uniform buffers not implemented!");
 					break;
 				case storageBuffers:
-					LN_CORE_ERROR("storage buffers not implemented!");
+					resourceLayoutBinding.binding = shaderLayout[i].binding;
+					resourceLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
+					resourceLayoutBinding.descriptorCount = shaderLayout[i].amount;
+					resourceLayoutBinding.pImmutableSamplers = nullptr;
+					resourceLayoutBinding.stageFlags = VkShaderStageFlagBits::VK_SHADER_STAGE_COMPUTE_BIT;
+					resourceLayoutBindings.push_back(resourceLayoutBinding);
 					break;
 				case storageImages:
 					resourceLayoutBinding.binding = shaderLayout[i].binding;

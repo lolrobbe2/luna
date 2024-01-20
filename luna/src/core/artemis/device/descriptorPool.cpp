@@ -28,6 +28,7 @@ namespace luna
 		}
 		descriptorSet& descriptorPool::allocateDescriptorSet()
 		{
+			LN_ERR_FAIL_COND_V_MSG(_descriptorPool == VK_NULL_HANDLE, descriptorSet(), "[Artemis] descriptorPool has not been initialized!");
 			VkDescriptorSetAllocateInfo allocateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO };
 			allocateInfo.descriptorPool = _descriptorPool;
 			allocateInfo.descriptorSetCount = 1;

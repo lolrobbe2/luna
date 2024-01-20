@@ -246,7 +246,7 @@ namespace luna
         ref<commandPool> device::getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags)
         {
             //release the vkqueue!
-            if(type == vkb::QueueType::transfer || type == vkb::QueueType::compute)
+            if(hasDedicatedQueue(type))
             {
                 VkQueue queue = getQueue(type, true);
                 if (queue != VK_NULL_HANDLE)
@@ -265,6 +265,10 @@ namespace luna
         ref<swapchain> device::getSwapchain()
         {
             return ref<swapchain>(new swapchain(&_device,window->getWidth(),window->getHeight(), surfaceCapabilities().minImageCount + 1));
+        }
+        ref<sampler> device::getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode)
+        {
+            return ref<sampler>(new sampler(&_device.device,filters,samplerAddressMode));
         }
         descriptorPoolBuilder device::getDescriptorPoolBuilder(const ref<shader> shader)
         {
