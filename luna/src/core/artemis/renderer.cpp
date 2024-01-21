@@ -13,7 +13,7 @@ namespace luna
 			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
 
 			p_allocator = c_device.getAllocator();
-			buffer buffer = p_allocator->allocateBuffer(100, GPU_ONLY, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
+			buffer& buffer = p_allocator->allocateBuffer(100, GPU_ONLY, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
 			LN_CORE_INFO("buffer size: {0}", buffer.getSize());
 			setUpComputePipeline();
 		}

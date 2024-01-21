@@ -10,6 +10,7 @@ namespace luna
 		{
 		public:
 			size_t getSize();
+			~buffer();
 		protected:
 			friend allocator;
 			buffer(VkBuffer buffer,vmaAllocation* allocation,allocator* allocator);

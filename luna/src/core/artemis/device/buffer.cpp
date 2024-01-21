@@ -15,5 +15,9 @@ namespace luna
 		{
 			return p_allocator->getSize(p_allocation);
 		}
+		buffer::~buffer()
+		{
+			p_allocator->deallocate(_buffer, p_allocation);
+		}
 	}
 }

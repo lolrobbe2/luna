@@ -35,7 +35,10 @@ namespace luna
 		class allocator
 		{
 		public:
-			buffer allocateBuffer(const size_t bufferSize,const memoryUsage memUsage,VkBufferUsageFlags bufferUsage);
+			buffer& allocateBuffer(const size_t bufferSize,const memoryUsage memUsage,VkBufferUsageFlags bufferUsage);
+			image& allocateImage();
+			void deallocate(const VkBuffer buffer, vmaAllocation* p_allocation);
+			void deallocate(const VkImage image, vmaAllocation* p_allocation);
 		protected:
 			friend class device;
 			allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion, const ref<commandPool> transferPool);

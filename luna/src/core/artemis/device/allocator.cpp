@@ -30,7 +30,7 @@ namespace luna
 			std::vector<transferCommand> transferCommands; //TODO make attomic var
 			ref<commandPool> transferPool;
 		};
-		buffer allocator::allocateBuffer(const size_t bufferSize, const memoryUsage memUsage, VkBufferUsageFlags bufferUsage)
+		buffer& allocator::allocateBuffer(const size_t bufferSize, const memoryUsage memUsage, VkBufferUsageFlags bufferUsage)
 		{
 			VkBufferCreateInfo bufferInfo = {};
 			bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
@@ -45,7 +45,25 @@ namespace luna
 			VkBuffer _buffer;
 			VkResult createRes = vmaCreateBuffer(p_data->allocator, &bufferInfo, &vmaAllocInfo, &_buffer, &allocation, &info);
 			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, buffer(VK_NULL_HANDLE,nullptr,nullptr), "[Artemis] an error occured whilst allocating a buffer, VkResult: " + VK_RESULT(createRes));
-			return buffer(_buffer, new vmaAllocation(allocation, info), this);
+			return *(new buffer(_buffer, new vmaAllocation(allocation, info), this));
+		}
+		image& allocator::allocateImage()
+		{
+			// TODO: insert return statement here
+		}
+		void allocator::deallocate(const VkBuffer buffer,vmaAllocation* p_allocation)
+		{
+			LN_ERR_FAIL_COND_MSG(buffer == VK_NULL_HANDLE, "[Artemis] cannot deallocate a buffer thats has already been detroyed!");
+			LN_ERR_FAIL_COND_MSG(p_allocation == nullptr, "[Artemis] allocation was invalid (nullptr)");
+			vmaDestroyBuffer(p_data->allocator, buffer, p_allocation->allocation);
+			delete p_allocation; //invalidate p_allocation
+		}
+		void allocator::deallocate(const VkImage image, vmaAllocation* p_allocation)
+		{
+			LN_ERR_FAIL_COND_MSG(image == VK_NULL_HANDLE, "[Artemis] cannot deallocate a image thats has already been detroyed!");
+			LN_ERR_FAIL_COND_MSG(p_allocation == nullptr, "[Artemis] allocation was invalid (nullptr)");
+			vmaDestroyImage(p_data->allocator, image, p_allocation->allocation);
+			delete p_allocation; //invalidate p_allocation
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
