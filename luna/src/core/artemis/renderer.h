@@ -14,7 +14,6 @@ namespace luna
 			device c_device;
 			ref<swapchain> p_swapChain;
 			ref<commandPool> p_graphicsCommandPool;
-			ref<commandPool> p_transferCommandPool;
 			ref<commandPool> p_computeCommandPool;
 			ref<renderPass> p_renderPass;
 			ref<pipeline> graphicsPipeline;
@@ -22,6 +21,8 @@ namespace luna
 
 			descriptorPool& computeDescriptorPool = descriptorPool();
 			descriptorSet& computeDescriptorSet = descriptorSet();
+
+			ref<allocator> p_allocator;
 		};
 	}
 }

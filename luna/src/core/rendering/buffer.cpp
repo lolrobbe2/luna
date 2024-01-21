@@ -2,6 +2,8 @@
 #include <core/vulkan/window/window.h>
 #include <core/vulkan/rendering/vulkanVertexBuffer.h>
 #include <core/vulkan/rendering/vulkanIndexBuffer.h>
+#include "buffer.h"
+#include "buffer.h"
 namespace luna
 {
 	namespace renderer
@@ -77,4 +79,5 @@ namespace luna
 		}
 	}
 }
+
 

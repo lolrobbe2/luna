@@ -1,5 +1,5 @@
 #pragma once
-#include <core/artemis/device/commandPool.h>
+#include <core/artemis/device/allocator.h>
 #include <core/artemis/rendering/renderPass.h>
 #include <core/artemis/rendering/builders/pipelineBuilder.h>
 #include <core/artemis/device/builders/descriptorPoolBuilder.h>
@@ -83,6 +83,7 @@ namespace luna
             ref<fence> getFence(const VkFenceCreateFlags flags) const;
             ref<swapchain> getSwapchain();
             ref<sampler> getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode = VK_SAMPLER_ADDRESS_MODE_REPEAT);
+            ref<allocator> getAllocator(const ref<commandPool> transferPool = nullptr);
             descriptorPoolBuilder getDescriptorPoolBuilder(const ref<shader> shader);
             pipelineBuilder getPipelineBuilder();
             operator const VkDevice* () { return &_device.device; }

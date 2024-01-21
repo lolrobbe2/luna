@@ -74,7 +74,7 @@ namespace luna
 			shaderStageFragment,
 			shaderStageCompute
 		};
-		struct shaderResource
+		struct  LN_API shaderResource
 		{
 			typeClass resourceClass = uniformBuffers;
 			typeId type = Unknown;

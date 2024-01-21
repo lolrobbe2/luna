@@ -270,6 +270,11 @@ namespace luna
         {
             return ref<sampler>(new sampler(&_device.device,filters,samplerAddressMode));
         }
+        ref<allocator> device::getAllocator(const ref<commandPool> transferPool)
+        {
+            ref<commandPool> p_transferPool = transferPool == nullptr ? getCommandPool(vkb::QueueType::transfer) : transferPool;
+            return ref<allocator>(new allocator(&_device.device,&instance.instance,&_device.physical_device.physical_device,_device.physical_device.properties.apiVersion,p_transferPool));
+        }
         descriptorPoolBuilder device::getDescriptorPoolBuilder(const ref<shader> shader)
         {
             return descriptorPoolBuilder(&_device.device,shader);
