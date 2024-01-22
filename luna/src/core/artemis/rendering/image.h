@@ -4,6 +4,8 @@ namespace luna
 {
 	namespace artemis 
 	{
+		struct vmaAllocation; //forward declare.
+		class allocator;
 		class image
 		{
 		public:
