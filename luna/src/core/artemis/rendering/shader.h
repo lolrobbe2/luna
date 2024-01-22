@@ -125,7 +125,7 @@ namespace luna
 			}
 
 			const std::vector<shaderResource> layout() { return shaderLayout; };
-			~shader() { vkDestroyShaderModule(*device, _module, nullptr); };
+			~shader();
 
 		private:
 			void createLayout();

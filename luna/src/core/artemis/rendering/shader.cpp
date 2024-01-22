@@ -71,6 +71,11 @@ namespace luna
 			shaderStageCreateInfo.module = _module;
 			shaderStageCreateInfo.flags = 0;
 		}
+		shader::~shader() 
+		{
+			LN_ERR_FAIL_COND_MSG(*device == VK_NULL_HANDLE, "[Artemis] shader could not be destroyed because device handle was invalid!");
+			vkDestroyShaderModule(*device, _module, nullptr);
+		}
 		void shader::createLayout()
 		{
 			spirv_cross::Compiler compiler(shaderSrc);
