@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace artemis 
 	{
-		struct vmaAllocation; //forward declare.
+		typedef struct allocation; //forward declare.
 		class allocator;
 		class image
 		{
@@ -23,13 +23,13 @@ namespace luna
 			glm::vec4 getUv() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
 		protected:
 			friend class allocator;
-			image(const VkImage image, const vmaAllocation* p_allocation, const glm::vec2& extent ,const VkFormat& format, const glm::vec4 uv = {0.0f,0.0f,1.0f,1.0f});
-			image(const VkImage image, const VkImageView imageView, const vmaAllocation* p_allocation, const glm::vec2& extent, const VkFormat& format, const glm::vec4 uv = { 0.0f,0.0f,1.0f,1.0f });
+			image(const VkImage image, const allocation* p_allocation, const glm::vec2& extent ,const VkFormat& format, const glm::vec4 uv = {0.0f,0.0f,1.0f,1.0f});
+			image(const VkImage image, const VkImageView imageView, const allocation* p_allocation, const glm::vec2& extent, const VkFormat& format, const glm::vec4 uv = { 0.0f,0.0f,1.0f,1.0f });
 		private:
 			VkImage _image = VK_NULL_HANDLE;
 			VkImageView _imageView = VK_NULL_HANDLE;
 			VkFormat format = VK_FORMAT_MAX_ENUM;
-			const vmaAllocation* p_allocation = nullptr;
+			const allocation* p_allocation = nullptr;
 			glm::vec2 extent;
 			glm::vec2 uvStart;
 			glm::vec2 uvEnd;

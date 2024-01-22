@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace artemis
 	{
-		struct vmaAllocation; //forward declare.
+		typedef struct allocation; //forward declare.
 		class allocator; 
 		class LN_API buffer
 		{
@@ -20,10 +20,10 @@ namespace luna
 			~buffer();
 		protected:
 			friend allocator;
-			buffer(VkBuffer buffer,vmaAllocation* allocation,allocator* allocator);
+			buffer(VkBuffer buffer,allocation* allocation,allocator* allocator);
 		private:
 			VkBuffer _buffer = VK_NULL_HANDLE;
-			vmaAllocation* p_allocation = nullptr;
+			allocation* p_allocation = nullptr;
 			allocator* p_allocator = nullptr;
 		};
 	}

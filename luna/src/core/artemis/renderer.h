@@ -11,7 +11,7 @@ namespace luna
 		private:
 			void setUpComputePipeline();
 		private:
-			device c_device;
+			device& c_device = device();
 			ref<swapchain> p_swapChain;
 			ref<commandPool> p_graphicsCommandPool;
 			ref<commandPool> p_computeCommandPool;

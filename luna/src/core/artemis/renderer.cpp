@@ -8,12 +8,13 @@ namespace luna
 		renderer::renderer(const ref<vulkan::window>& window)
 		{
 			LN_PROFILE_FUNCTION();
-			c_device = device(window);
+			c_device = *new device(window);
 			p_swapChain = c_device.getSwapchain();
 			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
 
 			p_allocator = c_device.getAllocator();
 			buffer& buffer = p_allocator->allocateBuffer(100, GPU_ONLY, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
+			image& image = p_allocator->allocateImage({ 100,100 }, 4, VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT);
 			LN_CORE_INFO("buffer size: {0}", buffer.getSize());
 			setUpComputePipeline();
 		}

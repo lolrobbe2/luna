@@ -1,6 +1,7 @@
 #include "allocator.h"
+#include <core/vulkan/utils/vma.h>
 #include <core/utils/objectStorage.h>
-#include <vk_mem_alloc.h>
+
 #include <core/debug/debugMacros.h>
 
 namespace luna 
@@ -8,12 +9,12 @@ namespace luna
 	namespace artemis 
 	{
 		
-		struct vmaAllocation
+		typedef struct allocation
 		{
-			VmaAllocation allocation;
+			VmaAllocation _allocation;
 			VmaAllocationInfo allocationInfo;
-			vmaAllocation(VmaAllocation allocation, VmaAllocationInfo allocationInfo) : allocation(allocation),allocationInfo(allocationInfo) {}
-		};
+			allocation(VmaAllocation allocation, VmaAllocationInfo allocationInfo) : _allocation(allocation),allocationInfo(allocationInfo) {}
+		} allocation;
 		struct transferCommand
 		{
 			uint64_t bufferOffset;
@@ -43,14 +44,14 @@ namespace luna
 
 			VmaAllocationCreateInfo vmaAllocInfo = {};
 			vmaAllocInfo.usage = (VmaMemoryUsage)memUsage;
-			VmaAllocation allocation;
+			VmaAllocation _allocation;
 			VmaAllocationInfo info;
 			VkBuffer _buffer;
-			VkResult createRes = vmaCreateBuffer(p_data->allocator, &bufferInfo, &vmaAllocInfo, &_buffer, &allocation, &info);
+			VkResult createRes = vmaCreateBuffer(p_data->allocator, &bufferInfo, &vmaAllocInfo, &_buffer, &_allocation, &info);
 			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, buffer(VK_NULL_HANDLE,nullptr,nullptr), "[Artemis] an error occured whilst allocating a buffer, VkResult: " + VK_RESULT(createRes));
-			return *(new buffer(_buffer, new vmaAllocation(allocation, info), this));
+			return *(new buffer(_buffer, new allocation(_allocation, info), this));
 		}
-		image& allocator::allocateImage(const VkExtent3D& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const memoryUsage memoryUsage,const glm::vec4& uv, bool imageView,const VkImageAspectFlags imageAspectFlags)
+		image& allocator::allocateImage(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const memoryUsage memoryUsage,const glm::vec4& uv, bool imageView,const VkImageAspectFlags imageAspectFlags)
 		{
 			VkImageCreateInfo imageCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO };
 
@@ -60,7 +61,12 @@ namespace luna
 			imageCreateInfo.imageType = VK_IMAGE_TYPE_2D;
 			VkFormat format = getSuitableFormat(usageFlags, channels);
 			imageCreateInfo.format = format;
-			imageCreateInfo.extent = extent;
+			VkExtent3D nativeExtent;
+			nativeExtent.width = extent.x;
+			nativeExtent.height = extent.y;
+			nativeExtent.depth = 1.0f;
+
+			imageCreateInfo.extent = nativeExtent;
 
 			imageCreateInfo.mipLevels = 1;
 			imageCreateInfo.arrayLayers = 1;
@@ -69,12 +75,12 @@ namespace luna
 			imageCreateInfo.usage = usageFlags;
 			imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 
-			VmaAllocation allocation;
+			VmaAllocation _allocation;
 			VmaAllocationCreateInfo allocationCreateInfo = {};
-			allocationCreateInfo.usage = VMA_MEMORY_USAGE_AUTO;
+			allocationCreateInfo.usage = (VmaMemoryUsage)memoryUsage;
 			VmaAllocationInfo info;
 			VkImage _image;
-			VkResult createRes = vmaCreateImage(p_data->allocator, &imageCreateInfo, &allocationCreateInfo,&_image , &allocation, &info);
+			VkResult createRes = vmaCreateImage(p_data->allocator, &imageCreateInfo, &allocationCreateInfo,&_image , &_allocation, &info);
 			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, image(), "[Artemis] an error occured during image creation, VkResult: " + VK_RESULT(createRes));
 			
 			if(imageView)
@@ -93,29 +99,29 @@ namespace luna
 				imageViewCreateInfo.subresourceRange.aspectMask = imageAspectFlags;
 				VkResult createRes = vkCreateImageView(*p_data->p_device, &imageViewCreateInfo, nullptr, &imageView);
 
-				LN_ERR_FAIL_COND_MSG(createRes != VK_SUCCESS, "[Artemis] an error occured whilst creating imageView!");
+				LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS,image(), "[Artemis] an error occured whilst creating imageView!");
 				
-				return *new image(_image, imageView, new vmaAllocation(allocation, info),{extent.width,extent.height}, format, uv);
+				return *new image(_image, imageView, new allocation(_allocation, info),extent, format, uv);
 			}
-			return *new image(_image, new vmaAllocation(allocation, info), { extent.width,extent.height }, format, uv);
+			return *new image(_image, new allocation(_allocation, info), extent, format, uv);
 		}
-		void allocator::deallocate(const VkBuffer buffer,vmaAllocation* p_allocation)
+		void allocator::deallocate(const VkBuffer buffer,allocation* p_allocation)
 		{
 			LN_ERR_FAIL_COND_MSG(buffer == VK_NULL_HANDLE, "[Artemis] cannot deallocate a buffer thats has already been detroyed!");
 			LN_ERR_FAIL_COND_MSG(p_allocation == nullptr, "[Artemis] allocation was invalid (nullptr)");
-			vmaDestroyBuffer(p_data->allocator, buffer, p_allocation->allocation);
+			vmaDestroyBuffer(p_data->allocator, buffer, p_allocation->_allocation);
 			delete p_allocation; //invalidate p_allocation
 		}
-		void allocator::deallocate(const VkImage image, vmaAllocation* p_allocation)
+		void allocator::deallocate(const VkImage image, allocation* p_allocation)
 		{
 			LN_ERR_FAIL_COND_MSG(image == VK_NULL_HANDLE, "[Artemis] cannot deallocate a image thats has already been detroyed!");
 			LN_ERR_FAIL_COND_MSG(p_allocation == nullptr, "[Artemis] allocation was invalid (nullptr)");
-			vmaDestroyImage(p_data->allocator, image, p_allocation->allocation);
+			vmaDestroyImage(p_data->allocator, image, p_allocation->_allocation);
 			delete p_allocation; //invalidate p_allocation
 		}
-		void* allocator::getData(const vmaAllocation* p_allocation)
+		void* allocator::getData(const allocation* p_allocation)
 		{
-			return p_allocation->allocation->GetMappedData();
+			return p_allocation->_allocation->GetMappedData();
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
@@ -142,9 +148,12 @@ namespace luna
 			LN_ERR_FAIL_COND_MSG(createRes != VK_SUCCESS, "[Artemis] an error occured during allocator creation");
 			
 			p_allocatorData->transferPool = transferPool;
+			p_allocatorData->p_device = p_device;
+			p_allocatorData->p_instance = p_instance;
+			p_allocatorData->p_physicalDevice = p_physicalDevice;
 			p_data = ref<allocatorData>(p_allocatorData);
 		}
-		size_t allocator::getSize(vmaAllocation* allocation)
+		size_t allocator::getSize(allocation* allocation)
 		{
 			return allocation->allocationInfo.size;
 		}

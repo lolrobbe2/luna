@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace artemis 
 	{
-		buffer::buffer(VkBuffer buffer, vmaAllocation* allocation, allocator* allocator)
+		buffer::buffer(VkBuffer buffer, allocation* allocation, allocator* allocator)
 		{
 			if (!allocator)return;
 			_buffer = buffer;

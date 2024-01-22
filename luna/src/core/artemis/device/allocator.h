@@ -31,23 +31,22 @@ namespace luna
 
             MAX_ENUM = 0x7FFFFFFF
         } memoryUsage;
-		struct vmaAllocation; //forward declare.
 		struct allocatorData; //forward declare.
 		class allocator
 		{
 		public:
 			buffer& allocateBuffer(const size_t bufferSize,const memoryUsage memUsage,VkBufferUsageFlags bufferUsage);
-			image& allocateImage( const VkExtent3D& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const memoryUsage memoryUsage = GPU_ONLY, const glm::vec4& uv = {0.0f,0.0f,1.0f,1.0f}, bool imageView = true, const VkImageAspectFlags imageAspectFlags = VK_IMAGE_ASPECT_COLOR_BIT);
-			void deallocate(const VkBuffer buffer, vmaAllocation* p_allocation);
-			void deallocate(const VkImage image, vmaAllocation* p_allocation);
+			image& allocateImage( const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const memoryUsage memoryUsage = GPU_ONLY, const glm::vec4& uv = {0.0f,0.0f,1.0f,1.0f}, bool imageView = true, const VkImageAspectFlags imageAspectFlags = VK_IMAGE_ASPECT_COLOR_BIT);
+			void deallocate(const VkBuffer buffer, allocation* p_allocation);
+			void deallocate(const VkImage image, allocation* p_allocation);
 
-			void* getData(const vmaAllocation* p_allocation);
+			void* getData(const allocation* p_allocation);
 		protected:
 			friend class device;
 			allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion, const ref<commandPool> transferPool);
 		protected:
 			friend class buffer;
-			size_t getSize(vmaAllocation* allocation);
+			size_t getSize(allocation* allocation);
 		private:
 			VkFormat getSuitableFormat(const VkImageUsageFlags usageFlags, const uint32_t channels);
 			ref<allocatorData> p_data;
