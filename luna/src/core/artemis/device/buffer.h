@@ -18,7 +18,7 @@ namespace luna
 			template<typename T>
 			T* getData();
 			~buffer();
-
+			operator bool() const { return _buffer == VK_NULL_HANDLE; }
 			operator VkBuffer() const { return _buffer; }
 			VkBuffer getBuffer() const { return _buffer; }
 		protected:

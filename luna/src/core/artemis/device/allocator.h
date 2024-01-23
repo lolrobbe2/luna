@@ -42,12 +42,17 @@ namespace luna
 
 			void* getData(const allocation* p_allocation);
 
+			/**
+			* @brief copies on buffer to another.
+			* @brief copuBUfferToBUffer commands are guaranteed to be executed in the order they are called!.
+			*/
 			void copyBufferToBuffer(const buffer& srcBuffer, const size_t srcOffset, const buffer& dstBuffer, const size_t dstOffset, const size_t size);
 			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer, const size_t dstOffset, const size_t size);
 			void copyBufferToBuffer(const buffer& srcBuffer, const size_t srcOffset, const buffer& dstBuffer, const size_t size);
 			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer,const size_t size);
 			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer);
 
+			void copyBufferToImage(const buffer& srcBuffer,const image& image);
 
 		protected:
 			friend class device;

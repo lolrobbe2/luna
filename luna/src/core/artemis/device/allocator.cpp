@@ -19,6 +19,7 @@ namespace luna
 		struct allocatorData
 		{
 			VmaAllocator allocator; //allocator handle.
+			std::vector<VkBufferCopy> bufferRegions;
 			ref<commandPool> transferPool;
 			ref<commandBuffer> commandBuffer;
 			const VkDevice* p_device;
@@ -119,11 +120,16 @@ namespace luna
 			LN_ERR_FAIL_COND_MSG((srcBuffer.getSize() - srcOffset) < size, "[Artemis] could not copyBuffer: srcBuffer size is not large enough");
 			LN_ERR_FAIL_COND_MSG((srcBuffer.getSize() - srcOffset) < size, "[Artemis] could not copyBuffer: srcBuffer size is not large enough");
 
+			LN_ERR_FAIL_COND_MSG(srcBuffer, "[Artemis] srcBuffer was invalid (VK_NULL_HANDLE)");
+			LN_ERR_FAIL_COND_MSG(dstBuffer, "[Artemis] dstBUffer was invalid (VK_NULL_HANDLE)");
+
+			LN_ERR_FAIL_COND_MSG(p_data->commandBuffer->isRecording(), "[Artemis] commandBuffer is not recording!");
+
 			VkBufferCopy copyInfo;
 			copyInfo.dstOffset = dstOffset;
 			copyInfo.size = size;
 			copyInfo.srcOffset = srcOffset;
-			vkCmdCopyBuffer(*p_data->commandBuffer, srcBuffer, dstBuffer, 1, &copyInfo);
+			p_data->bufferRegions.push_back(copyInfo);
 		}
 		void allocator::copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer, const size_t dstOffset, const size_t size)
 		{
