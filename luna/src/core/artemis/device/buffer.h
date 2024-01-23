@@ -18,6 +18,9 @@ namespace luna
 			template<typename T>
 			T* getData();
 			~buffer();
+
+			operator VkBuffer() const { return _buffer; }
+			VkBuffer getBuffer() const { return _buffer; }
 		protected:
 			friend allocator;
 			buffer(VkBuffer buffer,allocation* allocation,allocator* allocator);
