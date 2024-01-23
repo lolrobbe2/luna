@@ -10,7 +10,7 @@ namespace luna
 		{
 		public:
 			image() = default;
-			
+			operator bool() const { return _image == VK_NULL_HANDLE; }
 			operator VkImage() const { return _image; }
 			VkImage getImage() const { return _image; }
 			operator VkImageView() const{ return _imageView; }
@@ -19,6 +19,37 @@ namespace luna
 			VkFormat getFormat() const { return format; }
 			operator glm::vec2() const { return extent; }
 			glm::vec2 getExtent() const { return extent; }
+			operator VkExtent3D() const 
+			{ 
+				VkExtent3D _extent;
+				_extent.width = extent.x;
+				_extent.height = extent.y;
+				_extent.depth = 1;
+				return _extent;
+			}
+			VkExtent3D getExtent3D() const
+			{
+				VkExtent3D _extent;
+				_extent.width = extent.x;
+				_extent.height = extent.y;
+				_extent.depth = 1;
+				return _extent;
+			}
+			operator VkOffset3D() const 
+			{
+				VkOffset3D _offset;
+				_offset.x = uvStart.x * extent.x;
+				_offset.y = uvStart.y * extent.y;
+				_offset.z = 0;
+				return _offset;
+			}
+			VkOffset3D getOffset3D() const 
+			{
+				VkOffset3D _offset;
+				_offset.x = uvStart.x * extent.x;
+				_offset.y = uvStart.y * extent.y;
+				return _offset;
+			}
 			operator glm::vec4() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
 			glm::vec4 getUv() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
 		protected:

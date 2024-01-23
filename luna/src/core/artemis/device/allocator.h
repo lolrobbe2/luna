@@ -52,7 +52,13 @@ namespace luna
 			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer,const size_t size);
 			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer);
 
-			void copyBufferToImage(const buffer& srcBuffer,const image& image);
+			void copyBufferToImage(const buffer& srcBuffer, const size_t bufferOffset, const glm::vec2& bufferExtent,const image& image);
+			void copyBufferToImage(const buffer& srcBuffer, const size_t bufferOffset, const image& image);
+			void copyBufferToImage(const buffer& srcBuffer, const image& image);
+
+			void copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const glm::vec2& bufferExtent, const image& image);
+			void copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const image& image);
+			void copyImageToBuffer(const buffer& srcBuffer, const image& image);
 
 		protected:
 			friend class device;

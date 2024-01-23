@@ -20,6 +20,9 @@ namespace luna
 		{
 			VmaAllocator allocator; //allocator handle.
 			std::vector<VkBufferCopy> bufferRegions;
+			std::vector<VkBufferImageCopy> bufferImageRegions; //regions copyBufferToImage
+			std::vector<VkBufferImageCopy> imageBufferRegions; //regions copyImageToBuffer
+
 			ref<commandPool> transferPool;
 			ref<commandBuffer> commandBuffer;
 			const VkDevice* p_device;
@@ -147,6 +150,64 @@ namespace luna
 		{
 			LN_ERR_FAIL_COND_MSG(srcBuffer.getSize() != dstBuffer.getSize(), "[Artemis] when direct copying the size of src and dst buffer need to be equal!");
 			copyBufferToBuffer(srcBuffer, dstBuffer, srcBuffer.getSize());
+		}
+		void allocator::copyBufferToImage(const buffer& srcBuffer,const size_t bufferOffset,const glm::vec2& bufferExtent, const image& image)
+		{
+			LN_ERR_FAIL_COND(srcBuffer, "[Artemis] srcBuffer is invalid (VK_NULL_HANDLE)");
+			LN_ERR_FAIL_COND(image, "[Artemis] srcBuffer is invalid (VK_NULL_HANDLE)");
+
+
+			LN_ERR_FAIL_COND(bufferExtent.x > image.getExtent().x, "[Artemis] bufferExtent.x/bufferRowLength needs to be < or = to image.getExtent().x");
+			LN_ERR_FAIL_COND(bufferExtent.y > image.getExtent().y, "^[Artemis] bufferExtent.y/bufferImageHeight needs to be < or = to image.getExtent().y");
+			VkBufferImageCopy imageRegion;
+			imageRegion.bufferOffset = bufferOffset;
+			imageRegion.bufferRowLength = bufferExtent.x;
+			imageRegion.bufferImageHeight = bufferExtent.y;
+
+			imageRegion.imageExtent = image;
+			imageRegion.imageOffset = image;
+			imageRegion.imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			imageRegion.imageSubresource.mipLevel = 0;
+			imageRegion.imageSubresource.baseArrayLayer = 0;
+			imageRegion.imageSubresource.layerCount = 1;
+			p_data->bufferImageRegions.push_back(imageRegion);	
+		}
+		void allocator::copyBufferToImage(const buffer& srcBuffer, const size_t bufferOffset, const image& image)
+		{
+			copyBufferToImage(srcBuffer, bufferOffset, image, image);
+		}
+		void allocator::copyBufferToImage(const buffer& srcBuffer, const image& image)
+		{
+			copyBufferToImage(srcBuffer, 0, image);
+		}
+		void allocator::copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const glm::vec2& bufferExtent, const image& image)
+		{
+			LN_ERR_FAIL_COND(srcBuffer, "[Artemis] srcBuffer is invalid (VK_NULL_HANDLE)");
+			LN_ERR_FAIL_COND(image, "[Artemis] srcBuffer is invalid (VK_NULL_HANDLE)");
+
+
+			LN_ERR_FAIL_COND(bufferExtent.x > image.getExtent().x, "[Artemis] bufferExtent.x/bufferRowLength needs to be < or = to image.getExtent().x");
+			LN_ERR_FAIL_COND(bufferExtent.y > image.getExtent().y, "^[Artemis] bufferExtent.y/bufferImageHeight needs to be < or = to image.getExtent().y");
+			VkBufferImageCopy imageRegion;
+			imageRegion.bufferOffset = bufferOffset;
+			imageRegion.bufferRowLength = bufferExtent.x;
+			imageRegion.bufferImageHeight = bufferExtent.y;
+
+			imageRegion.imageExtent = image;
+			imageRegion.imageOffset = image;
+			imageRegion.imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			imageRegion.imageSubresource.mipLevel = 0;
+			imageRegion.imageSubresource.baseArrayLayer = 0;
+			imageRegion.imageSubresource.layerCount = 1;
+			p_data->imageBufferRegions.push_back(imageRegion);
+		}
+		void allocator::copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const image& image)
+		{
+			copyImageToBuffer(srcBuffer, bufferOffset, image, image);
+		}
+		void allocator::copyImageToBuffer(const buffer& srcBuffer, const image& image)
+		{
+			copyImageToBuffer(srcBuffer, 0, image);
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
