@@ -43,6 +43,12 @@ namespace luna
 			void* getData(const allocation* p_allocation);
 
 			void copyBufferToBuffer(const buffer& srcBuffer, const size_t srcOffset, const buffer& dstBuffer, const size_t dstOffset, const size_t size);
+			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer, const size_t dstOffset, const size_t size);
+			void copyBufferToBuffer(const buffer& srcBuffer, const size_t srcOffset, const buffer& dstBuffer, const size_t size);
+			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer,const size_t size);
+			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer);
+
+
 		protected:
 			friend class device;
 			allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion, const ref<commandPool> transferPool);

@@ -125,6 +125,23 @@ namespace luna
 			copyInfo.srcOffset = srcOffset;
 			vkCmdCopyBuffer(*p_data->commandBuffer, srcBuffer, dstBuffer, 1, &copyInfo);
 		}
+		void allocator::copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer, const size_t dstOffset, const size_t size)
+		{
+			copyBufferToBuffer(srcBuffer, 0, dstBuffer, dstOffset, size);
+		}
+		void allocator::copyBufferToBuffer(const buffer& srcBuffer, const size_t srcOffset, const buffer& dstBuffer, const size_t size)
+		{
+			copyBufferToBuffer(srcBuffer, srcOffset, dstBuffer, 0, size);
+		}
+		void allocator::copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer, const size_t size)
+		{
+			copyBufferToBuffer(srcBuffer, 0, dstBuffer, 0, size);
+		}
+		void allocator::copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer)
+		{
+			LN_ERR_FAIL_COND_MSG(srcBuffer.getSize() != dstBuffer.getSize(), "[Artemis] when direct copying the size of src and dst buffer need to be equal!");
+			copyBufferToBuffer(srcBuffer, dstBuffer, srcBuffer.getSize());
+		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
 			LN_ERR_FAIL_COND_MSG(transferPool == nullptr, "[Artemis] transferPool cann not be nullPointer!");
