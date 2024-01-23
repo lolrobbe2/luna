@@ -15,21 +15,12 @@ namespace luna
 			VmaAllocationInfo allocationInfo;
 			allocation(VmaAllocation allocation, VmaAllocationInfo allocationInfo) : _allocation(allocation),allocationInfo(allocationInfo) {}
 		} allocation;
-		struct transferCommand
-		{
-			uint64_t bufferOffset;
-			VkBuffer sourceBuffer;
-			VkImage VulkanImage;
-			VkFormat ImageFormat;
-			glm::vec2 subImageHeight;
-			glm::vec3 dimensions;
-			glm::vec3 offset;
-		};
+
 		struct allocatorData
 		{
 			VmaAllocator allocator; //allocator handle.
-			std::vector<transferCommand> transferCommands; //TODO make attomic var
 			ref<commandPool> transferPool;
+			ref<commandBuffer> commandBuffer;
 			const VkDevice* p_device;
 			const VkInstance* p_instance;
 			const VkPhysicalDevice* p_physicalDevice;
@@ -122,6 +113,17 @@ namespace luna
 		void* allocator::getData(const allocation* p_allocation)
 		{
 			return p_allocation->_allocation->GetMappedData();
+		}
+		void allocator::copyBufferToBuffer(const buffer& srcBuffer, const size_t srcOffset, const buffer& dstBuffer, const size_t dstOffset, const size_t size)
+		{
+			LN_ERR_FAIL_COND_MSG((srcBuffer.getSize() - srcOffset) < size, "[Artemis] could not copyBuffer: srcBuffer size is not large enough");
+			LN_ERR_FAIL_COND_MSG((srcBuffer.getSize() - srcOffset) < size, "[Artemis] could not copyBuffer: srcBuffer size is not large enough");
+
+			VkBufferCopy copyInfo;
+			copyInfo.dstOffset = dstOffset;
+			copyInfo.size = size;
+			copyInfo.srcOffset = srcOffset;
+			vkCmdCopyBuffer(*p_data->commandBuffer, srcBuffer, dstBuffer, 1, &copyInfo);
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{

@@ -21,7 +21,7 @@ namespace luna
             shaderLibrary::shutdown();
             _device.device = VK_NULL_HANDLE;
             _device.physical_device.physical_device = VK_NULL_HANDLE;
-            
+            instance.instance = VK_NULL_HANDLE;
         }
 
         ///instance creation

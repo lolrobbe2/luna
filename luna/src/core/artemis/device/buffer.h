@@ -10,7 +10,7 @@ namespace luna
 		{
 		public:
 			buffer() = default;
-			size_t getSize();
+			const size_t getSize() const;
 			void setData(void* p_src, size_t size);
 			template<typename T>
 			void setData(const T type);

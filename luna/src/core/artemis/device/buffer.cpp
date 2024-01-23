@@ -11,7 +11,7 @@ namespace luna
 			p_allocation = allocation;
 			p_allocator = allocator;
 		}
-		size_t buffer::getSize()
+		const size_t buffer::getSize() const
 		{
 			return p_allocator->getSize(p_allocation);
 		}
