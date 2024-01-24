@@ -7,7 +7,6 @@ namespace luna
 		class commandBuffer
 		{
 		public:
-
 			_ALWAYS_INLINE_ bool begin(const VkCommandBufferUsageFlags flags);
 			_ALWAYS_INLINE_ void end();
 			bool isRecording() { return recording; }

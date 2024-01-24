@@ -8,6 +8,7 @@ namespace luna
 		class fence
 		{
 		public:
+			fence() = default;
 			operator const VkFence() const { return _fence; }
 			operator const VkFence*() const { return &_fence; }
 			const VkFence native() { return _fence; }

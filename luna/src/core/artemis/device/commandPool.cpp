@@ -16,14 +16,14 @@ namespace luna
 				VkCommandBuffer* pCommandBuffers = new VkCommandBuffer[buffers.size()];
 				for (size_t i = 0; i < buffers.size(); i++) pCommandBuffers[i] = buffers[i];
 
-				submitInfo.pCommandBuffers = pCommandBuffers;
+				if(buffers.size()) submitInfo.pCommandBuffers = pCommandBuffers;
 			}
 			//signal semaphore translation
 			{
 				VkSemaphore* pSignalSemaphores = new VkSemaphore[signalSemaphores.size()];
 				for (size_t i = 0; i < signalSemaphores.size(); i++) pSignalSemaphores[i] = signalSemaphores[i];
 
-				submitInfo.pSignalSemaphores = pSignalSemaphores;
+				if(signalSemaphores.size()) submitInfo.pSignalSemaphores = pSignalSemaphores;
 			}
 
 			//wait semaphore translation
@@ -31,7 +31,7 @@ namespace luna
 				VkSemaphore* pWaitSemaphores = new VkSemaphore[waitSemaphores.size()];
 				for (size_t i = 0; i < waitSemaphores.size(); i++) pWaitSemaphores[i] = waitSemaphores[i];
 
-				submitInfo.pWaitSemaphores = pWaitSemaphores;
+				if(waitSemaphores.size()) submitInfo.pWaitSemaphores = pWaitSemaphores;
 			}
 			if (separateThread) runnerMutex.lock();
 			VkResult res = vkQueueSubmit(queue, 1, &submitInfo, fence);

@@ -231,7 +231,7 @@ namespace luna
 			//copyImageToBuffer
 			for (const auto& imageBufferRegion : p_data->imageBufferRegions) if (imageBufferRegion.second.size()) vkCmdCopyBufferToImage(*p_data->commandBuffer, imageBufferRegion.first.buffer, imageBufferRegion.first.image, imageBufferRegion.first.imageLayout, imageBufferRegion.second.size(), imageBufferRegion.second.data());
 			p_data->commandBuffer->end();
-			p_data->transferPool->flush({*p_data->commandBuffer},{},{},)
+			p_data->transferPool->flush({ *p_data->commandBuffer }, {}, {}, fence(), nullptr, true);
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
