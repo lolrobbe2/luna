@@ -52,6 +52,8 @@ namespace luna
 			}
 			operator glm::vec4() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
 			glm::vec4 getUv() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
+			operator VkImage() const { return _image; }
+			VkImage getImage() const { return _image; }
 		protected:
 			friend class allocator;
 			image(const VkImage image, const allocation* p_allocation, const glm::vec2& extent ,const VkFormat& format, const glm::vec4 uv = {0.0f,0.0f,1.0f,1.0f});
@@ -59,6 +61,7 @@ namespace luna
 		private:
 			VkImage _image = VK_NULL_HANDLE;
 			VkImageView _imageView = VK_NULL_HANDLE;
+			VkImageLayout currentLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 			VkFormat format = VK_FORMAT_MAX_ENUM;
 			const allocation* p_allocation = nullptr;
 			glm::vec2 extent;

@@ -44,7 +44,7 @@ namespace luna
 
 			/**
 			* @brief copies on buffer to another.
-			* @brief copuBUfferToBUffer commands are guaranteed to be executed in the order they are called!.
+			* @brief copuBufferToBUffer commands are guaranteed to be executed in the order they are called! per commandType.
 			*/
 			void copyBufferToBuffer(const buffer& srcBuffer, const size_t srcOffset, const buffer& dstBuffer, const size_t dstOffset, const size_t size);
 			void copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer, const size_t dstOffset, const size_t size);
@@ -56,10 +56,16 @@ namespace luna
 			void copyBufferToImage(const buffer& srcBuffer, const size_t bufferOffset, const image& image);
 			void copyBufferToImage(const buffer& srcBuffer, const image& image);
 
-			void copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const glm::vec2& bufferExtent, const image& image);
-			void copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const image& image);
-			void copyImageToBuffer(const buffer& srcBuffer, const image& image);
-
+			void copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const glm::vec2& bufferExtent, const image& image,const VkImageLayout destinationLayout);
+			void copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const image& image,const VkImageLayout destinationLayout);
+			void copyImageToBuffer(const buffer& srcBuffer, const image& image, const VkImageLayout destinationLayout);
+			/**
+			* @brief executes all copy commands
+			* @brief 1) copyBufferToBuffer commands.
+			* @brief 2) copyBufferToImage commands.
+			* @breif 3) copyImageToBuffer commands.
+			*/
+			void flush();
 		protected:
 			friend class device;
 			allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion, const ref<commandPool> transferPool);

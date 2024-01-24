@@ -15,13 +15,24 @@ namespace luna
 			VmaAllocationInfo allocationInfo;
 			allocation(VmaAllocation allocation, VmaAllocationInfo allocationInfo) : _allocation(allocation),allocationInfo(allocationInfo) {}
 		} allocation;
+		typedef struct bufferCopy 
+		{
+			VkBuffer srcBuffer;
+			VkBuffer dstBuffer;
+		};
+		typedef struct imageCopyRegion 
+		{
+			VkBuffer buffer;
+			VkImage image;
+			VkImageLayout imageLayout;
+		};
 
 		struct allocatorData
 		{
 			VmaAllocator allocator; //allocator handle.
-			std::vector<VkBufferCopy> bufferRegions;
-			std::vector<VkBufferImageCopy> bufferImageRegions; //regions copyBufferToImage
-			std::vector<VkBufferImageCopy> imageBufferRegions; //regions copyImageToBuffer
+			std::unordered_map<bufferCopy,std::vector<VkBufferCopy>> bufferRegions;
+			std::unordered_map<imageCopyRegion,std::vector<VkBufferImageCopy>> bufferImageRegions; //regions copyBufferToImage
+			std::unordered_map<imageCopyRegion,std::vector<VkBufferImageCopy>> imageBufferRegions; //regions copyImageToBuffer
 
 			ref<commandPool> transferPool;
 			ref<commandBuffer> commandBuffer;
@@ -132,7 +143,7 @@ namespace luna
 			copyInfo.dstOffset = dstOffset;
 			copyInfo.size = size;
 			copyInfo.srcOffset = srcOffset;
-			p_data->bufferRegions.push_back(copyInfo);
+			p_data->bufferRegions[{srcBuffer, dstBuffer}].push_back(copyInfo);
 		}
 		void allocator::copyBufferToBuffer(const buffer& srcBuffer, const buffer& dstBuffer, const size_t dstOffset, const size_t size)
 		{
@@ -170,7 +181,7 @@ namespace luna
 			imageRegion.imageSubresource.mipLevel = 0;
 			imageRegion.imageSubresource.baseArrayLayer = 0;
 			imageRegion.imageSubresource.layerCount = 1;
-			p_data->bufferImageRegions.push_back(imageRegion);	
+			p_data->bufferImageRegions[{srcBuffer.getBuffer(), image.getImage()}].push_back(imageRegion);
 		}
 		void allocator::copyBufferToImage(const buffer& srcBuffer, const size_t bufferOffset, const image& image)
 		{
@@ -180,7 +191,7 @@ namespace luna
 		{
 			copyBufferToImage(srcBuffer, 0, image);
 		}
-		void allocator::copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const glm::vec2& bufferExtent, const image& image)
+		void allocator::copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const glm::vec2& bufferExtent, const image& image,const VkImageLayout destinationLayout)
 		{
 			LN_ERR_FAIL_COND(srcBuffer, "[Artemis] srcBuffer is invalid (VK_NULL_HANDLE)");
 			LN_ERR_FAIL_COND(image, "[Artemis] srcBuffer is invalid (VK_NULL_HANDLE)");
@@ -199,15 +210,28 @@ namespace luna
 			imageRegion.imageSubresource.mipLevel = 0;
 			imageRegion.imageSubresource.baseArrayLayer = 0;
 			imageRegion.imageSubresource.layerCount = 1;
-			p_data->imageBufferRegions.push_back(imageRegion);
+			p_data->imageBufferRegions[{srcBuffer.getBuffer(), image.getImage(),destinationLayout}].push_back(imageRegion);
 		}
-		void allocator::copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const image& image)
+		void allocator::copyImageToBuffer(const buffer& srcBuffer, const size_t bufferOffset, const image& image, const VkImageLayout destinationLayout)
 		{
-			copyImageToBuffer(srcBuffer, bufferOffset, image, image);
+			copyImageToBuffer(srcBuffer, bufferOffset, image, image,destinationLayout);
 		}
-		void allocator::copyImageToBuffer(const buffer& srcBuffer, const image& image)
+		void allocator::copyImageToBuffer(const buffer& srcBuffer, const image& image, const VkImageLayout destinationlayout)
 		{
-			copyImageToBuffer(srcBuffer, 0, image);
+			copyImageToBuffer(srcBuffer, 0, image,destinationlayout);
+		}
+
+		void allocator::flush()
+		{
+			p_data->commandBuffer->begin(0);
+			//copyBufferToBuffer
+			for (const auto& bufferCopy : p_data->bufferRegions) if(bufferCopy.second.size()) vkCmdCopyBuffer(*p_data->commandBuffer, bufferCopy.first.srcBuffer, bufferCopy.first.dstBuffer, bufferCopy.second.size(), bufferCopy.second.data());
+			//copyBufferToImage
+			for (const auto& bufferImageRegion : p_data->bufferImageRegions) if (bufferImageRegion.second.size()) vkCmdCopyBufferToImage(*p_data->commandBuffer, bufferImageRegion.first.buffer, bufferImageRegion.first.image, bufferImageRegion.first.imageLayout,bufferImageRegion.second.size(),bufferImageRegion.second.data());
+			//copyImageToBuffer
+			for (const auto& imageBufferRegion : p_data->imageBufferRegions) if (imageBufferRegion.second.size()) vkCmdCopyBufferToImage(*p_data->commandBuffer, imageBufferRegion.first.buffer, imageBufferRegion.first.image, imageBufferRegion.first.imageLayout, imageBufferRegion.second.size(), imageBufferRegion.second.data());
+			p_data->commandBuffer->end();
+			p_data->transferPool->flush({*p_data->commandBuffer},{},{},)
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
