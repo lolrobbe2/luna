@@ -3,7 +3,86 @@
 #include <core/utils/objectStorage.h>
 
 #include <core/debug/debugMacros.h>
+#include <functional>
+namespace luna
+{
+	namespace artemis
+	{
+		struct bufferCopy
+		{
+			VkBuffer srcBuffer;
+			VkBuffer dstBuffer;
+			bool operator==(bufferCopy b) const
+			{
+				return std::tie(srcBuffer, dstBuffer) == std::tie(b.srcBuffer, b.dstBuffer);
+			}
+		};
+		struct bufferComp
+		{
 
+			bool operator() (bufferCopy a, bufferCopy b) const
+			{
+				return std::tie(a.srcBuffer, a.dstBuffer) > std::tie(b.srcBuffer, b.dstBuffer);
+			}
+		};
+		struct imageCopyRegion
+		{
+			VkBuffer buffer;
+			VkImage image;
+			VkImageLayout imageLayout;
+			bool operator== (imageCopyRegion B) const
+			{
+				return std::tie(buffer, image, imageLayout) > std::tie(B.buffer, B.image, B.imageLayout);
+			}
+		};
+
+		struct imageCopyComp
+		{
+			bool operator() (imageCopyRegion A, imageCopyRegion B) const
+			{
+				return std::tie(A.buffer, A.image, A.imageLayout) > std::tie(B.buffer, B.image, B.imageLayout);
+			}
+		};
+		struct pipelinBarrieStageFLags
+		{
+			VkPipelineStageFlags srcStage;
+			VkPipelineStageFlags dstStage;
+			bool operator==(pipelinBarrieStageFLags B) const
+			{
+				return std::tie(srcStage, dstStage) == std::tie(B.srcStage, B.dstStage);
+			}
+		};
+
+	}
+}
+template <>
+struct std::hash<luna::artemis::imageCopyRegion>
+{
+	std::size_t operator()(const luna::artemis::imageCopyRegion& k) const
+	{
+		return ((hash<uint64_t>()((uint64_t)k.buffer)
+			^ (hash<uint64_t>()((uint64_t)k.image) << 1)) >> 1)
+			^ (hash<uint64_t>()(k.imageLayout) << 1);
+	}
+};
+template <>
+struct std::hash<luna::artemis::bufferCopy>
+{
+	std::size_t operator()(const luna::artemis::bufferCopy& k) const
+	{
+		return ((hash<uint64_t>()((uint64_t)k.srcBuffer)
+			^ (hash<uint64_t>()((uint64_t)k.dstBuffer) << 1)) >> 1);
+	}
+};
+template <>
+struct std::hash<luna::artemis::pipelinBarrieStageFLags>
+{
+	std::size_t operator()(const luna::artemis::pipelinBarrieStageFLags& k) const
+	{
+		return ((hash<uint64_t>()((uint64_t)k.srcStage)
+			^ (hash<uint64_t>()((uint64_t)k.dstStage) << 1)) >> 1);
+	}
+};
 namespace luna 
 {
 	namespace artemis 
@@ -15,24 +94,16 @@ namespace luna
 			VmaAllocationInfo allocationInfo;
 			allocation(VmaAllocation allocation, VmaAllocationInfo allocationInfo) : _allocation(allocation),allocationInfo(allocationInfo) {}
 		} allocation;
-		typedef struct bufferCopy 
-		{
-			VkBuffer srcBuffer;
-			VkBuffer dstBuffer;
-		};
-		typedef struct imageCopyRegion 
-		{
-			VkBuffer buffer;
-			VkImage image;
-			VkImageLayout imageLayout;
-		};
 
 		struct allocatorData
 		{
+	
 			VmaAllocator allocator; //allocator handle.
+			std::unordered_map<pipelinBarrieStageFLags,std::vector<VkImageMemoryBarrier>> frontBarriers;
 			std::unordered_map<bufferCopy,std::vector<VkBufferCopy>> bufferRegions;
 			std::unordered_map<imageCopyRegion,std::vector<VkBufferImageCopy>> bufferImageRegions; //regions copyBufferToImage
 			std::unordered_map<imageCopyRegion,std::vector<VkBufferImageCopy>> imageBufferRegions; //regions copyImageToBuffer
+			std::unordered_map<pipelinBarrieStageFLags, std::vector<VkImageMemoryBarrier>> backBarriers;
 
 			ref<commandPool> transferPool;
 			ref<commandBuffer> commandBuffer;
@@ -181,7 +252,7 @@ namespace luna
 			imageRegion.imageSubresource.mipLevel = 0;
 			imageRegion.imageSubresource.baseArrayLayer = 0;
 			imageRegion.imageSubresource.layerCount = 1;
-			p_data->bufferImageRegions[{srcBuffer.getBuffer(), image.getImage()}].push_back(imageRegion);
+			p_data->bufferImageRegions[{srcBuffer.getBuffer(), image.getImage(), VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL}].push_back(imageRegion);
 		}
 		void allocator::copyBufferToImage(const buffer& srcBuffer, const size_t bufferOffset, const image& image)
 		{
@@ -220,18 +291,158 @@ namespace luna
 		{
 			copyImageToBuffer(srcBuffer, 0, image,destinationlayout);
 		}
+		void allocator::transitionImageLayoutFront(image& image,const VkImageLayout currentLayout,const VkImageLayout newLayout)
+		{
+			VkImageMemoryBarrier barrier{};
+			barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+			barrier.oldLayout = currentLayout;
+			barrier.newLayout = newLayout;
+			barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+			barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+			barrier.image = image;
+			barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			barrier.subresourceRange.baseMipLevel = 0;
+			barrier.subresourceRange.levelCount = 1;
+			barrier.subresourceRange.baseArrayLayer = 0;
+			barrier.subresourceRange.layerCount = 1;
 
+			VkPipelineStageFlags sourceStage = VK_PIPELINE_STAGE_NONE;
+			VkPipelineStageFlags destinationStage = VK_PIPELINE_STAGE_NONE;
+			if (currentLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_NONE;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR && newLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_MEMORY_READ_BIT;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_INDIRECT_COMMAND_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_UNDEFINED)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_NONE;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+			}
+			p_data->frontBarriers[{sourceStage,destinationStage}].push_back(barrier);
+		}
+		void allocator::transitionImageLayoutBack(image& image,const VkImageLayout currentLayout, const VkImageLayout newLayout)
+		{
+			VkImageMemoryBarrier barrier{};
+			barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+			barrier.oldLayout = currentLayout;
+			barrier.newLayout = newLayout;
+			barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+			barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+			barrier.image = image;
+			barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+			barrier.subresourceRange.baseMipLevel = 0;
+			barrier.subresourceRange.levelCount = 1;
+			barrier.subresourceRange.baseArrayLayer = 0;
+			barrier.subresourceRange.layerCount = 1;
+
+			VkPipelineStageFlags sourceStage = VK_PIPELINE_STAGE_NONE;
+			VkPipelineStageFlags destinationStage = VK_PIPELINE_STAGE_NONE;
+			//switch statement?
+			if (currentLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_NONE;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR && newLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_MEMORY_READ_BIT;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+				barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_INDIRECT_COMMAND_READ_BIT;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT;
+			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_UNDEFINED)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_NONE;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+			}
+			p_data->backBarriers[{sourceStage, destinationStage}].push_back(barrier);
+		}
 		void allocator::flush()
 		{
+			LN_PROFILE_FUNCTION();
 			p_data->commandBuffer->begin(0);
+			//fronBarriers
+			if (p_data->frontBarriers.size()) for (const auto& barriers : p_data->frontBarriers)vkCmdPipelineBarrier(*p_data->commandBuffer, barriers.first.srcStage, barriers.first.dstStage, 0, 0, nullptr, 0, nullptr, barriers.second.size(), barriers.second.data());
 			//copyBufferToBuffer
 			for (const auto& bufferCopy : p_data->bufferRegions) if(bufferCopy.second.size()) vkCmdCopyBuffer(*p_data->commandBuffer, bufferCopy.first.srcBuffer, bufferCopy.first.dstBuffer, bufferCopy.second.size(), bufferCopy.second.data());
 			//copyBufferToImage
 			for (const auto& bufferImageRegion : p_data->bufferImageRegions) if (bufferImageRegion.second.size()) vkCmdCopyBufferToImage(*p_data->commandBuffer, bufferImageRegion.first.buffer, bufferImageRegion.first.image, bufferImageRegion.first.imageLayout,bufferImageRegion.second.size(),bufferImageRegion.second.data());
 			//copyImageToBuffer
 			for (const auto& imageBufferRegion : p_data->imageBufferRegions) if (imageBufferRegion.second.size()) vkCmdCopyBufferToImage(*p_data->commandBuffer, imageBufferRegion.first.buffer, imageBufferRegion.first.image, imageBufferRegion.first.imageLayout, imageBufferRegion.second.size(), imageBufferRegion.second.data());
+			//backBarriers
+			if (p_data->backBarriers.size()) for (const auto& barriers : p_data->backBarriers)vkCmdPipelineBarrier(*p_data->commandBuffer, barriers.first.srcStage, barriers.first.dstStage, 0, 0, nullptr, 0, nullptr, barriers.second.size(), barriers.second.data());
+
 			p_data->commandBuffer->end();
-			p_data->transferPool->flush({ *p_data->commandBuffer }, {}, {}, fence(), nullptr, true);
+			p_data->transferPool->flush({ p_data->commandBuffer.get()}, {}, {}, fence(), nullptr, true);
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
@@ -258,6 +469,7 @@ namespace luna
 			LN_ERR_FAIL_COND_MSG(createRes != VK_SUCCESS, "[Artemis] an error occured during allocator creation");
 			
 			p_allocatorData->transferPool = transferPool;
+			p_allocatorData->commandBuffer = p_allocatorData->transferPool->getCommandBuffer();
 			p_allocatorData->p_device = p_device;
 			p_allocatorData->p_instance = p_instance;
 			p_allocatorData->p_physicalDevice = p_physicalDevice;
@@ -283,3 +495,4 @@ namespace luna
 		}
 	}
 }
+

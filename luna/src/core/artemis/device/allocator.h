@@ -66,6 +66,8 @@ namespace luna
 			* @breif 3) copyImageToBuffer commands.
 			*/
 			void flush();
+			void transitionImageLayoutFront(image& image, const VkImageLayout currentLayout, const VkImageLayout newLayout);
+			void transitionImageLayoutBack(image& image, const VkImageLayout currentLayout, const VkImageLayout newLayout);
 		protected:
 			friend class device;
 			allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion, const ref<commandPool> transferPool);

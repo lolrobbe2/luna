@@ -12,7 +12,7 @@ namespace luna
 			operator const VkFence() const { return _fence; }
 			operator const VkFence*() const { return &_fence; }
 			const VkFence native() { return _fence; }
-			~fence() { vkDestroyFence(*_device, _fence, nullptr); }
+			~fence() { if(_fence != VK_NULL_HANDLE)vkDestroyFence(*_device, _fence, nullptr); }
 		protected: 
 			friend class device;
 			fence(const VkDevice* device, const VkFenceCreateFlags flags);

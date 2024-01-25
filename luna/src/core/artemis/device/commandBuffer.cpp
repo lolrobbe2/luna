@@ -37,5 +37,13 @@ namespace luna
 			LN_ERR_FAIL_COND_MSG(result != VK_SUCCESS, "an error occured when stoping to record on the commandBuffer");
 			recording = false;
 		}
+		void commandBuffer::lock()
+		{
+			commandBufferLock.lock();
+		}
+		void commandBuffer::unlock()
+		{
+			commandBufferLock.unlock();
+		}
 	}
 }
