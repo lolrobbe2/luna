@@ -1,8 +1,11 @@
 #include "vulkanImgui.h"
+#pragma warning(disable : 4005)
 #include <core/vulkan/device/vulkanDevice.h>	
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_vulkan.h>
 #include <core/vulkan/rendering/vulkanPipeline.h>
+#pragma warning(default : 4005)
+
 namespace luna
 {
 	namespace gui

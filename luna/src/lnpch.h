@@ -1,5 +1,7 @@
 #pragma once
+#pragma warning(disable : 4005)
 #pragma warning(push,0)
+#include <core/platform/platform.h>
 #include <cstdint>
 #include <cstdlib>
 #include <string>
@@ -17,7 +19,7 @@
 #include <shared_mutex>
 
 /*personal engine includes*/
-#include <core/platform/platform.h>
+
 /*thirdparty includes*/
 #define GLFW_INCLUDE_VULKAN
 
@@ -34,6 +36,7 @@
 #include <glm/glm.hpp>
 #include <stb_image.h>
 #include <stb_image_write.h>
+#pragma warning(default : 4005)
 /*scene system includes*/
 #include <entt.h>
 #pragma warning(pop)

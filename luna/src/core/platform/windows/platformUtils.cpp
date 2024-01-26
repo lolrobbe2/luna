@@ -1,9 +1,10 @@
 #include <core/platform/platformUtils.h>
 #ifdef LN_PLATFORM_WINDOWS
-
+#pragma warning(disable : 4005)
 #include <shlobj_core.h>
 
 #include <commdlg.h>
+
 #include <GLFW/glfw3native.h>
 #include <core/application.h>
 #include <core/input.h>
@@ -11,6 +12,8 @@
 #include <locale.h>
 #include <core/object/methodDB.h>
 #include <string_view>
+#pragma warning(default : 4005)
+
 
 namespace luna 
 {

@@ -2,7 +2,6 @@
 #include <core/scene/scene.h>
 #include <core/networking/Ip.h>
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
-
 #if defined(UNIX_ENABLED) || defined(LN_PLATFORM_WINDOWS)
 	#ifdef LN_PLATFORM_WINDOWS
 	#define WIN32_LEAN_AND_MEAN

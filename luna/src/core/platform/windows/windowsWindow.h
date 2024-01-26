@@ -2,6 +2,7 @@
 #ifndef WINDOWS_WINDOW
 #define WINDOWS_WINDOW
 #include <core/vulkan/window/window.h>
+#include <core/platform/platform.h>
 namespace luna
 {
 	namespace vulkan

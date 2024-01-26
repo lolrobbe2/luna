@@ -45,7 +45,7 @@ namespace luna
 
 		/**
 		* structs are used because they are directly mappable from binary by using pointer.
-		* this way the .limp (luna import) file can be loaded and de pointer aquired.
+		* this way the .limp (luna import) file can be loaded and the pointer aquired.
 		* values can then be accesed like this: (assetMetaData*)data->handle;
 		* 
 		* @note this does mean that files need to be reimported when changes are made to the structs as they will no longer be valid.

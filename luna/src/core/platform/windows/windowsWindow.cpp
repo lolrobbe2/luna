@@ -4,7 +4,9 @@
 #include <core/events/keyEvent.h>
 #include <core/events/mouseEvent.h>
 #include <backends/imgui_impl_glfw.h>
+#pragma warning(disable : 4005)
 #include <GLFW/glfw3native.h>
+#pragma warning(default : 4005)
 #include <WinUser.h>
 namespace luna
 {

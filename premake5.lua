@@ -101,7 +101,6 @@ project "luna"
         staticruntime "on"
         systemversion "latest"
         symbols "on"
-
         links
         {
             "%{Library.ShaderC}",
