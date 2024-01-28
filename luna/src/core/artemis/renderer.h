@@ -1,5 +1,6 @@
 #pragma once
 #include <core/artemis/device/device.h>
+#include <core/artemis/renderCommandBuffer.h>
 namespace luna 
 {
 	namespace artemis 
@@ -8,6 +9,11 @@ namespace luna
 		{
 		public:
 			 renderer(const ref<vulkan::window>& window);
+			 void beginScene();
+			 void endScene();
+			 void update();
+
+			 void drawQuad(const drawCommand& command);
 		private:
 			void setUpComputePipeline();
 		private:
@@ -15,13 +21,16 @@ namespace luna
 			ref<swapchain> p_swapChain;
 			ref<commandPool> p_graphicsCommandPool;
 			ref<commandPool> p_computeCommandPool;
+			ref<commandBuffer> p_computeCommandBuffer;
 			ref<renderPass> p_renderPass;
 			ref<pipeline> graphicsPipeline;
 			ref<pipeline> computePipeline;
 
 			descriptorPool& computeDescriptorPool = descriptorPool();
 			descriptorSet& computeDescriptorSet = descriptorSet();
-
+			std::vector<renderCommandBuffer> renderCmdBuffers;
+			renderCommandBuffer* currentBuffer;
+			size_t batchCount;
 			ref<allocator> p_allocator;
 		};
 	}

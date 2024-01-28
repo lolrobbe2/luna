@@ -1,5 +1,6 @@
 #include "commandBuffer.h"
 #include <core/debug/debugMacros.h>
+#include <core/artemis/rendering/pipeline.h>
 namespace luna
 {
 	namespace artemis
@@ -45,5 +46,21 @@ namespace luna
 		{
 			commandBufferLock.unlock();
 		}
+		void commandBuffer::dispatch(uint32_t groupCountX,uint32_t groupCountY,uint32_t groupCountZ)
+		{
+			vkCmdDispatch(m_commandBuffer, groupCountX, groupCountY, groupCountZ);
+		}
+
+		void commandBuffer::bindPipeline(const ref<pipeline> pipeline)
+		{
+			vkCmdBindPipeline(m_commandBuffer, *pipeline, *pipeline);
+		}
+
+		void commandBuffer::beginRenderPass()
+		{
+			VkRenderPassBeginInfo info = { VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO };
+			vkCmdBeginRenderPass(m_commandBuffer,);
+		}
+		
 	}
 }

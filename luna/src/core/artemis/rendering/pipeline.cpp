@@ -2,7 +2,7 @@
 #include <core/debug/debugMacros.h>
 namespace luna 
 {
-	namespace artemis 
+	namespace artemis
 	{
 		pipeline::pipeline()
 		{
@@ -22,6 +22,9 @@ namespace luna
 			VkResult createRes = vkCreateComputePipelines(*p_device, VK_NULL_HANDLE, 1, &createInfo, nullptr, &_pipeline);
 			LN_ERR_FAIL_COND_MSG(createRes != VK_SUCCESS, "[Artemis] an error occured during compute pipeline creation, VkResult: " + VK_RESULT(createRes));
 		}
-}
+
+	
+
+	}
 }
 
