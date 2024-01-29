@@ -85,6 +85,40 @@ namespace luna
 			return *this;
 		}
 
+		renderPassBuilder& renderPassBuilder::addClearColorValue(const float r, const float g, const float b, const float a)
+		{
+			VkClearColorValue clearColor;
+			clearColor.float32[0] = r;
+			clearColor.float32[1] = g;
+			clearColor.float32[2] = b;
+			clearColor.float32[3] = a;
+			clearColorValues.push_back(clearColor);
+			return *this;
+		}
+
+		renderPassBuilder& renderPassBuilder::addClearColorValue(const int32_t r, const int32_t g, const int32_t b, const int32_t a)
+		{
+			VkClearColorValue clearColor;
+			clearColor.int32[0] = r;
+			clearColor.int32[1] = g;
+			clearColor.int32[2] = b;
+			clearColor.int32[3] = a;
+			clearColorValues.push_back(clearColor);
+			return *this;
+			//TODO add depthstencil (start with greatest std::vector)
+		}
+
+		renderPassBuilder& renderPassBuilder::addClearColorValue(const uint32_t r, const uint32_t g, const uint32_t b, const uint32_t a)
+		{
+			VkClearColorValue clearColor;
+			clearColor.uint32[0] = r;
+			clearColor.uint32[1] = g;
+			clearColor.uint32[2] = b;
+			clearColor.uint32[3] = a;
+			clearColorValues.push_back(clearColor);
+			return *this;
+		}
+
 		renderPass renderPassBuilder::build()
 		{
 			VkRenderPassCreateInfo info{VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO};

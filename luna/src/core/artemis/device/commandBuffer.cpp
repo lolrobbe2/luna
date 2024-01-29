@@ -1,6 +1,8 @@
 #include "commandBuffer.h"
 #include <core/debug/debugMacros.h>
 #include <core/artemis/rendering/pipeline.h>
+#include <core/artemis/rendering/renderPass.h>
+#include <core/artemis/rendering/swapchain.h>
 namespace luna
 {
 	namespace artemis
@@ -56,10 +58,12 @@ namespace luna
 			vkCmdBindPipeline(m_commandBuffer, *pipeline, *pipeline);
 		}
 
-		void commandBuffer::beginRenderPass()
+		void commandBuffer::beginRenderPass(const renderPass& renderPass, const ref<swapchain> p_swapchain)
 		{
 			VkRenderPassBeginInfo info = { VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO };
-			vkCmdBeginRenderPass(m_commandBuffer,);
+			info.renderPass = renderPass;
+			info.renderArea = *p_swapchain;
+			vkCmdBeginRenderPass(m_commandBuffer,&info,VK_SUBPASS_CONTENTS_INLINE);
 		}
 		
 	}

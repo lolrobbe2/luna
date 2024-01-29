@@ -5,6 +5,7 @@ namespace luna
 	namespace artemis 
 	{
 		class pipeline;
+		class swapchain;
 		class renderPass;
 		class LN_API commandBuffer
 		{
@@ -18,7 +19,7 @@ namespace luna
 			_ALWAYS_INLINE_ VkCommandBuffer native() { return m_commandBuffer; }
 			_ALWAYS_INLINE_ void dispatch(uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
 			_ALWAYS_INLINE_ void bindPipeline(const ref<pipeline> pipeline);
-			_ALWAYS_INLINE_ void beginRenderPass(const renderPass& renderPass);
+			_ALWAYS_INLINE_ void beginRenderPass(const renderPass& renderPass,const ref<swapchain> p_swapchain);
 			operator VkCommandBuffer() const { return m_commandBuffer; }
 			operator VkCommandBuffer*() { return &m_commandBuffer; }
 			~commandBuffer() { vkFreeCommandBuffers(*_device, *_commandPool, 1, &m_commandBuffer); }
