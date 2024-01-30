@@ -105,7 +105,6 @@ namespace luna
 			clearColor.int32[3] = a;
 			clearColorValues.push_back(clearColor);
 			return *this;
-			//TODO add depthstencil (start with greatest std::vector)
 		}
 
 		renderPassBuilder& renderPassBuilder::addClearColorValue(const uint32_t r, const uint32_t g, const uint32_t b, const uint32_t a)
@@ -116,6 +115,12 @@ namespace luna
 			clearColor.uint32[2] = b;
 			clearColor.uint32[3] = a;
 			clearColorValues.push_back(clearColor);
+			return *this;
+		}
+
+		renderPassBuilder& renderPassBuilder::addDepthStencilValue(float depth, uint32_t stencil)
+		{
+			
 			return *this;
 		}
 
