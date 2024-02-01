@@ -22,7 +22,7 @@ namespace luna
 			attachementBuilder& setDepthStencilValue(const float depth, const uint32_t stencil);
 
 			attachement build() {
-				attachement att = attachement(_attachement);
+				attachement att = attachement(_attachement,clearValue);
 				return att;
 			}
 		private:

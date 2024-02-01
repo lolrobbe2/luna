@@ -3,11 +3,12 @@ namespace luna
 {
 	namespace artemis 
 	{
-		attachement::attachement(VkAttachmentDescription attachement)
+		attachement::attachement(VkAttachmentDescription attachement,VkClearValue clearValue)
 		{
 			_attachement = attachement;
 			reference = createRef<VkAttachmentReference>();
 			reference->attachment = NULL_ATTACHEMENT_REF;
+			this->clearValue = clearValue;
 		}
 
 		void attachement::setAttachementRef(uint64_t ref)

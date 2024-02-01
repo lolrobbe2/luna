@@ -6,6 +6,7 @@ namespace luna
 	{
 		class pipeline;
 		class swapchain;
+		class descriptorSet;
 		class renderPass;
 		class LN_API commandBuffer
 		{
@@ -18,8 +19,12 @@ namespace luna
 			_ALWAYS_INLINE_ void reset(const VkCommandBufferResetFlags flags = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT) { vkResetCommandBuffer(m_commandBuffer, flags); }
 			_ALWAYS_INLINE_ VkCommandBuffer native() { return m_commandBuffer; }
 			_ALWAYS_INLINE_ void dispatch(uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
+
 			_ALWAYS_INLINE_ void bindPipeline(const ref<pipeline> pipeline);
 			_ALWAYS_INLINE_ void beginRenderPass(const renderPass& renderPass,const ref<swapchain> p_swapchain);
+			_ALWAYS_INLINE_ void bindDescriptorSets(const ref<pipeline> pipeline,const std::vector<descriptorSet>& descriptorSets);
+			_ALWAYS_INLINE_ void bindDescriptorSet(const ref<pipeline> pipeline, const descriptorSet& descriptorSets);
+
 			operator VkCommandBuffer() const { return m_commandBuffer; }
 			operator VkCommandBuffer*() { return &m_commandBuffer; }
 			~commandBuffer() { vkFreeCommandBuffers(*_device, *_commandPool, 1, &m_commandBuffer); }

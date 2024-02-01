@@ -3,6 +3,7 @@
 #include <core/artemis/rendering/pipeline.h>
 #include <core/artemis/rendering/renderPass.h>
 #include <core/artemis/rendering/swapchain.h>
+#include <core/artemis/device/descriptorSet.h>
 namespace luna
 {
 	namespace artemis
@@ -64,6 +65,18 @@ namespace luna
 			info.renderPass = renderPass;
 			info.renderArea = *p_swapchain;
 			vkCmdBeginRenderPass(m_commandBuffer,&info,VK_SUBPASS_CONTENTS_INLINE);
+		}
+
+		void commandBuffer::bindDescriptorSets(const ref<pipeline> pipeline,const std::vector<descriptorSet>& descriptorSets)
+		{
+			std::vector<VkDescriptorSet> nativeDescriptorSets;
+			std::transform(descriptorSets.begin(), descriptorSets.end(), nativeDescriptorSets.begin(), [](const descriptorSet& set) -> VkDescriptorSet {return set; });
+			vkCmdBindDescriptorSets(m_commandBuffer, *pipeline, *pipeline, 0, descriptorSets.size(),nativeDescriptorSets.data(), 0, nullptr);
+		}
+
+		void commandBuffer::bindDescriptorSet(const ref<pipeline> pipeline, const descriptorSet& descriptorSet)
+		{
+			vkCmdBindDescriptorSets(m_commandBuffer, *pipeline, *pipeline, 0, 1, descriptorSet, 0, nullptr);
 		}
 		
 	}

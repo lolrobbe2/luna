@@ -5,6 +5,7 @@ namespace luna
 {
 	namespace artemis
 	{
+		
 		/*
 		* @brief helper type for the renderPass builder same as VkSubpassDependency,
 		* @brief but without src/dst subPass as this is determined by the renderPass builder.
@@ -32,7 +33,22 @@ namespace luna
 				return (flags == rhs.flags &&
 					pipelineBindPoint == rhs.pipelineBindPoint);
 			}
-
+			operator std::vector<VkClearValue>() const 
+			{
+				std::vector<VkClearValue> clearValues;
+				for each (attachement attachement in colorAttachments)
+				{
+					clearValues.emplace_back(attachement);
+				}
+				for each (attachement attachement in inputAttachments)
+				{
+					clearValues.emplace_back(attachement);
+				}
+				for each (attachement attachement in resolveAttachments)
+				{
+					clearValues.emplace_back(attachement);
+				}
+			}
 			operator VkSubpassDescription() 
 			{
 				VkSubpassDescription description{};

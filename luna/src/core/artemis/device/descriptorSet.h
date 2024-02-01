@@ -10,6 +10,11 @@ namespace luna
 		class descriptorSet
 		{
 		public: 
+			_ALWAYS_INLINE_ VkDescriptorSet getNative() const { return _descriptorSet; }
+			operator VkDescriptorSet() const { return _descriptorSet; }
+			_ALWAYS_INLINE_ const VkDescriptorSet* getNativePtr() const { return &_descriptorSet; }
+			operator const VkDescriptorSet*() const { return &_descriptorSet; }
+
 			void free();
 			descriptorSet() = default;
 			~descriptorSet() { free(); }

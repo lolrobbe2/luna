@@ -24,7 +24,13 @@ namespace luna
 		}
 		void renderer::update()
 		{
+			p_computeCommandBuffer->begin(0);
+			p_computeCommandBuffer->bindPipeline(computePipeline);
+			p_computeCommandBuffer->bindDescriptorSet(computePipeline, computeDescriptorSet);
+			p_computeCommandBuffer->dispatch(256, 1, 1);
+			p_computeCommandBuffer->end();
 			
+			p_computeCommandPool->flush({ p_computeCommandBuffer.get()}, {}, {}, fence(), nullptr, true);
 		}
 
 		void renderer::drawQuad(const drawCommand& command)
