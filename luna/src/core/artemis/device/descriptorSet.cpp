@@ -17,6 +17,33 @@ namespace luna
 		descriptorSet::descriptorSet(const VkDevice* p_device,const VkDescriptorSet descriptorSet, const VkDescriptorPool* p_descriptorPool, std::vector<VkWriteDescriptorSet>& descriptorWrites) : p_device(p_device),_descriptorSet(descriptorSet),p_descriptorPool(p_descriptorPool),descriptorWrites(descriptorWrites)
 		{
 		}
+		template<typename T>
+		void descriptorSet::write(const uint32_t& descriptorIndex, T* pDescriptorInfo)
+		{
+			LN_PROFILE_FUNCTION();
+			switch (descriptorWrites[descriptorIndex].descriptorType)
+			{
+			case VK_DESCRIPTOR_TYPE_SAMPLER:
+			case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+			case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+			case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+				descriptorWrites[descriptorIndex].pImageInfo = pDescriptorInfo;
+				break;
+			case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+			case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+			case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+			case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+			case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+			case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+				descriptorWrites[descriptorIndex].pBufferInfo = pDescriptorInfo;
+				break;
+			default:
+				break;
+			}
+			vkDeviceWaitIdle(device->getDeviceHandles().device); //innificient!
+			vkUpdateDescriptorSets(device->getDeviceHandles().device, 1, &descriptorWrites[descriptorIndex], 0, nullptr);
+			return VkResult();
+		}
 	}
 }
 
