@@ -25,6 +25,9 @@ namespace luna
 			ref<renderPass> p_renderPass;
 			ref<pipeline> graphicsPipeline;
 			ref<pipeline> computePipeline;
+			
+			std::vector<semaphore> computeWaitSemaphores;
+			std::vector<semaphore> computeSignalSemaphores;
 
 			descriptorPool& computeDescriptorPool = descriptorPool();
 			descriptorSet& computeDescriptorSet = descriptorSet();

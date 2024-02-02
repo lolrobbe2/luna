@@ -24,13 +24,18 @@ namespace luna
 		}
 		void renderer::update()
 		{
+			VkDescriptorBufferInfo info;
+			info.buffer = currentBuffer->cpuBuffer;
+			info.offset = 0;
+			info.range = VK_WHOLE_SIZE;
+			computeDescriptorSet.write<VkDescriptorBufferInfo>(0, &info);
 			p_computeCommandBuffer->begin(0);
 			p_computeCommandBuffer->bindPipeline(computePipeline);
 			p_computeCommandBuffer->bindDescriptorSet(computePipeline, computeDescriptorSet);
 			p_computeCommandBuffer->dispatch(256, 1, 1);
 			p_computeCommandBuffer->end();
 			
-			p_computeCommandPool->flush({ p_computeCommandBuffer.get()}, {}, {}, fence(), nullptr, true);
+			p_computeCommandPool->flush({ p_computeCommandBuffer.get()}, computeSignalSemaphores, computeWaitSemaphores, fence(), nullptr, true);
 		}
 
 		void renderer::drawQuad(const drawCommand& command)

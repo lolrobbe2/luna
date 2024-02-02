@@ -286,6 +286,10 @@ namespace luna
         {
             return pipelineBuilder(&_device.device);
         }
+        void device::waitIdle()
+        {
+            vkDeviceWaitIdle(_device);
+        }
         VKAPI_ATTR VkBool32 VKAPI_CALL device::debugCallback(
             VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
             VkDebugUtilsMessageTypeFlagsEXT                  messageTypes,
