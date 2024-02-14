@@ -147,35 +147,61 @@
 		return m_retval;	 \
 	} else ((void)0) 
 
+#define LN_CRASH_FAIL_NULL(m_param) \
+	if(!m_param) { \
+		LN_CORE_CRITICAL("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}", FUNCTION_STR, __FILE__, __LINE__, "Parameter ' " stringify(m_param)" ' is null.", m_msg);	\
+		LN_FLUSH_STDOUT;  \                                                                                                  \
+		GENERATE_TRAP(); \
+	} else ((void)0) 
 	 /**
-	  * Try using `LN_ERR_FAIL_COND_MSG`.
-	  * Only use this macro if there is no sensible error message.
-	  * If checking for null use ERR_FAIL_NULL_MSG instead.
-	  * If checking index bounds use ERR_FAIL_INDEX_MSG instead.
-	  *
-	  * Ensures `m_cond` is false.
-	  * If `m_cond` is true, the current function returns.
-	  */
+	 * Try using `LN_ERR_FAIL_COND_MSG`.
+	 * Only use this macro if there is no sensible error message.
+	 * If checking for null use ERR_FAIL_NULL_MSG instead.
+	 * If checking index bounds use ERR_FAIL_INDEX_MSG instead.
+	 *
+	 * Ensures `m_cond` is false.
+	 * If `m_cond` is true, the current function returns.
+	 */
 #define LN_ERR_FAIL_COND(m_cond)                                                                          \
 	if (unlikely(m_cond)) {                                                                            \
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true."); \
 		return;                                                                                        \
 	} else                                                                                             \
 		((void)0)
-
+	/**
+	* If checking for null use ERR_FAIL_NULL_MSG instead.
+	* If checking index bounds use ERR_FAIL_INDEX_MSG instead
+	* Ensures `m_cond` is false.
+	* If `m_cond` is true, the current function returns and logs a m_msg to the CLI / log file. 
+	*/
 #define LN_ERR_FAIL_COND_MSG(m_cond,m_msg)                                                                          \
 	if (unlikely(m_cond)) {                                                                            \
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true.",m_msg); \
 		return;                                                                                        \
 	} else                                                                                             \
 		((void)0)
+/**
+* Try using `LN_ERR_FAIL_COND_V_MSG`.
+* Only use this macro if there is no sensible error message.
+* If checking for null use ERR_FAIL_NULL_V instead.
+* If checking index bounds use ERR_FAIL_INDEX_V instead.
+*
+* Ensures `m_cond` is false.
+* If `m_cond` is true, the current function returns m_retval.
+*/
 #define LN_ERR_FAIL_COND_V(m_cond,m_retval)                                                                          \
 	if (unlikely(m_cond)) {                                                                            \
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true."); \
 		return m_retval;                                                                                        \
 	} else                                                                                             \
 		((void)0)
-
+	/*
+	* If checking for null use ERR_FAIL_NULL_V_MSG instead.
+	* If checking index bounds use ERR_FAIL_INDEX_V_MSG instead.
+	*
+	* Ensures `m_cond` is false.
+	* If `m_cond` is true, the current function returns m_retval.
+	*/
 #define LN_ERR_FAIL_COND_V_MSG(m_cond,m_retval,m_msg)                                                                          \
 	if (unlikely(m_cond)) {                                                                            \
 		LN_CORE_ERROR("an error occured at line:{2} in function:{0} in file:{1}! , reason: {3}, msg: {4}",FUNCTION_STR, __FILE__, __LINE__, "Condition \"" stringify(m_cond) "\" is true.",m_msg); \

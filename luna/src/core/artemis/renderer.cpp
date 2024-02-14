@@ -29,6 +29,7 @@ namespace luna
 			info.offset = 0;
 			info.range = VK_WHOLE_SIZE;
 			computeDescriptorSet.write<VkDescriptorBufferInfo>(0, &info);
+
 			p_computeCommandBuffer->begin(0);
 			p_computeCommandBuffer->bindPipeline(computePipeline);
 			p_computeCommandBuffer->bindDescriptorSet(computePipeline, computeDescriptorSet);
@@ -36,6 +37,10 @@ namespace luna
 			p_computeCommandBuffer->end();
 			
 			p_computeCommandPool->flush({ p_computeCommandBuffer.get()}, computeSignalSemaphores, computeWaitSemaphores, fence(), nullptr, true);
+
+			p_graphicsCommandBuffer->begin(0);
+			p_graphicsCommandBuffer->bindPipeline(graphicsPipeline);
+			p_graphicsCommandBuffer->beginRenderPass(p_renderPass)
 		}
 
 		void renderer::drawQuad(const drawCommand& command)
@@ -64,6 +69,12 @@ namespace luna
 				.addShaderStage(quadVertexGenerator)
 				.addDescriptorSetLayout(computeDescriptorPool)
 				.build();
+
+		}
+
+		void setupGraphicsPipeline()
+		{
+
 		}
 	}
 }

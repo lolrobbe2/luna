@@ -20,6 +20,8 @@ namespace luna
 			device& c_device = device();
 			ref<swapchain> p_swapChain;
 			ref<commandPool> p_graphicsCommandPool;
+			ref<commandBuffer> p_graphicsCommandBuffer;
+
 			ref<commandPool> p_computeCommandPool;
 			ref<commandBuffer> p_computeCommandBuffer;
 			ref<renderPass> p_renderPass;
