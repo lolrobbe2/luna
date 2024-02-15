@@ -14,8 +14,7 @@ namespace luna
 			operator VkDescriptorSet() const { return _descriptorSet; }
 			_ALWAYS_INLINE_ const VkDescriptorSet* getNativePtr() const { return &_descriptorSet; }
 			operator const VkDescriptorSet*() const { return &_descriptorSet; }
-			template<typename T>
-			_ALWAYS_INLINE_ void write(const uint32_t& descriptorIndex, T* pDescriptorInfo);
+			void write(const uint32_t& descriptorIndex, void* pDescriptorInfo);
 			void free();
 			descriptorSet() = default;
 			~descriptorSet() { free(); }

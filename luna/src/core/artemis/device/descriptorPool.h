@@ -25,7 +25,7 @@ namespace luna
 			operator VkDescriptorSetLayout*() { return &layout; }
 		
 		private:
-			const VkDevice* p_device;
+			const VkDevice* p_device = nullptr;
 			VkDescriptorPool _descriptorPool = VK_NULL_HANDLE;
 			VkDescriptorSetLayout layout = VK_NULL_HANDLE;
 			std::vector<VkWriteDescriptorSet> descriptorWrites;

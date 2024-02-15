@@ -120,11 +120,14 @@ namespace luna
 
 		renderPassBuilder& renderPassBuilder::addDepthStencilValue(float depth, uint32_t stencil)
 		{
-			
+			VkClearDepthStencilValue depthStencilValue;
+			depthStencilValue.depth = depth;
+			depthStencilValue.stencil = stencil;
+			clearDepthStencilValues.push_back(depthStencilValue);
 			return *this;
 		}
 
-		renderPass renderPassBuilder::build()
+		ref<renderPass> renderPassBuilder::build()
 		{
 			VkRenderPassCreateInfo info{VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO};
 			std::vector<VkAttachmentDescription> attachementDescriptions = generateAttachementDescriptions();
@@ -135,7 +138,7 @@ namespace luna
 			info.pAttachments = attachementDescriptions.data();
 			info.pDependencies = subpassDependencys.data();
 			info.pSubpasses = generateSubpassDescriptions();
-			return renderPass(device,&info);
+			return ref<renderPass>(new renderPass(device,&info));
 		}
 
 		void renderPassBuilder::addAttachements(const std::vector<attachement>& attachments, std::vector<VkAttachmentDescription>& descriptions)

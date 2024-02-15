@@ -25,6 +25,7 @@ namespace luna
 			//auto commandPool = device.getCommandPool(vkb::QueueType::graphics, 0);
 			//auto commandBuffer = commandPool->getCommandBuffer();
 			LN_CORE_INFO("started vulkan device");
+			run();
 			/*required valid asset manager!*/
 			/*
 			renderer::renderer::init(mWindow);
@@ -71,21 +72,21 @@ namespace luna
 				
 				if (!minimized)
 				{
-					//renderer::renderer2D::BeginScene();
+					p_renderer->beginScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnUpdate");
 
 						for (utils::layer* layer : layerStack)
 							layer->onUpdate(timestep);
 					}
-					//renderer::renderer2D::endScene();
+					p_renderer->endScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
 						for (utils::layer* layer : layerStack)
 							layer->onImGuiRender();
 					}
-					//renderer::renderer::newFrame();
+					p_renderer->update();
 				}
 			}
 			LN_PROFILE_END_SESSION();
@@ -98,7 +99,7 @@ namespace luna
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			//mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
-			artemis::renderer renderer = artemis::renderer(mWindow);
+			renderer = createScope<artemis::renderer>(mWindow);
 		}
 
 		void application::onEvent(Event& e)

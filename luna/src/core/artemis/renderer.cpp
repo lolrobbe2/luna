@@ -28,7 +28,7 @@ namespace luna
 			info.buffer = currentBuffer->cpuBuffer;
 			info.offset = 0;
 			info.range = VK_WHOLE_SIZE;
-			computeDescriptorSet.write<VkDescriptorBufferInfo>(0, &info);
+			computeDescriptorSet.write(0, &info);
 
 			p_computeCommandBuffer->begin(0);
 			p_computeCommandBuffer->bindPipeline(computePipeline);
@@ -40,10 +40,22 @@ namespace luna
 
 			p_graphicsCommandBuffer->begin(0);
 			p_graphicsCommandBuffer->bindPipeline(graphicsPipeline);
-			p_graphicsCommandBuffer->beginRenderPass(p_renderPass)
+			p_graphicsCommandBuffer->beginRenderPass(p_renderPass,p_swapChain);
+			p_graphicsCommandBuffer->bindDescriptorSets(graphicsPipeline, graphicsDescriptors);
+			p_graphicsCommandBuffer->end(); 
 		}
 
-		void renderer::drawQuad(const drawCommand& command)
+		constexpr glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
+		{
+			return glm::normalize(color / 255.0f);
+		}
+
+		void renderer::drawQuad(const glm::mat4 transform,const glm::vec4 color1) const
+		{
+			drawQuad({ transform,color1 });
+		}
+
+		void renderer::drawQuad(const drawCommand& command) const
 		{
 			currentBuffer->addCommand(command);
 		}

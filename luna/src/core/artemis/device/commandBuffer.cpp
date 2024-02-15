@@ -59,10 +59,10 @@ namespace luna
 			vkCmdBindPipeline(m_commandBuffer, *pipeline, *pipeline);
 		}
 
-		void commandBuffer::beginRenderPass(const renderPass& renderPass, const ref<swapchain> p_swapchain)
+		void commandBuffer::beginRenderPass(const ref<renderPass>& p_renderPass, const ref<swapchain> p_swapchain)
 		{
 			VkRenderPassBeginInfo info = { VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO };
-			info.renderPass = renderPass;
+			info.renderPass = *p_renderPass;
 			info.renderArea = *p_swapchain;
 			vkCmdBeginRenderPass(m_commandBuffer,&info,VK_SUBPASS_CONTENTS_INLINE);
 		}

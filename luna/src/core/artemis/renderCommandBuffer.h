@@ -5,14 +5,14 @@ namespace luna
 {
     namespace artemis 
     {
-        struct drawCommand
+        typedef struct drawCommand
         {
             glm::mat4 transform;
             glm::vec4 color;
-            glm::vec2 textureCoords[4];
-            float textureIndex;
-            float text;
-        };
+            glm::vec2 textureCoords[4] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+            float textureIndex = 0;
+            float text = false;
+        } drawCommand;
         class renderCommandBuffer
         {
         public:

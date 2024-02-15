@@ -50,6 +50,7 @@ namespace luna
 			void pushLayer(utils::layer* layer);
 			void pushOverlay(utils::layer* layer);
 			void popLayer(utils::layer* layer);
+			const artemis::renderer* getRenderer() const { return p_renderer.get(); }
 			static application& get();
 		private:
 			friend class os;
@@ -62,6 +63,7 @@ namespace luna
 
 			std::vector<std::function<void()>> mainThreadQueue;
 			std::mutex mainThreadQueueMutex;
+			scope<artemis::renderer> p_renderer;
 		private:
 
 			friend int ::main(int argc, char** argv);

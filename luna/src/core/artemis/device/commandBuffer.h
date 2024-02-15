@@ -21,7 +21,7 @@ namespace luna
 			_ALWAYS_INLINE_ void dispatch(uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
 
 			_ALWAYS_INLINE_ void bindPipeline(const ref<pipeline> pipeline);
-			_ALWAYS_INLINE_ void beginRenderPass(const renderPass& renderPass,const ref<swapchain> p_swapchain);
+			_ALWAYS_INLINE_ void beginRenderPass(const ref<renderPass>& p_renderPass,const ref<swapchain> p_swapchain);
 			_ALWAYS_INLINE_ void bindDescriptorSets(const ref<pipeline> pipeline,const std::vector<descriptorSet>& descriptorSets);
 			_ALWAYS_INLINE_ void bindDescriptorSet(const ref<pipeline> pipeline, const descriptorSet& descriptorSets);
 
@@ -31,8 +31,8 @@ namespace luna
 		private:
 			std::mutex commandBufferLock;
 			bool recording = false;
-			const VkDevice* _device;
-			const VkCommandPool* _commandPool;
+			const VkDevice* _device = nullptr;
+			const VkCommandPool* _commandPool = nullptr;
 			VkCommandBuffer m_commandBuffer = VK_NULL_HANDLE;
 		protected:
 			friend class commandPool;
