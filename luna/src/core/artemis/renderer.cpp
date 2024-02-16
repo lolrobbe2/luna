@@ -22,6 +22,9 @@ namespace luna
 		{
 			currentBuffer = &renderCmdBuffers[0];
 		}
+		void renderer::endScene()
+		{
+		}
 		void renderer::update()
 		{
 			VkDescriptorBufferInfo info;
@@ -45,7 +48,7 @@ namespace luna
 			p_graphicsCommandBuffer->end(); 
 		}
 
-		constexpr glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
+		glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
 		{
 			return glm::normalize(color / 255.0f);
 		}

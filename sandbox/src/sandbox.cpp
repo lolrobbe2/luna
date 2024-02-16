@@ -1,17 +1,13 @@
 #pragma once
-#include <core/platform/platformUtils.h>
-#include <project/projectManager.h>
-#include <project/visualStudio/projectGeneratorVS.h>
 #include <luna.h>
-#include <core/assets/editorAssetManager.h>
-#include <core/vulkan/rendering/vulkanTexture.h>
+#include <test/testLayer.h>
 class sandbox : public luna::application::application
 {
 public:
 	sandbox() //base function
 	{
 
-
+		luna::application::application::get().popLayer(new luna::testLayer());
 		//luna::project::projectManager::init();
 	}
 	virtual ~sandbox() //base breaker function
@@ -23,6 +19,5 @@ public:
 
 luna::application::application* luna::application::createApplication()
 {
-	//hello
 	return new sandbox(); // returns the application
 }

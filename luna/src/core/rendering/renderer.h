@@ -56,7 +56,7 @@ namespace luna
 			 * brief ends the scene.
 			 * 
 			 */
-			static void endScene();
+			//static void endScene();
 
 			_ALWAYS_INLINE_ static glm::vec2 getSceneDimensions() { return rendererPipeline->getDimensions(); };
 			LN_API _ALWAYS_INLINE_ static ImVec2 getSceneGuiDimensions() { return { rendererPipeline->getDimensions().x,rendererPipeline->getDimensions().y }; };

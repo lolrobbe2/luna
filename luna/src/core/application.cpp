@@ -25,6 +25,8 @@ namespace luna
 			//auto commandPool = device.getCommandPool(vkb::QueueType::graphics, 0);
 			//auto commandBuffer = commandPool->getCommandBuffer();
 			LN_CORE_INFO("started vulkan device");
+			LN_PROFILE_END_SESSION();
+
 			run();
 			/*required valid asset manager!*/
 			/*
@@ -36,7 +38,6 @@ namespace luna
 			networking::Ip::init();
 			*/
 			platform::os::setCursorShape(platform::ARROW);
-			LN_PROFILE_END_SESSION();
 			
 		}
 		application::~application()
@@ -58,7 +59,7 @@ namespace luna
 		void application::run()
 		{
 			LN_PROFILE_BEGIN_SESSION("luna engine runtime", "./debug/luna-profile-runtime.json");
-			running = false;
+			running = true;
 			while (running)
 			{
 
@@ -99,7 +100,7 @@ namespace luna
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
 			//mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
-			renderer = createScope<artemis::renderer>(mWindow);
+			p_renderer = createScope<artemis::renderer>(mWindow);
 		}
 
 		void application::onEvent(Event& e)

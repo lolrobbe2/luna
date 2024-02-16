@@ -114,15 +114,15 @@ namespace luna
 			*/
 		}
 
-		void renderer2D::endScene()
-		{
+		//void renderer2D::endScene()
+		//{
 			/*
 			LN_PROFILE_FUNCTION();
 			flush();
 			rendererData.quadVertexBufferPreviousPtr =  rendererData.quadVertexBufferPtr;
 			renderer::endScene();
 			*/
-		}
+		//}
 		bool renderer2D::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<font>& font, const std::string labelText, const glm::vec4& bounds, uint8_t& startOutBounds)
 		{
 

@@ -39,7 +39,7 @@ namespace luna
 			/**
 			 * @brief ends the 2D renderer scene.
 			 */
-			_ALWAYS_INLINE_ static void endScene();
+			//_ALWAYS_INLINE_ static void endScene();
 			/**
 			 * @brief .
 			 * 

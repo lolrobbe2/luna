@@ -82,9 +82,7 @@ namespace luna
 			rendererPipeline->drawIndexed(vertexArray, textures, indexCount);
 		}
 
-		void renderer::endScene()
-		{
-		}
+
 
 	}
 }
