@@ -7,12 +7,13 @@ namespace luna
 		/// <summary>
 		/// remebember descriptorSet& not descriptorSet otherwise the descriptorSet will be destroyed before you can use it
 		/// </summary>
-		class descriptorSet
+		class LN_API descriptorSet
 		{
 		public: 
 			_ALWAYS_INLINE_ VkDescriptorSet getNative() const { return _descriptorSet; }
 			operator VkDescriptorSet() const { return _descriptorSet; }
 			_ALWAYS_INLINE_ const VkDescriptorSet* getNativePtr() const { return &_descriptorSet; }
+			_ALWAYS_INLINE_ void update();
 			operator const VkDescriptorSet*() const { return &_descriptorSet; }
 			void write(const uint32_t& descriptorIndex, void* pDescriptorInfo);
 			void free();

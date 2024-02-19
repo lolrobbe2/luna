@@ -19,6 +19,9 @@ namespace luna
         device::~device()
         {
             shaderLibrary::shutdown();
+            vkDeviceWaitIdle(_device);
+            vkb::destroy_device(_device);
+            vkb::destroy_instance(instance);
             _device.device = VK_NULL_HANDLE;
             _device.physical_device.physical_device = VK_NULL_HANDLE;
             instance.instance = VK_NULL_HANDLE;
@@ -285,6 +288,10 @@ namespace luna
         pipelineBuilder device::getPipelineBuilder()
         {
             return pipelineBuilder(&_device.device);
+        }
+        renderPassBuilder device::getRenderPassBuilder()
+        {
+            return renderPassBuilder(&_device.device);
         }
         void device::waitIdle()
         {

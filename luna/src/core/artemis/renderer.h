@@ -17,6 +17,7 @@ namespace luna
 			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command) const;
 		private:
 			void setUpComputePipeline();
+			void setUpGraphicsPipeline();
 		private:
 			device& c_device = device();
 			ref<swapchain> p_swapChain;
@@ -28,13 +29,12 @@ namespace luna
 			ref<renderPass> p_renderPass;
 			ref<pipeline> graphicsPipeline;
 			ref<pipeline> computePipeline;
-			
 			std::vector<semaphore> computeWaitSemaphores;
 			std::vector<semaphore> computeSignalSemaphores;
 
 			descriptorPool& computeDescriptorPool = descriptorPool();
-			descriptorSet& computeDescriptorSet = descriptorSet();
-			std::vector<descriptorSet> graphicsDescriptors;
+			descriptorPool& grapchicsDescriptorPool = descriptorPool();
+
 			std::vector<renderCommandBuffer> renderCmdBuffers;
 			renderCommandBuffer* currentBuffer;
 			size_t batchCount;

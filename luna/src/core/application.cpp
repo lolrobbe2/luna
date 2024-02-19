@@ -98,7 +98,7 @@ namespace luna
 			LN_PROFILE_SCOPE("engine startup");
 
 			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
-			//mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
+			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
 			p_renderer = createScope<artemis::renderer>(mWindow);
 		}

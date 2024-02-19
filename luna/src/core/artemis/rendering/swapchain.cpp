@@ -15,6 +15,17 @@ namespace luna
 			vkb::destroy_swapchain(m_swapchain);
 			m_swapchain = res.value();
 		}
+		VkViewport& swapchain::getViewport()
+		{
+			VkViewport viewport;
+			viewport.x = 0.0f;
+			viewport.y = 0.0f;
+			viewport.width = m_swapchain.extent.width;
+			viewport.height = m_swapchain.extent.height;
+			viewport.minDepth = 0.0f;
+			viewport.maxDepth = 1.0f;
+			return viewport;
+		}
 		swapchain::swapchain(const vkb::Device* device,uint32_t width,uint32_t height,uint32_t imageCount)
 		{
 			vkb::SwapchainBuilder builder{ *device };

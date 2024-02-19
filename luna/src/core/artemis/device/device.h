@@ -86,6 +86,7 @@ namespace luna
             ref<allocator> getAllocator(const ref<commandPool> transferPool = nullptr);
             descriptorPoolBuilder getDescriptorPoolBuilder(const ref<shader> shader);
             pipelineBuilder getPipelineBuilder();
+            renderPassBuilder getRenderPassBuilder();
             void waitIdle();
             operator const VkDevice* () { return &_device.device; }
             operator const VkDevice () { return _device.device; }

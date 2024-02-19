@@ -7,7 +7,7 @@ public:
 	sandbox() //base function
 	{
 
-		luna::application::application::get().popLayer(new luna::testLayer());
+		luna::application::application::get().pushLayer(new luna::testLayer());
 		//luna::project::projectManager::init();
 	}
 	virtual ~sandbox() //base breaker function

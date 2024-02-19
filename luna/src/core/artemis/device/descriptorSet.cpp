@@ -16,6 +16,14 @@ namespace luna
 		}
 		descriptorSet::descriptorSet(const VkDevice* p_device,const VkDescriptorSet descriptorSet, const VkDescriptorPool* p_descriptorPool, std::vector<VkWriteDescriptorSet>& descriptorWrites) : p_device(p_device),_descriptorSet(descriptorSet),p_descriptorPool(p_descriptorPool),descriptorWrites(descriptorWrites)
 		{
+			for(VkWriteDescriptorSet& write : this->descriptorWrites)
+			{
+				write.dstSet = descriptorSet;
+			}
+		}
+		void descriptorSet::update()
+		{
+			vkUpdateDescriptorSets(*p_device, descriptorWrites.size(), descriptorWrites.data(), 0, nullptr);
 		}
 		void descriptorSet::write(const uint32_t& descriptorIndex, void* pDescriptorInfo)
 		{

@@ -1,4 +1,5 @@
 #include "pipelineBuilder.h"
+#include <core/artemis/rendering/renderPass.h>
 #include <core/debug/debugMacros.h>
 
 namespace luna 
@@ -62,6 +63,7 @@ namespace luna
 			vertexInputCreateInfo[shader->name()].vertexAttributeDescriptionCount = inputDescriptions[shader->name()].attributes.size();
 			vertexInputCreateInfo[shader->name()].vertexBindingDescriptionCount = inputDescriptions[shader->name()].bindings.size();
 			vertexInputCreateInfo[shader->name()].flags = flags;
+			vertexInputCreateInfo[shader->name()].sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 			return *this;
 		}
 
@@ -242,12 +244,17 @@ namespace luna
 				createInfo.pInputAssemblyState = pInputAssemblyState;
 				createInfo.pMultisampleState = pMultisampleState;
 				createInfo.pRasterizationState = pRasterizationState;
+				createInfo.pViewportState = pViewportState;
 				createInfo.layout = pipelineLayout;
+				createInfo.stageCount = shaderStages.size();
+				createInfo.pStages = shaderStages.data();
+				LN_ERR_FAIL_NULL_V_MSG(p_renderPass, ref<pipeline>(), "[Artemis] a graphics pipeline requires a renderPass!");
+				createInfo.renderPass = *p_renderPass;
 				return createRef<pipeline>(p_device,createInfo);
 			}
 			else
 			{
-				LN_ERR_FAIL_COND_V_MSG(setLayouts.size() == 0, ref<pipeline>(), "[Artemis] a graphics compute pipeline must have atleast 1 descriptorSetLayout!");
+				LN_ERR_FAIL_COND_V_MSG(setLayouts.size() == 0, ref<pipeline>(), "[Artemis] a compute pipeline must have atleast 1 descriptorSetLayout!");
 				VkPipelineLayout pipelineLayout;
 				VkPipelineLayoutCreateInfo layoutCreateInfo{};
 				layoutCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;

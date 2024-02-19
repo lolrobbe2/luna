@@ -4,6 +4,7 @@ namespace luna
 {
 	namespace artemis 
 	{
+		class renderPass;
 		class pipelineBuilder
 		{
 		public:
@@ -22,7 +23,6 @@ namespace luna
 			*/
 			pipelineBuilder& createAttributeDescription(const ref<shader> shader);
 			pipelineBuilder& createVertexInputState(const ref<shader> shader, VkPipelineVertexInputStateCreateFlags flags = 0);
-			pipelineBuilder& setComputeShaderStage(const ref<shader> shader);
 			pipelineBuilder& addViewport(const VkViewport viewport);
 			pipelineBuilder& addScissor(const VkRect2D scissor);
 			pipelineBuilder& addDynamicState(const VkDynamicState dynamicState);
@@ -37,6 +37,7 @@ namespace luna
 			pipelineBuilder& setCreateFlags(const VkPipelineCreateFlags createFlags = 0);
 			pipelineBuilder& setTopology(const VkPrimitiveTopology topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
 			pipelineBuilder& setPolygonMode(const VkPolygonMode polygonMode);
+			pipelineBuilder& setRenderPass(const ref<renderPass> p_renderPass) { this->p_renderPass = p_renderPass; return *this; }
 			pipelineBuilder& addDescriptorSetLayout(const VkDescriptorSetLayout layout);
 			ref<pipeline> build();
 		protected:
@@ -60,7 +61,7 @@ namespace luna
 			std::vector<VkDynamicState> dynamicStates;
 
 			VkPipelineColorBlendAttachmentState colorBlendAttachementState;
-
+			ref<renderPass> p_renderPass;
 			pipelineType type;
 			VkPrimitiveTopology topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
 			VkPolygonMode polygonMode = VK_POLYGON_MODE_FILL;

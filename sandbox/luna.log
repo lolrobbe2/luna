@@ -1,115 +1,130 @@
-[15:47:08] [error] LUNA: ========================================================================================
-[15:47:08] [error] LUNA: |                                    fragment.glsl                                    |
-[15:47:08] [error] LUNA: ========================================================================================
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                        contents                        |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:     0 uniform buffers
-[15:47:08] [trace] LUNA:     0 push constants
-[15:47:08] [trace] LUNA:     1 resources
-[15:47:08] [trace] LUNA:     3 stage inputs
-[15:47:08] [trace] LUNA:     1 stage outputs
-[15:47:08] [trace] LUNA:     0 storage buffers
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                      stage inputs                      |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:   textIndex
-[15:47:08] [trace] LUNA:     id = 17
-[15:47:08] [trace] LUNA:     offset = 0
-[15:47:08] [trace] LUNA:     location = 2
-[15:47:08] [trace] LUNA:     typeName = Float
-[15:47:08] [trace] LUNA:   textCoord
-[15:47:08] [trace] LUNA:     id = 32
-[15:47:08] [trace] LUNA:     offset = 0
-[15:47:08] [trace] LUNA:     location = 1
-[15:47:08] [trace] LUNA:     typeName = Vec2
-[15:47:08] [trace] LUNA:   fragColor
-[15:47:08] [trace] LUNA:     id = 36
-[15:47:08] [trace] LUNA:     offset = 0
-[15:47:08] [trace] LUNA:     location = 0
-[15:47:08] [trace] LUNA:     typeName = Vec4
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                     stage outputs                     |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:   outColor
-[15:47:08] [trace] LUNA:     id = 9
-[15:47:08] [trace] LUNA:     typeName = Vec4
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                       resources                       |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:   textures
-[15:47:08] [trace] LUNA:     id = 15
-[15:47:08] [trace] LUNA:     typeName = Image
-[15:47:08] [trace] LUNA:     amount = 32
-[15:47:08] [trace] LUNA: reflecting shader: true
-[15:47:08] [error] LUNA: ========================================================================================
-[15:47:08] [error] LUNA: |                                     vertex.glsl                                     |
-[15:47:08] [error] LUNA: ========================================================================================
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                        contents                        |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:     0 uniform buffers
-[15:47:08] [trace] LUNA:     0 push constants
-[15:47:08] [trace] LUNA:     0 resources
-[15:47:08] [trace] LUNA:     4 stage inputs
-[15:47:08] [trace] LUNA:     3 stage outputs
-[15:47:08] [trace] LUNA:     0 storage buffers
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                      stage inputs                      |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:   inColor
-[15:47:08] [trace] LUNA:     id = 11
-[15:47:08] [trace] LUNA:     offset = 0
-[15:47:08] [trace] LUNA:     location = 1
-[15:47:08] [trace] LUNA:     typeName = Vec4
-[15:47:08] [trace] LUNA:   textureCoord
-[15:47:08] [trace] LUNA:     id = 17
-[15:47:08] [trace] LUNA:     offset = 0
-[15:47:08] [trace] LUNA:     location = 2
-[15:47:08] [trace] LUNA:     typeName = Vec2
-[15:47:08] [trace] LUNA:   textureIndex
-[15:47:08] [trace] LUNA:     id = 22
-[15:47:08] [trace] LUNA:     offset = 0
-[15:47:08] [trace] LUNA:     location = 3
-[15:47:08] [trace] LUNA:     typeName = Float
-[15:47:08] [trace] LUNA:   inPosition
-[15:47:08] [trace] LUNA:     id = 32
-[15:47:08] [trace] LUNA:     offset = 0
-[15:47:08] [trace] LUNA:     location = 0
-[15:47:08] [trace] LUNA:     typeName = Vec4
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                     stage outputs                     |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:   fragColor
-[15:47:08] [trace] LUNA:     id = 9
-[15:47:08] [trace] LUNA:     typeName = Vec4
-[15:47:08] [trace] LUNA:   textCoord
-[15:47:08] [trace] LUNA:     id = 15
-[15:47:08] [trace] LUNA:     typeName = Vec2
-[15:47:08] [trace] LUNA:   textIndex
-[15:47:08] [trace] LUNA:     id = 20
-[15:47:08] [trace] LUNA:     typeName = Float
-[15:47:08] [trace] LUNA: reflecting shader: true
-[15:47:08] [error] LUNA: ========================================================================================
-[15:47:08] [error] LUNA: |                               quadVertexGenerator.glsl                               |
-[15:47:08] [error] LUNA: ========================================================================================
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                        contents                        |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:     0 uniform buffers
-[15:47:08] [trace] LUNA:     0 push constants
-[15:47:08] [trace] LUNA:     0 resources
-[15:47:08] [trace] LUNA:     0 stage inputs
-[15:47:08] [trace] LUNA:     0 stage outputs
-[15:47:08] [trace] LUNA:     2 storage buffers
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [warning] LUNA: |                    storage buffers                    |
-[15:47:08] [warning] LUNA: ==========================================================
-[15:47:08] [trace] LUNA:   drawCommandsSSBO
-[15:47:08] [trace] LUNA:     id = 43
-[15:47:08] [trace] LUNA:     typeName = Struct
-[15:47:08] [trace] LUNA:   vertexSSBO
-[15:47:08] [trace] LUNA:     id = 57
-[15:47:08] [trace] LUNA:     typeName = Struct
-[15:47:08] [trace] LUNA: reflecting shader: true
-[15:47:08] [info] LUNA: started vulkan device
+[13:29:54] [error] LUNA: ========================================================================================
+[13:29:54] [error] LUNA: |                                    fragment.glsl                                    |
+[13:29:54] [error] LUNA: ========================================================================================
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                        contents                        |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:     0 uniform buffers
+[13:29:54] [trace] LUNA:     0 push constants
+[13:29:54] [trace] LUNA:     1 resources
+[13:29:54] [trace] LUNA:     3 stage inputs
+[13:29:54] [trace] LUNA:     1 stage outputs
+[13:29:54] [trace] LUNA:     0 storage buffers
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                      stage inputs                      |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:   textIndex
+[13:29:54] [trace] LUNA:     id = 17
+[13:29:54] [trace] LUNA:     offset = 0
+[13:29:54] [trace] LUNA:     location = 2
+[13:29:54] [trace] LUNA:     typeName = Float
+[13:29:54] [trace] LUNA:   textCoord
+[13:29:54] [trace] LUNA:     id = 32
+[13:29:54] [trace] LUNA:     offset = 0
+[13:29:54] [trace] LUNA:     location = 1
+[13:29:54] [trace] LUNA:     typeName = Vec2
+[13:29:54] [trace] LUNA:   fragColor
+[13:29:54] [trace] LUNA:     id = 36
+[13:29:54] [trace] LUNA:     offset = 0
+[13:29:54] [trace] LUNA:     location = 0
+[13:29:54] [trace] LUNA:     typeName = Vec4
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                     stage outputs                     |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:   outColor
+[13:29:54] [trace] LUNA:     id = 9
+[13:29:54] [trace] LUNA:     typeName = Vec4
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                       resources                       |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:   textures
+[13:29:54] [trace] LUNA:     id = 15
+[13:29:54] [trace] LUNA:     typeName = Image
+[13:29:54] [trace] LUNA:     amount = 32
+[13:29:54] [trace] LUNA: reflecting shader: true
+[13:29:54] [error] LUNA: ========================================================================================
+[13:29:54] [error] LUNA: |                                     vertex.glsl                                     |
+[13:29:54] [error] LUNA: ========================================================================================
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                        contents                        |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:     0 uniform buffers
+[13:29:54] [trace] LUNA:     0 push constants
+[13:29:54] [trace] LUNA:     0 resources
+[13:29:54] [trace] LUNA:     4 stage inputs
+[13:29:54] [trace] LUNA:     3 stage outputs
+[13:29:54] [trace] LUNA:     0 storage buffers
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                      stage inputs                      |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:   inColor
+[13:29:54] [trace] LUNA:     id = 11
+[13:29:54] [trace] LUNA:     offset = 0
+[13:29:54] [trace] LUNA:     location = 1
+[13:29:54] [trace] LUNA:     typeName = Vec4
+[13:29:54] [trace] LUNA:   textureCoord
+[13:29:54] [trace] LUNA:     id = 17
+[13:29:54] [trace] LUNA:     offset = 0
+[13:29:54] [trace] LUNA:     location = 2
+[13:29:54] [trace] LUNA:     typeName = Vec2
+[13:29:54] [trace] LUNA:   textureIndex
+[13:29:54] [trace] LUNA:     id = 22
+[13:29:54] [trace] LUNA:     offset = 0
+[13:29:54] [trace] LUNA:     location = 3
+[13:29:54] [trace] LUNA:     typeName = Float
+[13:29:54] [trace] LUNA:   inPosition
+[13:29:54] [trace] LUNA:     id = 32
+[13:29:54] [trace] LUNA:     offset = 0
+[13:29:54] [trace] LUNA:     location = 0
+[13:29:54] [trace] LUNA:     typeName = Vec4
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                     stage outputs                     |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:   fragColor
+[13:29:54] [trace] LUNA:     id = 9
+[13:29:54] [trace] LUNA:     typeName = Vec4
+[13:29:54] [trace] LUNA:   textCoord
+[13:29:54] [trace] LUNA:     id = 15
+[13:29:54] [trace] LUNA:     typeName = Vec2
+[13:29:54] [trace] LUNA:   textIndex
+[13:29:54] [trace] LUNA:     id = 20
+[13:29:54] [trace] LUNA:     typeName = Float
+[13:29:54] [trace] LUNA: reflecting shader: true
+[13:29:54] [error] LUNA: ========================================================================================
+[13:29:54] [error] LUNA: |                               quadVertexGenerator.glsl                               |
+[13:29:54] [error] LUNA: ========================================================================================
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                        contents                        |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:     0 uniform buffers
+[13:29:54] [trace] LUNA:     0 push constants
+[13:29:54] [trace] LUNA:     0 resources
+[13:29:54] [trace] LUNA:     0 stage inputs
+[13:29:54] [trace] LUNA:     0 stage outputs
+[13:29:54] [trace] LUNA:     2 storage buffers
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [warning] LUNA: |                    storage buffers                    |
+[13:29:54] [warning] LUNA: ==========================================================
+[13:29:54] [trace] LUNA:   drawCommandsSSBO
+[13:29:54] [trace] LUNA:     id = 43
+[13:29:54] [trace] LUNA:     typeName = Struct
+[13:29:54] [trace] LUNA:   vertexSSBO
+[13:29:54] [trace] LUNA:     id = 57
+[13:29:54] [trace] LUNA:     typeName = Struct
+[13:29:54] [trace] LUNA: reflecting shader: true
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ UNASSIGNED-GeneralParameterError-UnrecognizedValue ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xbe6eff91 | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].blendEnable (-858993460) is neither VK_TRUE nor VK_FALSE. Applications MUST not pass any other values than VK_TRUE or VK_FALSE into a Vulkan implementation where a VkBool32 is expected.
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ VUID-VkPipelineColorBlendAttachmentState-srcColorBlendFactor-parameter ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xeb9e690 | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].srcColorBlendFactor (-858993460) does not fall within the begin..end range of the core VkBlendFactor enumeration tokens and is not an extension added token. The Vulkan spec states: srcColorBlendFactor must be a valid VkBlendFactor value (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkPipelineColorBlendAttachmentState-srcColorBlendFactor-parameter)
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ VUID-VkPipelineColorBlendAttachmentState-dstColorBlendFactor-parameter ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x8db942fe | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].dstColorBlendFactor (-858993460) does not fall within the begin..end range of the core VkBlendFactor enumeration tokens and is not an extension added token. The Vulkan spec states: dstColorBlendFactor must be a valid VkBlendFactor value (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkPipelineColorBlendAttachmentState-dstColorBlendFactor-parameter)
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ VUID-VkPipelineColorBlendAttachmentState-colorBlendOp-parameter ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x7978ef4f | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].colorBlendOp (-858993460) does not fall within the begin..end range of the core VkBlendOp enumeration tokens and is not an extension added token. The Vulkan spec states: colorBlendOp must be a valid VkBlendOp value (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkPipelineColorBlendAttachmentState-colorBlendOp-parameter)
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ VUID-VkPipelineColorBlendAttachmentState-srcAlphaBlendFactor-parameter ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x4a7f8ed8 | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].srcAlphaBlendFactor (-858993460) does not fall within the begin..end range of the core VkBlendFactor enumeration tokens and is not an extension added token. The Vulkan spec states: srcAlphaBlendFactor must be a valid VkBlendFactor value (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkPipelineColorBlendAttachmentState-srcAlphaBlendFactor-parameter)
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ VUID-VkPipelineColorBlendAttachmentState-dstAlphaBlendFactor-parameter ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x53ab1c8f | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].dstAlphaBlendFactor (-858993460) does not fall within the begin..end range of the core VkBlendFactor enumeration tokens and is not an extension added token. The Vulkan spec states: dstAlphaBlendFactor must be a valid VkBlendFactor value (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkPipelineColorBlendAttachmentState-dstAlphaBlendFactor-parameter)
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ VUID-VkPipelineColorBlendAttachmentState-alphaBlendOp-parameter ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x48f9f9b | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].alphaBlendOp (-858993460) does not fall within the begin..end range of the core VkBlendOp enumeration tokens and is not an extension added token. The Vulkan spec states: alphaBlendOp must be a valid VkBlendOp value (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkPipelineColorBlendAttachmentState-alphaBlendOp-parameter)
+[13:29:54] [error] LUNA: [Artemis] msg: 
+ Validation Error: [ VUID-VkPipelineColorBlendAttachmentState-colorWriteMask-parameter ] Object 0: handle = 0x2020e425e30, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xb8f9c032 | vkCreateGraphicsPipelines: value of pCreateInfos[0].pColorBlendState->pAttachments[0].colorWriteMask contains flag bits that are not recognized members of VkColorComponentFlagBits The Vulkan spec states: colorWriteMask must be a valid combination of VkColorComponentFlagBits values (https://vulkan.lunarg.com/doc/view/1.3.216.0/windows/1.3-extensions/vkspec.html#VUID-VkPipelineColorBlendAttachmentState-colorWriteMask-parameter)

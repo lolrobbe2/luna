@@ -10,13 +10,12 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			c_device = *new device(window);
 			p_swapChain = c_device.getSwapchain();
-			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
 
 			p_allocator = c_device.getAllocator();
 		
 			setUpComputePipeline();
-			renderCmdBuffers.resize(10, p_allocator);
-			currentBuffer = &renderCmdBuffers[0];
+			
+			setUpGraphicsPipeline();
 		}
 		void renderer::beginScene()
 		{
@@ -27,25 +26,25 @@ namespace luna
 		}
 		void renderer::update()
 		{
-			VkDescriptorBufferInfo info;
-			info.buffer = currentBuffer->cpuBuffer;
-			info.offset = 0;
-			info.range = VK_WHOLE_SIZE;
-			computeDescriptorSet.write(0, &info);
 
 			p_computeCommandBuffer->begin(0);
 			p_computeCommandBuffer->bindPipeline(computePipeline);
-			p_computeCommandBuffer->bindDescriptorSet(computePipeline, computeDescriptorSet);
-			p_computeCommandBuffer->dispatch(256, 1, 1);
+			for (renderCommandBuffer renderCmdBuffer : renderCmdBuffers)
+			{
+				if (renderCmdBuffer.commandsAmount) {
+					p_computeCommandBuffer->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
+					p_computeCommandBuffer->dispatch(renderCmdBuffer.commandsAmount, 1, 1); //dispatch per batch
+				}
+			}
 			p_computeCommandBuffer->end();
 			
-			p_computeCommandPool->flush({ p_computeCommandBuffer.get()}, computeSignalSemaphores, computeWaitSemaphores, fence(), nullptr, true);
-
+			p_computeCommandPool->flush({ p_computeCommandBuffer.get()}, {}, {}, fence(), nullptr, true);
+			/*
 			p_graphicsCommandBuffer->begin(0);
 			p_graphicsCommandBuffer->bindPipeline(graphicsPipeline);
 			p_graphicsCommandBuffer->beginRenderPass(p_renderPass,p_swapChain);
-			p_graphicsCommandBuffer->bindDescriptorSets(graphicsPipeline, graphicsDescriptors);
 			p_graphicsCommandBuffer->end(); 
+			*/
 		}
 
 		glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
@@ -67,7 +66,7 @@ namespace luna
 		{
 			p_computeCommandPool = c_device.getCommandPool(vkb::QueueType::compute);
 
-			p_computeCommandPool->getCommandBuffer();
+			p_computeCommandBuffer = p_computeCommandPool->getCommandBuffer();
 			
 			ref<shader> quadVertexGenerator = shaderLibrary::get("quadVertexGenerator.glsl"); //get compute shader
 
@@ -78,17 +77,71 @@ namespace luna
 				.setStorageBufferAmount(1000)
 				.build();
 			
-			computeDescriptorSet = computeDescriptorPool.allocateDescriptorSet();
 			pipelineBuilder computePipelineBuidler = c_device.getPipelineBuilder();
 			computePipeline = computePipelineBuidler
+				.setPipelineType(COMPUTE)
 				.addShaderStage(quadVertexGenerator)
 				.addDescriptorSetLayout(computeDescriptorPool)
 				.build();
 
 		}
 
-		void setupGraphicsPipeline()
+		void renderer::setUpGraphicsPipeline()
 		{
+			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
+
+			p_graphicsCommandBuffer = p_graphicsCommandPool->getCommandBuffer();
+			currentBuffer = &renderCmdBuffers[0];
+
+			ref<shader> vertexShader = shaderLibrary::get("vertex.glsl"); //get vertex shader
+			ref<shader> fragmentShader = shaderLibrary::get("fragment.glsl"); //get vertex shader
+
+			descriptorPoolBuilder poolBuilder = c_device.getDescriptorPoolBuilder(fragmentShader);
+
+			//storageBuffers with fixed size used for vertex generation.
+			grapchicsDescriptorPool = poolBuilder
+				.setSamplerAmount(10)
+				.setStorageImageAmount(32*10)
+				.build();
+
+			attachementBuilder attachementBuilder{ p_swapChain };
+			attachement att = attachementBuilder
+				.setClearColorValue(0.0f, 0.0f, 0.0f, 0.0f)
+				.setSamples().setOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
+				.setLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
+				.setStencilOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
+				.build();
+
+			subPassBuilder subPassBuilder;
+			subpassDescription subpass = subPassBuilder
+				.addColorAttachement(att)
+				.setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS)
+				.build();
+
+			subpassDescription description = subPassBuilder.addColorAttachement(att).setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS).build();
+			subpassDependency dependency { 0, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,0};
+			renderPassBuilder renderPassBuilder = c_device.getRenderPassBuilder();
+			
+			p_renderPass = renderPassBuilder
+				.addClearColorValue(0.0f, 0.0f, 0.0f, 0.0f)
+				.addSubPassDependency(dependency)
+				.addSubPass(subpass)
+				.build();
+				
+
+			pipelineBuilder graphicsPipelineBuilder = c_device.getPipelineBuilder();
+			graphicsPipeline = graphicsPipelineBuilder
+				.setPipelineType(GRAPHICS)
+				.addShaderStage(vertexShader)
+				.addShaderStage(fragmentShader)
+				.addDescriptorSetLayout(grapchicsDescriptorPool)
+				.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
+				.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+				.addViewport(p_swapChain->getViewport())
+				.addScissor(*p_swapChain)
+				.setRenderPass(p_renderPass)
+				.build();
+			renderCmdBuffers.resize(10, { p_allocator,computeDescriptorPool,grapchicsDescriptorPool });
 
 		}
 	}

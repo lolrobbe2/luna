@@ -1,5 +1,6 @@
 #pragma once
 #include <core/artemis/device/allocator.h>
+#include <core/artemis/device/descriptorSet.h>
 #define LN_DRAW_COMMANDS_AMOUNT 100
 namespace luna 
 {
@@ -13,18 +14,21 @@ namespace luna
             float textureIndex = 0;
             float text = false;
         } drawCommand;
+        class descriptorPool;
         class renderCommandBuffer
         {
         public:
             renderCommandBuffer() = default;
-            renderCommandBuffer(const ref<allocator> p_allocator);
+            renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool);
             bool addCommand(const drawCommand& command);
             void reset();
             buffer& cpuBuffer = buffer(); //stores commands.
             buffer& gpuBuffer = buffer(); //stores vertices.
-            drawCommand* p_commands;
-            drawCommand* p_commandsBase;
-            size_t commandsAmount;
+            descriptorSet& computeDescriptorSet = descriptorSet();
+            descriptorSet& graphicsDescriptorSet = descriptorSet();
+            drawCommand* p_commands = nullptr;
+            drawCommand* p_commandsBase = nullptr;
+            size_t commandsAmount = 0;
         };
     }
 }

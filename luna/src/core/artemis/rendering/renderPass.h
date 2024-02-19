@@ -22,7 +22,6 @@ namespace luna
 		class renderPassBuilder
 		{
 		public:
-			renderPassBuilder(const VkDevice* device) { this->device = device; }
 			renderPassBuilder& addSubPass(const subpassDescription description);
 			renderPassBuilder& addCreateFlag(const VkRenderPassCreateFlagBits flag) { flags |= flag; return *this; };
 			
@@ -42,7 +41,9 @@ namespace luna
 			renderPassBuilder& addDepthStencilValue(float depth, uint32_t stencil);
 			
 			ref<renderPass> build();
-
+		protected:
+			friend class device;
+			renderPassBuilder(const VkDevice* device) { this->device = device; }
 		private:
 			static void addAttachements(const std::vector<attachement>& attachments, std::vector<VkAttachmentDescription>& descriptions);
 			std::vector<VkAttachmentDescription> generateAttachementDescriptions();
