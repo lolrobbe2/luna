@@ -27,7 +27,6 @@ namespace luna
 			LN_CORE_INFO("started vulkan device");
 			LN_PROFILE_END_SESSION();
 
-			run();
 			/*required valid asset manager!*/
 			/*
 			renderer::renderer::init(mWindow);
@@ -59,7 +58,7 @@ namespace luna
 		void application::run()
 		{
 			LN_PROFILE_BEGIN_SESSION("luna engine runtime", "./debug/luna-profile-runtime.json");
-			running = true;
+			//running = true;
 			while (running)
 			{
 

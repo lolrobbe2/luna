@@ -1,5 +1,6 @@
 #pragma once
 #include <core/utils/layer.h>
+#include <core/application.h>
 namespace luna
 {
 	class testLayer : public luna::utils::layer

@@ -22,6 +22,8 @@ namespace luna
             renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool);
             bool addCommand(const drawCommand& command);
             void reset();
+            void generateIndices();
+            buffer& cpuIndicesBuffer = buffer();
             buffer& cpuBuffer = buffer(); //stores commands.
             buffer& gpuBuffer = buffer(); //stores vertices.
             descriptorSet& computeDescriptorSet = descriptorSet();

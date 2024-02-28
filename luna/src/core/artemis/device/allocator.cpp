@@ -121,6 +121,7 @@ namespace luna
 
 			VmaAllocationCreateInfo vmaAllocInfo = {};
 			vmaAllocInfo.usage = (VmaMemoryUsage)memUsage;
+			vmaAllocInfo.flags = memUsage == CPU_TO_GPU || CPU_ONLY || CPU_COPY ? VMA_ALLOCATION_CREATE_HOST_ACCESS_RANDOM_BIT | VMA_ALLOCATION_CREATE_MAPPED_BIT : VMA_ALLOCATION_CREATE_STRATEGY_MIN_TIME_BIT;
 			VmaAllocation _allocation;
 			VmaAllocationInfo info;
 			VkBuffer _buffer;

@@ -10,6 +10,7 @@ namespace luna
 			attachementBuilder(const ref<swapchain> swapchain) : swapchain(swapchain)
 			{
 				_attachement.format = *swapchain;
+				
 			}
 			attachementBuilder& setFlags(VkAttachmentDescriptionFlags flags);
 			attachementBuilder& setSamples(VkSampleCountFlagBits sampleCount = VK_SAMPLE_COUNT_1_BIT);

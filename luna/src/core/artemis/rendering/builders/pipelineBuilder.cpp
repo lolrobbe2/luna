@@ -9,6 +9,7 @@ namespace luna
 		pipelineBuilder::pipelineBuilder(const VkDevice* p_device)
 		{
 			this->p_device = p_device;
+			colorBlendAttachementState.blendEnable = VK_FALSE;
 		}
 		pipelineBuilder& pipelineBuilder::addShaderStage(const ref<shader> shader, const VkPipelineShaderStageCreateFlags flags)
 		{
@@ -107,14 +108,10 @@ namespace luna
 			return *this;
 		}
 
-		pipelineBuilder& pipelineBuilder::setColorMask(const bool red, const bool green, const bool blue, const bool alpha)
+		pipelineBuilder& pipelineBuilder::setColorMask(VkColorComponentFlags colorWriteMask)
 		{
-			if (red) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_R_BIT;
-			if (green) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_G_BIT;
-			if (blue) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_B_BIT;
-
-			if (red) colorBlendAttachementState.colorWriteMask |= VK_COLOR_COMPONENT_A_BIT;
-
+			
+			colorBlendAttachementState.colorWriteMask = colorWriteMask;
 			return *this;
 		}
 

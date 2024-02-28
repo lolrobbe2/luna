@@ -29,7 +29,6 @@ namespace luna
 			attachement(VkAttachmentDescription attachement, VkClearValue clearValue);
 			void setAttachementRef(uint64_t ref);
 			void setReferenceLayout(VkImageLayout layout) { reference->layout = layout; }
-
 		private:
 			VkAttachmentDescription _attachement;
 			VkImageLayout referenceLayout;

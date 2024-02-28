@@ -41,6 +41,23 @@ namespace luna
 		{
 			p_commands = p_commandsBase;
 		}
+		void renderCommandBuffer::generateIndices()
+		{
+			uint32_t offset = 0;
+			uint32_t* quadIndices = cpuIndicesBuffer.getData<uint32_t>();
+			for (uint32_t i = 0; i < commandsAmount * 2; i += 6)
+			{
+				quadIndices[i + 0] = offset + 0;
+				quadIndices[i + 1] = offset + 1;
+				quadIndices[i + 2] = offset + 2;
+
+				quadIndices[i + 3] = offset + 2;
+				quadIndices[i + 4] = offset + 3;
+				quadIndices[i + 5] = offset + 0;
+
+				offset += 4;
+			}
+		}
 	}
 }
 

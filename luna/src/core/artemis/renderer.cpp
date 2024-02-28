@@ -27,24 +27,25 @@ namespace luna
 		void renderer::update()
 		{
 
-			p_computeCommandBuffer->begin(0);
-			p_computeCommandBuffer->bindPipeline(computePipeline);
+			p_computeCommandBuffer[currentFrame]->begin(0);
+			p_computeCommandBuffer[currentFrame]->bindPipeline(computePipeline);
 			for (renderCommandBuffer renderCmdBuffer : renderCmdBuffers)
 			{
 				if (renderCmdBuffer.commandsAmount) {
-					p_computeCommandBuffer->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
-					p_computeCommandBuffer->dispatch(renderCmdBuffer.commandsAmount, 1, 1); //dispatch per batch
+					p_computeCommandBuffer[currentFrame]->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
+					p_computeCommandBuffer[currentFrame]->dispatch(renderCmdBuffer.commandsAmount, 1, 1); //dispatch per batch
 				}
 			}
-			p_computeCommandBuffer->end();
+			p_computeCommandBuffer[currentFrame]->end();
 			
-			p_computeCommandPool->flush({ p_computeCommandBuffer.get()}, {}, {}, fence(), nullptr, true);
-			/*
-			p_graphicsCommandBuffer->begin(0);
-			p_graphicsCommandBuffer->bindPipeline(graphicsPipeline);
-			p_graphicsCommandBuffer->beginRenderPass(p_renderPass,p_swapChain);
-			p_graphicsCommandBuffer->end(); 
-			*/
+			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get()}, {}, {}, fence(), nullptr, true);
+			
+			p_graphicsCommandBuffer[currentFrame]->begin(0);
+			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
+			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass,p_swapChain);
+			p_graphicsCommandBuffer[currentFrame]->end();
+			p_graphicsCommandBuffer[currentFrame]->end();
+			
 		}
 
 		glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
@@ -66,7 +67,7 @@ namespace luna
 		{
 			p_computeCommandPool = c_device.getCommandPool(vkb::QueueType::compute);
 
-			p_computeCommandBuffer = p_computeCommandPool->getCommandBuffer();
+			p_computeCommandBuffer.resize(p_swapChain->size(),p_computeCommandPool->getCommandBuffer());
 			
 			ref<shader> quadVertexGenerator = shaderLibrary::get("quadVertexGenerator.glsl"); //get compute shader
 
@@ -90,7 +91,7 @@ namespace luna
 		{
 			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
 
-			p_graphicsCommandBuffer = p_graphicsCommandPool->getCommandBuffer();
+			p_graphicsCommandBuffer.resize(p_swapChain->size(),p_graphicsCommandPool->getCommandBuffer());
 			currentBuffer = &renderCmdBuffers[0];
 
 			ref<shader> vertexShader = shaderLibrary::get("vertex.glsl"); //get vertex shader
@@ -131,6 +132,9 @@ namespace luna
 
 			pipelineBuilder graphicsPipelineBuilder = c_device.getPipelineBuilder();
 			graphicsPipeline = graphicsPipelineBuilder
+				.setColorBlendingParams()
+				.setAlphaBlendingParams(VK_BLEND_FACTOR_SRC_ALPHA, VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA, VK_BLEND_OP_ADD)
+				.setColorMask()
 				.setPipelineType(GRAPHICS)
 				.addShaderStage(vertexShader)
 				.addShaderStage(fragmentShader)

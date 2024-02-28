@@ -32,7 +32,8 @@ namespace luna
 			pipelineBuilder& enableBlending(bool enable = true);
 			pipelineBuilder& setColorBlendingParams(const VkBlendFactor srcColor = VK_BLEND_FACTOR_SRC_ALPHA, const VkBlendFactor dstColor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA, const VkBlendOp blendOp = VK_BLEND_OP_ADD);
 			pipelineBuilder& setAlphaBlendingParams(const VkBlendFactor srcColor, const VkBlendFactor dstColor, const VkBlendOp blendOp);
-			pipelineBuilder& setColorMask(const bool red, const bool green, const bool blue, const bool alpha);
+			pipelineBuilder& setColorMask(VkColorComponentFlags colorWriteMask = VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_G_BIT |
+				VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_A_BIT);
 			pipelineBuilder& setPipelineType(const pipelineType type);
 			pipelineBuilder& setCreateFlags(const VkPipelineCreateFlags createFlags = 0);
 			pipelineBuilder& setTopology(const VkPrimitiveTopology topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);

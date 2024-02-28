@@ -25,6 +25,7 @@ namespace luna
 			_ALWAYS_INLINE_ void bindDescriptorSets(const ref<pipeline> pipeline,const std::vector<descriptorSet>& descriptorSets);
 			_ALWAYS_INLINE_ void bindDescriptorSet(const ref<pipeline> pipeline, const descriptorSet& descriptorSets);
 
+			_ALWAYS_INLINE_ void endCurrentRenderPass();
 			operator VkCommandBuffer() const { return m_commandBuffer; }
 			operator VkCommandBuffer*() { return &m_commandBuffer; }
 			~commandBuffer() { vkFreeCommandBuffers(*_device, *_commandPool, 1, &m_commandBuffer); }

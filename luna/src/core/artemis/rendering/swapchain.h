@@ -9,6 +9,7 @@ namespace luna
 		{
 		public:
 			void resize(uint32_t width, uint32_t height);
+			const size_t size() { return m_swapchain.image_count; }
 			~swapchain() { vkb::destroy_swapchain(m_swapchain); }
 			_ALWAYS_INLINE_ VkViewport& getViewport();
 			_ALWAYS_INLINE_ operator VkFormat() const { return m_swapchain.image_format; }

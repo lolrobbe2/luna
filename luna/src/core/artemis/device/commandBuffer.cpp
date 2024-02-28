@@ -78,6 +78,11 @@ namespace luna
 		{
 			vkCmdBindDescriptorSets(m_commandBuffer, *pipeline, *pipeline, 0, 1, descriptorSet, 0, nullptr);
 		}
+
+		void commandBuffer::endCurrentRenderPass()
+		{
+			vkCmdEndRenderPass(m_commandBuffer);
+		}
 		
 	}
 }

@@ -13,7 +13,7 @@ namespace luna
 			 void endScene();
 			 void update();
 			 _ALWAYS_INLINE_ glm::vec4 normalizeColor(const glm::vec4& color) const;
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4 transform, const glm::vec4 color1) const ;
+			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4 transform, const glm::vec4 color1) const;
 			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command) const;
 		private:
 			void setUpComputePipeline();
@@ -22,10 +22,10 @@ namespace luna
 			device& c_device = device();
 			ref<swapchain> p_swapChain;
 			ref<commandPool> p_graphicsCommandPool;
-			ref<commandBuffer> p_graphicsCommandBuffer;
+			std::vector<ref<commandBuffer>>p_graphicsCommandBuffer;
 
 			ref<commandPool> p_computeCommandPool;
-			ref<commandBuffer> p_computeCommandBuffer;
+			std::vector<ref<commandBuffer>> p_computeCommandBuffer;
 			ref<renderPass> p_renderPass;
 			ref<pipeline> graphicsPipeline;
 			ref<pipeline> computePipeline;
@@ -39,6 +39,8 @@ namespace luna
 			renderCommandBuffer* currentBuffer;
 			size_t batchCount;
 			ref<allocator> p_allocator;
+
+			uint8_t currentFrame = 0;
 		};
 	}
 }
