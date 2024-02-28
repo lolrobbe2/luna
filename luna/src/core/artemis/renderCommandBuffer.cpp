@@ -7,6 +7,7 @@ namespace luna
 		renderCommandBuffer::renderCommandBuffer(const ref<allocator> p_allocator, descriptorPool& computePool, descriptorPool& graphicsPool)
 		{
 			cpuBuffer = p_allocator->allocateBuffer(sizeof(drawCommand) * LN_DRAW_COMMANDS_AMOUNT, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT);
+			cpuIndicesBuffer = p_allocator->allocateBuffer(LN_DRAW_COMMANDS_AMOUNT * 6, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT);
 			gpuBuffer = p_allocator->allocateBuffer(cpuBuffer.getSize() * 4, GPU_ONLY, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
 			p_commandsBase = (drawCommand*) cpuBuffer.getData();
 			p_commands = p_commandsBase;
@@ -45,6 +46,7 @@ namespace luna
 		{
 			uint32_t offset = 0;
 			uint32_t* quadIndices = cpuIndicesBuffer.getData<uint32_t>();
+			//*2 because a rectangle/quad exists out of 2 triangles.
 			for (uint32_t i = 0; i < commandsAmount * 2; i += 6)
 			{
 				quadIndices[i + 0] = offset + 0;

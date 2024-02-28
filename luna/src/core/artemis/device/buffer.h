@@ -16,7 +16,7 @@ namespace luna
 			void setData(const T type);
 			_ALWAYS_INLINE_ void* getData();
 			template<typename T>
-			_ALWAYS_INLINE_ T* getData() { return (T)getData(); }
+			_ALWAYS_INLINE_ T* getData() { return (T*)getData(); }
 			~buffer();
 			operator bool() const { return _buffer == VK_NULL_HANDLE; }
 			operator VkBuffer() const { return _buffer; }

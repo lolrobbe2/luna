@@ -64,6 +64,7 @@ namespace luna
 			VkRenderPassBeginInfo info = { VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO };
 			info.renderPass = *p_renderPass;
 			info.renderArea = *p_swapchain;
+			//TODO add framebuffer!
 			vkCmdBeginRenderPass(m_commandBuffer,&info,VK_SUBPASS_CONTENTS_INLINE);
 		}
 

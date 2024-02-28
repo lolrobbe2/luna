@@ -28,11 +28,6 @@ namespace luna
 		{
 			setData(&type, sizeof(type));
 		}
-		template<typename T>
-		T* buffer::getData()
-		{
-			return (T*)getData();
-		}
 		buffer::~buffer()
 		{
 			p_allocator->deallocate(_buffer, p_allocation);

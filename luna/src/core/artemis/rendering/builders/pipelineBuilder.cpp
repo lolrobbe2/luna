@@ -247,7 +247,7 @@ namespace luna
 				createInfo.pStages = shaderStages.data();
 				LN_ERR_FAIL_NULL_V_MSG(p_renderPass, ref<pipeline>(), "[Artemis] a graphics pipeline requires a renderPass!");
 				createInfo.renderPass = *p_renderPass;
-				return createRef<pipeline>(p_device,createInfo);
+				return ref<pipeline>(new pipeline(p_device, createInfo));
 			}
 			else
 			{
@@ -274,7 +274,7 @@ namespace luna
 				createInfo.layout = pipelineLayout;
 				createInfo.stage = shaderStages[0]; //no other posibility so hardcode it!
 				createInfo.pNext = nullptr;
-				return createRef<pipeline>(p_device, createInfo);
+				return ref<pipeline>(new pipeline(p_device, createInfo));
 			}
 			return ref<pipeline>();
 		}

@@ -32,6 +32,7 @@ namespace luna
 			for (renderCommandBuffer renderCmdBuffer : renderCmdBuffers)
 			{
 				if (renderCmdBuffer.commandsAmount) {
+					renderCmdBuffer.generateIndices();
 					p_computeCommandBuffer[currentFrame]->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
 					p_computeCommandBuffer[currentFrame]->dispatch(renderCmdBuffer.commandsAmount, 1, 1); //dispatch per batch
 				}
