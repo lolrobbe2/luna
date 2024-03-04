@@ -26,27 +26,20 @@ namespace luna
 		}
 		void renderer::update()
 		{
-
-			p_computeCommandBuffer[currentFrame]->begin(0);
-			p_computeCommandBuffer[currentFrame]->bindPipeline(computePipeline);
-			for (renderCommandBuffer renderCmdBuffer : renderCmdBuffers)
+			inFlightFences[currentFrame].wait();
+			VkResult result = p_swapChain->acquireNextImage(UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
+			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
-				if (renderCmdBuffer.commandsAmount) {
-					renderCmdBuffer.generateIndices();
-					p_computeCommandBuffer[currentFrame]->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
-					p_computeCommandBuffer[currentFrame]->dispatch(renderCmdBuffer.commandsAmount, 1, 1); //dispatch per batch
-				}
+				if (p_swapChain->invalid()) return;
+				//todo recreate pipeline;
 			}
-			p_computeCommandBuffer[currentFrame]->end();
-			
-			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get()}, {}, {}, fence(), nullptr, true);
-			
-			p_graphicsCommandBuffer[currentFrame]->begin(0);
-			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
-			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass,frameBuffers[currentFrame]);
-			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
-			p_graphicsCommandBuffer[currentFrame]->end();
-			
+			inFlightFences[currentFrame].reset();
+			graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
+
+			inFlightFences[currentFrame].reset();
+			recordCommands();
+			flush();
+
 		}
 
 		glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
@@ -149,20 +142,32 @@ namespace luna
 			renderCmdBuffers.resize(10, { p_allocator,computeDescriptorPool,grapchicsDescriptorPool });
 
 		}
+		void renderer::recordCommands()
+		{
+			p_computeCommandBuffer[currentFrame]->begin(0);
+			p_computeCommandBuffer[currentFrame]->bindPipeline(computePipeline);
+			for (renderCommandBuffer renderCmdBuffer : renderCmdBuffers)
+			{
+				if (renderCmdBuffer.commandsAmount) {
+					renderCmdBuffer.generateIndices();
+					p_computeCommandBuffer[currentFrame]->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
+					p_computeCommandBuffer[currentFrame]->dispatch(renderCmdBuffer.commandsAmount, 1, 1); //dispatch per batch
+				}
+			}
+			p_computeCommandBuffer[currentFrame]->end();
+
+			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, {}, {}, fence(), nullptr, true);
+
+			p_graphicsCommandBuffer[currentFrame]->begin(0);
+			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
+			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[currentFrame]);
+			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
+			p_graphicsCommandBuffer[currentFrame]->end();
+			p_graphicsCommandPool->flush({ p_graphicsCommandBuffer[currentFrame].get() }, {renderFinishedSemaphores[currentFrame]}, {imageAvailableSemaphores[currentFrame]}, inFlightFences[currentFrame], nullptr, true);
+		}
 		void renderer::flush()
 		{
-			inFlightFences[currentFrame].wait();
-			VkResult result = p_swapChain->acquireNextImage(UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
-			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
-			{
-				if (p_swapChain->invalid()) return;
-				//todo recreate pipeline;
-			}
-			inFlightFences[currentFrame].reset();
-			graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
 
-			inFlightFences[currentFrame].reset();
-			
 		}
 	}
 }

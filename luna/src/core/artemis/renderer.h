@@ -19,6 +19,7 @@ namespace luna
 		private:
 			void setUpComputePipeline();
 			void setUpGraphicsPipeline();
+			void recordCommands();
 			void flush();
 		private:
 			device& c_device = device();
