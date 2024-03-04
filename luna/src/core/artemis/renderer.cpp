@@ -43,8 +43,8 @@ namespace luna
 			
 			p_graphicsCommandBuffer[currentFrame]->begin(0);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
-			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass,p_swapChain);
-			p_graphicsCommandBuffer[currentFrame]->end();
+			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass,frameBuffers[currentFrame]);
+			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
 			p_graphicsCommandBuffer[currentFrame]->end();
 			
 		}
@@ -125,11 +125,11 @@ namespace luna
 			renderPassBuilder renderPassBuilder = c_device.getRenderPassBuilder();
 			
 			p_renderPass = renderPassBuilder
-				.addClearColorValue(0.0f, 0.0f, 0.0f, 0.0f)
 				.addSubPassDependency(dependency)
 				.addSubPass(subpass)
 				.build();
 				
+			frameBuffers.resize(p_swapChain->size(), p_swapChain->getFrameBuffer(p_renderPass, frameBuffers.size(), 0, 1));
 
 			pipelineBuilder graphicsPipelineBuilder = c_device.getPipelineBuilder();
 			graphicsPipeline = graphicsPipelineBuilder

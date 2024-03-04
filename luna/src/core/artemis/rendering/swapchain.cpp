@@ -1,5 +1,7 @@
 #include "swapchain.h"
 #include <core/debug/debugMacros.h>
+#include <core/artemis/rendering/renderPass.h>
+#include <core/artemis/rendering/frameBuffer.h>
 namespace luna 
 {
 	namespace artemis 
@@ -26,6 +28,18 @@ namespace luna
 			viewport.maxDepth = 1.0f;
 			return viewport;
 		}
+		frameBuffer& swapchain::getFrameBuffer(const ref<renderPass> p_renderPass,uint32_t index,const VkFramebufferCreateFlags flags,const uint32_t layers)
+		{
+			VkFramebufferCreateInfo info{ VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO };
+			info.height = m_swapchain.extent.height;
+			info.width = m_swapchain.extent.width;
+			info.attachmentCount = 1;
+			info.pAttachments = &m_swapchain.get_image_views().value()[index];
+			info.renderPass = *p_renderPass;
+			info.flags = flags;
+			info.layers = layers;
+			return frameBuffer(&device->device, info);
+		}
 		swapchain::swapchain(const vkb::Device* device,uint32_t width,uint32_t height,uint32_t imageCount)
 		{
 			vkb::SwapchainBuilder builder{ *device };
@@ -38,6 +52,7 @@ namespace luna
 				.build();
 			LN_ERR_FAIL_COND_MSG(!res, "[Artemis] something went wrong when trying to create the swapchain, msg: " + res.error().message());
 			m_swapchain = res.value();
+			this->device = device;
 		}
 		
 	

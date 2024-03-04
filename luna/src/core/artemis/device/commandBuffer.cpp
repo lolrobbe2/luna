@@ -4,6 +4,7 @@
 #include <core/artemis/rendering/renderPass.h>
 #include <core/artemis/rendering/swapchain.h>
 #include <core/artemis/device/descriptorSet.h>
+#include <core/artemis/rendering/frameBuffer.h>
 namespace luna
 {
 	namespace artemis
@@ -59,12 +60,14 @@ namespace luna
 			vkCmdBindPipeline(m_commandBuffer, *pipeline, *pipeline);
 		}
 
-		void commandBuffer::beginRenderPass(const ref<renderPass>& p_renderPass, const ref<swapchain> p_swapchain)
+		void commandBuffer::beginRenderPass(const ref<renderPass>& p_renderPass,const frameBuffer& frameBuffer)
 		{
 			VkRenderPassBeginInfo info = { VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO };
 			info.renderPass = *p_renderPass;
-			info.renderArea = *p_swapchain;
-			//TODO add framebuffer!
+			info.renderArea = frameBuffer;
+			info.framebuffer = frameBuffer;
+			info.clearValueCount = p_renderPass->getClearValueCount();
+			info.pClearValues = p_renderPass->getClearValues();
 			vkCmdBeginRenderPass(m_commandBuffer,&info,VK_SUBPASS_CONTENTS_INLINE);
 		}
 

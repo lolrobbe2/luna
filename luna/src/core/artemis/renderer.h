@@ -1,6 +1,7 @@
 #pragma once
 #include <core/artemis/device/device.h>
 #include <core/artemis/renderCommandBuffer.h>
+#include <core/artemis/rendering/frameBuffer.h>
 namespace luna 
 {
 	namespace artemis 
@@ -31,6 +32,7 @@ namespace luna
 			ref<pipeline> computePipeline;
 			std::vector<semaphore> computeWaitSemaphores;
 			std::vector<semaphore> computeSignalSemaphores;
+			std::vector<frameBuffer> frameBuffers;
 
 			descriptorPool& computeDescriptorPool = descriptorPool();
 			descriptorPool& grapchicsDescriptorPool = descriptorPool();

@@ -5,6 +5,8 @@ namespace luna
 {
 	namespace artemis 
 	{
+		class frameBuffer;
+		class renderPass;
 		class LN_API swapchain
 		{
 		public:
@@ -21,7 +23,7 @@ namespace luna
 				renderArea.offset = { 0,0 };
 				return renderArea;
 			}
-			
+			frameBuffer& getFrameBuffer(const ref<renderPass> p_renderPass,uint32_t index, const VkFramebufferCreateFlags flags, const uint32_t layers);
 		protected:
 			friend class device;
 			swapchain(const vkb::Device* device, uint32_t width, uint32_t height, uint32_t imageCount);

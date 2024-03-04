@@ -3,17 +3,15 @@
 
 namespace luna
 {
-	namespace artemis 
+	namespace artemis
 	{
-		renderPass::renderPass(const VkDevice* device,const VkRenderPassCreateInfo* info)
+		renderPass::renderPass(const VkDevice* device, const VkRenderPassCreateInfo* info, const std::vector<VkClearValue> clearValues)
 		{
 			VkResult res = vkCreateRenderPass(*device, info, nullptr, &m_renderPass);
 			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "an error occured when creating renderPass, VkResult: " + VK_RESULT(res));
 			this->device = device;
+			this->clearValues = clearValues;
 		}
-
-	
-
 
 		renderPassBuilder& renderPassBuilder::addSubPass(const subpassDescription description)
 		{
@@ -24,7 +22,7 @@ namespace luna
 		renderPassBuilder& renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass, const VkPipelineStageFlags srcStageMask, const VkPipelineStageFlags dstStageMask, const VkAccessFlags srcAccessMask, const VkAccessFlags dstAccessMask, const VkDependencyFlags dependencyFlags)
 		{
 			subpassDependency dependancy{ srcStageMask,dstStageMask,srcAccessMask,dstAccessMask,dependencyFlags };
-			return addSubPassDependency(srcSubpass, dstSubpass,dependancy);
+			return addSubPassDependency(srcSubpass, dstSubpass, dependancy);
 		}
 
 		renderPassBuilder& renderPassBuilder::addSubPassDependency(const subpassDescription srcSubpass, const subpassDescription dstSubpass, const subpassDependency dependancy)
@@ -85,51 +83,9 @@ namespace luna
 			return *this;
 		}
 
-		renderPassBuilder& renderPassBuilder::addClearColorValue(const float r, const float g, const float b, const float a)
-		{
-			VkClearColorValue clearColor;
-			clearColor.float32[0] = r;
-			clearColor.float32[1] = g;
-			clearColor.float32[2] = b;
-			clearColor.float32[3] = a;
-			clearColorValues.push_back(clearColor);
-			return *this;
-		}
-
-		renderPassBuilder& renderPassBuilder::addClearColorValue(const int32_t r, const int32_t g, const int32_t b, const int32_t a)
-		{
-			VkClearColorValue clearColor;
-			clearColor.int32[0] = r;
-			clearColor.int32[1] = g;
-			clearColor.int32[2] = b;
-			clearColor.int32[3] = a;
-			clearColorValues.push_back(clearColor);
-			return *this;
-		}
-
-		renderPassBuilder& renderPassBuilder::addClearColorValue(const uint32_t r, const uint32_t g, const uint32_t b, const uint32_t a)
-		{
-			VkClearColorValue clearColor;
-			clearColor.uint32[0] = r;
-			clearColor.uint32[1] = g;
-			clearColor.uint32[2] = b;
-			clearColor.uint32[3] = a;
-			clearColorValues.push_back(clearColor);
-			return *this;
-		}
-
-		renderPassBuilder& renderPassBuilder::addDepthStencilValue(float depth, uint32_t stencil)
-		{
-			VkClearDepthStencilValue depthStencilValue;
-			depthStencilValue.depth = depth;
-			depthStencilValue.stencil = stencil;
-			clearDepthStencilValues.push_back(depthStencilValue);
-			return *this;
-		}
-
 		ref<renderPass> renderPassBuilder::build()
 		{
-			VkRenderPassCreateInfo info{VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO};
+			VkRenderPassCreateInfo info{ VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO };
 			std::vector<VkAttachmentDescription> attachementDescriptions = generateAttachementDescriptions();
 			info.attachmentCount = attachementDescriptions.size();
 			info.dependencyCount = subpassDependencys.size();
@@ -138,18 +94,19 @@ namespace luna
 			info.pAttachments = attachementDescriptions.data();
 			info.pDependencies = subpassDependencys.data();
 			info.pSubpasses = generateSubpassDescriptions();
-			return ref<renderPass>(new renderPass(device,&info));
+			return ref<renderPass>(new renderPass(device, &info, clearValues));
 		}
 
-		void renderPassBuilder::addAttachements(const std::vector<attachement>& attachments, std::vector<VkAttachmentDescription>& descriptions)
+		void renderPassBuilder::addAttachements(const std::vector<attachement>& attachments, std::vector<VkAttachmentDescription>& descriptions, std::vector<VkClearValue>& clearValues)
 		{
 			for (attachement attachement : attachments)
 			{
-				
+
 				if (attachement.reference->attachment == NULL_ATTACHEMENT_REF)
 				{
 					attachement.reference->attachment = descriptions.size();
 					descriptions.push_back(attachement);
+					clearValues.push_back(attachement);
 				}
 			}
 		}
@@ -159,10 +116,10 @@ namespace luna
 			std::vector<VkAttachmentDescription> descriptions;
 			for (subpassDescription subpass : subPasses)
 			{
-				addAttachements(subpass.colorAttachments, descriptions);
-				addAttachements(subpass.inputAttachments, descriptions);
-				addAttachements(subpass.resolveAttachments, descriptions);
-				addAttachements({ subpass.depthStencilAttachment }, descriptions);
+				addAttachements(subpass.colorAttachments, descriptions, clearValues);
+				addAttachements(subpass.inputAttachments, descriptions, clearValues);
+				addAttachements(subpass.resolveAttachments, descriptions, clearValues);
+				addAttachements({ subpass.depthStencilAttachment }, descriptions, clearValues);
 			}
 			return descriptions;
 		}
@@ -170,7 +127,7 @@ namespace luna
 		const VkSubpassDescription* renderPassBuilder::generateSubpassDescriptions()
 		{
 			subpassDescriptions.resize(0);
-			for(subpassDescription subpass : subPasses)
+			for (subpassDescription subpass : subPasses)
 			{
 				subpassDescriptions.push_back(subpass);
 			}
