@@ -149,5 +149,20 @@ namespace luna
 			renderCmdBuffers.resize(10, { p_allocator,computeDescriptorPool,grapchicsDescriptorPool });
 
 		}
+		void renderer::flush()
+		{
+			inFlightFences[currentFrame].wait();
+			VkResult result = p_swapChain->acquireNextImage(UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
+			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
+			{
+				if (p_swapChain->invalid()) return;
+				//todo recreate pipeline;
+			}
+			inFlightFences[currentFrame].reset();
+			graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
+
+			inFlightFences[currentFrame].reset();
+			
+		}
 	}
 }

@@ -23,7 +23,9 @@ namespace luna
 				renderArea.offset = { 0,0 };
 				return renderArea;
 			}
+			bool invalid() { return m_swapchain.extent.width <= 0 || m_swapchain.extent.height <= 0; }
 			frameBuffer& getFrameBuffer(const ref<renderPass> p_renderPass,uint32_t index, const VkFramebufferCreateFlags flags, const uint32_t layers);
+			VkResult acquireNextImage(uint64_t timeout, VkSemaphore semaphore, VkFence fence, uint32_t* pImageIndex);
 		protected:
 			friend class device;
 			swapchain(const vkb::Device* device, uint32_t width, uint32_t height, uint32_t imageCount);

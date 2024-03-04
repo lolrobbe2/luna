@@ -20,7 +20,7 @@ namespace luna
 			/**
 			* @brief when the deconstructor is called en noDestroy is true then the native fence (VkFence) will not be destroyed;
 			*/
-			_ALWAYS_INLINE_ fence setNoDestroy(bool noDestroy = false) { noDestroy = true; return *this; }
+			_ALWAYS_INLINE_ fence& setNoDestroy(bool noDestroy = false) { noDestroy = true; return *this; }
 		protected: 
 			friend class device;
 			fence(const VkDevice* device, const VkFenceCreateFlags flags);

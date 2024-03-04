@@ -40,6 +40,10 @@ namespace luna
 			info.layers = layers;
 			return frameBuffer(&device->device, info);
 		}
+		VkResult swapchain::acquireNextImage(uint64_t timeout,VkSemaphore semaphore,VkFence fence,uint32_t* pImageIndex)
+		{
+			return vkAcquireNextImageKHR(device->device,m_swapchain,timeout,semaphore,fence,pImageIndex);
+		}
 		swapchain::swapchain(const vkb::Device* device,uint32_t width,uint32_t height,uint32_t imageCount)
 		{
 			vkb::SwapchainBuilder builder{ *device };

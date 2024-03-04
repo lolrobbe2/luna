@@ -19,6 +19,7 @@ namespace luna
 		private:
 			void setUpComputePipeline();
 			void setUpGraphicsPipeline();
+			void flush();
 		private:
 			device& c_device = device();
 			ref<swapchain> p_swapChain;
@@ -32,6 +33,7 @@ namespace luna
 			ref<pipeline> computePipeline;
 			std::vector<semaphore> computeWaitSemaphores;
 			std::vector<semaphore> computeSignalSemaphores;
+			std::vector<semaphore> imageAvailableSemaphores, renderFinishedSemaphores;
 			std::vector<frameBuffer> frameBuffers;
 
 			descriptorPool& computeDescriptorPool = descriptorPool();
@@ -42,7 +44,10 @@ namespace luna
 			size_t batchCount;
 			ref<allocator> p_allocator;
 
+			std::vector<fence> graphicsFences, inFlightFences;
 			uint8_t currentFrame = 0;
+			uint32_t swapchainImageIndex = 0;
+
 		};
 	}
 }
