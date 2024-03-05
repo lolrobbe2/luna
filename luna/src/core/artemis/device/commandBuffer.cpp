@@ -5,6 +5,7 @@
 #include <core/artemis/rendering/swapchain.h>
 #include <core/artemis/device/descriptorSet.h>
 #include <core/artemis/rendering/frameBuffer.h>
+#include <core/artemis/device/buffer.h>
 namespace luna
 {
 	namespace artemis
@@ -87,6 +88,28 @@ namespace luna
 		{
 			vkCmdEndRenderPass(m_commandBuffer);
 		}
+
+		void commandBuffer::draw(uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance)
+		{
+			vkCmdDraw(m_commandBuffer, vertexCount, instanceCount, firstVertex, firstInstance);
+		}
+
+		void commandBuffer::drawIndexed(uint32_t indexCount,uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance)
+		{
+			vkCmdDrawIndexed(m_commandBuffer, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
+		}
+
+		void commandBuffer::bindIndexBuffer(const buffer& buffer,VkDeviceSize offset,VkIndexType indexType)
+		{
+			vkCmdBindIndexBuffer(m_commandBuffer, buffer, offset, indexType);
+		}
+
+		void commandBuffer::bindVertexBuffers(uint32_t firstBinding, std::vector<VkBuffer> buffers, const VkDeviceSize* p_offsets)
+		{
+			vkCmdBindVertexBuffers(m_commandBuffer, firstBinding, buffers.size(), buffers.data(), p_offsets);
+		}
+
+		
 		
 	}
 }

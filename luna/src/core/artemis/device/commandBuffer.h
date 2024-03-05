@@ -9,6 +9,7 @@ namespace luna
 		class descriptorSet;
 		class renderPass;
 		class frameBuffer;
+		class buffer;
 		class LN_API commandBuffer
 		{
 		public:
@@ -27,6 +28,11 @@ namespace luna
 			_ALWAYS_INLINE_ void bindDescriptorSet(const ref<pipeline> pipeline, const descriptorSet& descriptorSets);
 
 			_ALWAYS_INLINE_ void endCurrentRenderPass();
+
+			_ALWAYS_INLINE_ void draw(uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance);
+			_ALWAYS_INLINE_ void drawIndexed(uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance);
+			_ALWAYS_INLINE_ void bindIndexBuffer(const buffer& buffer, VkDeviceSize offset, VkIndexType indexType);
+			_ALWAYS_INLINE_ void bindVertexBuffers(uint32_t firstBinding, std::vector<VkBuffer> buffers, const VkDeviceSize* p_offsets);
 			operator VkCommandBuffer() const { return m_commandBuffer; }
 			operator VkCommandBuffer*() { return &m_commandBuffer; }
 			~commandBuffer() { vkFreeCommandBuffers(*_device, *_commandPool, 1, &m_commandBuffer); }

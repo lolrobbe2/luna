@@ -27,6 +27,8 @@ namespace luna
 			computeDescriptorSet.write(0, &info);
 			computeDescriptorSet.write(1, &vertexInfo);
 			computeDescriptorSet.update();
+
+			//graphicsDescriptorSet.write(0,)
 		}
 		bool renderCommandBuffer::addCommand(const drawCommand& command)
 		{

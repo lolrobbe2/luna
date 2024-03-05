@@ -143,7 +143,7 @@ namespace luna
 				.addShaderStage(vertexShader)
 				.addShaderStage(fragmentShader)
 				.addDescriptorSetLayout(grapchicsDescriptorPool)
-				.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
+				//.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
 				.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
 				.addViewport(p_swapChain->getViewport())
 				.addScissor(*p_swapChain)
@@ -171,7 +171,7 @@ namespace luna
 			}
 			p_computeCommandBuffer[currentFrame]->end();
 
-			//p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, {}, {}, nullptr, nullptr, true);
+			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, {}, {}, nullptr, nullptr, true);
 
 			p_graphicsCommandBuffer[currentFrame]->begin(0);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
@@ -180,15 +180,18 @@ namespace luna
 			{
 				if (renderCmdBuffer.commandsAmount)
 				{
+					static VkDeviceSize offsets = 0;
 					p_graphicsCommandBuffer[currentFrame]->bindDescriptorSet(graphicsPipeline, renderCmdBuffer.graphicsDescriptorSet);
-					//draw
+					p_graphicsCommandBuffer[currentFrame]->bindIndexBuffer(renderCmdBuffer.cpuIndicesBuffer,0, VK_INDEX_TYPE_UINT32);
+					p_graphicsCommandBuffer[currentFrame]->bindVertexBuffers(0, { renderCmdBuffer.gpuBuffer }, &offsets);
+					p_graphicsCommandBuffer[currentFrame]->drawIndexed(renderCmdBuffer.commandsAmount * 6, 1, 0, 0, 0);
 				}
 			}
 			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
 			p_graphicsCommandBuffer[currentFrame]->end();
 
 			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
-			p_graphicsCommandPool->flush({ p_graphicsCommandBuffer[currentFrame].get() }, {renderFinishedSemaphores[currentFrame]}, {imageAvailableSemaphores[currentFrame]}, inFlightFences[currentFrame],waitStages, false);
+			p_graphicsCommandPool->flush({ p_graphicsCommandBuffer[currentFrame].get() }, {renderFinishedSemaphores[currentFrame]}, {imageAvailableSemaphores[currentFrame]}, inFlightFences[currentFrame],waitStages, true);
 		}
 		void renderer::flush()
 		{
