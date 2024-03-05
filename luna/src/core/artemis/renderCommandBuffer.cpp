@@ -41,6 +41,7 @@ namespace luna
 		void renderCommandBuffer::reset()
 		{
 			p_commands = p_commandsBase;
+			commandsAmount = 0;
 		}
 		void renderCommandBuffer::generateIndices()
 		{

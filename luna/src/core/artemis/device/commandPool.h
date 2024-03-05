@@ -11,10 +11,11 @@ namespace luna
 		{
 		public:
 			ref<commandBuffer> getCommandBuffer(const VkCommandBufferLevel level = VK_COMMAND_BUFFER_LEVEL_PRIMARY) const;
-			void flush(const std::vector<commandBuffer*>& buffers, const std::vector<semaphore>& signalSemaphores, const std::vector<semaphore>& waitSemaphores, const fence& fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool separateThread);
+			void flush(const std::vector<commandBuffer*>& buffers, const std::vector<ref<semaphore>>& signalSemaphores, const std::vector<ref<semaphore>>& waitSemaphores, const ref<fence> fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool separateThread);
 			~commandPool() { vkDestroyCommandPool(*device, m_commandPool, nullptr); }
+			VkResult present(std::vector<ref<swapchain>> swapChains, std::vector<ref<semaphore>> waitSemaphores, uint32_t* pImageIndices);
 		private:
-			void _flush(VkQueue queue, const std::vector<commandBuffer*>& buffers, const std::vector<semaphore>& signalSemaphores, const std::vector<semaphore>& waitSemaphores, const fence& fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool separateThread);
+			void _flush(VkQueue queue, const std::vector<commandBuffer*>& buffers, const std::vector<ref<semaphore>>& signalSemaphores, const std::vector<ref<semaphore>>& waitSemaphores, const ref<fence> fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool separateThread);
 			VkCommandPool m_commandPool = VK_NULL_HANDLE;
 			std::thread runner; 
 		    mutable std::mutex runnerMutex;

@@ -443,7 +443,7 @@ namespace luna
 			if (p_data->backBarriers.size()) for (const auto& barriers : p_data->backBarriers)vkCmdPipelineBarrier(*p_data->commandBuffer, barriers.first.srcStage, barriers.first.dstStage, 0, 0, nullptr, 0, nullptr, barriers.second.size(), barriers.second.data());
 
 			p_data->commandBuffer->end();
-			p_data->transferPool->flush({ p_data->commandBuffer.get()}, {}, {}, fence(), nullptr, true);
+			p_data->transferPool->flush({ p_data->commandBuffer.get()}, {}, {}, nullptr, nullptr, true);
 		}
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{

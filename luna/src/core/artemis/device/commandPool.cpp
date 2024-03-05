@@ -1,11 +1,12 @@
 #include "commandPool.h"
 #include <core/debug/debugMacros.h>
 #include <future>
+#include <core/artemis/rendering/swapchain.h>
 namespace luna
 {
 	namespace artemis 
 	{
-		void commandPool::_flush(VkQueue queue, const std::vector<commandBuffer*>& buffers, const std::vector<semaphore>& signalSemaphores, const std::vector<semaphore>& waitSemaphores, const fence& fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool separateThread)
+		void commandPool::_flush(VkQueue queue, const std::vector<commandBuffer*>& buffers, const std::vector<ref<semaphore>>& signalSemaphores, const std::vector<ref<semaphore>>& waitSemaphores, const ref<fence> fence, const VkPipelineStageFlags* pWaitDstStageMask, const bool separateThread)
 		{
 			LN_PROFILE_FUNCTION();
 			VkSubmitInfo submitInfo{ VK_STRUCTURE_TYPE_SUBMIT_INFO };
@@ -14,7 +15,7 @@ namespace luna
 			submitInfo.waitSemaphoreCount = waitSemaphores.size();
 			submitInfo.pWaitDstStageMask = pWaitDstStageMask;
 			//commandBuffer transformation
-
+			
 			std::vector<VkCommandBuffer> commandBuffers;
 			for (size_t i = 0; i < buffers.size(); i++) {
 				commandBuffers.push_back(*buffers[i]);
@@ -25,26 +26,25 @@ namespace luna
 
 			//signal semaphore translation
 
-			VkSemaphore* pSignalSemaphores = new VkSemaphore[signalSemaphores.size()];
-			for (size_t i = 0; i < signalSemaphores.size(); i++) pSignalSemaphores[i] = signalSemaphores[i];
-
-			submitInfo.pSignalSemaphores = pSignalSemaphores;
+			std::vector<VkSemaphore> nativeSignalSemaphores;
+			if(signalSemaphores.size())nativeSignalSemaphores.resize(signalSemaphores.size(), *signalSemaphores[nativeSignalSemaphores.size()]);
+			submitInfo.pSignalSemaphores = nativeSignalSemaphores.data();
 
 
 			//wait semaphore translation
 
-			VkSemaphore* pWaitSemaphores = new VkSemaphore[waitSemaphores.size()];
-			for (size_t i = 0; i < waitSemaphores.size(); i++) pWaitSemaphores[i] = waitSemaphores[i];
+			std::vector<VkSemaphore> nativeWaitSemaphores;
+			if (waitSemaphores.size())nativeWaitSemaphores.resize(waitSemaphores.size(), *waitSemaphores[nativeWaitSemaphores.size()]);
+			submitInfo.pWaitSemaphores = nativeWaitSemaphores.data();
 
-			submitInfo.pWaitSemaphores = pWaitSemaphores;
 			if (separateThread) runnerMutex.lock();
 
-			VkResult res = vkQueueSubmit(queue, 1, &submitInfo, fence);
+			VkResult res = fence ? vkQueueSubmit(queue, 1, &submitInfo, *fence) : vkQueueSubmit(queue, 1, &submitInfo, nullptr);
 
 			
 			if (separateThread) { vkQueueWaitIdle(queue); runnerMutex.unlock(); }
 			for (size_t i = 0; i < buffers.size(); i++) {
-				buffers[i]->lock();
+				buffers[i]->unlock();
 			}
 			LN_ERR_FAIL_COND_MSG(res != VK_SUCCESS, "[Artemis] unable to flush commandBuffers to queue");
 		}
@@ -53,7 +53,7 @@ namespace luna
 		{
 			return ref<commandBuffer>(new commandBuffer(& m_commandPool, level, device));
 		}
-		void commandPool::flush(const std::vector<commandBuffer*>& buffers ,const std::vector<semaphore>& signalSemaphores,const std::vector<semaphore>& waitSemaphores,const fence& fence,const VkPipelineStageFlags* pWaitDstStageMask,const bool separateThread) 
+		void commandPool::flush(const std::vector<commandBuffer*>& buffers ,const std::vector<ref<semaphore>>& signalSemaphores,const std::vector<ref<semaphore>>& waitSemaphores,const ref<fence> fence,const VkPipelineStageFlags* pWaitDstStageMask,const bool separateThread) 
 		{
 			LN_PROFILE_FUNCTION();
 			if(separateThread) 
@@ -67,6 +67,26 @@ namespace luna
 			{
 				_flush(queue, buffers, signalSemaphores, waitSemaphores, fence, pWaitDstStageMask, separateThread);
 			}
+		}
+		VkResult commandPool::present(std::vector<ref<swapchain>> swapChains,std::vector<ref<semaphore>> waitSemaphores,uint32_t* pImageIndices)
+		{
+			std::vector<VkSwapchainKHR> nativeSwapchains;
+			std::vector<VkSemaphore> nativeSemaphores;
+
+			nativeSwapchains.resize(swapChains.size(), *swapChains[nativeSwapchains.size()]);
+			nativeSemaphores.resize(waitSemaphores.size(), *waitSemaphores[nativeSemaphores.size()]);
+
+			VkPresentInfoKHR presentInfo = {};
+			presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+			presentInfo.pNext = nullptr;
+
+			presentInfo.pSwapchains = nativeSwapchains.data();
+			presentInfo.swapchainCount = nativeSwapchains.size();
+			presentInfo.pWaitSemaphores = nativeSemaphores.data();
+			presentInfo.waitSemaphoreCount = nativeSemaphores.size();
+
+			presentInfo.pImageIndices = pImageIndices;
+			return vkQueuePresentKHR(queue, &presentInfo);
 		}
 		commandPool::commandPool(const VkQueue queue, const uint32_t queueFamilyIndex,const VkCommandPoolCreateFlags flags,const VkDevice* device)
 		{

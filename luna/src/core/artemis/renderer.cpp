@@ -26,20 +26,28 @@ namespace luna
 		}
 		void renderer::update()
 		{
-			inFlightFences[currentFrame].wait();
-			VkResult result = p_swapChain->acquireNextImage(UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
+			inFlightFences[currentFrame]->wait();
+			VkResult result = p_swapChain->acquireNextImage(UINT64_MAX, *imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (p_swapChain->invalid()) return;
 				//todo recreate pipeline;
 			}
-			inFlightFences[currentFrame].reset();
+			inFlightFences[currentFrame]->reset();
 			graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
 
-			inFlightFences[currentFrame].reset();
+			inFlightFences[currentFrame]->reset();
 			recordCommands();
-			flush();
 
+			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) commandBuffer.reset();
+			
+			VkResult presentResult = p_graphicsCommandPool->present({ p_swapChain }, { renderFinishedSemaphores[currentFrame] },&swapchainImageIndex);
+
+			if (presentResult == VK_ERROR_OUT_OF_DATE_KHR || presentResult == VK_SUBOPTIMAL_KHR)
+			{
+				//todo recreate pipeline.
+			}
+			currentFrame = (currentFrame + 1) % maxFramesInFlight;
 		}
 
 		glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
@@ -83,6 +91,8 @@ namespace luna
 
 		void renderer::setUpGraphicsPipeline()
 		{
+			maxFramesInFlight = p_swapChain->size() - 1;
+
 			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
 
 			p_graphicsCommandBuffer.resize(p_swapChain->size(),p_graphicsCommandPool->getCommandBuffer());
@@ -141,12 +151,17 @@ namespace luna
 				.build();
 			renderCmdBuffers.resize(10, { p_allocator,computeDescriptorPool,grapchicsDescriptorPool });
 
+			inFlightFences.resize(maxFramesInFlight, c_device.getFence(VK_FENCE_CREATE_SIGNALED_BIT));
+			graphicsFences.resize(p_swapChain->size());
+
+			imageAvailableSemaphores.resize(maxFramesInFlight, c_device.getSemaphore(0));
+			renderFinishedSemaphores.resize(p_swapChain->size(), c_device.getSemaphore(0));
 		}
 		void renderer::recordCommands()
 		{
 			p_computeCommandBuffer[currentFrame]->begin(0);
 			p_computeCommandBuffer[currentFrame]->bindPipeline(computePipeline);
-			for (renderCommandBuffer renderCmdBuffer : renderCmdBuffers)
+			for (renderCommandBuffer& renderCmdBuffer : renderCmdBuffers)
 			{
 				if (renderCmdBuffer.commandsAmount) {
 					renderCmdBuffer.generateIndices();
@@ -156,14 +171,24 @@ namespace luna
 			}
 			p_computeCommandBuffer[currentFrame]->end();
 
-			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, {}, {}, fence(), nullptr, true);
+			//p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, {}, {}, nullptr, nullptr, true);
 
 			p_graphicsCommandBuffer[currentFrame]->begin(0);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
 			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[currentFrame]);
+			for (renderCommandBuffer& renderCmdBuffer : renderCmdBuffers)
+			{
+				if (renderCmdBuffer.commandsAmount)
+				{
+					p_graphicsCommandBuffer[currentFrame]->bindDescriptorSet(graphicsPipeline, renderCmdBuffer.graphicsDescriptorSet);
+					//draw
+				}
+			}
 			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
 			p_graphicsCommandBuffer[currentFrame]->end();
-			p_graphicsCommandPool->flush({ p_graphicsCommandBuffer[currentFrame].get() }, {renderFinishedSemaphores[currentFrame]}, {imageAvailableSemaphores[currentFrame]}, inFlightFences[currentFrame], nullptr, true);
+
+			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
+			p_graphicsCommandPool->flush({ p_graphicsCommandBuffer[currentFrame].get() }, {renderFinishedSemaphores[currentFrame]}, {imageAvailableSemaphores[currentFrame]}, inFlightFences[currentFrame],waitStages, false);
 		}
 		void renderer::flush()
 		{

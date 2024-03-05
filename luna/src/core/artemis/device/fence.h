@@ -5,7 +5,7 @@ namespace luna
 {
 	namespace artemis 
 	{
-		class fence
+		class LN_API fence
 		{
 		public:
 			fence() = default;

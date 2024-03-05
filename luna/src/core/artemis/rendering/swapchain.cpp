@@ -52,7 +52,7 @@ namespace luna
 				.set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
 				.set_desired_extent(width, height)
 				.add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
-				.set_required_min_image_count(imageCount)
+				.set_required_min_image_count(imageCount + 1)
 				.build();
 			LN_ERR_FAIL_COND_MSG(!res, "[Artemis] something went wrong when trying to create the swapchain, msg: " + res.error().message());
 			m_swapchain = res.value();
