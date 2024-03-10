@@ -102,9 +102,9 @@ namespace luna
 			button.pressedFilePath = "src/assets/media/buttons/button3.png";
 
 
-			button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.normalFilePath.string(),assets::texture)));
-			button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::texture)));
-			button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::texture)));
+			//button.normalTexture = assets::assetManager::getAsset<renderer::texture>(assets::assetManager::importAsset(button.normalFilePath.string(),assets::texture));
+			//button.hoverTexture = assets::assetManager::getAsset<renderer::texture>(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::texture));
+			//button.pressedTexture = assets::assetManager::getAsset<renderer::texture>(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::texture));
 			
 			sprite.texture = button.normalTexture;
 		}

@@ -46,8 +46,8 @@ namespace luna
 		void renderer2D::init()
 		{
 			LN_PROFILE_SCOPE("renderer2D init");
-			ref<assets::asset> blankImageAsset = assets::assetManager::getAsset(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
-			blankImage = std::dynamic_pointer_cast<texture>(blankImageAsset);
+			//ref<assets::asset> blankImageAsset = assets::assetManager::getAsset<assets::asset>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
+			//blankImage = std::dynamic_pointer_cast<texture>(blankImageAsset);
 			rendererData.quadVertexBuffer = vertexBuffer::create(rendererData.maxVertices * sizeof(quadVertex));
 			rendererData.quadVertexBufferBase = (quadVertex*)rendererData.quadVertexBuffer->data;
 			rendererData.quadVertexBufferPtr = rendererData.quadVertexBufferBase;

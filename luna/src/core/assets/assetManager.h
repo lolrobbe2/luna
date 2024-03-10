@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace assets
 	{
-		class LN_API assetManager
+		class assetManager
 		{
 		public:
 			static void init(bool editor);
@@ -15,11 +15,27 @@ namespace luna
 			/**
 			* @brief returns an important asset and loads it if needed.
 			*/
-			static ref<asset> getAsset(const assetHandle handle);
+			template<typename T>
+			static ref<T> getAsset(const assetHandle handle)
+			{
+				if (!isAssetHandleValid(handle))
+				{
+					LN_CORE_ERROR("asset has not been imported! \n handle = {0}", ((uuid)handle));
+					return ref<T>();
+				}
+				if (!assetManagerRef->isAssetHandleLoaded(handle))
+					loadAsset(handle);
+
+				return ref<T>(assetManagerRef->getAsset(handle).get());
+			}
 			/**
 			 * @brief identical to getAsset with handle but slower.
 			 */
-			static ref<asset> getAsset(const std::string& name);
+			template<typename T>
+			static ref<T> getAsset(const std::string& name)
+			{
+				return std::dynamic_pointer_cast<T>(assetManagerRef->getAsset(name));
+			}
 			static assetMetadata* getAssetMetadata(const assetHandle handle);
 			static assetMetadata* getAssetMetadata(const std::string& filename);
 			/**

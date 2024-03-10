@@ -12,8 +12,7 @@ namespace luna
 		{
 		public:
 			virtual assets::assetType getType() const override;
-		protected:
-			friend class textureImporter;
+		
 			image(artemis::image& _image);
 		private:
 			artemis::image& _image = artemis::image();

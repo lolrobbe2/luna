@@ -261,7 +261,7 @@ namespace luna
 		sprite.TilingFactor = spriteComponent["tilingFactor"].as<float>();
 		sprite.showInEditor = spriteComponent["shownInEditor"].as<bool>();
 		
-		if (std::filesystem::exists(sprite.filePath)) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(), assets::texture)));
+		//if (std::filesystem::exists(sprite.filePath)) sprite.texture = assets::assetManager::getAsset<renderer::texture>(assets::assetManager::importAsset(sprite.filePath.string(), assets::texture));
 	}
 
 	static void deSerializeLabelRenderer(luna::Node& node, YAML::Node& serializedNode)
@@ -274,7 +274,7 @@ namespace luna
 		label.text = labelComponent["text"].as<std::string>();
 		label.TilingFactor = labelComponent["tilingFactor"].as<float>();
 		
-		if (std::filesystem::exists(label.filePath)) label.font = std::dynamic_pointer_cast<renderer::font>(assets::assetManager::getAsset(assets::assetManager::importAsset(label.filePath.string(), assets::texture)));
+		//if (std::filesystem::exists(label.filePath)) label.font = assets::assetManager::getAsset<renderer::font>(assets::assetManager::importAsset(label.filePath.string(), assets::texture));
 	}
 	static void deserializeButton(luna::Node& node, YAML::Node& serializedNode)
 	{
@@ -287,9 +287,9 @@ namespace luna
 		button.showInEditor = buttonComponent["shownInEditor"].as<bool>();
 		
 		
-		if (std::filesystem::exists(button.normalFilePath)) button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.normalFilePath.string()));
-		if (std::filesystem::exists(button.hoverFilePath)) button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.hoverFilePath.string()));
-		if (std::filesystem::exists(button.pressedFilePath)) button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.pressedFilePath.string()));
+		//if (std::filesystem::exists(button.normalFilePath)) button.normalTexture = assets::assetManager::getAsset<renderer::texture>(button.normalFilePath.string());
+		//if (std::filesystem::exists(button.hoverFilePath)) button.hoverTexture = assets::assetManager::getAsset<renderer::texture>(button.hoverFilePath.string());
+		//if (std::filesystem::exists(button.pressedFilePath)) button.pressedTexture = assets::assetManager::getAsset<renderer::texture>(button.pressedFilePath.string());
 		
 	}
 	static void deserializeColorRect(luna::Node& node, YAML::Node& serializedNode)
@@ -308,7 +308,7 @@ namespace luna
 		itemList.allowReselect = itemListComponent["allowReselect"].as<bool>();
 		itemList.allowRmbSelect = itemListComponent["allowRmbSelect"].as<bool>();
 		itemList.items = itemListComponent["items"].as<std::vector<luna::item>>();
-		if (std::filesystem::exists(itemList.filePath)) itemList.font = std::dynamic_pointer_cast<renderer::font>(assets::assetManager::getAsset(assets::assetManager::importAsset(itemList.filePath.string(), assets::texture)));
+		//if (std::filesystem::exists(itemList.filePath)) itemList.font = assets::assetManager::getAsset<renderer::font>(assets::assetManager::importAsset(itemList.filePath.string(), assets::texture));
 	}
 	static void deSerializeNode(luna::Node& node,YAML::Node& serializedNode)
 	{

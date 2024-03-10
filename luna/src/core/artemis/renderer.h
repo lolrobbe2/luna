@@ -2,6 +2,8 @@
 #include <core/artemis/device/device.h>
 #include <core/artemis/renderCommandBuffer.h>
 #include <core/artemis/rendering/frameBuffer.h>
+#include <core/assets/publicTypes/image.h>
+
 namespace luna 
 {
 	namespace artemis 

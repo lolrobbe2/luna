@@ -41,7 +41,7 @@ namespace luna
 			textureMetaData->width = (uint32_t)width;
 			textureMetaData->height = (uint32_t)height;
 
-			return ref<asset>(new assets::image(image));
+			return std::dynamic_pointer_cast<asset>(createRef<assets::image>(image));
 			//return ref<asset>(new vulkan::vulkanTexture(_handle, buffer, imageHandle, imageViewHandle, glm::vec2({ width,height })));
 		}
 	}

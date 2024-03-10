@@ -1,6 +1,8 @@
 #include "renderer.h"
 #include "rendering/builders/attachementBuilder.h"
 #include <core/utils/shaderLibrary.h>
+#include <core/assets/assetImporter.h>
+#include <core/assets/assetManager.h>
 namespace luna 
 {
 	namespace artemis 
@@ -13,9 +15,13 @@ namespace luna
 
 			p_allocator = c_device.getAllocator();
 		
+			assets::assetImporter::setAllocator(p_allocator);
+			
 			setUpComputePipeline();
 			
 			setUpGraphicsPipeline();
+			ref<luna::assets::asset> blankImageAsset = assets::assetManager::getAsset<assets::asset>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
+
 		}
 		void renderer::beginScene()
 		{

@@ -54,6 +54,9 @@ namespace luna
 			glm::vec4 getUv() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
 			operator VkImageLayout() const { return currentLayout; }
 			VkImageLayout getCurrentLayout() const { return currentLayout; }
+			//registers the image to a certain descriptorBank and sets its imageIndex
+			void registerImage(uint32_t descriptorSetIndex, uint8_t imageIndex) { this->descriptorSetIndex = descriptorSetIndex; this->imageIndex = imageIndex; }
+			//TODO unload image;
 		protected:
 			friend class allocator;
 			image(const VkImage image, const allocation* p_allocation, const glm::vec2& extent ,const VkFormat& format, const glm::vec4 uv = {0.0f,0.0f,1.0f,1.0f});
@@ -67,6 +70,9 @@ namespace luna
 			glm::vec2 extent;
 			glm::vec2 uvStart;
 			glm::vec2 uvEnd;
+
+			uint32_t descriptorSetIndex;
+			uint8_t imageIndex;
 		};
 	}
 }
