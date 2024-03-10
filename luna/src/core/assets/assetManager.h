@@ -26,7 +26,7 @@ namespace luna
 				if (!assetManagerRef->isAssetHandleLoaded(handle))
 					loadAsset(handle);
 
-				return ref<T>(assetManagerRef->getAsset(handle).get());
+				return std::dynamic_pointer_cast<T>(assetManagerRef->getAsset(handle));
 			}
 			/**
 			 * @brief identical to getAsset with handle but slower.

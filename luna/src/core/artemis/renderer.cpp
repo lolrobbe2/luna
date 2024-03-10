@@ -20,7 +20,7 @@ namespace luna
 			setUpComputePipeline();
 			
 			setUpGraphicsPipeline();
-			ref<luna::assets::asset> blankImageAsset = assets::assetManager::getAsset<assets::asset>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
+			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
 
 		}
 		void renderer::beginScene()
