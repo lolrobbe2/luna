@@ -70,9 +70,6 @@ namespace luna
 			glm::vec2 extent;
 			glm::vec2 uvStart;
 			glm::vec2 uvEnd;
-
-			uint32_t descriptorSetIndex;
-			uint8_t imageIndex;
 		};
 	}
 }

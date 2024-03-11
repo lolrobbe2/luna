@@ -5,6 +5,9 @@
 #define LN_IMAGE_BATCH_SIZE 32
 namespace luna 
 {
+    namespace assets {
+        class image;
+    }
     namespace artemis 
     {
         typedef struct drawCommand
@@ -24,11 +27,15 @@ namespace luna
             bool addCommand(const drawCommand& command);
             void reset();
             void generateIndices();
+            uint8_t getFreeIndex();
+            void unregister(uint8_t index);
             buffer& cpuIndicesBuffer = buffer();
             buffer& cpuBuffer = buffer(); //stores commands.
             buffer& gpuBuffer = buffer(); //stores vertices.
             descriptorSet& computeDescriptorSet = descriptorSet();
             descriptorSet& graphicsDescriptorSet = descriptorSet();
+            std::vector<uint8_t> freeImageIndeces;
+            ref<assets::image> images[LN_IMAGE_BATCH_SIZE];
             drawCommand* p_commands = nullptr;
             drawCommand* p_commandsBase = nullptr;
             size_t commandsAmount = 0;

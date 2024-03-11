@@ -1,5 +1,7 @@
 #include "renderCommandBuffer.h"
 #include <core/artemis/device/descriptorPool.h>
+#include <core/debug/debugMacros.h>
+#include <core/assets/publicTypes/image.h>
 namespace luna
 {
 	namespace artemis 
@@ -44,6 +46,23 @@ namespace luna
 		{
 			p_commands = p_commandsBase;
 			commandsAmount = 0;
+		}
+		uint8_t renderCommandBuffer::getFreeIndex()
+		{
+			if(freeImageIndeces.size())
+			{
+				uint8_t index = freeImageIndeces.back();
+				freeImageIndeces.pop_back();
+				return index;
+			} 
+			return UINT8_MAX;
+		}
+		void renderCommandBuffer::unregister(uint8_t index)
+		{
+			LN_ERR_FAIL_COND_MSG(std::find(freeImageIndeces.begin(), freeImageIndeces.end(), index) != freeImageIndeces.end(), "[Artemis] index is already available in batch");
+			freeImageIndeces.push_back(index);
+			images[index]->unbind();
+			images[index] = nullptr;
 		}
 		void renderCommandBuffer::generateIndices()
 		{
