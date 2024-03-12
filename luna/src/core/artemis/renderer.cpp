@@ -21,7 +21,7 @@ namespace luna
 			
 			setUpGraphicsPipeline();
 			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
-
+			renderCmdBuffers[0].bind(blankImageAsset, 0);
 		}
 		void renderer::beginScene()
 		{
@@ -29,6 +29,8 @@ namespace luna
 		}
 		void renderer::endScene()
 		{
+			//for (renderCommandBuffer& renderCommandBuffer : renderCmdBuffers)
+				//renderCommandBuffer.update();
 		}
 		void renderer::update()
 		{
@@ -102,7 +104,6 @@ namespace luna
 			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
 
 			p_graphicsCommandBuffer.resize(p_swapChain->size(),p_graphicsCommandPool->getCommandBuffer());
-			currentBuffer = &renderCmdBuffers[0];
 
 			ref<shader> vertexShader = shaderLibrary::get("vertex.glsl"); //get vertex shader
 			ref<shader> fragmentShader = shaderLibrary::get("fragment.glsl"); //get vertex shader
@@ -156,6 +157,7 @@ namespace luna
 				.setRenderPass(p_renderPass)
 				.build();
 			renderCmdBuffers.resize(10, { p_allocator,computeDescriptorPool,grapchicsDescriptorPool });
+			currentBuffer = &renderCmdBuffers[0];
 
 			inFlightFences.resize(maxFramesInFlight, c_device.getFence(VK_FENCE_CREATE_SIGNALED_BIT));
 			graphicsFences.resize(p_swapChain->size());

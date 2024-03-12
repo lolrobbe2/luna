@@ -72,6 +72,7 @@ namespace luna
         {
             vkb::PhysicalDeviceSelector deviceSelector{ instance };
             VkPhysicalDeviceFeatures features{};
+            VkPhysicalDeviceFeatures2 features2{ VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2 };
             VkPhysicalDeviceVulkan12Features features12{ VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES };
 
             deviceSelector
@@ -80,16 +81,31 @@ namespace luna
             auto tempPhysicalDevice = deviceSelector.select().value();
             if (tempPhysicalDevice.physical_device != VK_NULL_HANDLE)
             {
-
+                
                 vkGetPhysicalDeviceFeatures(tempPhysicalDevice, &supportedFeatures);
+
+                VkPhysicalDeviceRobustness2FeaturesEXT robustnessFeatures = {};
+                robustnessFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT;
+
+                VkPhysicalDeviceFeatures2 features2 = {};
+                features2.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
+                features2.pNext = &robustnessFeatures;
+
+                vkGetPhysicalDeviceFeatures2(tempPhysicalDevice, &features2);
+                LN_ERR_FAIL_COND_V_MSG(!(robustnessFeatures.nullDescriptor == VK_TRUE), VkResult::VK_ERROR_FEATURE_NOT_PRESENT, "[Artemis] feature not supported: ROBUST_BUFFER_ACCESS");
                 LN_ERR_FAIL_COND_V_MSG(!isFeatureSupported(SHADER_SAMPLED_IMAGE_ARRAY_DYNAMIC_INDEXING), VkResult::VK_ERROR_FEATURE_NOT_PRESENT, "[Artemis] feature not supported: SHADER_SAMPLED_IMAGE_ARRAY_DYNAMIC_INDEXING");
                 LN_ERR_FAIL_COND_V_MSG(!isFeatureSupported(MULTI_VIEWPORT), VkResult::VK_ERROR_FEATURE_NOT_PRESENT, "[Artemis] feature not present: MULTI_VIEWPORT");
                 features.multiViewport = VK_TRUE;
                 features12.shaderSampledImageArrayNonUniformIndexing = VK_TRUE; //shaderStorageImageArrayDynamicIndexing : specifies whether arrays of storage images can be indexed by dynamically uniform integer expressions in shader code
+               
+                VkPhysicalDeviceRobustness2FeaturesEXT robustnessFeaturesRequest{ VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT };
+                robustnessFeaturesRequest.nullDescriptor = VK_TRUE;
 
                 auto result = deviceSelector
                     .set_required_features(features)
                     .set_required_features_12(features12)
+                    .add_desired_extension(VK_EXT_ROBUSTNESS_2_EXTENSION_NAME)
+                    .add_required_extension_features<VkPhysicalDeviceRobustness2FeaturesEXT>(robustnessFeaturesRequest)
                     .select();
                 LN_ERR_FAIL_COND_V_MSG(!result, result.vk_result(), result.error().message());
 

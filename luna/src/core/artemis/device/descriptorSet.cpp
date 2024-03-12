@@ -23,9 +23,16 @@ namespace luna
 		}
 		void descriptorSet::update()
 		{
+			if (descriptorWrites[1].descriptorCount == 32) {
+				for (size_t i = 0; i < 32; i++)
+				{
+					VkDescriptorImageInfo info = descriptorWrites[1].pImageInfo[i];
+					LN_CORE_INFO("imageview: {0}", (uint64_t)info.imageView);
+				}
+			}
 			vkUpdateDescriptorSets(*p_device, descriptorWrites.size(), descriptorWrites.data(), 0, nullptr);
 		}
-		void descriptorSet::write(const uint32_t& descriptorIndex, void* pDescriptorInfo)
+		void descriptorSet::write(const uint32_t& descriptorIndex,const void* pDescriptorInfo)
 		{
 			LN_PROFILE_FUNCTION();
 			switch (descriptorWrites[descriptorIndex].descriptorType)
@@ -34,7 +41,7 @@ namespace luna
 			case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
 			case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
 			case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
-				descriptorWrites[descriptorIndex].pImageInfo = (VkDescriptorImageInfo*)pDescriptorInfo;
+				descriptorWrites[descriptorIndex].pImageInfo = (const VkDescriptorImageInfo*)pDescriptorInfo;
 				break;
 			case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
 			case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
@@ -42,13 +49,11 @@ namespace luna
 			case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
 			case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
 			case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
-				descriptorWrites[descriptorIndex].pBufferInfo = (VkDescriptorBufferInfo*)pDescriptorInfo;
+				descriptorWrites[descriptorIndex].pBufferInfo = (const VkDescriptorBufferInfo*)pDescriptorInfo;
 				break;
 			default:
 				break;
 			}
-			vkDeviceWaitIdle(*p_device); //innificient!
-			vkUpdateDescriptorSets(*p_device, 1, &descriptorWrites[descriptorIndex], 0, nullptr);
 		}
 	}
 }

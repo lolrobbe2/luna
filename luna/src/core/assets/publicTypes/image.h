@@ -21,8 +21,11 @@ namespace luna
 			_ALWAYS_INLINE_ operator glm::vec2() const { return _image; }
 			_ALWAYS_INLINE_ glm::vec2 getExtent() const { return _image; }
 			_ALWAYS_INLINE_ operator VkExtent3D() const { return _image; }
+			_ALWAYS_INLINE_ VkImageLayout getCurrentLayout() const { return _image; }
+			_ALWAYS_INLINE_ operator VkImageLayout() const { return _image; }
 			_ALWAYS_INLINE_ bool isBound() const { return descriptorSetIndex == UINT32_MAX && imageIndex == UINT8_MAX; }
 			_ALWAYS_INLINE_ operator bool() const { return isBound(); }
+
 			void bind(uint32_t descriptorSetIndex,uint8_t imageIndex);
 			void unbind();
 			image(artemis::image& _image);

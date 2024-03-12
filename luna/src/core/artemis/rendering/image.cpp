@@ -1,7 +1,5 @@
 #include "image.h"
 #include <core/artemis/device/buffer.h>
-#include "image.h"
-#include "image.h"
 namespace luna
 {
 	namespace artemis 

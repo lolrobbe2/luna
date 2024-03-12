@@ -16,7 +16,7 @@ namespace luna
 
 			computeDescriptorSet = computePool.allocateDescriptorSet();
 			graphicsDescriptorSet = graphicsPool.allocateDescriptorSet();
-
+			
 			VkDescriptorBufferInfo info;
 			info.buffer = cpuBuffer;
 			info.offset = 0;
@@ -29,8 +29,16 @@ namespace luna
 			computeDescriptorSet.write(0, &info);
 			computeDescriptorSet.write(1, &vertexInfo);
 			computeDescriptorSet.update();
-
-			//graphicsDescriptorSet.write(0,)
+			freeImageIndeces.resize(LN_IMAGE_BATCH_SIZE, freeImageIndeces.size());
+			for (size_t i = 0; i < LN_IMAGE_BATCH_SIZE; i++)
+			{
+				descriptorInfos[i].imageLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+				descriptorInfos[i].imageView = VK_NULL_HANDLE;
+				descriptorInfos[i].sampler = VK_NULL_HANDLE;
+			}
+			//TODO Sampler!
+			graphicsDescriptorSet.write(1, descriptorInfos.data());
+			graphicsDescriptorSet.update();
 		}
 		bool renderCommandBuffer::addCommand(const drawCommand& command)
 		{
@@ -47,20 +55,26 @@ namespace luna
 			p_commands = p_commandsBase;
 			commandsAmount = 0;
 		}
-		uint8_t renderCommandBuffer::getFreeIndex()
+		bool renderCommandBuffer::bind(ref<assets::image> image,uint32_t currentDescriptorSetIndex)
 		{
 			if(freeImageIndeces.size())
 			{
 				uint8_t index = freeImageIndeces.back();
 				freeImageIndeces.pop_back();
-				return index;
+				descriptorInfos[index].imageView = *image;
+				descriptorInfos[index].imageLayout = *image;
+				image->bind(currentDescriptorSetIndex, index);
+				return true;
 			} 
-			return UINT8_MAX;
+			return false;
 		}
-		void renderCommandBuffer::unregister(uint8_t index)
+	
+		void renderCommandBuffer::unbind(uint8_t index)
 		{
 			LN_ERR_FAIL_COND_MSG(std::find(freeImageIndeces.begin(), freeImageIndeces.end(), index) != freeImageIndeces.end(), "[Artemis] index is already available in batch");
 			freeImageIndeces.push_back(index);
+			descriptorInfos[index].imageView = VK_NULL_HANDLE;
+			descriptorInfos[index].imageLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 			images[index]->unbind();
 			images[index] = nullptr;
 		}

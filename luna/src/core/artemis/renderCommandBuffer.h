@@ -27,8 +27,11 @@ namespace luna
             bool addCommand(const drawCommand& command);
             void reset();
             void generateIndices();
-            uint8_t getFreeIndex();
-            void unregister(uint8_t index);
+            bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex);
+            void unbind(uint8_t index);
+            void update(){
+                graphicsDescriptorSet.update();
+            }
             buffer& cpuIndicesBuffer = buffer();
             buffer& cpuBuffer = buffer(); //stores commands.
             buffer& gpuBuffer = buffer(); //stores vertices.
@@ -37,7 +40,8 @@ namespace luna
             std::vector<uint8_t> freeImageIndeces;
             ref<assets::image> images[LN_IMAGE_BATCH_SIZE];
             drawCommand* p_commands = nullptr;
-            drawCommand* p_commandsBase = nullptr;
+            drawCommand* p_commandsBase = nullptr; 
+            std::vector<VkDescriptorImageInfo> descriptorInfos{ LN_IMAGE_BATCH_SIZE };
             size_t commandsAmount = 0;
         };
     }

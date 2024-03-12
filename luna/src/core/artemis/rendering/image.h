@@ -10,16 +10,16 @@ namespace luna
 		{
 		public:
 			image() = default;
-			operator bool() const { return _image == VK_NULL_HANDLE; }
-			operator VkImage() const { return _image; }
-			VkImage getImage() const { return _image; }
-			operator VkImageView() const{ return _imageView; }
-			VkImageView getView() const { return _imageView; }
-			operator VkFormat() const { return format; }
-			VkFormat getFormat() const { return format; }
-			operator glm::vec2() const { return extent; }
-			glm::vec2 getExtent() const { return extent; }
-			operator VkExtent3D() const 
+			_ALWAYS_INLINE_ operator bool() const { return _image == VK_NULL_HANDLE; }
+			_ALWAYS_INLINE_ operator VkImage() const { return _image; }
+			_ALWAYS_INLINE_ VkImage getImage() const { return _image; }
+			_ALWAYS_INLINE_ operator VkImageView() const{ return _imageView; }
+			_ALWAYS_INLINE_ VkImageView getView() const { return _imageView; }
+			_ALWAYS_INLINE_ operator VkFormat() const { return format; }
+			_ALWAYS_INLINE_ VkFormat getFormat() const { return format; }
+			_ALWAYS_INLINE_ operator glm::vec2() const { return extent; }
+			_ALWAYS_INLINE_ glm::vec2 getExtent() const { return extent; }
+			_ALWAYS_INLINE_ operator VkExtent3D() const
 			{ 
 				VkExtent3D _extent;
 				_extent.width = extent.x;
@@ -27,7 +27,7 @@ namespace luna
 				_extent.depth = 1;
 				return _extent;
 			}
-			VkExtent3D getExtent3D() const
+			_ALWAYS_INLINE_ VkExtent3D getExtent3D() const
 			{
 				VkExtent3D _extent;
 				_extent.width = extent.x;
@@ -35,7 +35,7 @@ namespace luna
 				_extent.depth = 1;
 				return _extent;
 			}
-			operator VkOffset3D() const 
+			_ALWAYS_INLINE_ operator VkOffset3D() const
 			{
 				VkOffset3D _offset;
 				_offset.x = uvStart.x * extent.x;
@@ -43,19 +43,17 @@ namespace luna
 				_offset.z = 0;
 				return _offset;
 			}
-			VkOffset3D getOffset3D() const 
+			_ALWAYS_INLINE_ VkOffset3D getOffset3D() const
 			{
 				VkOffset3D _offset;
 				_offset.x = uvStart.x * extent.x;
 				_offset.y = uvStart.y * extent.y;
 				return _offset;
 			}
-			operator glm::vec4() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
-			glm::vec4 getUv() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
-			operator VkImageLayout() const { return currentLayout; }
-			VkImageLayout getCurrentLayout() const { return currentLayout; }
-			//registers the image to a certain descriptorBank and sets its imageIndex
-			void registerImage(uint32_t descriptorSetIndex, uint8_t imageIndex) { this->descriptorSetIndex = descriptorSetIndex; this->imageIndex = imageIndex; }
+			_ALWAYS_INLINE_ operator glm::vec4() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
+			_ALWAYS_INLINE_ glm::vec4 getUv() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
+			_ALWAYS_INLINE_ operator VkImageLayout() const { return currentLayout; }
+			_ALWAYS_INLINE_ VkImageLayout getCurrentLayout() const { return currentLayout; }
 			//TODO unload image;
 		protected:
 			friend class allocator;

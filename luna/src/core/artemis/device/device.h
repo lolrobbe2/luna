@@ -119,7 +119,6 @@ namespace luna
 
 			VkSurfaceKHR surface = VK_NULL_HANDLE; // render surface
 			VkPhysicalDeviceFeatures supportedFeatures{};
-
 		};
 	}
 }
