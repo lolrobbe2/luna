@@ -286,7 +286,7 @@ namespace luna
         }
         ref<swapchain> device::getSwapchain()
         {
-            return ref<swapchain>(new swapchain(&_device,window->getWidth(),window->getHeight(), surfaceCapabilities().minImageCount + 1));
+            return ref<swapchain>(new swapchain(&_device,window->getWidth(),window->getHeight(), surfaceCapabilities().minImageCount  + 1));
         }
         ref<sampler> device::getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode)
         {

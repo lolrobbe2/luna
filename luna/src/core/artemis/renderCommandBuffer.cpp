@@ -2,14 +2,15 @@
 #include <core/artemis/device/descriptorPool.h>
 #include <core/debug/debugMacros.h>
 #include <core/assets/publicTypes/image.h>
+#include <core/artemis/rendering/sampler.h>
 namespace luna
 {
 	namespace artemis 
 	{
-		renderCommandBuffer::renderCommandBuffer(const ref<allocator> p_allocator, descriptorPool& computePool, descriptorPool& graphicsPool)
+		renderCommandBuffer::renderCommandBuffer(const ref<allocator> p_allocator, descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler)
 		{
 			cpuBuffer = p_allocator->allocateBuffer(sizeof(drawCommand) * LN_DRAW_COMMANDS_AMOUNT, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT);
-			cpuIndicesBuffer = p_allocator->allocateBuffer(LN_DRAW_COMMANDS_AMOUNT * 6, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT);
+			cpuIndicesBuffer = p_allocator->allocateBuffer(LN_DRAW_COMMANDS_AMOUNT * 6, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT);
 			gpuBuffer = p_allocator->allocateBuffer(cpuBuffer.getSize() * 4, GPU_ONLY, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
 			p_commandsBase = (drawCommand*) cpuBuffer.getData();
 			p_commands = p_commandsBase;
@@ -37,6 +38,8 @@ namespace luna
 				descriptorInfos[i].sampler = VK_NULL_HANDLE;
 			}
 			//TODO Sampler!
+			samplerInfo.sampler = *sampler;
+			graphicsDescriptorSet.write(0, &samplerInfo);
 			graphicsDescriptorSet.write(1, descriptorInfos.data());
 			graphicsDescriptorSet.update();
 		}

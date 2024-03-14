@@ -268,7 +268,10 @@ namespace luna
 			VkResult result2 = vkQueuePresentKHR(presentQueue, &presentInfo);
 			_frameNumber += 1;
 
-			if (result2 == VK_ERROR_OUT_OF_DATE_KHR || result2 == VK_SUBOPTIMAL_KHR)
+			if (result2 ==
+				
+				
+				VK_ERROR_OUT_OF_DATE_KHR || result2 == VK_SUBOPTIMAL_KHR)
 			{
 				initSyncStructures();
 				vDevice->swapchain->recreateSwapchain();

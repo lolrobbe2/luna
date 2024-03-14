@@ -36,7 +36,7 @@ namespace luna
 			ref<pipeline> computePipeline;
 			std::vector<semaphore> computeWaitSemaphores;
 			std::vector<semaphore> computeSignalSemaphores;
-			std::vector<ref<semaphore>> imageAvailableSemaphores, renderFinishedSemaphores;
+			std::vector<ref<semaphore>> imageAvailableSemaphores, renderFinishedSemaphores,computeFinishedSemaphores;
 			std::vector<frameBuffer> frameBuffers;
 
 			descriptorPool& computeDescriptorPool = descriptorPool();
@@ -47,10 +47,11 @@ namespace luna
 			size_t batchCount;
 			ref<allocator> p_allocator;
 
-			std::vector<ref<fence>> graphicsFences, inFlightFences;
+			std::vector<ref<fence>> inFlightFences,computeInflightFences;
 			uint8_t currentFrame = 0;
 			uint8_t maxFramesInFlight = 0;
 			uint32_t swapchainImageIndex = 0;
+			ref<sampler> sampler;
 
 		};
 	}

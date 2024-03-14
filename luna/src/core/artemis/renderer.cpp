@@ -16,7 +16,8 @@ namespace luna
 			p_allocator = c_device.getAllocator();
 		
 			assets::assetImporter::setAllocator(p_allocator);
-			
+			maxFramesInFlight = p_swapChain->size() - 1;
+
 			setUpComputePipeline();
 			
 			setUpGraphicsPipeline();
@@ -34,26 +35,28 @@ namespace luna
 		}
 		void renderer::update()
 		{
+			//c_device.waitIdle();
+			computeInflightFences[currentFrame]->wait();
 			inFlightFences[currentFrame]->wait();
 			VkResult result = p_swapChain->acquireNextImage(UINT64_MAX, *imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &swapchainImageIndex);
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (p_swapChain->invalid()) return;
-				//todo recreate pipeline;
+				LN_CORE_ERROR("out of date!");
 			}
+			computeInflightFences[currentFrame]->reset();
 			inFlightFences[currentFrame]->reset();
-			graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
+			//graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
 
-			inFlightFences[currentFrame]->reset();
+			//inFlightFences[currentFrame]->reset();
 			recordCommands();
-
 			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) commandBuffer.reset();
 			
 			VkResult presentResult = p_graphicsCommandPool->present({ p_swapChain }, { renderFinishedSemaphores[currentFrame] },&swapchainImageIndex);
 
 			if (presentResult == VK_ERROR_OUT_OF_DATE_KHR || presentResult == VK_SUBOPTIMAL_KHR)
 			{
-				//todo recreate pipeline.
+				LN_CORE_ERROR("out of date!");
 			}
 			currentFrame = (currentFrame + 1) % maxFramesInFlight;
 		}
@@ -77,7 +80,8 @@ namespace luna
 		{
 			p_computeCommandPool = c_device.getCommandPool(vkb::QueueType::compute);
 
-			p_computeCommandBuffer.resize(p_swapChain->size(),p_computeCommandPool->getCommandBuffer());
+			p_computeCommandBuffer.resize(p_swapChain->size() - 1);
+			for (auto& commandBuffer : p_computeCommandBuffer) commandBuffer = p_computeCommandPool->getCommandBuffer();
 			
 			ref<shader> quadVertexGenerator = shaderLibrary::get("quadVertexGenerator.glsl"); //get compute shader
 
@@ -95,16 +99,21 @@ namespace luna
 				.addDescriptorSetLayout(computeDescriptorPool)
 				.build();
 
+			computeFinishedSemaphores.resize(maxFramesInFlight);
+			for (auto& semaphore : computeFinishedSemaphores) semaphore = c_device.getSemaphore(0);
+
+			computeInflightFences.resize(maxFramesInFlight);
+			for (auto& fence : computeInflightFences) fence = c_device.getFence(VK_FENCE_CREATE_SIGNALED_BIT);
 		}
 
 		void renderer::setUpGraphicsPipeline()
 		{
-			maxFramesInFlight = p_swapChain->size() - 1;
 
 			p_graphicsCommandPool = c_device.getCommandPool(vkb::QueueType::graphics);
 
-			p_graphicsCommandBuffer.resize(p_swapChain->size(),p_graphicsCommandPool->getCommandBuffer());
-
+			p_graphicsCommandBuffer.resize(maxFramesInFlight);
+			for (auto& commandBuffer : p_graphicsCommandBuffer) commandBuffer = p_graphicsCommandPool->getCommandBuffer();
+			
 			ref<shader> vertexShader = shaderLibrary::get("vertex.glsl"); //get vertex shader
 			ref<shader> fragmentShader = shaderLibrary::get("fragment.glsl"); //get vertex shader
 
@@ -139,8 +148,9 @@ namespace luna
 				.addSubPass(subpass)
 				.build();
 				
-			frameBuffers.resize(p_swapChain->size(), p_swapChain->getFrameBuffer(p_renderPass, frameBuffers.size(), 0, 1));
-
+			frameBuffers.resize(p_swapChain->size());
+			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
+			
 			pipelineBuilder graphicsPipelineBuilder = c_device.getPipelineBuilder();
 			graphicsPipeline = graphicsPipelineBuilder
 				.setColorBlendingParams()
@@ -151,19 +161,30 @@ namespace luna
 				.addShaderStage(fragmentShader)
 				.addDescriptorSetLayout(grapchicsDescriptorPool)
 				//.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
-				.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+				//.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
 				.addViewport(p_swapChain->getViewport())
 				.addScissor(*p_swapChain)
 				.setRenderPass(p_renderPass)
 				.build();
-			renderCmdBuffers.resize(10, { p_allocator,computeDescriptorPool,grapchicsDescriptorPool });
+
+			sampler = c_device.getSampler(VK_FILTER_NEAREST);
+			renderCmdBuffers.reserve(10);
+			for (size_t i = 0; i < 10; ++i) {
+				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler));
+			}
 			currentBuffer = &renderCmdBuffers[0];
 
-			inFlightFences.resize(maxFramesInFlight, c_device.getFence(VK_FENCE_CREATE_SIGNALED_BIT));
-			graphicsFences.resize(p_swapChain->size());
+			inFlightFences.resize(maxFramesInFlight);
+			for (auto& fence : inFlightFences) fence = c_device.getFence(VK_FENCE_CREATE_SIGNALED_BIT);
+			
 
-			imageAvailableSemaphores.resize(maxFramesInFlight, c_device.getSemaphore(0));
-			renderFinishedSemaphores.resize(p_swapChain->size(), c_device.getSemaphore(0));
+			imageAvailableSemaphores.resize(p_swapChain->size());
+			for (auto& semaphore : imageAvailableSemaphores) semaphore = c_device.getSemaphore(0);
+			
+
+			// Resize and initialize renderFinishedSemaphores
+			renderFinishedSemaphores.resize(maxFramesInFlight);
+			for (auto& semaphore : renderFinishedSemaphores) semaphore = c_device.getSemaphore(0);
 		}
 		void renderer::recordCommands()
 		{
@@ -179,11 +200,9 @@ namespace luna
 			}
 			p_computeCommandBuffer[currentFrame]->end();
 
-			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, {}, {}, nullptr, nullptr, true);
-
 			p_graphicsCommandBuffer[currentFrame]->begin(0);
+			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[swapchainImageIndex]);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
-			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[currentFrame]);
 			for (renderCommandBuffer& renderCmdBuffer : renderCmdBuffers)
 			{
 				if (renderCmdBuffer.commandsAmount)
@@ -198,10 +217,13 @@ namespace luna
 			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
 			p_graphicsCommandBuffer[currentFrame]->end();
 
-			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
-			p_graphicsCommandPool->flush({ p_graphicsCommandBuffer[currentFrame].get() }, {renderFinishedSemaphores[currentFrame]}, {imageAvailableSemaphores[currentFrame]}, inFlightFences[currentFrame],waitStages, true);
+			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, { computeFinishedSemaphores[currentFrame] }, {  }, computeInflightFences[currentFrame], nullptr, false);
+
+			
+			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_VERTEX_INPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
+			p_graphicsCommandPool->flush({ p_graphicsCommandBuffer[currentFrame].get() }, {renderFinishedSemaphores[currentFrame]}, {computeFinishedSemaphores[currentFrame],imageAvailableSemaphores[currentFrame] }, inFlightFences[currentFrame],waitStages, false);
 		}
-		void renderer::flush()
+		void renderer::flush() 
 		{
 
 		}

@@ -27,14 +27,16 @@ namespace luna
 			//signal semaphore translation
 
 			std::vector<VkSemaphore> nativeSignalSemaphores;
-			if(signalSemaphores.size())nativeSignalSemaphores.resize(signalSemaphores.size(), *signalSemaphores[nativeSignalSemaphores.size()]);
+			for (auto& semaphorePtr : signalSemaphores) nativeSignalSemaphores.push_back(*semaphorePtr);
+			
 			submitInfo.pSignalSemaphores = nativeSignalSemaphores.data();
 
 
 			//wait semaphore translation
 
 			std::vector<VkSemaphore> nativeWaitSemaphores;
-			if (waitSemaphores.size())nativeWaitSemaphores.resize(waitSemaphores.size(), *waitSemaphores[nativeWaitSemaphores.size()]);
+			for (auto& semaphorePtr : waitSemaphores) nativeWaitSemaphores.push_back(*semaphorePtr);
+			
 			submitInfo.pWaitSemaphores = nativeWaitSemaphores.data();
 
 			if (separateThread) runnerMutex.lock();

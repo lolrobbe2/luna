@@ -19,11 +19,12 @@ namespace luna
             float text = false;
         } drawCommand;
         class descriptorPool;
+        class sampler;
         class renderCommandBuffer
         {
         public:
             renderCommandBuffer() = default;
-            renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool);
+            renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler);
             bool addCommand(const drawCommand& command);
             void reset();
             void generateIndices();
@@ -41,6 +42,7 @@ namespace luna
             ref<assets::image> images[LN_IMAGE_BATCH_SIZE];
             drawCommand* p_commands = nullptr;
             drawCommand* p_commandsBase = nullptr; 
+            VkDescriptorImageInfo samplerInfo;
             std::vector<VkDescriptorImageInfo> descriptorInfos{ LN_IMAGE_BATCH_SIZE };
             size_t commandsAmount = 0;
         };

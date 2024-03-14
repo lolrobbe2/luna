@@ -12,7 +12,7 @@ namespace luna
 			operator const VkFence() const { return _fence; }
 			operator const VkFence*() const { return &_fence; }
 			const VkFence native() { return _fence; }
-			~fence() { if(_fence != VK_NULL_HANDLE && !noDestroy)vkDestroyFence(*p_device, _fence, nullptr); }
+			~fence() { if (_fence != VK_NULL_HANDLE && !noDestroy) wait(); vkDestroyFence(*p_device, _fence, nullptr); }
 			_ALWAYS_INLINE_ void wait(bool waitForAll = true, uint64_t timeOut = UINT64_MAX);
 			_ALWAYS_INLINE_ static void wait(std::vector<fence> fences, bool waitForAll = true, uint64_t timeOut = UINT64_MAX);
 			_ALWAYS_INLINE_ void reset();

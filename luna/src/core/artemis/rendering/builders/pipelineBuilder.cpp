@@ -156,7 +156,7 @@ namespace luna
 				pColorBlendState->logicOpEnable = VK_FALSE;
 
 
-				LN_ERR_FAIL_COND_V_MSG(dynamicStates.size() == 0, ref<pipeline>(), "[Artemis] a graphics pipeline must have atleast 1 dynamic state!");
+				//LN_ERR_FAIL_COND_V_MSG(dynamicStates.size() == 0, ref<pipeline>(), "[Artemis] a graphics pipeline must have atleast 1 dynamic state!");
 				VkPipelineDynamicStateCreateInfo* pDynamicStateCreateInfo = new VkPipelineDynamicStateCreateInfo();//FREED when the pipeline is destroyed?
 				pDynamicStateCreateInfo->sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
 				pDynamicStateCreateInfo->dynamicStateCount = dynamicStates.size();
@@ -237,7 +237,7 @@ namespace luna
 				createInfo.pVertexInputState = vertexInputState.data();
 				createInfo.pColorBlendState = pColorBlendState;
 				createInfo.pDepthStencilState = nullptr; //not needed since 3D is not supported!
-				createInfo.pDynamicState = pDynamicStateCreateInfo;
+				createInfo.pDynamicState =  pDynamicStateCreateInfo->dynamicStateCount ? pDynamicStateCreateInfo : nullptr;
 				createInfo.pInputAssemblyState = pInputAssemblyState;
 				createInfo.pMultisampleState = pMultisampleState;
 				createInfo.pRasterizationState = pRasterizationState;
