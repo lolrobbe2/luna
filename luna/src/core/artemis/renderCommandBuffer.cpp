@@ -15,6 +15,7 @@ namespace luna
 			p_commandsBase = (drawCommand*) cpuBuffer.getData();
 			p_commands = p_commandsBase;
 
+
 			computeDescriptorSet = computePool.allocateDescriptorSet();
 			graphicsDescriptorSet = graphicsPool.allocateDescriptorSet();
 			
@@ -24,7 +25,7 @@ namespace luna
 			info.range = VK_WHOLE_SIZE;
 
 			VkDescriptorBufferInfo vertexInfo;
-			vertexInfo.buffer = cpuBuffer;
+			vertexInfo.buffer = gpuBuffer;
 			vertexInfo.offset = 0;
 			vertexInfo.range = VK_WHOLE_SIZE;
 			computeDescriptorSet.write(0, &info);
@@ -81,6 +82,7 @@ namespace luna
 			images[index]->unbind();
 			images[index] = nullptr;
 		}
+		
 		void renderCommandBuffer::generateIndices()
 		{
 			uint32_t offset = 0;

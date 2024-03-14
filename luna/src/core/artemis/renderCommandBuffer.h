@@ -13,13 +13,21 @@ namespace luna
         typedef struct drawCommand
         {
             glm::mat4 transform;
-            glm::vec4 color;
+            glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f };
             glm::vec2 textureCoords[4] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
             float textureIndex = 0;
             float text = false;
         } drawCommand;
         class descriptorPool;
         class sampler;
+        typedef struct quadVertex
+        {
+            glm::vec4 vert;
+            glm::vec4 color;
+            glm::vec2 textureCoord;
+            float textureIndex;
+            float text;
+        };
         class renderCommandBuffer
         {
         public:
@@ -33,6 +41,7 @@ namespace luna
             void update(){
                 graphicsDescriptorSet.update();
             }
+            void print();
             buffer& cpuIndicesBuffer = buffer();
             buffer& cpuBuffer = buffer(); //stores commands.
             buffer& gpuBuffer = buffer(); //stores vertices.

@@ -169,7 +169,7 @@ namespace luna
 
 			sampler = c_device.getSampler(VK_FILTER_NEAREST);
 			renderCmdBuffers.reserve(10);
-			for (size_t i = 0; i < 10; ++i) {
+			for (size_t i = 0; i < 1; ++i) {
 				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler));
 			}
 			currentBuffer = &renderCmdBuffers[0];
@@ -188,6 +188,7 @@ namespace luna
 		}
 		void renderer::recordCommands()
 		{
+			renderCmdBuffers[0].print();
 			p_computeCommandBuffer[currentFrame]->begin(0);
 			p_computeCommandBuffer[currentFrame]->bindPipeline(computePipeline);
 			for (renderCommandBuffer& renderCmdBuffer : renderCmdBuffers)
