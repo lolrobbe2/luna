@@ -50,11 +50,11 @@ namespace luna
 			LN_ERR_FAIL_COND_V_MSG(allocRes != VK_SUCCESS, std::vector<descriptorSet>(), "[Artemis] an error occured during descriptorSet allocation, VkResult: " + VK_RESULT(allocRes));
 
 			std::vector<descriptorSet>* sets = new std::vector<descriptorSet>();
-			sets->reserve(amount); //reserve upfront for performance reasons
+			sets->resize(amount); //reserve upfront for performance reasons
 
-			for (VkDescriptorSet set : nativeSets)
+			for (size_t i = 0; i < sets->size();i++)
 			{
-				sets->push_back({p_device, set,&_descriptorPool,descriptorWrites });
+				(*sets)[i] = *new descriptorSet(p_device, nativeSets[i],&_descriptorPool,descriptorWrites);
 			}
 			return *sets;
 		}

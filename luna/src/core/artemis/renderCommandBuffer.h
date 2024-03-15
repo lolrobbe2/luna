@@ -32,21 +32,21 @@ namespace luna
         {
         public:
             renderCommandBuffer() = default;
-            renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler);
+            renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler,uint8_t maxFramesInflight);
             bool addCommand(const drawCommand& command);
             void reset();
             void generateIndices();
             bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex);
             void unbind(uint8_t index);
-            void update(){
-                graphicsDescriptorSet.update();
+            void update(uint8_t currentFrame){
+                graphicsDescriptorSets[currentFrame].write(0, &samplerInfo);
+                graphicsDescriptorSets[currentFrame].update();
             }
-            void print();
             buffer& cpuIndicesBuffer = buffer();
             buffer& cpuBuffer = buffer(); //stores commands.
             buffer& gpuBuffer = buffer(); //stores vertices.
             descriptorSet& computeDescriptorSet = descriptorSet();
-            descriptorSet& graphicsDescriptorSet = descriptorSet();
+            std::vector<descriptorSet> graphicsDescriptorSets;
             std::vector<uint8_t> freeImageIndeces;
             ref<assets::image> images[LN_IMAGE_BATCH_SIZE];
             drawCommand* p_commands = nullptr;

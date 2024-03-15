@@ -36,7 +36,7 @@ namespace luna
 			artemis::image& image = p_allocator->allocateImage({ width,height }, channels, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, artemis::GPU_ONLY);
 			p_allocator->transitionImageLayoutFront(image, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 			p_allocator->copyBufferToImage(buffer, image);
-
+			p_allocator->transitionImageLayoutBack(image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_GENERAL);
 			textureMetaData->channels = channels;
 			textureMetaData->width = (uint32_t)width;
 			textureMetaData->height = (uint32_t)height;

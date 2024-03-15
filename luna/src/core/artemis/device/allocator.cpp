@@ -425,6 +425,14 @@ namespace luna
 				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
 				destinationStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
 			}
+			else if (currentLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_GENERAL)
+			{
+				barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+				barrier.dstAccessMask = VK_ACCESS_NONE;
+
+				sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
+				destinationStage = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT;
+			}
 			p_data->backBarriers[{sourceStage, destinationStage}].push_back(barrier);
 		}
 		void allocator::flush()
@@ -432,7 +440,8 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			p_data->commandBuffer->begin(0);
 			//fronBarriers
-			if (p_data->frontBarriers.size()) for (const auto& barriers : p_data->frontBarriers)vkCmdPipelineBarrier(*p_data->commandBuffer, barriers.first.srcStage, barriers.first.dstStage, 0, 0, nullptr, 0, nullptr, barriers.second.size(), barriers.second.data());
+			if (p_data->frontBarriers.size()) for (const auto& barriers : p_data->frontBarriers)
+				vkCmdPipelineBarrier(*p_data->commandBuffer, barriers.first.srcStage, barriers.first.dstStage, 0, 0, nullptr, 0, nullptr, barriers.second.size(), barriers.second.data());
 			//copyBufferToBuffer
 			for (const auto& bufferCopy : p_data->bufferRegions) if(bufferCopy.second.size()) vkCmdCopyBuffer(*p_data->commandBuffer, bufferCopy.first.srcBuffer, bufferCopy.first.dstBuffer, bufferCopy.second.size(), bufferCopy.second.data());
 			//copyBufferToImage
@@ -440,7 +449,8 @@ namespace luna
 			//copyImageToBuffer
 			for (const auto& imageBufferRegion : p_data->imageBufferRegions) if (imageBufferRegion.second.size()) vkCmdCopyBufferToImage(*p_data->commandBuffer, imageBufferRegion.first.buffer, imageBufferRegion.first.image, imageBufferRegion.first.imageLayout, imageBufferRegion.second.size(), imageBufferRegion.second.data());
 			//backBarriers
-			if (p_data->backBarriers.size()) for (const auto& barriers : p_data->backBarriers)vkCmdPipelineBarrier(*p_data->commandBuffer, barriers.first.srcStage, barriers.first.dstStage, 0, 0, nullptr, 0, nullptr, barriers.second.size(), barriers.second.data());
+			if (p_data->backBarriers.size()) for (const auto& barriers : p_data->backBarriers)
+				vkCmdPipelineBarrier(*p_data->commandBuffer, barriers.first.srcStage, barriers.first.dstStage, 0, 0, nullptr, 0, nullptr, barriers.second.size(), barriers.second.data());
 
 			p_data->commandBuffer->end();
 			p_data->transferPool->flush({ p_data->commandBuffer.get()}, {}, {}, nullptr, nullptr, true);

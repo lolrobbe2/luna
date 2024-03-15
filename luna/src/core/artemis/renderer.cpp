@@ -22,6 +22,7 @@ namespace luna
 			
 			setUpGraphicsPipeline();
 			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
+			p_allocator->flush();
 			renderCmdBuffers[0].bind(blankImageAsset, 0);
 		}
 		void renderer::beginScene()
@@ -49,8 +50,14 @@ namespace luna
 			//graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
 
 			//inFlightFences[currentFrame]->reset();
+			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) {
+				commandBuffer.update(currentFrame);
+				commandBuffer.reset();
+			}
 			recordCommands();
-			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) commandBuffer.reset();
+			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) {
+				commandBuffer.reset();
+			}
 			
 			VkResult presentResult = p_graphicsCommandPool->present({ p_swapChain }, { renderFinishedSemaphores[currentFrame] },&swapchainImageIndex);
 
@@ -127,7 +134,7 @@ namespace luna
 
 			attachementBuilder attachementBuilder{ p_swapChain };
 			attachement att = attachementBuilder
-				.setClearColorValue(0.0f, 0.0f, 0.0f, 0.0f)
+				.setClearColorValue(1.0f, 0.0f, 1.0f, 1.0f)
 				.setSamples().setOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
 				.setLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
 				.setStencilOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
@@ -170,7 +177,7 @@ namespace luna
 			sampler = c_device.getSampler(VK_FILTER_NEAREST);
 			renderCmdBuffers.reserve(10);
 			for (size_t i = 0; i < 1; ++i) {
-				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler));
+				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler,maxFramesInFlight));
 			}
 			currentBuffer = &renderCmdBuffers[0];
 
@@ -188,7 +195,6 @@ namespace luna
 		}
 		void renderer::recordCommands()
 		{
-			renderCmdBuffers[0].print();
 			p_computeCommandBuffer[currentFrame]->begin(0);
 			p_computeCommandBuffer[currentFrame]->bindPipeline(computePipeline);
 			for (renderCommandBuffer& renderCmdBuffer : renderCmdBuffers)
@@ -209,7 +215,7 @@ namespace luna
 				if (renderCmdBuffer.commandsAmount)
 				{
 					static VkDeviceSize offsets = 0;
-					p_graphicsCommandBuffer[currentFrame]->bindDescriptorSet(graphicsPipeline, renderCmdBuffer.graphicsDescriptorSet);
+					p_graphicsCommandBuffer[currentFrame]->bindDescriptorSet(graphicsPipeline, renderCmdBuffer.graphicsDescriptorSets[currentFrame]);
 					p_graphicsCommandBuffer[currentFrame]->bindIndexBuffer(renderCmdBuffer.cpuIndicesBuffer,0, VK_INDEX_TYPE_UINT32);
 					p_graphicsCommandBuffer[currentFrame]->bindVertexBuffers(0, { renderCmdBuffer.gpuBuffer }, &offsets);
 					p_graphicsCommandBuffer[currentFrame]->drawIndexed(renderCmdBuffer.commandsAmount * 6, 1, 0, 0, 0);
