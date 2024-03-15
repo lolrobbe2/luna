@@ -23,13 +23,6 @@ namespace luna
 		}
 		void descriptorSet::update()
 		{
-			if (descriptorWrites[1].descriptorCount == 32) {
-				for (size_t i = 0; i < 32; i++)
-				{
-					VkDescriptorImageInfo info = descriptorWrites[1].pImageInfo[i];
-					LN_CORE_INFO("imageview: {0}", (uint64_t)info.imageView);
-				}
-			}
 			vkUpdateDescriptorSets(*p_device, descriptorWrites.size(), descriptorWrites.data(), 0, nullptr);
 		}
 		void descriptorSet::write(const uint32_t& descriptorIndex,const void* pDescriptorInfo)

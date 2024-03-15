@@ -52,7 +52,6 @@ namespace luna
 			//inFlightFences[currentFrame]->reset();
 			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) {
 				commandBuffer.update(currentFrame);
-				commandBuffer.reset();
 			}
 			recordCommands();
 			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) {

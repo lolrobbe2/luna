@@ -14,7 +14,7 @@ namespace luna
 	}
 	void testLayer::onUpdate(utils::timestep ts)
 	{
-		application::application::get().getRenderer()->drawQuad(glm::mat4(1.0f), { 1.0f,1.0f,1.0f,0.0f });
+		application::application::get().getRenderer()->drawQuad(glm::mat4(1.0f), { 1.0f,1.0f,0.0f,0.0f });
 	}
 	void testLayer::onImGuiRender()
 	{
