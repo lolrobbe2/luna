@@ -133,7 +133,7 @@ namespace luna
 
 			attachementBuilder attachementBuilder{ p_swapChain };
 			attachement att = attachementBuilder
-				.setClearColorValue(1.0f, 0.0f, 1.0f, 1.0f)
+				.setClearColorValue(0.0f, 0.0f, 0.0f, 1.0f)
 				.setSamples().setOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
 				.setLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
 				.setStencilOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)

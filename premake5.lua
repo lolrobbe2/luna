@@ -19,7 +19,7 @@ workspace "luna"
     
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-buildmessage("$(VULKAN_SDK)/include")
+buildmessage("$(VULKAN_SDK)/Include")
 IncludeDir = {}
 IncludeDir["GLFW"] =  "%{wks.location}/luna/thirdParty/GLFW/include"
 IncludeDir["entt"] =  "%{wks.location}/luna/thirdParty/entt"
@@ -32,7 +32,6 @@ IncludeDir["imgui"] = "%{wks.location}/luna/thirdParty/imGui/"
 IncludeDir["imguizmo"] = "%{wks.location}/luna/thirdParty/imguizmo"
 IncludeDir["yaml_cpp"] = "%{wks.location}/luna/thirdParty/yaml-cpp/include"
 IncludeDir["mono"] =  "%{wks.location}/luna/thirdParty/mono/include"
-
 IncludeDir["luna"] = "%{wks.location}/luna/src"
 
 LibraryDir = {}
@@ -41,6 +40,11 @@ LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
 Library = {}
 
 Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
+
+Library["ShaderC"] = "%{wks.location}/vendor/shaderc_shared.lib"
+Library["SPIRV_Cross"] = "%{wks.location}/vendor/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL"] = "%{wks.location}/vendor/spirv-cross-glsl.lib"
+Library["SPIRV_Tools"] = "%{wks.location}/vendor/SPIRV-Tools.lib"
 
 Library["ShaderC"] = "%{wks.location}/vendor/shaderc_shared.lib"
 Library["SPIRV_Cross"] = "%{wks.location}/vendor/spirv-cross-core.lib"
@@ -67,7 +71,7 @@ project "luna"
     }
     includedirs
     {
-        "$(VULKAN_SDK)/include",
+        "$(VULKAN_SDK)/Include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.entt}",
         "%{IncludeDir.glm}",
@@ -192,7 +196,7 @@ project "sandbox"
     }
     includedirs
     {
-        "$(VULKAN_SDK)/include",
+        "$(VULKAN_SDK)/Include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.entt}",
         "%{IncludeDir.glm}",
@@ -255,7 +259,7 @@ project "apollo"
     }
     includedirs
     {
-        "$(VULKAN_SDK)/include",
+        "$(VULKAN_SDK)/Include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.entt}",
         "%{IncludeDir.glm}",
