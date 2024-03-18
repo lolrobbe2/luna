@@ -127,8 +127,8 @@ namespace luna
 
 			//storageBuffers with fixed size used for vertex generation.
 			grapchicsDescriptorPool = poolBuilder
-				.setSamplerAmount(10)
-				.setStorageImageAmount(32*10)
+				.setSamplerAmount(10*maxFramesInFlight)
+				.setStorageImageAmount(32*10* maxFramesInFlight)
 				.build();
 
 			attachementBuilder attachementBuilder{ p_swapChain };
