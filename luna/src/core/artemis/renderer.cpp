@@ -29,6 +29,7 @@ namespace luna
 		void renderer::beginScene()
 		{
 			currentBuffer = &renderCmdBuffers[0];
+			currentBuffer->reset();
 		}
 		void renderer::endScene()
 		{
