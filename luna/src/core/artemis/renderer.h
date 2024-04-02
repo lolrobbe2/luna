@@ -16,7 +16,8 @@ namespace luna
 			 void endScene();
 			 void update();
 			 _ALWAYS_INLINE_ glm::vec4 normalizeColor(const glm::vec4& color) const;
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4 transform, const glm::vec4 color1) const;
+			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) const;
+			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color1) const;
 			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command) const;
 		private:
 			void setUpComputePipeline();
@@ -52,7 +53,8 @@ namespace luna
 			uint8_t maxFramesInFlight = 0;
 			uint32_t swapchainImageIndex = 0;
 			ref<sampler> sampler;
-
+			
+			ref<vulkan::window> p_window;
 		};
 	}
 }

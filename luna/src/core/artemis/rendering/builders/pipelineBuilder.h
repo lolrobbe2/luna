@@ -40,6 +40,10 @@ namespace luna
 			pipelineBuilder& setPolygonMode(const VkPolygonMode polygonMode);
 			pipelineBuilder& setRenderPass(const ref<renderPass> p_renderPass) { this->p_renderPass = p_renderPass; return *this; }
 			pipelineBuilder& addDescriptorSetLayout(const VkDescriptorSetLayout layout);
+			/**
+			* @brief removes the added VkViewport's VkDynamicState's, VkScissors entered
+			*/
+			pipelineBuilder& invalidate();
 			ref<pipeline> build();
 		protected:
 			friend class device;

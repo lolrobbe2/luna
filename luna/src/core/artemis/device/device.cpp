@@ -7,11 +7,17 @@ namespace luna
     {
         device::device(const ref<vulkan::window>& Window)
         {
-            createInstance();
-            VkResult result = glfwCreateWindowSurface(instance, (GLFWwindow*)Window->getWindow(), nullptr, &surface);
-            LN_ERR_FAIL_COND_MSG(result != VK_SUCCESS, "[Artemis] an error occured during surface creation, result: " + std::to_string(result));
-            pickPhysicalDevice();
-            createLogicalDevice();
+            VkResult result = createInstance();
+            LN_ERR_FAIL_COND_MSG(result != VK_SUCCESS, "[Artemis] an error occured during instance creation, result: " + std::to_string(result));
+
+            VkResult result2 = glfwCreateWindowSurface(instance, (GLFWwindow*)Window->getWindow(), nullptr, &surface);
+            LN_ERR_FAIL_COND_MSG(result2 != VK_SUCCESS, "[Artemis] an error occured during surface creation, result: " + std::to_string(result2));
+            VkResult result3 = pickPhysicalDevice();
+            LN_ERR_FAIL_COND_MSG(result3 != VK_SUCCESS, "[Artemis] an error occured during physical_device picking, result: " + std::to_string(result3));
+
+            VkResult result4 = createLogicalDevice();
+            LN_ERR_FAIL_COND_MSG(result4 != VK_SUCCESS, "[Artemis] an error occured during physical_device picking, result: " + std::to_string(result4));
+
             window = Window;
             shaderLibrary::init(&_device.device);
         }
@@ -30,7 +36,7 @@ namespace luna
         ///instance creation
         VkResult device::createInstance()
         {
-            vkb::InstanceBuilder instanceBuilder;
+            vkb::InstanceBuilder instanceBuilder;   
             instanceBuilder.set_app_name("luna")
                 .set_engine_name("Artemis")
                 .set_engine_version(MAJOR, MINOR, PATCH)
@@ -49,7 +55,7 @@ namespace luna
             }
             auto result = instanceBuilder.build();
 
-            LN_ERR_FAIL_COND_V_MSG(!result, result.vk_result(), "[Artemis] and error ocured during instance creation, msg:" + result.full_error().type.message());
+            LN_ERR_FAIL_COND_V_MSG(!result, result.vk_result(), "[Artemis] and error ocured during instance creation, msg:" + result.error().message());
 
             instance = result.value();
             appInfo.apiVersion = VKB_VK_API_VERSION_1_2;

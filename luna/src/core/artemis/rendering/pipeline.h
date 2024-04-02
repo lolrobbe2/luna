@@ -18,7 +18,6 @@ namespace luna
 			pipeline();
 			pipeline(const VkDevice* p_device, VkGraphicsPipelineCreateInfo createInfo);
 			pipeline(const VkDevice* p_device, VkComputePipelineCreateInfo createInfo);
-			
 			_ALWAYS_INLINE_ VkPipeline getNative() { return _pipeline; }
 			operator VkPipeline() const { return _pipeline; }
 			_ALWAYS_INLINE_ VkPipelineBindPoint getBindPoint() const { return bindPoint; }

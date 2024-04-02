@@ -14,7 +14,15 @@ namespace luna
 	}
 	void testLayer::onUpdate(utils::timestep ts)
 	{
-		application::application::get().getRenderer()->drawQuad(glm::mat4(1.0f), { 1.0f,1.0f,0.0f,0.0f });
+		//application::application::get().getRenderer()->drawQuad(glm::mat4(1.0f), { 1.0f,1.0f,0.0f,0.0f });
+		const glm::vec3 pos = { -0.25,-0.25,0.0 };
+		const glm::vec2 size = { 0.5, 0.5 };
+		const glm::vec4 color = { 1.0f, 1.0f, 0.0f, 0.0f };
+		for (size_t i = 0; i < 10; i++)
+		{
+			//application::application::get().getRenderer()->drawQuad(pos, size, color);
+			application::application::get().getRenderer()->drawQuad(glm::mat4(1.0f), { 1.0f,1.0f,0.0f,0.0f });
+		}
 	}
 	void testLayer::onImGuiRender()
 	{

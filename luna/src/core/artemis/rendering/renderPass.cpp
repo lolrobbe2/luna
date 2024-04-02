@@ -5,6 +5,13 @@ namespace luna
 {
 	namespace artemis
 	{
+		renderPass::~renderPass()
+		{
+			LN_ERR_FAIL_COND_MSG(*device == VK_NULL_HANDLE, "[Artemis] VkDevice was lost!");
+			LN_ERR_FAIL_COND_MSG(m_renderPass == VK_NULL_HANDLE, "[Artemis] VkRenderPass was VK_NULL_HANDLE");
+			vkDeviceWaitIdle(*device);
+			vkDestroyRenderPass(*device, m_renderPass, nullptr);
+		}
 		renderPass::renderPass(const VkDevice* device, const VkRenderPassCreateInfo* info, const std::vector<VkClearValue> clearValues)
 		{
 			VkResult res = vkCreateRenderPass(*device, info, nullptr, &m_renderPass);

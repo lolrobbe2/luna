@@ -24,6 +24,7 @@ namespace luna
 			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
 			p_allocator->flush();
 			renderCmdBuffers[0].bind(blankImageAsset, 0);
+			p_window = window;
 		}
 		void renderer::beginScene()
 		{
@@ -43,7 +44,64 @@ namespace luna
 			if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
 			{
 				if (p_swapChain->invalid()) return;
-				LN_CORE_ERROR("out of date!");
+				imageAvailableSemaphores[currentFrame] = c_device.getSemaphore(0);
+				c_device.waitIdle();
+				for (auto commandBuffer : p_computeCommandBuffer)
+					commandBuffer->reset();
+				for (auto commandBuffer : p_graphicsCommandBuffer)
+					commandBuffer->reset();
+				p_swapChain->resize(p_window->getWidth(), p_window->getHeight());
+			
+				ref<shader> vertexShader = shaderLibrary::get("vertex.glsl"); //get vertex shader
+				ref<shader> fragmentShader = shaderLibrary::get("fragment.glsl"); //get vertex shader
+
+
+				attachementBuilder attachementBuilder{ p_swapChain };
+				attachement att = attachementBuilder
+					.setClearColorValue(0.0f, 0.0f, 0.0f, 1.0f)
+					.setSamples().setOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
+					.setLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
+					.setStencilOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
+					.build();
+
+				subPassBuilder subPassBuilder;
+				subpassDescription subpass = subPassBuilder
+					.addColorAttachement(att)
+					.setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS)
+					.build();
+
+				subpassDescription description = subPassBuilder.addColorAttachement(att).setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS).build();
+				subpassDependency dependency{ 0, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,0 };
+				renderPassBuilder renderPassBuilder = c_device.getRenderPassBuilder();
+
+				p_renderPass = renderPassBuilder
+					.addSubPassDependency(dependency)
+					.addSubPass(subpass)
+					.build();
+				frameBuffers.resize(0);
+				frameBuffers.resize(p_swapChain->size());
+				for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
+
+				//recreate pipeline
+				pipelineBuilder graphicsPipelineBuilder = c_device.getPipelineBuilder();
+				graphicsPipeline = graphicsPipelineBuilder
+					.setColorBlendingParams()
+					.setAlphaBlendingParams(VK_BLEND_FACTOR_SRC_ALPHA, VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA, VK_BLEND_OP_ADD)
+					.setColorMask()
+					.setPipelineType(GRAPHICS)
+					.addShaderStage(vertexShader)
+					.addShaderStage(fragmentShader)
+					.addDescriptorSetLayout(grapchicsDescriptorPool)
+					//.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
+					//.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+					.addViewport(p_swapChain->getViewport())
+					.addScissor(*p_swapChain)
+					.setRenderPass(p_renderPass)
+					.build();
+
+		
+				currentFrame = 0;
+				return;
 			}
 			computeInflightFences[currentFrame]->reset();
 			inFlightFences[currentFrame]->reset();
@@ -72,14 +130,24 @@ namespace luna
 			return glm::normalize(color / 255.0f);
 		}
 
-		void renderer::drawQuad(const glm::mat4 transform,const glm::vec4 color1) const
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) const
+		{
+			const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+			drawQuad(transform,color);
+		}
+
+		void renderer::drawQuad(const glm::mat4& transform,const glm::vec4& color1) const
 		{
 			drawQuad({ transform,color1 });
 		}
 
 		void renderer::drawQuad(const drawCommand& command) const
 		{
-			currentBuffer->addCommand(command);
+			if(currentBuffer->addCommand(command))
+			{
+				LN_CORE_INFO("rip currentBuffer full");
+			}
 		}
 
 		void renderer::setUpComputePipeline()

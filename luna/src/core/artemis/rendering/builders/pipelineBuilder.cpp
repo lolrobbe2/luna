@@ -145,6 +145,14 @@ namespace luna
 			return *this;
 		}
 
+		pipelineBuilder& pipelineBuilder::invalidate()
+		{
+			viewports.resize(0);
+			dynamicStates.resize(0);
+			scissors.resize(0);
+			return *this;
+		}
+
 		ref<pipeline> pipelineBuilder::build()
 		{
 			if (type == GRAPHICS)

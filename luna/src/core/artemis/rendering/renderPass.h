@@ -11,6 +11,7 @@ namespace luna
 			VkRenderPass getNative() const { return m_renderPass; }
 			_ALWAYS_INLINE_ const VkClearValue* getClearValues() const { return clearValues.data(); }
 			_ALWAYS_INLINE_ const uint32_t getClearValueCount() const { return clearValues.size(); }
+			~renderPass();
 		protected:
 			friend class renderPassBuilder;
 			renderPass(const VkDevice* device, const VkRenderPassCreateInfo* info,const std::vector<VkClearValue> clearValues);
