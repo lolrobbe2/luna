@@ -138,6 +138,19 @@ namespace luna
 			drawQuad(transform,color);
 		}
 
+		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
+		{
+			if(image)
+			{
+				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+					if(!renderCmdBuffers[i].bind(image,i)) return drawQuad({ transform,color,*image,*image });
+				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
+				return drawQuad({ transform,color,*image,*image });
+			}
+			return drawQuad({ transform,color,*image,*image });
+		}
+
 		void renderer::drawQuad(const glm::mat4& transform,const glm::vec4& color1) const
 		{
 			drawQuad({ transform,color1 });

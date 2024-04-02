@@ -37,6 +37,7 @@ namespace luna
 		class LN_API asset
 		{
 		public:
+			virtual ~asset() = default;
 			assetHandle assetHandle; //auto generate handle
 			virtual assetType getType() const = 0;
 		private:

@@ -71,7 +71,7 @@ namespace luna
 				freeImageIndeces.pop_back();
 				descriptorInfos[index].imageView = *image;
 				descriptorInfos[index].imageLayout = *image;
-				image->bind(currentDescriptorSetIndex, index);
+				image->bind(currentDescriptorSetIndex, index,&freeImageIndeces);
 				return true;
 			} 
 			return false;
@@ -92,7 +92,7 @@ namespace luna
 			uint32_t offset = 0;
 			uint32_t* quadIndices = cpuIndicesBuffer.getData<uint32_t>();
 			//*2 because a rectangle/quad exists out of 2 triangles.
-			for (uint32_t i = 0; i < commandsAmount * 2; i += 6)
+			for (uint32_t i = 0; i < commandsAmount * 6; i += 6)
 			{
 				quadIndices[i + 0] = offset + 0;
 				quadIndices[i + 1] = offset + 1;

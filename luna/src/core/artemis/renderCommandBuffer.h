@@ -36,6 +36,21 @@ namespace luna
             bool addCommand(const drawCommand& command);
             void reset();
             void generateIndices();
+            /// <summary>
+            /// Tries to bind an image to the current descriptor set.
+            /// </summary>
+            /// <param name="image">Image to bind</param>
+            /// <param name="currentDescriptorSetIndex">Descriptor Set index to bind to</param>
+            /// <param name="currentFrame">Current frame that is recording</param>
+            /// <returns>
+            ///     <para>
+            ///         - True if the image was successfully bound.
+            ///     </para>
+            ///     <para>
+            ///         - False if the image binding failed (no more freeImageIndices).
+            ///     </para>
+            /// </returns>
+            /// does not need currentFrame see update func for reason why!
             bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex);
             void unbind(uint8_t index);
             void update(uint8_t currentFrame){
