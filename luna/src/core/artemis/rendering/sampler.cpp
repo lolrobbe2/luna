@@ -29,6 +29,7 @@ namespace luna
 		{
 			LN_ERR_FAIL_COND_MSG(*p_device == VK_NULL_HANDLE, "[Artemis] could not destroy sampler because *p_device was VK_NULL_HANDLE!");
 			LN_ERR_FAIL_COND_MSG(_sampler == VK_NULL_HANDLE, "[Artemis] could not destroy sampler because it has already been destroyed!");	
+			vkDeviceWaitIdle(*p_device);
 			vkDestroySampler(*p_device, _sampler, nullptr);
 			_sampler = VK_NULL_HANDLE; 
 		}
