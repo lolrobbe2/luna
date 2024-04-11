@@ -34,7 +34,8 @@ namespace luna
 			info.height = m_swapchain.extent.height;
 			info.width = m_swapchain.extent.width;
 			info.attachmentCount = 1;
-			info.pAttachments = &m_swapchain.get_image_views().value()[index];
+			auto imageViews = m_swapchain.get_image_views().value();
+			info.pAttachments = &imageViews[index];
 			info.renderPass = *p_renderPass;
 			info.flags = flags;
 			info.layers = layers;

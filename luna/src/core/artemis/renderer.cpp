@@ -74,7 +74,6 @@ namespace luna
 					.setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS)
 					.build();
 
-				subpassDescription description = subPassBuilder.addColorAttachement(att).setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS).build();
 				subpassDependency dependency{ 0, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,0 };
 				renderPassBuilder renderPassBuilder = c_device.getRenderPassBuilder();
 
@@ -230,7 +229,6 @@ namespace luna
 				.setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS)
 				.build();
 
-			subpassDescription description = subPassBuilder.addColorAttachement(att).setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS).build();
 			subpassDependency dependency { 0, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,0};
 			renderPassBuilder renderPassBuilder = c_device.getRenderPassBuilder();
 			

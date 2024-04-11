@@ -121,7 +121,7 @@ namespace luna
 		std::vector<VkAttachmentDescription> renderPassBuilder::generateAttachementDescriptions()
 		{
 			std::vector<VkAttachmentDescription> descriptions;
-			for (subpassDescription subpass : subPasses)
+			for (subpassDescription& subpass : subPasses)
 			{
 				addAttachements(subpass.colorAttachments, descriptions, clearValues);
 				addAttachements(subpass.inputAttachments, descriptions, clearValues);
@@ -134,7 +134,7 @@ namespace luna
 		const VkSubpassDescription* renderPassBuilder::generateSubpassDescriptions()
 		{
 			subpassDescriptions.resize(0);
-			for (subpassDescription subpass : subPasses)
+			for (subpassDescription& subpass : subPasses)
 			{
 				subpassDescriptions.push_back(subpass);
 			}

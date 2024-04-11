@@ -227,7 +227,9 @@ namespace luna
 				//empty defaults
 				layoutCreateInfo.flags = 0;
 				layoutCreateInfo.setLayoutCount = setLayouts.size();
-				layoutCreateInfo.pSetLayouts = std::vector<VkDescriptorSetLayout>(setLayouts.begin(), setLayouts.end()).data();
+				std::vector<VkDescriptorSetLayout> layouts;
+				for (auto& setLayout : setLayouts) layouts.emplace_back(setLayout);
+				layoutCreateInfo.pSetLayouts = layouts.data();
 				layoutCreateInfo.pushConstantRangeCount = 0;
 				layoutCreateInfo.pPushConstantRanges = nullptr; //no pushConstants
 				VkResult layoutCreateRes = vkCreatePipelineLayout(*p_device, &layoutCreateInfo, nullptr, &pipelineLayout);
@@ -268,7 +270,8 @@ namespace luna
 				//empty defaults
 				layoutCreateInfo.flags = 0;
 				layoutCreateInfo.setLayoutCount = setLayouts.size();
-				layoutCreateInfo.pSetLayouts = std::vector<VkDescriptorSetLayout>(setLayouts.begin(), setLayouts.end()).data();
+				std::vector<VkDescriptorSetLayout> layouts(setLayouts.begin(), setLayouts.end());
+				layoutCreateInfo.pSetLayouts = layouts.data();
 				layoutCreateInfo.pushConstantRangeCount = 0;
 				layoutCreateInfo.pPushConstantRanges = nullptr; //no pushConstants
 				VkResult layoutCreateRes = vkCreatePipelineLayout(*p_device, &layoutCreateInfo, nullptr, &pipelineLayout);

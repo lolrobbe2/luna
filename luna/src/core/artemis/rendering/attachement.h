@@ -31,7 +31,6 @@ namespace luna
 			void setReferenceLayout(VkImageLayout layout) { reference->layout = layout; }
 		private:
 			VkAttachmentDescription _attachement;
-			VkImageLayout referenceLayout;
 			ref<VkAttachmentReference> reference = createRef<VkAttachmentReference>();
 			VkClearValue clearValue;
 		};

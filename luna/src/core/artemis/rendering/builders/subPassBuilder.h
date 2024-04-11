@@ -49,18 +49,22 @@ namespace luna
 					clearValues.emplace_back(attachement);
 				}
 			}
+		private:
+			std::vector<VkAttachmentReference> _colorAttachements;
+			std::vector<VkAttachmentReference> _inputAttachements;
+		public:
 			operator VkSubpassDescription() 
 			{
+				_colorAttachements.resize(0);
+				_inputAttachements.resize(0);
 				VkSubpassDescription description{};
 				description.flags = flags;
 				description.pipelineBindPoint = pipelineBindPoint;
-				std::vector<VkAttachmentReference> _inputAttachements;
 				for(attachement attachement : inputAttachments) 
 				{
 					_inputAttachements.push_back(attachement);
 				}
 
-				std::vector<VkAttachmentReference> _colorAttachements;
 				for (attachement attachement : colorAttachments)
 				{
 					_colorAttachements.push_back(attachement);
@@ -80,9 +84,9 @@ namespace luna
 		public:
 			subPassBuilder() = default;
 			subPassBuilder& setBindPoint(const VkPipelineBindPoint point) { description.pipelineBindPoint = point; return *this; }
-			subPassBuilder& addInputAttachement(attachement attachement, const VkImageLayout referenceLayout = VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL);
-			subPassBuilder& addColorAttachement(attachement attachement, const VkImageLayout referenceLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
-			subPassBuilder& setDepthStencilAttachement(const attachement attachement);
+			subPassBuilder& addInputAttachement(attachement& attachement, const VkImageLayout referenceLayout = VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL);
+			subPassBuilder& addColorAttachement(attachement& attachement, const VkImageLayout referenceLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+			subPassBuilder& setDepthStencilAttachement(const attachement& attachement);
 			subpassDescription build();
 		private:
 			std::vector<attachement> inputAttachements;
