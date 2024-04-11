@@ -23,8 +23,8 @@ namespace luna
 
 		const glm::vec4 color2 = { 0.0f, 1.0f, 0.0f, 0.0f };
 		application::application::get().getRenderer()->drawQuad(pos, size, color);
-		application::application::get().getRenderer()->drawQuad(glm::mat4(1.0f), { 1.0f,1.0f,0.0f,0.0f });
-		//application::application::get().getRenderer()->drawQuad(pos2, size, color);
+		//application::application::get().getRenderer()->drawQuad(glm::mat4(1.0f), { 1.0f,1.0f,0.0f,0.0f });
+		application::application::get().getRenderer()->drawQuad(pos2, size, color);
 
 		
 	

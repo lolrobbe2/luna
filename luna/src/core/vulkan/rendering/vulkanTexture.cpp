@@ -87,8 +87,8 @@ namespace luna
 			data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 			memcpy_s(data, width * height * 4, (void*)image, width * height * 4);
 			stbi_image_free(image);
-			utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
-			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
+			//utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
+			//utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
 			_handle = (uint64_t)imageViewHandle;
 
 			textureFile.close();
@@ -109,7 +109,7 @@ namespace luna
 				data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
 				memcpy_s(data, width * height * 4, (void*)image, width * height * channels);
 				stbi_image_free(image);
-				utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
+				//utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { width,height,channels });
 				utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
 				_handle = (uint64_t)imageViewHandle;
 				this->width = (uint32_t)width;

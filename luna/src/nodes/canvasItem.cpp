@@ -29,23 +29,23 @@ namespace luna
 		{
 			const ref<renderer::texture> charGlyph = font->getGlyph(chr);
 			transformComponent transform = getComponent<transformComponent>();
-			int pxNorm = PT_TO_PX(font_size) / renderer::renderer::getSceneGuiDimensions().y;
+			//int pxNorm = PT_TO_PX(font_size) / renderer::renderer::getSceneGuiDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
-			renderer::renderer2D::drawCharQuad(position, { pxNorm,pxNorm }, charGlyph, renderer::renderer2D::checkHandle(charGlyph->handle()), modulate);
+			//renderer::renderer2D::drawCharQuad(position, { pxNorm,pxNorm }, charGlyph, renderer::renderer2D::checkHandle(charGlyph->handle()), modulate);
 		}
 
 		void canvasItem::drawChar(const lineEditComponent::character character, ref<renderer::font> font, color modulate)
 		{
-			renderer::renderer2D::drawCharQuad(character.getTransform(), character.glyph, modulate,font->handle());
+			//renderer::renderer2D::drawCharQuad(character.getTransform(), character.glyph, modulate,font->handle());
 		}
 
 		void canvasItem::drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate)
 		{
 			float pxNorm = (font_size * 1.333);
-			pxNorm /= renderer::renderer::getSceneDimensions().y;
+			//pxNorm /= renderer::renderer::getSceneDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
 			uint8_t outOfBounds;
-			renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font,string,{-1.0f,1.0f,-1.0f,1.0f},outOfBounds);
+			//renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font,string,{-1.0f,1.0f,-1.0f,1.0f},outOfBounds);
 		}
 		void canvasItem::drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<renderer::font> font)
 		{
@@ -57,15 +57,15 @@ namespace luna
 		void canvasItem::drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate,glm::vec4& bounds, uint8_t& outOfBounds)
 		{
 			float pxNorm = (font_size * 1.333);
-			pxNorm /= renderer::renderer::getSceneDimensions().y;
+			//pxNorm /= renderer::renderer::getSceneDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
-			renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font, string, bounds, outOfBounds);
+			//renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font, string, bounds, outOfBounds);
 		}
 		void canvasItem::drawTexture(ref<renderer::texture> texture, glm::vec2 position, color modulate = color(1, 1, 1, 1))
 		{
 			glm::vec3 position3 = { position.x,position.y,0.0f };
-			glm::vec2 normSize = { texture->getWidth() / renderer::renderer::getSceneGuiDimensions().x,texture->getHeight() / renderer::renderer::getSceneGuiDimensions().y };
-			renderer::renderer2D::drawQuad(position3, normSize, texture); 
+			//glm::vec2 normSize = { texture->getWidth() / renderer::renderer::getSceneGuiDimensions().x,texture->getHeight() / renderer::renderer::getSceneGuiDimensions().y };
+			//renderer::renderer2D::drawQuad(position3, normSize, texture); 
 		}
 	}
 }

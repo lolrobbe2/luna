@@ -27,7 +27,7 @@ namespace luna
 			void recordCommands();
 			void flush();
 		private:
-			device& c_device = device();
+			device& c_device = *new device();
 			ref<swapchain> p_swapChain;
 			ref<commandPool> p_graphicsCommandPool;
 			std::vector<ref<commandBuffer>>p_graphicsCommandBuffer;
@@ -42,8 +42,8 @@ namespace luna
 			std::vector<ref<semaphore>> imageAvailableSemaphores, renderFinishedSemaphores,computeFinishedSemaphores;
 			std::vector<frameBuffer> frameBuffers;
 
-			descriptorPool& computeDescriptorPool = descriptorPool();
-			descriptorPool& grapchicsDescriptorPool = descriptorPool();
+			descriptorPool& computeDescriptorPool = *new descriptorPool();
+			descriptorPool& grapchicsDescriptorPool = *new descriptorPool();
 
 			std::vector<renderCommandBuffer> renderCmdBuffers;
 			renderCommandBuffer* currentBuffer;

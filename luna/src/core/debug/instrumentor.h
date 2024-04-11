@@ -51,7 +51,7 @@ namespace luna {
 				}
 				InternalEndSession();
 			}
-			m_OutputStream.open(filepath);
+			m_OutputStream.open(filepath, std::ofstream::binary | std::ofstream::app);
 
 			if (m_OutputStream.is_open() && m_OutputStream.good())
 			{
@@ -94,7 +94,7 @@ namespace luna {
 			if (m_CurrentSession)
 			{
 				m_OutputStream << json.str();
-				m_OutputStream.flush();
+				//m_OutputStream.flush();
 			}
 		}
 
@@ -117,13 +117,13 @@ namespace luna {
 		void WriteHeader()
 		{
 			m_OutputStream << "{\"otherData\": {},\"traceEvents\":[{}";
-			m_OutputStream.flush();
+			//m_OutputStream.flush();
 		}
 
 		void WriteFooter()
 		{
 			m_OutputStream << "]}";
-			m_OutputStream.flush();
+			//m_OutputStream.flush();
 		}
 
 		// Note: you must already own lock on m_Mutex before

@@ -17,9 +17,9 @@ namespace luna
 			
            
 		}
-		descriptorPool descriptorPoolBuilder::build()
+		descriptorPool& descriptorPoolBuilder::build()
 		{
-			return descriptorPool(p_device,info,createDescriptorWrites(),createLayout(layoutFlags));
+			return *new descriptorPool(p_device,info,createDescriptorWrites(),createLayout(layoutFlags));
 		}
 		void descriptorPoolBuilder::setDescriptorTypes()
 		{

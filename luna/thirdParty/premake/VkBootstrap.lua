@@ -2,8 +2,6 @@ Library["Vulkan"] = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"
 project "VkBootstrap"
 	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
-
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 	files
@@ -16,13 +14,6 @@ project "VkBootstrap"
 	includedirs
     {
         "$(VULKAN_SDK)/include"
-	}
-	links
-	{
-	}
-	buildoptions 
-	{
-		"/MD",
 	}
 	filter "configurations:debug"
 		runtime "Debug"

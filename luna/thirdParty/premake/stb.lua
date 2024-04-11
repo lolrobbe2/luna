@@ -12,7 +12,6 @@ project "stb"
 	}
 	buildoptions 
 	{
-		"/MD",
 	}
 	includedirs
 	{

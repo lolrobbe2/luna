@@ -105,7 +105,7 @@ namespace luna
 					if (iterator != objectMemory.end())
 					{
 						iterator->second = _value;
-						return { storageOpSucces,_value }
+						return { storageOpSucces,_value };
 					}
 				case cacheResult::cacheInvalidHandle:
 					return { storageInvalidHandle,value() };

@@ -25,8 +25,8 @@ namespace luna
 			memcpy_s(data, textureMetadata->imageSize, (void*)image, textureMetadata->imageSize);
 			stbi_image_free(image);
 
-			utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { textureMetadata->width,textureMetadata->height,textureMetadata->channels }); //TODO threadpool
-			utils::vulkanAllocator::flush();
+			//utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { textureMetadata->width,textureMetadata->height,textureMetadata->channels }); //TODO threadpool
+			//utils::vulkanAllocator::flush();
 		}
 
 		ref<asset> textureLoader::loadTexture(assetHandle handle, assetMetadata* metadata)
@@ -45,7 +45,7 @@ namespace luna
 			
 			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT); //TODO threadpool
 
-			uploadTexture(textureMetadata, buffer, imageHandle, imageFormat);
+			//uploadTexture(textureMetadata, buffer, imageHandle, imageFormat);
 
 			return ref<asset>(new vulkan::vulkanTexture((uint64_t)imageViewHandle,buffer,imageHandle,imageViewHandle,{textureMetadata->width,textureMetadata->height}));
 		}

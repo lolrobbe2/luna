@@ -49,7 +49,7 @@ namespace luna
 			descriptorPoolBuilder& setInlineUniformBlockExtAmount(uint32_t amount)        { poolSizes[INLINE_UNIFORM_BLOCK_EXT_AMOUNT].descriptorCount = amount; return *this; }
 			descriptorPoolBuilder& setMaxSets(uint32_t maxAmount = 100)                   { info.maxSets = maxAmount; return *this; }
 			descriptorPoolBuilder& setLayoutFlags(VkDescriptorSetLayoutCreateFlags flags) { layoutFlags = flags; return *this; }
-			descriptorPool build();
+			descriptorPool& build();
 		private:
 			void setDescriptorTypes();
 			std::vector<VkWriteDescriptorSet> createDescriptorWrites();

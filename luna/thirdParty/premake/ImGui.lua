@@ -1,7 +1,6 @@
 project "imGui"
 	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 	files
@@ -25,13 +24,9 @@ project "imGui"
 		"../imgui",
 		"../GLFW/include"
 	}
-	buildoptions 
-	{
-		"/MD",
-	}
 	defines
     {
-        "IMGUI_API=__declspec(dllexport)"
+        --"IMGUI_API=__declspec(dllexport)"
     }
 	filter "configurations:debug"
 		runtime "Debug"
@@ -40,6 +35,7 @@ project "imGui"
 	filter "configurations:release"
 		runtime "Release"
 		optimize "on"
+
 
 	filter "configurations:distribution"
 		runtime "Release"

@@ -11,18 +11,21 @@ namespace luna
 		{
 			LN_PROFILE_FUNCTION();
 			c_device = *new device(window);
+			
 			p_swapChain = c_device.getSwapchain();
 
 			p_allocator = c_device.getAllocator();
 		
 			assets::assetImporter::setAllocator(p_allocator);
 			maxFramesInFlight = p_swapChain->size() - 1;
-
-			setUpComputePipeline();
 			
+			setUpComputePipeline();
+			LN_CORE_INFO("here1");
 			setUpGraphicsPipeline();
 			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
+			LN_CORE_INFO("here2");
 			p_allocator->flush();
+			
 			renderCmdBuffers[0].bind(blankImageAsset, 0);
 			p_window = window;
 		}

@@ -10,10 +10,7 @@ project "yaml-cpp"
 		
 		"../yaml-cpp/include/**.h"
 	}
-    buildoptions
-    {
-        "/MD"
-    }
+
 	includedirs
 	{
 		"../yaml-cpp/include"

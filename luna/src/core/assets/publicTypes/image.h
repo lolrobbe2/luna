@@ -37,7 +37,7 @@ namespace luna
 			void unbind();
 			image(artemis::image& _image);
 		private:
-			artemis::image& _image = artemis::image();
+			artemis::image& _image = *new artemis::image();
 			uint32_t descriptorSetIndex = UINT32_MAX; //both descriptorSetIndex + imageIndex
 			uint8_t imageIndex = UINT8_MAX;
 			std::vector<uint8_t>* p_freeImageIndices;

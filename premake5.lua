@@ -40,18 +40,26 @@ LibraryDir["VulkanSDK"] = "$(VULKAN_SDK)/Lib"
 Library = {}
 
 Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
+
+Library["ShaderC"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
+Library["SPIRV_Cross"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
+Library["SPIRV_Tools"] = "%{LibraryDir.VulkanSDK}/SPIRV-Tools.lib"
+
+Library["ShaderC_d"] = "%{LibraryDir.VulkanSDK}/shaderc_sharedd.lib"
+Library["SPIRV_Cross_d"] = "%{LibraryDir.VulkanSDK}/spirv-cross-cored.lib"
+Library["SPIRV_Cross_GLSL_d"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsld.lib"
+Library["SPIRV_Tools_d"] = "%{LibraryDir.VulkanSDK}/SPIRV-Toolsd.lib"
 --[[
-Library["ShaderC"] = "%{wks.location}/vendor/shaderc_shared.lib"
-Library["SPIRV_Cross"] = "%{wks.location}/vendor/spirv-cross-core.lib"
-Library["SPIRV_Cross_GLSL"] = "%{wks.location}/vendor/spirv-cross-glsl.lib"
-Library["SPIRV_Tools"] = "%{wks.location}/vendor/SPIRV-Tools.lib"
+
+Library["ShaderC"] = "$(VULKAN_SDK)/bin/shaderc_shared.dll"
+Library["SPIRV_Cross"] = "$(VULKAN_SDK)/bin/spirv-cross-c-shared.dll"
+Library["SPIRV_Tools"] = "$(VULKAN_SDK)/bin/SPIRV-Tools-shared.dll"
+
+Library["ShaderC_d"] = "$(VULKAN_SDK)/bin/shaderc_sharedd.dll"
+Library["SPIRV_Cross_d"] = "$(VULKAN_SDK)/bin/spirv-cross-c-sharedd.dll"
+Library["SPIRV_Tools_d"] = "$(VULKAN_SDK)/bin/SPIRV-Tools-sharedd.dll"
 ]]--
-Library["ShaderC"] = "$(VULKAN_SDK)/Lib/shaderc_shared.lib"
-Library["SPIRV_Cross"] = "$(VULKAN_SDK)/Lib/spirv-cross-core.lib"
-Library["SPIRV_Cross_GLSL"] = "$(VULKAN_SDK)/Lib/spirv-cross-glsl.lib"
-Library["SPIRV_Tools"] = "$(VULKAN_SDK)/Lib/SPIRV-Tools.lib"
-
-
 
 include "luna/thirdParty/"
 group"core"
@@ -59,9 +67,9 @@ project "luna"
     location "luna"
     kind "SharedLib"
     language "c++"
-    toolset "v142"
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
+    ignoredefaultlibraries { "MSVCRT" }
     files
     {
         "%{prj.name}/src/**.h",
@@ -87,10 +95,7 @@ project "luna"
         
     }
 
-    buildoptions
-    {
-        "/MD"
-    }
+
     
     libdirs
     {
@@ -102,14 +107,11 @@ project "luna"
     }
     filter "system:windows"
         cppdialect "c++17"
-        staticruntime "on"
         systemversion "latest"
         symbols "on"
         links
         {
-            "%{Library.ShaderC}",
-			"%{Library.SPIRV_Cross}",
-			"%{Library.SPIRV_Cross_GLSL}",
+
             "GLFW",
             "VkBootstrap",
             "imGui",
@@ -125,16 +127,20 @@ project "luna"
             Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
             links
             {
-                "%{Library.mono}"
+                "%{Library.mono}",
+                "%{Library.ShaderC}",
+			    "%{Library.SPIRV_Cross_d}",
+                "%{Library.SPIRV_Cross_GLSL_d}",
+                "%{Library.SPIRV_Tools_d}"
             }
             defines
             {
                 "_CRT_SECURE_NO_WARNINGS",
                 "LN_BUILD_DLL",
-                "_WINDLL",
                 "LN_DEBUG"
             
             }
+
             runtime "Debug"
             symbols "On"
   
@@ -143,16 +149,20 @@ project "luna"
             Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
             links
             {
-                "%{Library.mono}"
+                "%{Library.mono}",
+                "%{Library.ShaderC}",
+			    "%{Library.SPIRV_Cross}",
+                "%{Library.SPIRV_Cross_GLSL}",
+                "%{Library.SPIRV_Tools}"
             }
             defines
             {
                 "_CRT_SECURE_NO_WARNINGS",
                 "LN_BUILD_DLL",
-                "_WINDLL",
                 "LN_RELEASE"
             
             }
+
             runtime "Release"
             optimize "On"
 
@@ -161,31 +171,28 @@ project "luna"
             Library["mono"] = "%{LibraryDir.mono}/mono-2.0-sgen.lib"
             links
             {
-                "%{Library.mono}"
+                "%{Library.mono}",
+                "%{Library.ShaderC}",
+			    "%{Library.SPIRV_Cross}",
+                "%{Library.SPIRV_Cross_GLSL}",
+                "%{Library.SPIRV_Tools}"
             }
             defines
             {
                 "_CRT_SECURE_NO_WARNINGS",
                 "LN_BUILD_DLL",
-                "_WINDLL",
+                "_WINDDLL",
                 "LN_DISTRIBUTION"
             
             }
             runtime "Release"
             symbols "Off"
             optimize "On"
-            buildoptions 
-            {
-                "-mwindows"
-            }
-        filter { "action:vs*" } -- Visual Studio-specific configuration
-            buildoptions { "/w" } -- Suppress all warnings
 group""
 project "sandbox"
     location "sandbox"
     kind "ConsoleApp"
     language "c++"
-    toolset "v142"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
@@ -214,41 +221,30 @@ project "sandbox"
         
         "luna"
     }
-    buildoptions 
-    {
-        "/MD",
-    }
+
     filter "system:windows"
         cppdialect "c++17"
-        staticruntime "on"
         systemversion "latest"
         defines
         {
-            "_WINDLL"
+ 
         }
         
         filter "configurations:debug"
             runtime "Debug"
             symbols "On"
-  
         filter "configurations:release"
             runtime "Release"
             optimize "On"
-
         filter "configurations:distribution"
             runtime "Release"
             symbols "Off"
             optimize "On"
-        buildoptions 
-        {
-            "-mwindows"
-        }
 group"core"
 project "apollo"
     location "apollo"
     kind "ConsoleApp"
     language "c++"
-    toolset "v142"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
@@ -277,17 +273,12 @@ project "apollo"
   
         "luna"
     }
-    buildoptions 
-    {
-        "/MD",
-    }
+
     filter "system:windows"
         cppdialect "c++17"
-        staticruntime "on"
         systemversion "latest"
         defines
         {
-            "_WINDLL",
         }
         
         filter "configurations:debug"
@@ -302,10 +293,6 @@ project "apollo"
         runtime "Release"
         symbols "Off"
         optimize "On"
-        buildoptions 
-        {
-            "-mwindows"
-        }
 group""
 
 

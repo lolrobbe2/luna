@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace artemis 
 	{
-		descriptorPool::descriptorPool(const VkDevice* device,VkDescriptorPoolCreateInfo info, std::vector<VkWriteDescriptorSet>& descriptorWrites,VkDescriptorSetLayout layout)
+		descriptorPool::descriptorPool(const VkDevice* device,VkDescriptorPoolCreateInfo info, std::vector<VkWriteDescriptorSet> descriptorWrites,VkDescriptorSetLayout layout)
 		{
 			VkDescriptorPool tempDescriptorPool; //temp used to make sure that when an error occured _desscriptorPool stays VK_NULL_HANDLE
 			
@@ -28,7 +28,7 @@ namespace luna
 		}
 		descriptorSet& descriptorPool::allocateDescriptorSet()
 		{
-			LN_ERR_FAIL_COND_V_MSG(_descriptorPool == VK_NULL_HANDLE, descriptorSet(), "[Artemis] descriptorPool has not been initialized!");
+			LN_ERR_FAIL_COND_V_MSG(_descriptorPool == VK_NULL_HANDLE,*new descriptorSet(), "[Artemis] descriptorPool has not been initialized!");
 			VkDescriptorSetAllocateInfo allocateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO };
 			allocateInfo.descriptorPool = _descriptorPool;
 			allocateInfo.descriptorSetCount = 1;
@@ -47,7 +47,7 @@ namespace luna
 			std::vector<VkDescriptorSet> nativeSets(amount);
 			VkResult allocRes = vkAllocateDescriptorSets(*p_device, &allocateInfo, nativeSets.data());
 			
-			LN_ERR_FAIL_COND_V_MSG(allocRes != VK_SUCCESS, std::vector<descriptorSet>(), "[Artemis] an error occured during descriptorSets allocation, VkResult: " + VK_RESULT(allocRes));
+			LN_ERR_FAIL_COND_V_MSG(allocRes != VK_SUCCESS,*new std::vector<descriptorSet>(), "[Artemis] an error occured during descriptorSets allocation, VkResult: " + VK_RESULT(allocRes));
 
 			std::vector<descriptorSet>* sets = new std::vector<descriptorSet>();
 			sets->resize(amount); //reserve upfront for performance reasons

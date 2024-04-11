@@ -4,10 +4,7 @@ namespace luna
 {
 	namespace vulkan
 	{
-		VkCommandBuffer vulkanCmdPool::operator[](const virtualCmdBuffer commandBuffer)
-		{
-			return VkCommandBuffer();
-		}
+		
 		vulkanCmdPool::vulkanCmdPool(const vulkanCmdPoolSpec& commandPoolSpec)
 		{
 			LN_PROFILE_FUNCTION();

@@ -1,6 +1,7 @@
 #include "socket.h"
 #include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
+#include <core/scene/scene.h>
 namespace luna
 {
 	namespace networking 

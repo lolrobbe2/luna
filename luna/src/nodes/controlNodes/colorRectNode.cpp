@@ -36,7 +36,7 @@ namespace luna
 		{
 			auto& canvasComp = getComponent<canvasComponent>();
 			auto& transform = getComponent<transformComponent>();
-			renderer::renderer2D::drawQuad(transform.translation, transform.scale, canvasComp.modulate);
+			//renderer::renderer2D::drawQuad(transform.translation, transform.scale, canvasComp.modulate);
 		}
 	}
 }

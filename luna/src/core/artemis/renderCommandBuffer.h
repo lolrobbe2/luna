@@ -57,10 +57,10 @@ namespace luna
                 graphicsDescriptorSets[currentFrame].write(0, &samplerInfo);
                 graphicsDescriptorSets[currentFrame].update();
             }
-            buffer& cpuIndicesBuffer = buffer();
-            buffer& cpuBuffer = buffer(); //stores commands.
-            buffer& gpuBuffer = buffer(); //stores vertices.
-            descriptorSet& computeDescriptorSet = descriptorSet();
+            buffer& cpuIndicesBuffer = *new buffer();
+            buffer& cpuBuffer = *new buffer(); //stores commands.
+            buffer& gpuBuffer = *new buffer(); //stores vertices.
+            descriptorSet& computeDescriptorSet = *new descriptorSet();
             std::vector<descriptorSet> graphicsDescriptorSets;
             std::vector<uint8_t> freeImageIndeces;
             ref<assets::image> images[LN_IMAGE_BATCH_SIZE];

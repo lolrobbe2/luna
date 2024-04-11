@@ -36,15 +36,15 @@ namespace luna
 			operator std::vector<VkClearValue>() const 
 			{
 				std::vector<VkClearValue> clearValues;
-				for each (attachement attachement in colorAttachments)
+				for(attachement attachement : colorAttachments)
 				{
 					clearValues.emplace_back(attachement);
 				}
-				for each (attachement attachement in inputAttachments)
+				for (attachement attachement : inputAttachments)
 				{
 					clearValues.emplace_back(attachement);
 				}
-				for each (attachement attachement in resolveAttachments)
+				for (attachement attachement : resolveAttachments)
 				{
 					clearValues.emplace_back(attachement);
 				}

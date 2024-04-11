@@ -43,8 +43,8 @@ namespace luna
 			transform.setScale(transform.scale + NORMALIZED_BORDER_SIZE);
 			glm::vec4 rectColor;
 			lineEdit.selected ? rectColor = SELECTED_COLOR : rectColor = UNSELECTED_COLOR;
-			renderer::renderer2D::drawQuad(transform.getTransform(), rectColor);
-			renderer::renderer2D::drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,1.0f});
+			//renderer::renderer2D::drawQuad(transform.getTransform(), rectColor);
+			//renderer::renderer2D::drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,1.0f});
 			
 			drawString(lineEdit.charTransforms, color(), lineEdit.font);
 			//if (lineEdit.font) drawString(lineEdit.font, transform2.translation, lineEdit.drawText,16,color(), lineEdit.bounds, lineEdit.indexOutOfBounds);

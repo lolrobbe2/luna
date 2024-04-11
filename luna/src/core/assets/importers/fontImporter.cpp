@@ -113,7 +113,7 @@ namespace luna
 				}
 			}
 			
-			if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(*imageBuffer, imageHandle, imageFormat, { FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,1 });
+			//if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(*imageBuffer, imageHandle, imageFormat, { FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,1 });
 			utils::vulkanAllocator::flush();
 			return bufferBase;
 		}
@@ -143,7 +143,7 @@ namespace luna
 
 			if (stbtt_InitFont(&fontInfo, buffer.data(), 0))
 			{
-				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
+				VkFormat imageFormat; //= utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
 
 				createFontTexture(FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, &imageHandle, &imageViewHandle, VK_FORMAT_R8_UNORM);
 				void* data = writeGlyphsIntoBuffer(&imageBuffer, imageHandle, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances, imageFormat);
@@ -153,7 +153,8 @@ namespace luna
 			}
 			else LN_CORE_ERROR("incorrect file format, expected .ttf!");
 			fontFile.close();
-			return ref<asset>(new vulkan::vulkanFont(imageBuffer, imageHandle, imageViewHandle, fontMetadata->glyphScales, fontMetadata->glyphAdvances));
+			//return ref<asset>(new vulkan::vulkanFont(imageBuffer, imageHandle, imageViewHandle, fontMetadata->glyphScales, fontMetadata->glyphAdvances));
+			return nullptr;
 		}
 
    }
