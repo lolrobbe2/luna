@@ -7,7 +7,7 @@
 */
 
 //set workgroup size
-layout (local_size_x = 16, local_size_y = 1, local_size_z = 1) in;
+layout (local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
 
 //vertex positions.
 const vec4 quadVertexPositions[4] = {
@@ -29,8 +29,7 @@ struct drawCommand
     mat4 transform;
     vec4 color;
     vec2 textureCoords[4];
-    float textureIndex;
-    float text;
+ 	vec2 textureDetails;
 };
 
 struct quadVertex
@@ -38,11 +37,11 @@ struct quadVertex
 	vec4 vert;
     vec4 color;
 	vec2 textureCoord;
-	float textureIndex;
-	float text;
+    float textureIndex;
+    float text;
 };
 
-layout(std140, binding = 0) readonly buffer drawCommandsSSBO {
+layout(binding = 0) readonly buffer drawCommandsSSBO {
     drawCommand drawCommandsIn[ ];
 };
 layout(std140, binding = 1) buffer vertexSSBO
@@ -52,24 +51,28 @@ layout(std140, binding = 1) buffer vertexSSBO
 
 //consts
 const uint quadVertexCount = 4;
-const uint outIndexMultiplier = quadVertexCount * 4;
+const uint outIndexMultiplier = 4;
 
 
 
 void main()
 {
-    const uint index = gl_GlobalInvocationID.x;
-    const uint outIndex = index * outIndexMultiplier; //index is multiplied by 4 to get the correct quad offset in memory. because quads have 4 quadVertices
+
+     uint localInvocationID = gl_LocalInvocationID.x;
+
+    // Calculate the index of the SSBO element to access
+    uint index = localInvocationID + gl_WorkGroupSize.x * gl_WorkGroupID.x;
+    uint outIndex = index * outIndexMultiplier; //index is multiplied by 4 to get the correct quad offset in memory. because quads have 4 quadVertices
 
     for (int subIndex = 0; subIndex < quadVertexCount; subIndex++)
     {
         //vertexPositions are different for text and quads.
-        if(drawCommandsIn[index].text > 0.0f) verticesOut[outIndex + subIndex].vert = drawCommandsIn[index].transform * quadCharVertexPositions[subIndex];
+        if(drawCommandsIn[index].textureDetails.y > 0.0f) verticesOut[outIndex + subIndex].vert = drawCommandsIn[index].transform * quadCharVertexPositions[subIndex];
         else verticesOut[outIndex + subIndex].vert = drawCommandsIn[index].transform * quadCharVertexPositions[subIndex];
 
-        verticesOut[outIndex + subIndex].textureIndex = drawCommandsIn[index].textureIndex;
+        verticesOut[outIndex + subIndex].textureIndex = drawCommandsIn[index].textureDetails.x;
         verticesOut[outIndex + subIndex].color = drawCommandsIn[index].color;
-        verticesOut[outIndex + subIndex].text = drawCommandsIn[index].text;
+        verticesOut[outIndex + subIndex].text = drawCommandsIn[index].textureDetails.y;
         verticesOut[outIndex + subIndex].textureCoord = drawCommandsIn[index].textureCoords[subIndex];
     }
 }

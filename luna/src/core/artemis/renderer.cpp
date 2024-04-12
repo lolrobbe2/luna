@@ -20,10 +20,8 @@ namespace luna
 			maxFramesInFlight = p_swapChain->size() - 1;
 			
 			setUpComputePipeline();
-			LN_CORE_INFO("here1");
 			setUpGraphicsPipeline();
 			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
-			LN_CORE_INFO("here2");
 			p_allocator->flush();
 			
 			renderCmdBuffers[0].bind(blankImageAsset, 0);
@@ -284,7 +282,7 @@ namespace luna
 				if (renderCmdBuffer.commandsAmount) {
 					renderCmdBuffer.generateIndices();
 					p_computeCommandBuffer[currentFrame]->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
-					p_computeCommandBuffer[currentFrame]->dispatch(renderCmdBuffer.commandsAmount, 1, 1); //dispatch per batch
+					p_computeCommandBuffer[currentFrame]->dispatch(ceil(renderCmdBuffer.commandsAmount / 256.0f), 1, 1); //dispatch per batch
 				}
 			}
 			p_computeCommandBuffer[currentFrame]->end();
