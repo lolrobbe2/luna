@@ -1,7 +1,7 @@
 #pragma once
 #include <core/artemis/device/allocator.h>
 #include <core/artemis/device/descriptorSet.h>
-#define LN_DRAW_COMMANDS_AMOUNT 10000
+#define LN_DRAW_COMMANDS_AMOUNT 100000
 #define LN_IMAGE_BATCH_SIZE 32
 namespace luna 
 {

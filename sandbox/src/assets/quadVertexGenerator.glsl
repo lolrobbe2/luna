@@ -7,7 +7,7 @@
 */
 
 //set workgroup size
-layout (local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
+layout (local_size_x = 512, local_size_y = 1, local_size_z = 1) in;
 
 //vertex positions.
 const vec4 quadVertexPositions[4] = {
@@ -44,7 +44,7 @@ struct quadVertex
 layout(binding = 0) readonly buffer drawCommandsSSBO {
     drawCommand drawCommandsIn[ ];
 };
-layout(std140, binding = 1) buffer vertexSSBO
+layout(binding = 1) buffer vertexSSBO
 {
     quadVertex verticesOut[ ];
 };

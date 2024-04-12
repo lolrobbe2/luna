@@ -282,7 +282,7 @@ namespace luna
 				if (renderCmdBuffer.commandsAmount) {
 					renderCmdBuffer.generateIndices();
 					p_computeCommandBuffer[currentFrame]->bindDescriptorSet(computePipeline, renderCmdBuffer.computeDescriptorSet);
-					p_computeCommandBuffer[currentFrame]->dispatch(ceil(renderCmdBuffer.commandsAmount / 256.0f), 1, 1); //dispatch per batch
+					p_computeCommandBuffer[currentFrame]->dispatch(ceil(renderCmdBuffer.commandsAmount / 512.0f), 1, 1); //dispatch per batch
 				}
 			}
 			p_computeCommandBuffer[currentFrame]->end();
