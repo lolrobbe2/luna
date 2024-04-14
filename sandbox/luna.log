@@ -1,129 +1,129 @@
-[02:27:58] [error] LUNA: ========================================================================================
-[02:27:58] [error] LUNA: |                                    fragment.glsl                                    |
-[02:27:58] [error] LUNA: ========================================================================================
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [warning] LUNA: |                        contents                        |
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [trace] LUNA:     0 uniform buffers
-[02:27:58] [trace] LUNA:     0 push constants
-[02:27:58] [trace] LUNA:     1 resources
-[02:27:58] [trace] LUNA:     4 stage inputs
-[02:27:58] [trace] LUNA:     1 stage outputs
-[02:27:58] [trace] LUNA:     0 storage buffers
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [warning] LUNA: |                      stage inputs                      |
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [trace] LUNA:   text
-[02:27:58] [trace] LUNA:     id = 8
-[02:27:58] [trace] LUNA:     offset = 0
-[02:27:58] [trace] LUNA:     location = 3
-[02:27:58] [trace] LUNA:     typeName = Float
-[02:27:58] [trace] LUNA:   textIndex
-[02:27:58] [trace] LUNA:     id = 25
-[02:27:58] [trace] LUNA:     offset = 0
-[02:27:58] [trace] LUNA:     location = 2
-[02:27:58] [trace] LUNA:     typeName = Float
-[02:27:58] [trace] LUNA:   textCoord
-[02:27:58] [trace] LUNA:     id = 41
-[02:27:58] [trace] LUNA:     offset = 0
-[02:27:58] [trace] LUNA:     location = 1
-[02:27:58] [trace] LUNA:     typeName = Vec2
-[02:27:58] [trace] LUNA:   fragColor
-[02:27:58] [trace] LUNA:     id = 48
-[02:27:58] [trace] LUNA:     offset = 0
-[02:27:58] [trace] LUNA:     location = 0
-[02:27:58] [trace] LUNA:     typeName = Vec4
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [warning] LUNA: |                     stage outputs                     |
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [trace] LUNA:   outColor
-[02:27:58] [trace] LUNA:     id = 17
-[02:27:58] [trace] LUNA:     typeName = Vec4
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [warning] LUNA: |                       resources                       |
-[02:27:58] [warning] LUNA: ==========================================================
-[02:27:58] [trace] LUNA:   textures
-[02:27:58] [trace] LUNA:     id = 24
-[02:27:58] [trace] LUNA:     typeName = Image
-[02:27:58] [trace] LUNA:     amount = 32
-[02:27:58] [trace] LUNA: reflecting shader: true
-[02:27:59] [error] LUNA: ========================================================================================
-[02:27:59] [error] LUNA: |                                     vertex.glsl                                     |
-[02:27:59] [error] LUNA: ========================================================================================
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [warning] LUNA: |                        contents                        |
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [trace] LUNA:     0 uniform buffers
-[02:27:59] [trace] LUNA:     0 push constants
-[02:27:59] [trace] LUNA:     0 resources
-[02:27:59] [trace] LUNA:     5 stage inputs
-[02:27:59] [trace] LUNA:     4 stage outputs
-[02:27:59] [trace] LUNA:     0 storage buffers
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [warning] LUNA: |                      stage inputs                      |
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [trace] LUNA:   inColor
-[02:27:59] [trace] LUNA:     id = 11
-[02:27:59] [trace] LUNA:     offset = 0
-[02:27:59] [trace] LUNA:     location = 1
-[02:27:59] [trace] LUNA:     typeName = Vec4
-[02:27:59] [trace] LUNA:   textureCoord
-[02:27:59] [trace] LUNA:     id = 17
-[02:27:59] [trace] LUNA:     offset = 0
-[02:27:59] [trace] LUNA:     location = 2
-[02:27:59] [trace] LUNA:     typeName = Vec2
-[02:27:59] [trace] LUNA:   textureIndex
-[02:27:59] [trace] LUNA:     id = 22
-[02:27:59] [trace] LUNA:     offset = 0
-[02:27:59] [trace] LUNA:     location = 3
-[02:27:59] [trace] LUNA:     typeName = Float
-[02:27:59] [trace] LUNA:   inPosition
-[02:27:59] [trace] LUNA:     id = 32
-[02:27:59] [trace] LUNA:     offset = 0
-[02:27:59] [trace] LUNA:     location = 0
-[02:27:59] [trace] LUNA:     typeName = Vec4
-[02:27:59] [trace] LUNA:   text
-[02:27:59] [trace] LUNA:     id = 36
-[02:27:59] [trace] LUNA:     offset = 0
-[02:27:59] [trace] LUNA:     location = 4
-[02:27:59] [trace] LUNA:     typeName = Float
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [warning] LUNA: |                     stage outputs                     |
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [trace] LUNA:   fragColor
-[02:27:59] [trace] LUNA:     id = 9
-[02:27:59] [trace] LUNA:     typeName = Vec4
-[02:27:59] [trace] LUNA:   textCoord
-[02:27:59] [trace] LUNA:     id = 15
-[02:27:59] [trace] LUNA:     typeName = Vec2
-[02:27:59] [trace] LUNA:   textIndex
-[02:27:59] [trace] LUNA:     id = 20
-[02:27:59] [trace] LUNA:     typeName = Float
-[02:27:59] [trace] LUNA:   _text
-[02:27:59] [trace] LUNA:     id = 35
-[02:27:59] [trace] LUNA:     typeName = Float
-[02:27:59] [trace] LUNA: reflecting shader: true
-[02:27:59] [error] LUNA: ========================================================================================
-[02:27:59] [error] LUNA: |                               quadVertexGenerator.glsl                               |
-[02:27:59] [error] LUNA: ========================================================================================
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [warning] LUNA: |                        contents                        |
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [trace] LUNA:     0 uniform buffers
-[02:27:59] [trace] LUNA:     0 push constants
-[02:27:59] [trace] LUNA:     0 resources
-[02:27:59] [trace] LUNA:     0 stage inputs
-[02:27:59] [trace] LUNA:     0 stage outputs
-[02:27:59] [trace] LUNA:     2 storage buffers
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [warning] LUNA: |                    storage buffers                    |
-[02:27:59] [warning] LUNA: ==========================================================
-[02:27:59] [trace] LUNA:   drawCommandsSSBO
-[02:27:59] [trace] LUNA:     id = 50
-[02:27:59] [trace] LUNA:     typeName = Struct
-[02:27:59] [trace] LUNA:   vertexSSBO
-[02:27:59] [trace] LUNA:     id = 65
-[02:27:59] [trace] LUNA:     typeName = Struct
-[02:27:59] [trace] LUNA: reflecting shader: true
-[02:27:59] [info] LUNA: started vulkan device
-[02:27:59] [info] APP: added testLayer
+[07:29:52] [error] LUNA: ========================================================================================
+[07:29:52] [error] LUNA: |                                    fragment.glsl                                    |
+[07:29:52] [error] LUNA: ========================================================================================
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                        contents                        |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:     0 uniform buffers
+[07:29:52] [trace] LUNA:     0 push constants
+[07:29:52] [trace] LUNA:     1 resources
+[07:29:52] [trace] LUNA:     4 stage inputs
+[07:29:52] [trace] LUNA:     1 stage outputs
+[07:29:52] [trace] LUNA:     0 storage buffers
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                      stage inputs                      |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:   text
+[07:29:52] [trace] LUNA:     id = 8
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 3
+[07:29:52] [trace] LUNA:     typeName = Float
+[07:29:52] [trace] LUNA:   textIndex
+[07:29:52] [trace] LUNA:     id = 25
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 2
+[07:29:52] [trace] LUNA:     typeName = Float
+[07:29:52] [trace] LUNA:   textCoord
+[07:29:52] [trace] LUNA:     id = 41
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 1
+[07:29:52] [trace] LUNA:     typeName = Vec2
+[07:29:52] [trace] LUNA:   fragColor
+[07:29:52] [trace] LUNA:     id = 48
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 0
+[07:29:52] [trace] LUNA:     typeName = Vec4
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                     stage outputs                     |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:   outColor
+[07:29:52] [trace] LUNA:     id = 17
+[07:29:52] [trace] LUNA:     typeName = Vec4
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                       resources                       |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:   textures
+[07:29:52] [trace] LUNA:     id = 24
+[07:29:52] [trace] LUNA:     typeName = Image
+[07:29:52] [trace] LUNA:     amount = 32
+[07:29:52] [trace] LUNA: reflecting shader: true
+[07:29:52] [error] LUNA: ========================================================================================
+[07:29:52] [error] LUNA: |                                     vertex.glsl                                     |
+[07:29:52] [error] LUNA: ========================================================================================
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                        contents                        |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:     0 uniform buffers
+[07:29:52] [trace] LUNA:     0 push constants
+[07:29:52] [trace] LUNA:     0 resources
+[07:29:52] [trace] LUNA:     5 stage inputs
+[07:29:52] [trace] LUNA:     4 stage outputs
+[07:29:52] [trace] LUNA:     0 storage buffers
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                      stage inputs                      |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:   inColor
+[07:29:52] [trace] LUNA:     id = 11
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 1
+[07:29:52] [trace] LUNA:     typeName = Vec4
+[07:29:52] [trace] LUNA:   textureCoord
+[07:29:52] [trace] LUNA:     id = 17
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 2
+[07:29:52] [trace] LUNA:     typeName = Vec2
+[07:29:52] [trace] LUNA:   textureIndex
+[07:29:52] [trace] LUNA:     id = 22
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 3
+[07:29:52] [trace] LUNA:     typeName = Float
+[07:29:52] [trace] LUNA:   inPosition
+[07:29:52] [trace] LUNA:     id = 32
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 0
+[07:29:52] [trace] LUNA:     typeName = Vec4
+[07:29:52] [trace] LUNA:   text
+[07:29:52] [trace] LUNA:     id = 36
+[07:29:52] [trace] LUNA:     offset = 0
+[07:29:52] [trace] LUNA:     location = 4
+[07:29:52] [trace] LUNA:     typeName = Float
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                     stage outputs                     |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:   fragColor
+[07:29:52] [trace] LUNA:     id = 9
+[07:29:52] [trace] LUNA:     typeName = Vec4
+[07:29:52] [trace] LUNA:   textCoord
+[07:29:52] [trace] LUNA:     id = 15
+[07:29:52] [trace] LUNA:     typeName = Vec2
+[07:29:52] [trace] LUNA:   textIndex
+[07:29:52] [trace] LUNA:     id = 20
+[07:29:52] [trace] LUNA:     typeName = Float
+[07:29:52] [trace] LUNA:   _text
+[07:29:52] [trace] LUNA:     id = 35
+[07:29:52] [trace] LUNA:     typeName = Float
+[07:29:52] [trace] LUNA: reflecting shader: true
+[07:29:52] [error] LUNA: ========================================================================================
+[07:29:52] [error] LUNA: |                               quadVertexGenerator.glsl                               |
+[07:29:52] [error] LUNA: ========================================================================================
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                        contents                        |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:     0 uniform buffers
+[07:29:52] [trace] LUNA:     0 push constants
+[07:29:52] [trace] LUNA:     0 resources
+[07:29:52] [trace] LUNA:     0 stage inputs
+[07:29:52] [trace] LUNA:     0 stage outputs
+[07:29:52] [trace] LUNA:     2 storage buffers
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [warning] LUNA: |                    storage buffers                    |
+[07:29:52] [warning] LUNA: ==========================================================
+[07:29:52] [trace] LUNA:   drawCommandsSSBO
+[07:29:52] [trace] LUNA:     id = 50
+[07:29:52] [trace] LUNA:     typeName = Struct
+[07:29:52] [trace] LUNA:   vertexSSBO
+[07:29:52] [trace] LUNA:     id = 65
+[07:29:52] [trace] LUNA:     typeName = Struct
+[07:29:52] [trace] LUNA: reflecting shader: true
+[07:29:53] [info] LUNA: started vulkan device
+[07:29:53] [info] APP: added testLayer
