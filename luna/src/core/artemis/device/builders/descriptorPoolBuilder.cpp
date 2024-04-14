@@ -13,9 +13,6 @@ namespace luna
             info.poolSizeCount = DESCRIPTOR_TYPE_AMOUNT;
             info.pPoolSizes = poolSizes;
             info.maxSets = 100;
-
-			
-           
 		}
 		descriptorPool& descriptorPoolBuilder::build()
 		{
@@ -45,6 +42,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			std::vector<VkWriteDescriptorSet> descriptorWrites;
 			descriptorWrites.resize(1);
+			if (!p_shader) return descriptorWrites; //return empty when shader has not been defined!
 			for (shaderResource resource : p_shader->layout())
 			{
 				VkDescriptorSetLayoutBinding resourceLayoutBinding;
@@ -91,6 +89,7 @@ namespace luna
 		{
 
 			LN_PROFILE_FUNCTION();
+			if (!p_shader) return VK_NULL_HANDLE;
 			VkDescriptorSetLayout setLayout;
 			VkDescriptorSetLayoutCreateInfo setLayoutCreateInfo{ VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO };
 			std::vector<VkDescriptorSetLayoutBinding> resourceLayoutBindings;

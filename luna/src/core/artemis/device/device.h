@@ -72,24 +72,28 @@ namespace luna
             device() = default;
 			device(const ref<vulkan::window>& Window);
             ~device();
-            bool isFeatureSupported(physicalDeviceFeatures feature);
-            VkSurfaceCapabilitiesKHR surfaceCapabilities();
+            bool isFeatureSupported(physicalDeviceFeatures feature) const;
+            VkSurfaceCapabilitiesKHR surfaceCapabilities() const;
 
-            VkQueue getQueue(vkb::QueueType type,bool dedicated = false);
-            uint32_t getQueueFamilyIndex(vkb::QueueType type, bool dedicated = false);
-            bool hasDedicatedQueue(vkb::QueueType type);
-            ref<commandPool> getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags = 0);
+            VkQueue getQueue(vkb::QueueType type,bool dedicated = false) const;
+            uint32_t getQueueFamilyIndex(vkb::QueueType type, bool dedicated = false) const;
+            bool hasDedicatedQueue(vkb::QueueType type) const;
+            ref<commandPool> getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags = 0) const;
             ref<semaphore> getSemaphore(const VkSemaphoreCreateFlags flags) const;
             ref<fence> getFence(const VkFenceCreateFlags flags) const;
-            ref<swapchain> getSwapchain();
-            ref<sampler> getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode = VK_SAMPLER_ADDRESS_MODE_REPEAT);
-            ref<allocator> getAllocator(const ref<commandPool> transferPool = nullptr);
-            descriptorPoolBuilder getDescriptorPoolBuilder(const ref<shader> shader);
-            pipelineBuilder getPipelineBuilder();
-            renderPassBuilder getRenderPassBuilder();
-            void waitIdle();
-            operator const VkDevice* () { return &_device.device; }
-            operator const VkDevice () { return _device.device; }
+            ref<swapchain> getSwapchain() const;
+            ref<sampler> getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode = VK_SAMPLER_ADDRESS_MODE_REPEAT) const;
+            ref<allocator> getAllocator(const ref<commandPool> transferPool = nullptr) const;
+            descriptorPoolBuilder getDescriptorPoolBuilder(const ref<shader> shader) const;
+            pipelineBuilder getPipelineBuilder() const;
+            renderPassBuilder getRenderPassBuilder() const;
+            void waitIdle() const;
+            operator const VkDevice* () const { return &_device.device; }
+            operator const VkDevice () const { return _device.device; }
+            operator const device* () const { return this; }
+            operator GLFWwindow* () const { return (GLFWwindow*)window->getWindow(); }
+            operator VkInstance () const { return instance; }
+            operator VkPhysicalDevice () const { return physicalDevice; }
 		private:
 			VkResult createInstance();
 

@@ -131,7 +131,7 @@ namespace luna
             return VK_SUCCESS;
         }
 
-        bool device::isFeatureSupported(physicalDeviceFeatures feature) 
+        bool device::isFeatureSupported(physicalDeviceFeatures feature) const
         {
             switch (feature) {
             case ROBUST_BUFFER_ACCESS:
@@ -250,28 +250,28 @@ namespace luna
             LN_ERR_FAIL_V_MSG("[Artemis] unkown feature!", false);
 
         }
-        VkSurfaceCapabilitiesKHR device::surfaceCapabilities()
+        VkSurfaceCapabilitiesKHR device::surfaceCapabilities() const
         {
             VkSurfaceCapabilitiesKHR temp;
             VkResult result = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, &temp);
             LN_ERR_FAIL_COND_V_MSG(result != VK_SUCCESS, temp, "[Artemis] and error occured while trying to get device surface capabilities, VkResult: " + std::to_string(result));
             return temp;
         }
-        VkQueue device::getQueue(vkb::QueueType type, bool dedicated)
+        VkQueue device::getQueue(vkb::QueueType type, bool dedicated) const
         {
             return dedicated ? _device.get_dedicated_queue(type).value() : _device.get_queue(type).value();
         }
-        uint32_t device::getQueueFamilyIndex(vkb::QueueType type, bool dedicated)
+        uint32_t device::getQueueFamilyIndex(vkb::QueueType type, bool dedicated) const
         {
             return dedicated ? _device.get_dedicated_queue_index(type).value() : _device.get_queue_index(type).value();
         }
 
-        bool device::hasDedicatedQueue(vkb::QueueType type)
+        bool device::hasDedicatedQueue(vkb::QueueType type) const
         {
             auto result = _device.get_dedicated_queue_index(type);
             return result.has_value();
         }
-        ref<commandPool> device::getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags)
+        ref<commandPool> device::getCommandPool(vkb::QueueType type, const VkCommandPoolCreateFlags createFlags) const
         {
             //release the vkqueue!
             if(hasDedicatedQueue(type))
@@ -290,32 +290,32 @@ namespace luna
         {
             return ref<fence>(new fence(&_device.device,flags));
         }
-        ref<swapchain> device::getSwapchain()
+        ref<swapchain> device::getSwapchain() const
         {
             return ref<swapchain>(new swapchain(&_device,window->getWidth(),window->getHeight(), surfaceCapabilities().maxImageCount  - 1));
         }
-        ref<sampler> device::getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode)
+        ref<sampler> device::getSampler(const VkFilter& filters, const VkSamplerAddressMode& samplerAddressMode) const
         {
             return ref<sampler>(new sampler(&_device.device,filters,samplerAddressMode));
         }
-        ref<allocator> device::getAllocator(const ref<commandPool> transferPool)
+        ref<allocator> device::getAllocator(const ref<commandPool> transferPool) const
         {
             ref<commandPool> p_transferPool = transferPool == nullptr ? getCommandPool(vkb::QueueType::transfer) : transferPool;
             return ref<allocator>(new allocator(&_device.device,&instance.instance,&_device.physical_device.physical_device,_device.physical_device.properties.apiVersion,p_transferPool));
         }
-        descriptorPoolBuilder device::getDescriptorPoolBuilder(const ref<shader> shader)
+        descriptorPoolBuilder device::getDescriptorPoolBuilder(const ref<shader> shader) const
         {
             return descriptorPoolBuilder(&_device.device,shader);
         }
-        pipelineBuilder device::getPipelineBuilder()
+        pipelineBuilder device::getPipelineBuilder() const
         {
             return pipelineBuilder(&_device.device);
         }
-        renderPassBuilder device::getRenderPassBuilder()
+        renderPassBuilder device::getRenderPassBuilder() const
         {
             return renderPassBuilder(&_device.device);
         }
-        void device::waitIdle()
+        void device::waitIdle() const
         {
             vkDeviceWaitIdle(_device);
         }
