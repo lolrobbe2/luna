@@ -69,6 +69,7 @@ namespace luna
 			std::vector<frameBuffer> imguiFrameBuffers;
 			ref<renderPass> p_imguiRenderPass;
 			glm::vec2 imguiSceneSize;
+			std::vector<image> frameBufferImages;    
 
 #endif //IMGUI_API
 

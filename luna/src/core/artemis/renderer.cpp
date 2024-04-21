@@ -79,7 +79,15 @@ namespace luna
 
 				subpassDependency dependency{ 0, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,0 };
 				renderPassBuilder renderPassBuilder = c_device.getRenderPassBuilder();
-
+#ifdef IMGUI_API
+				p_imguiRenderPass = renderPassBuilder
+					.addSubPassDependency(dependency)
+					.addSubPass(subpass)
+					.build();
+				imguiFrameBuffers.resize(0);
+				imguiFrameBuffers.resize(p_swapChain->size());
+				for (size_t i = 0; i < imguiFrameBuffers.size(); ++i) imguiFrameBuffers[i] = p_swapChain->getFrameBuffer(p_imguiRenderPass, i, 0, 1);
+#else
 				p_renderPass = renderPassBuilder
 					.addSubPassDependency(dependency)
 					.addSubPass(subpass)
@@ -87,7 +95,7 @@ namespace luna
 				frameBuffers.resize(0);
 				frameBuffers.resize(p_swapChain->size());
 				for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
-
+#endif // IMGUI_API
 				//recreate pipeline
 				pipelineBuilder graphicsPipelineBuilder = c_device.getPipelineBuilder();
 				graphicsPipeline = graphicsPipelineBuilder
@@ -240,7 +248,8 @@ namespace luna
 			frameBuffers.resize(p_swapChain->size());
 
 #ifdef IMGUI_API
-
+			frameBufferImages = p_allocator->allocateImages(imguiSceneSize, 4,VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,p_swapChain->size());
+			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = frameBuffer(c_device, frameBufferImages[i],p_renderPass);
 #else 
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
 #endif // !
@@ -279,7 +288,7 @@ namespace luna
 			renderFinishedSemaphores.resize(maxFramesInFlight);
 			for (auto& semaphore : renderFinishedSemaphores) semaphore = c_device.getSemaphore(0);
 		}
-
+#ifdef IMGUI_API
 		void renderer::setUpImguiPipeline()
 		{
 			attachementBuilder attachementBuilder{ p_swapChain };
@@ -305,6 +314,7 @@ namespace luna
 				.build();
 			for (size_t i = 0; i < imguiFrameBuffers.size(); ++i) imguiFrameBuffers[i] = p_swapChain->getFrameBuffer(p_imguiRenderPass, i, 0, 1);
 		}
+#endif // IMGUI_API
 
 		void renderer::recordCommands()
 		{

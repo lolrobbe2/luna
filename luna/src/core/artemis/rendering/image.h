@@ -1,5 +1,6 @@
 #pragma once
 #include <core/platform/windows/windowsWindow.h>
+#include <core/core.h>
 namespace luna 
 {
 	namespace artemis 
@@ -15,6 +16,8 @@ namespace luna
 			_ALWAYS_INLINE_ VkImage getImage() const { return _image; }
 			_ALWAYS_INLINE_ operator VkImageView() const{ return _imageView; }
 			_ALWAYS_INLINE_ VkImageView getView() const { return _imageView; }
+			_ALWAYS_INLINE_ operator VkImageView*() const { return (VkImageView*)&_imageView; }
+			_ALWAYS_INLINE_ VkImageView* getViewPtr() const { return (VkImageView*)&_imageView; }
 			_ALWAYS_INLINE_ operator VkFormat() const { return format; }
 			_ALWAYS_INLINE_ VkFormat getFormat() const { return format; }
 			_ALWAYS_INLINE_ operator glm::vec2() const { return extent; }

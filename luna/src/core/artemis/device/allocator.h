@@ -37,6 +37,7 @@ namespace luna
 		public:
 			buffer& allocateBuffer(const size_t bufferSize,const memoryUsage memUsage,VkBufferUsageFlags bufferUsage);
 			image& allocateImage( const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const memoryUsage memoryUsage = GPU_ONLY, const glm::vec4& uv = {0.0f,0.0f,1.0f,1.0f}, bool imageView = true, const VkImageAspectFlags imageAspectFlags = VK_IMAGE_ASPECT_COLOR_BIT);
+			std::vector<image>& allocateImages(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, size_t count, const memoryUsage memoryUsage = GPU_ONLY, const glm::vec4& uv = { 0.0f,0.0f,1.0f,1.0f }, bool imageView = true, const VkImageAspectFlags imageAspectFlags = VK_IMAGE_ASPECT_COLOR_BIT);
 			void deallocate(const VkBuffer buffer, allocation* p_allocation);
 			void deallocate(const VkImage image, allocation* p_allocation);
 

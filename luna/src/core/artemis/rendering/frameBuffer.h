@@ -20,6 +20,7 @@ namespace luna
 			_ALWAYS_INLINE_ operator VkFramebuffer() const {
 				return m_frameBuffer;
 			}
+			frameBuffer(const VkDevice* device,const image& image,ref<renderPass> p_renderPass);
 		protected:
 			friend class swapchain;
 			frameBuffer(const VkDevice* device,const VkFramebufferCreateInfo& info);

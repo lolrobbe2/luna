@@ -183,6 +183,16 @@ namespace luna
 			}
 			return *new image(_image, new allocation(_allocation, info), extent, format, uv);
 		}
+		std::vector<image>& allocator::allocateImages(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, size_t count, const memoryUsage memoryUsage, const glm::vec4& uv, bool imageView, const VkImageAspectFlags imageAspectFlags)
+		{
+			std::vector<image>* images = new std::vector<image>();
+			images->resize(count);
+			for (size_t i = 0; i < count; i++)
+			{
+				(*images)[count] = allocateImage(extent, channels, usageFlags, memoryUsage, uv, imageView, imageAspectFlags);
+			}
+			return *images;
+		}
 		void allocator::deallocate(const VkBuffer buffer,allocation* p_allocation)
 		{
 			LN_ERR_FAIL_COND_MSG(buffer == VK_NULL_HANDLE, "[Artemis] cannot deallocate a buffer thats has already been detroyed!");

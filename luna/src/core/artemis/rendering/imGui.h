@@ -10,8 +10,8 @@ namespace luna
 	class imGui
 	{
 	public:
-		imGui(const artemis::device& device);
-		void setPipeline(ref<artemis::pipeline> p_pipeline, ref<artemis::swapchain> p_swapchain);
+		imGui(const artemis::device& device,ref<artemis::swapchain> p_swapchain);
+		void setPipeline(ref<artemis::pipeline> p_pipeline);
 	private:
 		ref<artemis::pipeline> p_imguiPipeline;
 		artemis::descriptorPool& descriptorPool = *new artemis::descriptorPool();
