@@ -11,7 +11,7 @@ namespace luna
 	{
 	public:
 		imGui(const artemis::device& device);
-		void setPipeline(ref<artemis::pipeline> p_pipeline);
+		void setPipeline(ref<artemis::pipeline> p_pipeline, ref<artemis::swapchain> p_swapchain);
 	private:
 		ref<artemis::pipeline> p_imguiPipeline;
 		artemis::descriptorPool& descriptorPool = *new artemis::descriptorPool();

@@ -21,9 +21,17 @@ namespace luna
 			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image);
 			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color1) const;
 			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command) const;
+#ifdef IMGUI_API
+			 _ALWAYS_INLINE_ void setSceneDimensions(ImVec2 size) { imguiSceneSize.x = size.x; imguiSceneSize.y = size.y; }
+#endif // !IMGUI_API
+
 		private:
 			void setUpComputePipeline();
 			void setUpGraphicsPipeline();
+#ifdef IMGUI_API
+			void setUpImguiPipeline();
+#endif // IMGUI_API
+
 			void recordCommands();
 			void flush();
 		private:
@@ -57,6 +65,13 @@ namespace luna
 			ref<sampler> sampler;
 			
 			ref<vulkan::window> p_window;
+#ifdef IMGUI_API
+			std::vector<frameBuffer> imguiFrameBuffers;
+			ref<renderPass> p_imguiRenderPass;
+			glm::vec2 imguiSceneSize;
+
+#endif //IMGUI_API
+
 		};
 	}
 }

@@ -36,8 +36,8 @@ namespace luna
 		init_info.Device = device;
 		init_info.Queue = device.getQueue(vkb::QueueType::graphics);
 		init_info.DescriptorPool = descriptorPool;
-		init_info.MinImageCount = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->swapchain->mSwapchain.image_count;
-		init_info.ImageCount = std::dynamic_pointer_cast<vulkan::vulkanDevice>(device)->swapchain->mSwapchain.image_count;
+		init_info.MinImageCount = device.surfaceCapabilities().minImageCount;
+		init_info.ImageCount = p_swapchain->size();
 		init_info.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
 		//ref<vulkan::vulkanPipeline> vPipeline = std::dynamic_pointer_cast<vulkan::vulkanPipeline>(pipeline);
 

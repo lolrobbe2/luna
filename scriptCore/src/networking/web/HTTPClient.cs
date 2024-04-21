@@ -35,7 +35,7 @@ namespace Luna
         /// <summary>
         /// connects the http client to a host http server.
         /// </summary>
-        /// <remarks>will also connect to non http servers, it just won't be able to now wath to do with the HTTP response</remarks>
+        /// <remarks>will also connect to non http servers, it just won't be able to know wath to do with the HTTP response</remarks>
         /// <param name="Host">can be an <see cref="IpAddress"/></param>
         /// <param name="port"> number inclusive between 0-65536</param>
         /// <returns><see cref="SocketError.SUCCESS"/> when connetion to host whas succesful</returns>
@@ -44,7 +44,7 @@ namespace Luna
         /// sends an HTPP request to the connected host.
         /// </summary>
         /// <param name="Method">http method to be used <see cref="HTTPClient.Method"/></param>
-        /// <param name="Destination"></param>
+        /// <param name="Destination">destination uri</param>
         /// <param name="Headers"></param>
         /// <param name="body"></param>
         public void Request(HTTPClient.Method Method, string Destination, Json Headers, string body = "") { HTTPClientRequest(ObjectId, Method, Destination, Headers.ToString(), body); }
@@ -58,7 +58,7 @@ namespace Luna
         /// </summary>
         /// <remarks>
         /// as soon a the http client is receiving a response <see cref="HasResponse"/> will return true.
-        /// but at this point the body might nog have been fully received. To know when the response body has not been fully received <see cref="Status.STATUS_RECEIVING"/> use the <see cref="GetStatus"/> function.
+        /// but at this point the body might not have been fully received. To know when the response body has not been fully received <see cref="Status.STATUS_RECEIVING"/> use the <see cref="GetStatus"/> function.
         /// </remarks>
         /// <returns><see cref="SocketError.SUCCESS"/> when polling whas succesful</returns>
         public SocketError Poll() { return HTTPClientPoll(ObjectId); }

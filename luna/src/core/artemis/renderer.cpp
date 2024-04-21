@@ -3,6 +3,10 @@
 #include <core/utils/shaderLibrary.h>
 #include <core/assets/assetImporter.h>
 #include <core/assets/assetManager.h>
+#ifdef IMGUI_API
+#include <backends/imgui_impl_vulkan.cpp>
+#endif // IMGUI_API
+
 namespace luna 
 {
 	namespace artemis 
@@ -52,6 +56,7 @@ namespace luna
 					commandBuffer->reset();
 				for (auto commandBuffer : p_graphicsCommandBuffer)
 					commandBuffer->reset();
+
 				p_swapChain->resize(p_window->getWidth(), p_window->getHeight());
 			
 				ref<shader> vertexShader = shaderLibrary::get("vertex.glsl"); //get vertex shader
@@ -99,8 +104,6 @@ namespace luna
 					.addScissor(*p_swapChain)
 					.setRenderPass(p_renderPass)
 					.build();
-
-		
 				currentFrame = 0;
 				return;
 			}
@@ -234,10 +237,13 @@ namespace luna
 				.addSubPassDependency(dependency)
 				.addSubPass(subpass)
 				.build();
-				
 			frameBuffers.resize(p_swapChain->size());
+
+#ifdef IMGUI_API
+
+#else 
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
-			
+#endif // !
 			pipelineBuilder graphicsPipelineBuilder = c_device.getPipelineBuilder();
 			graphicsPipeline = graphicsPipelineBuilder
 				.setColorBlendingParams()
@@ -273,6 +279,33 @@ namespace luna
 			renderFinishedSemaphores.resize(maxFramesInFlight);
 			for (auto& semaphore : renderFinishedSemaphores) semaphore = c_device.getSemaphore(0);
 		}
+
+		void renderer::setUpImguiPipeline()
+		{
+			attachementBuilder attachementBuilder{ p_swapChain };
+			attachement att = attachementBuilder
+				.setClearColorValue(0.0f, 0.0f, 0.0f, 1.0f)
+				.setSamples().setOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
+				.setLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR)
+				.setStencilOp(VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE)
+				.build();
+
+			subPassBuilder subPassBuilder;
+			subpassDescription subpass = subPassBuilder
+				.addColorAttachement(att)
+				.setBindPoint(VK_PIPELINE_BIND_POINT_GRAPHICS)
+				.build();
+
+			subpassDependency dependency{ 0, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,0 };
+			renderPassBuilder renderPassBuilder = c_device.getRenderPassBuilder();
+
+			p_imguiRenderPass = renderPassBuilder
+				.addSubPassDependency(dependency)
+				.addSubPass(subpass)
+				.build();
+			for (size_t i = 0; i < imguiFrameBuffers.size(); ++i) imguiFrameBuffers[i] = p_swapChain->getFrameBuffer(p_imguiRenderPass, i, 0, 1);
+		}
+
 		void renderer::recordCommands()
 		{
 			p_computeCommandBuffer[currentFrame]->begin(0);
@@ -302,6 +335,14 @@ namespace luna
 				}
 			}
 			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
+
+#ifdef IMGUI_API
+			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_imguiRenderPass, imguiFrameBuffers[swapchainImageIndex]);
+			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
+			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), *p_graphicsCommandBuffer[currentFrame]);
+			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
+#endif // IMGUI_API
+
 			p_graphicsCommandBuffer[currentFrame]->end();
 
 			p_computeCommandPool->flush({ p_computeCommandBuffer[currentFrame].get() }, { computeFinishedSemaphores[currentFrame] }, {  }, computeInflightFences[currentFrame], nullptr, false);
