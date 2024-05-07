@@ -103,7 +103,7 @@ namespace luna
 	struct spriteRendererComponent
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
-		ref<renderer::texture> texture;
+		ref<assets::image> texture;
 		std::filesystem::path filePath;
 		float TilingFactor = 1.0f;
 		bool showInEditor = true;
@@ -130,7 +130,7 @@ namespace luna
 	struct labelRendererComponent
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
-		ref<renderer::font> font;
+		ref<assets::image> font;
 		uint64_t handle;
 		std::filesystem::path filePath;
 		std::string text;
@@ -155,9 +155,9 @@ namespace luna
 	};
 	struct buttonComponent
 	{
-		ref<renderer::texture> normalTexture; 
-		ref<renderer::texture> hoverTexture;
-		ref<renderer::texture> pressedTexture;
+		ref<assets::image> normalTexture; 
+		ref<assets::image> hoverTexture;
+		ref<assets::image> pressedTexture;
 		std::filesystem::path normalFilePath;
 		std::filesystem::path hoverFilePath;
 		std::filesystem::path pressedFilePath;
@@ -212,11 +212,11 @@ namespace luna
 
 	struct item {
 		
-		ref<renderer::texture> icon;
+		ref<assets::image> icon;
 		bool iconTransposed = false;
 		glm::vec2 iconRegion;
 		glm::vec4 iconModulate = { 1, 1, 1, 1 };
-		ref<renderer::texture> tagIcon;
+		ref<assets::image> tagIcon;
 		std::string text;
 		std::string language;
 
@@ -273,7 +273,7 @@ namespace luna
 
 		int currentColumns = 1;
 
-		ref<renderer::font> font;
+		ref<assets::image> font;
 		std::filesystem::path filePath;
 
 		itemList() = default;
@@ -296,11 +296,11 @@ namespace luna
 	{
 		struct character
 		{
-			ref<renderer::texture> glyph;
+			ref<assets::image> glyph;
 
 			character() = default;
 			character(const character&) = default;
-			character(glm::mat4 transform,ref<renderer::texture> glyph)
+			character(glm::mat4 transform,ref<assets::image> glyph)
 				: transformMatrix(transform), glyph(glyph) {
 			}
 
@@ -327,7 +327,7 @@ namespace luna
 		glm::vec4 bounds;
 		glm::mat4 outerBorderTransform;
 		std::vector<character> charTransforms;
-		ref<renderer::font> font;
+		ref<assets::image> font;
 	};
 	/*
 		node tree components:

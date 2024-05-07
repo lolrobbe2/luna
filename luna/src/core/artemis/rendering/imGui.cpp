@@ -1,3 +1,4 @@
+#ifdef IMGUI_API
 #include "imGui.h"
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_vulkan.h>
@@ -48,3 +49,4 @@ namespace luna
 		p_imguiPipeline = p_pipeline;
 	}
 }
+#endif

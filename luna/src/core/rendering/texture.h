@@ -2,7 +2,7 @@
 #include <core/vulkan/window/window.h>
 #include <stb_truetype.h>
 #include <core/assets/asset.h>
-
+#ifdef DEPRECATED
 namespace luna
 {
 	namespace renderer
@@ -109,3 +109,4 @@ namespace luna
 		};
 	}
 }
+#endif

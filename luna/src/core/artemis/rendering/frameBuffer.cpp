@@ -1,5 +1,7 @@
 #include "frameBuffer.h"
 #include <core/debug/debugMacros.h>
+#include "renderPass.h"
+#include "image.h"
 namespace luna 
 {
 	namespace artemis 

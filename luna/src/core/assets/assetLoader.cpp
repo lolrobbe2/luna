@@ -5,11 +5,16 @@ namespace luna
 {
 	namespace assets 
 	{
+        static ref<artemis::allocator> p_allocator;
         using assetLoadFunction = std::function<ref<asset>(assetHandle, assetMetadata*)>;
         static std::map<assetType, assetLoadFunction> s_assetLoadFunctions = {
             { assetType::texture, textureLoader::loadTexture },
             { assetType::font   , fontLoader::loadFont  },
         };
+        void assetLoader::setAllocator(const ref<artemis::allocator> p_allocator)
+        {
+            assets::p_allocator = p_allocator;
+        }
         ref<asset> assetLoader::loadAsset(assetHandle handle, assetMetadata* metadata)
         {
             if (s_assetLoadFunctions.find(metadata->assetType) == s_assetLoadFunctions.end())

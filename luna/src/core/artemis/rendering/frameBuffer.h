@@ -1,9 +1,12 @@
 #pragma once
 #include <core/platform/windows/windowsWindow.h>
+
 namespace luna 
 {
 	namespace artemis 
 	{
+		class image;
+		class renderPass;
 		class frameBuffer
 		{
 		public:

@@ -1,6 +1,5 @@
 #include "textureLoader.h"
-#include <core/vulkan/utils/vulkanAllocator.h>
-#include <core/vulkan/rendering/vulkanTexture.h>
+
 namespace luna 
 {
 	namespace assets 

@@ -1,3 +1,5 @@
+
+#ifdef DEPRECATED
 #include "texture.h"
 #include <core/vulkan/rendering/vulkanTexture.h>
 
@@ -58,4 +60,5 @@ namespace luna
 		}
 	}
 }
+#endif
 
