@@ -11,7 +11,13 @@ namespace luna
 	namespace assets 
 	{
 
-
+		std::future<stbi_uc*> loadImageAsync(const std::string& filePath) {
+			return std::async(std::launch::async, [filePath] {
+				int width, height, channels;
+				stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 4);
+				return image;
+				});
+		}
 		ref<asset> textureLoader::loadTexture(assetHandle handle, assetMetadata* metadata)
 		{
 			textureAssetMetadata* textureMetadata = (textureAssetMetadata*)metadata;
@@ -34,12 +40,6 @@ namespace luna
 			return std::dynamic_pointer_cast<asset>(createRef<assets::image>(image));
 		}
 
-		std::future<stbi_uc*> loadImageAsync(const std::string& filePath) {
-			return std::async(std::launch::async, [filePath] {
-				int width, height, channels;
-				stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 4);
-				return image;
-				});
-		}
+		
 	}
 }

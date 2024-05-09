@@ -375,7 +375,7 @@ namespace luna
 			item& item = itemList.items[pIdx];
 		}
 
-		int itemListNode::addItem(const std::string& pItem, const ref<renderer::texture>& pTexture, bool selectable)
+		int itemListNode::addItem(const std::string& pItem, const ref<assets::image> & pTexture, bool selectable)
 		{
 			item item;
 			item.icon = pTexture;
@@ -392,7 +392,7 @@ namespace luna
 			//notify_property_list_changed();
 			return itemId;
 		}
-		int itemListNode::addIconItem(const ref<renderer::texture>& pItem, bool selectable) 
+		int itemListNode::addIconItem(const ref<assets::image> & pItem, bool selectable) 
 		{
 			item item;
 			item.icon = pItem;
@@ -424,7 +424,7 @@ namespace luna
 			return itemList.items[pIdx].text;
 		}
 
-		void itemListNode::setItemIcon(int pIdx, const ref<renderer::texture>& pIcon) 
+		void itemListNode::setItemIcon(int pIdx, const ref<assets::image> & pIcon) 
 		{
 			auto& itemList = getComponent<luna::itemList>();
 			if (pIdx < 0) pIdx += getItemCount();
@@ -433,7 +433,7 @@ namespace luna
 			itemList.items[pIdx].icon = pIcon;
 			itemList.shapeChanged = true;
 		}
-		ref<renderer::texture> itemListNode::getItemIcon(int pIdx)
+		ref<assets::image> itemListNode::getItemIcon(int pIdx)
 		{
 			//ERR_FAIL_INDEX_V(pIdx, items.size(), ref<Texture2D>());
 			auto& itemList = getComponent<luna::itemList>();
@@ -483,7 +483,7 @@ namespace luna
 			return itemList.items[pIdx].customFg;
 		}
 
-		void itemListNode::setItemTagIcon(int p_idx, const ref<renderer::texture>& pTagIcon) 
+		void itemListNode::setItemTagIcon(int p_idx, const ref<assets::image> & pTagIcon) 
 		{
 			if (p_idx < 0) p_idx += getItemCount();
 			//ERR_FAIL_INDEX(p_idx, items.size());

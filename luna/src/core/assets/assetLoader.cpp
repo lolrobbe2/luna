@@ -8,8 +8,8 @@ namespace luna
         static ref<artemis::allocator> p_allocator;
         using assetLoadFunction = std::function<ref<asset>(assetHandle, assetMetadata*)>;
         static std::map<assetType, assetLoadFunction> s_assetLoadFunctions = {
-            { assetType::texture, textureLoader::loadTexture },
-            { assetType::font   , fontLoader::loadFont  },
+            { assetType::TEXTURE, textureLoader::loadTexture },
+            { assetType::FONT_ATLAS   , fontLoader::loadFont  },
         };
         void assetLoader::setAllocator(const ref<artemis::allocator> p_allocator)
         {

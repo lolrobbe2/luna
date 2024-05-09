@@ -43,15 +43,15 @@ namespace luna
 			
 			virtual void init(luna::scene* scene) override;
 
-			void drawChar(ref<renderer::font> font, glm::vec2 pos, char chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
-			void drawChar(const lineEditComponent::character character, ref<renderer::font> font, color modulate = color(1, 1, 1, 1));
-			void drawString(ref<renderer::font> font, glm::vec2 pos, std::string chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
-			void drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<renderer::font> font);
-			void drawTexture(ref<renderer::texture> texture, glm::vec2 position, color modulate);
+			void drawChar(ref<assets::font> font, glm::vec2 pos, char chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
+			void drawChar(const lineEditComponent::character character, ref<assets::font> font, color modulate = color(1, 1, 1, 1));
+			void drawString(ref<assets::font> font, glm::vec2 pos, std::string chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
+			void drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<assets::font> font);
+			void drawTexture(ref<artemis::image> image, glm::vec2 position, color modulate);
 			void executeDraw();
 			virtual void draw() {};
 		protected:
-			void drawString(ref<renderer::font> font, glm::vec2 pos, std::string string, int font_size, color modulate, glm::vec4& bounds, uint8_t& outOfBounds);
+			void drawString(ref<assets::font> font, glm::vec2 pos, std::string string, int font_size, color modulate, glm::vec4& bounds, uint8_t& outOfBounds);
 		};
 	}
 #pragma warning( disable : 4305 )

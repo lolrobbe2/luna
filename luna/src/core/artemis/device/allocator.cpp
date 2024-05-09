@@ -1,5 +1,6 @@
 #include "allocator.h"
-#include <core/vulkan/utils/vma.h>
+#include <vk_mem_alloc.h>
+
 #include <core/utils/objectStorage.h>
 
 #include <core/debug/debugMacros.h>

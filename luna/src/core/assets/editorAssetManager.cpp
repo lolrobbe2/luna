@@ -115,9 +115,9 @@ namespace luna
 			case luna::assets::none:
 				LN_CORE_WARN("assetType::none is not valid");
 				return nullptr;
-			case luna::assets::texture:
+			case luna::assets::TEXTURE:
 				return (assetMetadata*) new textureAssetMetadata();
-			case luna::assets::font:
+			case luna::assets::FONT_ATLAS:
 				return (assetMetadata*) new fontAssetMetadata();
 			case luna::assets::scene:
 				return nullptr;
@@ -132,9 +132,9 @@ namespace luna
 			{
 			case luna::assets::none:
 				break;
-			case luna::assets::texture:
+			case luna::assets::TEXTURE:
 				return sizeof(textureAssetMetadata);
-			case luna::assets::font:
+			case luna::assets::FONT_ATLAS:
 				return sizeof(fontAssetMetadata);
 			case luna::assets::scene:
 				break;

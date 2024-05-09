@@ -5,7 +5,7 @@ namespace luna
 	{
 		assets::assetType image::getType() const
 		{
-			return assetType::texture;
+			return assetType::TEXTURE;
 		}
 		void image::bind(uint32_t descriptorSetIndex, uint8_t imageIndex, std::vector<uint8_t>* p_freeImageIndices)
 		{

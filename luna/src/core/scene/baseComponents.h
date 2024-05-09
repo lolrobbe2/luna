@@ -4,8 +4,8 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/glm.hpp>
 #include <core/debug/uuid.h>
-#include <core/rendering/texture.h>
 #include <core/scripting/scriptUtils.h>
+#include <core/assets/publicTypes/font.h>
 namespace luna
 {
 	enum notificationType
@@ -130,7 +130,7 @@ namespace luna
 	struct labelRendererComponent
 	{
 		glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
-		ref<assets::image> font;
+		ref<assets::font> font;
 		uint64_t handle;
 		std::filesystem::path filePath;
 		std::string text;

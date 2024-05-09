@@ -11,8 +11,8 @@ namespace luna
         using AssetImportFunction = std::function<ref<asset>(assetHandle, assetMetadata*)>;
 
         static std::map<assetType, AssetImportFunction> s_assetImportFunctions = {
-            { assetType::texture, textureImporter::importTexture },
-            { assetType::font   , fontImporter::importFont       },
+            { assetType::TEXTURE, textureImporter::importTexture },
+            { assetType::FONT_ATLAS   , fontImporter::importFont       },
         };
         void assetImporter::setAllocator(const ref<artemis::allocator> p_allocator)
         {

@@ -158,7 +158,7 @@ namespace luna
 
 			float xAdvance = 0.0f;
 			if (!lineEdit.font) return;
-			const ref<renderer::texture> spaceGlyph = lineEdit.font->getGlyph('_');
+			const ref<artemis::image> spaceGlyph = lineEdit.font->getGlyph('_');
 			float pxNorm = lineEdit.points * 1.333;
 			pxNorm /= renderer::renderer::getSceneDimensions().y;
 			lineEdit.bounds = { transform.translation.x - transform.scale.x - NORMALIZED_BORDER_SIZE,transform.translation.x + transform.scale.x - NORMALIZED_BORDER_SIZE, transform.translation.y - transform.scale.y / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
@@ -167,7 +167,7 @@ namespace luna
 			
 			for (size_t i = lineEdit.scrollPosition; i < lineEdit.text.size(); i++)
 			{
-				const ref<renderer::texture> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
+				const ref<artemis::image> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
 				const glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() };
 				const glm::vec2 normalizedCharDimensions = dimensions / renderer::renderer::getSceneDimensions();
 				xAdvance += lineEdit.font->getAdvance(lineEdit.text[i]).x * normalizedDimensions.x;

@@ -28,8 +28,8 @@ namespace luna
 		enum assetType : uint16_t
 		{
 			none = 0,
-			texture,
-			fontAtlas,
+			TEXTURE,
+			FONT_ATLAS,
 			scene,
 		};
 
