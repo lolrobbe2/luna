@@ -29,7 +29,7 @@ namespace luna
 		{
 			none = 0,
 			texture,
-			font,
+			fontAtlas,
 			scene,
 		};
 
@@ -71,7 +71,7 @@ namespace luna
 			assetMetadata baseMetaData; //standard metadata that each asset has.
 			uint64_t width, height, channels;
 			uint64_t imageSize;
-			uint64_t imageByteSize;
+			size_t imageByteSize;
 		};
 
 		struct fontAtlas

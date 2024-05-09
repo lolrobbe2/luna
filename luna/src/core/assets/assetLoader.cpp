@@ -15,6 +15,10 @@ namespace luna
         {
             assets::p_allocator = p_allocator;
         }
+        ref<artemis::allocator> assetLoader::getAllocator()
+        {
+            return p_allocator;
+        }
         ref<asset> assetLoader::loadAsset(assetHandle handle, assetMetadata* metadata)
         {
             if (s_assetLoadFunctions.find(metadata->assetType) == s_assetLoadFunctions.end())

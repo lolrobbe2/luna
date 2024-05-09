@@ -1,52 +1,45 @@
 #include "textureLoader.h"
-
+#include <core/artemis/rendering/image.h>
+#include <core/artemis/device/buffer.h>
+#include <core/assets/publicTypes/image.h>
+#include <core/assets/assetLoader.h>
+#include <core/artemis/device/allocator.h>
+#include <core/debug/debugMacros.h>
+#include <future>
 namespace luna 
 {
 	namespace assets 
 	{
-		static void uploadTexture(textureAssetMetadata* textureMetadata,VkBuffer buffer, const VkImage imageHandle, const VkFormat imageFormat)
-		{
-			std::string filePath = reinterpret_cast<char*>(textureMetadata->baseMetaData.filePath);
-			filePath += "/";
-			filePath += reinterpret_cast<char*>(textureMetadata->baseMetaData.name);
 
-			if (!std::filesystem::exists(filePath)) return LN_CORE_ERROR("could not find imported file!");
-
-			
-			stbi_uc* image = nullptr;
-			{
-				int width, height, channels;
-				stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 4);
-			}
-
-			void* data = utils::vulkanAllocator::getAllocationInfo((uint64_t)buffer).pMappedData;
-
-			memcpy_s(data, textureMetadata->imageSize, (void*)image, textureMetadata->imageSize);
-			stbi_image_free(image);
-
-			//utils::vulkanAllocator::uploadTexture(buffer, imageHandle, imageFormat, { textureMetadata->width,textureMetadata->height,textureMetadata->channels }); //TODO threadpool
-			//utils::vulkanAllocator::flush();
-		}
 
 		ref<asset> textureLoader::loadTexture(assetHandle handle, assetMetadata* metadata)
 		{
 			textureAssetMetadata* textureMetadata = (textureAssetMetadata*)metadata;
 
-			VkBuffer buffer = VK_NULL_HANDLE;
-			VkImage imageHandle = VK_NULL_HANDLE;
-			VkImageView imageViewHandle = VK_NULL_HANDLE;
+			std::string filePath = reinterpret_cast<char*>(textureMetadata->baseMetaData.filePath);
+			filePath += "/";
+			filePath += reinterpret_cast<char*>(textureMetadata->baseMetaData.name);
 
-			uint64_t imageSize = textureMetadata->width* textureMetadata->height* textureMetadata->channels;
+			LN_ERR_FAIL_COND_V_MSG(!std::filesystem::exists(filePath), nullptr, "[ASSETS] could not load asset because asset does no longer exist, filePath: {0}",filePath);
 
-			utils::vulkanAllocator::createBuffer(&buffer, imageSize, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-			VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, textureMetadata->channels);
-			VkResult result = utils::vulkanAllocator::createImage(&imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)textureMetadata->width,(unsigned int)textureMetadata->height,1 }, imageFormat);
-			
-			utils::vulkanAllocator::createImageView(&imageViewHandle, imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT); //TODO threadpool
+			std::future<stbi_uc*> imageData = loadImageAsync(filePath);
 
-			//uploadTexture(textureMetadata, buffer, imageHandle, imageFormat);
+			ref<artemis::allocator> p_allocator = assetLoader::getAllocator();
+			artemis::image& image = p_allocator->allocateImage({ textureMetadata->width,textureMetadata->height }, textureMetadata->channels, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT);
+			artemis::buffer& buffer = p_allocator->allocateBuffer(textureMetadata->imageByteSize, artemis::CPU_COPY, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT);
 
-			return ref<asset>(new vulkan::vulkanTexture((uint64_t)imageViewHandle,buffer,imageHandle,imageViewHandle,{textureMetadata->width,textureMetadata->height}));
+			buffer.setData(imageData.get(), textureMetadata->imageByteSize);
+			stbi_image_free(imageData.get());
+			p_allocator->copyBufferToImage(buffer, image);
+			return std::dynamic_pointer_cast<asset>(createRef<assets::image>(image));
+		}
+
+		std::future<stbi_uc*> loadImageAsync(const std::string& filePath) {
+			return std::async(std::launch::async, [filePath] {
+				int width, height, channels;
+				stbi_uc* image = stbi_load(filePath.c_str(), &width, &height, &channels, 4);
+				return image;
+				});
 		}
 	}
 }

@@ -132,7 +132,6 @@ namespace luna
 			{
 				ref<artemis::allocator> p_allocator = assetImporter::getAllocator();
 
-				VkFormat imageFormat; //= utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
 				artemis::image& fontImage = p_allocator->allocateImage({ FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT }, 1, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT);//createFontTexture(FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, &imageHandle, &imageViewHandle, VK_FORMAT_R8_UNORM);
 				
 				artemis::buffer& buffer = p_allocator->allocateBuffer(FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, artemis::CPU_ONLY, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT);
@@ -141,16 +140,14 @@ namespace luna
 				
 				p_allocator->copyBufferToImage(buffer, fontImage);
 				p_allocator->flush();
-				LN_CORE_TRACE("succesfuly loaded fontFile! {}", filePath);
-
-				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::image> (fontImage));
+				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), buffer.getData(), sizeof(fontAtlas));
 				fontFile.close();
+				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font> (fontImage));
 
 			}
 			else LN_CORE_ERROR("incorrect file format, expected .ttf!");
 			fontFile.close();
-			//return ref<asset>(new vulkan::vulkanFont(imageBuffer, imageHandle, imageViewHandle, fontMetadata->glyphScales, fontMetadata->glyphAdvances));
-		
+			return nullptr;		
 		}
 
    }

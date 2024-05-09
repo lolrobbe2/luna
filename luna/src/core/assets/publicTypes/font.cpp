@@ -25,7 +25,7 @@ namespace luna
 		}
 		assets::assetType image::getType() const
 		{
-			return assetType::font;
+			return assetType::fontAtlas;
 		}
 	}
 }
