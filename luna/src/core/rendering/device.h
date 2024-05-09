@@ -1,4 +1,6 @@
 #pragma once
+#ifdef DEPRECATED
+
 #include <core/vulkan/window/window.h>
 
 
@@ -28,3 +30,4 @@ namespace luna
 		};
 	}
 }
+#endif

@@ -1,4 +1,4 @@
-
+#ifdef DEPRECATED
 #include <core/rendering/renderer.h>
 //vulkan
 #include <core/vulkan/device/vulkanDevice.h>
@@ -88,3 +88,4 @@ namespace luna
 }
 
 
+#endif

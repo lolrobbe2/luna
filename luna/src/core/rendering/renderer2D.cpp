@@ -1,3 +1,5 @@
+#ifdef DEPRECATED
+
 #include "renderer2D.h"
 #include <core/assets/assetManager.h>
 #include <core/debug/debugMacros.h>
@@ -330,3 +332,4 @@ namespace luna
 		}
 	}
 }
+#endif

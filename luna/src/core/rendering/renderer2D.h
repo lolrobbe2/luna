@@ -1,4 +1,6 @@
 #pragma once
+#ifdef DEPRECATED
+
 #include <core/rendering/renderer.h>
 #include <core/rendering/texture.h>
 namespace luna
@@ -117,4 +119,4 @@ namespace luna
 	}
 }
 
-
+#endif

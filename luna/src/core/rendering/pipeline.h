@@ -1,4 +1,6 @@
 #pragma once
+#ifdef DEPRECATED
+
 #include <core/rendering/device.h>
 #include <core/rendering/shader.h>
 #include <core/rendering/vertexArray.h>
@@ -88,3 +90,4 @@ namespace luna
 		};
 	}
 }
+#endif
