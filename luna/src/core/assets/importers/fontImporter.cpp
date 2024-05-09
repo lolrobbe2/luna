@@ -1,7 +1,8 @@
 #include "fontImporter.h"
-#include <core/vulkan/utils/vulkanAllocator.h>
-#include <core/vulkan/device/vulkanDevice.h>
-#include <core/vulkan/rendering/vulkanTexture.h>
+#include <core/assets/assetImporter.h>
+#include <core/artemis/device/allocator.h>
+#include <stb_truetype.h>
+#include <core/assets/publicTypes/font.h>
 namespace luna 
 {
     namespace assets
@@ -33,16 +34,7 @@ namespace luna
 		};
 
 
-		/**
-		 * @brief allocates and creates the atlas texture from wich glyphs can be sampled from.
-		 *
-		 */
-		static void createFontTexture(int width, int height, VkImage* imageHandle, VkImageView* imageViewHandle, VkFormat imageFormat)
-		{
-			int imageSize = width * height;
-			VkResult result = utils::vulkanAllocator::createImage(imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
-			utils::vulkanAllocator::createImageView(imageViewHandle, *imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
-		}
+		
 
 		/*
 		 * @brief creates a font glyph and gurantees the texture height and width to be 300 by 300 pixels.
@@ -80,12 +72,10 @@ namespace luna
 			delete glyph;
 		}
 
-		static void* writeGlyphsIntoBuffer(VkBuffer* imageBuffer, VkImage& imageHandle, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphAdvances, VkFormat imageFormat)
+		static void writeGlyphsIntoBuffer(artemis::buffer& buffer, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphAdvances)
 		{
 			LN_PROFILE_FUNCTION();
-			utils::vulkanAllocator::createBuffer(imageBuffer, FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)*imageBuffer).pMappedData;
-			imageAtlas* atlas = (imageAtlas*)bufferBase;
+			imageAtlas* atlas = (imageAtlas*)buffer.getData();
 			uint64_t offset = 0;
 			for (size_t i = 0; i < 256; i++)
 			{
@@ -102,8 +92,7 @@ namespace luna
 					int x = index % 16;
 					glypScales[i] = (scale);
 					glyphAdvances[i] = { offsetx,offsety };
-					//writeGlyphIntoBuffer(bufferPtr, (glyph*)fontGlyph,i);
-					//bufferPtr++;
+
 					writeGlyphToBuffer(atlas, (scanlineGlyph*)fontGlyph, x, y);
 				}
 				else
@@ -114,8 +103,6 @@ namespace luna
 			}
 			
 			//if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(*imageBuffer, imageHandle, imageFormat, { FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,1 });
-			utils::vulkanAllocator::flush();
-			return bufferBase;
 		}
 
 
@@ -143,18 +130,27 @@ namespace luna
 
 			if (stbtt_InitFont(&fontInfo, buffer.data(), 0))
 			{
-				VkFormat imageFormat; //= utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
+				ref<artemis::allocator> p_allocator = assetImporter::getAllocator();
 
-				createFontTexture(FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, &imageHandle, &imageViewHandle, VK_FORMAT_R8_UNORM);
-				void* data = writeGlyphsIntoBuffer(&imageBuffer, imageHandle, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances, imageFormat);
+				VkFormat imageFormat; //= utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
+				artemis::image& fontImage = p_allocator->allocateImage({ FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT }, 1, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT);//createFontTexture(FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, &imageHandle, &imageViewHandle, VK_FORMAT_R8_UNORM);
 				
-				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), data, sizeof(fontAtlas));
+				artemis::buffer& buffer = p_allocator->allocateBuffer(FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, artemis::CPU_ONLY, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT);
+				
+				writeGlyphsIntoBuffer(buffer, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances);
+				
+				p_allocator->copyBufferToImage(buffer, fontImage);
+				p_allocator->flush();
 				LN_CORE_TRACE("succesfuly loaded fontFile! {}", filePath);
+
+				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::image> (fontImage));
+				fontFile.close();
+
 			}
 			else LN_CORE_ERROR("incorrect file format, expected .ttf!");
 			fontFile.close();
 			//return ref<asset>(new vulkan::vulkanFont(imageBuffer, imageHandle, imageViewHandle, fontMetadata->glyphScales, fontMetadata->glyphAdvances));
-			return nullptr;
+		
 		}
 
    }

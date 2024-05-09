@@ -57,6 +57,7 @@ namespace luna
 			_ALWAYS_INLINE_ glm::vec4 getUv() const { return { uvStart.x,uvStart.y,uvEnd.x,uvEnd.y }; }
 			_ALWAYS_INLINE_ operator VkImageLayout() const { return currentLayout; }
 			_ALWAYS_INLINE_ VkImageLayout getCurrentLayout() const { return currentLayout; }
+			_ALWAYS_INLINE_ image& getSubImage(const glm::vec2& extent, const glm::vec4 uv = { 0.0f,0.0f,1.0f,1.0f });
 			//TODO unload image;
 		protected:
 			friend class allocator;
