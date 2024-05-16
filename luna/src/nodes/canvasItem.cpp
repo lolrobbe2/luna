@@ -1,5 +1,6 @@
 #include "canvasItem.h"
 #include <core/scene/scene.h>
+#include <core/application.h>
 namespace luna 
 {
 	namespace nodes 
@@ -64,7 +65,7 @@ namespace luna
 		{
 			glm::vec3 position3 = { position.x,position.y,0.0f };
 			//glm::vec2 normSize = { texture->getWidth() / renderer::renderer::getSceneGuiDimensions().x,texture->getHeight() / renderer::renderer::getSceneGuiDimensions().y };
-			//renderer::renderer2D::drawQuad(position3, normSize, texture); 
+			RENDERER->drawQuad(position3, normSize, texture);
 		}
 	}
 }

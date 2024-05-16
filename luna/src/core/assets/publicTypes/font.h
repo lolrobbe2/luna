@@ -12,8 +12,8 @@ namespace luna
 			font(artemis::image& _image);
 			~font() { unbind(); }
 			virtual assets::assetType getType() const override;
-			ref<image> getGlyph(char hlyph);
-			ref<image> glyphs[256];
+			ref<assets::image> getGlyph(char hlyph);
+			ref<assets::image> glyphs[256];
 		};
 	}
 }

@@ -273,7 +273,7 @@ namespace luna
 
 		int currentColumns = 1;
 
-		ref<assets::image> font;
+		ref<assets::font> font;
 		std::filesystem::path filePath;
 
 		itemList() = default;

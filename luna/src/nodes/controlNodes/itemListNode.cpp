@@ -1,4 +1,5 @@
 #include "itemListNode.h"
+#include <core/application.h>
 /* DISCLAIMER ALOT of code has been shamelesly copied from godot src*/
 namespace luna 
 {
@@ -21,29 +22,25 @@ namespace luna
 		void itemListNode::draw()
 		{
 			
-			/*
+			
 			auto& transform = getComponent<transformComponent>();
 			auto& itemListComponent = getComponent<itemList>();
 			glm::vec3 translation{ 0.0f,0.0f,0.0f };
 			glm::vec3 customTransform = { 0.0f,0.0f,0.0f };
 			static glm::vec2 glyphDimensions;
-			if (itemListComponent.font) glyphDimensions = glm::vec2(itemListComponent.font->getGlyph('A')->getWidth(), itemListComponent.font->getGlyph('A')->getHeight());
+			if (itemListComponent.font) glyphDimensions = *itemListComponent.font->getGlyph('A');
 			glm::vec2 advance{};
-			advance.x = (glyphDimensions.x / renderer::renderer::getSceneDimensions().x) + transform.translation.x;
-			advance.y = (glyphDimensions.y / renderer::renderer::getSceneDimensions().y) + transform.translation.y;
+			advance.x = (glyphDimensions.x / RENDERER->getSceneDimensions().x) + transform.translation.x;
+			advance.y = (glyphDimensions.y / RENDERER->getSceneDimensions().y) + transform.translation.y;
 			for (item& item : itemListComponent.items)
 			{
 				glm::vec2 size{ 15,3 };
 				size.x *= transform.scale.x;
 				size.y *= transform.scale.y;
-				if (renderer::renderer2D::drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg))
-				{
-					item.selectable = false;
-					return;
-				}
-				else item.selectable = true;
+				RENDERER->drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg);
+	
 
-				renderer::renderer2D::drawQuad(translation + transform.translation, size, item.customFg);
+				RENDERER->drawQuad(translation + transform.translation, size, item.customFg);
 				customTransform = translation;
 				customTransform = customTransform - glm::vec3(size.x / 2, -size.y / 4.0f, 0.0f);
 				if (itemListComponent.font) renderer::renderer2D::drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text);
@@ -51,7 +48,7 @@ namespace luna
 				item.rectCache.position = translation;
 				translation.y += size.y;
 			}
-			*/
+			
 			/*
 			_check_shape_changed();
 
