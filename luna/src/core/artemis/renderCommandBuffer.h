@@ -50,7 +50,7 @@ namespace luna
             ///     </para>
             /// </returns>
             /// does not need currentFrame see update func for reason why!
-            bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex);
+            bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex) const;
             void unbind(uint8_t index);
             void update(uint8_t currentFrame){
                 graphicsDescriptorSets[currentFrame].write(0, &samplerInfo);

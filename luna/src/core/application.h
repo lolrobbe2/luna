@@ -8,7 +8,9 @@
 #include <core/scene/scene.h>
 #include <core/artemis/renderer.h>
 
-
+#ifndef RENDERER
+#define RENDERER (application::application::get().getRenderer())
+#endif
 
 int main(int argc, char** argv);
 
@@ -50,7 +52,7 @@ namespace luna
 			void pushLayer(utils::layer* layer);
 			void pushOverlay(utils::layer* layer);
 			void popLayer(utils::layer* layer);
-			const artemis::renderer* getRenderer() const { return p_renderer.get(); }
+			artemis::renderer* getRenderer() { return p_renderer.get(); }
 			static application& get();
 		private:
 			friend class os;

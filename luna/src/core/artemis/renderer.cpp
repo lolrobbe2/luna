@@ -25,7 +25,7 @@ namespace luna
 			
 			setUpComputePipeline();
 			setUpGraphicsPipeline();
-			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::texture));
+			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::TEXTURE));
 			p_allocator->flush();
 			
 			renderCmdBuffers[0].bind(blankImageAsset, 0);
@@ -137,18 +137,57 @@ namespace luna
 			currentFrame = (currentFrame + 1) % maxFramesInFlight;
 		}
 
-		glm::vec4 renderer::normalizeColor(const glm::vec4& color) const
+		glm::vec4 renderer::normalizeColor(const glm::vec4& color)
 		{
 			return glm::normalize(color / 255.0f);
 		}
 
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) const
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) 
 		{
 			const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 			drawQuad(transform,color);
 		}
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image)
+		{
+			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
 
+			// Set the translation
+			transform[3] = glm::vec4(position, 1.0f);
+
+			// Set the scale
+			transform[0][0] = size.x;
+			transform[1][1] = size.y;
+
+			drawQuad(transform, {1,1,1,1}, image);
+
+		}
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image) 
+		{
+			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
+
+			// Set the translation
+			transform[3] = glm::vec4(position, 1.0f);
+
+			// Set the scale
+			transform[0][0] = size.x;
+			transform[1][1] = size.y;
+
+			drawQuad(transform, color, image);
+
+		}
+		void renderer::drawQuad(const glm::mat4& transform, const ref<assets::image> image)
+		{
+			if (image)
+			{
+				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+					if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image});
+				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
+				return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
+			}
+			return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
+		}
 		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
 		{
 			if(image)
@@ -162,12 +201,12 @@ namespace luna
 			return drawQuad({ transform,color,*image,*image });
 		}
 
-		void renderer::drawQuad(const glm::mat4& transform,const glm::vec4& color1) const
+		void renderer::drawQuad(const glm::mat4& transform,const glm::vec4& color1) 
 		{
 			drawQuad({ transform,color1 });
 		}
 
-		void renderer::drawQuad(const drawCommand& command) const
+		void renderer::drawQuad(const drawCommand& command) 
 		{
 			if(currentBuffer->addCommand(command))
 			{

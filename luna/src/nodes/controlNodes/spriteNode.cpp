@@ -1,5 +1,5 @@
 #include "spriteNode.h"
-#include <core/rendering/renderer2D.h>
+#include <core/application.h>
 namespace luna
 {
 	namespace nodes
@@ -29,7 +29,7 @@ namespace luna
 			auto& sprite = getComponent<spriteRendererComponent>();
 			auto& transform = getComponent<transformComponent>();
 
-			//if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
+			if(sprite.texture) RENDERER->drawQuad(transform.getTransform(), sprite.texture);
 		}
 	}
 }

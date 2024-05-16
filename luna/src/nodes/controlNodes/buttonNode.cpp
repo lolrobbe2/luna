@@ -1,7 +1,7 @@
 #include "buttonNode.h"
+#include <core/application.h>
 #include <core/assets/assetManager.h>
 #include <core/events/mouseEvent.h>
-#include <core/rendering/renderer2D.h>
 #include <core/scripting/scriptingEngine.h>
 #include <core/object/methodDB.h>
 namespace luna
@@ -45,7 +45,7 @@ namespace luna
 			if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
 			else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
 			else sprite.texture = button.normalTexture;
-			//if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
+			if (sprite.texture) RENDERER->drawQuad(transform.getTransform(), sprite.texture);
 		}
 
 		buttonNode::buttonNode(entt::entity handle, luna::scene* scene) : spriteNode(handle, scene)
@@ -110,7 +110,7 @@ namespace luna
 		}
 		void buttonNode::guiEvent(Event& event)
 		{
-			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			glm::vec2 normailizedMousePos =  RENDERER->getSceneMousePos() / RENDERER->getSceneDimensions();
 			normailizedMousePos.x -= 0.5f;
 			normailizedMousePos.y -= 0.5f;
 			spriteRendererComponent& sprite = getComponent<spriteRendererComponent>();

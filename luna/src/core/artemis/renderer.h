@@ -15,16 +15,23 @@ namespace luna
 			 void beginScene();
 			 void endScene();
 			 void update();
-			 _ALWAYS_INLINE_ glm::vec4 normalizeColor(const glm::vec4& color) const;
-			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) const;
+			 _ALWAYS_INLINE_ glm::vec4 normalizeColor(const glm::vec4& color);
+			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
+
+			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image);
+
+			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image);
+
+			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const ref<assets::image> image);
 
 			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image);
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color1) const;
-			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command) const;
+			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color1);
+			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command);
 #ifdef IMGUI_API
 			 _ALWAYS_INLINE_ void setSceneDimensions(ImVec2 size) { imguiSceneSize.x = size.x; imguiSceneSize.y = size.y; }
 #endif // !IMGUI_API
-
+			 _ALWAYS_INLINE_ glm::vec2 getSceneMousePos();
+			 _ALWAYS_INLINE_  glm::vec2 getSceneDimensions();
 		private:
 			void setUpComputePipeline();
 			void setUpGraphicsPipeline();

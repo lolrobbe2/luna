@@ -1,5 +1,4 @@
 #include "lineEditNode.h"
-#include <core/rendering/renderer2D.h>
 #include <core/events/mouseEvent.h>
 #include <core/events/keyEvent.h>
 

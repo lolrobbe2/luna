@@ -1,5 +1,5 @@
 #include "colorRectNode.h"
-#include <core/rendering/renderer2D.h>
+#include <core/application.h>
 namespace luna 
 { 
 	namespace nodes
@@ -36,7 +36,7 @@ namespace luna
 		{
 			auto& canvasComp = getComponent<canvasComponent>();
 			auto& transform = getComponent<transformComponent>();
-			//renderer::renderer2D::drawQuad(transform.translation, transform.scale, canvasComp.modulate);
+			RENDERER->drawQuad(transform.translation, transform.scale, canvasComp.modulate);
 		}
 	}
 }

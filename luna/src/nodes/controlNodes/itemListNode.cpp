@@ -1,5 +1,4 @@
 #include "itemListNode.h"
-#include <core/rendering/renderer2D.h>
 /* DISCLAIMER ALOT of code has been shamelesly copied from godot src*/
 namespace luna 
 {

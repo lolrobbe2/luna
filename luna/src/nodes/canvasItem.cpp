@@ -1,6 +1,5 @@
 #include "canvasItem.h"
 #include <core/scene/scene.h>
-#include <core/rendering/renderer2D.h>
 namespace luna 
 {
 	namespace nodes 
