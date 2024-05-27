@@ -27,6 +27,8 @@ namespace luna
 			_ALWAYS_INLINE_ operator VkExtent3D() const { return _image; }
 			_ALWAYS_INLINE_ glm::vec4 getUv() const { return _image; }
 			_ALWAYS_INLINE_ operator glm::vec4() const { return _image; }
+			_ALWAYS_INLINE_ std::array<glm::vec2, 4> getUvCoords() const { return _image; }
+			_ALWAYS_INLINE_ operator std::array<glm::vec2, 4>() const { return _image; }
 			_ALWAYS_INLINE_ VkImageLayout getCurrentLayout() const { return _image; }
 			_ALWAYS_INLINE_ operator VkImageLayout() const { return _image; }
 			_ALWAYS_INLINE_ bool isBound() const { return descriptorSetIndex == UINT32_MAX && imageIndex == UINT8_MAX; }

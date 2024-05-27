@@ -14,7 +14,7 @@ namespace luna
         {
             alignas(16)glm::mat4 transform;
             alignas(16)glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f };
-            alignas(8) glm::vec2 textureCoords[4] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+            alignas(8) std::array<glm::vec2,4> textureCoords = { glm::vec2(0.0f, 0.0f),  glm::vec2(1.0f, 0.0f),  glm::vec2(1.0f, 1.0f),  glm::vec2(0.0f, 1.0f) };
             alignas(8)glm::vec2 textureDetails{ 0.0f,false }; //textureindex, text bool
         } drawCommand;
         class descriptorPool;
@@ -50,7 +50,7 @@ namespace luna
             ///     </para>
             /// </returns>
             /// does not need currentFrame see update func for reason why!
-            bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex) const;
+            bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex);
             void unbind(uint8_t index);
             void update(uint8_t currentFrame){
                 graphicsDescriptorSets[currentFrame].write(0, &samplerInfo);

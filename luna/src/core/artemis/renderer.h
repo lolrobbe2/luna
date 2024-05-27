@@ -24,7 +24,9 @@ namespace luna
 
 			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const ref<assets::image> image);
 
+			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image,const std::array<glm::vec2,4>& textureCoords);
 			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image);
+
 			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color1);
 			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command);
 #ifdef IMGUI_API

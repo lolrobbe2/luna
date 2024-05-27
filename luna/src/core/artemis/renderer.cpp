@@ -188,17 +188,21 @@ namespace luna
 			}
 			return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
 		}
-		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
+		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
 		{
-			if(image)
+			if (image)
 			{
 				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-					if(!renderCmdBuffers[i].bind(image,i)) return drawQuad({ transform,color,*image,*image });
+					if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,*image });
 				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
-				return drawQuad({ transform,color,*image,*image });
+				return drawQuad({ transform,color,textureCoords,*image });
 			}
-			return drawQuad({ transform,color,*image,*image });
+			return drawQuad({ transform,color,textureCoords,*image });
+		}
+		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
+		{
+			drawQuad(transform, color, image,*image);
 		}
 
 		void renderer::drawQuad(const glm::mat4& transform,const glm::vec4& color1) 
