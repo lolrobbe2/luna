@@ -10,11 +10,11 @@ namespace luna
 		class LN_API descriptorSet
 		{
 		public: 
-			_ALWAYS_INLINE_ VkDescriptorSet getNative() const { return _descriptorSet; }
-			operator VkDescriptorSet() const { return _descriptorSet; }
-			_ALWAYS_INLINE_ const VkDescriptorSet* getNativePtr() const { return &_descriptorSet; }
+			_ALWAYS_INLINE_ VkDescriptorSet getNative() const { return m_descriptorSet; }
+			operator VkDescriptorSet() const { return m_descriptorSet; }
+			_ALWAYS_INLINE_ const VkDescriptorSet* getNativePtr() const { return &m_descriptorSet; }
 			_ALWAYS_INLINE_ void update();
-			operator const VkDescriptorSet*() const { return &_descriptorSet; }
+			operator const VkDescriptorSet*() const { return &m_descriptorSet; }
 			void write(const uint32_t& descriptorIndex,const void* pDescriptorInfo);
 			void free();
 			descriptorSet() = default;
@@ -23,9 +23,9 @@ namespace luna
 			friend class descriptorPool;
 			descriptorSet(const VkDevice* p_device,const VkDescriptorSet descriptorSet, const VkDescriptorPool* p_descriptorPool, std::vector<VkWriteDescriptorSet>& descriptorWrites);
 		private:
-			VkDescriptorSet _descriptorSet = VK_NULL_HANDLE;
-			const VkDescriptorPool* p_descriptorPool;
-			const VkDevice* p_device;
+			VkDescriptorSet m_descriptorSet = VK_NULL_HANDLE;
+			const VkDescriptorPool* p_descriptorPool = nullptr;
+			const VkDevice* p_device = nullptr;
 			std::vector<VkWriteDescriptorSet> descriptorWrites;
 
 		};

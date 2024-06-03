@@ -9,6 +9,9 @@
 #include <core/artemis/renderer.h>
 
 #ifndef RENDERER
+/**
+ helper macro to get the renderer from the applcation. because the renderer is owned by the application.
+ */
 #define RENDERER (application::application::get().getRenderer())
 #endif
 

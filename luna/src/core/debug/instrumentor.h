@@ -94,7 +94,7 @@ namespace luna {
 			if (m_CurrentSession)
 			{
 				m_OutputStream << json.str();
-				//m_OutputStream.flush();
+				m_OutputStream.flush();
 			}
 		}
 

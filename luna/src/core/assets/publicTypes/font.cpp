@@ -19,7 +19,7 @@ namespace luna
 			}
 		
 		}
-		ref<assets::image> font::getGlyph(char glyph)
+		const ref<assets::image> font::getGlyph(char glyph) const
 		{
 			return glyphs[glyph];
 		}

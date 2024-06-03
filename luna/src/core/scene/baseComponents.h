@@ -327,7 +327,7 @@ namespace luna
 		glm::vec4 bounds;
 		glm::mat4 outerBorderTransform;
 		std::vector<character> charTransforms;
-		ref<assets::image> font;
+		ref<assets::font> font;
 	};
 	/*
 		node tree components:

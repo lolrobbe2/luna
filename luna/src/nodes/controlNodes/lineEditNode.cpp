@@ -45,7 +45,7 @@ namespace luna
 			//renderer::renderer2D::drawQuad(transform.getTransform(), rectColor);
 			//renderer::renderer2D::drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,1.0f});
 			
-			drawString(lineEdit.charTransforms, color(), lineEdit.font);
+			//drawString(lineEdit.charTransforms, color(), lineEdit.font);
 			//if (lineEdit.font) drawString(lineEdit.font, transform2.translation, lineEdit.drawText,16,color(), lineEdit.bounds, lineEdit.indexOutOfBounds);
 		}
 
@@ -157,18 +157,18 @@ namespace luna
 
 			float xAdvance = 0.0f;
 			if (!lineEdit.font) return;
-			const ref<artemis::image> spaceGlyph = lineEdit.font->getGlyph('_');
-			float pxNorm = lineEdit.points * 1.333;
-			pxNorm /= renderer::renderer::getSceneDimensions().y;
+			const ref<assets::image> spaceGlyph = lineEdit.font->getGlyph('_');
+			float pxNorm = lineEdit.points * 1.333; //why the 1.333
+			pxNorm /= RENDERER->getSceneDimensions().y;
 			lineEdit.bounds = { transform.translation.x - transform.scale.x - NORMALIZED_BORDER_SIZE,transform.translation.x + transform.scale.x - NORMALIZED_BORDER_SIZE, transform.translation.y - transform.scale.y / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
-			const glm::vec2 normalizedDimensions = glm::vec2(pxNorm,pxNorm) / renderer::renderer::getSceneDimensions(); // Calculate normalized dimensions based on size relative to scene dimensions.
+			const glm::vec2 normalizedDimensions = glm::vec2(pxNorm,pxNorm) / RENDERER->getSceneDimensions(); // Calculate normalized dimensions based on size relative to scene dimensions.
 			std::vector<lineEditComponent::character> characters; // Vector to store character transforms.
 			
 			for (size_t i = lineEdit.scrollPosition; i < lineEdit.text.size(); i++)
 			{
-				const ref<artemis::image> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
-				const glm::vec2 dimensions = { glyph->getWidth(),glyph->getHeight() };
-				const glm::vec2 normalizedCharDimensions = dimensions / renderer::renderer::getSceneDimensions();
+				const ref<assets::image> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
+				const glm::vec2 dimensions = *glyph;
+				const glm::vec2 normalizedCharDimensions = dimensions / RENDERER->getSceneDimensions();
 				xAdvance += lineEdit.font->getAdvance(lineEdit.text[i]).x * normalizedDimensions.x;
 
 				// Calculate the transformation matrix for the character using the provided quad vertices.

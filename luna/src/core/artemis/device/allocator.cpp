@@ -1,5 +1,5 @@
 #include "allocator.h"
-#include <vk_mem_alloc.h>
+#include <core/artemis/vma/vma.h>
 
 #include <core/utils/objectStorage.h>
 

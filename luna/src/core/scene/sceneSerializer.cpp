@@ -1,6 +1,6 @@
 #include "sceneSerializer.h"
 #include <core/scene/node.h>
-#include <core/vulkan/utils/vulkanAllocator.h>
+#include <core/artemis/device/allocator.h>
 #include <yaml-cpp/yaml.h>
 #include <core/assets/assetManager.h>
 

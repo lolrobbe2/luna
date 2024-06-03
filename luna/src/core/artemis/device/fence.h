@@ -25,7 +25,7 @@ namespace luna
 			friend class device;
 			fence(const VkDevice* device, const VkFenceCreateFlags flags);
 		private:
-			const VkDevice* p_device;
+			const VkDevice* p_device = nullptr;
 			bool noDestroy = false;
 			VkFence _fence = VK_NULL_HANDLE;
 		};

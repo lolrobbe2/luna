@@ -162,7 +162,12 @@ namespace luna
 			drawQuad(transform, {1,1,1,1}, image);
 
 		}
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image) 
+		
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
+		{
+		}
+
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image)
 		{
 			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
 
@@ -176,17 +181,21 @@ namespace luna
 			drawQuad(transform, color, image);
 
 		}
-		void renderer::drawQuad(const glm::mat4& transform, const ref<assets::image> image)
+		void renderer::drawQuad(const glm::mat4& transform, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
 		{
 			if (image)
 			{
 				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-					if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image});
+					if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,*image }); //if an empty texture slot was found then bind it otherwise create new buffer
 				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
 				return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
 			}
-			return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
+			return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,*image });
+		}
+		void renderer::drawQuad(const glm::mat4& transform, const ref<assets::image> image)
+		{
+			drawQuad(transform, image, *image);
 		}
 		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
 		{
@@ -216,6 +225,20 @@ namespace luna
 			{
 				LN_CORE_INFO("rip currentBuffer full");
 			}
+		}
+
+		const glm::vec2 renderer::getSceneMousePos() const
+		{
+			return glm::vec2();
+		}
+
+		const glm::vec2 renderer::getSceneDimensions() const
+		{
+#ifndef IMGUI_API
+			return { p_window->windowSpec.width, p_window->windowSpec.height };
+#else 
+			return  imguiSceneSize;
+#endif // !IMGUI_API
 		}
 
 		void renderer::setUpComputePipeline()
