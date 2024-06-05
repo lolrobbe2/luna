@@ -71,9 +71,9 @@ namespace luna
 			VkImageLayout currentLayout = VK_IMAGE_LAYOUT_GENERAL;
 			VkFormat format = VK_FORMAT_MAX_ENUM;
 			const allocation* p_allocation = nullptr;
-			glm::vec2 extent;
-			glm::vec2 uvStart;
-			glm::vec2 uvEnd;
+			glm::vec2 extent = {};
+			glm::vec2 uvStart = {};
+			glm::vec2 uvEnd = {};
 		};
 	}
 }

@@ -7,6 +7,7 @@
 #include <backends/imgui_impl_vulkan.cpp>
 #endif // IMGUI_API
 
+
 namespace luna 
 {
 	namespace artemis 
@@ -120,26 +121,75 @@ namespace luna
 			//graphicsFences[swapchainImageIndex] = inFlightFences[currentFrame];
 
 			//inFlightFences[currentFrame]->reset();
-			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) {
+			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) 
 				commandBuffer.update(currentFrame);
-			}
+			
 			recordCommands();
-			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) {
+			for (renderCommandBuffer& commandBuffer : renderCmdBuffers) 
 				commandBuffer.reset();
-			}
+			
 			
 			VkResult presentResult = p_graphicsCommandPool->present({ p_swapChain }, { renderFinishedSemaphores[currentFrame] },&swapchainImageIndex);
 
 			if (presentResult == VK_ERROR_OUT_OF_DATE_KHR || presentResult == VK_SUBOPTIMAL_KHR)
-			{
 				LN_CORE_ERROR("out of date!");
-			}
+			
 			currentFrame = (currentFrame + 1) % maxFramesInFlight;
 		}
 
 		glm::vec4 renderer::normalizeColor(const glm::vec4& color)
 		{
 			return glm::normalize(color / 255.0f);
+		}
+
+		void renderer::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText,const glm::vec4& color)
+		{
+			//TODO FONT BINDING
+			if (font)
+			{
+				bool bound = *font; //check for empty binding
+				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+					if (!renderCmdBuffers[i].bind(font, i)) { bound = true; break; }
+
+				if (!bound) 
+				{
+					renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+					renderCmdBuffers.back().bind(font, renderCmdBuffers.size());
+				}
+			}
+
+
+			float xAdvance = 0.0f;
+			const ref<assets::image> spaceGlyph = font->getGlyph('_');
+			const glm::vec2 normalizedDimensions = glm::vec2(1.0f) / getSceneDimensions();
+			for (size_t i = 0; i < labelText.size(); i++)
+			{
+				xAdvance += font->getAdvance(labelText[i]).x * normalizedDimensions.x;
+				drawCharQuadBound({ xAdvance + position.x, position.y + font->getAdvance(labelText[i]).y * normalizedDimensions.y, position.z }, size, font->getGlyph(labelText[i]));
+				if (labelText[i] == ' ')
+				{
+					xAdvance += spaceGlyph->getExtent().x * normalizedDimensions.x;
+				}
+				else
+				{
+					xAdvance += font->getGlyph(labelText[i])->getExtent().x * normalizedDimensions.x;
+				}
+			}
+
+		}
+
+		void renderer::drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image, const glm::vec4& color = { 1.0f,1.0f,1.0f,1.0f })
+		{
+			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
+
+			// Set the translation
+			transform[3] = glm::vec4(position, 1.0f);
+
+			// Set the scale
+			transform[0][0] = size.x;
+			transform[1][1] = size.y;
+
+			drawQuad({ transform,color,image->getUvCoords(),{*image,true} });
 		}
 
 		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) 
@@ -191,7 +241,7 @@ namespace luna
 				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
 				return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
 			}
-			return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,*image });
+			return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{*image , false} });
 		}
 		void renderer::drawQuad(const glm::mat4& transform, const ref<assets::image> image)
 		{
@@ -207,7 +257,7 @@ namespace luna
 				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
 				return drawQuad({ transform,color,textureCoords,*image });
 			}
-			return drawQuad({ transform,color,textureCoords,*image });
+			return drawQuad({ transform,color,textureCoords,{*image, false} });
 		}
 		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
 		{
@@ -229,6 +279,7 @@ namespace luna
 
 		const glm::vec2 renderer::getSceneMousePos() const
 		{
+			//TODO mousepose
 			return glm::vec2();
 		}
 

@@ -28,7 +28,7 @@ namespace luna
 			friend class swapchain;
 			frameBuffer(const VkDevice* device,const VkFramebufferCreateInfo& info);
 		private:
-			VkFramebufferCreateInfo m_info;
+			VkFramebufferCreateInfo m_info = {};
 			VkFramebuffer m_frameBuffer = VK_NULL_HANDLE;
 		};
 	}

@@ -3,6 +3,7 @@
 #include <core/artemis/renderCommandBuffer.h>
 #include <core/artemis/rendering/frameBuffer.h>
 #include <core/assets/publicTypes/image.h>
+#include <core/assets/publicTypes/font.h>
 
 namespace luna 
 {
@@ -17,6 +18,8 @@ namespace luna
 			 void update();
 			 _ALWAYS_INLINE_ glm::vec4 normalizeColor(const glm::vec4& color);
 
+			 _ALWAYS_INLINE_ void drawLabel(const glm::vec3& position,const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color);
+			 _ALWAYS_INLINE_ void drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image,const glm::vec4& color = {1.0f,1.0f,1.0f,1.0f});
 			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords);
 			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 

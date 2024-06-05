@@ -42,10 +42,10 @@ namespace luna
 		void canvasItem::drawString(ref<assets::font> font, glm::vec2 pos, std::string string, int font_size, color modulate)
 		{
 			float pxNorm = (font_size * 1.333);
-			//pxNorm /= renderer::renderer::getSceneDimensions().y;
+			pxNorm /= RENDERER->getSceneDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
 			uint8_t outOfBounds;
-			//renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font,string,{-1.0f,1.0f,-1.0f,1.0f},outOfBounds);
+			RENDERER->drawLabel(position, { pxNorm,pxNorm }, font,string,modulate);
 		}
 		void canvasItem::drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<assets::font> font)
 		{
@@ -57,15 +57,15 @@ namespace luna
 		void canvasItem::drawString(ref<assets::font> font, glm::vec2 pos, std::string string, int font_size, color modulate,glm::vec4& bounds, uint8_t& outOfBounds)
 		{
 			float pxNorm = (font_size * 1.333);
-			//pxNorm /= renderer::renderer::getSceneDimensions().y;
+			pxNorm /= RENDERER->getSceneDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
 			//renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font, string, bounds, outOfBounds);
 		}
-		void canvasItem::drawTexture(ref<artemis::image> image, glm::vec2 position, color modulate = color(1, 1, 1, 1))
+		void canvasItem::drawTexture(ref<assets::image> image, glm::vec2 position, color modulate = color(1, 1, 1, 1))
 		{
 			glm::vec3 position3 = { position.x,position.y,0.0f };
-			//glm::vec2 normSize = { texture->getWidth() / renderer::renderer::getSceneGuiDimensions().x,texture->getHeight() / renderer::renderer::getSceneGuiDimensions().y };
-			RENDERER->drawQuad(position3, normSize, texture);
+			glm::vec2 normSize = image->getExtent() / RENDERER->getSceneDimensions();
+			RENDERER->drawQuad(position3, normSize, image);
 		}
 	}
 }

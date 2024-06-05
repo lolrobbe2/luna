@@ -85,16 +85,17 @@ namespace luna
 				struct sockaddr_in6* addr6 = (struct sockaddr_in6*)p_addr;
 				addr6->sin6_family = AF_INET6;
 				addr6->sin6_port = htons(p_port);
-				if (p_ip.isValid()) {
+				if (p_ip.isValid())
+				{
 					InetPtonA(AF_INET6, ((std::string)p_ip).c_str(), &addr6->sin6_addr.s6_addr);
 					//memcpy(&addr6->sin6_addr.s6_addr, p_ip.getIpv6(), 16);
 				}
-				else {
-					addr6->sin6_addr = in6addr_any;
-				}
+				else addr6->sin6_addr = in6addr_any;
+				
 				return sizeof(sockaddr_in6);
 			}
-			else { // IPv4 socket
+			else 
+			{ // IPv4 socket
 				
 				// IPv4 socket with IPv6 address
 				LN_ERR_FAIL_COND_V(!p_ip.isWildcard() && !p_ip.isIpv4(), 0);
@@ -107,9 +108,7 @@ namespace luna
 					InetPtonA(AF_INET, ((std::string)p_ip).c_str(), &addr4->sin_addr.s_addr);
 					//memcpy(&addr4->sin_addr.s_addr, p_ip.getIpv4(), 4);
 				}
-				else {
-					addr4->sin_addr.s_addr = INADDR_ANY;
-				}
+				else addr4->sin_addr.s_addr = INADDR_ANY;
 				
 				return sizeof(sockaddr_in);
 			}
@@ -505,23 +504,27 @@ namespace luna
 			}
 			int ret = select(1, rdp, wrp, &ex, tp);
 
-			if (ret == SOCKET_ERROR) {
+			if (ret == SOCKET_ERROR) 
 				return FAILED;
-			}
+			
 
-			if (ret == 0) {
+			if (ret == 0) 
 				return BUSY;
-			}
+			
 
-			if (FD_ISSET(_sock, &ex)) {
+			if (FD_ISSET(_sock, &ex)) 
+			{
 				LN_CORE_ERROR("poll failed, errror:{0}", WSAGetLastError());
 				return FAILED;
 			}
 
-			if (rdp && FD_ISSET(_sock, rdp)) {
+			if (rdp && FD_ISSET(_sock, rdp)) 
+			{
 				ready = true;
 			}
-			if (wrp && FD_ISSET(_sock, wrp)) {
+
+			if (wrp && FD_ISSET(_sock, wrp)) 
+			{
 				ready = true;
 			}
 

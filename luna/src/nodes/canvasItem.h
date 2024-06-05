@@ -3,6 +3,7 @@
 #include <core/scene/scene.h>
 
 #ifndef PT_TO_PX
+//POINT to pixels translation
 #define PT_TO_PX(Point) (Point * ( 72 / 96 ))
 #endif // !PT_TO_PX
 
@@ -47,7 +48,7 @@ namespace luna
 			void drawChar(const lineEditComponent::character character, ref<assets::font> font, color modulate = color(1, 1, 1, 1));
 			void drawString(ref<assets::font> font, glm::vec2 pos, std::string chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
 			void drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<assets::font> font);
-			void drawTexture(ref<artemis::image> image, glm::vec2 position, color modulate);
+			void drawTexture(ref<assets::image> image, glm::vec2 position, color modulate);
 			void executeDraw();
 			virtual void draw() {};
 		protected:

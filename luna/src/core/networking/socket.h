@@ -57,7 +57,8 @@ namespace luna
 #endif
 	namespace networking 
 	{
-		enum socketError {
+		enum socketError 
+		{
 			SUCCESS,
 			FAILED,
 			INIT_FAILED,
