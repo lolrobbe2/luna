@@ -1,8 +1,7 @@
+#define VMA_IMPLEMENTATION
+#include <vk_mem_alloc.h>
 #include "allocator.h"
-#include <core/artemis/vma/vma.h>
-
 #include <core/utils/objectStorage.h>
-
 #include <core/debug/debugMacros.h>
 #include <functional>
 namespace luna

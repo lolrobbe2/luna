@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _APPLICATION_
+#define _APPLICATION_
+
 #include <core/core.h>
 #include <core/platform/platform.h>
 #include <core/events/event.h>
@@ -12,7 +14,7 @@
 /**
  helper macro to get the renderer from the applcation. because the renderer is owned by the application.
  */
-#define RENDERER (application::application::get().getRenderer())
+#define RENDERER application::application::get().getRenderer()
 #endif
 
 int main(int argc, char** argv);
@@ -21,7 +23,7 @@ namespace luna
 {
 	namespace application
 	{
-		class LN_API  application
+		class application
 		{
 		public:
 			/**
@@ -34,7 +36,7 @@ namespace luna
 			 * @brief the main loop of the application.
 			 * 
 			 */
-			void run();
+			LN_API void run();
 			void initCore();
 			/**
 			 * @brief the main event callback of the application.
@@ -55,7 +57,7 @@ namespace luna
 			void pushLayer(utils::layer* layer);
 			void pushOverlay(utils::layer* layer);
 			void popLayer(utils::layer* layer);
-			artemis::renderer* getRenderer() { return p_renderer.get(); }
+			LN_API artemis::renderer* getRenderer() { return p_renderer.get(); }
 			static application& get();
 		private:
 			friend class os;
@@ -80,3 +82,4 @@ namespace luna
 	}
 }
 
+#endif 

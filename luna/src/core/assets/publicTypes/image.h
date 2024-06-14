@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _PUBLIC_IMAGE_
+#define _PUBLIC_IMAGE_
 #include <core/assets/asset.h>
 #include <core/artemis/rendering/image.h>
 namespace luna 
@@ -49,3 +50,4 @@ namespace luna
 }
 
 
+#endif

@@ -7,7 +7,7 @@ namespace luna
 {
 	namespace nodes 
 	{
-		class LN_API controlNode : public canvasItem
+		class controlNode : public canvasItem
 		{
 		public:
 			controlNode() = default;

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _OBJECT_STORAGE_
+#define _OBJECT_STORAGE_
 #include <core/utils/vectorCache.h>
 namespace luna
 {
@@ -155,4 +156,4 @@ namespace luna
 	}
 }
 
-
+#endif 

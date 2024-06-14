@@ -1,10 +1,10 @@
-#pragma once
+#ifndef _LAYER_
+#define _LAYER_
 /*from hazel2D*/
 
 #include <core/utils/timestep.h>
 #include <core/events/event.h>
 #include <core/events/keyEvent.h>
-#include "lnpch.h"
 
 namespace luna 
 {
@@ -27,3 +27,4 @@ namespace luna
 		};
 	}
 }
+#endif // !_LAYER_

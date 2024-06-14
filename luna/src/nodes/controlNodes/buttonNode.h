@@ -7,7 +7,7 @@ namespace luna
 		/**
 		 * @brief buttonNode implementation.
 		 */
-		class LN_API buttonNode : public spriteNode
+		class buttonNode : public spriteNode
 		{
 		public:
 			~buttonNode() = default;

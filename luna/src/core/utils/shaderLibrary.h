@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace artemis
 	{
-		class LN_API shaderLibrary
+		class shaderLibrary
 		{
 		public:
 			static void init(const VkDevice* device);

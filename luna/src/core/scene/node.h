@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _NODE_
+#define _NODE_
 #include <core/object/objectDB.h>
 namespace luna 
 {
@@ -43,3 +44,5 @@ namespace luna
 	};
 
 }
+
+#endif

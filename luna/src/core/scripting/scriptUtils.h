@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _SCRIPT_UTILS_
+#define _SCRIPT_UTILS_
+
 #include <core/core.h>
 #include <core/debug/uuid.h>
 #include <core/object/signal.h>
@@ -42,4 +45,4 @@ namespace luna
 	}
 }
 
-
+#endif // !_SCRIPT_UTILS_

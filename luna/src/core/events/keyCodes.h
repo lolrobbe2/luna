@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _KEY_CODES_
+#define _KEY_CODES_
+
 #include <lnpch.h>
 #include <core/core.h>
 
@@ -144,3 +147,4 @@ namespace luna
 		};
 	}
 }
+#endif // !_KEY_CODES_

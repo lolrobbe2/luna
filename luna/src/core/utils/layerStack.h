@@ -1,6 +1,6 @@
-#pragma once
+#ifndef _LAYER_STACK_
+#define _LAYER_STACK_
 #include <core/utils/layer.h>
-
 #include <vector>
 
 namespace luna 
@@ -34,3 +34,4 @@ namespace luna
 		};
 	}
 }
+#endif

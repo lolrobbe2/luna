@@ -1,6 +1,9 @@
 #pragma once
+#ifndef _SIGNAL_
+#define _SIGNAL_
 #include <core/core.h>
 #include <optional>
+
 namespace luna
 {
 	struct signal
@@ -42,3 +45,4 @@ namespace luna
 	}
 }
 
+#endif

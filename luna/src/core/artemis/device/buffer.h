@@ -4,12 +4,12 @@ namespace luna
 {
 	namespace artemis
 	{
-		typedef struct allocation; //forward declare.
+		struct allocation; //forward declare.
 		class allocator; 
 		class LN_API buffer
 		{
 		public:
-			buffer() = default;
+			buffer() {}
 			const size_t getSize() const;
 			void setData(void* p_src, size_t size);
 			template<typename T>

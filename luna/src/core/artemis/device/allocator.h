@@ -1,4 +1,5 @@
 #pragma once
+#include <core/artemis/vma/vma.h>
 #include <core/artemis/device/commandPool.h>
 #include <core/artemis/device/buffer.h>
 #include <core/artemis/rendering/image.h>

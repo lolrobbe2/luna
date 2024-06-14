@@ -74,7 +74,7 @@ namespace luna
 			size_t imageByteSize;
 		};
 
-		struct fontAtlas
+		LN_API struct fontAtlas
 		{
 			stbi_uc fontImage[FONT_ATLAS_WIDTH * FONT_ATLAS_WIDTH];
 		};

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _SCRIPTING_ENGINE_
+#define _SCRIPTING_ENGINE_
 #include <core/core.h>
 #include <core/scene/scene.h>
 #include <mono/jit/jit.h>
@@ -127,3 +129,4 @@ namespace luna
 
 	}
 }
+#endif

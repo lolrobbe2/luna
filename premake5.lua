@@ -66,10 +66,10 @@ group"core"
 project "luna"
     location "luna"
     kind "SharedLib"
+    staticruntime "off"
     language "c++"
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
-    ignoredefaultlibraries { "MSVCRT" }
     files
     {
         "%{prj.name}/src/**.h",
@@ -94,8 +94,6 @@ project "luna"
         "%{IncludeDir.luna}"
         
     }
-
-
     
     libdirs
     {
@@ -109,6 +107,8 @@ project "luna"
         cppdialect "c++17"
         systemversion "latest"
         symbols "on"
+        linkoptions "/FORCE" 
+
         links
         {
 
@@ -181,7 +181,6 @@ project "luna"
             {
                 "_CRT_SECURE_NO_WARNINGS",
                 "LN_BUILD_DLL",
-                "_WINDDLL",
                 "LN_DISTRIBUTION"
             
             }

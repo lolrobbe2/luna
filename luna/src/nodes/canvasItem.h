@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _CANVAS_ITEM_
+#define _CANVAS_ITEM_
+
 #include <core/scene/node.h>
 #include <core/scene/scene.h>
 
@@ -208,4 +211,4 @@ namespace luna
 #pragma (pop)
 }
 
-
+#endif // !_CANVAS_ITEM_

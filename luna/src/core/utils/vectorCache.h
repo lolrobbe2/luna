@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _VECTOR_CACHE_
+#define _VECTOR_CACHE_
 #include <core/core.h>
 #include <core/debug/uuid.h>
 namespace luna
@@ -198,3 +199,5 @@ namespace luna
 		};
 	}
 }
+
+#endif

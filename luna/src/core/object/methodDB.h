@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _METHOD_DB_
+#define _METHOD_DB_
+
 #define LN_ADD_INTERNAL_CALL(Class,Function) luna::methodDB::bindInternalFunction<Class>(#Function,Function);
 #include <core/core.h>
 #include <core/debug/uuid.h>
@@ -46,3 +49,4 @@ namespace luna
 		mono_add_internal_call(functionSignature.c_str(),functionPtr);
 	}
 }
+#endif

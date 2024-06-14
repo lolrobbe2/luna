@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _OBJECT_DB_
+#define _OBJECT_DB_
 #include <core/core.h>
 #include <entt.h>
 #include <type_traits>
@@ -249,3 +250,4 @@ namespace luna
 	};
 }
 
+#endif

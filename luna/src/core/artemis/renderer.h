@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _RENDERER_
+#define _RENDERER_
 #include <core/artemis/device/device.h>
 #include <core/artemis/renderCommandBuffer.h>
 #include <core/artemis/rendering/frameBuffer.h>
@@ -9,39 +10,40 @@ namespace luna
 {
 	namespace artemis 
 	{
-		class LN_API renderer
+		class renderer
 		{
 		public:
 			 renderer(const ref<vulkan::window>& window);
 			 void beginScene();
 			 void endScene();
 			 void update();
-			 _ALWAYS_INLINE_ glm::vec4 normalizeColor(const glm::vec4& color);
+			 glm::vec4 normalizeColor(const glm::vec4& color);
+			 void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color);
 
-			 _ALWAYS_INLINE_ void drawLabel(const glm::vec3& position,const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color);
-			 _ALWAYS_INLINE_ void drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image,const glm::vec4& color = {1.0f,1.0f,1.0f,1.0f});
-			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords);
-			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
+			 void bindImage(const ref<assets::image> p_image);
+			 void drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image,const glm::vec4& color = {1.0f,1.0f,1.0f,1.0f});
+			 void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords);
+			 void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 
-			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords);
-			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image);
+			 void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords);
+			 void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image);
 
-			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords);
-			 _ALWAYS_INLINE_ void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image);
+			 void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords);
+			 void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image);
 
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords);
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const ref<assets::image> image);
+			 void drawQuad(const glm::mat4& transform, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords);
+			 void drawQuad(const glm::mat4& transform, const ref<assets::image> image);
 
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image,const std::array<glm::vec2,4>& textureCoords);
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image);
+			 void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image,const std::array<glm::vec2,4>& textureCoords);
+			 void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image);
 
-			 _ALWAYS_INLINE_ void drawQuad(const glm::mat4& transform, const glm::vec4& color1);
-			 _ALWAYS_INLINE_ void drawQuad(const drawCommand& command);
+			 void drawQuad(const glm::mat4& transform, const glm::vec4& color1);
+			 void drawQuad(const drawCommand& command);
 #ifdef IMGUI_API
-			 _ALWAYS_INLINE_ void setSceneDimensions(ImVec2 size) { imguiSceneSize.x = size.x; imguiSceneSize.y = size.y; }
+			 void setSceneDimensions(ImVec2 size) { imguiSceneSize.x = size.x; imguiSceneSize.y = size.y; }
 #endif // !IMGUI_API
-			 _ALWAYS_INLINE_ const glm::vec2 getSceneMousePos() const;
-			 _ALWAYS_INLINE_  const glm::vec2 getSceneDimensions() const;
+			 const glm::vec2 getSceneMousePos() const;
+			 const glm::vec2 getSceneDimensions() const;
 		private:
 			void setUpComputePipeline();
 			void setUpGraphicsPipeline();
@@ -94,4 +96,4 @@ namespace luna
 	}
 }
 
-
+#endif

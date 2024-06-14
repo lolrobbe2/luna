@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _COMMAND_BUFFER_
+#define _COMMAND_BUFFER_
 #include  <core/platform/windows/windowsWindow.h>
 namespace luna 
 {
@@ -13,6 +14,7 @@ namespace luna
 		class LN_API commandBuffer
 		{
 		public:
+			commandBuffer() {}
 			_ALWAYS_INLINE_ bool begin(const VkCommandBufferUsageFlags flags);
 			_ALWAYS_INLINE_ void end();
 			_ALWAYS_INLINE_ void lock();
@@ -51,3 +53,4 @@ namespace luna
 }
 
 
+#endif // !_COMMAND_BUFFER_

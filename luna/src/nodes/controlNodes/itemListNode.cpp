@@ -43,7 +43,7 @@ namespace luna
 				RENDERER->drawQuad(translation + transform.translation, size, item.customFg);
 				customTransform = translation;
 				customTransform = customTransform - glm::vec3(size.x / 2, -size.y / 4.0f, 0.0f);
-				if (itemListComponent.font) renderer::renderer2D::drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text);
+				if (itemListComponent.font) RENDERER->drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text,item.iconModulate);
 				item.rectCache.start = size;
 				item.rectCache.position = translation;
 				translation.y += size.y;

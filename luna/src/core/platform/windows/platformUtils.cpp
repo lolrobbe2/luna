@@ -195,31 +195,31 @@ namespace luna
 			switch (shape)
 			{
 			case ARROW:
-				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				SetCursor(LoadCursor(NULL, IDC_ARROW));
 				break;
 			case IBEAM:
-				SetSystemCursor(LoadCursor(NULL, IDC_IBEAM), 32512);
+				SetCursor(LoadCursor(NULL, IDC_IBEAM));
 				break;
 			case CROSSHAIR:
-				SetSystemCursor(LoadCursor(NULL, IDC_CROSS), 32512);
+				SetCursor(LoadCursor(NULL, IDC_CROSS));
 				break;
 			case HAND:
-				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				SetCursor(LoadCursor(NULL, IDC_ARROW));
 				break;
 			case HRESIZE:
-				SetSystemCursor(LoadCursor(NULL, IDC_SIZEWE), 32512);
+				SetCursor(LoadCursor(NULL, IDC_SIZEWE));
 				break;
 			case VRESIZE:
-				SetSystemCursor(LoadCursor(NULL, IDC_SIZENS), 32512);
+				SetCursor(LoadCursor(NULL, IDC_SIZENS));
 				break;
 			case APP_STARTING:
-				SetSystemCursor(LoadCursor(NULL, IDC_APPSTARTING), 32512);
+				SetCursor(LoadCursor(NULL, IDC_APPSTARTING));
 				break;
 			case WAITING:
-				SetSystemCursor(LoadCursor(NULL, IDC_WAIT), 32512);
+				SetCursor(LoadCursor(NULL, IDC_WAIT));
 				break;
 			default:
-				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				SetCursor(LoadCursor(NULL, IDC_ARROW));
 				break;
 			}
 

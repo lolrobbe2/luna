@@ -42,9 +42,10 @@ namespace luna
 			transform.setScale(transform.scale + NORMALIZED_BORDER_SIZE);
 			glm::vec4 rectColor;
 			lineEdit.selected ? rectColor = SELECTED_COLOR : rectColor = UNSELECTED_COLOR;
-			//renderer::renderer2D::drawQuad(transform.getTransform(), rectColor);
-			//renderer::renderer2D::drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,1.0f});
+			RENDERER->drawQuad(transform.getTransform(), rectColor);
+			RENDERER->drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,1.0f});
 			
+
 			//drawString(lineEdit.charTransforms, color(), lineEdit.font);
 			//if (lineEdit.font) drawString(lineEdit.font, transform2.translation, lineEdit.drawText,16,color(), lineEdit.bounds, lineEdit.indexOutOfBounds);
 		}
@@ -137,7 +138,7 @@ namespace luna
 		{
 			auto transform = getComponent<transformComponent>();
 			transform.scale += NORMALIZED_BORDER_SIZE;
-			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			glm::vec2 normailizedMousePos = RENDERER->getSceneMousePos() / RENDERER->getSceneDimensions();
 			normailizedMousePos.x -= 0.5f;
 			normailizedMousePos.y -= 0.5f;
 
@@ -158,7 +159,7 @@ namespace luna
 			float xAdvance = 0.0f;
 			if (!lineEdit.font) return;
 			const ref<assets::image> spaceGlyph = lineEdit.font->getGlyph('_');
-			float pxNorm = lineEdit.points * 1.333; //why the 1.333
+			float pxNorm = lineEdit.points * 1.333; //why the 1.333 (pt to px ,1pt => pw: 1pt * 1.333)
 			pxNorm /= RENDERER->getSceneDimensions().y;
 			lineEdit.bounds = { transform.translation.x - transform.scale.x - NORMALIZED_BORDER_SIZE,transform.translation.x + transform.scale.x - NORMALIZED_BORDER_SIZE, transform.translation.y - transform.scale.y / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
 			const glm::vec2 normalizedDimensions = glm::vec2(pxNorm,pxNorm) / RENDERER->getSceneDimensions(); // Calculate normalized dimensions based on size relative to scene dimensions.
@@ -168,56 +169,22 @@ namespace luna
 			{
 				const ref<assets::image> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
 				const glm::vec2 dimensions = *glyph;
-				const glm::vec2 normalizedCharDimensions = dimensions / RENDERER->getSceneDimensions();
-				xAdvance += lineEdit.font->getAdvance(lineEdit.text[i]).x * normalizedDimensions.x;
 
 				// Calculate the transformation matrix for the character using the provided quad vertices.
-				glm::mat4 transformMat = glm::translate(glm::mat4(1.0f), { xAdvance + transform.translation.x, transform.translation.y + (pxNorm / 2) + lineEdit.font->getAdvance(lineEdit.text[i]).y * normalizedDimensions.y, transform.translation.z })
-					* glm::scale(glm::mat4(1.0f), { pxNorm, pxNorm, 1.0f })
-					* glm::scale(glm::mat4(1.0f), { normalizedCharDimensions.x, normalizedCharDimensions.y, 1.0f });
-
-				// Check if the character is out of bounds.
-				if (isOutOfBounds(transformMat, lineEdit.bounds))
-				{
-					lineEdit.charTransforms = characters;
-					lineEdit.outOfBounds = true;
-					return;
-				}
-				// Store the character's transformation matrix and glyph in the vector.
-
-				characters.emplace_back(transformMat, glyph);
-
-				// Update xAdvance based on character width.
+				xAdvance += (lineEdit.font->getAdvance(lineEdit.text[i]).x * normalizedDimensions.x) + transform.translation.x;
+				//drawCharQuadBound({ xAdvance + position.x, position.y + font->getAdvance(labelText[i]).y * normalizedDimensions.y, position.z }, size, font->getGlyph(labelText[i]));
 				if (lineEdit.text[i] == ' ')
 				{
-					xAdvance += spaceGlyph->getWidth() * normalizedDimensions.x;
+					xAdvance += spaceGlyph->getExtent().x * normalizedDimensions.x;
 				}
 				else
 				{
-					xAdvance += glyph->getWidth() * normalizedDimensions.x;
+					xAdvance += glyph->getExtent().x * normalizedDimensions.x;
 				}
-
 	
 			}
 			lineEdit.charTransforms = characters;
 			lineEdit.outOfBounds = false;
 		}
-		bool lineEditNode::isOutOfBounds(const glm::mat4 transform,const glm::vec4& bounds)
-		{
-			glm::vec4 vert[] = {
-				glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-				glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
-				glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)
-			};
-
-			for (size_t i = 0; i < 4; i++)
-			{
-				glm::vec4 transVert = transform * vert[i];
-				if((transVert.x < bounds.x || transVert.x > bounds.y) || (transVert.y < bounds.z || transVert.y > bounds.w)) return true;
-			}
-			return false;
-		}
-		
 	}
 }

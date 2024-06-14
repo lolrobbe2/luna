@@ -1,8 +1,11 @@
 #include "renderer.h"
 #include "rendering/builders/attachementBuilder.h"
+#include <core/artemis/device/descriptorSet.h>
+#include <core/artemis/device/commandBuffer.h>
 #include <core/utils/shaderLibrary.h>
 #include <core/assets/assetImporter.h>
 #include <core/assets/assetManager.h>
+#include <core/debug/debugMacros.h>
 #ifdef IMGUI_API
 #include <backends/imgui_impl_vulkan.cpp>
 #endif // IMGUI_API
@@ -142,23 +145,36 @@ namespace luna
 			return glm::normalize(color / 255.0f);
 		}
 
-		void renderer::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText,const glm::vec4& color)
+		void renderer::bindImage(const ref<assets::image> p_image)
+		{
+			LN_ERR_FAIL_NULL_MSG(p_image, "[ARTEMIS] font was nullptr");
+			bool bound = *p_image; //check for empty binding
+			for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+				if (!renderCmdBuffers[i].bind(p_image, i)) { bound = true; break; }
+
+			if (!bound)
+			{
+				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+				renderCmdBuffers.back().bind(p_image, renderCmdBuffers.size());
+			}
+		}
+
+		void renderer::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color)
 		{
 			//TODO FONT BINDING
-			if (font)
-			{
-				bool bound = *font; //check for empty binding
-				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-					if (!renderCmdBuffers[i].bind(font, i)) { bound = true; break; }
+			LN_ERR_FAIL_NULL_MSG(font, "[ARTEMIS] font was nullptr");
+			bool bound = *font; //check for empty binding
+			for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+				if (!renderCmdBuffers[i].bind(font, i)) { bound = true; break; }
 
-				if (!bound) 
-				{
-					renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
-					renderCmdBuffers.back().bind(font, renderCmdBuffers.size());
-				}
+			if (!bound)
+			{
+				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+				renderCmdBuffers.back().bind(font, renderCmdBuffers.size());
 			}
 
 
+		
 			float xAdvance = 0.0f;
 			const ref<assets::image> spaceGlyph = font->getGlyph('_');
 			const glm::vec2 normalizedDimensions = glm::vec2(1.0f) / getSceneDimensions();
@@ -178,7 +194,7 @@ namespace luna
 
 		}
 
-		void renderer::drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image, const glm::vec4& color = { 1.0f,1.0f,1.0f,1.0f })
+		void renderer::drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image, const glm::vec4& color)
 		{
 			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
 
@@ -192,11 +208,18 @@ namespace luna
 			drawQuad({ transform,color,image->getUvCoords(),{*image,true} });
 		}
 
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords)
+		{
+		}
+
 		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) 
 		{
 			const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 			drawQuad(transform,color);
+		}
+		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
+		{
 		}
 		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image)
 		{

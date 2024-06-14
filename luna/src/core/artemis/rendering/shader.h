@@ -74,7 +74,7 @@ namespace luna
 			shaderStageFragment,
 			shaderStageCompute
 		};
-		struct  LN_API shaderResource
+		struct shaderResource
 		{
 			typeClass resourceClass = uniformBuffers;
 			typeId type = Unknown;
@@ -87,7 +87,7 @@ namespace luna
 			std::string name;
 			std::vector<shaderResource> members{};
 		};
-		class LN_API shader
+		class shader
 		{
 		public:
 			shader(const VkDevice* device, const std::string& filepath, const shaderStage stage, const std::string& entrypoint = "main");

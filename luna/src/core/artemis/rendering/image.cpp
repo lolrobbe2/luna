@@ -6,7 +6,7 @@ namespace luna
 	{
 		image& image::getSubImage(const glm::vec2& extent, const glm::vec4 uv)
 		{
-			return image(_image,_imageView,p_allocation,extent,format,uv);
+			return *new image(_image,_imageView,p_allocation,extent,format,uv);
 		}
 		image::image(const VkImage image, const allocation* p_allocation, const glm::vec2& extent, const VkFormat& format, const glm::vec4 uv)
 		{

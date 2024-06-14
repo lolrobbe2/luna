@@ -27,7 +27,7 @@ namespace luna
 		{
 			return advances[character];
 		}
-		assets::assetType image::getType() const
+		assets::assetType font::getType() const
 		{
 			return assetType::FONT_ATLAS;
 		}

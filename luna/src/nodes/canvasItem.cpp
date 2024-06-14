@@ -1,8 +1,9 @@
 #include "canvasItem.h"
-#include <core/scene/scene.h>
 #include <core/application.h>
+
 namespace luna 
 {
+
 	namespace nodes 
 	{
 		canvasItem::canvasItem(entt::entity handle, luna::scene* scene) : Node(handle,scene)
@@ -27,6 +28,7 @@ namespace luna
 
 		void canvasItem::drawChar(ref<assets::font> font, glm::vec2 pos, char chr, int font_size, color modulate) 
 		{
+			
 			const ref<assets::image> charGlyph = font->getGlyph(chr);
 			transformComponent transform = getComponent<transformComponent>();
 			//int pxNorm = PT_TO_PX(font_size) / renderer::renderer::getSceneGuiDimensions().y;
@@ -46,20 +48,6 @@ namespace luna
 			glm::vec3 position{ pos.x,pos.y,1.0f };
 			uint8_t outOfBounds;
 			RENDERER->drawLabel(position, { pxNorm,pxNorm }, font,string,modulate);
-		}
-		void canvasItem::drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<assets::font> font)
-		{
-			for (auto& character : transforms)
-			{
-				drawChar(character, font,modulate);
-			}
-		}
-		void canvasItem::drawString(ref<assets::font> font, glm::vec2 pos, std::string string, int font_size, color modulate,glm::vec4& bounds, uint8_t& outOfBounds)
-		{
-			float pxNorm = (font_size * 1.333);
-			pxNorm /= RENDERER->getSceneDimensions().y;
-			glm::vec3 position{ pos.x,pos.y,1.0f };
-			//renderer::renderer2D::drawLabel(position, { pxNorm,pxNorm }, font, string, bounds, outOfBounds);
 		}
 		void canvasItem::drawTexture(ref<assets::image> image, glm::vec2 position, color modulate = color(1, 1, 1, 1))
 		{

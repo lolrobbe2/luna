@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _LNPCH_
+#define _LNPCH_
 #pragma warning(disable : 4005)
 #pragma warning(push,0)
 #include <core/platform/platform.h>
@@ -48,4 +50,4 @@
 #include <entt.h>
 #pragma warning(pop)
 
-
+#endif

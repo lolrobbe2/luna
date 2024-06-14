@@ -7,13 +7,13 @@ namespace luna
 	{
 		class frameBuffer;
 		class renderPass;
-		class LN_API swapchain
+		class swapchain
 		{
 		public:
 			void resize(uint32_t width, uint32_t height);
 			const size_t size() { return m_swapchain.image_count; }
 			~swapchain() { vkb::destroy_swapchain(m_swapchain); }
-			_ALWAYS_INLINE_ VkViewport& getViewport();
+			LN_API _ALWAYS_INLINE_ VkViewport& getViewport();
 			_ALWAYS_INLINE_ operator VkFormat() const { return m_swapchain.image_format; }
 			_ALWAYS_INLINE_ operator VkSwapchainKHR() const { return m_swapchain.swapchain; }
 			_ALWAYS_INLINE_ operator VkExtent2D() const { return m_swapchain.extent; }
