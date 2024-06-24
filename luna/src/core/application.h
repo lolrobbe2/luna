@@ -23,7 +23,7 @@ namespace luna
 {
 	namespace application
 	{
-		class application
+		class  LN_API application
 		{
 		public:
 			/**
@@ -36,7 +36,7 @@ namespace luna
 			 * @brief the main loop of the application.
 			 * 
 			 */
-			LN_API void run();
+			void run();
 			void initCore();
 			/**
 			 * @brief the main event callback of the application.
@@ -57,7 +57,7 @@ namespace luna
 			void pushLayer(utils::layer* layer);
 			void pushOverlay(utils::layer* layer);
 			void popLayer(utils::layer* layer);
-			LN_API artemis::renderer* getRenderer() { return p_renderer.get(); }
+			artemis::renderer* getRenderer() { return p_renderer.get(); }
 			static application& get();
 		private:
 			friend class os;

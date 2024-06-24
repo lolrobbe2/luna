@@ -1,4 +1,5 @@
 #pragma once
+#include <core/core.h>
 #include <core/platform/windows/windowsWindow.h>
 namespace luna 
 {
@@ -6,7 +7,7 @@ namespace luna
 	{
 		struct allocation; //forward declare.
 		class allocator; 
-		class LN_API buffer
+		class buffer
 		{
 		public:
 			buffer() {}

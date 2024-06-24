@@ -209,7 +209,7 @@ namespace luna
 			//ImGui::SetCursorPosX(viewport->WorkSize.x * 0.75);
 			ImGui::SameLine();
 			ImGui::BeginGroup();
-			if (ImGui::Button("Import", ImVec2(-1.0f, 0.0f)));
+			if (ImGui::Button("Import", ImVec2(-1.0f, 0.0f)))
 			{
 				if (ImGui::IsItemHovered() && ImGui::IsItemClicked()) {
 					ImGui::OpenPopup("ImportProject");

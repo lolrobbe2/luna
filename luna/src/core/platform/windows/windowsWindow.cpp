@@ -3,7 +3,9 @@
 #include <core/events/applicationEvent.h>
 #include <core/events/keyEvent.h>
 #include <core/events/mouseEvent.h>
-#include <backends/imgui_impl_glfw.h>
+#ifdef IMGUI_API
+	#include <backends/imgui_impl_glfw.h>
+#endif
 #pragma warning(disable : 4005)
 #include <GLFW/glfw3native.h>
 #pragma warning(default : 4005)

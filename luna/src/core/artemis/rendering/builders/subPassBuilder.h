@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _SUBPASS_BUILDER_
+#define _SUBPASS_BUILDER_
+
 #include <core/artemis/rendering/attachement.h>
 
 namespace luna 
@@ -99,3 +102,4 @@ namespace luna
 	}
 }
 
+#endif // !_SUBPASS_BUILDER_

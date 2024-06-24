@@ -1,6 +1,4 @@
 #pragma once
-#ifndef _LNPCH_
-#define _LNPCH_
 #pragma warning(disable : 4005)
 #pragma warning(push,0)
 #include <core/platform/platform.h>
@@ -29,16 +27,10 @@
 #include <VkBootstrap.h>
 #include <VkBootstrapDispatch.h>
 #include <GLFW/glfw3.h>
-//#define IMGUI_DISABLE
 
 
 
 
-
-//#include <imgui.h>
-#ifdef IMGUI_API
-#include <backends/imgui_impl_glfw.h>
-#endif //IMGUI_API
 #define GLM_FORCE_SSE2 // or GLM_FORCE_SSE42 if your processor supports it
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
@@ -50,4 +42,4 @@
 #include <entt.h>
 #pragma warning(pop)
 
-#endif
+

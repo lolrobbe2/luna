@@ -37,7 +37,7 @@ namespace luna
 	namespace nodes 
 	{
 
-		class canvasItem : public Node
+		class LN_API canvasItem : public Node
 		{
 		public:
 			canvasItem() = default;

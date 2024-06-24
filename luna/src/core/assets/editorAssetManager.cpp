@@ -9,7 +9,14 @@ namespace luna
 		editorAssetManager::~editorAssetManager()
 		{
 			assetMetadataStorage.clear(); 
-			translationMap.clear();
+			try
+			{
+				translationMap.clear();
+			}
+			catch (const std::exception& e)
+			{
+				LN_CORE_ERROR("[EDITOR_ASSET_MANAGER] unable to clear translation map!");
+			}
 		}
 		void editorAssetManager::loadImportedAssetMetadata()
 		{

@@ -66,7 +66,6 @@ group"core"
 project "luna"
     location "luna"
     kind "SharedLib"
-    staticruntime "off"
     language "c++"
     targetdir("%{wks.location}/bin/" .. outputdir .. "/x64/%{prj.name}")
     objdir("%{wks.location}/bin-int/" .. outputdir .. "/x64/%{prj.name}")
@@ -104,11 +103,9 @@ project "luna"
         ("@python %{wks.location}copyEngineCore.py")
     }
     filter "system:windows"
-        cppdialect "c++17"
+        cppdialect "c++20"
         systemversion "latest"
         symbols "on"
-        linkoptions "/FORCE" 
-
         links
         {
 
@@ -140,8 +137,6 @@ project "luna"
                 "LN_DEBUG"
             
             }
-
-            runtime "Debug"
             symbols "On"
   
         filter "configurations:release"
@@ -162,8 +157,6 @@ project "luna"
                 "LN_RELEASE"
             
             }
-
-            runtime "Release"
             optimize "On"
 
         filter "configurations:distribution"
@@ -184,7 +177,6 @@ project "luna"
                 "LN_DISTRIBUTION"
             
             }
-            runtime "Release"
             symbols "Off"
             optimize "On"
 group""
@@ -226,17 +218,14 @@ project "sandbox"
         systemversion "latest"
         defines
         {
- 
+            "IMGUI_DISABLE"
         }
         
         filter "configurations:debug"
-            runtime "Debug"
             symbols "On"
         filter "configurations:release"
-            runtime "Release"
             optimize "On"
         filter "configurations:distribution"
-            runtime "Release"
             symbols "Off"
             optimize "On"
 group"core"

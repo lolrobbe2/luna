@@ -23,10 +23,7 @@ namespace luna
 		{
 			return glyphs[glyph];
 		}
-		const glm::vec2& font::getAdvance(const char character) const
-		{
-			return advances[character];
-		}
+
 		assets::assetType font::getType() const
 		{
 			return assetType::FONT_ATLAS;

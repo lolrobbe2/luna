@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _ATTACHEMENT_
+#define _ATTACHEMENT_
 #include <core/artemis/rendering/swapchain.h>
 namespace luna 
 {
@@ -36,4 +38,4 @@ namespace luna
 		};
 	}
 }
-
+#endif // !_ATTACHEMENT_

@@ -1,3 +1,4 @@
+#include <core/scene/scene.h>
 #include <core/scene/node.h>
 #include <core/events/mouseEvent.h>
 #include <nodes/controlNodes/itemListNode.h>

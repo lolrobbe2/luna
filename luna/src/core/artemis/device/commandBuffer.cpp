@@ -56,7 +56,7 @@ namespace luna
 			vkCmdDispatch(m_commandBuffer, groupCountX, groupCountY, groupCountZ);
 		}
 
-		void commandBuffer::bindPipeline(const ref<pipeline> pipeline)
+		void commandBuffer::bindPipeline(ref<pipeline> pipeline)
 		{
 			vkCmdBindPipeline(m_commandBuffer, *pipeline, *pipeline);
 		}

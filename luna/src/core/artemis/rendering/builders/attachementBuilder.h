@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _ATTACHEMENT_BUILDER_
+#define _ATTACHEMENT_BUILDER_
+
 #include <core/artemis/rendering/attachement.h>
 namespace luna 
 {
@@ -36,3 +39,4 @@ namespace luna
 }
 
 
+#endif // !_ATTACHEMENT_BUILDER_

@@ -1,5 +1,5 @@
 #include "contentBrowserPanel.h"
-#include <core/vulkan/rendering/vulkanTexture.h>
+#include <core/assets/publicTypes/image.h>
 #include <core/platform/platformUtils.h>
 #include <project/projectManager.h>
 namespace luna
@@ -7,10 +7,10 @@ namespace luna
 	std::map<std::string, bool> selectedMap;
 
 	std::unordered_map<std::string,assets::assetType> allowedImportExtensions = {
-		{".png",assets::texture},
-		{".jpg",assets::texture},
-		{".bmp",assets::texture},
-		{".ttf",assets::font}
+		{".png",assets::TEXTURE},
+		{".jpg",assets::TEXTURE},
+		{".bmp",assets::TEXTURE},
+		{".ttf",assets::FONT_ATLAS}
 	};
 
 	const char* assetTypeToString[] = {
@@ -313,22 +313,22 @@ namespace luna
 	void contentBrowserPanel::loadNormalIcons()
 	{
 		assets::assetManager::setImportDirectory(platform::filesystem::getEngineRootPath());
-		assets::assetManager::importAsset("src/resources/normal/directoryIcon.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/directoryIconHovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/directoryIcon.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/directoryIconHovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_png.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_png_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_png.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_png_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_jpg.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_jpg_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_jpg.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_jpg_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_ttf.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_ttf_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_ttf.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_ttf_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_lscn.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_lscn_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_lscn.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_lscn_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/fileIcon.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/fileIcon.png", assets::TEXTURE);
 
 		assets::assetManager::setImportDirectory("");
 	}
@@ -375,20 +375,20 @@ namespace luna
 
 	void contentBrowserPanel::loadSmallIcons()
 	{
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon_hovered.png", assets::TEXTURE);
 	}
 
 	void contentBrowserPanel::setSmallIcons()
@@ -506,9 +506,9 @@ namespace luna
 			ImGui::TableNextColumn();
 			switch (metaData->assetType)
 			{
-			case assets::texture:
+			case assets::TEXTURE:
 			{
-				assets::textureAssetMetadata* textureMetadata = (assets::textureAssetMetadata*)metaData;
+				assets::TEXTUREAssetMetadata* textureMetadata = (assets::TEXTUREAssetMetadata*)metaData;
 				ImGui::Text("width");
 				ImGui::TableNextColumn();
 				ImGui::Text(std::to_string(textureMetadata->width).c_str());

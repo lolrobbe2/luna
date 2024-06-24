@@ -126,7 +126,7 @@ namespace luna
 			VmaAllocationInfo info;
 			VkBuffer _buffer;
 			VkResult createRes = vmaCreateBuffer(p_data->allocator, &bufferInfo, &vmaAllocInfo, &_buffer, &_allocation, &info);
-			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, buffer(VK_NULL_HANDLE,nullptr,nullptr), "[Artemis] an error occured whilst allocating a buffer, VkResult: " + VK_RESULT(createRes));
+			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS,*new buffer(), "[Artemis] an error occured whilst allocating a buffer, VkResult: " + VK_RESULT(createRes));
 			return *(new buffer(_buffer, new allocation(_allocation, info), this));
 		}
 		image& allocator::allocateImage(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const memoryUsage memoryUsage,const glm::vec4& uv, bool imageView,const VkImageAspectFlags imageAspectFlags)
@@ -159,7 +159,7 @@ namespace luna
 			VmaAllocationInfo info;
 			VkImage _image;
 			VkResult createRes = vmaCreateImage(p_data->allocator, &imageCreateInfo, &allocationCreateInfo,&_image , &_allocation, &info);
-			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, image(), "[Artemis] an error occured during image creation, VkResult: " + VK_RESULT(createRes));
+			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, *new image(), "[Artemis] an error occured during image creation, VkResult: " + VK_RESULT(createRes));
 			
 			if(imageView)
 			{
@@ -177,7 +177,7 @@ namespace luna
 				imageViewCreateInfo.subresourceRange.aspectMask = imageAspectFlags;
 				VkResult createRes = vkCreateImageView(*p_data->p_device, &imageViewCreateInfo, nullptr, &imageView);
 
-				LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS,image(), "[Artemis] an error occured whilst creating imageView!");
+				LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS,*new image(), "[Artemis] an error occured whilst creating imageView!");
 				
 				return *new image(_image, imageView, new allocation(_allocation, info),extent, format, uv);
 			}

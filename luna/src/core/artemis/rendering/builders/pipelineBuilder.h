@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _PIPELINE_BUILDER_
+#define _PIPELINE_BUILDER_
+
 #include <core/artemis/rendering/pipeline.h>
 namespace luna 
 {
@@ -76,3 +79,4 @@ namespace luna
 	}
 }
 
+#endif // !_PIPELINE_BUILDER_

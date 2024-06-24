@@ -1,5 +1,4 @@
 #include "objectDB.h"
-#include <core/scene/scene.h>
 #include <core/scripting/scriptingEngine.h>
 #include <core/debug/debugMacros.h>
 namespace luna

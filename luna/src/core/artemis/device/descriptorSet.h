@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _DESCRIPTOR_SET_
+#define _DESCRIPTOR_SET_
+
 #include <core/artemis/rendering/shader.h>
 namespace luna 
 {
@@ -7,13 +10,13 @@ namespace luna
 		/// <summary>
 		/// remebember descriptorSet& not descriptorSet otherwise the descriptorSet will be destroyed before you can use it
 		/// </summary>
-		class LN_API descriptorSet
+		class descriptorSet
 		{
 		public: 
 			_ALWAYS_INLINE_ VkDescriptorSet getNative() const { return m_descriptorSet; }
 			operator VkDescriptorSet() const { return m_descriptorSet; }
 			_ALWAYS_INLINE_ const VkDescriptorSet* getNativePtr() const { return &m_descriptorSet; }
-			_ALWAYS_INLINE_ void update();
+			void update();
 			operator const VkDescriptorSet*() const { return &m_descriptorSet; }
 			void write(const uint32_t& descriptorIndex,const void* pDescriptorInfo);
 			void free();
@@ -31,5 +34,4 @@ namespace luna
 		};
 	}
 }
-
-
+#endif // !_DESCRIPTOR_SET_

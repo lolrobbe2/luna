@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _DESCRIPTOR_POOL_
+#define _DESCRIPTOR_POOL_
+
 #include <core/artemis/device/descriptorSet.h>
 namespace luna 
 {
@@ -32,5 +35,4 @@ namespace luna
 		};
 	}
 }
-
-
+#endif // !_DESCRIPTOR_POOL_

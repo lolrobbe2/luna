@@ -97,7 +97,7 @@ namespace luna
 		socketError HTTPClient::connectToHost(const std::string& hostName, int port)
 		{
 			ipAddress address(hostName);
-			ipAddress finalizedAddress = address.isValid() || address.isWildcard() ? address : Ip::resolveHostname(hostName);
+			ipAddress finalizedAddress = address.isValid() || address.isWildcard() ? address : ipAddress(Ip::resolveHostname(hostName));
 			return streamPeerTCP::connectToHost(finalizedAddress, port);
 		}
 		void HTTPClient::request(const method requestMethod, const std::string& destination, utils::json headers, std::string body)

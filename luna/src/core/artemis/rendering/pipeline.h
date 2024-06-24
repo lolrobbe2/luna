@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _PIPELINE_
+#define _PIPELINE_
 #include <core/artemis/rendering/shader.h>
 
 namespace luna 
@@ -33,5 +35,4 @@ namespace luna
 		};
 	}
 }
-
-
+#endif // !_PIPELINE_

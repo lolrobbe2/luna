@@ -1,5 +1,4 @@
-#include "renderer.h"
-#include "rendering/builders/attachementBuilder.h"
+#include <core/artemis/rendering/builders/attachementBuilder.h>
 #include <core/artemis/device/descriptorSet.h>
 #include <core/artemis/device/commandBuffer.h>
 #include <core/utils/shaderLibrary.h>
@@ -9,6 +8,8 @@
 #ifdef IMGUI_API
 #include <backends/imgui_impl_vulkan.cpp>
 #endif // IMGUI_API
+#include "renderer.h"
+
 
 
 namespace luna 
@@ -147,7 +148,7 @@ namespace luna
 
 		void renderer::bindImage(const ref<assets::image> p_image)
 		{
-			LN_ERR_FAIL_NULL_MSG(p_image, "[ARTEMIS] font was nullptr");
+			LN_ERR_FAIL_NULL_MSG(p_image, "[ARTEMIS] p_image was nullptr");
 			bool bound = *p_image; //check for empty binding
 			for (size_t i = 0; i < renderCmdBuffers.size(); i++)
 				if (!renderCmdBuffers[i].bind(p_image, i)) { bound = true; break; }
@@ -159,161 +160,8 @@ namespace luna
 			}
 		}
 
-		void renderer::drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color)
-		{
-			//TODO FONT BINDING
-			LN_ERR_FAIL_NULL_MSG(font, "[ARTEMIS] font was nullptr");
-			bool bound = *font; //check for empty binding
-			for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-				if (!renderCmdBuffers[i].bind(font, i)) { bound = true; break; }
-
-			if (!bound)
-			{
-				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
-				renderCmdBuffers.back().bind(font, renderCmdBuffers.size());
-			}
-
-
 		
-			float xAdvance = 0.0f;
-			const ref<assets::image> spaceGlyph = font->getGlyph('_');
-			const glm::vec2 normalizedDimensions = glm::vec2(1.0f) / getSceneDimensions();
-			for (size_t i = 0; i < labelText.size(); i++)
-			{
-				xAdvance += font->getAdvance(labelText[i]).x * normalizedDimensions.x;
-				drawCharQuadBound({ xAdvance + position.x, position.y + font->getAdvance(labelText[i]).y * normalizedDimensions.y, position.z }, size, font->getGlyph(labelText[i]));
-				if (labelText[i] == ' ')
-				{
-					xAdvance += spaceGlyph->getExtent().x * normalizedDimensions.x;
-				}
-				else
-				{
-					xAdvance += font->getGlyph(labelText[i])->getExtent().x * normalizedDimensions.x;
-				}
-			}
-
-		}
-
-		void renderer::drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image, const glm::vec4& color)
-		{
-			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
-
-			// Set the translation
-			transform[3] = glm::vec4(position, 1.0f);
-
-			// Set the scale
-			transform[0][0] = size.x;
-			transform[1][1] = size.y;
-
-			drawQuad({ transform,color,image->getUvCoords(),{*image,true} });
-		}
-
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords)
-		{
-		}
-
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) 
-		{
-			const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-				* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-			drawQuad(transform,color);
-		}
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
-		{
-		}
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image)
-		{
-			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
-
-			// Set the translation
-			transform[3] = glm::vec4(position, 1.0f);
-
-			// Set the scale
-			transform[0][0] = size.x;
-			transform[1][1] = size.y;
-
-			drawQuad(transform, {1,1,1,1}, image);
-
-		}
 		
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
-		{
-		}
-
-		void renderer::drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image)
-		{
-			glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
-
-			// Set the translation
-			transform[3] = glm::vec4(position, 1.0f);
-
-			// Set the scale
-			transform[0][0] = size.x;
-			transform[1][1] = size.y;
-
-			drawQuad(transform, color, image);
-
-		}
-		void renderer::drawQuad(const glm::mat4& transform, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
-		{
-			if (image)
-			{
-				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-					if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,*image }); //if an empty texture slot was found then bind it otherwise create new buffer
-				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
-				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
-				return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
-			}
-			return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{*image , false} });
-		}
-		void renderer::drawQuad(const glm::mat4& transform, const ref<assets::image> image)
-		{
-			drawQuad(transform, image, *image);
-		}
-		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
-		{
-			if (image)
-			{
-				for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-					if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,*image });
-				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
-				renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
-				return drawQuad({ transform,color,textureCoords,*image });
-			}
-			return drawQuad({ transform,color,textureCoords,{*image, false} });
-		}
-		void renderer::drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
-		{
-			drawQuad(transform, color, image,*image);
-		}
-
-		void renderer::drawQuad(const glm::mat4& transform,const glm::vec4& color1) 
-		{
-			drawQuad({ transform,color1 });
-		}
-
-		void renderer::drawQuad(const drawCommand& command) 
-		{
-			if(currentBuffer->addCommand(command))
-			{
-				LN_CORE_INFO("rip currentBuffer full");
-			}
-		}
-
-		const glm::vec2 renderer::getSceneMousePos() const
-		{
-			//TODO mousepose
-			return glm::vec2();
-		}
-
-		const glm::vec2 renderer::getSceneDimensions() const
-		{
-#ifndef IMGUI_API
-			return { p_window->windowSpec.width, p_window->windowSpec.height };
-#else 
-			return  imguiSceneSize;
-#endif // !IMGUI_API
-		}
 
 		void renderer::setUpComputePipeline()
 		{

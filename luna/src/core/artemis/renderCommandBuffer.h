@@ -10,7 +10,7 @@ namespace luna
     }
     namespace artemis 
     {
-        typedef struct drawCommand
+        LN_API typedef struct drawCommand
         {
             alignas(16)glm::mat4 transform;
             alignas(16)glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f };

@@ -3,6 +3,7 @@
 * disclaimer this class is inspired by the godot equivelant.
 */
 #include <core/networking/socket.h>
+#include <core/object/objectDB.h>
 namespace luna 
 {
 	namespace networking

@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _SHADER_
+#define _SHADER_
+
 #include <core/platform/windows/windowsWindow.h>
 #include <spirv_cross/spirv_cross.hpp>
 #include <spirv_cross/spirv_glsl.hpp>
@@ -156,5 +159,4 @@ namespace luna
 		};
 	}
 }
-
-
+#endif // !_SHADER_

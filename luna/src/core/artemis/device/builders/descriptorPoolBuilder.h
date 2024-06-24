@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _DESCRIPTOR_POOL_BUILDER_
+#define _DESCRIPTOR_POOL_BUILDER_
+
 #include <core/artemis/rendering/shader.h>
 #include <core/artemis/device/descriptorPool.h>
 #define DESCRIPTOR_TYPE_AMOUNT 16
@@ -62,5 +65,5 @@ namespace luna
 		};
 	}
 }
-
+#endif
 

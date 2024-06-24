@@ -1,7 +1,10 @@
 #pragma once
+#ifndef IMGUI_DISABLE
+#ifndef _IMGUI_
+#define _IMGUI_
 #include <imgui.h>
+#include <backends/imgui_impl_glfw.h>
 #include <core/artemis/device/device.h>
-#ifdef IMGUI_API
 namespace luna
 {
 	/// <summary>
@@ -20,4 +23,5 @@ namespace luna
 		
 	};
 } 
-#endif
+#endif // !_IMGUI_
+#endif // !IMGUI_DISABLE

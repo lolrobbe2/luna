@@ -109,7 +109,7 @@ namespace luna
 		bool scriptingEngine::loadAssembly(const std::filesystem::path& filepath)
 		{
 			// Create an App Domain
-			s_Data->appDomain = mono_domain_create_appdomain("lunaScriptRt", nullptr);
+			s_Data->appDomain = mono_domain_create_appdomain((char*)"lunaScriptRt", nullptr);
 			mono_domain_set(s_Data->appDomain, true);
 
 			s_Data->coreAssemblyFilepath = filepath;//todo pdb
@@ -353,7 +353,7 @@ namespace luna
 				{
 					MonoMethodSignature* signature = mono_method_signature(method);
 					uint8_t paramAmount = mono_signature_get_param_count(signature);
-					signalDB::registerSignal(signal({ mono_method_get_name(method),paramAmount ,method }), std::string(mono_class_get_name(monoClass)));
+					signalDB::registerSignal(*new signal({ mono_method_get_name(method),paramAmount ,method }),*new  std::string(mono_class_get_name(monoClass)));
 				}
 			}
 		}

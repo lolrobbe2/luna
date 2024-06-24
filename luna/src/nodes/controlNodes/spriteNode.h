@@ -8,7 +8,7 @@ namespace luna
 		/**
 		 * @brief implementation of spriteNode.
 		 */
-		class spriteNode : public controlNode
+		class LN_API spriteNode : public controlNode
 		{
 		public:
 			spriteNode() = default;

@@ -1,5 +1,5 @@
-#ifdef IMGUI_API
 #include "imGui.h"
+#ifdef IMGUI_API
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_vulkan.h>
 namespace luna 

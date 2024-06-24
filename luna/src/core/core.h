@@ -30,6 +30,10 @@
 #endif
 #endif
 
+#ifndef _NO_INLINE_
+#define _NO_INLINE_ __declspec(noinline)
+#endif
+
 #ifndef stringify
 #define stringify( name ) #name
 #endif
