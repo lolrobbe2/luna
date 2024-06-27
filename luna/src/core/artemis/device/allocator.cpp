@@ -131,13 +131,17 @@ namespace luna
 		}
 		image& allocator::allocateImage(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const memoryUsage memoryUsage,const glm::vec4& uv, bool imageView,const VkImageAspectFlags imageAspectFlags)
 		{
+			VkFormat format = getSuitableFormat(usageFlags, channels);
+			return allocateImage(extent, channels, usageFlags, format, memoryUsage, uv, imageView, imageAspectFlags);
+		}
+		image& allocator::allocateImage(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, const VkFormat format, const memoryUsage memoryUsage,const glm::vec4& uv, bool imageView,const VkImageAspectFlags imageAspectFlags)
+		{
 			VkImageCreateInfo imageCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO };
 
 			VkImageFormatProperties properties;
 
 			imageCreateInfo.pNext = nullptr;
 			imageCreateInfo.imageType = VK_IMAGE_TYPE_2D;
-			VkFormat format = getSuitableFormat(usageFlags, channels);
 			imageCreateInfo.format = format;
 			VkExtent3D nativeExtent;
 			nativeExtent.width = extent.x;
@@ -158,10 +162,10 @@ namespace luna
 			allocationCreateInfo.usage = (VmaMemoryUsage)memoryUsage;
 			VmaAllocationInfo info;
 			VkImage _image;
-			VkResult createRes = vmaCreateImage(p_data->allocator, &imageCreateInfo, &allocationCreateInfo,&_image , &_allocation, &info);
+			VkResult createRes = vmaCreateImage(p_data->allocator, &imageCreateInfo, &allocationCreateInfo, &_image, &_allocation, &info);
 			LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, *new image(), "[Artemis] an error occured during image creation, VkResult: " + VK_RESULT(createRes));
-			
-			if(imageView)
+
+			if (imageView)
 			{
 				VkImageView imageView;
 				VkImageViewCreateInfo imageViewCreateInfo = { VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO };
@@ -177,19 +181,24 @@ namespace luna
 				imageViewCreateInfo.subresourceRange.aspectMask = imageAspectFlags;
 				VkResult createRes = vkCreateImageView(*p_data->p_device, &imageViewCreateInfo, nullptr, &imageView);
 
-				LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS,*new image(), "[Artemis] an error occured whilst creating imageView!");
-				
-				return *new image(_image, imageView, new allocation(_allocation, info),extent, format, uv);
+				LN_ERR_FAIL_COND_V_MSG(createRes != VK_SUCCESS, *new image(), "[Artemis] an error occured whilst creating imageView!");
+
+				return *new image(_image, imageView, new allocation(_allocation, info), extent, format, uv);
 			}
 			return *new image(_image, new allocation(_allocation, info), extent, format, uv);
 		}
 		std::vector<image>& allocator::allocateImages(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, size_t count, const memoryUsage memoryUsage, const glm::vec4& uv, bool imageView, const VkImageAspectFlags imageAspectFlags)
 		{
+			VkFormat format = getSuitableFormat(usageFlags, channels);
+			return allocateImages(extent, channels, usageFlags, format, memoryUsage, uv, imageView, imageAspectFlags);
+		}
+		std::vector<image>& allocator::allocateImages(const glm::vec2& extent, const uint32_t channels, const VkImageUsageFlags usageFlags, size_t count,const VkFormat format, const memoryUsage memoryUsage, const glm::vec4& uv, bool imageView, const VkImageAspectFlags imageAspectFlags)
+		{
 			std::vector<image>* images = new std::vector<image>();
 			images->resize(count);
 			for (size_t i = 0; i < count; i++)
 			{
-				(*images)[i] = allocateImage(extent, channels, usageFlags, memoryUsage, uv, imageView, imageAspectFlags);
+				(*images)[i] = allocateImage(extent, channels, usageFlags,format, memoryUsage, uv, imageView, imageAspectFlags);
 			}
 			return *images;
 		}

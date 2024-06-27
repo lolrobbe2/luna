@@ -267,7 +267,7 @@ namespace luna
 			frameBuffers.resize(p_swapChain->size());
 
 #ifdef IMGUI_API
-			frameBufferImages = p_allocator->allocateImages(imguiSceneSize, 4,VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,p_swapChain->size());
+			frameBufferImages = p_allocator->allocateImages(imguiSceneSize, 4,VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,p_swapChain->size(), VK_FORMAT_B8G8R8A8_UNORM);
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = frameBuffer(c_device, frameBufferImages[i],p_renderPass);
 #else 
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
@@ -395,7 +395,7 @@ namespace luna
 #ifdef IMGUI_API
 		ImTextureID renderer::registerImGuiImage(const ref<assets::image> image)
 		{
-			return  ImGui_ImplVulkan_AddTexture(*sampler, *image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+			return ImGui_ImplVulkan_AddTexture(*sampler, *image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
 		}
 		void renderer::unregisterImGuiImage(ImTextureID imGuiImageHandle)
 		{

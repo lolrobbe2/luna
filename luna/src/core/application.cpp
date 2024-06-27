@@ -81,8 +81,8 @@ namespace luna
 					{
 						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
-						for (utils::layer* layer : layerStack)
-							layer->onImGuiRender();
+						for (size_t i = 0; i < layerStack.size(); i++)
+							(*(layerStack.begin() + i))->onImGuiRender();
 					}
 					p_renderer->endImGuiScene();
 					p_renderer->update();
@@ -99,6 +99,11 @@ namespace luna
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
 			p_renderer = createScope<artemis::renderer>(mWindow);
+
+			nodes::classRegister::registerClasses();
+			scripting::scriptingEngine::init();
+			methodDB::init();
+			networking::Ip::init();
 		}
 
 		void application::onEvent(Event& e)

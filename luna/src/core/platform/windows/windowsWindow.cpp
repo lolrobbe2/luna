@@ -186,7 +186,7 @@ namespace luna
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
 #ifdef IMGUI_API
-				//ImGui_ImplGlfw_CursorPosCallback(window, xpos, ypos);
+				ImGui_ImplGlfw_CursorPosCallback(window, xpos, ypos);
 #endif // IMGUI_API
 
 				mouseMovedEvent moveEvent((float)xpos, (float)ypos);

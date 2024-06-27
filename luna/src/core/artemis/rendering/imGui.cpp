@@ -4,6 +4,7 @@
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_vulkan.h>
 #include <core/artemis/device/device.h>
+#include <backends/imgui_impl_glfw.cpp>
 namespace luna 
 {
 	static ref<artemis::pipeline> p_imguiPipeline;
@@ -28,7 +29,7 @@ namespace luna
 			.setInputAttachementAmount(1000);
 
 		descriptorPool = poolBuilder.build();
-
+		
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
 		(void)io;
@@ -38,7 +39,7 @@ namespace luna
 		io.IniFilename = "guiConfig.ini";
 		io.IniSavingRate = INFINITE;
 		io.Fonts->Build();
-		LN_ERR_FAIL_COND_MSG(!ImGui_ImplGlfw_InitForVulkan(device, true),"[IMGUI] unable to init IMGUI!");
+		LN_ERR_FAIL_COND_MSG(!ImGui_ImplGlfw_InitForVulkan(device, false),"[IMGUI] unable to init IMGUI!");
 		
 		//ref<vulkan::vulkanPipeline> vPipeline = std::dynamic_pointer_cast<vulkan::vulkanPipeline>(pipeline);
 

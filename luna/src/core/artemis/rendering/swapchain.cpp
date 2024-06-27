@@ -50,7 +50,7 @@ namespace luna
 			vkb::SwapchainBuilder builder{ *device };
 			auto res = builder.add_fallback_present_mode(VK_PRESENT_MODE_FIFO_KHR)
 				.set_desired_present_mode(VK_PRESENT_MODE_IMMEDIATE_KHR)
-				.set_desired_format({ VK_FORMAT_R8G8B8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
+				.set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
 				.set_desired_extent(width, height)
 				.add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT)
 				.set_required_min_image_count(imageCount + 1)

@@ -50,41 +50,43 @@ namespace luna
 		std::string os::openFolderDialog()
 		{
 			std::string selectedFolder = "";
-
-			// Create an instance of the File Open Dialog
-			IFileDialog* pFileDialog = nullptr;
-			HRESULT hr = CoCreateInstance(CLSID_FileOpenDialog, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pFileDialog));
+			HRESULT hr = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
 			if (SUCCEEDED(hr))
 			{
-				// Set options to select folders only
-				DWORD options;
-				pFileDialog->GetOptions(&options);
-				pFileDialog->SetOptions(options | FOS_PICKFOLDERS);
-
-				// Show the dialog
-				if (SUCCEEDED(pFileDialog->Show(nullptr)))
+				// Create an instance of the File Open Dialog
+				IFileDialog* pFileDialog = nullptr;
+				HRESULT hr = CoCreateInstance(CLSID_FileOpenDialog, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pFileDialog));
+				if (SUCCEEDED(hr))
 				{
-					// Get the selected folder path
-					IShellItem* pResult = nullptr;
-					if (SUCCEEDED(pFileDialog->GetResult(&pResult)))
+					// Set options to select folders only
+					DWORD options;
+					pFileDialog->GetOptions(&options);
+					pFileDialog->SetOptions(options | FOS_PICKFOLDERS);
+
+					// Show the dialog
+					if (SUCCEEDED(pFileDialog->Show(nullptr)))
 					{
-						PWSTR folderPath;
-						if (SUCCEEDED(pResult->GetDisplayName(SIGDN_FILESYSPATH, &folderPath)))
+						// Get the selected folder path
+						IShellItem* pResult = nullptr;
+						if (SUCCEEDED(pFileDialog->GetResult(&pResult)))
 						{
-							// Convert the wide string to narrow string
-							int bufferSize = WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, nullptr, 0, nullptr, nullptr);
-							if (bufferSize > 0)
+							PWSTR folderPath;
+							if (SUCCEEDED(pResult->GetDisplayName(SIGDN_FILESYSPATH, &folderPath)))
 							{
-								std::string narrowPath(bufferSize, '\0');
-								WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, narrowPath.data(), bufferSize, nullptr, nullptr);
-								selectedFolder = narrowPath;
+								// Convert the wide string to narrow string
+								int bufferSize = WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, nullptr, 0, nullptr, nullptr);
+								if (bufferSize > 0)
+								{
+									std::string narrowPath(bufferSize, '\0');
+									WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, narrowPath.data(), bufferSize, nullptr, nullptr);
+									selectedFolder = narrowPath;
+								}
+								CoTaskMemFree(folderPath);
 							}
-							CoTaskMemFree(folderPath);
+							pResult->Release();
 						}
-						pResult->Release();
 					}
 				}
-
 				pFileDialog->Release();
 			}
 
