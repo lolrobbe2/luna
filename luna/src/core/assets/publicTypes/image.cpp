@@ -1,4 +1,4 @@
-//#include <core/application.h>
+#include <core/application.h>
 #include "image.h"
 
 namespace luna 
@@ -30,7 +30,7 @@ namespace luna
 
 		void image::enableImgui(ref<image> image)
 		{
-			//image->imGuiImageHandle = RENDERER->registerImGuiImage(image);
+			image->imGuiImageHandle = RENDERER->registerImGuiImage(image);
 		}
 		void image::enableImgui(std::vector<ref<image>> images)
 		{
@@ -39,7 +39,7 @@ namespace luna
 		}
 		void image::diableImgui()
 		{
-			//RENDERER->unregisterImGuiImage(imGuiImageHandle);
+			RENDERER->unregisterImGuiImage(imGuiImageHandle);
 		}
 #endif // IMGUI_API
 	}

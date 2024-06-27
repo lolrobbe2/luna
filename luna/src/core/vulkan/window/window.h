@@ -112,7 +112,7 @@ namespace luna
 		*	@class std::shared_ptr<window>(window::create(windowSpec windowSpec));
 		*	@warning use as an std::shared_ptr /ref
 		*/
-		class window
+		class LN_API window
 		{
 			
 		public:

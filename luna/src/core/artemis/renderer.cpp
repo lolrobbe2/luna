@@ -362,6 +362,7 @@ namespace luna
 		{
 			return ImGui_ImplVulkan_RemoveTexture((VkDescriptorSet)imGuiImageHandle);
 		}
+
 #endif
 	}
 }

@@ -2,11 +2,15 @@
 #ifdef IMGUI_API
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_vulkan.h>
+#include <core/artemis/device/device.h>
 namespace luna 
 {
+	static ref<artemis::pipeline> p_imguiPipeline;
+	static artemis::descriptorPool& descriptorPool = *(artemis::descriptorPool*)nullptr;
+	static const artemis::device* p_device;
 	imGui::imGui(const artemis::device& device,ref<artemis::swapchain> p_swapchain)
 	{
-		this->p_device = device;
+		p_device = device;
 		artemis::descriptorPoolBuilder poolBuilder = p_device->getDescriptorPoolBuilder(nullptr);
 		poolBuilder.setSamplerAmount(1000)
 			.setCombinedImageSamplerAmount(1000)

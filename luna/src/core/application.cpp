@@ -99,7 +99,6 @@ namespace luna
 			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
 			assets::assetManager::init(true);
 			p_renderer = createScope<artemis::renderer>(mWindow);
-			p_renderer->set
 		}
 
 		void application::onEvent(Event& e)

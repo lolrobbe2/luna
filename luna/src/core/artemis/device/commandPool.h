@@ -1,6 +1,7 @@
 #pragma once
+#ifndef _COMMAND_POOL_
+#define _COMMAND_POOL_
 #include <core/artemis/device/commandBuffer.h>
-#include <core/artemis/device/semaphore.h>
 #include <core/artemis/device/semaphore.h>
 #include <core/artemis/device/fence.h>
 namespace luna
@@ -29,3 +30,4 @@ namespace luna
 }
 
 
+#endif // !_COMMAND_POOL_
