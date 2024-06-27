@@ -189,7 +189,7 @@ namespace luna
 			images->resize(count);
 			for (size_t i = 0; i < count; i++)
 			{
-				(*images)[count] = allocateImage(extent, channels, usageFlags, memoryUsage, uv, imageView, imageAspectFlags);
+				(*images)[i] = allocateImage(extent, channels, usageFlags, memoryUsage, uv, imageView, imageAspectFlags);
 			}
 			return *images;
 		}

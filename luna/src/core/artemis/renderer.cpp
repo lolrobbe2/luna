@@ -238,6 +238,8 @@ namespace luna
 #ifdef IMGUI_API
 			frameBufferImages = p_allocator->allocateImages(imguiSceneSize, 4,VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,p_swapChain->size());
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = frameBuffer(c_device, frameBufferImages[i],p_renderPass);
+			for (image& image : frameBufferImages) 
+				frambufferGuiImages.push_back(ImGui_ImplVulkan_AddTexture(*sampler, image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL));
 #else 
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
 #endif // !
@@ -363,6 +365,10 @@ namespace luna
 			return ImGui_ImplVulkan_RemoveTexture((VkDescriptorSet)imGuiImageHandle);
 		}
 
+		ImTextureID renderer::getWindowImage()
+		{
+			return frambufferGuiImages[currentFrame];
+		}
 #endif
 	}
 }

@@ -277,6 +277,7 @@ project "apollo"
         systemversion "latest"
         defines
         {
+            "IMGUI_API=__declspec(dllimport)"
         }
         
         filter "configurations:debug"

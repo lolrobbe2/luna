@@ -5,6 +5,12 @@
 #define _IMGUI_
 #include <core/core.h>
 #include <imgui.h>
+#ifdef IMGUI_API
+	#undef IMGUI_API
+	#define IMGUI_API LN_API
+#endif // IMGUI_API
+
+
 namespace luna
 {
 	namespace artemis

@@ -28,7 +28,7 @@ project "imGui"
 	}
 	defines
     {
-        --"IMGUI_API=__declspec(dllexport)"
+        "IMGUI_API=__declspec(dllexport)"
     }
 	filter "configurations:debug"
 		symbols "on"

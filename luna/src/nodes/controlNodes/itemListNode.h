@@ -6,7 +6,7 @@ namespace luna
 {
 	namespace nodes
 	{
-		class itemListNode : public controlNode
+		class LN_API itemListNode : public controlNode
 		{
 		public:
 

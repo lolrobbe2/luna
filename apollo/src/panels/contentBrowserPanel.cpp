@@ -54,12 +54,11 @@ namespace luna
 				ImVec2 windowPos = ImGui::GetMainViewport()->GetCenter();
 				ImGui::SetWindowPos({ windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
 				
-				if (!assets::assetManager::isAssetHandleValid(importPath.filename().string())) {
+				if (!assets::assetManager::isAssetHandleValid(importPath.filename().string())) 
 					importPopup(openPopup);
-				}
-				else {
+				else 
 					showAssetInfo(importPath.filename().string());
-				}
+				
 				ImGui::EndPopup();
 			}
 		}
@@ -174,7 +173,7 @@ namespace luna
 				//ImGui::PushID(filenameString.c_str());
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
-				ref<assets::image> icon = std::dynamic_pointer_cast<assets::image>(getIcon(directoryEntry, hovered == filenameString));
+				ref<assets::image> icon = getIcon(directoryEntry, hovered == filenameString);
 
 
 				ImGui::ImageButton(icon->getGuiImageHandle(), { thumbnailSize, thumbnailSize }, { 0, 0 }, { 1, 1 });
@@ -222,7 +221,7 @@ namespace luna
 
 	bool contentBrowserPanel::button(assetDirectory& directoryEntry,int indent)
 	{
-		const ref<assets::image> icon = std::dynamic_pointer_cast<assets::image>(getSmallIcon(directoryEntry.entry,directoryEntry.hovered));
+		const ref<assets::image> icon = getSmallIcon(directoryEntry.entry,directoryEntry.hovered);
 
 		
 		
@@ -291,7 +290,10 @@ namespace luna
 		{
 			if ((GetFileAttributesA(directoryEntry.path().string().c_str()) & FILE_ATTRIBUTE_HIDDEN) == 0) {
 				assetDirectory dir;
-				if (directoryEntry.is_directory()) initChildAssetDir(directoryEntry.path(), dir);
+
+				if (directoryEntry.is_directory()) 
+					initChildAssetDir(directoryEntry.path(), dir);
+
 				dir.entry = directoryEntry;
 				assetDir.push_back(dir);
 			}
@@ -303,7 +305,10 @@ namespace luna
 		{
 			if ((GetFileAttributesA(directoryEntry.path().string().c_str()) & FILE_ATTRIBUTE_HIDDEN) == 0) {
 				assetDirectory dir;
-				if (directoryEntry.is_directory()) initChildAssetDir(directoryEntry.path(),dir);
+
+				if (directoryEntry.is_directory())
+					initChildAssetDir(directoryEntry.path(),dir);
+
 				dir.entry = directoryEntry;
 				parentDir.childDir.push_back(dir);
 			}
@@ -335,22 +340,22 @@ namespace luna
 
 	void contentBrowserPanel::setNormalIcons()
 	{
-		directoryIcon = assets::assetManager::getAsset("directoryIcon.png");
-		directoryHoveredIcon = assets::assetManager::getAsset("directoryIconHovered.png");
+		directoryIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIcon.png"));
+		directoryHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIconHovered.png"));
 
-		pngIcon = assets::assetManager::getAsset("icon_png.png");
-		pngHoveredIcon = assets::assetManager::getAsset("icon_png_hovered.png");
+		pngIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_png.png"));
+		pngHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_png_hovered.png"));
 
-		jpgIcon = assets::assetManager::getAsset("icon_jpg.png");
-		jpgHoveredIcon = assets::assetManager::getAsset("icon_jpg_hovered.png");
+		jpgIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_jpg.png"));
+		jpgHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_jpg_hovered.png"));
 
-		ttfIcon = assets::assetManager::getAsset("icon_ttf.png");
-		ttfHoveredIcon = assets::assetManager::getAsset("icon_ttf_hovered.png");
+		ttfIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_ttf.png"));
+		ttfHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_ttf_hovered.png"));
 
-		lscnIcon = assets::assetManager::getAsset("icon_lscn.png");
-		lscnHoveredIcon = assets::assetManager::getAsset("icon_lscn_hovered.png");
+		lscnIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_lscn.png"));
+		lscnHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_lscn_hovered.png"));
 
-		fileIcon = assets::assetManager::getAsset("fileIcon.png");
+		fileIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("fileIcon.png"));
 	}
 
 	void contentBrowserPanel::setNormalGuiIcons()
@@ -390,23 +395,23 @@ namespace luna
 
 	void contentBrowserPanel::setSmallIcons()
 	{
-		smallDirectoryIcon = assets::assetManager::getAsset("directoryIcon.png");
-		smallDirectoryHoveredIcon = assets::assetManager::getAsset("directoryIconHovered.png");
+		smallDirectoryIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIcon.png"));
+		smallDirectoryHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIconHovered.png"));
 
-		smallPngIcon = assets::assetManager::getAsset("small_icon_png.png");
-		smallPngHoveredIcon = assets::assetManager::getAsset("small_icon_png_hovered.png");
+		smallPngIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_png.png"));
+		smallPngHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_png_hovered.png"));
 
-		smallJpgIcon = assets::assetManager::getAsset("small_icon_jpg.png");
-		smallJpgHoveredIcon = assets::assetManager::getAsset("small_icon_jpg_hovered.png");
+		smallJpgIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_jpg.png"));
+		smallJpgHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_jpg_hovered.png"));
 
-		smallTtfIcon = assets::assetManager::getAsset("small_icon_ttf.png");
-		smallTtfHoveredIcon = assets::assetManager::getAsset("small_icon_ttf_hovered.png");
+		smallTtfIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_ttf.png"));
+		smallTtfHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_ttf_hovered.png"));
 
-		smallLscnIcon = assets::assetManager::getAsset("small_icon_lscn.png");
-		smallLscnHoveredIcon = assets::assetManager::getAsset("small_icon_lscn_hovered.png");
+		smallLscnIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_lscn.png"));
+		smallLscnHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_lscn_hovered.png"));
 
-		smallFileIcon = assets::assetManager::getAsset("small_fileIcon.png");
-		smallFileIconHovered = assets::assetManager::getAsset("small_fileIcon_hovered.png");
+		smallFileIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon.png"));
+		smallFileIconHovered = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon_hovered.png"));
 	}
 	void contentBrowserPanel::setSmallGuiIcons()
 	{

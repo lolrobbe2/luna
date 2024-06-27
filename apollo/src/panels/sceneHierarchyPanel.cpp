@@ -14,23 +14,23 @@ namespace luna
 {
 	sceneHierarchyPanel::sceneHierarchyPanel()
 	{
-		smallDirectoryIcon = assets::assetManager::getAsset("directoryIcon.png");
-		smallPngIcon = assets::assetManager::getAsset("small_icon_png.png");
-		smallJpgIcon = assets::assetManager::getAsset("small_icon_jpg.png");
-		smallTtfIcon = assets::assetManager::getAsset("small_icon_ttf.png");
-		smallLscnIcon = assets::assetManager::getAsset("small_icon_lscn.png");
-		smallFileIcon = assets::assetManager::getAsset("small_fileIcon.png");
+		smallDirectoryIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIcon.png"));
+		smallPngIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_png.png"));
+		smallJpgIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_jpg.png"));
+		smallTtfIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_ttf.png"));
+		smallLscnIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_lscn.png"));
+		smallFileIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon.png"));
 	}
 	sceneHierarchyPanel::sceneHierarchyPanel(const ref<scene>& context)
 	{
 		setContext(context);
 
-		smallDirectoryIcon = assets::assetManager::getAsset("directoryIcon.png");
-		smallPngIcon = assets::assetManager::getAsset("small_icon_png.png");
-		smallJpgIcon = assets::assetManager::getAsset("small_icon_jpg.png");
-		smallTtfIcon = assets::assetManager::getAsset("small_icon_ttf.png");
-		smallLscnIcon = assets::assetManager::getAsset("small_icon_lscn.png");
-		smallFileIcon = assets::assetManager::getAsset("small_fileIcon.png");
+		smallDirectoryIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIcon.png"));
+		smallPngIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_png.png"));
+		smallJpgIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_jpg.png"));
+		smallTtfIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_ttf.png"));
+		smallLscnIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_lscn.png"));
+		smallFileIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon.png"));
 
 	}
 
@@ -268,7 +268,7 @@ namespace luna
 					//inputText("filePath", sprite.filePath);
 					if(sprite.filePath.string() != "")
 					{
-						const ref<assets::image> icon = std::dynamic_pointer_cast<assets::image>(getSmallIcon(sprite.filePath));
+						const ref<assets::image> icon = getSmallIcon(sprite.filePath);
 						if(ImGui::ImageButton(icon->getGuiImageHandle(),ImVec2(60,60)))
 						{
 							const std::string filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
@@ -483,7 +483,7 @@ namespace luna
 		
 	}
 
-	ref<assets::asset> sceneHierarchyPanel::getSmallIcon(const std::filesystem::path& assetFilePath)
+	ref<assets::image> sceneHierarchyPanel::getSmallIcon(const std::filesystem::path& assetFilePath)
 	{
 		if (assetFilePath.extension().string() == ".png") {
 			

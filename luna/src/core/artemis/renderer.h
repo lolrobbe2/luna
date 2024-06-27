@@ -153,7 +153,7 @@ namespace luna
 			
 
 			 void unregisterImGuiImage(ImTextureID imGuiImageHandle);
-			 ImTextureID getWindowImage();
+			 LN_API ImTextureID getWindowImage();
 #endif // !IMGUI_API
 			 const glm::vec2 getSceneMousePos() const
 			 {
@@ -217,11 +217,11 @@ namespace luna
 #ifdef IMGUI_API
 			std::vector<frameBuffer> imguiFrameBuffers;
 			ref<renderPass> p_imguiRenderPass;
-			glm::vec2 imguiSceneSize;
+			glm::vec2 imguiSceneSize = { 100.0f,100.0f }; //set default because otherwise the float max will be taken wich is to big for any gpu to render to!!!
 			glm::vec2 sceneMousePos;
 
 			std::vector<image> frameBufferImages;    
-
+			std::vector<ImTextureID> frambufferGuiImages;
 #endif //IMGUI_API
 
 		};

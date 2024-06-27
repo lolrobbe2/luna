@@ -1,4 +1,5 @@
 #pragma once
+#include <core/artemis/rendering/imGui.h>
 #include <core/utils/layer.h>
 #include <panels/sceneHierarchyPanel.h>
 #include <panels/contentBrowserPanel.h>
@@ -9,6 +10,7 @@ namespace luna
 	class editorLayer : public utils::layer
 	{
 	public:
+		
 		editorLayer(layer* prjLayer, const std::string& name = "editor layer");
 		virtual ~editorLayer() = default;
 		
