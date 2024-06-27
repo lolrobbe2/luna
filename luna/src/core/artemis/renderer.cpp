@@ -353,5 +353,15 @@ namespace luna
 		{
 
 		}
+#ifdef IMGUI_API
+		ImTextureID renderer::registerImGuiImage(const ref<assets::image> image)
+		{
+			return  ImGui_ImplVulkan_AddTexture(*sampler, *image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+		}
+		void renderer::unregisterImGuiImage(ImTextureID imGuiImageHandle)
+		{
+			return ImGui_ImplVulkan_RemoveTexture((VkDescriptorSet)imGuiImageHandle);
+		}
+#endif
 	}
 }

@@ -216,16 +216,26 @@ project "sandbox"
     filter "system:windows"
         cppdialect "c++17"
         systemversion "latest"
-        defines
-        {
-            "IMGUI_DISABLE"
-        }
-        
         filter "configurations:debug"
+            defines
+            {
+                "IMGUI_DISABLE"
+            }
+        
             symbols "On"
         filter "configurations:release"
+            defines
+            {
+                "IMGUI_DISABLE"
+            }
+        
             optimize "On"
         filter "configurations:distribution"
+            defines
+            {
+                "IMGUI_DISABLE"
+            }
+        
             symbols "Off"
             optimize "On"
 group"core"

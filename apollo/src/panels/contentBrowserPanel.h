@@ -1,4 +1,5 @@
 #pragma once
+#include <core/assets/publicTypes/image.h>
 #include <core/assets/assetManager.h>
 
 namespace luna 
@@ -18,8 +19,8 @@ namespace luna
 		contentBrowserPanel();
 		void onImGuiRender();
 	private:
-		ref<assets::asset> getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered);
-		ref<assets::asset> getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered);
+		ref<assets::image> getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered);
+		ref<assets::image> getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered);
 		void importPopup(bool& openPopup);
 
 		void largeIcons();
@@ -44,41 +45,41 @@ namespace luna
 		std::filesystem::path m_BaseDirectory;
 		std::filesystem::path m_CurrentDirectory;
 #pragma region normalIcons
-		ref<assets::asset> directoryIcon;
-		ref<assets::asset> directoryHoveredIcon;
+		ref<assets::image> directoryIcon;
+		ref<assets::image> directoryHoveredIcon;
 
-		ref<assets::asset> pngIcon;
-		ref<assets::asset> pngHoveredIcon;
+		ref<assets::image> pngIcon;
+		ref<assets::image> pngHoveredIcon;
 
-		ref<assets::asset> jpgIcon;
-		ref<assets::asset> jpgHoveredIcon;
+		ref<assets::image> jpgIcon;
+		ref<assets::image> jpgHoveredIcon;
 
-		ref<assets::asset> ttfIcon;
-		ref<assets::asset> ttfHoveredIcon;
+		ref<assets::image> ttfIcon;
+		ref<assets::image> ttfHoveredIcon;
 
-		ref<assets::asset> lscnIcon;
-		ref<assets::asset> lscnHoveredIcon;
+		ref<assets::image> lscnIcon;
+		ref<assets::image> lscnHoveredIcon;
 
-		ref<assets::asset> fileIcon;
+		ref<assets::image> fileIcon;
 #pragma endregion
 #pragma region smallIcons
-		ref<assets::asset> smallDirectoryIcon;
-		ref<assets::asset> smallDirectoryHoveredIcon;
+		ref<assets::image> smallDirectoryIcon;
+		ref<assets::image> smallDirectoryHoveredIcon;
 
-		ref<assets::asset> smallPngIcon;
-		ref<assets::asset> smallPngHoveredIcon;
+		ref<assets::image> smallPngIcon;
+		ref<assets::image> smallPngHoveredIcon;
 
-		ref<assets::asset> smallJpgIcon;
-		ref<assets::asset> smallJpgHoveredIcon;
+		ref<assets::image> smallJpgIcon;
+		ref<assets::image> smallJpgHoveredIcon;
 
-		ref<assets::asset> smallTtfIcon;
-		ref<assets::asset> smallTtfHoveredIcon;
+		ref<assets::image> smallTtfIcon;
+		ref<assets::image> smallTtfHoveredIcon;
 
-		ref<assets::asset> smallLscnIcon;
-		ref<assets::asset> smallLscnHoveredIcon;
+		ref<assets::image> smallLscnIcon;
+		ref<assets::image> smallLscnHoveredIcon;
 
-		ref<assets::asset> smallFileIcon;
-		ref<assets::asset> smallFileIconHovered;
+		ref<assets::image> smallFileIcon;
+		ref<assets::image> smallFileIconHovered;
 #pragma endregion
 		std::filesystem::path currentImportSelected;
 

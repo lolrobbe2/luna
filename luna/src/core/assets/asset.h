@@ -1,5 +1,4 @@
 #pragma once
-#include "lnpch.h"
 #include <core/debug/uuid.h>
 
 #pragma region fonts

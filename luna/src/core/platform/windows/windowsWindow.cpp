@@ -1,4 +1,3 @@
-#include <lnpch.h>
 #include <core/platform/windows/windowsWindow.h>
 #include <core/events/applicationEvent.h>
 #include <core/events/keyEvent.h>
@@ -110,9 +109,9 @@ namespace luna
 			glfwSetKeyCallback(_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
-#ifdef ENABLE_IMGUI
+#ifdef IMGUI_API
 				ImGui_ImplGlfw_KeyCallback(window, key, scancode, action, mods);
-#endif // ENABLE_IMGUI
+#endif // IMGUI_API
 				switch (action)
 				{
 					case GLFW_RELEASE:
@@ -138,9 +137,9 @@ namespace luna
 			glfwSetMouseButtonCallback(_window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
-#ifdef ENABLE_IMGUI
+#ifdef IMGUI_API
 				ImGui_ImplGlfw_MouseButtonCallback(window, button, action, mods);
-#endif // ENABLE_IMGUI
+#endif // IMGUI_API
 				switch (action)
 				{
 					case GLFW_RELEASE:
@@ -175,9 +174,9 @@ namespace luna
 			glfwSetScrollCallback(_window, [](GLFWwindow* window, double xoffset, double yoffset) 
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
-#ifdef ENABLE_IMGUI
+#ifdef IMGUI_API
 				ImGui_ImplGlfw_ScrollCallback(window, xoffset, yoffset);
-#endif // ENABLE_IMGUI
+#endif // IMGUI_API
 
 				mouseScrolledEvent scrollEvent((float)xoffset, (float)yoffset);
 				winData.eventCallbackFn(scrollEvent);
@@ -186,9 +185,9 @@ namespace luna
 			glfwSetCursorPosCallback(_window, [](GLFWwindow* window, double xpos, double ypos)
 			{
 				windowData& winData = *(windowData*)glfwGetWindowUserPointer(window);
-#ifdef ENABLE_IMGUI
+#ifdef IMGUI_API
 				ImGui_ImplGlfw_CursorPosCallback(window, xpos, ypos);
-#endif // ENABLE_IMGUI
+#endif // IMGUI_API
 
 				mouseMovedEvent moveEvent((float)xpos, (float)ypos);
 				winData.eventCallbackFn(moveEvent);
@@ -200,9 +199,9 @@ namespace luna
 
 				keyTypedEvent event(codepoint);
 				data.eventCallbackFn(event);
-#ifdef ENABLE_IMGUI
+#ifdef IMGUI_API
 				ImGui_ImplGlfw_CharCallback(window, codepoint);
-#endif // ENABLE_IMGUI
+#endif // IMGUI_API
 
 			});
 			

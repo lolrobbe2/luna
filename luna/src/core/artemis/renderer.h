@@ -143,13 +143,24 @@ namespace luna
 			 {
 				 if (currentBuffer->addCommand(command))
 				 {
-					 LN_CORE_INFO("rip currentBuffer full"); //TODO: needs fixing
+					 LN_CORE_INFO("rip currentBuffer full"); //TODO: needs fixing.
 				 }
 			 }
 #ifdef IMGUI_API
 			 void setSceneDimensions(ImVec2 size) { imguiSceneSize.x = size.x; imguiSceneSize.y = size.y; }
+
+			 ImTextureID registerImGuiImage(const ref<assets::image> image);
+			
+
+			 void unregisterImGuiImage(ImTextureID imGuiImageHandle);
+			 ImTextureID getWindowImage();
 #endif // !IMGUI_API
 			 const glm::vec2 getSceneMousePos() const
+			 {
+				 //TODO mousepose
+				 return glm::vec2();
+			 }
+			 const glm::vec2 setSceneMousePos(const glm::vec2& sceneMousePos) const
 			 {
 				 //TODO mousepose
 				 return glm::vec2();
@@ -162,6 +173,7 @@ namespace luna
 				 return  imguiSceneSize;
 #endif // !IMGUI_API
 			 }
+
 		private:
 			void setUpComputePipeline();
 			void setUpGraphicsPipeline();
@@ -206,6 +218,8 @@ namespace luna
 			std::vector<frameBuffer> imguiFrameBuffers;
 			ref<renderPass> p_imguiRenderPass;
 			glm::vec2 imguiSceneSize;
+			glm::vec2 sceneMousePos;
+
 			std::vector<image> frameBufferImages;    
 
 #endif //IMGUI_API

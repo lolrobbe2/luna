@@ -1,6 +1,5 @@
 #ifndef _IMAGE_
 #define _IMAGE_
-
 #include <core/platform/windows/windowsWindow.h>
 #include <core/core.h>
 namespace luna 

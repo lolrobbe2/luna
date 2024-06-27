@@ -5,7 +5,6 @@
 #include <nodes/controlNodes/buttonNode.h>
 #include <nodes/controlNodes/itemListNode.h>
 //node includes end
-#include <core/rendering/renderer2D.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <core/platform/platformUtils.h>
 #include <core/object/objectDB.h>
@@ -50,10 +49,10 @@ namespace luna
 			{
 				ImGui::Text(("framerate = " + std::to_string(ImGui::GetIO().Framerate) + " FPS").c_str());
 				ImGui::Text(("frameTime = " + std::to_string(ImGui::GetIO().DeltaTime * 1000) + " ms").c_str());
-				ImGui::Text(("drawCalls = " + std::to_string(renderer::renderer2D::getStats().drawCalls)).c_str());
-				ImGui::Text(("quadCount = " + std::to_string(renderer::renderer2D::getStats().quadCount)).c_str());
-				ImGui::Text(("vertexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalVertexCount())).c_str());
-				ImGui::Text(("indexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalIndexCount())).c_str());
+				//ImGui::Text(("drawCalls = " + std::to_string(renderer::renderer2D::getStats().drawCalls)).c_str());
+				//ImGui::Text(("quadCount = " + std::to_string(renderer::renderer2D::getStats().quadCount)).c_str());
+				//ImGui::Text(("vertexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalVertexCount())).c_str());
+				//ImGui::Text(("indexCount = " + std::to_string(renderer::renderer2D::getStats().getTotalIndexCount())).c_str());
 			}
 			ImGui::End();
 
@@ -269,7 +268,7 @@ namespace luna
 					//inputText("filePath", sprite.filePath);
 					if(sprite.filePath.string() != "")
 					{
-						const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getSmallIcon(sprite.filePath));
+						const ref<assets::image> icon = std::dynamic_pointer_cast<assets::image>(getSmallIcon(sprite.filePath));
 						if(ImGui::ImageButton(icon->getGuiImageHandle(),ImVec2(60,60)))
 						{
 							const std::string filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
@@ -277,8 +276,8 @@ namespace luna
 							{
 								sprite.filePath = filePath;
 								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-								if (texture) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
-								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(), assets::texture));
+								if (texture) sprite.texture = std::dynamic_pointer_cast<assets::image>(texture);
+								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(), assets::TEXTURE));
 							}
 						}
 						ImGui::SameLine();
@@ -292,8 +291,8 @@ namespace luna
 							{
 								sprite.filePath = filePath;
 								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
-								if (texture) sprite.texture = std::dynamic_pointer_cast<renderer::texture>(texture);
-								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(),assets::texture));
+								if (texture) sprite.texture = std::dynamic_pointer_cast<assets::image>(texture);
+								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(),assets::TEXTURE));
 							}
 						}
 					}
@@ -316,12 +315,12 @@ namespace luna
 					if (assets::assetManager::isAssetHandleValid(filePath.filename().string())) {
 						ref<assets::asset> font = assets::assetManager::getAsset(filePath.filename().string());
 						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
-						label.font = std::dynamic_pointer_cast<renderer::font>(font);
+						label.font = std::dynamic_pointer_cast<assets::font>(font);
 					} else {
-						label.handle = assets::assetManager::importAsset(filePath.string(), assets::font);
+						label.handle = assets::assetManager::importAsset(filePath.string(), assets::FONT_ATLAS);
 						ref<assets::asset> font = assets::assetManager::getAsset(label.handle);
 						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
-						label.font = std::dynamic_pointer_cast<renderer::font>(font);
+						label.font = std::dynamic_pointer_cast<assets::font>(font);
 					}
 					
 				}
@@ -356,7 +355,7 @@ namespace luna
 					if (ImGui::Button("select normal image"))
 					{
 						button.normalFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.normalFilePath.string()));
+						button.normalTexture = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset(button.normalFilePath.string()));
 					}
 					inputText("normal Image", button.normalFilePath.string());
 
@@ -364,7 +363,7 @@ namespace luna
 					if (ImGui::Button("select hover image"))
 					{
 						button.hoverFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.hoverFilePath.string()));
+						button.hoverTexture = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset(button.hoverFilePath.string()));
 
 					}
 					inputText("hover Image", button.hoverFilePath.string());
@@ -372,7 +371,7 @@ namespace luna
 					if (ImGui::Button("select pressed image"))
 					{
 						button.pressedFilePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
-						button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(button.pressedFilePath.string()));
+						button.pressedTexture = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset(button.pressedFilePath.string()));
 					}
 					inputText("pressed Image", button.pressedFilePath.string());
 
@@ -401,7 +400,7 @@ namespace luna
 					itemList.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
 					ref<assets::asset> font = assets::assetManager::getAsset(itemList.filePath.filename().string());
 					//itemList.handle = assets::assetManager::getAssetMetadata(itemList.filePath.filename().string())->handle;
-					itemList.font = std::dynamic_pointer_cast<renderer::font>(font);
+					itemList.font = std::dynamic_pointer_cast<assets::font>(font);
 				}
 				if (ImGui::Button("add item"))
 				{
@@ -439,7 +438,7 @@ namespace luna
 				{
 					lineEdit.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
 					ref<assets::asset> font = assets::assetManager::getAsset(lineEdit.filePath.filename().string());
-					lineEdit.font = std::dynamic_pointer_cast<renderer::font>(font);
+					lineEdit.font = std::dynamic_pointer_cast<assets::font>(font);
 				}
 				ImGui::TreePop();
 			}

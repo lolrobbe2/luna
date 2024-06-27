@@ -2,8 +2,6 @@
 #ifndef IMGUI_DISABLE
 #ifndef _IMGUI_
 #define _IMGUI_
-#include <imgui.h>
-#include <backends/imgui_impl_glfw.h>
 #include <core/artemis/device/device.h>
 namespace luna
 {
@@ -17,8 +15,7 @@ namespace luna
 		void setPipeline(ref<artemis::pipeline> p_pipeline);
 	private:
 		ref<artemis::pipeline> p_imguiPipeline;
-		artemis::descriptorPool& descriptorPool = *new artemis::descriptorPool();
-		
+		artemis::descriptorPool& descriptorPool = *(artemis::descriptorPool*)nullptr;
 		const artemis::device* p_device;
 		
 	};

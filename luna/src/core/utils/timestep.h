@@ -1,8 +1,7 @@
 #pragma once
 #ifndef _TIMESTEP_
 #define _TIMESTEP_
-
-#include "lnpch.h"
+#include <core/core.h>
 
 /*from hazel2D*/
 namespace luna 

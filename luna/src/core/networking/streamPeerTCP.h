@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _STREAM_PEER_TCP_
+#define _STREAM_PEER_TCP_
 /**
 * disclaimer this class is inspired by the godot equivelant.
 */
@@ -58,3 +60,4 @@ namespace luna
 		};
 	}
 }
+#endif

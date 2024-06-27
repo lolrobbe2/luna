@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WINDOW
-#define WINDOW
+#ifndef _WINDOW_
+#define _WINDOW_
 /**
 * @brief transforms A VkResult value to an std::string.
 */
@@ -8,14 +8,13 @@
 #define VK_RESULT(res) getVkResultString(res)
 #endif
 
-#include <lnpch.h>
 #include <core/core.h>
 #include <core/events/event.h>
-#include <imgui.h>
+#include <core/artemis/rendering/imGui.h>
 
 namespace luna
 {
-    _ALWAYS_INLINE_ static std::string getVkResultString(VkResult result) {
+    static std::string getVkResultString(VkResult result) {
         switch (result) {
         case VK_SUCCESS:
             return "VK_SUCCESS";

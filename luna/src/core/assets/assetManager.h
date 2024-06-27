@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace assets
 	{
-		class assetManager
+		class LN_API assetManager
 		{
 		public:
 			static void init(bool editor);
@@ -28,6 +28,10 @@ namespace luna
 
 				return std::dynamic_pointer_cast<T>(assetManagerRef->getAsset(handle));
 			}
+			static ref<assets::asset> getAsset(const assetHandle handle)
+			{
+				return getAsset<assets::asset>(handle);
+			}
 			/**
 			 * @brief identical to getAsset with handle but slower.
 			 */
@@ -35,6 +39,10 @@ namespace luna
 			static ref<T> getAsset(const std::string& name)
 			{
 				return std::dynamic_pointer_cast<T>(assetManagerRef->getAsset(name));
+			}
+			static ref<assets::asset> getAsset(const std::string& name)
+			{
+				return assetManagerRef->getAsset(name);
 			}
 			static assetMetadata* getAssetMetadata(const assetHandle handle);
 			static assetMetadata* getAssetMetadata(const std::string& filename);

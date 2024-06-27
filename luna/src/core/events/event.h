@@ -1,6 +1,5 @@
 #ifndef _EVENT_
 #define _EVENT_
-#include <lnpch.h>
 #include <core/core.h>
 namespace luna 
 {

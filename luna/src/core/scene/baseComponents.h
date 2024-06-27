@@ -1,6 +1,5 @@
 #ifndef _BASE_COMPONENTS_
 #define _BASE_COMPONENTS_
-#include "lnpch.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/glm.hpp>

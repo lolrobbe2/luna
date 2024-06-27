@@ -64,7 +64,7 @@ namespace luna
 			}
 		}
 	}
-	ref<assets::asset> contentBrowserPanel::getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
+	ref<assets::image> contentBrowserPanel::getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
 	{
 		if (directoryEntry.is_directory())
 		{
@@ -90,7 +90,7 @@ namespace luna
 		return fileIcon;
 	}
 
-	ref<assets::asset> contentBrowserPanel::getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
+	ref<assets::image> contentBrowserPanel::getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
 	{
 		if (directoryEntry.is_directory())
 		{
@@ -174,7 +174,7 @@ namespace luna
 				//ImGui::PushID(filenameString.c_str());
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
-				ref<vulkan::vulkanTexture> icon = std::dynamic_pointer_cast<vulkan::vulkanTexture>(getIcon(directoryEntry, hovered == filenameString));
+				ref<assets::image> icon = std::dynamic_pointer_cast<assets::image>(getIcon(directoryEntry, hovered == filenameString));
 
 
 				ImGui::ImageButton(icon->getGuiImageHandle(), { thumbnailSize, thumbnailSize }, { 0, 0 }, { 1, 1 });
@@ -222,7 +222,7 @@ namespace luna
 
 	bool contentBrowserPanel::button(assetDirectory& directoryEntry,int indent)
 	{
-		const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getSmallIcon(directoryEntry.entry,directoryEntry.hovered));
+		const ref<assets::image> icon = std::dynamic_pointer_cast<assets::image>(getSmallIcon(directoryEntry.entry,directoryEntry.hovered));
 
 		
 		
@@ -355,22 +355,19 @@ namespace luna
 
 	void contentBrowserPanel::setNormalGuiIcons()
 	{
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(directoryIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(directoryHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(pngIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(pngHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(jpgIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(jpgHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(ttfIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(ttfHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(lscnIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(lscnHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(fileIcon)->createGuiImage();
+		assets::image::enableImgui({
+			directoryIcon,
+			directoryHoveredIcon,
+			pngIcon,
+			pngHoveredIcon,
+			jpgIcon,
+			jpgHoveredIcon,
+			ttfIcon,
+			ttfHoveredIcon,
+			lscnIcon,
+			lscnHoveredIcon,
+			fileIcon
+			});
 	}
 
 	void contentBrowserPanel::loadSmallIcons()
@@ -413,23 +410,25 @@ namespace luna
 	}
 	void contentBrowserPanel::setSmallGuiIcons()
 	{
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallDirectoryIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallDirectoryHoveredIcon)->createGuiImage();
+		assets::image::enableImgui({
+			smallDirectoryIcon,
+			smallDirectoryHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallPngIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallPngHoveredIcon)->createGuiImage();
+			smallPngIcon,
+			smallPngHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallJpgIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallJpgHoveredIcon)->createGuiImage();
+			smallJpgIcon,
+			smallJpgHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallTtfIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallTtfHoveredIcon)->createGuiImage();
+			smallTtfIcon,
+			smallTtfHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallLscnIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallLscnHoveredIcon)->createGuiImage();
+			smallLscnIcon,
+			smallLscnHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallFileIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallFileIconHovered)->createGuiImage();
+			smallFileIcon,
+			smallFileIconHovered
+			});
 	}
 	void contentBrowserPanel::showAssetInfo(const std::string& filename)
 	{
@@ -508,7 +507,7 @@ namespace luna
 			{
 			case assets::TEXTURE:
 			{
-				assets::TEXTUREAssetMetadata* textureMetadata = (assets::TEXTUREAssetMetadata*)metaData;
+				assets::textureAssetMetadata* textureMetadata = (assets::textureAssetMetadata*)metaData;
 				ImGui::Text("width");
 				ImGui::TableNextColumn();
 				ImGui::Text(std::to_string(textureMetadata->width).c_str());
@@ -551,7 +550,7 @@ namespace luna
 				}
 				ImGui::Text(sizeText.c_str(), adjustedSize);
 			}
-			case assets::font:
+			case assets::FONT_ATLAS:
 			{
 				assets::fontAssetMetadata* fontMetadata = (assets::fontAssetMetadata*)metaData;
 				ImGui::Text("width");

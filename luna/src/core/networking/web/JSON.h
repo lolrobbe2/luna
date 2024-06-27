@@ -1,5 +1,4 @@
 #pragma once
-#include <lnpch.h>
 #include <core/utils/json.h>
 #include <core/debug/debugMacros.h>
 #define JSON_OP(className) operator className()\

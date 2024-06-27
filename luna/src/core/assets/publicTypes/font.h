@@ -1,6 +1,6 @@
 #ifndef _PUBLIC_FONT_
 #define _PUBLIC_FONT_
-#include "image.h"
+#include <core/assets/publicTypes/image.h>
 namespace luna 
 {
 	namespace assets 

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _ALLOCATOR_
+#define _ALLOCATOR_
 #include <core/artemis/vma/vma.h>
 #include <core/artemis/device/commandPool.h>
 #include <core/artemis/device/buffer.h>
@@ -83,4 +85,5 @@ namespace luna
 	}
 }
 
+#endif // !_ALLOCATOR_
 

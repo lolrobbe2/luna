@@ -1,5 +1,4 @@
 #include "editorLayer.h"
-#include <core/rendering/renderer2D.h>
 #include <core/input.h>
 #include <core/platform/platformUtils.h>
 #include <core/scene/sceneSerializer.h>
@@ -96,8 +95,8 @@ namespace luna
 			glm::vec2 windowMousePos;
 			windowMousePos.x = mousePos.x - scrollPos.x;
 			windowMousePos.y = mousePos.y - scrollPos.y;
-			renderer::renderer::setSceneMouse(windowMousePos);
-			renderer::renderer::setSceneDimensions({ viewportPanelSize.x, viewportPanelSize.y });
+			RENDERER->setSceneMousePos(windowMousePos);
+			RENDERER->setSceneDimensions({ viewportPanelSize.x, viewportPanelSize.y });
 
 			std::string text = (activeScene->m_IsRunning) ? "stop" : "play";
 			ImVec2 buttonSize = { ImGui::GetContentRegionAvail().x + 1.0f,30.0f };

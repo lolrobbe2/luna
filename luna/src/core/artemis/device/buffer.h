@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _BUFFER_
+#define _BUFFER_
 #include <core/core.h>
 #include <core/platform/windows/windowsWindow.h>
 namespace luna 
@@ -33,4 +35,4 @@ namespace luna
 	}
 }
 
-
+#endif // !_BUFFER_

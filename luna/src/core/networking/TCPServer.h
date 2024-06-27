@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _TCP_SERVER_
+#define _TCP_SERVER_
 #include <core/networking/streamPeerTCP.h>
 namespace luna 
 {
@@ -19,4 +21,4 @@ namespace luna
 	}
 }
 
-
+#endif //!_TCP_SERVER_
