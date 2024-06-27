@@ -18,6 +18,7 @@ namespace luna
 		class device;
 		class swapchain;
 		class pipeline;
+		class renderPass;
 	}
 	/// <summary>
 	/// rendering interface for imgui
@@ -27,6 +28,7 @@ namespace luna
 	public:
 		imGui(const artemis::device& device,ref<artemis::swapchain> p_swapchain);
 		void setPipeline(ref<artemis::pipeline> p_pipeline);
+		void setRenderPass(ref<artemis::renderPass>p_renderPass);
 	private:
 
 		

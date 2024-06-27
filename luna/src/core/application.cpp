@@ -21,8 +21,6 @@ namespace luna
 			instance = this;
 			Log::Init();
 			initCore();
-			//auto commandPool = device.getCommandPool(vkb::QueueType::graphics, 0);
-			//auto commandBuffer = commandPool->getCommandBuffer();
 			LN_CORE_INFO("started vulkan device");
 			LN_PROFILE_END_SESSION();
 
@@ -79,12 +77,14 @@ namespace luna
 							layer->onUpdate(timestep);
 					}
 					p_renderer->endScene();
+					p_renderer->beginImGuiScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
 						for (utils::layer* layer : layerStack)
 							layer->onImGuiRender();
 					}
+					p_renderer->endImGuiScene();
 					p_renderer->update();
 				}
 			}

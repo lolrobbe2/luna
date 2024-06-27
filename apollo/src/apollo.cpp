@@ -11,6 +11,7 @@ public:
 	{
 		LN_TRACE("started apollo editor");
 		luna::project::projectManager::init();
+		ImGui::SetCurrentContext(RENDERER->getImGuiContext());
 		pushLayer(new luna::projectLayer("projectLayer"));
 	}
 	virtual ~apollo() //base breaker function

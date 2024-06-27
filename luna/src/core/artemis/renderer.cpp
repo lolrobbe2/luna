@@ -6,7 +6,11 @@
 #include <core/assets/assetManager.h>
 #include <core/debug/debugMacros.h>
 #ifdef IMGUI_API
+#include <core/artemis/rendering/imGui.h>
 #include <backends/imgui_impl_vulkan.cpp>
+#include <backends/imgui_impl_glfw.h>
+
+
 #endif // IMGUI_API
 #include "renderer.h"
 
@@ -16,12 +20,16 @@ namespace luna
 {
 	namespace artemis 
 	{
+		static ref<imGui> imgui;
 		renderer::renderer(const ref<vulkan::window>& window)
 		{
 			LN_PROFILE_FUNCTION();
 			c_device = *new device(window);
 			
 			p_swapChain = c_device.getSwapchain();
+#ifdef IMGUI_API
+			imgui = createRef<imGui>(c_device, p_swapChain);
+#endif // IMGUI_API
 
 			p_allocator = c_device.getAllocator();
 		
@@ -30,14 +38,37 @@ namespace luna
 			
 			setUpComputePipeline();
 			setUpGraphicsPipeline();
+#ifdef IMGUI_API
+			setUpImguiPipeline();
+#endif // IMGUI_API
+
 			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::TEXTURE));
 			p_allocator->flush();
 			
 			renderCmdBuffers[0].bind(blankImageAsset, 0);
 			p_window = window;
 		}
-		void renderer::beginScene()
+#ifdef IMGUI_API
+
+		void renderer::beginImGuiScene()
 		{
+			ImGui_ImplVulkan_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+			//imgui commands
+			ImGui::NewFrame();
+			ImGuiViewport* viewport = ImGui::GetMainViewport();
+			ImGui::DockSpaceOverViewport(viewport, ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_NoResize);
+		}
+		void renderer::endImGuiScene()
+		{
+			ImGui::Render();
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+		}
+#endif // IMGUI_API
+
+		void renderer::beginScene()
+		{			
 			currentBuffer = &renderCmdBuffers[0];
 			currentBuffer->reset();
 		}
@@ -238,8 +269,6 @@ namespace luna
 #ifdef IMGUI_API
 			frameBufferImages = p_allocator->allocateImages(imguiSceneSize, 4,VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,p_swapChain->size());
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = frameBuffer(c_device, frameBufferImages[i],p_renderPass);
-			for (image& image : frameBufferImages) 
-				frambufferGuiImages.push_back(ImGui_ImplVulkan_AddTexture(*sampler, image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL));
 #else 
 			for (size_t i = 0; i < frameBuffers.size(); ++i) frameBuffers[i] = p_swapChain->getFrameBuffer(p_renderPass, i, 0, 1);
 #endif // !
@@ -260,6 +289,7 @@ namespace luna
 				.build();
 
 			sampler = c_device.getSampler(VK_FILTER_NEAREST);
+
 			renderCmdBuffers.reserve(10);
 			for (size_t i = 0; i < 1; ++i) {
 				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler,maxFramesInFlight));
@@ -302,7 +332,14 @@ namespace luna
 				.addSubPassDependency(dependency)
 				.addSubPass(subpass)
 				.build();
+			imgui->setRenderPass(p_imguiRenderPass);
+			imguiFrameBuffers.resize(p_swapChain->size());
 			for (size_t i = 0; i < imguiFrameBuffers.size(); ++i) imguiFrameBuffers[i] = p_swapChain->getFrameBuffer(p_imguiRenderPass, i, 0, 1);
+		
+			//SAMPLER IS NEEDED FOR VK_FORMAT!
+
+			for (image& image : frameBufferImages)
+				frambufferGuiImages.push_back(ImGui_ImplVulkan_AddTexture(*sampler, image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL));
 		}
 #endif // IMGUI_API
 
@@ -368,6 +405,10 @@ namespace luna
 		ImTextureID renderer::getWindowImage()
 		{
 			return frambufferGuiImages[currentFrame];
+		}
+		LN_API ImGuiContext* renderer::getImGuiContext()
+		{
+			return ImGui::GetCurrentContext();
 		}
 #endif
 	}

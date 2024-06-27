@@ -15,6 +15,11 @@ namespace luna
 		{
 		public:
 			 renderer(const ref<vulkan::window>& window);
+#ifdef IMGUI_API
+			 void beginImGuiScene();
+			 void endImGuiScene();
+#endif // IMGUI_API
+
 			 void beginScene();
 			 void endScene();
 			 void update();
@@ -154,6 +159,7 @@ namespace luna
 
 			 void unregisterImGuiImage(ImTextureID imGuiImageHandle);
 			 LN_API ImTextureID getWindowImage();
+			 LN_API ImGuiContext* getImGuiContext();
 #endif // !IMGUI_API
 			 const glm::vec2 getSceneMousePos() const
 			 {
