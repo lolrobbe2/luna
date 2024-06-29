@@ -60,6 +60,7 @@ namespace luna
 			_ALWAYS_INLINE_ operator std::array<glm::vec2, 4>() const { return { uvStart, glm::vec2(uvEnd.x,uvStart.y),uvEnd,glm::vec2(uvStart.x,uvEnd.y)}; }
 			_ALWAYS_INLINE_ operator VkImageLayout() const { return currentLayout; }
 			_ALWAYS_INLINE_ VkImageLayout getCurrentLayout() const { return currentLayout; }
+			_ALWAYS_INLINE_ void setCurrentLayout(VkImageLayout layout) { currentLayout = layout; }
 			LN_API _ALWAYS_INLINE_ image& getSubImage(const glm::vec2& extent, const glm::vec4 uv = { 0.0f,0.0f,1.0f,1.0f });
 			//TODO unload image;
 		protected:

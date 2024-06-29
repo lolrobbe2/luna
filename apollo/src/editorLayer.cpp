@@ -28,6 +28,7 @@ namespace luna
 		contentPanel = ref<contentBrowserPanel>(new contentBrowserPanel());
 
 		utils::scriptUtils::reloadAssamblies();
+		RENDERER->setTransition(true);
 	}
 	void editorLayer::onAttach()
 	{

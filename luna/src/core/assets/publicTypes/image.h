@@ -4,6 +4,10 @@
 #include <core/artemis/rendering/image.h>
 namespace luna 
 {
+	namespace artemis
+	{
+		class renderer;
+	}
 	namespace assets 
 	{
 		/**
@@ -54,6 +58,7 @@ namespace luna
 			ImTextureID imGuiImageHandle = 0;
 #endif
 		protected:
+			friend class artemis::renderer;
 			artemis::image& _image = *new artemis::image();
 		};
 	}

@@ -1,7 +1,9 @@
 #include "contentBrowserPanel.h"
+#include <core/application.h>
 #include <core/assets/publicTypes/image.h>
 #include <core/platform/platformUtils.h>
 #include <project/projectManager.h>
+
 namespace luna
 {
 	std::map<std::string, bool> selectedMap;
@@ -334,7 +336,7 @@ namespace luna
 		assets::assetManager::importAsset("src/resources/normal/icon_lscn_hovered.png", assets::TEXTURE);
 
 		assets::assetManager::importAsset("src/resources/normal/fileIcon.png", assets::TEXTURE);
-
+		RENDERER->flush();
 		assets::assetManager::setImportDirectory("");
 	}
 
@@ -391,6 +393,7 @@ namespace luna
 
 		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon.png", assets::TEXTURE);
 		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon_hovered.png", assets::TEXTURE);
+		RENDERER->flush();
 	}
 
 	void contentBrowserPanel::setSmallIcons()
@@ -412,6 +415,7 @@ namespace luna
 
 		smallFileIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon.png"));
 		smallFileIconHovered = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon_hovered.png"));
+		
 	}
 	void contentBrowserPanel::setSmallGuiIcons()
 	{
@@ -434,6 +438,7 @@ namespace luna
 			smallFileIcon,
 			smallFileIconHovered
 			});
+
 	}
 	void contentBrowserPanel::showAssetInfo(const std::string& filename)
 	{

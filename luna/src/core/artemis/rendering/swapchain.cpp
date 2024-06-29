@@ -11,6 +11,8 @@ namespace luna
 			uint32_t imageCount = m_swapchain.image_count;
 			vkb::SwapchainBuilder builder{ *device };
 			auto res = builder.set_old_swapchain(m_swapchain)
+				.set_desired_format({ VK_FORMAT_B8G8R8A8_UNORM,VK_COLORSPACE_SRGB_NONLINEAR_KHR, })
+				.set_desired_present_mode(VK_PRESENT_MODE_IMMEDIATE_KHR)
 				.set_desired_extent(width, height)
 				.build();
 			LN_ERR_FAIL_COND_MSG(!res, "[Artemis] something went wrong when trying to create the swapchain, msg: " + res.error().message());

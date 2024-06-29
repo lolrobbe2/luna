@@ -378,6 +378,11 @@ namespace luna
 			}
 			p_data->frontBarriers[{sourceStage,destinationStage}].push_back(barrier);
 		}
+		void allocator::transitionImageLayoutFront(image& image, const VkImageLayout newLayout)
+		{
+			transitionImageLayoutFront(image, image.getCurrentLayout(), newLayout);
+			image.setCurrentLayout(newLayout);
+		}
 		void allocator::transitionImageLayoutBack(image& image,const VkImageLayout currentLayout, const VkImageLayout newLayout)
 		{
 			VkImageMemoryBarrier barrier{};
@@ -474,6 +479,7 @@ namespace luna
 			p_data->commandBuffer->end();
 			p_data->transferPool->flush({ p_data->commandBuffer.get()}, {}, {}, nullptr, nullptr, true);
 		}
+	
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
 		{
 			LN_ERR_FAIL_COND_MSG(transferPool == nullptr, "[Artemis] transferPool cann not be nullPointer!");

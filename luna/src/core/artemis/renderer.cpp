@@ -30,7 +30,7 @@ namespace luna
 #ifdef IMGUI_API
 			imgui = createRef<imGui>(c_device, p_swapChain);
 #endif // IMGUI_API
-
+			
 			p_allocator = c_device.getAllocator();
 		
 			assets::assetImporter::setAllocator(p_allocator);
@@ -281,8 +281,12 @@ namespace luna
 				.addShaderStage(vertexShader)
 				.addShaderStage(fragmentShader)
 				.addDescriptorSetLayout(grapchicsDescriptorPool)
-				//.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
-				//.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+#ifdef IMGUI_API
+				.setCreateFlags(VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT)
+				.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
+				.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+#endif // IMGUI_API
+
 				.addViewport(p_swapChain->getViewport())
 				.addScissor(*p_swapChain)
 				.setRenderPass(p_renderPass)
@@ -358,8 +362,16 @@ namespace luna
 			p_computeCommandBuffer[currentFrame]->end();
 
 			p_graphicsCommandBuffer[currentFrame]->begin(0);
+#ifdef IMGUI_API
+			for(ref<assets::image> p_image : imguiEnbledImages)
+				p_graphicsCommandBuffer[currentFrame]->transitionImageLayout(p_image->_image,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+
+			imguiEnbledImages.clear();
+#endif // IMGUI_API
 			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[swapchainImageIndex]);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
+
+
 			for (renderCommandBuffer& renderCmdBuffer : renderCmdBuffers)
 			{
 				if (renderCmdBuffer.commandsAmount)
@@ -374,10 +386,15 @@ namespace luna
 			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
 
 #ifdef IMGUI_API
+			if(transition) p_graphicsCommandBuffer[currentFrame]->transitionImageLayout(frameBufferImages[currentFrame],VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+
 			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_imguiRenderPass, imguiFrameBuffers[swapchainImageIndex]);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
 			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), *p_graphicsCommandBuffer[currentFrame]);
 			p_graphicsCommandBuffer[currentFrame]->endCurrentRenderPass();
+			
+			if (transition) p_graphicsCommandBuffer[currentFrame]->transitionImageLayout(frameBufferImages[currentFrame],VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+
 #endif // IMGUI_API
 
 			p_graphicsCommandBuffer[currentFrame]->end();
@@ -390,11 +407,12 @@ namespace luna
 		}
 		void renderer::flush() 
 		{
-
+			p_allocator->flush();
 		}
 #ifdef IMGUI_API
 		ImTextureID renderer::registerImGuiImage(const ref<assets::image> image)
 		{
+			imguiEnbledImages.push_back(image);
 			return ImGui_ImplVulkan_AddTexture(*sampler, *image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
 		}
 		void renderer::unregisterImGuiImage(ImTextureID imGuiImageHandle)

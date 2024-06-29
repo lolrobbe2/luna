@@ -11,6 +11,7 @@ namespace luna
 		class renderPass;
 		class frameBuffer;
 		class buffer;
+		class image;
 		class commandBuffer
 		{
 		public:
@@ -35,6 +36,7 @@ namespace luna
 			void drawIndexed(uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance);
 			void bindIndexBuffer(const buffer& buffer, VkDeviceSize offset, VkIndexType indexType);
 			void bindVertexBuffers(uint32_t firstBinding, std::vector<VkBuffer> buffers, const VkDeviceSize* p_offsets);
+			void transitionImageLayout(image& image, const VkImageLayout oldLayout, const VkImageLayout newLayout);
 			operator VkCommandBuffer() const { return m_commandBuffer; }
 			operator VkCommandBuffer*() { return &m_commandBuffer; }
 			~commandBuffer() { vkFreeCommandBuffers(*_device, *_commandPool, 1, &m_commandBuffer); }
