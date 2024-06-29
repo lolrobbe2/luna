@@ -152,7 +152,14 @@ namespace luna
 				 }
 			 }
 #ifdef IMGUI_API
-			 void setSceneDimensions(ImVec2 size) { imguiSceneSize.x = size.x; imguiSceneSize.y = size.y; }
+			 void setSceneDimensions(ImVec2 size) 
+			 {
+				 if (size.x != imguiSceneSize.x || size.y != imguiSceneSize.y) 
+				 {
+					 imguiSceneSize.x = size.x; imguiSceneSize.y = size.y;
+					 resized = true;
+				 }
+			 }
 
 			 ImTextureID registerImGuiImage(const ref<assets::image> image);
 			
@@ -227,10 +234,13 @@ namespace luna
 			glm::vec2 imguiSceneSize = { 100.0f,100.0f }; //set default because otherwise the float max will be taken wich is to big for any gpu to render to!!!
 			glm::vec2 sceneMousePos;
 			bool transition = false;
+			bool resized = false;
 			std::vector<image> frameBufferImages;    
 			std::vector<ImTextureID> frambufferGuiImages;
 
-			std::vector<ref<assets::image>> imguiEnbledImages;
+			std::vector<ref<assets::image>> imguiEnabledImages;
+			std::vector<ref<assets::image>> imguiEnabledImagesResize;
+
 #endif //IMGUI_API
 
 		};

@@ -24,10 +24,12 @@ namespace luna
 				return m_frameBuffer;
 			}
 			frameBuffer(const VkDevice* device,const image& image,ref<renderPass> p_renderPass);
+			~frameBuffer();
 		protected:
 			friend class swapchain;
 			frameBuffer(const VkDevice* device,const VkFramebufferCreateInfo& info);
 		private:
+			VkDevice device;
 			VkFramebufferCreateInfo m_info = {};
 			VkFramebuffer m_frameBuffer = VK_NULL_HANDLE;
 		};

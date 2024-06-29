@@ -39,6 +39,13 @@ namespace luna
 
 		void buttonNode::draw()
 		{
+			const glm::vec3 pos = { -1.0,-1.0,0.0 };
+			const glm::vec2 size = { 0.1, 0.1 };
+			const glm::vec4 color = { 1.0f, 0.0f, 0.0f, 0.0f };
+
+			application::application::get().getRenderer()->drawQuad(pos, size, color);
+
+
 			auto& transform = getComponent<transformComponent>();
 			auto& button = getComponent<buttonComponent>();
 			auto& sprite = getComponent<spriteRendererComponent>();
@@ -102,10 +109,10 @@ namespace luna
 			button.pressedFilePath = "src/assets/media/buttons/button3.png";
 
 
-			//button.normalTexture = assets::assetManager::getAsset<renderer::texture>(assets::assetManager::importAsset(button.normalFilePath.string(),assets::texture));
-			//button.hoverTexture = assets::assetManager::getAsset<renderer::texture>(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::texture));
-			//button.pressedTexture = assets::assetManager::getAsset<renderer::texture>(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::texture));
-			
+			button.normalTexture = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset(button.normalFilePath.string(),assets::TEXTURE));
+			button.hoverTexture = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::TEXTURE));
+			button.pressedTexture = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::TEXTURE));
+			RENDERER->flush();
 			sprite.texture = button.normalTexture;
 		}
 		void buttonNode::guiEvent(Event& event)

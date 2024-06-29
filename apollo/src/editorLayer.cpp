@@ -100,8 +100,8 @@ namespace luna
 			RENDERER->setSceneDimensions({ viewportPanelSize.x, viewportPanelSize.y });
 
 			std::string text = (activeScene->m_IsRunning) ? "stop" : "play";
-			ImVec2 buttonSize = { ImGui::GetContentRegionAvail().x + 1.0f,30.0f };
-			ImGui::Image(RENDERER->getWindowImage(), ImGui::GetContentRegionAvail());
+			ImVec2 buttonSize = { viewportPanelSize.x + 1.0f,30.0f };
+			ImGui::Image(RENDERER->getWindowImage(), viewportPanelSize);
 			ImGui::SameLine(0.000001f);
 			if(ImGui::Button(text.c_str(), buttonSize));
 			{

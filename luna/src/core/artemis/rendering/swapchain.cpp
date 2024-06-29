@@ -41,7 +41,7 @@ namespace luna
 			info.renderPass = *p_renderPass;
 			info.flags = flags;
 			info.layers = layers;
-			return *new frameBuffer(&device->device, info);
+			return *new frameBuffer((const VkDevice*)device, info);
 		}
 		VkResult swapchain::acquireNextImage(uint64_t timeout,VkSemaphore semaphore,VkFence fence,uint32_t* pImageIndex)
 		{
