@@ -11,9 +11,8 @@ namespace luna
 		
 		void itemListNode::init(luna::scene* scene)
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(itemListNode);
+			controlNode::init(scene);
+			LN_CLASS_TYPE_NAME(itemListNode);
 			addComponent<tagComponent>().tag = LN_CLASS_STRINGIFY(itemListNode);
 			addComponent<itemList>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());

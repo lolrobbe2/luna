@@ -399,7 +399,7 @@ namespace luna
 					//hotpink color code (227,28,121)
 					itemList.filePath = luna::platform::os::openFileDialog("font (*.ttf)\0*.ttf\0");
 					ref<assets::asset> font = assets::assetManager::getAsset(itemList.filePath.filename().string());
-					//itemList.handle = assets::assetManager::getAssetMetadata(itemList.filePath.filename().string())->handle;
+					//itemList.han= assets::assetManager::getAssetMetadata(itemList.filePath.filename().string())->handle;
 					itemList.font = std::dynamic_pointer_cast<assets::font>(font);
 				}
 				if (ImGui::Button("add item"))

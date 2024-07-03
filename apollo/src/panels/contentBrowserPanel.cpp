@@ -371,7 +371,7 @@ namespace luna
 			jpgHoveredIcon,
 			ttfIcon,
 			ttfHoveredIcon,
-			lscnIcon,
+			lscnIcon,	
 			lscnHoveredIcon,
 			fileIcon
 			});

@@ -22,9 +22,7 @@ namespace luna
 		LN_PROFILE_FUNCTION();
 		std::vector<Node> childNodes;
 		if (node.hasComponent<childComponent>()) for (auto child : node.getComponent<childComponent>().childs) childNodes.push_back(Node(child, node));
-		if (!node.hasComponent<transformComponent>()) { for (Node child : childNodes) draw(child); return; }
-		auto& transform = node.getComponent<transformComponent>();
-		if(node.hasComponent<canvasComponent>())
+		if (node.hasComponent<transformComponent>() && node.hasComponent<canvasComponent>()){}
 		{
 			node.getComponent<canvasComponent>().drawFunction();
 		}

@@ -168,7 +168,7 @@ namespace luna
 					.setRenderPass(p_renderPass)
 					.build();
 #ifdef IMGUI_API
-				imguiEnabledImages = imguiEnabledImagesResize;
+				//imguiEnabledImages = imguiEnabledImagesResize;
 				
 				resized = false;
 #endif // IMGUI_API
@@ -308,8 +308,8 @@ namespace luna
 				.addDescriptorSetLayout(grapchicsDescriptorPool)
 #ifdef IMGUI_API
 				.setCreateFlags(VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT)
-				.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
-				.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+				//.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
+				//.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
 #endif // IMGUI_API
 
 				.addViewport(p_swapChain->getViewport())
@@ -391,7 +391,7 @@ namespace luna
 			for(ref<assets::image> p_image : imguiEnabledImages)
 				p_graphicsCommandBuffer[currentFrame]->transitionImageLayout(p_image->_image,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
 
-			imguiEnabledImages.clear();
+			//imguiEnabledImages.clear();
 #endif // IMGUI_API
 			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[swapchainImageIndex]);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
@@ -439,7 +439,7 @@ namespace luna
 		ImTextureID renderer::registerImGuiImage(const ref<assets::image> image)
 		{
 			imguiEnabledImages.push_back(image);
-			imguiEnabledImagesResize.push_back(image);
+			//imguiEnabledImagesResize.push_back(image);
 			return ImGui_ImplVulkan_AddTexture(*sampler, *image, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
 		}
 		void renderer::unregisterImGuiImage(ImTextureID imGuiImageHandle)
