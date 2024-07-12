@@ -169,15 +169,15 @@ namespace luna
 			 LN_API ImGuiContext* getImGuiContext();
 			 LN_API void setTransition(bool transition) { this->transition = transition; }
 #endif // !IMGUI_API
-			 const glm::vec2 getSceneMousePos() const
+			 LN_API const glm::vec2 getSceneMousePos() const
 			 {
 				 //TODO mousepose
-				 return glm::vec2();
+				 return sceneMousePos;
 			 }
-			 const glm::vec2 setSceneMousePos(const glm::vec2& sceneMousePos) const
+			 LN_API void setSceneMousePos(glm::vec2& sceneMousePos) 
 			 {
 				 //TODO mousepose
-				 return glm::vec2();
+				 this->sceneMousePos = sceneMousePos;
 			 }
 			 const glm::vec2 getSceneDimensions() const
 			 {

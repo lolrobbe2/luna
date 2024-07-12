@@ -260,18 +260,19 @@ namespace luna
 
 
 			LN_ERR_FAIL_COND(bufferExtent.x > image.getExtent().x, "[Artemis] bufferExtent.x/bufferRowLength needs to be < or = to image.getExtent().x");
-			LN_ERR_FAIL_COND(bufferExtent.y > image.getExtent().y, "^[Artemis] bufferExtent.y/bufferImageHeight needs to be < or = to image.getExtent().y");
+			LN_ERR_FAIL_COND(bufferExtent.y > image.getExtent().y, "[Artemis] bufferExtent.y/bufferImageHeight needs to be < or = to image.getExtent().y");
 			VkBufferImageCopy imageRegion;
 			imageRegion.bufferOffset = bufferOffset;
 			imageRegion.bufferRowLength = bufferExtent.x;
 			imageRegion.bufferImageHeight = bufferExtent.y;
-
+			
 			imageRegion.imageExtent = image;
 			imageRegion.imageOffset = image;
 			imageRegion.imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
 			imageRegion.imageSubresource.mipLevel = 0;
 			imageRegion.imageSubresource.baseArrayLayer = 0;
 			imageRegion.imageSubresource.layerCount = 1;
+			
 			p_data->bufferImageRegions[{srcBuffer.getBuffer(), image.getImage(), VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL}].push_back(imageRegion);
 		}
 		void allocator::copyBufferToImage(const buffer& srcBuffer, const size_t bufferOffset, const image& image)
@@ -478,6 +479,13 @@ namespace luna
 
 			p_data->commandBuffer->end();
 			p_data->transferPool->flush({ p_data->commandBuffer.get()}, {}, {}, nullptr, nullptr, true);
+
+			p_data->imageBufferRegions.clear();
+			p_data->bufferImageRegions.clear();
+			p_data->bufferRegions.clear();
+
+			p_data->backBarriers.clear();
+			p_data->frontBarriers.clear();
 		}
 	
 		allocator::allocator(const VkDevice* p_device, const VkInstance* p_instance, const VkPhysicalDevice* p_physicalDevice, const uint32_t apiVersion,const ref<commandPool> transferPool)
@@ -517,10 +525,10 @@ namespace luna
 		}
 		VkFormat allocator::getSuitableFormat(const VkImageUsageFlags usageFlags, const uint32_t channels)
 		{
-		
-			VkFormat baseFormat = (VkFormat)(9 + channels * 7);
-			VkFormat indexedFormat = baseFormat;
-			for (size_t i = 0; i < 7; i++)
+			//TODO fix single channel format detection
+			const glm::vec2 range = getFormatRange(channels);
+			VkFormat indexedFormat = (VkFormat)range.x;
+			for (size_t i = range.x; i < range.y; i++)
 			{
 				VkImageFormatProperties properties;
 				VkResult result = vkGetPhysicalDeviceImageFormatProperties(*p_data->p_physicalDevice, indexedFormat, VK_IMAGE_TYPE_2D, VK_IMAGE_TILING_OPTIMAL, usageFlags, 0, &properties);
@@ -528,6 +536,15 @@ namespace luna
 				indexedFormat = (VkFormat)(indexedFormat + 1);
 			}
 			return VK_FORMAT_UNDEFINED;
+		}
+		const glm::vec2& allocator::getFormatRange(size_t channels)
+		{
+			if (channels == 1) return { VK_FORMAT_R8_UNORM, VK_FORMAT_R8_SRGB };
+			else if (channels == 2) return { VK_FORMAT_R8G8_UNORM , VK_FORMAT_R8G8_SRGB };
+			else if (channels == 3) return { VK_FORMAT_R8G8B8_UNORM, VK_FORMAT_B8G8R8_SRGB };
+			else if (channels == 4) return { VK_FORMAT_R8G8B8A8_UNORM, VK_FORMAT_B8G8R8A8_SRGB };
+			LN_ERR_FAIL_V_MSG(glm::vec2( 0,0 ),"[ARTEMIS] channels must be between 1 and 4 inclusive but was:" + std::to_string(channels));
+
 		}
 	}
 }

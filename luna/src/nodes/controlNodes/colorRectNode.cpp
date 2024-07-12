@@ -8,20 +8,16 @@ namespace luna
 			: controlNode(handle, scene) {}
 		colorRectNode::colorRectNode(luna::scene* scene)
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
+			controlNode::init(scene);
 			addComponent<idComponent>();
-			addComponent<transformComponent>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 
 		void colorRectNode::init(luna::scene* scene)
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(colorRectNode);
-			addComponent<scriptComponent>();
-			addComponent<transformComponent>();
+			controlNode::init(scene);
+			LN_CLASS_TYPE_NAME(controlNode);
+			LN_CANVAS_COMPONENT();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
 		}
 		void colorRectNode::setColor(const glm::vec4& color)

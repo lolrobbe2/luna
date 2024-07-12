@@ -84,6 +84,7 @@ namespace luna
 			size_t getSize(allocation* allocation);
 		private:
 			VkFormat getSuitableFormat(const VkImageUsageFlags usageFlags, const uint32_t channels);
+			const glm::vec2& getFormatRange(size_t channels);
 			ref<allocatorData> p_data;
 		};
 	}

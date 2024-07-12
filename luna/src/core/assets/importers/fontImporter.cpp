@@ -137,7 +137,7 @@ namespace luna
 				artemis::buffer& buffer = p_allocator->allocateBuffer(FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, artemis::CPU_ONLY, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT);
 				
 				writeGlyphsIntoBuffer(buffer, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances);
-				
+				p_allocator->transitionImageLayoutFront(fontImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 				p_allocator->copyBufferToImage(buffer, fontImage);
 				p_allocator->flush();
 				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), buffer.getData(), sizeof(fontAtlas));
