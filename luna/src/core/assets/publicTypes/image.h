@@ -36,7 +36,7 @@ namespace luna
 			_ALWAYS_INLINE_ operator std::array<glm::vec2, 4>() const { return _image; }
 			_ALWAYS_INLINE_ VkImageLayout getCurrentLayout() const { return _image; }
 			_ALWAYS_INLINE_ operator VkImageLayout() const { return _image; }
-			_ALWAYS_INLINE_ bool isBound() const { return descriptorSetIndex == UINT32_MAX && imageIndex == UINT8_MAX; }
+			_ALWAYS_INLINE_ bool isBound() const { return !(descriptorSetIndex == UINT32_MAX && imageIndex == UINT8_MAX); }
 			_ALWAYS_INLINE_ operator bool() const { return isBound(); }  
 			_ALWAYS_INLINE_ operator float() const { return imageIndex; }
 			_ALWAYS_INLINE_ float getImageIndex() const { return imageIndex; }

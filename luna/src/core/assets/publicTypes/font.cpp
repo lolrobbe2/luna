@@ -18,6 +18,7 @@ namespace luna
 				glyphs[glyph] = glyphTexture;
 			}
 		
+			this->advances = advances;
 		}
 		const ref<assets::image> font::getGlyph(char glyph) const
 		{

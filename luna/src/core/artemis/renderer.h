@@ -27,7 +27,7 @@ namespace luna
 			 LN_API void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color)
 			 {
 				 //TODO FONT BINDING
-				 bindImage(font);
+				 bindImage(std::dynamic_pointer_cast<assets::image>(font));
 				 float xAdvance = 0.0f;
 				 const ref<assets::image> spaceGlyph = font->getGlyph('_');
 				 const glm::vec2 normalizedDimensions = glm::vec2(1.0f) / getSceneDimensions();
