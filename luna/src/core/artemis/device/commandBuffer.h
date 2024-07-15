@@ -37,6 +37,9 @@ namespace luna
 			void bindIndexBuffer(const buffer& buffer, VkDeviceSize offset, VkIndexType indexType);
 			void bindVertexBuffers(uint32_t firstBinding, std::vector<VkBuffer> buffers, const VkDeviceSize* p_offsets);
 			void transitionImageLayout(image& image, const VkImageLayout oldLayout, const VkImageLayout newLayout);
+
+			void setViewport(VkViewport& viewport);
+			void setScissor(VkRect2D scissor);
 			operator VkCommandBuffer() const { return m_commandBuffer; }
 			operator VkCommandBuffer*() { return &m_commandBuffer; }
 			~commandBuffer() { vkFreeCommandBuffers(*_device, *_commandPool, 1, &m_commandBuffer); }

@@ -221,6 +221,15 @@ namespace luna
 			vkCmdPipelineBarrier(m_commandBuffer, sourceStage, destinationStage, 0, 0, nullptr, 0, nullptr, 1, &barrier);
 			image.setCurrentLayout(newLayout);
 		}
+
+		void commandBuffer::setViewport(VkViewport& viewport)
+		{
+			vkCmdSetViewport(m_commandBuffer, 0, 1, &viewport);
+		}
 		
+		void commandBuffer::setScissor(VkRect2D scissor)
+		{
+			vkCmdSetScissor(m_commandBuffer, 0, 1, &scissor);
+		}
 	}
 }

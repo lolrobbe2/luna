@@ -7,6 +7,7 @@
 #include <core/assets/publicTypes/font.h>
 #include <core/debug/debugMacros.h>
 //TODO placing the implemntation of the draw functions is a hack don't know why it does not detect the implementation in the cpp file?
+//TODO scene viewport is wrong
 namespace luna 
 {
 	namespace artemis 

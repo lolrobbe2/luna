@@ -162,8 +162,9 @@ namespace luna
 					.addShaderStage(vertexShader)
 					.addShaderStage(fragmentShader)
 					.addDescriptorSetLayout(grapchicsDescriptorPool)
-					//.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
-					//.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+					.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
+					
+					.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
 					.addViewport(p_swapChain->getViewport())
 					.addScissor(*p_swapChain)
 					.setRenderPass(p_renderPass)
@@ -389,11 +390,27 @@ namespace luna
 
 			p_graphicsCommandBuffer[currentFrame]->begin(0);
 #ifdef IMGUI_API
+			VkViewport viewport{};
+			viewport.x -= imguiSceneSize.x / 4;
+			viewport.y -= imguiSceneSize.y / 4;
+
+			viewport.width = imguiSceneSize.x;
+			viewport.height = imguiSceneSize.y;
+
+			viewport.maxDepth = 1.0f;
+
+			VkRect2D scissor{};
+			scissor.extent.width = imguiSceneSize.x;
+			scissor.extent.height = imguiSceneSize.y;
+
+			p_graphicsCommandBuffer[currentFrame]->setScissor(scissor);
+			p_graphicsCommandBuffer[currentFrame]->setViewport(viewport);
 			for(ref<assets::image> p_image : imguiEnabledImages)
 				p_graphicsCommandBuffer[currentFrame]->transitionImageLayout(p_image->_image,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
 
 			//imguiEnabledImages.clear();
 #endif // IMGUI_API
+			
 			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[swapchainImageIndex]);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
 
@@ -414,7 +431,7 @@ namespace luna
 #ifdef IMGUI_API
 			if(transition) 
 				p_graphicsCommandBuffer[currentFrame]->transitionImageLayout(frameBufferImages[currentFrame],VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
-
+			//p_graphicsCommandBuffer[currentFrame]->setViewport(p_swapChain->getViewport());
 			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_imguiRenderPass, imguiFrameBuffers[swapchainImageIndex]);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
 			ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), *p_graphicsCommandBuffer[currentFrame]);
