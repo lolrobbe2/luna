@@ -139,6 +139,8 @@ namespace luna
 				writeGlyphsIntoBuffer(buffer, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances);
 				p_allocator->transitionImageLayoutFront(fontImage,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 				p_allocator->copyBufferToImage(buffer, fontImage);
+				p_allocator->transitionImageLayoutBack(fontImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_GENERAL );
+
 				p_allocator->flush();
 				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), buffer.getData(), sizeof(fontAtlas));
 				fontFile.close();

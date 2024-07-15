@@ -32,8 +32,11 @@ namespace luna
 			computeDescriptorSet.write(1, &vertexInfo);
 			computeDescriptorSet.update();
 			freeImageIndeces.resize(LN_IMAGE_BATCH_SIZE, freeImageIndeces.size());
+			
 			for (size_t i = 0; i < LN_IMAGE_BATCH_SIZE; i++)
 			{
+				freeImageIndeces[i] = i;
+
 				descriptorInfos[i].imageLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 				descriptorInfos[i].imageView = VK_NULL_HANDLE;
 				descriptorInfos[i].sampler = VK_NULL_HANDLE;
@@ -65,6 +68,7 @@ namespace luna
 		}
 		bool renderCommandBuffer::bind(ref<assets::image> image,uint32_t currentDescriptorSetIndex)
 		{
+			if (image->isBound()) return true;
 			if(freeImageIndeces.size())
 			{
 				uint8_t index = freeImageIndeces.back();
@@ -72,6 +76,7 @@ namespace luna
 				descriptorInfos[index].imageView = *image;
 				descriptorInfos[index].imageLayout = *image;
 				image->bind(currentDescriptorSetIndex, index,&freeImageIndeces);
+				images[index] = image;
 				return true;
 			} 
 			return false;

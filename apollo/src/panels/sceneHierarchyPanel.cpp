@@ -265,7 +265,7 @@ namespace luna
 				if (ImGui::TreeNodeEx((void*)typeid(spriteRendererComponent).hash_code(), 0, "sprite"))
 				{
 					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
-					//inputText("filePath", sprite.filePath);
+					inputText("filePath", sprite.filePath.generic_string());
 					if(sprite.filePath.string() != "")
 					{
 						const ref<assets::image> icon = getSmallIcon(sprite.filePath);
@@ -443,6 +443,15 @@ namespace luna
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
+		}
+		if(Node.hasComponent<canvasComponent>())
+		{
+			auto& canvasComponent = Node.getComponent<luna::canvasComponent>();
+			if (ImGui::TreeNodeEx((void*)typeid(luna::lineEditComponent).hash_code(), 0, "canvas"))
+			{
+				ImGui::DragFloat4("color", glm::value_ptr(canvasComponent.modulate), 0.1f);
+				ImGui::TreePop();
+			}
 		}
 
 	}

@@ -42,10 +42,11 @@ namespace luna
 			setUpImguiPipeline();
 #endif // IMGUI_API
 
-			ref<assets::image> blankImageAsset = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::TEXTURE));
+			blankImage = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset("src/assets/media/blank.png", assets::TEXTURE));
+			 
 			p_allocator->flush();
 			
-			renderCmdBuffers[0].bind(blankImageAsset, 0);
+			bindImage(blankImage);
 			p_window = window;
 		}
 #ifdef IMGUI_API

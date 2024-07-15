@@ -25,7 +25,7 @@ namespace luna
 		}
 		void spriteNode::draw()
 		{
-			LN_CORE_INFO("scene ptr: {0}",(void*)scene);
+			
 			auto& sprite = getComponent<spriteRendererComponent>();
 			auto& transform = getComponent<transformComponent>();
 

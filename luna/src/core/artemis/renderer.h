@@ -113,7 +113,7 @@ namespace luna
 				 if (image)
 				 {
 					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-						 if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,*image }); //if an empty texture slot was found then bind it otherwise create new buffer
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(255,255,255,255),textureCoords,*image }); //if an empty texture slot was found then bind it otherwise create new buffer
 					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
 					 return drawQuad({ transform,glm::vec4(1,1,1,1),*image,*image });
@@ -130,7 +130,7 @@ namespace luna
 				 if (image)
 				 {
 					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-						 if (!renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,*image });
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,{*image,false} });
 					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
 					 return drawQuad({ transform,color,textureCoords,*image });
@@ -142,7 +142,7 @@ namespace luna
 			 { drawQuad(transform, color, image, *image); }
 
 			 LN_API void drawQuad(const glm::mat4& transform, const glm::vec4& color1)
-			 { drawQuad({ transform,color1 });}
+			 { drawQuad(transform,color1,blankImage);}
 
 			 LN_API void drawQuad(const drawCommand& command)
 			 {
@@ -227,6 +227,8 @@ namespace luna
 			uint32_t swapchainImageIndex = 0;
 			ref<sampler> sampler;
 			
+			ref<assets::image> blankImage;
+
 			ref<vulkan::window> p_window;
 #ifdef IMGUI_API
 			std::vector<frameBuffer> imguiFrameBuffers;

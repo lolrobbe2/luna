@@ -37,6 +37,7 @@ namespace luna
 			p_allocator->transitionImageLayoutFront(image, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 			p_allocator->copyBufferToImage(buffer, image);
 			p_allocator->transitionImageLayoutBack(image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_GENERAL);
+			p_allocator->flush();
 			textureMetaData->channels = channels;
 			textureMetaData->width = (uint32_t)width;
 			textureMetaData->height = (uint32_t)height;
