@@ -346,27 +346,11 @@ namespace luna
 		{
 			if (!_monoClass) return;
 
-			monoClass test = _monoClass;
+			monoClass baseClass = _monoClass;
 
-			for (const monoMethod& method : test.getMethodsAttribute("Signal"))
-			{
-				LN_CORE_INFO("Singal: class:{0} method:{1}", test.getName(), method.getName());
-			}
-
-			MonoMethod* method;
-			void* iter = nullptr;
-
-			while ((method = mono_class_get_methods(_monoClass, &iter)) != nullptr)
-			{
-				//LN_CORE_INFO("method: {0}", mono_method_get_name(method));
-				MonoCustomAttrInfo* info = mono_custom_attrs_from_method(method);
-				if (info && mono_custom_attrs_has_attr(info, mono_class_from_name(s_Data->coreImage, "Luna", "Signal")))
-				{
-					MonoMethodSignature* signature = mono_method_signature(method);
-					uint8_t paramAmount = mono_signature_get_param_count(signature);
-					signalDB::registerSignal(*new signal({ mono_method_get_name(method),paramAmount ,method }),*new  std::string(mono_class_get_name(_monoClass)));
-				}
-			}
+			for (const monoMethod& method : baseClass.getMethodsAttribute("Signal"))
+				signalDB::registerSignal(*new signal({method.getName(),(uint8_t)method.getParamCount(),method.getNative()}),baseClass.getName());
+			
 		}
 
 		MonoMethodSignature* scriptingEngine::getSignature(MonoMethod* method)
