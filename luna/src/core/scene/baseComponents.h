@@ -34,7 +34,7 @@ namespace luna
 
 	struct scriptComponent
 	{
-		std::string className = "noot noot";
+		std::string className = "";
 		int currentItem = -1;
 		utils::scriptInstance* scritpInstance = nullptr;
 		scriptComponent() = default;

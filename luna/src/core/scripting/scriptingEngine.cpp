@@ -10,6 +10,9 @@
 #include <core/application.h>
 
 #include <core/object/objectDB.h>
+#include "monoClass.h"
+#include "monoMethod.h"
+
 namespace luna
 {
 	namespace scripting
@@ -321,7 +324,7 @@ namespace luna
 			return s_Data->m_Context;
 		}
 
-		void scriptingEngine::secContext(scene* scene)
+		void scriptingEngine::setContext(scene* scene)
 		{
 			s_Data->m_Context = scene;
 		}
@@ -339,13 +342,21 @@ namespace luna
 			return mono_string_new(s_Data->appDomain,string.c_str());
 		}
 
-		void scriptingEngine::getAvailableSignals(MonoClass* monoClass)
+		void scriptingEngine::getAvailableSignals(MonoClass* _monoClass)
 		{
-			if (!monoClass) return;
+			if (!_monoClass) return;
+
+			monoClass test = _monoClass;
+
+			for (const monoMethod& method : test.getMethodsAttribute("Signal"))
+			{
+				LN_CORE_INFO("Singal: class:{0} method:{1}", test.getName(), method.getName());
+			}
+
 			MonoMethod* method;
 			void* iter = nullptr;
 
-			while ((method = mono_class_get_methods(monoClass, &iter)) != nullptr)
+			while ((method = mono_class_get_methods(_monoClass, &iter)) != nullptr)
 			{
 				//LN_CORE_INFO("method: {0}", mono_method_get_name(method));
 				MonoCustomAttrInfo* info = mono_custom_attrs_from_method(method);
@@ -353,7 +364,7 @@ namespace luna
 				{
 					MonoMethodSignature* signature = mono_method_signature(method);
 					uint8_t paramAmount = mono_signature_get_param_count(signature);
-					signalDB::registerSignal(*new signal({ mono_method_get_name(method),paramAmount ,method }),*new  std::string(mono_class_get_name(monoClass)));
+					signalDB::registerSignal(*new signal({ mono_method_get_name(method),paramAmount ,method }),*new  std::string(mono_class_get_name(_monoClass)));
 				}
 			}
 		}

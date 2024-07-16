@@ -12,7 +12,7 @@ namespace luna
 
 		void scriptUtils::setContext(scene* scene)
 		{
-			scripting::scriptingEngine::secContext(scene);
+			scripting::scriptingEngine::setContext(scene);
 		}
 
 		void scriptUtils::reloadAssamblies()
@@ -25,7 +25,7 @@ namespace luna
 		}
 		scriptInstance::scriptInstance(scripting::scriptClass* scriptClass, uint32_t entityHandle) : m_ScriptClass(scriptClass) , handle(entityHandle)
 		{
-			LN_CORE_INFO("instancing class: {0}", mono_class_get_name(m_ScriptClass->childClass));
+			LN_CORE_INFO("instancing class: {0}",name());
 			instance = scripting::scriptingEngine::instanciate(m_ScriptClass->childClass);
 			void* param = &handle;
 			object((entt::entity)entityHandle, scripting::scriptingEngine::getContext()).getComponent<scriptComponent>().scritpInstance = this;
@@ -47,6 +47,9 @@ namespace luna
 		}
 		void scriptInstance::invokeSignal(const connectedSignal& signal, void** params)
 		{
+			LN_ERR_FAIL_COND_MSG(signal.connectedObj == 0, "[scripting] signals must be connected to a Node to be invoked!");
+			LN_ERR_FAIL_NULL_MSG(signal.signalMethodPtr, "[scripting] no singal function callback has been found");
+
 			mono_runtime_invoke(signal.signalMethodPtr, instance, params, nullptr);
 		}
 		void scriptInstance::connectSignal(const signal& signal,uint64_t entity)
@@ -58,6 +61,10 @@ namespace luna
 			}
 			*/
 
+		}
+		std::string scriptInstance::name()
+		{
+			return std::string(mono_class_get_name(m_ScriptClass->childClass));
 		}
 		MonoClass* scriptInstance::getClass()
 		{

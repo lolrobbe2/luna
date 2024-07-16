@@ -114,10 +114,10 @@ namespace luna
 				 if (image)
 				 {
 					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{*image,false} }); //if an empty texture slot was found then bind it otherwise create new buffer
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{image->getImageIndex(),false}}); //if an empty texture slot was found then bind it otherwise create new buffer
 					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
-					 return drawQuad({ transform,glm::vec4(1,1,1,1),*image,{*image,false} });
+					 return drawQuad({ transform,glm::vec4(1,1,1,1),image->getUvCoords(),{image->getImageIndex(),false}});
 				 }
 				 return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{*image , false} });
 			 }
@@ -131,12 +131,12 @@ namespace luna
 				 if (image)
 				 {
 					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,{*image,false} });
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false}});
 					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
-					 return drawQuad({ transform,color,textureCoords,*image });
+					 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false} });
 				 }
-				 return drawQuad({ transform,color,textureCoords,{*image, false} });
+				 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(), false} });
 			 }
 
 			 LN_API void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)

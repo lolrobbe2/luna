@@ -100,7 +100,7 @@ namespace luna
 				return coreClassNames;
 			}
 			static scene* getContext();
-			static void secContext(scene* scene);
+			static void setContext(scene* scene);
 			void createInstance(const std::string& className, uuid entityId);
 			static MonoObject* instanciate(MonoClass* monoClass);
 			static scriptClass* getScriptClass(const std::string& className) { return appClasses.find(className)->second; }

@@ -33,6 +33,7 @@ namespace luna
 			void process(float deltaTime);
 			void invokeSignal(const connectedSignal& signal, void** params);
 			void connectSignal(const signal& signal, uint64_t entity);
+			std::string name();
 			MonoObject* getInstance() { return instance; };
 			MonoClass* getClass();
 		private: 
