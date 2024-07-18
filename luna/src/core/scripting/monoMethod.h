@@ -25,6 +25,7 @@ namespace luna
 
 			_ALWAYS_INLINE_ monoClass getAttribute(const std::string& name) const;
 			_ALWAYS_INLINE_ MonoMethod* getNative() const { return p_method;}
+
 		private:
 			MonoMethod* p_method;
 		};

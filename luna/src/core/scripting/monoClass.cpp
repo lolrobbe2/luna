@@ -5,12 +5,14 @@
 #include <mono/metadata/attrdefs.h>
 #include <mono/metadata/object.h>
 #include "monoMethod.h"
+#include "monoObject.h"
 namespace luna
 {
 	namespace scripting
 	{
 		monoClass::monoClass(MonoClass* p_class) : p_class(p_class), m_name(mono_class_get_name(p_class))
 		{
+			p_VTable = mono_class_vtable(mono_get_root_domain(), p_class);
 		}
 		const std::vector<monoMethod> monoClass::getMethods() const
 		{
@@ -35,6 +37,10 @@ namespace luna
 		{
 			return mono_class_get_method_from_name(p_class,name.c_str(),paramCount);
 		}
-		
+
+		ref<monoObject> monoClass::instanciate()
+		{
+			return createRef<monoObject>(*this);
+		}
 	}
 }

@@ -353,11 +353,6 @@ namespace luna
 			
 		}
 
-		MonoMethodSignature* scriptingEngine::getSignature(MonoMethod* method)
-		{
-			return mono_method_get_signature(method,s_Data->appImage,0);
-		}
-
 		bool scriptingEngine::hasFlag(MonoMethod* method, uint32_t flag)
 		{
 			uint32_t monoFlag = mono_method_get_flags(method, nullptr);
@@ -368,7 +363,6 @@ namespace luna
 		rootClass::rootClass(MonoClass* baseClass) : root(baseClass)
 		{
 			MonoMethod* method= nullptr;
-
 		}
 		MonoArray* rootClass::createArray(const size_t arraySize)
 		{
