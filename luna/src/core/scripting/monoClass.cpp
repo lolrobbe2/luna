@@ -6,13 +6,14 @@
 #include <mono/metadata/object.h>
 #include "monoMethod.h"
 #include "monoObject.h"
+#include <core/debug/debugMacros.h>
 namespace luna
 {
 	namespace scripting
 	{
-		monoClass::monoClass(MonoClass* p_class) : p_class(p_class), m_name(mono_class_get_name(p_class))
+		monoClass::monoClass(MonoClass* p_class) : p_class(p_class), m_name(p_class ? mono_class_get_name(p_class) : "empty")
 		{
-			p_VTable = mono_class_vtable(mono_get_root_domain(), p_class);
+			p_VTable = p_class ? mono_class_vtable(mono_get_root_domain(), p_class) : nullptr;
 		}
 		const std::vector<monoMethod> monoClass::getMethods() const
 		{
@@ -20,6 +21,8 @@ namespace luna
 			MonoMethod* p_method;
 
 			std::vector<monoMethod> methods;
+
+			LN_ERR_FAIL_NULL_V_MSG(p_class, methods, "[Mono] p_class cannot be nullptr");
 
 			while ((p_method = mono_class_get_methods(p_class, &iter)) != nullptr)
 				methods.push_back(p_method);

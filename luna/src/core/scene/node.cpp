@@ -5,6 +5,8 @@
 #include <core/object/methodDB.h>
 #include <core/scripting/scriptingEngine.h>
 #include <queue>
+#include <core/scripting/monoArray.h>
+#include <core/scripting/monoObject.h>
 namespace luna 
 {
 #pragma region NODE
@@ -30,15 +32,18 @@ namespace luna
 		Node node = { nodeId,scripting::scriptingEngine::getContext() };
 		auto children = node.getChildren();
 
-		MonoArray* nodeArray = scripting::scriptingEngine::createArray<Node>(children.size());
+		//MonoArray* nodeArray = 
+		luna::scripting::monoArray nodes(scripting::scriptingEngine::createArray<Node>(children.size()));
+		
+		
 		for (size_t i = 0; i < children.size(); i++)
 		{
 			auto& script = children[i].getComponent<scriptComponent>();
-			MonoObject* nodeObject = script.scritpInstance->getInstance();
-			mono_array_set(nodeArray, MonoObject*, i, nodeObject);
+			luna::scripting::monoObject nodeObject{ script.scritpInstance->getInstance() };
+			nodes[i] = nodeObject;
 		}
-
-		return nodeArray;
+		
+		return nodes.getNative();
 	}
 
 	static MonoObject* NodeGetParent(entt::entity nodeId)

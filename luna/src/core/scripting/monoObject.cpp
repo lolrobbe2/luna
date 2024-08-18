@@ -12,13 +12,17 @@ namespace luna
 			p_object = mono_object_new_fast(getVTable());
 			mono_runtime_object_init(p_object);
 		}
+		monoObject::monoObject(MonoObject* p_object) : p_object(p_object),monoClass(p_object ? mono_object_get_class(p_object) : nullptr)
+		{
+			
+		}
 		MonoObject* monoObject::getNative()
 		{
 			return p_object;
 		}
-		ref<monoObject> monoObject::clone()
+		monoObject monoObject::clone()
 		{
-			return createRef<monoObject>(mono_object_clone(p_object),*this);
+			return monoObject(mono_object_clone(p_object), *this);
 		}
 		monoObject::monoObject(MonoObject* p_object, monoClass monoClass) : monoClass(monoClass), p_object(p_object)
 		{
