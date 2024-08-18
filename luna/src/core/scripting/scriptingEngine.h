@@ -33,21 +33,21 @@ namespace luna
 		{
 		public:
 			scriptClass() = default;
-			scriptClass(MonoClass* childClass,MonoClass* baseClass);
+			scriptClass(monoClass childClass,monoClass baseClass);
 			virtual ~scriptClass() = default;
-			MonoObject* instance();
+			monoObject instance();
 			void queueFree();
 
 			void process(float deltaTime);
 			void invokeSignal(std::string& signalName, void* obj, void** params);
 			void getImplementedSignals();
-			MonoMethod* constructor = nullptr;
-			MonoMethod* readyMethod = nullptr;
-			MonoMethod* processMethod = nullptr;
-			MonoMethod* physicsProcessMethod = nullptr;
+			monoMethod constructor;
+			monoMethod readyMethod;
+			monoMethod processMethod;
+			monoMethod physicsProcessMethod;
 		
-			MonoClass* childClass;
-			MonoClass* baseClass;
+			monoClass childClass;
+			monoClass baseClass;
 		};
 
 

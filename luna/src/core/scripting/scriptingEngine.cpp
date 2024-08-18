@@ -369,13 +369,13 @@ namespace luna
 			return mono_array_new(s_Data->appDomain, root, arraySize);
 		}
 
-		scriptClass::scriptClass(MonoClass* _childClass, MonoClass* _baseClass) : childClass(_childClass),baseClass(_baseClass)
+		scriptClass::scriptClass(monoClass _childClass, monoClass _baseClass) : childClass(_childClass),baseClass(_baseClass)
 		{
 			//LN_CORE_INFO("creating scriptCLass: {0}", mono_class_get_name(childClass));
-			constructor = mono_class_get_method_from_name(baseClass, ".ctor", 1);
-			readyMethod = mono_class_get_method_from_name(childClass, "Ready", 0);
-			processMethod = mono_class_get_method_from_name(childClass, "Process", 1);
-			physicsProcessMethod = mono_class_get_method_from_name(childClass, "PhysicsProcess", 1);
+			constructor = baseClass.getMethod(".ctor", 1);
+			readyMethod = childClass.getMethod("Ready", 0);
+			processMethod = childClass.getMethod("Process", 1);
+			physicsProcessMethod = childClass.getMethod("PhysicsProcess", 1);
 
 			//get all the declared signals
 			//signals can be declared in C# by creating a virtual function with the Signal attribute.
@@ -383,9 +383,9 @@ namespace luna
 		}
 
 
-		MonoObject* scriptClass::instance()
+		monoObject scriptClass::instance()
 		{
-			return scriptingEngine::instanciate(childClass);
+			return monoObject(childClass);
 		}
 
 		void scriptClass::queueFree()

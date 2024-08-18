@@ -5,6 +5,7 @@
 #include <core/core.h>
 #include <core/debug/uuid.h>
 #include <core/object/signal.h>
+#include <core/scripting/monoObject.h>
 
 namespace luna
 {
@@ -34,13 +35,13 @@ namespace luna
 			void invokeSignal(const connectedSignal& signal, void** params);
 			void connectSignal(const signal& signal, uint64_t entity);
 			std::string name();
-			MonoObject* getInstance() { return instance; };
+			scripting::monoObject getInstance() { return instance; };
 			MonoClass* getClass();
 		private: 
 			scripting::scriptClass* m_ScriptClass;
 			uint32_t handle;
 			uuid entityId;
-			MonoObject* instance;
+			scripting::monoObject instance;
 			std::unordered_map<std::string,std::vector<connectedSignal>> connectedSignals;
 		};
 	}
