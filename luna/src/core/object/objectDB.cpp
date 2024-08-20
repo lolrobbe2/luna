@@ -54,7 +54,7 @@ namespace luna
 		
 		LN_ERR_FAIL_COND_MSG(className == "", "className was invalid! (check properties if a class was selected!)");
 
-		MonoClass* childClass = scripting::scriptingEngine::getScriptClass(className)->childClass;
+		MonoClass* childClass = scripting::scriptingEngine::getScriptClass(className)->childClass.getNative();
 
 		if (!connectedSignals.empty())
 		{

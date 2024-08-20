@@ -3,6 +3,7 @@
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/attrdefs.h>
 #include <mono/metadata/object.h>
+#include <core/scripting/monoMethod.h>
 namespace luna 
 {
 	namespace scripting 
@@ -15,6 +16,11 @@ namespace luna
 		monoObject::monoObject(MonoObject* p_object) : p_object(p_object),monoClass(p_object ? mono_object_get_class(p_object) : nullptr)
 		{
 			
+		}
+		monoObject monoObject::invoke(monoMethod method, void** params)
+		{
+			if (!method) return nullptr;
+			return monoObject(mono_runtime_invoke(method.getNative(), p_object, params, nullptr));
 		}
 		MonoObject* monoObject::getNative()
 		{

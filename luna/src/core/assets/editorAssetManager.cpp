@@ -8,9 +8,9 @@ namespace luna
 		static std::map<std::string, assetHandle> translationMap;
 		editorAssetManager::~editorAssetManager()
 		{
-			assetMetadataStorage.clear(); 
 			try
 			{
+				assetMetadataStorage.clear();
 				translationMap.clear();
 			}
 			catch (const std::exception& e)

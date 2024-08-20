@@ -282,17 +282,17 @@ namespace luna
 				else
 					fullName = className;
 
-				MonoClass* monoClass = mono_class_from_name(s_Data->appImage, nameSpace, className);
-				MonoClass* monoParentClass = mono_class_get_parent(monoClass);
-				std::string parentName = mono_class_get_name(monoParentClass);
-				if (!(rootClasses.find(pascalToCamel(parentName)) != rootClasses.end() || parentName == "Node"))
+				monoClass _monoClass = mono_class_from_name(s_Data->appImage, nameSpace, className);
+				monoClass _monoParentClass = _monoClass.getParent();
+				
+				if (!(rootClasses.find(pascalToCamel(_monoParentClass.getName())) != rootClasses.end() || _monoParentClass.getName() == "Node"))
 				{
 					LN_CORE_WARN("[scriptingEgine] unrecognized class found {}.{}", nameSpace, className);
 					break;
 				}
-				scriptClass* scriptCLass = new scriptClass(monoClass, rootClasses.find(pascalToCamel(parentName))->second);
+				scriptClass* scriptCLass = new scriptClass(_monoClass, rootClasses.find(pascalToCamel(_monoParentClass.getName()))->second);
 				appClasses.emplace(className,scriptCLass);
-				getAvailableSignals(monoClass);
+				getAvailableSignals(_monoClass);
 			}
 
 		}
@@ -342,14 +342,13 @@ namespace luna
 			return mono_string_new(s_Data->appDomain,string.c_str());
 		}
 
-		void scriptingEngine::getAvailableSignals(MonoClass* _monoClass)
+		void scriptingEngine::getAvailableSignals(monoClass _monoClass)
 		{
 			if (!_monoClass) return;
 
-			monoClass baseClass = _monoClass;
 
-			for (const monoMethod& method : baseClass.getMethodsAttribute("Signal"))
-				signalDB::registerSignal(*new signal({method.getName(),(uint8_t)method.getParamCount(),method.getNative()}),baseClass.getName());
+			for (const monoMethod& method : _monoClass.getMethodsAttribute("Signal"))
+				signalDB::registerSignal(*new signal({method.getName(),(uint8_t)method.getParamCount(),method.getNative()}),_monoClass.getName());
 			
 		}
 

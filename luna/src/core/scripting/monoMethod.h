@@ -12,6 +12,7 @@ namespace luna
 		class LN_API monoMethod
 		{
 		public:
+			monoMethod() = default;
 			monoMethod(MonoMethod* p_method) : p_method(p_method) {};
 			_ALWAYS_INLINE_ std::string getName() const;
 			_ALWAYS_INLINE_ MonoMethodSignature* getSingature() const;
@@ -25,9 +26,10 @@ namespace luna
 
 			_ALWAYS_INLINE_ monoClass getAttribute(const std::string& name) const;
 			_ALWAYS_INLINE_ MonoMethod* getNative() const { return p_method;}
+			_ALWAYS_INLINE_ operator bool() { return p_method; }
 
 		private:
-			MonoMethod* p_method;
+			MonoMethod* p_method = nullptr;
 		};
 	}
 }

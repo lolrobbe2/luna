@@ -310,8 +310,8 @@ namespace luna
 				.addDescriptorSetLayout(grapchicsDescriptorPool)
 #ifdef IMGUI_API
 				.setCreateFlags(VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT)
-				//.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
-				//.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
+				.addDynamicState(VK_DYNAMIC_STATE_VIEWPORT)
+				.addDynamicState(VK_DYNAMIC_STATE_SCISSOR)
 #endif // IMGUI_API
 
 				.addViewport(p_swapChain->getViewport())

@@ -33,10 +33,10 @@ namespace luna
 			advance.y = (glyphDimensions.y / RENDERER->getSceneDimensions().y) + transform.translation.y;
 			for (item& item : itemListComponent.items)
 			{
-				glm::vec2 size{ 15,3 };
+				glm::vec2 size{ 1,1 };
 				size.x *= transform.scale.x;
 				size.y *= transform.scale.y;
-				RENDERER->drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg);
+				RENDERER->drawQuad(translation + transform.translation, size + glm::vec2(1.0f), item.customBg);
 	
 
 				RENDERER->drawQuad(translation + transform.translation, size, item.customFg);

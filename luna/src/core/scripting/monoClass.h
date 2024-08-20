@@ -19,13 +19,16 @@ namespace luna
 			monoClass(MonoClass* p_class);
 
 			_ALWAYS_INLINE_ operator const std::string() const { return m_name; }
-			_ALWAYS_INLINE_ const std::string getName() const { return m_name; } 
+			_ALWAYS_INLINE_ const std::string& getName() const { return m_name; } 
 			_ALWAYS_INLINE_ const std::vector<monoMethod> getMethods() const;
 			_ALWAYS_INLINE_ const std::vector<monoMethod> getMethodsAttribute(const std::string& attributeName);
 			_ALWAYS_INLINE_ const monoMethod getMethod(const std::string& name,int paramCount) const;
+			_ALWAYS_INLINE_ const monoClass getParent() const;
 			_ALWAYS_INLINE_ ref<monoObject> instanciate();
 
 			_ALWAYS_INLINE_ MonoClass* getNative() { return p_class; }
+
+			_ALWAYS_INLINE_ operator bool() { return p_class && p_VTable; };
 		protected:
 			_ALWAYS_INLINE_ MonoVTable* getVTable() const { return p_VTable; }
 

@@ -41,6 +41,11 @@ namespace luna
 			return mono_class_get_method_from_name(p_class,name.c_str(),paramCount);
 		}
 
+		const monoClass monoClass::getParent() const
+		{
+			return mono_class_get_parent(p_class);
+		}
+
 		ref<monoObject> monoClass::instanciate()
 		{
 			return createRef<monoObject>(*this);

@@ -51,7 +51,7 @@ namespace luna
 		Node node = { nodeId,scripting::scriptingEngine::getContext() };
 		Node parent = node.getParent();
 		if (parent) {
-			return parent.getComponent<scriptComponent>().scritpInstance->getInstance();
+			return parent.getComponent<scriptComponent>().scritpInstance->getInstance().getNative();
 		}
 		return nullptr;
 	}

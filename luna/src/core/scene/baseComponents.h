@@ -226,8 +226,8 @@ namespace luna
 		bool tooltipEnabled = true;
 		
 		std::string tooltip;
-		glm::vec4 customFg;
-		glm::vec4 customBg = { 0.0, 0.0, 0.0, 0.0 };
+		glm::vec4 customFg = { 0.0, 0.0, 0.0, 255.0 };
+		glm::vec4 customBg = { 0.0, 0.0, 0.0, 255.0 };
 
 		bool hover = 0;
 

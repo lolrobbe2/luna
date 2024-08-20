@@ -13,6 +13,7 @@ namespace luna
 			monoObject() = default;
 			monoObject(monoClass monoClass);
 			monoObject(MonoObject* p_object);
+			monoObject invoke(monoMethod method, void** params);
 		    MonoObject* getNative();
 			_ALWAYS_INLINE_ monoObject clone();
 		private:

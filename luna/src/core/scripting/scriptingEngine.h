@@ -7,7 +7,7 @@
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/attrdefs.h>
 #include <mono/metadata/object.h>
-
+#include <core/scripting/monoMethod.h>
 
 
 namespace luna
@@ -25,6 +25,7 @@ namespace luna
 			MonoArray* createArray(const size_t arraySize);
 			virtual ~rootClass() = default;
 			operator MonoClass* () { return root; };
+			operator monoClass() { return root; };
 		private:
 			MonoClass* root;
 		};
@@ -107,7 +108,7 @@ namespace luna
 			template<class type>
 			static MonoArray* createArray(const size_t size);
 			static MonoString* createMonoString(const std::string& string);
-			static void getAvailableSignals(MonoClass* monoClass);
+			static void getAvailableSignals(monoClass _monoClass);
 			static MonoMethodSignature* getSignature(MonoMethod* method);
 			static bool hasFlag(MonoMethod* method, uint32_t flag);
 			static MonoClass* getStandAloneClass(const std::string& className) { return standAloneClasses.find(className)->second; }

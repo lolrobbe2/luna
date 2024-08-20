@@ -59,19 +59,19 @@ namespace luna
 
 			ImGui::Begin("scene Hierarchy");
 			if (ImGui::Button("add node", ImVec2(80, 30))) ImGui::OpenPopup("add node");
-			
-			if (ImGui::BeginPopupModal("add node",nullptr, ImGuiWindowFlags_NoMove))
+
+			if (ImGui::BeginPopupModal("add node", nullptr, ImGuiWindowFlags_NoMove))
 			{
 				ImGui::SetWindowSize(ImVec2(1000, 500));
 				ImVec2 windowPos = ImGui::GetMainViewport()->GetCenter();
-				ImGui::SetWindowPos({windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
+				ImGui::SetWindowPos({ windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
 				if (ImGui::Button("exit node selection", ImVec2(200, 20)))
 				{
 					m_ListSelected = "";
 					ImGui::CloseCurrentPopup();
 				}
-				ImGui::SameLine(ImGui::GetContentRegionAvail().x-200);
-				if(ImGui::Button("add selected node",ImVec2(200,20)))
+				ImGui::SameLine(ImGui::GetContentRegionAvail().x - 200);
+				if (ImGui::Button("add selected node", ImVec2(200, 20)))
 				{
 					//LN_CORE_INFO("node added: {0}",m_ListSelected);
 					objectDB::createInstance(m_ListSelected, m_Context);
@@ -81,23 +81,26 @@ namespace luna
 				drawNodeSelectionList();
 				ImGui::EndPopup();
 			}
-			auto view = m_Context->m_Registry.view<idComponent,tagComponent>(entt::exclude<parentComponent>);
-			for (auto entityID : view) {
-				Node Node{ entityID , m_Context }; 
-				drawEntityNode(Node, 0);
+			auto view = m_Context->m_Registry.view<idComponent, tagComponent>(entt::exclude<parentComponent>);
+			if (view) {
+				for (auto entityID : view)
+				{
+					Node Node{ entityID , m_Context };
+					drawEntityNode(Node, 0);
+				}
 			}
 
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
 				m_Selected = {};
-			
+
 			ImGui::End();
 			//ImGui::DockBuilderDockWindow("properties", dock_id_Top_left);
 			ImGui::Begin("properties");
-			if(m_Selected) drawComponents(m_Selected);
+			if (m_Selected) drawComponents(m_Selected);
 			ImGui::End();
 
 			ImGui::Begin("Signals");
-			if (m_Selected) 
+			if (m_Selected)
 			{
 				drawSignals(m_Selected.getComponent<idComponent>().typeName);
 				drawSignalConnectWindow();
@@ -109,7 +112,7 @@ namespace luna
 	void sceneHierarchyPanel::drawSignals(std::string& typeName)
 	{
 		auto& signals = signalDB::getSignalNames(typeName);
-		if(signals.size()) ImGui::Text(typeName.c_str());
+		if (signals.size()) ImGui::Text(typeName.c_str());
 		for (auto& signalName : signals)
 		{
 			ImGui::Button(signalName.c_str(), ImVec2(-1, 0));
@@ -133,12 +136,12 @@ namespace luna
 
 	void sceneHierarchyPanel::drawEntityNode(Node Node, uint32_t indent)
 	{
-		
+
 		std::string buttonText = Node.getName();
 		ImGuiTreeNodeFlags flags = (m_Selected == Node) ? ImGuiTreeNodeFlags_Selected : 0;
 		bool isOpen = ImGui::TreeNodeEx((void*)Node.getUUID().getId(), ImGuiTreeNodeFlags_OpenOnArrow | flags, buttonText.c_str());
 
-		
+
 		if (ImGui::BeginDragDropTarget())
 		{
 			const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("node");
@@ -163,7 +166,7 @@ namespace luna
 			{
 				ImGui::Indent(addIndent);
 				auto& childs = Node.getComponent<childComponent>().childs;
-				
+
 				for (auto child : childs)
 				{
 					luna::Node _Node{ child,m_Context };
@@ -177,12 +180,12 @@ namespace luna
 
 			ImGui::TreePop();
 		}
-		
+
 
 	}
 	void sceneHierarchyPanel::drawComponents(Node Node)
 	{
-		if (!Node.scene || Node.entityHandle == entt::null ) return;
+		if (!Node.scene || Node.entityHandle == entt::null) return;
 		if (Node.hasComponent<idComponent>())
 		{
 			auto& id = Node.getComponent<idComponent>();
@@ -195,14 +198,14 @@ namespace luna
 		}
 		if (Node.hasComponent<scriptComponent>())
 		{
-			auto& script = Node.getComponent<scriptComponent>();			
+			auto& script = Node.getComponent<scriptComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(luna::itemList).hash_code(), 0, "script"))
 			{
 				auto appClassNames = utils::scriptUtils::getAppClassNames();
 				const char** items = appClassNames.data();
 				int currentItem = script.currentItem;
 				ImGui::LabelText("className", script.className.c_str());
-				if(ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size()));
+				if (ImGui::Combo("select class", &currentItem, items, utils::scriptUtils::getAppClassNames().size()));
 				{
 					if (currentItem != -1) {
 						script.currentItem = currentItem;
@@ -224,13 +227,13 @@ namespace luna
 			}
 			ImGui::Separator();
 		}
-		if(Node.hasComponent<tagComponent>())
+		if (Node.hasComponent<tagComponent>())
 		{
 			auto& tag = Node.getComponent<tagComponent>().tag;
 			inputText("name", tag);
 			ImGui::Separator();
 		}
-		if(Node.hasComponent<transformComponent>())
+		if (Node.hasComponent<transformComponent>())
 		{
 			auto& transform = Node.getComponent<transformComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(transformComponent).hash_code(), 0, "transform"))
@@ -238,20 +241,20 @@ namespace luna
 				glm::vec3 translation = transform.translation;
 				glm::vec3 rotation = transform.rotation;
 				glm::vec3 scale = transform.scale;
-				if (ImGui::DragFloat3("position", glm::value_ptr(translation), 0.25f)) 
+				if (ImGui::DragFloat3("position", glm::value_ptr(translation), 0.25f))
 				{
 					Node.getComponent<idComponent>().notificationFunc(TRANSFORM_UPDATED);
 					transform.setTranslation(translation);
 				}
 				if (ImGui::DragFloat3("rotation", glm::value_ptr(rotation), 0.25f))
-				{ 
+				{
 					Node.getComponent<idComponent>().notificationFunc(TRANSFORM_UPDATED);
 					transform.setRotation(rotation);
 				}
-				if (ImGui::DragFloat3("scale", glm::value_ptr(scale), 0.25f)) 
+				if (ImGui::DragFloat3("scale", glm::value_ptr(scale), 0.25f))
 				{
 					Node.getComponent<idComponent>().notificationFunc(TRANSFORM_UPDATED);
-					transform.setScale(scale); 
+					transform.setScale(scale);
 				}
 				ImGui::TreePop();
 			}
@@ -266,10 +269,10 @@ namespace luna
 				{
 					ImGui::DragFloat4("color", glm::value_ptr(sprite.color), 0.25f);
 					inputText("filePath", sprite.filePath.generic_string());
-					if(sprite.filePath.string() != "")
+					if (sprite.filePath.string() != "")
 					{
 						const ref<assets::image> icon = getSmallIcon(sprite.filePath);
-						if(ImGui::ImageButton(icon->getGuiImageHandle(),ImVec2(60,60)))
+						if (ImGui::ImageButton(icon->getGuiImageHandle(), ImVec2(60, 60)))
 						{
 							const std::string filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
 							if (filePath != "")
@@ -283,7 +286,8 @@ namespace luna
 						ImGui::SameLine();
 						ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 30.0f);
 						ImGui::Text(sprite.filePath.filename().string().c_str());
-					} else {
+					}
+					else {
 						if (ImGui::Button("select \n image", ImVec2(60, 60)))
 						{
 							const std::string filePath = luna::platform::os::openFileDialog("image\0*.png;*.jpeg;*.jpg\0");
@@ -292,7 +296,7 @@ namespace luna
 								sprite.filePath = filePath;
 								ref<assets::asset> texture = assets::assetManager::getAsset(sprite.filePath.filename().string());
 								if (texture) sprite.texture = std::dynamic_pointer_cast<assets::image>(texture);
-								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(),assets::TEXTURE));
+								else texture = assets::assetManager::getAsset(assets::assetManager::importAsset(sprite.filePath.string(), assets::TEXTURE));
 							}
 						}
 					}
@@ -316,13 +320,14 @@ namespace luna
 						ref<assets::asset> font = assets::assetManager::getAsset(filePath.filename().string());
 						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
 						label.font = std::dynamic_pointer_cast<assets::font>(font);
-					} else {
+					}
+					else {
 						label.handle = assets::assetManager::importAsset(filePath.string(), assets::FONT_ATLAS);
 						ref<assets::asset> font = assets::assetManager::getAsset(label.handle);
 						label.handle = assets::assetManager::getAssetMetadata(filePath.filename().string())->handle;
 						label.font = std::dynamic_pointer_cast<assets::font>(font);
 					}
-					
+
 				}
 				inputText("label text", label.text);
 				ImGui::InputInt("font size", &label.fontSize);
@@ -331,7 +336,7 @@ namespace luna
 			}
 			ImGui::Separator();
 		}
-		if(Node.hasComponent<rectComponent>())
+		if (Node.hasComponent<rectComponent>())
 		{
 			auto& rect = Node.getComponent<rectComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(rectComponent).hash_code(), 0, "color rect"))
@@ -346,7 +351,7 @@ namespace luna
 			auto& button = Node.getComponent<buttonComponent>();
 			const char* items[] = { "ACTION_MODE_BUTTON_PRESS","ACTION_MODE_BUTTON_RELEASE" };
 
-			ImGui::Combo("action mode", (int*)& button.actionMode, items, 2);
+			ImGui::Combo("action mode", (int*)&button.actionMode, items, 2);
 			ImGui::Checkbox("toggle mode", &button.toggleMode);
 			if (button.showInEditor)
 			{
@@ -388,12 +393,12 @@ namespace luna
 			{
 				const char* items[] = { "single","multi" };
 				static int currentItem;
-					
-				ImGui::Combo("select mode", &currentItem, items,2);
-				
+
+				ImGui::Combo("select mode", &currentItem, items, 2);
+
 				if (currentItem == 0) itemList.selectMode = luna::itemList::SELECT_SINGLE;
 				else itemList.selectMode = luna::itemList::SELECT_MULTI;
-					
+
 				if (ImGui::Button("select font"))
 				{
 					//hotpink color code (227,28,121)
@@ -407,6 +412,7 @@ namespace luna
 					nodes::itemListNode itemListNode(Node);
 					itemListNode.addItem("test");
 				}
+				
 				int itemNum = 0;
 				if (ImGui::BeginChild("items"))
 				{
@@ -420,16 +426,33 @@ namespace luna
 							ImGui::TreePop();
 						}
 						itemNum++;
+						if (ImGui::TreeNodeEx("Color"))
+						{
+							float col[4] = { item.customFg.x,item.customFg.y,item.customFg.z,item.customFg.w };
+							ImGui::ColorPicker4("Foreground color", col);
+							item.customFg.x = col[0];
+							item.customFg.y = col[1];
+							item.customFg.z = col[2];
+							item.customFg.w = col[3];
+
+							float col1[4] = { item.customBg.x,item.customBg.y,item.customBg.z,item.customBg.w };
+							ImGui::ColorPicker4("Background color", col1);
+							item.customBg.x = col1[0];
+							item.customBg.y = col1[1];
+							item.customBg.z = col1[2];
+							item.customBg.w = col1[3];
+							ImGui::TreePop();
+						}
 					}
 				}
 				ImGui::EndChild();
-			
+
 				//TODO renderer part.
 				ImGui::TreePop();
 			}
 			ImGui::Separator();
 		}
-		if(Node.hasComponent<lineEditComponent>())
+		if (Node.hasComponent<lineEditComponent>())
 		{
 			auto& lineEdit = Node.getComponent<luna::lineEditComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(luna::lineEditComponent).hash_code(), 0, "itemList"))
@@ -444,7 +467,7 @@ namespace luna
 			}
 			ImGui::Separator();
 		}
-		if(Node.hasComponent<canvasComponent>())
+		if (Node.hasComponent<canvasComponent>())
 		{
 			auto& canvasComponent = Node.getComponent<luna::canvasComponent>();
 			if (ImGui::TreeNodeEx((void*)typeid(luna::lineEditComponent).hash_code(), 0, "canvas"))
@@ -459,13 +482,13 @@ namespace luna
 
 	void sceneHierarchyPanel::drawNodeSelectionList()
 	{
-		for (auto& [key, value] : objectDB::rootClassDatabase) 
+		for (auto& [key, value] : objectDB::rootClassDatabase)
 		{
-			addNodeSelection(key,value);
+			addNodeSelection(key, value);
 		}
-			
+
 	}
-	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName,objectDB::classInfo* classInfo)
+	bool sceneHierarchyPanel::addNodeSelection(const std::string& nodeName, objectDB::classInfo* classInfo)
 	{
 		ImGuiTreeNodeFlags flags = (m_ListSelected == nodeName) ? ImGuiTreeNodeFlags_Selected : 0;
 		bool isOpenNode = ImGui::TreeNodeEx(nodeName.c_str(), ImGuiTreeNodeFlags_OpenOnArrow | flags, nodeName.c_str());
@@ -477,10 +500,10 @@ namespace luna
 			for (auto childClass : classInfo->children) addNodeSelection(childClass->className, childClass);
 			ImGui::Unindent(10);
 		}
-	
+
 		return isOpenNode;
 	}
-	void sceneHierarchyPanel::inputText(const std::string& name,std::string& stringBuffer)
+	void sceneHierarchyPanel::inputText(const std::string& name, std::string& stringBuffer)
 	{
 		char buffer[256];
 		memset(buffer, 0, sizeof(buffer));
@@ -489,21 +512,21 @@ namespace luna
 	}
 	void sceneHierarchyPanel::onPlay()
 	{
-		
+
 	}
 
 	ref<assets::image> sceneHierarchyPanel::getSmallIcon(const std::filesystem::path& assetFilePath)
 	{
 		if (assetFilePath.extension().string() == ".png") {
-			
+
 			return smallPngIcon;
 		}
 		else if (assetFilePath.extension().string() == ".jpg") {
-		
+
 			return smallJpgIcon;
 		}
 		else if (assetFilePath.extension().string() == ".ttf") {
-		
+
 			return smallTtfIcon;
 		}
 		return smallFileIcon;
@@ -515,7 +538,7 @@ namespace luna
 		ImGui::SetNextWindowSize(nextWindowSize);
 		if (ImGui::BeginPopupModal("connect signal", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove))
 		{
-			if(ImGui::BeginChild("##nodeSelection"))
+			if (ImGui::BeginChild("##nodeSelection"))
 			{
 				auto view = m_Context->m_Registry.view<idComponent, tagComponent>(entt::exclude<parentComponent>);
 				for (auto entityID : view) {
@@ -525,7 +548,7 @@ namespace luna
 				ImGui::EndChild();
 			}
 
-			if(ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.15f, 0.0f)))
+			if (ImGui::Button("connect", ImVec2(ImGui::GetWindowWidth() / 2.15f, 0.0f)))
 			{
 				m_Selected.connectSignal((uint64_t)m_SignalSelected.entityHandle, m_SelectedSignal);
 				ImGui::CloseCurrentPopup();
@@ -535,15 +558,15 @@ namespace luna
 			ImGui::EndPopup();
 		}
 	}
-	void sceneHierarchyPanel::drawSignalNode(Node& node,uint32_t indent)
+	void sceneHierarchyPanel::drawSignalNode(Node& node, uint32_t indent)
 	{
 		std::string buttonText = node.getName();
 		ImGuiTreeNodeFlags flags = (m_SignalSelected == node) ? ImGuiTreeNodeFlags_Selected : 0;
 		bool isOpen = ImGui::TreeNodeEx((void*)node.getUUID().getId(), ImGuiTreeNodeFlags_OpenOnArrow | flags, buttonText.c_str());
-	
+
 		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) m_SignalSelected = node;
 
-		if (isOpen) 
+		if (isOpen)
 		{
 			if (node.hasComponent<childComponent>())
 			{
@@ -564,5 +587,5 @@ namespace luna
 			ImGui::TreePop();
 		}
 	}
-	
+
 }

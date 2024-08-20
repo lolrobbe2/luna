@@ -69,7 +69,7 @@ namespace luna
 			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 			 {
 				 const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-					 * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+					 * glm::scale(glm::mat4(0.5f), { size.x, size.y, 1.0f });
 				 drawQuad(transform, color);
 			 }
 			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
