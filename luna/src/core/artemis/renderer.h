@@ -170,6 +170,9 @@ namespace luna
 			 LN_API ImGuiContext* getImGuiContext();
 			 LN_API void setTransition(bool transition) { this->transition = transition; }
 #endif // !IMGUI_API
+#ifdef IMGUI_API
+
+
 			 LN_API const glm::vec2 getSceneMousePos() const
 			 {
 				 //TODO mousepose
@@ -180,6 +183,8 @@ namespace luna
 				 //TODO mousepose
 				 this->sceneMousePos = sceneMousePos;
 			 }
+#endif // IMGUI_API
+
 			 const glm::vec2 getSceneDimensions() const
 			 {
 #ifndef IMGUI_API

@@ -20,7 +20,9 @@ namespace luna
 {
 	namespace artemis 
 	{
-		static ref<imGui> imgui;
+#ifdef IMGUI_API
+		static ref<imGui> imgui
+#endif // IMGUI_API
 		renderer::renderer(const ref<vulkan::window>& window)
 		{
 			LN_PROFILE_FUNCTION();
@@ -390,6 +392,7 @@ namespace luna
 
 			p_graphicsCommandBuffer[currentFrame]->begin(0);
 #ifdef IMGUI_API
+			///TODO FIX VIEWPORT BUG WHERE THINGS ARE NOT CENTERED AND PART OF THE SCREEN IS GONE!
 			VkViewport viewport{};
 			viewport.x -= imguiSceneSize.x / 4;
 			viewport.y -= imguiSceneSize.y / 4;

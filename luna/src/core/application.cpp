@@ -77,6 +77,7 @@ namespace luna
 							layer->onUpdate(timestep);
 					}
 					p_renderer->endScene();
+#ifdef IMGUI_API
 					p_renderer->beginImGuiScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
@@ -84,7 +85,8 @@ namespace luna
 						for (size_t i = 0; i < layerStack.size(); i++)
 							(*(layerStack.begin() + i))->onImGuiRender();
 					}
-					p_renderer->endImGuiScene();
+					p_renderer->endImGuiScene(); 
+#endif // IMGUI_API
 					p_renderer->update();
 				}
 			}

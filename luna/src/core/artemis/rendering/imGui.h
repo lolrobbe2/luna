@@ -1,5 +1,5 @@
 #pragma once
-
+#define IMGUI_DISABLE
 #ifndef IMGUI_DISABLE
 #ifndef _IMGUI_
 #define _IMGUI_
