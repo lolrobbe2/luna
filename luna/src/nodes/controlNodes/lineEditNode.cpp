@@ -6,8 +6,8 @@
 #include <core/debug/typedefs.h>
 #include <core/platform/platformUtils.h>
 
-#define UNSELECTED_COLOR {204.0f,136.935f, 28.05f, 1.0f}
-#define SELECTED_COLOR {255, 172.89, 37.995, 1.0f} 
+#define UNSELECTED_COLOR {204.0f,136.935f, 28.05f, 255.0f}
+#define SELECTED_COLOR {255, 172.89, 37.995, 255.0f} 
 #define NORMALIZED_BORDER_SIZE 0.03f
 
 namespace luna
@@ -37,45 +37,45 @@ namespace luna
 			auto& lineEdit = getComponent<lineEditComponent>();
 			auto transform = getComponent<transformComponent>();
 			auto transform2 = getComponent<transformComponent>();
-			transform2.translation.x -= transform.scale.x / 2.0f - transform2.scale.x * 0.03f;
+			//transform2.translation.x -= transform.scale.x / 2.0f - transform2.scale.x * 0.03f;
 
 			transform.setScale(transform.scale + NORMALIZED_BORDER_SIZE);
 			glm::vec4 rectColor;
 			lineEdit.selected ? rectColor = SELECTED_COLOR : rectColor = UNSELECTED_COLOR;
-			RENDERER->drawQuad(transform.getTransform(), rectColor);
-			RENDERER->drawQuad(getComponent<transformComponent>().getTransform(), {36.0f,37.0f,38.0f,1.0f});
-			
+			RENDERER->drawQuad(transform.getTransform(), RENDERER->normalizeColor(rectColor));
+			RENDERER->drawQuad(getComponent<transformComponent>().getTransform(),RENDERER->normalizeColor({ 36.0f,37.0f,38.0f,255.0f }));
+
 
 			//drawString(lineEdit.charTransforms, color(), lineEdit.font);
-			//if (lineEdit.font) drawString(lineEdit.font, transform2.translation, lineEdit.drawText,16,color(), lineEdit.bounds, lineEdit.indexOutOfBounds);
+			if (lineEdit.font) drawString(lineEdit.font, transform.translation, lineEdit.text, lineEdit.points, color(), lineEdit.bounds);
 		}
 
 		void lineEditNode::guiEvent(Event& event)
 		{
 			auto& lineEdit = getComponent<lineEditComponent>();
-			
+
 			if (event.getEventType() == eventType::MouseMoved)
 			{
 				bool prevHovered = lineEdit.hovered;
 				lineEdit.hovered = isHovered();
 				if (prevHovered != lineEdit.hovered)
 				{
-					if(prevHovered)
+					if (prevHovered)
 					{
 						platform::os::setCursorShape(platform::ARROW);
 					}
-					else 
+					else
 					{
 						platform::os::setCursorShape(platform::IBEAM);
 					}
 				}
 			}
-			if(event.getEventType() == eventType::MouseButtonPressed)
+			if (event.getEventType() == eventType::MouseButtonPressed)
 			{
 				mouseButtonPressedEvent* mouseEvent = (mouseButtonPressedEvent*)&event;
-				if(mouseEvent->getMouseButton() == Mouse::ButtonLeft)
-				{ 
-					if(lineEdit.hovered)
+				if (mouseEvent->getMouseButton() == Mouse::ButtonLeft)
+				{
+					if (lineEdit.hovered)
 					{
 						lineEdit.selected = !lineEdit.selected;
 					}
@@ -84,7 +84,7 @@ namespace luna
 			}
 			if (lineEdit.selected && event.getEventType() == eventType::KeyTyped)
 			{
-				
+
 				keyTypedEvent* keyBoardEvent = (keyTypedEvent*)&event;
 				lineEdit.text += keyBoardEvent->getkeyCode();
 				LN_EMIT_SIGNAL("TextChanged", utils::scriptUtils::createMonoString(lineEdit.text));
@@ -93,23 +93,23 @@ namespace luna
 			if (lineEdit.selected && event.getEventType() == eventType::KeyPressed)
 			{
 				keyPressedEvent* keyPressed = (keyPressedEvent*)&event;
-				if (keyPressed->getkeyCode() == input::Backspace && lineEdit.text.size()) 
+				if (keyPressed->getkeyCode() == input::Backspace && lineEdit.text.size())
 				{
 					lineEdit.text.pop_back();
 					LN_EMIT_SIGNAL("TextChanged", utils::scriptUtils::createMonoString(lineEdit.text));
 					calculateTransforms();
 				}
-				if(keyPressed->getkeyCode() == input::Enter)
+				if (keyPressed->getkeyCode() == input::Enter)
 				{
 					LN_EMIT_SIGNAL("TextSubmitted", utils::scriptUtils::createMonoString(lineEdit.text));
 				}
 			}
-			if(lineEdit.selected && event.getEventType() == eventType::MouseScrolled)
+			if (lineEdit.selected && event.getEventType() == eventType::MouseScrolled)
 			{
 				mouseScrolledEvent* scrolledEvent = (mouseScrolledEvent*)&event;
 				if (scrolledEvent->getYOffset() < 0) //MOUSE_DOWN
 				{
-					lineEdit.scrollPosition = CLAMP(lineEdit.scrollPosition + 1,0,lineEdit.text.size() - 1);
+					lineEdit.scrollPosition = CLAMP(lineEdit.scrollPosition + 1, 0, lineEdit.text.size() - 1);
 					calculateTransforms();
 				}
 
@@ -117,7 +117,7 @@ namespace luna
 				{
 					lineEdit.scrollPosition = CLAMP(lineEdit.scrollPosition - 1, 0, lineEdit.text.size() - 1);
 					calculateTransforms();
-				}	
+				}
 			}
 		}
 
@@ -133,7 +133,7 @@ namespace luna
 			}
 		}
 
-		
+
 		bool lineEditNode::isHovered()
 		{
 			auto transform = getComponent<transformComponent>();
@@ -154,37 +154,14 @@ namespace luna
 		{
 			auto& lineEdit = getComponent<lineEditComponent>();
 			auto transform = getComponent<transformComponent>();
-			transform.translation.x -= transform.scale.x / 2.0f - transform.scale.x * 0.03f;
+			//transform.translation.x -= transform.scale.x / 2.0f - transform.scale.x * 0.03f;
 
 			float xAdvance = 0.0f;
 			if (!lineEdit.font) return;
 			const ref<assets::image> spaceGlyph = lineEdit.font->getGlyph('_');
 			float pxNorm = lineEdit.points * 1.333; //why the 1.333 (pt to px ,1pt => pw: 1pt * 1.333)
 			pxNorm /= RENDERER->getSceneDimensions().y;
-			lineEdit.bounds = { transform.translation.x - transform.scale.x - NORMALIZED_BORDER_SIZE,transform.translation.x + transform.scale.x - NORMALIZED_BORDER_SIZE, transform.translation.y - transform.scale.y / 2.0f,transform.translation.y + transform.scale.y / 2.0f };
-			const glm::vec2 normalizedDimensions = glm::vec2(pxNorm,pxNorm) / RENDERER->getSceneDimensions(); // Calculate normalized dimensions based on size relative to scene dimensions.
-			std::vector<lineEditComponent::character> characters; // Vector to store character transforms.
-			
-			for (size_t i = lineEdit.scrollPosition; i < lineEdit.text.size(); i++)
-			{
-				const ref<assets::image> glyph = lineEdit.font->getGlyph(lineEdit.text[i]);
-				const glm::vec2 dimensions = *glyph;
-
-				// Calculate the transformation matrix for the character using the provided quad vertices.
-				xAdvance += (lineEdit.font->getAdvance(lineEdit.text[i]).x * normalizedDimensions.x) + transform.translation.x;
-				//drawCharQuadBound({ xAdvance + position.x, position.y + font->getAdvance(labelText[i]).y * normalizedDimensions.y, position.z }, size, font->getGlyph(labelText[i]));
-				if (lineEdit.text[i] == ' ')
-				{
-					xAdvance += spaceGlyph->getExtent().x * normalizedDimensions.x;
-				}
-				else
-				{
-					xAdvance += glyph->getExtent().x * normalizedDimensions.x;
-				}
-	
-			}
-			lineEdit.charTransforms = characters;
-			lineEdit.outOfBounds = false;
+			lineEdit.bounds = { transform.translation.x - transform.scale.x / 2.0f + NORMALIZED_BORDER_SIZE,transform.translation.y - transform.scale.y / 2.0f + NORMALIZED_BORDER_SIZE, transform.translation.x + transform.scale.x / 2.0f - NORMALIZED_BORDER_SIZE,transform.translation.y + transform.scale.y / 2.0f - NORMALIZED_BORDER_SIZE };
 		}
 	}
 }

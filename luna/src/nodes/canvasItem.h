@@ -49,7 +49,7 @@ namespace luna
 
 			void drawChar(ref<assets::font> font, glm::vec2 pos, char chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
 			void drawChar(const lineEditComponent::character character, ref<assets::font> font, color modulate = color(1, 1, 1, 1));
-			void drawString(ref<assets::font> font, glm::vec2 pos, std::string chr, int font_size = 16, color modulate = color(1, 1, 1, 1));
+			void drawString(ref<assets::font> font, glm::vec2 pos, std::string chr, int font_size = 16, color modulate = color(1, 1, 1, 1), const glm::vec4& bounds = { -1.0f,-1.0f,1.0f,1.0f });
 			void drawString(std::vector<lineEditComponent::character> transforms, color modulate, ref<assets::font> font);
 			void drawTexture(ref<assets::image> image, glm::vec2 position, color modulate);
 			void executeDraw();

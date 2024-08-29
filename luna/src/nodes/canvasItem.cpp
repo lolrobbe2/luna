@@ -42,13 +42,12 @@ namespace luna
 			//renderer::renderer2D::drawCharQuad(character.getTransform(), character.glyph, modulate,font->handle());
 		}
 
-		void canvasItem::drawString(ref<assets::font> font, glm::vec2 pos, std::string string, int font_size, color modulate)
+		void canvasItem::drawString(ref<assets::font> font, glm::vec2 pos, std::string string, int font_size, color modulate, const glm::vec4& bounds)
 		{
 			float pxNorm = (font_size * 1.333);
 			pxNorm /= application::application::get().getRenderer()->getSceneDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
-			uint8_t outOfBounds;
-			application::application::get().getRenderer()->drawLabel(position, { pxNorm,pxNorm }, font,string,modulate);
+			application::application::get().getRenderer()->drawLabel(position, { pxNorm,pxNorm }, font,string,modulate,bounds);
 		}
 		void canvasItem::drawTexture(ref<assets::image> image, glm::vec2 position, color modulate = color(1, 1, 1, 1))
 		{
