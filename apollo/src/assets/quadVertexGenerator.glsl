@@ -2,7 +2,7 @@
 #pragma vscode_glsllint_stage : frag
 
 /**
-@brief this shaders calcultes the the vertices based on a given draw command.
+@brief this shaders calcultes the vertices based on a given draw command.
 @brief these calculations used to be done on the cpu but can be done on the GPU and thus improve performance!
 */
 
@@ -21,7 +21,7 @@ const vec4 quadCharVertexPositions[4] = {
     { 1.0f, 0.0f, 0.0f, 1.0f },
     { 1.0f,  1.0f, 0.0f, 1.0f },
     { 0.0f,  1.0f, 0.0f, 1.0f }
-};
+    };
 
 // IO structs
 struct drawCommand
@@ -67,8 +67,14 @@ void main()
     for (int subIndex = 0; subIndex < quadVertexCount; subIndex++)
     {
         //vertexPositions are different for text and quads.
-        if(drawCommandsIn[index].textureDetails.y > 0.0f) verticesOut[outIndex + subIndex].vert = drawCommandsIn[index].transform * quadCharVertexPositions[subIndex];
-        else verticesOut[outIndex + subIndex].vert = drawCommandsIn[index].transform * quadCharVertexPositions[subIndex];
+        if(drawCommandsIn[index].textureDetails.y > 0.0f) 
+        {
+            verticesOut[outIndex + subIndex].vert = drawCommandsIn[index].transform * quadCharVertexPositions[subIndex];
+        }
+        else 
+        {
+            verticesOut[outIndex + subIndex].vert = drawCommandsIn[index].transform * quadVertexPositions[subIndex];
+         }
 
         verticesOut[outIndex + subIndex].textureIndex = drawCommandsIn[index].textureDetails.x;
         verticesOut[outIndex + subIndex].color = drawCommandsIn[index].color;

@@ -12,10 +12,10 @@ namespace luna
     {
         LN_API typedef struct drawCommand
         {
-            alignas(16)glm::mat4 transform;
-            alignas(16)glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f };
-            alignas(8) std::array<glm::vec2,4> textureCoords = { glm::vec2(0.0f, 0.0f),  glm::vec2(1.0f, 0.0f),  glm::vec2(1.0f, 1.0f),  glm::vec2(0.0f, 1.0f) };
-            alignas(8)glm::vec2 textureDetails{ 0.0f,false }; //textureindex, text bool
+            alignas(16) glm::mat4 transform;
+            alignas(16) glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f };
+            alignas(8)  std::array<glm::vec2,4> textureCoords = { glm::vec2(0.0f, 0.0f),  glm::vec2(1.0f, 0.0f),  glm::vec2(1.0f, 1.0f),  glm::vec2(0.0f, 1.0f) };
+            alignas(8)  glm::vec2 textureDetails{ 0.0f,false }; //textureindex, text bool
         } drawCommand;
         class descriptorPool;
         class sampler;

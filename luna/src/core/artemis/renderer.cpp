@@ -21,7 +21,7 @@ namespace luna
 	namespace artemis 
 	{
 #ifdef IMGUI_API
-		static ref<imGui> imgui
+		static ref<imGui> imgui;
 #endif // IMGUI_API
 		renderer::renderer(const ref<vulkan::window>& window)
 		{
@@ -220,6 +220,20 @@ namespace luna
 			}
 		}
 
+		void renderer::bindFont(const ref<assets::font> p_font)
+		{
+			LN_ERR_FAIL_NULL_MSG(p_font, "[ARTEMIS] p_font was nullptr");
+			bool bound = *p_font; //check for empty binding
+			for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+				if (!renderCmdBuffers[i].bind(p_font, i)) { bound = true; break; }
+
+			if (!bound)
+			{
+				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+				renderCmdBuffers.back().bind(p_font, renderCmdBuffers.size());
+			}
+		}
+
 		
 		
 
@@ -394,15 +408,21 @@ namespace luna
 #ifdef IMGUI_API
 			///TODO FIX VIEWPORT BUG WHERE THINGS ARE NOT CENTERED AND PART OF THE SCREEN IS GONE!
 			VkViewport viewport{};
-			viewport.x -= imguiSceneSize.x / 4;
-			viewport.y -= imguiSceneSize.y / 4;
+			//viewport.x = -imguiSceneSize.x / 2.0f;
+			//viewport.y = -imguiSceneSize.y / 2.0f;
+
+			viewport.x = 0.0f;
+			viewport.y = 0.0f;
 
 			viewport.width = imguiSceneSize.x;
 			viewport.height = imguiSceneSize.y;
 
+			viewport.minDepth = 0.0f;
 			viewport.maxDepth = 1.0f;
 
 			VkRect2D scissor{};
+			scissor.offset.x = 0;
+			scissor.offset.y = 0;
 			scissor.extent.width = imguiSceneSize.x;
 			scissor.extent.height = imguiSceneSize.y;
 

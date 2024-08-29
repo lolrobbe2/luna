@@ -36,7 +36,7 @@ namespace luna
 				glm::vec2 size{ 1,1 };
 				size.x *= transform.scale.x;
 				size.y *= transform.scale.y;
-				RENDERER->drawQuad(translation + transform.translation, size + glm::vec2(1.0f), item.customBg);
+				RENDERER->drawQuad(translation + transform.translation, size + glm::vec2(0.1f), item.customBg);
 	
 
 				RENDERER->drawQuad(translation + transform.translation, size, item.customFg);

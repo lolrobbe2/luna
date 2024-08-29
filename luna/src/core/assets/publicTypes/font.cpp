@@ -4,8 +4,8 @@ namespace luna
 {
 	namespace assets
 	{
-
-		font::font(artemis::image& _image, glm::vec2* advances) : image(_image)
+		
+		font::font(artemis::image& _image,glm::vec2* advances,glm::vec2* scales) : image(_image)
 		{
 			for (size_t glyph = 0; glyph < 256; glyph++)
 			{
@@ -19,10 +19,20 @@ namespace luna
 			}
 		
 			this->advances = advances;
+			this->glyphScales = scales;
 		}
 		const ref<assets::image> font::getGlyph(char glyph) const
 		{
 			return glyphs[glyph];
+		}
+
+		void font::bind(uint32_t descriptorSetIndex, uint8_t imageIndex, std::vector<uint8_t>* p_freeImageIndices)
+		{
+			image::bind(descriptorSetIndex, imageIndex, p_freeImageIndices);
+			for (ref<image> glyph : glyphs)
+				glyph->bind(descriptorSetIndex, imageIndex, p_freeImageIndices);
+			
+
 		}
 
 		assets::assetType font::getType() const

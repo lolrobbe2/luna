@@ -19,7 +19,7 @@ namespace luna
 			artemis::buffer& buffer = p_allocator->allocateBuffer(fontMetadata->width * fontMetadata->height, artemis::CPU_COPY, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT);
 
 			buffer.setData(&fontMetadata->atlas,sizeof(fontAtlas));
-			return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font>(image,fontMetadata->glyphAdvances));
+			return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font>(image,fontMetadata->glyphAdvances, fontMetadata->glyphScales));
 
 		}
 	}

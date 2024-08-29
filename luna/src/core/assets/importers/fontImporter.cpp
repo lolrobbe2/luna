@@ -144,7 +144,7 @@ namespace luna
 				p_allocator->flush();
 				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), buffer.getData(), sizeof(fontAtlas));
 				fontFile.close();
-				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font>(fontImage,fontMetadata->glyphAdvances));
+				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font>(fontImage,fontMetadata->glyphAdvances,fontMetadata->glyphScales));
 
 			}
 			else LN_CORE_ERROR("incorrect file format, expected .ttf!");

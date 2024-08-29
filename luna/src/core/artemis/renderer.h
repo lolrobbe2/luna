@@ -28,39 +28,37 @@ namespace luna
 			 LN_API void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color)
 			 {
 				 //TODO FONT BINDING
-				 bindImage(std::dynamic_pointer_cast<assets::image>(font));
+				 bindFont(font);
 				 float xAdvance = 0.0f;
 				 const ref<assets::image> spaceGlyph = font->getGlyph('_');
-				 const glm::vec2 normalizedDimensions = glm::vec2(1.0f) / getSceneDimensions();
+				 const glm::vec2 normalizedDimensions = 1.0f / getSceneDimensions() * size.x;
 				 for (size_t i = 0; i < labelText.size(); i++)
 				 {
+					 drawCharQuadBound({ xAdvance + position.x, position.y + font->getAdvance(labelText[i]).y * normalizedDimensions.y, position.z }, font->getVirtualExtent(labelText[i]) * normalizedDimensions, font->getGlyph(labelText[i]));
 					 xAdvance += font->getAdvance(labelText[i]).x * normalizedDimensions.x;
-					 drawCharQuadBound({ xAdvance + position.x, position.y + font->getAdvance(labelText[i]).y * normalizedDimensions.y, position.z }, size, font->getGlyph(labelText[i]));
+					 float yAdvance = font->getAdvance(labelText[i]).y;
 					 if (labelText[i] == ' ')
 					 {
-						 xAdvance += spaceGlyph->getExtent().x * normalizedDimensions.x;
+						 xAdvance += font->getVirtualExtent('_').x * normalizedDimensions.x;
 					 }
 					 else
 					 {
-						 xAdvance += font->getGlyph(labelText[i])->getExtent().x * normalizedDimensions.x;
+						 xAdvance += font->getVirtualExtent(labelText[i]).x / getSceneDimensions().x * size.x;
 					 }
 				 }
 
 			 }
 
 			 void bindImage(const ref<assets::image> p_image);
+			 void bindFont(const ref<assets::font> p_font);
 			 LN_API void drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image,const glm::vec4& color = {1.0f,1.0f,1.0f,1.0f})
 			 {
-				 glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
+				 //TODO fix this to use glm functions!
+				 glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 0.0f });
 
 				 // Set the translation
-				 transform[3] = glm::vec4(position, 1.0f);
 
-				 // Set the scale
-				 transform[0][0] = size.x;
-				 transform[1][1] = size.y;
-
-				 drawQuad({ transform,color,image->getUvCoords(),{*image,true} });
+				 drawQuad({ transform,color,image->getUvCoords(),{image->imageIndex,true} });
 			 }
 			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords)
 			 {

@@ -40,13 +40,14 @@ namespace luna
 			_ALWAYS_INLINE_ operator bool() const { return isBound(); }  
 			_ALWAYS_INLINE_ operator float() const { return imageIndex; }
 			_ALWAYS_INLINE_ float getImageIndex() const { return imageIndex; }
+			_ALWAYS_INLINE_ void setImageIndex(uint8_t newImageIndex) { imageIndex = newImageIndex; }
 #ifndef IMGUI_DISABLE
 			static void enableImgui(ref<image> image);
 			static void enableImgui(std::vector<ref<image>> images);
 			void diableImgui();
 			ImTextureID getGuiImageHandle() { return imGuiImageHandle; }
 #endif
-			void bind(uint32_t descriptorSetIndex,uint8_t imageIndex,std::vector<uint8_t>* p_freeImageIndices);
+			virtual void bind(uint32_t descriptorSetIndex,uint8_t imageIndex,std::vector<uint8_t>* p_freeImageIndices);
 			void unbind();
 			image(artemis::image& _image);
 	
