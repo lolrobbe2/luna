@@ -47,7 +47,7 @@ namespace luna
 		 * \param newYoff: relative yoffset.
 		 * \return stbi_uc* pointer to texure data.
 		 */
-		static stbi_uc* createGlyph(const stbtt_fontinfo* info, int codePoint, float* xscale, float* yscale, int* newXoff, int* newYoff)
+		static stbi_uc* createGlyph(const stbtt_fontinfo* info, int codePoint, float* xscale, float* yscale, int* newXoff, int* newYoff, int* advanceWidth, int* leftSideBearing)
 		{
 			LN_PROFILE_FUNCTION();
 			int xoff, yoff;
@@ -58,7 +58,25 @@ namespace luna
 			*yscale = ((float)GLYPH_HEIGHT - 1) / (float)charHeight; //299.0f instead of 300.0f beacuse of floating point "error".
 			
 			int newCharWidth, newCharHeight;
+			/**
+			 * @brief The advance width, which determines how much to move the cursor
+			 *        after drawing the character.
+			 *
+			 * The advance width is the h	orizontal distance to move the cursor to the
+			 * next character's position after rendering this character. It is the
+			 * distance between the current character's origin and the next character's
+			 * origin in a horizontal layout.
+			 */
 
+			 /**
+			  * @brief The left side bearing, which is the distance from the current
+			  *        cursor position to the left edge of the character.
+			  *
+			  * The left side bearing defines the space between the start of the
+			  * character's bounding box and the current cursor position. It can be
+			  * positive (indicating some space) or negative (indicating an overlap).
+			  */
+			stbtt_GetCodepointHMetrics(info, codePoint, advanceWidth, leftSideBearing);
 			return stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, &xoff, &yoff);
 		}
 
@@ -72,32 +90,36 @@ namespace luna
 			delete glyph;
 		}
 
-		static void writeGlyphsIntoBuffer(artemis::buffer& buffer, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphAdvances)
+		static void writeGlyphsIntoBuffer(artemis::buffer& buffer, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphOffests,glm::vec2* glyphAdvances)
 		{
 			LN_PROFILE_FUNCTION();
 			imageAtlas* atlas = (imageAtlas*)buffer.getData();
 			uint64_t offset = 0;
 			for (size_t i = 0; i < 256; i++)
 			{
-
+				float advanceScale = stbtt_ScaleForPixelHeight(fontInfo, 100);
 				int index = i - GLYPH_START_INDEX;
 				glm::vec2 scale;
 				int offsetx, offsety;
+				int advanceWidth, leftSideBearing;
 
-				stbi_uc* fontGlyph = createGlyph(fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
+
+				stbi_uc* fontGlyph = createGlyph(fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety,&advanceWidth,&leftSideBearing);
 
 				if (fontGlyph)
 				{
 					int y = index / 16;
 					int x = index % 16;
 					glypScales[i] = (scale);
-					glyphAdvances[i] = { offsetx,offsety };
+					glyphOffests[i] = { offsetx,offsety };
+					glyphAdvances[i] = { advanceWidth * advanceScale,leftSideBearing * advanceScale};	
 
 					writeGlyphToBuffer(atlas, (scanlineGlyph*)fontGlyph, x, y);
 				}
 				else
 				{
 					glypScales[i] = { 1.0f,1.0f };
+					glyphOffests[i] = { 0.0f,0.0f };
 					glyphAdvances[i] = { 0.0f,0.0f };
 				}
 			}
@@ -136,7 +158,7 @@ namespace luna
 				
 				artemis::buffer& buffer = p_allocator->allocateBuffer(FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, artemis::CPU_ONLY, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT);
 				
-				writeGlyphsIntoBuffer(buffer, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances);
+				writeGlyphsIntoBuffer(buffer, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphOffests,fontMetadata->glyphAdvances);
 				p_allocator->transitionImageLayoutFront(fontImage,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 				p_allocator->copyBufferToImage(buffer, fontImage);
 				p_allocator->transitionImageLayoutBack(fontImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_GENERAL );
@@ -144,7 +166,7 @@ namespace luna
 				p_allocator->flush();
 				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), buffer.getData(), sizeof(fontAtlas));
 				fontFile.close();
-				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font>(fontImage,fontMetadata->glyphAdvances,fontMetadata->glyphScales));
+				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font>(fontImage,fontMetadata->glyphAdvances,fontMetadata->glyphScales,fontMetadata->glyphOffests));
 
 			}
 			else LN_CORE_ERROR("incorrect file format, expected .ttf!");

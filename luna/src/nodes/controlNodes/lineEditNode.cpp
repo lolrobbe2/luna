@@ -6,8 +6,8 @@
 #include <core/debug/typedefs.h>
 #include <core/platform/platformUtils.h>
 
-#define UNSELECTED_COLOR {204.0f,136.935f, 28.05f, 255.0f}
-#define SELECTED_COLOR {255, 172.89, 37.995, 255.0f} 
+#define UNSELECTED_COLOR glm::vec4(204.0f,136.935f, 28.05f, 255.0f)
+#define SELECTED_COLOR glm::vec4(255, 172.89, 37.995, 255.0f) 
 #define NORMALIZED_BORDER_SIZE 0.03f
 
 namespace luna
@@ -40,14 +40,13 @@ namespace luna
 			//transform2.translation.x -= transform.scale.x / 2.0f - transform2.scale.x * 0.03f;
 
 			transform.setScale(transform.scale + NORMALIZED_BORDER_SIZE);
-			glm::vec4 rectColor;
-			lineEdit.selected ? rectColor = SELECTED_COLOR : rectColor = UNSELECTED_COLOR;
+			glm::vec4 rectColor = lineEdit.selected ? SELECTED_COLOR : UNSELECTED_COLOR;
 			RENDERER->drawQuad(transform.getTransform(), RENDERER->normalizeColor(rectColor));
 			RENDERER->drawQuad(getComponent<transformComponent>().getTransform(),RENDERER->normalizeColor({ 36.0f,37.0f,38.0f,255.0f }));
 
-
+			transform.translation.x -= transform2.scale.x / 2.0f;
 			//drawString(lineEdit.charTransforms, color(), lineEdit.font);
-			if (lineEdit.font) drawString(lineEdit.font, transform.translation, lineEdit.text, lineEdit.points, color(), lineEdit.bounds);
+			if (lineEdit.font) drawString(lineEdit.font, transform.translation, lineEdit.text, lineEdit.points, color(), lineEdit.bounds,lineEdit.scrollPosition,true,lineEdit.scrollPosition);
 		}
 
 		void lineEditNode::guiEvent(Event& event)

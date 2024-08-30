@@ -83,7 +83,8 @@ namespace luna
 			uint64_t width, height;
 			fontAtlas atlas;
 			glm::vec2 glyphScales[FONT_ATLAS_GLYPH_AMOUNT];
-			glm::vec2 glyphAdvances[FONT_ATLAS_GLYPH_AMOUNT];
+			glm::vec2 glyphOffests[FONT_ATLAS_GLYPH_AMOUNT];
+			glm::vec2 glyphAdvances[FONT_ATLAS_GLYPH_AMOUNT]; //x=advance width
 		};
 #pragma pack(pop)
 	}

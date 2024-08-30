@@ -25,44 +25,60 @@ namespace luna
 			 void endScene();
 			 void update();
 			 glm::vec4 normalizeColor(const glm::vec4& color);
-			 LN_API void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color, const glm::vec4& bounds = { -1.0f,-1.0,1.0,1.0 })
+			 LN_API void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color, const glm::vec4& bounds = { -1.0f,-1.0f,1.0f,1.0f }, size_t scrollPosition = 0, bool drawCaret = false, size_t caretPosition = 0)
 			 {
+				 //TODO left side bearing
 				 bindFont(font);
 
-				 float xAdvance = 0.0f;
-				 const ref<assets::image> spaceGlyph = font->getGlyph('_');
 				 glm::vec2 normalizedDimensions = size / getSceneDimensions();
+				 float xAdvance = -font->getAdvance(labelText[scrollPosition]).y * normalizedDimensions.x;;
+				 float caretXPosition = position.x;
 
-				 for (size_t i = 0; i < labelText.size(); i++)
+				 // Determine the width available for the text to render
+				 float maxWidth = bounds.z - bounds.x;
+
+				 // Iterate over the text starting from scrollPosition
+				 for (size_t i = scrollPosition; i < labelText.size(); i++)
 				 {
-					 glm::vec3 currentPosition = { xAdvance + position.x, position.y + font->getAdvance(labelText[i]).y * normalizedDimensions.y, position.z };
+					 xAdvance += font->getAdvance(labelText[i]).y * normalizedDimensions.x;
+					 glm::vec3 currentPosition = { xAdvance + position.x, position.y + font->getOffset(labelText[i]).y * normalizedDimensions.y, position.z };
 					 glm::vec2 virtualExtent = font->getVirtualExtent(labelText[i]) * normalizedDimensions;
 
 					 // Check if the character exceeds the right boundary (z, w)
 					 if ((currentPosition.x + virtualExtent.x) > bounds.z)
-					 {
-						 break;
-					 }
+						break;
+
+					 // Update caret position if we are at the caret index
+					 if (i == caretPosition)
+						caretXPosition = currentPosition.x;
+					 
 
 					 // Only draw if the character is within the left boundary (x, y)
 					 if (currentPosition.x + virtualExtent.x > bounds.x)
-					 {
-						 drawCharQuadBound(currentPosition, virtualExtent, font->getGlyph(labelText[i]),color);
-					 }
+						drawCharQuadBound(currentPosition, virtualExtent, font->getGlyph(labelText[i]), color);
+					 
 
 					 // Advance the position for the next character
-					 xAdvance += font->getAdvance(labelText[i]).x * normalizedDimensions.x;
+					  xAdvance += (font->getOffset(labelText[i]).x)* normalizedDimensions.x;
+
 					 if (labelText[i] == ' ')
-					 {
-						 xAdvance += font->getVirtualExtent('_').x * normalizedDimensions.x;
-					 }
+						xAdvance += font->getVirtualExtent('_').x * normalizedDimensions.x;
 					 else
-					 {
-						 xAdvance += font->getVirtualExtent(labelText[i]).x / getSceneDimensions().x * size.x;
-					 }
+						xAdvance += font->getVirtualExtent(labelText[i]).x / getSceneDimensions().x * size.x;
+					 
 				 }
 
+				 // Draw the caret if enabled and if it's within the visible area
+				 if (drawCaret && caretPosition >= scrollPosition)
+				 {
+					 glm::vec3 caretPosition = { caretXPosition, position.y, position.z };
+					 glm::vec2 caretSize = { 2.0f * normalizedDimensions.x, size.y }; // Customize caret size as needed
+
+					 // Use drawQuad to draw the caret
+					 drawQuad(caretPosition, caretSize, color);
+				 }
 			 }
+
 
 			 void bindImage(const ref<assets::image> p_image);
 			 void bindFont(const ref<assets::font> p_font);

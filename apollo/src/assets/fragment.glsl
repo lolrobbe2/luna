@@ -9,7 +9,7 @@ layout(set = 0,binding = 0) uniform sampler samp;
 layout(set = 0,binding = 1) uniform texture2D textures[32];
 void main() 
 {   
-    if(text > 0.0f) outColor = vec4(1.0f,1.0f,1.0f,texture(sampler2D(textures[nonuniformEXT(int(textIndex))], samp),textCoord).r) * fragColor;  
+    if(text > 0.0f) outColor = vec4(fragColor.x,fragColor.y,fragColor.z,texture(sampler2D(textures[nonuniformEXT(int(textIndex))], samp),textCoord).r) * fragColor;  
     else outColor = texture(sampler2D(textures[nonuniformEXT(int(textIndex))], samp),textCoord) * fragColor;  
 
 }

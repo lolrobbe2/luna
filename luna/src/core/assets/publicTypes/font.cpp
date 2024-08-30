@@ -5,7 +5,7 @@ namespace luna
 	namespace assets
 	{
 		
-		font::font(artemis::image& _image,glm::vec2* advances,glm::vec2* scales) : image(_image)
+		font::font(artemis::image& _image,glm::vec2* advances,glm::vec2* scales,glm::vec2* offsets) : image(_image)
 		{
 			for (size_t glyph = 0; glyph < 256; glyph++)
 			{
@@ -19,6 +19,7 @@ namespace luna
 			}
 		
 			this->advances = advances;
+			this->offsets = offsets;
 			this->glyphScales = scales;
 		}
 		const ref<assets::image> font::getGlyph(char glyph) const

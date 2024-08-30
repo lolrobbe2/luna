@@ -9,7 +9,7 @@ namespace luna
 		pipelineBuilder::pipelineBuilder(const VkDevice* p_device)
 		{
 			this->p_device = p_device;
-			colorBlendAttachementState.blendEnable = VK_FALSE;
+			colorBlendAttachementState.blendEnable = VK_TRUE;
 		}
 		pipelineBuilder& pipelineBuilder::addShaderStage(const ref<shader> shader, const VkPipelineShaderStageCreateFlags flags)
 		{
