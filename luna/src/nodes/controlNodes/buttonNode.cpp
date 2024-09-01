@@ -43,7 +43,7 @@ namespace luna
 			const glm::vec2 size = { 0.1, 0.1 };
 			const glm::vec4 color = { 1.0f, 0.0f, 0.0f, 0.0f };
 
-			application::application::get().getRenderer()->drawQuad(pos, size, color);
+			//RENDERER->submitRenderTask(&artemis::renderer::drawQuadPosColor,pos, size, color);
 
 
 			auto& transform = getComponent<transformComponent>();
@@ -52,7 +52,7 @@ namespace luna
 			if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
 			else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
 			else sprite.texture = button.normalTexture;
-			if (sprite.texture) RENDERER->drawQuad(transform.getTransform(), sprite.texture);
+			if (sprite.texture) RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransImage(RENDERER->currentDrawindex(sprite.texture),transform.getTransform(), sprite.texture); });
 		}
 
 		buttonNode::buttonNode(entt::entity handle, luna::scene* scene) : spriteNode(handle, scene)

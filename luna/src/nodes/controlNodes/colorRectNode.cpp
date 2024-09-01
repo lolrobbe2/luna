@@ -32,7 +32,7 @@ namespace luna
 		{
 			auto& canvasComp = getComponent<canvasComponent>();
 			auto& transform = getComponent<transformComponent>();
-			RENDERER->drawQuad(transform.translation, transform.scale, canvasComp.modulate);
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadPosColor(transform.translation, transform.scale, canvasComp.modulate); });
 		}
 	}
 }

@@ -31,8 +31,15 @@ namespace luna
         {
         public:
             renderCommandBuffer() = default;
+            // Default copy constructor and copy assignment operator
+            renderCommandBuffer(const renderCommandBuffer&) = default;
+            renderCommandBuffer& operator=(const renderCommandBuffer&) = default;
+
+            // Move constructor and move assignment operator
+            renderCommandBuffer(renderCommandBuffer&&) noexcept = default;
+            renderCommandBuffer& operator=(renderCommandBuffer&&) noexcept = default;
             renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler,uint8_t maxFramesInflight);
-            bool addCommand(const drawCommand& command);
+            bool addCommand(const drawCommand& command,int64_t drawIndex);
             void reset();
             void generateIndices();
             /// <summary>
@@ -67,7 +74,10 @@ namespace luna
             drawCommand* p_commandsBase = nullptr; 
             VkDescriptorImageInfo samplerInfo;
             std::vector<VkDescriptorImageInfo> descriptorInfos{ LN_IMAGE_BATCH_SIZE };
-            size_t commandsAmount = 0;
+            size_t commandsAmount = 0; //commandsSubmitted
+            size_t commandsTotal = 0; //commandsAmount being computed!
+        private: 
+            std::shared_ptr<std::shared_mutex> commandsMutex;
         };
     }
 }

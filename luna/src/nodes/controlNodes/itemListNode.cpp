@@ -36,13 +36,13 @@ namespace luna
 				glm::vec2 size{ 1,1 };
 				size.x *= transform.scale.x;
 				size.y *= transform.scale.y;
-				RENDERER->drawQuad(translation + transform.translation, size + glm::vec2(0.1f), item.customBg);
+				RENDERER->submitRenderTask([=]() {RENDERER->drawQuadPosColor(translation + transform.translation, size + glm::vec2(0.1f), item.customBg); });
 	
 
-				RENDERER->drawQuad(translation + transform.translation, size, item.customFg);
+				RENDERER->submitRenderTask([=]() {RENDERER->drawQuadPosColor(translation + transform.translation, size, item.customFg); });
 				customTransform = translation;
 				customTransform = customTransform - glm::vec3(size.x / 2, -size.y / 4.0f, 0.0f);
-				if (itemListComponent.font) RENDERER->drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text,item.iconModulate);
+				if (itemListComponent.font) RENDERER->submitRenderTask([=]() {RENDERER->drawLabel(customTransform + transform.translation, glm::vec2(transform.scale.x, transform.scale.y), itemListComponent.font, item.text, item.iconModulate); });
 				item.rectCache.start = size;
 				item.rectCache.position = translation;
 				translation.y += size.y;

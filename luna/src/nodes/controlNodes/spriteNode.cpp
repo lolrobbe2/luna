@@ -29,7 +29,7 @@ namespace luna
 			auto& sprite = getComponent<spriteRendererComponent>();
 			auto& transform = getComponent<transformComponent>();
 			auto& canvas = getComponent<canvasComponent>();
-			if(sprite.texture) RENDERER->drawQuad(transform.getTransform(),canvas.modulate, sprite.texture);
+			if (sprite.texture) RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransImageColor(RENDERER->currentDrawindex(sprite.texture),transform.getTransform(), canvas.modulate, sprite.texture); });
 		}
 	}
 }

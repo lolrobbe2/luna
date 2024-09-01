@@ -6,8 +6,9 @@
 #include <core/assets/publicTypes/image.h>
 #include <core/assets/publicTypes/font.h>
 #include <core/debug/debugMacros.h>
+#include <core/utils/threadPool.h>
+
 //TODO placing the implemntation of the draw functions is a hack don't know why it does not detect the implementation in the cpp file?
-//TODO scene viewport is wrong
 namespace luna 
 {
 	namespace artemis 
@@ -15,7 +16,7 @@ namespace luna
 		class renderer
 		{
 		public:
-			 renderer(const ref<vulkan::window>& window);
+			 renderer(const ref<vulkan::window>& window, size_t threadCount = 4);
 #ifdef IMGUI_API
 			 void beginImGuiScene();
 			 void endImGuiScene();
@@ -24,9 +25,17 @@ namespace luna
 			 void beginScene();
 			 void endScene();
 			 void update();
+
+
+			 void submitRenderTask(std::function<void()> func) {
+					pool.enqueue(func);
+			 }
+
+			 int64_t currentDrawindex(ref<assets::image> p_image);
 			 glm::vec4 normalizeColor(const glm::vec4& color);
 			 LN_API void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color, const glm::vec4& bounds = { -1.0f,-1.0f,1.0f,1.0f }, size_t scrollPosition = 0, bool drawCaret = false, size_t caretPosition = 0)
 			 {
+				 int64_t drawIndex = currentDrawindex(font);
 				 //TODO left side bearing
 				 bindFont(font);
 
@@ -55,8 +64,8 @@ namespace luna
 
 					 // Only draw if the character is within the left boundary (x, y)
 					 if (currentPosition.x + virtualExtent.x > bounds.x)
-						drawCharQuadBound(currentPosition, virtualExtent, font->getGlyph(labelText[i]), color);
-					 
+						drawCharQuadBound(drawIndex,currentPosition, virtualExtent, font->getGlyph(labelText[i]), color);
+					 drawIndex = currentDrawindex(font);
 
 					 // Advance the position for the next character
 					  xAdvance += (font->getOffset(labelText[i]).x)* normalizedDimensions.x;
@@ -75,38 +84,39 @@ namespace luna
 					 glm::vec2 caretSize = { 2.0f * normalizedDimensions.x, size.y }; // Customize caret size as needed
 
 					 // Use drawQuad to draw the caret
-					 drawQuad(caretPosition, caretSize, color);
+					 drawQuadPosColor(caretPosition, caretSize, color, drawIndex);
 				 }
 			 }
 
 
 			 void bindImage(const ref<assets::image> p_image);
 			 void bindFont(const ref<assets::font> p_font);
-			 LN_API void drawCharQuadBound(const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image,const glm::vec4& color = {1.0f,1.0f,1.0f,1.0f})
+			 LN_API void drawCharQuadBound(int64_t drawIndex,const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image,const glm::vec4& color = {1.0f,1.0f,1.0f,1.0f})
 			 {
 				 //TODO fix this to use glm functions!
 				 glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 0.0f });
 
 				 // Set the translation
 
-				 drawQuad({ transform,color,image->getUvCoords(),{image->imageIndex,true} });
+				 drawQuad({ transform,color,image->getUvCoords(),{image->imageIndex,true} },drawIndex);
 			 }
-			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords)
+			 LN_API void drawQuad(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords)
 			 {
 				 //TODO implement 
 			 }
-			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
+			 LN_API void drawQuadPosColor(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, int64_t drawIndex = -1)
 			 {
+				 if(drawIndex == -1) drawIndex = currentDrawindex(blankImage);
 				 const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 					 * glm::scale(glm::mat4(0.5f), { size.x, size.y, 1.0f });
-				 drawQuad(transform, color);
+				 drawQuadTransColor(transform, color,drawIndex);
 			 }
 			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
 			 {
 				 //TODO implement
 			 }
 			 
-			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image)
+			 LN_API void drawQuadPosImage(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image)
 			 {
 				 glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
 
@@ -117,13 +127,13 @@ namespace luna
 				 transform[0][0] = size.x;
 				 transform[1][1] = size.y;
 
-				 drawQuad(transform, { 1,1,1,1 }, image);
+				 drawQuadTransImageColor(drawIndex,transform, { 1,1,1,1 }, image);
 
 			 }
-			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
+			 LN_API void drawQuadPosImageColorCoords(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
 			 {
 			 }
-			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image)
+			 LN_API void drawQuadPosImageColor(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image)
 			 {
 				 glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
 
@@ -134,49 +144,53 @@ namespace luna
 				 transform[0][0] = size.x;
 				 transform[1][1] = size.y;
 
-				 drawQuad(transform, color, image);
+				 drawQuadTransImageColor(drawIndex,transform, color, image);
 
 			 }
 
-			 LN_API void drawQuad(const glm::mat4& transform, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
+			 LN_API void drawQuadTransImageCoords(int64_t drawIndex,const glm::mat4& transform, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
 			 {
 				 if (image)
 				 {
 					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{image->getImageIndex(),false}}); //if an empty texture slot was found then bind it otherwise create new buffer
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{image->getImageIndex(),false}},drawIndex); //if an empty texture slot was found then bind it otherwise create new buffer
 					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
-					 return drawQuad({ transform,glm::vec4(1,1,1,1),image->getUvCoords(),{image->getImageIndex(),false}});
+					 return drawQuad({ transform,glm::vec4(1,1,1,1),image->getUvCoords(),{image->getImageIndex(),false}},drawIndex);
 				 }
-				 return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{*image , false} });
+				 return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{*image , false} },drawIndex);
 			 }
-			 LN_API void drawQuad(const glm::mat4& transform, const ref<assets::image> image)
+			 LN_API void drawQuadTransImage(int64_t drawIndex,const glm::mat4& transform, const ref<assets::image> image)
 			 {
-				 drawQuad(transform, image, *image);
+				 drawQuadTransImageCoords(drawIndex,transform, image, *image);
 			 }
 
-			 LN_API void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image,const std::array<glm::vec2,4>& textureCoords)
+			 LN_API void drawQuadTransImageCoordsColor(int64_t drawIndex,const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image,const std::array<glm::vec2,4>& textureCoords)
 			 {
 				 if (image)
 				 {
 					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
-						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false}});
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false}},drawIndex);
 					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
 					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
-					 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false} });
+					 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false} },drawIndex);
 				 }
-				 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(), false} });
+				 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(), false} },drawIndex);
 			 }
 
-			 LN_API void drawQuad(const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
-			 { drawQuad(transform, color, image, *image); }
-
-			 LN_API void drawQuad(const glm::mat4& transform, const glm::vec4& color1)
-			 { drawQuad(transform,color1,blankImage);}
-
-			 LN_API void drawQuad(const drawCommand& command)
+			 LN_API void drawQuadTransImageColor(int64_t drawIndex,const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
 			 {
-				 if (currentBuffer->addCommand(command))
+				 drawQuadTransImageCoordsColor(drawIndex,transform, color, image, *image); }
+
+			 LN_API void drawQuadTransColor(const glm::mat4& transform, const glm::vec4& color1,int64_t drawIndex = -1)
+			 { 
+				if (drawIndex == -1) drawIndex = currentDrawindex(blankImage); 
+				drawQuadTransImageColor(drawIndex, transform, color1, blankImage);
+			 }
+
+			 LN_API void drawQuad(const drawCommand& command, int64_t drawIndex)
+			 {
+				 if (currentBuffer->addCommand(command,drawIndex))
 				 {
 					 LN_CORE_INFO("rip currentBuffer full"); //TODO: needs fixing.
 				 }
@@ -279,7 +293,7 @@ namespace luna
 			std::vector<ref<assets::image>> imguiEnabledImagesResize;
 
 #endif //IMGUI_API
-
+			threadPool pool;
 		};
 	}
 }

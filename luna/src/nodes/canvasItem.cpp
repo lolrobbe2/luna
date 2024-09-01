@@ -47,13 +47,18 @@ namespace luna
 			float pxNorm = (font_size * 1.333);
 			pxNorm /= application::application::get().getRenderer()->getSceneDimensions().y;
 			glm::vec3 position{ pos.x,pos.y,1.0f };
-			application::application::get().getRenderer()->drawLabel(position, { pxNorm,pxNorm }, font,string,modulate,bounds,scrollPosition,drawCaret,caretPosition);
+			glm::vec4 glmModulate = modulate;
+			RENDERER->submitRenderTask([=]() {RENDERER->drawLabel(position, glm::vec2(pxNorm, pxNorm), font, string, glmModulate, bounds, scrollPosition, drawCaret, caretPosition); });
 		}
 		void canvasItem::drawTexture(ref<assets::image> image, glm::vec2 position, color modulate = color(1, 1, 1, 1))
 		{
 			glm::vec3 position3 = { position.x,position.y,0.0f };
 			glm::vec2 normSize = image->getExtent() / application::application::get().getRenderer()->getSceneDimensions();
-			application::application::get().getRenderer()->drawQuad(position3, normSize, image);
+			// Assuming Renderer is your renderer instance
+			auto index = RENDERER->currentDrawindex(image);  // Get the current draw index for the image
+
+			// Create the render task using the drawQuad function
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadPosImage(index, position3, normSize, image); });
 		}
 	}
 }

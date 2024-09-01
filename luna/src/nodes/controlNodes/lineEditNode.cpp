@@ -41,8 +41,9 @@ namespace luna
 
 			transform.setScale(transform.scale + NORMALIZED_BORDER_SIZE);
 			glm::vec4 rectColor = lineEdit.selected ? SELECTED_COLOR : UNSELECTED_COLOR;
-			RENDERER->drawQuad(transform.getTransform(), RENDERER->normalizeColor(rectColor));
-			RENDERER->drawQuad(getComponent<transformComponent>().getTransform(),RENDERER->normalizeColor({ 36.0f,37.0f,38.0f,255.0f }));
+			const int64_t drawIndex = -1;
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransColor(transform.getTransform(), RENDERER->normalizeColor(rectColor), drawIndex); });
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransColor(getComponent<transformComponent>().getTransform(), RENDERER->normalizeColor({ 36.0f,37.0f,38.0f,255.0f }), -1); });
 
 			transform.translation.x -= transform2.scale.x / 2.0f;
 			//drawString(lineEdit.charTransforms, color(), lineEdit.font);

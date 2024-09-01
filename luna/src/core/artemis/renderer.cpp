@@ -23,7 +23,7 @@ namespace luna
 #ifdef IMGUI_API
 		static ref<imGui> imgui;
 #endif // IMGUI_API
-		renderer::renderer(const ref<vulkan::window>& window)
+		renderer::renderer(const ref<vulkan::window>& window, size_t threadCount) : pool(threadCount)
 		{
 			LN_PROFILE_FUNCTION();
 			c_device = *new device(window);
@@ -82,6 +82,7 @@ namespace luna
 		}
 		void renderer::update()
 		{
+			pool.sync();
 			p_allocator->flush();
 			//c_device.waitIdle();
 			computeInflightFences[currentFrame]->wait();
@@ -199,6 +200,13 @@ namespace luna
 				LN_CORE_ERROR("out of date!");
 			
 			currentFrame = (currentFrame + 1) % maxFramesInFlight;
+		}
+
+		int64_t renderer::currentDrawindex(ref<assets::image> p_image)
+		{
+			if (!p_image->isBound()) bindImage(p_image);
+			renderCmdBuffers[p_image->descriptorSetIndex].commandsTotal += 1;
+			return renderCmdBuffers[p_image->descriptorSetIndex].commandsTotal - 1;
 		}
 
 		glm::vec4 renderer::normalizeColor(const glm::vec4& color)

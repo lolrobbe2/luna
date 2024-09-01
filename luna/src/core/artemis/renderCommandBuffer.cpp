@@ -7,7 +7,7 @@ namespace luna
 {
 	namespace artemis 
 	{
-		renderCommandBuffer::renderCommandBuffer(const ref<allocator> p_allocator, descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler, uint8_t maxFramesInflight)
+		renderCommandBuffer::renderCommandBuffer(const ref<allocator> p_allocator, descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler, uint8_t maxFramesInflight) : commandsMutex(std::make_shared<std::shared_mutex>())
 		{
 			cpuBuffer = p_allocator->allocateBuffer(sizeof(drawCommand) * LN_DRAW_COMMANDS_AMOUNT, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT);
 			cpuIndicesBuffer = p_allocator->allocateBuffer(LN_DRAW_COMMANDS_AMOUNT * 6, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT);
@@ -51,11 +51,11 @@ namespace luna
 			}
 		
 		}
-		bool renderCommandBuffer::addCommand(const drawCommand& command)
+		bool renderCommandBuffer::addCommand(const drawCommand& command, int64_t drawIndex)
 		{
+			std::shared_lock<std::shared_mutex> lock(*commandsMutex);
 			if (commandsAmount < LN_DRAW_COMMANDS_AMOUNT) {
-				*p_commands = command;
-				p_commands++;
+				p_commandsBase[drawIndex] = command;
 				commandsAmount++;
 				return false;
 			}

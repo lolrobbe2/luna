@@ -96,8 +96,8 @@ namespace luna
 		void scrollBar::draw()
 		{
 			LN_ERR_FAIL_COND_MSG(entityHandle == (entt::entity)-1, "invalid entity");
-			RENDERER->drawQuad(getComponent<transformComponent>().getTransform(), { 36.0f,37.0f,38.0f,0.8f });
-			RENDERER->drawQuad(getThumbTrackTransform().getTransform(), { 228.0f,223.0f,235.0f,1.0f });
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransColor(getComponent<transformComponent>().getTransform(), glm::vec4(36.0f, 37.0f, 38.0f, 0.8f)); });
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransColor(getThumbTrackTransform().getTransform(), glm::vec4(228.0f, 223.0f, 235.0f, 1.0f)); });
 		}
 		transformComponent scrollBar::getThumbTrackTransform()
 		{
