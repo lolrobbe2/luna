@@ -22,6 +22,7 @@ namespace luna
 		 * \param uuid 
 		 */
 		uuid(uint64_t uuid);
+		~uuid() = default;
 		/**
 		 * @brief returns the uuid as uint64_t.
 		 */

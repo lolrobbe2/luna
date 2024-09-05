@@ -51,23 +51,31 @@ namespace luna
 			mWindow->~window();
 			LN_PROFILE_END_SESSION();
 		}
-
-		void application::run()
+		void application::renderImGui()
 		{
-			LN_PROFILE_BEGIN_SESSION("luna engine runtime", "./debug/luna-profile-runtime.json");
-			//running = true;
+
+				LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
+				p_renderer->beginImGuiScene();
+				// Ensure this code runs on the main thread
+				{
+					for (size_t i = 0; i < layerStack.size(); i++)
+						(*(layerStack.begin() + i))->onImGuiRender();
+				}
+				p_renderer->endImGuiScene();
+			
+
+		}
+		void application::renderingFunction()
+		{
+			renderImGuiSemaphore.post();
 			while (running)
 			{
+				if (!running)
+					break;
 
-				mWindow->onUpdate();
-				LN_PROFILE_SCOPE("drawing");
-				double time = glfwGetTime();
-				utils::timestep timestep = time - lastFrameTime;
-				lastFrameTime = time;
-				
-				executeMainThreadQueue();
-				
-				if (!minimized)
+
+
+				if (true)
 				{
 					p_renderer->beginScene();
 					{
@@ -76,20 +84,52 @@ namespace luna
 						for (utils::layer* layer : layerStack)
 							layer->onUpdate(timestep);
 					}
-					p_renderer->endScene();
-#ifdef IMGUI_API
-					p_renderer->beginImGuiScene();
-					{
-						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
-						for (size_t i = 0; i < layerStack.size(); i++)
-							(*(layerStack.begin() + i))->onImGuiRender();
-					}
-					p_renderer->endImGuiScene(); 
+#ifdef IMGUI_API			
+					
+					
+						
+					renderImGuiSemaphore.post();
+					finishedRenderImGui.wait();
+
+					
 #endif // IMGUI_API
 					p_renderer->update();
 				}
+
+				frameReady = false; // Indicate that rendering is done
 			}
+		}
+		void application::run()
+		{
+			LN_PROFILE_BEGIN_SESSION("luna engine runtime", "./debug/luna-profile-runtime.json");
+			renderThread = std::thread([this]() { this->renderingFunction(); });
+			renderImGuiSemaphore.wait();
+			while (running)
+			{
+				mWindow->onUpdate();
+				LN_PROFILE_SCOPE("drawing");
+	
+				double time = glfwGetTime();
+				utils::timestep tempTimestep{ time - lastFrameTime };
+				timestep.store(tempTimestep);
+				lastFrameTime = time;
+
+				
+
+				executeMainThreadQueue();
+
+				if (!minimized)
+				{
+					renderImGuiSemaphore.wait();
+					renderImGui();
+					finishedRenderImGui.post();
+
+				}
+			}
+
+			running = false;
+			renderThread.join();
 			LN_PROFILE_END_SESSION();
 		}
 

@@ -9,6 +9,7 @@
 #include <core/utils/layerStack.h>
 #include <core/scene/scene.h>
 #include <core/artemis/renderer.h>
+#include <core/utils/semaphore.h>
 
 #ifndef RENDERER
 /**
@@ -32,6 +33,8 @@ namespace luna
 			 */
 			application();
 			virtual ~application();
+			void renderImGui();
+			void renderingFunction();
 			/**
 			 * @brief the main loop of the application.
 			 * 
@@ -65,14 +68,23 @@ namespace luna
 			scene scene;
 			utils::layerStack layerStack;
 			double lastFrameTime = 0.0f;
-			bool running = true;
 			bool minimized = false;
 
 			std::vector<std::function<void()>> mainThreadQueue;
 			std::mutex mainThreadQueueMutex;
 			scope<artemis::renderer> p_renderer;
 		private:
+			std::atomic<bool> running = true;
+			std::atomic<bool> frameReady = false;
+			std::atomic<bool> imguiRendering = false;
+			std::condition_variable renderCondition;
+			std::thread renderThread;
 
+			semaphore renderImGuiSemaphore;
+			semaphore finishedRenderImGui;
+
+
+			std::atomic<utils::timestep> timestep;  // Shared timestep variable
 			friend int ::main(int argc, char** argv);
 		};
 		/**

@@ -16,7 +16,15 @@ namespace luna
 			const size_t getSize() const;
 			void setData(void* p_src, size_t size);
 			template<typename T>
-			void setData(const T type);
+			void setData(const T type)
+			{
+				setData(&type, sizeof(type));
+			}
+			template<typename T>
+			void setDataIndex(const size_t index, const T type)
+			{
+				memcpy_s(static_cast<char*>(getData()) + (index * sizeof(T)), getSize(), (void*) & type, sizeof(T));
+			}
 			_ALWAYS_INLINE_ void* getData();
 			template<typename T>
 			_ALWAYS_INLINE_ T* getData() { return (T*)getData(); }

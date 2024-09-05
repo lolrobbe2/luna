@@ -50,6 +50,7 @@ namespace luna
 			
 			bindImage(blankImage);
 			p_window = window;
+		
 		}
 #ifdef IMGUI_API
 
@@ -445,11 +446,13 @@ namespace luna
 			p_graphicsCommandBuffer[currentFrame]->beginRenderPass(p_renderPass, frameBuffers[swapchainImageIndex]);
 			p_graphicsCommandBuffer[currentFrame]->bindPipeline(graphicsPipeline);
 
-
+			size_t index = 0;
+			uint32_t drawCount = 0;
 			for (renderCommandBuffer& renderCmdBuffer : renderCmdBuffers)
 			{
 				if (renderCmdBuffer.commandsAmount)
 				{
+					
 					static VkDeviceSize offsets = 0;
 					p_graphicsCommandBuffer[currentFrame]->bindDescriptorSet(graphicsPipeline, renderCmdBuffer.graphicsDescriptorSets[currentFrame]);
 					p_graphicsCommandBuffer[currentFrame]->bindIndexBuffer(renderCmdBuffer.cpuIndicesBuffer,0, VK_INDEX_TYPE_UINT32);

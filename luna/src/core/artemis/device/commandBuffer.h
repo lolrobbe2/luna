@@ -34,6 +34,8 @@ namespace luna
 
 			void draw(uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance);
 			void drawIndexed(uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance);
+			void drawIndexedIndirect(buffer& buffer,VkDeviceSize offset,uint32_t drawCount,uint32_t stride);
+			void drawIndexedIndirectCommand(const size_t index,buffer& buffer, uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance);
 			void bindIndexBuffer(const buffer& buffer, VkDeviceSize offset, VkIndexType indexType);
 			void bindVertexBuffers(uint32_t firstBinding, std::vector<VkBuffer> buffers, const VkDeviceSize* p_offsets);
 			void transitionImageLayout(image& image, const VkImageLayout oldLayout, const VkImageLayout newLayout);

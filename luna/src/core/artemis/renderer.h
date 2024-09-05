@@ -261,7 +261,6 @@ namespace luna
 			std::vector<semaphore> computeSignalSemaphores;
 			std::vector<ref<semaphore>> imageAvailableSemaphores, renderFinishedSemaphores,computeFinishedSemaphores;
 			std::vector<frameBuffer> frameBuffers;
-
 			descriptorPool& computeDescriptorPool = *new descriptorPool();
 			descriptorPool& grapchicsDescriptorPool = *new descriptorPool();
 

@@ -97,7 +97,19 @@ namespace luna
 
 		void commandBuffer::drawIndexed(uint32_t indexCount,uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance)
 		{
+
 			vkCmdDrawIndexed(m_commandBuffer, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
+		}
+
+		void commandBuffer::drawIndexedIndirect(buffer& buffer, VkDeviceSize offset, uint32_t drawCount, uint32_t stride)
+		{
+			vkCmdDrawIndexedIndirect(m_commandBuffer, buffer, offset, drawCount, stride);
+		}
+
+		void commandBuffer::drawIndexedIndirectCommand(const size_t index,buffer& buffer, uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance)
+		{
+			VkDrawIndexedIndirectCommand drawCommand = { indexCount,instanceCount,firstIndex,vertexOffset,firstInstance };
+			buffer.setDataIndex(index, drawCommand);
 		}
 
 		void commandBuffer::bindIndexBuffer(const buffer& buffer,VkDeviceSize offset,VkIndexType indexType)
