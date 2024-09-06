@@ -1,6 +1,8 @@
 #pragma once
+#ifndef _FONT_IMPORTER_
+#define _FONT_IMPORTER_
 #include <core/assets/asset.h>
-#include <core/rendering/texture.h>
+
 namespace luna 
 {
 	namespace assets
@@ -13,4 +15,4 @@ namespace luna
 	}
 }
 
-
+#endif // !_FONT_IMPORTER_

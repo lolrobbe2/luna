@@ -1,6 +1,9 @@
 #pragma once
+#ifndef _SIGNAL_
+#define _SIGNAL_
 #include <core/core.h>
 #include <optional>
+
 namespace luna
 {
 	struct signal
@@ -28,7 +31,7 @@ namespace luna
 	class LN_API signalDB
 	{
 	public:
-		static void registerSignal(signal& signal, std::string& className);
+		static void registerSignal(const signal& signal,const std::string& className);
 		static void deregisterSignal(std::string& signalName, std::string& className);
 		static std::vector<std::string> getSignalNames(std::string& className);
 		template<typename T> 
@@ -42,3 +45,4 @@ namespace luna
 	}
 }
 
+#endif

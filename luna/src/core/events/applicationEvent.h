@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef _APLLICATION_EVENT_
+#define _APPLICATION_EVENT_
 #include <core/events/event.h>
 
 namespace luna {
@@ -79,3 +79,5 @@ namespace luna {
 			EVENT_CLASS_CATEGORY(eventCategoryApplication)
 	};
 }
+
+#endif

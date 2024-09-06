@@ -1,9 +1,10 @@
-#pragma once
+#ifndef _OBJECT_DB_
+#define _OBJECT_DB_
 #include <core/core.h>
 #include <entt.h>
 #include <type_traits>
 #include <core/scene/baseComponents.h>
-
+#include <core/scene/scene.h>
 #ifndef LN_REGISTER_CLASS
 #define LN_REGISTER_CLASS(mClass) objectDB::registerClass<mClass>();
 #endif // !LN_REGISTER_CLASS
@@ -46,7 +47,7 @@ T& addComponent(Args&&... args) {return className::addComponent<T>(std::forward<
 template<typename T, typename... Args> \
 T& addOrReplaceComponent(Args&&... args) \
 { \
-	return classNamme::addOrReplaceComponent<T>(std::forward<Args&&>()...); \
+	return className::addOrReplaceComponent<T>(std::forward<Args&&>()...); \
 } \
 template<typename T>\
 T& getComponent()\
@@ -57,7 +58,7 @@ T& getComponent()\
 
 namespace luna
 {
-	class LN_API scene;
+	//class LN_API scene;
 	/**
 	 * @brief object class.
 	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
@@ -249,3 +250,4 @@ namespace luna
 	};
 }
 
+#endif

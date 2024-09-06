@@ -1,16 +1,18 @@
 #include "contentBrowserPanel.h"
-#include <core/vulkan/rendering/vulkanTexture.h>
+#include <core/application.h>
+#include <core/assets/publicTypes/image.h>
 #include <core/platform/platformUtils.h>
 #include <project/projectManager.h>
+
 namespace luna
 {
 	std::map<std::string, bool> selectedMap;
 
 	std::unordered_map<std::string,assets::assetType> allowedImportExtensions = {
-		{".png",assets::texture},
-		{".jpg",assets::texture},
-		{".bmp",assets::texture},
-		{".ttf",assets::font}
+		{".png",assets::TEXTURE},
+		{".jpg",assets::TEXTURE},
+		{".bmp",assets::TEXTURE},
+		{".ttf",assets::FONT_ATLAS}
 	};
 
 	const char* assetTypeToString[] = {
@@ -54,17 +56,16 @@ namespace luna
 				ImVec2 windowPos = ImGui::GetMainViewport()->GetCenter();
 				ImGui::SetWindowPos({ windowPos.x - ImGui::GetWindowSize().x / 2, windowPos.y - ImGui::GetWindowSize().y / 2 });
 				
-				if (!assets::assetManager::isAssetHandleValid(importPath.filename().string())) {
+				if (!assets::assetManager::isAssetHandleValid(importPath.filename().string())) 
 					importPopup(openPopup);
-				}
-				else {
+				else 
 					showAssetInfo(importPath.filename().string());
-				}
+				
 				ImGui::EndPopup();
 			}
 		}
 	}
-	ref<assets::asset> contentBrowserPanel::getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
+	ref<assets::image> contentBrowserPanel::getIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
 	{
 		if (directoryEntry.is_directory())
 		{
@@ -90,7 +91,7 @@ namespace luna
 		return fileIcon;
 	}
 
-	ref<assets::asset> contentBrowserPanel::getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
+	ref<assets::image> contentBrowserPanel::getSmallIcon(const std::filesystem::directory_entry directoryEntry, bool hovered)
 	{
 		if (directoryEntry.is_directory())
 		{
@@ -174,7 +175,7 @@ namespace luna
 				//ImGui::PushID(filenameString.c_str());
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f });
-				ref<vulkan::vulkanTexture> icon = std::dynamic_pointer_cast<vulkan::vulkanTexture>(getIcon(directoryEntry, hovered == filenameString));
+				ref<assets::image> icon = getIcon(directoryEntry, hovered == filenameString);
 
 
 				ImGui::ImageButton(icon->getGuiImageHandle(), { thumbnailSize, thumbnailSize }, { 0, 0 }, { 1, 1 });
@@ -222,7 +223,7 @@ namespace luna
 
 	bool contentBrowserPanel::button(assetDirectory& directoryEntry,int indent)
 	{
-		const ref<renderer::texture> icon = std::dynamic_pointer_cast<renderer::texture>(getSmallIcon(directoryEntry.entry,directoryEntry.hovered));
+		const ref<assets::image> icon = getSmallIcon(directoryEntry.entry,directoryEntry.hovered);
 
 		
 		
@@ -291,7 +292,10 @@ namespace luna
 		{
 			if ((GetFileAttributesA(directoryEntry.path().string().c_str()) & FILE_ATTRIBUTE_HIDDEN) == 0) {
 				assetDirectory dir;
-				if (directoryEntry.is_directory()) initChildAssetDir(directoryEntry.path(), dir);
+
+				if (directoryEntry.is_directory()) 
+					initChildAssetDir(directoryEntry.path(), dir);
+
 				dir.entry = directoryEntry;
 				assetDir.push_back(dir);
 			}
@@ -303,7 +307,10 @@ namespace luna
 		{
 			if ((GetFileAttributesA(directoryEntry.path().string().c_str()) & FILE_ATTRIBUTE_HIDDEN) == 0) {
 				assetDirectory dir;
-				if (directoryEntry.is_directory()) initChildAssetDir(directoryEntry.path(),dir);
+
+				if (directoryEntry.is_directory())
+					initChildAssetDir(directoryEntry.path(),dir);
+
 				dir.entry = directoryEntry;
 				parentDir.childDir.push_back(dir);
 			}
@@ -313,123 +320,125 @@ namespace luna
 	void contentBrowserPanel::loadNormalIcons()
 	{
 		assets::assetManager::setImportDirectory(platform::filesystem::getEngineRootPath());
-		assets::assetManager::importAsset("src/resources/normal/directoryIcon.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/directoryIconHovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/directoryIcon.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/directoryIconHovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_png.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_png_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_png.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_png_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_jpg.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_jpg_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_jpg.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_jpg_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_ttf.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_ttf_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_ttf.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_ttf_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/icon_lscn.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/normal/icon_lscn_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/normal/icon_lscn.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/normal/icon_lscn_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/normal/fileIcon.png", assets::texture);
-
+		assets::assetManager::importAsset("src/resources/normal/fileIcon.png", assets::TEXTURE);
+		RENDERER->flush();
 		assets::assetManager::setImportDirectory("");
 	}
 
 	void contentBrowserPanel::setNormalIcons()
 	{
-		directoryIcon = assets::assetManager::getAsset("directoryIcon.png");
-		directoryHoveredIcon = assets::assetManager::getAsset("directoryIconHovered.png");
+		directoryIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIcon.png"));
+		directoryHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIconHovered.png"));
 
-		pngIcon = assets::assetManager::getAsset("icon_png.png");
-		pngHoveredIcon = assets::assetManager::getAsset("icon_png_hovered.png");
+		pngIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_png.png"));
+		pngHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_png_hovered.png"));
 
-		jpgIcon = assets::assetManager::getAsset("icon_jpg.png");
-		jpgHoveredIcon = assets::assetManager::getAsset("icon_jpg_hovered.png");
+		jpgIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_jpg.png"));
+		jpgHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_jpg_hovered.png"));
 
-		ttfIcon = assets::assetManager::getAsset("icon_ttf.png");
-		ttfHoveredIcon = assets::assetManager::getAsset("icon_ttf_hovered.png");
+		ttfIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_ttf.png"));
+		ttfHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_ttf_hovered.png"));
 
-		lscnIcon = assets::assetManager::getAsset("icon_lscn.png");
-		lscnHoveredIcon = assets::assetManager::getAsset("icon_lscn_hovered.png");
+		lscnIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_lscn.png"));
+		lscnHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("icon_lscn_hovered.png"));
 
-		fileIcon = assets::assetManager::getAsset("fileIcon.png");
+		fileIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("fileIcon.png"));
 	}
 
 	void contentBrowserPanel::setNormalGuiIcons()
 	{
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(directoryIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(directoryHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(pngIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(pngHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(jpgIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(jpgHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(ttfIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(ttfHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(lscnIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(lscnHoveredIcon)->createGuiImage();
-
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(fileIcon)->createGuiImage();
+		assets::image::enableImgui({
+			directoryIcon,
+			directoryHoveredIcon,
+			pngIcon,
+			pngHoveredIcon,
+			jpgIcon,
+			jpgHoveredIcon,
+			ttfIcon,
+			ttfHoveredIcon,
+			lscnIcon,	
+			lscnHoveredIcon,
+			fileIcon
+			});
 	}
 
 	void contentBrowserPanel::loadSmallIcons()
 	{
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_png_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_jpg_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_ttf_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_icon_lscn_hovered.png", assets::TEXTURE);
 
-		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon.png", assets::texture);
-		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon_hovered.png", assets::texture);
+		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon.png", assets::TEXTURE);
+		assets::assetManager::importAsset("src/resources/small_icons/small_fileIcon_hovered.png", assets::TEXTURE);
+		RENDERER->flush();
 	}
 
 	void contentBrowserPanel::setSmallIcons()
 	{
-		smallDirectoryIcon = assets::assetManager::getAsset("directoryIcon.png");
-		smallDirectoryHoveredIcon = assets::assetManager::getAsset("directoryIconHovered.png");
+		smallDirectoryIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIcon.png"));
+		smallDirectoryHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("directoryIconHovered.png"));
 
-		smallPngIcon = assets::assetManager::getAsset("small_icon_png.png");
-		smallPngHoveredIcon = assets::assetManager::getAsset("small_icon_png_hovered.png");
+		smallPngIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_png.png"));
+		smallPngHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_png_hovered.png"));
 
-		smallJpgIcon = assets::assetManager::getAsset("small_icon_jpg.png");
-		smallJpgHoveredIcon = assets::assetManager::getAsset("small_icon_jpg_hovered.png");
+		smallJpgIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_jpg.png"));
+		smallJpgHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_jpg_hovered.png"));
 
-		smallTtfIcon = assets::assetManager::getAsset("small_icon_ttf.png");
-		smallTtfHoveredIcon = assets::assetManager::getAsset("small_icon_ttf_hovered.png");
+		smallTtfIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_ttf.png"));
+		smallTtfHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_ttf_hovered.png"));
 
-		smallLscnIcon = assets::assetManager::getAsset("small_icon_lscn.png");
-		smallLscnHoveredIcon = assets::assetManager::getAsset("small_icon_lscn_hovered.png");
+		smallLscnIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_lscn.png"));
+		smallLscnHoveredIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_icon_lscn_hovered.png"));
 
-		smallFileIcon = assets::assetManager::getAsset("small_fileIcon.png");
-		smallFileIconHovered = assets::assetManager::getAsset("small_fileIcon_hovered.png");
+		smallFileIcon = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon.png"));
+		smallFileIconHovered = std::dynamic_pointer_cast<assets::image>(assets::assetManager::getAsset("small_fileIcon_hovered.png"));
+		
 	}
 	void contentBrowserPanel::setSmallGuiIcons()
 	{
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallDirectoryIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallDirectoryHoveredIcon)->createGuiImage();
+		assets::image::enableImgui({
+			smallDirectoryIcon,
+			smallDirectoryHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallPngIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallPngHoveredIcon)->createGuiImage();
+			smallPngIcon,
+			smallPngHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallJpgIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallJpgHoveredIcon)->createGuiImage();
+			smallJpgIcon,
+			smallJpgHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallTtfIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallTtfHoveredIcon)->createGuiImage();
+			smallTtfIcon,
+			smallTtfHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallLscnIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallLscnHoveredIcon)->createGuiImage();
+			smallLscnIcon,
+			smallLscnHoveredIcon,
 
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallFileIcon)->createGuiImage();
-		std::dynamic_pointer_cast<vulkan::vulkanTexture>(smallFileIconHovered)->createGuiImage();
+			smallFileIcon,
+			smallFileIconHovered
+			});
+
 	}
 	void contentBrowserPanel::showAssetInfo(const std::string& filename)
 	{
@@ -506,7 +515,7 @@ namespace luna
 			ImGui::TableNextColumn();
 			switch (metaData->assetType)
 			{
-			case assets::texture:
+			case assets::TEXTURE:
 			{
 				assets::textureAssetMetadata* textureMetadata = (assets::textureAssetMetadata*)metaData;
 				ImGui::Text("width");
@@ -551,7 +560,7 @@ namespace luna
 				}
 				ImGui::Text(sizeText.c_str(), adjustedSize);
 			}
-			case assets::font:
+			case assets::FONT_ATLAS:
 			{
 				assets::fontAssetMetadata* fontMetadata = (assets::fontAssetMetadata*)metaData;
 				ImGui::Text("width");

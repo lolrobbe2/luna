@@ -138,13 +138,16 @@ namespace luna
 
 			socketError err = netSocket::connectToHost(tcpData.peerPort, tcpData.peerHost);
 
-			if (err == SUCCESS) {
+			if (err == SUCCESS) 
+			{
 				tcpData.status = STATUS_CONNECTED;
 				return SUCCESS;
 			}
-			else if (err == BUSY) {
+			else if (err == BUSY) 
+			{
 				// Check for connect timeout
-				if (platform::os::getTicksMsec() > tcpData.timeout) {
+				if (platform::os::getTicksMsec() > tcpData.timeout)
+				{
 					disconnectFromHost();
 					tcpData.status = STATUS_ERROR;
 					return FAILED;
@@ -158,22 +161,24 @@ namespace luna
 			return socketError::CONNECT_FAILED;
 		}
 
-		socketError streamPeerTCP::write(const uint8_t* data, int bytes, int& sent, bool block) {
+		socketError streamPeerTCP::write(const uint8_t* data, int bytes, int& sent, bool block) 
+		{
 			LN_ERR_FAIL_COND_V(!netSocket::isValid(), socketError::FAILED);
 
 			tcpComponent& tcpData = getComponent<tcpComponent>();
 
 
-			if (tcpData.status != STATUS_CONNECTED) {
+			if (tcpData.status != STATUS_CONNECTED) 
 				return FAILED;
-			}
+			
 
 			socketError err;
 			int dataToSend = bytes;
 			const uint8_t* offset = data;
 			int totalSent = 0;
 
-			while (dataToSend) {
+			while (dataToSend) 
+			{
 				int sentAmount = 0;
 				err = netSocket::send(offset, dataToSend, sentAmount);
 
@@ -183,19 +188,22 @@ namespace luna
 						return FAILED;
 					}
 
-					if (!block) {
+					if (!block)
+					{
 						sent = totalSent;
 						return SUCCESS;
 					}
 
 					// Block and wait for the socket to accept more data
 					err = netSocket::poll(POLL_TYPE_OUT, -1);
-					if (err != SUCCESS) {
+					if (err != SUCCESS) 
+					{
 						disconnectFromHost();
 						return FAILED;
 					}
 				}
-				else {
+				else 
+				{
 					dataToSend -= sentAmount;
 					offset += sentAmount;
 					totalSent += sentAmount;
@@ -207,25 +215,28 @@ namespace luna
 			return SUCCESS;
 		}
 
-		socketError streamPeerTCP::read(uint8_t* buffer, int bytes, int& received, bool block) {
+		socketError streamPeerTCP::read(uint8_t* buffer, int bytes, int& received, bool block) 
+		{
 			tcpComponent& tcpData = getComponent<tcpComponent>();
 
-			if (tcpData.status != STATUS_CONNECTED) {
+			if (tcpData.status != STATUS_CONNECTED) 
 				return FAILED;
-			}
+			
 
 			socketError err;
 			int toRead = bytes;
 			int totalRead = 0;
 			received = 0;
 
-			while (toRead) {
+			while (toRead) 
+			{
 				int read = 0;
 				err = netSocket::receive(buffer + totalRead, toRead, read);
 
 				if (err != SUCCESS) 
 				{
-					if (err != BUSY) {
+					if (err != BUSY) 
+					{
 						disconnectFromHost();
 						return FAILED;
 					}
@@ -257,7 +268,8 @@ namespace luna
 					toRead -= read;
 					totalRead += read;
 
-					if (!block) {
+					if (!block) 
+					{
 						received = totalRead;
 						return SUCCESS;
 					}
@@ -274,7 +286,8 @@ namespace luna
 			netSocket::setTcpNoDelayEnabled(enabled);
 		}
 
-		status streamPeerTCP::getStatus() {
+		status streamPeerTCP::getStatus()
+		{
 			return (status)getComponent<tcpComponent>().status;
 		}
 
@@ -310,7 +323,8 @@ namespace luna
 			socketData = socket->getComponent<socketComponent>();
 		}
 
-		socketError streamPeerTCP::bind(int port, const ipAddress& host) {
+		socketError streamPeerTCP::bind(int port, const ipAddress& host) 
+		{
 			LN_ERR_FAIL_COND_V(!netSocket::isValid(), socketError::FAILED);
 			LN_ERR_FAIL_COND_V(netSocket::isOpen(), socketError::ALREADY_INIT);
 			LN_ERR_FAIL_COND_V_MSG(port < 0 || port > 65535, socketError::FAILED, "The local port number must be between 0 and 65535 (inclusive).");
@@ -327,23 +341,27 @@ namespace luna
 			LN_ERR_FAIL_COND_V(!host.isValid(), socketError::INVALID_IP_ADDRESS);
 			LN_ERR_FAIL_COND_V_MSG(port < 1 || port > 65535, socketError::FAILED, "The remote port number must be between 1 and 65535 (inclusive).");
 
-			if (!netSocket::isOpen()) {
+			if (!netSocket::isOpen()) 
+			{
 				socketError err = netSocket::open(TCP);
-				if (err != SUCCESS) {
+				if (err != SUCCESS) 
 					return err;
-				}  
+				
 			}
 
 			socketError err = netSocket::connectToHost(port, host);
 			
-			if (err == SUCCESS) {
+			if (err == SUCCESS) 
+			{
 				tcpData.status = STATUS_CONNECTED;
 				netSocket::setBlockingEnabled(false); //needs to be here because socket uses getAddrinfo and needs to be blocking wich it is by default!
 			}
-			else if (err == BUSY) {
+			else if (err == BUSY) 
+			{
 				tcpData.status = STATUS_CONNECTING;
 			}
-			else {
+			else 
+			{
 				LN_CORE_ERROR("Connection to remote host failed!");
 				disconnectFromHost();
 				return FAILED;

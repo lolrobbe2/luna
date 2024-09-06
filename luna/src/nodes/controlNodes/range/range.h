@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace nodes 
 	{
-		class LN_API range : public controlNode
+		class range : public controlNode
 		{
 		public:
 			range() = default;

@@ -1,9 +1,10 @@
 #include <core/platform/platformUtils.h>
 #ifdef LN_PLATFORM_WINDOWS
-
+#pragma warning(disable : 4005)
 #include <shlobj_core.h>
 
 #include <commdlg.h>
+
 #include <GLFW/glfw3native.h>
 #include <core/application.h>
 #include <core/input.h>
@@ -11,6 +12,8 @@
 #include <locale.h>
 #include <core/object/methodDB.h>
 #include <string_view>
+#pragma warning(default : 4005)
+
 
 namespace luna 
 {
@@ -47,41 +50,43 @@ namespace luna
 		std::string os::openFolderDialog()
 		{
 			std::string selectedFolder = "";
-
-			// Create an instance of the File Open Dialog
-			IFileDialog* pFileDialog = nullptr;
-			HRESULT hr = CoCreateInstance(CLSID_FileOpenDialog, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pFileDialog));
+			HRESULT hr = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
 			if (SUCCEEDED(hr))
 			{
-				// Set options to select folders only
-				DWORD options;
-				pFileDialog->GetOptions(&options);
-				pFileDialog->SetOptions(options | FOS_PICKFOLDERS);
-
-				// Show the dialog
-				if (SUCCEEDED(pFileDialog->Show(nullptr)))
+				// Create an instance of the File Open Dialog
+				IFileDialog* pFileDialog = nullptr;
+				HRESULT hr = CoCreateInstance(CLSID_FileOpenDialog, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pFileDialog));
+				if (SUCCEEDED(hr))
 				{
-					// Get the selected folder path
-					IShellItem* pResult = nullptr;
-					if (SUCCEEDED(pFileDialog->GetResult(&pResult)))
+					// Set options to select folders only
+					DWORD options;
+					pFileDialog->GetOptions(&options);
+					pFileDialog->SetOptions(options | FOS_PICKFOLDERS);
+
+					// Show the dialog
+					if (SUCCEEDED(pFileDialog->Show(nullptr)))
 					{
-						PWSTR folderPath;
-						if (SUCCEEDED(pResult->GetDisplayName(SIGDN_FILESYSPATH, &folderPath)))
+						// Get the selected folder path
+						IShellItem* pResult = nullptr;
+						if (SUCCEEDED(pFileDialog->GetResult(&pResult)))
 						{
-							// Convert the wide string to narrow string
-							int bufferSize = WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, nullptr, 0, nullptr, nullptr);
-							if (bufferSize > 0)
+							PWSTR folderPath;
+							if (SUCCEEDED(pResult->GetDisplayName(SIGDN_FILESYSPATH, &folderPath)))
 							{
-								std::string narrowPath(bufferSize, '\0');
-								WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, narrowPath.data(), bufferSize, nullptr, nullptr);
-								selectedFolder = narrowPath;
+								// Convert the wide string to narrow string
+								int bufferSize = WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, nullptr, 0, nullptr, nullptr);
+								if (bufferSize > 0)
+								{
+									std::string narrowPath(bufferSize, '\0');
+									WideCharToMultiByte(CP_UTF8, 0, folderPath, -1, narrowPath.data(), bufferSize, nullptr, nullptr);
+									selectedFolder = narrowPath;
+								}
+								CoTaskMemFree(folderPath);
 							}
-							CoTaskMemFree(folderPath);
+							pResult->Release();
 						}
-						pResult->Release();
 					}
 				}
-
 				pFileDialog->Release();
 			}
 
@@ -192,31 +197,31 @@ namespace luna
 			switch (shape)
 			{
 			case ARROW:
-				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				SetCursor(LoadCursor(NULL, IDC_ARROW));
 				break;
 			case IBEAM:
-				SetSystemCursor(LoadCursor(NULL, IDC_IBEAM), 32512);
+				SetCursor(LoadCursor(NULL, IDC_IBEAM));
 				break;
 			case CROSSHAIR:
-				SetSystemCursor(LoadCursor(NULL, IDC_CROSS), 32512);
+				SetCursor(LoadCursor(NULL, IDC_CROSS));
 				break;
 			case HAND:
-				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				SetCursor(LoadCursor(NULL, IDC_ARROW));
 				break;
 			case HRESIZE:
-				SetSystemCursor(LoadCursor(NULL, IDC_SIZEWE), 32512);
+				SetCursor(LoadCursor(NULL, IDC_SIZEWE));
 				break;
 			case VRESIZE:
-				SetSystemCursor(LoadCursor(NULL, IDC_SIZENS), 32512);
+				SetCursor(LoadCursor(NULL, IDC_SIZENS));
 				break;
 			case APP_STARTING:
-				SetSystemCursor(LoadCursor(NULL, IDC_APPSTARTING), 32512);
+				SetCursor(LoadCursor(NULL, IDC_APPSTARTING));
 				break;
 			case WAITING:
-				SetSystemCursor(LoadCursor(NULL, IDC_WAIT), 32512);
+				SetCursor(LoadCursor(NULL, IDC_WAIT));
 				break;
 			default:
-				SetSystemCursor(LoadCursor(NULL, IDC_ARROW), 32512);
+				SetCursor(LoadCursor(NULL, IDC_ARROW));
 				break;
 			}
 

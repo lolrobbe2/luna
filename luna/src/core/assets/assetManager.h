@@ -8,18 +8,43 @@ namespace luna
 		{
 		public:
 			static void init(bool editor);
+			static void shutdown();
 			/**
 			* simular to std::filesystem::currentPath() but this function does not override the std::filesystem::currentPath.
 			*/
 			static void setImportDirectory(const std::filesystem::path& directory);
 			/**
-			* @brief returns an important asset and loads it if needed.
+			* @brief returns an imported asset and loads it if needed.
 			*/
-			static ref<asset> getAsset(const assetHandle handle);
+			template<typename T>
+			static ref<T> getAsset(const assetHandle handle)
+			{
+				if (!isAssetHandleValid(handle))
+				{
+					LN_CORE_ERROR("asset has not been imported! \n handle = {0}", ((uuid)handle));
+					return ref<T>();
+				}
+				if (!assetManagerRef->isAssetHandleLoaded(handle))
+					loadAsset(handle);
+
+				return std::dynamic_pointer_cast<T>(assetManagerRef->getAsset(handle));
+			}
+			static ref<assets::asset> getAsset(const assetHandle handle)
+			{
+				return getAsset<assets::asset>(handle);
+			}
 			/**
 			 * @brief identical to getAsset with handle but slower.
 			 */
-			static ref<asset> getAsset(const std::string& name);
+			template<typename T>
+			static ref<T> getAsset(const std::string& name)
+			{
+				return std::dynamic_pointer_cast<T>(assetManagerRef->getAsset(name));
+			}
+			static ref<assets::asset> getAsset(const std::string& name)
+			{
+				return assetManagerRef->getAsset(name);
+			}
 			static assetMetadata* getAssetMetadata(const assetHandle handle);
 			static assetMetadata* getAssetMetadata(const std::string& filename);
 			/**

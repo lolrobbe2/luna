@@ -31,7 +31,7 @@ namespace luna
 
 		void inputText(const std::string& name, std::string& stringBuffer);
 		void onPlay();
-		ref<assets::asset> getSmallIcon(const std::filesystem::path& assetFilePath);
+		ref<assets::image> getSmallIcon(const std::filesystem::path& assetFilePath);
 		void onStop();
 		void drawSignalConnectWindow();
 		void drawSignalNode(Node& node, uint32_t indent);
@@ -46,17 +46,17 @@ namespace luna
 		std::string m_ListSelected = "";
 
 #pragma region smallIcons
-		ref<assets::asset> smallDirectoryIcon;
+		ref<assets::image> smallDirectoryIcon;
 
-		ref<assets::asset> smallPngIcon;
+		ref<assets::image> smallPngIcon;
 
-		ref<assets::asset> smallJpgIcon;
+		ref<assets::image> smallJpgIcon;
 
-		ref<assets::asset> smallTtfIcon;
+		ref<assets::image> smallTtfIcon;
 
-		ref<assets::asset> smallLscnIcon;
+		ref<assets::image> smallLscnIcon;
 
-		ref<assets::asset> smallFileIcon;
+		ref<assets::image> smallFileIcon;
 #pragma endregion
 
 	};

@@ -1,4 +1,8 @@
 #pragma once
+#ifndef _LNPCH_
+#define _LNPCH_
+
+#pragma warning(disable : 4005)
 #pragma warning(push,0)
 #include <cstdint>
 #include <cstdlib>
@@ -17,7 +21,7 @@
 #include <shared_mutex>
 
 /*personal engine includes*/
-#include <core/platform/platform.h>
+
 /*thirdparty includes*/
 #define GLFW_INCLUDE_VULKAN
 
@@ -26,16 +30,19 @@
 #include <VkBootstrapDispatch.h>
 #include <GLFW/glfw3.h>
 
-#include <imgui.h>
-#include <backends/imgui_impl_glfw.h>
+
+
+
 #define GLM_FORCE_SSE2 // or GLM_FORCE_SSE42 if your processor supports it
 #define GLM_FORCE_RADIANS
-#define GLM_FORCE_INLINE 
+#define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
 #include <glm/glm.hpp>
 #include <stb_image.h>
 #include <stb_image_write.h>
+#pragma warning(default : 4005)
 /*scene system includes*/
 #include <entt.h>
 #pragma warning(pop)
 
+#endif // !_LNPCH_
 

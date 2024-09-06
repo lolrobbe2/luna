@@ -7,7 +7,7 @@ namespace luna
 		/**
 		 * @brief label node implementation.
 		 */
-		class LN_API labelNode : public controlNode
+		class labelNode : public controlNode
 		{
 		public:
 			

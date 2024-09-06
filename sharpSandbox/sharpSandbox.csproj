@@ -73,6 +73,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "$(SolutionDir)\bin\debug-windows-x86_64\x64\$(ProjectName)"\ (xcopy /Q /E /Y /I "$(SolutionDir)\bin\debug-windows-x86_64\x64\$(ProjectName)" "$(SolutionDir)\apollo\mono\lib" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\bin\debug-windows-x86_64\x64\$(ProjectName)" "$(SolutionDir)\apollo\mono\lib" &gt; nul)</PostBuildEvent>
+    <PostBuildEvent>@python $(SolutionDir)copyScriptCore.py</PostBuildEvent>
   </PropertyGroup>
 </Project>

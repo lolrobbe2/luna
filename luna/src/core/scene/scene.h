@@ -1,5 +1,6 @@
 #pragma once
-#include "lnpch.h"
+#ifndef _SCENE_
+#define _SCENE_
 #include <core/utils/objectStorage.h>
 #include <core/scene/baseComponents.h>
 #include <core/utils/timestep.h>
@@ -58,5 +59,6 @@ namespace luna
 	};
 		
 }
+#endif // !_SCENE_
 
 

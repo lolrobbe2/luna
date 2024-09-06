@@ -1,0 +1,300 @@
+#ifndef _RENDERER_
+#define _RENDERER_
+#include <core/artemis/device/device.h>
+#include <core/artemis/renderCommandBuffer.h>
+#include <core/artemis/rendering/frameBuffer.h>
+#include <core/assets/publicTypes/image.h>
+#include <core/assets/publicTypes/font.h>
+#include <core/debug/debugMacros.h>
+#include <core/utils/threadPool.h>
+
+//TODO placing the implemntation of the draw functions is a hack don't know why it does not detect the implementation in the cpp file?
+namespace luna 
+{
+	namespace artemis 
+	{
+		class renderer
+		{
+		public:
+			 renderer(const ref<vulkan::window>& window, size_t threadCount = 4);
+#ifdef IMGUI_API
+			 void beginImGuiScene();
+			 void endImGuiScene();
+#endif // IMGUI_API
+
+			 void beginScene();
+			 void endScene();
+			 void update();
+
+
+			 void submitRenderTask(std::function<void()> func) {
+					pool.enqueue(func);
+			 }
+
+			 int64_t currentDrawindex(ref<assets::image> p_image);
+			 glm::vec4 normalizeColor(const glm::vec4& color);
+			 LN_API void drawLabel(const glm::vec3& position, const glm::vec2& size, const ref<assets::font> font, const std::string labelText, const glm::vec4& color, const glm::vec4& bounds = { -1.0f,-1.0f,1.0f,1.0f }, size_t scrollPosition = 0, bool drawCaret = false, size_t caretPosition = 0)
+			 {
+				 int64_t drawIndex = currentDrawindex(font);
+				 //TODO left side bearing
+				 bindFont(font);
+
+				 glm::vec2 normalizedDimensions = size / getSceneDimensions();
+				 float xAdvance = -font->getAdvance(labelText[scrollPosition]).y * normalizedDimensions.x;;
+				 float caretXPosition = position.x;
+
+				 // Determine the width available for the text to render
+				 float maxWidth = bounds.z - bounds.x;
+
+				 // Iterate over the text starting from scrollPosition
+				 for (size_t i = scrollPosition; i < labelText.size(); i++)
+				 {
+					 xAdvance += font->getAdvance(labelText[i]).y * normalizedDimensions.x;
+					 glm::vec3 currentPosition = { xAdvance + position.x, position.y + font->getOffset(labelText[i]).y * normalizedDimensions.y, position.z };
+					 glm::vec2 virtualExtent = font->getVirtualExtent(labelText[i]) * normalizedDimensions;
+
+					 // Check if the character exceeds the right boundary (z, w)
+					 if ((currentPosition.x + virtualExtent.x) > bounds.z)
+						break;
+
+					 // Update caret position if we are at the caret index
+					 if (i == caretPosition)
+						caretXPosition = currentPosition.x;
+					 
+
+					 // Only draw if the character is within the left boundary (x, y)
+					 if (currentPosition.x + virtualExtent.x > bounds.x)
+						drawCharQuadBound(drawIndex,currentPosition, virtualExtent, font->getGlyph(labelText[i]), color);
+					 drawIndex = currentDrawindex(font);
+
+					 // Advance the position for the next character
+					  xAdvance += (font->getOffset(labelText[i]).x)* normalizedDimensions.x;
+
+					 if (labelText[i] == ' ')
+						xAdvance += font->getVirtualExtent('_').x * normalizedDimensions.x;
+					 else
+						xAdvance += font->getVirtualExtent(labelText[i]).x / getSceneDimensions().x * size.x;
+					 
+				 }
+
+				 // Draw the caret if enabled and if it's within the visible area
+				 if (drawCaret && caretPosition >= scrollPosition)
+				 {
+					 glm::vec3 caretPosition = { caretXPosition, position.y, position.z };
+					 glm::vec2 caretSize = { 2.0f * normalizedDimensions.x, size.y }; // Customize caret size as needed
+
+					 // Use drawQuad to draw the caret
+					 drawQuadPosColor(caretPosition, caretSize, color, drawIndex);
+				 }
+			 }
+
+
+			 void bindImage(const ref<assets::image> p_image);
+			 void bindFont(const ref<assets::font> p_font);
+			 LN_API void drawCharQuadBound(int64_t drawIndex,const glm::vec3 position, const glm::vec2& size, const ref<assets::image> image,const glm::vec4& color = {1.0f,1.0f,1.0f,1.0f})
+			 {
+				 //TODO fix this to use glm functions!
+				 glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 0.0f });
+
+				 // Set the translation
+
+				 drawQuad({ transform,color,image->getUvCoords(),{image->imageIndex,true} },drawIndex);
+			 }
+			 LN_API void drawQuad(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const std::array<glm::vec2, 4>& textureCoords)
+			 {
+				 //TODO implement 
+			 }
+			 LN_API void drawQuadPosColor(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, int64_t drawIndex = -1)
+			 {
+				 if(drawIndex == -1) drawIndex = currentDrawindex(blankImage);
+				 const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+					 * glm::scale(glm::mat4(0.5f), { size.x, size.y, 1.0f });
+				 drawQuadTransColor(transform, color,drawIndex);
+			 }
+			 LN_API void drawQuad(const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
+			 {
+				 //TODO implement
+			 }
+			 
+			 LN_API void drawQuadPosImage(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const ref<assets::image> image)
+			 {
+				 glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
+
+				 // Set the translation
+				 transform[3] = glm::vec4(position, 1.0f);
+
+				 // Set the scale
+				 transform[0][0] = size.x;
+				 transform[1][1] = size.y;
+
+				 drawQuadTransImageColor(drawIndex,transform, { 1,1,1,1 }, image);
+
+			 }
+			 LN_API void drawQuadPosImageColorCoords(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
+			 {
+			 }
+			 LN_API void drawQuadPosImageColor(int64_t drawIndex,const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const ref<assets::image> image)
+			 {
+				 glm::mat4 transform = glm::mat4(1.0f); // Identity matrix
+
+				 // Set the translation
+				 transform[3] = glm::vec4(position, 1.0f);
+
+				 // Set the scale
+				 transform[0][0] = size.x;
+				 transform[1][1] = size.y;
+
+				 drawQuadTransImageColor(drawIndex,transform, color, image);
+
+			 }
+
+			 LN_API void drawQuadTransImageCoords(int64_t drawIndex,const glm::mat4& transform, const ref<assets::image> image, const std::array<glm::vec2, 4>& textureCoords)
+			 {
+				 if (image)
+				 {
+					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{image->getImageIndex(),false}},drawIndex); //if an empty texture slot was found then bind it otherwise create new buffer
+					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
+					 return drawQuad({ transform,glm::vec4(1,1,1,1),image->getUvCoords(),{image->getImageIndex(),false}},drawIndex);
+				 }
+				 return drawQuad({ transform,glm::vec4(1,1,1,1),textureCoords,{*image , false} },drawIndex);
+			 }
+			 LN_API void drawQuadTransImage(int64_t drawIndex,const glm::mat4& transform, const ref<assets::image> image)
+			 {
+				 drawQuadTransImageCoords(drawIndex,transform, image, *image);
+			 }
+
+			 LN_API void drawQuadTransImageCoordsColor(int64_t drawIndex,const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image,const std::array<glm::vec2,4>& textureCoords)
+			 {
+				 if (image)
+				 {
+					 for (size_t i = 0; i < renderCmdBuffers.size(); i++)
+						 if (renderCmdBuffers[i].bind(image, i)) return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false}},drawIndex);
+					 renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler, maxFramesInFlight));
+					 renderCmdBuffers.back().bind(image, renderCmdBuffers.size());
+					 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(),false} },drawIndex);
+				 }
+				 return drawQuad({ transform,color,textureCoords,{image->getImageIndex(), false} },drawIndex);
+			 }
+
+			 LN_API void drawQuadTransImageColor(int64_t drawIndex,const glm::mat4& transform, const glm::vec4& color, const ref<assets::image> image)
+			 {
+				 drawQuadTransImageCoordsColor(drawIndex,transform, color, image, *image); }
+
+			 LN_API void drawQuadTransColor(const glm::mat4& transform, const glm::vec4& color1,int64_t drawIndex = -1)
+			 { 
+				if (drawIndex == -1) drawIndex = currentDrawindex(blankImage); 
+				drawQuadTransImageColor(drawIndex, transform, color1, blankImage);
+			 }
+
+			 LN_API void drawQuad(const drawCommand& command, int64_t drawIndex)
+			 {
+				 if (currentBuffer->addCommand(command,drawIndex))
+				 {
+					 LN_CORE_INFO("rip currentBuffer full"); //TODO: needs fixing.
+				 }
+			 }
+#ifdef IMGUI_API
+			 void setSceneDimensions(ImVec2 size) 
+			 {
+				 if (size.x != imguiSceneSize.x || size.y != imguiSceneSize.y) 
+				 {
+					 imguiSceneSize.x = size.x; imguiSceneSize.y = size.y;
+					 resized = true;
+				 }
+			 }
+
+			 ImTextureID registerImGuiImage(const ref<assets::image> image);
+			
+
+			 void unregisterImGuiImage(ImTextureID imGuiImageHandle);
+			 LN_API ImTextureID getWindowImage();
+			 LN_API ImGuiContext* getImGuiContext();
+			 LN_API void setTransition(bool transition) { this->transition = transition; }
+#endif // !IMGUI_API
+#ifdef IMGUI_API
+
+
+			 LN_API const glm::vec2 getSceneMousePos() const
+			 {
+				 //TODO mousepose
+				 return sceneMousePos;
+			 }
+			 LN_API void setSceneMousePos(glm::vec2& sceneMousePos) 
+			 {
+				 //TODO mousepose
+				 this->sceneMousePos = sceneMousePos;
+			 }
+#endif // IMGUI_API
+
+			 const glm::vec2 getSceneDimensions() const
+			 {
+#ifndef IMGUI_API
+				 return { p_window->windowSpec.width, p_window->windowSpec.height };
+#else 
+				 return  imguiSceneSize;
+#endif // !IMGUI_API
+			 }
+			 LN_API void flush();
+
+		private:
+			void setUpComputePipeline();
+			void setUpGraphicsPipeline();
+#ifdef IMGUI_API
+			void setUpImguiPipeline();
+#endif // IMGUI_API
+
+			void recordCommands();
+		private:
+			device& c_device = *new device();
+			ref<swapchain> p_swapChain;
+			ref<commandPool> p_graphicsCommandPool;
+			std::vector<ref<commandBuffer>>p_graphicsCommandBuffer;
+
+			ref<commandPool> p_computeCommandPool;
+			std::vector<ref<commandBuffer>> p_computeCommandBuffer;
+			ref<renderPass> p_renderPass;
+			ref<pipeline> graphicsPipeline;
+			ref<pipeline> computePipeline;
+			std::vector<semaphore> computeWaitSemaphores;
+			std::vector<semaphore> computeSignalSemaphores;
+			std::vector<ref<semaphore>> imageAvailableSemaphores, renderFinishedSemaphores,computeFinishedSemaphores;
+			std::vector<frameBuffer> frameBuffers;
+			descriptorPool& computeDescriptorPool = *new descriptorPool();
+			descriptorPool& grapchicsDescriptorPool = *new descriptorPool();
+
+			std::vector<renderCommandBuffer> renderCmdBuffers;
+			renderCommandBuffer* currentBuffer;
+			size_t batchCount;
+			ref<allocator> p_allocator;
+
+			std::vector<ref<fence>> inFlightFences,computeInflightFences;
+			uint8_t currentFrame = 0;
+			uint8_t maxFramesInFlight = 0;
+			uint32_t swapchainImageIndex = 0;
+			ref<sampler> sampler;
+			
+			ref<assets::image> blankImage;
+
+			ref<vulkan::window> p_window;
+#ifdef IMGUI_API
+			std::vector<frameBuffer> imguiFrameBuffers;
+			ref<renderPass> p_imguiRenderPass;
+			glm::vec2 imguiSceneSize = { 100.0f,100.0f }; //set default because otherwise the float max will be taken wich is to big for any gpu to render to!!!
+			glm::vec2 sceneMousePos;
+			bool transition = false;
+			bool resized = false;
+			std::vector<image> frameBufferImages;    
+			std::vector<ImTextureID> frambufferGuiImages;
+
+			std::vector<ref<assets::image>> imguiEnabledImages;
+			std::vector<ref<assets::image>> imguiEnabledImagesResize;
+
+#endif //IMGUI_API
+			threadPool pool;
+		};
+	}
+}
+
+#endif

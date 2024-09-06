@@ -1,0 +1,105 @@
+#pragma once
+#ifndef _SUBPASS_BUILDER_
+#define _SUBPASS_BUILDER_
+
+#include <core/artemis/rendering/attachement.h>
+
+namespace luna 
+{
+	namespace artemis
+	{
+		
+		/*
+		* @brief helper type for the renderPass builder same as VkSubpassDependency,
+		* @brief but without src/dst subPass as this is determined by the renderPass builder.
+		*/
+		typedef struct subpassDependency {
+			VkAccessFlags           srcAccessMask;
+			VkAccessFlags           dstAccessMask;
+			VkPipelineStageFlags    srcStageMask;
+			VkPipelineStageFlags    dstStageMask;
+			VkDependencyFlags       dependencyFlags;
+		} subpassDependency;
+
+		typedef struct subpassDescription {
+			VkSubpassDescriptionFlags       flags;
+			VkPipelineBindPoint             pipelineBindPoint;
+			std::vector<attachement> inputAttachments;
+			std::vector<attachement> colorAttachments;
+			std::vector<attachement> resolveAttachments;
+			attachement depthStencilAttachment;
+			uint32_t                        preserveAttachmentCount;
+			const uint32_t* pPreserveAttachments;
+		
+			bool operator==(const subpassDescription& rhs) const {
+				// Compare relevant members for equality with *this (lhs) and rhs
+				return (flags == rhs.flags &&
+					pipelineBindPoint == rhs.pipelineBindPoint);
+			}
+			operator std::vector<VkClearValue>() const 
+			{
+				std::vector<VkClearValue> clearValues;
+				for(attachement attachement : colorAttachments)
+				{
+					clearValues.emplace_back(attachement);
+				}
+				for (attachement attachement : inputAttachments)
+				{
+					clearValues.emplace_back(attachement);
+				}
+				for (attachement attachement : resolveAttachments)
+				{
+					clearValues.emplace_back(attachement);
+				}
+			}
+		private:
+			std::vector<VkAttachmentReference> _colorAttachements;
+			std::vector<VkAttachmentReference> _inputAttachements;
+		public:
+			operator VkSubpassDescription() 
+			{
+				_colorAttachements.resize(0);
+				_inputAttachements.resize(0);
+				VkSubpassDescription description{};
+				description.flags = flags;
+				description.pipelineBindPoint = pipelineBindPoint;
+				for(attachement attachement : inputAttachments) 
+				{
+					_inputAttachements.push_back(attachement);
+				}
+
+				for (attachement attachement : colorAttachments)
+				{
+					_colorAttachements.push_back(attachement);
+				}
+				description.pInputAttachments = _inputAttachements.data();
+				description.inputAttachmentCount = _inputAttachements.size();
+				description.pColorAttachments = _colorAttachements.data();
+				description.colorAttachmentCount = _colorAttachements.size();
+				return description;
+			}
+
+
+		} subpassDescription;
+
+		class subPassBuilder
+		{
+		public:
+			subPassBuilder() = default;
+			subPassBuilder& setBindPoint(const VkPipelineBindPoint point) { description.pipelineBindPoint = point; return *this; }
+			subPassBuilder& addInputAttachement(attachement& attachement, const VkImageLayout referenceLayout = VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL);
+			subPassBuilder& addColorAttachement(attachement& attachement, const VkImageLayout referenceLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+			subPassBuilder& setDepthStencilAttachement(const attachement& attachement);
+			subpassDescription build();
+		private:
+			std::vector<attachement> inputAttachements;
+			std::vector<attachement> colorAttachements;
+			attachement depthStencilAttachement = attachement();
+
+			std::vector<VkImageLayout> preserveAttachements;
+			subpassDescription description = subpassDescription();
+		};
+	}
+}
+
+#endif // !_SUBPASS_BUILDER_

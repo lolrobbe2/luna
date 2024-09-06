@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _TEXTURE_LOADER_
+#define _TEXTURE_LOADER_
 #include <core/assets/asset.h>
 namespace luna 
 {
@@ -11,5 +13,6 @@ namespace luna
 		};
 	}
 }
+#endif // !_TEXTURE_LOADER_
 
 

@@ -1,5 +1,4 @@
 #pragma once
-#include <lnpch.h>
 #include <core/application.h>
 #include <core/scene/scene.h>
 #include <core/object/classRegister.h>
@@ -21,21 +20,13 @@ namespace luna
 
 			instance = this;
 			Log::Init();
-			LN_PROFILE_SCOPE("engine startup");
-
-
-			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
-			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
-			assets::assetManager::init(true);
-			/*required valid asset manager!*/
-			renderer::renderer::init(mWindow);
-			renderer::renderer2D::init();
-			nodes::classRegister::registerClasses();
-			scripting::scriptingEngine::init();
-			methodDB::init();
-			networking::Ip::init();
-			platform::os::setCursorShape(platform::ARROW);
+			initCore();
+			LN_CORE_INFO("started vulkan device");
 			LN_PROFILE_END_SESSION();
+
+			/*required valid asset manager!*/
+			
+			platform::os::setCursorShape(platform::ARROW);
 			
 		}
 		application::~application()
@@ -43,49 +34,110 @@ namespace luna
 			LN_PROFILE_BEGIN_SESSION("luna engine shutdown", "./debug/luna-profile-shutdown.json");
 			layerStack.~layerStack();
 			platform::os::setCursorShape(platform::ARROW);
+			
+			
 			networking::Ip::shutdown();
 			networking::netSocket::terminate();
-			renderer::renderer2D::shutdown();
 			scripting::scriptingEngine::shutdown();
+			assets::assetManager::shutdown();
 			mWindow->~window();
 			LN_PROFILE_END_SESSION();
 		}
-
-		void application::run()
+		void application::renderImGui()
 		{
-			LN_PROFILE_BEGIN_SESSION("luna engine runtime", "./debug/luna-profile-runtime.json");
+
+				LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
+				p_renderer->beginImGuiScene();
+				// Ensure this code runs on the main thread
+				{
+					for (size_t i = 0; i < layerStack.size(); i++)
+						(*(layerStack.begin() + i))->onImGuiRender();
+				}
+				p_renderer->endImGuiScene();
+			
+
+		}
+		void application::renderingFunction()
+		{
+			renderImGuiSemaphore.post();
 			while (running)
 			{
+				if (!running)
+					break;
 
-				mWindow->onUpdate();
-				LN_PROFILE_SCOPE("drawing");
-				double time = glfwGetTime();
-				utils::timestep timestep = time - lastFrameTime;
-				lastFrameTime = time;
 
-				executeMainThreadQueue();
 
-				if (!minimized)
+				if (true)
 				{
-					renderer::renderer2D::BeginScene();
+					p_renderer->beginScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnUpdate");
 
 						for (utils::layer* layer : layerStack)
 							layer->onUpdate(timestep);
 					}
-					renderer::renderer2D::endScene();
-					{
-						LN_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
-						for (utils::layer* layer : layerStack)
-							layer->onImGuiRender();
-					}
-					renderer::renderer::newFrame();
+#ifdef IMGUI_API			
+					
+					
+						
+					renderImGuiSemaphore.post();
+					finishedRenderImGui.wait();
+
+					
+#endif // IMGUI_API
+					p_renderer->update();
 				}
-				
+
+				frameReady = false; // Indicate that rendering is done
 			}
+		}
+		void application::run()
+		{
+			LN_PROFILE_BEGIN_SESSION("luna engine runtime", "./debug/luna-profile-runtime.json");
+			renderThread = std::thread([this]() { this->renderingFunction(); });
+			renderImGuiSemaphore.wait();
+			while (running)
+			{
+				mWindow->onUpdate();
+				LN_PROFILE_SCOPE("drawing");
+	
+				double time = glfwGetTime();
+				utils::timestep tempTimestep{ time - lastFrameTime };
+				timestep.store(tempTimestep);
+				lastFrameTime = time;
+
+				
+
+				executeMainThreadQueue();
+
+				if (!minimized)
+				{
+					renderImGuiSemaphore.wait();
+					renderImGui();
+					finishedRenderImGui.post();
+
+				}
+			}
+
+			running = false;
+			renderThread.join();
 			LN_PROFILE_END_SESSION();
+		}
+
+		void application::initCore()
+		{
+			LN_PROFILE_SCOPE("engine startup");
+
+			mWindow = ref<vulkan::window>(vulkan::window::windowCreate());
+			mWindow->setEventCallBack(LN_BIND_EVENT_FN(onEvent));
+			assets::assetManager::init(true);
+			p_renderer = createScope<artemis::renderer>(mWindow);
+
+			nodes::classRegister::registerClasses();
+			scripting::scriptingEngine::init();
+			methodDB::init();
+			networking::Ip::init();
 		}
 
 		void application::onEvent(Event& e)

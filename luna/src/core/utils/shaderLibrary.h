@@ -1,17 +1,20 @@
 #pragma once
-#include<core/rendering/shader.h>
+#include <core/artemis/rendering/shader.h>
 namespace luna
 {
-	namespace utils
+	namespace artemis
 	{
 		class shaderLibrary
 		{
 		public:
-			static void init();
-			static void load(const std::string& filePath, const renderer::shaderStage& stage);
-			static ref<renderer::shader> get(const std::string& shaderName);
+			static void init(const VkDevice* device);
+			static void load(const std::string& filePath, const shaderStage& stage);
+			static ref<shader> get(const std::string& shaderName);
+			static void shutdown();
 		private:
-			inline static std::unordered_map<std::string, ref<renderer::shader>> shaders;
+			inline static VkDevice* _device;
+			inline static std::unordered_map<std::string, ref<shader>> shaders;
+			friend class shader;
 		};
 	}
 }

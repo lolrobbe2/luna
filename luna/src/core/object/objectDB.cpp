@@ -1,5 +1,4 @@
 #include "objectDB.h"
-#include <core/scene/scene.h>
 #include <core/scripting/scriptingEngine.h>
 #include <core/debug/debugMacros.h>
 namespace luna
@@ -11,8 +10,10 @@ namespace luna
 		LN_ERR_FAIL_NULL_MSG(info, "class was not found");
 		object* node = (object*)info->creation_func();
 		node->init(scene);
-		if (node->hasComponent<tagComponent>()) node->getComponent<tagComponent>().tag = className;
-		else node->addComponent<tagComponent>(className);
+		if (node->hasComponent<tagComponent>())
+			node->getComponent<tagComponent>().tag = className;
+		else 
+			node->addComponent<tagComponent>(className);
 	}
 	
 	object::object(uint64_t id, luna::scene* scene) : scene(scene)
@@ -23,7 +24,8 @@ namespace luna
 
 		auto it = std::find_if(idComponents.begin(), idComponents.end(), [&](entt::entity entity) { return getComponent<idComponent>().id == id; });
 
-		if (it != idComponents.end()) entityHandle = *it;
+		if (it != idComponents.end()) 
+			entityHandle = *it;
 	}
 
 	void object::init(luna::scene* scene)
@@ -52,13 +54,15 @@ namespace luna
 		
 		LN_ERR_FAIL_COND_MSG(className == "", "className was invalid! (check properties if a class was selected!)");
 
-		MonoClass* childClass = scripting::scriptingEngine::getScriptClass(className)->childClass;
+		MonoClass* childClass = scripting::scriptingEngine::getScriptClass(className)->childClass.getNative();
 
-		if (!connectedSignals.empty()) {
+		if (!connectedSignals.empty())
+		{
 			auto mapIter = connectedSignals.find(signal.signalName); //signalName already registered/ has connections
 			if (mapIter != connectedSignals.end())
 			{
 				auto vecIter = std::find_if(mapIter->second.begin(), mapIter->second.end(), [&](connectedSignal signal) {return signal.connectedObj != objectID; });
+				
 				if (vecIter != mapIter->second.end())
 					return mapIter->second.push_back({ objectID,mono_class_get_method_from_name(childClass,signal.signalName.c_str(),signal.paramCount) });
 			}

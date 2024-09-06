@@ -51,7 +51,7 @@ namespace luna {
 				}
 				InternalEndSession();
 			}
-			m_OutputStream.open(filepath);
+			m_OutputStream.open(filepath, std::ofstream::binary | std::ofstream::app);
 
 			if (m_OutputStream.is_open() && m_OutputStream.good())
 			{

@@ -18,16 +18,16 @@ namespace luna
 			virtual void init(luna::scene* scene) override;
 			virtual void draw() override;
 
-			int addItem(const std::string& pItem, const ref<renderer::texture>& pTexture = ref<renderer::texture>(), bool selectable = true);
-			int addIconItem(const ref<renderer::texture>& pItem, bool selectable = true);
+			int addItem(const std::string& pItem, const ref<assets::image> & pTexture = ref<assets::image> (), bool selectable = true);
+			int addIconItem(const ref<assets::image> & pItem, bool selectable = true);
 
 
 			void setItemText(int pIdx, const std::string& text);
 			std::string getItemText(int pIdx);
 
-			void setItemIcon(int pIdx, const ref<renderer::texture>& pIcon);
+			void setItemIcon(int pIdx, const ref<assets::image> & pIcon);
 
-			ref<renderer::texture> getItemIcon(int p_idx);
+			ref<assets::image> getItemIcon(int p_idx);
 
 			glm::vec2 getItemIconRegion(int pIdx);
 
@@ -59,7 +59,7 @@ namespace luna
 			void setItemCustomFgColor(int pIdx, const glm::vec4& pCustomFgColor);
 			glm::vec4 getItemCustomFgColor(int pIdx);
 
-			void setItemTagIcon(int p_idx, const ref<renderer::texture>& pTagIcon);
+			void setItemTagIcon(int p_idx, const ref<assets::image> & pTagIcon);
 
 			void setItemSelectable(int pIdx, bool selectable);
 

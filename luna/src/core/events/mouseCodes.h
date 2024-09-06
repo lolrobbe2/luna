@@ -1,5 +1,4 @@
 #pragma once
-#include <lnpch.h>
 #include <core/core.h>
 namespace luna
 {

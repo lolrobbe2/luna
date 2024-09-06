@@ -1,5 +1,5 @@
 #include "itemListNode.h"
-#include <core/rendering/renderer2D.h>
+#include <core/application.h>
 /* DISCLAIMER ALOT of code has been shamelesly copied from godot src*/
 namespace luna 
 {
@@ -11,9 +11,8 @@ namespace luna
 		
 		void itemListNode::init(luna::scene* scene)
 		{
-			this->scene = scene;
-			entityHandle = scene->create();
-			addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(itemListNode);
+			controlNode::init(scene);
+			LN_CLASS_TYPE_NAME(itemListNode);
 			addComponent<tagComponent>().tag = LN_CLASS_STRINGIFY(itemListNode);
 			addComponent<itemList>();
 			LN_CORE_INFO("node uuid = {0}", getUUID().getId());
@@ -22,37 +21,33 @@ namespace luna
 		void itemListNode::draw()
 		{
 			
-			/*
+			
 			auto& transform = getComponent<transformComponent>();
 			auto& itemListComponent = getComponent<itemList>();
 			glm::vec3 translation{ 0.0f,0.0f,0.0f };
 			glm::vec3 customTransform = { 0.0f,0.0f,0.0f };
 			static glm::vec2 glyphDimensions;
-			if (itemListComponent.font) glyphDimensions = glm::vec2(itemListComponent.font->getGlyph('A')->getWidth(), itemListComponent.font->getGlyph('A')->getHeight());
+			if (itemListComponent.font) glyphDimensions = *itemListComponent.font->getGlyph('A');
 			glm::vec2 advance{};
-			advance.x = (glyphDimensions.x / renderer::renderer::getSceneDimensions().x) + transform.translation.x;
-			advance.y = (glyphDimensions.y / renderer::renderer::getSceneDimensions().y) + transform.translation.y;
+			advance.x = (glyphDimensions.x / RENDERER->getSceneDimensions().x) + transform.translation.x;
+			advance.y = (glyphDimensions.y / RENDERER->getSceneDimensions().y) + transform.translation.y;
 			for (item& item : itemListComponent.items)
 			{
-				glm::vec2 size{ 15,3 };
+				glm::vec2 size{ 1,1 };
 				size.x *= transform.scale.x;
 				size.y *= transform.scale.y;
-				if (renderer::renderer2D::drawQuad(translation + transform.translation, size + glm::vec2(0.01f), item.customBg))
-				{
-					item.selectable = false;
-					return;
-				}
-				else item.selectable = true;
+				RENDERER->submitRenderTask([=]() {RENDERER->drawQuadPosColor(translation + transform.translation, size + glm::vec2(0.1f), item.customBg); });
+	
 
-				renderer::renderer2D::drawQuad(translation + transform.translation, size, item.customFg);
+				RENDERER->submitRenderTask([=]() {RENDERER->drawQuadPosColor(translation + transform.translation, size, item.customFg); });
 				customTransform = translation;
 				customTransform = customTransform - glm::vec3(size.x / 2, -size.y / 4.0f, 0.0f);
-				if (itemListComponent.font) renderer::renderer2D::drawLabel(customTransform + transform.translation, { transform.scale.x,transform.scale.y }, itemListComponent.font, item.text);
+				if (itemListComponent.font) RENDERER->submitRenderTask([=]() {RENDERER->drawLabel(customTransform + transform.translation, glm::vec2(transform.scale.x, transform.scale.y), itemListComponent.font, item.text, item.iconModulate); });
 				item.rectCache.start = size;
 				item.rectCache.position = translation;
 				translation.y += size.y;
 			}
-			*/
+			
 			/*
 			_check_shape_changed();
 
@@ -375,7 +370,7 @@ namespace luna
 			item& item = itemList.items[pIdx];
 		}
 
-		int itemListNode::addItem(const std::string& pItem, const ref<renderer::texture>& pTexture, bool selectable)
+		int itemListNode::addItem(const std::string& pItem, const ref<assets::image> & pTexture, bool selectable)
 		{
 			item item;
 			item.icon = pTexture;
@@ -392,7 +387,7 @@ namespace luna
 			//notify_property_list_changed();
 			return itemId;
 		}
-		int itemListNode::addIconItem(const ref<renderer::texture>& pItem, bool selectable) 
+		int itemListNode::addIconItem(const ref<assets::image> & pItem, bool selectable) 
 		{
 			item item;
 			item.icon = pItem;
@@ -424,7 +419,7 @@ namespace luna
 			return itemList.items[pIdx].text;
 		}
 
-		void itemListNode::setItemIcon(int pIdx, const ref<renderer::texture>& pIcon) 
+		void itemListNode::setItemIcon(int pIdx, const ref<assets::image> & pIcon) 
 		{
 			auto& itemList = getComponent<luna::itemList>();
 			if (pIdx < 0) pIdx += getItemCount();
@@ -433,7 +428,7 @@ namespace luna
 			itemList.items[pIdx].icon = pIcon;
 			itemList.shapeChanged = true;
 		}
-		ref<renderer::texture> itemListNode::getItemIcon(int pIdx)
+		ref<assets::image> itemListNode::getItemIcon(int pIdx)
 		{
 			//ERR_FAIL_INDEX_V(pIdx, items.size(), ref<Texture2D>());
 			auto& itemList = getComponent<luna::itemList>();
@@ -483,7 +478,7 @@ namespace luna
 			return itemList.items[pIdx].customFg;
 		}
 
-		void itemListNode::setItemTagIcon(int p_idx, const ref<renderer::texture>& pTagIcon) 
+		void itemListNode::setItemTagIcon(int p_idx, const ref<assets::image> & pTagIcon) 
 		{
 			if (p_idx < 0) p_idx += getItemCount();
 			//ERR_FAIL_INDEX(p_idx, items.size());

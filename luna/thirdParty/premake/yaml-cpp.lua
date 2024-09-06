@@ -1,6 +1,7 @@
 project "yaml-cpp"
 	kind "StaticLib"
 	language "C++"
+	cppdialect "c++20"
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 	files
@@ -10,10 +11,7 @@ project "yaml-cpp"
 		
 		"../yaml-cpp/include/**.h"
 	}
-    buildoptions
-    {
-        "/MD"
-    }
+
 	includedirs
 	{
 		"../yaml-cpp/include"
@@ -24,18 +22,17 @@ project "yaml-cpp"
 	}
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "off"
 
 		filter "configurations:debug"
-			runtime "Debug"
+
 			symbols "on"
 
 		filter "configurations:release"
-			runtime "Release"
+
 			optimize "on"
 
 		filter "configurations:distribution"
-			runtime "Release"
+
 			optimize "on"
 
 

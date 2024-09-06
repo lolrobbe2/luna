@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _OBJECT_STORAGE_
+#define _OBJECT_STORAGE_
 #include <core/utils/vectorCache.h>
 namespace luna
 {
@@ -105,7 +106,7 @@ namespace luna
 					if (iterator != objectMemory.end())
 					{
 						iterator->second = _value;
-						return { storageOpSucces,_value }
+						return { storageOpSucces,_value };
 					}
 				case cacheResult::cacheInvalidHandle:
 					return { storageInvalidHandle,value() };
@@ -155,4 +156,4 @@ namespace luna
 	}
 }
 
-
+#endif 

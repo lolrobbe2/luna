@@ -1,5 +1,4 @@
 #include "editorLayer.h"
-#include <core/rendering/renderer2D.h>
 #include <core/input.h>
 #include <core/platform/platformUtils.h>
 #include <core/scene/sceneSerializer.h>
@@ -29,6 +28,7 @@ namespace luna
 		contentPanel = ref<contentBrowserPanel>(new contentBrowserPanel());
 
 		utils::scriptUtils::reloadAssamblies();
+		RENDERER->setTransition(true);
 	}
 	void editorLayer::onAttach()
 	{
@@ -64,6 +64,11 @@ namespace luna
 				if (ImGui::MenuItem("close project", "Ctrl+Shift+L"))
 				{
 					application::application::get().pushLayer(new projectLayer(this));
+					//when project is closed don't bother drawing anything else!!
+					utils::scriptUtils::setContext(nullptr);
+					ImGui::EndMenu();
+					ImGui::EndMainMenuBar();
+					return;
 				}
 				ImGui::EndMenu();
 			}
@@ -96,12 +101,12 @@ namespace luna
 			glm::vec2 windowMousePos;
 			windowMousePos.x = mousePos.x - scrollPos.x;
 			windowMousePos.y = mousePos.y - scrollPos.y;
-			renderer::renderer::setSceneMouse(windowMousePos);
-			renderer::renderer::setSceneDimensions({ viewportPanelSize.x, viewportPanelSize.y });
+			RENDERER->setSceneMousePos(windowMousePos);
+			RENDERER->setSceneDimensions({ viewportPanelSize.x, viewportPanelSize.y });
 
 			std::string text = (activeScene->m_IsRunning) ? "stop" : "play";
-			ImVec2 buttonSize = { ImGui::GetContentRegionAvail().x + 1.0f,30.0f };
-			ImGui::Image(renderer::renderer::getWindowImage(), ImGui::GetContentRegionAvail());
+			ImVec2 buttonSize = { viewportPanelSize.x + 1.0f,30.0f };
+			ImGui::Image(RENDERER->getWindowImage(),  viewportPanelSize);
 			ImGui::SameLine(0.000001f);
 			if(ImGui::Button(text.c_str(), buttonSize));
 			{

@@ -196,7 +196,7 @@ namespace luna
 
 		std::string Ip::resolveHostname(const std::string& p_hostname, Ip::Type p_type) {
 			const std::vector<std::string> addresses = resolveHostnameAddresses(p_hostname, p_type);
-			return addresses.size() ? addresses[0] : ipAddress();
+			return addresses.size() ? addresses[0] : "0.0.0.0";
 		}
 
 		std::vector<std::string> Ip::resolveHostnameAddresses(const std::string& p_hostname, Type p_type) {

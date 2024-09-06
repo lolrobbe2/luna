@@ -1,5 +1,4 @@
 #pragma once
-#include <lnpch.h>
 #include <core/events/event.h>
 #include <core/events/mouseCodes.h>
 namespace luna {

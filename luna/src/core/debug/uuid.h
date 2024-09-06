@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _UUID
-#define _UUID
+#ifndef _UUID_
+#define _UUID_
 #include <core/core.h>
 namespace luna
 {
@@ -22,6 +22,7 @@ namespace luna
 		 * \param uuid 
 		 */
 		uuid(uint64_t uuid);
+		~uuid() = default;
 		/**
 		 * @brief returns the uuid as uint64_t.
 		 */

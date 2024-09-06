@@ -1,14 +1,22 @@
-#pragma once
+#ifndef _APPLICATION_
+#define _APPLICATION_
+
 #include <core/core.h>
 #include <core/platform/platform.h>
-#include <core/vulkan/window/window.h>
 #include <core/events/event.h>
 #include <core/events/applicationEvent.h>
-#include <core/rendering/renderer2D.h>
 #include <core/utils/objectStorage.h>
 #include <core/utils/layerStack.h>
 #include <core/scene/scene.h>
+#include <core/artemis/renderer.h>
+#include <core/utils/semaphore.h>
 
+#ifndef RENDERER
+/**
+ helper macro to get the renderer from the applcation. because the renderer is owned by the application.
+ */
+#define RENDERER application::application::get().getRenderer()
+#endif
 
 int main(int argc, char** argv);
 
@@ -16,7 +24,7 @@ namespace luna
 {
 	namespace application
 	{
-		class LN_API application
+		class  LN_API application
 		{
 		public:
 			/**
@@ -25,11 +33,14 @@ namespace luna
 			 */
 			application();
 			virtual ~application();
+			void renderImGui();
+			void renderingFunction();
 			/**
 			 * @brief the main loop of the application.
 			 * 
 			 */
 			void run();
+			void initCore();
 			/**
 			 * @brief the main event callback of the application.
 			 * 
@@ -49,6 +60,7 @@ namespace luna
 			void pushLayer(utils::layer* layer);
 			void pushOverlay(utils::layer* layer);
 			void popLayer(utils::layer* layer);
+			artemis::renderer* getRenderer() { return p_renderer.get(); }
 			static application& get();
 		private:
 			friend class os;
@@ -56,19 +68,30 @@ namespace luna
 			scene scene;
 			utils::layerStack layerStack;
 			double lastFrameTime = 0.0f;
-			bool running = true;
 			bool minimized = false;
 
 			std::vector<std::function<void()>> mainThreadQueue;
 			std::mutex mainThreadQueueMutex;
+			scope<artemis::renderer> p_renderer;
 		private:
+			std::atomic<bool> running = true;
+			std::atomic<bool> frameReady = false;
+			std::atomic<bool> imguiRendering = false;
+			std::condition_variable renderCondition;
+			std::thread renderThread;
 
+			semaphore renderImGuiSemaphore;
+			semaphore finishedRenderImGui;
+
+
+			std::atomic<utils::timestep> timestep;  // Shared timestep variable
 			friend int ::main(int argc, char** argv);
 		};
 		/**
 		 * @brief creates the application and returns a pointer to the appliccation.
 		 */
-		application* createApplication();
+		extern application* createApplication();
 	}
 }
 
+#endif 

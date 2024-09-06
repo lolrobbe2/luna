@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _KEY_EVENT_
+#define _KEY_EVENT_
 #include <core/events/event.h>
 #include <core/events/keyCodes.h>
 
@@ -69,3 +71,4 @@ namespace luna {
 		EVENT_CLASS_TYPE(KeyTyped)
 	};
 }
+#endif

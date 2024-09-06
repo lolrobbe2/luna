@@ -10,6 +10,9 @@
 #include <core/application.h>
 
 #include <core/object/objectDB.h>
+#include "monoClass.h"
+#include "monoMethod.h"
+
 namespace luna
 {
 	namespace scripting
@@ -109,7 +112,7 @@ namespace luna
 		bool scriptingEngine::loadAssembly(const std::filesystem::path& filepath)
 		{
 			// Create an App Domain
-			s_Data->appDomain = mono_domain_create_appdomain("lunaScriptRt", nullptr);
+			s_Data->appDomain = mono_domain_create_appdomain((char*)"lunaScriptRt", nullptr);
 			mono_domain_set(s_Data->appDomain, true);
 
 			s_Data->coreAssemblyFilepath = filepath;//todo pdb
@@ -279,17 +282,17 @@ namespace luna
 				else
 					fullName = className;
 
-				MonoClass* monoClass = mono_class_from_name(s_Data->appImage, nameSpace, className);
-				MonoClass* monoParentClass = mono_class_get_parent(monoClass);
-				std::string parentName = mono_class_get_name(monoParentClass);
-				if (!(rootClasses.find(pascalToCamel(parentName)) != rootClasses.end() || parentName == "Node"))
+				monoClass _monoClass = mono_class_from_name(s_Data->appImage, nameSpace, className);
+				monoClass _monoParentClass = _monoClass.getParent();
+				
+				if (!(rootClasses.find(pascalToCamel(_monoParentClass.getName())) != rootClasses.end() || _monoParentClass.getName() == "Node"))
 				{
 					LN_CORE_WARN("[scriptingEgine] unrecognized class found {}.{}", nameSpace, className);
 					break;
 				}
-				scriptClass* scriptCLass = new scriptClass(monoClass, rootClasses.find(pascalToCamel(parentName))->second);
+				scriptClass* scriptCLass = new scriptClass(_monoClass, rootClasses.find(pascalToCamel(_monoParentClass.getName()))->second);
 				appClasses.emplace(className,scriptCLass);
-				getAvailableSignals(monoClass);
+				getAvailableSignals(_monoClass);
 			}
 
 		}
@@ -321,7 +324,7 @@ namespace luna
 			return s_Data->m_Context;
 		}
 
-		void scriptingEngine::secContext(scene* scene)
+		void scriptingEngine::setContext(scene* scene)
 		{
 			s_Data->m_Context = scene;
 		}
@@ -339,28 +342,14 @@ namespace luna
 			return mono_string_new(s_Data->appDomain,string.c_str());
 		}
 
-		void scriptingEngine::getAvailableSignals(MonoClass* monoClass)
+		void scriptingEngine::getAvailableSignals(monoClass _monoClass)
 		{
-			if (!monoClass) return;
-			MonoMethod* method;
-			void* iter = nullptr;
+			if (!_monoClass) return;
 
-			while ((method = mono_class_get_methods(monoClass, &iter)) != nullptr)
-			{
-				//LN_CORE_INFO("method: {0}", mono_method_get_name(method));
-				MonoCustomAttrInfo* info = mono_custom_attrs_from_method(method);
-				if (info && mono_custom_attrs_has_attr(info, mono_class_from_name(s_Data->coreImage, "Luna", "Signal")))
-				{
-					MonoMethodSignature* signature = mono_method_signature(method);
-					uint8_t paramAmount = mono_signature_get_param_count(signature);
-					signalDB::registerSignal(signal({ mono_method_get_name(method),paramAmount ,method }), std::string(mono_class_get_name(monoClass)));
-				}
-			}
-		}
 
-		MonoMethodSignature* scriptingEngine::getSignature(MonoMethod* method)
-		{
-			return mono_method_get_signature(method,s_Data->appImage,0);
+			for (const monoMethod& method : _monoClass.getMethodsAttribute("Signal"))
+				signalDB::registerSignal(*new signal({method.getName(),(uint8_t)method.getParamCount(),method.getNative()}),_monoClass.getName());
+			
 		}
 
 		bool scriptingEngine::hasFlag(MonoMethod* method, uint32_t flag)
@@ -373,20 +362,19 @@ namespace luna
 		rootClass::rootClass(MonoClass* baseClass) : root(baseClass)
 		{
 			MonoMethod* method= nullptr;
-
 		}
 		MonoArray* rootClass::createArray(const size_t arraySize)
 		{
 			return mono_array_new(s_Data->appDomain, root, arraySize);
 		}
 
-		scriptClass::scriptClass(MonoClass* _childClass, MonoClass* _baseClass) : childClass(_childClass),baseClass(_baseClass)
+		scriptClass::scriptClass(monoClass _childClass, monoClass _baseClass) : childClass(_childClass),baseClass(_baseClass)
 		{
 			//LN_CORE_INFO("creating scriptCLass: {0}", mono_class_get_name(childClass));
-			constructor = mono_class_get_method_from_name(baseClass, ".ctor", 1);
-			readyMethod = mono_class_get_method_from_name(childClass, "Ready", 0);
-			processMethod = mono_class_get_method_from_name(childClass, "Process", 1);
-			physicsProcessMethod = mono_class_get_method_from_name(childClass, "PhysicsProcess", 1);
+			constructor = baseClass.getMethod(".ctor", 1);
+			readyMethod = childClass.getMethod("Ready", 0);
+			processMethod = childClass.getMethod("Process", 1);
+			physicsProcessMethod = childClass.getMethod("PhysicsProcess", 1);
 
 			//get all the declared signals
 			//signals can be declared in C# by creating a virtual function with the Signal attribute.
@@ -394,9 +382,9 @@ namespace luna
 		}
 
 
-		MonoObject* scriptClass::instance()
+		monoObject scriptClass::instance()
 		{
-			return scriptingEngine::instanciate(childClass);
+			return monoObject(childClass);
 		}
 
 		void scriptClass::queueFree()

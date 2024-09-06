@@ -165,7 +165,7 @@ namespace Luna
         /// <summary>
         /// node name
         /// </summary>
-        protected string Name { get { NodeGetName(ObjectId, out string Name); return Name; } set => NodeSetName(ObjectId,value); }
+        public string Name { get { NodeGetName(ObjectId, out string Name); return Name; } set => NodeSetName(ObjectId,value); }
 
         #endregion
     }

@@ -34,7 +34,7 @@ namespace luna
         ref<project> projectSerializer::deSerialize(const std::filesystem::path& projectPath)
         {
             std::ifstream stream(projectPath);
-            if (!stream.is_open()) return false;
+            if (!stream.is_open()) return nullptr;
             std::stringstream strstream;
             strstream << stream.rdbuf();
             stream.close();

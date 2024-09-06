@@ -2,7 +2,7 @@
 #include <core/events/mouseEvent.h>
 #include <core/events/keyEvent.h>
 #include <core/debug/typedefs.h>
-#include <core/rendering/renderer2D.h>
+#include <core/application.h>
 #define SCROLL_DISTANCE_RATIO 0.9
 #define THUMBTRACK_BASE_OFFSET SCROLL_DISTANCE_RATIO / 2.0f
 namespace luna 
@@ -38,7 +38,7 @@ namespace luna
 					auto transform = getBaseThumbTrackTransform();
 
 					glm::vec2 normalizedScrollPos = transform.translation - (transform.scale / 2.0f);
-					glm::vec2 normalizedMousePos = (renderer::renderer::getSceneMousePos()) / renderer::renderer::getSceneDimensions();
+					glm::vec2 normalizedMousePos = (RENDERER->getSceneMousePos()) / RENDERER->getSceneDimensions();
 
 					normalizedMousePos.x -= 0.5f;
 					normalizedMousePos.y -= 0.5f;
@@ -96,8 +96,8 @@ namespace luna
 		void scrollBar::draw()
 		{
 			LN_ERR_FAIL_COND_MSG(entityHandle == (entt::entity)-1, "invalid entity");
-			renderer::renderer2D::drawQuad(getComponent<transformComponent>().getTransform(), { 36.0f,37.0f,38.0f,0.8f });
-			renderer::renderer2D::drawQuad(getThumbTrackTransform().getTransform(), { 228.0f,223.0f,235.0f,1.0f });
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransColor(getComponent<transformComponent>().getTransform(), glm::vec4(36.0f, 37.0f, 38.0f, 0.8f)); });
+			RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransColor(getThumbTrackTransform().getTransform(), glm::vec4(228.0f, 223.0f, 235.0f, 1.0f)); });
 		}
 		transformComponent scrollBar::getThumbTrackTransform()
 		{
@@ -119,7 +119,7 @@ namespace luna
 		}
 		bool scrollBar::isThumbTrackHovered(transformComponent transform)
 		{
-			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			glm::vec2 normailizedMousePos = RENDERER->getSceneMousePos() / RENDERER->getSceneDimensions();
 			normailizedMousePos.x -= 0.5f;
 			normailizedMousePos.y -= 0.5f;
 
@@ -133,7 +133,7 @@ namespace luna
 		bool scrollBar::isScrollBarHovered()
 		{
 			transformComponent transform = getComponent<transformComponent>();
-			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			glm::vec2 normailizedMousePos = RENDERER->getSceneMousePos() / RENDERER->getSceneDimensions();
 			normailizedMousePos.x -= 0.5f;
 			normailizedMousePos.y -= 0.5f;
 

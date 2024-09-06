@@ -1,0 +1,39 @@
+#pragma once
+#include <core/platform/windows/windowsWindow.h>
+#define NULL_ATTACHEMENT_REF UINT32_MAX
+namespace luna 
+{
+	namespace artemis 
+	{
+		class frameBuffer;
+		class renderPass;
+		class swapchain
+		{
+		public:
+			void resize(uint32_t width, uint32_t height);
+			const size_t size() { return m_swapchain.image_count; }
+			~swapchain() { vkb::destroy_swapchain(m_swapchain); }
+			LN_API _ALWAYS_INLINE_ VkViewport& getViewport();
+			_ALWAYS_INLINE_ operator VkFormat() const { return m_swapchain.image_format; }
+			_ALWAYS_INLINE_ operator VkSwapchainKHR() const { return m_swapchain.swapchain; }
+			_ALWAYS_INLINE_ operator VkExtent2D() const { return m_swapchain.extent; }
+			_ALWAYS_INLINE_ operator VkRect2D() const {
+				VkRect2D renderArea;
+				renderArea.extent = m_swapchain.extent;
+				renderArea.offset = { 0,0 };
+				return renderArea;
+			}
+			bool invalid() { return m_swapchain.extent.width <= 0 || m_swapchain.extent.height <= 0; }
+			frameBuffer& getFrameBuffer(const ref<renderPass> p_renderPass,uint32_t index, const VkFramebufferCreateFlags flags, const uint32_t layers);
+			VkResult acquireNextImage(uint64_t timeout, VkSemaphore semaphore, VkFence fence, uint32_t* pImageIndex);
+		protected:
+			friend class device;
+			swapchain(const vkb::Device* device, uint32_t width, uint32_t height, uint32_t imageCount);
+		private:
+			vkb::Swapchain m_swapchain;
+			const vkb::Device* device = nullptr;
+		};
+	}
+}
+
+

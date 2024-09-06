@@ -1,0 +1,115 @@
+#include "renderCommandBuffer.h"
+#include <core/artemis/device/descriptorPool.h>
+#include <core/debug/debugMacros.h>
+#include <core/assets/publicTypes/image.h>
+#include <core/artemis/rendering/sampler.h>
+namespace luna
+{
+	namespace artemis 
+	{
+		renderCommandBuffer::renderCommandBuffer(const ref<allocator> p_allocator, descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler, uint8_t maxFramesInflight) : commandsMutex(std::make_shared<std::shared_mutex>())
+		{
+			cpuBuffer = p_allocator->allocateBuffer(sizeof(drawCommand) * LN_DRAW_COMMANDS_AMOUNT, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT);
+			cpuIndicesBuffer = p_allocator->allocateBuffer(LN_DRAW_COMMANDS_AMOUNT * 6, CPU_TO_GPU, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT);
+			gpuBuffer = p_allocator->allocateBuffer(cpuBuffer.getSize() * 4, GPU_ONLY, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
+			p_commandsBase = (drawCommand*) cpuBuffer.getData();
+			p_commands = p_commandsBase;
+
+
+			computeDescriptorSet = computePool.allocateDescriptorSet();
+			graphicsDescriptorSets = graphicsPool.allocateDescriptorSets(maxFramesInflight);
+			
+			VkDescriptorBufferInfo info;
+			info.buffer = cpuBuffer;
+			info.offset = 0;
+			info.range = VK_WHOLE_SIZE;
+
+			VkDescriptorBufferInfo vertexInfo;
+			vertexInfo.buffer = gpuBuffer;
+			vertexInfo.offset = 0;
+			vertexInfo.range = VK_WHOLE_SIZE;
+			computeDescriptorSet.write(0, &info);
+			computeDescriptorSet.write(1, &vertexInfo);
+			computeDescriptorSet.update();
+			freeImageIndeces.resize(LN_IMAGE_BATCH_SIZE, freeImageIndeces.size());
+			
+			for (size_t i = 0; i < LN_IMAGE_BATCH_SIZE; i++)
+			{
+				freeImageIndeces[i] = i;
+
+				descriptorInfos[i].imageLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+				descriptorInfos[i].imageView = VK_NULL_HANDLE;
+				descriptorInfos[i].sampler = VK_NULL_HANDLE;
+			}
+			//TODO Sampler!
+			samplerInfo.sampler = *sampler;
+			for (descriptorSet& graphicsDescriptorSet : graphicsDescriptorSets)
+			{
+				graphicsDescriptorSet.write(0, &samplerInfo);
+				graphicsDescriptorSet.write(1, descriptorInfos.data());
+				graphicsDescriptorSet.update();
+			}
+		
+		}
+		bool renderCommandBuffer::addCommand(const drawCommand& command, int64_t drawIndex)
+		{
+			std::shared_lock<std::shared_mutex> lock(*commandsMutex);
+			if (commandsAmount < LN_DRAW_COMMANDS_AMOUNT) {
+				p_commandsBase[drawIndex] = command;
+				commandsAmount++;
+				return false;
+			}
+			return true; //buffer full create new buffer;
+		}
+		void renderCommandBuffer::reset()
+		{
+			p_commands = p_commandsBase;
+			commandsAmount = 0;
+		}
+		bool renderCommandBuffer::bind(ref<assets::image> image,uint32_t currentDescriptorSetIndex)
+		{
+			if (image->isBound()) return true;
+			if(freeImageIndeces.size())
+			{
+				uint8_t index = freeImageIndeces.back();
+				freeImageIndeces.pop_back();
+				descriptorInfos[index].imageView = *image;
+				descriptorInfos[index].imageLayout = *image;
+				image->bind(currentDescriptorSetIndex, index,&freeImageIndeces);
+				images[index] = image;
+				return true;
+			} 
+			return false;
+		}
+	
+		void renderCommandBuffer::unbind(uint8_t index)
+		{
+			LN_ERR_FAIL_COND_MSG(std::find(freeImageIndeces.begin(), freeImageIndeces.end(), index) != freeImageIndeces.end(), "[Artemis] index is already available in batch");
+			freeImageIndeces.push_back(index);
+			descriptorInfos[index].imageView = VK_NULL_HANDLE;
+			descriptorInfos[index].imageLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+			images[index]->unbind();
+			images[index] = nullptr;
+		}
+		
+		void renderCommandBuffer::generateIndices()
+		{
+			uint32_t offset = 0;
+			uint32_t* quadIndices = cpuIndicesBuffer.getData<uint32_t>();
+			//*2 because a rectangle/quad exists out of 2 triangles.
+			for (uint32_t i = 0; i < commandsAmount * 6; i += 6)
+			{
+				quadIndices[i + 0] = offset + 0;
+				quadIndices[i + 1] = offset + 1;
+				quadIndices[i + 2] = offset + 2;
+
+				quadIndices[i + 3] = offset + 2;
+				quadIndices[i + 4] = offset + 3;
+				quadIndices[i + 5] = offset + 0;
+
+				offset += 4;
+			}
+		}
+	}
+}
+

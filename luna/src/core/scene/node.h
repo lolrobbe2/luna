@@ -1,5 +1,7 @@
-#pragma once
+#ifndef _NODE_
+#define _NODE_
 #include <core/object/objectDB.h>
+
 namespace luna 
 {
 	class LN_API scene;
@@ -43,3 +45,5 @@ namespace luna
 	};
 
 }
+
+#endif

@@ -1,7 +1,11 @@
 #pragma once
+#ifndef _SCRIPT_UTILS_
+#define _SCRIPT_UTILS_
+
 #include <core/core.h>
 #include <core/debug/uuid.h>
 #include <core/object/signal.h>
+#include <core/scripting/monoObject.h>
 
 namespace luna
 {
@@ -30,16 +34,17 @@ namespace luna
 			void process(float deltaTime);
 			void invokeSignal(const connectedSignal& signal, void** params);
 			void connectSignal(const signal& signal, uint64_t entity);
-			MonoObject* getInstance() { return instance; };
+			std::string name();
+			scripting::monoObject& getInstance() { return *instance; };
 			MonoClass* getClass();
 		private: 
 			scripting::scriptClass* m_ScriptClass;
 			uint32_t handle;
 			uuid entityId;
-			MonoObject* instance;
+			ref<scripting::monoObject> instance;
 			std::unordered_map<std::string,std::vector<connectedSignal>> connectedSignals;
 		};
 	}
 }
 
-
+#endif // !_SCRIPT_UTILS_

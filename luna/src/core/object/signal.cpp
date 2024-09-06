@@ -31,12 +31,12 @@ namespace luna
 #pragma region signalDB
 	static std::unordered_map<std::string, std::vector<signal>> registeredSignals;
 
-	void signalDB::registerSignal(signal& _signal, std::string& className)
+	void signalDB::registerSignal(const signal& _signal,const std::string& className)
 	{
-		auto& signalsIterator = registeredSignals.find(className);
+		const auto& signalsIterator = registeredSignals.find(className);
 		if(signalsIterator != registeredSignals.end())
 		{
-			auto& res = std::find_if(signalsIterator->second.begin(), signalsIterator->second.end(), [&](signal m_signal) {
+			const auto& res = std::find_if(signalsIterator->second.begin(), signalsIterator->second.end(), [&](signal m_signal) {
 				return m_signal.signalName == _signal.signalName;
 				});
 			if(res == signalsIterator->second.end()) return signalsIterator->second.push_back(_signal); //signal not registered
@@ -49,10 +49,10 @@ namespace luna
 	}
 	void signalDB::deregisterSignal(std::string& signalName, std::string& className)
 	{
-		auto& signalsIterator = registeredSignals.find(className);
+		const auto& signalsIterator = registeredSignals.find(className);
 		LN_ERR_FAIL_COND_MSG(signalsIterator == registeredSignals.end(), "class was not found! (" + className + ")");
 
-		auto& res = std::find_if(signalsIterator->second.begin(), signalsIterator->second.end(), [&](signal m_signal) {
+		const auto& res = std::find_if(signalsIterator->second.begin(), signalsIterator->second.end(), [&](signal m_signal) {
 			return m_signal.signalName == signalName;
 			});
 		if (res != signalsIterator->second.end()) signalsIterator->second.erase(res);

@@ -4,7 +4,7 @@ namespace luna
 {
 	namespace nodes
 	{
-		class LN_API colorRectNode : public controlNode
+		class colorRectNode : public controlNode
 		{
 		public:
 			colorRectNode() = default;

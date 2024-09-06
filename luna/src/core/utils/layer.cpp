@@ -1,4 +1,3 @@
-#include "lnpch.h"
 #include "layer.h"
 
 namespace luna 

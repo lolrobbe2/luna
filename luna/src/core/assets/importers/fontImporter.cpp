@@ -1,7 +1,8 @@
 #include "fontImporter.h"
-#include <core/vulkan/utils/vulkanAllocator.h>
-#include <core/vulkan/device/vulkanDevice.h>
-#include <core/vulkan/rendering/vulkanTexture.h>
+#include <core/assets/assetImporter.h>
+#include <core/artemis/device/allocator.h>
+#include <stb_truetype.h>
+#include <core/assets/publicTypes/font.h>
 namespace luna 
 {
     namespace assets
@@ -33,16 +34,7 @@ namespace luna
 		};
 
 
-		/**
-		 * @brief allocates and creates the atlas texture from wich glyphs can be sampled from.
-		 *
-		 */
-		static void createFontTexture(int width, int height, VkImage* imageHandle, VkImageView* imageViewHandle, VkFormat imageFormat)
-		{
-			int imageSize = width * height;
-			VkResult result = utils::vulkanAllocator::createImage(imageHandle, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY, { (unsigned int)width,(unsigned int)height,1 }, imageFormat);
-			utils::vulkanAllocator::createImageView(imageViewHandle, *imageHandle, imageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
-		}
+		
 
 		/*
 		 * @brief creates a font glyph and gurantees the texture height and width to be 300 by 300 pixels.
@@ -55,7 +47,7 @@ namespace luna
 		 * \param newYoff: relative yoffset.
 		 * \return stbi_uc* pointer to texure data.
 		 */
-		static stbi_uc* createGlyph(const stbtt_fontinfo* info, int codePoint, float* xscale, float* yscale, int* newXoff, int* newYoff)
+		static stbi_uc* createGlyph(const stbtt_fontinfo* info, int codePoint, float* xscale, float* yscale, int* newXoff, int* newYoff, int* advanceWidth, int* leftSideBearing)
 		{
 			LN_PROFILE_FUNCTION();
 			int xoff, yoff;
@@ -66,7 +58,25 @@ namespace luna
 			*yscale = ((float)GLYPH_HEIGHT - 1) / (float)charHeight; //299.0f instead of 300.0f beacuse of floating point "error".
 			
 			int newCharWidth, newCharHeight;
+			/**
+			 * @brief The advance width, which determines how much to move the cursor
+			 *        after drawing the character.
+			 *
+			 * The advance width is the h	orizontal distance to move the cursor to the
+			 * next character's position after rendering this character. It is the
+			 * distance between the current character's origin and the next character's
+			 * origin in a horizontal layout.
+			 */
 
+			 /**
+			  * @brief The left side bearing, which is the distance from the current
+			  *        cursor position to the left edge of the character.
+			  *
+			  * The left side bearing defines the space between the start of the
+			  * character's bounding box and the current cursor position. It can be
+			  * positive (indicating some space) or negative (indicating an overlap).
+			  */
+			stbtt_GetCodepointHMetrics(info, codePoint, advanceWidth, leftSideBearing);
 			return stbtt_GetCodepointBitmap(info, *xscale, *yscale, codePoint, &newCharWidth, &newCharHeight, &xoff, &yoff);
 		}
 
@@ -80,42 +90,41 @@ namespace luna
 			delete glyph;
 		}
 
-		static void* writeGlyphsIntoBuffer(VkBuffer* imageBuffer, VkImage& imageHandle, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphAdvances, VkFormat imageFormat)
+		static void writeGlyphsIntoBuffer(artemis::buffer& buffer, stbtt_fontinfo* fontInfo, glm::vec2* glypScales, glm::vec2* glyphOffests,glm::vec2* glyphAdvances)
 		{
 			LN_PROFILE_FUNCTION();
-			utils::vulkanAllocator::createBuffer(imageBuffer, FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU, VMA_ALLOCATION_CREATE_MAPPED_BIT);
-			void* bufferBase = utils::vulkanAllocator::getAllocationInfo((uint64_t)*imageBuffer).pMappedData;
-			imageAtlas* atlas = (imageAtlas*)bufferBase;
+			imageAtlas* atlas = (imageAtlas*)buffer.getData();
 			uint64_t offset = 0;
 			for (size_t i = 0; i < 256; i++)
 			{
-
+				float advanceScale = stbtt_ScaleForPixelHeight(fontInfo, 100);
 				int index = i - GLYPH_START_INDEX;
 				glm::vec2 scale;
 				int offsetx, offsety;
+				int advanceWidth, leftSideBearing;
 
-				stbi_uc* fontGlyph = createGlyph(fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety);
+
+				stbi_uc* fontGlyph = createGlyph(fontInfo, i, &scale.x, &scale.y, &offsetx, &offsety,&advanceWidth,&leftSideBearing);
 
 				if (fontGlyph)
 				{
 					int y = index / 16;
 					int x = index % 16;
 					glypScales[i] = (scale);
-					glyphAdvances[i] = { offsetx,offsety };
-					//writeGlyphIntoBuffer(bufferPtr, (glyph*)fontGlyph,i);
-					//bufferPtr++;
+					glyphOffests[i] = { offsetx,offsety };
+					glyphAdvances[i] = { advanceWidth * advanceScale,leftSideBearing * advanceScale};	
+
 					writeGlyphToBuffer(atlas, (scanlineGlyph*)fontGlyph, x, y);
 				}
 				else
 				{
 					glypScales[i] = { 1.0f,1.0f };
+					glyphOffests[i] = { 0.0f,0.0f };
 					glyphAdvances[i] = { 0.0f,0.0f };
 				}
 			}
 			
-			if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(*imageBuffer, imageHandle, imageFormat, { FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,1 });
-			utils::vulkanAllocator::flush();
-			return bufferBase;
+			//if (imageHandle != VK_NULL_HANDLE) utils::vulkanAllocator::uploadTexture(*imageBuffer, imageHandle, imageFormat, { FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,1 });
 		}
 
 
@@ -143,17 +152,26 @@ namespace luna
 
 			if (stbtt_InitFont(&fontInfo, buffer.data(), 0))
 			{
-				VkFormat imageFormat = utils::vulkanAllocator::getSuitableFormat(VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 1);
+				ref<artemis::allocator> p_allocator = assetImporter::getAllocator();
 
-				createFontTexture(FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, &imageHandle, &imageViewHandle, VK_FORMAT_R8_UNORM);
-				void* data = writeGlyphsIntoBuffer(&imageBuffer, imageHandle, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphAdvances, imageFormat);
+				artemis::image& fontImage = p_allocator->allocateImage({ FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT }, 1, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT);//createFontTexture(FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, &imageHandle, &imageViewHandle, VK_FORMAT_R8_UNORM);
 				
-				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), data, sizeof(fontAtlas));
-				LN_CORE_TRACE("succesfuly loaded fontFile! {}", filePath);
+				artemis::buffer& buffer = p_allocator->allocateBuffer(FONT_ATLAS_WIDTH * FONT_ATLAS_HEIGHT, artemis::CPU_ONLY, VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_SRC_BIT);
+				
+				writeGlyphsIntoBuffer(buffer, &fontInfo, fontMetadata->glyphScales, fontMetadata->glyphOffests,fontMetadata->glyphAdvances);
+				p_allocator->transitionImageLayoutFront(fontImage,VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+				p_allocator->copyBufferToImage(buffer, fontImage);
+				p_allocator->transitionImageLayoutBack(fontImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_GENERAL );
+
+				p_allocator->flush();
+				memcpy_s(&fontMetadata->atlas, sizeof(fontAtlas), buffer.getData(), sizeof(fontAtlas));
+				fontFile.close();
+				return std::dynamic_pointer_cast<assets::asset>(createRef<assets::font>(fontImage,fontMetadata->glyphAdvances,fontMetadata->glyphScales,fontMetadata->glyphOffests));
+
 			}
 			else LN_CORE_ERROR("incorrect file format, expected .ttf!");
 			fontFile.close();
-			return ref<asset>(new vulkan::vulkanFont(imageBuffer, imageHandle, imageViewHandle, fontMetadata->glyphScales, fontMetadata->glyphAdvances));
+			return nullptr;		
 		}
 
    }

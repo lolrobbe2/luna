@@ -1,5 +1,5 @@
 #include "spriteNode.h"
-#include <core/rendering/renderer2D.h>
+#include <core/application.h>
 namespace luna
 {
 	namespace nodes
@@ -25,11 +25,11 @@ namespace luna
 		}
 		void spriteNode::draw()
 		{
-			LN_CORE_INFO("scene ptr: {0}",(void*)scene);
+			
 			auto& sprite = getComponent<spriteRendererComponent>();
 			auto& transform = getComponent<transformComponent>();
-
-			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
+			auto& canvas = getComponent<canvasComponent>();
+			if (sprite.texture) RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransImageColor(RENDERER->currentDrawindex(sprite.texture),transform.getTransform(), canvas.modulate, sprite.texture); });
 		}
 	}
 }

@@ -1,7 +1,7 @@
 #include "buttonNode.h"
+#include <core/application.h>
 #include <core/assets/assetManager.h>
 #include <core/events/mouseEvent.h>
-#include <core/rendering/renderer2D.h>
 #include <core/scripting/scriptingEngine.h>
 #include <core/object/methodDB.h>
 namespace luna
@@ -39,13 +39,20 @@ namespace luna
 
 		void buttonNode::draw()
 		{
+			const glm::vec3 pos = { -1.0,-1.0,0.0 };
+			const glm::vec2 size = { 0.1, 0.1 };
+			const glm::vec4 color = { 1.0f, 0.0f, 0.0f, 0.0f };
+
+			//RENDERER->submitRenderTask(&artemis::renderer::drawQuadPosColor,pos, size, color);
+
+
 			auto& transform = getComponent<transformComponent>();
 			auto& button = getComponent<buttonComponent>();
 			auto& sprite = getComponent<spriteRendererComponent>();
 			if (button.hover && button.pressed) sprite.texture = button.pressedTexture;
 			else if (button.hover && !button.pressed) sprite.texture = button.hoverTexture;
 			else sprite.texture = button.normalTexture;
-			if (sprite.texture) sprite.outOfBounds = renderer::renderer2D::drawQuad(transform.translation, { transform.scale.x,transform.scale.y }, sprite.texture);
+			if (sprite.texture) RENDERER->submitRenderTask([=]() {RENDERER->drawQuadTransImage(RENDERER->currentDrawindex(sprite.texture),transform.getTransform(), sprite.texture); });
 		}
 
 		buttonNode::buttonNode(entt::entity handle, luna::scene* scene) : spriteNode(handle, scene)
@@ -102,15 +109,15 @@ namespace luna
 			button.pressedFilePath = "src/assets/media/buttons/button3.png";
 
 
-			button.normalTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.normalFilePath.string(),assets::texture)));
-			button.hoverTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::texture)));
-			button.pressedTexture = std::dynamic_pointer_cast<renderer::texture>(assets::assetManager::getAsset(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::texture)));
-			
+			button.normalTexture = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset(button.normalFilePath.string(),assets::TEXTURE));
+			button.hoverTexture = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset(button.hoverFilePath.string(),assets::TEXTURE));
+			button.pressedTexture = assets::assetManager::getAsset<assets::image>(assets::assetManager::importAsset(button.pressedFilePath.string(),assets::TEXTURE));
+			RENDERER->flush();
 			sprite.texture = button.normalTexture;
 		}
 		void buttonNode::guiEvent(Event& event)
 		{
-			glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
+			glm::vec2 normailizedMousePos =  RENDERER->getSceneMousePos() / RENDERER->getSceneDimensions();
 			normailizedMousePos.x -= 0.5f;
 			normailizedMousePos.y -= 0.5f;
 			spriteRendererComponent& sprite = getComponent<spriteRendererComponent>();
@@ -128,17 +135,17 @@ namespace luna
 					buttonComponent& button = getComponent<buttonComponent>();
 					bool previousHover = button.hover;
 					button.hover = (leftCorner.x < normailizedMousePos.x && leftCorner.y < normailizedMousePos.y && rightCorner.x > normailizedMousePos.x && rightCorner.y > normailizedMousePos.y);
-					if (button.hover) sprite.texture = button.hoverTexture;
+					if (button.hover) 
+						sprite.texture = button.hoverTexture;
 					else if (button.hover != previousHover) {
-						if (getToggleMode()) { 
+						if (getToggleMode())
+						{ 
 							if (button.pressed)
-							{
 								sprite.texture = button.pressedTexture;
-							} 
+				
 							else
-							{
 								sprite.texture = button.normalTexture;
-							}
+							
 						}
 						else sprite.texture = button.normalTexture;
 					}

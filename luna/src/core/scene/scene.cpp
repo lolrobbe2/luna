@@ -1,6 +1,6 @@
 #include "scene.h"
 #include "node.h"
-#include <core/rendering/renderer2D.h>
+#include <core/artemis/renderer.h>
 #include <core/events/mouseEvent.h>
 #include <nodes/controlNodes/itemListNode.h>
 #include <nodes/canvasItem.h>
@@ -22,9 +22,7 @@ namespace luna
 		LN_PROFILE_FUNCTION();
 		std::vector<Node> childNodes;
 		if (node.hasComponent<childComponent>()) for (auto child : node.getComponent<childComponent>().childs) childNodes.push_back(Node(child, node));
-		if (!node.hasComponent<transformComponent>()) { for (Node child : childNodes) draw(child); return; }
-		auto& transform = node.getComponent<transformComponent>();
-		if(node.hasComponent<canvasComponent>())
+		if (node.hasComponent<transformComponent>() && node.hasComponent<canvasComponent>())
 		{
 			node.getComponent<canvasComponent>().drawFunction();
 		}
@@ -75,11 +73,12 @@ namespace luna
 		if (!m_IsRunning) return;
 
 		process(ts);
-
+		/*
 		glm::vec2 normailizedMousePos = renderer::renderer::getSceneMousePos() / renderer::renderer::getSceneDimensions();
 		
 		normailizedMousePos.x -= 0.5f;
 		normailizedMousePos.y -= 0.5f;
+		*/
 		/*
 		if (normailizedMousePos.x > 0.5f) normailizedMousePos.x -= 0.5f;
 		else normailizedMousePos.x = -0.5f + normailizedMousePos.x;

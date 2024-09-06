@@ -1,7 +1,8 @@
 #pragma once
-#ifndef WINDOWS_WINDOW
-#define WINDOWS_WINDOW
+#ifndef _WINDOWS_WINDOW_
+#define _WINDOWS_WINDOW_
 #include <core/vulkan/window/window.h>
+#include <core/platform/platform.h>
 namespace luna
 {
 	namespace vulkan

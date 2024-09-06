@@ -1,5 +1,5 @@
-#include "lnpch.h"
 #include <core/platform/platform.h>
+#include <core/core.h>
 #ifdef  LN_PLATFORM_WINDOWS
 namespace luna
 {

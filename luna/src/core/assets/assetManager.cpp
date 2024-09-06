@@ -12,6 +12,11 @@ namespace luna
 			else LN_CORE_ERROR("runtime asset manager not implemented!");
 		}
 
+		void assetManager::shutdown()
+		{
+			assetManagerRef.reset();
+		}
+
 
 		void assetManager::setImportDirectory(const std::filesystem::path& directory)
 		{	
@@ -33,22 +38,6 @@ namespace luna
 		void assetManager::loadAsset(assetHandle handle)
 		{
 			assetManagerRef->loadAsset(handle);
-		}
-		ref<asset> assetManager::getAsset(const assetHandle handle)
-		{
-			if (!isAssetHandleValid(handle)) 
-			{
-				LN_CORE_ERROR("asset has not been imported! \n handle = {0}",((uuid)handle)); 
-				return ref<asset>();
-			}
-			if (!assetManagerRef->isAssetHandleLoaded(handle)) 
-				loadAsset(handle);
-			
-			return assetManagerRef->getAsset(handle);
-		}
-		ref<asset> assetManager::getAsset(const std::string& name)
-		{
-			return assetManagerRef->getAsset(name);
 		}
 
 		assetMetadata* assetManager::getAssetMetadata(const std::string& filename)

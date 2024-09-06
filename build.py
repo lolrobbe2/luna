@@ -55,7 +55,7 @@ def main():
     with open(f"bin/{outputdir}/x64/scriptCore/scriptCore.dll", "w") as f:
         pass
     os.makedirs("apollo/mono/lib", exist_ok=True)
-
+    input("Press Enter to continue...")
 
 if __name__ == "__main__":
     main()

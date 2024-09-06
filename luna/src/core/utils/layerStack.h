@@ -1,6 +1,6 @@
-#pragma once
+#ifndef _LAYER_STACK_
+#define _LAYER_STACK_
 #include <core/utils/layer.h>
-
 #include <vector>
 
 namespace luna 
@@ -18,7 +18,7 @@ namespace luna
 			void pushOverlay(layer* overlay);
 			void popLayer(layer* layer);
 			void popOverlay(layer* overlay);
-
+			size_t size() { return m_Layers.size(); }
 			std::vector<layer*>::iterator begin() { return m_Layers.begin(); }
 			std::vector<layer*>::iterator end() { return m_Layers.end(); }
 			std::vector<layer*>::reverse_iterator rbegin() { return m_Layers.rbegin(); }
@@ -34,3 +34,4 @@ namespace luna
 		};
 	}
 }
+#endif

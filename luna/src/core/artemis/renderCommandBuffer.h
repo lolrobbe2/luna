@@ -1,0 +1,85 @@
+#pragma once
+#include <core/artemis/device/allocator.h>
+#include <core/artemis/device/descriptorSet.h>
+#define LN_DRAW_COMMANDS_AMOUNT 100000
+#define LN_IMAGE_BATCH_SIZE 32
+namespace luna 
+{
+    namespace assets {
+        class image;
+    }
+    namespace artemis 
+    {
+        LN_API typedef struct drawCommand
+        {
+            alignas(16) glm::mat4 transform;
+            alignas(16) glm::vec4 color = { 1.0f,1.0f,1.0f,1.0f };
+            alignas(8)  std::array<glm::vec2,4> textureCoords = { glm::vec2(0.0f, 0.0f),  glm::vec2(1.0f, 0.0f),  glm::vec2(1.0f, 1.0f),  glm::vec2(0.0f, 1.0f) };
+            alignas(8)  glm::vec2 textureDetails{ 0.0f,false }; //textureindex, text bool
+        } drawCommand;
+        class descriptorPool;
+        class sampler;
+        typedef struct quadVertex
+        {
+            glm::vec4 vert;
+            glm::vec4 color;
+            glm::vec2 textureCoord;
+            float textureIndex;
+            float text;
+        };
+        class renderCommandBuffer
+        {
+        public:
+            renderCommandBuffer() = default;
+            // Default copy constructor and copy assignment operator
+            renderCommandBuffer(const renderCommandBuffer&) = default;
+            renderCommandBuffer& operator=(const renderCommandBuffer&) = default;
+
+            // Move constructor and move assignment operator
+            renderCommandBuffer(renderCommandBuffer&&) noexcept = default;
+            renderCommandBuffer& operator=(renderCommandBuffer&&) noexcept = default;
+            renderCommandBuffer(const ref<allocator> p_allocator,descriptorPool& computePool, descriptorPool& graphicsPool,ref<sampler> sampler,uint8_t maxFramesInflight);
+            bool addCommand(const drawCommand& command,int64_t drawIndex);
+            void reset();
+            void generateIndices();
+            /// <summary>
+            /// Tries to bind an image to the current descriptor set.
+            /// </summary>
+            /// <param name="image">Image to bind</param>
+            /// <param name="currentDescriptorSetIndex">Descriptor Set index to bind to</param>
+            /// <param name="currentFrame">Current frame that is recording</param>
+            /// <returns>
+            ///     <para>
+            ///         - True if the image was successfully bound.
+            ///     </para>
+            ///     <para>
+            ///         - False if the image binding failed (no more freeImageIndices).
+            ///     </para>
+            /// </returns>
+            /// does not need currentFrame see update func for reason why!
+            bool bind(ref<assets::image> image, uint32_t currentDescriptorSetIndex);
+            void unbind(uint8_t index);
+            void update(uint8_t currentFrame){
+                graphicsDescriptorSets[currentFrame].write(0, &samplerInfo);
+                graphicsDescriptorSets[currentFrame].update();
+            }
+            buffer& cpuIndicesBuffer = *new buffer();
+            buffer& cpuBuffer = *new buffer(); //stores commands.
+            buffer& gpuBuffer = *new buffer(); //stores vertices.
+            descriptorSet& computeDescriptorSet = *new descriptorSet();
+            std::vector<descriptorSet> graphicsDescriptorSets;
+            std::vector<uint8_t> freeImageIndeces;
+            ref<assets::image> images[LN_IMAGE_BATCH_SIZE];
+            drawCommand* p_commands = nullptr;
+            drawCommand* p_commandsBase = nullptr; 
+            VkDescriptorImageInfo samplerInfo;
+            std::vector<VkDescriptorImageInfo> descriptorInfos{ LN_IMAGE_BATCH_SIZE };
+            size_t commandsAmount = 0; //commandsSubmitted
+            size_t commandsTotal = 0; //commandsAmount being computed!
+        private: 
+            std::shared_ptr<std::shared_mutex> commandsMutex;
+        };
+    }
+}
+
+

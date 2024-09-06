@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _VECTOR_CACHE_
+#define _VECTOR_CACHE_
 #include <core/core.h>
 #include <core/debug/uuid.h>
 namespace luna
@@ -102,12 +103,13 @@ namespace luna
 				auto it = findHandle(key);
 				if (it != handleCache.end())
 				{
-					value requestedCacheObject = valueCache[std::distance(handleCache.begin(), it)];
+					auto index = std::distance(handleCache.begin(), it);
+					value requestedCacheObject = valueCache[index];
+					valueCache.erase(valueCache.begin() + index);
 					handleCache.erase(it);
-					valueCache.erase(valueCache.begin() + std::distance(handleCache.begin(), it));
 					handleCache.insert(handleCache.begin(), key);
-					valueCache.insert(valueCache.begin(), requestedCacheObject);
-					return std::make_pair(cacheResult::cacheHit, std::move(requestedCacheObject));
+					valueCache.insert(valueCache.begin(), std::move(requestedCacheObject));
+					return std::make_pair(cacheResult::cacheHit, *valueCache.begin());
 				}
 
 				return std::make_pair(cacheResult::cacheMiss, value());
@@ -197,3 +199,5 @@ namespace luna
 		};
 	}
 }
+
+#endif

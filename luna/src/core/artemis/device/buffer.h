@@ -1,0 +1,46 @@
+#pragma once
+#ifndef _BUFFER_
+#define _BUFFER_
+#include <core/core.h>
+#include <core/platform/windows/windowsWindow.h>
+namespace luna 
+{
+	namespace artemis
+	{
+		struct allocation; //forward declare.
+		class allocator; 
+		class buffer
+		{
+		public:
+			buffer() {}
+			const size_t getSize() const;
+			void setData(void* p_src, size_t size);
+			template<typename T>
+			void setData(const T type)
+			{
+				setData(&type, sizeof(type));
+			}
+			template<typename T>
+			void setDataIndex(const size_t index, const T type)
+			{
+				memcpy_s(static_cast<char*>(getData()) + (index * sizeof(T)), getSize(), (void*) & type, sizeof(T));
+			}
+			_ALWAYS_INLINE_ void* getData();
+			template<typename T>
+			_ALWAYS_INLINE_ T* getData() { return (T*)getData(); }
+			~buffer();
+			operator bool() const { return _buffer == VK_NULL_HANDLE; }
+			operator VkBuffer() const { return _buffer; }
+			VkBuffer getBuffer() const { return _buffer; }
+		protected:
+			friend allocator;
+			buffer(VkBuffer buffer,allocation* allocation,allocator* allocator);
+		private:
+			VkBuffer _buffer = VK_NULL_HANDLE;
+			allocation* p_allocation = nullptr;
+			allocator* p_allocator = nullptr;
+		};
+	}
+}
+
+#endif // !_BUFFER_

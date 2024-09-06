@@ -1,7 +1,6 @@
 project "stb"
 	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
 	files
 	{
 		"../stb.c",
@@ -12,7 +11,6 @@ project "stb"
 	}
 	buildoptions 
 	{
-		"/MD",
 	}
 	includedirs
 	{
@@ -20,8 +18,7 @@ project "stb"
 	}
 
 	filter "system:windows"
-		cppdialect "c++17"
-		staticruntime "on"
+		cppdialect "c++20"
 		systemversion "latest"
 		defines
 		{
@@ -29,14 +26,11 @@ project "stb"
 		}
 
 	filter "configurations:debug"
-		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:release"
-		runtime "Release"
 		optimize "on"
 
 	filter "configurations:distribution"
-		runtime "Release"
 		optimize "on"
 		symbols "off"

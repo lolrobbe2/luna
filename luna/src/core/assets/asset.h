@@ -1,5 +1,4 @@
 #pragma once
-#include "lnpch.h"
 #include <core/debug/uuid.h>
 
 #pragma region fonts
@@ -28,8 +27,8 @@ namespace luna
 		enum assetType : uint16_t
 		{
 			none = 0,
-			texture,
-			font,
+			TEXTURE,
+			FONT_ATLAS,
 			scene,
 		};
 
@@ -37,6 +36,7 @@ namespace luna
 		class LN_API asset
 		{
 		public:
+			virtual ~asset() = default;
 			assetHandle assetHandle; //auto generate handle
 			virtual assetType getType() const = 0;
 		private:
@@ -45,7 +45,7 @@ namespace luna
 
 		/**
 		* structs are used because they are directly mappable from binary by using pointer.
-		* this way the .limp (luna import) file can be loaded and de pointer aquired.
+		* this way the .limp (luna import) file can be loaded and the pointer aquired.
 		* values can then be accesed like this: (assetMetaData*)data->handle;
 		* 
 		* @note this does mean that files need to be reimported when changes are made to the structs as they will no longer be valid.
@@ -70,10 +70,10 @@ namespace luna
 			assetMetadata baseMetaData; //standard metadata that each asset has.
 			uint64_t width, height, channels;
 			uint64_t imageSize;
-			uint64_t imageByteSize;
+			size_t imageByteSize;
 		};
 
-		struct fontAtlas
+		LN_API struct fontAtlas
 		{
 			stbi_uc fontImage[FONT_ATLAS_WIDTH * FONT_ATLAS_WIDTH];
 		};
@@ -83,7 +83,8 @@ namespace luna
 			uint64_t width, height;
 			fontAtlas atlas;
 			glm::vec2 glyphScales[FONT_ATLAS_GLYPH_AMOUNT];
-			glm::vec2 glyphAdvances[FONT_ATLAS_GLYPH_AMOUNT];
+			glm::vec2 glyphOffests[FONT_ATLAS_GLYPH_AMOUNT];
+			glm::vec2 glyphAdvances[FONT_ATLAS_GLYPH_AMOUNT]; //x=advance width
 		};
 #pragma pack(pop)
 	}
