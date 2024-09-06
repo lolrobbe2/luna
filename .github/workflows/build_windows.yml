@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: '3.9'  # Use the version you need
       - name: Generate solution files and install Vulkan
-        run: .\build.bat
+        run: .\build_actions.bat
   build:
     needs: setup
     runs-on: windows-latest
