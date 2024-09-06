@@ -24,6 +24,9 @@ namespace luna
 			static assetMetadata* getMetadataPointer(const assetType type);
 			static size_t getMetadataStructSize(const assetType type);
 			static void saveImportData(assetMetadata* assetMetadata);
+
+			inline static utils::objectStorage<assetMetadata*> assetMetadataStorage;
+			inline static std::map<std::string, assetHandle> translationMap;
 		};
 	}
 }

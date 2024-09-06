@@ -12,6 +12,11 @@ namespace luna
 			else LN_CORE_ERROR("runtime asset manager not implemented!");
 		}
 
+		void assetManager::shutdown()
+		{
+			assetManagerRef.reset();
+		}
+
 
 		void assetManager::setImportDirectory(const std::filesystem::path& directory)
 		{	

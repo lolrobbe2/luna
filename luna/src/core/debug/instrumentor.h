@@ -117,13 +117,13 @@ namespace luna {
 		void WriteHeader()
 		{
 			m_OutputStream << "{\"otherData\": {},\"traceEvents\":[{}";
-			//m_OutputStream.flush();
+			m_OutputStream.flush();
 		}
 
 		void WriteFooter()
 		{
 			m_OutputStream << "]}";
-			//m_OutputStream.flush();
+			m_OutputStream.flush();
 		}
 
 		// Note: you must already own lock on m_Mutex before

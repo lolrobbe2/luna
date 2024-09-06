@@ -4,8 +4,7 @@ namespace luna
 {
 	namespace assets 
 	{
-		static utils::objectStorage<assetMetadata*> assetMetadataStorage;
-		static std::map<std::string, assetHandle> translationMap;
+		
 		editorAssetManager::~editorAssetManager()
 		{
 			try

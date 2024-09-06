@@ -8,12 +8,13 @@ namespace luna
 		{
 		public:
 			static void init(bool editor);
+			static void shutdown();
 			/**
 			* simular to std::filesystem::currentPath() but this function does not override the std::filesystem::currentPath.
 			*/
 			static void setImportDirectory(const std::filesystem::path& directory);
 			/**
-			* @brief returns an important asset and loads it if needed.
+			* @brief returns an imported asset and loads it if needed.
 			*/
 			template<typename T>
 			static ref<T> getAsset(const assetHandle handle)
