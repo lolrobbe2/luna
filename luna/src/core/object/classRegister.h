@@ -17,20 +17,20 @@ namespace luna
 		public:
 			_ALWAYS_INLINE_ static void registerClasses()
 			{
-				LN_CLASS(canvasItem, Node);
-				LN_CLASS(controlNode, canvasItem);
-				LN_CLASS(labelNode, controlNode);
-				LN_CLASS(spriteNode, controlNode);
-				LN_CLASS(buttonNode, controlNode);
-				LN_CLASS(itemListNode, controlNode);
-				LN_CLASS(colorRectNode, controlNode);
-				LN_CLASS(lineEditNode, controlNode);
-				LN_CLASS(imageButtonNode, buttonNode);
+				LN_REGISTER_CLASS(canvasItem, Node);
+				LN_REGISTER_CLASS(controlNode, canvasItem);
+				LN_REGISTER_CLASS(labelNode, controlNode);
+				LN_REGISTER_CLASS(spriteNode, controlNode);
+				LN_REGISTER_CLASS(buttonNode, controlNode);
+				LN_REGISTER_CLASS(itemListNode, controlNode);
+				LN_REGISTER_CLASS(colorRectNode, controlNode);
+				LN_REGISTER_CLASS(lineEditNode, controlNode);
+				LN_REGISTER_CLASS(imageButtonNode, buttonNode);
 
-				LN_CLASS(range, controlNode);
-				LN_CLASS(scrollBar,range);
-				LN_CLASS(HScrollBar, scrollBar);
-				LN_CLASS(VScrollBar, scrollBar);
+				LN_REGISTER_CLASS(range, controlNode);
+				LN_REGISTER_CLASS(scrollBar,range);
+				LN_REGISTER_CLASS(HScrollBar, scrollBar);
+				LN_REGISTER_CLASS(VScrollBar, scrollBar);
 
 			}
 		};

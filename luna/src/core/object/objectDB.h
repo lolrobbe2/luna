@@ -5,12 +5,12 @@
 #include <type_traits>
 #include <core/scene/baseComponents.h>
 #include <core/scene/scene.h>
-#ifndef LN_REGISTER_CLASS
-#define LN_REGISTER_CLASS(mClass) objectDB::registerClass<mClass>();
+#ifndef LN_REGISTER_OBJECT
+#define LN_REGISTER_OBJECT(mClass) objectDB::registerClass<mClass>();
 #endif // !LN_REGISTER_CLASS
 #include <core/debug/debugMacros.h>
-#ifndef LN_CLASS
-#define LN_CLASS(mClass,mInherits) objectDB::addClass<mClass,mInherits>();
+#ifndef LN_REGISTER_CLASS
+#define LN_REGISTER_CLASS(mClass,mInherits) objectDB::addClass<mClass,mInherits>();
 #endif // !LN_CLASS
 #ifndef LN_EMIT_SIGNAL
 #define  LN_EMIT_SIGNAL(signalName,...) this->emitSignal(signalName,__VA_ARGS__)
@@ -58,99 +58,12 @@ T& getComponent()\
 
 namespace luna
 {
-	//class LN_API scene;
-	/**
-	 * @brief object class.
-	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
-	 */
-	class LN_API object
+	class LN_API object;
+	template <class T>
+	static object* creator()
 	{
-	public:
-		object() = default;
-		object(entt::entity handle, luna::scene* scene) : entityHandle(handle), scene(scene) { LN_ERR_FAIL_COND_MSG(handle == entt::null,"invalid node quikID!"); };
-		object(uint64_t id, luna::scene* scene);
-		virtual void init(scene* scene);
-		virtual	void bindMethods(); 
-		/*@brief emits a notification to a node or module*/
-		virtual void notification(const notificationType type) {};
-		/**
-		* @brief emits a signal by name to all the nodes to wich the signal is connected
-		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
-		*/
-		template <typename ... ArgsT>
-		void emitSignal(const char* functionName, ArgsT && ... inMonoArgs )
-		{ 
-			std::vector<void*> args = { static_cast<void*>(&inMonoArgs)... };
-			if(args.size() == 0) emitSignalParams(functionName, nullptr);
-			else emitSignalParams(functionName, args.data());
-		}
-		/**
-		* @brief emits a signal by name to all the nodes to wich the signal is connected
-		* all the arguments need to be mono compatible! (for example std::string => MonoString*)
-		*/
-		void emitSignalParams(const char* functionName, void** monoParams)
-		{
-			auto it = getComponent<signalComponent>().connectedSignals.find(functionName);
-			if (it != getComponent<signalComponent>().connectedSignals.end()) {
-				if (monoParams) {
-					for (const auto& targetNodeId : it->second) {
-						object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
-						targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, monoParams);
-					}
-					return;
-				}
-				for (const auto& targetNodeId : it->second) {
-					object targetNode = { (entt::entity)targetNodeId.connectedObj, scene };
-					targetNode.getComponent<scriptComponent>().scritpInstance->invokeSignal(targetNodeId, nullptr);
-				}
-			}
-		}
-		/**
-		* @brief connects a signal to a object, that ether being itself or another object.
-		* 
-		* @param uint64_t objectID (quikID entt::entity)
-		*/
-		void connectSignal(uint64_t objectID,const std::string& functionName);
-		std::vector<std::string> getSignalNames();
-		template<typename T, typename... Args>
-		T& addComponent(Args&&... args)
-		{
-			//LN_CORE_ASSERT(!hasComponent<T>(), "Node already has component!");
-			T& component = scene->m_Registry.emplace<T>(entityHandle, std::forward<Args>(args)...);
-			//scene->onComponentAdded<T>(*this, component);
-			return component;
-		}
-		template<typename T, typename... Args>
-		T& addOrReplaceComponent(Args&&... args)
-		{
-			T& component = this->scene->m_Registry.emplace_or_replace<T>(entityHandle, std::forward<Args>(args)...);
-			return component;
-		}
-
-		template<typename T>
-		T& getComponent()
-		{
-			return scene->m_Registry.get<T>(entityHandle);
-		}
-
-		template<typename T>
-		bool hasComponent()
-		{
-			return scene->m_Registry.all_of<T>(entityHandle);
-		}
-		template<typename T>
-		void removeComponent()
-		{
-			this->scene->m_Registry.remove<T>(entityHandle);
-		}
-		uuid getUUID() { return getComponent<idComponent>().id; }
-		operator entt::entity() { return entityHandle; }
-	protected:
-		friend class luna::scene;
-		entt::entity entityHandle{ entt::null };
-		scene* scene = nullptr;
-
-	};
+		return memnew(T);
+	}
 	/**
 	 * @brief object database class.
 	 * @warning DO NOT TOUCH UNLESS YOU KNOW WHAT YOURE DOING!!!
@@ -211,22 +124,6 @@ namespace luna
 			classDatabase.insert({ getClassName<T>(), t});
 			rootClassDatabase.insert({ getClassName<T>(), getPtr(t.className)});
 		}
-		/* start of c++ wizardry from GD */
-		#define memnew(m_class) _post_initialize(new m_class)
-		template <class T>
-		static object* creator()
-		{
-			return memnew(T);
-		}
-		_ALWAYS_INLINE_ static void postinitialize_handler(void*) {}
-
-		template <class T>
-		_ALWAYS_INLINE_ static T* _post_initialize(T* p_obj) 
-		{
-			postinitialize_handler(p_obj);
-			return p_obj;
-		}
-		/* end of c++ wizardry from GD*/
 
 		static void createInstance(const std::string& className, scene* scene);
 

@@ -1,19 +1,14 @@
 #ifndef _NODE_
 #define _NODE_
 #include <core/object/objectDB.h>
-
+#include <core/object/object.h>
 namespace luna 
 {
 	class LN_API scene;
 	class LN_API Node : public luna::object
 	{
 	public:
-
-		Node() = default;
-		Node(entt::entity handle, luna::scene* scene);
-		Node(uint64_t id, luna::scene* scene);
-		Node(luna::scene* scene);
-		virtual ~Node() = default;
+		LN_CLASS(Node, object);
 		void setName(std::string name);
 		void addChild(Node node);
 		std::vector<Node> getChildren();

@@ -59,6 +59,17 @@ namespace luna
 	{
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
+	/* start of c++ wizardry from GD */
+#define memnew(m_class) _post_initialize(new m_class)
+	_ALWAYS_INLINE_ static void postinitialize_handler(void*) {}
+
+	template <class T>
+	_ALWAYS_INLINE_ static T* _post_initialize(T* p_obj)
+	{
+		postinitialize_handler(p_obj);
+		return p_obj;
+	}
+	/* end of c++ wizardry from GD*/
 }
 #endif // !CORE
 

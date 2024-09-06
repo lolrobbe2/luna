@@ -1,78 +1,36 @@
 #include "methodDB.h"
-#include <core/scripting/scriptingEngine.h>
-#ifndef TYPED_METHOD_BIND
-class __UnexistingClass;
-#define MB_T __UnexistingClass
-#else
-#define MB_T T
-#endif
-
 #include <core/debug/log.h>
-#include <core/platform/platformUtils.h>
 #include <core/object/signal.h>
-#include <core/scene/node.h>
 #include <core/debug/debugMacros.h>
+#include <core/utils/objectStorage.h>
 //networking
-#include <core/networking/ipAddress.h>
-#include <core/networking/streamPeerTCP.h>
-#include <core/networking/web/HTTPClient.h>
+
 
 namespace luna
 {
-	#ifdef TYPED_METHOD_BIND
-		template <class T, class... P>
-	#else
-		template <class... P>
-	#endif
-	struct Method
-	{
-		MonoMethod* externalMethod;
-		void (MB_T::*method)(P...) = nullptr;
-		int argsCount;
-	};
+
 
 	struct methodDBData
 	{
 		//TODO change map with hashed objStorage.
-		std::map<std::string,Method<>> methodMap;
+		utils::objectStorage<methodDefinition> methodDefStorage;
+		utils::objectStorage<method> methodStorage;
 	};
 
 	static methodDBData* s_Data = new methodDBData();
 
-	void methodDB::init()
+	methodDefinition methodDB::createMethodDefinition(const char* p_className, const char* p_methodName, const char* const** p_args, uint32_t p_argcount)
 	{
-		bindFunctions();
-		bindStaticFunctions();
-	}
-
-	void methodDB::bindObjectFunctions(const std::string& className) 
-	{
-		const std::string name = className == "node" ? "Node" : scripting::scriptingEngine::pascalToCamel(className);
-		objectDB::classInfo* info = objectDB::getPtr(name);
-		LN_ERR_FAIL_NULL_MSG(info,"object class not registered in objectDB: " + name);
-		Node* node = (Node*)info->creation_func();
-		node->bindMethods();
-	}
-
-
-	void methodDB::bindFunctions()
-	{
-		for (const std::string& objectName : scripting::scriptingEngine::getCoreClassNames()) 
+		methodDefinition methodDef;
+		methodDef.id = std::hash<std::string>{}(std::string(p_className) + "::" + std::string(p_methodName));
+		methodDef.m_class = p_className;
+		methodDef.m_name = p_methodName;
+		if (p_args && p_argcount > 0) 
 		{
-			bindObjectFunctions(objectName);
+			for (uint32_t i = 0; i < p_argcount; ++i) 
+				methodDef.args.push_back(std::string(*p_args[i])); // Add argument names to the vector
 		}
-	}
-
-	void methodDB::bindStaticFunctions()
-	{
-		Log::RegisterMethods();
-		Os::RegisterMethods();
-		Signal::RegisterMethods();
-		networking::Ip::RegisterMethods();
-		networking::ipAddress::registerMethods();
-		networking::netSocket().bindMethods();
-		networking::streamPeerTCP().bindMethods();
-		networking::HTTPClient().bindMethods();
+		return methodDef;
 	}
 
 

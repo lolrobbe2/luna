@@ -8,29 +8,8 @@
 #include <core/assets/publicTypes/font.h>
 namespace luna
 {
-	enum notificationType
-	{
-		TRANSFORM_UPDATED
-	};
-	struct idComponent
-	{
-		uuid id;
-		std::string typeName;
-		operator uint64_t() { return id; }
-		std::function<void(notificationType)> notificationFunc = [](notificationType type) {};
-		idComponent() = default;
-		idComponent(const idComponent&) = default;
-	};
 
-	struct tagComponent
-	{
-		std::string tag = "Node";
 
-		tagComponent() = default;
-		tagComponent(const tagComponent&) = default;
-		tagComponent(const std::string& tag)
-			: tag(tag) {}
-	};
 
 	struct scriptComponent
 	{

@@ -85,11 +85,8 @@ namespace luna
 
 	Node::Node(luna::scene* scene)
 	{
-		this->scene = scene;
-		entityHandle = scene->create();
-		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
-		addComponent<scriptComponent>();
-		addComponent<signalComponent>();
+		init(scene);
+
 	}
 
 	void Node::setName(std::string name)
@@ -134,9 +131,11 @@ namespace luna
 
 	void Node::init(luna::scene* scene)
 	{
-		object::init(scene);
-		LN_CLASS_TYPE_NAME(Node);
+		this->scene = scene;
+		entityHandle = scene->create();
+		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
 		addComponent<scriptComponent>();
+		addComponent<signalComponent>(); Component>();
 	}
 
 	void Node::bindMethods()
