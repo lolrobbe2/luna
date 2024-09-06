@@ -1,0 +1,1 @@
+python build.py --force-python --force-vulkan
