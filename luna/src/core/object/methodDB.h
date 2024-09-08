@@ -52,7 +52,7 @@ namespace luna
 	{
 	public:
 		template <typename T, typename... P>
-		method* createMethodBind(void (T::* p_method)(P...)) {
+		static method* createMethodBind(void (T::* p_method)(P...)) {
 #ifdef TYPED_METHOD_BIND
 			method* a = memnew((MethodBindT<T, P...>)(p_method));
 #else
@@ -62,13 +62,13 @@ namespace luna
 			return a;
 		}
 		template<typename Class, typename... Args>
-		methodDefinition createMethodDefinition(Class* p_object,const char* p_methodName, Args&&... p_args)
+		static methodDefinition createMethodDefinition(Class* p_object,const char* p_methodName, Args&&... p_args)
 		{
 			// Ensure Class is derived from 'object' at any level in the inheritance chain
 			return createMethodDefinition<Class>(p_methodName,std::forward<Args>(p_args)...);
 		}
 		template<typename Class, typename... Args>
-		methodDefinition createMethodDefinition(const char* p_methodName, Args&&... p_args)
+		static methodDefinition createMethodDefinition(const char* p_methodName, Args&&... p_args)
 		{
 			// Ensure Class is derived from 'object' at any level in the inheritance chain
 			static_assert(std::is_base_of<object, Class>::value, "[MethodDB] Class must derive from 'object'");
@@ -76,11 +76,12 @@ namespace luna
 		}
 
 		template<typename... Args>
-		methodDefinition createMethodDefinition(const char* p_className, const char* p_methodName, Args&&... p_args)
+
+		static methodDefinition createMethodDefinition(const char* p_className, const char* p_methodName, Args&&... p_args)
 		{
 			return createMethodDefinition(p_className, p_methodName, std::forward<Args>(p_args)..., sizeof...(p_args));
 		}
-		methodDefinition createMethodDefinition(const char* p_className, const char* p_methodName, const char* const** p_args, uint32_t p_argcount);
+		static methodDefinition createMethodDefinition(const char* p_className, const char* p_methodName, const char* const** p_args, uint32_t p_argcount);
 		static void init();
 		
 	};

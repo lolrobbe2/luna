@@ -24,6 +24,7 @@
 	} \
 	m_class(luna::scene* p_scene) {init(p_scene);} \
 	virtual ~m_class() = default; \
+	virtual void notification(notificationType type); \
     static const char* className() { return #m_class; } 
 #endif // !LN_CLASS
 
@@ -38,6 +39,7 @@
     m_class(uint64_t id, luna::scene* scene) { /* constructor body for id */ } \
 	m_class(luna::scene* scene) {m_inherits::init(scene); init();} \
 	virtual ~m_class() = default; \
+	virtual void notification(notificationType type); \
 	friend class m_inherits; \
     static const char* className() { return #m_class; } \
     static const char* baseClassName() { return #m_inherits; }
@@ -48,6 +50,7 @@ namespace luna
 {
 	enum notificationType
 	{
+		NOTIFICATION_READY,
 		TRANSFORM_UPDATED
 	};
 

@@ -8,8 +8,6 @@
 
 namespace luna
 {
-
-
 	struct methodDBData
 	{
 		//TODO change map with hashed objStorage.
