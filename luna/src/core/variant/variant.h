@@ -10,15 +10,13 @@ namespace luna
 		~variant();
 
 	private:
-
+		union 
+		{
+			bool m_bool;
+			int64_t m_int;
+			uint64_t m_uint;
+			double m_float;
+		} data;
 	};
-
-	variant::variant()
-	{
-	}
-
-	variant::~variant()
-	{
-	}
 }
 #endif // !_VARIANT_
