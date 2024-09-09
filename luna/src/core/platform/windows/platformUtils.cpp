@@ -263,6 +263,12 @@ namespace luna
 			return getTicksUsec() / 1000ULL;
 		}
 
+		ref<dynamicLibrary> os::loadDynamicLib(std::filesystem::path& libPath)
+		{
+			dyLibHandle lib = LOAD_DYLIB(libPath.c_str());
+			return createRef<dynamicLibrary>(lib);
+		}
+
 		std::string filesystem::getSystemFolderPath(const folderTypes folderType)
 		{
 			//uses shlobj_core.h
@@ -327,16 +333,9 @@ namespace luna
 #pragma region osGlue
 	void Os::RegisterMethods()
 	{
-		LN_ADD_INTERNAL_CALL(Os, OpenFileDialog);
-		LN_ADD_INTERNAL_CALL(Os, SaveFileDialog);
-		LN_ADD_INTERNAL_CALL(Os, GetCurrentWorkingDirectory);
-		LN_ADD_INTERNAL_CALL(Os, GetName);
-		LN_ADD_INTERNAL_CALL(Os, GetVersion);
-		LN_ADD_INTERNAL_CALL(Os, GetLocale);
-		LN_ADD_INTERNAL_CALL(Os, GetLocaleLanguage);
-		LN_ADD_INTERNAL_CALL(Os, GetProcessId);
+		
 	}
-
+	/*
 	MonoString* Os::OpenFileDialog(MonoString* filter)
 	{
 		std::string filePath = platform::os::openFileDialog(mono_string_to_utf8(filter));
@@ -375,6 +374,7 @@ namespace luna
 	int Os::GetProcessId() {
 		return platform::os::getProcessId();
 	}
+	*/
 #pragma endregion
 }
 

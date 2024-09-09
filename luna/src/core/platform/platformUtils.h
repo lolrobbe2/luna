@@ -1,6 +1,9 @@
 #pragma once
 #include <core/core.h>
 #include <core/debug/debugMacros.h>
+#include <core/platform/dynamicLibrary.h>
+
+
 namespace luna 
 {
 	namespace platform
@@ -49,6 +52,7 @@ namespace luna
 			static void setCursorShape(const cursorShape shape);
 			static uint64_t getTicksUsec();
 			static uint64_t getTicksMsec();
+			static ref<dynamicLibrary> loadDynamicLib(std::filesystem::path& libPath);
 		private:
 			inline static uint64_t ticksStart;
 			inline static uint64_t ticksPerSecond = 10000000; //1 win tick = 100ns
