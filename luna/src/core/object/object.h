@@ -142,6 +142,7 @@ namespace luna
 			this->scene->m_Registry.remove<T>(entityHandle);
 		}
 		uuid getUUID();
+		scene* getScene();
 		operator entt::entity() { return entityHandle; }
 	protected:
 		friend class luna::scene;

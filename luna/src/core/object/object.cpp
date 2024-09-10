@@ -54,4 +54,9 @@ namespace luna
 		 return getComponent<idComponent>().id; 
 	}
 
+	scene* object::getScene()
+	{
+		return p_scene;
+	}
+
 }
