@@ -16,6 +16,7 @@ namespace luna
 	typedef std::vector<glm::vec4> packedVector4Array;
 	typedef float real_t;
 	class scene;
+	class object;
 	class variant
 	{
 		enum type
@@ -47,6 +48,11 @@ namespace luna
 		variant(uint16_t p_uint);
 		variant(uint32_t p_uint);
 		variant(uint64_t p_uint);
+		variant(double p_double);
+		variant(const char* p_string);
+		variant(const std::string& p_string);	
+		variant(object* p_object);
+		variant();
 		~variant();
 
 	private:
@@ -60,7 +66,8 @@ namespace luna
 			bool m_bool;
 			int64_t m_int;
 			uint64_t m_uint;
-			double m_float;
+			float m_float;
+			double m_double;
 			void* m_ptr; 
 			uint8_t _mem[sizeof(objectData) > (sizeof(real_t) * 4) ? sizeof(objectData) : (sizeof(real_t) * 4)]{ 0 };
 		} m_data alignas(8);
