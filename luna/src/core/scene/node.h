@@ -14,23 +14,21 @@ namespace luna
 		std::vector<Node> getChildren();
 		Node getParent();
 
-		virtual void init(luna::scene* scene) override;
-		virtual void bindMethods() override;
 		friend class scene;
 		friend class sceneHierarchyPanel;
 		entt::entity getQuikId() { return entityHandle; };
-		luna::scene* getScene() { return scene; };
+		luna::scene* getScene() { return p_scene; };
 		operator bool() const { return entityHandle != entt::null; }
 		operator entt::entity() const { return entityHandle; }
 		operator uint32_t() const { return (uint32_t)entityHandle; }
-		operator luna::scene* () const { return scene; };
+		operator luna::scene* () const { return p_scene; };
 		std::string& getName() {
 			return getComponent<tagComponent>().tag;
 		}
 
 		bool operator==(const Node& other) const
 		{
-			return entityHandle == other.entityHandle && scene == other.scene;
+			return entityHandle == other.entityHandle && p_scene == other.p_scene;
 		}
 
 		bool operator!=(const Node& other) const

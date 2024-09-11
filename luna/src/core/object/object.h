@@ -25,7 +25,9 @@
 	m_class(luna::scene* p_scene) {init(p_scene);} \
 	virtual ~m_class() = default; \
 	virtual void notification(notificationType type); \
-    static const char* className() { return #m_class; } 
+    static const char* className() { return #m_class; } \
+	static void bindMethods();
+
 #endif // !LN_CLASS
 
 #ifndef LN_CLASS
@@ -33,16 +35,18 @@
     static_assert(std::is_base_of<object,m_class>::value, "Class must derive from 'object'"); \
     m_class() = default; \
     m_class(entt::entity handle, luna::scene* scene) \
-        : m_inherits(handle, scene), entityHandle(handle), scene(scene) { \
+        : m_inherits(handle, scene) { \
         LN_ERR_FAIL_COND_MSG(handle == entt::null, "Invalid node quikID!"); \
     } \
     m_class(uint64_t id, luna::scene* scene) { /* constructor body for id */ } \
 	m_class(luna::scene* scene) {m_inherits::init(scene); init();} \
 	virtual ~m_class() = default; \
-	virtual void notification(notificationType type); \
+	virtual void notification(notificationType type);override \
+	virtual void init(luna::scene* scene) override; \
 	friend class m_inherits; \
     static const char* className() { return #m_class; } \
-    static const char* baseClassName() { return #m_inherits; }
+    static const char* baseClassName() { return #m_inherits; } \
+	static void bindMethods();
 #endif // !LN_CLASS
 
 
