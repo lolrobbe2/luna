@@ -36,7 +36,7 @@ namespace luna
 			PackedInt64Array,
 
 		};
-
+		variant(void);
 		variant(bool p_bool);
 		variant(float p_float);
 

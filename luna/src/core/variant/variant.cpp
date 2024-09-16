@@ -2,6 +2,11 @@
 #include <core/object/object.h>
 namespace luna
 {
+	variant::variant(void)
+	{
+		m_type = Nil;
+
+	}
 	variant::variant(bool p_bool)
 	{
 		m_data.m_bool = p_bool;
