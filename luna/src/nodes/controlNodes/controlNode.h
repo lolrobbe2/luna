@@ -10,12 +10,7 @@ namespace luna
 		class LN_API controlNode : public canvasItem
 		{
 		public:
-			controlNode() = default;
-			controlNode(entt::entity handle, luna::scene* scene);
-			controlNode(luna::scene* scene);
-			virtual ~controlNode() = default;
-			virtual void init(luna::scene* scene) override;
-			virtual void bindMethods() override;
+			LN_CLASS(controlNode, canvasItem);
 			virtual void guiEvent(Event& event);
 			float getOffset();
 			//rect2 getRect()

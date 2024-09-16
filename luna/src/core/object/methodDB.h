@@ -5,6 +5,7 @@
 #include <core/core.h>
 #include <core/debug/uuid.h>
 #include <core/variant/variant.h>
+#include <core/debug/debugMacros.h>
 namespace luna
 {
 
@@ -12,23 +13,83 @@ namespace luna
 	{
 	public:
 		void setId(uint64_t newId) { id = newId; }
-		uint64_t getId() { id; }
+		uint64_t getId() const { id; } 
 		_ALWAYS_INLINE_ void setClassName(const std::string& name) { m_class = name; }
 		_ALWAYS_INLINE_ const std::string& getClassName(const std::string& name) { return m_class; }
 	private:
 		uint64_t id = 0;
 		std::string m_class;
-		std::vector<variant> args;
+		std::vector<variant> defaultArgs;
+		std::vector<variant::type> args;
 		operator bool() { return id != 0; }
 	};
 #ifdef TYPED_METHOD_BIND
 	template <typename T, typename... P>
 #else
-	template <typename... P>
+	template <typename MB_T,typename... P>
 #endif
 	class methodT : public method
 	{
 		void (MB_T::* method)(P...) = nullptr;
+
+		template<typename... Args>
+		_ALWAYS_INLINE_ variant call(MB_T* object, Args&&... args) 
+		{
+			if (method) {
+				// Call the stored method on the provided object and forward the arguments
+				return (object->*method)(std::forward<Args>(args)...);
+			}
+		}
+		_ALWAYS_INLINE_ variant callv(MB_T* object, variant** args, int argCount)
+		{
+			if (method) {
+				// Ensure argCount matches the expected number of parameters
+				LN_ERR_FAIL_COND_V_MSG(argCount != sizeof...(P),variant(), "Error: Argument count mismatch!");
+
+				// Create a tuple from the array of variants
+				return callFromVariants(object, args, std::index_sequence_for<P...>{});
+			}
+		}
+		_ALWAYS_INLINE_ variant calldv(MB_T* object, variant** args, int argCount, const std::vector<variant>& defaultArgs)
+		{
+			constexpr size_t expectedArgCount = sizeof...(P);
+
+			
+			// If argCount is less than expected, use defaultArgs to fill in the rest
+			LN_UNROLL_LOOP
+			if (argCount < expectedArgCount) 
+			{
+				std::vector<variant> finalArgs(expectedArgCount);
+
+				// Copy the provided arguments into the finalArgs array
+				LN_UNROLL_LOOP
+				for (int i = 0; i < argCount; ++i) 
+					finalArgs[i] = *args[i];
+			
+				// Fill in the remaining arguments from defaultArgs
+				LN_UNROLL_LOOP
+				for (int i = argCount; i < expectedArgCount; ++i) 
+					finalArgs[i] = defaultArgs[i - argCount];  // Take values from defaultArgs
+				
+				// Convert the vector back to an array of pointers
+				std::vector<variant*> finalArgPtrs(expectedArgCount);
+				LN_UNROLL_LOOP
+				for (int i = 0; i < expectedArgCount; ++i) 
+					finalArgPtrs[i] = &finalArgs[i];
+				
+
+				return callv(object, finalArgPtrs.data(), expectedArgCount);
+			}
+
+		
+			return callv(object, args, argCount);
+			
+		}
+		template<std::size_t... I>
+		_ALWAYS_INLINE_ variant callFromVariants(MB_T* object, variant** args, std::index_sequence<I...>) {
+			// Convert each Variant argument to the expected type and call the method
+			return call(object, (args[I]->operator P())...);  // Extract and cast each Variant to P
+		}
 
 	};
 	struct methodDefinition

@@ -13,7 +13,7 @@ namespace luna
 		callable(object& object, const char* name);
 	private:
 		object m_object;
-		methodDefinition m_methodDefinition;
+		methodDefinition* m_methodDefinition;
 	};
 
 

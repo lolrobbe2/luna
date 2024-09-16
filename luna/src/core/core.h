@@ -6,6 +6,9 @@
 
 #define LN_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 #define LN_TYPE_TO_NAME(type) #type;
+#ifndef LN_UNROLL_LOOP
+	#define LN_UNROLL_LOOP _Pragma("unroll")
+#endif // !LN_UNROLL_LOOP
 
 #pragma warning(push, 0)
 #include <memory>

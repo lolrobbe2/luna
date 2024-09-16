@@ -510,10 +510,12 @@ namespace luna
 		LN_PROFILE_SCOPE("node tree assembly");
 		prevTime = std::chrono::system_clock::now();
 		auto childGroup = scene->m_Registry.view<childUintComponent>();
+		LN_UNROLL_LOOP
 		for (auto& entity : childGroup)
 		{
 			Node parent{ entity,scene };
 			auto children = parent.getComponent<childUintComponent>().childs;
+			LN_UNROLL_LOOP
 			for(uint64_t childId : children)
 			{
 				Node child{ childId, scene };

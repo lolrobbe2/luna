@@ -33,6 +33,7 @@ namespace luna
 			computeDescriptorSet.update();
 			freeImageIndeces.resize(LN_IMAGE_BATCH_SIZE, freeImageIndeces.size());
 			
+			LN_UNROLL_LOOP
 			for (size_t i = 0; i < LN_IMAGE_BATCH_SIZE; i++)
 			{
 				freeImageIndeces[i] = i;
@@ -43,6 +44,7 @@ namespace luna
 			}
 			//TODO Sampler!
 			samplerInfo.sampler = *sampler;
+			LN_UNROLL_LOOP
 			for (descriptorSet& graphicsDescriptorSet : graphicsDescriptorSets)
 			{
 				graphicsDescriptorSet.write(0, &samplerInfo);
@@ -97,6 +99,7 @@ namespace luna
 			uint32_t offset = 0;
 			uint32_t* quadIndices = cpuIndicesBuffer.getData<uint32_t>();
 			//*2 because a rectangle/quad exists out of 2 triangles.
+			LN_UNROLL_LOOP
 			for (uint32_t i = 0; i < commandsAmount * 6; i += 6)
 			{
 				quadIndices[i + 0] = offset + 0;

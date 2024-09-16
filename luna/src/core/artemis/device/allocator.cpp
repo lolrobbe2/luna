@@ -196,6 +196,7 @@ namespace luna
 		{
 			std::vector<image>* images = new std::vector<image>();
 			images->resize(count);
+			LN_UNROLL_LOOP
 			for (size_t i = 0; i < count; i++)
 			{
 				(*images)[i] = allocateImage(extent, channels, usageFlags,format, memoryUsage, uv, imageView, imageAspectFlags);

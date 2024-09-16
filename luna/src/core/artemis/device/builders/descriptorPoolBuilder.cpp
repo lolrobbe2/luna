@@ -95,6 +95,7 @@ namespace luna
 			std::vector<VkDescriptorSetLayoutBinding> resourceLayoutBindings;
 			std::vector<shaderResource> shaderLayout = p_shader->layout();
 			//question: why did i ever reverse this for loop.
+			LN_UNROLL_LOOP
 			for (size_t i = 0; i < shaderLayout.size(); i++)
 			{
 				VkDescriptorSetLayoutBinding resourceLayoutBinding;

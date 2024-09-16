@@ -83,6 +83,7 @@ namespace luna
 		static void writeGlyphToBuffer(imageAtlas* atlas, scanlineGlyph* glyph, int x, int y)
 		{
 			int yoff = y * GLYPH_HEIGHT;
+			LN_UNROLL_LOOP
 			for (size_t i = 0; i < GLYPH_HEIGHT; i++)
 			{
 				atlas->height[yoff + i].scanlines[x] = glyph->scanlines[i];
@@ -95,6 +96,7 @@ namespace luna
 			LN_PROFILE_FUNCTION();
 			imageAtlas* atlas = (imageAtlas*)buffer.getData();
 			uint64_t offset = 0;
+			LN_UNROLL_LOOP
 			for (size_t i = 0; i < 256; i++)
 			{
 				float advanceScale = stbtt_ScaleForPixelHeight(fontInfo, 100);

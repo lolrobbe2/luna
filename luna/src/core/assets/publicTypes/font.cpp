@@ -7,6 +7,7 @@ namespace luna
 		
 		font::font(artemis::image& _image,glm::vec2* advances,glm::vec2* scales,glm::vec2* offsets) : image(_image)
 		{
+			LN_UNROLL_LOOP
 			for (size_t glyph = 0; glyph < 256; glyph++)
 			{
 				int yStart = glyph / 16;

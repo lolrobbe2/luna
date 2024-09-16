@@ -50,6 +50,7 @@ namespace luna
 				p_renderer->beginImGuiScene();
 				// Ensure this code runs on the main thread
 				{
+					LN_UNROLL_LOOP
 					for (size_t i = 0; i < layerStack.size(); i++)
 						(*(layerStack.begin() + i))->onImGuiRender();
 				}
@@ -72,7 +73,7 @@ namespace luna
 					p_renderer->beginScene();
 					{
 						LN_PROFILE_SCOPE("LayerStack OnUpdate");
-
+						LN_UNROLL_LOOP
 						for (utils::layer* layer : layerStack)
 							layer->onUpdate(timestep);
 					}

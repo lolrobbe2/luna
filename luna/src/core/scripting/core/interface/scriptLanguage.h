@@ -4,11 +4,18 @@
 #include <core/object/object.h>
 namespace luna 
 {
+
 	namespace scripting 
 	{
+		class scriptInstance : public object 
+		{
+			LN_CLASS(scriptInstance, object);
+			virtual void call() = 0;
+		};
 		class script : public object
 		{
 			LN_CLASS(script, object);
+			virtual void instantiate() = 0;
 		};
 
 		class scriptLanguage : public object

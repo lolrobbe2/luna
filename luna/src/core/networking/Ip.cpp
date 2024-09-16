@@ -125,6 +125,7 @@ namespace luna
 			queueItem queue[Ip::RESOLVER_MAX_QUERIES];
 
 			Ip::ResolverID find_empty_id() const {
+				LN_UNROLL_LOOP
 				for (int i = 0; i < Ip::RESOLVER_MAX_QUERIES; i++) {
 					if (queue[i].status.get() == Ip::RESOLVER_STATUS_NONE) {
 						return i;
@@ -142,6 +143,7 @@ namespace luna
 			bool threadAbort;
 
 			void resolveQueues() {
+				LN_UNROLL_LOOP
 				for (int i = 0; i < Ip::RESOLVER_MAX_QUERIES; i++) {
 					if (queue[i].status.get() != Ip::RESOLVER_STATUS_WAITING) {
 						continue;

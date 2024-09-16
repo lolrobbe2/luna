@@ -19,6 +19,7 @@ namespace luna
 	class object;
 	class variant
 	{
+	public:
 		enum type
 		{
 			Nil,
@@ -35,7 +36,7 @@ namespace luna
 			PackedInt64Array,
 
 		};
-	public:
+
 		variant(bool p_bool);
 		variant(float p_float);
 

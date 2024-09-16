@@ -35,7 +35,7 @@ namespace luna
 		//MonoArray* nodeArray = 
 		luna::scripting::monoArray nodes(scripting::scriptingEngine::createArray<Node>(children.size()));
 		
-		
+		LN_UNROLL_LOOP
 		for (size_t i = 0; i < children.size(); i++)
 		{
 			auto& script = children[i].getComponent<scriptComponent>();

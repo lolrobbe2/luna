@@ -707,6 +707,7 @@ namespace luna
 				itemList.items[itemList.current].selected = true;
 				itemList.items[itemList.current].customFg = { 255.0f, 0.0f, 255.0f,255.0f };
 			}
+			LN_UNROLL_LOOP
 			for(item& item : itemList.items)
 			{
 				if(!item.hover && mouseButtonEvent.getMouseButton() == Mouse::ButtonLeft)

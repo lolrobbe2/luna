@@ -52,6 +52,7 @@ namespace luna
 
     _ALWAYS_INLINE_ threadPool::threadPool(size_t threads)
         : stop(false), active_tasks(0) {
+        LN_UNROLL_LOOP
         for (size_t i = 0; i < threads; ++i) {
             workers.emplace_back([this] {
                 for (;;) {

@@ -47,6 +47,7 @@ namespace luna
 				 float maxWidth = bounds.z - bounds.x;
 
 				 // Iterate over the text starting from scrollPosition
+				 LN_UNROLL_LOOP
 				 for (size_t i = scrollPosition; i < labelText.size(); i++)
 				 {
 					 xAdvance += font->getAdvance(labelText[i]).y * normalizedDimensions.x;

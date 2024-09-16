@@ -347,6 +347,7 @@ namespace luna
 			sampler = c_device.getSampler(VK_FILTER_NEAREST);
 
 			renderCmdBuffers.reserve(10);
+			LN_UNROLL_LOOP
 			for (size_t i = 0; i < 1; ++i) {
 				renderCmdBuffers.push_back(renderCommandBuffer(p_allocator, computeDescriptorPool, grapchicsDescriptorPool, sampler,maxFramesInFlight));
 			}

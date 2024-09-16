@@ -36,6 +36,8 @@ namespace luna
 					return std::to_string(field8[12]) + "." + std::to_string(field8[13]) + "." + std::to_string(field8[14]) + "." + std::to_string(field8[15]);
 				}
 				std::string ret;
+
+				LN_UNROLL_LOOP
 				for (int i = 0; i < 8; i++) {
 					if (i > 0) {
 						ret = ret + ":";
@@ -58,6 +60,8 @@ namespace luna
 				if (!valid) {
 					return false;
 				}
+
+				LN_UNROLL_LOOP
 				for (int i = 0; i < 4; i++) {
 					if (field32[i] != p_ip.field32[i]) {
 						return false;
@@ -73,6 +77,8 @@ namespace luna
 				if (!valid) {
 					return true;
 				}
+
+				LN_UNROLL_LOOP
 				for (int i = 0; i < 4; i++) {
 					if (field32[i] != p_ip.field32[i]) {
 						return true;
