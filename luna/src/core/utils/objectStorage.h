@@ -72,11 +72,11 @@ namespace luna
 				switch (result.first)
 				{
 				case cacheResult::cacheHit:
-					return { storageOpSucces,result.second };
+					_value = result.second; return { storageOpSucces,_value };
 				case cacheResult::cacheMiss:
 				{
 					auto iterator = objectMemory.find(key);
-					if (iterator != objectMemory.end()) return { storageOpSucces,iterator->second };
+					if (iterator != objectMemory.end()) _value = iterator->second; return { storageOpSucces,iterator->second };
 					return { storageOpFailed,value() };
 				}
 				case cacheResult::cacheInvalidHandle:
