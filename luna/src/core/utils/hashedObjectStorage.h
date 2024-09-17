@@ -25,15 +25,19 @@ namespace luna
 			hashedObjectStorage(size_t cacheSize) : objectStorage(cacheSize) {}
 			value& operator[](const keyObject& key) { return getValue(key, value()); };
 
-			_ALWAYS_INLINE_ std::pair<storageResult, value> putValue(const keyObject& key, const value&& _value)
+			_ALWAYS_INLINE_ value& putValue(const keyObject& key, const value&& _value)
 			{
-				storage.putValue(hashFunction(key),std::forward<value>(_value))
+				storage.putValue(hashFunction(key), std::forward<value>(_value)).second;
 			}
 			_ALWAYS_INLINE_ value& getValue(const keyObject& key)
 			{
 				value value;
 				storage.getValue(hashFunction(key),value);
 				return value;
+			}
+			_ALWAYS_INLINE_ bool hasValue(const keyObject& key)
+			{
+				return storage.hasValue(hashFunction(key));
 			}
 		private:
 			uint64_t hashFunction(const keyObject& key) const

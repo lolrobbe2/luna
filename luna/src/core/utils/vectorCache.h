@@ -91,7 +91,7 @@ namespace luna
 			 * \param key
 			 * \return 
 			 */
-			std::pair<cacheResult, value> getValue(cacheObject key)
+			std::pair<cacheResult, value&> getValue(cacheObject key)
 			{
 				LN_PROFILE_FUNCTION();
 
@@ -109,12 +109,12 @@ namespace luna
 					handleCache.erase(it);
 					handleCache.insert(handleCache.begin(), key);
 					valueCache.insert(valueCache.begin(), std::move(requestedCacheObject));
-					return std::make_pair(cacheResult::cacheHit, *valueCache.begin());
+					return std::pair<cacheResult, value&>(cacheResult::cacheHit, *valueCache.begin());
 				}
 
-				return std::make_pair(cacheResult::cacheMiss, value());
+				return std::pair<cacheResult, value&>(cacheResult::cacheMiss, value());
 				//if value is not found return empty value and cache miss.
-				return std::pair<cacheResult, value>(cacheResult::cacheMiss, value());
+				return std::pair<cacheResult, value&>(cacheResult::cacheMiss, value());
 			};
 			/**
 			 * @brief sets the current value of the given cacheObject key.
@@ -123,22 +123,22 @@ namespace luna
 			 * \param _value the value to overwrite the current value
 			 * \return 
 			 */
-			std::pair<cacheResult, value> setValue(cacheObject key, value _value)
+			std::pair<cacheResult, value&> setValue(cacheObject key, value _value)
 			{
 				LN_PROFILE_FUNCTION();
 
 
-				if (key == 0) return std::make_pair(cacheResult::cacheInvalidHandle, value());
+				if (key == 0) return std::pair<cacheResult, value&>(cacheResult::cacheInvalidHandle, value());
 				std::lock_guard<std::mutex> cacheGuard(lockGuard);
 
 				auto it = findHandle(key);
 				if (it != handleCache.end())
 				{
 					valueCache[std::distance(handleCache.begin(), it)] = std::move(_value);
-					return std::make_pair(cacheResult::cacheOpSuccess, valueCache[std::distance(handleCache.begin(), it)]);
+					return std::pair<cacheResult, value&>(cacheResult::cacheOpSuccess, valueCache[std::distance(handleCache.begin(), it)]);
 				}
 
-				return std::make_pair(cacheResult::cacheOpFailed, _value);
+				return std::pair<cacheResult, value&>(cacheResult::cacheOpFailed, _value);
 			}
 
 			/**
@@ -181,20 +181,44 @@ namespace luna
 			*/
 			void clear()
 			{
-				std::lock_guard<std::mutex>(this->lockGuard);
+				std::lock_guard<std::mutex> cacheGuard(this->lockGuard);
 				handleCache.clear();
 				valueCache.clear();
 			}
 		protected:
 
-			uint64_t maxCacheSize;
+			constexpr uint64_t maxCacheSize;
 			std::vector<cacheObject> handleCache; //use seperate vector to allow the entire vector to remain in cache.
 			std::vector<value> valueCache; //same principle value byte size is unkown -> valueCache might not fit in cahce completely.
 			mutable std::mutex lockGuard;
 
 			typename std::vector<cacheObject>::iterator findHandle(cacheObject key)
 			{
-				return std::find(handleCache.begin(), handleCache.end(), key);
+				auto begin = handleCache.begin();
+				auto end = handleCache.end();
+				size_t distance = std::distance(begin, end);
+
+				constexpr size_t unrollCount = 20; // Number of unrollings
+				size_t i = 0;
+
+				// Ensure the loop is unrolled for a minimum size
+				if (distance >= unrollCount)
+				{
+					for (; i + unrollCount <= distance; i += unrollCount)
+					{
+						LN_UNROLL_LOOP_COUNT(20) //this should be compiled as an unrolled for loop for faster compile time
+						for (size_t j = 0; j < unrollCount; ++j)
+							if (*(begin + i + j) == key) return begin + i + j;
+					}
+				}
+
+				// Check remaining elements
+				LN_UNROLL_LOOP; //try unrolling
+				for (; i < distance; ++i)
+					if (*(begin + i) == key) return begin + i;
+				
+
+				return end;
 			}
 		};
 	}

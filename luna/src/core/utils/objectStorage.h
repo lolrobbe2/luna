@@ -37,7 +37,7 @@ namespace luna
 			}
 			/**
 			 * @brief puts a value in the object storage.
-			 * @note if the value of *key !=  it whill use this value instead of generating one.
+			 * @note if the value of *key != 0 it whill use this value instead of generating one.
 			 *
 			 * \param storageObject* key pointer to key
 			 * \param value _value value/object to be stored.
@@ -47,7 +47,7 @@ namespace luna
 			std::pair<storageResult, value> putValue(storageObject* key, const value& _value)
 			{
 				LN_PROFILE_FUNCTION();
-				std::pair<cacheObject, value> result = objectCache.putValue(key, _value);
+				std::pair<cacheObject, value&> result = objectCache.putValue(key, _value);
 				if (result.first)
 				{
 					std::lock_guard<std::shared_mutex> heapGuard(heapMutex);
@@ -65,10 +65,10 @@ namespace luna
 			 * \return std::pair<storageResult, value> value is the input value.
 			 * @see storageResult
 			 */
-			std::pair<storageResult, value> getValue(const storageObject& key, const value& _value = value())
+			std::pair<storageResult, value&> getValue(const storageObject& key, const value& _value = value())
 			{
 				LN_PROFILE_FUNCTION();
-				std::pair<cacheResult, value> result = objectCache.getValue(key);
+				std::pair<cacheResult, value&> result = objectCache.getValue(key);
 				switch (result.first)
 				{
 				case cacheResult::cacheHit:
@@ -137,6 +137,22 @@ namespace luna
 			{
 				if (objectCache.hasValue(key)) return true;
 				return objectMemory.find(key) != objectMemory.end();
+			}
+
+			std::vector<value> data()
+			{
+				std::vector<value> combinedData;
+				std::shared_lock lock(heapMutex);
+				combinedData.insert(combinedData.end(), objectCache.begin(), objectCache.end());
+
+				// Add values from the unordered_map to the result vector
+				LN_UNROLL_LOOP
+				for (const auto& pair : objectMemory) 
+					combinedData.push_back(pair.second);
+				
+
+				// The shared lock is automatically released when going out of scope
+				return combinedData;
 			}
 
 			/**
