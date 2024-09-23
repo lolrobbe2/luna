@@ -7,8 +7,32 @@
 #define LN_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 #define LN_TYPE_TO_NAME(type) #type;
 #ifndef LN_UNROLL_LOOP
-	#define LN_UNROLL_LOOP _Pragma("unroll")
+	#if defined(_MSC_VER) // Microsoft Visual Studio
+		#define LN_UNROLL_LOOP _Pragma("loop(hint_parallel(1))")
+	#elif defined(__GNUC__) || defined(__clang__) // GCC or Clang
+		#define LN_UNROLL_LOOP _Pragma("unroll")
+	#elif defined(__INTEL_COMPILER) // Intel C++ Compiler
+		#define LN_UNROLL_LOOP _Pragma("unroll")
+	#else // Fallback for other compilers
+		#define LN_UNROLL_LOOP // No unroll pragma
+	#endif
 #endif // !LN_UNROLL_LOOP
+
+
+#ifndef LN_UNROLL_LOOP_COUNT
+	#if _MSC_VER // Microsoft Visual Studio
+		// MSVC does not directly support unroll factor, use hint_parallel
+		#define LN_UNROLL_LOOP_COUNT(count) _Pragma("loop(hint_parallel(1))")
+	#elif defined(__GNUC__) || defined(__clang__) // GCC or Clang
+		// GCC and Clang support specifying unroll factor
+		#define LN_UNROLL_LOOP_COUNT(count) _Pragma("unroll " #count)
+	#elif defined(__INTEL_COMPILER) // Intel C++ Compiler
+		// Intel C++ Compiler supports unroll factor
+		#define LN_UNROLL_LOOP_COUNT(count) _Pragma("unroll " #count)
+	#else // Fallback for other compilers
+		#define LN_UNROLL_LOOP_COUNT(count) // No unroll pragma
+	#endif
+#endif // !LN_UNROLL_LOOP_COUNT
 
 #pragma warning(push, 0)
 #include <memory>

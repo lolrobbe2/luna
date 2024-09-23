@@ -187,7 +187,7 @@ namespace luna
 			}
 		protected:
 
-			constexpr uint64_t maxCacheSize;
+			uint64_t maxCacheSize;
 			std::vector<cacheObject> handleCache; //use seperate vector to allow the entire vector to remain in cache.
 			std::vector<value> valueCache; //same principle value byte size is unkown -> valueCache might not fit in cahce completely.
 			mutable std::mutex lockGuard;

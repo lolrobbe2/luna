@@ -63,7 +63,7 @@ void main()
     // Calculate the index of the SSBO element to access
     uint index = localInvocationID + gl_WorkGroupSize.x * gl_WorkGroupID.x;
     uint outIndex = index * outIndexMultiplier; //index is multiplied by 4 to get the correct quad offset in memory. because quads have 4 quadVertices
-
+    #pragma unroll 4
     for (int subIndex = 0; subIndex < quadVertexCount; subIndex++)
     {
         //vertexPositions are different for text and quads.

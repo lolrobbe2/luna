@@ -14,7 +14,7 @@ namespace luna
 	/*-----------------------------------------------------------------------*/
 	/*                                glue                                 */
 	/*-----------------------------------------------------------------------*/
-
+	/*
 
 	static void NodeSetName(entt::entity nodeHandle, MonoString* name)
 	{
@@ -72,6 +72,7 @@ namespace luna
 	{
 		return Node(scripting::scriptingEngine::getContext());
 	}
+	*/
 	Node::Node(uint64_t id, luna::scene* scene)
 		: object(id,scene)
 	{
@@ -113,7 +114,7 @@ namespace luna
 		{
 			auto childrenID = getComponent<childComponent>().childs;
 			for (auto child : childrenID) {
-				children.push_back(Node(child, scene));
+				children.push_back(Node(child, p_scene));
 			}
 		}
 		return children;
@@ -123,23 +124,27 @@ namespace luna
 	{
 		if (hasComponent<parentComponent>()) {
 			auto& parentComp = getComponent<parentComponent>();
-			Node parent{ parentComp.parentId,scene };
+			Node parent{ parentComp.parentId,p_scene };
 			return parent;
 		}
-		return Node(-1, scene);
+		return Node(-1, p_scene);
 	}
 
 	void Node::init(luna::scene* scene)
 	{
-		this->scene = scene;
+		this->p_scene = scene;
 		entityHandle = scene->create();
 		addComponent<idComponent>().typeName = LN_CLASS_STRINGIFY(Node);
 		addComponent<scriptComponent>();
-		addComponent<signalComponent>(); Component>();
+		addComponent<signalComponent>(); 
 	}
 
 	void Node::bindMethods()
 	{
+		methodDB::registerMethod(METHOD_DEF("SetName", "name"), &setName);
+		methodDB::registerMethod(METHOD_DEF("GetName"),&getName);
+		methodDB::registerMethod(METHOD_DEF("GetChildren"), &getChildren);
+		/*
 		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
 		LN_ADD_INTERNAL_CALL(Node, NodeGetName);
 		LN_ADD_INTERNAL_CALL(Node, NodeGetChildren);
@@ -147,6 +152,7 @@ namespace luna
 		LN_ADD_INTERNAL_CALL(Node, NodeAddSibling);
 		LN_ADD_INTERNAL_CALL(Node, NodeAddChild);
 		LN_ADD_INTERNAL_CALL(Node, NodeCreateNew);
+		*/
 	}
 
 #pragma endregion
