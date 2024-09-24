@@ -99,7 +99,7 @@ namespace luna
 
 	void Node::addChild(Node node)
 	{
-		LN_CORE_INFO("adding node {0} as a child to {1} .", node.getUUID().getId(), getUUID().getId());
+		//LN_CORE_INFO("adding node {0} as a child to {1} .", node.getUUID().getId(), getUUID().getId());
 		if (node.hasComponent<parentComponent>()) node.getComponent<parentComponent>().parentId = getComponent<idComponent>().id;
 		else node.addComponent<parentComponent>().parentId = getComponent<idComponent>().id;
 
@@ -130,6 +130,17 @@ namespace luna
 		return Node(-1, p_scene);
 	}
 
+	void Node::addSibling(Node node)
+	{
+		LN_ERR_FAIL_COND_MSG(getParent(), "[Node] unable to add sibling node when current node has not parent!");
+		getParent().addChild(node);
+	}
+
+	Node Node::createNew()
+	{
+		return Node(scripting::scriptingEngine::getContext());
+	}
+
 	void Node::init(luna::scene* scene)
 	{
 		this->p_scene = scene;
@@ -144,15 +155,10 @@ namespace luna
 		methodDB::registerMethod(METHOD_DEF("SetName", "name"), &setName);
 		methodDB::registerMethod(METHOD_DEF("GetName"),&getName);
 		methodDB::registerMethod(METHOD_DEF("GetChildren"), &getChildren);
-		/*
-		LN_ADD_INTERNAL_CALL(Node, NodeSetName);
-		LN_ADD_INTERNAL_CALL(Node, NodeGetName);
-		LN_ADD_INTERNAL_CALL(Node, NodeGetChildren);
-		LN_ADD_INTERNAL_CALL(Node, NodeGetParent);
-		LN_ADD_INTERNAL_CALL(Node, NodeAddSibling);
-		LN_ADD_INTERNAL_CALL(Node, NodeAddChild);
-		LN_ADD_INTERNAL_CALL(Node, NodeCreateNew);
-		*/
+		methodDB::registerMethod(METHOD_DEF("GetParent"), &getParent);
+		methodDB::registerMethod(METHOD_DEF("AddSibling"), &addSibling);
+		methodDB::registerMethod(METHOD_DEF("AddChild"), &addChild);
+		methodDB::registerMethod(METHOD_DEF("_constructor"), &createNew);
 	}
 
 #pragma endregion

@@ -13,7 +13,8 @@ namespace luna
 		void addChild(Node node);
 		std::vector<Node> getChildren();
 		Node getParent();
-
+		void addSibling(Node node);
+		Node createNew();
 		friend class scene;
 		friend class sceneHierarchyPanel;
 		entt::entity getQuikId() { return entityHandle; };
