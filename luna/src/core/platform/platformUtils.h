@@ -53,6 +53,7 @@ namespace luna
 			static uint64_t getTicksUsec();
 			static uint64_t getTicksMsec();
 			static ref<dynamicLibrary> loadDynamicLib(std::filesystem::path& libPath);
+			static std::filesystem::path getFolderPath(folderTypes type);
 		private:
 			inline static uint64_t ticksStart;
 			inline static uint64_t ticksPerSecond = 10000000; //1 win tick = 100ns

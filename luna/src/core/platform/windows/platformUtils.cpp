@@ -269,6 +269,83 @@ namespace luna
 			return createRef<dynamicLibrary>(lib);
 		}
 
+		std::filesystem::path os::getFolderPath(folderTypes type)
+		{
+			PWSTR path = nullptr;
+			std::filesystem::path folderPath;
+
+			switch (type)
+			{
+			case desktop:
+				SHGetKnownFolderPath(FOLDERID_Desktop, 0, NULL, &path);
+				folderPath = path;
+				CoTaskMemFree(path); // Free memory allocated by SHGetKnownFolderPath
+				break;
+
+			case desktopDir:
+				SHGetKnownFolderPath(FOLDERID_Desktop, 0, NULL, &path);
+				folderPath = std::filesystem::path(path).parent_path();
+				CoTaskMemFree(path);
+				break;
+
+			case documents:
+				SHGetKnownFolderPath(FOLDERID_Documents, 0, NULL, &path);
+				folderPath = path;
+				CoTaskMemFree(path);
+				break;
+
+			case music:
+				SHGetKnownFolderPath(FOLDERID_Music, 0, NULL, &path);
+				folderPath = path;
+				CoTaskMemFree(path);
+				break;
+
+			case video:
+				SHGetKnownFolderPath(FOLDERID_Videos, 0, NULL, &path);
+				folderPath = path;
+				CoTaskMemFree(path);
+				break;
+
+			case fonts:
+				SHGetKnownFolderPath(FOLDERID_Fonts, 0, NULL, &path);
+				folderPath = path;
+				CoTaskMemFree(path);
+				break;
+
+			case appData:
+				SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, NULL, &path);
+				folderPath = path;
+				CoTaskMemFree(path);
+				break;
+
+			case root:
+				folderPath = std::filesystem::path(std::getenv("SystemDrive")) / "/";
+				break;
+
+			case programFiles:
+				folderPath = std::filesystem::path(std::getenv("ProgramFiles"));
+				break;
+
+			case programFilesX86:
+				folderPath = std::filesystem::path(std::getenv("ProgramFiles(x86)"));
+				break;
+
+			case recycleBin:
+				// For Recycle Bin, there is no straightforward SHGetKnownFolderPath.
+				// A custom function to query the special folder is required.
+				// For now, returning a placeholder path.
+				folderPath = "C:/$Recycle.Bin"; // Adjust as needed
+				break;
+
+			default:
+				folderPath = "Unknown folder type!";
+				break;
+			}
+
+			return folderPath;
+		}
+
+
 		std::string filesystem::getSystemFolderPath(const folderTypes folderType)
 		{
 			//uses shlobj_core.h

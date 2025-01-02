@@ -35,18 +35,20 @@ namespace luna {
 
 	void Log::RegisterMethods()
 	{
+		/*
 		LN_ADD_INTERNAL_CALL(Log, TraceInternal);
 		LN_ADD_INTERNAL_CALL(Log, InfoInternal);
 		LN_ADD_INTERNAL_CALL(Log, WarnInternal);
 		LN_ADD_INTERNAL_CALL(Log, ErrorInternal);
 		LN_ADD_INTERNAL_CALL(Log, CriticalInternal)
+		*/
 	}
 
 	_ALWAYS_INLINE_ void Log::TraceInternal(MonoString* string)
 	{
 		LN_TRACE(std::string(mono_string_to_utf8(string)));
 	}
-
+	
 	_ALWAYS_INLINE_ void Log::InfoInternal(MonoString* string)
 	{
 		LN_INFO(std::string(mono_string_to_utf8(string)));

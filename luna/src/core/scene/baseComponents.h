@@ -15,7 +15,7 @@ namespace luna
 	{
 		std::string className = "";
 		int currentItem = -1;
-		utils::scriptInstance* scritpInstance = nullptr;
+		//utils::scriptInstance* scritpInstance = nullptr;
 		scriptComponent() = default;
 		scriptComponent(const scriptComponent&) = default;
 	};

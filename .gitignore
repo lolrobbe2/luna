@@ -51,3 +51,10 @@ luna/tirdParty/obj/
 lunaScripting.sln
 premake5.lua
 scriptCore/scriptCore.csproj
+/scriptCore/.vs/scriptCore
+/scriptCore/obj
+/sharpSandbox/obj
+/vendor/premake5.exe
+/luna.sln
+/sharpSandbox/sharpSandbox.csproj
+/scriptCore/scriptCore.csproj

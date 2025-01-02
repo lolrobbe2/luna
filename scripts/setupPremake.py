@@ -16,7 +16,7 @@ def install_premake_thread(installer_path):
 
 
 def run_premake_vs2022():
-    subprocess.run(["vendor\\premake5", "vs2019"], check=True)
+    subprocess.run(["vendor\\premake5", "vs2022"], check=True)
 
 
 def download_and_extract_premake():

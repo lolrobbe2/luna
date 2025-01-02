@@ -134,6 +134,7 @@ namespace luna
 
 	void scene::onPlayScene()
 	{
+		/*
 		auto scriptComponents = m_Registry.view<scriptComponent,idComponent>();
 		for (auto entity : scriptComponents)
 		{
@@ -152,6 +153,7 @@ namespace luna
 			}
 
 		}
+		*/
 		m_IsRunning = true;
 	}
 
@@ -160,10 +162,11 @@ namespace luna
 		auto scriptComponents = m_Registry.view<scriptComponent, idComponent>();
 		for (auto entity : scriptComponents)
 		{
+			/*
 			auto& script = m_Registry.get<scriptComponent>(entity);
 			delete script.scritpInstance;
 			script.scritpInstance = nullptr;
-		
+			*/
 		}
 		m_IsRunning = false;
 	}
@@ -200,9 +203,11 @@ namespace luna
 		auto view = m_Registry.view<idComponent, tagComponent>(entt::exclude<parentComponent>);
 		for (auto entityID : view) {
 			Node node{ entityID, this };
+			/*
 			if (node.hasComponent<scriptComponent>() && node.getComponent<scriptComponent>().scritpInstance) {
 				node.getComponent<scriptComponent>().scritpInstance->process(ts);
 			}
+			*/
 			// Check if the entity has child entities
 			auto childView = m_Registry.view<parentComponent>();
 			if (!childView.empty()) {
@@ -222,9 +227,11 @@ namespace luna
 				auto& children = node.getComponent<childComponent>().childs;
 				for (auto childEntityID : children) {
 					Node childNode{ childEntityID, this };
+					/*
 					if (childNode.hasComponent<scriptComponent>()) {
 						childNode.getComponent<scriptComponent>().scritpInstance->process(ts);
 					}
+					*/
 					entityQueue.push(childEntityID);
 				}
 			}
